@@ -283,10 +283,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      min-height: 440px;
+      min-height: 520px;
     }
 
     .haya-banner-container::before {
@@ -302,19 +302,19 @@
 
     .haya-official-banner-logo {
       width: auto;
-      height: 340px;
+      height: 420px;
       max-width: 95%;
       object-fit: contain;
-      filter: drop-shadow(0 0 60px var(--color-cyan-glow));
+      filter: drop-shadow(0 0 75px var(--color-cyan-glow));
       position: relative;
       z-index: 2;
       transition: var(--transition-smooth);
-      transform: scale(1.75);
+      transform: scale(2.25);
     }
 
     .haya-official-banner-logo:hover {
-      transform: scale(1.85);
-      filter: drop-shadow(0 0 80px var(--color-cyan-glow));
+      transform: scale(2.35);
+      filter: drop-shadow(0 0 90px var(--color-cyan-glow));
     }
 
     /* ── HERO SECTION ── */
@@ -1192,16 +1192,16 @@
       .nav-container { padding: 0.85rem 1.25rem; }
       
       .haya-banner-container {
-        min-height: 240px;
-        padding: 2rem 1rem;
+        min-height: 320px;
+        padding: 2.5rem 1rem;
         margin-top: 1.5rem;
-        border-radius: 16px;
+        border-radius: 18px;
       }
       .haya-official-banner-logo {
         height: auto;
-        max-height: 180px;
+        max-height: 280px;
         width: 100%;
-        transform: scale(1.15);
+        transform: scale(1.6);
       }
       
       .hero { padding: 2.5rem 0 2.5rem; }
@@ -1235,25 +1235,40 @@
         text-align: center;
       }
       
+      .ide-body {
+        flex-direction: column !important;
+      }
+
       .ide-sidebar {
-        width: 100%;
-        border-right: none;
+        width: 100% !important;
+        border-right: none !important;
         border-bottom: 1px solid var(--border-glow);
       }
-      .sqlite-panel {
-        width: 100%;
-        border-left: none;
-        border-top: 1px solid var(--border-glow);
+
+      .ide-editor-area {
+        flex-direction: column !important;
+        width: 100% !important;
       }
-      .ide-body {
-        flex-direction: column;
+
+      .monaco-panel {
+        width: 100% !important;
+        flex: none !important;
+        border-bottom: 1px solid var(--border-glow);
+        padding: 1rem !important;
+      }
+
+      .sqlite-panel {
+        width: 100% !important;
+        border-left: none !important;
+        border-top: 1px solid var(--border-glow) !important;
+        padding: 1rem !important;
       }
     }
 
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.85rem; }
       .brand-logo { font-size: 1.2rem; }
-      .haya-official-banner-logo { max-height: 140px; transform: scale(1.1); }
+      .haya-official-banner-logo { max-height: 220px; transform: scale(1.4); }
       .command-header { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
     }
   </style>
