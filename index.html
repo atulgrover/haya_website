@@ -551,9 +551,9 @@
 
     .monaco-panel {
       flex: 1;
-      padding: 1.25rem;
+      padding: 1rem 1.25rem;
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
@@ -562,24 +562,83 @@
     .monaco-editor-content {
       color: var(--text-main);
       outline: none;
-      white-space: pre-wrap;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
       flex: 1;
     }
 
-    .monaco-editor-content .md-bold { color: var(--color-cyan); font-weight: bold; }
-    .monaco-editor-content .md-table-row {
-      background: rgba(255, 255, 255, 0.03);
-      border-left: 2px solid var(--color-cyan);
-      padding: 0.4rem 0.6rem;
-      margin: 0.3rem 0;
+    .sim-doc-header {
+      border-bottom: 1px solid var(--border-glow);
+      padding-bottom: 0.65rem;
+    }
+
+    .sim-doc-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--color-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sim-doc-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .md-table-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin: 0.25rem 0;
+    }
+
+    .md-table-header-row {
+      display: grid;
+      grid-template-columns: 35px 95px 1fr 110px 140px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-glow);
+    }
+
+    .md-table-row {
+      display: grid;
+      grid-template-columns: 35px 95px 1fr 110px 140px;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glow);
+      border-left: 3px solid var(--color-cyan);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
       cursor: pointer;
-      display: block;
+      font-size: 0.78rem;
       transition: var(--transition-smooth);
-      word-break: break-word;
     }
-    .monaco-editor-content .md-table-row:hover {
+
+    .md-table-row:hover, .md-table-row.active-row {
       background: rgba(0, 212, 255, 0.12);
+      border-color: var(--color-cyan);
+      transform: translateX(2px);
     }
+
+    .md-tag {
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      width: fit-content;
+      text-align: center;
+    }
+    .md-tag.cyan { background: rgba(0, 212, 255, 0.12); color: var(--color-cyan); border: 1px solid var(--color-cyan); }
+    .md-tag.amber { background: rgba(255, 170, 0, 0.12); color: var(--color-amber); border: 1px solid var(--color-amber); }
+    .md-tag.purple { background: rgba(145, 80, 255, 0.15); color: var(--color-purple); border: 1px solid var(--color-purple); }
 
     .sqlite-panel {
       width: 280px;
@@ -1402,20 +1461,48 @@
           <div class="ide-editor-area" id="sim-editor-panel">
             <div class="monaco-panel">
               <div class="monaco-editor-content">
-                <span class="md-bold"># Suspicious Transactions Audit</span><br>
-                <span>Click any transaction row below to update your case database in real-time:</span><br><br>
+                <div class="sim-doc-header">
+                  <div class="sim-doc-title">📄 Suspicious Transactions Audit</div>
+                  <div class="sim-doc-sub">Click any transaction row below to update your case database in real-time:</div>
+                </div>
                 
-                <div class="md-table-row" onclick="syncRow(1, '2025-11-14', 'Apex Traders Ltd', '45,00,000', 'UNVERIFIED')">
-                  | 01 | 2025-11-14 | Apex Traders Ltd | INR 45,00,000 | Priority Transfer |
+                <div class="md-table-container">
+                  <div class="md-table-header-row">
+                    <span>#</span>
+                    <span>Date</span>
+                    <span>Entity Name</span>
+                    <span>Amount</span>
+                    <span>Classification</span>
+                  </div>
+
+                  <div class="md-table-row" onclick="syncRow(1, '2025-11-14', 'Apex Traders Ltd', '45,00,000', 'UNVERIFIED')">
+                    <span>01</span>
+                    <span>2025-11-14</span>
+                    <strong style="color:var(--text-main);">Apex Traders Ltd</strong>
+                    <span style="color:var(--color-cyan); font-weight:600;">₹45,00,000</span>
+                    <span class="md-tag cyan">Priority Transfer</span>
+                  </div>
+
+                  <div class="md-table-row" onclick="syncRow(2, '2025-12-02', 'Zenith Logistics', '1,20,00,000', 'VERIFIED')">
+                    <span>02</span>
+                    <span>2025-12-02</span>
+                    <strong style="color:var(--text-main);">Zenith Logistics</strong>
+                    <span style="color:var(--color-cyan); font-weight:600;">₹1,20,00,000</span>
+                    <span class="md-tag amber">Below Market Price</span>
+                  </div>
+
+                  <div class="md-table-row" onclick="syncRow(3, '2026-01-20', 'Promoter Related Entity', '80,00,000', 'VERIFIED')">
+                    <span>03</span>
+                    <span>2026-01-20</span>
+                    <strong style="color:var(--text-main);">Promoter Entity</strong>
+                    <span style="color:var(--color-cyan); font-weight:600;">₹80,00,000</span>
+                    <span class="md-tag purple">High Interest</span>
+                  </div>
                 </div>
-                <div class="md-table-row" onclick="syncRow(2, '2025-12-02', 'Zenith Logistics', '1,20,00,000', 'VERIFIED')">
-                  | 02 | 2025-12-02 | Zenith Logistics | INR 1,20,00,000 | Below Market Price |
+
+                <div style="font-size:0.72rem; color:var(--text-dim); margin-top:0.25rem;">
+                  ⚡ Edits saved here automatically update your case database and summary reports.
                 </div>
-                <div class="md-table-row" onclick="syncRow(3, '2026-01-20', 'Promoter Related Entity', '80,00,000', 'VERIFIED')">
-                  | 03 | 2026-01-20 | Promoter Related Entity | INR 80,00,000 | Unusually High Interest |
-                </div>
-                <br>
-                <span style="color:var(--text-dim);">// Edits saved here automatically update your case database and summary reports.</span>
               </div>
             </div>
 
