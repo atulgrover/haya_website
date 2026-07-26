@@ -1247,14 +1247,12 @@
   <header>
     <div class="nav-container">
       <a href="#" class="brand-logo" id="logo">
-        <img src="resources/hayagriva_logo_white.png" alt="Official Hayagriva Logo" class="header-official-logo" id="header-logo-img">
         HAYAGRIVA
-        <code>v3.0</code>
       </a>
 
       <nav class="nav-links">
         <a href="#stages">How It Works</a>
-        <a href="#commands">Shortcuts ( / &amp; @ )</a>
+        <a href="#commands">Shortcuts</a>
         <a href="#agents-skills">Custom Templates</a>
         <a href="#simulation">Live Demo</a>
         <a href="#dual-mode">Laptop Modes</a>
@@ -1266,8 +1264,6 @@
         <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()">
           <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">Light Mode</span>
         </button>
-
-        <button class="nav-cta" onclick="document.getElementById('stages').scrollIntoView({behavior: 'smooth'})">Explore Platform</button>
       </div>
     </div>
   </header>
@@ -1821,14 +1817,11 @@
     }
 
     function updateLogosForTheme(theme) {
-      const headerLogo = document.getElementById('header-logo-img');
       const bannerLogo = document.getElementById('banner-logo-img');
       
       if (theme === 'light') {
-        if (headerLogo) headerLogo.src = 'resources/hayagriva_logo_black.png';
         if (bannerLogo) bannerLogo.src = 'resources/hayagriva_logo_black.png';
       } else {
-        if (headerLogo) headerLogo.src = 'resources/hayagriva_logo_white.png';
         if (bannerLogo) bannerLogo.src = 'resources/hayagriva_logo_white.png';
       }
     }
