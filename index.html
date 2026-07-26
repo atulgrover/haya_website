@@ -1366,7 +1366,7 @@
               <div class="ide-dot green"></div>
             </div>
             <div class="ide-tabs">
-              <button class="ide-tab active" id="tab-editor" onclick="switchSimulation('editor')">📄 avoidance_ledger.md</button>
+              <button class="ide-tab active" id="tab-editor" onclick="switchSimulation('editor')">📄 suspicious_transactions.md</button>
               <button class="ide-tab" id="tab-rag" onclick="switchSimulation('rag')">🤖 AI Legal Assistant</button>
             </div>
           </div>
@@ -1377,7 +1377,7 @@
           <div class="ide-sidebar">
             <div class="sidebar-section-title">Case Files</div>
             <div class="sidebar-file-item active">
-              <span>📄</span> avoidance_ledger.md
+              <span>📄</span> suspicious_transactions.md
             </div>
             <div class="sidebar-file-item">
               <span>📄</span> claims_registry.md
@@ -1402,17 +1402,17 @@
           <div class="ide-editor-area" id="sim-editor-panel">
             <div class="monaco-panel">
               <div class="monaco-editor-content">
-                <span class="md-bold"># Avoidance Ledger (Section 43/45 IBC)</span><br>
-                <span>Click any row below to update the legal database in real-time:</span><br><br>
+                <span class="md-bold"># Suspicious Transactions Audit</span><br>
+                <span>Click any transaction row below to update your case database in real-time:</span><br><br>
                 
                 <div class="md-table-row" onclick="syncRow(1, '2025-11-14', 'Apex Traders Ltd', '45,00,000', 'UNVERIFIED')">
-                  | 01 | 2025-11-14 | Apex Traders Ltd | INR 45,00,000 | Preferential |
+                  | 01 | 2025-11-14 | Apex Traders Ltd | INR 45,00,000 | Priority Transfer |
                 </div>
                 <div class="md-table-row" onclick="syncRow(2, '2025-12-02', 'Zenith Logistics', '1,20,00,000', 'VERIFIED')">
-                  | 02 | 2025-12-02 | Zenith Logistics | INR 1,20,00,000 | Undervalued |
+                  | 02 | 2025-12-02 | Zenith Logistics | INR 1,20,00,000 | Below Market Price |
                 </div>
                 <div class="md-table-row" onclick="syncRow(3, '2026-01-20', 'Promoter Related Entity', '80,00,000', 'VERIFIED')">
-                  | 03 | 2026-01-20 | Promoter Related Entity | INR 80,00,000 | Extortionate |
+                  | 03 | 2026-01-20 | Promoter Related Entity | INR 80,00,000 | Unusually High Interest |
                 </div>
                 <br>
                 <span style="color:var(--text-dim);">// Edits saved here automatically update your case database and summary reports.</span>
@@ -1468,7 +1468,7 @@
               <div style="background:var(--bg-surface); border:1px solid var(--border-glow); padding:1rem; border-radius:8px; align-self:flex-start; max-width:95%; font-size:0.85rem;">
                 <span style="color:var(--color-cyan); font-weight:bold;">Advisor Assistant</span><br>
                 Based on document analysis 
-                <span class="chat-citation" onclick="openDrawer('Zenith Logistics', '1,20,00,000', '2025-12-02', 'Section 45 IBC')">[source: avoidance_ledger#row2]</span>, 
+                <span class="chat-citation" onclick="openDrawer('Zenith Logistics', '1,20,00,000', '2025-12-02', 'Section 45 IBC')">[source: suspicious_transactions#row2]</span>, 
                 the payment of INR 1,20,00,000 made to Zenith Logistics occurred within the 1-year look-back period for non-related parties.
               </div>
             </div>
