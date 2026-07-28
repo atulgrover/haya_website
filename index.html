@@ -273,9 +273,9 @@
 
     /* ── FULL LOGO HERO BANNER ── */
     .haya-banner-container {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       position: relative;
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
       border: 1px solid var(--border-glow);
       background: var(--bg-surface-glass);
@@ -283,10 +283,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 5rem 2rem;
+      padding: 3rem 1.5rem;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      min-height: 520px;
+      min-height: 380px;
     }
 
     .haya-banner-container::before {
@@ -302,19 +302,22 @@
 
     .haya-official-banner-logo {
       width: auto;
-      height: 420px;
-      max-width: 95%;
+      height: auto;
+      max-height: 320px;
+      max-width: 90%;
       object-fit: contain;
-      filter: drop-shadow(0 0 75px var(--color-cyan-glow));
+      filter: drop-shadow(0 0 50px var(--color-cyan-glow));
       position: relative;
       z-index: 2;
-      transition: var(--transition-smooth);
-      transform: scale(2.25);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      transform: none;
     }
 
-    .haya-official-banner-logo:hover {
-      transform: scale(2.35);
-      filter: drop-shadow(0 0 90px var(--color-cyan-glow));
+    @media (hover: hover) and (pointer: fine) {
+      .haya-official-banner-logo:hover {
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 70px var(--color-cyan-glow));
+      }
     }
 
     /* ── HERO SECTION ── */
@@ -1251,16 +1254,17 @@
       .nav-container { padding: 0.85rem 1.25rem; }
       
       .haya-banner-container {
-        min-height: 320px;
-        padding: 2.5rem 1rem;
-        margin-top: 1.5rem;
-        border-radius: 18px;
+        min-height: 240px;
+        padding: 2rem 1rem;
+        margin-top: 1.25rem;
+        border-radius: 16px;
       }
       .haya-official-banner-logo {
         height: auto;
-        max-height: 280px;
-        width: 100%;
-        transform: scale(1.6);
+        max-height: 200px;
+        width: auto;
+        max-width: 95%;
+        transform: none;
       }
       
       .hero { padding: 2.5rem 0 2.5rem; }
@@ -1349,6 +1353,7 @@
         <a href="#stages">How It Works</a>
         <a href="#commands">Shortcuts</a>
         <a href="#agents-skills">Custom Templates</a>
+        <a href="#ipie-gateway">iPIE Integration</a>
         <a href="#simulation">Live Demo</a>
         <a href="#dual-mode">Laptop Modes</a>
         <a href="#privacy">Data Privacy</a>
@@ -1372,6 +1377,7 @@
       <a href="#stages" onclick="toggleMobileMenu()">How It Works</a>
       <a href="#commands" onclick="toggleMobileMenu()">Shortcuts</a>
       <a href="#agents-skills" onclick="toggleMobileMenu()">Custom Templates</a>
+      <a href="#ipie-gateway" onclick="toggleMobileMenu()">iPIE Integration</a>
       <a href="#simulation" onclick="toggleMobileMenu()">Live Demo</a>
       <a href="#dual-mode" onclick="toggleMobileMenu()">Laptop Modes</a>
       <a href="#privacy" onclick="toggleMobileMenu()">Data Privacy</a>
@@ -1577,100 +1583,98 @@
       </div>
     </section>
 
-    <!-- SECTION 1: 3-STEP LEGAL WORKFLOW -->
+    <!-- SECTION 1: 3x3 SOVEREIGN LEGAL ARCHITECTURE -->
     <section class="section-padding" id="stages">
       <div class="section-header">
-        <span class="section-tag">Simple 3-Step Process</span>
-        <h2 class="section-title">How Hayagriva Simplifies Your Cases</h2>
-        <p class="section-subtitle">From importing messy documents to generating court-ready filings, Hayagriva automates every step of your legal workflow.</p>
+        <span class="section-tag">3×3 Sovereign Legal Architecture</span>
+        <h2 class="section-title">The Air-Gapped Legal Development Environment</h2>
+        <p class="section-subtitle">Hayagriva structures your legal practice into 3 In-App Workspace Sections and 3 Downloadable Portal Plug-ins.</p>
       </div>
 
-      <div class="stage-cards-grid">
-        <!-- STAGE 1 CARD -->
-        <div class="stage-card stage-1">
-          <div class="stage-number-badge">
-            <span>STEP 1</span> • Instant File Import
+      <!-- GRID 1: 3 IN-APP WORKSPACE SECTIONS -->
+      <div style="margin-bottom: 3.5rem;">
+        <h3 style="font-family:'Outfit'; font-size:1.35rem; color:var(--color-cyan); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>📥</span> In-App Workspace Sections (Inside Your Case Folder)
+        </h3>
+        <div class="stage-cards-grid">
+          <!-- WORKSPACE SECTION 1 -->
+          <div class="stage-card stage-1">
+            <div class="stage-number-badge"><span>SECTION 1</span> • Ground Truth Layer</div>
+            <h3>📁 Case Data &amp; Facts</h3>
+            <p>Drop multi-format case files (PDFs, Word docs, Excel sheets). Hayagriva slices them into companion markdown section cards and builds your master key-value dictionary.</p>
+            <ul class="stage-feature-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Multi-Format Ingestion (PDF, Word, Excel, TiddlyWiki)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Companion Section Slicing (concepts/&lt;doc&gt;/)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Auto-Extracted Case KV Dictionary (case_kv_dictionary.json)</span></li>
+            </ul>
           </div>
-          <h3>Read PDF, Word &amp; Excel Files</h3>
-          <p>
-            Drop your bank statements, agreements, contracts, and filings into Hayagriva. It reads scanned and text files locally on your computer with 100% privacy.
-          </p>
-          <ul class="stage-feature-list">
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Instant Local PDF &amp; Word Document Reading</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Smart Warning on Scanned Pages</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Encrypted Local Storage (Never Uploaded)</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Automatic File Change Tracking</span>
-            </li>
-          </ul>
+
+          <!-- WORKSPACE SECTION 2 -->
+          <div class="stage-card stage-2">
+            <div class="stage-number-badge"><span>SECTION 2</span> • Verification Layer</div>
+            <h3>⚖️ Professional Audits &amp; Inputs</h3>
+            <p>Human oversight &amp; claim ledgers. Edit claims or avoidance tables in Monaco to sync live with SQLite (<code>verified_by_user = 1</code>). Control context with 3-stage status dot flags.</p>
+            <ul class="stage-feature-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Bi-Directional Monaco-SQLite Database Sync</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>3-Stage Status Dots (Reviewed, Needs Verification, AI)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Active-Context Control Matrix for RAG Scope</span></li>
+            </ul>
+          </div>
+
+          <!-- WORKSPACE SECTION 3 -->
+          <div class="stage-card stage-3">
+            <div class="stage-number-badge"><span>SECTION 3</span> • Synthesis Layer</div>
+            <h3>🤖 AI Enhancements &amp; Exporters</h3>
+            <p>Synthesize court-ready petitions using specialized domain subagents. Rerank hybrid search with dual-model RRF RAG and compile directly to Supreme Court DOCX layout.</p>
+            <ul class="stage-feature-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Specialized Subagents (@Document, @Advisor, @Forms)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Dual RRF Fusion RAG (InLegal-SBERT + Finance)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>1-Click Supreme Court Layout Exporter (/export-sc)</span></li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <!-- STAGE 2 CARD -->
-        <div class="stage-card stage-2">
-          <div class="stage-number-badge">
-            <span>STEP 2</span> • Smart Search &amp; Sync
+      <!-- GRID 2: 3 DOWNLOADABLE PORTAL PLUG-INS -->
+      <div>
+        <h3 style="font-family:'Outfit'; font-size:1.35rem; color:var(--color-amber); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>📦</span> Downloadable Portal Plug-ins (Licensing Portal Marketplace)
+        </h3>
+        <div class="stage-cards-grid">
+          <!-- PLUGIN PACK 1 -->
+          <div class="stage-card stage-1">
+            <div class="stage-number-badge" style="background:rgba(255,170,0,0.15); color:var(--color-amber); border-color:rgba(255,170,0,0.3);"><span>PACK 1</span> • Intelligence Engines</div>
+            <h3>🧠 Models Pack</h3>
+            <p>Download local ONNX embedding models and quantized 2.9B LLM engines to run AI inferences 100% offline on your laptop with zero cloud latency.</p>
+            <ul class="stage-feature-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>InLegal-SBERT &amp; Finance-Embeddings Pipelines</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Quantized LegalParam-2.9B.gguf &amp; FinanceParam-2.9B</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>100% Air-Gapped (Zero Data Transmission)</span></li>
+            </ul>
           </div>
-          <h3>Real-Time Database &amp; Search</h3>
-          <p>
-            Every edit you make in your document updates your master case records instantly. Search across thousands of pages in milliseconds.
-          </p>
-          <ul class="stage-feature-list">
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Automatic Table-to-Database Sync</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Smart Memory &amp; Token Budget Guard</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>1-Click Court Layout Export (A4, 4cm Margins)</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              <span>Organized Question &amp; Answer Folders</span>
-            </li>
-          </ul>
-        </div>
 
-        <!-- STAGE 3 CARD -->
-        <div class="stage-card stage-3">
-          <div class="stage-number-badge">
-            <span>STEP 3</span> • AI Legal Assistants
+          <!-- PLUGIN PACK 2 -->
+          <div class="stage-card stage-2">
+            <div class="stage-number-badge" style="background:rgba(255,170,0,0.15); color:var(--color-amber); border-color:rgba(255,170,0,0.3);"><span>PACK 2</span> • Reference Libraries</div>
+            <h3>📚 Encrypted Vaults Pack</h3>
+            <p>Encrypted local databases (<code>laws.vlt</code>) containing statutory Acts, supreme court judgments, and statutory forms. Decrypted dynamically in RAM.</p>
+            <ul class="stage-feature-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>AES-256 Encrypted Statutory Acts (IBC 2016, Companies Act)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Monaco Precedent &amp; Citation Autocomplete (/law, /case)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>48 IBBI Compliance Forms &amp; Petition Templates</span></li>
+            </ul>
           </div>
-          <h3>19 Specialized AI Assistants</h3>
-          <p>
-            Call specialized AI assistants to audit claims, check statutory deadlines under the Insolvency Code, and draft court-ready petitions.
-          </p>
 
-          <div class="pillars-grid">
-            <div class="pillar-box">
-              <strong>1. Statutory Code</strong>
-              IBC &amp; Companies Act
-            </div>
-            <div class="pillar-box">
-              <strong>2. Judgments</strong>
-              Supreme Court Rulings
-            </div>
-            <div class="pillar-box">
-              <strong>3. Official Forms</strong>
-              48 IBBI Compliance Forms
-            </div>
-            <div class="pillar-box">
-              <strong>4. Precedents</strong>
-              63 Court Petition Templates
-            </div>
+          <!-- PLUGIN PACK 3 -->
+          <div class="stage-card stage-3">
+            <div class="stage-number-badge" style="background:rgba(255,170,0,0.15); color:var(--color-amber); border-color:rgba(255,170,0,0.3);"><span>PACK 3</span> • Domain Co-Pilots</div>
+            <h3>⚡ Specialist Agents Pack</h3>
+            <p>Specialized Node.js domain agent modules that plug directly into the workspace to audit claims, verify compliance forms, and write briefs.</p>
+            <ul class="stage-feature-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Insolvency &amp; Claim Auditor Subagents</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>MCA Regulatory &amp; Corporate Compliance Agent</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Critique &amp; Audit Verification Loops</span></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1784,6 +1788,24 @@
             <p class="command-desc">Searches your offline legal vault and case precedent database for matching Supreme Court judgments.</p>
             <div class="command-example agent-example">@vault Find rulings on CIRP withdrawal under 12A</div>
           </div>
+
+          <div class="command-card">
+            <div class="command-header">
+              <span class="command-name agent-name">@coc</span>
+              <span class="command-category">CoC Coordinator</span>
+            </div>
+            <p class="command-desc">Calculates CoC voting share percentages, excludes related parties (0%), and drafts voting ballots &amp; notices.</p>
+            <div class="command-example agent-example">@coc Calculate voting shares from claims_registry.md</div>
+          </div>
+
+          <div class="command-card">
+            <div class="command-header">
+              <span class="command-name agent-name">@evaluator</span>
+              <span class="command-category">Plan &amp; Form H Auditor</span>
+            </div>
+            <p class="command-desc">Audits Resolution Plans under Section 30(2) &amp; 29A and compiles Regulation 39(4) Form H certificates.</p>
+            <div class="command-example agent-example">@evaluator Audit Plan for Section 30(2) &amp; Form H</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1860,6 +1882,85 @@
             <div class="icon">📦</div>
             <h4>Customize for Your Firm</h4>
             <p>Add custom templates to teach Hayagriva your firm's specific drafting style and formatting standards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: iPIE GATEWAY & WORKFLOW INTEGRATION -->
+    <section class="section-padding" id="ipie-gateway" style="background: rgba(0, 212, 255, 0.02); border-top: 1px solid var(--border-glow); border-bottom: 1px solid var(--border-glow);">
+      <div class="section-header">
+        <span class="section-tag">🏛️ MCA iPIE / IPAI Ecosystem</span>
+        <h2 class="section-title">Local Private Workbench ➔ Govt. iPIE Central Portal</h2>
+        <p class="section-subtitle">Draft, evaluate, and audit case files locally in 100% private Hayagriva — then sync verified reports directly to MCA's Integrated Platform for IBC Ecosystem (iPIE) via API.</p>
+      </div>
+
+      <!-- WORKFLOW STEPPER -->
+      <div style="margin-bottom: 3.5rem;">
+        <h3 style="text-align: center; font-size: 1.25rem; margin-bottom: 2rem; color: var(--color-cyan); font-family: 'Outfit'; uppercase; letter-spacing: 0.05em;">
+          🔄 End-to-End Execution Workflow: Hayagriva to iPIE Portal
+        </h3>
+
+        <div class="capabilities-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+          <div class="cap-card" style="position: relative; border-left: 3px solid var(--color-cyan);">
+            <div class="icon" style="background: rgba(0, 212, 255, 0.1); color: var(--color-cyan); font-weight: 700;">1</div>
+            <h4>Air-Gapped Ingestion</h4>
+            <p>Import NCLT petitions, financial ledgers, and NeSL Record of Default (RoD) files into your local Hayagriva workspace. Key facts are extracted locally without cloud exposure.</p>
+          </div>
+
+          <div class="cap-card" style="position: relative; border-left: 3px solid var(--color-amber);">
+            <div class="icon" style="background: rgba(255, 170, 0, 0.1); color: var(--color-amber); font-weight: 700;">2</div>
+            <h4>AI Subagent Audit</h4>
+            <p>Run <code>@evaluator</code> for Section 30(2) &amp; Section 29A Resolution Plan audits. Run <code>@coc</code> to calculate voting shares and generate voting ballots.</p>
+          </div>
+
+          <div class="cap-card" style="position: relative; border-left: 3px solid var(--color-purple);">
+            <div class="icon" style="background: rgba(147, 51, 234, 0.1); color: var(--color-purple); font-weight: 700;">3</div>
+            <h4>Auto-Form Compiler</h4>
+            <p>Auto-compile Regulation 39(4) <strong>Form H Compliance Certificates</strong> and court-ready pleadings formatted to Supreme Court standards.</p>
+          </div>
+
+          <div class="cap-card" style="position: relative; border-left: 3px solid var(--color-green);">
+            <div class="icon" style="background: rgba(39, 201, 63, 0.1); color: var(--color-green); font-weight: 700;">4</div>
+            <h4>1-Click iPIE Sync</h4>
+            <p>Push audited claims, verified evaluation reports, Form H certificates, and CIRP progress reports directly into the central MCA iPIE Portal via secured APIs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- iPIE TOUCHPOINTS GRID -->
+      <div style="background: var(--bg-surface-glass); border: 1px solid var(--border-glow); border-radius: 16px; padding: 2rem; backdrop-filter: blur(16px);">
+        <h3 style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--text-main); font-family: 'Outfit';">
+          🔌 Integrated Ecosystem Touchpoints (iPIE Pillars)
+        </h3>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+          <div style="background: rgba(255, 255, 255, 0.02); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-glow);">
+            <div style="font-weight: 700; color: var(--color-cyan); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+              💾 NeSL Information Utility (IU)
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Import authenticated debt &amp; Record of Default (RoD) certificates directly into <code>claims_registry.md</code>.</p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.02); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-glow);">
+            <div style="font-weight: 700; color: var(--color-amber); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+              🏢 MCA-21 Portal Gateway
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Cross-check Corporate Debtor CIN, Director DINs, active charges, and financial statements (AOC-4 / MGT-7).</p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.02); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-glow);">
+            <div style="font-weight: 700; color: var(--color-purple); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+              ⚖️ NCLT / NCLAT e-Courts
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Auto-sync daily cause lists, order sheets, and filing scrutiny notes for the active case workspace.</p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.02); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border-glow);">
+            <div style="font-weight: 700; color: var(--color-green); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+              📋 IBBI Regulatory Gateway
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Track statutory CIRP deadlines ($T_0 \rightarrow T_{330}$) with live Mermaid Gantt charts and push Form IP-1 / progress reports.</p>
           </div>
         </div>
       </div>
