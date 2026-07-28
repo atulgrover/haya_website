@@ -1,0 +1,17 @@
+{
+  "name": "haya-portal",
+  "version": "1.0.0",
+  "description": "HAYA PORTAL — Customer Auth, License Issuer, Payment Gateway & Asset Distribution Hub",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

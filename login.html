@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login &amp; Portal Account — HAYAGRIVA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0d1117;
+      --bg-card: rgba(20, 24, 33, 0.85);
+      --border-glow: rgba(0, 212, 255, 0.2);
+      --color-cyan: #00d4ff;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --input-bg: #161b22;
+    }
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      backdrop-filter: blur(16px);
+    }
+    .auth-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-cyan);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .auth-sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--input-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    .btn-auth {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--color-cyan);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: opacity 0.2s;
+    }
+    .btn-auth:hover { opacity: 0.9; }
+    .toggle-auth {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .toggle-auth a { color: var(--color-cyan); text-decoration: none; cursor: pointer; }
+    .error-msg { color: #ef4444; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; display: none; }
+  </style>
+</head>
+<body>
+  <div class="auth-card">
+    <div class="auth-title">HAYA PORTAL</div>
+    <div class="auth-sub" id="form-subtitle">Login to access licenses &amp; downloads</div>
+
+    <div class="error-msg" id="error-box"></div>
+
+    <form id="auth-form">
+      <div class="form-group" id="group-name" style="display:none;">
+        <label>FULL NAME</label>
+        <input type="text" id="fullName" placeholder="Adv. Ramesh Kumar" />
+      </div>
+
+      <div class="form-group">
+        <label>EMAIL ADDRESS</label>
+        <input type="email" id="email" required placeholder="name@firm.com" />
+      </div>
+
+      <div class="form-group">
+        <label>PASSWORD</label>
+        <input type="password" id="password" required placeholder="••••••••" />
+      </div>
+
+      <button type="submit" class="btn-auth" id="btn-submit">Login →</button>
+    </form>
+
+    <div class="toggle-auth">
+      <span id="toggle-text">Don't have an account?</span>
+      <a onclick="switchMode()" id="toggle-link">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    let isSignup = false;
+
+    function switchMode() {
+      isSignup = !isSignup;
+      document.getElementById('group-name').style.display = isSignup ? 'block' : 'none';
+      document.getElementById('form-subtitle').innerText = isSignup ? 'Create account for license & downloads' : 'Login to access licenses & downloads';
+      document.getElementById('btn-submit').innerText = isSignup ? 'Create Account →' : 'Login →';
+      document.getElementById('toggle-text').innerText = isSignup ? 'Already have an account?' : "Don't have an account?";
+      document.getElementById('toggle-link').innerText = isSignup ? 'Login' : 'Sign Up';
+    }
+
+    document.getElementById('auth-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const errBox = document.getElementById('error-box');
+      errBox.style.display = 'none';
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const fullName = document.getElementById('fullName').value;
+
+      const endpoint = isSignup ? '/api/auth/signup' : '/api/auth/login';
+      const body = isSignup ? { email, password, fullName } : { email, password };
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (data.success) {
+          localStorage.setItem('haya_portal_token', data.token);
+          window.location.href = 'dashboard.html';
+        } else {
+          errBox.innerText = data.error || 'Authentication failed.';
+          errBox.style.display = 'block';
+        }
+      } catch (err) {
+        errBox.innerText = 'Connection error.';
+        errBox.style.display = 'block';
+      }
+    };
+  </script>
+</body>
+</html>
