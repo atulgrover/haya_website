@@ -229,6 +229,44 @@
       transform: translateY(-1px);
     }
 
+    /* ── SCROLL TO TOP BUTTON ── */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-surface-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glow);
+      color: var(--color-cyan);
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .scroll-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .scroll-top-btn:hover {
+      background: var(--color-cyan);
+      color: #000;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+      transform: translateY(-3px);
+    }
+
     /* MOBILE HAMBURGER BUTTON & DRAWER */
     .mobile-menu-btn {
       display: none;
@@ -1349,29 +1387,15 @@
         HAYAGRIVA
       </a>
 
-      <nav class="nav-links">
-        <a href="#stages">How It Works</a>
-        <a href="#commands">Shortcuts</a>
-        <a href="#agents-skills">Custom Templates</a>
-        <a href="#ipie-gateway">iPIE Integration</a>
-        <a href="#simulation">Live Demo</a>
-        <a href="#dual-mode">Laptop Modes</a>
-        <a href="#privacy">Data Privacy</a>
-        <a href="login.html" style="color: var(--color-cyan); font-weight: 700;">🔑 Portal Login</a>
-      </nav>
-
       <div class="nav-actions">
         <!-- PORTAL LOGIN BUTTON -->
-        <a href="login.html" style="background: var(--color-cyan); color: #000; font-weight: 700; padding: 0.45rem 1rem; border-radius: 20px; font-size: 0.82rem; text-decoration: none;">Client Login &rarr;</a>
+        <a href="login.html" style="background: var(--color-cyan); color: #000; font-weight: 700; padding: 0.45rem 1.15rem; border-radius: 20px; font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); transition: var(--transition-smooth);">
+          <span>🔑</span> Client Login
+        </a>
 
         <!-- LIGHT / DARK MODE TOGGLE BUTTON -->
         <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()">
           <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">Light Mode</span>
-        </button>
-
-        <!-- MOBILE HAMBURGER MENU BUTTON -->
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
-          ☰
         </button>
       </div>
     </div>
@@ -2230,9 +2254,28 @@
       renderFeatures();
     }
 
+    // Floating Scroll To Top Logic
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     // Initialize Theme and Features on Load
     initTheme();
     renderFeatures();
   </script>
+
+  <!-- FLOATING SCROLL TO TOP BUTTON -->
+  <button id="scrollTopBtn" class="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">
+    &uarr;
+  </button>
 </body>
 </html>
