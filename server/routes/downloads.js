@@ -9,13 +9,25 @@ const { authenticateToken } = require('./auth');
 const router = express.Router();
 
 const CATALOG = [
-    { id: 'legal_agents.vlt', name: 'Legal Agents Pack', type: 'vault', tier: 'starter', description: '21 legal & insolvency subagents.' },
-    { id: 'finance_agents.vlt', name: 'Finance Agents Pack', type: 'vault', tier: 'starter', description: 'Forensic audit and financial analysis subagents.' },
-    { id: 'coding_agents.vlt', name: 'Coding Agents Pack', type: 'vault', tier: 'starter', description: 'IDE extension development subagents.' },
-    { id: 'legalparam-2.9b', name: 'LegalParam 2.9B LLM', type: 'model', tier: 'starter', sizeGb: 1.7, description: 'Bundled starter LLM for Indian legal domain.' },
-    { id: 'financeparam-2.9b', name: 'FinanceParam 2.9B LLM', type: 'model', tier: 'starter', sizeGb: 1.7, description: 'Bundled starter LLM for Indian financial domain.' },
-    { id: 'hayaparam-7b', name: 'HayaParam 7B LLM', type: 'model', tier: 'professional', sizeGb: 4.7, description: 'Fine-tuned on Indian legal & financial corpus (24K context).' },
-    { id: 'hayaparam-14b', name: 'HayaParam 14B LLM', type: 'model', tier: 'enterprise', sizeGb: 8.5, description: 'Full document resolution plan analysis (64K context).' }
+    // 1. Desktop App Installers
+    { id: 'hayagriva-mac-x64.dmg', category: 'app', name: 'Hayagriva Desktop IDE — macOS (Intel / Apple Silicon)', tier: 'starter', size: '120 MB', description: 'Native Electron IDE bundle for macOS.' },
+    { id: 'hayagriva-win-x64.exe', category: 'app', name: 'Hayagriva Desktop IDE — Windows 10 / 11 (64-bit)', tier: 'starter', size: '140 MB', description: 'Native Standalone Windows Setup Installer.' },
+    { id: 'hayagriva-linux-x64.AppImage', category: 'app', name: 'Hayagriva Desktop IDE — Linux (AppImage / x64)', tier: 'starter', size: '130 MB', description: 'Portable Linux binary package.' },
+
+    // 2. LLM Models (.gguf)
+    { id: 'legalparam-2.9b.gguf', category: 'model', name: 'LegalParam 2.9B LLM (Q4_K_M)', tier: 'starter', size: '1.70 GB', description: 'Quantized LLM for Indian legal analysis & IBC drafting.' },
+    { id: 'financeparam-2.9b.gguf', category: 'model', name: 'FinanceParam 2.9B LLM (Q4_K_M)', tier: 'starter', size: '1.70 GB', description: 'Quantized LLM for financial auditing & claim calculations.' },
+
+    // 3. Agent Packs (.vlt)
+    { id: 'legal_agents.vlt', category: 'agent', name: 'Legal Subagents Pack', tier: 'starter', size: '10 MB', description: '21 specialized legal subagents (Advisor, Forms, Doc Agent).' },
+    { id: 'finance_agents.vlt', category: 'agent', name: 'Finance Subagents Pack', tier: 'starter', size: '10 MB', description: 'Forensic audit and financial analysis subagents.' },
+    { id: 'coding_agents.vlt', category: 'agent', name: 'Coding Subagents Pack', tier: 'starter', size: '10 MB', description: 'IDE extension development & custom skill subagents.' },
+
+    // 4. Domain Vaults (.vlt)
+    { id: 'laws_vault.vlt', category: 'vault', name: 'IBC Statutory Laws & Acts Vault', tier: 'starter', size: '50 MB', description: 'Full text index of IBC 2016, Companies Act, and Amendments.' },
+    { id: 'cases_vault.vlt', category: 'vault', name: 'Supreme Court & NCLAT Cases Vault', tier: 'starter', size: '350 MB', description: 'Indexed precedent database of NCLAT and SC judgements.' },
+    { id: 'regulations_vault.vlt', category: 'vault', name: 'Statutory Regulations & Circulars Vault', tier: 'starter', size: '50 MB', description: 'IBBI Regulations, MCA notifications, and CIRP circulars.' },
+    { id: 'precedents_vault.vlt', category: 'vault', name: 'Model Forms & Precedents Vault', tier: 'starter', size: '50 MB', description: 'Resolution plan skeletons, Form H compliance, & voting templates.' }
 ];
 
 // GET /api/downloads/catalog

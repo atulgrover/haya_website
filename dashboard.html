@@ -155,12 +155,9 @@
       </div>
     </div>
 
-    <!-- ASSET CATALOG -->
-    <div class="card">
-      <div class="card-title">📦 Vaults &amp; Model Downloads</div>
-      <div class="grid" id="catalog-grid">
-        <div style="color: var(--text-muted);">Loading asset catalog...</div>
-      </div>
+    <!-- ASSET CATALOG SEGREGATED SECTIONS -->
+    <div id="catalog-container">
+      <div style="color: var(--text-muted);">Loading asset catalog...</div>
     </div>
   </div>
 
@@ -222,21 +219,42 @@
       } catch (e) {}
     }
 
+    const CATEGORIES = [
+      { id: 'app', title: '🖥️ Hayagriva Desktop App Installers', desc: 'Native Desktop IDE builds for macOS, Windows, and Linux.' },
+      { id: 'model', title: '🧠 Offline AI Models (.gguf)', desc: 'Quantized domain models running 100% offline via llamafile.' },
+      { id: 'agent', title: '🤖 Specialized Subagent Packs (.vlt)', desc: 'Legal, financial audit, and coding subagent extensions.' },
+      { id: 'vault', title: '📚 Encrypted Domain Vaults (.vlt)', desc: 'Statutory laws, NCLAT/SC precedents, regulations, & precedent skeletons.' }
+    ];
+
     async function loadCatalog() {
       try {
         const res = await fetch('/api/downloads/catalog', { headers: { 'Authorization': `Bearer ${token}` } });
         const data = await res.json();
-        const grid = document.getElementById('catalog-grid');
-        grid.innerHTML = data.items.map(item => `
-          <div class="asset-card">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div class="asset-name">${item.name}</div>
-              ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + item.tier + '</span>'}
+        const container = document.getElementById('catalog-container');
+
+        container.innerHTML = CATEGORIES.map(cat => {
+          const items = data.items.filter(i => i.category === cat.id);
+          if (!items.length) return '';
+          return `
+            <div class="card">
+              <div class="card-title">${cat.title}</div>
+              <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">${cat.desc}</div>
+              <div class="grid">
+                ${items.map(item => `
+                  <div class="asset-card">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+                      <div class="asset-name">${item.name}</div>
+                      ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + item.tier + '</span>'}
+                    </div>
+                    <div style="font-size: 0.78rem; font-weight:700; color: #38bdf8; margin-bottom: 0.4rem;">Size: ${item.size}</div>
+                    <div class="asset-desc">${item.description}</div>
+                    ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn btn-outline" style="width:100%; font-size:0.8rem; opacity:0.5;" disabled>Locked</button>`}
+                  </div>
+                `).join('')}
+              </div>
             </div>
-            <div class="asset-desc">${item.description}</div>
-            ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package</button>` : `<button class="btn btn-outline" style="width:100%; font-size:0.8rem; opacity:0.5;" disabled>Locked</button>`}
-          </div>
-        `).join('');
+          `;
+        }).join('');
       } catch (e) {}
     }
 
@@ -244,7 +262,11 @@
       try {
         const res = await fetch(`/api/downloads/file/${assetId}`, { headers: { 'Authorization': `Bearer ${token}` } });
         const data = await res.json();
-        alert(data.message);
+        if (data.downloadUrl) {
+          window.location.href = data.downloadUrl;
+        } else {
+          alert(data.message || 'Download initiated.');
+        }
       } catch (e) {}
     }
 
