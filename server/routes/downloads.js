@@ -40,11 +40,11 @@ const CATALOG = [
     { id: 'finance_agents.vlt', r2Key: 'agent_packs/finance_agents.vlt', category: 'agent', name: 'Finance Subagents Pack', tier: 'starter', size: '10 MB', description: 'Forensic audit and financial analysis subagents.' },
     { id: 'coding_agents.vlt', r2Key: 'agent_packs/coding_agents.vlt', category: 'agent', name: 'Coding Subagents Pack', tier: 'starter', size: '10 MB', description: 'IDE extension development & custom skill subagents.' },
 
-    // 4. Domain Vaults (.vlt)
-    { id: 'laws_vault.vlt', r2Key: 'vaults/laws_vault.vlt', category: 'vault', name: 'IBC Statutory Laws & Acts Vault', tier: 'starter', size: '50 MB', description: 'Full text index of IBC 2016, Companies Act, and Amendments.' },
-    { id: 'cases_vault.vlt', r2Key: 'vaults/cases_vault.vlt', category: 'vault', name: 'Supreme Court & NCLAT Cases Vault', tier: 'starter', size: '350 MB', description: 'Indexed precedent database of NCLAT and SC judgements.' },
-    { id: 'regulations_vault.vlt', r2Key: 'vaults/regulations_vault.vlt', category: 'vault', name: 'Statutory Regulations & Circulars Vault', tier: 'starter', size: '50 MB', description: 'IBBI Regulations, MCA notifications, and CIRP circulars.' },
-    { id: 'precedents_vault.vlt', r2Key: 'vaults/precedents_vault.vlt', category: 'vault', name: 'Model Forms & Precedents Vault', tier: 'starter', size: '50 MB', description: 'Resolution plan skeletons, Form H compliance, & voting templates.' }
+    // 4. Encrypted 768-Dimension Domain Vaults (.vlt / .zip)
+    { id: 'laws_vault.zip', r2Key: 'vaults/laws_vault.zip', category: 'vault', name: 'IBC Statutory Laws & Acts Vault (768-Dim)', tier: 'starter', size: '34 MB', description: 'Full text vector index of IBC 2016, Companies Act, and Amendments.' },
+    { id: 'cases_vault.zip', r2Key: 'vaults/cases_vault.zip', category: 'vault', name: 'Supreme Court & NCLAT Cases Vault (768-Dim)', tier: 'starter', size: '133 MB', description: 'Indexed 768-dim vector precedent database of NCLAT and SC judgements.' },
+    { id: 'documents_vault.zip', r2Key: 'vaults/documents_vault.zip', category: 'vault', name: 'Corporate Documents & Dossiers Vault (768-Dim)', tier: 'starter', size: '29 MB', description: 'Corporate resolutions, CIRP dossiers, & due-diligence data.' },
+    { id: 'forms_vault.zip', r2Key: 'vaults/forms_vault.zip', category: 'vault', name: 'Model Forms & Form H Precedents Vault (768-Dim)', tier: 'starter', size: '1.5 MB', description: 'Resolution plan skeletons, Regulation 39(4) Form H, & voting ballots.' }
 ];
 
 // GET /api/downloads/catalog
