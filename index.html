@@ -7,7 +7,7 @@
   <meta name="description" content="HAYAGRIVA bridges offline artificial intelligence with statutory compliance. Powered by a central Marketplace of custom models, domain vaults, agentic reports, and a native Workbench IDE.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -699,6 +699,38 @@
       color: var(--footer-text);
       padding: 48px 24px 32px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Shloka block in footer */
+    .shloka-block {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .shloka-devanagari {
+      font-family: 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif;
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+    }
+
+    .shloka-transliteration {
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-style: italic;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 12px;
+    }
+
+    .shloka-meaning {
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.55);
     }
 
     .footer-container {
@@ -1398,6 +1430,13 @@
             <p><a href="https://www.chatibc.com" target="_blank">www.chatibc.com</a></p>
             <p><a href="https://www.resolutionbazaar.in" target="_blank">www.resolutionbazaar.in</a></p>
           </div>
+        </div>
+
+        <!-- Hayagriva Shloka -->
+        <div class="shloka-block">
+          <p class="shloka-devanagari">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् ।<br>आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
+          <p class="shloka-transliteration">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim |<br>ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
+          <p class="shloka-meaning">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
         </div>
       </div>
 
