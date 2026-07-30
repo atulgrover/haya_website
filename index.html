@@ -707,8 +707,8 @@
       padding-top: 24px;
       border-top: 1px solid rgba(255, 255, 255, 0.25);
       display: flex;
-      align-items: center;
-      gap: 28px;
+      align-items: flex-start;
+      gap: 20px;
     }
 
     .shloka-text {
@@ -717,18 +717,21 @@
 
     .shloka-logo {
       flex-shrink: 0;
-      width: 160px;
+      width: 90px;
+      height: 110px;
+      object-fit: cover;
+      object-position: top;
       opacity: 0.88;
       filter: brightness(0) invert(1);
     }
 
     .shloka-devanagari {
       font-family: 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif;
-      font-size: 15px;
+      font-size: 13.5px;
       line-height: 1.85;
       color: #ffffff;
       letter-spacing: 0.3px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .shloka-transliteration {
@@ -737,19 +740,19 @@
       font-style: italic;
       line-height: 1.75;
       color: rgba(255, 255, 255, 0.88);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .shloka-meaning {
       font-family: var(--font-body);
-      font-size: 12.5px;
+      font-size: 11.5px;
       line-height: 1.7;
       color: rgba(255, 255, 255, 0.82);
     }
 
     @media (max-width: 600px) {
       .shloka-block { flex-direction: column; }
-      .shloka-logo { width: 120px; align-self: flex-start; }
+      .shloka-logo { width: 80px; height: 95px; align-self: flex-start; }
     }
 
     .footer-container {
@@ -1453,12 +1456,12 @@
 
         <!-- Hayagriva Shloka -->
         <div class="shloka-block">
+          <img src="resources/hayagriva_head.png" alt="Hayagriva" class="shloka-logo" />
           <div class="shloka-text">
             <p class="shloka-devanagari">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् ।<br>आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
             <p class="shloka-transliteration">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim |<br>ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
             <p class="shloka-meaning">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
           </div>
-          <img src="resources/hayagriva_head.png" alt="Hayagriva" class="shloka-logo" />
         </div>
       </div>
 
