@@ -8,11 +8,11 @@ const { authenticateToken } = require('./auth');
 const router = express.Router();
 
 // POST /api/license/issue - Issue or re-issue license token for active user
-router.post('/issue', authenticateToken, (req, res) => {
+router.post('/issue', authenticateToken, async (req, res) => {
     try {
         const userId = req.user.userId;
-        const user = db.prepare('SELECT email FROM users WHERE id = ?').get(userId);
-        const sub = db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(userId);
+        const user = await db.prepare('SELECT email FROM users WHERE id = ?').get(userId);
+        const sub = await db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(userId);
 
         const tier = sub ? sub.tier : 'starter';
 
@@ -32,7 +32,7 @@ router.post('/issue', authenticateToken, (req, res) => {
         const licenseKey = generateLicenseKey(payload);
 
         // Save to licenses table
-        db.prepare(`
+        await db.prepare(`
             INSERT INTO licenses (user_id, tier, license_key, expires_at)
             VALUES (?, ?, ?, ?)
         `).run(userId, tier, licenseKey, expiresAtStr);

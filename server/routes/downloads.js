@@ -48,10 +48,10 @@ const CATALOG = [
 ];
 
 // GET /api/downloads/catalog
-router.get('/catalog', authenticateToken, (req, res) => {
+router.get('/catalog', authenticateToken, async (req, res) => {
     try {
         const userId = req.user.userId;
-        const sub = db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(userId);
+        const sub = await db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(userId);
         const userTier = sub ? sub.tier : 'starter';
 
         const items = CATALOG.map(item => {
@@ -93,7 +93,7 @@ router.get('/file/:assetId', authenticateToken, async (req, res) => {
         }
 
         // Log download event
-        db.prepare(`
+        await db.prepare(`
             INSERT INTO download_logs (user_id, asset_id, ip_address)
             VALUES (?, ?, ?)
         `).run(userId, assetId, req.ip || '127.0.0.1');

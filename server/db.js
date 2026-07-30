@@ -3,56 +3,104 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
-const dbPath = path.join(__dirname, 'portal_database.db');
-const db = new Database(dbPath);
+let db;
 
-// Enable WAL mode for high concurrency
-db.pragma('journal_mode = WAL');
+const isTurso = !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
 
-// Initialize Database Schemas
-db.exec(`
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT UNIQUE NOT NULL,
-        password_hash TEXT NOT NULL,
-        full_name TEXT NOT NULL,
-        firm_name TEXT,
-        ip_registration_no TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
+if (isTurso) {
+    console.log(`[Haya Portal DB] Connecting to Turso Cloud SQLite: ${process.env.TURSO_DATABASE_URL}`);
+    const { createClient } = require('@libsql/client');
+    const client = createClient({
+        url: process.env.TURSO_DATABASE_URL,
+        authToken: process.env.TURSO_AUTH_TOKEN
+    });
 
-    CREATE TABLE IF NOT EXISTS subscriptions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        tier TEXT DEFAULT 'starter', -- 'starter' | 'professional' | 'enterprise'
-        status TEXT DEFAULT 'active', -- 'active' | 'cancelled' | 'expired'
-        expires_at DATETIME,
-        payment_provider TEXT, -- 'razorpay' | 'stripe' | 'manual'
-        transaction_id TEXT,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-    );
+    db = {
+        prepare: (sql) => ({
+            run: async (...args) => {
+                const res = await client.execute({ sql, args });
+                return { lastInsertRowid: res.lastInsertRowid ? Number(res.lastInsertRowid) : 0, changes: res.rowsAffected };
+            },
+            get: async (...args) => {
+                const res = await client.execute({ sql, args });
+                return res.rows[0] || null;
+            },
+            all: async (...args) => {
+                const res = await client.execute({ sql, args });
+                return res.rows;
+            }
+        }),
+        exec: async (sql) => {
+            return await client.executeMultiple(sql);
+        }
+    };
+} else {
+    const dbPath = path.join(__dirname, 'portal_database.db');
+    const localDb = new Database(dbPath);
+    localDb.pragma('journal_mode = WAL');
+    console.log(`[Haya Portal DB] Local SQLite database initialized at ${dbPath}`);
 
-    CREATE TABLE IF NOT EXISTS licenses (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        tier TEXT NOT NULL,
-        license_key TEXT UNIQUE NOT NULL,
-        expires_at DATETIME NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-    );
+    db = {
+        prepare: (sql) => ({
+            run: (...args) => localDb.prepare(sql).run(...args),
+            get: (...args) => localDb.prepare(sql).get(...args),
+            all: (...args) => localDb.prepare(sql).all(...args)
+        }),
+        exec: (sql) => localDb.exec(sql)
+    };
+}
 
-    CREATE TABLE IF NOT EXISTS download_logs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        asset_id TEXT NOT NULL,
-        ip_address TEXT,
-        downloaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-    );
-`);
+// Function to initialize tables asynchronously
+async function initSchema() {
+    try {
+        await db.exec(`
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                email TEXT UNIQUE NOT NULL,
+                password_hash TEXT NOT NULL,
+                full_name TEXT NOT NULL,
+                firm_name TEXT,
+                ip_registration_no TEXT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
 
-console.log(`[Haya Portal DB] SQLite database initialized at ${dbPath}`);
+            CREATE TABLE IF NOT EXISTS subscriptions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                tier TEXT DEFAULT 'starter',
+                status TEXT DEFAULT 'active',
+                expires_at DATETIME,
+                payment_provider TEXT,
+                transaction_id TEXT,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
+
+            CREATE TABLE IF NOT EXISTS licenses (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                tier TEXT NOT NULL,
+                license_key TEXT UNIQUE NOT NULL,
+                expires_at DATETIME NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
+
+            CREATE TABLE IF NOT EXISTS download_logs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                asset_id TEXT NOT NULL,
+                ip_address TEXT,
+                downloaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
+        `);
+        console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
+    } catch (err) {
+        console.error('[Haya Portal DB] Initialization error:', err.message);
+    }
+}
+
+initSchema();
 
 module.exports = db;
