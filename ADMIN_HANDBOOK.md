@@ -22,7 +22,7 @@ Haya Portal is the central web application and API service supporting the **Haya
 ```
 /Users/atulgrover/Desktop/haya_portal/
 ├── index.html                   # Public Landing Page & iPIE Workflow
-├── login.html                   # Auth Modal (Login / Sign Up)
+├── login.html                   # Auth Modal (Login Only)
 ├── dashboard.html               # Customer Dashboard & License Box
 ├── ADMIN_HANDBOOK.md            # This Operations Guide
 ├── package.json

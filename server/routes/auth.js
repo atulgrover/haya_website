@@ -21,43 +21,9 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// POST /api/auth/signup
+// POST /api/auth/signup (DISABLED)
 router.post('/signup', async (req, res) => {
-    try {
-        const { email, password, fullName, firmName, ipRegistrationNo } = req.body;
-        if (!email || !password || !fullName) {
-            return res.status(400).json({ error: 'Email, password, and full name are required.' });
-        }
-
-        const existing = await db.prepare('SELECT id FROM users WHERE email = ?').get(email.toLowerCase());
-        if (existing) {
-            return res.status(400).json({ error: 'An account with this email already exists.' });
-        }
-
-        const salt = await bcrypt.genSalt(10);
-        const passwordHash = await bcrypt.hash(password, salt);
-
-        const result = await db.prepare(`
-            INSERT INTO users (email, password_hash, full_name, firm_name, ip_registration_no)
-            VALUES (?, ?, ?, ?, ?)
-        `).run(email.toLowerCase(), passwordHash, fullName, firmName || null, ipRegistrationNo || null);
-
-        // Auto-create starter subscription
-        await db.prepare(`
-            INSERT INTO subscriptions (user_id, tier, status)
-            VALUES (?, 'starter', 'active')
-        `).run(result.lastInsertRowid);
-
-        const token = jwt.sign({ userId: result.lastInsertRowid, email: email.toLowerCase() }, JWT_SECRET, { expiresIn: '7d' });
-
-        res.json({
-            success: true,
-            token,
-            user: { id: result.lastInsertRowid, email: email.toLowerCase(), fullName, tier: 'starter' }
-        });
-    } catch (e) {
-        res.status(500).json({ error: e.message });
-    }
+    return res.status(403).json({ error: 'New user registration is disabled. Only existing accounts can log in.' });
 });
 
 // POST /api/auth/login
