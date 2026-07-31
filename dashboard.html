@@ -163,11 +163,11 @@
 
   <script>
     const token = localStorage.getItem('haya_portal_token');
-    if (!token) window.location.href = 'login.html';
+    if (!token) window.location.href = 'index.html';
 
     function logout() {
       localStorage.removeItem('haya_portal_token');
-      window.location.href = 'login.html';
+      window.location.href = 'index.html';
     }
 
     async function loadUserData() {
