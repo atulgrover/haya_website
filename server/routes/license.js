@@ -13,6 +13,8 @@ router.post('/issue', authenticateToken, async (req, res) => {
         const userId = req.user.userId;
         const user = await db.prepare('SELECT email FROM users WHERE id = ?').get(userId);
         const sub = await db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(userId);
+        const purchases = await db.prepare('SELECT asset_id FROM user_purchases WHERE user_id = ?').all(userId);
+        const purchasedAssets = purchases ? purchases.map(p => p.asset_id) : [];
 
         const tier = sub ? sub.tier : 'starter';
 
@@ -25,6 +27,7 @@ router.post('/issue', authenticateToken, async (req, res) => {
             sub: user.email,
             tier: tier,
             allowedDomains: ['legal', 'finance'],
+            purchasedAssets: purchasedAssets,
             expiresAt: expiresAtStr,
             gracePeriodDays: 30
         };
@@ -40,6 +43,7 @@ router.post('/issue', authenticateToken, async (req, res) => {
         res.json({
             success: true,
             tier,
+            purchasedAssets,
             licenseKey,
             expiresAt: expiresAtStr,
             licensedTo: user.email

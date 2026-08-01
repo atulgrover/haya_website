@@ -147,6 +147,7 @@
     .badge-locked { background: var(--color-red-bg); color: var(--color-red); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
     .badge-unlocked { background: var(--color-green-bg); color: var(--color-green); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
   </style>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
   <div class="container">
@@ -245,16 +246,56 @@
 
     async function upgradePlan(planTier) {
       try {
-        const res = await fetch('/api/payments/verify', {
+        const res = await fetch('/api/payments/create-order', {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ planTier, razorpayPaymentId: 'pay_simulated_' + Date.now() })
+          body: JSON.stringify({ planTier })
         });
-        const data = await res.json();
-        if (data.success) {
-          alert(data.message);
-          loadUserData();
-          loadCatalog();
+        const orderData = await res.json();
+
+        if (typeof Razorpay !== 'undefined') {
+          const options = {
+            key: orderData.keyId,
+            amount: orderData.amount,
+            currency: "INR",
+            name: "HAYAGRIVA PORTAL",
+            description: "Upgrade to " + planTier.toUpperCase() + " Tier",
+            order_id: orderData.orderId,
+            handler: async function (response) {
+              const resVerify = await fetch('/api/payments/verify', {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  planTier,
+                  razorpayPaymentId: response.razorpay_payment_id,
+                  razorpayOrderId: response.razorpay_order_id,
+                  razorpaySignature: response.razorpay_signature
+                })
+              });
+              const data = await resVerify.json();
+              if (data.success) {
+                alert(data.message);
+                loadUserData();
+                loadCatalog();
+              }
+            },
+            theme: { color: "#1E6C93" }
+          };
+          const rzp = new Razorpay(options);
+          rzp.open();
+        } else {
+          // Simulation fallback
+          const resVerify = await fetch('/api/payments/verify', {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ planTier, razorpayPaymentId: 'pay_simulated_' + Date.now() })
+          });
+          const data = await resVerify.json();
+          if (data.success) {
+            alert(data.message);
+            loadUserData();
+            loadCatalog();
+          }
         }
       } catch (e) {}
     }
@@ -290,7 +331,7 @@
                       <div style="font-size: 0.78rem; font-weight:700; color: var(--color-primary); margin-bottom: 0.4rem;">Size: ${item.size}</div>
                       <div class="asset-desc">${item.description}</div>
                     </div>
-                    ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn btn-outline" style="width:100%; font-size:0.8rem; opacity:0.4; cursor:not-allowed;" disabled>Locked</button>`}
+                    ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn" style="width:100%; font-size:0.8rem; font-weight:700;" onclick="buyComponent('${item.id}', '${item.name.replace(/'/g, "\\'")}')">Buy Item for ₹1 →</button>`}
                   </div>
                 `).join('')}
               </div>
@@ -298,6 +339,67 @@
           `;
         }).join('');
       } catch (e) {}
+    }
+
+    async function buyComponent(assetId, assetName) {
+      try {
+        const resOrder = await fetch('/api/payments/create-component-order', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ assetId })
+        });
+        const orderData = await resOrder.json();
+        if (!orderData.success) {
+          alert(orderData.error || 'Unable to create payment order.');
+          return;
+        }
+
+        if (typeof Razorpay !== 'undefined') {
+          const options = {
+            key: orderData.keyId,
+            amount: orderData.amount, // 100 paise = ₹1
+            currency: "INR",
+            name: "HAYAGRIVA PORTAL",
+            description: "Unlock " + assetName,
+            order_id: orderData.orderId,
+            handler: async function (response) {
+              await verifyComponentPayment(assetId, response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature);
+            },
+            prefill: {
+              name: "Haya Portal User",
+              email: "user@firm.com"
+            },
+            theme: { color: "#1E6C93" }
+          };
+          const rzp = new Razorpay(options);
+          rzp.open();
+        } else {
+          // Simulation fallback
+          await verifyComponentPayment(assetId, 'pay_sim_' + Date.now(), orderData.orderId, 'sim_sig');
+        }
+      } catch (e) {
+        alert('An error occurred during payment initiation.');
+      }
+    }
+
+    async function verifyComponentPayment(assetId, razorpayPaymentId, razorpayOrderId, razorpaySignature) {
+      try {
+        const res = await fetch('/api/payments/verify-component-payment', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ assetId, razorpayPaymentId, razorpayOrderId, razorpaySignature })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(`🎉 Payment Successful! Unlocked "${assetId}" for ₹1.\n\nYour Master Ed25519 License Key has been updated with this component.`);
+          loadUserData();
+          loadCatalog();
+        } else {
+          alert(data.error || 'Payment verification failed.');
+        }
+      } catch (e) {
+        alert('Error verifying payment.');
+      }
     }
 
     async function downloadAsset(assetId) {

@@ -73,8 +73,12 @@ router.get('/catalog', authenticateToken, async (req, res) => {
         const sub = await db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(userId);
         const userTier = sub ? sub.tier : 'starter';
 
+        const purchases = await db.prepare('SELECT asset_id FROM user_purchases WHERE user_id = ?').all(userId);
+        const purchasedAssetIds = purchases ? purchases.map(p => p.asset_id) : [];
+
         const items = CATALOG.map(item => {
             const isAccessible = item.tier === 'starter' || 
+                                purchasedAssetIds.includes(item.id) ||
                                 (item.tier === 'professional' && ['professional', 'enterprise'].includes(userTier)) ||
                                 (item.tier === 'enterprise' && userTier === 'enterprise');
             return {
@@ -84,7 +88,7 @@ router.get('/catalog', authenticateToken, async (req, res) => {
             };
         });
 
-        res.json({ userTier, items });
+        res.json({ userTier, items, purchasedAssetIds });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
@@ -148,12 +152,16 @@ router.get('/stream/:assetId', authenticateTokenOrQuery, async (req, res) => {
         const sub = await db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(userId);
         const userTier = sub ? sub.tier : 'starter';
 
+        const purchases = await db.prepare('SELECT asset_id FROM user_purchases WHERE user_id = ?').all(userId);
+        const purchasedAssetIds = purchases ? purchases.map(p => p.asset_id) : [];
+
         const isAccessible = item.tier === 'starter' || 
+                            purchasedAssetIds.includes(item.id) ||
                             (item.tier === 'professional' && ['professional', 'enterprise'].includes(userTier)) ||
                             (item.tier === 'enterprise' && userTier === 'enterprise');
 
         if (!isAccessible) {
-            return res.status(403).json({ error: `Asset requires ${item.tier} subscription tier.` });
+            return res.status(403).json({ error: `Asset requires purchase or ${item.tier} subscription tier.` });
         }
 
         // Log download event

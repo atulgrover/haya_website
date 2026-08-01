@@ -94,6 +94,17 @@ async function initSchema() {
                 downloaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users(id)
             );
+
+            CREATE TABLE IF NOT EXISTS user_purchases (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                asset_id TEXT NOT NULL,
+                amount INTEGER NOT NULL,
+                currency TEXT DEFAULT 'INR',
+                transaction_id TEXT,
+                purchased_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
         `);
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
     } catch (err) {
