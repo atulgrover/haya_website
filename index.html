@@ -1089,25 +1089,184 @@
       </div>
 
       <div class="container">
-        <!-- GATEWAY (ipie) Highlights Banner -->
-        <div style="display: flex; justify-content: space-between; align-items: center; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 32px; box-shadow: var(--card-shadow);">
+        <!-- Summary Stats Bar -->
+        <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 24px; margin-bottom: 36px; box-shadow: var(--card-shadow); display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; text-align: center;">
           <div>
-            <span class="ipie-module-num">MCA / IBBI COMPLIANCE INTEGRATION ENGINE</span>
-            <div class="ipie-module-title" style="font-size: 1.4rem; margin-top: 4px;">Direct Regulatory API &amp; Air-Gapped Payload Signer</div>
-            <div class="ipie-module-desc" style="margin-bottom: 0;">Automates filings, claims collation, CIRP timelines, stakeholder voting, and compliance audits for Insolvency Professionals.</div>
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary-color); font-family: var(--font-heading);">11 Modules</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Full iPIE Coverage</div>
           </div>
-          <div style="text-align: right; flex-shrink: 0; margin-left: 20px;">
-            <a onclick="switchTab('workbench')" class="card-btn" style="padding: 10px 20px; font-size: 0.9rem;">Launch in WORKBENCH (ipe) →</a>
+          <div style="border-left: 1px solid var(--border-color); padding-left: 20px;">
+            <div style="font-size: 1.8rem; font-weight: 700; color: #10B981; font-family: var(--font-heading);">100% Air-Gapped</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Local Ed25519 Signing</div>
+          </div>
+          <div style="border-left: 1px solid var(--border-color); padding-left: 20px;">
+            <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary-color); font-family: var(--font-heading);">XBRL &amp; Form H</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Regulator Payload Ready</div>
           </div>
         </div>
 
-        <!-- Call to Action Banner -->
-        <div style="background-color: var(--primary-color); border-radius: 12px; padding: 36px; text-align: center; color: #FFFFFF; margin-top: 24px; box-shadow: var(--card-shadow);">
-          <h3 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; color: #FFFFFF;">Ready to Sync with GATEWAY (ipie)?</h3>
-          <p style="max-width: 680px; margin: 0 auto 24px auto; font-size: 0.95rem; opacity: 0.95; line-height: 1.6;">
-            Ingest confidential case files into Hayagriva WORKBENCH (ipe) IDE, execute subagent audit loops, and sign regulatory payloads offline using your private key.
-          </p>
-          <a onclick="switchTab('workbench')" style="background: #FFFFFF; color: var(--primary-color); padding: 12px 28px; font-weight: 700; border-radius: 6px; cursor: pointer; display: inline-block;">Open WORKBENCH (ipe) IDE →</a>
+        <h2 class="section-heading">GATEWAY (ipie) Core Statutory Process Modules</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 32px; font-size: 15px;">
+          Detailed breakdown of the 11 integrated modules governing insolvency proceedings under the Insolvency and Bankruptcy Code (IBC 2016).
+        </p>
+
+        <!-- 11 Modules Grid -->
+        <div class="ipie-grid">
+
+          <!-- 01. User Registration -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 01</span>
+              <h3 class="ipie-module-title">01. User Registration</h3>
+              <p class="ipie-module-desc">
+                Role-based onboarding and cryptographic identity verification for Insolvency Professionals (IPs), IP Entities (IPEs), Financial Creditors, Operational Creditors, and Corporate Debtors. Features Ed25519 digital identity binding and IBBI registration credential validation.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">🔑 Identity &amp; Role Authentication</span>
+            </div>
+          </div>
+
+          <!-- 02. Process Commencement -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 02</span>
+              <h3 class="ipie-module-title">02. Process Commencement</h3>
+              <p class="ipie-module-desc">
+                Initiation and tracking of CIRP, Fast-Track CIRP, PPIRP, and Voluntary Liquidation. Automated ingestion of NCLT admission orders, Form FA withdrawal tracking, Form A public announcement dispatch, and Day-0 to Day-180 statutory clock synchronization.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">⏱️ CIRP Initiation &amp; Timeline Clock</span>
+            </div>
+          </div>
+
+          <!-- 03. Claims Management -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 03</span>
+              <h3 class="ipie-module-title">03. Claims Management</h3>
+              <p class="ipie-module-desc">
+                Automated receipt, AI parsing, and collation of operational, financial, employee, and statutory claims under CIRP Regulations 7–12. Supports Forms B, C, D, E &amp; F auto-verification, security interest mapping, and Form CIRP-2 MCA generation.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">📊 Form B-F Collation &amp; CIRP-2</span>
+            </div>
+          </div>
+
+          <!-- 04. Stakeholder Management -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 04</span>
+              <h3 class="ipie-module-title">04. Stakeholder Management</h3>
+              <p class="ipie-module-desc">
+                End-to-end Committee of Creditors (CoC) constitution, meeting administration, and statutory voting share calculation. Synchronizes CoC notice issuance, e-voting portal payloads, meeting minute recording, and Form CIRP-3 filings.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">🏛️ CoC Constitution &amp; Voting Share</span>
+            </div>
+          </div>
+
+          <!-- 05. Records Management -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 05</span>
+              <h3 class="ipie-module-title">05. Records Management</h3>
+              <p class="ipie-module-desc">
+                Air-gapped Virtual Data Room (VDR) and tamper-proof evidence repository. Securely indexes audited balance sheets, forensic audit findings, asset valuation reports, and Section 29A due-diligence evidence ledgers.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">📁 Air-Gapped VDR &amp; Evidence Vault</span>
+            </div>
+          </div>
+
+          <!-- 06. Plan Management -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 06</span>
+              <h3 class="ipie-module-title">06. Plan Management</h3>
+              <p class="ipie-module-desc">
+                Automated evaluation of Resolution Plans, Section 29A affiliate disqualification checks, and Regulation 39(4) Form H compliance certificate compilation. Features automated Section 30(2) statutory matrix verification.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">📄 Resolution Plan &amp; Form H Audit</span>
+            </div>
+          </div>
+
+          <!-- 07. Implementation & Monitoring -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 07</span>
+              <h3 class="ipie-module-title">07. Implementation &amp; Monitoring</h3>
+              <p class="ipie-module-desc">
+                Post-NCLT approval supervision, Monitoring Committee governance, asset transfer logging, and tranche payout distribution tracking. Generates quarterly progress reporting logs for NCLT and IBBI submission.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">📈 Monitoring Committee &amp; Tranches</span>
+            </div>
+          </div>
+
+          <!-- 08. Compliance Management -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 08</span>
+              <h3 class="ipie-module-title">08. Compliance Management</h3>
+              <p class="ipie-module-desc">
+                Automated compilation and transmission of IBBI statutory forms (CIRP-1 to CIRP-6) and MCA XBRL reporting payloads. Performs local XBRL schema validation, Ed25519 signing, and real-time portal submission tracking.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">📋 IBBI CIRP-1..6 &amp; XBRL Payloads</span>
+            </div>
+          </div>
+
+          <!-- 09. Litigation Management -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 09</span>
+              <h3 class="ipie-module-title">09. Litigation Management</h3>
+              <p class="ipie-module-desc">
+                Centralized management of Interlocutory Applications (IAs), avoidance transaction petitions under Sections 43, 45, 50 &amp; 66 (PUFE), NCLT/NCLAT hearing calendars, and vector precedent searches across Supreme Court judgements.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">⚖️ PUFE Applications &amp; IA Tracker</span>
+            </div>
+          </div>
+
+          <!-- 10. Cost Management -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 10</span>
+              <h3 class="ipie-module-title">10. Cost Management</h3>
+              <p class="ipie-module-desc">
+                Granular CIRP &amp; Liquidation cost accounting certified under IBBI regulations. Tracks IP fee accounting, interim finance interest ledgers, valuation &amp; audit retainers, CoC cost approval recording, and Form CIRP-4 compilation.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">💰 CIRP Cost Ledger &amp; Form CIRP-4</span>
+            </div>
+          </div>
+
+          <!-- 11. MIS Dashboards -->
+          <div class="ipie-module-card">
+            <div>
+              <span class="ipie-module-num">MODULE 11</span>
+              <h3 class="ipie-module-title">11. MIS Dashboards</h3>
+              <p class="ipie-module-desc">
+                Real-time executive analytics, CIRP health metrics, timeline bottleneck warnings, recovery percentage calculators, CoC voting trends, and single-click regulatory audit readiness reporting.
+              </p>
+            </div>
+            <div>
+              <span class="ipie-module-tag">📊 Executive Analytics &amp; Recovery Ratios</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
