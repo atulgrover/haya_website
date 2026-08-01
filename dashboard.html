@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-void: #0d1117;
-      --bg-card: rgba(20, 24, 33, 0.85);
-      --border-glow: rgba(0, 212, 255, 0.2);
-      --color-cyan: #00d4ff;
-      --color-green: #10b981;
-      --text-main: #f0f6fc;
-      --text-muted: #8b949e;
-      --input-bg: #161b22;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --color-primary: #0284c7;
+      --color-primary-hover: #0369a1;
+      --color-primary-light: #e0f2fe;
+      --color-green: #16a34a;
+      --color-green-bg: #dcfce7;
+      --color-red: #dc2626;
+      --color-red-bg: #fee2e2;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --input-bg: #f1f5f9;
+      --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --card-hover-shadow: 0 12px 28px -4px rgba(2, 132, 199, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
     }
+    * { box-sizing: border-box; }
     body {
-      background-color: var(--bg-void);
+      background-color: var(--bg-page);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.04) 0px, transparent 50%);
       color: var(--text-main);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      padding: 2rem;
+      padding: 2.5rem 1.5rem;
+      min-height: 100vh;
     }
     .container {
-      max-width: 1000px;
+      max-width: 1040px;
       margin: 0 auto;
     }
     .header-bar {
@@ -33,35 +45,37 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-glow);
-      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2.25rem;
     }
     .brand-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.75rem;
       font-weight: 800;
-      color: var(--color-cyan);
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
     }
     .user-badge {
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid var(--color-cyan);
-      color: var(--color-cyan);
-      padding: 0.35rem 0.85rem;
+      background: var(--color-primary-light);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      color: var(--color-primary-hover);
+      padding: 0.4rem 0.95rem;
       border-radius: 20px;
       font-size: 0.82rem;
       font-weight: 600;
     }
     .card {
       background: var(--bg-card);
-      border: 1px solid var(--border-glow);
-      border-radius: 14px;
-      padding: 1.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .card-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 1rem;
       color: var(--text-main);
@@ -71,45 +85,71 @@
     }
     .key-box {
       background: var(--input-bg);
-      border: 1px solid var(--border-glow);
-      border-radius: 8px;
-      padding: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 1.1rem;
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       word-break: break-all;
-      color: #38bdf8;
-      margin-bottom: 1rem;
+      color: #0369a1;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
     }
     .btn {
-      background: var(--color-cyan);
-      color: #000;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
       border: none;
-      padding: 0.65rem 1.25rem;
-      border-radius: 8px;
-      font-weight: 700;
+      padding: 0.68rem 1.35rem;
+      border-radius: 10px;
+      font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
+      box-shadow: 0 2px 4px rgba(2, 132, 199, 0.2);
+      transition: all 0.2s ease;
     }
+    .btn:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .btn:active { transform: translateY(0); }
     .btn-outline {
-      background: none;
-      border: 1px solid var(--color-cyan);
-      color: var(--color-cyan);
+      background: #ffffff;
+      border: 1.5px solid var(--color-primary);
+      color: var(--color-primary);
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary-hover);
+      color: var(--color-primary-hover);
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
     }
     .asset-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border-glow);
-      border-radius: 10px;
-      padding: 1.25rem;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
-    .asset-name { font-weight: 700; margin-bottom: 0.4rem; color: var(--color-cyan); }
-    .asset-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
-    .badge-locked { background: rgba(239,68,68,0.15); color: #ef4444; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; }
-    .badge-unlocked { background: rgba(16,185,129,0.15); color: var(--color-green); font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; }
+    .asset-card:hover {
+      border-color: rgba(2, 132, 199, 0.4);
+      box-shadow: var(--card-hover-shadow);
+      transform: translateY(-2px);
+    }
+    .asset-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--text-main); }
+    .asset-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.45; }
+    .badge-locked { background: var(--color-red-bg); color: var(--color-red); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+    .badge-unlocked { background: var(--color-green-bg); color: var(--color-green); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
   </style>
 </head>
 <body>
@@ -118,7 +158,7 @@
       <div class="brand-title">HAYA PORTAL</div>
       <div style="display:flex; align-items:center; gap: 1rem;">
         <span class="user-badge" id="user-tier">Starter (Free)</span>
-        <button class="btn btn-outline" onclick="logout()" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">Logout</button>
+        <button class="btn btn-outline" onclick="logout()" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">Logout</button>
       </div>
     </div>
 
@@ -140,16 +180,20 @@
       <div class="card-title">⚡ Subscription Plans</div>
       <div class="grid">
         <div class="asset-card">
-          <div class="asset-name">Professional Tier</div>
-          <div style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;">₹4,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
-          <div class="asset-desc">Unlocks HayaParam 7B LLM (24K context), custom Law Vaults, and Priority Support.</div>
+          <div>
+            <div class="asset-name" style="font-size: 1.05rem;">Professional Tier</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹4,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
+            <div class="asset-desc">Unlocks HayaParam 7B LLM (24K context), custom Law Vaults, and Priority Support.</div>
+          </div>
           <button class="btn" onclick="upgradePlan('professional')" style="width:100%;">Upgrade to Pro →</button>
         </div>
 
         <div class="asset-card">
-          <div class="asset-name">Enterprise Tier</div>
-          <div style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;">₹14,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
-          <div class="asset-desc">Unlocks HayaParam 14B LLM (64K context), multi-user firm license, and iPIE Gateway Sync.</div>
+          <div>
+            <div class="asset-name" style="font-size: 1.05rem;">Enterprise Tier</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹14,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
+            <div class="asset-desc">Unlocks HayaParam 14B LLM (64K context), multi-user firm license, and iPIE Gateway Sync.</div>
+          </div>
           <button class="btn" onclick="upgradePlan('enterprise')" style="width:100%;">Upgrade to Enterprise →</button>
         </div>
       </div>
@@ -242,13 +286,15 @@
               <div class="grid">
                 ${items.map(item => `
                   <div class="asset-card">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-                      <div class="asset-name">${item.name}</div>
-                      ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + item.tier + '</span>'}
+                    <div>
+                      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; gap: 0.5rem;">
+                        <div class="asset-name">${item.name}</div>
+                        ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + item.tier + '</span>'}
+                      </div>
+                      <div style="font-size: 0.78rem; font-weight:700; color: var(--color-primary); margin-bottom: 0.4rem;">Size: ${item.size}</div>
+                      <div class="asset-desc">${item.description}</div>
                     </div>
-                    <div style="font-size: 0.78rem; font-weight:700; color: #38bdf8; margin-bottom: 0.4rem;">Size: ${item.size}</div>
-                    <div class="asset-desc">${item.description}</div>
-                    ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn btn-outline" style="width:100%; font-size:0.8rem; opacity:0.5;" disabled>Locked</button>`}
+                    ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn btn-outline" style="width:100%; font-size:0.8rem; opacity:0.4; cursor:not-allowed;" disabled>Locked</button>`}
                   </div>
                 `).join('')}
               </div>
@@ -285,3 +331,4 @@
   </script>
 </body>
 </html>
+
