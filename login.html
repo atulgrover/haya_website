@@ -1,55 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login — HAYAGRIVA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-page: #f8fafc;
-      --bg-card: #ffffff;
-      --border-color: #e2e8f0;
-      --color-primary: #0284c7;
-      --color-primary-hover: #0369a1;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --input-bg: #f8fafc;
-      --input-border: #cbd5e1;
+      --bg-page: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+      --color-primary: #1E6C93;
+      --color-primary-hover: #165272;
+      --color-primary-light: rgba(30, 108, 147, 0.1);
+      --text-main: #212121;
+      --text-muted: #5F6368;
+      --input-bg: #F8F9FA;
+      --input-border: #E2E8F0;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-page);
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.08) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.05) 0px, transparent 50%);
       color: var(--text-main);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
+      line-height: 1.6;
     }
     .auth-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 20px;
+      border-radius: 12px;
       padding: 2.75rem 2.5rem;
       width: 100%;
       max-width: 420px;
-      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.04);
+      box-shadow: var(--card-shadow);
     }
     .auth-title {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Google Sans', 'Lato', sans-serif;
       font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--color-primary);
+      font-weight: 700;
+      color: var(--text-main);
       margin-bottom: 0.5rem;
       text-align: center;
-      letter-spacing: -0.02em;
+      letter-spacing: 1.5px;
     }
     .auth-sub {
       text-align: center;
@@ -64,7 +65,7 @@
     .form-group label {
       display: block;
       font-size: 0.78rem;
-      color: #334155;
+      color: var(--text-main);
       margin-bottom: 0.45rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -74,47 +75,47 @@
       padding: 0.8rem 1rem;
       background: var(--input-bg);
       border: 1px solid var(--input-border);
-      border-radius: 10px;
+      border-radius: 8px;
       color: var(--text-main);
       font-size: 0.95rem;
       box-sizing: border-box;
       transition: all 0.2s ease;
+      font-family: 'Lato', sans-serif;
     }
     .form-group input:focus {
       outline: none;
       border-color: var(--color-primary);
-      background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px var(--color-primary-light);
     }
     .btn-auth {
       width: 100%;
       padding: 0.85rem;
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-      color: #ffffff;
+      background-color: var(--color-primary);
+      color: #FFFFFF;
       border: none;
-      border-radius: 10px;
+      border-radius: 6px;
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
       margin-top: 1rem;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       transition: all 0.2s ease;
     }
     .btn-auth:hover {
-      background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+      background-color: var(--color-primary-hover);
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
     }
     .btn-auth:active {
       transform: translateY(0);
     }
     .error-msg {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      color: #dc2626;
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      color: #EF4444;
       font-size: 0.85rem;
       padding: 0.75rem 1rem;
-      border-radius: 10px;
+      border-radius: 8px;
       margin-bottom: 1.25rem;
       text-align: center;
       display: none;
