@@ -262,12 +262,23 @@
       try {
         const res = await fetch(`/api/downloads/file/${assetId}`, { headers: { 'Authorization': `Bearer ${token}` } });
         const data = await res.json();
+        if (!res.ok || !data.success) {
+          alert(data.error || data.message || 'Download failed.');
+          return;
+        }
         if (data.downloadUrl) {
-          window.location.href = data.downloadUrl;
+          const a = document.createElement('a');
+          a.href = data.downloadUrl;
+          a.download = assetId;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
         } else {
           alert(data.message || 'Download initiated.');
         }
-      } catch (e) {}
+      } catch (e) {
+        alert('An error occurred while starting download.');
+      }
     }
 
     window.onload = () => { loadUserData(); loadCatalog(); };
