@@ -17,6 +17,37 @@ function verifyRazorpaySignature(orderId, paymentId, signature, secret) {
     return generatedSignature === signature;
 }
 
+async function createRazorpayOrder(amount, currency = 'INR') {
+    const keyId = process.env.RAZORPAY_KEY_ID;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+
+    if (keyId && keySecret) {
+        try {
+            const auth = Buffer.from(`${keyId}:${keySecret}`).toString('base64');
+            const res = await fetch('https://api.razorpay.com/v1/orders', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Basic ${auth}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    amount: amount,
+                    currency: currency,
+                    receipt: 'rcpt_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7)
+                })
+            });
+            const data = await res.json();
+            if (data && data.id) {
+                return data.id;
+            }
+            console.warn('[Razorpay API Warning]: Order creation API response:', data);
+        } catch (err) {
+            console.error('[Razorpay API Error]:', err.message);
+        }
+    }
+    return 'order_' + Math.random().toString(36).substring(2, 11);
+}
+
 // POST /api/payments/create-order (Subscription Tiers)
 router.post('/create-order', authenticateToken, async (req, res) => {
     try {
@@ -26,7 +57,7 @@ router.post('/create-order', authenticateToken, async (req, res) => {
         }
 
         const prices = { professional: 499900, enterprise: 1499900 }; // in paise (INR)
-        const orderId = 'order_' + Math.random().toString(36).substring(2, 11);
+        const orderId = await createRazorpayOrder(prices[planTier]);
 
         res.json({
             success: true,
@@ -106,8 +137,8 @@ router.post('/create-component-order', authenticateToken, async (req, res) => {
             return res.status(400).json({ error: 'Asset ID is required.' });
         }
 
-        const orderId = 'ord_' + Math.random().toString(36).substring(2, 11);
         const amount = 100; // ₹1 in paise
+        const orderId = await createRazorpayOrder(amount);
 
         res.json({
             success: true,
