@@ -964,6 +964,164 @@
         display: none;
       }
     }
+
+    /* Blogs & TiddlyWiki Reader Layout */
+    .blogs-wrapper {
+      display: flex;
+      height: calc(100vh - 72px);
+      width: 100%;
+      background: var(--bg-card);
+      overflow: hidden;
+    }
+    .blogs-sidebar {
+      width: 330px;
+      min-width: 290px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      background: #FFFFFF;
+    }
+    .sidebar-title {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .sidebar-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .sidebar-search {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      background: var(--bg-card);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .sidebar-search:focus {
+      border-color: var(--color-primary);
+    }
+    .wiki-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem 0.5rem;
+    }
+    .wiki-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 0.4rem;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .wiki-item:hover {
+      background: rgba(30, 108, 147, 0.05);
+      border-color: rgba(30, 108, 147, 0.15);
+    }
+    .wiki-item.active {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary);
+    }
+    .wiki-item-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .wiki-item-info {
+      flex: 1;
+    }
+    .wiki-item-title {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+    .wiki-item-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-bottom: 0.4rem;
+    }
+    .wiki-item-meta {
+      display: flex;
+      gap: 0.35rem;
+    }
+    .wiki-tag {
+      background: #E2E8F0;
+      color: #475569;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .blogs-viewport {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #FFFFFF;
+    }
+    .viewport-bar {
+      height: 42px;
+      background: #F1F5F9;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+    .viewport-link-btn {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border: 1px solid var(--color-primary);
+      border-radius: 4px;
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+    }
+    .viewport-link-btn:hover {
+      background: var(--color-primary);
+      color: #FFFFFF;
+    }
+    .wiki-iframe {
+      flex: 1;
+      width: 100%;
+      height: calc(100% - 42px);
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .blogs-wrapper {
+        flex-direction: column;
+        height: auto;
+      }
+      .blogs-sidebar {
+        width: 100%;
+        min-width: 100%;
+        max-height: 280px;
+      }
+      .blogs-viewport {
+        height: 600px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -983,6 +1141,7 @@
         <li><a class="nav-link" id="btn-workbench" onclick="switchTab('workbench')">WORKBENCH</a></li>
         <li><a class="nav-link" id="btn-marketplace" onclick="switchTab('marketplace')">MARKETPLACE</a></li>
         <li><a class="nav-link" id="btn-laws" onclick="switchTab('laws')">COMPLIANCE</a></li>
+        <li><a class="nav-link" id="btn-blogs" onclick="switchTab('blogs')">BLOGS</a></li>
         <li><a href="login.html" class="nav-link login-btn">Login</a></li>
       </ul>
     </div>
@@ -1584,6 +1743,67 @@
       </div>
     </section>
 
+    <!-- TAB 6: BLOGS (Single-Page TiddlyWiki Knowledge Base & Articles) -->
+    <section id="tab-blogs" class="tab-view">
+      <div class="blogs-wrapper">
+        <!-- Sidebar -->
+        <aside class="blogs-sidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-title">📖 TiddlyWiki Blogs</div>
+            <div class="sidebar-sub">Interactive Knowledge Base</div>
+            <input type="text" id="wikiSearchInput" onkeyup="filterWikis()" placeholder="🔍 Search TiddlyWikis..." class="sidebar-search" />
+          </div>
+          
+          <div class="wiki-list" id="wikiListContainer">
+            <div class="wiki-item active" onclick="loadTiddlyWiki('wiki/ipie.html', this)">
+              <div class="wiki-item-icon">⚡</div>
+              <div class="wiki-item-info">
+                <div class="wiki-item-title">GATEWAY (ipie) Architecture</div>
+                <div class="wiki-item-desc">MCA Central Gateway specifications & XBRL signing protocol</div>
+                <div class="wiki-item-meta">
+                  <span class="wiki-tag">ipie</span>
+                  <span class="wiki-tag">architecture</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wiki-item" onclick="loadTiddlyWiki('wiki/agentic_workflows.html', this)">
+              <div class="wiki-item-icon">🤖</div>
+              <div class="wiki-item-info">
+                <div class="wiki-item-title">Agentic Process & Workflows</div>
+                <div class="wiki-item-desc">Autonomous multi-agent execution pipeline & deterministic fallback</div>
+                <div class="wiki-item-meta">
+                  <span class="wiki-tag">agentic</span>
+                  <span class="wiki-tag">pipeline</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wiki-item" onclick="loadTiddlyWiki('wiki/law_vaults.html', this)">
+              <div class="wiki-item-icon">📚</div>
+              <div class="wiki-item-info">
+                <div class="wiki-item-title">Law Vaults (.vlt) Specification</div>
+                <div class="wiki-item-desc">AES-256 encrypted statutory law vaults & precedent vectors</div>
+                <div class="wiki-item-meta">
+                  <span class="wiki-tag">law-vaults</span>
+                  <span class="wiki-tag">encryption</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Viewport -->
+        <main class="blogs-viewport">
+          <div class="viewport-bar">
+            <span id="active-wiki-label">⚡ wiki/ipie.html — GATEWAY (ipie) Architecture</span>
+            <a href="wiki/ipie.html" target="_blank" id="open-new-tab-btn" class="viewport-link-btn">↗ Open in New Window</a>
+          </div>
+          <iframe id="tiddlywiki-frame" src="wiki/ipie.html" class="wiki-iframe" title="TiddlyWiki Reader"></iframe>
+        </main>
+      </div>
+    </section>
+
   </main>
 
   <!-- Sample Report Preview Modals -->
@@ -1792,6 +2012,43 @@
 
     function toggleMobileNav() {
       document.getElementById('navLinks').classList.toggle('show');
+    }
+
+    // TiddlyWiki Reader Loader & Sidebar Filter
+    function loadTiddlyWiki(wikiPath, element) {
+      const iframe = document.getElementById('tiddlywiki-frame');
+      const label = document.getElementById('active-wiki-label');
+      const openBtn = document.getElementById('open-new-tab-btn');
+
+      if (iframe) {
+        iframe.src = wikiPath;
+      }
+      if (openBtn) {
+        openBtn.href = wikiPath;
+      }
+
+      const items = document.querySelectorAll('.wiki-item');
+      items.forEach(item => item.classList.remove('active'));
+      if (element) {
+        element.classList.add('active');
+        const titleText = element.querySelector('.wiki-item-title') ? element.querySelector('.wiki-item-title').innerText : '';
+        if (label) {
+          label.innerText = `📄 ${wikiPath} — ${titleText}`;
+        }
+      }
+    }
+
+    function filterWikis() {
+      const query = document.getElementById('wikiSearchInput').value.toLowerCase();
+      const items = document.querySelectorAll('.wiki-item');
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        if (text.includes(query)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
     }
 
     // Modal Control
