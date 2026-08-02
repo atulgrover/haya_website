@@ -193,6 +193,68 @@
     .asset-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5; }
     .badge-locked { background: var(--color-red-bg); color: var(--color-red); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
     .badge-unlocked { background: var(--color-green-bg); color: var(--color-green); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+
+    /* Form & Profile Controls */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: var(--input-bg);
+      color: var(--text-main);
+      transition: border-color 0.2s ease;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      background: #FFFFFF;
+    }
+    .form-input[readonly] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .status-msg {
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 6px;
+      display: none;
+    }
+    .status-msg.success {
+      display: block;
+      background: var(--color-green-bg);
+      color: var(--color-green);
+      border: 1px solid var(--color-green);
+    }
+    .status-msg.error {
+      display: block;
+      background: var(--color-red-bg);
+      color: var(--color-red);
+      border: 1px solid var(--color-red);
+    }
+    .card-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #FFFFFF;
+      margin-bottom: 0.8rem;
+    }
   </style>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
@@ -213,6 +275,7 @@
       <button class="dash-tab" id="tab-btn-models" onclick="switchDashTab('models')">🧠 Hayagriva Models</button>
       <button class="dash-tab" id="tab-btn-vaults" onclick="switchDashTab('vaults')">📚 Hayagriva Vaults</button>
       <button class="dash-tab" id="tab-btn-agents" onclick="switchDashTab('agents')">🤖 Hayagriva Agents</button>
+      <button class="dash-tab" id="tab-btn-profile" onclick="switchDashTab('profile')">👤 Profile & Settings</button>
     </nav>
 
     <!-- TAB 1: LICENSE & PRICING -->
@@ -299,6 +362,104 @@
       </div>
     </div>
 
+    <!-- TAB 6: PROFILE & SETTINGS -->
+    <div id="dashtab-profile" class="dash-panel">
+      <!-- PERSONAL & FIRM PROFILE CARD -->
+      <div class="card">
+        <div class="card-title">👤 Personal & Firm Profile</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Manage your profile information and professional registration details.</div>
+        
+        <form id="profile-form" onsubmit="event.preventDefault(); saveProfile();">
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="form-group">
+              <label class="form-label">Email Address (Account ID)</label>
+              <input type="email" id="profile-email" class="form-input" readonly />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="profile-fullname" class="form-input" placeholder="e.g. Adv. Rajesh Sharma" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Firm / Organization Name</label>
+              <input type="text" id="profile-firmname" class="form-input" placeholder="e.g. Sharma Legal Consultants LLP" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">IP / Bar Registration Number</label>
+              <input type="text" id="profile-ipreg" class="form-input" placeholder="e.g. IBBI/IPA-001/IP-P00001/2026" />
+            </div>
+          </div>
+          <button type="submit" class="btn" style="margin-top: 0.5rem;">Save Profile Changes</button>
+          <div id="profile-msg" class="status-msg"></div>
+        </form>
+      </div>
+
+      <!-- SECURITY & PASSWORD CHANGE CARD -->
+      <div class="card">
+        <div class="card-title">🔒 Security & Password</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Update your login password securely.</div>
+        
+        <form id="password-form" onsubmit="event.preventDefault(); changePassword();" style="max-width: 500px;">
+          <div class="form-group">
+            <label class="form-label">Current Password</label>
+            <input type="password" id="pwd-current" class="form-input" placeholder="••••••••" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">New Password (min 6 characters)</label>
+            <input type="password" id="pwd-new" class="form-input" placeholder="••••••••" required minlength="6" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm New Password</label>
+            <input type="password" id="pwd-confirm" class="form-input" placeholder="••••••••" required minlength="6" />
+          </div>
+          <button type="submit" class="btn">Update Password</button>
+          <div id="pwd-msg" class="status-msg"></div>
+        </form>
+      </div>
+
+      <!-- PAYMENT METHODS & CREDIT CARDS CARD -->
+      <div class="card">
+        <div class="card-title">
+          <span>💳 Saved Payment Methods & Credit Cards</span>
+          <button class="btn btn-outline" onclick="toggleAddCardForm()">+ Add New Card</button>
+        </div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Manage your saved payment cards for quick subscription and asset purchases.</div>
+
+        <!-- Add Card Form Container -->
+        <div id="add-card-container" style="display: none; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 1rem; color: var(--color-primary);">Add New Credit / Debit Card</div>
+          <form id="card-form" onsubmit="event.preventDefault(); addPaymentMethod();">
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+              <div class="form-group">
+                <label class="form-label">Cardholder Name</label>
+                <input type="text" id="card-holder" class="form-input" placeholder="e.g. RAJESH SHARMA" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Card Number</label>
+                <input type="text" id="card-number" class="form-input" placeholder="4111 1111 1111 4242" required maxlength="19" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Expiry Month (MM)</label>
+                <input type="text" id="card-exp-month" class="form-input" placeholder="08" required maxlength="2" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Expiry Year (YY)</label>
+                <input type="text" id="card-exp-year" class="form-input" placeholder="28" required maxlength="2" />
+              </div>
+            </div>
+            <div style="display:flex; gap: 0.75rem; margin-top: 0.5rem;">
+              <button type="submit" class="btn">Save Payment Method</button>
+              <button type="button" class="btn btn-outline" onclick="toggleAddCardForm()">Cancel</button>
+            </div>
+            <div id="card-msg" class="status-msg"></div>
+          </form>
+        </div>
+
+        <div id="payment-methods-grid">
+          <div style="color: var(--text-muted); font-size: 0.9rem;">Loading payment methods...</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -318,6 +479,10 @@
       const activePanel = document.getElementById(`dashtab-${tabId}`);
       if (activeBtn) activeBtn.classList.add('active');
       if (activePanel) activePanel.classList.add('active');
+
+      if (tabId === 'profile') {
+        loadPaymentMethods();
+      }
     }
 
     async function loadUserData() {
@@ -330,7 +495,162 @@
         if (data.activeLicense) {
           document.getElementById('license-key-box').innerText = data.activeLicense.license_key;
         }
+
+        if (data.user) {
+          document.getElementById('profile-email').value = data.user.email || '';
+          document.getElementById('profile-fullname').value = data.user.full_name || '';
+          document.getElementById('profile-firmname').value = data.user.firm_name || '';
+          document.getElementById('profile-ipreg').value = data.user.ip_registration_no || '';
+        }
       } catch (e) {}
+    }
+
+    async function saveProfile() {
+      const msgEl = document.getElementById('profile-msg');
+      msgEl.className = 'status-msg';
+      msgEl.style.display = 'none';
+
+      const fullName = document.getElementById('profile-fullname').value;
+      const firmName = document.getElementById('profile-firmname').value;
+      const ipRegistrationNo = document.getElementById('profile-ipreg').value;
+
+      try {
+        const res = await fetch('/api/auth/profile', {
+          method: 'PUT',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fullName, firmName, ipRegistrationNo })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msgEl.className = 'status-msg success';
+          msgEl.innerText = data.message || 'Profile updated successfully.';
+        } else {
+          msgEl.className = 'status-msg error';
+          msgEl.innerText = data.error || 'Failed to update profile.';
+        }
+      } catch (e) {
+        msgEl.className = 'status-msg error';
+        msgEl.innerText = 'Network error while updating profile.';
+      }
+    }
+
+    async function changePassword() {
+      const msgEl = document.getElementById('pwd-msg');
+      msgEl.className = 'status-msg';
+      msgEl.style.display = 'none';
+
+      const currentPassword = document.getElementById('pwd-current').value;
+      const newPassword = document.getElementById('pwd-new').value;
+      const confirmPassword = document.getElementById('pwd-confirm').value;
+
+      if (newPassword !== confirmPassword) {
+        msgEl.className = 'status-msg error';
+        msgEl.innerText = 'New passwords do not match.';
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/change-password', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ currentPassword, newPassword })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msgEl.className = 'status-msg success';
+          msgEl.innerText = data.message || 'Password changed successfully.';
+          document.getElementById('password-form').reset();
+        } else {
+          msgEl.className = 'status-msg error';
+          msgEl.innerText = data.error || 'Failed to change password.';
+        }
+      } catch (e) {
+        msgEl.className = 'status-msg error';
+        msgEl.innerText = 'Network error while updating password.';
+      }
+    }
+
+    function toggleAddCardForm() {
+      const container = document.getElementById('add-card-container');
+      container.style.display = container.style.display === 'none' ? 'block' : 'none';
+    }
+
+    async function loadPaymentMethods() {
+      const grid = document.getElementById('payment-methods-grid');
+      if (!grid) return;
+      try {
+        const res = await fetch('/api/auth/payment-methods', { headers: { 'Authorization': `Bearer ${token}` } });
+        const data = await res.json();
+        if (data.success && data.paymentMethods && data.paymentMethods.length > 0) {
+          grid.innerHTML = data.paymentMethods.map(card => `
+            <div class="card-item-row">
+              <div style="display:flex; align-items:center; gap: 1rem;">
+                <div style="font-size: 1.5rem;">💳</div>
+                <div>
+                  <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">${card.card_brand} •••• ${card.card_last4}</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">${card.card_holder} | Exp: ${card.exp_month}/${card.exp_year}</div>
+                </div>
+              </div>
+              <button class="btn btn-outline" style="border-color: var(--color-red); color: var(--color-red); padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="deletePaymentMethod(${card.id})">Remove</button>
+            </div>
+          `).join('');
+        } else {
+          grid.innerHTML = '<div style="color: var(--text-muted); font-size: 0.9rem;">No saved payment cards. Click "+ Add New Card" above to add one.</div>';
+        }
+      } catch (e) {
+        grid.innerHTML = '<div style="color: var(--text-muted); font-size: 0.9rem;">Unable to load saved payment methods.</div>';
+      }
+    }
+
+    async function addPaymentMethod() {
+      const msgEl = document.getElementById('card-msg');
+      msgEl.className = 'status-msg';
+      msgEl.style.display = 'none';
+
+      const cardHolder = document.getElementById('card-holder').value;
+      const cardNumber = document.getElementById('card-number').value;
+      const expMonth = document.getElementById('card-exp-month').value;
+      const expYear = document.getElementById('card-exp-year').value;
+
+      try {
+        const res = await fetch('/api/auth/payment-methods', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cardHolder, cardNumber, expMonth, expYear })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msgEl.className = 'status-msg success';
+          msgEl.innerText = data.message || 'Card saved successfully.';
+          document.getElementById('card-form').reset();
+          toggleAddCardForm();
+          loadPaymentMethods();
+        } else {
+          msgEl.className = 'status-msg error';
+          msgEl.innerText = data.error || 'Failed to save card.';
+        }
+      } catch (e) {
+        msgEl.className = 'status-msg error';
+        msgEl.innerText = 'Error saving payment method.';
+      }
+    }
+
+    async function deletePaymentMethod(cardId) {
+      if (!confirm('Are you sure you want to remove this saved payment card?')) return;
+      try {
+        const res = await fetch(`/api/auth/payment-methods/${cardId}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (data.success) {
+          loadPaymentMethods();
+        } else {
+          alert(data.error || 'Failed to remove card.');
+        }
+      } catch (e) {
+        alert('Error removing card.');
+      }
     }
 
     async function issueLicense() {

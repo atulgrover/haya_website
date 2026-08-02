@@ -105,6 +105,19 @@ async function initSchema() {
                 purchased_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users(id)
             );
+
+            CREATE TABLE IF NOT EXISTS user_payment_methods (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                card_holder TEXT NOT NULL,
+                card_last4 TEXT NOT NULL,
+                card_brand TEXT DEFAULT 'Visa',
+                exp_month TEXT NOT NULL,
+                exp_year TEXT NOT NULL,
+                is_default INTEGER DEFAULT 0,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
         `);
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
     } catch (err) {
