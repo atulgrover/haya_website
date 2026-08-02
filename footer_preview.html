@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer Preview — HAYAGRIVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Noto+Serif+Devanagari:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #e8eef4;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── spacer to simulate page content above ── */
+    .page-spacer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 40px;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER — exact copy of live site styles
+    ═══════════════════════════════════════════ */
+    :root {
+      --footer-bg:   #1E6C93;
+      --footer-text: #FFFFFF;
+      --footer-muted: rgba(255,255,255,0.8);
+      --font-heading: 'Lato', sans-serif;
+      --font-body:    'Lato', sans-serif;
+      --primary-color: #1E6C93;
+    }
+
+    .compact-footer {
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 48px 24px 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Shloka block */
+    .shloka-block {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .shloka-logo {
+      flex-shrink: 0;
+      width: 90px;
+      height: 110px;          /* clip bottom text strip */
+      object-fit: cover;
+      object-position: top;
+      opacity: 0.88;
+      filter: brightness(0) invert(1);
+    }
+    .shloka-text { flex: 1; }
+    .shloka-devanagari {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 13.5px;
+      line-height: 1.85;
+      color: #ffffff;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+    }
+    .shloka-transliteration {
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-style: italic;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 10px;
+    }
+    .shloka-meaning {
+      font-family: var(--font-body);
+      font-size: 11.5px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-heading {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      font-size: 14px;
+    }
+    .info-group h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 5px;
+    }
+    .info-group p {
+      color: rgba(255,255,255,0.9);
+      line-height: 1.65;
+      font-size: 13.5px;
+    }
+    .info-group a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+    }
+
+    /* Contact form */
+    .contact-form {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .contact-form h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .form-group { margin-bottom: 12px; }
+    .form-label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      padding: 9px 12px;
+      color: #fff;
+      font-size: 13px;
+      font-family: var(--font-body);
+      outline: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(255,255,255,0.4);
+    }
+    .form-textarea { resize: none; }
+    .form-submit {
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      color: var(--primary-color);
+      border: none;
+      border-radius: 6px;
+      padding: 11px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--footer-muted);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 600px) {
+      .shloka-block { flex-direction: column; }
+      .shloka-logo  { width: 120px; align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-spacer">↑ page content above footer ↑</div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="compact-footer">
+    <div class="footer-container">
+
+      <!-- Column 1: Contact Details + Shloka -->
+      <div>
+        <h3 class="footer-heading">HAYAGRIVA Contact</h3>
+        <div class="contact-info-grid">
+          <div class="info-group">
+            <h4>Call Us</h4>
+            <p>+91-98140-40900<br>+91-98558-88881</p>
+          </div>
+          <div class="info-group">
+            <h4>Email Us</h4>
+            <p><a href="#">admin@resolutionbazaar.in</a><br><a href="#">resolutionbazaar@gmail.com</a></p>
+          </div>
+          <div class="info-group">
+            <h4>Address</h4>
+            <p>#1634, Sector 18-D<br>Chandigarh, India, 160018</p>
+          </div>
+          <div class="info-group">
+            <h4>Websites</h4>
+            <p><a href="#">www.chatibc.com</a><br><a href="#">www.resolutionbazaar.in</a></p>
+          </div>
+        </div>
+
+        <!-- Shloka block with deity head -->
+        <div class="shloka-block">
+          <img src="resources/hayagriva_head.png" alt="Hayagriva" class="shloka-logo" />
+          <div class="shloka-text">
+            <p class="shloka-devanagari">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् ।<br>आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
+            <p class="shloka-transliteration">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim |<br>ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
+            <p class="shloka-meaning">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Contact Form -->
+      <div>
+        <div class="contact-form">
+          <h3>Contact &amp; Inquiry Form</h3>
+          <div class="form-group">
+            <label class="form-label">Name *</label>
+            <input type="text" class="form-input" placeholder="Your Full Name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-input" placeholder="name@domain.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone No *</label>
+            <input type="tel" class="form-input" placeholder="+91-XXXXX-XXXXX" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message / Inquiry</label>
+            <textarea class="form-textarea" rows="2" placeholder="How can we assist you?"></textarea>
+          </div>
+          <button class="form-submit">Submit Inquiry</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 HAYAGRIVA. All rights reserved.</div>
+      <div>Zero Cloud Data Transmission • Air-Gapped Local AI Compliance</div>
+    </div>
+  </footer>
+
+</body>
+</html>
