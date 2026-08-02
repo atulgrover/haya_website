@@ -113,7 +113,7 @@
       background-color: var(--primary-light);
     }
 
-    .login-btn {
+    .login-btn, .blog-btn {
       background-color: var(--primary-color);
       color: #FFFFFF !important;
       font-weight: 600;
@@ -122,8 +122,9 @@
       transition: background-color 0.2s ease, transform 0.1s ease;
     }
 
-    .login-btn:hover {
+    .login-btn:hover, .blog-btn:hover, .blog-btn.active {
       background-color: var(--primary-hover);
+      color: #FFFFFF !important;
       transform: translateY(-1px);
     }
 
@@ -1141,7 +1142,7 @@
         <li><a class="nav-link" id="btn-workbench" onclick="switchTab('workbench')">WORKBENCH</a></li>
         <li><a class="nav-link" id="btn-marketplace" onclick="switchTab('marketplace')">MARKETPLACE</a></li>
         <li><a class="nav-link" id="btn-laws" onclick="switchTab('laws')">COMPLIANCE</a></li>
-        <li><a class="nav-link" id="btn-blogs" onclick="switchTab('blogs')">BLOGS</a></li>
+        <li><a class="nav-link blog-btn" id="btn-blogs" onclick="switchTab('blogs')">Blog</a></li>
         <li><a href="login.html" class="nav-link login-btn">Login</a></li>
       </ul>
     </div>
