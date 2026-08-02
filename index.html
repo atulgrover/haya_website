@@ -2036,7 +2036,7 @@
       if (!container) return;
 
       try {
-        const res = await fetch('/api/wiki/list');
+        const res = await fetch('/api/wiki/list?_t=' + Date.now(), { cache: 'no-store' });
         const data = await res.json();
 
         if (data.success && data.wikis && data.wikis.length > 0) {

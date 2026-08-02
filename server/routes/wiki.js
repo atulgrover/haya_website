@@ -7,9 +7,14 @@ const path = require('path');
 const router = express.Router();
 const WIKI_DIR = path.join(__dirname, '../../wiki');
 
-// GET /api/wiki/list - Dynamically scan wiki/ directory on the fly
+// GET /api/wiki/list - Dynamically scan wiki/ directory on the fly with anti-caching headers
 router.get('/list', (req, res) => {
     try {
+        // Prevent browser / HTTP caching so added/deleted files reflect instantly
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+
         if (!fs.existsSync(WIKI_DIR)) {
             fs.mkdirSync(WIKI_DIR, { recursive: true });
         }
@@ -46,12 +51,6 @@ router.get('/list', (req, res) => {
                 const descMatch = snippet.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
                 if (descMatch && descMatch[1].trim()) {
                     subtitle = descMatch[1].trim();
-                } else if (lowerName.includes('ipie') || lowerName.includes('gateway')) {
-                    subtitle = 'MCA Central Gateway specifications & XBRL signing protocol';
-                } else if (lowerName.includes('agent') || lowerName.includes('workflow')) {
-                    subtitle = 'Autonomous multi-agent execution pipeline & deterministic fallback';
-                } else if (lowerName.includes('vault') || lowerName.includes('law')) {
-                    subtitle = 'AES-256 encrypted statutory law vaults & precedent vectors';
                 }
             } catch (e) {}
 
