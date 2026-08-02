@@ -20,35 +20,43 @@ router.get('/list', (req, res) => {
         const wikis = htmlFiles.map(filename => {
             const filePath = path.join(WIKI_DIR, filename);
             const stats = fs.statSync(filePath);
-
-            // Size formatting
-            let size = `${(stats.size / 1024).toFixed(1)} KB`;
-            if (stats.size >= 1024 * 1024) {
-                size = `${(stats.size / (1024 * 1024)).toFixed(1)} MB`;
-            }
+            const lowerName = filename.toLowerCase();
 
             // Default title from filename
             let title = filename.replace(/\.(html|htm)$/i, '').replace(/[-_]/g, ' ');
             title = title.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
+            let subtitle = 'Interactive Knowledge Base';
+
             try {
-                // Read initial snippet to look for <title>
+                // Read initial snippet to look for <title> and <meta name="description">
                 const buffer = Buffer.alloc(4096);
                 const fd = fs.openSync(filePath, 'r');
                 const bytesRead = fs.readSync(fd, buffer, 0, 4096, 0);
                 fs.closeSync(fd);
                 const snippet = buffer.toString('utf8', 0, bytesRead);
+                
                 const titleMatch = snippet.match(/<title>([^<]+)<\/title>/i);
                 if (titleMatch && titleMatch[1].trim()) {
                     let parsedTitle = titleMatch[1].trim();
                     parsedTitle = parsedTitle.replace(/\s*[—|-]\s*TiddlyWiki.*$/i, '');
                     if (parsedTitle) title = parsedTitle;
                 }
+
+                const descMatch = snippet.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
+                if (descMatch && descMatch[1].trim()) {
+                    subtitle = descMatch[1].trim();
+                } else if (lowerName.includes('ipie') || lowerName.includes('gateway')) {
+                    subtitle = 'MCA Central Gateway specifications & XBRL signing protocol';
+                } else if (lowerName.includes('agent') || lowerName.includes('workflow')) {
+                    subtitle = 'Autonomous multi-agent execution pipeline & deterministic fallback';
+                } else if (lowerName.includes('vault') || lowerName.includes('law')) {
+                    subtitle = 'AES-256 encrypted statutory law vaults & precedent vectors';
+                }
             } catch (e) {}
 
             // Assign icons based on name/title
             let icon = '📄';
-            const lowerName = filename.toLowerCase();
             if (lowerName.includes('ipie') || lowerName.includes('gateway')) icon = '⚡';
             else if (lowerName.includes('agent') || lowerName.includes('workflow')) icon = '🤖';
             else if (lowerName.includes('vault') || lowerName.includes('law')) icon = '📚';
@@ -58,8 +66,8 @@ router.get('/list', (req, res) => {
                 filename,
                 path: `wiki/${filename}`,
                 title,
+                subtitle,
                 icon,
-                size,
                 mtime: stats.mtime
             };
         });

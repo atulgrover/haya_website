@@ -994,7 +994,7 @@
     .sidebar-toggle-btn {
       position: absolute;
       top: 10px;
-      right: 12px;
+      left: 12px;
       z-index: 100;
       background: var(--primary-color, #1E6C93);
       color: #FFFFFF;
@@ -1996,7 +1996,7 @@
               <div class="wiki-item-icon">${wiki.icon}</div>
               <div class="wiki-item-info">
                 <div class="wiki-item-title">${wiki.title}</div>
-                <div class="wiki-item-desc">${wiki.filename} • ${wiki.size}</div>
+                <div class="wiki-item-desc">${wiki.subtitle}</div>
               </div>
             </div>
           `).join('');
