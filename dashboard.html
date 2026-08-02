@@ -45,7 +45,7 @@
       align-items: center;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--border-color);
-      margin-bottom: 2.25rem;
+      margin-bottom: 1.5rem;
     }
     .brand-title {
       font-family: 'Google Sans', 'Lato', sans-serif;
@@ -63,6 +63,53 @@
       font-size: 0.82rem;
       font-weight: 600;
     }
+    
+    /* Navigation Tabs */
+    .dashboard-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .dash-tab {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 0.75rem 1.25rem;
+      font-family: 'Google Sans', 'Lato', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      border-radius: 6px 6px 0 0;
+    }
+    .dash-tab:hover {
+      color: var(--color-primary);
+      background: rgba(30, 108, 147, 0.04);
+    }
+    .dash-tab.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      background: rgba(30, 108, 147, 0.08);
+    }
+
+    /* Tab Content Panels */
+    .dash-panel {
+      display: none;
+    }
+    .dash-panel.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -159,47 +206,99 @@
       </div>
     </div>
 
-    <!-- LICENSE KEY CARD -->
-    <div class="card">
-      <div class="card-title">
-        <span>🔑 Your Ed25519 Desktop License Key</span>
-        <button class="btn" onclick="issueLicense()">Generate Fresh Key</button>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
-        Copy the license string below and paste it into Hayagriva Desktop's <strong>Settings ➔ MARKETPLACE (rbz) ➔ License Key</strong> to activate your features offline.
-      </p>
-      <div class="key-box" id="license-key-box">Click "Generate Fresh Key" to issue your license token.</div>
-      <button class="btn btn-outline" onclick="copyKey()">📋 Copy License Key to Clipboard</button>
-    </div>
+    <!-- DASHBOARD SUB-SECTION TABS -->
+    <nav class="dashboard-tabs">
+      <button class="dash-tab active" id="tab-btn-license" onclick="switchDashTab('license')">🔑 License & Pricing</button>
+      <button class="dash-tab" id="tab-btn-installer" onclick="switchDashTab('installer')">🖥️ Hayagriva Installer</button>
+      <button class="dash-tab" id="tab-btn-models" onclick="switchDashTab('models')">🧠 Hayagriva Models</button>
+      <button class="dash-tab" id="tab-btn-vaults" onclick="switchDashTab('vaults')">📚 Hayagriva Vaults</button>
+      <button class="dash-tab" id="tab-btn-agents" onclick="switchDashTab('agents')">🤖 Hayagriva Agents</button>
+    </nav>
 
-    <!-- UPGRADE TIERS -->
-    <div class="card">
-      <div class="card-title">⚡ Subscription Plans</div>
-      <div class="grid">
-        <div class="asset-card">
-          <div>
-            <div class="asset-name" style="font-size: 1.05rem;">Professional Tier</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹4,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
-            <div class="asset-desc">Unlocks HayaParam 7B LLM (24K context), custom Law Vaults, and Priority Support.</div>
-          </div>
-          <button class="btn" onclick="upgradePlan('professional')" style="width:100%;">Upgrade to Pro →</button>
+    <!-- TAB 1: LICENSE & PRICING -->
+    <div id="dashtab-license" class="dash-panel active">
+      <!-- LICENSE KEY CARD -->
+      <div class="card">
+        <div class="card-title">
+          <span>🔑 Your Ed25519 Desktop License Key</span>
+          <button class="btn" onclick="issueLicense()">Generate Fresh Key</button>
         </div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
+          Copy the license string below and paste it into Hayagriva Desktop's <strong>Settings ➔ MARKETPLACE (rbz) ➔ License Key</strong> to activate your features offline.
+        </p>
+        <div class="key-box" id="license-key-box">Click "Generate Fresh Key" to issue your license token.</div>
+        <button class="btn btn-outline" onclick="copyKey()">📋 Copy License Key to Clipboard</button>
+      </div>
 
-        <div class="asset-card">
-          <div>
-            <div class="asset-name" style="font-size: 1.05rem;">Enterprise Tier</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹14,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
-            <div class="asset-desc">Unlocks HayaParam 14B LLM (64K context), multi-user firm license, and GATEWAY (ipie) Sync.</div>
+      <!-- UPGRADE TIERS -->
+      <div class="card">
+        <div class="card-title">⚡ Subscription Plans</div>
+        <div class="grid">
+          <div class="asset-card">
+            <div>
+              <div class="asset-name" style="font-size: 1.05rem;">Professional Tier</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹4,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
+              <div class="asset-desc">Unlocks HayaParam 7B LLM (24K context), custom Law Vaults, and Priority Support.</div>
+            </div>
+            <button class="btn" onclick="upgradePlan('professional')" style="width:100%;">Upgrade to Pro →</button>
           </div>
-          <button class="btn" onclick="upgradePlan('enterprise')" style="width:100%;">Upgrade to Enterprise →</button>
+
+          <div class="asset-card">
+            <div>
+              <div class="asset-name" style="font-size: 1.05rem;">Enterprise Tier</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹14,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
+              <div class="asset-desc">Unlocks HayaParam 14B LLM (64K context), multi-user firm license, and GATEWAY (ipie) Sync.</div>
+            </div>
+            <button class="btn" onclick="upgradePlan('enterprise')" style="width:100%;">Upgrade to Enterprise →</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- ASSET CATALOG SEGREGATED SECTIONS -->
-    <div id="catalog-container">
-      <div style="color: var(--text-muted);">Loading asset catalog...</div>
+    <!-- TAB 2: HAYAGRIVA INSTALLER -->
+    <div id="dashtab-installer" class="dash-panel">
+      <div class="card">
+        <div class="card-title">🖥️ Hayagriva Desktop App Installers</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Native Desktop IDE builds for macOS, Windows, and Linux.</div>
+        <div id="catalog-app-grid" class="grid">
+          <div style="color: var(--text-muted);">Loading installers...</div>
+        </div>
+      </div>
     </div>
+
+    <!-- TAB 3: HAYAGRIVA MODELS -->
+    <div id="dashtab-models" class="dash-panel">
+      <div class="card">
+        <div class="card-title">🧠 Offline AI Models (.gguf)</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Quantized domain models running 100% offline via llamafile.</div>
+        <div id="catalog-model-grid" class="grid">
+          <div style="color: var(--text-muted);">Loading models...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: HAYAGRIVA VAULTS -->
+    <div id="dashtab-vaults" class="dash-panel">
+      <div class="card">
+        <div class="card-title">📚 Encrypted Domain Vaults (.vlt)</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Statutory laws, NCLAT/SC precedents, regulations, & precedent skeletons.</div>
+        <div id="catalog-vault-grid" class="grid">
+          <div style="color: var(--text-muted);">Loading domain vaults...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: HAYAGRIVA AGENTS -->
+    <div id="dashtab-agents" class="dash-panel">
+      <div class="card">
+        <div class="card-title">🤖 Specialized Subagent Packs (.vlt)</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Legal, financial audit, and coding subagent extensions.</div>
+        <div id="catalog-agent-grid" class="grid">
+          <div style="color: var(--text-muted);">Loading subagent packs...</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -209,6 +308,16 @@
     function logout() {
       localStorage.removeItem('haya_portal_token');
       window.location.href = 'index.html';
+    }
+
+    function switchDashTab(tabId) {
+      document.querySelectorAll('.dash-tab').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.dash-panel').forEach(panel => panel.classList.remove('active'));
+      
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      const activePanel = document.getElementById(`dashtab-${tabId}`);
+      if (activeBtn) activeBtn.classList.add('active');
+      if (activePanel) activePanel.classList.add('active');
     }
 
     async function loadUserData() {
@@ -301,44 +410,42 @@
     }
 
     const CATEGORIES = [
-      { id: 'app', title: '🖥️ Hayagriva Desktop App Installers', desc: 'Native Desktop IDE builds for macOS, Windows, and Linux.' },
-      { id: 'model', title: '🧠 Offline AI Models (.gguf)', desc: 'Quantized domain models running 100% offline via llamafile.' },
-      { id: 'agent', title: '🤖 Specialized Subagent Packs (.vlt)', desc: 'Legal, financial audit, and coding subagent extensions.' },
-      { id: 'vault', title: '📚 Encrypted Domain Vaults (.vlt)', desc: 'Statutory laws, NCLAT/SC precedents, regulations, & precedent skeletons.' }
+      { id: 'app', gridId: 'catalog-app-grid' },
+      { id: 'model', gridId: 'catalog-model-grid' },
+      { id: 'vault', gridId: 'catalog-vault-grid' },
+      { id: 'agent', gridId: 'catalog-agent-grid' }
     ];
 
     async function loadCatalog() {
       try {
         const res = await fetch('/api/downloads/catalog', { headers: { 'Authorization': `Bearer ${token}` } });
         const data = await res.json();
-        const container = document.getElementById('catalog-container');
 
-        container.innerHTML = CATEGORIES.map(cat => {
+        CATEGORIES.forEach(cat => {
+          const gridEl = document.getElementById(cat.gridId);
+          if (!gridEl) return;
           const items = data.items.filter(i => i.category === cat.id);
-          if (!items.length) return '';
-          return `
-            <div class="card">
-              <div class="card-title">${cat.title}</div>
-              <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">${cat.desc}</div>
-              <div class="grid">
-                ${items.map(item => `
-                  <div class="asset-card">
-                    <div>
-                      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; gap: 0.5rem;">
-                        <div class="asset-name">${item.name}</div>
-                        ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + item.tier + '</span>'}
-                      </div>
-                      <div style="font-size: 0.78rem; font-weight:700; color: var(--color-primary); margin-bottom: 0.4rem;">Size: ${item.size}</div>
-                      <div class="asset-desc">${item.description}</div>
-                    </div>
-                    ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn" style="width:100%; font-size:0.8rem; font-weight:700;" onclick="buyComponent('${item.id}', '${item.name.replace(/'/g, "\\'")}')">Buy Item for ₹1 →</button>`}
-                  </div>
-                `).join('')}
+          if (!items.length) {
+            gridEl.innerHTML = '<div style="color: var(--text-muted); font-size: 0.9rem; grid-column: 1/-1;">No items currently available in this category.</div>';
+            return;
+          }
+          gridEl.innerHTML = items.map(item => `
+            <div class="asset-card">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; gap: 0.5rem;">
+                  <div class="asset-name">${item.name}</div>
+                  ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + item.tier + '</span>'}
+                </div>
+                <div style="font-size: 0.78rem; font-weight:700; color: var(--color-primary); margin-bottom: 0.4rem;">Size: ${item.size}</div>
+                <div class="asset-desc">${item.description}</div>
               </div>
+              ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn" style="width:100%; font-size:0.8rem; font-weight:700;" onclick="buyComponent('${item.id}', '${item.name.replace(/'/g, "\\'")}')">Buy Item for ₹1 →</button>`}
             </div>
-          `;
-        }).join('');
-      } catch (e) {}
+          `).join('');
+        });
+      } catch (e) {
+        console.error('Failed to load catalog:', e);
+      }
     }
 
     async function buyComponent(assetId, assetName) {
@@ -429,4 +536,3 @@
   </script>
 </body>
 </html>
-
