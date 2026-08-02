@@ -1258,6 +1258,96 @@
             </div>
           </div>
         </div>
+
+        <!-- Statutory AI Compliance Section on Home Page -->
+        <div style="margin-top: 64px; border-top: 1px solid var(--border-color); padding-top: 48px;">
+          <h2 class="section-heading" style="text-align: center; margin-bottom: 12px;">Statutory AI Compliance & Data Sovereignty</h2>
+          <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 36px auto; font-size: 15px;">
+            HAYAGRIVA is purpose-built for regulatory compliance under the Insolvency &amp; Bankruptcy Code (ibc), DPDP Act 2023, IT Act 2000, and Supreme Court AI Directives.
+          </p>
+
+          <!-- 3 Core Compliance Pillars Grid -->
+          <div class="laws-grid">
+            <!-- Pillar 1: Data Privacy -->
+            <div class="law-card">
+              <span class="law-tag">DATA PRIVACY</span>
+              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">DPDP Act 2023 Compliance</h3>
+              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+                Enforces complete data minimization and local data sovereignty under Section 6 & Section 8 of the Digital Personal Data Protection Act 2023. All confidential case records, financial spreadsheets, and vector embeddings are stored and processed 100% on-premise without transferring data to external LLM cloud APIs.
+              </p>
+              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
+                <li><strong>Zero Cloud Data Leaks:</strong> Client documents remain strictly within local hardware boundaries.</li>
+                <li><strong>Local Anonymization Engine:</strong> Automatic PII masking before local subagent execution.</li>
+                <li><strong>Purpose Limitation:</strong> Case data is locked isolated to the active case workspace.</li>
+              </ul>
+            </div>
+
+            <!-- Pillar 2: Cybersecurity -->
+            <div class="law-card">
+              <span class="law-tag">CYBERSECURITY</span>
+              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">Information Technology Act 2000</h3>
+              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+                Protects document integrity and guarantees an evidentiary chain of custody under Section 43A and Section 66A of the IT Act 2000. Utilizes local cryptographic hashing, asymmetric digital signatures, and encrypted on-premise storage.
+              </p>
+              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
+                <li><strong>Cryptographic Hashing:</strong> SHA-256 document fingerprinting at ingestion.</li>
+                <li><strong>Ed25519 Digital Signatures:</strong> Cryptographically signed audit memos & Form H files.</li>
+                <li><strong>Encrypted Vaults:</strong> AES-256-GCM encrypted `.vlt` databases with tamper-evident audit trails.</li>
+              </ul>
+            </div>
+
+            <!-- Pillar 3: Judicial Directives -->
+            <div class="law-card">
+              <span class="law-tag">JUDICIAL DIRECTIVES</span>
+              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">SC / RBI / IBBI AI Directives</h3>
+              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+                Strictly adheres to Supreme Court legal ethics, RBI cybersecurity frameworks, and IBBI statutory codes governing AI deployment in judicial proceedings.
+              </p>
+              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
+                <li><strong>Attorney-Client Privilege:</strong> Confidential strategy is never transmitted offsite.</li>
+                <li><strong>Human-in-the-Loop Audit:</strong> Mandates `verified_by_user = 1` verification flags on all AI drafts.</li>
+                <li><strong>Air-Gapped Local Execution:</strong> Port 8090 local GGUF server isolates processing from public networks.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Comprehensive Statutory Matrix Table -->
+          <div style="margin-top: 48px;">
+            <h2 class="section-heading" style="text-align: center; margin-bottom: 24px;">Statutory AI Compliance Matrix</h2>
+            <table class="sample-table" style="box-shadow: var(--card-shadow); border-radius: 10px; overflow: hidden; width: 100%;">
+              <thead>
+                <tr style="background-color: var(--primary-color); color: #FFFFFF;">
+                  <th style="padding: 14px 18px; font-size: 14px;">Regulatory Act / Directive</th>
+                  <th style="padding: 14px 18px; font-size: 14px;">Statutory Mandate</th>
+                  <th style="padding: 14px 18px; font-size: 14px;">HAYAGRIVA Technical Guarantee</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">DPDP Act 2023 (Sec 6 & 8)</td>
+                  <td>Local data minimization & data fiduciary accountability</td>
+                  <td><span style="color: #10B981; font-weight: 600;">✓ 100% On-Premise Execution</span> (Zero external API transmission)</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Information Technology Act 2000 (Sec 43A)</td>
+                  <td>Cryptographic data security & tamper-proof audit trails</td>
+                  <td><span style="color: #10B981; font-weight: 600;">✓ Ed25519 Payload Signing</span> & SHA-256 integrity chains</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Supreme Court Judicial AI Code</td>
+                  <td>Preservation of attorney-client privilege & confidentiality</td>
+                  <td><span style="color: #10B981; font-weight: 600;">✓ Air-Gapped Local Models</span> (LegalParam-2.9B offline engine)</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">IBBI Statutory Insolvency Regulations</td>
+                  <td>Verified Form H compliance & Sec 29A due-diligence audit</td>
+                  <td><span style="color: #10B981; font-weight: 600;">✓ Human-in-the-Loop Protocol</span> (`verified_by_user = 1` flag)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1670,96 +1760,6 @@
             <button class="preview-btn" onclick="openModal('modal-forensic')">Preview Sample Report</button>
           </div>
         </div>
-
-        <!-- Statutory AI Compliance Section on Home Page -->
-        <div style="margin-top: 64px; border-top: 1px solid var(--border-color); padding-top: 48px;">
-          <h2 class="section-heading" style="text-align: center; margin-bottom: 12px;">Statutory AI Compliance & Data Sovereignty</h2>
-          <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 36px auto; font-size: 15px;">
-            HAYAGRIVA is purpose-built for regulatory compliance under the Insolvency &amp; Bankruptcy Code (ibc), DPDP Act 2023, IT Act 2000, and Supreme Court AI Directives.
-          </p>
-
-          <!-- 3 Core Compliance Pillars Grid -->
-          <div class="laws-grid">
-            <!-- Pillar 1: Data Privacy -->
-            <div class="law-card">
-              <span class="law-tag">DATA PRIVACY</span>
-              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">DPDP Act 2023 Compliance</h3>
-              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
-                Enforces complete data minimization and local data sovereignty under Section 6 & Section 8 of the Digital Personal Data Protection Act 2023. All confidential case records, financial spreadsheets, and vector embeddings are stored and processed 100% on-premise without transferring data to external LLM cloud APIs.
-              </p>
-              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
-                <li><strong>Zero Cloud Data Leaks:</strong> Client documents remain strictly within local hardware boundaries.</li>
-                <li><strong>Local Anonymization Engine:</strong> Automatic PII masking before local subagent execution.</li>
-                <li><strong>Purpose Limitation:</strong> Case data is locked isolated to the active case workspace.</li>
-              </ul>
-            </div>
-
-            <!-- Pillar 2: Cybersecurity -->
-            <div class="law-card">
-              <span class="law-tag">CYBERSECURITY</span>
-              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">Information Technology Act 2000</h3>
-              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
-                Protects document integrity and guarantees an evidentiary chain of custody under Section 43A and Section 66A of the IT Act 2000. Utilizes local cryptographic hashing, asymmetric digital signatures, and encrypted on-premise storage.
-              </p>
-              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
-                <li><strong>Cryptographic Hashing:</strong> SHA-256 document fingerprinting at ingestion.</li>
-                <li><strong>Ed25519 Digital Signatures:</strong> Cryptographically signed audit memos & Form H files.</li>
-                <li><strong>Encrypted Vaults:</strong> AES-256-GCM encrypted `.vlt` databases with tamper-evident audit trails.</li>
-              </ul>
-            </div>
-
-            <!-- Pillar 3: Judicial Directives -->
-            <div class="law-card">
-              <span class="law-tag">JUDICIAL DIRECTIVES</span>
-              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">SC / RBI / IBBI AI Directives</h3>
-              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
-                Strictly adheres to Supreme Court legal ethics, RBI cybersecurity frameworks, and IBBI statutory codes governing AI deployment in judicial proceedings.
-              </p>
-              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
-                <li><strong>Attorney-Client Privilege:</strong> Confidential strategy is never transmitted offsite.</li>
-                <li><strong>Human-in-the-Loop Audit:</strong> Mandates `verified_by_user = 1` verification flags on all AI drafts.</li>
-                <li><strong>Air-Gapped Local Execution:</strong> Port 8090 local GGUF server isolates processing from public networks.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Comprehensive Statutory Matrix Table -->
-          <div style="margin-top: 48px;">
-            <h2 class="section-heading" style="text-align: center; margin-bottom: 24px;">Statutory AI Compliance Matrix</h2>
-            <table class="sample-table" style="box-shadow: var(--card-shadow); border-radius: 10px; overflow: hidden; width: 100%;">
-              <thead>
-                <tr style="background-color: var(--primary-color); color: #FFFFFF;">
-                  <th style="padding: 14px 18px; font-size: 14px;">Regulatory Act / Directive</th>
-                  <th style="padding: 14px 18px; font-size: 14px;">Statutory Mandate</th>
-                  <th style="padding: 14px 18px; font-size: 14px;">HAYAGRIVA Technical Guarantee</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight: 600;">DPDP Act 2023 (Sec 6 & 8)</td>
-                  <td>Local data minimization & data fiduciary accountability</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ 100% On-Premise Execution</span> (Zero external API transmission)</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">Information Technology Act 2000 (Sec 43A)</td>
-                  <td>Cryptographic data security & tamper-proof audit trails</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ Ed25519 Payload Signing</span> & SHA-256 integrity chains</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">Supreme Court Judicial AI Code</td>
-                  <td>Preservation of attorney-client privilege & confidentiality</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ Air-Gapped Local Models</span> (LegalParam-2.9B offline engine)</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">IBBI Statutory Insolvency Regulations</td>
-                  <td>Verified Form H compliance & Sec 29A due-diligence audit</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ Human-in-the-Loop Protocol</span> (`verified_by_user = 1` flag)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
       </div>
     </section>
 
