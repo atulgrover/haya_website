@@ -129,7 +129,20 @@ router.post('/verify', authenticateToken, async (req, res) => {
     }
 });
 
-// POST /api/payments/create-component-order (Individual ₹1 Component Purchase)
+// ASSET PRICING MAP (in INR)
+const ASSET_PRICES = {
+    'legalparam-2.9b.gguf': 499,
+    'financeparam-2.9b.gguf': 499,
+    'legal_agents.vlt': 399,
+    'finance_agents.vlt': 399,
+    'coding_agents.vlt': 399,
+    'laws_vault.zip': 199,
+    'cases_vault.zip': 299,
+    'documents_vault.zip': 199,
+    'forms_vault.zip': 199
+};
+
+// POST /api/payments/create-component-order (Dynamic A La Carte Purchase)
 router.post('/create-component-order', authenticateToken, async (req, res) => {
     try {
         const { assetId } = req.body;
@@ -137,13 +150,15 @@ router.post('/create-component-order', authenticateToken, async (req, res) => {
             return res.status(400).json({ error: 'Asset ID is required.' });
         }
 
-        const amount = 100; // ₹1 in paise
-        const orderId = await createRazorpayOrder(amount);
+        const itemPriceInr = ASSET_PRICES[assetId] || 199;
+        const amountPaise = itemPriceInr * 100; // in paise
+        const orderId = await createRazorpayOrder(amountPaise);
 
         res.json({
             success: true,
             orderId,
-            amount,
+            amount: amountPaise,
+            priceInr: itemPriceInr,
             currency: 'INR',
             keyId: process.env.RAZORPAY_KEY_ID || 'rzp_test_TKPNXAjeiDn6AB',
             assetId
@@ -170,12 +185,14 @@ router.post('/verify-component-payment', authenticateToken, async (req, res) => 
         }
 
         const txnId = razorpayPaymentId || razorpayOrderId || ('pay_sim_' + Date.now());
+        const itemPriceInr = ASSET_PRICES[assetId] || 199;
+        const amountPaise = itemPriceInr * 100;
 
         // Record purchase
         await db.prepare(`
             INSERT INTO user_purchases (user_id, asset_id, amount, currency, transaction_id)
-            VALUES (?, ?, 100, 'INR', ?)
-        `).run(userId, assetId, txnId);
+            VALUES (?, ?, ?, 'INR', ?)
+        `).run(userId, assetId, amountPaise, txnId);
 
         // Fetch user data & purchased assets for master license regeneration
         const user = await db.prepare('SELECT email FROM users WHERE id = ?').get(userId);

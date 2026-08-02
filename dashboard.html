@@ -294,27 +294,14 @@
         <button class="btn btn-outline" onclick="copyKey()">📋 Copy License Key to Clipboard</button>
       </div>
 
-      <!-- UPGRADE TIERS -->
+      <!-- PURCHASED A LA CARTE UNLOCKS CARD -->
       <div class="card">
-        <div class="card-title">⚡ Subscription Plans</div>
-        <div class="grid">
-          <div class="asset-card">
-            <div>
-              <div class="asset-name" style="font-size: 1.05rem;">Professional Tier</div>
-              <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹4,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
-              <div class="asset-desc">Unlocks HayaParam 7B LLM (24K context), custom Law Vaults, and Priority Support.</div>
-            </div>
-            <button class="btn" onclick="upgradePlan('professional')" style="width:100%;">Upgrade to Pro →</button>
-          </div>
-
-          <div class="asset-card">
-            <div>
-              <div class="asset-name" style="font-size: 1.05rem;">Enterprise Tier</div>
-              <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0.4rem 0 0.6rem 0;">₹14,999 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/ month</span></div>
-              <div class="asset-desc">Unlocks HayaParam 14B LLM (64K context), multi-user firm license, and GATEWAY (ipie) Sync.</div>
-            </div>
-            <button class="btn" onclick="upgradePlan('enterprise')" style="width:100%;">Upgrade to Enterprise →</button>
-          </div>
+        <div class="card-title">📦 Your Purchased A La Carte Assets & Offline Unlocks</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Every model, data vault, or agent you unlock is permanently bound to your master Ed25519 license key. Download packages and import them into your Hayagriva Desktop IDE for 100% offline access.
+        </div>
+        <div id="unlocked-assets-summary" style="font-size: 0.9rem; color: var(--text-main); font-weight: 600;">
+          Loading unlocked assets...
         </div>
       </div>
 
@@ -538,7 +525,7 @@
         if (!res.ok) { logout(); return; }
         const data = await res.json();
         
-        document.getElementById('user-tier').innerText = `${data.subscription.tier.toUpperCase()} Tier`;
+        document.getElementById('user-tier').innerText = `Pay-As-You-Go`;
         if (data.activeLicense) {
           document.getElementById('license-key-box').innerText = data.activeLicense.license_key;
         }
@@ -815,7 +802,7 @@
       }
     }
 
-    async function buyComponent(assetId, assetName) {
+    async function buyComponent(assetId, assetName, priceInr) {
       try {
         const resOrder = await fetch('/api/payments/create-component-order', {
           method: 'POST',
@@ -828,16 +815,18 @@
           return;
         }
 
+        const priceDisplay = orderData.priceInr || priceInr || 199;
+
         if (typeof Razorpay !== 'undefined') {
           const options = {
             key: orderData.keyId,
-            amount: orderData.amount, // 100 paise = ₹1
+            amount: orderData.amount,
             currency: "INR",
             name: "HAYAGRIVA PORTAL",
-            description: "Unlock " + assetName,
+            description: `Unlock ${assetName} (₹${priceDisplay})`,
             order_id: orderData.orderId,
             handler: async function (response) {
-              await verifyComponentPayment(assetId, response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature);
+              await verifyComponentPayment(assetId, assetName, priceDisplay, response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature);
             },
             prefill: {
               name: "Haya Portal User",
@@ -849,14 +838,14 @@
           rzp.open();
         } else {
           // Simulation fallback
-          await verifyComponentPayment(assetId, 'pay_sim_' + Date.now(), orderData.orderId, 'sim_sig');
+          await verifyComponentPayment(assetId, assetName, priceDisplay, 'pay_sim_' + Date.now(), orderData.orderId, 'sim_sig');
         }
       } catch (e) {
         alert('An error occurred during payment initiation.');
       }
     }
 
-    async function verifyComponentPayment(assetId, razorpayPaymentId, razorpayOrderId, razorpaySignature) {
+    async function verifyComponentPayment(assetId, assetName, priceInr, razorpayPaymentId, razorpayOrderId, razorpaySignature) {
       try {
         const res = await fetch('/api/payments/verify-component-payment', {
           method: 'POST',
@@ -865,9 +854,10 @@
         });
         const data = await res.json();
         if (data.success) {
-          alert(`🎉 Payment Successful! Unlocked "${assetId}" for ₹1.\n\nYour Master Ed25519 License Key has been updated with this component.`);
+          alert(`🎉 Payment Successful!\n\nUnlocked "${assetName}" for ₹${priceInr}.\nYour Master Ed25519 License Key has been updated with this asset.`);
           loadUserData();
           loadCatalog();
+          loadPaymentHistory();
         } else {
           alert(data.error || 'Payment verification failed.');
         }
