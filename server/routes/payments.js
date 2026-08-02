@@ -217,5 +217,73 @@ router.post('/verify-component-payment', authenticateToken, async (req, res) => 
     }
 });
 
+// GET /api/payments/history (Fetch combined user transaction history)
+router.get('/history', authenticateToken, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+
+        // Fetch subscription payments
+        const subs = await db.prepare(`
+            SELECT id, tier, status, payment_provider, transaction_id, updated_at AS created_at
+            FROM subscriptions
+            WHERE user_id = ?
+            ORDER BY id DESC
+        `).all(userId);
+
+        // Fetch component / asset purchases
+        const purchases = await db.prepare(`
+            SELECT id, asset_id, amount, currency, transaction_id, purchased_at AS created_at
+            FROM user_purchases
+            WHERE user_id = ?
+            ORDER BY id DESC
+        `).all(userId);
+
+        const subPrices = { professional: 4999, enterprise: 14999 };
+
+        const history = [];
+
+        if (subs && subs.length > 0) {
+            subs.forEach(s => {
+                const tierName = (s.tier || 'starter').toUpperCase();
+                history.push({
+                    id: 'sub_' + s.id,
+                    item: `Subscription Upgrade (${tierName} Tier)`,
+                    amount: subPrices[s.tier] || 0,
+                    currency: 'INR',
+                    provider: s.payment_provider || 'Razorpay',
+                    transactionId: s.transaction_id || 'N/A',
+                    status: s.status === 'active' ? 'Success' : s.status,
+                    date: s.created_at
+                });
+            });
+        }
+
+        if (purchases && purchases.length > 0) {
+            purchases.forEach(p => {
+                history.push({
+                    id: 'pur_' + p.id,
+                    item: `Asset Unlock (${p.asset_id})`,
+                    amount: Math.round(p.amount / 100),
+                    currency: p.currency || 'INR',
+                    provider: 'Razorpay',
+                    transactionId: p.transaction_id || 'N/A',
+                    status: 'Success',
+                    date: p.created_at
+                });
+            });
+        }
+
+        history.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        res.json({
+            success: true,
+            history
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 module.exports = router;
+
 

@@ -270,15 +270,16 @@
 
     <!-- DASHBOARD SUB-SECTION TABS -->
     <nav class="dashboard-tabs">
-      <button class="dash-tab active" id="tab-btn-license" onclick="switchDashTab('license')">🔑 License & Pricing</button>
-      <button class="dash-tab" id="tab-btn-installer" onclick="switchDashTab('installer')">🖥️ Hayagriva Installer</button>
-      <button class="dash-tab" id="tab-btn-models" onclick="switchDashTab('models')">🧠 Hayagriva Models</button>
-      <button class="dash-tab" id="tab-btn-vaults" onclick="switchDashTab('vaults')">📚 Hayagriva Vaults</button>
-      <button class="dash-tab" id="tab-btn-agents" onclick="switchDashTab('agents')">🤖 Hayagriva Agents</button>
+      <button class="dash-tab active" id="tab-btn-license" onclick="switchDashTab('license')">🔑 License & Payments</button>
+      <button class="dash-tab" id="tab-btn-installer" onclick="switchDashTab('installer')">🖥️ Hayagriva IPE</button>
+      <button class="dash-tab" id="tab-btn-models" onclick="switchDashTab('models')">🧠 LLM Models</button>
+      <button class="dash-tab" id="tab-btn-vaults" onclick="switchDashTab('vaults')">📚 Data Vaults</button>
+      <button class="dash-tab" id="tab-btn-agents" onclick="switchDashTab('agents')">🤖 IBC Agents</button>
+      <button class="dash-tab" id="tab-btn-reports" onclick="switchDashTab('reports')">📊 Marketplace Reports</button>
       <button class="dash-tab" id="tab-btn-profile" onclick="switchDashTab('profile')">👤 Profile & Settings</button>
     </nav>
 
-    <!-- TAB 1: LICENSE & PRICING -->
+    <!-- TAB 1: LICENSE & PAYMENTS -->
     <div id="dashtab-license" class="dash-panel active">
       <!-- LICENSE KEY CARD -->
       <div class="card">
@@ -316,12 +317,24 @@
           </div>
         </div>
       </div>
+
+      <!-- RAZORPAY PAYMENT & SUBSCRIPTION HISTORY CARD -->
+      <div class="card">
+        <div class="card-title">
+          <span>💳 Razorpay Payment & Subscription History</span>
+          <button class="btn btn-outline" style="padding: 0.3rem 0.75rem; font-size: 0.8rem;" onclick="loadPaymentHistory()">Refresh History</button>
+        </div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">View your past subscription upgrades and asset purchases made via Razorpay API.</div>
+        <div id="payment-history-table-container">
+          <div style="color: var(--text-muted); font-size: 0.88rem;">Loading payment history...</div>
+        </div>
+      </div>
     </div>
 
-    <!-- TAB 2: HAYAGRIVA INSTALLER -->
+    <!-- TAB 2: HAYAGRIVA IPE -->
     <div id="dashtab-installer" class="dash-panel">
       <div class="card">
-        <div class="card-title">🖥️ Hayagriva Desktop App Installers</div>
+        <div class="card-title">🖥️ Hayagriva IPE App Installers</div>
         <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Native Desktop IDE builds for macOS, Windows, and Linux.</div>
         <div id="catalog-app-grid" class="grid">
           <div style="color: var(--text-muted);">Loading installers...</div>
@@ -329,10 +342,10 @@
       </div>
     </div>
 
-    <!-- TAB 3: HAYAGRIVA MODELS -->
+    <!-- TAB 3: LLM MODELS -->
     <div id="dashtab-models" class="dash-panel">
       <div class="card">
-        <div class="card-title">🧠 Offline AI Models (.gguf)</div>
+        <div class="card-title">🧠 Offline LLM Models (.gguf)</div>
         <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Quantized domain models running 100% offline via llamafile.</div>
         <div id="catalog-model-grid" class="grid">
           <div style="color: var(--text-muted);">Loading models...</div>
@@ -340,10 +353,10 @@
       </div>
     </div>
 
-    <!-- TAB 4: HAYAGRIVA VAULTS -->
+    <!-- TAB 4: DATA VAULTS -->
     <div id="dashtab-vaults" class="dash-panel">
       <div class="card">
-        <div class="card-title">📚 Encrypted Domain Vaults (.vlt)</div>
+        <div class="card-title">📚 Encrypted Data Vaults (.vlt)</div>
         <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Statutory laws, NCLAT/SC precedents, regulations, & precedent skeletons.</div>
         <div id="catalog-vault-grid" class="grid">
           <div style="color: var(--text-muted);">Loading domain vaults...</div>
@@ -351,13 +364,42 @@
       </div>
     </div>
 
-    <!-- TAB 5: HAYAGRIVA AGENTS -->
+    <!-- TAB 5: IBC AGENTS -->
     <div id="dashtab-agents" class="dash-panel">
       <div class="card">
-        <div class="card-title">🤖 Specialized Subagent Packs (.vlt)</div>
+        <div class="card-title">🤖 Specialized IBC Agents (.vlt)</div>
         <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Legal, financial audit, and coding subagent extensions.</div>
         <div id="catalog-agent-grid" class="grid">
           <div style="color: var(--text-muted);">Loading subagent packs...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: MARKETPLACE REPORTS -->
+    <div id="dashtab-reports" class="dash-panel">
+      <!-- REPORT CATALOG CARD -->
+      <div class="card">
+        <div class="card-title">📊 Custom Intelligence Reports Marketplace</div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Order specialized IBC due diligence, financial audit, and legal research reports. Reports are generated, dispatched to your email, and loaded here automatically.
+        </div>
+        
+        <div class="grid" id="reports-catalog-grid">
+          <div style="color: var(--text-muted);">Loading report catalog...</div>
+        </div>
+      </div>
+
+      <!-- MY ORDERED REPORTS GALLERY -->
+      <div class="card">
+        <div class="card-title">
+          <span>📥 My Ordered Reports & Delivery Vault</span>
+          <button class="btn btn-outline" style="padding: 0.3rem 0.75rem; font-size: 0.8rem;" onclick="loadMyReports()">Refresh Status</button>
+        </div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Track the status of your requested reports and download completed intelligence dossiers.
+        </div>
+        <div id="my-reports-container">
+          <div style="color: var(--text-muted); font-size: 0.88rem;">Loading your report orders...</div>
         </div>
       </div>
     </div>
@@ -480,7 +522,12 @@
       if (activeBtn) activeBtn.classList.add('active');
       if (activePanel) activePanel.classList.add('active');
 
-      if (tabId === 'profile') {
+      if (tabId === 'license') {
+        loadPaymentHistory();
+      } else if (tabId === 'reports') {
+        loadReportCatalog();
+        loadMyReports();
+      } else if (tabId === 'profile') {
         loadPaymentMethods();
       }
     }
@@ -852,7 +899,201 @@
       }
     }
 
-    window.onload = () => { loadUserData(); loadCatalog(); };
+    async function loadPaymentHistory() {
+      const container = document.getElementById('payment-history-table-container');
+      if (!container) return;
+      try {
+        const res = await fetch('/api/payments/history', { headers: { 'Authorization': `Bearer ${token}` } });
+        const data = await res.json();
+        if (data.success && data.history && data.history.length > 0) {
+          container.innerHTML = `
+            <table style="width:100%; border-collapse:collapse; font-size:0.88rem; text-align:left;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                  <th style="padding: 0.6rem;">Date</th>
+                  <th style="padding: 0.6rem;">Item / Description</th>
+                  <th style="padding: 0.6rem;">Amount</th>
+                  <th style="padding: 0.6rem;">Provider</th>
+                  <th style="padding: 0.6rem;">Transaction ID</th>
+                  <th style="padding: 0.6rem;">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.history.map(item => `
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 0.65rem; color: var(--text-muted); font-size: 0.8rem;">${new Date(item.date).toLocaleDateString()} ${new Date(item.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
+                    <td style="padding: 0.65rem; font-weight: 600; color: var(--text-main);">${item.item}</td>
+                    <td style="padding: 0.65rem; font-weight: 700; color: var(--color-primary);">₹${item.amount.toLocaleString('en-IN')}</td>
+                    <td style="padding: 0.65rem;"><span class="badge-unlocked" style="background:#EBF8FF; color:#2B6CB0; border-color:#BEE3F8;">${item.provider}</span></td>
+                    <td style="padding: 0.65rem; font-family: monospace; font-size: 0.78rem; color: var(--text-muted);">${item.transactionId}</td>
+                    <td style="padding: 0.65rem;"><span class="badge-unlocked">✓ ${item.status}</span></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `;
+        } else {
+          container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.88rem;">No payment transactions recorded yet. Upgrade your plan or purchase components to view payment logs.</div>';
+        }
+      } catch (e) {
+        container.innerHTML = '<div style="color: var(--color-red); font-size: 0.88rem;">Failed to load payment history.</div>';
+      }
+    }
+
+    async function loadReportCatalog() {
+      const grid = document.getElementById('reports-catalog-grid');
+      if (!grid) return;
+      try {
+        const res = await fetch('/api/reports/catalog');
+        const data = await res.json();
+        if (data.success && data.catalog) {
+          grid.innerHTML = data.catalog.map(report => `
+            <div class="asset-card">
+              <div>
+                <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">${report.title}</div>
+                <div style="font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.6rem;">₹${report.price.toLocaleString('en-IN')} <span style="font-size:0.75rem; font-weight:normal; color:var(--text-muted);">/ per report</span></div>
+                <div class="asset-desc">${report.description}</div>
+              </div>
+              <button class="btn" style="width:100%; font-size:0.82rem; margin-top:0.75rem;" onclick="openReportModal('${report.id}', '${report.title.replace(/'/g, "\\'")}')">Order Report Now →</button>
+            </div>
+          `).join('');
+        }
+      } catch (e) {
+        grid.innerHTML = '<div style="color: var(--text-muted);">Failed to load report catalog.</div>';
+      }
+    }
+
+    function openReportModal(reportType, reportTitle) {
+      document.getElementById('modal-report-type').value = reportType;
+      document.getElementById('modal-report-title').innerText = reportTitle;
+      document.getElementById('modal-company-name').value = '';
+      document.getElementById('modal-notes').value = '';
+      document.getElementById('modal-msg').style.display = 'none';
+      document.getElementById('report-order-modal').style.display = 'flex';
+    }
+
+    function closeReportModal() {
+      document.getElementById('report-order-modal').style.display = 'none';
+    }
+
+    async function submitReportOrder() {
+      const reportType = document.getElementById('modal-report-type').value;
+      const companyName = document.getElementById('modal-company-name').value;
+      const notes = document.getElementById('modal-notes').value;
+      const msgEl = document.getElementById('modal-msg');
+
+      msgEl.className = 'status-msg';
+      msgEl.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/reports/order', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reportType, companyName, notes })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msgEl.className = 'status-msg success';
+          msgEl.innerText = data.message;
+          setTimeout(() => {
+            closeReportModal();
+            loadMyReports();
+          }, 1800);
+        } else {
+          msgEl.className = 'status-msg error';
+          msgEl.innerText = data.error || 'Failed to submit report order.';
+        }
+      } catch (e) {
+        msgEl.className = 'status-msg error';
+        msgEl.innerText = 'Network error while placing report order.';
+      }
+    }
+
+    async function loadMyReports() {
+      const container = document.getElementById('my-reports-container');
+      if (!container) return;
+      try {
+        const res = await fetch('/api/reports/my-orders', { headers: { 'Authorization': `Bearer ${token}` } });
+        const data = await res.json();
+        if (data.success && data.orders && data.orders.length > 0) {
+          container.innerHTML = `
+            <table style="width:100%; border-collapse:collapse; font-size:0.88rem; text-align:left;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                  <th style="padding: 0.6rem;">Order ID</th>
+                  <th style="padding: 0.6rem;">Report Title / Subject</th>
+                  <th style="padding: 0.6rem;">Target Company</th>
+                  <th style="padding: 0.6rem;">Date Requested</th>
+                  <th style="padding: 0.6rem;">Delivery Status</th>
+                  <th style="padding: 0.6rem;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.orders.map(order => `
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 0.65rem; font-family: monospace; font-size:0.8rem; color: var(--text-muted);">#REP-${order.id}</td>
+                    <td style="padding: 0.65rem; font-weight: 600; color: var(--text-main);">${order.title}</td>
+                    <td style="padding: 0.65rem; color: var(--text-main);">${order.company_name || 'N/A'}</td>
+                    <td style="padding: 0.65rem; color: var(--text-muted); font-size: 0.8rem;">${new Date(order.created_at).toLocaleDateString()}</td>
+                    <td style="padding: 0.65rem;">
+                      ${order.status === 'in_processing' 
+                        ? '<span class="badge-locked" style="background:#FEFCBF; color:#744210; border-color:#F6E05E;">⏳ Generating & Emailing...</span>' 
+                        : '<span class="badge-unlocked">✓ Email Sent & Ready</span>'}
+                    </td>
+                    <td style="padding: 0.65rem;">
+                      ${order.file_url 
+                        ? `<a href="${order.file_url}" target="_blank" class="btn btn-outline" style="padding:0.25rem 0.6rem; font-size:0.75rem;">Download PDF</a>` 
+                        : `<button class="btn btn-outline" style="padding:0.25rem 0.6rem; font-size:0.75rem; opacity:0.7;" onclick="alert('Your custom report is being generated and emailed to your registered address. You will receive an email notification as soon as it completes.')">View Status</button>`}
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `;
+        } else {
+          container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.88rem;">No custom report orders found. Choose a report template above to order your first intelligence audit.</div>';
+        }
+      } catch (e) {
+        container.innerHTML = '<div style="color: var(--color-red); font-size: 0.88rem;">Failed to load report orders.</div>';
+      }
+    }
+
+    window.onload = () => { 
+      loadUserData(); 
+      loadCatalog(); 
+      loadPaymentHistory(); 
+      loadReportCatalog(); 
+      loadMyReports(); 
+    };
   </script>
+
+  <!-- REPORT ORDER MODAL -->
+  <div id="report-order-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
+    <div class="card" style="max-width:550px; width:90%; background:#FFF; border-radius:12px; padding:1.5rem; position:relative;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem;">
+        <div style="font-weight:800; font-size:1.1rem; color:var(--text-main);" id="modal-report-title">Request Custom Report</div>
+        <button onclick="closeReportModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+      </div>
+      <form id="report-order-form" onsubmit="event.preventDefault(); submitReportOrder();">
+        <input type="hidden" id="modal-report-type" />
+        <div class="form-group">
+          <label class="form-label">Corporate Debtor / Company Name *</label>
+          <input type="text" id="modal-company-name" class="form-input" placeholder="e.g. ABC Developers Ltd / Zenith Steel Pvt Ltd" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Research Instructions & Notes (Optional)</label>
+          <textarea id="modal-notes" class="form-input" style="height:90px; resize:vertical;" placeholder="Specify particular NCLT benches, CIRP claim numbers, or focus areas..."></textarea>
+        </div>
+        <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1rem; background:var(--input-bg); padding:0.75rem; border-radius:6px;">
+          📧 The final report will be delivered directly to your registered email address and updated in your report vault within 24 hours.
+        </div>
+        <div style="display:flex; gap:0.75rem; justify-content:flex-end;">
+          <button type="button" class="btn btn-outline" onclick="closeReportModal()">Cancel</button>
+          <button type="submit" class="btn">Confirm Order Request →</button>
+        </div>
+        <div id="modal-msg" class="status-msg"></div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
