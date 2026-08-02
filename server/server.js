@@ -8,6 +8,7 @@ const { router: authRouter } = require('./routes/auth');
 const licenseRouter = require('./routes/license');
 const downloadsRouter = require('./routes/downloads');
 const paymentsRouter = require('./routes/payments');
+const wikiRouter = require('./routes/wiki');
 const { ensureKeyPair } = require('./utils/license-signer');
 
 const app = express();
@@ -28,6 +29,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/license', licenseRouter);
 app.use('/api/downloads', downloadsRouter);
 app.use('/api/payments', paymentsRouter);
+app.use('/api/wiki', wikiRouter);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
