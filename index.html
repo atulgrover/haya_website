@@ -968,6 +968,7 @@
 
     /* Blogs & TiddlyWiki Reader Layout */
     .blogs-wrapper {
+      position: relative;
       display: flex;
       height: calc(100vh - 72px);
       width: 100%;
@@ -982,6 +983,33 @@
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
+      transition: margin-left 0.3s ease, opacity 0.3s ease;
+    }
+    .blogs-sidebar.collapsed {
+      margin-left: -330px;
+      min-width: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sidebar-toggle-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      z-index: 100;
+      background: var(--primary-color, #1E6C93);
+      color: #FFFFFF;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .sidebar-toggle-btn:hover {
+      background: var(--primary-hover, #165272);
+      transform: translateY(-1px);
     }
     .sidebar-header {
       padding: 1.25rem 1rem;
@@ -1054,58 +1082,19 @@
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.35;
-      margin-bottom: 0.4rem;
-    }
-    .wiki-item-meta {
-      display: flex;
-      gap: 0.35rem;
-    }
-    .wiki-tag {
-      background: #E2E8F0;
-      color: #475569;
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 2px 6px;
-      border-radius: 4px;
     }
     .blogs-viewport {
+      position: relative;
       flex: 1;
       display: flex;
       flex-direction: column;
       height: 100%;
       background: #FFFFFF;
     }
-    .viewport-bar {
-      height: 42px;
-      background: #F1F5F9;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--color-primary);
-    }
-    .viewport-link-btn {
-      color: var(--color-primary);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border: 1px solid var(--color-primary);
-      border-radius: 4px;
-      background: #FFFFFF;
-      transition: all 0.2s ease;
-    }
-    .viewport-link-btn:hover {
-      background: var(--color-primary);
-      color: #FFFFFF;
-    }
     .wiki-iframe {
       flex: 1;
       width: 100%;
-      height: calc(100% - 42px);
+      height: 100%;
       border: none;
     }
 
@@ -1748,58 +1737,19 @@
     <section id="tab-blogs" class="tab-view">
       <div class="blogs-wrapper">
         <!-- Sidebar -->
-        <aside class="blogs-sidebar">
+        <aside class="blogs-sidebar" id="blogsSidebar">
           <div class="sidebar-header">
-            <div class="sidebar-title">📖 TiddlyWiki Blogs</div>
-            <div class="sidebar-sub">Interactive Knowledge Base</div>
             <input type="text" id="wikiSearchInput" onkeyup="filterWikis()" placeholder="🔍 Search TiddlyWikis..." class="sidebar-search" />
           </div>
           
           <div class="wiki-list" id="wikiListContainer">
-            <div class="wiki-item active" onclick="loadTiddlyWiki('wiki/ipie.html', this)">
-              <div class="wiki-item-icon">⚡</div>
-              <div class="wiki-item-info">
-                <div class="wiki-item-title">GATEWAY (ipie) Architecture</div>
-                <div class="wiki-item-desc">MCA Central Gateway specifications & XBRL signing protocol</div>
-                <div class="wiki-item-meta">
-                  <span class="wiki-tag">ipie</span>
-                  <span class="wiki-tag">architecture</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="wiki-item" onclick="loadTiddlyWiki('wiki/agentic_workflows.html', this)">
-              <div class="wiki-item-icon">🤖</div>
-              <div class="wiki-item-info">
-                <div class="wiki-item-title">Agentic Process & Workflows</div>
-                <div class="wiki-item-desc">Autonomous multi-agent execution pipeline & deterministic fallback</div>
-                <div class="wiki-item-meta">
-                  <span class="wiki-tag">agentic</span>
-                  <span class="wiki-tag">pipeline</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="wiki-item" onclick="loadTiddlyWiki('wiki/law_vaults.html', this)">
-              <div class="wiki-item-icon">📚</div>
-              <div class="wiki-item-info">
-                <div class="wiki-item-title">Law Vaults (.vlt) Specification</div>
-                <div class="wiki-item-desc">AES-256 encrypted statutory law vaults & precedent vectors</div>
-                <div class="wiki-item-meta">
-                  <span class="wiki-tag">law-vaults</span>
-                  <span class="wiki-tag">encryption</span>
-                </div>
-              </div>
-            </div>
+            <div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">Loading wikis...</div>
           </div>
         </aside>
 
         <!-- Main Viewport -->
         <main class="blogs-viewport">
-          <div class="viewport-bar">
-            <span id="active-wiki-label">⚡ wiki/ipie.html — GATEWAY (ipie) Architecture</span>
-            <a href="wiki/ipie.html" target="_blank" id="open-new-tab-btn" class="viewport-link-btn">↗ Open in New Window</a>
-          </div>
+          <button id="sidebarToggleBtn" class="sidebar-toggle-btn" onclick="toggleWikiSidebar()" title="Toggle Sidebar">◀ Hide Sidebar</button>
           <iframe id="tiddlywiki-frame" src="wiki/ipie.html" class="wiki-iframe" title="TiddlyWiki Reader"></iframe>
         </main>
       </div>
@@ -2019,6 +1969,18 @@
       document.getElementById('navLinks').classList.toggle('show');
     }
 
+    function toggleWikiSidebar() {
+      const sidebar = document.getElementById('blogsSidebar');
+      const toggleBtn = document.getElementById('sidebarToggleBtn');
+      if (sidebar) {
+        sidebar.classList.toggle('collapsed');
+        const isCollapsed = sidebar.classList.contains('collapsed');
+        if (toggleBtn) {
+          toggleBtn.innerText = isCollapsed ? '▶ Show Sidebar' : '◀ Hide Sidebar';
+        }
+      }
+    }
+
     // Dynamic On-The-Fly TiddlyWiki Loader
     async function loadDynamicWikis() {
       const container = document.getElementById('wikiListContainer');
@@ -2035,23 +1997,15 @@
               <div class="wiki-item-info">
                 <div class="wiki-item-title">${wiki.title}</div>
                 <div class="wiki-item-desc">${wiki.filename} • ${wiki.size}</div>
-                <div class="wiki-item-meta">
-                  <span class="wiki-tag">${wiki.filename.replace(/\.(html|htm)$/i, '')}</span>
-                  <span class="wiki-tag">wiki</span>
-                </div>
               </div>
             </div>
           `).join('');
 
           // Select first wiki if frame empty or default
           const iframe = document.getElementById('tiddlywiki-frame');
-          if (iframe && (!iframe.src || iframe.src.endsWith('about:blank') || iframe.src.includes('ipie.html'))) {
+          if (iframe && (!iframe.src || iframe.src.endsWith('about:blank'))) {
             const firstWiki = data.wikis[0];
             iframe.src = firstWiki.path;
-            const label = document.getElementById('active-wiki-label');
-            const openBtn = document.getElementById('open-new-tab-btn');
-            if (label) label.innerText = `${firstWiki.icon} ${firstWiki.path} — ${firstWiki.title}`;
-            if (openBtn) openBtn.href = firstWiki.path;
           }
         } else {
           container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No TiddlyWikis found in the /wiki folder. Drop .html files there to display them here!</div>';
@@ -2064,24 +2018,15 @@
     // TiddlyWiki Reader Loader & Sidebar Filter
     function loadTiddlyWiki(wikiPath, element) {
       const iframe = document.getElementById('tiddlywiki-frame');
-      const label = document.getElementById('active-wiki-label');
-      const openBtn = document.getElementById('open-new-tab-btn');
 
       if (iframe) {
         iframe.src = wikiPath;
-      }
-      if (openBtn) {
-        openBtn.href = wikiPath;
       }
 
       const items = document.querySelectorAll('.wiki-item');
       items.forEach(item => item.classList.remove('active'));
       if (element) {
         element.classList.add('active');
-        const titleText = element.querySelector('.wiki-item-title') ? element.querySelector('.wiki-item-title').innerText : '';
-        if (label) {
-          label.innerText = `📄 ${wikiPath} — ${titleText}`;
-        }
       }
     }
 
