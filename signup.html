@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login — HAYAGRIVA</title>
+  <title>Create Profile — HAYAGRIVA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -31,16 +31,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 2rem 1.5rem;
       line-height: 1.6;
     }
     .auth-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 2.75rem 2.5rem;
+      padding: 2.5rem 2.5rem;
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
       box-shadow: var(--card-shadow);
     }
     .auth-title {
@@ -48,7 +48,7 @@
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
       text-align: center;
       letter-spacing: 1.5px;
     }
@@ -56,23 +56,23 @@
       text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-bottom: 2.25rem;
+      margin-bottom: 2rem;
       line-height: 1.4;
     }
     .form-group {
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.15rem;
     }
     .form-group label {
       display: block;
       font-size: 0.78rem;
       color: var(--text-main);
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
       font-weight: 700;
       letter-spacing: 0.04em;
     }
     .form-group input {
       width: 100%;
-      padding: 0.8rem 1rem;
+      padding: 0.75rem 1rem;
       background: var(--input-bg);
       border: 1px solid var(--input-border);
       border-radius: 8px;
@@ -98,7 +98,7 @@
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       transition: all 0.2s ease;
     }
@@ -126,51 +126,69 @@
 <body>
   <div class="auth-card">
     <div class="auth-title">HAYA PORTAL</div>
-    <div class="auth-sub" id="form-subtitle">Login to access licenses &amp; downloads</div>
+    <div class="auth-sub" id="form-subtitle">Create your practitioner profile to access licenses &amp; assets</div>
 
     <div class="error-msg" id="error-box"></div>
 
-    <form id="auth-form">
+    <form id="signup-form">
       <div class="form-group">
-        <label>EMAIL ADDRESS</label>
-        <input type="email" id="email" required placeholder="name@firm.com" />
+        <label>FULL NAME *</label>
+        <input type="text" id="fullName" required placeholder="Adv. Rajesh Kumar" />
       </div>
 
       <div class="form-group">
-        <label>PASSWORD</label>
-        <input type="password" id="password" required placeholder="••••••••" />
+        <label>EMAIL ADDRESS *</label>
+        <input type="email" id="email" required placeholder="rajesh@legalfirm.in" />
       </div>
 
-      <button type="submit" class="btn-auth" id="btn-submit">Login →</button>
+      <div class="form-group">
+        <label>PASSWORD *</label>
+        <input type="password" id="password" required placeholder="••••••••" minlength="6" />
+      </div>
+
+      <div class="form-group">
+        <label>LAW FIRM / ENTITY NAME</label>
+        <input type="text" id="firmName" placeholder="Kumar &amp; Associates Legal" />
+      </div>
+
+      <div class="form-group">
+        <label>IBBI / BAR REGISTRATION NO. (OPTIONAL)</label>
+        <input type="text" id="ipRegistrationNo" placeholder="IBBI/IPA-001/IP-P00123/2026-27" />
+      </div>
+
+      <button type="submit" class="btn-auth" id="btn-submit">Create Profile →</button>
     </form>
 
     <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem;">
       <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s ease;">← Back to Home</a>
-      <a href="signup.html" style="color: var(--color-primary); text-decoration: none; font-weight: 700; transition: color 0.2s ease;">Create Profile →</a>
+      <a href="login.html" style="color: var(--color-primary); text-decoration: none; font-weight: 700; transition: color 0.2s ease;">Already have a profile? Login →</a>
     </div>
   </div>
 
   <script>
-    document.getElementById('auth-form').onsubmit = async (e) => {
+    document.getElementById('signup-form').onsubmit = async (e) => {
       e.preventDefault();
       const errBox = document.getElementById('error-box');
       errBox.style.display = 'none';
 
+      const fullName = document.getElementById('fullName').value;
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
+      const firmName = document.getElementById('firmName').value;
+      const ipRegistrationNo = document.getElementById('ipRegistrationNo').value;
 
       try {
-        const res = await fetch('/api/auth/login', {
+        const res = await fetch('/api/auth/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
+          body: JSON.stringify({ fullName, email, password, firmName, ipRegistrationNo })
         });
         const data = await res.json();
         if (data.success) {
           localStorage.setItem('haya_portal_token', data.token);
           window.location.href = 'dashboard.html';
         } else {
-          errBox.innerText = data.error || 'Authentication failed.';
+          errBox.innerText = data.error || 'Profile creation failed.';
           errBox.style.display = 'block';
         }
       } catch (err) {
@@ -181,4 +199,3 @@
   </script>
 </body>
 </html>
-

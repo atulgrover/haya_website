@@ -21,9 +21,60 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// POST /api/auth/signup (DISABLED)
+// POST /api/auth/signup
 router.post('/signup', async (req, res) => {
-    return res.status(403).json({ error: 'New user registration is disabled. Only existing accounts can log in.' });
+    try {
+        const { email, password, fullName, firmName, ipRegistrationNo } = req.body;
+        if (!email || !password || !fullName) {
+            return res.status(400).json({ error: 'Full name, email, and password are required.' });
+        }
+        if (password.length < 6) {
+            return res.status(400).json({ error: 'Password must be at least 6 characters.' });
+        }
+
+        const normalizedEmail = email.trim().toLowerCase();
+        const existing = await db.prepare('SELECT id FROM users WHERE email = ?').get(normalizedEmail);
+        if (existing) {
+            return res.status(400).json({ error: 'An account with this email address already exists.' });
+        }
+
+        const password_hash = await bcrypt.hash(password, 10);
+        const result = await db.prepare(`
+            INSERT INTO users (email, password_hash, full_name, firm_name, ip_registration_no)
+            VALUES (?, ?, ?, ?, ?)
+        `).run(normalizedEmail, password_hash, fullName.trim(), firmName ? firmName.trim() : null, ipRegistrationNo ? ipRegistrationNo.trim() : null);
+
+        const userId = result.lastInsertRowid;
+
+        // Create default starter subscription
+        const expiresAt = new Date();
+        expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+        const expiresAtStr = expiresAt.toISOString();
+
+        await db.prepare(`
+            INSERT INTO subscriptions (user_id, tier, status, expires_at, payment_provider)
+            VALUES (?, 'starter', 'active', ?, 'free_registration')
+        `).run(userId, expiresAtStr);
+
+        // Generate default master license key
+        const randomHex = require('crypto').randomBytes(12).toString('hex').toUpperCase();
+        const licenseKey = `HAYA-STARTER-${randomHex.slice(0,4)}-${randomHex.slice(4,8)}-${randomHex.slice(8,12)}`;
+
+        await db.prepare(`
+            INSERT INTO licenses (user_id, tier, license_key, expires_at)
+            VALUES (?, 'starter', ?, ?)
+        `).run(userId, licenseKey, expiresAtStr);
+
+        const token = jwt.sign({ userId, email: normalizedEmail }, JWT_SECRET, { expiresIn: '7d' });
+
+        res.json({
+            success: true,
+            token,
+            user: { id: userId, email: normalizedEmail, fullName: fullName.trim(), firmName: firmName ? firmName.trim() : null, tier: 'starter' }
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
 });
 
 // POST /api/auth/login
