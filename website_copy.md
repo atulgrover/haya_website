@@ -37,3 +37,27 @@
 
 3. **⚡ Specialist Agents Pack (Domain Capabilities)**:
    - Insolvency Auditor Agent, MCA Forms Compliance Agent, Petition Drafting Agent.
+
+---
+
+## 🎯 Targeted Product Offerings & Packaging Matrix
+
+### 🏛️ 1. Haya_Legal (Legal Edition for Advocates & Law Firms)
+* **Target Professionals**: Advocates, Barristers, Corporate Counsel, Law Firms.
+* **AI Model Footprint (2 Models)**:
+  1. `InLegal-SBERT` (768-dim ONNX Vector Embedder)
+  2. `LegalParam-2.9B.gguf` (Q4_K_M 2.9B Generative LLM)
+* **Encrypted Vault Suite**: `laws`, `cases`, `ibc`, `general`, `acord_clauses` (126k clauses), `rera`, `debt_recovery`, `documents_pleadings`.
+* **Subagent Extension Pack**: `@advisor`, `@document`, `@nclt`, `@precedent`, `@counter`, `@litigation`, `@strength`, `@witness`.
+* **Signature Capability**: Instant precedent matching, court petition drafting, and 1-Click Supreme Court layout compiler (`/export-sc`).
+
+### 📊 2. Haya_Finance (Finance & CIRP Edition for CAs & RPs)
+* **Target Professionals**: Chartered Accountants, Insolvency Resolution Professionals (IPs), Forensic Auditors, Valuation Experts.
+* **AI Model Footprint (3 Models)**:
+  1. `InLegal-SBERT` (768-dim ONNX Vector Embedder – for Data Vault lookups)
+  2. `Finance-Embeddings` (768-dim ONNX Vector Embedder – for Excel ledgers & trial balances)
+  3. `FinanceParam-2.9B.gguf` (Q4_K_M 2.9B Generative LLM)
+* **Encrypted Vault Suite**: `forms`, `documents_ibc`, `documents_corporate`, `documents_tax_conveyancing`, `cuad_benchmark`.
+* **Subagent Extension Pack**: `@coc` (Creditor Voting Share & Meeting Coordinator), `@evaluator` (Resolution Plan & Form H Auditor), `@claims` (Claim Verification), `@timeline` ($T_0 \rightarrow T_{330}$ Manager), `@avoidance` (Sections 43, 45, 50, 66 PUFE Auditor).
+* **Signature Capability**: Bank statement reconciliation, financial claim admission, creditor voting share math, PUFE forensic audit, and Form H compliance certificates.
+

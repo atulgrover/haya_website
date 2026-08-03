@@ -783,19 +783,34 @@
             gridEl.innerHTML = '<div style="color: var(--text-muted); font-size: 0.9rem; grid-column: 1/-1;">No items currently available in this category.</div>';
             return;
           }
-          gridEl.innerHTML = items.map(item => `
+          gridEl.innerHTML = items.map(item => {
+            let specBadge = '';
+            if (item.name.includes('768-Dim') || item.name.includes('Embedder')) {
+              specBadge = '<span style="display:inline-block; background:rgba(0,212,255,0.12); color:#00d4ff; border:1px solid rgba(0,212,255,0.3); padding:0.15rem 0.45rem; border-radius:4px; font-size:0.7rem; font-weight:700;">⚡ 768-Dim Vector</span>';
+            } else if (item.name.includes('LLM') || item.name.includes('2.9B')) {
+              specBadge = '<span style="display:inline-block; background:rgba(123,97,255,0.12); color:#9d85ff; border:1px solid rgba(123,97,255,0.3); padding:0.15rem 0.45rem; border-radius:4px; font-size:0.7rem; font-weight:700;">🧠 Q4_K_M GGUF</span>';
+            } else if (item.name.includes('Pack') || item.name.includes('Subagents')) {
+              specBadge = '<span style="display:inline-block; background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:0.15rem 0.45rem; border-radius:4px; font-size:0.7rem; font-weight:700;">🤖 Subagent Pack</span>';
+            } else if (item.name.includes('Vault')) {
+              specBadge = '<span style="display:inline-block; background:rgba(255,170,0,0.12); color:#ffaa00; border:1px solid rgba(255,170,0,0.3); padding:0.15rem 0.45rem; border-radius:4px; font-size:0.7rem; font-weight:700;">🔒 AES-256 Vault</span>';
+            }
+            return `
             <div class="asset-card">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; gap: 0.5rem;">
                   <div class="asset-name">${item.name}</div>
-                  ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + item.tier + '</span>'}
+                  ${item.accessible ? '<span class="badge-unlocked">✓ Available</span>' : '<span class="badge-locked">🔒 Requires ' + (item.tier || 'Unlock') + '</span>'}
                 </div>
-                <div style="font-size: 0.78rem; font-weight:700; color: var(--color-primary); margin-bottom: 0.4rem;">Size: ${item.size}</div>
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem;">
+                  <div style="font-size: 0.78rem; font-weight:700; color: var(--color-primary);">Size: ${item.size}</div>
+                  ${specBadge}
+                </div>
                 <div class="asset-desc">${item.description}</div>
               </div>
-              ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn" style="width:100%; font-size:0.8rem; font-weight:700;" onclick="buyComponent('${item.id}', '${item.name.replace(/'/g, "\\'")}')">Buy Item for ₹1 →</button>`}
+              ${item.accessible ? `<button class="btn btn-outline" style="width:100%; font-size:0.8rem;" onclick="downloadAsset('${item.id}')">Download Package (${item.size})</button>` : `<button class="btn" style="width:100%; font-size:0.8rem; font-weight:700;" onclick="buyComponent('${item.id}', '${item.name.replace(/'/g, "\\'")}', ${item.price})">Buy Item for ₹${item.price || 199} →</button>`}
             </div>
-          `).join('');
+            `;
+          }).join('');
         });
       } catch (e) {
         console.error('Failed to load catalog:', e);
