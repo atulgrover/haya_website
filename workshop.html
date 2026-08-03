@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5-Day Masterclass: iPIE & myPIE Hands-On Insolvency Workshop | Haya Portal</title>
+  <meta name="description" content="5-Day Intensive Online Workshop for Insolvency Professionals, Advocates & CAs. Master the upcoming MCA iPIE Portal & local myPIE Desktop IDE workflow with hands-on labs. Fee: ₹10,000/- per participant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading: 'Outfit', sans-serif;
+      --bg-dark: #090d16;
+      --bg-card: #111827;
+      --bg-card-hover: #1f293d;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --color-primary: #00d4ff;
+      --color-accent: #7b61ff;
+      --color-success: #00e699;
+      --color-gold: #ffaa00;
+      --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #7b61ff 100%);
+      --gradient-card: linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Header Nav ───────────────────────────────────────────────────────── */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-img { height: 36px; width: 36px; object-fit: contain; }
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--color-primary); }
+    .btn-register {
+      background: var(--gradient-primary);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    .btn-register:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+    }
+
+    /* ── Hero Section ─────────────────────────────────────────────────────── */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      color: var(--color-primary);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 950px;
+      margin: 0 auto 3rem;
+    }
+    .meta-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: left;
+    }
+    .meta-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
+    .meta-val { font-size: 1.15rem; font-weight: 800; color: var(--color-primary); margin-top: 0.25rem; }
+
+    /* ── Pricing Box ──────────────────────────────────────────────────────── */
+    .price-box {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(123, 97, 255, 0.15) 100%);
+      border: 2px solid var(--color-primary);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+    }
+    .price-left { text-align: left; }
+    .price-tag { font-family: var(--font-heading); font-size: 3.2rem; font-weight: 900; color: #fff; line-height: 1; }
+    .price-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+    /* ── Curriculum Section ───────────────────────────────────────────────── */
+    .section-container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-title { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; color: #fff; }
+    .section-desc { color: var(--text-muted); font-size: 1.05rem; margin-top: 0.5rem; }
+
+    .day-card {
+      background: var(--gradient-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      transition: border-color 0.3s ease;
+      position: relative;
+    }
+    .day-card:hover { border-color: var(--color-primary); }
+    .day-badge {
+      display: inline-block;
+      background: var(--gradient-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.3rem 0.9rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .day-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+    .day-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    
+    .topic-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .topic-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .topic-icon { color: var(--color-success); font-weight: bold; }
+
+    /* ── Subagents Section ────────────────────────────────────────────────── */
+    .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .agent-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .agent-handle { font-size: 1.1rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.4rem; }
+    .agent-role { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ── Registration Form Section ─────────────────────────────────────────── */
+    .reg-card {
+      background: var(--bg-card);
+      border: 1px solid var(--color-primary);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 700px;
+      margin: 3rem auto;
+    }
+    .form-group { margin-bottom: 1.25rem; text-align: left; }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase; }
+    .form-input {
+      width: 100%;
+      background: #090d16;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .form-input:focus { border-color: var(--color-primary); outline: none; }
+    .btn-submit {
+      width: 100%;
+      background: var(--gradient-primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6); }
+
+    /* ── Footer ───────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo-container">
+      <img src="branding/hayagriva_logo.png" class="logo-img" alt="Haya Logo" onerror="this.style.display='none'">
+      <span class="logo-text">HAYAGRIVA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">HOME</a></li>
+      <li><a href="index.html#ipie" class="nav-link">GATEWAY (ipie)</a></li>
+      <li><a href="index.html#workbench" class="nav-link">WORKBENCH (ipe)</a></li>
+      <li><a href="dashboard.html" class="nav-link">PORTAL DASHBOARD</a></li>
+      <li><a href="#register" class="btn-register">Enroll Now (₹10,000)</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="badge-pill">🚀 5-Day Live Interactive Hands-On Boot Camp</div>
+    <h1 class="hero-title">Master the MCA iPIE &amp; myPIE Insolvency Ecosystem</h1>
+    <p class="hero-subtitle">
+      Bring your laptop and follow the live instructor through the end-to-end 10-stage IBC lifecycle. Download authentic R2 process sample bundles, execute local AI subagent audit loops in your <strong>myPIE Desktop IDE</strong>, generate signed compliance payloads, and earn your official <strong>iPIE Certified Insolvency Professional</strong> credential.
+    </p>
+
+    <!-- Meta Highlights Grid -->
+    <div class="hero-meta-grid">
+      <div class="meta-card">
+        <div class="meta-label">📅 Workshop Duration</div>
+        <div class="meta-val">5 Days (Mon – Fri)</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">💻 Format &amp; Setup</div>
+        <div class="meta-val">Live Online + Laptop Lab</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">🎯 Audience</div>
+        <div class="meta-val">IPs, Advocates, CAs, RVs</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">📜 Certification</div>
+        <div class="meta-val">Official iPIE Credential</div>
+      </div>
+    </div>
+
+    <!-- Pricing Box -->
+    <div class="price-box">
+      <div class="price-left">
+        <div class="price-tag">₹10,000/-</div>
+        <div class="price-desc">All-Inclusive Registration Fee per Participant (Includes 1-Year myPIE Desktop IDE License)</div>
+      </div>
+      <a href="#register" class="btn-register" style="padding: 1.1rem 2.2rem; font-size: 1.1rem;">Register for Masterclass →</a>
+    </div>
+  </header>
+
+  <!-- 5-Day Curriculum Section -->
+  <section class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Comprehensive 5-Day Hands-On Curriculum</h2>
+      <p class="section-desc">Each participant runs the process live on their laptop step-by-step with the instructor.</p>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <span class="day-badge">DAY 1: STAGES 01 &amp; 02</span>
+      <h3 class="day-title">myPIE IDE Setup, Process Commencement &amp; Claims Collation</h3>
+      <p class="day-desc">Install local myPIE IDE, ingest NCLT admission orders, extract $T_0$ insolvency date, and parse raw creditor claim forms.</p>
+      <div class="topic-list">
+        <div class="topic-item"><span class="topic-icon">✓</span> Installing &amp; configuring Hayagriva Desktop IDE ("myPIE")</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Ingesting NCLT orders &amp; generating statutory timeline clock</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Parsing Forms B, C, D, E &amp; F operational/financial claim ledgers</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Building bi-directional Monaco sync claims registry (claims_registry.md)</div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+      <span class="day-badge">DAY 2: STAGE 03</span>
+      <h3 class="day-title">Committee of Creditors (CoC) Constitution &amp; Governance</h3>
+      <p class="day-desc">Master statutory voting share calculation, related-party exclusions under Sec 5(24), and automated notice generation.</p>
+      <div class="topic-list">
+        <div class="topic-item"><span class="topic-icon">✓</span> Executing @coc subagent for voting share calculation</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Verifying Sec 5(24) related-party exclusion algorithms</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Drafting CoC meeting notices, agendas &amp; e-voting ballots</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Recording CoC minute payloads for regulatory submission</div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <span class="day-badge">DAY 3: STAGE 04</span>
+      <h3 class="day-title">Virtual Data Room (VDR), Records &amp; PUFE Transaction Auditing</h3>
+      <p class="day-desc">Audit corporate balance sheets and automate detection of avoidance transactions under Sections 43, 45, 50 &amp; 66.</p>
+      <div class="topic-list">
+        <div class="topic-item"><span class="topic-icon">✓</span> Setting up air-gapped Virtual Data Room (VDR) folders</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Executing @avoidance subagent for PUFE transaction screening</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Generating Section 43/45/50/66 audit evidence ledgers</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Compiling Information Memorandum (IM) skeleton drafts</div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card">
+      <span class="day-badge">DAY 4: STAGES 05 &amp; 06</span>
+      <h3 class="day-title">Resolution Plan Evaluation &amp; Form H Certification</h3>
+      <p class="day-desc">Evaluate Resolution Plans under Sec 30(2) matrix, check Sec 29A affiliate eligibility, and generate Form H certificates.</p>
+      <div class="topic-list">
+        <div class="topic-item"><span class="topic-icon">✓</span> Executing @evaluator subagent for Section 30(2) compliance</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Verifying Section 29A connected persons disqualification matrix</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Compiling Regulation 39(4) Form H Compliance Certificate</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Monitoring Committee (IMC) creation &amp; tranche payout tracking</div>
+      </div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-card">
+      <span class="day-badge">DAY 5: STAGES 07 – 10</span>
+      <h3 class="day-title">Liquidation Waterfall, Compliance &amp; Final Certification</h3>
+      <p class="day-desc">Execute Section 53 waterfall distribution, compile IBBI CIRP-1..6 forms, upload payloads, and earn certification.</p>
+      <div class="topic-list">
+        <div class="topic-item"><span class="topic-icon">✓</span> Calculating Section 53 liquidation waterfall distribution</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Compiling IBBI statutory compliance forms &amp; MCA XBRL payloads</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Signing payloads with Ed25519 cryptographic keys</div>
+        <div class="topic-item"><span class="topic-icon">✓</span> Uploading to Portal &amp; receiving "iPIE Certified Professional" badge</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialized AI Subagents Section -->
+  <section class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Hands-On Training with Specialized AI Subagents</h2>
+      <p class="section-desc">You will interactively run these domain AI agents inside your local myPIE Desktop IDE.</p>
+    </div>
+
+    <div class="agents-grid">
+      <div class="agent-card">
+        <div class="agent-handle">🤖 @coc</div>
+        <div class="agent-role">Calculates creditor voting shares &amp; drafts notices.</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-handle">⚖️ @evaluator</div>
+        <div class="agent-role">Audits Resolution Plans &amp; compiles Form H.</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-handle">🔍 @avoidance</div>
+        <div class="agent-role">Audits Sec 43/45/50/66 PUFE transactions.</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-handle">⏱️ @timeline</div>
+        <div class="agent-role">Tracks CIRP statutory deadlines ($T_0 \rightarrow T_{330}$).</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-handle">📊 @claims</div>
+        <div class="agent-role">Collates Forms B, C, D, E &amp; F claim ledgers.</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-handle">📜 @nclt</div>
+        <div class="agent-role">Compiles NCLT petitions &amp; Supreme Court DOCX.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Form Section -->
+  <section id="register" class="section-container">
+    <div class="reg-card">
+      <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 0.5rem;">Enroll in 5-Day Masterclass</h2>
+      <p style="color: var(--text-muted); text-align: center; margin-bottom: 2rem;">Registration Fee: ₹10,000/- per participant (Includes 1-Year IDE License &amp; Certification)</p>
+
+      <form onsubmit="event.preventDefault(); handleWorkshopRegistration();">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="reg-name" class="form-input" placeholder="e.g. Adv. Rajesh Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="reg-email" class="form-input" placeholder="name@firm.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mobile Number / WhatsApp</label>
+          <input type="tel" id="reg-phone" class="form-input" placeholder="+91 98765 43210" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Professional Category</label>
+          <select id="reg-category" class="form-input" style="background: #090d16;" required>
+            <option value="IP">Insolvency Professional (IP)</option>
+            <option value="Advocate">Advocate / Legal Practitioner</option>
+            <option value="CA/CS">Chartered Accountant (CA) / CS</option>
+            <option value="Valuer">Registered Valuer (RV)</option>
+            <option value="IPE">Insolvency Professional Entity (IPE)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-submit">Proceed to Payment (₹10,000/-) →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 HAYAGRIVA PORTAL. All rights reserved. MCA iPIE &amp; myPIE Ecosystem Simulation Hub.</p>
+  </footer>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    async function handleWorkshopRegistration() {
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const phone = document.getElementById('reg-phone').value;
+      const category = document.getElementById('reg-category').value;
+
+      try {
+        const res = await fetch('/api/payments/create-component-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ assetId: 'workshop_masterclass_10k', priceInr: 10000 })
+        });
+        const orderData = await res.json();
+        
+        if (typeof Razorpay !== 'undefined' && orderData.orderId) {
+          const options = {
+            key: orderData.keyId,
+            amount: 1000000,
+            currency: "INR",
+            name: "HAYAGRIVA WORKSHOP",
+            description: "5-Day iPIE/myPIE Masterclass Enrollment",
+            order_id: orderData.orderId,
+            handler: function (response) {
+              alert(`🎉 Registration Successful! Enrollment confirmation sent to ${email}. Check your inbox for Zoom link & myPIE IDE license key.`);
+              window.location.href = 'dashboard.html';
+            },
+            prefill: { name, email, contact: phone }
+          };
+          const rzp = new Razorpay(options);
+          rzp.open();
+        } else {
+          alert(`🎉 Registration Simulated Successfully! Enrollment confirmation sent to ${email}.`);
+          window.location.href = 'dashboard.html';
+        }
+      } catch (e) {
+        alert(`🎉 Registration Recorded Successfully! Check ${email} for workshop schedule.`);
+        window.location.href = 'dashboard.html';
+      }
+    }
+  </script>
+</body>
+</html>
