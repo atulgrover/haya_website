@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Participant Training Handbook & Lab Manual | iPIE & myPIE Masterclass</title>
+  <meta name="description" content="Official 10-Chapter Lab Manual for iPIE & myPIE Insolvency Masterclass. Complete guide to sample demo files, ingestion pipelines, Monaco editing, and subagent prompts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-heading: 'Outfit', sans-serif;
+      --font-code: 'Fira Code', monospace;
+      --bg-dark: #090d16;
+      --bg-sidebar: #0d1322;
+      --bg-card: #111827;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --color-primary: #00d4ff;
+      --color-accent: #7b61ff;
+      --color-success: #00e699;
+      --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #7b61ff 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── Sidebar Navigation ────────────────────────────────────────────────── */
+    .sidebar {
+      width: 300px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: auto;
+      padding: 1.5rem 1rem;
+      z-index: 10;
+    }
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .sidebar-logo { height: 32px; width: 32px; }
+    .sidebar-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-group-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+    .toc-list { list-style: none; margin-bottom: 1.5rem; }
+    .toc-item { margin-bottom: 0.2rem; }
+    .toc-link {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: #fff;
+      background: rgba(0, 212, 255, 0.1);
+      border-left: 3px solid var(--color-primary);
+    }
+
+    /* ── Main Content Area ────────────────────────────────────────────────── */
+    .content-area {
+      margin-left: 300px;
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      max-width: 1000px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .btn-action {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+    /* ── Typography & Chapter Styling ─────────────────────────────────────── */
+    h1 { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; color: #fff; }
+    h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--color-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem; }
+    h3 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #fff; }
+    p { margin-bottom: 1rem; color: #d1d5db; font-size: 0.95rem; }
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; color: #d1d5db; font-size: 0.95rem; }
+    li { margin-bottom: 0.35rem; }
+
+    /* ── Code Blocks ──────────────────────────────────────────────────────── */
+    pre {
+      background: #0d1117;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: #7ee787;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    code { font-family: var(--font-code); background: rgba(255,255,255,0.08); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; color: var(--color-primary); }
+    pre code { background: transparent; padding: 0; color: inherit; }
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: var(--color-primary); color: #000; }
+
+    .callout {
+      background: rgba(0, 212, 255, 0.05);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .callout-title { font-weight: 700; color: var(--color-primary); margin-bottom: 0.4rem; font-size: 0.9rem; }
+
+    @media print {
+      .sidebar, .top-bar { display: none !important; }
+      .content-area { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Table of Contents -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="branding/hayagriva_logo.png" class="sidebar-logo" alt="Haya Logo" onerror="this.style.display='none'">
+      <span class="sidebar-title">myPIE Lab Manual</span>
+    </div>
+
+    <div class="nav-group-title">Setup &amp; Foundations</div>
+    <ul class="toc-list">
+      <li class="toc-item"><a href="#ch0" class="toc-link active">Chapter 0: Sovereign Workspace Setup</a></li>
+    </ul>
+
+    <div class="nav-group-title">iPIE Stage Chapters</div>
+    <ul class="toc-list">
+      <li class="toc-item"><a href="#ch1" class="toc-link">Chapter 1: Process Commencement</a></li>
+      <li class="toc-item"><a href="#ch2" class="toc-link">Chapter 2: Claims Management</a></li>
+      <li class="toc-item"><a href="#ch3" class="toc-link">Chapter 3: Stakeholder &amp; CoC</a></li>
+      <li class="toc-item"><a href="#ch4" class="toc-link">Chapter 4: VDR &amp; PUFE Auditing</a></li>
+      <li class="toc-item"><a href="#ch5" class="toc-link">Chapter 5: Resolution Plan &amp; Form H</a></li>
+      <li class="toc-item"><a href="#ch6" class="toc-link">Chapter 6: Implementation (IMC)</a></li>
+      <li class="toc-item"><a href="#ch7" class="toc-link">Chapter 7: Liquidation Waterfall</a></li>
+      <li class="toc-item"><a href="#ch8" class="toc-link">Chapter 8: Compliance Management</a></li>
+      <li class="toc-item"><a href="#ch9" class="toc-link">Chapter 9: Litigation &amp; Dispute</a></li>
+      <li class="toc-item"><a href="#ch10" class="toc-link">Chapter 10: Cost &amp; Expense Accounting</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="content-area">
+    
+    <!-- Top Action Bar -->
+    <div class="top-bar">
+      <div>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">iPIE &amp; myPIE Masterclass Handbook v2026.1</span>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-action" onclick="window.print()">🖨️ Print / Save PDF</button>
+        <a href="dashboard.html" class="btn-action">← Return to Portal</a>
+      </div>
+    </div>
+
+    <h1>myPIE &amp; iPIE Masterclass Participant Lab Manual</h1>
+    <p>Official 10-Chapter Practical Guide for Insolvency Professionals, Advocates, and Auditors.</p>
+
+    <!-- Chapter 0 -->
+    <section id="ch0">
+      <h2>Chapter 0: Sovereign Workspace Setup &amp; myPIE IDE Architecture</h2>
+      <p>The Ministry of Corporate Affairs (MCA) <strong>iPIE Portal</strong> operates alongside your local <strong>myPIE (Hayagriva Desktop IDE)</strong>. Confidential client records remain 100% private on your laptop while generating verified compliance payloads.</p>
+      
+      <div class="callout">
+        <div class="callout-title">💡 4-Step Local IDE Execution Pipeline</div>
+        <ol>
+          <li><strong>Ingestion &amp; Slicing</strong>: Converts PDFs/Word/Excel into sliced companion markdown cards (<code>concepts/</code>).</li>
+          <li><strong>Monaco Audit</strong>: Live status dot indicators &amp; bi-directional table sync (<code>case_kv_dictionary.json</code>).</li>
+          <li><strong>Subagent Execution</strong>: Run specialized domain agents (<code>@coc</code>, <code>@evaluator</code>, <code>@avoidance</code>).</li>
+          <li><strong>Regulator Payloads</strong>: Generates cryptographically signed Ed25519 JSON compliance files.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Chapter 1 -->
+    <section id="ch1">
+      <h2>Chapter 1: Process Commencement &amp; Timeline Synchronizer (Stage 01)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_01_Commencement.zip</code></p>
+      <h3>Sample Demo Files Included:</h3>
+      <ul>
+        <li><code>NCLT_Admission_Order_CP_IB_1024_2026.pdf</code> (NCLT CIRP admission order)</li>
+        <li><code>Form_FA_Withdrawal_Application.docx</code> (Sec 12A withdrawal application)</li>
+      </ul>
+
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@nclt verify admission order
+@timeline generate public announcement</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 2 -->
+    <section id="ch2">
+      <h2>Chapter 2: Claims Management &amp; Multi-Class Collation (Stage 02)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_02_Claims.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@claims collate all claims
+@forms generate CIRP-2</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 3 -->
+    <section id="ch3">
+      <h2>Chapter 3: Stakeholder Governance &amp; CoC Constitution (Stage 03)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_03_CoC.zip</code></p>
+      <div class="callout">
+        <div class="callout-title">📐 CoC Voting Share Formula</div>
+        <p>$$\text{Voting Share}_i = \frac{\text{Admitted Debt}_i}{\sum \text{Unrelated Financial Debt}} \times 100\%$$</p>
+      </div>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@coc calculate voting share
+@coc draft meeting notice</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 4 -->
+    <section id="ch4">
+      <h2>Chapter 4: VDR Records &amp; PUFE Forensic Auditing (Stage 04)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_04_Records.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@avoidance audit transactions
+@im compile information memorandum</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 5 -->
+    <section id="ch5">
+      <h2>Chapter 5: Resolution Plan Evaluation &amp; Form H Audit (Stage 05)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_05_Plan.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@evaluator audit resolution plan
+@evaluator generate Form H</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 6 -->
+    <section id="ch6">
+      <h2>Chapter 6: Implementation &amp; Monitoring Committee (Stage 06)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_06_Implementation.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@compliance track implementation</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 7 -->
+    <section id="ch7">
+      <h2>Chapter 7: Liquidation Estate &amp; Section 53 Waterfall (Stage 07)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_07_Liquidation.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@claims calculate waterfall</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 8 -->
+    <section id="ch8">
+      <h2>Chapter 8: Compliance Management &amp; IBBI Filings (Stage 08)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_08_Compliance.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@forms audit compliance</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 9 -->
+    <section id="ch9">
+      <h2>Chapter 9: Litigation Management &amp; Dispute Exporter (Stage 09)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_09_Litigation.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@litigation draft reply
+/export-sc</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+    <!-- Chapter 10 -->
+    <section id="ch10">
+      <h2>Chapter 10: Cost Management &amp; Process Expense Approval (Stage 10)</h2>
+      <p><strong>Sample Bundle</strong>: <code>ipie/iPIE_10_Finance.zip</code></p>
+      <h3>Subagent Execution Commands:</h3>
+      <pre><code>@coc approve costs
+@forms compile CIRP-4</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </section>
+
+  </main>
+
+  <script>
+    function copyCode(btn) {
+      const code = btn.parentElement.querySelector('code').innerText;
+      navigator.clipboard.writeText(code);
+      btn.innerText = 'Copied!';
+      setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
+    }
+  </script>
+</body>
+</html>
