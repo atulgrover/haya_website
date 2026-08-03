@@ -422,6 +422,70 @@
         </form>
       </div>
 
+      <!-- 🎓 iPIE SUBMISSIONS & TRAINING MILESTONES CARD -->
+      <div class="card">
+        <div class="card-title">
+          <span>🎓 iPIE Submissions &amp; Training Milestones</span>
+          <span class="badge-unlocked" id="ipie-certified-badge">Progress: 0 / 10 Stages</span>
+        </div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Upload generated payload output files from your local <strong>myPIE (Hayagriva Desktop IDE)</strong> to verify your stage completion and earn your <strong>iPIE Certified Insolvency Professional</strong> credential.
+        </div>
+
+        <!-- Stage Badges Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 1.5rem;" id="ipie-milestones-grid">
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">01. Commencement</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-1">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">02. Claims Collation</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-2">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">03. CoC Constitution</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-3">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">04. Records &amp; VDR</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-4">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">05. Resolution Plan</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-5">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">06. Implementation</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-6">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">07. Liquidation</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-7">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">08. Compliance</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-8">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">09. Litigation</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-9">⚪ Pending Submission</span>
+          </div>
+          <div style="background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: var(--text-main);">10. Cost Ledger</div>
+            <span style="color: var(--text-muted); font-size: 0.72rem;" id="badge-stage-10">⚪ Pending Submission</span>
+          </div>
+        </div>
+
+        <!-- Payload Dropzone -->
+        <div style="border: 2px dashed var(--color-primary); border-radius: 8px; padding: 1.5rem; text-align: center; background: rgba(0, 212, 255, 0.04); cursor: pointer;" onclick="document.getElementById('ipiePayloadFileInput').click()">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📥</div>
+          <div style="font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">Drop your IDE Output Payload here to certify stage</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Accepts .json (Ed25519 payload), .md, or Form H certificate files generated from Hayagriva IDE</div>
+          <input type="file" id="ipiePayloadFileInput" style="display: none;" onchange="handleIpiePayloadUpload(event)" accept=".json,.md,.docx,.txt" />
+        </div>
+        <div id="ipie-upload-msg" class="status-msg"></div>
+      </div>
+
       <!-- SECURITY & PASSWORD CHANGE CARD -->
       <div class="card">
         <div class="card-title">🔒 Security & Password</div>
@@ -761,6 +825,46 @@
           }
         }
       } catch (e) {}
+    }
+
+    async function handleIpiePayloadUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const msgEl = document.getElementById('ipie-upload-msg');
+      msgEl.className = 'status-msg';
+      msgEl.textContent = `Uploading & verifying ${file.name}...`;
+
+      try {
+        const text = await file.text();
+        const res = await fetch('/api/ipie/submit-payload', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ payloadText: text, filename: file.name })
+        });
+        const data = await res.json();
+        if (data.success) {
+          msgEl.className = 'status-msg status-success';
+          msgEl.textContent = `✓ ${data.message || 'Stage payload verified & milestone awarded!'}`;
+          if (data.stageId) {
+            const badgeEl = document.getElementById(`badge-stage-${data.stageId}`);
+            if (badgeEl) {
+              badgeEl.textContent = '🟢 Certified Stage';
+              badgeEl.style.color = 'var(--color-primary)';
+              badgeEl.style.fontWeight = 'bold';
+            }
+          }
+          if (data.completedCount !== undefined) {
+            const certBadge = document.getElementById('ipie-certified-badge');
+            if (certBadge) certBadge.textContent = `Progress: ${data.completedCount} / 10 Stages`;
+          }
+        } else {
+          msgEl.className = 'status-msg status-error';
+          msgEl.textContent = data.error || 'Failed to verify payload.';
+        }
+      } catch (e) {
+        msgEl.className = 'status-msg status-error';
+        msgEl.textContent = 'Error uploading payload file.';
+      }
     }
 
     const CATEGORIES = [
