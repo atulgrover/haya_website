@@ -24,7 +24,7 @@ function authenticateToken(req, res, next) {
 // POST /api/auth/signup
 router.post('/signup', async (req, res) => {
     try {
-        const { email, password, fullName, firmName, ipRegistrationNo } = req.body;
+        const { email, password, fullName, firmName, ipRegistrationNo, role, companyId } = req.body;
         if (!email || !password || !fullName) {
             return res.status(400).json({ error: 'Full name, email, and password are required.' });
         }
@@ -33,6 +33,7 @@ router.post('/signup', async (req, res) => {
         }
 
         const normalizedEmail = email.trim().toLowerCase();
+        const userRole = role && ['student', 'employee', 'employer', 'professional'].includes(role) ? role : 'student';
         const existing = await db.prepare('SELECT id FROM users WHERE email = ?').get(normalizedEmail);
         if (existing) {
             return res.status(400).json({ error: 'An account with this email address already exists.' });
@@ -40,9 +41,9 @@ router.post('/signup', async (req, res) => {
 
         const password_hash = await bcrypt.hash(password, 10);
         const result = await db.prepare(`
-            INSERT INTO users (email, password_hash, full_name, firm_name, ip_registration_no)
-            VALUES (?, ?, ?, ?, ?)
-        `).run(normalizedEmail, password_hash, fullName.trim(), firmName ? firmName.trim() : null, ipRegistrationNo ? ipRegistrationNo.trim() : null);
+            INSERT INTO users (email, password_hash, full_name, firm_name, ip_registration_no, role, company_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        `).run(normalizedEmail, password_hash, fullName.trim(), firmName ? firmName.trim() : null, ipRegistrationNo ? ipRegistrationNo.trim() : null, userRole, companyId ? companyId.trim() : null);
 
         const userId = result.lastInsertRowid;
 
@@ -65,12 +66,12 @@ router.post('/signup', async (req, res) => {
             VALUES (?, 'starter', ?, ?)
         `).run(userId, licenseKey, expiresAtStr);
 
-        const token = jwt.sign({ userId, email: normalizedEmail }, JWT_SECRET, { expiresIn: '7d' });
+        const token = jwt.sign({ userId, email: normalizedEmail, role: userRole, companyId }, JWT_SECRET, { expiresIn: '7d' });
 
         res.json({
             success: true,
             token,
-            user: { id: userId, email: normalizedEmail, fullName: fullName.trim(), firmName: firmName ? firmName.trim() : null, tier: 'starter' }
+            user: { id: userId, email: normalizedEmail, fullName: fullName.trim(), role: userRole, companyId, tier: 'starter' }
         });
     } catch (e) {
         res.status(500).json({ error: e.message });
@@ -97,18 +98,29 @@ router.post('/login', async (req, res) => {
 
         const sub = await db.prepare('SELECT tier FROM subscriptions WHERE user_id = ? ORDER BY id DESC LIMIT 1').get(user.id);
         const tier = sub ? sub.tier : 'starter';
+        const userRole = user.role || 'student';
 
-        const token = jwt.sign({ userId: user.id, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
+        const token = jwt.sign({ userId: user.id, email: user.email, role: userRole, companyId: user.company_id }, JWT_SECRET, { expiresIn: '7d' });
 
         res.json({
             success: true,
             token,
-            user: { id: user.id, email: user.email, fullName: user.full_name, firmName: user.firm_name, tier }
+            user: {
+                id: user.id,
+                email: user.email,
+                fullName: user.full_name,
+                firmName: user.firm_name,
+                role: userRole,
+                companyId: user.company_id,
+                tier
+            }
         });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
 });
+
+
 
 // GET /api/auth/me
 router.get('/me', authenticateToken, async (req, res) => {

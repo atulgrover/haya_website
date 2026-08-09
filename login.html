@@ -3,182 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login — HAYAGRIVA</title>
+  <title>Login & Single Sign-On (SSO) — HAYAGRIVA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-page: #F8F9FA;
+      --bg-primary: #F8F9FA;
       --bg-card: #FFFFFF;
-      --border-color: #E2E8F0;
-      --color-primary: #1E6C93;
-      --color-primary-hover: #165272;
-      --color-primary-light: rgba(30, 108, 147, 0.1);
+      --primary-color: #1E6C93;
+      --primary-hover: #165272;
+      --primary-light: rgba(30, 108, 147, 0.1);
       --text-main: #212121;
       --text-muted: #5F6368;
-      --input-bg: #F8F9FA;
-      --input-border: #E2E8F0;
-      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --border-color: #E2E8F0;
+      --font-main: 'Lato', sans-serif;
+      --font-heading: 'Google Sans', sans-serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: var(--bg-page);
-      color: var(--text-main);
-      font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      line-height: 1.6;
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; min-height: 100vh; }
+    a { color: var(--primary-color); text-decoration: none; }
+
+    /* Top Navigation Bar */
+    .header-nav {
+      position: sticky; top: 0; z-index: 1000;
+      background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .nav-container {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo {
+      font-family: var(--font-heading); font-weight: 700; font-size: 22px;
+      letter-spacing: 1.5px; color: var(--text-main);
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-link {
+      padding: 8px 16px; border-radius: 6px; font-size: 15px; font-weight: 500;
+      color: var(--text-main); transition: all 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
+    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 9px 20px; border-radius: 6px; }
+
+    /* Login Card Container */
+    .auth-wrapper {
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px 24px; min-height: calc(100vh - 70px);
     }
     .auth-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2.75rem 2.5rem;
-      width: 100%;
-      max-width: 420px;
-      box-shadow: var(--card-shadow);
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 12px; padding: 2.75rem 2.5rem; width: 100%; max-width: 440px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
     }
-    .auth-title {
-      font-family: 'Google Sans', 'Lato', sans-serif;
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
-      text-align: center;
-      letter-spacing: 1.5px;
+    .auth-title { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; letter-spacing: 1.5px; }
+    .auth-sub { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .form-input, .form-select {
+      width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color);
+      border-radius: 8px; background: #F8F9FA; font-size: 0.95rem; font-family: var(--font-main);
+      transition: all 0.2s ease; outline: none;
     }
-    .auth-sub {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 2.25rem;
-      line-height: 1.4;
+    .form-input:focus, .form-select:focus { border-color: var(--primary-color); background: #FFFFFF; }
+
+    .submit-btn {
+      width: 100%; padding: 0.85rem; background: var(--primary-color); color: #FFFFFF;
+      border: none; border-radius: 8px; font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: background 0.2s ease; margin-top: 0.5rem;
     }
-    .form-group {
-      margin-bottom: 1.35rem;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.78rem;
-      color: var(--text-main);
-      margin-bottom: 0.45rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: var(--input-bg);
-      border: 1px solid var(--input-border);
-      border-radius: 8px;
-      color: var(--text-main);
-      font-size: 0.95rem;
-      box-sizing: border-box;
-      transition: all 0.2s ease;
-      font-family: 'Lato', sans-serif;
-    }
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--color-primary);
-      background: #FFFFFF;
-      box-shadow: 0 0 0 3px var(--color-primary-light);
-    }
-    .btn-auth {
-      width: 100%;
-      padding: 0.85rem;
-      background-color: var(--color-primary);
-      color: #FFFFFF;
-      border: none;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 1rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s ease;
-    }
-    .btn-auth:hover {
-      background-color: var(--color-primary-hover);
-      transform: translateY(-1px);
-    }
-    .btn-auth:active {
-      transform: translateY(0);
-    }
-    .error-msg {
-      background: #FEF2F2;
-      border: 1px solid #FECACA;
-      color: #EF4444;
-      font-size: 0.85rem;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 1.25rem;
-      text-align: center;
-      display: none;
-      font-weight: 500;
-    }
+    .submit-btn:hover { background: var(--primary-hover); }
+
+    .alert { padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; display: none; }
+    .alert-error { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+    .alert-success { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
   </style>
 </head>
 <body>
-  <div class="auth-card">
-    <div class="auth-title">HAYA PORTAL</div>
-    <div class="auth-sub" id="form-subtitle">Login to access licenses &amp; downloads</div>
 
-    <div class="error-msg" id="error-box"></div>
+  <!-- Top Header Navigation Bar -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <span>HAYAGRIVA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="students.html" class="nav-link">Students</a></li>
+        <li><a href="employees.html" class="nav-link">Employees</a></li>
+        <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+        <li><a href="login.html" class="nav-link login-btn active">Login</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <form id="auth-form">
-      <div class="form-group">
-        <label>EMAIL ADDRESS</label>
-        <input type="email" id="email" required placeholder="name@firm.com" />
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <h1 class="auth-title">HAYAGRIVA SSO</h1>
+      <p class="auth-sub">Single Sign-On for Students, Employees & Professionals</p>
+
+      <div id="authAlert" class="alert"></div>
+
+      <form id="authForm" onsubmit="handleAuth(event)">
+        <div class="form-group">
+          <label class="form-label" for="role">Account Persona & Role</label>
+          <select id="role" class="form-select" onchange="toggleRoleFields()">
+            <option value="student">🎓 Student (Skillpedia NSQF Portal)</option>
+            <option value="employee">💼 Corporate Employee</option>
+            <option value="employer">🏢 Employer / Enterprise Manager</option>
+            <option value="professional">⚖️ Legal / Patent / IP Professional</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" id="email" class="form-input" placeholder="name@domain.com" required />
+        </div>
+
+        <div class="form-group" id="fullNameGroup" style="display: none;">
+          <label class="form-label" for="fullName">Full Name</label>
+          <input type="text" id="fullName" class="form-input" placeholder="Your Full Name" />
+        </div>
+
+        <div class="form-group" id="companyGroup" style="display: none;">
+          <label class="form-label" for="companyId">Company ID / Domain</label>
+          <input type="text" id="companyId" class="form-input" placeholder="e.g. acme_corp" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Sign In</button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+        <span id="toggleText">Don't have an account?</span>
+        <a href="#" onclick="toggleMode(event)" style="font-weight: 700; margin-left: 4px;" id="toggleLink">Create One</a>
       </div>
-
-      <div class="form-group">
-        <label>PASSWORD</label>
-        <input type="password" id="password" required placeholder="••••••••" />
-      </div>
-
-      <button type="submit" class="btn-auth" id="btn-submit">Login →</button>
-    </form>
-
-    <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem;">
-      <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s ease;">← Back to Home</a>
-      <a href="signup.html" style="color: var(--color-primary); text-decoration: none; font-weight: 700; transition: color 0.2s ease;">Create Profile →</a>
     </div>
   </div>
 
   <script>
-    document.getElementById('auth-form').onsubmit = async (e) => {
-      e.preventDefault();
-      const errBox = document.getElementById('error-box');
-      errBox.style.display = 'none';
+    let isSignup = false;
 
+    function toggleRoleFields() {
+      const role = document.getElementById('role').value;
+      const companyGroup = document.getElementById('companyGroup');
+      if (role === 'employee' || role === 'employer') {
+        companyGroup.style.display = 'block';
+      } else {
+        companyGroup.style.display = 'none';
+      }
+    }
+
+    function toggleMode(e) {
+      e.preventDefault();
+      isSignup = !isSignup;
+      document.getElementById('fullNameGroup').style.display = isSignup ? 'block' : 'none';
+      document.getElementById('submitBtn').innerText = isSignup ? 'Create Account' : 'Sign In';
+      document.getElementById('toggleText').innerText = isSignup ? 'Already have an account?' : "Don't have an account?";
+      document.getElementById('toggleLink').innerText = isSignup ? 'Sign In' : 'Create One';
+    }
+
+    async function handleAuth(e) {
+      e.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
+      const role = document.getElementById('role').value;
+      const fullName = document.getElementById('fullName').value;
+      const companyId = document.getElementById('companyId').value;
+
+      const endpoint = isSignup ? '/api/auth/signup' : '/api/auth/login';
+      const body = isSignup 
+        ? { email, password, fullName, role, companyId }
+        : { email, password };
 
       try {
-        const res = await fetch('/api/auth/login', {
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
+          body: JSON.stringify(body)
         });
         const data = await res.json();
+        const alertBox = document.getElementById('authAlert');
+
         if (data.success) {
-          localStorage.setItem('haya_portal_token', data.token);
-          window.location.href = 'dashboard.html';
+          localStorage.setItem('haya_token', data.token);
+          localStorage.setItem('haya_user', JSON.stringify(data.user));
+          alertBox.className = 'alert alert-success';
+          alertBox.innerText = `Welcome ${data.user.fullName || data.user.email}! Redirecting...`;
+          alertBox.style.display = 'block';
+
+          setTimeout(() => {
+            if (data.user.role === 'student') window.location.href = 'students.html';
+            else if (data.user.role === 'employee' || data.user.role === 'employer') window.location.href = 'employees.html';
+            else window.location.href = 'professionals.html';
+          }, 1000);
         } else {
-          errBox.innerText = data.error || 'Authentication failed.';
-          errBox.style.display = 'block';
+          alertBox.className = 'alert alert-error';
+          alertBox.innerText = data.error || 'Authentication failed.';
+          alertBox.style.display = 'block';
         }
       } catch (err) {
-        errBox.innerText = 'Connection error.';
-        errBox.style.display = 'block';
+        console.error(err);
       }
-    };
+    }
   </script>
 </body>
 </html>
-

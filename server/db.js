@@ -61,7 +61,28 @@ async function initSchema() {
                 full_name TEXT NOT NULL,
                 firm_name TEXT,
                 ip_registration_no TEXT,
+                role TEXT DEFAULT 'student',
+                company_id TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+
+            CREATE TABLE IF NOT EXISTS custom_skills (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                company_id TEXT,
+                employee_email_id TEXT NOT NULL,
+                schema_json TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+
+            CREATE TABLE IF NOT EXISTS skill_progress (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                employee_email_id TEXT NOT NULL,
+                skill_id TEXT NOT NULL,
+                completed_pcs TEXT DEFAULT '[]',
+                score INTEGER DEFAULT 0,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS subscriptions (

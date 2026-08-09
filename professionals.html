@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professionals | HAYAGRIVA Sovereign IDE & Vaults</title>
+  <meta name="description" content="HAYAGRIVA Professional Workspace for Legal, Patent, and Insolvency Attorneys. Download sovereign domain vaults, launch local desktop IDE, and deploy AI agents.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-primary: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --primary-color: #1E6C93;
+      --primary-hover: #165272;
+      --primary-light: rgba(30, 108, 147, 0.1);
+      --text-main: #212121;
+      --text-muted: #5F6368;
+      --border-color: #E2E8F0;
+      --font-main: 'Lato', sans-serif;
+      --font-heading: 'Google Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; }
+    a { color: var(--primary-color); text-decoration: none; }
+
+    /* Top Navigation Bar */
+    .header-nav {
+      position: sticky; top: 0; z-index: 1000;
+      background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .nav-container {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo {
+      font-family: var(--font-heading); font-weight: 700; font-size: 22px;
+      letter-spacing: 1.5px; color: var(--text-main);
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-link {
+      padding: 8px 16px; border-radius: 6px; font-size: 15px; font-weight: 500;
+      color: var(--text-main); transition: all 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
+    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 9px 20px; border-radius: 6px; }
+
+    /* Container & Diagram Slots */
+    .page-container { max-width: 1280px; margin: 40px auto; padding: 0 24px; }
+    
+    .diagram-slot {
+      background: #FFFFFF; border: 2px dashed #CBD5E1; border-radius: 12px;
+      padding: 60px 32px; text-align: center; margin-bottom: 32px;
+      transition: all 0.2s ease;
+    }
+    .diagram-slot:hover { border-color: var(--primary-color); background: #F1F5F9; }
+    .slot-tag { display: inline-block; background: var(--primary-light); color: var(--primary-color); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 12px; margin-bottom: 12px; }
+    .slot-title { font-family: var(--font-heading); font-size: 24px; margin-bottom: 8px; }
+    .slot-desc { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 15px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; }
+    .card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation Bar -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <span>HAYAGRIVA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="students.html" class="nav-link">Students</a></li>
+        <li><a href="employees.html" class="nav-link">Employees</a></li>
+        <li><a href="professionals.html" class="nav-link active">Professionals</a></li>
+        <li><a href="login.html" class="nav-link login-btn">Login</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <!-- PROFESSIONAL HERO DIAGRAM SLOT -->
+    <div class="diagram-slot" id="professional-hero-slot">
+      <span class="slot-tag">DIAGRAM SLOT #1</span>
+      <h2 class="slot-title">HAYAGRIVA Professional Sovereign IDE Overview</h2>
+      <p class="slot-desc">Replace this placeholder with your exact diagram/image for the Professional IDE & Local Air-Gapped Intelligence Engine.</p>
+    </div>
+
+    <!-- VAULT MARKETPLACE SLOT -->
+    <div class="diagram-slot" id="vault-marketplace-slot">
+      <span class="slot-tag">DIAGRAM SLOT #2</span>
+      <h2 class="slot-title">Sovereign Domain Vaults & Agent Packages Marketplace</h2>
+      <p class="slot-desc">Place your exact diagram/image for downloading Patent Agents (`patent_agents_v1.0.zip`), IBC Vaults, and Precedent DBs here.</p>
+    </div>
+
+    <!-- FEATURES OVERVIEW -->
+    <div class="grid-3">
+      <div class="card">
+        <h3>⚖️ Sovereign Domain Vaults</h3>
+        <p style="color: var(--text-muted); margin-top: 8px;">Offline-first encrypted databases for Patent, Insolvency, and Corporate Litigation.</p>
+      </div>
+      <div class="card">
+        <h3>🤖 AI Agent Personas</h3>
+        <p style="color: var(--text-muted); margin-top: 8px;">Specialized subagents for claim drafting, 35 U.S.C. eligibility, and mock judge red-teaming.</p>
+      </div>
+      <div class="card">
+        <h3>🖥️ Air-Gapped Desktop IDE</h3>
+        <p style="color: var(--text-muted); margin-top: 8px;">Monaco editor with strict DPDP Act 2023 zero-cloud data leak guarantees.</p>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
