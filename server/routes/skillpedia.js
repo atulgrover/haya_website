@@ -92,36 +92,51 @@ router.get('/qps/jobroles', async (req, res) => {
 router.get('/qps/cards', async (req, res) => {
     try {
         const { q, sector, subsector, occupation, jobrole, limit } = req.query;
-        let sql = `SELECT * FROM nsqf_qps WHERE 1=1`;
+        let baseSql = `FROM nsqf_qps WHERE 1=1`;
         const args = [];
 
         if (q) {
-            sql += ` AND (qp_name LIKE ? OR qp_code LIKE ? OR sector LIKE ? OR occupation LIKE ? OR min_education_exp LIKE ?)`;
+            baseSql += ` AND (qp_name LIKE ? OR qp_code LIKE ? OR sector LIKE ? OR occupation LIKE ? OR min_education_exp LIKE ?)`;
             const term = `%${q.trim()}%`;
             args.push(term, term, term, term, term);
         }
         if (sector) {
-            sql += ` AND sector = ?`;
+            baseSql += ` AND sector = ?`;
             args.push(sector);
         }
         if (subsector) {
-            sql += ` AND sub_sector = ?`;
+            baseSql += ` AND sub_sector = ?`;
             args.push(subsector);
         }
         if (occupation) {
-            sql += ` AND occupation = ?`;
+            baseSql += ` AND occupation = ?`;
             args.push(occupation);
         }
         if (jobrole) {
-            sql += ` AND qp_name = ?`;
+            baseSql += ` AND qp_name = ?`;
             args.push(jobrole);
         }
 
-        const maxLimit = limit ? parseInt(limit) : 50;
-        sql += ` ORDER BY id ASC LIMIT ${maxLimit}`;
+        // Get total matching count
+        const countRow = await db.prepare(`SELECT COUNT(*) as total ${baseSql}`).get(...args);
+        const matchCount = countRow ? countRow.total : 0;
 
-        const cards = await db.prepare(sql).all(...args);
-        res.json({ success: true, count: cards.length, cards });
+        // Get overall database count
+        const dbCountRow = await db.prepare(`SELECT COUNT(*) as total FROM nsqf_qps`).get();
+        const totalDatabaseCount = dbCountRow ? dbCountRow.total : 2176;
+
+        const maxLimit = limit ? parseInt(limit) : 60;
+        const querySql = `SELECT * ${baseSql} ORDER BY id ASC LIMIT ${maxLimit}`;
+
+        const cards = await db.prepare(querySql).all(...args);
+        res.json({
+            success: true,
+            totalDatabaseCount,
+            matchCount,
+            count: cards.length,
+            hasFiltered: !!(q || sector || subsector || occupation || jobrole),
+            cards
+        });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }

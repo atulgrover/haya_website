@@ -324,7 +324,16 @@
         const countSpan = document.getElementById('resultsCount');
 
         if (data.success && data.cards.length > 0) {
-          countSpan.innerText = `Showing ${data.cards.length} Job Roles`;
+          if (data.hasFiltered) {
+            if (data.matchCount > data.cards.length) {
+              countSpan.innerText = `Showing ${data.cards.length} of ${data.matchCount.toLocaleString()} matching Job Roles — Use narrower filters to pinpoint`;
+            } else {
+              countSpan.innerText = `Showing ${data.matchCount.toLocaleString()} matching Job Roles`;
+            }
+          } else {
+            countSpan.innerText = `Showing ${data.cards.length} of ${data.totalDatabaseCount.toLocaleString()} Job Roles — Use Left Filters to Explore All`;
+          }
+
           grid.innerHTML = data.cards.map(card => `
             <div class="qp-card">
               <div>
