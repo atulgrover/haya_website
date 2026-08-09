@@ -7,7 +7,7 @@
   <meta name="description" content="HAYAGRIVA is a local-first Universal Integrated Professional Environment (IPE) Platform serving Students, Employees, and Professionals with 100% offline data sovereignty, AI agent packs, local embeddings, and encrypted domain vaults.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -48,30 +48,24 @@
       display: flex; align-items: center; gap: 10px; cursor: pointer;
       font-family: var(--font-heading); font-weight: 700; font-size: 22px; letter-spacing: 1.5px; color: var(--text-main);
     }
-    .brand-logo svg { height: 40px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
     .nav-link { padding: 8px 16px; border-radius: 6px; font-size: 14.5px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
     .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
     .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 9px 20px; border-radius: 6px; }
 
-    /* Hero Section */
+    /* Pure Logo Hero Section */
     .hero-section {
-      background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
-      border-bottom: 1px solid var(--border-color); padding: 80px 24px; text-align: center;
+      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+      border-bottom: 1px solid var(--border-color); padding: 50px 24px; text-align: center;
+      display: flex; justify-content: center; align-items: center;
     }
-    .hero-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .hero-badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: var(--primary-light); color: var(--primary-color); letter-spacing: 0.5px; }
-    .hero-title { font-family: var(--font-heading); font-size: 42px; font-weight: 700; line-height: 1.25; color: var(--text-main); }
-    .hero-subtitle { font-size: 18px; color: var(--text-muted); max-width: 780px; line-height: 1.6; }
-    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
-    .btn-cta {
-      padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.2s ease;
-      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    .hero-logo-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px;
+      padding: 30px 60px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease; max-width: 540px; width: 100%;
     }
-    .btn-cta-primary { background: var(--primary-color); color: #FFFFFF !important; box-shadow: 0 4px 10px rgba(30, 108, 147, 0.2); }
-    .btn-cta-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
-    .btn-cta-outline { background: #FFFFFF; color: var(--text-main) !important; border: 1px solid var(--border-color); }
-    .btn-cta-outline:hover { border-color: var(--primary-color); color: var(--primary-color) !important; transform: translateY(-2px); }
+    .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 180px; }
 
     /* Content Layout */
     .section-container { max-width: 1280px; margin: 0 auto; padding: 64px 24px; }
@@ -92,17 +86,21 @@
     .pillar-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
     .pillar-features li { font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
 
+    .btn-cta-outline {
+      padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+      background: #FFFFFF; color: var(--primary-color) !important; border: 1px solid var(--primary-color);
+    }
+    .btn-cta-outline:hover { background: var(--primary-color); color: #FFFFFF !important; }
+
     /* Engines Grid */
     .engines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .engine-card {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
-      box-shadow: var(--card-shadow);
-    }
+    .engine-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; box-shadow: var(--card-shadow); }
     .engine-code { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
     .engine-name { font-family: var(--font-heading); font-size: 16.5px; font-weight: 700; margin-bottom: 6px; }
     .engine-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
-    /* TiddlyWiki Knowledge Base Section */
+    /* Dynamic TiddlyWiki Reader */
     .wiki-section { background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 64px 24px; }
     .wiki-container { max-width: 1280px; margin: 0 auto; }
     .wiki-reader-box { display: flex; border: 1px solid var(--border-color); border-radius: 10px; height: 600px; overflow: hidden; }
@@ -113,30 +111,29 @@
     .wiki-item:hover, .wiki-item.active { border-color: var(--primary-color); background: var(--primary-light); color: var(--primary-color); }
     .wiki-frame { flex: 1; border: none; width: 100%; height: 100%; }
 
-    /* Footer */
-    .site-footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 48px 24px 24px; }
-    .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
-    .footer-brand { font-family: var(--font-heading); font-size: 20px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
-    .footer-desc { font-size: 13.5px; color: var(--footer-muted); line-height: 1.6; max-width: 400px; }
-    .footer-col-title { font-family: var(--font-heading); font-size: 14px; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; color: #FFFFFF; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-links a { color: var(--footer-muted); font-size: 13.5px; }
-    .footer-links a:hover { color: #FFFFFF; }
-    .footer-bottom { max-width: 1280px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 13px; color: var(--footer-muted); }
+    /* Original Compact Footer Styles (100% Restored) */
+    .compact-footer { background-color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 40px 24px 20px; }
+    .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-heading { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 16px; }
+    
+    .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .info-group h4 { font-size: 13px; font-weight: 700; color: var(--primary-color); text-transform: uppercase; margin-bottom: 4px; }
+    .info-group p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 2px; }
 
-    /* Modal Backdrop */
-    .modal-backdrop {
-      display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center;
-    }
-    .modal-backdrop.open { display: flex; }
-    .modal-card { background: #FFFFFF; border-radius: 12px; width: 90%; max-width: 500px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-    .modal-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 16px; }
-    .form-group { margin-bottom: 14px; }
-    .form-label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; color: var(--text-muted); }
-    .form-input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 14px; outline: none; }
-    .form-input:focus { border-color: var(--primary-color); }
-    .btn-submit { width: 100%; padding: 12px; background: var(--primary-color); color: #FFFFFF; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
+    .shloka-block { background: #F8FAFC; border-left: 4px solid var(--primary-color); padding: 14px 16px; border-radius: 6px; display: flex; gap: 14px; align-items: flex-start; }
+    .shloka-logo { height: 44px; width: auto; }
+    .shloka-devanagari { font-family: 'Noto Serif Devanagari', serif; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 4px; line-height: 1.4; }
+    .shloka-transliteration { font-size: 11.5px; font-style: italic; color: #64748B; margin-bottom: 4px; }
+    .shloka-meaning { font-size: 11px; color: #475569; line-height: 1.35; }
+
+    .contact-form { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; }
+    .form-group { margin-bottom: 12px; }
+    .form-label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 4px; }
+    .form-input, .form-textarea { width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; background: #FFFFFF; }
+    .form-input:focus, .form-textarea:focus { border-color: var(--primary-color); }
+    .form-submit { background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 13.5px; cursor: pointer; width: 100%; }
+
+    .footer-bottom { max-width: 1280px; margin: 30px auto 0; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
   </style>
 </head>
 <body>
@@ -145,11 +142,6 @@
   <header class="header-nav">
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="45" stroke="#1E6C93" stroke-width="6"/>
-          <path d="M30 70 L50 30 L70 70" stroke="#1E6C93" stroke-width="6" stroke-linecap="round"/>
-          <circle cx="50" cy="52" r="8" fill="#1E6C93"/>
-        </svg>
         <span>HAYAGRIVA</span>
       </a>
       <ul class="nav-links">
@@ -162,25 +154,10 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Pure Logo Hero Section (NOTHING BUT THE LOGO) -->
   <section class="hero-section">
-    <div class="hero-container">
-      <span class="hero-badge">SOVEREIGN AI & INTEGRATED PROFESSIONAL ENVIRONMENT (IPE)</span>
-      <h1 class="hero-title">The Universal Platform for Students, Employees & Professionals</h1>
-      <p class="hero-subtitle">
-        HAYAGRIVA unifies offline data sovereignty, domain reference databases, local AI reasoning models, encrypted vaults, and specialized agent packs into a single intelligent platform.
-      </p>
-      <div class="hero-ctas">
-        <a href="students.html" class="btn-cta btn-cta-primary">
-          🎓 Students Portal (Skillpedia)
-        </a>
-        <a href="employees.html" class="btn-cta btn-cta-outline">
-          💼 Employees Portal
-        </a>
-        <a href="professionals.html" class="btn-cta btn-cta-outline">
-          🏛️ Professionals Workspace
-        </a>
-      </div>
+    <div class="hero-logo-card">
+      <img src="branding/hayagriva_logo.png" alt="HAYAGRIVA Emblem Logo" />
     </div>
   </section>
 
@@ -207,7 +184,7 @@
             <li>✅ 11-Reel Video Inspector for interactive learning</li>
           </ul>
         </div>
-        <a href="students.html" class="btn-cta btn-cta-outline" style="width: 100%; justify-content: center;">Explore Students Portal →</a>
+        <a href="students.html" class="btn-cta-outline">Explore Students Portal →</a>
       </div>
 
       <!-- Pillar 2: Employees -->
@@ -225,7 +202,7 @@
             <li>✅ 3rd Segment Interactive Skill Reel Player</li>
           </ul>
         </div>
-        <a href="employees.html" class="btn-cta btn-cta-outline" style="width: 100%; justify-content: center;">Explore Employees Portal →</a>
+        <a href="employees.html" class="btn-cta-outline">Explore Employees Portal →</a>
       </div>
 
       <!-- Pillar 3: Professionals -->
@@ -243,7 +220,7 @@
             <li>✅ Specialized Agent Packs (<code>legal_agents.vlt</code>) & Monaco <code>/commands</code></li>
           </ul>
         </div>
-        <a href="professionals.html" class="btn-cta btn-cta-outline" style="width: 100%; justify-content: center;">Explore Professionals Workspace →</a>
+        <a href="professionals.html" class="btn-cta-outline">Explore Professionals Workspace →</a>
       </div>
     </div>
   </section>
@@ -311,83 +288,100 @@
     </div>
   </section>
 
-  <!-- Footer (UNTOUCHED) -->
-  <footer class="site-footer">
+  <!-- Compact Footer with Integrated Contact Form (100% RESTORED EXACT ORIGINAL) -->
+  <footer class="compact-footer">
     <div class="footer-container">
+      
+      <!-- Column 1: Contact Details -->
       <div>
-        <div class="footer-brand">HAYAGRIVA</div>
-        <p class="footer-desc">
-          Universal Integrated Professional Environment (IPE) Platform & Sovereign Ecosystem serving Students, Employees, and Professionals.
-        </p>
+        <h3 class="footer-heading">HAYAGRIVA Contact</h3>
+        <div class="contact-info-grid">
+          <div class="info-group">
+            <h4>Call Us</h4>
+            <p>+91-98140-40900</p>
+            <p>+91-98558-88881</p>
+          </div>
+
+          <div class="info-group">
+            <h4>Email Us</h4>
+            <p><a href="mailto:admin@resolutionbazaar.in">admin@resolutionbazaar.in</a></p>
+            <p><a href="mailto:resolutionbazaar@gmail.com">resolutionbazaar@gmail.com</a></p>
+          </div>
+
+          <div class="info-group">
+            <h4>Address</h4>
+            <p>#1634, Sector 18-D</p>
+            <p>Chandigarh, India, 160018</p>
+          </div>
+
+          <div class="info-group">
+            <h4>Websites</h4>
+            <p><a href="https://www.chatibc.com" target="_blank">www.chatibc.com</a></p>
+            <p><a href="https://www.resolutionbazaar.in" target="_blank">www.resolutionbazaar.in</a></p>
+          </div>
+        </div>
+
+        <!-- Hayagriva Shloka -->
+        <div class="shloka-block">
+          <div class="shloka-text">
+            <p class="shloka-devanagari">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् ।<br>आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
+            <p class="shloka-transliteration">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim |<br>ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
+            <p class="shloka-meaning">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
+          </div>
+        </div>
       </div>
+
+      <!-- Column 2: Embedded Contact Form connected to Google Form -->
       <div>
-        <h4 class="footer-col-title">Ecosystem</h4>
-        <ul class="footer-links">
-          <li><a href="students.html">Students Portal</a></li>
-          <li><a href="employees.html">Employees Portal</a></li>
-          <li><a href="professionals.html">Professionals Workspace</a></li>
-        </ul>
+        <div class="contact-form">
+          <h3 style="font-size: 18px; font-weight: 600; color: #1E293B; margin-bottom: 12px;">Contact & Inquiry Form</h3>
+          
+          <div id="formNotice" style="display: none; margin-bottom: 12px; padding: 10px; background: #DCFCE7; color: #166534; border-radius: 6px; font-size: 13px;">
+            ✓ Thank you! Your inquiry has been recorded successfully.
+          </div>
+
+          <form id="contactForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="inputName">Name *</label>
+              <input type="text" id="inputName" class="form-input" placeholder="Your Full Name" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inputEmail">Email *</label>
+              <input type="email" id="inputEmail" class="form-input" placeholder="name@domain.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inputPhone">Phone No *</label>
+              <input type="tel" id="inputPhone" class="form-input" placeholder="+91-XXXXX-XXXXX" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inputMessage">Message / Inquiry</label>
+              <textarea id="inputMessage" class="form-textarea" rows="2" placeholder="How can we assist you?"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Submit Inquiry</button>
+          </form>
+        </div>
       </div>
-      <div>
-        <h4 class="footer-col-title">Platform</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home Overview</a></li>
-          <li><a href="login.html">Persona SSO Login</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-col-title">Contact</h4>
-        <ul class="footer-links">
-          <li><a href="javascript:void(0)" onclick="openModal('contactModal')">Direct Inquiry Form</a></li>
-          <li><a href="mailto:resolutionbazaar@gmail.com">resolutionbazaar@gmail.com</a></li>
-        </ul>
-      </div>
+
     </div>
+
     <div class="footer-bottom">
-      &copy; 2026 HAYAGRIVA Sovereign AI Platform. All rights reserved.
+      <div>© 2026 HAYAGRIVA. All rights reserved.</div>
+      <div>Zero Cloud Data Transmission • Air-Gapped Local AI Compliance</div>
     </div>
   </footer>
-
-  <!-- Contact Form Modal (UNTOUCHED) -->
-  <div class="modal-backdrop" id="contactModal">
-    <div class="modal-card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h3 class="modal-title" style="margin-bottom: 0;">Direct Inquiry Form</h3>
-        <button onclick="closeModal('contactModal')" style="background: none; border: none; font-size: 22px; cursor: pointer;">×</button>
-      </div>
-      <form id="contactForm" onsubmit="handleFormSubmit(event)">
-        <div class="form-group">
-          <label class="form-label" for="inputName">Full Name</label>
-          <input type="text" id="inputName" class="form-input" required placeholder="e.g. Adv. Rajesh Sharma" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="inputEmail">Email Address</label>
-          <input type="email" id="inputEmail" class="form-input" required placeholder="rajesh@lawfirm.in" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="inputPhone">Phone Number</label>
-          <input type="tel" id="inputPhone" class="form-input" placeholder="+91 98765 43210" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="inputMessage">Message / Request</label>
-          <textarea id="inputMessage" class="form-input" rows="4" required placeholder="Detail your deployment or inquiry..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Submit Direct Inquiry</button>
-      </form>
-      <div id="formNotice" style="display: none; margin-top: 14px; padding: 10px; background: #DCFCE7; color: #166534; border-radius: 6px; font-size: 13px; text-align: center;">
-        ✅ Thank you! Your inquiry has been sent to resolutionbazaar@gmail.com.
-      </div>
-    </div>
-  </div>
 
   <script>
     async function loadDynamicWikis() {
       try {
-        const res = await fetch('/api/wiki/list');
+        const res = await fetch('/api/wiki/list?_t=' + Date.now(), { cache: 'no-store' });
         const data = await res.json();
         const container = document.getElementById('wikiListContainer');
 
-        if (data.success && data.wikis.length > 0) {
+        if (data.success && data.wikis && data.wikis.length > 0) {
           container.innerHTML = data.wikis.map((wiki, index) => `
             <div class="wiki-item ${index === 0 ? 'active' : ''}" onclick="loadTiddlyWiki('${wiki.path}', this)">
               <span>${wiki.icon}</span>
@@ -419,16 +413,6 @@
       });
     }
 
-    function openModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) modal.classList.add('open');
-    }
-
-    function closeModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) modal.classList.remove('open');
-    }
-
     function handleFormSubmit(event) {
       event.preventDefault();
       const name = document.getElementById('inputName').value;
@@ -439,7 +423,7 @@
       fetch("https://formsubmit.co/ajax/resolutionbazaar@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ _subject: "HAYAGRIVA Inquiry from " + name, Name: name, Email: email, Phone: phone, Message: message })
+        body: JSON.stringify({ _subject: "New HAYAGRIVA Portal Inquiry from " + name, Name: name, Email: email, Phone: phone, Message: message })
       })
       .then(res => res.json())
       .then(() => {
@@ -463,6 +447,7 @@
         authBtn.onclick = (e) => { e.preventDefault(); localStorage.removeItem('haya_portal_token'); window.location.reload(); };
       }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       loadDynamicWikis();
       checkAuthStatus();
