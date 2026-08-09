@@ -35,13 +35,13 @@
     a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
     a:hover { color: var(--primary-hover); }
 
-    /* Top Navigation Bar */
+    /* Top Navigation Bar (Full Width) */
     .header-nav {
       position: sticky; top: 0; z-index: 1000; background-color: #FFFFFF;
       border-bottom: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .nav-container {
-      max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 70px;
+      max-width: 100%; margin: 0; padding: 0 32px; height: 70px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .brand-logo {
@@ -53,28 +53,28 @@
     .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
     .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 9px 20px; border-radius: 6px; }
 
-    /* Pure Logo Hero Section */
+    /* Pure Logo Hero Section (Full Width) */
     .hero-section {
       background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
-      border-bottom: 1px solid var(--border-color); padding: 50px 24px; text-align: center;
-      display: flex; justify-content: center; align-items: center;
+      border-bottom: 1px solid var(--border-color); padding: 50px 32px; text-align: center;
+      display: flex; justify-content: center; align-items: center; width: 100%;
     }
     .hero-logo-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px;
       padding: 30px 60px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       display: inline-flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease; max-width: 540px; width: 100%;
+      transition: all 0.3s ease; max-width: 560px; width: 100%;
     }
     .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 180px; }
 
-    /* Content Layout */
-    .section-container { max-width: 1280px; margin: 0 auto; padding: 64px 24px; }
+    /* Content Layout (Full Width Edge-to-Edge) */
+    .section-container { max-width: 100%; margin: 0; padding: 48px 32px; }
     .section-header { text-align: center; margin-bottom: 48px; }
     .sec-title { font-family: var(--font-heading); font-size: 30px; font-weight: 700; margin-bottom: 12px; }
-    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 640px; margin: 0 auto; }
+    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 720px; margin: 0 auto; }
 
-    /* Persona Pillars Grid */
-    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px; }
+    /* Persona Pillars Grid (Full Width Responsive) */
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px; width: 100%; }
     .pillar-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px; padding: 32px;
       box-shadow: var(--card-shadow); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;
@@ -93,27 +93,27 @@
     }
     .btn-cta-outline:hover { background: var(--primary-color); color: #FFFFFF !important; }
 
-    /* Engines Grid */
-    .engines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    /* Engines Grid (Full Width Responsive) */
+    .engines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
     .engine-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; box-shadow: var(--card-shadow); }
     .engine-code { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
     .engine-name { font-family: var(--font-heading); font-size: 16.5px; font-weight: 700; margin-bottom: 6px; }
     .engine-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
-    /* Dynamic TiddlyWiki Reader */
-    .wiki-section { background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 64px 24px; }
-    .wiki-container { max-width: 1280px; margin: 0 auto; }
-    .wiki-reader-box { display: flex; border: 1px solid var(--border-color); border-radius: 10px; height: 600px; overflow: hidden; }
-    .wiki-sidebar { width: 300px; background: #F8FAFC; border-right: 1px solid var(--border-color); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    /* Dynamic TiddlyWiki Reader (Full Width) */
+    .wiki-section { background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 32px; width: 100%; }
+    .wiki-container { max-width: 100%; margin: 0; }
+    .wiki-reader-box { display: flex; border: 1px solid var(--border-color); border-radius: 10px; height: 600px; overflow: hidden; width: 100%; }
+    .wiki-sidebar { width: 320px; background: #F8FAFC; border-right: 1px solid var(--border-color); padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
     .wiki-search { padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; }
     .wiki-list { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
     .wiki-item { padding: 10px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
     .wiki-item:hover, .wiki-item.active { border-color: var(--primary-color); background: var(--primary-light); color: var(--primary-color); }
     .wiki-frame { flex: 1; border: none; width: 100%; height: 100%; }
 
-    /* Original Compact Footer Styles (100% Restored) */
-    .compact-footer { background-color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 40px 24px 20px; }
-    .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    /* Original Compact Footer (Full Width Edge-to-Edge) */
+    .compact-footer { background-color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 40px 32px 20px; width: 100%; }
+    .footer-container { max-width: 100%; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
     .footer-heading { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 16px; }
     
     .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
@@ -121,7 +121,6 @@
     .info-group p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 2px; }
 
     .shloka-block { background: #F8FAFC; border-left: 4px solid var(--primary-color); padding: 14px 16px; border-radius: 6px; display: flex; gap: 14px; align-items: flex-start; }
-    .shloka-logo { height: 44px; width: auto; }
     .shloka-devanagari { font-family: 'Noto Serif Devanagari', serif; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 4px; line-height: 1.4; }
     .shloka-transliteration { font-size: 11.5px; font-style: italic; color: #64748B; margin-bottom: 4px; }
     .shloka-meaning { font-size: 11px; color: #475569; line-height: 1.35; }
@@ -133,12 +132,12 @@
     .form-input:focus, .form-textarea:focus { border-color: var(--primary-color); }
     .form-submit { background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 13.5px; cursor: pointer; width: 100%; }
 
-    .footer-bottom { max-width: 1280px; margin: 30px auto 0; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+    .footer-bottom { max-width: 100%; margin: 30px 0 0; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
+  <!-- Top Navigation Bar (Full Width) -->
   <header class="header-nav">
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
@@ -154,14 +153,14 @@
     </div>
   </header>
 
-  <!-- Pure Logo Hero Section (NOTHING BUT THE LOGO) -->
+  <!-- Pure Logo Hero Section (Full Width, NOTHING BUT THE LOGO) -->
   <section class="hero-section">
     <div class="hero-logo-card">
       <img src="branding/hayagriva_logo.png" alt="HAYAGRIVA Emblem Logo" />
     </div>
   </section>
 
-  <!-- 3 Universal Persona Pillars Section -->
+  <!-- 3 Universal Persona Pillars Section (Full Width) -->
   <section class="section-container">
     <div class="section-header">
       <h2 class="sec-title">Three Universal Ecosystem Pillars</h2>
@@ -225,8 +224,8 @@
     </div>
   </section>
 
-  <!-- 6 Core HAYAGRIVA Platform Engines Section -->
-  <section style="background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 64px 24px;">
+  <!-- 6 Core HAYAGRIVA Platform Engines Section (Full Width) -->
+  <section style="background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 32px; width: 100%;">
     <div class="section-container" style="padding: 0;">
       <div class="section-header">
         <h2 class="sec-title">The 6 Core HAYAGRIVA Platform Engines</h2>
@@ -268,7 +267,7 @@
     </div>
   </section>
 
-  <!-- Dynamic TiddlyWiki Knowledge Base Section -->
+  <!-- Dynamic TiddlyWiki Knowledge Base Section (Full Width) -->
   <section class="wiki-section">
     <div class="wiki-container">
       <div class="section-header">
@@ -288,7 +287,7 @@
     </div>
   </section>
 
-  <!-- Compact Footer with Integrated Contact Form (100% RESTORED EXACT ORIGINAL) -->
+  <!-- Compact Footer with Integrated Contact Form (100% Full Width Edge-to-Edge) -->
   <footer class="compact-footer">
     <div class="footer-container">
       
