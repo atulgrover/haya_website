@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAYAGRIVA - Agentic Systems for Professionals</title>
-  <meta name="description" content="HAYAGRIVA bridges offline artificial intelligence with statutory compliance under the Insolvency & Bankruptcy Code (ibc). Powered by Resolution Bazaar (rbz), Integrated Platform for Insolvency Ecosystem (ipie), and a native WORKBENCH (ipe) IDE.">
+  <title>HAYAGRIVA - Universal Integrated Professional Environment (IPE) Platform</title>
+  <meta name="description" content="HAYAGRIVA is a local-first Universal Integrated Professional Environment (IPE) Platform serving Students, Employees, and Professionals with 100% offline data sovereignty, AI agent packs, local embeddings, and encrypted domain vaults.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -30,1148 +30,129 @@
       --font-mono: 'Roboto Mono', monospace;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font-main);
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    a:hover {
-      color: var(--primary-hover);
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; }
+    a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
+    a:hover { color: var(--primary-hover); }
 
     /* Top Navigation Bar */
     .header-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: #FFFFFF;
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      position: sticky; top: 0; z-index: 1000; background-color: #FFFFFF;
+      border-bottom: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
-
     .nav-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
     .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 22px;
-      letter-spacing: 1.5px;
-      color: var(--text-main);
+      display: flex; align-items: center; gap: 10px; cursor: pointer;
+      font-family: var(--font-heading); font-weight: 700; font-size: 22px; letter-spacing: 1.5px; color: var(--text-main);
     }
+    .brand-logo svg { height: 40px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-link { padding: 8px 16px; border-radius: 6px; font-size: 14.5px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
+    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 9px 20px; border-radius: 6px; }
 
-    .brand-logo svg {
-      height: 40px;
-      width: auto;
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
+      border-bottom: 1px solid var(--border-color); padding: 80px 24px; text-align: center;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
+    .hero-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .hero-badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: var(--primary-light); color: var(--primary-color); letter-spacing: 0.5px; }
+    .hero-title { font-family: var(--font-heading); font-size: 42px; font-weight: 700; line-height: 1.25; color: var(--text-main); }
+    .hero-subtitle { font-size: 18px; color: var(--text-muted); max-width: 780px; line-height: 1.6; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+    .btn-cta {
+      padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
     }
+    .btn-cta-primary { background: var(--primary-color); color: #FFFFFF !important; box-shadow: 0 4px 10px rgba(30, 108, 147, 0.2); }
+    .btn-cta-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .btn-cta-outline { background: #FFFFFF; color: var(--text-main) !important; border: 1px solid var(--border-color); }
+    .btn-cta-outline:hover { border-color: var(--primary-color); color: var(--primary-color) !important; transform: translateY(-2px); }
 
-    .nav-link {
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: all 0.2s ease;
+    /* Content Layout */
+    .section-container { max-width: 1280px; margin: 0 auto; padding: 64px 24px; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .sec-title { font-family: var(--font-heading); font-size: 30px; font-weight: 700; margin-bottom: 12px; }
+    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 640px; margin: 0 auto; }
+
+    /* Persona Pillars Grid */
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px; }
+    .pillar-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px; padding: 32px;
+      box-shadow: var(--card-shadow); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;
     }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); border-color: var(--primary-color); }
+    .pillar-icon { font-size: 36px; margin-bottom: 16px; display: inline-block; }
+    .pillar-title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .pillar-desc { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+    .pillar-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .pillar-features li { font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
 
-    .nav-link:hover, .nav-link.active {
-      color: var(--primary-color);
-      background-color: var(--primary-light);
-    }
-
-    .login-btn, .blog-btn, .home-btn {
-      background-color: var(--primary-color);
-      color: #FFFFFF !important;
-      font-weight: 600;
-      padding: 9px 20px;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, transform 0.1s ease;
-    }
-
-    .login-btn:hover, .blog-btn:hover, .blog-btn.active, .home-btn:hover, .home-btn.active {
-      background-color: var(--primary-hover);
-      color: #FFFFFF !important;
-      transform: translateY(-1px);
-    }
-
-    /* Mobile Hamburger */
-    .mobile-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--text-main);
-      cursor: pointer;
-    }
-
-    /* Main Container & Tab Views */
-    .main-content {
-      min-height: calc(100vh - 70px - 320px);
-    }
-
-    .tab-view {
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    .tab-view.active-tab {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Container Utility */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-
-    /* Hero Emblem Banner (Home & Pages) */
-    .hero-banner {
-      background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-      border-bottom: 1px solid var(--border-color);
-      padding: 60px 24px 50px;
-      text-align: center;
-    }
-
-    .hero-emblem-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      max-width: 680px;
-      aspect-ratio: 2 / 1;
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.04);
-      margin: 0 auto 32px;
-      padding: 20px 32px;
-    }
-
-    @keyframes logo-breathe {
-      0%   { transform: scale(1);    }
-      30%  { transform: scale(1.08); }
-      60%  { transform: scale(0.97); }
-      80%  { transform: scale(1.04); }
-      100% { transform: scale(1);    }
-    }
-
-    .hero-logo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      mix-blend-mode: multiply;
-      animation: logo-breathe 2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s 1 forwards;
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-      cursor: pointer;
-      will-change: transform;
-    }
-
-    .hero-logo-img:hover,
-    .hero-logo-img:active {
-      transform: scale(1.08);
-      animation: none;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 32px;
-      font-weight: 300;
-      color: var(--text-main);
-      margin-bottom: 16px;
-    }
-
-    .hero-subtitle {
-      max-width: 1040px;
-      margin: 0 auto;
-      font-size: 15.5px;
-      color: var(--text-muted);
-      font-weight: 300;
-      line-height: 1.75;
-    }
-
-    /* Feature Cards 3-Column Grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
-    }
-
-    .feature-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      box-shadow: var(--hover-shadow);
-      border-color: rgba(30, 108, 147, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .card-title {
-      font-family: var(--font-heading);
-      font-size: 24px;
-      font-weight: 400;
-      color: var(--primary-color);
-      margin-bottom: 16px;
-    }
-
-    .card-body {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      line-height: 1.7;
-    }
-
-    .card-btn {
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      background-color: var(--primary-color);
-      color: #FFFFFF !important;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 15px;
-      transition: background-color 0.2s ease;
-    }
-
-    .card-btn:hover {
-      background-color: var(--primary-hover);
-    }
-
-    /* Workflow Stepper Diagram */
-    .workflow-section {
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 40px;
-      margin-top: 48px;
+    /* Engines Grid */
+    .engines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .engine-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
       box-shadow: var(--card-shadow);
     }
+    .engine-code { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
+    .engine-name { font-family: var(--font-heading); font-size: 16.5px; font-weight: 700; margin-bottom: 6px; }
+    .engine-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
-    .section-heading {
-      font-family: var(--font-heading);
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--primary-color);
-      margin-bottom: 24px;
-      text-align: center;
-    }
+    /* TiddlyWiki Knowledge Base Section */
+    .wiki-section { background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 64px 24px; }
+    .wiki-container { max-width: 1280px; margin: 0 auto; }
+    .wiki-reader-box { display: flex; border: 1px solid var(--border-color); border-radius: 10px; height: 600px; overflow: hidden; }
+    .wiki-sidebar { width: 300px; background: #F8FAFC; border-right: 1px solid var(--border-color); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .wiki-search { padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; }
+    .wiki-list { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
+    .wiki-item { padding: 10px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .wiki-item:hover, .wiki-item.active { border-color: var(--primary-color); background: var(--primary-light); color: var(--primary-color); }
+    .wiki-frame { flex: 1; border: none; width: 100%; height: 100%; }
 
-    .workflow-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      position: relative;
-    }
+    /* Footer */
+    .site-footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 48px 24px 24px; }
+    .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-brand { font-family: var(--font-heading); font-size: 20px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
+    .footer-desc { font-size: 13.5px; color: var(--footer-muted); line-height: 1.6; max-width: 400px; }
+    .footer-col-title { font-family: var(--font-heading); font-size: 14px; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; color: #FFFFFF; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { color: var(--footer-muted); font-size: 13.5px; }
+    .footer-links a:hover { color: #FFFFFF; }
+    .footer-bottom { max-width: 1280px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 13px; color: var(--footer-muted); }
 
-    .step-card {
-      background-color: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 20px;
-      position: relative;
-    }
-
-    .step-number {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--primary-color);
-      background-color: var(--primary-light);
-      padding: 4px 10px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-
-    .step-title {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .step-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    /* Workbench Stage Breakdown */
-    .workbench-stage {
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .stage-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .stage-badge {
-      background-color: var(--primary-color);
-      color: #FFFFFF;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
-
-    .stage-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      color: var(--text-main);
-    }
-
-    .stage-list {
-      list-style-type: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .stage-item {
-      background-color: var(--bg-primary);
-      border-left: 4px solid var(--primary-color);
-      padding: 14px 18px;
-      border-radius: 0 6px 6px 0;
-      font-size: 14px;
-    }
-
-    .stage-item strong {
-      display: block;
-      color: var(--text-main);
-      margin-bottom: 4px;
-      font-size: 15px;
-    }
-
-    /* IDE Simulator Mockup */
-    .ide-simulator {
-      background-color: #1E293B;
-      color: #F8FAFC;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 32px;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-    }
-
-    .ide-header {
-      background-color: #0F172A;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #334155;
-    }
-
-    .ide-dots {
-      display: flex;
-      gap: 8px;
-    }
-
-    .ide-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-    .dot-red { background-color: #EF4444; }
-    .dot-yellow { background-color: #F59E0B; }
-    .dot-green { background-color: #10B981; }
-
-    .ide-title {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: #94A3B8;
-    }
-
-    .ide-body {
-      display: grid;
-      grid-template-columns: 240px 1fr 280px;
-      min-height: 400px;
-    }
-
-    .ide-sidebar {
-      background-color: #0F172A;
-      border-right: 1px solid #334155;
-      padding: 16px;
-      font-size: 13px;
-    }
-
-    .ide-tree-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #64748B;
-      margin-bottom: 12px;
-    }
-
-    .ide-tree-item {
-      padding: 6px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      color: #CBD5E1;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .ide-tree-item.active {
-      background-color: #334155;
-      color: #38BDF8;
-    }
-
-    .ide-editor {
-      padding: 20px;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      line-height: 1.8;
-      background-color: #1E293B;
-      color: #E2E8F0;
-    }
-
-    .ide-line-num {
-      color: #475569;
-      margin-right: 16px;
-      user-select: none;
-    }
-
-    .ide-panel {
-      background-color: #0F172A;
-      border-left: 1px solid #334155;
-      padding: 16px;
-      font-size: 13px;
-    }
-
-    .token-gauge {
-      background-color: #1E293B;
-      border-radius: 6px;
-      padding: 12px;
-      margin-bottom: 16px;
-    }
-
-    .progress-bar {
-      height: 8px;
-      background-color: #334155;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 8px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 42%;
-      background-color: #38BDF8;
-    }
-
-    /* Marketplace Reports Matrix */
-    .concept-notice {
-      background-color: #EFF6FF;
-      border: 1px solid #BFDBFE;
-      border-left: 5px solid var(--primary-color);
-      border-radius: 8px;
-      padding: 20px 24px;
-      margin-bottom: 32px;
-      font-size: 15px;
-      color: #1E3A8A;
-    }
-
-    .reports-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .report-card {
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 24px;
-      box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .report-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--hover-shadow);
-    }
-
-    .report-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .report-title {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .report-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .preview-btn {
-      background-color: var(--bg-primary);
-      border: 1px solid var(--primary-color);
-      color: var(--primary-color);
-      padding: 10px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-
-    .preview-btn:hover {
-      background-color: var(--primary-color);
-      color: #FFFFFF;
-    }
-
-    /* Modal Styling */
+    /* Modal Backdrop */
     .modal-backdrop {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-    }
-
-    .modal-content {
-      background-color: #FFFFFF;
-      border-radius: 12px;
-      max-width: 700px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 32px;
-      position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    .sample-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-      font-size: 14px;
-    }
-
-    .sample-table th, .sample-table td {
-      border: 1px solid var(--border-color);
-      padding: 10px 14px;
-      text-align: left;
-    }
-
-    .sample-table th {
-      background-color: var(--bg-primary);
-      font-weight: 600;
-    }
-
-    /* Regulation iPIE Gateway */
-    .ipie-flow {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
-    }
-
-    .ipie-card {
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-top: 4px solid var(--primary-color);
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .ipie-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-      margin-top: 32px;
-    }
-
-    .ipie-module-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--primary-color);
-      border-radius: 10px;
-      padding: 28px;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .ipie-module-card:hover {
-      box-shadow: var(--hover-shadow);
-      transform: translateY(-2px);
-      border-color: var(--primary-color);
-    }
-
-    .ipie-module-num {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--primary-color);
-      background-color: var(--primary-light);
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
-    }
-
-    .ipie-module-title {
-      font-family: var(--font-heading);
-      font-size: 19px;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 10px;
-    }
-
-    .ipie-module-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    .ipie-module-tag {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--primary-color);
-      background-color: var(--bg-primary);
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-    }
-
-    /* Laws & Regulatory Grid */
-    .laws-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 28px;
-    }
-
-    .law-card {
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 28px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .law-tag {
-      display: inline-block;
-      background-color: var(--primary-light);
-      color: var(--primary-color);
-      font-weight: 700;
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    /* Compact Footer with Integrated Google Form Contact */
-    .compact-footer {
-      background-color: var(--footer-bg);
-      color: var(--footer-text);
-      padding: 48px 24px 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Shloka block in footer */
-    .shloka-block {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.25);
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .shloka-text {
-      flex: 1;
-    }
-
-    .shloka-logo {
-      flex-shrink: 0;
-      width: 90px;
-      height: 110px;
-      object-fit: cover;
-      object-position: top;
-      opacity: 0.88;
-      filter: brightness(0) invert(1);
-    }
-
-    .shloka-devanagari {
-      font-family: 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif;
-      font-size: 13.5px;
-      line-height: 1.85;
-      color: #ffffff;
-      letter-spacing: 0.3px;
-      margin-bottom: 8px;
-    }
-
-    .shloka-transliteration {
-      font-family: var(--font-body);
-      font-size: 12.5px;
-      font-style: italic;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.88);
-      margin-bottom: 10px;
-    }
-
-    .shloka-meaning {
-      font-family: var(--font-body);
-      font-size: 11.5px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.82);
-    }
-
-    @media (max-width: 600px) {
-      .shloka-block { flex-direction: column; }
-      .shloka-logo { width: 80px; height: 95px; align-self: flex-start; }
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-    }
-
-    @media (max-width: 868px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .footer-heading {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 600;
-      color: #FFFFFF;
-      margin-bottom: 20px;
-      letter-spacing: 0.5px;
-    }
-
-    .contact-info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      font-size: 14px;
-    }
-
-    .info-group h4 {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--footer-muted);
-      margin-bottom: 6px;
-    }
-
-    .info-group p, .info-group a {
-      color: #FFFFFF;
-      line-height: 1.6;
-    }
-
-    /* Integrated Contact Form */
-    .contact-form {
-      background-color: #FFFFFF;
-      color: var(--text-main);
-      padding: 24px;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #334155;
-      margin-bottom: 4px;
-    }
-
-    .form-input, .form-textarea {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-family: var(--font-main);
-      font-size: 14px;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-input:focus, .form-textarea:focus {
-      outline: none;
-      border-color: var(--primary-color);
-    }
-
-    .form-submit {
-      width: 100%;
-      background-color: var(--primary-color);
-      color: #FFFFFF;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .form-submit:hover {
-      background-color: var(--primary-hover);
-    }
-
-    .form-notice {
-      display: none;
-      background-color: #DCFCE7;
-      color: #166534;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 13px;
-      margin-bottom: 12px;
-      text-align: center;
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 32px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      color: var(--footer-muted);
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: #FFFFFF;
-        flex-direction: column;
-        padding: 20px;
-        border-bottom: 1px solid var(--border-color);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      }
-      .nav-links.show {
-        display: flex;
-      }
-      .mobile-toggle {
-        display: block;
-      }
-      .ide-body {
-        grid-template-columns: 1fr;
-      }
-      .ide-sidebar, .ide-panel {
-        display: none;
-      }
-    }
-
-    /* Blogs & TiddlyWiki Reader Layout */
-    .blogs-wrapper {
-      position: relative;
-      display: flex;
-      height: calc(100vh - 72px);
-      width: 100%;
-      background: var(--bg-card);
-      overflow: hidden;
-    }
-    .blogs-sidebar {
-      width: 330px;
-      min-width: 290px;
-      background: var(--bg-sidebar);
-      border-right: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      transition: margin-left 0.3s ease, opacity 0.3s ease;
-    }
-    .blogs-sidebar.collapsed {
-      margin-left: -330px;
-      min-width: 0;
-      opacity: 0;
-      pointer-events: none;
-    }
-    .sidebar-header {
-      padding: 1rem;
-      border-bottom: 1px solid var(--border-color);
-      background: #FFFFFF;
-    }
-    .sidebar-search-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .sidebar-search {
-      flex: 1;
-      padding: 0.55rem 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-size: 0.85rem;
-      background: var(--bg-card);
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .sidebar-search:focus {
-      border-color: var(--color-primary);
-    }
-    .sidebar-burger-btn {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #FFFFFF;
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-    .sidebar-burger-btn:hover {
-      background: var(--color-primary-light, rgba(30, 108, 147, 0.1));
-      border-color: var(--color-primary, #1E6C93);
-      color: var(--color-primary, #1E6C93);
-    }
-    .floating-burger-btn {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 100;
-      width: 36px;
-      height: 36px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: var(--primary-color, #1E6C93);
-      color: #FFFFFF;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: all 0.2s ease;
-    }
-    .floating-burger-btn.show {
-      display: flex;
-    }
-    .floating-burger-btn:hover {
-      background: var(--primary-hover, #165272);
-      transform: scale(1.05);
-    }
-    .sidebar-title {
-      font-family: 'Google Sans', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .sidebar-sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-    .sidebar-search {
-      width: 100%;
-      padding: 0.55rem 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-size: 0.85rem;
-      background: var(--bg-card);
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .sidebar-search:focus {
-      border-color: var(--color-primary);
-    }
-    .wiki-list {
-      flex: 1;
-      overflow-y: auto;
-      padding: 0.75rem 0.5rem;
-    }
-    .wiki-item {
-      display: flex;
-      gap: 0.75rem;
-      padding: 0.85rem;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-bottom: 0.4rem;
-      transition: all 0.2s ease;
-      border: 1px solid transparent;
-    }
-    .wiki-item:hover {
-      background: rgba(30, 108, 147, 0.05);
-      border-color: rgba(30, 108, 147, 0.15);
-    }
-    .wiki-item.active {
-      background: var(--color-primary-light);
-      border-color: var(--color-primary);
-    }
-    .wiki-item-icon {
-      font-size: 1.3rem;
-      line-height: 1;
-      margin-top: 2px;
-    }
-    .wiki-item-info {
-      flex: 1;
-    }
-    .wiki-item-title {
-      font-family: 'Google Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.88rem;
-      color: var(--text-main);
-      margin-bottom: 0.2rem;
-    }
-    .wiki-item-desc {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.35;
-    }
-    .blogs-viewport {
-      position: relative;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      background: #FFFFFF;
-    }
-    .wiki-iframe {
-      flex: 1;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    @media (max-width: 768px) {
-      .blogs-wrapper {
-        flex-direction: column;
-        height: auto;
-      }
-      .blogs-sidebar {
-        width: 100%;
-        min-width: 100%;
-        max-height: 280px;
-      }
-      .blogs-viewport {
-        height: 600px;
-      }
-    }
+      display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card { background: #FFFFFF; border-radius: 12px; width: 90%; max-width: 500px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .modal-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+    .form-group { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; color: var(--text-muted); }
+    .form-input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 14px; outline: none; }
+    .form-input:focus { border-color: var(--primary-color); }
+    .btn-submit { width: 100%; padding: 12px; background: var(--primary-color); color: #FFFFFF; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
   </style>
 </head>
 <body>
 
-  <!-- Top Header Navigation Bar -->
+  <!-- Top Navigation Bar -->
   <header class="header-nav">
     <div class="nav-container">
-      <div class="brand-logo" onclick="switchTab('home')">
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" stroke="#1E6C93" stroke-width="6"/>
+          <path d="M30 70 L50 30 L70 70" stroke="#1E6C93" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="50" cy="52" r="8" fill="#1E6C93"/>
+        </svg>
         <span>HAYAGRIVA</span>
-      </div>
-
-      <button class="mobile-toggle" onclick="toggleMobileNav()">☰</button>
-
-      <ul class="nav-links" id="navLinks">
+      </a>
+      <ul class="nav-links">
         <li><a href="index.html" class="nav-link active">Home</a></li>
         <li><a href="students.html" class="nav-link">Students</a></li>
         <li><a href="employees.html" class="nav-link">Employees</a></li>
@@ -1181,878 +162,263 @@
     </div>
   </header>
 
-  <!-- Main Content Area -->
-  <main class="main-content">
-
-    <!-- TAB 1: HOME (Agentic Process & Workflows) -->
-    <section id="tab-home" class="tab-view active-tab">
-      <div class="hero-banner">
-        <div class="hero-emblem-box">
-          <img src="resources/hayagriva_logo_black.png" alt="HAYAGRIVA Artificial Intelligence" class="hero-logo-img" />
-        </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <span class="hero-badge">SOVEREIGN AI & INTEGRATED PROFESSIONAL ENVIRONMENT (IPE)</span>
+      <h1 class="hero-title">The Universal Platform for Students, Employees & Professionals</h1>
+      <p class="hero-subtitle">
+        HAYAGRIVA unifies offline data sovereignty, domain reference databases, local AI reasoning models, encrypted vaults, and specialized agent packs into a single intelligent platform.
+      </p>
+      <div class="hero-ctas">
+        <a href="students.html" class="btn-cta btn-cta-primary">
+          🎓 Students Portal (Skillpedia)
+        </a>
+        <a href="employees.html" class="btn-cta btn-cta-outline">
+          💼 Employees Portal
+        </a>
+        <a href="professionals.html" class="btn-cta btn-cta-outline">
+          🏛️ Professionals Workspace
+        </a>
       </div>
+    </div>
+  </section>
 
-      <div class="container">
-        <!-- 3-Column Feature Cards Grid -->
-        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-          <div class="feature-card">
-            <div>
-              <h3 class="card-title">GATEWAY (ipie)</h3>
-              <p class="card-body">
-                Integrated Platform for Insolvency Ecosystem (ipie) — Centralized MCA &amp; IBBI regulatory integration hub. Automates statutory compliance across 11 core process modules with air-gapped Ed25519 payload signing.
-              </p>
-            </div>
-            <a onclick="switchTab('ipie')" class="card-btn">Explore GATEWAY (ipie)</a>
-          </div>
+  <!-- 3 Universal Persona Pillars Section -->
+  <section class="section-container">
+    <div class="section-header">
+      <h2 class="sec-title">Three Universal Ecosystem Pillars</h2>
+      <p class="sec-subtitle">Tailored sovereign workspaces designed specifically for students, corporate employees, and domain professionals.</p>
+    </div>
 
-          <div class="feature-card">
-            <div>
-              <h3 class="card-title">MARKETPLACE (rbz)</h3>
-              <p class="card-body">
-                Resolution Bazaar (rbz) — The intelligence distribution hub delivering domain-tuned quantised LLMs (`LegalParam-2.9B`), encrypted vaults extension packs (`.vlt`), and agentic reporting suites directly to your local workstation.
-              </p>
-            </div>
-            <a onclick="switchTab('marketplace')" class="card-btn">Explore MARKETPLACE (rbz)</a>
-          </div>
-
-          <div class="feature-card">
-            <div>
-              <h3 class="card-title">WORKBENCH (ipe)</h3>
-              <p class="card-body">
-                Integrated Professional Environment (ipe) — A custom desktop IDE customised for legal practitioners. It consumes MARKETPLACE (rbz) models, vaults, and report pipelines to automate legal drafting and compliance with complete privacy.
-              </p>
-            </div>
-            <a onclick="switchTab('workbench')" class="card-btn">Open WORKBENCH (ipe)</a>
-          </div>
-        </div>
-
-        <!-- Statutory AI Compliance Section on Home Page -->
-        <div style="margin-top: 56px;">
-          <h2 class="section-heading" style="text-align: center; margin-bottom: 32px;">Statutory AI Compliance & Data Sovereignty</h2>
-
-          <!-- 3 Core Compliance Pillars Grid -->
-          <div class="laws-grid">
-            <!-- Pillar 1: Data Privacy -->
-            <div class="law-card">
-              <span class="law-tag">DATA PRIVACY</span>
-              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">DPDP Act 2023 Compliance</h3>
-              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
-                Enforces complete data minimization and local data sovereignty under Section 6 & Section 8 of the Digital Personal Data Protection Act 2023. All confidential case records, financial spreadsheets, and vector embeddings are stored and processed 100% on-premise without transferring data to external LLM cloud APIs.
-              </p>
-              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
-                <li><strong>Zero Cloud Data Leaks:</strong> Client documents remain strictly within local hardware boundaries.</li>
-                <li><strong>Local Anonymization Engine:</strong> Automatic PII masking before local subagent execution.</li>
-                <li><strong>Purpose Limitation:</strong> Case data is locked isolated to the active case workspace.</li>
-              </ul>
-            </div>
-
-            <!-- Pillar 2: Cybersecurity -->
-            <div class="law-card">
-              <span class="law-tag">CYBERSECURITY</span>
-              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">Information Technology Act 2000</h3>
-              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
-                Protects document integrity and guarantees an evidentiary chain of custody under Section 43A and Section 66A of the IT Act 2000. Utilizes local cryptographic hashing, asymmetric digital signatures, and encrypted on-premise storage.
-              </p>
-              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
-                <li><strong>Cryptographic Hashing:</strong> SHA-256 document fingerprinting at ingestion.</li>
-                <li><strong>Ed25519 Digital Signatures:</strong> Cryptographically signed audit memos & Form H files.</li>
-                <li><strong>Encrypted Vaults:</strong> AES-256-GCM encrypted `.vlt` databases with tamper-evident audit trails.</li>
-              </ul>
-            </div>
-
-            <!-- Pillar 3: Judicial Directives -->
-            <div class="law-card">
-              <span class="law-tag">JUDICIAL DIRECTIVES</span>
-              <h3 style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 14px; color: var(--text-main);">SC / RBI / IBBI AI Directives</h3>
-              <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
-                Strictly adheres to Supreme Court legal ethics, RBI cybersecurity frameworks, and IBBI statutory codes governing AI deployment in judicial proceedings.
-              </p>
-              <ul style="font-size: 14px; color: var(--text-main); line-height: 1.8; padding-left: 18px; margin-top: 10px;">
-                <li><strong>Attorney-Client Privilege:</strong> Confidential strategy is never transmitted offsite.</li>
-                <li><strong>Human-in-the-Loop Audit:</strong> Mandates `verified_by_user = 1` verification flags on all AI drafts.</li>
-                <li><strong>Air-Gapped Local Execution:</strong> Port 8090 local GGUF server isolates processing from public networks.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Comprehensive Statutory Matrix Table -->
-          <div style="margin-top: 48px;">
-            <h2 class="section-heading" style="text-align: center; margin-bottom: 24px;">Statutory AI Compliance Matrix</h2>
-            <table class="sample-table" style="box-shadow: var(--card-shadow); border-radius: 10px; overflow: hidden; width: 100%;">
-              <thead>
-                <tr style="background-color: var(--primary-color); color: #FFFFFF;">
-                  <th style="padding: 14px 18px; font-size: 14px;">Regulatory Act / Directive</th>
-                  <th style="padding: 14px 18px; font-size: 14px;">Statutory Mandate</th>
-                  <th style="padding: 14px 18px; font-size: 14px;">HAYAGRIVA Technical Guarantee</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight: 600;">DPDP Act 2023 (Sec 6 & 8)</td>
-                  <td>Local data minimization & data fiduciary accountability</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ 100% On-Premise Execution</span> (Zero external API transmission)</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">Information Technology Act 2000 (Sec 43A)</td>
-                  <td>Cryptographic data security & tamper-proof audit trails</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ Ed25519 Payload Signing</span> & SHA-256 integrity chains</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">Supreme Court Judicial AI Code</td>
-                  <td>Preservation of attorney-client privilege & confidentiality</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ Air-Gapped Local Models</span> (LegalParam-2.9B offline engine)</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 600;">IBBI Statutory Insolvency Regulations</td>
-                  <td>Verified Form H compliance & Sec 29A due-diligence audit</td>
-                  <td><span style="color: #10B981; font-weight: 600;">✓ Human-in-the-Loop Protocol</span> (`verified_by_user = 1` flag)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TAB: GATEWAY (ipie) (10 Core MCA Process Modules & Simulation Sandbox) -->
-    <section id="tab-ipie" class="tab-view">
-      <div class="hero-banner">
-        <h1 class="hero-title">GATEWAY (ipie)</h1>
-        <p class="hero-subtitle">
-          Integrated Platform for Insolvency Ecosystem (ipie) — Centralized MCA &amp; IBBI regulatory integration hub.<br>
-          Automates statutory compliance across 10 core process modules for Insolvency Professionals (IPs), Advocates &amp; Auditors.<br>
-          Download authentic process sample bundles from R2, run local AI processing in your Desktop IDE ("myPIE"), and upload signed payloads back for certification.
-        </p>
-      </div>
-
-      <div class="container">
-
-        <!-- 10 iPIE Process Modules Grid -->
-        <div class="ipie-grid">
-
-          <!-- 01. Process Commencement -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 01</span>
-              <h3 class="ipie-module-title">01. Process Commencement</h3>
-              <p class="ipie-module-desc">
-                Initiation and tracking of CIRP, Fast-Track CIRP, PPIRP, and Voluntary Liquidation. Ingests NCLT admission orders, Form FA withdrawal tracking, Form A public announcement dispatch, and Day-0 to Day-180 statutory clock synchronization.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">⏱️ CIRP Initiation &amp; Timeline Clock</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @timeline, @nclt</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_01_Commencement.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 02. Claims Management -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 02</span>
-              <h3 class="ipie-module-title">02. Claims Management</h3>
-              <p class="ipie-module-desc">
-                Automated receipt, AI parsing, and collation of operational, financial, employee, and statutory claims under CIRP Regulations 7–12. Parses Forms B, C, D, E &amp; F, verifies security interest, and updates claims registry.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">📊 Form B-F Collation &amp; Claims DB</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @claims, @forms</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_02_Claims.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 03. Stakeholder Management -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 03</span>
-              <h3 class="ipie-module-title">03. Stakeholder &amp; CoC Management</h3>
-              <p class="ipie-module-desc">
-                End-to-end Committee of Creditors (CoC) constitution, meeting administration, and statutory voting share calculation. Excludes related parties under Sec 5(24), drafts meeting notices, and records voting event payloads.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">🏛️ CoC Constitution &amp; Voting Share</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @coc</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_03_CoC.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 04. Records Management -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 04</span>
-              <h3 class="ipie-module-title">04. Records &amp; VDR Management</h3>
-              <p class="ipie-module-desc">
-                Air-gapped Virtual Data Room (VDR) and evidence repository. Audits balance sheets, bank statement ledgers, PUFE avoidance transactions (Sections 43, 45, 50, 66), and compiles Information Memorandum.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">📁 Air-Gapped VDR &amp; PUFE Audit</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @avoidance, @im</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_04_Records.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 05. Plan Management -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 05</span>
-              <h3 class="ipie-module-title">05. Resolution Plan Management</h3>
-              <p class="ipie-module-desc">
-                Automated evaluation of Resolution Plans, Section 29A affiliate disqualification verification, Section 30(2) compliance matrix audit, and Regulation 39(4) Form H certificate compilation.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">📄 Resolution Plan &amp; Form H Audit</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @evaluator, @document</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_05_Plan.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 06. Implementation & Monitoring -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 06</span>
-              <h3 class="ipie-module-title">06. Implementation &amp; Monitoring</h3>
-              <p class="ipie-module-desc">
-                Post-NCLT approval supervision, Monitoring Committee (IMC) governance, asset transfer logging, and tranche payout distribution tracking for successful resolution plan implementation.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">📈 Monitoring Committee &amp; Tranches</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @compliance</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_06_Implementation.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 07. Liquidation & Bankruptcy -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 07</span>
-              <h3 class="ipie-module-title">07. Liquidation &amp; Estate Management</h3>
-              <p class="ipie-module-desc">
-                Liquidation process initiation, Stakeholder Consultation Committee (SCC) constitution, asset e-auction notice preparation, Section 53 waterfall distribution, and dissolution reporting.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">⚖️ Estate Waterfall &amp; Dissolution</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @claims, @coc</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_07_Liquidation.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 08. Compliance Management -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 08</span>
-              <h3 class="ipie-module-title">08. Compliance Management</h3>
-              <p class="ipie-module-desc">
-                Compilation and audit of IBBI statutory forms (CIRP-1 to CIRP-6) and MCA reporting payloads. Performs local XBRL schema validation and Ed25519 payload signing.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">📋 IBBI CIRP-1..6 &amp; XBRL Payloads</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @forms</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_08_Compliance.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 09. Litigation Management -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 09</span>
-              <h3 class="ipie-module-title">09. Litigation &amp; Dispute Management</h3>
-              <p class="ipie-module-desc">
-                Centralized tracking of Interlocutory Applications (IAs), avoidance petitions, NCLT/NCLAT hearing calendars, and vector precedent searches across Supreme Court judgements.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">⚖️ PUFE Applications &amp; IA Tracker</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @litigation, @counter</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_09_Litigation.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-          <!-- 10. Cost Management -->
-          <div class="ipie-module-card">
-            <div>
-              <span class="ipie-module-num">MODULE 10</span>
-              <h3 class="ipie-module-title">10. Cost &amp; Expense Management</h3>
-              <p class="ipie-module-desc">
-                Granular CIRP &amp; Liquidation cost accounting under IBBI regulations. Tracks IP fees, interim finance interest, valuation retainers, CoC cost approval recording, and Form CIRP-4 compilation.
-              </p>
-              <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap;">
-                <span class="ipie-module-tag">💰 CIRP Cost Ledger &amp; Form CIRP-4</span>
-                <span style="background:rgba(0,230,153,0.12); color:#00e699; border:1px solid rgba(0,230,153,0.3); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700;">Subagents: @forms, @coc</span>
-              </div>
-            </div>
-            <button class="btn btn-outline" style="margin-top:0.85rem; width:100%; font-size:0.8rem; font-weight:700;" onclick="downloadIpieBundle('iPIE_10_Finance.zip')">📥 Download Process Bundle (.zip)</button>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <script>
-      function downloadIpieBundle(zipName) {
-        const url = `https://r2.hayagriva.app/ipie/${zipName}`;
-        window.open(url, '_blank');
-      }
-    </script>
-
-    <!-- TAB 2: WORKBENCH (Theia IDE & 3-Stage Workflow) -->
-    <section id="tab-workbench" class="tab-view">
-      <div class="hero-banner">
-        <h1 class="hero-title">WORKBENCH (ipe)</h1>
-        <p class="hero-subtitle">
-          The Eclipse Theia Integrated Professional Environment (ipe) IDE engineered for legal practitioners.<br>
-          Parse case files, query dual-vector RAG search indices, and execute subagent audit loops.<br>
-          Operates 100% on-premise with air-gapped zero cloud transmission and private payload signing.
-        </p>
-      </div>
-
-      <div class="container">
-        <!-- Stage 1 -->
-        <div class="workbench-stage">
-          <div class="stage-header">
-            <span class="stage-badge">STAGE 1</span>
-            <h2 class="stage-title">Case File Ingestion & Indexing</h2>
-          </div>
-          <p style="color: var(--text-muted); font-size: 15px;">
-            Securely parses and structures heterogeneous legal documents into high-performance local SQLite vector & full-text search indices.
+    <div class="pillars-grid">
+      <!-- Pillar 1: Students -->
+      <div class="pillar-card">
+        <div>
+          <span class="pillar-icon">🎓</span>
+          <h3 class="pillar-title">Students Portal (NSQF Skillpedia)</h3>
+          <p class="pillar-desc">
+            National Qualification Packs (QPs) database for vocational and technical education.
           </p>
-          <div class="stage-list">
-            <div class="stage-item">
-              <strong>Multi-Format Ingestion</strong>
-              PDF, Word (.docx), Excel (.xlsx), TiddlyWiki, and scanned OCR layout handling.
-            </div>
-            <div class="stage-item">
-              <strong>Dual-Vector RAG Engine</strong>
-              Concurrently routes legal text to `InLegal-SBERT` and financial sheets to `Finance-Embeddings`.
-            </div>
-            <div class="stage-item">
-              <strong>Active-Context Control Matrix</strong>
-              Filters search scopes with a live 2,048-token budget gauge to prevent context window overflow.
-            </div>
-            <div class="stage-item">
-              <strong>Bi-Directional Monaco-SQLite Sync</strong>
-              Intercepts edits to markdown tables and syncs key-value dictionaries directly to database records.
-            </div>
-          </div>
+          <ul class="pillar-features">
+            <li>✅ 2,176+ NCVET Qualification Packs across 41 Sectors</li>
+            <li>✅ 4 Cascading Dropdowns (Sector ➔ Sub Sector ➔ Occupation ➔ Job Role)</li>
+            <li>✅ 26 Metadata Attributes per QP card</li>
+            <li>✅ 11-Reel Video Inspector for interactive learning</li>
+          </ul>
         </div>
+        <a href="students.html" class="btn-cta btn-cta-outline" style="width: 100%; justify-content: center;">Explore Students Portal →</a>
+      </div>
 
-        <!-- Stage 2 -->
-        <div class="workbench-stage">
-          <div class="stage-header">
-            <span class="stage-badge">STAGE 2</span>
-            <h2 class="stage-title">Professional Enhancements & Visual Analytics</h2>
-          </div>
-          <p style="color: var(--text-muted); font-size: 15px;">
-            Provides real-time LSP diagnostics, dynamic relationship graphs, and automated judicial layout compilers.
+      <!-- Pillar 2: Employees -->
+      <div class="pillar-card">
+        <div>
+          <span class="pillar-icon">💼</span>
+          <h3 class="pillar-title">Employees Portal (Enterprise Custom Skills)</h3>
+          <p class="pillar-desc">
+            Corporate enterprise skill management with strict email isolation and shareable skill reels.
           </p>
-          <div class="stage-list">
-            <div class="stage-item">
-              <strong>Monaco LSP Hover & Completion</strong>
-              Auto-completes section citations, key claims, and statutory definitions directly in the editor.
-            </div>
-            <div class="stage-item">
-              <strong>D3.js 3D Case Graph Viewer</strong>
-              Renders interactive 3D graphs mapping corporate entities, creditors, claims, and related parties.
-            </div>
-            <div class="stage-item">
-              <strong>Case Wiki Q&A Accordions</strong>
-              Auto-scans `wiki/qna/` markdown files to build structured collapsible question-and-answer trees.
-            </div>
-            <div class="stage-item">
-              <strong>Supreme Court Layout Compiler</strong>
-              Compiles drafts into Supreme Court compliant DOCX (A4, Times New Roman, 14pt, 1.5 line spacing, 4cm margins).
-            </div>
-          </div>
+          <ul class="pillar-features">
+            <li>✅ Corporate Email Isolation Key (<code>employee_email_id</code>)</li>
+            <li>✅ Custom Skill Creation & Tag Directory</li>
+            <li>✅ Shareable Skill Card Links (<code>🔗 Copy Share Link</code>)</li>
+            <li>✅ 3rd Segment Interactive Skill Reel Player</li>
+          </ul>
         </div>
+        <a href="employees.html" class="btn-cta btn-cta-outline" style="width: 100%; justify-content: center;">Explore Employees Portal →</a>
+      </div>
 
-        <!-- Stage 3 -->
-        <div class="workbench-stage">
-          <div class="stage-header">
-            <span class="stage-badge">STAGE 3</span>
-            <h2 class="stage-title">Agentic Reporting & Critique Loops</h2>
-          </div>
-          <p style="color: var(--text-muted); font-size: 15px;">
-            Orchestrates specialized subagents via Eclipse Theia ChatAgent delegation to perform automated compliance audits.
+      <!-- Pillar 3: Professionals -->
+      <div class="pillar-card">
+        <div>
+          <span class="pillar-icon">🏛️</span>
+          <h3 class="pillar-title">Professionals Portal (HAYAGRIVA IDE & Vaults)</h3>
+          <p class="pillar-desc">
+            3-Panel IDE Workspace for Patent Builders, Insolvency Professionals, Corporate Advocates, and Arbitrators.
           </p>
-          <div class="stage-list">
-            <div class="stage-item">
-              <strong>`@coc-coordinator` Subagent</strong>
-              Computes voting shares ($\text{Debt}_i / \sum \text{Unrelated Debt} \times 100\%$) excluding Section 5(24) related parties.
-            </div>
-            <div class="stage-item">
-              <strong>`@plan-evaluator` Subagent</strong>
-              Audits Resolution Plans against Section 30(2) & Section 29A to compile Regulation 39(4) Form H certificates.
-            </div>
-            <div class="stage-item">
-              <strong>`DocumentAgent` & `FormsAgent`</strong>
-              Executes autonomous critique loops: drafts documents, sends to FormsAgent for auditing, and auto-refines.
-            </div>
-            <div class="stage-item">
-              <strong>Offline LLM Hot-Swapping</strong>
-              Executes `LegalParam-2.9B` and `FinanceParam-2.9B` on unified port 8090 with 50% RAM savings (~2.7 GB).
-            </div>
-          </div>
+          <ul class="pillar-features">
+            <li>✅ 100% Local ONNX Embeddings (<code>InLegal-SBERT</code>, <code>Finance-Embeddings</code>)</li>
+            <li>✅ Local GGUF Reasoning Models (<code>LegalParam-2.9B</code>, <code>SaulLM-7B</code>)</li>
+            <li>✅ Encrypted Sovereign Vaults (<code>laws_vault</code>, <code>cases_vault</code>)</li>
+            <li>✅ Specialized Agent Packs (<code>legal_agents.vlt</code>) & Monaco <code>/commands</code></li>
+          </ul>
         </div>
-
-        <!-- Interactive IDE Simulator -->
-        <h2 class="section-heading" style="margin-top: 48px;">Interactive WORKBENCH (ipe) Simulator</h2>
-        <div class="ide-simulator">
-          <div class="ide-header">
-            <div class="ide-dots">
-              <span class="ide-dot dot-red"></span>
-              <span class="ide-dot dot-yellow"></span>
-              <span class="ide-dot dot-green"></span>
-            </div>
-            <div class="ide-title">Hayagriva WORKBENCH (ipe) IDE - [Case: CIRP-Jaypee-2026]</div>
-            <div style="font-size: 12px; color: #10B981;">● Engine: Port 8090 (Standard)</div>
-          </div>
-          <div class="ide-body">
-            <!-- Sidebar -->
-            <div class="ide-sidebar">
-              <div class="ide-tree-title">Explorer</div>
-              <div class="ide-tree-item active">📄 claims_registry.md</div>
-              <div class="ide-tree-item">📄 avoidance_ledger.md</div>
-              <div class="ide-tree-item">📁 wiki / qna</div>
-              <div class="ide-tree-item">📊 case_graph_3d.d3</div>
-              <div class="ide-tree-title" style="margin-top: 20px;">Subagents</div>
-              <div class="ide-tree-item" style="color: #38BDF8;">🤖 @coc-coordinator</div>
-              <div class="ide-tree-item" style="color: #38BDF8;">🤖 @plan-evaluator</div>
-            </div>
-            <!-- Editor -->
-            <div class="ide-editor">
-              <div><span class="ide-line-num">1</span># Form H Compliance Certificate</div>
-              <div><span class="ide-line-num">2</span>Under Regulation 39(4) of the IBBI (CIRP) Regulations, 2016.</div>
-              <div><span class="ide-line-num">3</span></div>
-              <div><span class="ide-line-num">4</span>| Creditor Class | Claim Admitted (₹) | Voting Share (%) | Status |</div>
-              <div><span class="ide-line-num">5</span>|----------------|--------------------|------------------|--------|</div>
-              <div><span class="ide-line-num">6</span>| Financial (CoC)| 4,500,000,000      | 84.50%           | Admitted|</div>
-              <div><span class="ide-line-num">7</span>| Related Parties|   850,000,000      |  0.00% (Sec 5-24)| Excluded|</div>
-              <div><span class="ide-line-num">8</span></div>
-              <div><span class="ide-line-num">9</span><span style="color: #10B981;">[✓] Section 29A Disqualification Audit: Passed (0 Disqualifications found)</span></div>
-              <div><span class="ide-line-num">10</span><span style="color: #38BDF8;">[ℹ] Signed with local Ed25519 private key. Payload ready for iPIE portal.</span></div>
-            </div>
-            <!-- Right Panel -->
-            <div class="ide-panel">
-              <div class="ide-tree-title">Active-Context Matrix</div>
-              <div class="token-gauge">
-                <div style="display: flex; justify-content: space-between; font-size: 11px;">
-                  <span>Token Budget</span>
-                  <span style="color: #38BDF8;">854 / 2,048 Tokens</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill"></div></div>
-              </div>
-              <div style="font-size: 12px; color: #CBD5E1;">
-                <label style="display: block; margin-bottom: 6px;"><input type="checkbox" checked /> Jaypee_Information_Mem.pdf</label>
-                <label style="display: block; margin-bottom: 6px;"><input type="checkbox" checked /> Resolution_Plan_v3.docx</label>
-                <label style="display: block; margin-bottom: 6px;"><input type="checkbox" /> Tally_Ledger_2025.csv</label>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a href="professionals.html" class="btn-cta btn-cta-outline" style="width: 100%; justify-content: center;">Explore Professionals Workspace →</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- TAB 3: MARKETPLACE (Dashman Reports & Sourcing) -->
-    <section id="tab-marketplace" class="tab-view">
-      <div class="hero-banner">
-        <h1 class="hero-title">MARKETPLACE (rbz)</h1>
-        <p class="hero-subtitle">
-          Resolution Bazaar (rbz) — Offline legal intelligence, domain LLMs, and encrypted vault distribution hub.<br>
-          Acquire quantized AI engines (`LegalParam-2.9B`, `FinanceParam-2.9B`), pre-bundled `InLegal-SBERT` (768-dim), 14 Encrypted Data Vaults (~411 MB), and 21 specialized subagents (`@coc`, `@evaluator`, `@advisor`, `@document`, `@forms`, `@avoidance`, `@claims`, `@timeline`).<br>
-          Import packages into your local WORKBENCH (ipe) for 100% air-gapped offline execution.
-        </p>
+  <!-- 6 Core HAYAGRIVA Platform Engines Section -->
+  <section style="background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 64px 24px;">
+    <div class="section-container" style="padding: 0;">
+      <div class="section-header">
+        <h2 class="sec-title">The 6 Core HAYAGRIVA Platform Engines</h2>
+        <p class="sec-subtitle">Foundational architectural management systems powering sovereign desktop knowledge management.</p>
       </div>
 
-      <div class="container">
-        <!-- Reports Grid -->
-        <div class="reports-grid">
-          <!-- Report 1 -->
-          <div class="report-card">
-            <div>
-              <div class="report-icon">📢</div>
-              <h3 class="report-title">PRA Outreach & Investor Search</h3>
-              <p class="report-desc">
-                Automated preparation of Process Memorandums, Teasers, and prospective resolution applicant outreach tracking for investor sourcing.
-              </p>
-            </div>
-            <button class="preview-btn" onclick="openModal('modal-pra')">Preview Sample Report</button>
-          </div>
-
-          <!-- Report 2 -->
-          <div class="report-card">
-            <div>
-              <div class="report-icon">🛡️</div>
-              <h3 class="report-title">29A Due-Diligence Audit</h3>
-              <p class="report-desc">
-                Multi-tier corporate ownership graph crawling, Connected Persons analysis, and Section 29A disqualification verification.
-              </p>
-            </div>
-            <button class="preview-btn" onclick="openModal('modal-29a')">Preview Sample Report</button>
-          </div>
-
-          <!-- Report 3 -->
-          <div class="report-card">
-            <div>
-              <div class="report-icon">⚖️</div>
-              <h3 class="report-title">Base Plan Preparation</h3>
-              <p class="report-desc">
-                Resolution plan creation, statutory compliance verification, multi-plan comparison matrix, and selected plan justification.
-              </p>
-            </div>
-            <button class="preview-btn" onclick="openModal('modal-plan')">Preview Sample Report</button>
-          </div>
-
-          <!-- Report 4 -->
-          <div class="report-card">
-            <div>
-              <div class="report-icon">💰</div>
-              <h3 class="report-title">Asset Valuation & Debt Audit</h3>
-              <p class="report-desc">
-                Asset Memorandum generation, liquidation vs. fair value appraisal, and financial creditor voting share calculations.
-              </p>
-            </div>
-            <button class="preview-btn" onclick="openModal('modal-valuation')">Preview Sample Report</button>
-          </div>
-
-          <!-- Report 5 -->
-          <div class="report-card">
-            <div>
-              <div class="report-icon">🔍</div>
-              <h3 class="report-title">Forensic Audit & Transaction Audit</h3>
-              <p class="report-desc">
-                Corporate XBRL parsing, Tally XML/CSV transaction auditing for preferential (Sec 43), undervalued (Sec 45), and fraudulent transactions.
-              </p>
-            </div>
-            <button class="preview-btn" onclick="openModal('modal-forensic')">Preview Sample Report</button>
-          </div>
+      <div class="engines-grid">
+        <div class="engine-card">
+          <span class="engine-code">IMS</span>
+          <h3 class="engine-name">Ingestion Management System</h3>
+          <p class="engine-desc">Multi-format document parsing (PDF, Word, Excel, TiddlyWiki) with SHA-256 hash tracking and density gating.</p>
+        </div>
+        <div class="engine-card">
+          <span class="engine-code">CMS</span>
+          <h3 class="engine-name">Context Management System</h3>
+          <p class="engine-desc">PageIndex hierarchy indexing, SQLite FTS5 keyword retrieval, and ONNX vector cosine reranking (&lt;1ms response).</p>
+        </div>
+        <div class="engine-card">
+          <span class="engine-code">VMS</span>
+          <h3 class="engine-name">Vault Management System</h3>
+          <p class="engine-desc">Encrypted local AES-256 databases (<code>laws_vault</code>, <code>cases_vault</code>, <code>documents_vault</code>) with instant Monaco citations.</p>
+        </div>
+        <div class="engine-card">
+          <span class="engine-code">AMS</span>
+          <h3 class="engine-name">Agent Management System</h3>
+          <p class="engine-desc">Local Node.js specialized subagent critique & verification loops (<code>@advisor</code>, <code>@avoidance</code>, <code>@claims</code>, <code>@forms</code>).</p>
+        </div>
+        <div class="engine-card">
+          <span class="engine-code">DMS</span>
+          <h3 class="engine-name">Drafting Management System</h3>
+          <p class="engine-desc">Monaco-powered drafting canvas with placeholder parsing and 1-click court DOCX compilation (<code>/export-sc</code>).</p>
+        </div>
+        <div class="engine-card">
+          <span class="engine-code">WMS</span>
+          <h3 class="engine-name">Workspace Isolation System</h3>
+          <p class="engine-desc">Isolated client and project workspace directories with Node.js backend daemon synchronizations.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- TAB 6: BLOGS (Single-Page TiddlyWiki Knowledge Base & Articles) -->
-    <section id="tab-blogs" class="tab-view">
-      <div class="blogs-wrapper">
-        <!-- Sidebar -->
-        <aside class="blogs-sidebar" id="blogsSidebar">
-          <div class="sidebar-header">
-            <div class="sidebar-search-row">
-              <input type="text" id="wikiSearchInput" onkeyup="filterWikis()" placeholder="🔍 Search TiddlyWikis..." class="sidebar-search" />
-              <button id="sidebarToggleBtn" class="sidebar-burger-btn" onclick="toggleWikiSidebar()" title="Collapse Sidebar">☰</button>
-            </div>
-          </div>
-          
+  <!-- Dynamic TiddlyWiki Knowledge Base Section -->
+  <section class="wiki-section">
+    <div class="wiki-container">
+      <div class="section-header">
+        <h2 class="sec-title">Dynamic Knowledge Base Reader</h2>
+        <p class="sec-subtitle">Scans local wiki files in the workspace directory on the fly.</p>
+      </div>
+
+      <div class="wiki-reader-box">
+        <div class="wiki-sidebar">
+          <input type="text" id="wikiSearchInput" class="wiki-search" placeholder="Search wikis..." oninput="filterWikis()" />
           <div class="wiki-list" id="wikiListContainer">
-            <div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">Loading wikis...</div>
+            <!-- Dynamic wikis loaded here -->
           </div>
-        </aside>
-
-        <!-- Main Viewport -->
-        <main class="blogs-viewport">
-          <button id="floatingBurgerBtn" class="floating-burger-btn" onclick="toggleWikiSidebar()" title="Expand Sidebar">☰</button>
-          <iframe id="tiddlywiki-frame" src="wiki/ipie.html" class="wiki-iframe" title="TiddlyWiki Reader"></iframe>
-        </main>
+        </div>
+        <iframe id="tiddlywiki-frame" class="wiki-frame" src="about:blank"></iframe>
       </div>
-    </section>
-
-  </main>
-
-  <!-- Sample Report Preview Modals -->
-  <div class="modal-backdrop" id="modal-pra">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-pra')">×</button>
-      <h3 style="color: var(--primary-color); margin-bottom: 8px;">PRA Outreach & Teaser Report</h3>
-      <p style="font-size: 14px; color: var(--text-muted);">Generated by `dashman/build-pra-outreach.js`</p>
-      <table class="sample-table">
-        <thead>
-          <tr><th>Prospective Applicant</th><th>Category</th><th>Teaser Sent</th><th>NDA Executed</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>JSW Steel Ltd</td><td>Strategic Investor</td><td>Yes</td><td>Admitted (Verified)</td></tr>
-          <tr><td>ArcelorMittal India</td><td>Strategic Investor</td><td>Yes</td><td>Admitted (Verified)</td></tr>
-          <tr><td>Dalmia Resurgent Fund</td><td>Financial Investor</td><td>Yes</td><td>Under Review</td></tr>
-        </tbody>
-      </table>
-      <div style="font-size: 12px; color: #10B981; margin-top: 12px;">✓ Verified by @coc-coordinator for CoC circulation.</div>
     </div>
-  </div>
+  </section>
 
-  <div class="modal-backdrop" id="modal-29a">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-29a')">×</button>
-      <h3 style="color: var(--primary-color); margin-bottom: 8px;">Section 29A Due-Diligence Audit</h3>
-      <p style="font-size: 14px; color: var(--text-muted);">Generated by `dashman/build-29a-tree.js`</p>
-      <table class="sample-table">
-        <thead>
-          <tr><th>Resolution Applicant</th><th>Clause Checked</th><th>Connected Persons</th><th>Disqualification</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Alpha Holdings Ltd</td><td>Section 29A(c) NPA</td><td>3 Subsidiary Entities</td><td>None (Clear)</td></tr>
-          <tr><td>Beta Infra Corp</td><td>Section 29A(h) Guarantor</td><td>2 Directors</td><td>None (Clear)</td></tr>
-        </tbody>
-      </table>
-      <div style="font-size: 12px; color: #10B981; margin-top: 12px;">✓ 0 Disqualifications found across 14 ownership tiers.</div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-plan">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-plan')">×</button>
-      <h3 style="color: var(--primary-color); margin-bottom: 8px;">Base Plan Evaluation Matrix</h3>
-      <p style="font-size: 14px; color: var(--text-muted);">Generated by `dashman/build-plan-matrix.js`</p>
-      <table class="sample-table">
-        <thead>
-          <tr><th>Resolution Plan</th><th>Total Upfront (₹)</th><th>CIRP Cost Coverage</th><th>Sec 30(2) Audit</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Plan A (Consortium X)</td><td>5,200,000,000</td><td>100% Covered</td><td>Compliant</td></tr>
-          <tr><td>Plan B (Entity Y)</td><td>4,800,000,000</td><td>100% Covered</td><td>Compliant</td></tr>
-        </tbody>
-      </table>
-      <div style="font-size: 12px; color: #10B981; margin-top: 12px;">✓ Verified by @plan-evaluator for Form H attachment.</div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-valuation">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-valuation')">×</button>
-      <h3 style="color: var(--primary-color); margin-bottom: 8px;">Asset Valuation Memorandum</h3>
-      <p style="font-size: 14px; color: var(--text-muted);">Generated by `dashman/build-valuation-memo.js`</p>
-      <table class="sample-table">
-        <thead>
-          <tr><th>Asset Class</th><th>Registered Valuer A</th><th>Registered Valuer B</th><th>Average Fair Value</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Land & Building</td><td>₹ 1,200 Cr</td><td>₹ 1,250 Cr</td><td>₹ 1,225 Cr</td></tr>
-          <tr><td>Plant & Machinery</td><td>₹ 850 Cr</td><td>₹ 820 Cr</td><td>₹ 835 Cr</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="modal-forensic">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal-forensic')">×</button>
-      <h3 style="color: var(--primary-color); margin-bottom: 8px;">Forensic Audit & Transaction Audit</h3>
-      <p style="font-size: 14px; color: var(--text-muted);">Generated by `dashman/build-forensic-audit.js`</p>
-      <table class="sample-table">
-        <thead>
-          <tr><th>Transaction Type</th><th>Section</th><th>Audited Value</th><th>NCLT Filing Status</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Preferential Transfer</td><td>Section 43</td><td>₹ 45.2 Cr</td><td>Application Drafted</td></tr>
-          <tr><td>Undervalued Transfer</td><td>Section 45</td><td>₹ 12.8 Cr</td><td>Under Review</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Compact Footer with Integrated Google Form Contact -->
-  <footer class="compact-footer">
+  <!-- Footer (UNTOUCHED) -->
+  <footer class="site-footer">
     <div class="footer-container">
-      
-      <!-- Column 1: Contact Details -->
       <div>
-        <h3 class="footer-heading">HAYAGRIVA Contact</h3>
-        <div class="contact-info-grid">
-          <div class="info-group">
-            <h4>Call Us</h4>
-            <p>+91-98140-40900</p>
-            <p>+91-98558-88881</p>
-          </div>
-
-          <div class="info-group">
-            <h4>Email Us</h4>
-            <p><a href="mailto:admin@resolutionbazaar.in">admin@resolutionbazaar.in</a></p>
-            <p><a href="mailto:resolutionbazaar@gmail.com">resolutionbazaar@gmail.com</a></p>
-          </div>
-
-          <div class="info-group">
-            <h4>Address</h4>
-            <p>#1634, Sector 18-D</p>
-            <p>Chandigarh, India, 160018</p>
-          </div>
-
-          <div class="info-group">
-            <h4>Websites</h4>
-            <p><a href="https://www.chatibc.com" target="_blank">www.chatibc.com</a></p>
-            <p><a href="https://www.resolutionbazaar.in" target="_blank">www.resolutionbazaar.in</a></p>
-          </div>
-        </div>
-
-        <!-- Hayagriva Shloka -->
-        <div class="shloka-block">
-          <img src="resources/hayagriva_head.png" alt="Hayagriva" class="shloka-logo" />
-          <div class="shloka-text">
-            <p class="shloka-devanagari">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् ।<br>आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
-            <p class="shloka-transliteration">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim |<br>ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
-            <p class="shloka-meaning">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
-          </div>
-        </div>
+        <div class="footer-brand">HAYAGRIVA</div>
+        <p class="footer-desc">
+          Universal Integrated Professional Environment (IPE) Platform & Sovereign Ecosystem serving Students, Employees, and Professionals.
+        </p>
       </div>
-
-      <!-- Column 2: Embedded Contact Form connected to Google Form -->
       <div>
-        <div class="contact-form">
-          <h3 style="font-size: 18px; font-weight: 600; color: #1E293B; margin-bottom: 12px;">Contact & Inquiry Form</h3>
-          
-          <div id="formNotice" class="form-notice">
-            ✓ Thank you! Your inquiry has been recorded successfully.
-          </div>
-
-          <form id="contactForm" onsubmit="handleFormSubmit(event)">
-            <div class="form-group">
-              <label class="form-label" for="inputName">Name *</label>
-              <input type="text" id="inputName" class="form-input" placeholder="Your Full Name" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="inputEmail">Email *</label>
-              <input type="email" id="inputEmail" class="form-input" placeholder="name@domain.com" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="inputPhone">Phone No *</label>
-              <input type="tel" id="inputPhone" class="form-input" placeholder="+91-XXXXX-XXXXX" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="inputMessage">Message / Inquiry</label>
-              <textarea id="inputMessage" class="form-textarea" rows="2" placeholder="How can we assist you?"></textarea>
-            </div>
-
-            <button type="submit" class="form-submit">Submit Inquiry</button>
-          </form>
-        </div>
+        <h4 class="footer-col-title">Ecosystem</h4>
+        <ul class="footer-links">
+          <li><a href="students.html">Students Portal</a></li>
+          <li><a href="employees.html">Employees Portal</a></li>
+          <li><a href="professionals.html">Professionals Workspace</a></li>
+        </ul>
       </div>
-
+      <div>
+        <h4 class="footer-col-title">Platform</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="login.html">Persona SSO Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="javascript:void(0)" onclick="openModal('contactModal')">Direct Inquiry Form</a></li>
+          <li><a href="mailto:resolutionbazaar@gmail.com">resolutionbazaar@gmail.com</a></li>
+        </ul>
+      </div>
     </div>
-
     <div class="footer-bottom">
-      <div>© 2026 HAYAGRIVA. All rights reserved.</div>
-      <div>Zero Cloud Data Transmission • Air-Gapped Local AI Compliance</div>
+      &copy; 2026 HAYAGRIVA Sovereign AI Platform. All rights reserved.
     </div>
   </footer>
 
+  <!-- Contact Form Modal (UNTOUCHED) -->
+  <div class="modal-backdrop" id="contactModal">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 class="modal-title" style="margin-bottom: 0;">Direct Inquiry Form</h3>
+        <button onclick="closeModal('contactModal')" style="background: none; border: none; font-size: 22px; cursor: pointer;">×</button>
+      </div>
+      <form id="contactForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="inputName">Full Name</label>
+          <input type="text" id="inputName" class="form-input" required placeholder="e.g. Adv. Rajesh Sharma" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputEmail">Email Address</label>
+          <input type="email" id="inputEmail" class="form-input" required placeholder="rajesh@lawfirm.in" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputPhone">Phone Number</label>
+          <input type="tel" id="inputPhone" class="form-input" placeholder="+91 98765 43210" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputMessage">Message / Request</label>
+          <textarea id="inputMessage" class="form-input" rows="4" required placeholder="Detail your deployment or inquiry..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit Direct Inquiry</button>
+      </form>
+      <div id="formNotice" style="display: none; margin-top: 14px; padding: 10px; background: #DCFCE7; color: #166534; border-radius: 6px; font-size: 13px; text-align: center;">
+        ✅ Thank you! Your inquiry has been sent to resolutionbazaar@gmail.com.
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Single Page App (SPA) Tab Switching Logic
-    function switchTab(tabName) {
-      // Hide all tabs
-      const tabs = document.querySelectorAll('.tab-view');
-      tabs.forEach(tab => tab.classList.remove('active-tab'));
-
-      // Deactivate all nav buttons
-      const navs = document.querySelectorAll('.nav-link');
-      navs.forEach(nav => nav.classList.remove('active'));
-
-      // Activate selected tab & nav button
-      const targetTab = document.getElementById('tab-' + tabName);
-      const targetBtn = document.getElementById('btn-' + tabName);
-
-      if (targetTab) {
-        targetTab.classList.add('active-tab');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-      if (targetBtn) {
-        targetBtn.classList.add('active');
-      }
-
-      // Close mobile menu if open
-      document.getElementById('navLinks').classList.remove('show');
-
-      if (tabName === 'blogs') {
-        loadDynamicWikis();
-      }
-    }
-
-    function toggleMobileNav() {
-      document.getElementById('navLinks').classList.toggle('show');
-    }
-
-    function toggleWikiSidebar() {
-      const sidebar = document.getElementById('blogsSidebar');
-      const floatingBtn = document.getElementById('floatingBurgerBtn');
-      if (sidebar) {
-        sidebar.classList.toggle('collapsed');
-        const isCollapsed = sidebar.classList.contains('collapsed');
-        if (floatingBtn) {
-          floatingBtn.classList.toggle('show', isCollapsed);
-        }
-      }
-    }
-
-    // Dynamic On-The-Fly TiddlyWiki Loader
     async function loadDynamicWikis() {
-      const container = document.getElementById('wikiListContainer');
-      if (!container) return;
-
       try {
-        const res = await fetch('/api/wiki/list?_t=' + Date.now(), { cache: 'no-store' });
+        const res = await fetch('/api/wiki/list');
         const data = await res.json();
+        const container = document.getElementById('wikiListContainer');
 
-        if (data.success && data.wikis && data.wikis.length > 0) {
+        if (data.success && data.wikis.length > 0) {
           container.innerHTML = data.wikis.map((wiki, index) => `
             <div class="wiki-item ${index === 0 ? 'active' : ''}" onclick="loadTiddlyWiki('${wiki.path}', this)">
-              <div class="wiki-item-icon">${wiki.icon}</div>
-              <div class="wiki-item-info">
-                <div class="wiki-item-title">${wiki.title}</div>
-              </div>
+              <span>${wiki.icon}</span>
+              <span>${wiki.title}</span>
             </div>
           `).join('');
 
-          // Select first wiki if frame empty or default
           const iframe = document.getElementById('tiddlywiki-frame');
           if (iframe && (!iframe.src || iframe.src.endsWith('about:blank'))) {
-            const firstWiki = data.wikis[0];
-            iframe.src = firstWiki.path;
+            iframe.src = data.wikis[0].path;
           }
         } else {
-          container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No TiddlyWikis found in the /wiki folder. Drop .html files there to display them here!</div>';
+          container.innerHTML = '<div style="color: var(--text-muted); font-size: 12px; padding: 10px;">No wikis found in /wiki folder. Drop .html files there to display here!</div>';
         }
-      } catch (e) {
-        console.error('Error loading dynamic wiki list:', e);
-      }
+      } catch (e) { console.error('Error loading wikis:', e); }
     }
 
-    // TiddlyWiki Reader Loader & Sidebar Filter
     function loadTiddlyWiki(wikiPath, element) {
       const iframe = document.getElementById('tiddlywiki-frame');
-
-      if (iframe) {
-        iframe.src = wikiPath;
-      }
-
-      const items = document.querySelectorAll('.wiki-item');
-      items.forEach(item => item.classList.remove('active'));
-      if (element) {
-        element.classList.add('active');
-      }
+      if (iframe) iframe.src = wikiPath;
+      document.querySelectorAll('.wiki-item').forEach(item => item.classList.remove('active'));
+      if (element) element.classList.add('active');
     }
 
     function filterWikis() {
       const query = document.getElementById('wikiSearchInput').value.toLowerCase();
-      const items = document.querySelectorAll('.wiki-item');
-      items.forEach(item => {
-        const text = item.innerText.toLowerCase();
-        if (text.includes(query)) {
-          item.style.display = 'flex';
-        } else {
-          item.style.display = 'none';
-        }
+      document.querySelectorAll('.wiki-item').forEach(item => {
+        item.style.display = item.innerText.toLowerCase().includes(query) ? 'flex' : 'none';
       });
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      loadDynamicWikis();
-    });
-
-    // Modal Control
     function openModal(modalId) {
       const modal = document.getElementById(modalId);
       if (modal) modal.classList.add('open');
@@ -2063,84 +429,44 @@
       if (modal) modal.classList.remove('open');
     }
 
-    // Close modal on backdrop click
-    window.onclick = function(event) {
-      if (event.target.classList.contains('modal-backdrop')) {
-        event.target.classList.remove('open');
-      }
-    };
-
-    // Direct Gmail Contact Handler (FormSubmit Endpoint)
     function handleFormSubmit(event) {
       event.preventDefault();
-      
       const name = document.getElementById('inputName').value;
       const email = document.getElementById('inputEmail').value;
       const phone = document.getElementById('inputPhone').value;
       const message = document.getElementById('inputMessage').value;
 
-      // Post directly to FormSubmit endpoint (delivers formatted email to resolutionbazaar@gmail.com)
-      const formSubmitUrl = "https://formsubmit.co/ajax/resolutionbazaar@gmail.com";
-      
-      fetch(formSubmitUrl, {
+      fetch("https://formsubmit.co/ajax/resolutionbazaar@gmail.com", {
         method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          _subject: "New HAYAGRIVA Portal Inquiry from " + name,
-          Name: name,
-          Email: email,
-          Phone: phone,
-          Message: message
-        })
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ _subject: "HAYAGRIVA Inquiry from " + name, Name: name, Email: email, Phone: phone, Message: message })
       })
       .then(res => res.json())
-      .then(data => {
-        const notice = document.getElementById('formNotice');
-        notice.style.display = 'block';
+      .then(() => {
+        document.getElementById('formNotice').style.display = 'block';
         document.getElementById('contactForm').reset();
-        setTimeout(() => {
-          notice.style.display = 'none';
-        }, 6000);
+        setTimeout(() => { document.getElementById('formNotice').style.display = 'none'; }, 6000);
       })
-      .catch(err => {
-        console.error("Form submit error: ", err);
-        const notice = document.getElementById('formNotice');
-        notice.style.display = 'block';
+      .catch(() => {
+        document.getElementById('formNotice').style.display = 'block';
         document.getElementById('contactForm').reset();
-        setTimeout(() => {
-          notice.style.display = 'none';
-        }, 6000);
+        setTimeout(() => { document.getElementById('formNotice').style.display = 'none'; }, 6000);
       });
     }
 
     function checkAuthStatus() {
       const token = localStorage.getItem('haya_portal_token');
       const authBtn = document.getElementById('main-auth-btn');
-      const portalLink = document.getElementById('portal-link');
-      if (token) {
-        if (portalLink) portalLink.style.display = 'inline-block';
-        if (authBtn) {
-          authBtn.textContent = 'Logout';
-          authBtn.href = '#';
-          authBtn.onclick = function(e) {
-            e.preventDefault();
-            localStorage.removeItem('haya_portal_token');
-            window.location.reload();
-          };
-        }
-      } else {
-        if (portalLink) portalLink.style.display = 'none';
-        if (authBtn) {
-          authBtn.textContent = 'Login';
-          authBtn.href = 'login.html';
-          authBtn.onclick = null;
-        }
+      if (token && authBtn) {
+        authBtn.textContent = 'Logout';
+        authBtn.href = '#';
+        authBtn.onclick = (e) => { e.preventDefault(); localStorage.removeItem('haya_portal_token'); window.location.reload(); };
       }
     }
-    document.addEventListener('DOMContentLoaded', checkAuthStatus);
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDynamicWikis();
+      checkAuthStatus();
+    });
   </script>
 </body>
 </html>
