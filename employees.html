@@ -45,7 +45,7 @@
     /* 3-Panel IDE Layout */
     .ide-container { display: flex; flex: 1; height: calc(100vh - 64px); overflow: hidden; }
 
-    /* LEFT PANEL: Search & Alphabetical Directory */
+    /* LEFT PANEL: Search & Consolidated Tag Directory */
     .panel-left {
       width: 320px; min-width: 280px; background: #FFFFFF; border-right: 1px solid var(--border-color);
       padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; flex-shrink: 0;
@@ -60,19 +60,10 @@
     }
     .filter-input:focus { border-color: var(--primary-color); }
 
-    /* Alphabet Index Quick Jump Bar */
-    .az-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-    .az-btn {
-      width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
-      background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px;
-      font-size: 11px; font-weight: 700; cursor: pointer; color: var(--text-main); transition: all 0.15s;
-    }
-    .az-btn:hover, .az-btn.active { background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color); }
-
     /* Consolidated Keyword Tag List */
     .tag-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
     .tag-item {
-      display: flex; justify-content: space-between; align-items: center; padding: 8px 12px;
+      display: flex; justify-content: space-between; align-items: center; padding: 9px 12px;
       background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px;
       font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     }
@@ -177,7 +168,7 @@
   <!-- 3-Panel IDE Layout Container -->
   <div class="ide-container">
 
-    <!-- LEFT PANEL: Search & Alphabetical Tag Directory -->
+    <!-- LEFT PANEL: Search & Consolidated Tag Directory -->
     <aside class="panel-left">
       <h2 class="panel-title">Skill Directory</h2>
 
@@ -185,15 +176,6 @@
       <div class="filter-group">
         <label class="filter-label" for="searchInput">Search Skills / Employee Email</label>
         <input type="text" id="searchInput" class="filter-input" placeholder="Search title, email, tag..." oninput="handleSearchInput()" />
-      </div>
-
-      <!-- Alphabetical A-Z Quick Jump Index Bar -->
-      <div class="filter-group">
-        <label class="filter-label">Alphabetical Index (A-Z)</label>
-        <div class="az-bar" id="azBar">
-          <button class="az-btn active" onclick="filterByLetter('')">ALL</button>
-          <!-- A-Z buttons inserted dynamically -->
-        </div>
       </div>
 
       <!-- Consolidated Keyword Tags Directory -->
@@ -270,22 +252,13 @@
 
   <script>
     let currentTag = '';
-    let currentLetter = '';
     let searchTimeout = null;
 
     window.addEventListener('DOMContentLoaded', () => {
-      buildAZBar();
       loadKeywords();
       loadSkills();
       checkUrlParams();
     });
-
-    function buildAZBar() {
-      const azBar = document.getElementById('azBar');
-      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-      azBar.innerHTML = `<button class="az-btn active" id="az-ALL" onclick="filterByLetter('')">ALL</button>` +
-        letters.map(l => `<button class="az-btn" id="az-${l}" onclick="filterByLetter('${l}')">${l}</button>`).join('');
-    }
 
     function checkUrlParams() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -314,20 +287,8 @@
       } catch (err) { console.error(err); }
     }
 
-    function filterByLetter(letter) {
-      currentLetter = letter;
-      currentTag = '';
-      document.querySelectorAll('.az-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = document.getElementById(`az-${letter || 'ALL'}`);
-      if (activeBtn) activeBtn.classList.add('active');
-      loadSkills();
-    }
-
     function filterByTag(tag) {
       currentTag = tag;
-      currentLetter = '';
-      document.querySelectorAll('.az-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById('az-ALL').classList.add('active');
       loadKeywords();
       loadSkills();
     }
@@ -342,7 +303,6 @@
       let url = `/api/skillpedia/custom/all-skills?1=1`;
       if (q) url += `&q=${encodeURIComponent(q)}`;
       if (currentTag) url += `&tag=${encodeURIComponent(currentTag)}`;
-      if (currentLetter) url += `&letter=${encodeURIComponent(currentLetter)}`;
 
       try {
         const res = await fetch(url);
