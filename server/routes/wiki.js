@@ -8,7 +8,7 @@ const router = express.Router();
 const WIKI_DIR = path.join(__dirname, '../../wiki');
 
 // GET /api/wiki/professional-roles
-// Returns specialized professional role titles with exact embedding, llm, vault, agent, gateway, and marketplace metadata mapped from haya_vaults
+// Returns specialized professional role titles with exact verified HAYAGRIVA assets (InLegal-SBERT, Finance-Embeddings, LegalParam-2.9B, FinanceParam-2.9B, SaulLM-7B, laws_vault, cases_vault, documents_vault, legal_agents.vlt, finance_agents.vlt)
 router.get('/professional-roles', (req, res) => {
     try {
         const roles = [
@@ -18,31 +18,31 @@ router.get('/professional-roles', (req, res) => {
                 category: 'Intellectual Property',
                 description: 'Specialized environment for USPTO 35 U.S.C. 101/102/103 patent eligibility, claim drafting, antecedent linting, and Office Action responses.',
                 embeddings: {
-                    model_name: 'nomic-embed-text-v1.5',
-                    dimensions: 768,
-                    scope: 'USPTO MPEP Citations, Patent Claims & Prior Art Vectors',
-                    details: 'Tuned specifically for patent claim semantic similarity and 35 U.S.C. 102 prior art novelty matching.'
+                    model_name: 'InLegal-SBERT',
+                    dimensions: 384,
+                    scope: 'USPTO MPEP Citations, Patent Claims & Prior Art Vectors (100% Local ONNX)',
+                    details: '100% Local ONNX embedding model fine-tuned for patent claim semantic similarity and 35 U.S.C. 102 prior art novelty matching.'
                 },
                 llm: {
-                    model_name: 'openrouter/google/gemini-2.5-flash',
-                    backup_model: 'anthropic/claude-3.7-sonnet',
+                    model_name: 'LegalParam-2.9B (Local GGUF)',
+                    backup_model: 'google/gemini-2.5-flash',
                     local_gguf: 'Air-Gapped Local Port 8090 (GGUF 4-bit)',
-                    details: 'Optimized for high-speed statutory claim parsing, statutory rejection responses, and Alice 101 eligibility auditing.'
+                    details: 'Bundled starter LLM optimized for high-speed statutory claim parsing, rejection responses, and Alice 101 eligibility auditing.'
                 },
                 vaults: {
-                    vault_name: 'Patent Agent Vault (v1.0)',
+                    vault_name: 'Legal Templates Vault (documents_vault)',
                     file_name: 'patent_agents_v1.0.zip',
-                    size: '10.42 KB',
-                    details: 'Compiled offline encrypted vault asset containing 7 specialist agent personas, statutory linters, and Monaco slash rules.'
+                    size: '28.7 MB (Data Vault) + 10.42 KB (Agent Pack)',
+                    details: 'Encrypted local data vault containing patent disclosures, claims templates, and 7 specialist patent agent personas.'
                 },
                 agents: [
+                    { name: 'Advisor Agent (@advisor)', file: '@advisor', description: 'Legal research specialist querying local statutory laws and MPEP guidelines.' },
+                    { name: 'Document Agent (@document)', file: '@document', description: 'Drafts patent specifications and independent/dependent claim trees.' },
+                    { name: 'Forms Agent (@forms)', file: '@forms', description: 'Audits USPTO filing forms and checks antecedent basis consistency.' },
                     { name: 'Invention Interrogator', file: 'interrogator.md', description: 'Extracts statutory claims and technical novelty features from raw disclosures.' },
                     { name: 'Alice 101 Examiner', file: 'alice_examiner.md', description: 'Audits claims under USPTO 2-step Alice framework for 35 U.S.C. 101 eligibility.' },
-                    { name: 'Claim Drafter & Linter', file: 'claim_drafter.md', description: 'Drafts independent/dependent claims with automatic antecedent basis checking.' },
-                    { name: 'Prior Art Analyst', file: 'prior_art_analyst.md', description: 'Evaluates novelty (102) and non-obviousness (103) against prior art citations.' },
-                    { name: 'USPTO Mock Examiner', file: 'mock_examiner.md', description: 'Simulates strict USPTO Office Action rejections and allowance probability scores.' },
-                    { name: 'Prosecution Counsel', file: 'prosecution_counsel.md', description: 'Drafts formal Office Action responses with USPTO track-changes markup.' },
-                    { name: 'Figure Illustrator Agent', file: 'figure_illustrator.md', description: 'Generates structured ASCII and Mermaid patent drawing specifications.' }
+                    { name: 'Claim Drafter & Linter', file: 'claim_drafter.md', description: 'Drafts claims with automatic antecedent basis checking.' },
+                    { name: 'USPTO Mock Examiner', file: 'mock_examiner.md', description: 'Simulates strict USPTO Office Action rejections and allowance probability scores.' }
                 ],
                 gateway: {
                     statutory_body: 'USPTO & Indian Patent Office (IPO)',
@@ -65,28 +65,29 @@ router.get('/professional-roles', (req, res) => {
                 category: 'Insolvency & Bankruptcy',
                 description: 'Complete environment for Insolvency Professionals under the Insolvency & Bankruptcy Code 2016 (IBC), CIRP monitoring, and Form H compliance.',
                 embeddings: {
-                    model_name: 'bge-large-en-v1.5',
-                    dimensions: 1024,
-                    scope: 'IBC Code Sections, NCLT / NCLAT Precedents & Circulars',
-                    details: 'Vectorized precedent repository covering NCLT judgments, CIRP timelines, and Section 30(2) compliance.'
+                    model_name: 'InLegal-SBERT & Finance-Embeddings (Dual RAG)',
+                    dimensions: 384,
+                    scope: 'IBC Code Sections, NCLT / NCLAT Judgments & Bank Ledgers (100% Local ONNX)',
+                    details: 'Dual query RAG pipeline routing legal documents to InLegal-SBERT and financial ledgers to Finance-Embeddings.'
                 },
                 llm: {
-                    model_name: 'google/gemini-2.5-flash',
-                    backup_model: 'Air-Gapped Local Port 8090 (GGUF 4-bit)',
-                    local_gguf: 'Air-Gapped Local GGUF',
-                    details: 'Audits CIRP timelines, claims ledgers, and CoC voting minutes.'
+                    model_name: 'FinanceParam-2.9B & LegalParam-2.9B',
+                    backup_model: 'google/gemini-2.5-flash',
+                    local_gguf: 'Air-Gapped Local Port 8090 (GGUF 4-bit)',
+                    details: 'Dual-domain GGUF models for auditing CIRP timelines, bank ledgers, claim forms, and CoC voting minutes.'
                 },
                 vaults: {
-                    vault_name: 'IBC Resolution Vault (v2.0)',
+                    vault_name: 'Laws Vault (33.6 MB) + Cases Vault (132.8 MB)',
                     file_name: 'ibc_precedent_vault_v2.vlt',
-                    size: '48.50 MB',
-                    details: 'Contains complete NCLT/NCLAT judgment databases and Resolution Plan compliance templates.'
+                    size: '166.4 MB Combined Vaults',
+                    details: 'Complete IBC 2016 statutory code, IBBI CIRP regulations, and Supreme Court / NCLAT landmark precedent indices.'
                 },
                 agents: [
-                    { name: 'IBC Statutory Auditor', file: 'ibc_auditor.md', description: 'Audits CIRP milestone timelines and Section 29A disqualifications.' },
-                    { name: 'Form H Signer', file: 'form_h_signer.md', description: 'Generates cryptographically signed Form H compliance certificate.' },
-                    { name: 'Claim Verifier', file: 'claim_verifier.md', description: 'Cross-verifies Operational and Financial Creditor proof of claim forms.' },
-                    { name: 'CoC Minutes Analyzer', file: 'coc_analyzer.md', description: 'Parses Committee of Creditors voting results and resolution approvals.' }
+                    { name: 'Avoidance Audit Agent (@avoidance)', file: '@avoidance', description: 'Scans ledgers for suspect transactions under Sections 43, 45, 50, and 66 of IBC.' },
+                    { name: 'Claims Verification Agent (@claims)', file: '@claims', description: 'Audits admitted vs rejected balances for Form B, Form C, and Form D claim forms.' },
+                    { name: 'IM Compiler Agent (@im_compiler)', file: '@im_compiler', description: 'Aggregates balance sheets and litigation registries into Regulation 36 Information Memorandum.' },
+                    { name: 'Forms Agent (@forms)', file: '@forms', description: 'Audits MCA forms, AOC-4, MGT-7, and Form H resolution compliance.' },
+                    { name: 'Forensic Audit Agent (@forensic)', file: '@forensic', description: 'Deep financial forensic statement and bank cashbook auditor.' }
                 ],
                 gateway: {
                     statutory_body: 'Insolvency & Bankruptcy Board of India (IBBI)',
@@ -95,7 +96,7 @@ router.get('/professional-roles', (req, res) => {
                     sovereignty: 'Ed25519 Cryptographic Signatures & Tamper-Evident Audit Trails'
                 },
                 marketplace: {
-                    asset_title: 'IBC Resolution Vault (v2.0)',
+                    asset_title: 'IBC Precedent & Laws Vault (v2.0)',
                     download_url: 'downloads/ibc_precedent_vault_v2.zip',
                     file_name: 'ibc_precedent_vault_v2.zip',
                     version: 'v2.1.0',
@@ -109,27 +110,28 @@ router.get('/professional-roles', (req, res) => {
                 category: 'Corporate & Litigation',
                 description: 'Litigation environment for corporate advocates, high court practitioners, and trial attorneys.',
                 embeddings: {
-                    model_name: 'bge-small-en-v1.5',
+                    model_name: 'InLegal-SBERT',
                     dimensions: 384,
-                    scope: 'CPC, CrPC, Evidence Act & High Court Case Laws',
-                    details: 'Optimized for rapid case law search, procedural objection checking, and brief drafting.'
+                    scope: 'CPC, CrPC, Evidence Act & High Court Case Laws (100% Local ONNX)',
+                    details: 'Tuned specifically for fast case law search, procedural objection checking, and pleading drafting.'
                 },
                 llm: {
-                    model_name: 'anthropic/claude-3.7-sonnet',
-                    backup_model: 'google/gemini-2.5-flash',
-                    local_gguf: 'Air-Gapped Local GGUF',
-                    details: 'Synthesizes persuasive legal arguments, pleading drafts, and cross-examination strategies.'
+                    model_name: 'SaulLM-7B Instruct (PRO 4.37 GB)',
+                    backup_model: 'anthropic/claude-3.7-sonnet',
+                    local_gguf: 'Air-Gapped Local Port 8090 (GGUF 4-bit)',
+                    details: 'Specialized 7B Legal LLM pre-trained on 30B+ legal tokens for litigation argument synthesis and pleading drafts.'
                 },
                 vaults: {
-                    vault_name: 'Commercial Litigation Vault (v1.5)',
+                    vault_name: 'Judgments & Case Law Vault (cases_vault)',
                     file_name: 'litigation_vault_v1.vlt',
-                    size: '32.10 MB',
-                    details: 'Precedent brief repository for High Court commercial suits and writ petitions.'
+                    size: '132.8 MB (Cases) + 28.7 MB (Documents)',
+                    details: 'Supreme Court & High Court precedent brief repository for commercial suits and writ petitions.'
                 },
                 agents: [
-                    { name: 'Mock Judge Litigation Agent', file: 'mock_judge.md', description: 'Simulates hostile bench questioning and identifies weaknesses in legal briefs.' },
-                    { name: 'Pleading Drafter', file: 'pleading_drafter.md', description: 'Drafts plaints, written statements, and interlocutory applications.' },
-                    { name: 'Evidence Linter', file: 'evidence_linter.md', description: 'Verifies admissibility of electronic evidence under Section 65B.' }
+                    { name: 'Advisor Agent (@advisor)', file: '@advisor', description: 'Legal research specialist querying landmark Supreme Court precedent indices.' },
+                    { name: 'Document Agent (@document)', file: '@document', description: 'Compiles legal plaints, written statements, and interlocutory applications.' },
+                    { name: 'Judicial Agent (@nclt)', file: '@nclt', description: 'Simulates bench questioning and procedural compliance checks.' },
+                    { name: 'Mock Judge Red-Teaming', file: 'mock_judge.md', description: 'Simulates hostile bench questioning and identifies weaknesses in legal briefs.' }
                 ],
                 gateway: {
                     statutory_body: 'Bar Council of India & Supreme Court of India',
@@ -152,27 +154,27 @@ router.get('/professional-roles', (req, res) => {
                 category: 'Arbitration & Contracts',
                 description: 'Specialized suite for contract clause auditing, antecedent term checking, and commercial arbitration.',
                 embeddings: {
-                    model_name: 'nomic-embed-text-v1.5',
-                    dimensions: 768,
-                    scope: 'Commercial Contracts, Arbitration Awards & NDAs',
+                    model_name: 'InLegal-SBERT',
+                    dimensions: 384,
+                    scope: 'Commercial Contracts, Arbitration Awards & NDAs (100% Local ONNX)',
                     details: 'Vectorized contract clause repository for indemnification, liability, and dispute resolution clauses.'
                 },
                 llm: {
-                    model_name: 'google/gemini-2.5-flash',
-                    backup_model: 'claude-3.7-sonnet',
-                    local_gguf: 'Air-Gapped Local GGUF',
+                    model_name: 'LegalParam-2.9B (Local GGUF)',
+                    backup_model: 'google/gemini-2.5-flash',
+                    local_gguf: 'Air-Gapped Local Port 8090 (GGUF 4-bit)',
                     details: 'Lints contract terminology for antecedent consistency and breach risk scores.'
                 },
                 vaults: {
-                    vault_name: 'Contract Compliance Vault (v1.0)',
+                    vault_name: 'Laws Vault (33.6 MB) + Documents Vault (28.7 MB)',
                     file_name: 'contract_vault_v1.vlt',
-                    size: '15.80 MB',
-                    details: 'Contains 500+ standardized commercial contract templates and clause risk benchmarks.'
+                    size: '62.3 MB Combined Vaults',
+                    details: 'Contains Arbitration & Conciliation Act 1996, Indian Contract Act 1872, and 500+ commercial contract templates.'
                 },
                 agents: [
-                    { name: 'Contract Antecedent Linter', file: 'contract_antecedent_linter.js', description: 'Scans contract text for undefined capitalized terms and ambiguous clauses.' },
-                    { name: 'Arbitration Clause Checker', file: 'arbitration_checker.md', description: 'Verifies seat/venue clarity and institutional arbitration rules.' },
-                    { name: 'Breach Risk Analyst', file: 'breach_analyst.md', description: 'Calculates monetary exposure and liquidated damages enforceability.' }
+                    { name: 'Document Agent (@document)', file: '@document', description: 'Compiles arbitration petitions, statement of claims, and award certificates.' },
+                    { name: 'Forms Agent (@forms)', file: '@forms', description: 'Audits contract mathematical obligations and penalty clause timelines.' },
+                    { name: 'Contract Antecedent Linter', file: 'contract_antecedent_linter.js', description: 'Scans contract text for undefined capitalized terms and ambiguous clauses.' }
                 ],
                 gateway: {
                     statutory_body: 'Arbitration & Conciliation Act 1996 (as amended)',
