@@ -8,7 +8,7 @@ const router = express.Router();
 const WIKI_DIR = path.join(__dirname, '../../wiki');
 
 // GET /api/wiki/professional-roles
-// Returns specialized professional role titles with exact verified HAYAGRIVA assets (InLegal-SBERT, Finance-Embeddings, LegalParam-2.9B, FinanceParam-2.9B, SaulLM-7B, laws_vault, cases_vault, documents_vault, legal_agents.vlt, finance_agents.vlt)
+// Returns specialized professional role titles with exact verified HAYAGRIVA assets and Monaco slash commands (/commands)
 router.get('/professional-roles', (req, res) => {
     try {
         const roles = [
@@ -43,6 +43,15 @@ router.get('/professional-roles', (req, res) => {
                     { name: 'Alice 101 Examiner', file: 'alice_examiner.md', description: 'Audits claims under USPTO 2-step Alice framework for 35 U.S.C. 101 eligibility.' },
                     { name: 'Claim Drafter & Linter', file: 'claim_drafter.md', description: 'Drafts claims with automatic antecedent basis checking.' },
                     { name: 'USPTO Mock Examiner', file: 'mock_examiner.md', description: 'Simulates strict USPTO Office Action rejections and allowance probability scores.' }
+                ],
+                slash_commands: [
+                    { command: '/law <statute>', description: 'Searches USPTO MPEP guidelines & 35 U.S.C. sections.', example: '/law 35 usc 101' },
+                    { command: '/precedent <query>', description: 'Queries USPTO Patent Trial and Appeal Board (PTAB) precedent rulings.', example: '/precedent alice 101 eligibility' },
+                    { command: '/interrogate', description: 'Triggers Invention Interrogator to extract statutory claim elements.', example: '/interrogate raw_disclosure.md' },
+                    { command: '/alice', description: 'Audits claims under 2-step USPTO Alice Framework for eligibility.', example: '/alice claim 1' },
+                    { command: '/draft-claim', description: 'Generates independent/dependent claims with antecedent linter.', example: '/draft-claim method' },
+                    { command: '/mock-examiner', description: 'Simulates USPTO Office Action rejections and allowance score.', example: '/mock-examiner' },
+                    { command: '/export-sc', description: '1-Click USPTO / Court DOCX formatting compiler.', example: '/export-sc' }
                 ],
                 gateway: {
                     statutory_body: 'USPTO & Indian Patent Office (IPO)',
@@ -89,6 +98,15 @@ router.get('/professional-roles', (req, res) => {
                     { name: 'Forms Agent (@forms)', file: '@forms', description: 'Audits MCA forms, AOC-4, MGT-7, and Form H resolution compliance.' },
                     { name: 'Forensic Audit Agent (@forensic)', file: '@forensic', description: 'Deep financial forensic statement and bank cashbook auditor.' }
                 ],
+                slash_commands: [
+                    { command: '/law <statute>', description: 'Searches IBC Code 2016 sections, IBBI circulars & MCA rules.', example: '/law ibc 14' },
+                    { command: '/precedent <query>', description: 'Searches Supreme Court & NCLAT landmark precedents.', example: '/precedent related party voting' },
+                    { command: '/avoidance', description: 'Runs Avoidance Transaction Audit for Sections 43, 45, 50, and 66.', example: '/avoidance lookback 2yr' },
+                    { command: '/claims', description: 'Audits admitted vs rejected balances for Form B, C, and D.', example: '/claims audit' },
+                    { command: '/im_compiler', description: 'Compiles Regulation 36 Information Memorandum.', example: '/im_compiler' },
+                    { command: '/forms', description: 'Audits Form H compliance and CoC voting percentages.', example: '/forms form_h' },
+                    { command: '/export-sc', description: '1-Click NCLT / NCLAT DOCX formatting compiler.', example: '/export-sc' }
+                ],
                 gateway: {
                     statutory_body: 'Insolvency & Bankruptcy Board of India (IBBI)',
                     directives: 'IBBI CIRP Regulations 2016 & Supreme Court Directives on AI in Judicial Audits',
@@ -133,6 +151,15 @@ router.get('/professional-roles', (req, res) => {
                     { name: 'Judicial Agent (@nclt)', file: '@nclt', description: 'Simulates bench questioning and procedural compliance checks.' },
                     { name: 'Mock Judge Red-Teaming', file: 'mock_judge.md', description: 'Simulates hostile bench questioning and identifies weaknesses in legal briefs.' }
                 ],
+                slash_commands: [
+                    { command: '/law <statute>', description: 'Searches CPC, CrPC, Companies Act, and High Court Rules.', example: '/law cpc order 39' },
+                    { command: '/precedent <query>', description: 'Searches High Court & Supreme Court ruling vectors.', example: '/precedent specific performance' },
+                    { command: '/advisor', description: 'Triggers Advisor Agent for deep statutory & precedent Q&A.', example: '/advisor notice period' },
+                    { command: '/mock-judge', description: 'Simulates hostile judicial questioning on active brief.', example: '/mock-judge redteam' },
+                    { command: '/pleading', description: 'Drafts plaints, written statements, and petitions.', example: '/pleading plaint' },
+                    { command: '/evidence', description: 'Lints electronic evidence for Section 65B compliance.', example: '/evidence cert65b' },
+                    { command: '/export-sc', description: '1-Click Supreme Court A4 DOCX compiler.', example: '/export-sc' }
+                ],
                 gateway: {
                     statutory_body: 'Bar Council of India & Supreme Court of India',
                     directives: 'High Court Commercial Division Rules & e-Courts Directives',
@@ -175,6 +202,14 @@ router.get('/professional-roles', (req, res) => {
                     { name: 'Document Agent (@document)', file: '@document', description: 'Compiles arbitration petitions, statement of claims, and award certificates.' },
                     { name: 'Forms Agent (@forms)', file: '@forms', description: 'Audits contract mathematical obligations and penalty clause timelines.' },
                     { name: 'Contract Antecedent Linter', file: 'contract_antecedent_linter.js', description: 'Scans contract text for undefined capitalized terms and ambiguous clauses.' }
+                ],
+                slash_commands: [
+                    { command: '/law <statute>', description: 'Searches Arbitration & Conciliation Act 1996 and Contract Act 1872.', example: '/law arb sec 11' },
+                    { command: '/clause <type>', description: 'Inserts standard boilerplate (arbitration, indemnity, governing law).', example: '/clause arbitration' },
+                    { command: '/antecedent', description: 'Scans contract text for undefined capitalized terms.', example: '/antecedent lint' },
+                    { command: '/arbitration', description: 'Verifies seat/venue clarity and institutional rules.', example: '/arbitration seat' },
+                    { command: '/breach', description: 'Calculates monetary exposure & liquidated damages enforcement.', example: '/breach risk' },
+                    { command: '/export-sc', description: '1-Click Arbitral Award DOCX compiler.', example: '/export-sc' }
                 ],
                 gateway: {
                     statutory_body: 'Arbitration & Conciliation Act 1996 (as amended)',

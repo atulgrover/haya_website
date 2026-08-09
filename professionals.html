@@ -116,6 +116,11 @@
       display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
     }
     .btn-download:hover { background: #15803D; }
+
+    .cmd-badge {
+      font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 12.5px;
+      background: #E2E8F0; color: #0F172A; padding: 2px 7px; border-radius: 4px; display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -163,14 +168,14 @@
 
       <!-- Dedicated Engine Segments Grid -->
       <div class="segments-grid" id="segmentsGrid">
-        <!-- 4 Dedicated Segments loaded dynamically -->
+        <!-- 5 Dedicated Segments loaded dynamically -->
       </div>
     </main>
 
     <!-- RIGHT PANEL (3rd Segment): Gateway & Marketplace Inspector -->
     <aside class="panel-right" id="panelRight">
       <div class="inspector-header">
-        <h2 class="panel-title" id="inspectorTitle">3rd Segment: Gateway & Marketplace</h2>
+        <h2 class="panel-title" id="inspectorTitle">3rd Segment: Inspector</h2>
         <button class="btn-close" onclick="closeInspector()">×</button>
       </div>
 
@@ -280,6 +285,20 @@
             🔍 More Details (Agent Personas)
           </button>
         </div>
+
+        <!-- Segment 5: Monaco Slash Commands -->
+        <div class="segment-card">
+          <div>
+            <span class="segment-badge">CANVAS DIRECTIVES</span>
+            <h3 class="segment-title">⚡ Slash Commands (/commands)</h3>
+            <p class="segment-desc">
+              Monaco editor inline completions, ghost text triggers, and subagent directives for <strong>${activeRole.role_title}</strong>.
+            </p>
+          </div>
+          <button class="btn-more-details" onclick="openInspector('slash')">
+            🔍 More Details (Slash Commands List)
+          </button>
+        </div>
       `;
     }
 
@@ -319,7 +338,7 @@
           <div class="inspector-section">
             <div class="inspector-sec-title">Configured Reasoning Models</div>
             <div class="inspector-sec-text">
-              • <strong>Primary Cloud Model:</strong> <code>${activeRole.llm.model_name}</code><br/>
+              • <strong>Primary Local LLM:</strong> <code>${activeRole.llm.model_name}</code><br/>
               • <strong>Backup Model:</strong> <code>${activeRole.llm.backup_model || 'N/A'}</code><br/>
               • <strong>Air-Gapped Execution:</strong> ${activeRole.llm.local_gguf}
             </div>
@@ -362,6 +381,25 @@
             <a href="${activeRole.marketplace.download_url}" download class="btn-download">
               ⬇️ Download Full Agent Vault Package
             </a>
+          </div>
+        `;
+      } else if (segmentType === 'slash') {
+        title.innerText = '⚡ Monaco Slash Commands (/commands)';
+        content.innerHTML = `
+          <div class="inspector-section">
+            <div class="inspector-sec-title">Inline Completions & Directives</div>
+            <p class="inspector-sec-text">Type these slash commands anywhere inside the Monaco drafting canvas to trigger ghost-text completions and subagent workflows.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+              ${(activeRole.slash_commands || []).map(cmd => `
+                <div style="background: #FFF; border: 1px solid var(--border-color); padding: 10px; border-radius: 6px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span class="cmd-badge">${cmd.command}</span>
+                  </div>
+                  <div style="font-size: 12.5px; color: var(--text-main);">${cmd.description}</div>
+                  <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Example: <code>${cmd.example}</code></div>
+                </div>
+              `).join('')}
+            </div>
           </div>
         `;
       }
