@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Professionals | HAYAGRIVA Sovereign IDE & Vaults</title>
-  <meta name="description" content="HAYAGRIVA Professional Workspace for Legal, Patent, and Insolvency Attorneys. Download sovereign domain vaults, launch local desktop IDE, and deploy AI agents.">
+  <meta name="description" content="HAYAGRIVA Professional Workspace for Patent Builders, Insolvency Professionals, and Corporate Advocates. Download sovereign domain vaults and deploy AI agents.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -24,46 +24,106 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; }
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
     a { color: var(--primary-color); text-decoration: none; }
 
     /* Top Navigation Bar */
     .header-nav {
-      position: sticky; top: 0; z-index: 1000;
-      background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      height: 64px; background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-shrink: 0; z-index: 1000;
     }
     .nav-container {
-      max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 70px;
+      max-width: 100%; padding: 0 24px; height: 100%;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .brand-logo {
-      font-family: var(--font-heading); font-weight: 700; font-size: 22px;
-      letter-spacing: 1.5px; color: var(--text-main);
-    }
+    .brand-logo { font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 1.5px; color: var(--text-main); }
     .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
-    .nav-link {
-      padding: 8px 16px; border-radius: 6px; font-size: 15px; font-weight: 500;
-      color: var(--text-main); transition: all 0.2s ease;
-    }
+    .nav-link { padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
     .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
-    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 9px 20px; border-radius: 6px; }
+    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
 
-    /* Container & Diagram Slots */
-    .page-container { max-width: 1280px; margin: 40px auto; padding: 0 24px; }
-    
-    .diagram-slot {
-      background: #FFFFFF; border: 2px dashed #CBD5E1; border-radius: 12px;
-      padding: 60px 32px; text-align: center; margin-bottom: 32px;
+    /* 3-Panel IDE Layout */
+    .ide-container { display: flex; flex: 1; height: calc(100vh - 64px); overflow: hidden; }
+
+    /* LEFT PANEL: Professional Titles Directory */
+    .panel-left {
+      width: 320px; min-width: 280px; background: #FFFFFF; border-right: 1px solid var(--border-color);
+      padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; flex-shrink: 0;
+    }
+    .panel-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .filter-group { display: flex; flex-direction: column; gap: 6px; }
+    .filter-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .filter-input {
+      width: 100%; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px;
+      font-size: 13.5px; font-family: var(--font-main); outline: none; transition: border-color 0.2s;
+    }
+    .filter-input:focus { border-color: var(--primary-color); }
+
+    .role-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .role-item {
+      padding: 12px 14px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px;
+      cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 4px;
+    }
+    .role-item:hover, .role-item.active { background: var(--primary-light); border-color: var(--primary-color); }
+    .role-title { font-family: var(--font-heading); font-size: 14.5px; font-weight: 700; color: var(--text-main); }
+    .role-category { font-size: 11.5px; color: var(--text-muted); font-weight: 600; }
+
+    /* CENTER PANEL: Dedicated Engine Segments */
+    .panel-center {
+      flex: 1; background: var(--bg-primary); padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;
+    }
+    .workspace-header { border-bottom: 1px solid var(--border-color); padding-bottom: 14px; }
+    .role-header-title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .role-header-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+
+    .segment-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;
       transition: all 0.2s ease;
     }
-    .diagram-slot:hover { border-color: var(--primary-color); background: #F1F5F9; }
-    .slot-tag { display: inline-block; background: var(--primary-light); color: var(--primary-color); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 12px; margin-bottom: 12px; }
-    .slot-title { font-family: var(--font-heading); font-size: 24px; margin-bottom: 8px; }
-    .slot-desc { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 15px; }
+    .segment-card:hover { border-color: var(--primary-color); box-shadow: 0 6px 12px rgba(30, 108, 147, 0.1); }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; }
-    .card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .segment-badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: var(--primary-light); color: var(--primary-color); display: inline-block; margin-bottom: 8px; }
+    .segment-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+    .segment-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
+
+    .btn-more-details {
+      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--primary-color); padding: 9px;
+      border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px;
+    }
+    .btn-more-details:hover { background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color); }
+
+    /* WORKBENCH Shared Engine Banner */
+    .workbench-banner {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-left: 4px solid var(--primary-color);
+      border-radius: 10px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .wb-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .wb-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* RIGHT PANEL (3rd Segment): Gateway & Marketplace Inspector */
+    .panel-right {
+      width: 420px; min-width: 340px; background: #FFFFFF; border-left: 1px solid var(--border-color);
+      padding: 24px; overflow-y: auto; display: none; flex-direction: column; gap: 20px; flex-shrink: 0;
+    }
+    .panel-right.active { display: flex; }
+    .inspector-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .btn-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+
+    .inspector-section { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; }
+    .inspector-sec-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+    .inspector-sec-text { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 10px; }
+
+    .btn-download {
+      background: #166534; color: #FFFFFF; border: none; padding: 12px; border-radius: 8px;
+      font-weight: 700; font-size: 14px; width: 100%; cursor: pointer; transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+    }
+    .btn-download:hover { background: #15803D; }
   </style>
 </head>
 <body>
@@ -84,37 +144,256 @@
     </div>
   </header>
 
-  <main class="page-container">
-    <!-- PROFESSIONAL HERO DIAGRAM SLOT -->
-    <div class="diagram-slot" id="professional-hero-slot">
-      <span class="slot-tag">DIAGRAM SLOT #1</span>
-      <h2 class="slot-title">HAYAGRIVA Professional Sovereign IDE Overview</h2>
-      <p class="slot-desc">Replace this placeholder with your exact diagram/image for the Professional IDE & Local Air-Gapped Intelligence Engine.</p>
-    </div>
+  <!-- 3-Panel IDE Layout Container -->
+  <div class="ide-container">
 
-    <!-- VAULT MARKETPLACE SLOT -->
-    <div class="diagram-slot" id="vault-marketplace-slot">
-      <span class="slot-tag">DIAGRAM SLOT #2</span>
-      <h2 class="slot-title">Sovereign Domain Vaults & Agent Packages Marketplace</h2>
-      <p class="slot-desc">Place your exact diagram/image for downloading Patent Agents (`patent_agents_v1.0.zip`), IBC Vaults, and Precedent DBs here.</p>
-    </div>
+    <!-- LEFT PANEL: Professional Role Titles Directory -->
+    <aside class="panel-left">
+      <h2 class="panel-title">Professional Roles</h2>
 
-    <!-- FEATURES OVERVIEW -->
-    <div class="grid-3">
-      <div class="card">
-        <h3>⚖️ Sovereign Domain Vaults</h3>
-        <p style="color: var(--text-muted); margin-top: 8px;">Offline-first encrypted databases for Patent, Insolvency, and Corporate Litigation.</p>
+      <div class="filter-group">
+        <label class="filter-label" for="searchInput">Filter Roles</label>
+        <input type="text" id="searchInput" class="filter-input" placeholder="e.g. Patent, Insolvency..." oninput="handleSearchInput()" />
       </div>
-      <div class="card">
-        <h3>🤖 AI Agent Personas</h3>
-        <p style="color: var(--text-muted); margin-top: 8px;">Specialized subagents for claim drafting, 35 U.S.C. eligibility, and mock judge red-teaming.</p>
-      </div>
-      <div class="card">
-        <h3>🖥️ Air-Gapped Desktop IDE</h3>
-        <p style="color: var(--text-muted); margin-top: 8px;">Monaco editor with strict DPDP Act 2023 zero-cloud data leak guarantees.</p>
-      </div>
-    </div>
-  </main>
 
+      <div class="role-list" id="roleList">
+        <!-- Professional Roles loaded dynamically -->
+      </div>
+    </aside>
+
+    <!-- CENTER PANEL: Dedicated Engine Segments -->
+    <main class="panel-center">
+      <div class="workspace-header" id="workspaceHeader">
+        <h1 class="role-header-title" id="roleHeaderTitle">Loading Professional Roles...</h1>
+        <p class="role-header-desc" id="roleHeaderDesc">Select a professional role from the left panel to inspect domain architecture.</p>
+      </div>
+
+      <!-- WORKBENCH Core Engine Banner -->
+      <div class="workbench-banner">
+        <div class="wb-title">🖥️ WORKBENCH Core Desktop Engine</div>
+        <div class="wb-desc">Consistent across all professional domains. Provides local document ingestion, vector indexing, cryptographic SHA-256 hashing, and air-gapped GGUF port 8090 execution.</div>
+      </div>
+
+      <!-- Dedicated Engine Segments Grid -->
+      <div class="segments-grid" id="segmentsGrid">
+        <!-- 4 Dedicated Segments loaded dynamically -->
+      </div>
+    </main>
+
+    <!-- RIGHT PANEL (3rd Segment): Gateway & Marketplace Inspector -->
+    <aside class="panel-right" id="panelRight">
+      <div class="inspector-header">
+        <h2 class="panel-title" id="inspectorTitle">3rd Segment: Gateway & Marketplace</h2>
+        <button class="btn-close" onclick="closeInspector()">×</button>
+      </div>
+
+      <div id="inspectorContent">
+        <!-- Dynamic inspector content rendered when "More Details" is clicked -->
+      </div>
+    </aside>
+
+  </div>
+
+  <script>
+    let allRoles = [];
+    let activeRole = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadProfessionalRoles();
+    });
+
+    async function loadProfessionalRoles() {
+      try {
+        const res = await fetch('/api/wiki/professional-roles');
+        const data = await res.json();
+        if (data.success && data.roles.length > 0) {
+          allRoles = data.roles;
+          renderRoleList(allRoles);
+          selectRole(allRoles[0].id);
+        }
+      } catch (err) { console.error(err); }
+    }
+
+    function renderRoleList(roles) {
+      const list = document.getElementById('roleList');
+      list.innerHTML = roles.map(r => `
+        <div class="role-item ${activeRole && activeRole.id === r.id ? 'active' : ''}" onclick="selectRole('${r.id}')">
+          <span class="role-title">${r.role_title}</span>
+          <span class="role-category">${r.category}</span>
+        </div>
+      `).join('');
+    }
+
+    function handleSearchInput() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = allRoles.filter(r => 
+        r.role_title.toLowerCase().includes(q) || 
+        r.category.toLowerCase().includes(q) || 
+        r.description.toLowerCase().includes(q)
+      );
+      renderRoleList(filtered);
+    }
+
+    function selectRole(roleId) {
+      activeRole = allRoles.find(r => r.id === roleId);
+      if (!activeRole) return;
+
+      renderRoleList(allRoles);
+      closeInspector();
+
+      document.getElementById('roleHeaderTitle').innerText = activeRole.role_title;
+      document.getElementById('roleHeaderDesc').innerText = activeRole.description;
+
+      const grid = document.getElementById('segmentsGrid');
+      grid.innerHTML = `
+        <!-- Segment 1: Embeddings -->
+        <div class="segment-card">
+          <div>
+            <span class="segment-badge">BRAIN / VECTORS</span>
+            <h3 class="segment-title">🧠 Embedding Models</h3>
+            <p class="segment-desc">
+              <strong>Model:</strong> <code>${activeRole.embeddings.model_name}</code> (${activeRole.embeddings.dimensions}-dim)<br/>
+              <strong>Scope:</strong> ${activeRole.embeddings.scope}
+            </p>
+          </div>
+          <button class="btn-more-details" onclick="openInspector('embeddings')">
+            🔍 More Details (Gateway & Scope)
+          </button>
+        </div>
+
+        <!-- Segment 2: LLM Engines -->
+        <div class="segment-card">
+          <div>
+            <span class="segment-badge">REASONING ENGINE</span>
+            <h3 class="segment-title">⚡ LLM Reasoning Engines</h3>
+            <p class="segment-desc">
+              <strong>Primary LLM:</strong> <code>${activeRole.llm.model_name}</code><br/>
+              <strong>Air-Gapped:</strong> ${activeRole.llm.local_gguf}
+            </p>
+          </div>
+          <button class="btn-more-details" onclick="openInspector('llm')">
+            🔍 More Details (Model Specs)
+          </button>
+        </div>
+
+        <!-- Segment 3: Domain Vaults -->
+        <div class="segment-card">
+          <div>
+            <span class="segment-badge">SOVEREIGN VAULTS</span>
+            <h3 class="segment-title">📦 Domain Vault Assets</h3>
+            <p class="segment-desc">
+              <strong>Vault:</strong> ${activeRole.vaults.vault_name}<br/>
+              <strong>Size:</strong> <code>${activeRole.vaults.size}</code>
+            </p>
+          </div>
+          <button class="btn-more-details" onclick="openInspector('vaults')">
+            🔍 More Details (Marketplace Download)
+          </button>
+        </div>
+
+        <!-- Segment 4: Specialist AI Agents -->
+        <div class="segment-card">
+          <div>
+            <span class="segment-badge">SUBAGENT ROSTER</span>
+            <h3 class="segment-title">🤖 Specialist AI Agents</h3>
+            <p class="segment-desc">
+              Contains <strong>${activeRole.agents.length} Specialized Subagents</strong> tuned specifically for ${activeRole.category}.
+            </p>
+          </div>
+          <button class="btn-more-details" onclick="openInspector('agents')">
+            🔍 More Details (Agent Personas)
+          </button>
+        </div>
+      `;
+    }
+
+    function openInspector(segmentType) {
+      if (!activeRole) return;
+
+      const rightPanel = document.getElementById('panelRight');
+      const title = document.getElementById('inspectorTitle');
+      const content = document.getElementById('inspectorContent');
+
+      rightPanel.classList.add('active');
+
+      if (segmentType === 'embeddings') {
+        title.innerText = '🧠 Embedding Model Details';
+        content.innerHTML = `
+          <div class="inspector-section">
+            <div class="inspector-sec-title">Model Specifications</div>
+            <div class="inspector-sec-text">
+              • <strong>Model Name:</strong> <code>${activeRole.embeddings.model_name}</code><br/>
+              • <strong>Vector Dimension:</strong> ${activeRole.embeddings.dimensions}-D<br/>
+              • <strong>Primary Scope:</strong> ${activeRole.embeddings.scope}
+            </div>
+            <p class="inspector-sec-text">${activeRole.embeddings.details}</p>
+          </div>
+          <div class="inspector-section">
+            <div class="inspector-sec-title">🏛️ Domain GATEWAY Audit</div>
+            <div class="inspector-sec-text">
+              • <strong>Statutory Body:</strong> ${activeRole.gateway.statutory_body}<br/>
+              • <strong>Directives:</strong> ${activeRole.gateway.directives}<br/>
+              • <strong>Data Sovereignty:</strong> ${activeRole.gateway.sovereignty}
+            </div>
+          </div>
+        `;
+      } else if (segmentType === 'llm') {
+        title.innerText = '⚡ LLM Engine Details';
+        content.innerHTML = `
+          <div class="inspector-section">
+            <div class="inspector-sec-title">Configured Reasoning Models</div>
+            <div class="inspector-sec-text">
+              • <strong>Primary Cloud Model:</strong> <code>${activeRole.llm.model_name}</code><br/>
+              • <strong>Backup Model:</strong> <code>${activeRole.llm.backup_model || 'N/A'}</code><br/>
+              • <strong>Air-Gapped Execution:</strong> ${activeRole.llm.local_gguf}
+            </div>
+            <p class="inspector-sec-text">${activeRole.llm.details}</p>
+          </div>
+        `;
+      } else if (segmentType === 'vaults') {
+        title.innerText = '📦 Domain Vault & Marketplace';
+        content.innerHTML = `
+          <div class="inspector-section">
+            <div class="inspector-sec-title">Vault Asset Details</div>
+            <div class="inspector-sec-text">
+              • <strong>Asset Title:</strong> ${activeRole.marketplace.asset_title}<br/>
+              • <strong>Version:</strong> <code>${activeRole.marketplace.version}</code><br/>
+              • <strong>File Size:</strong> ${activeRole.marketplace.file_size}
+            </div>
+            <p class="inspector-sec-text">${activeRole.vaults.details}</p>
+          </div>
+
+          <a href="${activeRole.marketplace.download_url}" download class="btn-download">
+            ⬇️ Download ${activeRole.marketplace.file_name} (${activeRole.marketplace.file_size})
+          </a>
+        `;
+      } else if (segmentType === 'agents') {
+        title.innerText = '🤖 Specialist AI Agents Roster';
+        content.innerHTML = `
+          <div class="inspector-section">
+            <div class="inspector-sec-title">${activeRole.agents.length} Specialized Subagents</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+              ${activeRole.agents.map(a => `
+                <div style="background: #FFF; border: 1px solid var(--border-color); padding: 10px; border-radius: 6px;">
+                  <div style="font-weight: 700; font-size: 13.5px; color: var(--primary-color);">🤖 ${a.name}</div>
+                  <div style="font-size: 11.5px; color: var(--text-muted); font-family: 'Roboto Mono', monospace;">${a.file}</div>
+                  <div style="font-size: 12.5px; color: var(--text-main); margin-top: 4px;">${a.description}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="inspector-section" style="margin-top: 10px;">
+            <a href="${activeRole.marketplace.download_url}" download class="btn-download">
+              ⬇️ Download Full Agent Vault Package
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    function closeInspector() {
+      document.getElementById('panelRight').classList.remove('active');
+    }
+  </script>
 </body>
 </html>
