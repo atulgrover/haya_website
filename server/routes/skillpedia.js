@@ -5,8 +5,129 @@ const db = require('../db');
 
 const router = express.Router();
 
+// GET /api/skillpedia/qps/sectors
+router.get('/qps/sectors', async (req, res) => {
+    try {
+        const rows = await db.prepare(`SELECT DISTINCT sector FROM nsqf_qps WHERE sector != '' ORDER BY sector ASC`).all();
+        const sectors = rows.map(r => r.sector);
+        res.json({ success: true, count: sectors.length, sectors });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// GET /api/skillpedia/qps/subsectors
+router.get('/qps/subsectors', async (req, res) => {
+    try {
+        const { sector } = req.query;
+        let sql = `SELECT DISTINCT sub_sector FROM nsqf_qps WHERE sub_sector != ''`;
+        const args = [];
+        if (sector) {
+            sql += ` AND sector = ?`;
+            args.push(sector);
+        }
+        sql += ` ORDER BY sub_sector ASC`;
+
+        const rows = await db.prepare(sql).all(...args);
+        const subsectors = rows.map(r => r.sub_sector);
+        res.json({ success: true, count: subsectors.length, subsectors });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// GET /api/skillpedia/qps/occupations
+router.get('/qps/occupations', async (req, res) => {
+    try {
+        const { sector, subsector } = req.query;
+        let sql = `SELECT DISTINCT occupation FROM nsqf_qps WHERE occupation != ''`;
+        const args = [];
+        if (sector) {
+            sql += ` AND sector = ?`;
+            args.push(sector);
+        }
+        if (subsector) {
+            sql += ` AND sub_sector = ?`;
+            args.push(subsector);
+        }
+        sql += ` ORDER BY occupation ASC`;
+
+        const rows = await db.prepare(sql).all(...args);
+        const occupations = rows.map(r => r.occupation);
+        res.json({ success: true, count: occupations.length, occupations });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// GET /api/skillpedia/qps/jobroles
+router.get('/qps/jobroles', async (req, res) => {
+    try {
+        const { sector, subsector, occupation } = req.query;
+        let sql = `SELECT DISTINCT qp_name FROM nsqf_qps WHERE qp_name != ''`;
+        const args = [];
+        if (sector) {
+            sql += ` AND sector = ?`;
+            args.push(sector);
+        }
+        if (subsector) {
+            sql += ` AND sub_sector = ?`;
+            args.push(subsector);
+        }
+        if (occupation) {
+            sql += ` AND occupation = ?`;
+            args.push(occupation);
+        }
+        sql += ` ORDER BY qp_name ASC`;
+
+        const rows = await db.prepare(sql).all(...args);
+        const jobroles = rows.map(r => r.qp_name);
+        res.json({ success: true, count: jobroles.length, jobroles });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// GET /api/skillpedia/qps/cards
+router.get('/qps/cards', async (req, res) => {
+    try {
+        const { q, sector, subsector, occupation, jobrole, limit } = req.query;
+        let sql = `SELECT * FROM nsqf_qps WHERE 1=1`;
+        const args = [];
+
+        if (q) {
+            sql += ` AND (qp_name LIKE ? OR qp_code LIKE ? OR sector LIKE ? OR occupation LIKE ? OR min_education_exp LIKE ?)`;
+            const term = `%${q.trim()}%`;
+            args.push(term, term, term, term, term);
+        }
+        if (sector) {
+            sql += ` AND sector = ?`;
+            args.push(sector);
+        }
+        if (subsector) {
+            sql += ` AND sub_sector = ?`;
+            args.push(subsector);
+        }
+        if (occupation) {
+            sql += ` AND occupation = ?`;
+            args.push(occupation);
+        }
+        if (jobrole) {
+            sql += ` AND qp_name = ?`;
+            args.push(jobrole);
+        }
+
+        const maxLimit = limit ? parseInt(limit) : 50;
+        sql += ` ORDER BY id ASC LIMIT ${maxLimit}`;
+
+        const cards = await db.prepare(sql).all(...args);
+        res.json({ success: true, count: cards.length, cards });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 // POST /api/skillpedia/save-skill
-// Saves custom 11-reel skill with employee_email_id isolation
 router.post('/save-skill', async (req, res) => {
     try {
         const { title, companyId, employeeEmailId, schemaJson } = req.body;
@@ -33,7 +154,6 @@ router.post('/save-skill', async (req, res) => {
 });
 
 // GET /api/skillpedia/employee-skills
-// Fetches custom 11-reel skills isolated by employee_email_id
 router.get('/employee-skills', async (req, res) => {
     try {
         const email = req.query.email;
@@ -63,7 +183,6 @@ router.get('/employee-skills', async (req, res) => {
 });
 
 // POST /api/skillpedia/save-progress
-// Saves completed PCs & quiz scores for an employee/student
 router.post('/save-progress', async (req, res) => {
     try {
         const { userId, employeeEmailId, skillId, completedPcs, score } = req.body;
