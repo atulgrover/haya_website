@@ -8,7 +8,7 @@ const router = express.Router();
 const WIKI_DIR = path.join(__dirname, '../../wiki');
 
 // GET /api/wiki/professional-roles
-// Returns specialized professional role titles with dedicated embedding, llm, vault, agent, gateway, and marketplace metadata
+// Returns specialized professional role titles with exact embedding, llm, vault, agent, gateway, and marketplace metadata mapped from haya_vaults
 router.get('/professional-roles', (req, res) => {
     try {
         const roles = [
@@ -24,7 +24,7 @@ router.get('/professional-roles', (req, res) => {
                     details: 'Tuned specifically for patent claim semantic similarity and 35 U.S.C. 102 prior art novelty matching.'
                 },
                 llm: {
-                    model_name: 'google/gemini-2.5-flash (OpenRouter)',
+                    model_name: 'openrouter/google/gemini-2.5-flash',
                     backup_model: 'anthropic/claude-3.7-sonnet',
                     local_gguf: 'Air-Gapped Local Port 8090 (GGUF 4-bit)',
                     details: 'Optimized for high-speed statutory claim parsing, statutory rejection responses, and Alice 101 eligibility auditing.'
