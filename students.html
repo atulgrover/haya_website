@@ -347,12 +347,6 @@
                 <div class="qp-meta-line"><strong>Occupation:</strong> ${card.occupation || 'N/A'}</div>
                 <div class="qp-meta-line"><strong>Awarding Body:</strong> ${card.awarding_body || 'NCVET'}</div>
                 <div class="qp-meta-line"><strong>Min Qualification:</strong> ${card.min_education_exp || 'N/A'}</div>
-                
-                <div class="duration-box">
-                  <div class="duration-title">⏱️ Duration Breakdown:</div>
-                  <div>Theory: <strong>${card.theory_duration || 0} hrs</strong> │ Practical: <strong>${card.practical_duration || 0} hrs</strong></div>
-                  <div>Mandatory OJT: <strong>${card.ojt_mandatory_duration || 0} hrs</strong> │ Total: <strong>${card.total_qp_hours || 0} hrs</strong></div>
-                </div>
               </div>
 
               <button class="btn-learn" onclick="openDetailInspector('${card.qp_code}', '${encodeURIComponent(card.qp_name)}')">
