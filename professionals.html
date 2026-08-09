@@ -45,29 +45,21 @@
     /* 3-Panel IDE Layout */
     .ide-container { display: flex; flex: 1; height: calc(100vh - 64px); overflow: hidden; }
 
-    /* LEFT PANEL: Professional Titles Directory */
+    /* LEFT PANEL: Streamlined Professional Titles Directory */
     .panel-left {
-      width: 320px; min-width: 280px; background: #FFFFFF; border-right: 1px solid var(--border-color);
+      width: 300px; min-width: 260px; background: #FFFFFF; border-right: 1px solid var(--border-color);
       padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; flex-shrink: 0;
     }
     .panel-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
 
-    .filter-group { display: flex; flex-direction: column; gap: 6px; }
-    .filter-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .filter-input {
-      width: 100%; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px;
-      font-size: 13.5px; font-family: var(--font-main); outline: none; transition: border-color 0.2s;
-    }
-    .filter-input:focus { border-color: var(--primary-color); }
-
-    .role-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .role-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .role-item {
-      padding: 12px 14px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px;
-      cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 4px;
+      padding: 14px 16px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px;
+      cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .role-item:hover, .role-item.active { background: var(--primary-light); border-color: var(--primary-color); }
-    .role-title { font-family: var(--font-heading); font-size: 14.5px; font-weight: 700; color: var(--text-main); }
-    .role-category { font-size: 11.5px; color: var(--text-muted); font-weight: 600; }
+    .role-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .role-item.active .role-title { color: var(--primary-color); }
 
     /* CENTER PANEL: Dedicated Engine Segments */
     .panel-center {
@@ -147,14 +139,9 @@
   <!-- 3-Panel IDE Layout Container -->
   <div class="ide-container">
 
-    <!-- LEFT PANEL: Professional Role Titles Directory -->
+    <!-- LEFT PANEL: Streamlined Professional Titles Directory -->
     <aside class="panel-left">
       <h2 class="panel-title">Professional Roles</h2>
-
-      <div class="filter-group">
-        <label class="filter-label" for="searchInput">Filter Roles</label>
-        <input type="text" id="searchInput" class="filter-input" placeholder="e.g. Patent, Insolvency..." oninput="handleSearchInput()" />
-      </div>
 
       <div class="role-list" id="roleList">
         <!-- Professional Roles loaded dynamically -->
@@ -219,19 +206,8 @@
       list.innerHTML = roles.map(r => `
         <div class="role-item ${activeRole && activeRole.id === r.id ? 'active' : ''}" onclick="selectRole('${r.id}')">
           <span class="role-title">${r.role_title}</span>
-          <span class="role-category">${r.category}</span>
         </div>
       `).join('');
-    }
-
-    function handleSearchInput() {
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = allRoles.filter(r => 
-        r.role_title.toLowerCase().includes(q) || 
-        r.category.toLowerCase().includes(q) || 
-        r.description.toLowerCase().includes(q)
-      );
-      renderRoleList(filtered);
     }
 
     function selectRole(roleId) {

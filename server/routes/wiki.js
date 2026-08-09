@@ -14,7 +14,7 @@ router.get('/professional-roles', (req, res) => {
         const roles = [
             {
                 id: 'patent_builders',
-                role_title: '📜 Patent Builders & Patent Attorneys',
+                role_title: 'Patent Builders',
                 category: 'Intellectual Property',
                 description: 'Specialized environment for USPTO 35 U.S.C. 101/102/103 patent eligibility, claim drafting, antecedent linting, and Office Action responses.',
                 embeddings: {
@@ -61,7 +61,7 @@ router.get('/professional-roles', (req, res) => {
             },
             {
                 id: 'insolvency_professionals',
-                role_title: '⚖️ Insolvency Professionals (IPs & RAs)',
+                role_title: 'Insolvency Professionals',
                 category: 'Insolvency & Bankruptcy',
                 description: 'Complete environment for Insolvency Professionals under the Insolvency & Bankruptcy Code 2016 (IBC), CIRP monitoring, and Form H compliance.',
                 embeddings: {
@@ -105,7 +105,7 @@ router.get('/professional-roles', (req, res) => {
             },
             {
                 id: 'corporate_advocates',
-                role_title: '🏢 Corporate Advocates & Litigation Attorneys',
+                role_title: 'Corporate Advocates',
                 category: 'Corporate & Litigation',
                 description: 'Litigation environment for corporate advocates, high court practitioners, and trial attorneys.',
                 embeddings: {
@@ -147,8 +147,8 @@ router.get('/professional-roles', (req, res) => {
                 }
             },
             {
-                id: 'arbitrators',
-                role_title: '📑 Arbitrators & Contract Compliance Officers',
+                id: 'contract_arbitrators',
+                role_title: 'Contract Arbitrators',
                 category: 'Arbitration & Contracts',
                 description: 'Specialized suite for contract clause auditing, antecedent term checking, and commercial arbitration.',
                 embeddings: {
