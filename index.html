@@ -25,8 +25,8 @@
       --border-color: #E2E8F0;
       --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
       --hover-shadow: 0 10px 15px -3px rgba(30, 108, 147, 0.12), 0 4px 6px -2px rgba(30, 108, 147, 0.05);
-      --font-main: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-heading: 'Google Sans', 'Lato', sans-serif;
+      --font-main: 'Lato', sans-serif;
+      --font-heading: 'Google Sans', sans-serif;
       --font-mono: 'Roboto Mono', monospace;
     }
 
@@ -35,40 +35,37 @@
     a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
     a:hover { color: var(--primary-hover); }
 
-    /* Top Navigation Bar (Full Width) */
+    /* Top Navigation Bar (Identical across all pages: 64px height, padding 0 24px) */
     .header-nav {
-      position: sticky; top: 0; z-index: 1000; background-color: #FFFFFF;
-      border-bottom: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      height: 64px; background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-shrink: 0; z-index: 1000; position: sticky; top: 0;
     }
     .nav-container {
-      max-width: 100%; margin: 0; padding: 0 32px; height: 70px;
+      max-width: 100%; padding: 0 24px; height: 100%;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .brand-logo {
-      display: flex; align-items: center; gap: 10px; cursor: pointer;
-      font-family: var(--font-heading); font-weight: 700; font-size: 22px; letter-spacing: 1.5px; color: var(--text-main);
-    }
+    .brand-logo { font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 1.5px; color: var(--text-main); }
     .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
-    .nav-link { padding: 8px 16px; border-radius: 6px; font-size: 14.5px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
+    .nav-link { padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
     .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
-    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 9px 20px; border-radius: 6px; }
+    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
 
-    /* Pure Logo Hero Section (Full Width) */
+    /* Pure Logo Hero Section (Full Width, NOTHING BUT THE LOGO) */
     .hero-section {
       background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
-      border-bottom: 1px solid var(--border-color); padding: 50px 32px; text-align: center;
+      border-bottom: 1px solid var(--border-color); padding: 50px 24px; text-align: center;
       display: flex; justify-content: center; align-items: center; width: 100%;
     }
     .hero-logo-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px;
       padding: 30px 60px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       display: inline-flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease; max-width: 560px; width: 100%;
+      transition: all 0.3s ease; max-width: 540px; width: 100%;
     }
     .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 180px; }
 
     /* Content Layout (Full Width Edge-to-Edge) */
-    .section-container { max-width: 100%; margin: 0; padding: 48px 32px; }
+    .section-container { max-width: 100%; margin: 0; padding: 48px 24px; }
     .section-header { text-align: center; margin-bottom: 48px; }
     .sec-title { font-family: var(--font-heading); font-size: 30px; font-weight: 700; margin-bottom: 12px; }
     .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 720px; margin: 0 auto; }
@@ -86,12 +83,13 @@
     .pillar-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
     .pillar-features li { font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
 
+    /* Card CTA Buttons (Matching professionals.html slate/white button style) */
     .btn-cta-outline {
-      padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s ease;
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
-      background: #FFFFFF; color: var(--primary-color) !important; border: 1px solid var(--primary-color);
+      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--primary-color) !important;
+      padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px; cursor: pointer; transition: all 0.2s ease;
+      display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; width: 100%;
     }
-    .btn-cta-outline:hover { background: var(--primary-color); color: #FFFFFF !important; }
+    .btn-cta-outline:hover { background: var(--primary-color); color: #FFFFFF !important; border-color: var(--primary-color); }
 
     /* Engines Grid (Full Width Responsive) */
     .engines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
@@ -101,7 +99,7 @@
     .engine-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
     /* Dynamic TiddlyWiki Reader (Full Width) */
-    .wiki-section { background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 32px; width: 100%; }
+    .wiki-section { background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 24px; width: 100%; }
     .wiki-container { max-width: 100%; margin: 0; }
     .wiki-reader-box { display: flex; border: 1px solid var(--border-color); border-radius: 10px; height: 600px; overflow: hidden; width: 100%; }
     .wiki-sidebar { width: 320px; background: #F8FAFC; border-right: 1px solid var(--border-color); padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
@@ -111,33 +109,36 @@
     .wiki-item:hover, .wiki-item.active { border-color: var(--primary-color); background: var(--primary-light); color: var(--primary-color); }
     .wiki-frame { flex: 1; border: none; width: 100%; height: 100%; }
 
-    /* Original Compact Footer (Full Width Edge-to-Edge) */
-    .compact-footer { background-color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 40px 32px 20px; width: 100%; }
+    /* Signature Deep Blue (#1E6C93) Compact Footer */
+    .compact-footer { background-color: #1E6C93; color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 48px 24px 24px; width: 100%; }
     .footer-container { max-width: 100%; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-    .footer-heading { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 16px; }
+    .footer-heading { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 16px; }
     
     .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-    .info-group h4 { font-size: 13px; font-weight: 700; color: var(--primary-color); text-transform: uppercase; margin-bottom: 4px; }
-    .info-group p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 2px; }
+    .info-group h4 { font-size: 13px; font-weight: 700; color: #E2E8F0; text-transform: uppercase; margin-bottom: 4px; }
+    .info-group p { font-size: 13.5px; color: rgba(255, 255, 255, 0.85); margin-bottom: 2px; }
+    .info-group a { color: #FFFFFF; text-decoration: underline; }
+    .info-group a:hover { color: #E2E8F0; }
 
-    .shloka-block { background: #F8FAFC; border-left: 4px solid var(--primary-color); padding: 14px 16px; border-radius: 6px; display: flex; gap: 14px; align-items: flex-start; }
-    .shloka-devanagari { font-family: 'Noto Serif Devanagari', serif; font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 4px; line-height: 1.4; }
-    .shloka-transliteration { font-size: 11.5px; font-style: italic; color: #64748B; margin-bottom: 4px; }
-    .shloka-meaning { font-size: 11px; color: #475569; line-height: 1.35; }
+    .shloka-block { background: rgba(255, 255, 255, 0.1); border-left: 4px solid #FFFFFF; padding: 16px; border-radius: 8px; display: flex; gap: 14px; align-items: flex-start; }
+    .shloka-devanagari { font-family: 'Noto Serif Devanagari', serif; font-size: 13.5px; font-weight: 600; color: #FFFFFF; margin-bottom: 4px; line-height: 1.45; }
+    .shloka-transliteration { font-size: 12px; font-style: italic; color: rgba(255, 255, 255, 0.85); margin-bottom: 4px; }
+    .shloka-meaning { font-size: 11.5px; color: rgba(255, 255, 255, 0.8); line-height: 1.4; }
 
-    .contact-form { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; }
+    .contact-form { background: #FFFFFF; border-radius: 10px; padding: 24px; color: var(--text-main); }
     .form-group { margin-bottom: 12px; }
     .form-label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 4px; }
-    .form-input, .form-textarea { width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; background: #FFFFFF; }
+    .form-input, .form-textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; background: #FFFFFF; }
     .form-input:focus, .form-textarea:focus { border-color: var(--primary-color); }
-    .form-submit { background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 13.5px; cursor: pointer; width: 100%; }
+    .form-submit { background: var(--primary-color); color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; transition: background 0.2s; }
+    .form-submit:hover { background: var(--primary-hover); }
 
-    .footer-bottom { max-width: 100%; margin: 30px 0 0; padding-top: 16px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+    .footer-bottom { max-width: 100%; margin: 36px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15); display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255, 255, 255, 0.85); }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar (Full Width) -->
+  <!-- Top Navigation Bar (Identical across all pages: 64px height, padding 0 24px) -->
   <header class="header-nav">
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
@@ -225,7 +226,7 @@
   </section>
 
   <!-- 6 Core HAYAGRIVA Platform Engines Section (Full Width) -->
-  <section style="background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 32px; width: 100%;">
+  <section style="background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 24px; width: 100%;">
     <div class="section-container" style="padding: 0;">
       <div class="section-header">
         <h2 class="sec-title">The 6 Core HAYAGRIVA Platform Engines</h2>
@@ -287,7 +288,7 @@
     </div>
   </section>
 
-  <!-- Compact Footer with Integrated Contact Form (100% Full Width Edge-to-Edge) -->
+  <!-- Signature Deep Blue (#1E6C93) Compact Footer -->
   <footer class="compact-footer">
     <div class="footer-container">
       
