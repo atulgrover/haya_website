@@ -5,6 +5,202 @@ const db = require('../db');
 
 const router = express.Router();
 
+// Seed initial custom enterprise skills if custom_skills table is empty
+async function seedCustomSkillsIfEmpty() {
+    try {
+        const countRow = await db.prepare(`SELECT COUNT(*) as count FROM custom_skills`).get();
+        if (countRow && countRow.count === 0) {
+            const seedSkills = [
+                {
+                    title: 'Accounting & GST Filing Workflow',
+                    company_id: 'acme_corp',
+                    employee_email_id: 'sarah.accounting@acme.com',
+                    schema_json: JSON.stringify({
+                        title: 'Accounting & GST Filing Workflow',
+                        tag: 'Accounting',
+                        description: '11-step complete guide for corporate GST reconciliation and e-way bill generation.',
+                        reels: [
+                            { step: 1, title: 'GST Ledger Verification', videoId: 'dQw4w9WgXcQ' },
+                            { step: 2, title: 'Input Tax Credit Audit', videoId: 'dQw4w9WgXcQ' }
+                        ]
+                    })
+                },
+                {
+                    title: 'Automotive Electric Vehicle Battery Assembly',
+                    company_id: 'tesla_motors',
+                    employee_email_id: 'alex.engineer@evtech.com',
+                    schema_json: JSON.stringify({
+                        title: 'Automotive Electric Vehicle Battery Assembly',
+                        tag: 'Automotive Assembly',
+                        description: 'High-voltage EV pack wiring and thermal management safety protocols.',
+                        reels: [
+                            { step: 1, title: 'BMS Calibration', videoId: 'dQw4w9WgXcQ' }
+                        ]
+                    })
+                },
+                {
+                    title: 'Blockchain Smart Contract Auditing',
+                    company_id: 'web3_labs',
+                    employee_email_id: 'crypto.lead@web3labs.io',
+                    schema_json: JSON.stringify({
+                        title: 'Blockchain Smart Contract Auditing',
+                        tag: 'Blockchain',
+                        description: 'Reentrancy vulnerability linting and Gas optimization for ERC-20 tokens.',
+                        reels: [
+                            { step: 1, title: 'Static Analysis with Slither', videoId: 'dQw4w9WgXcQ' }
+                        ]
+                    })
+                },
+                {
+                    title: 'Customer Service Escalation & Conflict Resolution',
+                    company_id: 'global_support',
+                    employee_email_id: 'maria.support@helpdesk.com',
+                    schema_json: JSON.stringify({
+                        title: 'Customer Service Escalation Protocol',
+                        tag: 'Customer Service',
+                        description: 'SLA tracking and Tier-3 ticket escalation procedures for enterprise client accounts.',
+                        reels: [
+                            { step: 1, title: 'De-escalation Communication', videoId: 'dQw4w9WgXcQ' }
+                        ]
+                    })
+                },
+                {
+                    title: 'Drone Payload Calibration & Flight Safety',
+                    company_id: 'aero_drones',
+                    employee_email_id: 'flight.ops@aerodrones.in',
+                    schema_json: JSON.stringify({
+                        title: 'Drone Payload Calibration',
+                        tag: 'Drone Maintenance',
+                        description: 'LiDAR sensor alignment and DGCA airspace flight clearance checklist.',
+                        reels: [
+                            { step: 1, title: 'Pre-flight Telemetry Checks', videoId: 'dQw4w9WgXcQ' }
+                        ]
+                    })
+                },
+                {
+                    title: 'Fire Safety & Industrial Emergency Evacuation',
+                    company_id: 'safety_first',
+                    employee_email_id: 'hse.officer@safetycorp.org',
+                    schema_json: JSON.stringify({
+                        title: 'Industrial Emergency Evacuation',
+                        tag: 'Fire Safety',
+                        description: 'Hazmat response, CO2 extinguisher operation, and emergency assembly point drills.',
+                        reels: [
+                            { step: 1, title: 'Alarm Activation Protocols', videoId: 'dQw4w9WgXcQ' }
+                        ]
+                    })
+                }
+            ];
+
+            for (const s of seedSkills) {
+                await db.prepare(`
+                    INSERT INTO custom_skills (title, company_id, employee_email_id, schema_json)
+                    VALUES (?, ?, ?, ?)
+                `).run(s.title, s.company_id, s.employee_email_id, s.schema_json);
+            }
+            console.log('[Haya Portal DB] Seeded initial custom skills.');
+        }
+    } catch (e) {
+        console.error('[Haya Portal DB] Seeding error:', e.message);
+    }
+}
+seedCustomSkillsIfEmpty();
+
+// GET /api/skillpedia/custom/keywords
+// Returns consolidated, deduplicated alphabetical A-Z list of keywords with skill counts
+router.get('/custom/keywords', async (req, res) => {
+    try {
+        const skills = await db.prepare(`SELECT schema_json, title FROM custom_skills`).all();
+        const tagCounts = {};
+
+        skills.forEach(s => {
+            let tag = 'General';
+            try {
+                const schema = JSON.parse(s.schema_json);
+                if (schema.tag) tag = schema.tag.trim();
+                else {
+                    const firstWord = s.title.split(' ')[0];
+                    if (firstWord) tag = firstWord;
+                }
+            } catch (e) {
+                const firstWord = s.title.split(' ')[0];
+                if (firstWord) tag = firstWord;
+            }
+            tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+        });
+
+        const sortedTags = Object.keys(tagCounts).sort((a, b) => a.localeCompare(b)).map(tag => ({
+            tag,
+            count: tagCounts[tag],
+            firstLetter: tag.charAt(0).toUpperCase()
+        }));
+
+        res.json({
+            success: true,
+            totalKeywords: sortedTags.length,
+            keywords: sortedTags
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// GET /api/skillpedia/custom/all-skills
+// Returns custom skill cards filtered by q, tag, letter, email, or skillId
+router.get('/custom/all-skills', async (req, res) => {
+    try {
+        const { q, tag, letter, email, skillId } = req.query;
+        let sql = `SELECT * FROM custom_skills WHERE 1=1`;
+        const args = [];
+
+        if (skillId) {
+            sql += ` AND id = ?`;
+            args.push(skillId);
+        }
+        if (email) {
+            sql += ` AND employee_email_id = ?`;
+            args.push(email.trim().toLowerCase());
+        }
+        if (q) {
+            sql += ` AND (title LIKE ? OR employee_email_id LIKE ? OR schema_json LIKE ?)`;
+            const term = `%${q.trim()}%`;
+            args.push(term, term, term);
+        }
+
+        sql += ` ORDER BY id DESC`;
+        const rows = await db.prepare(sql).all(...args);
+
+        let parsedSkills = rows.map(s => {
+            let schema = {};
+            try { schema = JSON.parse(s.schema_json); } catch (e) {}
+            return {
+                id: s.id,
+                title: s.title,
+                company_id: s.company_id || 'N/A',
+                employee_email_id: s.employee_email_id,
+                created_at: s.created_at,
+                tag: schema.tag || s.title.split(' ')[0] || 'General',
+                schema
+            };
+        });
+
+        if (tag) {
+            parsedSkills = parsedSkills.filter(s => s.tag.toLowerCase() === tag.trim().toLowerCase());
+        }
+        if (letter) {
+            parsedSkills = parsedSkills.filter(s => s.tag.toUpperCase().startsWith(letter.trim().toUpperCase()));
+        }
+
+        res.json({
+            success: true,
+            count: parsedSkills.length,
+            skills: parsedSkills
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 // GET /api/skillpedia/qps/sectors
 router.get('/qps/sectors', async (req, res) => {
     try {
