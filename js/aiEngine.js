@@ -85,33 +85,41 @@ class AICurriculumEngine {
     onProgress(2, `Searching Live YouTube Index for 11 Relevant Video Reels...`, 70);
     console.log(`%c[AI-LOG 6/10] Resolving video candidates in parallel for all 11 reels of "${cleanTopic}"...`, 'color: #38bdf8; font-weight: bold');
 
-    // Real verified agricultural video IDs (Mango, Citrus, Gardening, Farming)
-    const verifiedAgriculturalVids = [
-      'oPjQ9N49QyU', // Mango Farming & Plantation Complete Guide
-      'QjM2eZ_8jV0', // High Density Mango Cultivation
-      'Z1-13c5O0_M', // Mango Tree Pruning & Canopy Management
-      '8rY2859P9w8', // Mango Nursery & Grafting Techniques
-      '8cZgX6201a0', // Organic Fertilizer for Mango Trees
-      '9X981a8c0_M', // Pest & Disease Control in Mango Orchards
-      '50Y30-1-12c', // Irrigation & Water Management in Mango Plantation
-      '1Rs2ND1ryYc', // Flowering & Fruit Set Optimization
-      'w7ejDZ8SWv8', // Mango Maturity & Harvesting Techniques
-      'pQN-pnXPaVg', // Post-Harvest Washing & Sorting
-      'mU6anWqZJcc'  // Mango Storage & Market Transportation
+    // Generic neutral fallback video IDs — broad educational content, never domain-specific
+    // Used ONLY when the live proxy fails for ALL queries. These are safe, topic-agnostic.
+    const neutralFallbackVids = [
+      'ZbZSe6N_BXs', // How to Stay Calm Under Pressure (TED-Ed)
+      'arj7oStGLkU', // Inside the Mind of a Master Procrastinator (TED)
+      'H14bBuluwB8', // How to Speak so People Want to Listen (TED)
+      'eIho2S0ZahI', // The Art of Misdirection (TED-Ed)
+      'UyyjU8fzEYU', // How great leaders inspire action (TED - Simon Sinek)
+      'Unzc731iCUY', // How to make stress your friend (TED)
+      'wnHW6o8WMas', // The Power of Vulnerability (TED - Brené Brown)
+      'RcGyVTAoXEU', // Why We Do What We Do (TED - Tony Robbins)
+      'X4y_3PtB6IY', // 10 ways to have a better conversation (TED)
+      'NbuUW9i-mHs', // The Happy Secret to Better Work (TED)
+      'fLJsdqxnZb0'  // Your body language may shape who you are (TED)
     ];
 
     const lessonsWithVideos = await Promise.all(llmResult.lessons.map(async (les, idx) => {
       const reelIndex = idx + 1;
+      // Primary query: topic + lesson title
       const stepQuery = `${cleanTopic} ${les.title.replace(/^Reel \d+:\s*/i, '')}`;
-      
+
       console.log(`[AI-LOG 6.1/10] Searching video proxy for Reel ${reelIndex}: "${stepQuery}"`);
-      const candidates = await this.searchLiveYouTubeVideoCandidates(stepQuery);
-      
+      let candidates = await this.searchLiveYouTubeVideoCandidates(stepQuery);
+
+      // Secondary attempt: use the LLM's own search_query if primary returns nothing
+      if ((!candidates || candidates.length === 0) && les.search_query && les.search_query !== stepQuery) {
+        console.log(`[AI-LOG 6.1b/10] Reel ${reelIndex}: primary empty, retrying with LLM search_query: "${les.search_query}"`);
+        candidates = await this.searchLiveYouTubeVideoCandidates(les.search_query);
+      }
+
       console.log(`[AI-LOG 6.2/10] Reel ${reelIndex} candidates found (${candidates.length}):`, candidates);
 
-      const topVid = (candidates && candidates.length > 0) 
-        ? candidates[0].video_id 
-        : (les.video_id && les.video_id.length === 11 ? les.video_id : verifiedAgriculturalVids[idx % 11]);
+      const topVid = (candidates && candidates.length > 0)
+        ? candidates[0].video_id
+        : (les.video_id && les.video_id.length === 11 ? les.video_id : neutralFallbackVids[idx % 11]);
 
       const chosenTitle = (candidates && candidates.length > 0) ? candidates[0].title : les.title;
 
@@ -406,7 +414,7 @@ Respond ONLY with raw JSON:
         title: `Reel ${i + 1}: ${formattedTitle} Step ${i + 1}`,
         subtitle: `Mastering essential technique for ${formattedTitle} — Stage ${i + 1} of 11`,
         video_platform: 'youtube',
-        video_id: ['oPjQ9N49QyU', 'QjM2eZ_8jV0', 'Z1-13c5O0_M', '8rY2859P9w8', '8cZgX6201a0', '9X981a8c0_M', '50Y30-1-12c', '1Rs2ND1ryYc', 'w7ejDZ8SWv8', 'pQN-pnXPaVg', 'mU6anWqZJcc'][i % 11],
+        video_id: ['ZbZSe6N_BXs', 'arj7oStGLkU', 'H14bBuluwB8', 'eIho2S0ZahI', 'UyyjU8fzEYU', 'Unzc731iCUY', 'wnHW6o8WMas', 'RcGyVTAoXEU', 'X4y_3PtB6IY', 'NbuUW9i-mHs', 'fLJsdqxnZb0'][i % 11],
         pcs: [
           `PC1. Review safety standards and prerequisites for ${formattedTitle}.`,
           `PC2. Execute step ${i + 1} using standard tools and procedures.`,
