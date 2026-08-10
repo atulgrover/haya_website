@@ -11,11 +11,19 @@
 .nav-container { position: relative; }
 
 /* ── Unified Header Brand Sub-Title ──────────────────── */
+.brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
 .brand-logo .brand-sub {
-  font-weight: 500;
-  color: var(--primary-color, #1E6C93);
-  font-size: 0.9em;
-  margin-left: 4px;
+  font-family: var(--font-heading), 'Google Sans', sans-serif;
+  font-weight: 600;
+  color: #212121;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  opacity: 0.7;
 }
 
 .page-subtitle-banner {
