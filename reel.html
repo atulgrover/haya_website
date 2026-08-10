@@ -57,7 +57,7 @@
     /* ===== BACK BUTTON ===== */
     #backBtn {
       position: fixed;
-      top: 24px; left: 14px;
+      top: 18px; left: 14px;
       z-index: 2001;
       display: flex; align-items: center; gap: 6px;
       background: rgba(0,0,0,0.55);
@@ -74,7 +74,7 @@
     /* ===== MUTE BUTTON ===== */
     #muteBtn {
       position: fixed;
-      top: 24px; right: 14px;
+      top: 18px; right: 14px;
       z-index: 2001;
       width: 38px; height: 38px;
       display: flex; align-items: center; justify-content: center;
@@ -279,6 +279,12 @@
        INIT — fetch skill from haya_portal API
        ========================================================= */
     async function initReelPage() {
+      // Hide duplicate back button if embedded in an iframe modal
+      if (window.self !== window.top) {
+        const backBtn = document.getElementById('backBtn');
+        if (backBtn) backBtn.style.display = 'none';
+      }
+
       if (!skillId) {
         document.getElementById('reelPageLoading').innerHTML = `
           <div style="font-size:40px;margin-bottom:12px">📚</div>
