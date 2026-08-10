@@ -7,7 +7,7 @@
   <meta name="description" content="HAYAGRIVA is a local-first Universal Integrated Professional Environment (IPE) Platform serving Students, Employees, and Professionals with 100% offline data sovereignty, AI agent packs, local embeddings, and encrypted domain vaults.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -109,24 +109,45 @@
     .wiki-item:hover, .wiki-item.active { border-color: var(--primary-color); background: var(--primary-light); color: var(--primary-color); }
     .wiki-frame { flex: 1; border: none; width: 100%; height: 100%; }
 
-    /* Signature Deep Blue (#1E6C93) Compact Footer */
+    /* Option 2: 3-Column Equal Grid Reformatted Footer (#1E6C93) */
     .compact-footer { background-color: #1E6C93; color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 48px 24px 24px; width: 100%; }
-    .footer-container { max-width: 100%; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-    .footer-heading { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 16px; }
+    .footer-container-3col {
+      max-width: 100%; margin: 0;
+      display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 32px; align-items: start;
+    }
     
-    .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-    .info-group h4 { font-size: 13px; font-weight: 700; color: #E2E8F0; text-transform: uppercase; margin-bottom: 4px; }
-    .info-group p { font-size: 13.5px; color: rgba(255, 255, 255, 0.85); margin-bottom: 2px; }
-    .info-group a { color: #FFFFFF; text-decoration: underline; }
-    .info-group a:hover { color: #E2E8F0; }
+    @media (max-width: 1024px) {
+      .footer-container-3col { grid-template-columns: 1fr; gap: 36px; }
+    }
 
-    .shloka-block { background: rgba(255, 255, 255, 0.1); border-left: 4px solid #FFFFFF; padding: 16px; border-radius: 8px; display: flex; gap: 16px; align-items: center; }
-    .shloka-emblem { height: 95px; width: auto; filter: brightness(0) invert(1); flex-shrink: 0; }
-    .shloka-devanagari { font-family: 'Noto Serif Devanagari', serif; font-size: 13.5px; font-weight: 600; color: #FFFFFF; margin-bottom: 4px; line-height: 1.45; }
-    .shloka-transliteration { font-size: 12px; font-style: italic; color: rgba(255, 255, 255, 0.85); margin-bottom: 4px; }
-    .shloka-meaning { font-size: 11.5px; color: rgba(255, 255, 255, 0.8); line-height: 1.4; }
+    .footer-heading { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: #FFFFFF; margin-bottom: 18px; letter-spacing: 0.5px; }
+    
+    /* Column 1: Contact Details Vertical Stack */
+    .contact-stack { display: flex; flex-direction: column; gap: 18px; }
+    .info-group-col h4 { font-size: 13px; font-weight: 700; color: #60A5FA; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+    .info-group-col p { font-size: 14px; color: rgba(255, 255, 255, 0.9); margin-bottom: 2px; line-height: 1.5; }
+    .info-group-col a { color: #FFFFFF; text-decoration: underline; transition: color 0.2s; }
+    .info-group-col a:hover { color: #93C5FD; }
 
-    .contact-form { background: #FFFFFF; border-radius: 10px; padding: 24px; color: var(--text-main); }
+    /* Column 2: Center Sacred Shloka & Emblem Card */
+    .shloka-card-centered {
+      background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
+      border-top: 4px solid #60A5FA; padding: 24px; border-radius: 12px; text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .shloka-emblem-center {
+      height: 120px; width: auto; display: block; margin: 0 auto 16px;
+      filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.25));
+    }
+    .shloka-devanagari-center {
+      font-family: 'Noto Serif Devanagari', serif; font-size: 16px; font-weight: 700;
+      color: #FFFFFF; margin-bottom: 8px; line-height: 1.6; letter-spacing: 0.3px;
+    }
+    .shloka-transliteration-center { font-size: 13px; font-style: italic; color: #93C5FD; margin-bottom: 10px; line-height: 1.45; }
+    .shloka-meaning-center { font-size: 12.5px; color: rgba(255, 255, 255, 0.92); line-height: 1.5; }
+
+    /* Column 3: Contact Inquiry Form */
+    .contact-form-col { background: #FFFFFF; border-radius: 10px; padding: 24px; color: var(--text-main); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
     .form-group { margin-bottom: 12px; }
     .form-label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 4px; }
     .form-input, .form-textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; background: #FFFFFF; }
@@ -134,7 +155,7 @@
     .form-submit { background: var(--primary-color); color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; transition: background 0.2s; }
     .form-submit:hover { background: var(--primary-hover); }
 
-    .footer-bottom { max-width: 100%; margin: 36px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15); display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255, 255, 255, 0.85); }
+    .footer-bottom { max-width: 100%; margin: 40px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15); display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255, 255, 255, 0.85); }
   </style>
 </head>
 <body>
@@ -289,54 +310,54 @@
     </div>
   </section>
 
-  <!-- Signature Deep Blue (#1E6C93) Compact Footer -->
+  <!-- Option 2: 3-Column Equal Grid Reformatted Compact Footer -->
   <footer class="compact-footer">
-    <div class="footer-container">
+    <div class="footer-container-3col">
       
-      <!-- Column 1: Contact Details -->
+      <!-- Column 1: HAYAGRIVA Contact Details -->
       <div>
         <h3 class="footer-heading">HAYAGRIVA Contact</h3>
-        <div class="contact-info-grid">
-          <div class="info-group">
+        <div class="contact-stack">
+          <div class="info-group-col">
             <h4>Call Us</h4>
             <p>+91-98140-40900</p>
             <p>+91-98558-88881</p>
           </div>
 
-          <div class="info-group">
+          <div class="info-group-col">
             <h4>Email Us</h4>
             <p><a href="mailto:admin@resolutionbazaar.in">admin@resolutionbazaar.in</a></p>
             <p><a href="mailto:resolutionbazaar@gmail.com">resolutionbazaar@gmail.com</a></p>
           </div>
 
-          <div class="info-group">
+          <div class="info-group-col">
             <h4>Address</h4>
             <p>#1634, Sector 18-D</p>
             <p>Chandigarh, India, 160018</p>
           </div>
 
-          <div class="info-group">
+          <div class="info-group-col">
             <h4>Websites</h4>
             <p><a href="https://www.chatibc.com" target="_blank">www.chatibc.com</a></p>
             <p><a href="https://www.resolutionbazaar.in" target="_blank">www.resolutionbazaar.in</a></p>
           </div>
         </div>
+      </div>
 
-        <!-- Hayagriva Shloka -->
-        <div class="shloka-block">
-          <img src="branding/hayagriva_head.png" alt="Lord Hayagriva Emblem" class="shloka-emblem" />
-          <div class="shloka-text">
-            <p class="shloka-devanagari">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् ।<br>आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
-            <p class="shloka-transliteration">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim |<br>ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
-            <p class="shloka-meaning">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
-          </div>
+      <!-- Column 2: Center Sacred Lord Hayagriva Shloka & Emblem Card -->
+      <div>
+        <div class="shloka-card-centered">
+          <img src="branding/hayagriva_head.png" alt="Lord Hayagriva Emblem" class="shloka-emblem-center" />
+          <p class="shloka-devanagari-center">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् ।<br>आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
+          <p class="shloka-transliteration-center">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim |<br>ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
+          <p class="shloka-meaning-center">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
         </div>
       </div>
 
-      <!-- Column 2: Embedded Contact Form connected to Google Form -->
+      <!-- Column 3: Contact & Inquiry Form -->
       <div>
-        <div class="contact-form">
-          <h3 style="font-size: 18px; font-weight: 600; color: #1E293B; margin-bottom: 12px;">Contact & Inquiry Form</h3>
+        <div class="contact-form-col">
+          <h3 style="font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 12px;">Contact & Inquiry Form</h3>
           
           <div id="formNotice" style="display: none; margin-bottom: 12px; padding: 10px; background: #DCFCE7; color: #166534; border-radius: 6px; font-size: 13px;">
             ✓ Thank you! Your inquiry has been recorded successfully.
