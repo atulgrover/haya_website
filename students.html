@@ -12,6 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
 
   <style>
     :root {
@@ -352,8 +353,27 @@
         <li><a href="professionals.html" class="nav-link">Professionals</a></li>
         <li><a href="login.html" class="nav-link login-btn">Login</a></li>
       </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-mobile-drawer" id="navMobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="students.html">Students</a>
+    <a href="employees.html">Employees</a>
+    <a href="professionals.html">Professionals</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+
+  <!-- Panel scrim (mobile overlay backdrop) -->
+  <div class="panel-scrim" id="panelScrim"></div>
 
   <!-- 3-Panel IDE Layout Container -->
   <div class="ide-container">
@@ -406,6 +426,13 @@
 
     <!-- CENTER PANEL: Qualification Cards Grid & Search Results -->
     <main class="panel-center">
+      <!-- Mobile filter toggle -->
+      <button class="filter-drawer-toggle" id="filterDrawerToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
+        </svg>
+        Filter Job Roles
+      </button>
       <div class="results-header">
         <span class="results-count" id="resultsCount">Loading NCVET NSQF Database...</span>
       </div>
@@ -652,6 +679,7 @@
         });
     }
   </script>
+  <script src="js/responsive.js"></script>
   <script src="js/components.js"></script>
 </body>
 

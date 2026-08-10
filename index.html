@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
   
   <style>
     :root {
@@ -127,7 +128,7 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar (Identical across all pages: 64px height, padding 0 24px) -->
+  <!-- Top Navigation Bar -->
   <header class="header-nav">
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
@@ -140,8 +141,25 @@
         <li><a href="professionals.html" class="nav-link">Professionals</a></li>
         <li><a href="login.html" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
       </ul>
+      <!-- Hamburger (mobile only) -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="students.html">Students</a>
+    <a href="employees.html">Employees</a>
+    <a href="professionals.html">Professionals</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
 
   <!-- Larger Animated Hero Section -->
   <section class="hero-section" id="heroSection">
@@ -282,6 +300,7 @@
   <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
   <div id="site-footer"></div>
 
+  <script src="js/responsive.js"></script>
   <script src="js/components.js"></script>
   <script>
     function scrollToSection(sectionId) {

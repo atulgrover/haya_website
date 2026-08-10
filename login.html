@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
   
   <style>
     :root {
@@ -97,8 +98,24 @@
         <li><a href="professionals.html" class="nav-link">Professionals</a></li>
         <li><a href="login.html" class="nav-link login-btn active">Login</a></li>
       </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-mobile-drawer" id="navMobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="students.html">Students</a>
+    <a href="employees.html">Employees</a>
+    <a href="professionals.html">Professionals</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
 
   <div class="auth-wrapper">
     <div class="auth-card">
@@ -214,5 +231,6 @@
       }
     }
   </script>
+  <script src="js/responsive.js"></script>
 </body>
 </html>
