@@ -76,7 +76,7 @@
     /* Interactive IDE Simulator Component */
     .ide-simulator {
       background-color: #1E293B; color: #F8FAFC; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); border: 1px solid #334155; width: 100%;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); border: 1px solid #334155; width: 100%; min-height: 360px;
     }
     .ide-header {
       background-color: #0F172A; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
@@ -233,7 +233,7 @@
       </div>
     </aside>
 
-    <!-- CENTER PANEL: 6 Standalone Engine Cards & WORKBENCH IDE Window -->
+    <!-- CENTER PANEL: WORKBENCH IDE Window + 6 Standalone Engine Cards -->
     <main class="panel-center">
       <div class="workspace-header" id="workspaceHeader">
         <h1 class="role-header-title" id="roleHeaderTitle">Loading Professional Roles...</h1>
@@ -493,6 +493,8 @@
 
     function renderWorkbenchIdeSimulator(role) {
       const container = document.getElementById('workbenchIdeSimulator');
+      if (!container) return;
+
       let caseTitle = "[Case: CIRP-Jaypee-2026]";
       let fileList = ["claims_registry.md", "avoidance_ledger.md", "wiki / qna", "case_graph_3d.d3"];
       let subagentList = ["@coc-coordinator", "@plan-evaluator"];
@@ -556,7 +558,7 @@
           { name: "SCC_Precedents_Vault.vlt", checked: true },
           { name: "Evidence_Exhibit_A.pdf", checked: false }
         ];
-      } else if (role.id === 'arbitrators') {
+      } else if (role.id === 'arbitrators' || role.id === 'contract_arbitrators') {
         caseTitle = "[Arbitration: Arb-Claim-882-2026]";
         fileList = ["statement_of_claim.md", "counter_claim.md", "exhibits_index.md", "arbitral_award_draft.md"];
         subagentList = ["@arbitral-award-drafter", "@limitation-auditor"];
@@ -730,7 +732,7 @@
             { title: 'Supreme Court & High Court SLP Briefs', price: '₹3,499', desc: 'Special Leave Petition synopsis, list of dates, and InLegal-SBERT precedent similarity Brief.' },
             { title: 'Commercial Litigation Statutory Limitation Audit', price: '₹1,499', desc: 'Audits court fee calculations, limitation periods, and CPC procedural compliance.' }
           ];
-        } else if (activeRole.id === 'arbitrators') {
+        } else if (activeRole.id === 'arbitrators' || activeRole.id === 'contract_arbitrators') {
           services = [
             { title: 'Arbitral Award Section 31 Interest Audit', price: '₹2,499', desc: 'Calculates statutory post-award and pre-award interest under Sec 31(7) Arbitration Act 1996.' },
             { title: 'Evidence Admissibility & Exhibit Brief', price: '₹1,999', desc: 'Cross-indexes evidence bundles with Indian Evidence Act / BSA electronic records certificates.' }
