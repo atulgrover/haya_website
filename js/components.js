@@ -392,7 +392,7 @@ function updateAuthButtonsUI() {
             btn.setAttribute('onclick', 'toggleUserDropdown(event)');
 
             // Map user role to portal page
-            let portalPage = 'employees.html';
+            let portalPage = 'dashboard.html';
             let portalLabel = 'Go to Employee Portal';
 
             if (user.role === 'student') {
@@ -402,7 +402,7 @@ function updateAuthButtonsUI() {
                 portalPage = 'professionals.html';
                 portalLabel = 'Go to Professional Portal';
             } else {
-                portalPage = 'employees.html';
+                portalPage = 'dashboard.html';
                 portalLabel = 'Go to Employee Portal';
             }
 
@@ -424,6 +424,10 @@ function updateAuthButtonsUI() {
                 <a href="${portalPage}" class="user-profile-item">
                     <span>${portalLabel}</span>
                     <span>➔</span>
+                </a>
+                <a href="dashboard.html" class="user-profile-item">
+                    <span>Portal Dashboard &amp; Vault</span>
+                    <span>📊</span>
                 </a>
                 <a href="#" onclick="handleSignOut(event)" class="user-profile-item logout">
                     <span>Sign Out</span>
