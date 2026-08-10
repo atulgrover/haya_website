@@ -8,6 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- SkillPedia AI Engine -->
+  <script src="js/contentFilter.js"></script>
+  <script src="js/schemas.js"></script>
+  <script src="js/aiEngine.js"></script>
   
   <style>
     :root {
@@ -137,11 +142,110 @@
     }
     .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
 
+    /* ===== AI PROGRESS MODAL ===== */
+    .ai-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+      display: none; align-items: center; justify-content: center; z-index: 3000;
+    }
+    .ai-modal-overlay.active { display: flex; }
+    .ai-modal-card {
+      background: #0F172A; border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 16px; padding: 28px; width: 560px; max-width: 92vw;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .ai-modal-title { font-size: 17px; font-weight: 800; color: #E2E8F0; }
+    .ai-modal-subtitle { font-size: 13px; color: #64748B; margin-top: -14px; }
+    .ai-progress-bar-track { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+    .ai-progress-bar-fill { height: 100%; background: linear-gradient(90deg, #38BDF8, #818CF8); border-radius: 3px; width: 10%; transition: width 0.5s ease; }
+    .ai-terminal {
+      background: #020617; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+      padding: 14px 16px; font-family: 'Roboto Mono', monospace; font-size: 11.5px;
+      height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 3px;
+    }
+
+    /* ===== CREATOR STUDIO MODAL ===== */
+    .studio-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.82);
+      display: none; align-items: flex-start; justify-content: center;
+      z-index: 3000; padding: 20px; overflow-y: auto;
+    }
+    .studio-modal-overlay.active { display: flex; }
+    .studio-modal-card {
+      background: #0F172A; border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 20px; padding: 28px; width: 820px; max-width: 96vw;
+      display: flex; flex-direction: column; gap: 20px; margin: auto;
+    }
+    .studio-reel-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 16px; transition: border-color 0.3s;
+    }
+    .studio-reel-card.confirmed { border-color: #4ADE80; }
+    .studio-confirm-btn {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #E2E8F0; padding: 6px 14px; border-radius: 8px; font-size: 12px;
+      font-weight: 700; cursor: pointer; transition: all 0.2s;
+    }
+    .studio-confirm-btn.confirmed { background: #4ADE80; border-color: #4ADE80; color: #000; }
+    .studio-publish-btn {
+      background: linear-gradient(135deg, #1E6C93, #38BDF8); color: #fff;
+      border: none; padding: 13px 24px; border-radius: 10px; font-size: 15px;
+      font-weight: 800; cursor: pointer; width: 100%; transition: opacity 0.2s;
+    }
+    .studio-publish-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .studio-yt-thumb {
+      width: 100%; aspect-ratio: 16/9; border-radius: 8px; object-fit: cover;
+      background: #1E293B; display: block;
+    }
+
+    /* ===== FULL-SCREEN REEL PLAYER MODAL ===== */
+    .player-modal-overlay {
+      position: fixed; inset: 0; background: #000;
+      display: none; z-index: 4000;
+      flex-direction: column;
+    }
+    .player-modal-overlay.active { display: flex; }
+    .player-modal-header {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; z-index: 10;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+    }
+    .player-modal-title { color: #fff; font-size: 14px; font-weight: 700; }
+    .player-modal-close {
+      background: rgba(255,255,255,0.15); border: none; color: #fff;
+      font-size: 18px; width: 36px; height: 36px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .player-modal-iframe {
+      width: 100%; height: 100%; border: none;
+    }
+
+    /* ===== CARD BUTTONS ===== */
+    .btn-card-play {
+      background: var(--primary-color); color: #fff; border: none; padding: 9px 14px;
+      border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer;
+      transition: background 0.2s; flex: 1;
+    }
+    .btn-card-play:hover { background: var(--primary-hover); }
+    .btn-card-share {
+      background: #fff; color: var(--primary-color); border: 1px solid var(--primary-color);
+      padding: 9px 14px; border-radius: 6px; font-weight: 700; font-size: 13px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-card-share:hover { background: var(--primary-light); }
+    .card-reels-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11.5px; font-weight: 700; color: var(--primary-color);
+      background: var(--primary-light); padding: 3px 9px; border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
     /* Toast Notification */
     .toast {
       position: fixed; bottom: 24px; right: 24px; background: #10B981; color: #FFFFFF;
-      padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 13px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: none; z-index: 3000;
+      padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 13px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: none; z-index: 5000;
+      max-width: 380px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
   </style>
@@ -215,103 +319,144 @@
   <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
   <div id="site-footer"></div>
 
-  <!-- Create Custom Skill Modal -->
+  <!-- Create Custom Skill Modal (AI Build) -->
   <div class="modal-overlay" id="createModal">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 style="font-size: 16px; font-weight: 700;">➕ Create New Custom Skill</h3>
+        <h3 style="font-size: 16px; font-weight: 700;">✨ Build AI Custom Skill</h3>
         <button class="btn-close" onclick="closeCreateModal()">×</button>
       </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: -8px; line-height: 1.5;">
+        Enter a skill topic and our AI will generate an <strong>11-reel vocational curriculum</strong> with real YouTube videos, NOS codes, and Performance Criteria.
+      </p>
 
       <div class="filter-group">
-        <label class="filter-label">Skill Title</label>
-        <input type="text" id="newTitle" class="filter-input" placeholder="e.g. EV Battery Calibration" />
+        <label class="filter-label">Skill Topic</label>
+        <input type="text" id="newTitle" class="filter-input" placeholder="e.g. Customer Onboarding Protocol" />
       </div>
 
       <div class="filter-group">
-        <label class="filter-label">Category Keyword / Tag</label>
-        <input type="text" id="newTag" class="filter-input" placeholder="e.g. Automotive, Accounting" />
+        <label class="filter-label">Category Tag</label>
+        <input type="text" id="newTag" class="filter-input" placeholder="e.g. HR, Automotive, Finance" />
       </div>
 
       <div class="filter-group">
-        <label class="filter-label">Skill Description</label>
-        <textarea id="newDescription" class="filter-input" style="height: 64px; resize: vertical;" placeholder="A brief 1-2 line description of what this custom skill is about..."></textarea>
+        <label class="filter-label">Short Description</label>
+        <textarea id="newDescription" class="filter-input" style="height: 60px; resize: vertical;"
+          placeholder="1-2 lines about this skill..."></textarea>
       </div>
 
-      <button class="btn-learn" onclick="submitCreateSkill()" style="margin-top: 10px;">
-        🚀 Generate 11-Reel Skill Package
+      <button class="btn-learn" onclick="submitCreateSkill()" style="margin-top: 4px;">
+        🚀 Generate 11-Reel AI Skill Pack
       </button>
     </div>
+  </div>
+
+  <!-- AI Build Progress Modal -->
+  <div class="ai-modal-overlay" id="aiProgressModal">
+    <div class="ai-modal-card">
+      <div>
+        <div class="ai-modal-title">🧠 Building AI Skill Pack</div>
+        <div class="ai-modal-subtitle" id="aiProgressTopicName" style="margin-top: 6px; color: #38BDF8;"></div>
+      </div>
+      <div class="ai-progress-bar-track">
+        <div class="ai-progress-bar-fill" id="aiProgressBarFill"></div>
+      </div>
+      <div class="ai-terminal" id="aiLogTerminal"></div>
+    </div>
+  </div>
+
+  <!-- Creator 11-Reel Confirmation Studio -->
+  <div class="studio-modal-overlay" id="studioModal">
+    <div class="studio-modal-card">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <div style="font-size:20px; font-weight:800; color:#E2E8F0;">🎨 Creator Confirmation Studio</div>
+          <div style="font-size:13px; color:#64748B; margin-top:4px;" id="studioSkillTitle"></div>
+        </div>
+        <button onclick="closeStudio()" style="background:transparent;border:none;color:#64748B;font-size:20px;cursor:pointer;">✕</button>
+      </div>
+      <!-- Progress bar -->
+      <div style="background:rgba(255,255,255,0.05); padding:12px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-size:13px; font-weight:700; color:#E2E8F0;">Reels Confirmed: <span id="confirmedCount">0</span> / <span id="totalCount">11</span></span>
+        <div style="width:200px; height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+          <div id="studioProgressFill" style="height:100%; background:#38BDF8; width:0%; transition:width 0.3s;"></div>
+        </div>
+      </div>
+      <!-- Reel cards container -->
+      <div id="studioReelCards" style="display:flex; flex-direction:column; gap:16px;"></div>
+      <!-- Publish -->
+      <button class="studio-publish-btn" id="publishBtn" onclick="publishSkill()" disabled>
+        ✅ Publish Skill Pack (Confirm All 11 Reels First)
+      </button>
+    </div>
+  </div>
+
+  <!-- Full-Screen Reel Player Modal -->
+  <div class="player-modal-overlay" id="playerModal">
+    <div class="player-modal-header">
+      <span class="player-modal-title" id="playerModalTitle">Skill Reels</span>
+      <button class="player-modal-close" onclick="closePlayerModal()">✕</button>
+    </div>
+    <iframe class="player-modal-iframe" id="playerModalFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
   </div>
 
   <!-- Toast Notification -->
   <div class="toast" id="toast">URL Copied to Clipboard!</div>
 
   <script>
-    let currentTag = '';
+    /* ============================================================
+       HAYAGRIVA — Custom AI Skill Builder
+       Powered by SkillPedia aiEngine.js (same engine, same key)
+       ============================================================ */
+    let currentTag    = '';
     let searchTimeout = null;
+    let studioDraft   = null;
+    let confirmedReels = new Set();
 
     window.addEventListener('DOMContentLoaded', () => {
       loadKeywords();
       loadSkills();
-      checkUrlParams();
     });
 
-    function checkUrlParams() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const skillId = urlParams.get('skillId');
-      if (skillId) {
-        loadSkillById(skillId);
-      }
-    }
-
+    /* ---- Keywords sidebar ---- */
     async function loadKeywords() {
       try {
-        const res = await fetch('/api/skillpedia/custom/keywords');
+        const res  = await fetch('/api/skillpedia/custom/keywords');
         const data = await res.json();
-        if (data.success) {
-          const tagList = document.getElementById('tagList');
-          tagList.innerHTML = `<div class="tag-item ${currentTag === '' ? 'active' : ''}" onclick="filterByTag('')">
-            <span>All Keywords</span>
-            <span class="tag-badge">${data.totalKeywords}</span>
-          </div>` + data.keywords.map(k => `
-            <div class="tag-item ${currentTag === k.tag ? 'active' : ''}" onclick="filterByTag('${k.tag}')">
-              <span>${k.tag}</span>
-              <span class="tag-badge">${k.count}</span>
-            </div>
-          `).join('');
-        }
+        if (!data.success) return;
+        const tagList = document.getElementById('tagList');
+        tagList.innerHTML = `<div class="tag-item ${currentTag === '' ? 'active' : ''}" onclick="filterByTag('')">
+          <span>All Skills</span>
+          <span class="tag-badge">${data.totalKeywords}</span>
+        </div>` + data.keywords.map(k => `
+          <div class="tag-item ${currentTag === k.tag ? 'active' : ''}" onclick="filterByTag('${k.tag}')">
+            <span>${k.tag}</span>
+            <span class="tag-badge">${k.count}</span>
+          </div>`).join('');
       } catch (err) { console.error(err); }
     }
 
-    function filterByTag(tag) {
-      currentTag = tag;
-      loadKeywords();
-      loadSkills();
-    }
+    function filterByTag(tag) { currentTag = tag; loadKeywords(); loadSkills(); }
+    function handleSearchInput() { clearTimeout(searchTimeout); searchTimeout = setTimeout(loadSkills, 300); }
 
-    function handleSearchInput() {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(loadSkills, 300);
-    }
-
+    /* ---- Load skill cards ---- */
     async function loadSkills() {
-      const q = document.getElementById('searchInput').value;
-      let url = `/api/skillpedia/custom/all-skills?1=1`;
-      if (q) url += `&q=${encodeURIComponent(q)}`;
+      const q   = document.getElementById('searchInput').value;
+      let url   = `/api/skillpedia/custom/all-skills?1=1`;
+      if (q)          url += `&q=${encodeURIComponent(q)}`;
       if (currentTag) url += `&tag=${encodeURIComponent(currentTag)}`;
 
       try {
-        const res = await fetch(url);
+        const res  = await fetch(url);
         const data = await res.json();
         const grid = document.getElementById('cardsGrid');
-        const countSpan = document.getElementById('resultsCount');
 
         if (data.success && data.skills.length > 0) {
-          if (countSpan) countSpan.innerText = `Showing ${data.skills.length} Enterprise Skills`;
           grid.innerHTML = data.skills.map(skill => {
-            const shareUrl = `${window.location.origin}/employees.html?skillId=${skill.id}`;
-            const desc = skill.description || (skill.schema && skill.schema.description) || 'Enterprise SOP micro-learning reel and operational workflow.';
+            const desc     = skill.description || 'Enterprise SOP micro-learning reel and operational workflow.';
+            const reelCount = (skill.lessons && skill.lessons.length) || 0;
+            const shareUrl = `${window.location.origin}/reel.html?skill=${skill.id}`;
             return `
               <div class="skill-card">
                 <div>
@@ -321,146 +466,251 @@
                   </div>
                   <h3 class="skill-title">${skill.title}</h3>
                   <p class="skill-desc-text">${desc}</p>
-
-                  <!-- Shareable URL Container -->
-                  <div class="url-box">
-                    <input type="text" class="url-input" value="${shareUrl}" readonly id="url-${skill.id}" />
-                    <button class="btn-copy-url" onclick="copyShareUrl('${shareUrl}')">🔗 Copy</button>
-                  </div>
+                  ${reelCount > 0
+                    ? `<div class="card-reels-badge">🎬 ${reelCount} Reels</div>`
+                    : '<div class="card-reels-badge" style="background:#FEF3C7;color:#92400E;">⚠️ No Reels</div>'}
                 </div>
-
-                <button class="btn-learn" onclick="openSkillInspector(${skill.id}, '${encodeURIComponent(skill.title)}', '${encodeURIComponent(desc)}')">
-                  🎬 Learn Now
-                </button>
-              </div>
-            `;
+                <div style="display:flex; gap:8px; margin-top:12px;">
+                  <button class="btn-card-play" onclick="openPlayerModal(${skill.id}, '${encodeURIComponent(skill.title)}')">▶ Play</button>
+                  <button class="btn-card-share" onclick="shareSkill(${skill.id}, '${encodeURIComponent(skill.title)}')" title="Copy shareable link">🔗 Share</button>
+                </div>
+              </div>`;
           }).join('');
         } else {
-          if (countSpan) countSpan.innerText = `0 Skills Found`;
-          grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No custom skills match your selected filter.</div>`;
+          grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">
+            No custom skills yet. Click <strong>"✨ Build AI Custom Skill"</strong> to create your first one!
+          </div>`;
         }
       } catch (err) { console.error(err); }
     }
 
-    async function loadSkillById(skillId) {
-      try {
-        const res = await fetch(`/api/skillpedia/custom/all-skills?skillId=${skillId}`);
-        const data = await res.json();
-        if (data.success && data.skills.length > 0) {
-          const desc = s.description || (s.schema && s.schema.description) || 'Enterprise SOP micro-learning reel and operational workflow.';
-          openSkillInspector(s.id, encodeURIComponent(s.title), encodeURIComponent(desc));
-        }
-      } catch (err) { console.error(err); }
-    }
-
-    function copyShareUrl(url) {
-      navigator.clipboard.writeText(url).then(() => {
-        const toast = document.getElementById('toast');
-        toast.style.display = 'block';
-        setTimeout(() => toast.style.display = 'none', 2500);
-      });
-    }
-
-    function openSkillInspector(skillId, titleEnc, descEnc) {
-      const title = decodeURIComponent(titleEnc);
-      const desc = decodeURIComponent(descEnc || '');
-      const rightPanel = document.getElementById('panelRight');
-      const inspectorTitle = document.getElementById('inspectorTitle');
-      const content = document.getElementById('inspectorContent');
-
-      inspectorTitle.innerText = `Skill #${skillId}`;
-      content.innerHTML = `
-        <div style="background: var(--primary-light); padding: 14px; border-radius: 8px; margin-bottom: 16px;">
-          <h3 style="font-size: 16px; color: var(--primary-color); font-weight: 700; margin-bottom: 6px;">${title}</h3>
-          <p style="font-size: 13px; color: var(--text-main); line-height: 1.45;">${desc}</p>
-        </div>
-        <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
-          <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">🎬 11-Step Custom Video Viewer</h4>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Employee skill reels and Performance Criteria checklist.</p>
-          <a href="public/skillpedia/index.html?customSkillId=${skillId}" target="_blank" class="btn-learn" style="text-align: center; text-decoration: none;">
-            🚀 Open Full Skill Player
-          </a>
-        </div>
-      `;
-      rightPanel.classList.add('active');
-    }
-
-    function closeInspector() {
-      document.getElementById('panelRight').classList.remove('active');
-    }
-
-    function openCreateModal() { document.getElementById('createModal').style.display = 'flex'; }
+    /* ---- Create Modal ---- */
+    function openCreateModal()  { document.getElementById('createModal').style.display = 'flex'; }
     function closeCreateModal() { document.getElementById('createModal').style.display = 'none'; }
 
+    /* ============================================================
+       SUBMIT — Run full SkillPedia AI pipeline
+       ============================================================ */
     async function submitCreateSkill() {
-      const title = document.getElementById('newTitle').value;
-      const tag = document.getElementById('newTag').value;
-      const description = document.getElementById('newDescription').value;
+      const title       = document.getElementById('newTitle').value.trim();
+      const tag         = document.getElementById('newTag').value.trim();
+      const description = document.getElementById('newDescription').value.trim();
 
-      if (!title) {
-        alert('Skill Title is required.');
-        return;
-      }
+      if (!title) { alert('Please enter a Skill Topic.'); return; }
 
-      const descText = description || 'Enterprise SOP micro-learning reel and operational workflow.';
+      closeCreateModal();
 
-      const schema = {
-        title,
-        tag: tag || 'General',
-        description: descText,
-        reels: [
-          { step: 1, title: `${title} - Part 1`, videoId: 'dQw4w9WgXcQ' },
-          { step: 2, title: `${title} - Part 2`, videoId: 'dQw4w9WgXcQ' }
-        ]
+      // --- Show AI progress modal ---
+      const progressModal = document.getElementById('aiProgressModal');
+      const progressTopic = document.getElementById('aiProgressTopicName');
+      const progressBar   = document.getElementById('aiProgressBarFill');
+      const terminal      = document.getElementById('aiLogTerminal');
+
+      progressTopic.textContent = `"${title}"`;
+      progressBar.style.width   = '8%';
+      terminal.innerHTML        = `<div style="color:#38BDF8;font-weight:700;">🟢 [AI] Initializing 11-Reel Curriculum Engine for "${title}"...</div>`;
+      progressModal.classList.add('active');
+
+      const updateProgress = (step, msg, percent = 50) => {
+        progressBar.style.width = `${percent}%`;
+        const timeStr  = new Date().toLocaleTimeString([], { hour12: false, minute: '2-digit', second: '2-digit' });
+        let icon = '⚡', color = '#a5f3fc';
+        if (percent < 40)  { icon = '🧠'; color = '#c084fc'; }
+        else if (percent < 75) { icon = '🔎'; color = '#38bdf8'; }
+        else if (percent < 95) { icon = '🎯'; color = '#facc15'; }
+        else                   { icon = '✅'; color = '#4ade80'; }
+        const line = document.createElement('div');
+        line.innerHTML = `<span style="color:#64748b;font-size:10px;">[${timeStr}]</span> <span style="color:${color};font-weight:600;">${icon} ${msg}</span>`;
+        terminal.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
       };
 
       try {
-        const res = await fetch('/api/skillpedia/save-skill', {
-          method: 'POST',
+        const curriculum = await aiEngine.generate11ReelCurriculum(title, updateProgress, true);
+
+        // Inject user's tag + description into the draft
+        curriculum.tag         = tag  || curriculum.sector || 'General';
+        curriculum.description = description || curriculum.subtitle || `11-Reel AI skill course on ${title}.`;
+
+        progressModal.classList.remove('active');
+        openCreatorStudio(curriculum);
+
+      } catch (err) {
+        progressModal.classList.remove('active');
+        alert(`⚠️ AI Build Failed: ${err.message}`);
+      }
+    }
+
+    /* ============================================================
+       CREATOR 11-REEL CONFIRMATION STUDIO
+       ============================================================ */
+    function openCreatorStudio(curriculum) {
+      studioDraft    = JSON.parse(JSON.stringify(curriculum));
+      confirmedReels = new Set();
+
+      document.getElementById('studioSkillTitle').textContent = curriculum.title;
+      document.getElementById('totalCount').textContent       = curriculum.lessons.length;
+      renderStudioCards();
+      document.getElementById('studioModal').classList.add('active');
+    }
+
+    function closeStudio() {
+      document.getElementById('studioModal').classList.remove('active');
+      studioDraft = null;
+    }
+
+    function renderStudioCards() {
+      const container = document.getElementById('studioReelCards');
+      const total     = studioDraft.lessons.length;
+      const confirmed = confirmedReels.size;
+
+      document.getElementById('confirmedCount').textContent   = confirmed;
+      document.getElementById('studioProgressFill').style.width = `${(confirmed / total) * 100}%`;
+
+      const publishBtn = document.getElementById('publishBtn');
+      if (confirmed === total) {
+        publishBtn.disabled     = false;
+        publishBtn.textContent  = `✅ Publish Skill Pack — ${total} Reels Confirmed!`;
+      } else {
+        publishBtn.disabled     = true;
+        publishBtn.textContent  = `✅ Publish Skill Pack (Confirm All ${total} Reels First)`;
+      }
+
+      container.innerHTML = studioDraft.lessons.map((les, idx) => {
+        const isConfirmed = confirmedReels.has(idx);
+        const thumbUrl    = `https://img.youtube.com/vi/${les.video_id}/mqdefault.jpg`;
+        const pcs         = (les.pcs || []).slice(0, 3);
+        return `
+          <div class="studio-reel-card ${isConfirmed ? 'confirmed' : ''}" id="studioCard_${idx}">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="background:rgba(56,189,248,0.15);color:#38BDF8;font-weight:800;font-size:11px;padding:2px 8px;border-radius:6px;">Reel ${idx + 1} / ${total}</span>
+                <strong style="font-size:14px;color:#E2E8F0;">${les.title}</strong>
+              </div>
+              <button class="studio-confirm-btn ${isConfirmed ? 'confirmed' : ''}" onclick="toggleReelConfirm(${idx})">
+                ${isConfirmed ? '✅ Confirmed' : '⭕ Confirm Reel'}
+              </button>
+            </div>
+            <img class="studio-yt-thumb" src="${thumbUrl}" alt="Reel ${idx + 1} thumbnail"
+              onerror="this.style.background='#1E293B';this.style.height='80px';">
+            <p style="font-size:12px;color:#94A3B8;margin:10px 0 8px;">${les.subtitle || ''}</p>
+            ${pcs.length ? `<ul style="margin:0;padding:0 0 0 16px;color:#64748B;font-size:12px;">
+              ${pcs.map(pc => `<li style="margin-bottom:4px;">${pc}</li>`).join('')}
+            </ul>` : ''}
+            <div style="display:flex;align-items:center;gap:8px;margin-top:10px;">
+              <span style="font-size:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);padding:2px 8px;border-radius:4px;font-family:monospace;">${les.nos_code || ''}</span>
+              <a href="https://youtube.com/watch?v=${les.video_id}" target="_blank" rel="noopener"
+                style="font-size:11px;color:#38BDF8;text-decoration:none;">▶ Watch on YouTube ↗</a>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function toggleReelConfirm(idx) {
+      if (confirmedReels.has(idx)) confirmedReels.delete(idx);
+      else                          confirmedReels.add(idx);
+      renderStudioCards();
+    }
+
+    /* ============================================================
+       PUBLISH — save full schema to haya_portal DB
+       ============================================================ */
+    async function publishSkill() {
+      if (!studioDraft) return;
+      const publishBtn = document.getElementById('publishBtn');
+      publishBtn.disabled = true;
+      publishBtn.textContent = '💾 Saving...';
+
+      // Build the full schema to persist
+      const schemaJson = {
+        title:       studioDraft.title,
+        subtitle:    studioDraft.subtitle || `11-Reel AI Skill Package`,
+        sector:      studioDraft.sector   || studioDraft.tag || 'Custom Micro-Learning',
+        nsqf_level:  studioDraft.nsqf_level || 3,
+        tag:         studioDraft.tag || 'General',
+        description: studioDraft.description || studioDraft.subtitle || `AI-curated skill course on ${studioDraft.title}`,
+        lessons:     studioDraft.lessons
+      };
+
+      try {
+        const res  = await fetch('/api/skillpedia/save-skill', {
+          method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title,
-            companyId: 'acme_corp',
-            employeeEmailId: 'builder@hayagriva.ai',
-            schemaJson: schema
-          })
+          body:    JSON.stringify({ title: studioDraft.title, schemaJson })
         });
         const data = await res.json();
+
         if (data.success) {
-          closeCreateModal();
-          document.getElementById('newTitle').value = '';
-          document.getElementById('newTag').value = '';
-          document.getElementById('newDescription').value = '';
+          closeStudio();
           loadKeywords();
           loadSkills();
-          copyShareUrl(`${window.location.origin}/employees.html?skillId=${data.skillId}`);
+          // Toast
+          const toast = document.getElementById('toast');
+          toast.textContent  = `✅ "${studioDraft.title}" published — ${studioDraft.lessons.length} reels live!`;
+          toast.style.display = 'block';
+          setTimeout(() => toast.style.display = 'none', 3500);
+        } else {
+          alert('Save failed: ' + (data.error || 'Unknown error'));
+          publishBtn.disabled = false;
+          publishBtn.textContent = '✅ Publish Skill Pack';
         }
-      } catch (err) { console.error(err); }
+      } catch (err) {
+        alert('Network error: ' + err.message);
+        publishBtn.disabled = false;
+        publishBtn.textContent = '✅ Publish Skill Pack';
+      }
+    }
+
+    /* ============================================================
+       FULL-SCREEN REEL PLAYER MODAL
+       ============================================================ */
+    function openPlayerModal(skillId, titleEnc) {
+      const title = decodeURIComponent(titleEnc);
+      document.getElementById('playerModalTitle').textContent = title;
+      // Load reel.html in iframe
+      document.getElementById('playerModalFrame').src = `/reel.html?skill=${skillId}`;
+      document.getElementById('playerModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePlayerModal() {
+      document.getElementById('playerModal').classList.remove('active');
+      document.getElementById('playerModalFrame').src = '';
+      document.body.style.overflow = '';
+    }
+
+    /* ============================================================
+       SHARE — copy reel.html deep-link URL
+       ============================================================ */
+    function shareSkill(skillId, titleEnc) {
+      const title    = decodeURIComponent(titleEnc);
+      const shareUrl = `${window.location.origin}/reel.html?skill=${skillId}`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl);
+        const toast = document.getElementById('toast');
+        toast.textContent  = `🔗 Share link copied for "${title}"!`;
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 2500);
+      } else {
+        alert(`Share Link:\n${shareUrl}`);
+      }
     }
 
     function handleFormSubmit(event) {
       event.preventDefault();
-      const name = document.getElementById('inputName').value;
-      const email = document.getElementById('inputEmail').value;
-      const phone = document.getElementById('inputPhone').value;
-      const message = document.getElementById('inputMessage').value;
-
+      const name    = document.getElementById('inputName')?.value    || '';
+      const email   = document.getElementById('inputEmail')?.value   || '';
+      const phone   = document.getElementById('inputPhone')?.value   || '';
+      const message = document.getElementById('inputMessage')?.value || '';
       fetch("https://formsubmit.co/ajax/resolutionbazaar@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ _subject: "New HAYAGRIVA Portal Inquiry from " + name, Name: name, Email: email, Phone: phone, Message: message })
-      })
-      .then(res => res.json())
-      .then(() => {
-        document.getElementById('formNotice').style.display = 'block';
-        document.getElementById('contactForm').reset();
-        setTimeout(() => { document.getElementById('formNotice').style.display = 'none'; }, 6000);
-      })
-      .catch(() => {
-        document.getElementById('formNotice').style.display = 'block';
-        document.getElementById('contactForm').reset();
-        setTimeout(() => { document.getElementById('formNotice').style.display = 'none'; }, 6000);
-      });
+        body: JSON.stringify({ _subject: "New HAYAGRIVA Inquiry from " + name, Name: name, Email: email, Phone: phone, Message: message })
+      }).then(() => {
+        const n = document.getElementById('formNotice');
+        if (n) { n.style.display = 'block'; setTimeout(() => n.style.display = 'none', 6000); }
+        document.getElementById('contactForm')?.reset();
+      }).catch(() => {});
     }
   </script>
   <script src="js/components.js"></script>

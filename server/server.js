@@ -11,7 +11,8 @@ const paymentsRouter = require('./routes/payments');
 const wikiRouter = require('./routes/wiki');
 const reportsRouter = require('./routes/reports');
 const ipieRouter = require('./routes/ipie');
-const skillpediaRouter = require('./routes/skillpedia');
+const skillpediaRouter  = require('./routes/skillpedia');
+const searchVideoRouter = require('./routes/searchVideo');
 const { ensureKeyPair } = require('./utils/license-signer');
 
 const app = express();
@@ -35,7 +36,8 @@ app.use('/api/payments', paymentsRouter);
 app.use('/api/wiki', wikiRouter);
 app.use('/api/reports', reportsRouter);
 app.use('/api/ipie', ipieRouter);
-app.use('/api/skillpedia', skillpediaRouter);
+app.use('/api/skillpedia',    skillpediaRouter);
+app.use('/api/search-video', searchVideoRouter);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

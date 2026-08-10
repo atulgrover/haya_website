@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>HAYAGRIVA – Skill Reel Player</title>
+  <meta name="description" content="Watch AI-curated 11-reel vocational skill courses with step-by-step performance criteria on HAYAGRIVA.">
+
+  <!-- No-cache for fresh content -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+
+  <!-- Open Graph (WhatsApp preview) -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="HAYAGRIVA – Skill Reel Player">
+  <meta property="og:description" content="Watch AI-curated 11-reel vocational skill courses on HAYAGRIVA.">
+  <meta property="og:image"       content="https://hayagriva.app/branding/hayagriva_logo.png">
+
+  <!-- PWA / Mobile -->
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- YouTube IFrame API -->
+  <script defer src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- SkillPedia Engine files (schemas + content filter) -->
+  <script defer src="js/schemas.js"></script>
+  <script defer src="js/contentFilter.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* ===== PROGRESS PILLS ===== */
+    #reelProgressBar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 2000;
+      display: flex;
+      gap: 4px;
+      padding: 10px 14px 6px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .rp-pill { flex: 1; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.25); transition: background 0.4s ease; }
+    .rp-pill.active  { background: #ffffff; }
+    .rp-pill.visited { background: rgba(56, 189, 248, 0.85); }
+
+    /* ===== BACK BUTTON ===== */
+    #backBtn {
+      position: fixed;
+      top: 24px; left: 14px;
+      z-index: 2001;
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== MUTE BUTTON ===== */
+    #muteBtn {
+      position: fixed;
+      top: 24px; right: 14px;
+      z-index: 2001;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer; color: #fff;
+    }
+
+    /* ===== SCROLL CONTAINER ===== */
+    #reelsContainer {
+      width: 100%;
+      height: 100dvh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: none;
+    }
+
+    /* ===== INDIVIDUAL REEL SLIDE ===== */
+    .reel-slide {
+      position: relative;
+      width: 100%; height: 100dvh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      overflow: hidden;
+      background: #000;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ===== YOUTUBE PLAYER ===== */
+    .yt-player-wrap {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: #000;
+    }
+    .yt-player-wrap iframe { width: 100%; height: 100%; border: none; }
+
+    .slide-loading {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+      color: rgba(255,255,255,0.5); font-size: 13px;
+    }
+    .slide-spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,0.15);
+      border-top-color: rgba(56, 189, 248, 0.8);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== BOTTOM GRADIENT ===== */
+    .reel-gradient {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* ===== BOTTOM ACTION BAR ===== */
+    .reel-action-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      padding: 0 14px 24px; z-index: 10;
+    }
+    .reel-meta { flex: 1; padding-right: 12px; }
+    .reel-course-name { font-size: 12px; font-weight: 700; color: rgba(56,189,248,0.9); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+    .reel-nos-label { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; letter-spacing: 0.4px; }
+    .reel-index-label { font-size: 13px; font-weight: 800; color: #fff; line-height: 1.3; }
+
+    /* ===== ICON BUTTONS ===== */
+    .reel-icon-btns { display: flex; flex-direction: column; align-items: center; gap: 18px; padding-bottom: 4px; }
+    .reel-icon-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: none; cursor: pointer; padding: 0; }
+    .reel-icon-btn .icon-circle {
+      width: 46px; height: 46px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border-radius: 50%; font-size: 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .reel-icon-btn:active .icon-circle { background: rgba(255,255,255,0.25); transform: scale(0.9); }
+    .reel-icon-btn.active-btn .icon-circle { background: rgba(56,189,248,0.3); border-color: rgba(56,189,248,0.6); }
+    .reel-icon-btn .icon-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.3px; }
+
+    /* ===== DRAWERS ===== */
+    .reel-drawer {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(9,12,20,0.97);
+      backdrop-filter: blur(24px);
+      border-radius: 20px 20px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 20px 48px; z-index: 100;
+      transform: translateY(100%);
+      transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
+      max-height: 65dvh; overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .reel-drawer.open { transform: translateY(0); }
+    .drawer-handle { width: 36px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 0 auto 16px; }
+    .drawer-title { font-size: 13px; font-weight: 800; color: rgba(56,189,248,0.9); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 12px; }
+    .drawer-reel-title { font-size: 17px; font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 6px; }
+    .drawer-reel-subtitle { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .drawer-pc-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .drawer-pc-item { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+    .drawer-pc-item input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: rgb(56,189,248); margin-top: 2px; }
+    .drawer-pc-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .drawer-pc-item.checked .drawer-pc-text { color: rgba(56,189,248,0.85); text-decoration: line-through; }
+
+    .drawer-url-box { display: flex; gap: 8px; align-items: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px; margin-top: 8px; }
+    .drawer-url-text { flex: 1; font-size: 11px; font-family: monospace; color: rgba(56,189,248,0.85); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .drawer-url-copy-btn { background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.35); color: rgba(56,189,248,1); font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 7px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+
+    .drawer-backdrop { position: absolute; inset: 0; z-index: 99; display: none; }
+    .drawer-backdrop.visible { display: block; }
+
+    /* ===== SCROLL HINT ===== */
+    .scroll-hint {
+      position: absolute; bottom: 90px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      animation: bounce 1.8s ease infinite;
+      pointer-events: none; opacity: 0; transition: opacity 0.5s;
+    }
+    .scroll-hint.visible { opacity: 1; }
+    .scroll-hint-arrow { font-size: 22px; }
+    .scroll-hint-text { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ===== LOADING & ERROR ===== */
+    #reelPageLoading {
+      position: fixed; inset: 0; background: #000;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 18px; color: rgba(255,255,255,0.6); z-index: 9999;
+    }
+    .load-spinner { width: 44px; height: 44px; border: 3px solid rgba(255,255,255,0.1); border-top-color: rgb(56,189,248); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    .load-text { font-size: 14px; font-weight: 600; letter-spacing: 0.3px; }
+
+    /* ===== NEXT REEL CTA ===== */
+    .next-reel-cta {
+      position: absolute; bottom: 100px; right: 14px;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+      border: 1px solid rgba(56,189,248,0.4); border-radius: 12px;
+      padding: 10px 14px; color: #fff; font-size: 12px; font-weight: 700;
+      cursor: pointer; z-index: 50;
+      display: none; align-items: center; gap: 6px;
+    }
+    .next-reel-cta.visible { display: flex; }
+  </style>
+</head>
+<body>
+
+  <!-- Loading overlay -->
+  <div id="reelPageLoading">
+    <div class="load-spinner"></div>
+    <span class="load-text">Loading Skill Reels...</span>
+  </div>
+
+  <!-- Progress pills (fixed top) -->
+  <div id="reelProgressBar"></div>
+
+  <!-- Back button -->
+  <a id="backBtn" href="employees.html">← Skills</a>
+
+  <!-- Mute toggle -->
+  <button id="muteBtn" title="Toggle Mute" onclick="toggleMute()">🔇</button>
+
+  <!-- Reels scroll container -->
+  <div id="reelsContainer"></div>
+
+  <script>
+    /* ===========================================================
+       HAYAGRIVA TIKTOK-STYLE REEL PLAYER
+       Reads: /api/skillpedia/skill/:id via ?skill=<id>
+       =========================================================== */
+
+    const params   = new URLSearchParams(window.location.search);
+    const skillId  = params.get('skill');
+
+    let curriculum  = null;
+    let ytReady     = false;
+    let isMuted     = true;
+    let activeIndex = 0;
+    let visitedSet  = new Set([0]);
+    const players   = {};
+    const slides    = [];
+
+    /* YouTube IFrame API ready */
+    function onYouTubeIframeAPIReady() {
+      ytReady = true;
+      if (curriculum) createPlayerForIndex(activeIndex >= 0 ? activeIndex : 0);
+    }
+
+    /* =========================================================
+       INIT — fetch skill from haya_portal API
+       ========================================================= */
+    async function initReelPage() {
+      if (!skillId) {
+        document.getElementById('reelPageLoading').innerHTML = `
+          <div style="font-size:40px;margin-bottom:12px">📚</div>
+          <span class="load-text">No skill specified.</span>
+          <a href="employees.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
+        return;
+      }
+
+      try {
+        const res  = await fetch(`/api/skillpedia/skill/${skillId}`);
+        const data = await res.json();
+
+        if (!data.success || !data.skill) throw new Error('Skill not found');
+
+        const skill = data.skill;
+
+        // Build curriculum object compatible with formatStandardizedCurriculum
+        const raw = {
+          id:          `CUSTOM-${skill.id}`,
+          type:        'custom_ai',
+          title:       skill.title,
+          subtitle:    skill.subtitle || '11-Reel AI Skill Package',
+          sector:      skill.sector   || 'Custom Micro-Learning',
+          nsqf_level:  skill.nsqf_level || 3,
+          total_reels: skill.lessons.length,
+          creator_id:  'hayagriva',
+          created_at:  skill.created_at,
+          lessons:     skill.lessons
+        };
+
+        // Validate + format via schemas.js if available
+        try {
+          curriculum = (typeof formatStandardizedCurriculum === 'function')
+            ? formatStandardizedCurriculum(raw)
+            : raw;
+        } catch (schemaErr) {
+          console.warn('[REEL] Schema validation warning:', schemaErr.message);
+          curriculum = raw;
+        }
+
+        // Update back button to show skill title
+        document.title = `${skill.title} — HAYAGRIVA Reels`;
+        document.getElementById('backBtn').title = skill.title;
+
+        renderReels(curriculum);
+
+        setTimeout(() => {
+          if (ytReady || typeof YT !== 'undefined') {
+            ytReady = true;
+            createPlayerForIndex(0);
+          }
+        }, 100);
+
+        document.getElementById('reelPageLoading').style.display = 'none';
+
+      } catch (err) {
+        document.getElementById('reelPageLoading').innerHTML = `
+          <div style="font-size:40px;margin-bottom:12px">😕</div>
+          <span class="load-text">${err.message}</span>
+          <a href="employees.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
+      }
+    }
+
+    /* =========================================================
+       RENDER ALL REEL SLIDES
+       ========================================================= */
+    function renderReels(curr) {
+      const container = document.getElementById('reelsContainer');
+      const pillBar   = document.getElementById('reelProgressBar');
+      const shareBase = `${window.location.origin}/reel.html?skill=${skillId}`;
+
+      pillBar.innerHTML = curr.lessons.map((_, i) =>
+        `<div class="rp-pill ${i === 0 ? 'active' : ''}" id="pill-${i}"></div>`
+      ).join('');
+
+      curr.lessons.forEach((lesson, idx) => {
+        const slide = document.createElement('div');
+        slide.className    = 'reel-slide';
+        slide.dataset.index = idx;
+
+        const lessonTitle    = lesson.title    || `Reel ${idx + 1}`;
+        const lessonSubtitle = lesson.subtitle || lesson.title || '';
+        const nosCode        = lesson.nos_code  || `CUST/N${String(idx+1).padStart(4,'0')}`;
+        const pcs            = Array.isArray(lesson.pcs) ? lesson.pcs : [];
+
+        slide.innerHTML = `
+          <!-- YouTube player mount -->
+          <div class="yt-player-wrap" id="yt-wrap-${idx}">
+            <div class="slide-loading">
+              <div class="slide-spinner"></div>
+              <span>Reel ${idx + 1}</span>
+            </div>
+          </div>
+
+          <!-- Bottom gradient -->
+          <div class="reel-gradient"></div>
+
+          <!-- Drawer backdrop -->
+          <div class="drawer-backdrop" id="bd-${idx}" onclick="closeDrawers(${idx})"></div>
+
+          <!-- INFO DRAWER -->
+          <div class="reel-drawer" id="drawer-info-${idx}">
+            <div class="drawer-handle"></div>
+            <div class="drawer-title">📖 Reel ${idx + 1} of ${curr.lessons.length}</div>
+            <div class="drawer-reel-title">${lessonTitle}</div>
+            <div class="drawer-reel-subtitle">${lessonSubtitle}</div>
+            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:10px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);padding:3px 8px;border-radius:5px;font-weight:700;">${nosCode}</span>
+              <span style="font-size:10px;background:rgba(56,189,248,0.15);color:rgba(56,189,248,0.9);padding:3px 8px;border-radius:5px;font-weight:700;">${curr.sector || 'Vocational'}</span>
+            </div>
+          </div>
+
+          <!-- PC CHECKLIST DRAWER -->
+          <div class="reel-drawer" id="drawer-pc-${idx}">
+            <div class="drawer-handle"></div>
+            <div class="drawer-title">✅ Performance Criteria</div>
+            <div class="drawer-pc-list" id="pc-list-${idx}">
+              ${pcs.length > 0 ? pcs.map((pc, pcIdx) => {
+                const savedKey = `pc_prog_${skillId}_${lesson.id || idx}`;
+                const saved    = JSON.parse(localStorage.getItem(savedKey) || '[]');
+                const checked  = saved.includes(pcIdx);
+                return `
+                  <label class="drawer-pc-item ${checked ? 'checked' : ''}" id="pc-${idx}-${pcIdx}">
+                    <input type="checkbox" ${checked ? 'checked' : ''}
+                      onchange="togglePC('${skillId}','${lesson.id || idx}',${pcIdx},${idx},this)">
+                    <span class="drawer-pc-text">${pc}</span>
+                  </label>`;
+              }).join('') : '<p style="color:rgba(255,255,255,0.4);font-size:13px;">No performance criteria listed for this reel.</p>'}
+            </div>
+          </div>
+
+          <!-- SHARE DRAWER -->
+          <div class="reel-drawer" id="drawer-url-${idx}">
+            <div class="drawer-handle"></div>
+            <div class="drawer-title">🔗 Share This Skill</div>
+            <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:8px;">
+              Share this 11-reel skill course directly — opens reel player on any device:
+            </p>
+            <div class="drawer-url-box">
+              <span class="drawer-url-text">${shareBase}</span>
+              <button class="drawer-url-copy-btn" onclick="copyUrl('${shareBase}')">📋 Copy</button>
+            </div>
+          </div>
+
+          <!-- BOTTOM ACTION BAR -->
+          <div class="reel-action-bar">
+            <div class="reel-meta">
+              <div class="reel-course-name">${curr.title}</div>
+              <div class="reel-nos-label">${nosCode}</div>
+              <div class="reel-index-label">Reel ${idx + 1} of ${curr.lessons.length}</div>
+            </div>
+            <div class="reel-icon-btns">
+              <button class="reel-icon-btn" onclick="toggleDrawer(${idx},'info')" title="Info">
+                <div class="icon-circle">📖</div>
+                <span class="icon-label">Info</span>
+              </button>
+              <button class="reel-icon-btn" onclick="toggleDrawer(${idx},'pc')" title="Checklist">
+                <div class="icon-circle">✅</div>
+                <span class="icon-label">Tasks</span>
+              </button>
+              <button class="reel-icon-btn" onclick="toggleDrawer(${idx},'url')" title="Share">
+                <div class="icon-circle">🔗</div>
+                <span class="icon-label">Share</span>
+              </button>
+            </div>
+          </div>
+
+          ${idx === 0 ? `<div class="scroll-hint visible" id="scrollHint">
+            <span class="scroll-hint-arrow">↓</span>
+            <span class="scroll-hint-text">SWIPE UP</span>
+          </div>` : ''}
+
+          ${idx < curr.lessons.length - 1
+            ? `<div class="next-reel-cta" id="next-cta-${idx}" onclick="scrollToReel(${idx + 1})">Next Reel ▶</div>`
+            : `<div class="next-reel-cta" id="next-cta-${idx}" onclick="location.href='employees.html'">🏠 All Skills</div>`
+          }
+        `;
+
+        container.appendChild(slide);
+        slides[idx] = slide;
+      });
+
+      setupScrollObserver(curr);
+    }
+
+    /* =========================================================
+       INTERSECTION OBSERVER
+       ========================================================= */
+    function setupScrollObserver(curr) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const idx = parseInt(entry.target.dataset.index);
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.65) {
+            activateReel(idx);
+          } else {
+            pauseReel(idx);
+          }
+        });
+      }, { threshold: [0.65], root: document.getElementById('reelsContainer') });
+
+      slides.forEach(slide => observer.observe(slide));
+    }
+
+    function activateReel(idx) {
+      if (idx === activeIndex && players[idx]) return;
+      activeIndex = idx;
+      visitedSet.add(idx);
+      updatePills();
+      closeDrawers(idx);
+
+      const hint = document.getElementById('scrollHint');
+      if (hint && idx > 0) hint.classList.remove('visible');
+
+      if (ytReady) {
+        createPlayerForIndex(idx);
+        if (idx + 1 < slides.length) createPlayerForIndex(idx + 1);
+      }
+    }
+
+    function pauseReel(idx) {
+      if (players[idx] && typeof players[idx].pauseVideo === 'function') {
+        try { players[idx].pauseVideo(); } catch(_) {}
+      }
+    }
+
+    /* =========================================================
+       YOUTUBE PLAYER CREATION
+       ========================================================= */
+    function createPlayerForIndex(idx) {
+      if (!curriculum || players[idx]) {
+        if (idx === activeIndex && players[idx]) {
+          try {
+            if (isMuted) players[idx].mute(); else players[idx].unMute();
+            players[idx].playVideo();
+          } catch(_) {}
+        }
+        return;
+      }
+
+      const lesson  = curriculum.lessons[idx];
+      const videoId = lesson.video_id;
+      if (!videoId) return;
+
+      const wrap = document.getElementById(`yt-wrap-${idx}`);
+      if (!wrap) return;
+
+      const mountDiv = document.createElement('div');
+      mountDiv.id = `yt-player-${idx}`;
+      mountDiv.style.cssText = 'width:100%;height:100%;';
+      wrap.innerHTML = '';
+      wrap.appendChild(mountDiv);
+
+      players[idx] = new YT.Player(`yt-player-${idx}`, {
+        host:     'https://www.youtube-nocookie.com',
+        videoId:  videoId,
+        width:    '100%',
+        height:   '100%',
+        playerVars: {
+          autoplay: idx === activeIndex ? 1 : 0,
+          mute: 1, controls: 1, playsinline: 1,
+          rel: 0, modestbranding: 1, enablejsapi: 1,
+          origin: window.location.origin
+        },
+        events: {
+          onReady(e) {
+            if (isMuted) e.target.mute(); else e.target.unMute();
+            if (idx === activeIndex) e.target.playVideo();
+          },
+          onStateChange(e) {
+            if (e.data === YT.PlayerState.ENDED && idx === activeIndex) {
+              showNextCta(idx);
+              setTimeout(() => scrollToReel(idx + 1), 1500);
+            }
+          },
+          onError(e) { console.warn(`YT error reel ${idx}:`, e.data); }
+        }
+      });
+    }
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+    function scrollToReel(idx) {
+      if (idx < 0 || idx >= slides.length) return;
+      slides[idx].scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showNextCta(idx) {
+      const cta = document.getElementById(`next-cta-${idx}`);
+      if (cta) cta.classList.add('visible');
+    }
+
+    function updatePills() {
+      slides.forEach((_, idx) => {
+        const pill = document.getElementById(`pill-${idx}`);
+        if (!pill) return;
+        pill.className = 'rp-pill';
+        if (idx === activeIndex)      pill.classList.add('active');
+        else if (visitedSet.has(idx)) pill.classList.add('visited');
+      });
+    }
+
+    /* =========================================================
+       MUTE
+       ========================================================= */
+    function toggleMute() {
+      isMuted = !isMuted;
+      document.getElementById('muteBtn').textContent = isMuted ? '🔇' : '🔊';
+      Object.values(players).forEach(p => {
+        try { isMuted ? p.mute() : p.unMute(); } catch(_) {}
+      });
+    }
+
+    /* =========================================================
+       DRAWERS
+       ========================================================= */
+    function toggleDrawer(idx, type) {
+      const types  = ['info', 'pc', 'url'];
+      const target = document.getElementById(`drawer-${type}-${idx}`);
+      const isOpen = target.classList.contains('open');
+      const bd     = document.getElementById(`bd-${idx}`);
+
+      types.forEach(t => document.getElementById(`drawer-${t}-${idx}`)?.classList.remove('open'));
+
+      if (!isOpen) {
+        target.classList.add('open');
+        if (bd) bd.classList.add('visible');
+      } else {
+        if (bd) bd.classList.remove('visible');
+      }
+    }
+
+    function closeDrawers(idx) {
+      ['info', 'pc', 'url'].forEach(t =>
+        document.getElementById(`drawer-${t}-${idx}`)?.classList.remove('open')
+      );
+      const bd = document.getElementById(`bd-${idx}`);
+      if (bd) bd.classList.remove('visible');
+    }
+
+    /* =========================================================
+       PC CHECKLIST
+       ========================================================= */
+    function togglePC(skillId, lessonId, pcIdx, slideIdx, checkbox) {
+      const key  = `pc_prog_${skillId}_${lessonId}`;
+      let saved  = JSON.parse(localStorage.getItem(key) || '[]');
+      if (checkbox.checked) {
+        if (!saved.includes(pcIdx)) saved.push(pcIdx);
+        checkbox.closest('.drawer-pc-item').classList.add('checked');
+      } else {
+        saved = saved.filter(i => i !== pcIdx);
+        checkbox.closest('.drawer-pc-item').classList.remove('checked');
+      }
+      localStorage.setItem(key, JSON.stringify(saved));
+    }
+
+    /* =========================================================
+       COPY URL
+       ========================================================= */
+    function copyUrl(url) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url);
+        alert(`🔗 Link Copied!\n\n${url}\n\nPaste in WhatsApp to share this skill course.`);
+      } else {
+        alert(`🔗 Share Link:\n${url}`);
+      }
+    }
+
+    /* =========================================================
+       START
+       ========================================================= */
+    document.addEventListener('DOMContentLoaded', initReelPage);
+  </script>
+</body>
+</html>

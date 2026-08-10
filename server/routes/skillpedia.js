@@ -173,6 +173,15 @@ router.get('/custom/all-skills', async (req, res) => {
         let parsedSkills = rows.map(s => {
             let schema = {};
             try { schema = JSON.parse(s.schema_json); } catch (e) {}
+            // Normalise lessons — support both new (schema.lessons[]) and old (schema.reels[]) formats
+            const lessons = Array.isArray(schema.lessons) ? schema.lessons
+                          : Array.isArray(schema.reels)   ? schema.reels.map((r, i) => ({
+                                id: `les_${i+1}`, reel_index: i+1,
+                                nos_code: `CUST/N010${i+1}`, title: r.title || `Step ${i+1}`,
+                                subtitle: r.title || `Step ${i+1}`, video_id: r.videoId || '',
+                                video_platform: 'youtube', pcs: []
+                            }))
+                          : [];
             return {
                 id: s.id,
                 title: s.title,
@@ -181,6 +190,7 @@ router.get('/custom/all-skills', async (req, res) => {
                 created_at: s.created_at,
                 tag: schema.tag || s.title.split(' ')[0] || 'General',
                 description: schema.description || 'Enterprise SOP micro-learning reel and operational workflow.',
+                lessons,
                 schema
             };
         });
@@ -343,11 +353,12 @@ router.get('/qps/cards', async (req, res) => {
 router.post('/save-skill', async (req, res) => {
     try {
         const { title, companyId, employeeEmailId, schemaJson } = req.body;
-        if (!title || !employeeEmailId || !schemaJson) {
-            return res.status(400).json({ error: 'Title, employeeEmailId, and schemaJson are required.' });
+        if (!title || !schemaJson) {
+            return res.status(400).json({ error: 'Title and schemaJson are required.' });
         }
 
-        const normalizedEmail = employeeEmailId.trim().toLowerCase();
+        // Default anonymous builder if no email provided
+        const normalizedEmail = (employeeEmailId || 'builder@hayagriva.ai').trim().toLowerCase();
         const schemaString = typeof schemaJson === 'string' ? schemaJson : JSON.stringify(schemaJson);
 
         const result = await db.prepare(`
@@ -358,7 +369,45 @@ router.post('/save-skill', async (req, res) => {
         res.json({
             success: true,
             skillId: result.lastInsertRowid,
-            message: `Custom skill "${title}" saved successfully for ${normalizedEmail}.`
+            message: `Custom skill "${title}" saved successfully.`
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// GET /api/skillpedia/skill/:id  — fetch one custom skill by ID (used by reel.html deep-link)
+router.get('/skill/:id', async (req, res) => {
+    try {
+        const row = await db.prepare(`SELECT * FROM custom_skills WHERE id = ?`).get(req.params.id);
+        if (!row) return res.status(404).json({ error: 'Skill not found.' });
+
+        let schema = {};
+        try { schema = JSON.parse(row.schema_json); } catch (e) {}
+
+        // Normalise lessons
+        const lessons = Array.isArray(schema.lessons) ? schema.lessons
+                      : Array.isArray(schema.reels)   ? schema.reels.map((r, i) => ({
+                            id: `les_${i+1}`, reel_index: i+1,
+                            nos_code: `CUST/N010${i+1}`, title: r.title || `Step ${i+1}`,
+                            subtitle: r.title || `Step ${i+1}`, video_id: r.videoId || '',
+                            video_platform: 'youtube', pcs: []
+                        }))
+                      : [];
+
+        res.json({
+            success: true,
+            skill: {
+                id: row.id,
+                title: row.title,
+                subtitle: schema.subtitle || `11-Reel AI Skill Package`,
+                sector: schema.sector || 'Custom Micro-Learning',
+                nsqf_level: schema.nsqf_level || 3,
+                tag: schema.tag || 'General',
+                description: schema.description || '',
+                lessons,
+                created_at: row.created_at
+            }
         });
     } catch (e) {
         res.status(500).json({ error: e.message });
