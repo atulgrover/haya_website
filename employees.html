@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employees & Enterprise Skill Builder | HAYAGRIVA</title>
-  <meta name="description" content="Enterprise Skill Reel Builder for Employees. Build custom multi-segment video skill reels, partition corporate domain knowledge, and share operational SOPs.">
+  <title>Employees | Enterprise Custom Skills | HAYAGRIVA</title>
+  <meta name="description" content="Enterprise Skill Hub for Employees and Corporate Workforce. Access company custom 11-reel skills isolated by employee email ID.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
@@ -45,42 +45,106 @@
     /* 3-Panel IDE Layout */
     .ide-container { display: flex; flex: 1; height: calc(100vh - 64px); overflow: hidden; }
 
-    /* LEFT PANEL: Isolation & Custom Creator Form */
+    /* LEFT PANEL: Search & Consolidated Tag Directory */
     .panel-left {
       width: 320px; min-width: 280px; background: #FFFFFF; border-right: 1px solid var(--border-color);
-      padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; flex-shrink: 0;
+      padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; flex-shrink: 0;
     }
     .panel-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
 
     .filter-group { display: flex; flex-direction: column; gap: 6px; }
-    .filter-label { font-size: 12.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-    .filter-input, .filter-textarea, .filter-select {
-      padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px;
-      font-size: 13.5px; background: #FFFFFF; color: var(--text-main); outline: none; width: 100%;
+    .filter-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .filter-input {
+      width: 100%; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px;
+      font-size: 13.5px; font-family: var(--font-main); outline: none; transition: border-color 0.2s;
     }
-    .filter-input:focus, .filter-textarea:focus, .filter-select:focus { border-color: var(--primary-color); }
-    
-    .btn-create {
-      background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px 16px;
-      border-radius: 6px; font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background 0.2s;
+    .filter-input:focus { border-color: var(--primary-color); }
+
+    /* Consolidated Keyword Tag List */
+    .tag-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+    .tag-item {
+      display: flex; justify-content: space-between; align-items: center; padding: 9px 12px;
+      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px;
+      font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     }
-    .btn-create:hover { background: var(--primary-hover); }
+    .tag-item:hover, .tag-item.active { background: var(--primary-light); color: var(--primary-color); border-color: var(--primary-color); }
+    .tag-badge { background: #E2E8F0; color: var(--text-main); font-size: 11px; padding: 2px 7px; border-radius: 10px; }
 
-    /* CENTER PANEL: Enterprise Custom Skill Cards */
-    .panel-center { flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; background: var(--bg-primary); }
-    .results-header { display: flex; justify-content: space-between; align-items: center; }
-    .results-count { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+    /* CENTER PANEL: Enterprise Skill Cards Grid */
+    .panel-center {
+      flex: 1; background: var(--bg-primary); padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;
+    }
+    .workspace-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .workspace-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; }
+    .btn-create-skill {
+      background: var(--primary-color); color: #FFFFFF; border: none; padding: 9px 18px; border-radius: 6px;
+      font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .btn-create-skill:hover { background: var(--primary-hover); }
 
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+
     .skill-card {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px;
-      padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.2s ease;
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;
+      transition: all 0.2s ease;
     }
-    .skill-card:hover { border-color: var(--primary-color); box-shadow: 0 4px 12px rgba(30, 108, 147, 0.12); transform: translateY(-2px); }
-    .card-badge { font-family: 'Roboto Mono', monospace; font-size: 10.5px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: var(--primary-light); color: var(--primary-color); display: inline-block; }
-    .card-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); margin-top: 4px; }
-    .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .skill-card:hover { border-color: var(--primary-color); box-shadow: 0 6px 12px rgba(30, 108, 147, 0.1); transform: translateY(-2px); }
+    
+    .tag-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .badge-tag { background: var(--primary-light); color: var(--primary-color); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .company-tag { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+
+    .skill-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); line-height: 1.35; }
+    .email-line { font-size: 12.5px; color: var(--text-muted); margin-bottom: 12px; word-break: break-all; }
+
+    /* Shareable URL Container */
+    .url-box {
+      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 8px 10px;
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    }
+    .url-input {
+      flex: 1; border: none; background: transparent; font-family: 'Roboto Mono', monospace;
+      font-size: 11.5px; color: var(--primary-color); outline: none; text-overflow: ellipsis;
+    }
+    .btn-copy-url {
+      background: #FFFFFF; border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 700; cursor: pointer; color: var(--text-main); transition: all 0.15s;
+    }
+    .btn-copy-url:hover { background: var(--primary-light); color: var(--primary-color); }
+
+    .btn-learn {
+      background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px; border-radius: 6px;
+      font-weight: 700; font-size: 13.5px; width: 100%; cursor: pointer; transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+
+    /* RIGHT PANEL: Inspector Drawer */
+    .panel-right {
+      width: 400px; min-width: 320px; background: #FFFFFF; border-left: 1px solid var(--border-color);
+      padding: 20px; overflow-y: auto; display: none; flex-direction: column; gap: 16px; flex-shrink: 0;
+    }
+    .panel-right.active { display: flex; }
+    .inspector-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .btn-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+
+    /* Modal Overlay for Creating Custom Skills */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5);
+      display: none; align-items: center; justify-content: center; z-index: 2000;
+    }
+    .modal-card {
+      background: #FFFFFF; width: 440px; max-width: 90%; border-radius: 10px; padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 16px;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #10B981; color: #FFFFFF;
+      padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 13px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: none; z-index: 3000;
+    }
 
     /* Unified Dark Deep Blue Footer Container (#0F172A / #1E6C93 Top Border) */
     .compact-footer {
@@ -130,34 +194,25 @@
       border-radius: 10px; padding: 24px; color: #FFFFFF; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); height: 100%;
     }
     .form-group { margin-bottom: 12px; }
-    .form-label { display: block; font-size: 12px; font-weight: 700; color: #93C5FD; margin-bottom: 4px; }
-    .form-input, .form-textarea {
+    .form-label-dark { display: block; font-size: 12px; font-weight: 700; color: #93C5FD; margin-bottom: 4px; }
+    .form-input-dark, .form-textarea-dark {
       width: 100%; padding: 9px 12px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px;
       font-size: 13.5px; outline: none; background: rgba(15, 23, 42, 0.6); color: #FFFFFF;
     }
-    .form-input::placeholder, .form-textarea::placeholder { color: #94A3B8; }
-    .form-input:focus, .form-textarea:focus { border-color: #93C5FD; }
-    .form-submit {
+    .form-input-dark::placeholder, .form-textarea-dark::placeholder { color: #94A3B8; }
+    .form-input-dark:focus, .form-textarea-dark:focus { border-color: #93C5FD; }
+    .form-submit-dark {
       background: #1E6C93; color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 6px;
       font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; transition: background 0.2s;
     }
-    .form-submit:hover { background: #165272; }
+    .form-submit-dark:hover { background: #165272; }
 
     .footer-bottom { max-width: 100%; margin: 40px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.12); display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255, 255, 255, 0.75); }
-
-    /* RIGHT PANEL: Inspector */
-    .panel-right {
-      width: 360px; min-width: 300px; background: #FFFFFF; border-left: 1px solid var(--border-color);
-      padding: 20px; overflow-y: auto; display: none; flex-direction: column; gap: 16px; flex-shrink: 0;
-    }
-    .panel-right.active { display: flex; }
-    .inspector-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-    .btn-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
+  <!-- Top Header Navigation Bar -->
   <header class="header-nav">
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
@@ -176,56 +231,36 @@
   <!-- 3-Panel IDE Layout Container -->
   <div class="ide-container">
 
-    <!-- LEFT PANEL: Corporate Email & Skill Builder Form -->
+    <!-- LEFT PANEL: Search & Consolidated Tag Directory -->
     <aside class="panel-left">
-      <h2 class="panel-title">Corporate Workspace</h2>
+      <h2 class="panel-title">Filter Custom Skills</h2>
 
+      <!-- Keyword Search Input -->
       <div class="filter-group">
-        <label class="filter-label" for="employee_email_id">Corporate Email Domain</label>
-        <input type="email" id="employee_email_id" class="filter-input" placeholder="e.g. name@company.com" oninput="onEmailChange()" />
+        <label class="filter-label" for="searchInput">Search Keyword</label>
+        <input type="text" id="searchInput" class="filter-input" placeholder="Search title or email..." oninput="handleSearchInput()" />
       </div>
 
-      <div style="border-bottom: 1px solid var(--border-color); margin: 6px 0;"></div>
-
-      <h2 class="panel-title">Create Custom Skill Reel</h2>
-      <form id="createSkillForm" onsubmit="handleCreateSkill(event)">
-        <div class="filter-group">
-          <label class="filter-label" for="skill_title">Skill Title *</label>
-          <input type="text" id="skill_title" class="filter-input" placeholder="e.g. Precision CNC Calibration" required />
+      <!-- Consolidated Tag / Category Directory -->
+      <div class="filter-group">
+        <label class="filter-label">Keyword / Category Directory</label>
+        <div class="tag-list" id="tagList">
+          <!-- Loaded dynamically via API -->
         </div>
-
-        <div class="filter-group">
-          <label class="filter-label" for="category">Category *</label>
-          <select id="category" class="filter-select" required>
-            <option value="Manufacturing & Quality">Manufacturing & Quality</option>
-            <option value="IT & Software Systems">IT & Software Systems</option>
-            <option value="Logistics & Warehousing">Logistics & Warehousing</option>
-            <option value="Safety & Compliance">Safety & Compliance</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label class="filter-label" for="video_url">Video Reel URL / Embed *</label>
-          <input type="url" id="video_url" class="filter-input" placeholder="https://youtube.com/watch?v=..." required />
-        </div>
-
-        <div class="filter-group">
-          <label class="filter-label" for="description">Skill Description</label>
-          <textarea id="description" class="filter-textarea" rows="3" placeholder="Brief SOP overview..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-create">Publish Enterprise Skill Reel</button>
-      </form>
+      </div>
     </aside>
 
-    <!-- CENTER PANEL: Custom Skill Cards Grid -->
+    <!-- CENTER PANEL: Enterprise Custom Skill Cards -->
     <main class="panel-center">
-      <div class="results-header">
-        <span class="results-count" id="resultsCount">Enterprise Custom Skill Reels</span>
+      <div class="workspace-header">
+        <span class="workspace-title" id="resultsCount">Loading Enterprise Skills...</span>
+        <button class="btn-create-skill" onclick="openCreateModal()">
+          ➕ Create Custom Skill
+        </button>
       </div>
 
       <div class="cards-grid" id="cardsGrid">
-        <!-- Enterprise Custom Skill Cards rendered dynamically -->
+        <!-- Enterprise Custom Skill Cards Rendered Dynamically -->
       </div>
 
       <!-- Unified Dark Deep Blue Footer Container (#0F172A) -->
@@ -286,26 +321,26 @@
 
               <form id="contactForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                  <label class="form-label" for="inputName">Name *</label>
-                  <input type="text" id="inputName" class="form-input" placeholder="Your Full Name" required />
+                  <label class="form-label-dark" for="inputName">Name *</label>
+                  <input type="text" id="inputName" class="form-input-dark" placeholder="Your Full Name" required />
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="inputEmail">Email *</label>
-                  <input type="email" id="inputEmail" class="form-input" placeholder="name@domain.com" required />
+                  <label class="form-label-dark" for="inputEmail">Email *</label>
+                  <input type="email" id="inputEmail" class="form-input-dark" placeholder="name@domain.com" required />
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="inputPhone">Phone No *</label>
-                  <input type="tel" id="inputPhone" class="form-input" placeholder="+91-XXXXX-XXXXX" required />
+                  <label class="form-label-dark" for="inputPhone">Phone No *</label>
+                  <input type="tel" id="inputPhone" class="form-input-dark" placeholder="+91-XXXXX-XXXXX" required />
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="inputMessage">Message / Inquiry</label>
-                  <textarea id="inputMessage" class="form-textarea" rows="2" placeholder="How can we assist you?"></textarea>
+                  <label class="form-label-dark" for="inputMessage">Message / Inquiry</label>
+                  <textarea id="inputMessage" class="form-textarea-dark" rows="2" placeholder="How can we assist you?"></textarea>
                 </div>
 
-                <button type="submit" class="form-submit">Submit Inquiry</button>
+                <button type="submit" class="form-submit-dark">Submit Inquiry</button>
               </form>
             </div>
           </div>
@@ -319,100 +354,232 @@
       </footer>
     </main>
 
-    <!-- RIGHT PANEL: Skill Inspector -->
+    <!-- RIGHT PANEL: Micro-Learning Inspector Drawer -->
     <aside class="panel-right" id="panelRight">
       <div class="inspector-header">
         <h2 class="panel-title" id="inspectorTitle">Skill Inspector</h2>
         <button class="btn-close" onclick="closeInspector()">×</button>
       </div>
       <div id="inspectorContent">
-        <!-- Dynamic inspector content -->
+        <!-- Content rendered dynamically -->
       </div>
     </aside>
 
   </div>
 
+  <!-- Create Custom Skill Modal -->
+  <div class="modal-overlay" id="createModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 16px; font-weight: 700;">➕ Create New Custom Skill</h3>
+        <button class="btn-close" onclick="closeCreateModal()">×</button>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Skill Title</label>
+        <input type="text" id="newTitle" class="filter-input" placeholder="e.g. EV Battery Calibration" />
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Category Keyword / Tag</label>
+        <input type="text" id="newTag" class="filter-input" placeholder="e.g. Automotive, Accounting" />
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Employee Email ID</label>
+        <input type="email" id="newEmail" class="filter-input" placeholder="employee@company.com" />
+      </div>
+
+      <button class="btn-learn" onclick="submitCreateSkill()" style="margin-top: 10px;">
+        🚀 Generate 11-Reel Skill Package
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">URL Copied to Clipboard!</div>
+
   <script>
-    let customSkills = [
-      { id: '1', skill_title: 'CNC Mill Calibration & Tool Offset SOP', category: 'Manufacturing & Quality', employee_email_id: 'tech@tata.com', description: 'Step-by-step 5-axis CNC zero-point alignment and tool height offset procedure.' },
-      { id: '2', skill_title: 'Local ONNX Vector Index Pipeline Setup', category: 'IT & Software Systems', employee_email_id: 'dev@company.com', description: 'Enterprise configuration for air-gapped InLegal-SBERT local embedding indexing.' },
-      { id: '3', skill_title: 'Hazmat Storage & Chemical Safety Protocols', category: 'Safety & Compliance', employee_email_id: 'safety@pharma.com', description: 'OSHA & ISO 45001 compliant chemical spill containment and storage checklist.' }
-    ];
+    let currentTag = '';
+    let searchTimeout = null;
 
     window.addEventListener('DOMContentLoaded', () => {
-      renderCards(customSkills);
+      loadKeywords();
+      loadSkills();
+      checkUrlParams();
     });
 
-    function onEmailChange() {
-      const email = document.getElementById('employee_email_id').value.toLowerCase().trim();
-      if (!email) {
-        renderCards(customSkills);
-        return;
+    function checkUrlParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const skillId = urlParams.get('skillId');
+      if (skillId) {
+        loadSkillById(skillId);
       }
-      const filtered = customSkills.filter(s => s.employee_email_id.toLowerCase().includes(email));
-      renderCards(filtered);
     }
 
-    function renderCards(skills) {
-      const grid = document.getElementById('cardsGrid');
-      const count = document.getElementById('resultsCount');
-
-      count.innerText = `Showing ${skills.length} Enterprise Custom Skill Reels`;
-      if (skills.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No custom skill reels found for this corporate email domain.</div>`;
-        return;
-      }
-
-      grid.innerHTML = skills.map(s => `
-        <div class="skill-card">
-          <div>
-            <span class="card-badge">${s.category}</span>
-            <h3 class="card-title">${s.skill_title}</h3>
-            <p class="card-desc">${s.description}</p>
-            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 8px;">Domain: <code>${s.employee_email_id}</code></div>
-          </div>
-
-          <button class="btn-create" style="margin-top: 10px;" onclick="openInspector('${s.skill_title}')">
-            🎬 View Enterprise Reel
-          </button>
-        </div>
-      `).join('');
+    async function loadKeywords() {
+      try {
+        const res = await fetch('/api/skillpedia/custom/keywords');
+        const data = await res.json();
+        if (data.success) {
+          const tagList = document.getElementById('tagList');
+          tagList.innerHTML = `<div class="tag-item ${currentTag === '' ? 'active' : ''}" onclick="filterByTag('')">
+            <span>All Keywords</span>
+            <span class="tag-badge">${data.totalKeywords}</span>
+          </div>` + data.keywords.map(k => `
+            <div class="tag-item ${currentTag === k.tag ? 'active' : ''}" onclick="filterByTag('${k.tag}')">
+              <span>${k.tag}</span>
+              <span class="tag-badge">${k.count}</span>
+            </div>
+          `).join('');
+        }
+      } catch (err) { console.error(err); }
     }
 
-    function handleCreateSkill(event) {
-      event.preventDefault();
-      const title = document.getElementById('skill_title').value;
-      const cat = document.getElementById('category').value;
-      const desc = document.getElementById('description').value;
-      const email = document.getElementById('employee_email_id').value || 'general@company.com';
-
-      const newSkill = { id: Date.now().toString(), skill_title: title, category: cat, description: desc, employee_email_id: email };
-      customSkills.unshift(newSkill);
-      document.getElementById('createSkillForm').reset();
-      renderCards(customSkills);
-      alert(`Skill reel "${title}" published successfully!`);
+    function filterByTag(tag) {
+      currentTag = tag;
+      loadKeywords();
+      loadSkills();
     }
 
-    function openInspector(titleText) {
-      const panel = document.getElementById('panelRight');
-      const title = document.getElementById('inspectorTitle');
+    function handleSearchInput() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(loadSkills, 300);
+    }
+
+    async function loadSkills() {
+      const q = document.getElementById('searchInput').value;
+      let url = `/api/skillpedia/custom/all-skills?1=1`;
+      if (q) url += `&q=${encodeURIComponent(q)}`;
+      if (currentTag) url += `&tag=${encodeURIComponent(currentTag)}`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const grid = document.getElementById('cardsGrid');
+        const countSpan = document.getElementById('resultsCount');
+
+        if (data.success && data.skills.length > 0) {
+          countSpan.innerText = `Showing ${data.skills.length} Enterprise Skills`;
+          grid.innerHTML = data.skills.map(skill => {
+            const shareUrl = `${window.location.origin}/employees.html?skillId=${skill.id}`;
+            return `
+              <div class="skill-card">
+                <div>
+                  <div class="tag-header">
+                    <span class="badge-tag">${skill.tag}</span>
+                    <span class="company-tag">Org: ${skill.company_id}</span>
+                  </div>
+                  <h3 class="skill-title">${skill.title}</h3>
+                  <div class="email-line">👤 <strong>Employee:</strong> ${skill.employee_email_id}</div>
+
+                  <!-- Shareable URL Container -->
+                  <div class="url-box">
+                    <input type="text" class="url-input" value="${shareUrl}" readonly id="url-${skill.id}" />
+                    <button class="btn-copy-url" onclick="copyShareUrl('${shareUrl}')">🔗 Copy</button>
+                  </div>
+                </div>
+
+                <button class="btn-learn" onclick="openSkillInspector(${skill.id}, '${encodeURIComponent(skill.title)}', '${skill.employee_email_id}')">
+                  🎬 Learn Now
+                </button>
+              </div>
+            `;
+          }).join('');
+        } else {
+          countSpan.innerText = `0 Skills Found`;
+          grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No custom skills match your selected filter.</div>`;
+        }
+      } catch (err) { console.error(err); }
+    }
+
+    async function loadSkillById(skillId) {
+      try {
+        const res = await fetch(`/api/skillpedia/custom/all-skills?skillId=${skillId}`);
+        const data = await res.json();
+        if (data.success && data.skills.length > 0) {
+          const s = data.skills[0];
+          openSkillInspector(s.id, encodeURIComponent(s.title), s.employee_email_id);
+        }
+      } catch (err) { console.error(err); }
+    }
+
+    function copyShareUrl(url) {
+      navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById('toast');
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 2500);
+      });
+    }
+
+    function openSkillInspector(skillId, titleEnc, email) {
+      const title = decodeURIComponent(titleEnc);
+      const rightPanel = document.getElementById('panelRight');
+      const inspectorTitle = document.getElementById('inspectorTitle');
       const content = document.getElementById('inspectorContent');
 
-      title.innerText = 'Enterprise Reel';
+      inspectorTitle.innerText = `Skill #${skillId}`;
       content.innerHTML = `
-        <div style="background: var(--primary-light); padding: 12px; border-radius: 6px;">
-          <h3 style="font-size: 14px; color: var(--primary-color); font-weight: 700;">${titleText}</h3>
+        <div style="background: var(--primary-light); padding: 14px; border-radius: 8px; margin-bottom: 16px;">
+          <h3 style="font-size: 16px; color: var(--primary-color); font-weight: 700;">${title}</h3>
+          <span style="font-size: 12px; color: var(--text-muted);">Assigned to: ${email}</span>
         </div>
-        <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
-          <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 6px;">🎬 Multi-Segment Reel Inspector</h4>
-          <p style="font-size: 12.5px; color: var(--text-muted);">Shared corporate skill reel checklist and operating manual.</p>
+        <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+          <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">🎬 11-Step Custom Video Viewer</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Employee skill reels and Performance Criteria checklist.</p>
+          <a href="public/skillpedia/index.html?customSkillId=${skillId}" target="_blank" class="btn-learn" style="text-align: center; text-decoration: none;">
+            🚀 Open Full Skill Player
+          </a>
         </div>
       `;
-      panel.classList.add('active');
+      rightPanel.classList.add('active');
     }
 
     function closeInspector() {
       document.getElementById('panelRight').classList.remove('active');
+    }
+
+    function openCreateModal() { document.getElementById('createModal').style.display = 'flex'; }
+    function closeCreateModal() { document.getElementById('createModal').style.display = 'none'; }
+
+    async function submitCreateSkill() {
+      const title = document.getElementById('newTitle').value;
+      const tag = document.getElementById('newTag').value;
+      const email = document.getElementById('newEmail').value;
+
+      if (!title || !email) {
+        alert('Title and Employee Email ID are required.');
+        return;
+      }
+
+      const schema = {
+        title,
+        tag: tag || 'General',
+        reels: [
+          { step: 1, title: `${title} - Part 1`, videoId: 'dQw4w9WgXcQ' },
+          { step: 2, title: `${title} - Part 2`, videoId: 'dQw4w9WgXcQ' }
+        ]
+      };
+
+      try {
+        const res = await fetch('/api/skillpedia/save-skill', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title,
+            companyId: 'acme_corp',
+            employeeEmailId: email,
+            schemaJson: schema
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          closeCreateModal();
+          loadKeywords();
+          loadSkills();
+          copyShareUrl(`${window.location.origin}/employees.html?skillId=${data.skillId}`);
+        }
+      } catch (err) { console.error(err); }
     }
 
     function handleFormSubmit(event) {
