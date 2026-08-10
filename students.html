@@ -446,6 +446,12 @@
         </div>
       </div>
 
+      <!-- Active Sector Filter Banner -->
+      <div id="activeSectorBar" class="active-sector-bar" style="display: none;">
+        <span>Active Sector Filter: <strong id="activeSectorName">All Sectors</strong></span>
+        <button class="btn-clear-sector" onclick="resetSectorGrid()">Clear Filter ✕</button>
+      </div>
+
       <div class="results-header">
         <span class="results-count" id="resultsCount">Loading NCVET NSQF Database...</span>
       </div>
@@ -514,16 +520,30 @@
       }).join('');
     }
 
-    function selectSectorCard(sectorName) {
+    async function selectSectorCard(sectorName) {
+      currentFilters.sector = sectorName;
+      currentFilters.sub_sector = '';
+      currentFilters.occupation = '';
+      currentFilters.qp_code = '';
+
       const select = document.getElementById('selectSector');
       if (select) {
         select.value = sectorName;
-        onSectorChange();
       }
+
+      const bar = document.getElementById('activeSectorBar');
+      const barName = document.getElementById('activeSectorName');
+      if (bar && barName) {
+        barName.innerText = sectorName;
+        bar.style.display = 'flex';
+      }
+
       const backBtn = document.getElementById('btnBackToSectors');
       if (backBtn) backBtn.style.display = 'inline-flex';
       const grid = document.getElementById('sidSectorGrid');
       if (grid) grid.style.display = 'none';
+
+      await onSectorChange();
 
       const resultsHeader = document.querySelector('.results-header');
       if (resultsHeader) resultsHeader.scrollIntoView({ behavior: 'smooth' });
@@ -531,10 +551,6 @@
 
     function resetSectorGrid() {
       resetFilters();
-      const backBtn = document.getElementById('btnBackToSectors');
-      if (backBtn) backBtn.style.display = 'none';
-      const grid = document.getElementById('sidSectorGrid');
-      if (grid) grid.style.display = 'grid';
     }
 
     async function initCascadingFilters() {
@@ -543,16 +559,31 @@
         const data = await res.json();
         if (data.success && data.sectors) {
           populateSelect('selectSector', data.sectors, 'All Sectors');
+          if (currentFilters.sector) {
+            const select = document.getElementById('selectSector');
+            if (select) select.value = currentFilters.sector;
+          }
         }
       } catch (err) { console.error(err); }
     }
 
     async function onSectorChange() {
-      const sec = document.getElementById('selectSector').value;
+      const sec = document.getElementById('selectSector').value || currentFilters.sector;
       currentFilters.sector = sec;
       currentFilters.sub_sector = '';
       currentFilters.occupation = '';
       currentFilters.qp_code = '';
+
+      const bar = document.getElementById('activeSectorBar');
+      const barName = document.getElementById('activeSectorName');
+      if (sec) {
+        if (bar && barName) {
+          barName.innerText = sec;
+          bar.style.display = 'flex';
+        }
+      } else {
+        if (bar) bar.style.display = 'none';
+      }
 
       resetSelect('selectSubsector', 'All Sub Sectors');
       resetSelect('selectOccupation', 'All Occupations');
@@ -628,6 +659,9 @@
       resetSelect('selectOccupation', 'All Occupations');
       resetSelect('selectJobrole', 'All Job Roles');
 
+      const bar = document.getElementById('activeSectorBar');
+      if (bar) bar.style.display = 'none';
+
       const backBtn = document.getElementById('btnBackToSectors');
       if (backBtn) backBtn.style.display = 'none';
       const grid = document.getElementById('sidSectorGrid');
@@ -655,7 +689,9 @@
       if (currentFilters.occupation) params.append('occupation', currentFilters.occupation);
       if (currentFilters.qp_code) params.append('jobrole', currentFilters.qp_code);
       if (currentFilters.search) params.append('q', currentFilters.search);
-      params.append('limit', '15');
+
+      const fetchLimit = (currentFilters.sector || currentFilters.sub_sector || currentFilters.occupation || currentFilters.search) ? '100' : '15';
+      params.append('limit', fetchLimit);
 
       const url = `/api/skillpedia/qps/cards?${params.toString()}`;
       try {

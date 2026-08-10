@@ -371,3 +371,34 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Active Sector Filter Bar */
+.active-sector-bar {
+  background: #E0F2FE;
+  border: 1px solid #7DD3FC;
+  color: #0369A1;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.btn-clear-sector {
+  background: #0284C7;
+  color: #FFFFFF;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-clear-sector:hover {
+  background: #0369A1;
+}
+
