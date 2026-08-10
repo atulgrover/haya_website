@@ -74,11 +74,9 @@
     .panel-center {
       flex: 1; background: var(--bg-primary); padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;
     }
-    .workspace-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-    .workspace-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; }
     .btn-create-skill {
-      background: var(--primary-color); color: #FFFFFF; border: none; padding: 9px 18px; border-radius: 6px;
-      font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 6px;
+      background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px 16px; border-radius: 6px;
+      font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
     }
     .btn-create-skill:hover { background: var(--primary-hover); }
 
@@ -241,6 +239,11 @@
         <input type="text" id="searchInput" class="filter-input" placeholder="Search title or email..." oninput="handleSearchInput()" />
       </div>
 
+      <!-- Create Custom Skill Button (Shifted under Search Keyword) -->
+      <button class="btn-create-skill" onclick="openCreateModal()">
+        ➕ Create Custom Skill
+      </button>
+
       <!-- Consolidated Tag / Category Directory -->
       <div class="filter-group">
         <label class="filter-label">Keyword / Category Directory</label>
@@ -252,13 +255,6 @@
 
     <!-- CENTER PANEL: Enterprise Custom Skill Cards -->
     <main class="panel-center">
-      <div class="workspace-header">
-        <span class="workspace-title" id="resultsCount">Loading Enterprise Skills...</span>
-        <button class="btn-create-skill" onclick="openCreateModal()">
-          ➕ Create Custom Skill
-        </button>
-      </div>
-
       <div class="cards-grid" id="cardsGrid">
         <!-- Enterprise Custom Skill Cards Rendered Dynamically -->
       </div>
@@ -460,7 +456,7 @@
         const countSpan = document.getElementById('resultsCount');
 
         if (data.success && data.skills.length > 0) {
-          countSpan.innerText = `Showing ${data.skills.length} Enterprise Skills`;
+          if (countSpan) countSpan.innerText = `Showing ${data.skills.length} Enterprise Skills`;
           grid.innerHTML = data.skills.map(skill => {
             const shareUrl = `${window.location.origin}/employees.html?skillId=${skill.id}`;
             return `
@@ -487,7 +483,7 @@
             `;
           }).join('');
         } else {
-          countSpan.innerText = `0 Skills Found`;
+          if (countSpan) countSpan.innerText = `0 Skills Found`;
           grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No custom skills match your selected filter.</div>`;
         }
       } catch (err) { console.error(err); }
