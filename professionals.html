@@ -66,7 +66,7 @@
     }
     .role-title { font-size: 14px; font-weight: 600; }
 
-    /* CENTER PANEL: WORKBENCH Core Engine + 5 Segment Cards */
+    /* CENTER PANEL: WORKBENCH Core Engine + 6 Standalone Segment Cards */
     .panel-center { flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; background: var(--bg-primary); }
     
     .workspace-header { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; box-shadow: var(--card-shadow); }
@@ -105,7 +105,7 @@
     .progress-bar { height: 6px; background: #334155; border-radius: 4px; overflow: hidden; margin-top: 6px; }
     .progress-fill { height: 100%; background: #38BDF8; border-radius: 4px; }
 
-    /* Segment Cards 5-Grid */
+    /* Segment Cards 6-Grid */
     .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
     .segment-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
@@ -121,9 +121,9 @@
     }
     .btn-more-details:hover { background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color); }
 
-    /* RIGHT PANEL (3rd Segment): Gateway & Marketplace Inspector */
+    /* RIGHT PANEL: Gateway & Marketplace Inspector */
     .panel-right {
-      width: 360px; background: #FFFFFF; border-left: 1px solid var(--border-color);
+      width: 380px; background: #FFFFFF; border-left: 1px solid var(--border-color);
       display: flex; flex-direction: column; flex-shrink: 0; padding: 20px; gap: 16px; overflow-y: auto;
       transform: translateX(100%); transition: transform 0.3s ease; position: fixed; right: 0; top: 64px; bottom: 0; z-index: 100;
       box-shadow: -5px 0 25px rgba(0,0,0,0.1);
@@ -134,7 +134,9 @@
     .inspector-section { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; }
     .inspector-sec-title { font-weight: 700; font-size: 13.5px; color: var(--primary-color); margin-bottom: 6px; }
     .inspector-sec-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
-    .btn-download { background: var(--primary-color); color: #FFFFFF; padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px; display: block; text-align: center; text-decoration: none; margin-top: 10px; }
+    .service-price-tag { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #166534; background: #DCFCE7; padding: 3px 8px; border-radius: 4px; display: inline-block; float: right; }
+    .btn-download { background: var(--primary-color); color: #FFFFFF; padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px; display: block; text-align: center; text-decoration: none; margin-top: 10px; cursor: pointer; border: none; width: 100%; }
+    .btn-download:hover { background: var(--primary-hover); }
     .cmd-badge { font-family: var(--font-mono); font-size: 12px; background: var(--primary-light); color: var(--primary-color); padding: 2px 6px; border-radius: 4px; font-weight: 700; }
   </style>
 </head>
@@ -168,7 +170,7 @@
       </div>
     </aside>
 
-    <!-- CENTER PANEL: Dedicated Engine Segments & WORKBENCH IDE Window -->
+    <!-- CENTER PANEL: 6 Standalone Engine Cards & WORKBENCH IDE Window -->
     <main class="panel-center">
       <div class="workspace-header" id="workspaceHeader">
         <h1 class="role-header-title" id="roleHeaderTitle">Loading Professional Roles...</h1>
@@ -180,13 +182,13 @@
         <!-- Dynamically rendered per selected role -->
       </div>
 
-      <!-- Dedicated Engine Segments Grid -->
+      <!-- 6 Standalone Segment Engine Cards Grid -->
       <div class="segments-grid" id="segmentsGrid">
-        <!-- 5 Dedicated Segments loaded dynamically -->
+        <!-- 6 Standalone Cards loaded dynamically -->
       </div>
     </main>
 
-    <!-- RIGHT PANEL (3rd Segment): Gateway & Marketplace Inspector -->
+    <!-- RIGHT PANEL: Gateway & Marketplace Inspector -->
     <aside class="panel-right" id="panelRight">
       <div class="inspector-header">
         <h2 class="panel-title" id="inspectorTitle">3rd Segment: Inspector</h2>
@@ -243,10 +245,10 @@
       // Render Dynamic WORKBENCH IDE Window tailored for activeRole
       renderWorkbenchIdeSimulator(activeRole);
 
-      // Render 5 Segment Cards
+      // Render 6 Standalone Cards Grid
       const grid = document.getElementById('segmentsGrid');
       grid.innerHTML = `
-        <!-- Segment 1: Embeddings -->
+        <!-- Card 1: Embedding Models (Standalone) -->
         <div class="segment-card">
           <div>
             <span class="segment-badge">BRAIN / VECTORS</span>
@@ -257,11 +259,11 @@
             </p>
           </div>
           <button class="btn-more-details" onclick="openInspector('embeddings')">
-            🔍 More Details (Gateway & Scope)
+            🔍 More Details (Embedding Specs)
           </button>
         </div>
 
-        <!-- Segment 2: LLM Engines -->
+        <!-- Card 2: LLM Engines -->
         <div class="segment-card">
           <div>
             <span class="segment-badge">REASONING ENGINE</span>
@@ -276,7 +278,7 @@
           </button>
         </div>
 
-        <!-- Segment 3: Domain Vaults -->
+        <!-- Card 3: Domain Vault Assets (Standalone Downloads) -->
         <div class="segment-card">
           <div>
             <span class="segment-badge">SOVEREIGN VAULTS</span>
@@ -287,11 +289,11 @@
             </p>
           </div>
           <button class="btn-more-details" onclick="openInspector('vaults')">
-            🔍 More Details (Marketplace Download)
+            🔍 More Details (Vault Downloads)
           </button>
         </div>
 
-        <!-- Segment 4: Specialist AI Agents -->
+        <!-- Card 4: Specialist AI Agents -->
         <div class="segment-card">
           <div>
             <span class="segment-badge">SUBAGENT ROSTER</span>
@@ -305,17 +307,32 @@
           </button>
         </div>
 
-        <!-- Segment 5: Monaco Slash Commands -->
+        <!-- Card 5: Gateway Audit (Standalone NEW) -->
         <div class="segment-card">
           <div>
-            <span class="segment-badge">CANVAS DIRECTIVES</span>
-            <h3 class="segment-title">⚡ Slash Commands (/commands)</h3>
+            <span class="segment-badge">REGULATORY GATEWAY</span>
+            <h3 class="segment-title">🏛️ Gateway Audit</h3>
             <p class="segment-desc">
-              Monaco editor inline completions, ghost text triggers, and subagent directives for <strong>${activeRole.role_title}</strong>.
+              <strong>Body:</strong> ${activeRole.gateway ? activeRole.gateway.statutory_body : 'Statutory Regulatory Body'}<br/>
+              <strong>Sovereignty:</strong> ${activeRole.gateway ? activeRole.gateway.sovereignty : 'Air-Gapped Local Audit'}
             </p>
           </div>
-          <button class="btn-more-details" onclick="openInspector('slash')">
-            🔍 More Details (Slash Commands List)
+          <button class="btn-more-details" onclick="openInspector('gateway')">
+            🔍 More Details (Gateway Audit)
+          </button>
+        </div>
+
+        <!-- Card 6: Professional Services Marketplace (Standalone NEW) -->
+        <div class="segment-card">
+          <div>
+            <span class="segment-badge">COMPANY SERVICES</span>
+            <h3 class="segment-title">🛒 Services Marketplace</h3>
+            <p class="segment-desc">
+              Specialized professional audit reports, precedent summaries, and forensic analysis offered for <strong>${activeRole.role_title}</strong>.
+            </p>
+          </div>
+          <button class="btn-more-details" onclick="openInspector('marketplace')">
+            🔍 More Details (Company Services)
           </button>
         </div>
       `;
@@ -458,7 +475,7 @@
       panel.classList.add('active');
 
       if (segmentType === 'embeddings') {
-        title.innerText = '🧠 Embedding Model Details';
+        title.innerText = '🧠 Embedding Model Specifications';
         content.innerHTML = `
           <div class="inspector-section">
             <div class="inspector-sec-title">ONNX Vector Engine</div>
@@ -467,19 +484,11 @@
               • <strong>Vector Dimension:</strong> ${activeRole.embeddings.dimensions}-D<br/>
               • <strong>Primary Scope:</strong> ${activeRole.embeddings.scope}
             </div>
-            <p class="inspector-sec-text" style="margin-top: 6px;">${activeRole.embeddings.details}</p>
-          </div>
-          <div class="inspector-section">
-            <div class="inspector-sec-title">🏛️ Domain GATEWAY Audit</div>
-            <div class="inspector-sec-text">
-              • <strong>Statutory Body:</strong> ${activeRole.gateway.statutory_body}<br/>
-              • <strong>Directives:</strong> ${activeRole.gateway.directives}<br/>
-              • <strong>Data Sovereignty:</strong> ${activeRole.gateway.sovereignty}
-            </div>
+            <p class="inspector-sec-text" style="margin-top: 8px;">${activeRole.embeddings.details}</p>
           </div>
         `;
       } else if (segmentType === 'llm') {
-        title.innerText = '⚡ LLM Engine Details';
+        title.innerText = '⚡ LLM Reasoning Engine';
         content.innerHTML = `
           <div class="inspector-section">
             <div class="inspector-sec-title">Configured Reasoning Models</div>
@@ -488,20 +497,20 @@
               • <strong>Backup Model:</strong> <code>${activeRole.llm.backup_model || 'N/A'}</code><br/>
               • <strong>Air-Gapped Execution:</strong> ${activeRole.llm.local_gguf}
             </div>
-            <p class="inspector-sec-text" style="margin-top: 6px;">${activeRole.llm.details}</p>
+            <p class="inspector-sec-text" style="margin-top: 8px;">${activeRole.llm.details}</p>
           </div>
         `;
       } else if (segmentType === 'vaults') {
-        title.innerText = '📦 Domain Vault & Marketplace';
+        title.innerText = '📦 Domain Vault Asset Downloads';
         content.innerHTML = `
           <div class="inspector-section">
-            <div class="inspector-sec-title">Vault Asset Details</div>
+            <div class="inspector-sec-title">Local Vault Package Asset</div>
             <div class="inspector-sec-text">
-              • <strong>Asset Title:</strong> ${activeRole.marketplace.asset_title}<br/>
+              • <strong>Vault Name:</strong> ${activeRole.vaults.vault_name}<br/>
               • <strong>Version:</strong> <code>${activeRole.marketplace.version}</code><br/>
               • <strong>File Size:</strong> ${activeRole.marketplace.file_size}
             </div>
-            <p class="inspector-sec-text" style="margin-top: 6px;">${activeRole.vaults.details}</p>
+            <p class="inspector-sec-text" style="margin-top: 8px;">${activeRole.vaults.details}</p>
           </div>
 
           <a href="${activeRole.marketplace.download_url}" download class="btn-download">
@@ -523,32 +532,80 @@
               `).join('')}
             </div>
           </div>
-          <div class="inspector-section" style="margin-top: 10px;">
-            <a href="${activeRole.marketplace.download_url}" download class="btn-download">
-              ⬇️ Download Full Agent Vault Package
-            </a>
-          </div>
         `;
-      } else if (segmentType === 'slash') {
-        title.innerText = '⚡ Monaco Slash Commands (/commands)';
+      } else if (segmentType === 'gateway') {
+        title.innerText = '🏛️ Gateway Audit & Compliance';
+        const gw = activeRole.gateway || {};
         content.innerHTML = `
           <div class="inspector-section">
-            <div class="inspector-sec-title">Inline Completions & Directives</div>
-            <p class="inspector-sec-text">Type these slash commands anywhere inside the Monaco drafting canvas to trigger ghost-text completions and subagent workflows.</p>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
-              ${(activeRole.slash_commands || []).map(cmd => `
-                <div style="background: #FFF; border: 1px solid var(--border-color); padding: 10px; border-radius: 6px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <span class="cmd-badge">${cmd.command}</span>
-                  </div>
-                  <div style="font-size: 12.5px; color: var(--text-main);">${cmd.description}</div>
-                  <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Example: <code>${cmd.example}</code></div>
+            <div class="inspector-sec-title">Statutory Regulatory Body</div>
+            <div class="inspector-sec-text">
+              • <strong>Regulatory Authority:</strong> ${gw.statutory_body || 'National Regulatory Body'}<br/>
+              • <strong>Statutory Directives:</strong> ${gw.directives || 'Directives & Code Rules'}<br/>
+              • <strong>Data Sovereignty:</strong> ${gw.sovereignty || '100% Local Air-Gapped Compliance'}
+            </div>
+          </div>
+
+          <div class="inspector-section" style="margin-top: 10px;">
+            <div class="inspector-sec-title">Integrated Portals</div>
+            <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px;">
+              ${(gw.portals || ['NCLT e-Courts Portal', 'IBBI Portal', 'Resolution Bazaar']).map(p => `
+                <div style="background: #FFF; border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 6px; font-size: 12.5px; font-weight: 600; color: var(--primary-color);">
+                  🌐 ${p}
                 </div>
               `).join('')}
             </div>
           </div>
         `;
+      } else if (segmentType === 'marketplace') {
+        title.innerText = '🛒 Professional Services Marketplace';
+        
+        let services = [
+          { title: 'CIRP Due Diligence & Form Verification Audit Report', price: '₹999', desc: 'Automated audit of admitted claim forms (Form C/D) against IBBI CIRP Regulations, 2016.' },
+          { title: 'NCLT Bench Precedent Summary & Briefs', price: '₹1,499', desc: 'Comprehensive bench-wise analysis of recent NCLT & NCLAT admission & resolution precedents.' },
+          { title: 'Promoter Track Record & PUFE Audit Report', price: '₹2,499', desc: 'Deep audit of preferential, undervalued, fraudulent, and extortionate transactions (Sec 43-51, IBC).' },
+          { title: 'Liquidation Valuation Benchmark Appraisal', price: '₹1,999', desc: 'Cross-reference liquidation asset appraisals with historical NCLT auction recovery benchmarks.' }
+        ];
+
+        if (activeRole.id === 'patent_builders') {
+          services = [
+            { title: 'Patentability & 35 U.S.C. 101/102 Prior Art Search Report', price: '₹2,999', desc: 'Deep prior art search across USPTO, EPO & Google Patents with Alice Step 2B eligibility scoring.' },
+            { title: 'USPTO Office Action Response Audit & Linter', price: '₹1,999', desc: 'Automated antecedent basis linting and statutory rejection argument compiler.' }
+          ];
+        } else if (activeRole.id === 'corporate_advocates') {
+          services = [
+            { title: 'Supreme Court & High Court SLP Briefs', price: '₹3,499', desc: 'Special Leave Petition synopsis, list of dates, and InLegal-SBERT precedent similarity Brief.' },
+            { title: 'Commercial Litigation Statutory Limitation Audit', price: '₹1,499', desc: 'Audits court fee calculations, limitation periods, and CPC procedural compliance.' }
+          ];
+        } else if (activeRole.id === 'arbitrators') {
+          services = [
+            { title: 'Arbitral Award Section 31 Interest Audit', price: '₹2,499', desc: 'Calculates statutory post-award and pre-award interest under Sec 31(7) Arbitration Act 1996.' },
+            { title: 'Evidence Admissibility & Exhibit Brief', price: '₹1,999', desc: 'Cross-indexes evidence bundles with Indian Evidence Act / BSA electronic records certificates.' }
+          ];
+        }
+
+        content.innerHTML = `
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <p style="font-size: 13px; color: var(--text-muted);">
+              Professional services offered by our company to <strong>${activeRole.role_title}</strong>:
+            </p>
+            ${services.map(s => `
+              <div style="background: #FFF; border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; box-shadow: var(--card-shadow);">
+                <span class="service-price-tag">${s.price}</span>
+                <div style="font-weight: 700; font-size: 13.5px; color: var(--text-main); margin-bottom: 4px; padding-right: 60px;">${s.title}</div>
+                <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 10px;">${s.desc}</div>
+                <button class="btn-download" style="font-size: 12.5px; padding: 7px 12px;" onclick="orderService('${s.title}')">
+                  🛒 Request / Order Service
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        `;
       }
+    }
+
+    function orderService(serviceTitle) {
+      alert(`Thank you for requesting "${serviceTitle}"! Our specialized team will reach out to you shortly.`);
     }
 
     function closeInspector() {
