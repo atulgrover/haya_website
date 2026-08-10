@@ -142,46 +142,25 @@
     .shloka-transliteration-banner { font-size: 14px; font-style: italic; color: #93C5FD; font-weight: 600; margin-bottom: 4px; }
     .shloka-meaning-banner { font-size: 13.5px; color: #CBD5E1; line-height: 1.5; }
 
-    /* Bottom 2-Column Symmetrical Balanced Grid */
-    .footer-container-2col { max-width: 100%; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: stretch; }
-    
+    /* Contact Details Full-Width Glass Card */
+    .contact-card-glass {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px; padding: 28px 32px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); width: 100%;
+    }
+    .contact-info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     @media (max-width: 900px) {
       .shloka-banner-integrated { flex-direction: column; text-align: center; padding: 20px; }
-      .footer-container-2col { grid-template-columns: 1fr; gap: 32px; }
+      .contact-info-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    @media (max-width: 550px) {
+      .contact-info-grid { grid-template-columns: 1fr; gap: 16px; }
     }
 
     .footer-heading { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 20px; letter-spacing: 0.5px; }
-    
-    /* Left Column: Symmetrical Translucent Glass Card for Contact Details */
-    .contact-card-glass {
-      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px; padding: 24px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      height: 100%; display: flex; flex-direction: column; justify-content: space-between;
-    }
-    .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .info-group-col h4 { font-size: 13.5px; font-weight: 700; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
     .info-group-col p { font-size: 14px; color: rgba(255, 255, 255, 0.95); margin-bottom: 3px; line-height: 1.5; }
     .info-group-col a { color: #FFFFFF; text-decoration: underline; transition: color 0.2s; }
     .info-group-col a:hover { color: #93C5FD; }
-
-    /* Right Column: Contact Inquiry Form Dark Glass Container */
-    .contact-form-col {
-      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px; padding: 24px; color: #FFFFFF; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); height: 100%;
-    }
-    .form-group { margin-bottom: 12px; }
-    .form-label { display: block; font-size: 12px; font-weight: 700; color: #93C5FD; margin-bottom: 4px; }
-    .form-input, .form-textarea {
-      width: 100%; padding: 9px 12px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px;
-      font-size: 13.5px; outline: none; background: rgba(15, 23, 42, 0.6); color: #FFFFFF;
-    }
-    .form-input::placeholder, .form-textarea::placeholder { color: #94A3B8; }
-    .form-input:focus, .form-textarea:focus { border-color: #93C5FD; }
-    .form-submit {
-      background: #1E6C93; color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 6px;
-      font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; transition: background 0.2s;
-    }
-    .form-submit:hover { background: #165272; }
 
     .footer-bottom { max-width: 100%; margin: 40px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.12); display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255, 255, 255, 0.75); }
   </style>
@@ -238,42 +217,42 @@
       <div class="feature-card">
         <div>
           <div class="card-num-tag">02 / VISUAL REELS</div>
-          <h3 class="card-title">11-Reel Micro-Learning Inspector</h3>
+          <h3 class="card-title">11-Step Micro-Learning Reels</h3>
           <p class="card-desc">
-            Bite-sized visual learning reels breaking down complex vocational skills into step-by-step visual modules for instant comprehension.
+            Master complex vocational procedures through high-definition 11-segment micro-learning reels paired with Performance Criteria (PC) checklists.
           </p>
         </div>
       </div>
 
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">03 / CAREER PATHWAYS</div>
-          <h3 class="card-title">Structured Skill Progression</h3>
+          <div class="card-num-tag">03 / FREE CERTIFICATION</div>
+          <h3 class="card-title">Open Access & Skill Verification</h3>
           <p class="card-desc">
-            Clear skill hierarchy tracking from Level 1 foundation technician to Level 8 master practitioner certification.
+            No mandatory subscriptions or hidden paywalls. Anyone can learn, verify job competency, and build job-ready portfolios.
           </p>
         </div>
       </div>
     </div>
 
-    <a href="students.html" class="btn-cta-section">Explore Students Workspace</a>
+    <a href="students.html" class="btn-cta-section">Explore Student Portal</a>
   </section>
 
   <!-- Section 2: Employees (100% Free) -->
-  <section id="employees-section" class="marketing-section">
-    <span class="section-badge">100% Free Enterprise Skill Builder</span>
-    <h2 class="sec-title">Employees: Skill Reel Builder & Knowledge Sharing</h2>
+  <section id="employees-section" class="marketing-section" style="background-color: #F1F5F9; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <span class="section-badge" style="background: #DCFCE7; color: #166534;">100% Free Enterprise Skill Builder</span>
+    <h2 class="sec-title">Employees: Enterprise Skill Reels & SOP Sharing</h2>
     <p class="sec-subtitle">
-      Empower your team with a free enterprise skill builder. Create custom multi-segment video reels, partition workspaces by corporate email, and share operational workflows.
+      Empower your enterprise workforce to build, package, and share custom multi-segment video skill reels, SOP checklists, and corporate domain knowledge for free.
     </p>
 
     <div class="feature-cards-grid">
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">01 / REEL CREATOR</div>
-          <h3 class="card-title">Custom Skill Reel Builder</h3>
+          <div class="card-num-tag">01 / CUSTOM BUILDER</div>
+          <h3 class="card-title">Custom Skill Reel Creator</h3>
           <p class="card-desc">
-            Record, assemble, and publish tailored multi-segment skill reels for specialized internal organizational workflows and operational training.
+            Upload internal standard operating procedures (SOPs), safety protocols, and operational workflows into interactive 11-step skill reels.
           </p>
         </div>
       </div>
@@ -281,42 +260,42 @@
       <div class="feature-card">
         <div>
           <div class="card-num-tag">02 / DOMAIN ISOLATION</div>
-          <h3 class="card-title">Corporate Workspace Isolation</h3>
+          <h3 class="card-title">Corporate Email Domain Isolation</h3>
           <p class="card-desc">
-            Secure email-based workspace partitioning keeping internal team knowledge isolated, searchable, and organized per corporate domain.
+            Filter and isolate custom skill reels by corporate email domain (e.g. <code>@company.com</code>) ensuring confidential workforce knowledge sharing.
           </p>
         </div>
       </div>
 
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">03 / PEER KNOWLEDGE</div>
-          <h3 class="card-title">Peer-to-Peer Knowledge Sharing</h3>
+          <div class="card-num-tag">03 / PEER LEARNING</div>
+          <h3 class="card-title">Peer-to-Peer SOP Distribution</h3>
           <p class="card-desc">
-            Share operational SOPs, machine operating checklists, and compliance workflows freely across internal department teams.
+            Generate shareable direct deep-links for instant team onboarding, equipment operation drills, and compliance verification.
           </p>
         </div>
       </div>
     </div>
 
-    <a href="employees.html" class="btn-cta-section">Build Enterprise Skill Reels</a>
+    <a href="employees.html" class="btn-cta-section">Open Enterprise Skill Builder</a>
   </section>
 
-  <!-- Section 3: Professionals (Freemium) -->
+  <!-- Section 3: Professionals (Free Core IDE • Paid Sovereign Vaults & Services) -->
   <section id="professionals-section" class="marketing-section">
-    <span class="section-badge">Core IDE 100% Free • Pay-As-You-Go Vaults</span>
-    <h2 class="sec-title">Professionals: Air-Gapped Sovereign IPE Workspace</h2>
+    <span class="section-badge" style="background: #E0E7FF; color: #3730A3;">Core IDE 100% Free • Pay-As-You-Go Vaults</span>
+    <h2 class="sec-title">Professionals: Air-Gapped Sovereign AI Workbench</h2>
     <p class="sec-subtitle">
-      The core HAYAGRIVA WORKBENCH IDE is 100% free for all legal & domain practitioners. Upgrade on-demand with specialized domain vaults, AI agent rosters, and company audit services.
+      The core 3-panel Monaco IDE workspace is 100% free forever for Patent Builders, Insolvency Professionals, Corporate Advocates, and Arbitrators. Pay only for specialized sovereign vaults and company audit services.
     </p>
 
     <div class="feature-cards-grid">
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">01 / CORE IDE ENGINE</div>
-          <h3 class="card-title">Free Core WORKBENCH IDE</h3>
+          <div class="card-num-tag">01 / CORE WORKBENCH</div>
+          <h3 class="card-title">Free 3-Panel Monaco Legal IDE</h3>
           <p class="card-desc">
-            Complete 3-panel workspace with local Monaco code editor, file explorer, subagent runners, and active-context matrix—100% free forever.
+            Air-gapped desktop IDE engine with zero cloud data transmission, cryptographic Ed25519 audit trails, and local file tree explorer.
           </p>
         </div>
       </div>
@@ -359,67 +338,6 @@
       </div>
     </div>
 
-    <!-- Bottom Section: Balanced 2-Column Symmetrical Grid -->
-    <div class="footer-container-2col">
-      
-      <!-- Column 1: HAYAGRIVA Contact Details (Glassmorphism Card) -->
-      <div class="contact-card-glass">
-        <h3 class="footer-heading">HAYAGRIVA Contact</h3>
-        <div class="contact-info-grid">
-          <div class="info-group-col">
-            <h4>Call Us</h4>
-            <p>+91-98140-40900</p>
-            <p>+91-98558-88881</p>
-          </div>
-
-          <div class="info-group-col">
-            <h4>Email Us</h4>
-            <p><a href="mailto:admin@resolutionbazaar.in">admin@resolutionbazaar.in</a></p>
-            <p><a href="mailto:resolutionbazaar@gmail.com">resolutionbazaar@gmail.com</a></p>
-          </div>
-
-          <div class="info-group-col">
-            <h4>Address</h4>
-            <p>#1634, Sector 18-D</p>
-            <p>Chandigarh, India, 160018</p>
-          </div>
-
-          <div class="info-group-col">
-            <h4>Websites</h4>
-            <p><a href="https://www.chatibc.com" target="_blank">www.chatibc.com</a></p>
-            <p><a href="https://www.resolutionbazaar.in" target="_blank">www.resolutionbazaar.in</a></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Column 2: Contact & Inquiry Form (Dark Glass Container) -->
-      <div>
-        <div class="contact-form-col">
-          <h3 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px;">Contact & Inquiry Form</h3>
-          
-          <div id="formNotice" style="display: none; margin-bottom: 12px; padding: 10px; background: #DCFCE7; color: #166534; border-radius: 6px; font-size: 13px;">
-            ✓ Thank you! Your inquiry has been recorded successfully.
-          </div>
-
-          <form id="contactForm" onsubmit="handleFormSubmit(event)">
-            <div class="form-group">
-              <label class="form-label" for="inputName">Name *</label>
-              <input type="text" id="inputName" class="form-input" placeholder="Your Full Name" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="inputEmail">Email *</label>
-              <input type="email" id="inputEmail" class="form-input" placeholder="name@domain.com" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="inputPhone">Phone No *</label>
-              <input type="tel" id="inputPhone" class="form-input" placeholder="+91-XXXXX-XXXXX" required />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="inputMessage">Message / Inquiry</label>
-              <textarea id="inputMessage" class="form-textarea" rows="2" placeholder="How can we assist you?"></textarea>
             </div>
 
             <button type="submit" class="form-submit">Submit Inquiry</button>
