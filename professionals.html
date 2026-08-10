@@ -3,31 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professionals | HAYAGRIVA Sovereign IDE & Vaults</title>
-  <meta name="description" content="HAYAGRIVA Professional Workspace for Patent Builders, Insolvency Professionals, and Corporate Advocates. Download sovereign domain vaults and deploy AI agents.">
+  <title>HAYAGRIVA - Professionals Workspace & Core IDE</title>
+  <meta name="description" content="Professionals Portal for HAYAGRIVA: Specialized 3-Panel IDE Workspace for Patent Builders, Insolvency Professionals, Corporate Advocates, and Arbitrators with 100% offline data sovereignty, local ONNX embeddings, and GGUF reasoning engines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg-primary: #F8F9FA;
       --bg-card: #FFFFFF;
+      --bg-accent: #EFF6FF;
+      --text-main: #212121;
+      --text-muted: #5F6368;
       --primary-color: #1E6C93;
       --primary-hover: #165272;
       --primary-light: rgba(30, 108, 147, 0.1);
-      --text-main: #212121;
-      --text-muted: #5F6368;
       --border-color: #E2E8F0;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --hover-shadow: 0 10px 15px -3px rgba(30, 108, 147, 0.12), 0 4px 6px -2px rgba(30, 108, 147, 0.05);
       --font-main: 'Lato', sans-serif;
       --font-heading: 'Google Sans', sans-serif;
+      --font-mono: 'Roboto Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
-    a { color: var(--primary-color); text-decoration: none; }
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+    a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
+    a:hover { color: var(--primary-hover); }
 
-    /* Top Navigation Bar */
+    /* Top Navigation Bar (Identical across all pages: 64px height, padding 0 24px) */
     .header-nav {
       height: 64px; background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
       box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-shrink: 0; z-index: 1000;
@@ -42,90 +47,100 @@
     .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
     .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
 
-    /* 3-Panel IDE Layout */
-    .ide-container { display: flex; flex: 1; height: calc(100vh - 64px); overflow: hidden; }
+    /* 3-Panel IDE Layout Container */
+    .ide-container { display: flex; flex: 1; overflow: hidden; width: 100%; }
 
     /* LEFT PANEL: Streamlined Professional Titles Directory */
     .panel-left {
-      width: 300px; min-width: 260px; background: #FFFFFF; border-right: 1px solid var(--border-color);
-      padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; flex-shrink: 0;
+      width: 280px; background: #FFFFFF; border-right: 1px solid var(--border-color);
+      display: flex; flex-direction: column; flex-shrink: 0; padding: 16px; gap: 12px; overflow-y: auto;
     }
-    .panel-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
-
-    .role-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .panel-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
+    .role-list { display: flex; flex-direction: column; gap: 6px; }
     .role-item {
-      padding: 14px 16px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px;
-      cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border-color);
+      background: #FFFFFF; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: space-between;
     }
-    .role-item:hover, .role-item.active { background: var(--primary-light); border-color: var(--primary-color); }
-    .role-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); }
-    .role-item.active .role-title { color: var(--primary-color); }
+    .role-item:hover, .role-item.active {
+      border-color: var(--primary-color); background-color: var(--primary-light); color: var(--primary-color); font-weight: 700;
+    }
+    .role-title { font-size: 14px; font-weight: 600; }
 
-    /* CENTER PANEL: Dedicated Engine Segments */
-    .panel-center {
-      flex: 1; background: var(--bg-primary); padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;
-    }
-    .workspace-header { border-bottom: 1px solid var(--border-color); padding-bottom: 14px; }
-    .role-header-title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    /* CENTER PANEL: WORKBENCH Core Engine + 5 Segment Cards */
+    .panel-center { flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; background: var(--bg-primary); }
+    
+    .workspace-header { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; box-shadow: var(--card-shadow); }
+    .role-header-title { font-family: var(--font-heading); font-size: 24px; font-weight: 700; margin-bottom: 6px; color: var(--primary-color); }
     .role-header-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
-    .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    /* Interactive IDE Simulator Component */
+    .ide-simulator {
+      background-color: #1E293B; color: #F8FAFC; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); border: 1px solid #334155; width: 100%;
+    }
+    .ide-header {
+      background-color: #0F172A; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+    .ide-dots { display: flex; gap: 8px; }
+    .ide-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .dot-red { background-color: #EF4444; }
+    .dot-yellow { background-color: #F59E0B; }
+    .dot-green { background-color: #10B981; }
+    .ide-title { font-family: var(--font-mono); font-size: 13px; color: #94A3B8; font-weight: 500; }
+    
+    .ide-body { display: grid; grid-template-columns: 240px 1fr 280px; min-height: 320px; }
+    @media (max-width: 1200px) { .ide-body { grid-template-columns: 200px 1fr; } .ide-panel { display: none; } }
 
+    .ide-sidebar { background-color: #0F172A; border-right: 1px solid #334155; padding: 16px; font-size: 13px; }
+    .ide-tree-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #64748B; margin-bottom: 10px; font-weight: 700; }
+    .ide-tree-item { padding: 6px 10px; border-radius: 4px; cursor: pointer; color: #CBD5E1; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 12.5px; transition: background 0.2s; }
+    .ide-tree-item.active, .ide-tree-item:hover { background-color: #334155; color: #38BDF8; }
+
+    .ide-editor { padding: 16px 20px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7; background-color: #1E293B; color: #E2E8F0; overflow-x: auto; }
+    .ide-line-num { color: #475569; margin-right: 16px; user-select: none; }
+
+    .ide-panel { background-color: #0F172A; border-left: 1px solid #334155; padding: 16px; font-size: 13px; }
+    .token-gauge { background-color: #1E293B; border-radius: 6px; padding: 10px 12px; margin-bottom: 14px; }
+    .progress-bar { height: 6px; background: #334155; border-radius: 4px; overflow: hidden; margin-top: 6px; }
+    .progress-fill { height: 100%; background: #38BDF8; border-radius: 4px; }
+
+    /* Segment Cards 5-Grid */
+    .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
     .segment-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;
-      transition: all 0.2s ease;
+      box-shadow: var(--card-shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
     }
-    .segment-card:hover { border-color: var(--primary-color); box-shadow: 0 6px 12px rgba(30, 108, 147, 0.1); }
-
-    .segment-badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: var(--primary-light); color: var(--primary-color); display: inline-block; margin-bottom: 8px; }
-    .segment-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
-    .segment-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
-
+    .segment-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+    .segment-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; margin-top: 6px; }
+    .segment-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
     .btn-more-details {
-      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--primary-color); padding: 9px;
-      border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s;
-      display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px;
+      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--primary-color);
+      padding: 9px 14px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s ease;
+      display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
     }
     .btn-more-details:hover { background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color); }
 
-    /* WORKBENCH Shared Engine Banner */
-    .workbench-banner {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-left: 4px solid var(--primary-color);
-      border-radius: 10px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
-    .wb-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-    .wb-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; }
-
     /* RIGHT PANEL (3rd Segment): Gateway & Marketplace Inspector */
     .panel-right {
-      width: 420px; min-width: 340px; background: #FFFFFF; border-left: 1px solid var(--border-color);
-      padding: 24px; overflow-y: auto; display: none; flex-direction: column; gap: 20px; flex-shrink: 0;
+      width: 360px; background: #FFFFFF; border-left: 1px solid var(--border-color);
+      display: flex; flex-direction: column; flex-shrink: 0; padding: 20px; gap: 16px; overflow-y: auto;
+      transform: translateX(100%); transition: transform 0.3s ease; position: fixed; right: 0; top: 64px; bottom: 0; z-index: 100;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.1);
     }
-    .panel-right.active { display: flex; }
-    .inspector-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-    .btn-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
-
-    .inspector-section { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; }
-    .inspector-sec-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
-    .inspector-sec-text { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 10px; }
-
-    .btn-download {
-      background: #166534; color: #FFFFFF; border: none; padding: 12px; border-radius: 8px;
-      font-weight: 700; font-size: 14px; width: 100%; cursor: pointer; transition: background 0.2s;
-      display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
-    }
-    .btn-download:hover { background: #15803D; }
-
-    .cmd-badge {
-      font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 12.5px;
-      background: #E2E8F0; color: #0F172A; padding: 2px 7px; border-radius: 4px; display: inline-block;
-    }
+    .panel-right.active { transform: translateX(0); position: relative; top: 0; }
+    .inspector-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .btn-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-muted); }
+    .inspector-section { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; }
+    .inspector-sec-title { font-weight: 700; font-size: 13.5px; color: var(--primary-color); margin-bottom: 6px; }
+    .inspector-sec-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+    .btn-download { background: var(--primary-color); color: #FFFFFF; padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px; display: block; text-align: center; text-decoration: none; margin-top: 10px; }
+    .cmd-badge { font-family: var(--font-mono); font-size: 12px; background: var(--primary-light); color: var(--primary-color); padding: 2px 6px; border-radius: 4px; font-weight: 700; }
   </style>
 </head>
 <body>
 
-  <!-- Top Header Navigation Bar -->
+  <!-- Top Navigation Bar (Identical across all pages: 64px height, padding 0 24px) -->
   <header class="header-nav">
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
@@ -136,7 +151,7 @@
         <li><a href="students.html" class="nav-link">Students</a></li>
         <li><a href="employees.html" class="nav-link">Employees</a></li>
         <li><a href="professionals.html" class="nav-link active">Professionals</a></li>
-        <li><a href="login.html" class="nav-link login-btn">Login</a></li>
+        <li><a href="login.html" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
       </ul>
     </div>
   </header>
@@ -153,17 +168,16 @@
       </div>
     </aside>
 
-    <!-- CENTER PANEL: Dedicated Engine Segments -->
+    <!-- CENTER PANEL: Dedicated Engine Segments & WORKBENCH IDE Window -->
     <main class="panel-center">
       <div class="workspace-header" id="workspaceHeader">
         <h1 class="role-header-title" id="roleHeaderTitle">Loading Professional Roles...</h1>
         <p class="role-header-desc" id="roleHeaderDesc">Select a professional role from the left panel to inspect domain architecture.</p>
       </div>
 
-      <!-- WORKBENCH Core Engine Banner -->
-      <div class="workbench-banner">
-        <div class="wb-title">🖥️ WORKBENCH Core Desktop Engine</div>
-        <div class="wb-desc">Consistent across all professional domains. Provides local document ingestion, vector indexing, cryptographic SHA-256 hashing, and air-gapped GGUF port 8090 execution.</div>
+      <!-- Live Role-Dynamic WORKBENCH IDE Window -->
+      <div class="ide-simulator" id="workbenchIdeSimulator">
+        <!-- Dynamically rendered per selected role -->
       </div>
 
       <!-- Dedicated Engine Segments Grid -->
@@ -192,6 +206,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       loadProfessionalRoles();
+      checkAuthStatus();
     });
 
     async function loadProfessionalRoles() {
@@ -225,6 +240,10 @@
       document.getElementById('roleHeaderTitle').innerText = activeRole.role_title;
       document.getElementById('roleHeaderDesc').innerText = activeRole.description;
 
+      // Render Dynamic WORKBENCH IDE Window tailored for activeRole
+      renderWorkbenchIdeSimulator(activeRole);
+
+      // Render 5 Segment Cards
       const grid = document.getElementById('segmentsGrid');
       grid.innerHTML = `
         <!-- Segment 1: Embeddings -->
@@ -302,26 +321,153 @@
       `;
     }
 
+    function renderWorkbenchIdeSimulator(role) {
+      const container = document.getElementById('workbenchIdeSimulator');
+      let caseTitle = "[Case: CIRP-Jaypee-2026]";
+      let fileList = ["claims_registry.md", "avoidance_ledger.md", "wiki / qna", "case_graph_3d.d3"];
+      let subagentList = ["@coc-coordinator", "@plan-evaluator"];
+      let editorLines = [
+        `# Form H Compliance Certificate`,
+        `Under Regulation 39(4) of the IBBI (CIRP) Regulations, 2016.`,
+        ``,
+        `| Creditor Class | Claim Admitted (₹) | Voting Share (%) | Status |`,
+        `|----------------|--------------------|------------------|--------|`,
+        `| Financial (CoC)| 4,500,000,000      | 84.50%           | Admitted|`,
+        `| Related Parties|   850,000,000      |  0.00% (Sec 5-24)| Excluded|`,
+        ``,
+        `<span style="color: #10B981;">[✓] Section 29A Disqualification Audit: Passed (0 Disqualifications found)</span>`,
+        `<span style="color: #38BDF8;">[ℹ] Signed with local Ed25519 private key. Payload ready for iPIE portal.</span>`
+      ];
+      let contextFiles = [
+        { name: "Jaypee_Information_Mem.pdf", checked: true },
+        { name: "Resolution_Plan_v3.docx", checked: true },
+        { name: "Tally_Ledger_2025.csv", checked: false }
+      ];
+
+      if (role.id === 'patent_builders') {
+        caseTitle = "[Patent: US-1182934-B2]";
+        fileList = ["claims_draft_v2.md", "prior_art_matrix.d3", "specification.md", "office_action_resp.md"];
+        subagentList = ["@claims-auditor", "@prior-art-searcher"];
+        editorLines = [
+          `# Independent Claim 1: Autonomous Vector Reranking System`,
+          `1. A computer-implemented method comprising density gating vector indexing...`,
+          ``,
+          `| Element | Statutory Basis | Prior Art Overlap | Antecedent Status |`,
+          `|---------|-----------------|-------------------|-------------------|`,
+          `| Clause A| 35 U.S.C. 101   | 0.12 (Novel)      | Verified          |`,
+          `| Clause B| 35 U.S.C. 102   | 0.04 (Distinct)   | Verified          |`,
+          ``,
+          `<span style="color: #10B981;">[✓] 35 U.S.C. 101 Eligibility Audit: Passed (Alice Step 2B Specific Technical Improvement)</span>`,
+          `<span style="color: #38BDF8;">[ℹ] Antecedent linter clean. 0 unlinked dependent claim references.</span>`
+        ];
+        contextFiles = [
+          { name: "USPTO_Patent_Spec.pdf", checked: true },
+          { name: "IEEE_PriorArt_2025.pdf", checked: true },
+          { name: "MPEP_Guidelines_v2026.pdf", checked: false }
+        ];
+      } else if (role.id === 'corporate_advocates') {
+        caseTitle = "[Suit: Special-Leave-Petition-2026]";
+        fileList = ["slp_draft_v1.md", "precedents_vault.md", "court_fee_calc.d3", "synopsis.md"];
+        subagentList = ["@precedent-analyzer", "@procedural-auditor"];
+        editorLines = [
+          `# Synopsis & List of Dates (Supreme Court of India)`,
+          `IN THE SUPREME COURT OF INDIA (CIVIL EXTRAORDINARY JURISDICTION)`,
+          ``,
+          `| Date       | Forum / High Court | Impugned Order / Relief | Citation |`,
+          `|------------|--------------------|------------------------|----------|`,
+          `| 12-01-2026 | High Court Delhi   | Order under Sec 37 Arb | 2026 DHC |`,
+          `| 04-03-2026 | Supreme Court      | Special Leave Petition | Pending  |`,
+          ``,
+          `<span style="color: #10B981;">[✓] Limitation Period Audit: Passed (Filed within 90 days from HC Decree)</span>`,
+          `<span style="color: #38BDF8;">[ℹ] InLegal-SBERT Precedent Match: Cosine Similarity 0.94 with 2024 SC 882.</span>`
+        ];
+        contextFiles = [
+          { name: "Impugned_Order_HC.pdf", checked: true },
+          { name: "SCC_Precedents_Vault.vlt", checked: true },
+          { name: "Evidence_Exhibit_A.pdf", checked: false }
+        ];
+      } else if (role.id === 'arbitrators') {
+        caseTitle = "[Arbitration: Arb-Claim-882-2026]";
+        fileList = ["statement_of_claim.md", "counter_claim.md", "exhibits_index.md", "arbitral_award_draft.md"];
+        subagentList = ["@arbitral-award-drafter", "@limitation-auditor"];
+        editorLines = [
+          `# Final Arbitral Award under Sec 31 of Arbitration & Conciliation Act, 1996`,
+          `BEFORE THE SOLE ARBITRATOR IN THE MATTER OF COMMERCIAL DISPUTE #882`,
+          ``,
+          `| Claim No | Head of Claim       | Amount Claimed (₹) | Awarded Amount (₹) | Interest P.A. |`,
+          `|----------|---------------------|--------------------|--------------------|---------------|`,
+          `| Claim 1  | EPC Milestone 3     | 18,50,00,000       | 14,50,00,000       | 9.0% P.A.     |`,
+          `| Claim 2  | Delayed Costs       |  4,20,00,000       |  2,10,00,000       | 9.0% P.A.     |`,
+          ``,
+          `<span style="color: #10B981;">[✓] Section 31(7) Statutory Interest Audit: Verified & Calculated</span>`,
+          `<span style="color: #38BDF8;">[ℹ] Signed with local Ed25519 private key. Award tamper-proof hash generated.</span>`
+        ];
+        contextFiles = [
+          { name: "Pleadings_Bundle.pdf", checked: true },
+          { name: "Arbitration_Agreement.pdf", checked: true },
+          { name: "Expert_Valuation_Report.csv", checked: false }
+        ];
+      }
+
+      container.innerHTML = `
+        <div class="ide-header">
+          <div class="ide-dots">
+            <span class="ide-dot dot-red"></span>
+            <span class="ide-dot dot-yellow"></span>
+            <span class="ide-dot dot-green"></span>
+          </div>
+          <div class="ide-title">Hayagriva WORKBENCH (ipe) IDE - ${caseTitle}</div>
+          <div style="font-size: 12px; color: #10B981; font-weight: 700;">● Engine: Port 8090 (Standard)</div>
+        </div>
+        <div class="ide-body">
+          <!-- Sidebar -->
+          <div class="ide-sidebar">
+            <div class="ide-tree-title">Explorer</div>
+            ${fileList.map((f, i) => `<div class="ide-tree-item ${i === 0 ? 'active' : ''}">${f.endsWith('.d3') ? '📊' : f.includes('/') ? '📁' : '📄'} ${f}</div>`).join('')}
+            <div class="ide-tree-title" style="margin-top: 18px;">Subagents</div>
+            ${subagentList.map(s => `<div class="ide-tree-item" style="color: #38BDF8;">🤖 ${s}</div>`).join('')}
+          </div>
+          <!-- Editor -->
+          <div class="ide-editor">
+            ${editorLines.map((line, idx) => `<div><span class="ide-line-num">${idx + 1}</span>${line}</div>`).join('')}
+          </div>
+          <!-- Panel -->
+          <div class="ide-panel">
+            <div class="ide-tree-title">Active-Context Matrix</div>
+            <div class="token-gauge">
+              <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px;">
+                <span>Token Budget</span>
+                <span style="color: #38BDF8; font-weight: 700;">854 / 2,048 Tokens</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 41%;"></div></div>
+            </div>
+            <div style="font-size: 12px; color: #CBD5E1;">
+              ${contextFiles.map(c => `<label style="display: block; margin-bottom: 6px; cursor: pointer;"><input type="checkbox" ${c.checked ? 'checked' : ''} /> ${c.name}</label>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     function openInspector(segmentType) {
       if (!activeRole) return;
-
-      const rightPanel = document.getElementById('panelRight');
+      const panel = document.getElementById('panelRight');
       const title = document.getElementById('inspectorTitle');
       const content = document.getElementById('inspectorContent');
 
-      rightPanel.classList.add('active');
+      panel.classList.add('active');
 
       if (segmentType === 'embeddings') {
         title.innerText = '🧠 Embedding Model Details';
         content.innerHTML = `
           <div class="inspector-section">
-            <div class="inspector-sec-title">Model Specifications</div>
+            <div class="inspector-sec-title">ONNX Vector Engine</div>
             <div class="inspector-sec-text">
               • <strong>Model Name:</strong> <code>${activeRole.embeddings.model_name}</code><br/>
               • <strong>Vector Dimension:</strong> ${activeRole.embeddings.dimensions}-D<br/>
               • <strong>Primary Scope:</strong> ${activeRole.embeddings.scope}
             </div>
-            <p class="inspector-sec-text">${activeRole.embeddings.details}</p>
+            <p class="inspector-sec-text" style="margin-top: 6px;">${activeRole.embeddings.details}</p>
           </div>
           <div class="inspector-section">
             <div class="inspector-sec-title">🏛️ Domain GATEWAY Audit</div>
@@ -342,7 +488,7 @@
               • <strong>Backup Model:</strong> <code>${activeRole.llm.backup_model || 'N/A'}</code><br/>
               • <strong>Air-Gapped Execution:</strong> ${activeRole.llm.local_gguf}
             </div>
-            <p class="inspector-sec-text">${activeRole.llm.details}</p>
+            <p class="inspector-sec-text" style="margin-top: 6px;">${activeRole.llm.details}</p>
           </div>
         `;
       } else if (segmentType === 'vaults') {
@@ -355,7 +501,7 @@
               • <strong>Version:</strong> <code>${activeRole.marketplace.version}</code><br/>
               • <strong>File Size:</strong> ${activeRole.marketplace.file_size}
             </div>
-            <p class="inspector-sec-text">${activeRole.vaults.details}</p>
+            <p class="inspector-sec-text" style="margin-top: 6px;">${activeRole.vaults.details}</p>
           </div>
 
           <a href="${activeRole.marketplace.download_url}" download class="btn-download">
@@ -407,6 +553,16 @@
 
     function closeInspector() {
       document.getElementById('panelRight').classList.remove('active');
+    }
+
+    function checkAuthStatus() {
+      const token = localStorage.getItem('haya_portal_token');
+      const authBtn = document.getElementById('main-auth-btn');
+      if (token && authBtn) {
+        authBtn.textContent = 'Logout';
+        authBtn.href = '#';
+        authBtn.onclick = (e) => { e.preventDefault(); localStorage.removeItem('haya_portal_token'); window.location.reload(); };
+      }
     }
   </script>
 </body>
