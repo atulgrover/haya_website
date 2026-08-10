@@ -19,9 +19,6 @@
       --primary-color: #1E6C93;
       --primary-hover: #165272;
       --primary-light: rgba(30, 108, 147, 0.1);
-      --footer-bg: #1E6C93;
-      --footer-text: #FFFFFF;
-      --footer-muted: rgba(255, 255, 255, 0.8);
       --border-color: #E2E8F0;
       --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
       --hover-shadow: 0 10px 15px -3px rgba(30, 108, 147, 0.12), 0 4px 6px -2px rgba(30, 108, 147, 0.05);
@@ -125,28 +122,31 @@
     }
     .btn-cta-section:hover { background: var(--primary-hover); color: #FFFFFF; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 108, 147, 0.3); }
 
-    /* Signature Deep Blue (#1E6C93) Footer with High-Contrast White Shloka Banner Card & Symmetrical Bottom Cards */
-    .compact-footer { background-color: #1E6C93; color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 48px 24px 24px; width: 100%; }
-    
-    /* Full-Width White Shloka Card Banner */
-    .shloka-banner-white {
-      background: #FFFFFF; color: #1E293B; border-radius: 12px; padding: 24px 32px;
-      border-left: 6px solid #1E6C93; margin-bottom: 36px; display: flex; gap: 28px;
-      align-items: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); width: 100%;
+    /* Unified Dark Deep Blue Footer Container (#0F172A / #1E6C93 Top Border) */
+    .compact-footer {
+      background-color: #0F172A; color: #FFFFFF;
+      border-top: 4px solid #1E6C93; padding: 48px 24px 24px; width: 100%;
     }
-    .shloka-emblem-banner { height: 105px; width: auto; flex-shrink: 0; filter: none; }
+    
+    /* Integrated Shloka Header (No White Card Box) */
+    .shloka-banner-integrated {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px; padding: 24px 32px; margin-bottom: 36px; display: flex; gap: 28px;
+      align-items: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); width: 100%;
+    }
+    .shloka-emblem-banner { height: 105px; width: auto; flex-shrink: 0; filter: brightness(0) invert(1); }
     .shloka-devanagari-banner {
       font-family: 'Noto Serif Devanagari', serif; font-size: 17px; font-weight: 700;
-      color: #1E293B; margin-bottom: 6px; line-height: 1.55; letter-spacing: 0.3px;
+      color: #FFFFFF; margin-bottom: 6px; line-height: 1.55; letter-spacing: 0.3px;
     }
-    .shloka-transliteration-banner { font-size: 14px; font-style: italic; color: #1E6C93; font-weight: 600; margin-bottom: 4px; }
-    .shloka-meaning-banner { font-size: 13.5px; color: #475569; line-height: 1.5; }
+    .shloka-transliteration-banner { font-size: 14px; font-style: italic; color: #93C5FD; font-weight: 600; margin-bottom: 4px; }
+    .shloka-meaning-banner { font-size: 13.5px; color: #CBD5E1; line-height: 1.5; }
 
     /* Bottom 2-Column Symmetrical Balanced Grid */
     .footer-container-2col { max-width: 100%; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: stretch; }
     
     @media (max-width: 900px) {
-      .shloka-banner-white { flex-direction: column; text-align: center; padding: 20px; }
+      .shloka-banner-integrated { flex-direction: column; text-align: center; padding: 20px; }
       .footer-container-2col { grid-template-columns: 1fr; gap: 32px; }
     }
 
@@ -154,8 +154,8 @@
     
     /* Left Column: Symmetrical Translucent Glass Card for Contact Details */
     .contact-card-glass {
-      background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 10px; padding: 24px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px; padding: 24px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       height: 100%; display: flex; flex-direction: column; justify-content: space-between;
     }
     .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -164,16 +164,26 @@
     .info-group-col a { color: #FFFFFF; text-decoration: underline; transition: color 0.2s; }
     .info-group-col a:hover { color: #93C5FD; }
 
-    /* Right Column: Contact Inquiry Form White Card */
-    .contact-form-col { background: #FFFFFF; border-radius: 10px; padding: 24px; color: var(--text-main); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); height: 100%; }
+    /* Right Column: Contact Inquiry Form Dark Glass Container */
+    .contact-form-col {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px; padding: 24px; color: #FFFFFF; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); height: 100%;
+    }
     .form-group { margin-bottom: 12px; }
-    .form-label { display: block; font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 4px; }
-    .form-input, .form-textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; background: #FFFFFF; }
-    .form-input:focus, .form-textarea:focus { border-color: var(--primary-color); }
-    .form-submit { background: var(--primary-color); color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; transition: background 0.2s; }
-    .form-submit:hover { background: var(--primary-hover); }
+    .form-label { display: block; font-size: 12px; font-weight: 700; color: #93C5FD; margin-bottom: 4px; }
+    .form-input, .form-textarea {
+      width: 100%; padding: 9px 12px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px;
+      font-size: 13.5px; outline: none; background: rgba(15, 23, 42, 0.6); color: #FFFFFF;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #94A3B8; }
+    .form-input:focus, .form-textarea:focus { border-color: #93C5FD; }
+    .form-submit {
+      background: #1E6C93; color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 6px;
+      font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; transition: background 0.2s;
+    }
+    .form-submit:hover { background: #165272; }
 
-    .footer-bottom { max-width: 100%; margin: 40px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15); display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255, 255, 255, 0.85); }
+    .footer-bottom { max-width: 100%; margin: 40px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.12); display: flex; justify-content: space-between; font-size: 12.5px; color: rgba(255, 255, 255, 0.75); }
   </style>
 </head>
 <body>
@@ -335,16 +345,16 @@
     <a href="professionals.html" class="btn-cta-section">Open Professional IDE</a>
   </section>
 
-  <!-- Polished Symmetrical Footer (#1E6C93) with White Shloka Card Banner & Dual Balanced Cards -->
+  <!-- Unified Dark Deep Blue Footer Container (#0F172A) -->
   <footer class="compact-footer">
     
-    <!-- Top Section: Full-Width White Shloka Card Banner (High Contrast, Crisp Legibility) -->
-    <div class="shloka-banner-white">
+    <!-- Top Section: Integrated Shloka Banner (No White Card Box) -->
+    <div class="shloka-banner-integrated">
       <img src="branding/hayagriva_head.png" alt="Lord Hayagriva Emblem Logo" class="shloka-emblem-banner" />
       <div>
         <p class="shloka-devanagari-banner">ज्ञानानन्दमयं देवं निर्मलस्फटिकाकृतिम् । आधारं सर्वविद्यानां हयग्रीवमुपास्महे ॥</p>
         <p class="shloka-transliteration-banner">jñānānandamayaṁ dēvaṁ nirmalasphaṭikākr̥tim | ādhāraṁ sarvavidyānāṁ hayagrīvamupāsmahē ||</p>
-        <div style="border-bottom: 1px solid rgba(30, 108, 147, 0.15); margin: 8px 0;"></div>
+        <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.12); margin: 8px 0;"></div>
         <p class="shloka-meaning-banner">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
       </div>
     </div>
@@ -382,10 +392,10 @@
         </div>
       </div>
 
-      <!-- Column 2: Contact & Inquiry Form (White Card) -->
+      <!-- Column 2: Contact & Inquiry Form (Dark Glass Container) -->
       <div>
         <div class="contact-form-col">
-          <h3 style="font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 12px;">Contact & Inquiry Form</h3>
+          <h3 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px;">Contact & Inquiry Form</h3>
           
           <div id="formNotice" style="display: none; margin-bottom: 12px; padding: 10px; background: #DCFCE7; color: #166534; border-radius: 6px; font-size: 13px;">
             ✓ Thank you! Your inquiry has been recorded successfully.
