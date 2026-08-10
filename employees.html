@@ -43,12 +43,12 @@
     .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
 
     /* 3-Panel IDE Layout */
-    .ide-container { display: flex; flex: 1; height: calc(100vh - 64px); overflow: hidden; }
+    .ide-container { display: flex; flex: 1; min-height: calc(100vh - 64px); }
 
     /* LEFT PANEL: Search & Consolidated Tag Directory */
     .panel-left {
       width: 320px; min-width: 280px; background: #FFFFFF; border-right: 1px solid var(--border-color);
-      padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; flex-shrink: 0;
+      padding: 20px; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; flex-shrink: 0;
     }
     .panel-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
 
@@ -245,8 +245,6 @@
         <!-- Enterprise Custom Skill Cards Rendered Dynamically -->
       </div>
 
-      <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
-      <div id="site-footer"></div>
     </main>
 
     <!-- RIGHT PANEL: Micro-Learning Inspector Drawer -->
@@ -261,6 +259,9 @@
     </aside>
 
   </div>
+
+  <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
+  <div id="site-footer"></div>
 
   <!-- Create Custom Skill Modal -->
   <div class="modal-overlay" id="createModal">

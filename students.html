@@ -110,8 +110,7 @@
     .ide-container {
       display: flex;
       flex: 1;
-      height: calc(100vh - 64px);
-      overflow: hidden;
+      min-height: calc(100vh - 64px);
     }
 
     /* LEFT PANEL: Filters & Cascade Selector */
@@ -121,6 +120,9 @@
       background: #FFFFFF;
       border-right: 1px solid var(--border-color);
       padding: 20px;
+      position: sticky;
+      top: 64px;
+      height: calc(100vh - 64px);
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -557,8 +559,6 @@
         <!-- Dynamic Qualification Cards Rendered Here -->
       </div>
 
-      <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
-      <div id="site-footer"></div>
     </main>
 
     <!-- RIGHT PANEL: Micro-Learning Detail Inspector Drawer -->
@@ -573,6 +573,9 @@
     </aside>
 
   </div>
+
+  <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
+  <div id="site-footer"></div>
 
   <script>
     let currentFilters = { sector: '', sub_sector: '', occupation: '', qp_code: '', search: '' };
