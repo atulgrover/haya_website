@@ -130,10 +130,9 @@ function injectAuthModal() {
                     <div class="form-group">
                         <label class="form-label" for="authRole">Account Persona &amp; Role</label>
                         <select id="authRole" class="form-select" onchange="toggleAuthRoleFields()">
-                            <option value="student">🎓 Student (Skillpedia NSQF Portal)</option>
-                            <option value="employee">💼 Corporate Employee</option>
-                            <option value="employer">🏢 Employer / Enterprise Manager</option>
-                            <option value="professional">⚖️ Legal / Patent / IP Professional</option>
+                            <option value="student">Student</option>
+                            <option value="employee">Employee</option>
+                            <option value="professional">Professional</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -205,7 +204,7 @@ function toggleAuthRoleFields() {
     const companyGroup = document.getElementById('authCompanyGroup');
     if (roleSelect && companyGroup) {
         const r = roleSelect.value;
-        companyGroup.style.display = (r === 'employee' || r === 'employer') ? 'block' : 'none';
+        companyGroup.style.display = (r === 'employee') ? 'block' : 'none';
     }
 }
 
@@ -250,7 +249,7 @@ async function handleAuthSubmit(e) {
                 updateAuthButtonsUI();
                 if (data.user.role === 'student' && !window.location.pathname.endsWith('students.html')) {
                     window.location.href = 'students.html';
-                } else if ((data.user.role === 'employee' || data.user.role === 'employer') && !window.location.pathname.endsWith('employees.html')) {
+                } else if (data.user.role === 'employee' && !window.location.pathname.endsWith('employees.html')) {
                     window.location.href = 'employees.html';
                 } else if (data.user.role === 'professional' && !window.location.pathname.endsWith('professionals.html')) {
                     window.location.href = 'professionals.html';
