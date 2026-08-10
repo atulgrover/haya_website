@@ -8,15 +8,14 @@
      375px — small phone: tighten spacing/fonts
    ======================================================= */
 
-/* ── Mobile Header Center Page Title ──────────────────── */
-.mobile-page-badge {
-  display: none;
-  font-family: var(--font-heading), 'Google Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #212121;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+.nav-container { position: relative; }
+
+/* ── Unified Header Brand Sub-Title ──────────────────── */
+.brand-logo .brand-sub {
+  font-weight: 500;
+  color: var(--primary-color, #1E6C93);
+  font-size: 0.9em;
+  margin-left: 4px;
 }
 
 .page-subtitle-banner {
@@ -125,10 +124,10 @@
 /* ── TABLET (≤ 768px) ─────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* Nav: hide links, show hamburger and center page badge */
+  /* Nav: hide links, show hamburger */
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex; align-items: center; }
-  .mobile-page-badge { display: inline-flex !important; align-items: center; justify-content: center; }
+  .page-subtitle-banner { display: none !important; }
 
   /* IDE: hide left panel by default, show toggle button */
   .panel-left {
