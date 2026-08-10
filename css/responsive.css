@@ -8,6 +8,26 @@
      375px — small phone: tighten spacing/fonts
    ======================================================= */
 
+/* ── Mobile Header Center Page Title ──────────────────── */
+.mobile-page-badge {
+  display: none;
+  font-family: var(--font-heading), 'Google Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #212121;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.page-subtitle-banner {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
 /* ── Hamburger button (hidden on desktop) ─────────────── */
 .nav-hamburger {
   display: none;
@@ -105,9 +125,10 @@
 /* ── TABLET (≤ 768px) ─────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* Nav: hide links, show hamburger */
+  /* Nav: hide links, show hamburger and center page badge */
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex; align-items: center; }
+  .mobile-page-badge { display: inline-flex !important; align-items: center; justify-content: center; }
 
   /* IDE: hide left panel by default, show toggle button */
   .panel-left {
@@ -129,8 +150,9 @@
   /* Show the filter toggle button in center panel */
   .filter-drawer-toggle { display: flex; }
 
-  /* Hide right inspector panel (not needed on mobile) */
+  /* Hide right inspector panel & IDE simulator (not needed on mobile) */
   .panel-right { display: none !important; }
+  .ide-simulator { display: none !important; }
 
   /* Card grid: allow narrower cards */
   .cards-grid {
@@ -176,7 +198,8 @@
   .panel-scrim { top: 56px; }
 
   /* Card grid: always single column */
-  .cards-grid {
+  .cards-grid,
+  .segments-grid {
     grid-template-columns: 1fr !important;
     gap: 14px !important;
   }
