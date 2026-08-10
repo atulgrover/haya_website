@@ -737,12 +737,14 @@
         const data = await res.json();
 
         if (data.success) {
+          const publishedTitle = studioDraft.title;
+          const publishedCount = studioDraft.lessons.length;
           closeStudio();
           loadKeywords();
           loadSkills();
           // Toast
           const toast = document.getElementById('toast');
-          toast.textContent  = `✅ "${studioDraft.title}" published — ${studioDraft.lessons.length} reels live!`;
+          toast.textContent  = `✅ "${publishedTitle}" published — ${publishedCount} reels live!`;
           toast.style.display = 'block';
           setTimeout(() => toast.style.display = 'none', 3500);
         } else {
