@@ -611,6 +611,11 @@
         const isConfirmed = confirmedReels.has(idx);
         const thumbUrl    = `https://img.youtube.com/vi/${les.video_id}/mqdefault.jpg`;
         const pcs         = (les.pcs || []).slice(0, 3);
+        const candidates  = les.candidates || [{ video_id: les.video_id, title: les.video_title || les.title }];
+        const activeCand  = candidates.find(c => c.video_id === les.video_id) || { title: les.video_title || les.title };
+        const currentTitle = activeCand.title || les.video_title || les.title;
+        const auditScore  = les.audit_score || 90;
+
         return `
           <div class="studio-reel-card ${isConfirmed ? 'confirmed' : ''}" id="studioCard_${idx}">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
@@ -622,12 +627,51 @@
                 ${isConfirmed ? '✅ Confirmed' : '⭕ Confirm Reel'}
               </button>
             </div>
+
+            <!-- ACTUAL RESOLVED YOUTUBE VIDEO TITLE -->
+            <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(56,189,248,0.2);padding:8px 12px;border-radius:8px;margin-bottom:10px;">
+              <div style="font-size:11px;color:#94A3B8;font-weight:600;margin-bottom:2px;">🎬 Resolved YouTube Title:</div>
+              <div style="font-size:13px;font-weight:700;color:#38BDF8;word-break:break-word;">${currentTitle}</div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+                <span style="font-size:10px;background:rgba(74,222,128,0.15);color:#4ADE80;padding:2px 6px;border-radius:4px;font-weight:700;">🎯 AI Audit Match: ${auditScore}%</span>
+                <span style="font-size:10px;color:#64748B;font-family:monospace;">ID: ${les.video_id}</span>
+              </div>
+            </div>
+
             <img class="studio-yt-thumb" src="${thumbUrl}" alt="Reel ${idx + 1} thumbnail"
               onerror="this.style.background='#1E293B';this.style.height='80px';">
+
             <p style="font-size:12px;color:#94A3B8;margin:10px 0 8px;">${les.subtitle || ''}</p>
-            ${pcs.length ? `<ul style="margin:0;padding:0 0 0 16px;color:#64748B;font-size:12px;">
+
+            ${pcs.length ? `<ul style="margin:0;padding:0 0 0 16px;color:#64748B;font-size:12px;margin-bottom:12px;">
               ${pcs.map(pc => `<li style="margin-bottom:4px;">${pc}</li>`).join('')}
             </ul>` : ''}
+
+            <!-- AI VIDEO ALTERNATIVE CANDIDATES SELECTOR -->
+            ${candidates.length > 1 ? `
+            <div style="margin-top:10px;margin-bottom:10px;background:rgba(0,0,0,0.2);padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);">
+              <div style="font-size:11px;font-weight:700;color:#94A3B8;margin-bottom:6px;">🔄 AI-Suggested Video Candidates:</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                ${candidates.slice(0, 4).map((cand, cIdx) => `
+                  <button onclick="swapStudioVideo(${idx}, '${cand.video_id}', '${encodeURIComponent(cand.title)}')"
+                    style="text-align:left;background:${les.video_id === cand.video_id ? 'rgba(56,189,248,0.15)' : 'rgba(255,255,255,0.04)'};border:1px solid ${les.video_id === cand.video_id ? '#38BDF8' : 'rgba(255,255,255,0.1)'};color:#E2E8F0;padding:6px 10px;border-radius:6px;font-size:11.5px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                    <span>${cIdx === 0 ? '⭐ Top Match:' : `Option ${cIdx + 1}:`} ${cand.title.substring(0, 48)}...</span>
+                    <span style="font-family:monospace;font-size:10px;color:#94A3B8;flex-shrink:0;">${cand.video_id}</span>
+                  </button>
+                `).join('')}
+              </div>
+            </div>` : ''}
+
+            <!-- PASTE CUSTOM YOUTUBE LINK / ID -->
+            <div style="display:flex;gap:6px;margin-top:8px;">
+              <input type="text" id="customVid_${idx}" placeholder="Paste YouTube URL or Video ID..."
+                style="flex:1;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:11px;padding:6px 10px;border-radius:6px;" />
+              <button onclick="customSwapVideo(${idx})"
+                style="background:rgba(56,189,248,0.2);border:1px solid #38BDF8;color:#38BDF8;font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;cursor:pointer;">
+                Swap Video
+              </button>
+            </div>
+
             <div style="display:flex;align-items:center;gap:8px;margin-top:10px;">
               <span style="font-size:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);padding:2px 8px;border-radius:4px;font-family:monospace;">${les.nos_code || ''}</span>
               <a href="https://youtube.com/watch?v=${les.video_id}" target="_blank" rel="noopener"
@@ -641,6 +685,27 @@
       if (confirmedReels.has(idx)) confirmedReels.delete(idx);
       else                          confirmedReels.add(idx);
       renderStudioCards();
+    }
+
+    function swapStudioVideo(idx, newVidId, encodedTitle) {
+      if (!studioDraft || !studioDraft.lessons[idx]) return;
+      const decodedTitle = decodeURIComponent(encodedTitle || '');
+      studioDraft.lessons[idx].video_id = newVidId;
+      if (decodedTitle) studioDraft.lessons[idx].video_title = decodedTitle;
+      renderStudioCards();
+    }
+
+    function customSwapVideo(idx) {
+      const input = document.getElementById(`customVid_${idx}`);
+      if (!input || !input.value.trim()) return;
+      let val = input.value.trim();
+      const match = val.match(/(?:v=|\/embed\/|\/watch\?v=|\/shorts\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+      if (match) val = match[1];
+      if (val.length !== 11) {
+        alert('Invalid YouTube Video ID or URL. Please enter a valid 11-character video ID or YouTube URL.');
+        return;
+      }
+      swapStudioVideo(idx, val, 'Custom Selected YouTube Video');
     }
 
     /* ============================================================

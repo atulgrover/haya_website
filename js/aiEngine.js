@@ -115,6 +115,12 @@ class AICurriculumEngine {
         candidates = await this.searchLiveYouTubeVideoCandidates(les.search_query);
       }
 
+      // Tertiary attempt: search cleanTopic alone if both primary & secondary return empty
+      if (!candidates || candidates.length === 0) {
+        console.log(`[AI-LOG 6.1c/10] Reel ${reelIndex}: secondary empty, retrying with cleanTopic: "${cleanTopic}"`);
+        candidates = await this.searchLiveYouTubeVideoCandidates(cleanTopic);
+      }
+
       console.log(`[AI-LOG 6.2/10] Reel ${reelIndex} candidates found (${candidates.length}):`, candidates);
 
       const topVid = (candidates && candidates.length > 0)
@@ -125,10 +131,14 @@ class AICurriculumEngine {
 
       console.log(`%c[AI-LOG 6.3/10] Reel ${reelIndex}/11 RESOLVED -> video_id="${topVid}" ("${chosenTitle}")`, 'color: #facc15');
 
+      // Pass resolved video title to user terminal logs
+      onProgress(2, `Reel ${reelIndex}/11: Found "${chosenTitle.substring(0, 50)}..." [ID: ${topVid}]`, 70 + Math.floor((idx / 11) * 12));
+
       return {
         ...les,
         video_id: topVid,
-        candidates: candidates.length > 0 ? candidates : [{ video_id: topVid, title: les.title }]
+        video_title: chosenTitle,
+        candidates: candidates && candidates.length > 0 ? candidates : [{ video_id: topVid, title: chosenTitle }]
       };
     }));
 
@@ -143,7 +153,7 @@ class AICurriculumEngine {
     })));
 
     // 7. SECOND PASS: LLM VIDEO-TO-NOS RELEVANCE VERIFICATION AUDIT
-    onProgress(3, `Verifying Video Relevance against NOS Requirements via AI Audit...`, 85);
+    onProgress(3, `Executing Pass-2 AI Audit: Verifying Video Relevance against NOS Requirements...`, 85);
     console.log(`%c[AI-LOG 8/10] Step 7: Executing LLM Video-to-NOS Relevance Audit Pass for "${cleanTopic}"...`, 'color: #a855f7; font-weight: bold');
 
     try {
@@ -156,8 +166,10 @@ class AICurriculumEngine {
           if (les && les.candidates && les.candidates[v.selected_index]) {
             const bestCand = les.candidates[v.selected_index];
             les.video_id = bestCand.video_id;
+            les.video_title = bestCand.title;
             les.audit_score = v.confidence || 90;
             les.audit_reason = v.reason || 'Verified relevant to NOS criteria';
+            onProgress(3, `🎯 Pass-2 Audit Reel ${v.reel_index}: Promoted "${bestCand.title.substring(0, 45)}..." (Match Score: ${v.confidence || 90}%)`, 85 + Math.floor((v.reel_index / 11) * 10));
             console.log(`%c[AI-AUDIT-LOG 8.2/10] Reel ${v.reel_index}: Promoted candidate #${v.selected_index} ("${bestCand.title}") [video_id="${bestCand.video_id}"] — Score: ${v.confidence}%`, 'color: #4ade80');
           }
         });
