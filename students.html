@@ -433,6 +433,19 @@
         </svg>
         Filter Job Roles
       </button>
+      <!-- Skill India Digital Style 41 NCVET Sector Cards Grid Container -->
+      <div id="sectorCardsSection" class="sid-sector-container">
+        <div class="sid-sector-header">
+          <div class="sid-sector-header-title">NCVET Vocational Sectors</div>
+          <button id="btnBackToSectors" class="btn-back-sectors" style="display: none;" onclick="resetSectorGrid()">
+            ← Back to All 41 Sectors
+          </button>
+        </div>
+        <div class="sid-sector-grid" id="sidSectorGrid">
+          <!-- Dynamically populated 41 sector cards -->
+        </div>
+      </div>
+
       <div class="results-header">
         <span class="results-count" id="resultsCount">Loading NCVET NSQF Database...</span>
       </div>
@@ -463,10 +476,66 @@
     let currentFilters = { sector: '', sub_sector: '', occupation: '', qp_code: '', search: '' };
     let searchDebounce = null;
 
+    let activeSectorsList = [];
+
     window.addEventListener('DOMContentLoaded', () => {
       initCascadingFilters();
+      loadSectorCards();
       fetchCards();
     });
+
+    async function loadSectorCards() {
+      try {
+        const res = await fetch('resources/active_sectors.json');
+        activeSectorsList = await res.json();
+        renderSectorCards(activeSectorsList);
+      } catch (err) {
+        console.error('Failed to load active sectors:', err);
+      }
+    }
+
+    function renderSectorCards(sectors) {
+      const grid = document.getElementById('sidSectorGrid');
+      if (!grid) return;
+
+      grid.innerHTML = sectors.map(s => {
+        const cleanName = s.nsqfSectorName.replace(/'/g, "\\'");
+        return `
+          <div class="sid-sector-card" onclick="selectSectorCard('${cleanName}')">
+            <div class="sid-sector-img-wrap">
+              <img src="${s.localImage}" alt="${s.title}" class="sid-sector-img" loading="lazy" onerror="this.src='resources/sectors/sector_1.jpg'" />
+            </div>
+            <div class="sid-sector-body">
+              <div class="sid-sector-title">${s.title}</div>
+              <div class="sid-sector-desc">${s.description || 'Explore National Qualifications & Vocational Skill Packs in this sector.'}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectSectorCard(sectorName) {
+      const select = document.getElementById('selectSector');
+      if (select) {
+        select.value = sectorName;
+        onSectorChange();
+      }
+      const backBtn = document.getElementById('btnBackToSectors');
+      if (backBtn) backBtn.style.display = 'inline-flex';
+      const grid = document.getElementById('sidSectorGrid');
+      if (grid) grid.style.display = 'none';
+
+      const resultsHeader = document.querySelector('.results-header');
+      if (resultsHeader) resultsHeader.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetSectorGrid() {
+      resetFilters();
+      const backBtn = document.getElementById('btnBackToSectors');
+      if (backBtn) backBtn.style.display = 'none';
+      const grid = document.getElementById('sidSectorGrid');
+      if (grid) grid.style.display = 'grid';
+    }
 
     async function initCascadingFilters() {
       try {
@@ -558,6 +627,12 @@
       resetSelect('selectSubsector', 'All Sub Sectors');
       resetSelect('selectOccupation', 'All Occupations');
       resetSelect('selectJobrole', 'All Job Roles');
+
+      const backBtn = document.getElementById('btnBackToSectors');
+      if (backBtn) backBtn.style.display = 'none';
+      const grid = document.getElementById('sidSectorGrid');
+      if (grid) grid.style.display = 'grid';
+
       fetchCards();
     }
 
