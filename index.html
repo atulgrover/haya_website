@@ -50,11 +50,11 @@
     .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
     .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
 
-    /* Pure Logo Hero Section (Full Width, NOTHING BUT THE LOGO) */
+    /* Pure Logo Hero Section with 3 Plain Text Anchor Buttons */
     .hero-section {
       background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
       border-bottom: 1px solid var(--border-color); padding: 50px 24px; text-align: center;
-      display: flex; justify-content: center; align-items: center; width: 100%;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;
     }
     .hero-logo-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px;
@@ -64,50 +64,29 @@
     }
     .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 180px; }
 
-    /* Content Layout (Full Width Edge-to-Edge) */
-    .section-container { max-width: 100%; margin: 0; padding: 48px 24px; }
-    .section-header { text-align: center; margin-bottom: 48px; }
-    .sec-title { font-family: var(--font-heading); font-size: 30px; font-weight: 700; margin-bottom: 12px; }
-    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 720px; margin: 0 auto; }
-
-    /* Persona Pillars Grid (Full Width Responsive) */
-    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px; width: 100%; }
-    .pillar-card {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px; padding: 32px;
-      box-shadow: var(--card-shadow); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;
+    /* Plain Text Anchor Buttons (Zero Emojis/Icons) */
+    .hero-nav-buttons { display: flex; gap: 16px; margin-top: 28px; justify-content: center; flex-wrap: wrap; }
+    .btn-hero-anchor {
+      background: #FFFFFF; border: 1px solid var(--border-color); color: var(--primary-color);
+      padding: 12px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer;
+      transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
-    .pillar-card:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); border-color: var(--primary-color); }
-    .pillar-icon { font-size: 36px; margin-bottom: 16px; display: inline-block; }
-    .pillar-title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 10px; }
-    .pillar-desc { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
-    .pillar-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-    .pillar-features li { font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
-
-    /* Card CTA Buttons (Matching professionals.html slate/white button style) */
-    .btn-cta-outline {
-      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--primary-color) !important;
-      padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px; cursor: pointer; transition: all 0.2s ease;
-      display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; width: 100%;
+    .btn-hero-anchor:hover {
+      background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color);
+      box-shadow: 0 6px 16px rgba(30, 108, 147, 0.25); transform: translateY(-2px);
     }
-    .btn-cta-outline:hover { background: var(--primary-color); color: #FFFFFF !important; border-color: var(--primary-color); }
 
-    /* Engines Grid (Full Width Responsive) */
-    .engines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; }
-    .engine-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; box-shadow: var(--card-shadow); }
-    .engine-code { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
-    .engine-name { font-family: var(--font-heading); font-size: 16.5px; font-weight: 700; margin-bottom: 6px; }
-    .engine-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-
-    /* Dynamic TiddlyWiki Reader (Full Width) */
-    .wiki-section { background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 24px; width: 100%; }
-    .wiki-container { max-width: 100%; margin: 0; }
-    .wiki-reader-box { display: flex; border: 1px solid var(--border-color); border-radius: 10px; height: 600px; overflow: hidden; width: 100%; }
-    .wiki-sidebar { width: 320px; background: #F8FAFC; border-right: 1px solid var(--border-color); padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
-    .wiki-search { padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13.5px; outline: none; }
-    .wiki-list { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
-    .wiki-item { padding: 10px 12px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
-    .wiki-item:hover, .wiki-item.active { border-color: var(--primary-color); background: var(--primary-light); color: var(--primary-color); }
-    .wiki-frame { flex: 1; border: none; width: 100%; height: 100%; }
+    /* Dummy Section Containers (Clean Plain Text) */
+    .dummy-section {
+      max-width: 100%; margin: 0; padding: 64px 24px; border-bottom: 1px solid var(--border-color);
+      background: #FFFFFF; text-align: center;
+    }
+    .dummy-section:nth-child(even) { background: var(--bg-primary); }
+    .sec-title { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-main); margin-bottom: 16px; }
+    .dummy-placeholder-card {
+      background: #FFFFFF; border: 2px dashed var(--border-color); border-radius: 12px;
+      padding: 60px 24px; font-size: 16px; font-weight: 500; color: var(--text-muted); max-width: 900px; margin: 0 auto;
+    }
 
     /* Signature Deep Blue (#1E6C93) Footer with High-Contrast White Shloka Banner Card & Symmetrical Bottom Cards */
     .compact-footer { background-color: #1E6C93; color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 48px 24px 24px; width: 100%; }
@@ -178,137 +157,39 @@
     </div>
   </header>
 
-  <!-- Pure Logo Hero Section (Full Width, NOTHING BUT THE LOGO) -->
+  <!-- Pure Logo Hero Section with 3 Plain Text Anchor Buttons -->
   <section class="hero-section">
     <div class="hero-logo-card">
       <img src="branding/hayagriva_logo.png" alt="HAYAGRIVA Emblem Logo" />
     </div>
-  </section>
-
-  <!-- 3 Universal Persona Pillars Section (Full Width) -->
-  <section class="section-container">
-    <div class="section-header">
-      <h2 class="sec-title">Three Universal Ecosystem Pillars</h2>
-      <p class="sec-subtitle">Tailored sovereign workspaces designed specifically for students, corporate employees, and domain professionals.</p>
-    </div>
-
-    <div class="pillars-grid">
-      <!-- Pillar 1: Students -->
-      <div class="pillar-card">
-        <div>
-          <span class="pillar-icon">🎓</span>
-          <h3 class="pillar-title">Students Portal (NSQF Skillpedia)</h3>
-          <p class="pillar-desc">
-            National Qualification Packs (QPs) database for vocational and technical education.
-          </p>
-          <ul class="pillar-features">
-            <li>✅ 2,176+ NCVET Qualification Packs across 41 Sectors</li>
-            <li>✅ 4 Cascading Dropdowns (Sector ➔ Sub Sector ➔ Occupation ➔ Job Role)</li>
-            <li>✅ 26 Metadata Attributes per QP card</li>
-            <li>✅ 11-Reel Video Inspector for interactive learning</li>
-          </ul>
-        </div>
-        <a href="students.html" class="btn-cta-outline">Explore Students Portal →</a>
-      </div>
-
-      <!-- Pillar 2: Employees -->
-      <div class="pillar-card">
-        <div>
-          <span class="pillar-icon">💼</span>
-          <h3 class="pillar-title">Employees Portal (Enterprise Custom Skills)</h3>
-          <p class="pillar-desc">
-            Corporate enterprise skill management with strict email isolation and shareable skill reels.
-          </p>
-          <ul class="pillar-features">
-            <li>✅ Corporate Email Isolation Key (<code>employee_email_id</code>)</li>
-            <li>✅ Custom Skill Creation & Tag Directory</li>
-            <li>✅ Shareable Skill Card Links (<code>🔗 Copy Share Link</code>)</li>
-            <li>✅ 3rd Segment Interactive Skill Reel Player</li>
-          </ul>
-        </div>
-        <a href="employees.html" class="btn-cta-outline">Explore Employees Portal →</a>
-      </div>
-
-      <!-- Pillar 3: Professionals -->
-      <div class="pillar-card">
-        <div>
-          <span class="pillar-icon">🏛️</span>
-          <h3 class="pillar-title">Professionals Portal (HAYAGRIVA IDE & Vaults)</h3>
-          <p class="pillar-desc">
-            3-Panel IDE Workspace for Patent Builders, Insolvency Professionals, Corporate Advocates, and Arbitrators.
-          </p>
-          <ul class="pillar-features">
-            <li>✅ 100% Local ONNX Embeddings (<code>InLegal-SBERT</code>, <code>Finance-Embeddings</code>)</li>
-            <li>✅ Local GGUF Reasoning Models (<code>LegalParam-2.9B</code>, <code>SaulLM-7B</code>)</li>
-            <li>✅ Encrypted Sovereign Vaults (<code>laws_vault</code>, <code>cases_vault</code>)</li>
-            <li>✅ Specialized Agent Packs (<code>legal_agents.vlt</code>) & Monaco <code>/commands</code></li>
-          </ul>
-        </div>
-        <a href="professionals.html" class="btn-cta-outline">Explore Professionals Workspace →</a>
-      </div>
+    <div class="hero-nav-buttons">
+      <button class="btn-hero-anchor" onclick="scrollToSection('students-section')">Students</button>
+      <button class="btn-hero-anchor" onclick="scrollToSection('employees-section')">Employees</button>
+      <button class="btn-hero-anchor" onclick="scrollToSection('professionals-section')">Professionals</button>
     </div>
   </section>
 
-  <!-- 6 Core HAYAGRIVA Platform Engines Section (Full Width) -->
-  <section style="background: #FFFFFF; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 48px 24px; width: 100%;">
-    <div class="section-container" style="padding: 0;">
-      <div class="section-header">
-        <h2 class="sec-title">The 6 Core HAYAGRIVA Platform Engines</h2>
-        <p class="sec-subtitle">Foundational architectural management systems powering sovereign desktop knowledge management.</p>
-      </div>
-
-      <div class="engines-grid">
-        <div class="engine-card">
-          <span class="engine-code">IMS</span>
-          <h3 class="engine-name">Ingestion Management System</h3>
-          <p class="engine-desc">Multi-format document parsing (PDF, Word, Excel, TiddlyWiki) with SHA-256 hash tracking and density gating.</p>
-        </div>
-        <div class="engine-card">
-          <span class="engine-code">CMS</span>
-          <h3 class="engine-name">Context Management System</h3>
-          <p class="engine-desc">PageIndex hierarchy indexing, SQLite FTS5 keyword retrieval, and ONNX vector cosine reranking (&lt;1ms response).</p>
-        </div>
-        <div class="engine-card">
-          <span class="engine-code">VMS</span>
-          <h3 class="engine-name">Vault Management System</h3>
-          <p class="engine-desc">Encrypted local AES-256 databases (<code>laws_vault</code>, <code>cases_vault</code>, <code>documents_vault</code>) with instant Monaco citations.</p>
-        </div>
-        <div class="engine-card">
-          <span class="engine-code">AMS</span>
-          <h3 class="engine-name">Agent Management System</h3>
-          <p class="engine-desc">Local Node.js specialized subagent critique & verification loops (<code>@advisor</code>, <code>@avoidance</code>, <code>@claims</code>, <code>@forms</code>).</p>
-        </div>
-        <div class="engine-card">
-          <span class="engine-code">DMS</span>
-          <h3 class="engine-name">Drafting Management System</h3>
-          <p class="engine-desc">Monaco-powered drafting canvas with placeholder parsing and 1-click court DOCX compilation (<code>/export-sc</code>).</p>
-        </div>
-        <div class="engine-card">
-          <span class="engine-code">WMS</span>
-          <h3 class="engine-name">Workspace Isolation System</h3>
-          <p class="engine-desc">Isolated client and project workspace directories with Node.js backend daemon synchronizations.</p>
-        </div>
-      </div>
+  <!-- Dummy Section 1: Students -->
+  <section id="students-section" class="dummy-section">
+    <h2 class="sec-title">Students</h2>
+    <div class="dummy-placeholder-card">
+      [ Students section content placeholder — To be updated ]
     </div>
   </section>
 
-  <!-- Dynamic TiddlyWiki Knowledge Base Section (Full Width) -->
-  <section class="wiki-section">
-    <div class="wiki-container">
-      <div class="section-header">
-        <h2 class="sec-title">Dynamic Knowledge Base Reader</h2>
-        <p class="sec-subtitle">Scans local wiki files in the workspace directory on the fly.</p>
-      </div>
+  <!-- Dummy Section 2: Employees -->
+  <section id="employees-section" class="dummy-section">
+    <h2 class="sec-title">Employees</h2>
+    <div class="dummy-placeholder-card">
+      [ Employees section content placeholder — To be updated ]
+    </div>
+  </section>
 
-      <div class="wiki-reader-box">
-        <div class="wiki-sidebar">
-          <input type="text" id="wikiSearchInput" class="wiki-search" placeholder="Search wikis..." oninput="filterWikis()" />
-          <div class="wiki-list" id="wikiListContainer">
-            <!-- Dynamic wikis loaded here -->
-          </div>
-        </div>
-        <iframe id="tiddlywiki-frame" class="wiki-frame" src="about:blank"></iframe>
-      </div>
+  <!-- Dummy Section 3: Professionals -->
+  <section id="professionals-section" class="dummy-section">
+    <h2 class="sec-title">Professionals</h2>
+    <div class="dummy-placeholder-card">
+      [ Professionals section content placeholder — To be updated ]
     </div>
   </section>
 
@@ -403,42 +284,11 @@
   </footer>
 
   <script>
-    async function loadDynamicWikis() {
-      try {
-        const res = await fetch('/api/wiki/list?_t=' + Date.now(), { cache: 'no-store' });
-        const data = await res.json();
-        const container = document.getElementById('wikiListContainer');
-
-        if (data.success && data.wikis && data.wikis.length > 0) {
-          container.innerHTML = data.wikis.map((wiki, index) => `
-            <div class="wiki-item ${index === 0 ? 'active' : ''}" onclick="loadTiddlyWiki('${wiki.path}', this)">
-              <span>${wiki.icon}</span>
-              <span>${wiki.title}</span>
-            </div>
-          `).join('');
-
-          const iframe = document.getElementById('tiddlywiki-frame');
-          if (iframe && (!iframe.src || iframe.src.endsWith('about:blank'))) {
-            iframe.src = data.wikis[0].path;
-          }
-        } else {
-          container.innerHTML = '<div style="color: var(--text-muted); font-size: 12px; padding: 10px;">No wikis found in /wiki folder. Drop .html files there to display here!</div>';
-        }
-      } catch (e) { console.error('Error loading wikis:', e); }
-    }
-
-    function loadTiddlyWiki(wikiPath, element) {
-      const iframe = document.getElementById('tiddlywiki-frame');
-      if (iframe) iframe.src = wikiPath;
-      document.querySelectorAll('.wiki-item').forEach(item => item.classList.remove('active'));
-      if (element) element.classList.add('active');
-    }
-
-    function filterWikis() {
-      const query = document.getElementById('wikiSearchInput').value.toLowerCase();
-      document.querySelectorAll('.wiki-item').forEach(item => {
-        item.style.display = item.innerText.toLowerCase().includes(query) ? 'flex' : 'none';
-      });
+    function scrollToSection(sectionId) {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     function handleFormSubmit(event) {
@@ -477,7 +327,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      loadDynamicWikis();
       checkAuthStatus();
     });
   </script>
