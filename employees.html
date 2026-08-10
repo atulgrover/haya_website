@@ -96,7 +96,9 @@
     
     .tag-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
     .badge-tag { background: var(--primary-light); color: var(--primary-color); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-    .company-tag { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+    .reels-count-pill { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; }
+    .reels-count-pill.has-reels { background: var(--primary-light); color: var(--primary-color); }
+    .reels-count-pill.no-reels  { background: #F1F5F9; color: #94A3B8; }
 
     .skill-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); line-height: 1.35; }
     .skill-desc-text { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.45; }
@@ -462,13 +464,13 @@
                 <div>
                   <div class="tag-header">
                     <span class="badge-tag">${skill.tag}</span>
-                    <span class="company-tag">Org: ${skill.company_id}</span>
+                    ${reelCount > 0
+                      ? `<span class="reels-count-pill has-reels">🎬 ${reelCount} Reels</span>`
+                      : `<span class="reels-count-pill no-reels">No Reels</span>`}
                   </div>
                   <h3 class="skill-title">${skill.title}</h3>
                   <p class="skill-desc-text">${desc}</p>
-                  ${reelCount > 0
-                    ? `<div class="card-reels-badge">🎬 ${reelCount} Reels</div>`
-                    : '<div class="card-reels-badge" style="background:#FEF3C7;color:#92400E;">⚠️ No Reels</div>'}
+                
                 </div>
                 <div style="display:flex; gap:8px; margin-top:12px;">
                   <button class="btn-card-play" onclick="openPlayerModal(${skill.id}, '${encodeURIComponent(skill.title)}')">▶ Play</button>
