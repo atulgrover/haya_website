@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const footerContainer = document.getElementById('site-footer');
     if (footerContainer) {
         try {
-            const res = await fetch('/components/footer.html');
+            const res = await fetch('/components/footer.html?v=' + Date.now());
             if (res.ok) {
                 const html = await res.text();
                 footerContainer.innerHTML = html;
