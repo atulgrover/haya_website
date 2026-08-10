@@ -38,9 +38,11 @@
 }
 
 .footer-logo-img {
-  height: 105px;
-  width: auto;
-  filter: brightness(0) invert(1);
+  width: 90%;
+  max-width: 220px;
+  height: auto;
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 
 .footer-brand-title {
