@@ -50,22 +50,32 @@
     .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
     .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
 
-    /* Pure Logo Hero Section with 3 Plain Text Anchor Buttons */
+    /* Page Load Entrance Animation */
+    @keyframes heroPulseIn {
+      0% { opacity: 0; transform: perspective(1000px) translateY(30px) scale(0.93); }
+      60% { transform: perspective(1000px) translateY(-4px) scale(1.02); }
+      100% { opacity: 1; transform: perspective(1000px) translateY(0) scale(1); }
+    }
+
+    /* Animated Larger Hero Logo Section */
     .hero-section {
       background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
-      border-bottom: 1px solid var(--border-color); padding: 50px 24px; text-align: center;
+      border-bottom: 1px solid var(--border-color); padding: 60px 24px 50px; text-align: center;
       display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;
+      perspective: 1000px;
     }
     .hero-logo-card {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px;
-      padding: 30px 60px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 20px;
+      padding: 36px 64px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       display: inline-flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease; max-width: 540px; width: 100%;
+      max-width: 680px; width: 100%; transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+      animation: heroPulseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-style: preserve-3d; will-change: transform; cursor: pointer;
     }
-    .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 180px; }
+    .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 230px; }
 
     /* Plain Text Anchor Buttons (Zero Emojis/Icons) */
-    .hero-nav-buttons { display: flex; gap: 16px; margin-top: 28px; justify-content: center; flex-wrap: wrap; }
+    .hero-nav-buttons { display: flex; gap: 16px; margin-top: 32px; justify-content: center; flex-wrap: wrap; }
     .btn-hero-anchor {
       background: #FFFFFF; border: 1px solid var(--border-color); color: var(--primary-color);
       padding: 12px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer;
@@ -157,9 +167,9 @@
     </div>
   </header>
 
-  <!-- Pure Logo Hero Section with 3 Plain Text Anchor Buttons -->
-  <section class="hero-section">
-    <div class="hero-logo-card">
+  <!-- Larger Animated Hero Section with 3 Plain Text Anchor Buttons -->
+  <section class="hero-section" id="heroSection">
+    <div class="hero-logo-card" id="heroLogoCard">
       <img src="branding/hayagriva_logo.png" alt="HAYAGRIVA Emblem Logo" />
     </div>
     <div class="hero-nav-buttons">
@@ -291,6 +301,28 @@
       }
     }
 
+    /* Interactive 3D Parallax Mouse Move Animation for Hero Logo Card */
+    function initHeroParallax() {
+      const heroCard = document.getElementById('heroLogoCard');
+      const heroSection = document.getElementById('heroSection');
+      
+      if (heroSection && heroCard) {
+        heroSection.addEventListener('mousemove', (e) => {
+          const rect = heroSection.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          
+          heroCard.style.transform = `perspective(1000px) rotateY(${x * 16}deg) rotateX(${-y * 16}deg) translateY(${y * -8}px) scale(1.03)`;
+          heroCard.style.boxShadow = `${-x * 24}px ${-y * 24}px 40px rgba(30, 108, 147, 0.18), 0 12px 28px rgba(0, 0, 0, 0.08)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+          heroCard.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1)';
+          heroCard.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
+        });
+      }
+    }
+
     function handleFormSubmit(event) {
       event.preventDefault();
       const name = document.getElementById('inputName').value;
@@ -328,6 +360,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       checkAuthStatus();
+      initHeroParallax();
     });
   </script>
 </body>
