@@ -153,10 +153,79 @@ async function initSchema() {
                 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users(id)
             );
+
+            CREATE TABLE IF NOT EXISTS nsqf_qps (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                s_no TEXT,
+                sector TEXT,
+                sub_sector TEXT,
+                occupation TEXT,
+                qp_name TEXT,
+                qp_code TEXT,
+                version TEXT,
+                awarding_body TEXT,
+                last_reviewed_on TEXT,
+                next_review_date TEXT,
+                nsqc_approval_date TEXT,
+                nsqf_level TEXT,
+                common_norms_category TEXT,
+                economic_category TEXT,
+                deactivation_date TEXT,
+                technical_type TEXT,
+                sector_type TEXT,
+                nqr_code TEXT,
+                qp_type TEXT,
+                theory_duration TEXT,
+                practical_duration TEXT,
+                ojt_mandatory_duration TEXT,
+                ojt_recommended_duration TEXT,
+                total_qp_hours TEXT,
+                min_education_exp TEXT,
+                min_job_entry_age TEXT
+            );
         `);
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
+
+        // Auto-seed NSQF database if nsqf_qps table is empty
+        await seedNSQFFromJSON();
     } catch (err) {
         console.error('[Haya Portal DB] Initialization error:', err.message);
+    }
+}
+
+async function seedNSQFFromJSON() {
+    try {
+        const countRow = await db.prepare(`SELECT COUNT(*) as count FROM nsqf_qps`).get();
+        if (countRow && countRow.count === 0) {
+            const fs = require('fs');
+            const seedPath = path.join(__dirname, 'nsqf_seed.json');
+            if (fs.existsSync(seedPath)) {
+                console.log('[Haya Portal DB] Seeding 2,176 NCVET NSQF Job Roles from nsqf_seed.json...');
+                const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
+                for (const r of seedData) {
+                    await db.prepare(`
+                        INSERT INTO nsqf_qps (
+                            s_no, sector, sub_sector, occupation, qp_name, qp_code, version,
+                            awarding_body, last_reviewed_on, next_review_date, nsqc_approval_date,
+                            nsqf_level, common_norms_category, economic_category, deactivation_date,
+                            technical_type, sector_type, nqr_code, qp_type, theory_duration,
+                            practical_duration, ojt_mandatory_duration, ojt_recommended_duration,
+                            total_qp_hours, min_education_exp, min_job_entry_age
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    `).run(
+                        r.s_no, r.sector, r.sub_sector, r.occupation, r.qp_name, r.qp_code, r.version,
+                        r.awarding_body, r.last_reviewed_on, r.next_review_date, r.nsqc_approval_date,
+                        r.nsqf_level, r.common_norms_category, r.economic_category, r.deactivation_date,
+                        r.technical_type, r.sector_type, r.nqr_code, r.qp_type, r.theory_duration,
+                        r.practical_duration, r.ojt_mandatory_duration, r.ojt_recommended_duration,
+                        r.total_qp_hours, r.min_education_exp, r.min_job_entry_age
+                    );
+                }
+                console.log(`[Haya Portal DB] Successfully seeded ${seedData.length} NSQF Job Roles.`);
+            }
+        }
+    } catch (e) {
+        console.error('[Haya Portal DB] Error seeding NSQF DB:', e.message);
     }
 }
 
