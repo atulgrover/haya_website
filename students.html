@@ -356,9 +356,11 @@
 
     async function initCascadingFilters() {
       try {
-        const res = await fetch('/api/nsqf/sectors');
-        const sectors = await res.json();
-        populateSelect('selectSector', sectors, 'All Sectors');
+        const res = await fetch('/api/skillpedia/qps/sectors');
+        const data = await res.json();
+        if (data.success && data.sectors) {
+          populateSelect('selectSector', data.sectors, 'All Sectors');
+        }
       } catch (err) { console.error(err); }
     }
 
@@ -374,9 +376,11 @@
       resetSelect('selectJobrole', 'All Job Roles');
 
       if (sec) {
-        const res = await fetch(`/api/nsqf/subsectors?sector=${encodeURIComponent(sec)}`);
-        const subsectors = await res.json();
-        populateSelect('selectSubsector', subsectors, 'All Sub Sectors');
+        const res = await fetch(`/api/skillpedia/qps/subsectors?sector=${encodeURIComponent(sec)}`);
+        const data = await res.json();
+        if (data.success && data.subsectors) {
+          populateSelect('selectSubsector', data.subsectors, 'All Sub Sectors');
+        }
       }
       fetchCards();
     }
@@ -392,9 +396,11 @@
       resetSelect('selectJobrole', 'All Job Roles');
 
       if (sub) {
-        const res = await fetch(`/api/nsqf/occupations?sector=${encodeURIComponent(sec)}&sub_sector=${encodeURIComponent(sub)}`);
-        const occupations = await res.json();
-        populateSelect('selectOccupation', occupations, 'All Occupations');
+        const res = await fetch(`/api/skillpedia/qps/occupations?sector=${encodeURIComponent(sec)}&subsector=${encodeURIComponent(sub)}`);
+        const data = await res.json();
+        if (data.success && data.occupations) {
+          populateSelect('selectOccupation', data.occupations, 'All Occupations');
+        }
       }
       fetchCards();
     }
@@ -409,9 +415,11 @@
       resetSelect('selectJobrole', 'All Job Roles');
 
       if (occ) {
-        const res = await fetch(`/api/nsqf/jobroles?sector=${encodeURIComponent(sec)}&sub_sector=${encodeURIComponent(sub)}&occupation=${encodeURIComponent(occ)}`);
-        const jobroles = await res.json();
-        populateSelect('selectJobrole', jobroles, 'All Job Roles', item => ({ value: item.qp_code, text: `${item.qp_name} (${item.qp_code})` }));
+        const res = await fetch(`/api/skillpedia/qps/jobroles?sector=${encodeURIComponent(sec)}&subsector=${encodeURIComponent(sub)}&occupation=${encodeURIComponent(occ)}`);
+        const data = await res.json();
+        if (data.success && data.jobroles) {
+          populateSelect('selectJobrole', data.jobroles, 'All Job Roles');
+        }
       }
       fetchCards();
     }
@@ -454,20 +462,20 @@
     async function fetchCards() {
       const params = new URLSearchParams();
       if (currentFilters.sector) params.append('sector', currentFilters.sector);
-      if (currentFilters.sub_sector) params.append('sub_sector', currentFilters.sub_sector);
+      if (currentFilters.sub_sector) params.append('subsector', currentFilters.sub_sector);
       if (currentFilters.occupation) params.append('occupation', currentFilters.occupation);
-      if (currentFilters.qp_code) params.append('qp_code', currentFilters.qp_code);
-      if (currentFilters.search) params.append('search', currentFilters.search);
+      if (currentFilters.qp_code) params.append('jobrole', currentFilters.qp_code);
+      if (currentFilters.search) params.append('q', currentFilters.search);
       params.append('limit', '50');
 
-      const url = `/api/nsqf/cards?${params.toString()}`;
+      const url = `/api/skillpedia/qps/cards?${params.toString()}`;
       try {
         const res = await fetch(url);
         const data = await res.json();
         const grid = document.getElementById('cardsGrid');
         const countSpan = document.getElementById('resultsCount');
 
-        if (data.success && data.cards.length > 0) {
+        if (data.success && data.cards && data.cards.length > 0) {
           if (data.hasFiltered) {
             if (data.matchCount > data.cards.length) {
               countSpan.innerText = `Showing ${data.cards.length} of ${data.matchCount.toLocaleString()} matching Job Roles — Use narrower filters to pinpoint`;
@@ -475,7 +483,7 @@
               countSpan.innerText = `Showing ${data.matchCount.toLocaleString()} matching Job Roles`;
             }
           } else {
-            countSpan.innerText = `Showing ${data.cards.length} of ${data.totalDatabaseCount.toLocaleString()} Job Roles — Use Left Filters to Explore All`;
+            countSpan.innerText = `Showing ${data.cards.length} of ${(data.totalDatabaseCount || 2176).toLocaleString()} Job Roles — Use Left Filters to Explore All`;
           }
 
           grid.innerHTML = data.cards.map(card => `
