@@ -180,6 +180,7 @@ router.get('/custom/all-skills', async (req, res) => {
                 employee_email_id: s.employee_email_id,
                 created_at: s.created_at,
                 tag: schema.tag || s.title.split(' ')[0] || 'General',
+                description: schema.description || 'Enterprise SOP micro-learning reel and operational workflow.',
                 schema
             };
         });
