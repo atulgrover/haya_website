@@ -1,8 +1,7 @@
 'use strict';
 
 /**
- * HAYAGRIVA Component Loader & In-Page SSO Auth Modal
- * Asynchronously loads shared components and provides the in-page Auth Modal with blurred backdrop.
+ * HAYAGRIVA Component Loader & In-Page SSO Auth Modal + User Profile Dropdown
  */
 
 let authIsSignup = false;
@@ -25,10 +24,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 2. Inject Auth Modal HTML & CSS into document body
     injectAuthModal();
 
-    // 3. Update auth buttons across page
+    // 3. Update auth buttons & dropdown UI
     updateAuthButtonsUI();
 
-    // 4. Auto-open modal if URL query ?login=1 or ?signup=1
+    // 4. Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+        const dropdown = document.getElementById('userProfileDropdown');
+        if (dropdown && dropdown.classList.contains('active')) {
+            const isClickInside = e.target.closest('.user-profile-dropdown') || e.target.closest('.user-profile-trigger');
+            if (!isClickInside) {
+                dropdown.classList.remove('active');
+            }
+        }
+    });
+
+    // 5. Auto-open modal if URL query ?login=1 or ?signup=1
     const params = new URLSearchParams(window.location.search);
     if (params.get('login') === '1' || params.get('auth') === '1') {
         openAuthModal(false);
@@ -41,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function injectAuthModal() {
     if (document.getElementById('authModalOverlay')) return;
 
-    // Inject Stylesheet for Auth Modal
+    // Inject Stylesheet for Auth Modal & Profile Dropdown
     const style = document.createElement('style');
     style.id = 'authModalStyles';
     style.textContent = `
@@ -113,6 +123,83 @@ function injectAuthModal() {
         .auth-modal-toggle { text-align: center; margin-top: 16px; font-size: 13px; color: #64748B; }
         .auth-modal-toggle a { color: #1E6C93; font-weight: 700; text-decoration: none; margin-left: 4px; }
         .auth-modal-toggle a:hover { text-decoration: underline; }
+
+        /* ── User Profile Dropdown ────────────────────────────── */
+        .user-profile-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 230px;
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            z-index: 5500;
+            display: none;
+            flex-direction: column;
+            padding: 6px 0;
+            box-sizing: border-box;
+            animation: userDropdownPop 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .user-profile-dropdown.active { display: flex; }
+        @keyframes userDropdownPop {
+            from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .user-profile-header {
+            padding: 10px 14px 10px;
+            border-bottom: 1px solid #F1F5F9;
+            text-align: left;
+        }
+        .user-profile-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: #0F172A;
+            margin-bottom: 3px;
+            word-break: break-word;
+        }
+        .user-profile-email {
+            font-size: 11px;
+            color: #64748B;
+            margin-bottom: 6px;
+            word-break: break-all;
+        }
+        .user-profile-role-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            color: #1E6C93;
+            background: rgba(30, 108, 147, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .user-profile-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            text-align: left;
+        }
+        .user-profile-item:hover {
+            background: #F8FAFC;
+            color: #1E6C93;
+        }
+        .user-profile-item.logout {
+            color: #DC2626;
+            border-top: 1px solid #F1F5F9;
+            margin-top: 4px;
+        }
+        .user-profile-item.logout:hover {
+            background: #FEE2E2;
+        }
     `;
     document.head.appendChild(style);
 
@@ -166,7 +253,7 @@ function injectAuthModal() {
     document.body.appendChild(div.firstElementChild);
 }
 
-/* ── Modal Control Functions ─────────────────────────────────── */
+/* ── Modal & Dropdown Control Functions ───────────────────────── */
 function openAuthModal(signup = false) {
     injectAuthModal();
     authIsSignup = signup;
@@ -206,6 +293,23 @@ function toggleAuthRoleFields() {
         const r = roleSelect.value;
         companyGroup.style.display = (r === 'employee') ? 'block' : 'none';
     }
+}
+
+function toggleUserDropdown(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    const dropdown = document.getElementById('userProfileDropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('active');
+    }
+}
+
+function handleSignOut(e) {
+    if (e) e.preventDefault();
+    localStorage.removeItem('haya_token');
+    localStorage.removeItem('haya_user');
+    const dropdown = document.getElementById('userProfileDropdown');
+    if (dropdown) dropdown.classList.remove('active');
+    updateAuthButtonsUI();
 }
 
 /* ── Auth Form Handler ───────────────────────────────────────── */
@@ -272,18 +376,67 @@ async function handleAuthSubmit(e) {
     }
 }
 
-/* ── UI Auth State Updater ───────────────────────────────────── */
+/* ── UI Auth State & Dropdown Updater ──────────────────────────── */
 function updateAuthButtonsUI() {
     const userJson = localStorage.getItem('haya_user');
     const user     = userJson ? JSON.parse(userJson) : null;
 
     document.querySelectorAll('.login-btn, #main-auth-btn').forEach(btn => {
+        const parent = btn.parentElement;
+        if (parent) parent.style.position = 'relative';
+
         if (user) {
-            btn.textContent = user.fullName || user.email.split('@')[0];
-            btn.setAttribute('onclick', 'openAuthModal(false)');
+            const userName = user.fullName || user.email.split('@')[0];
+            btn.textContent = `${userName} ▾`;
+            btn.classList.add('user-profile-trigger');
+            btn.setAttribute('onclick', 'toggleUserDropdown(event)');
+
+            // Map user role to portal page
+            let portalPage = 'employees.html';
+            let portalLabel = 'Go to Employee Portal';
+
+            if (user.role === 'student') {
+                portalPage = 'students.html';
+                portalLabel = 'Go to Student Portal';
+            } else if (user.role === 'professional') {
+                portalPage = 'professionals.html';
+                portalLabel = 'Go to Professional Portal';
+            } else {
+                portalPage = 'employees.html';
+                portalLabel = 'Go to Employee Portal';
+            }
+
+            // Create/update User Profile Dropdown attached to parent
+            let dropdown = parent.querySelector('#userProfileDropdown');
+            if (!dropdown) {
+                dropdown = document.createElement('div');
+                dropdown.id = 'userProfileDropdown';
+                dropdown.className = 'user-profile-dropdown';
+                parent.appendChild(dropdown);
+            }
+
+            dropdown.innerHTML = `
+                <div class="user-profile-header">
+                    <div class="user-profile-name">${userName}</div>
+                    <div class="user-profile-email">${user.email}</div>
+                    <span class="user-profile-role-badge">${user.role || 'Member'}</span>
+                </div>
+                <a href="${portalPage}" class="user-profile-item">
+                    <span>${portalLabel}</span>
+                    <span>➔</span>
+                </a>
+                <a href="#" onclick="handleSignOut(event)" class="user-profile-item logout">
+                    <span>Sign Out</span>
+                    <span>🚪</span>
+                </a>
+            `;
         } else {
             btn.textContent = 'Login';
-            btn.setAttribute('onclick', 'openAuthModal(false)');
+            btn.classList.remove('user-profile-trigger');
+            btn.setAttribute('onclick', 'openAuthModal(false); return false;');
+
+            const dropdown = parent ? parent.querySelector('#userProfileDropdown') : null;
+            if (dropdown) dropdown.remove();
         }
     });
 }
