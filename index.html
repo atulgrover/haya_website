@@ -86,17 +86,44 @@
       box-shadow: 0 6px 16px rgba(30, 108, 147, 0.25); transform: translateY(-2px);
     }
 
-    /* Dummy Section Containers (Clean Plain Text) */
-    .dummy-section {
-      max-width: 100%; margin: 0; padding: 64px 24px; border-bottom: 1px solid var(--border-color);
+    /* Marketing Section Containers */
+    .marketing-section {
+      max-width: 100%; margin: 0; padding: 72px 24px; border-bottom: 1px solid var(--border-color);
       background: #FFFFFF; text-align: center;
     }
-    .dummy-section:nth-child(even) { background: var(--bg-primary); }
-    .sec-title { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-main); margin-bottom: 16px; }
-    .dummy-placeholder-card {
-      background: #FFFFFF; border: 2px dashed var(--border-color); border-radius: 12px;
-      padding: 60px 24px; font-size: 16px; font-weight: 500; color: var(--text-muted); max-width: 900px; margin: 0 auto;
+    .marketing-section:nth-child(even) { background: var(--bg-primary); }
+    
+    .section-badge {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary-color);
+      background: var(--primary-light); padding: 4px 12px; border-radius: 20px; display: inline-block;
+      letter-spacing: 0.8px; margin-bottom: 12px; text-transform: uppercase;
     }
+    .sec-title { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
+    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 820px; margin: 0 auto 40px; line-height: 1.6; }
+
+    /* Marketing Cards 3-Column Grid */
+    .feature-cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+      max-width: 1200px; margin: 0 auto 36px; text-align: left;
+    }
+    .feature-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 28px; box-shadow: var(--card-shadow); transition: all 0.3s ease;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .feature-card:hover {
+      box-shadow: var(--hover-shadow); border-color: var(--primary-color); transform: translateY(-3px);
+    }
+    .card-num-tag { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--primary-color); margin-bottom: 8px; }
+    .card-title { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+    .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    
+    .btn-cta-section {
+      display: inline-block; background: var(--primary-color); color: #FFFFFF; font-weight: 700;
+      padding: 13px 32px; border-radius: 8px; font-size: 15px; transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.2); text-decoration: none;
+    }
+    .btn-cta-section:hover { background: var(--primary-hover); color: #FFFFFF; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 108, 147, 0.3); }
 
     /* Signature Deep Blue (#1E6C93) Footer with High-Contrast White Shloka Banner Card & Symmetrical Bottom Cards */
     .compact-footer { background-color: #1E6C93; color: #FFFFFF; border-top: 1px solid var(--border-color); padding: 48px 24px 24px; width: 100%; }
@@ -179,28 +206,133 @@
     </div>
   </section>
 
-  <!-- Dummy Section 1: Students -->
-  <section id="students-section" class="dummy-section">
-    <h2 class="sec-title">Students</h2>
-    <div class="dummy-placeholder-card">
-      [ Students section content placeholder — To be updated ]
+  <!-- Section 1: Students (100% Free) -->
+  <section id="students-section" class="marketing-section">
+    <span class="section-badge">100% Free Open Education</span>
+    <h2 class="sec-title">Students: National Qualification Standards & Skillpedia</h2>
+    <p class="sec-subtitle">
+      Access 10,000+ National Skills Qualification Framework (NSQF) job roles, interactive 11-reel video inspectors, and structured career progression pathways at zero cost.
+    </p>
+
+    <div class="feature-cards-grid">
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">01 / NSQF STANDARDS</div>
+          <h3 class="card-title">National Qualification Packs (QP)</h3>
+          <p class="card-desc">
+            Explore standardized curriculum across Agriculture, Automotive, IT-ITeS, Electronics, Healthcare, and 30+ national industry sectors.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">02 / VISUAL REELS</div>
+          <h3 class="card-title">11-Reel Micro-Learning Inspector</h3>
+          <p class="card-desc">
+            Bite-sized visual learning reels breaking down complex vocational skills into step-by-step visual modules for instant comprehension.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">03 / CAREER PATHWAYS</div>
+          <h3 class="card-title">Structured Skill Progression</h3>
+          <p class="card-desc">
+            Clear skill hierarchy tracking from Level 1 foundation technician to Level 8 master practitioner certification.
+          </p>
+        </div>
+      </div>
     </div>
+
+    <a href="students.html" class="btn-cta-section">Explore Students Workspace</a>
   </section>
 
-  <!-- Dummy Section 2: Employees -->
-  <section id="employees-section" class="dummy-section">
-    <h2 class="sec-title">Employees</h2>
-    <div class="dummy-placeholder-card">
-      [ Employees section content placeholder — To be updated ]
+  <!-- Section 2: Employees (100% Free) -->
+  <section id="employees-section" class="marketing-section">
+    <span class="section-badge">100% Free Enterprise Skill Builder</span>
+    <h2 class="sec-title">Employees: Skill Reel Builder & Knowledge Sharing</h2>
+    <p class="sec-subtitle">
+      Empower your team with a free enterprise skill builder. Create custom multi-segment video reels, partition workspaces by corporate email, and share operational workflows.
+    </p>
+
+    <div class="feature-cards-grid">
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">01 / REEL CREATOR</div>
+          <h3 class="card-title">Custom Skill Reel Builder</h3>
+          <p class="card-desc">
+            Record, assemble, and publish tailored multi-segment skill reels for specialized internal organizational workflows and operational training.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">02 / DOMAIN ISOLATION</div>
+          <h3 class="card-title">Corporate Workspace Isolation</h3>
+          <p class="card-desc">
+            Secure email-based workspace partitioning keeping internal team knowledge isolated, searchable, and organized per corporate domain.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">03 / PEER KNOWLEDGE</div>
+          <h3 class="card-title">Peer-to-Peer Knowledge Sharing</h3>
+          <p class="card-desc">
+            Share operational SOPs, machine operating checklists, and compliance workflows freely across internal department teams.
+          </p>
+        </div>
+      </div>
     </div>
+
+    <a href="employees.html" class="btn-cta-section">Build Enterprise Skill Reels</a>
   </section>
 
-  <!-- Dummy Section 3: Professionals -->
-  <section id="professionals-section" class="dummy-section">
-    <h2 class="sec-title">Professionals</h2>
-    <div class="dummy-placeholder-card">
-      [ Professionals section content placeholder — To be updated ]
+  <!-- Section 3: Professionals (Freemium) -->
+  <section id="professionals-section" class="marketing-section">
+    <span class="section-badge">Core IDE 100% Free • Pay-As-You-Go Vaults</span>
+    <h2 class="sec-title">Professionals: Air-Gapped Sovereign IPE Workspace</h2>
+    <p class="sec-subtitle">
+      The core HAYAGRIVA WORKBENCH IDE is 100% free for all legal & domain practitioners. Upgrade on-demand with specialized domain vaults, AI agent rosters, and company audit services.
+    </p>
+
+    <div class="feature-cards-grid">
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">01 / CORE IDE ENGINE</div>
+          <h3 class="card-title">Free Core WORKBENCH IDE</h3>
+          <p class="card-desc">
+            Complete 3-panel workspace with local Monaco code editor, file explorer, subagent runners, and active-context matrix—100% free forever.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">02 / DOMAIN VAULTS & AGENTS</div>
+          <h3 class="card-title">Sovereign Vaults & AI Agent Packs</h3>
+          <p class="card-desc">
+            Unlock encrypted domain vaults (IBC Laws, USPTO Prior Art) and specialized AI agent rosters (@coc-coordinator, @claims-auditor) on-demand.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-num-tag">03 / ON-DEMAND SERVICES</div>
+          <h3 class="card-title">Company Professional Services</h3>
+          <p class="card-desc">
+            Request specialized CIRP Form Verification Audits, NCLT Bench Precedent Summaries, PUFE Avoidance Audits, and Patentability Reports.
+          </p>
+        </div>
+      </div>
     </div>
+
+    <a href="professionals.html" class="btn-cta-section">Open Professional IDE</a>
   </section>
 
   <!-- Polished Symmetrical Footer (#1E6C93) with White Shloka Card Banner & Dual Balanced Cards -->
