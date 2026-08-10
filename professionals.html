@@ -157,7 +157,7 @@
         <li><a href="students.html" class="nav-link">Students</a></li>
         <li><a href="employees.html" class="nav-link">Employees</a></li>
         <li><a href="professionals.html" class="nav-link active">Professionals</a></li>
-        <li><a href="login.html" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
+        <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
       </ul>
       <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -175,7 +175,7 @@
     <a href="students.html">Students</a>
     <a href="employees.html">Employees</a>
     <a href="professionals.html" class="active">Professionals ●</a>
-    <a href="login.html" class="login-btn">Login</a>
+    <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Login</a>
   </nav>
 
   <!-- Panel scrim (mobile overlay backdrop) -->
