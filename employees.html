@@ -406,13 +406,45 @@
           <button onclick="regenerateDomainPrompt()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#E2E8F0; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px;">
             🔄 Rewrite / Try Again with AI
           </button>
-          <button onclick="confirmPromptAndStartBuild()" style="background:linear-gradient(135deg, #1E6C93, #38BDF8); color:#FFFFFF; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 12px rgba(56,189,248,0.25);">
-            ✅ Confirm Prompt & Build 11 Reels ➔
+          <button onclick="confirmPromptAndGenerateChapters()" style="background:linear-gradient(135deg, #1E6C93, #38BDF8); color:#FFFFFF; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 12px rgba(56,189,248,0.25);">
+            ✅ Confirm Prompt ➔ Generate 11 Chapters ➔
           </button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- 11 Chapter Titles Review & Confirmation Modal (Approval Step 2) -->
+  <div class="ai-modal-overlay" id="chaptersReviewModal">
+    <div class="ai-modal-card" style="width: 780px; max-width: 95vw; background: #0F172A; border: 1px solid rgba(56,189,248,0.4); max-height: 90vh; display: flex; flex-direction: column;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1); flex-shrink:0;">
+        <div>
+          <div class="ai-modal-title" style="font-size:18px; color:#E2E8F0;">📋 Review & Confirm 11 Chapter Titles</div>
+          <div style="font-size:12px; color:#94A3B8; margin-top:2px;">Review or edit any chapter title below before executing YouTube API video searches.</div>
+        </div>
+        <button onclick="closeChaptersReviewModal()" style="background:none; border:none; color:#64748B; font-size:20px; cursor:pointer;">✕</button>
+      </div>
+
+      <div id="chaptersLoadingState" style="display:none; text-align:center; padding:40px 10px;">
+        <div style="font-size:15px; color:#38BDF8; font-weight:700;">🧠 Sarvam AI (sarvam-105b) is Synthesizing 11 Chapter Topics...</div>
+        <div style="font-size:12px; color:#94A3B8; margin-top:6px;">Building clean step-by-step chapter curriculum from your confirmed prompt.</div>
+      </div>
+
+      <div id="chaptersEditorState" style="display:flex; flex-direction:column; gap:12px; flex:1; overflow-y:auto; padding:12px 4px 0 0;">
+        <div id="chaptersListContainer" style="display:flex; flex-direction:column; gap:10px;"></div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; gap:10px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.1); flex-shrink:0;">
+        <button onclick="regenerateChaptersList()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#E2E8F0; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px;">
+          🔄 Regenerate Chapters with AI
+        </button>
+        <button onclick="confirmChaptersAndStartVideoSearch()" style="background:linear-gradient(135deg, #1E6C93, #38BDF8); color:#FFFFFF; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 12px rgba(56,189,248,0.25);">
+          ✅ Confirm 11 Chapters ➔ Search YouTube Videos 🔍
+        </button>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Live YouTube API Search & Swap Modal -->
   <div class="ai-modal-overlay" id="liveSearchModal">
@@ -640,7 +672,9 @@
       }
     }
 
-    async function confirmPromptAndStartBuild() {
+    let draftCurriculum = null;
+
+    async function confirmPromptAndGenerateChapters() {
       const textarea = document.getElementById('domainPromptTextarea');
       draftDomainPrompt = textarea.value.trim();
 
@@ -650,16 +684,91 @@
       }
 
       closePromptReviewModal();
+      openChaptersReviewModal();
+    }
 
-      // Show AI progress modal
+    async function openChaptersReviewModal() {
+      const modal = document.getElementById('chaptersReviewModal');
+      const loadingState = document.getElementById('chaptersLoadingState');
+      const editorState  = document.getElementById('chaptersEditorState');
+
+      modal.classList.add('active');
+      loadingState.style.display = 'block';
+      editorState.style.display  = 'none';
+
+      try {
+        draftCurriculum = await aiEngine.generate11ChapterTitles(draftSkillTopic, draftDomainPrompt);
+        renderChaptersList();
+        loadingState.style.display = 'none';
+        editorState.style.display  = 'flex';
+      } catch (err) {
+        alert(`Failed to synthesize chapter titles: ${err.message}`);
+        closeChaptersReviewModal();
+      }
+    }
+
+    function closeChaptersReviewModal() {
+      document.getElementById('chaptersReviewModal').classList.remove('active');
+    }
+
+    async function regenerateChaptersList() {
+      const loadingState = document.getElementById('chaptersLoadingState');
+      const editorState  = document.getElementById('chaptersEditorState');
+
+      loadingState.style.display = 'block';
+      editorState.style.display  = 'none';
+
+      try {
+        draftCurriculum = await aiEngine.generate11ChapterTitles(draftSkillTopic, draftDomainPrompt);
+        renderChaptersList();
+        loadingState.style.display = 'none';
+        editorState.style.display  = 'flex';
+      } catch (err) {
+        alert(`Chapter regeneration failed: ${err.message}`);
+        loadingState.style.display = 'none';
+        editorState.style.display  = 'flex';
+      }
+    }
+
+    function renderChaptersList() {
+      const container = document.getElementById('chaptersListContainer');
+      if (!draftCurriculum || !draftCurriculum.lessons) return;
+
+      container.innerHTML = draftCurriculum.lessons.map((les, idx) => `
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px; display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="background:rgba(56,189,248,0.2); color:#38BDF8; font-weight:800; font-size:11px; padding:3px 8px; border-radius:6px; flex-shrink:0;">Chapter ${idx + 1} / 11</span>
+            <input type="text" id="chapterTitle_${idx}" value="${les.title.replace(/"/g, '&quot;')}"
+              style="flex:1; background:#020617; border:1px solid rgba(255,255,255,0.15); color:#F8FAFC; font-size:13px; font-weight:700; padding:8px 12px; border-radius:6px; outline:none;" />
+          </div>
+          <input type="text" id="chapterSubtitle_${idx}" value="${(les.subtitle || '').replace(/"/g, '&quot;')}" placeholder="Short summary description..."
+            style="width:100%; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); color:#94A3B8; font-size:12px; padding:6px 10px; border-radius:6px; outline:none;" />
+        </div>
+      `).join('');
+    }
+
+    async function confirmChaptersAndStartVideoSearch() {
+      // Sync edited input values back into draftCurriculum
+      if (draftCurriculum && draftCurriculum.lessons) {
+        draftCurriculum.lessons.forEach((les, idx) => {
+          const titleInput    = document.getElementById(`chapterTitle_${idx}`);
+          const subtitleInput = document.getElementById(`chapterSubtitle_${idx}`);
+          if (titleInput && titleInput.value.trim())       les.title = titleInput.value.trim();
+          if (subtitleInput && subtitleInput.value.trim()) les.subtitle = subtitleInput.value.trim();
+        });
+      }
+
+      closeChaptersReviewModal();
+
+      // Show AI progress modal & resolve videos via official YouTube API
       const progressModal = document.getElementById('aiProgressModal');
       const progressTopic = document.getElementById('aiProgressTopicName');
       const progressBar   = document.getElementById('aiProgressBarFill');
       const terminal      = document.getElementById('aiLogTerminal');
 
       progressTopic.textContent = `"${draftSkillTopic}"`;
-      progressBar.style.width   = '8%';
-      terminal.innerHTML        = `<div style="color:#38BDF8;font-weight:700;">🟢 [AI] Initializing 11-Reel Curriculum Engine for "${draftSkillTopic}"...</div>`;
+      progressBar.style.width   = '10%';
+      terminal.innerHTML        = `<div style="color:#38BDF8;font-weight:700;">🟢 Querying Official YouTube Data API v3 for 11 Confirmed Chapters of "${draftSkillTopic}"...</div>`;
       progressModal.classList.add('active');
 
       const updateProgress = (step, msg, percent = 50) => {
@@ -677,19 +786,19 @@
       };
 
       try {
-        const curriculum = await aiEngine.generate11ReelCurriculum(draftSkillTopic, draftDomainPrompt, updateProgress, true);
-
-        curriculum.tag         = draftSkillTag  || curriculum.sector || 'General';
-        curriculum.description = draftSkillDesc || curriculum.subtitle || `11-Reel AI skill course on ${draftSkillTopic}.`;
+        const resolved = await aiEngine.resolveVideosForChapters(draftSkillTopic, draftCurriculum, updateProgress);
+        resolved.tag         = draftSkillTag  || resolved.sector || 'General';
+        resolved.description = draftSkillDesc || resolved.subtitle || `11-Chapter AI skill course on ${draftSkillTopic}.`;
 
         progressModal.classList.remove('active');
-        openCreatorStudio(curriculum);
+        openCreatorStudio(resolved);
 
       } catch (err) {
         progressModal.classList.remove('active');
-        alert(`⚠️ AI Build Failed: ${err.message}`);
+        alert(`⚠️ Video Search Failed: ${err.message}`);
       }
     }
+
 
     /* ---- Live YouTube Search & Swap Modal ---- */
     function openLiveSearchModal(reelIndex) {

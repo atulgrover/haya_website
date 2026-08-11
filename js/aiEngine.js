@@ -2,7 +2,7 @@
  * SkillPedia AI 11-Reel Curriculum Engine
  * Primary Provider: Sarvam AI (sarvam-105b / sarvam-105b-conversations)
  * Fallback Provider: OpenRouter Multi-Model Array
- * Official YouTube Data API v3 Integration + Domain Prompt Confirmation
+ * Official YouTube Data API v3 Integration + 2-Step Confirmation Workflow
  */
 
 class AICurriculumEngine {
@@ -16,25 +16,25 @@ class AICurriculumEngine {
   }
 
   /**
-   * Synthesize a Domain-Specific Master Prompt using Sarvam AI (Primary) with OpenRouter Fallback
+   * STEP 1: Synthesize Domain-Specific Master System Prompt using Sarvam AI
    */
   async generateDomainPrompt(topic, tag = '', description = '') {
     console.log(`[AI-LOG] generateDomainPrompt for topic="${topic}", tag="${tag}"`);
     const userContext = `Topic: "${topic}"\nCategory/Sector Tag: "${tag || 'General'}"\nDescription: "${description || 'Enterprise skill curriculum'}"`;
 
-    const systemPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Master Curriculum Architect.
-The user wants to generate an 11-step standardized micro-learning skill course based on the following enterprise details:
+    const systemPrompt = `You are an expert Master Curriculum Architect.
+The user wants to generate an 11-chapter micro-learning skill course based on the following enterprise details:
 ${userContext}
 
-Your task: Synthesize a highly detailed, domain-specific System Instruction Prompt that will guide the LLM to build 11 National Occupational Standards (NOS) units and exact search queries for YouTube videos.
+Your task: Synthesize a highly detailed, domain-specific System Instruction Prompt that will guide the AI to outline 11 logical, step-by-step chapter titles and exact search queries for YouTube videos.
 
 Requirements:
 - Make the prompt domain-specific, tailored to the sector, keywords, and practical procedures described.
-- Clearly outline what each of the 11 reels should focus on.
-- Explicitly instruct the AI to generate precise, highly relevant YouTube search queries (including technical keywords, 'how to', 'tutorial', 'demonstration').
+- Clearly outline what each of the 11 chapters should focus on.
+- Instruct the AI to generate clean, practical chapter titles (Chapter 1 through Chapter 11) and precise YouTube search queries.
 - Keep the output formatted cleanly in natural English as a ready-to-use Master Prompt.`;
 
-    // 1. Primary: Sarvam AI (sarvam-105b)
+    // Primary: Sarvam AI
     const sarvamKey = this.getSarvamApiKey();
     if (sarvamKey) {
       console.log(`[AI-LOG] [Primary Provider] Trying Sarvam AI (sarvam-105b) for domain prompt...`);
@@ -62,15 +62,13 @@ Requirements:
             console.log(`%c[AI-LOG] ✅ Sarvam AI (sarvam-105b) successfully generated domain prompt!`, 'color:#4ade80;font-weight:bold');
             return content;
           }
-        } else {
-          console.warn(`[AI-LOG] Sarvam AI returned HTTP ${response.status}. Falling back to OpenRouter...`);
         }
       } catch (sarvamErr) {
-        console.warn(`[AI-LOG] Sarvam AI fetch exception (${sarvamErr.message}). Falling back to OpenRouter...`);
+        console.warn(`[AI-LOG] Sarvam AI prompt fetch exception (${sarvamErr.message}). Falling back to OpenRouter...`);
       }
     }
 
-    // 2. Fallback: OpenRouter Models
+    // Fallback: OpenRouter Models
     const openRouterKey = this.getOpenRouterApiKey();
     const candidateModels = [
       'meta-llama/llama-3.3-70b-instruct:free',
@@ -108,93 +106,72 @@ Requirements:
       }
     }
 
-    return `You are an expert NSQF Curriculum Architect for the domain "${topic}" (Sector: ${tag || 'General'}).
+    return `You are an expert Curriculum Architect for the domain "${topic}" (Sector: ${tag || 'General'}).
 Build an 11-step standardized micro-learning skill curriculum for "${topic}" covering key operational procedures, safety, and domain compliance: ${description}.
-Generate 11 distinct NOS units with specific, domain-relevant YouTube video search queries for each step.`;
+Generate 11 distinct chapters with specific, domain-relevant YouTube video search queries for each step.`;
   }
 
-  async generate11ReelCurriculum(topic, confirmedPrompt = '', onProgress = () => {}, forceFresh = false) {
-    console.log(`%c[AI-LOG 1/10] 🚀 generate11ReelCurriculum("${topic}") initiated!`, 'color: #c084fc; font-weight: bold; font-size: 14px');
-
-    const safetyCheck = sanitizeAndCheckPrompt(topic);
-    if (!safetyCheck.safe) {
-      throw new Error(`[Content Moderation] ${safetyCheck.reason}`);
-    }
-
+  /**
+   * STEP 2: Generate 11 Clean Chapter Titles & Summaries (No YouTube API calls yet!)
+   */
+  async generate11ChapterTitles(topic, confirmedPrompt = '') {
+    console.log(`[AI-LOG] Generating 11 Chapter Titles for "${topic}"...`);
     const cleanTopic = topic.trim();
     const formattedTitle = cleanTopic.charAt(0).toUpperCase() + cleanTopic.slice(1);
 
-    if (!forceFresh) {
-      try {
-        const existing = await dbClient.searchCurricula(cleanTopic, '', 'custom_ai');
-        const exactMatch = existing ? existing.find(c => c.title.toLowerCase() === cleanTopic.toLowerCase()) : null;
-        if (exactMatch && exactMatch.lessons && exactMatch.lessons.length === REEL_STANDARD_COUNT) {
-          onProgress(4, 'Found pre-existing Skill Pack in DB!', 100);
-          return exactMatch;
-        }
-      } catch (dbErr) {
-        console.warn(`[AI-LOG] Turso DB pre-check warning: ${dbErr.message}`);
-      }
-    }
-
-    onProgress(1, `Synthesizing 11 NOS Units via Sarvam AI Primary Engine for "${formattedTitle}"...`, 35);
-
     let llmResult = null;
 
-    // 1. Primary Provider: Sarvam AI (sarvam-105b)
+    // Primary: Sarvam AI
     const sarvamKey = this.getSarvamApiKey();
     if (sarvamKey) {
-      console.log(`[AI-LOG] [Primary Provider] Synthesizing 11 NOS units with Sarvam AI (sarvam-105b)...`);
       try {
         llmResult = await this.callSarvamModel(cleanTopic, 'sarvam-105b', sarvamKey, confirmedPrompt);
-        if (llmResult && Array.isArray(llmResult.lessons) && llmResult.lessons.length === 11) {
-          console.log(`%c[AI-LOG] ✅ Primary Engine Sarvam AI successfully generated 11 NOS units!`, 'color:#4ade80;font-weight:bold');
-        } else {
-          llmResult = null;
-        }
-      } catch (sarvamErr) {
-        console.warn(`[AI-LOG] Primary Sarvam AI attempt failed (${sarvamErr.message}). Switching to OpenRouter fallback...`);
+      } catch (err) {
+        console.warn(`[AI-LOG] Sarvam chapter generation failed (${err.message}). Trying OpenRouter fallback...`);
       }
     }
 
-    // 2. Fallback Provider: OpenRouter Models
+    // Fallback: OpenRouter
     if (!llmResult) {
       const openRouterKey = this.getOpenRouterApiKey();
       const candidateModels = [
         'meta-llama/llama-3.3-70b-instruct:free',
         'meta-llama/llama-3.1-8b-instruct:free',
         'google/gemini-2.0-flash-exp:free',
-        'qwen/qwen-2.5-7b-instruct:free',
         'openrouter/free'
       ];
 
-      for (let mIdx = 0; mIdx < candidateModels.length; mIdx++) {
-        const modelName = candidateModels[mIdx];
+      for (const modelName of candidateModels) {
         try {
           llmResult = await this.callOpenRouterModel(cleanTopic, modelName, openRouterKey, confirmedPrompt);
-          if (llmResult && Array.isArray(llmResult.lessons) && llmResult.lessons.length === 11) {
-            console.log(`%c[AI-LOG] ✅ Fallback OpenRouter model "${modelName}" generated 11 NOS units!`, 'color:#4ade80;font-weight:bold');
-            break;
-          }
+          if (llmResult && Array.isArray(llmResult.lessons) && llmResult.lessons.length === 11) break;
         } catch (err) {
-          console.warn(`[AI-LOG] OpenRouter model "${modelName}" attempt failed (${err.message}). Trying next...`);
+          console.warn(`[AI-LOG] OpenRouter model "${modelName}" failed: ${err.message}`);
         }
       }
     }
 
     if (!llmResult || !Array.isArray(llmResult.lessons) || llmResult.lessons.length !== 11) {
-      console.warn(`[AI-LOG] All LLM endpoints failed/throttled. Using Fallback Generator.`);
       llmResult = this.generateFallbackCurriculum(cleanTopic, formattedTitle);
     }
 
-    // Official YouTube API Parallel Video Search
-    onProgress(2, `Querying Official YouTube Data API v3 for 11 Relevant Video Reels...`, 60);
+    return llmResult;
+  }
 
-    const lessonsWithVideos = await Promise.all(llmResult.lessons.map(async (les, idx) => {
+  /**
+   * STEP 3: Query Official YouTube Data API v3 ONLY AFTER User Confirms 11 Chapters
+   */
+  async resolveVideosForChapters(topic, confirmedCurriculum, onProgress = () => {}) {
+    console.log(`[AI-LOG] Resolving YouTube API videos for 11 Confirmed Chapters of "${topic}"...`);
+    const cleanTopic = topic.trim();
+
+    onProgress(2, `Querying Official YouTube Data API v3 for 11 Confirmed Chapters...`, 60);
+
+    const lessonsWithVideos = await Promise.all(confirmedCurriculum.lessons.map(async (les, idx) => {
       const reelIndex = idx + 1;
-      const stepQuery = `${cleanTopic} ${les.title.replace(/^Reel \d+:\s*/i, '')}`;
+      const stepQuery = `${cleanTopic} ${les.title.replace(/^Chapter \d+:\s*/i, '').replace(/^Reel \d+:\s*/i, '')}`;
 
-      console.log(`[AI-LOG] Official YouTube API Search for Reel ${reelIndex}: "${stepQuery}"`);
+      console.log(`[AI-LOG] Official YouTube API Search for Chapter ${reelIndex}: "${stepQuery}"`);
       let searchRes = await this.searchLiveYouTubeVideoCandidates(stepQuery);
 
       if (!searchRes.success && les.search_query && les.search_query !== stepQuery) {
@@ -206,15 +183,15 @@ Generate 11 distinct NOS units with specific, domain-relevant YouTube video sear
       }
 
       if (!searchRes.success || !searchRes.candidates || searchRes.candidates.length === 0) {
-        console.error(`[AI-LOG] Video resolution FAILED for Reel ${reelIndex}: ${searchRes.error || 'No candidates'}`);
-        throw new Error(`Official YouTube API Video Error: Could not resolve video for Reel ${reelIndex} ("${les.title}"). ${searchRes.error || 'No matching videos found.'}`);
+        console.error(`[AI-LOG] Video resolution FAILED for Chapter ${reelIndex}: ${searchRes.error || 'No candidates'}`);
+        throw new Error(`Official YouTube API Video Error: Could not resolve video for Chapter ${reelIndex} ("${les.title}"). ${searchRes.error || 'No matching videos found.'}`);
       }
 
       const candidates = searchRes.candidates;
       const topVid = candidates[0].video_id;
       const chosenTitle = candidates[0].title;
 
-      onProgress(2, `Reel ${reelIndex}/11: Resolved "${chosenTitle.substring(0, 45)}..." [ID: ${topVid}]`, 60 + Math.floor((idx / 11) * 20));
+      onProgress(2, `Chapter ${reelIndex}/11: Resolved "${chosenTitle.substring(0, 45)}..." [ID: ${topVid}]`, 60 + Math.floor((idx / 11) * 20));
 
       return {
         ...les,
@@ -224,21 +201,21 @@ Generate 11 distinct NOS units with specific, domain-relevant YouTube video sear
       };
     }));
 
-    llmResult.lessons = lessonsWithVideos;
+    confirmedCurriculum.lessons = lessonsWithVideos;
 
-    // Pass-2 Audit Pass (Sarvam AI / OpenRouter)
-    onProgress(3, `Executing Pass-2 AI Audit: Verifying Video Relevance against NOS Requirements...`, 85);
+    // Pass-2 Audit Pass
+    onProgress(3, `Executing Pass-2 AI Audit: Verifying Video Relevance against Chapter Goals...`, 85);
     try {
-      const auditResult = await this.verifyReelVideoRelevance(cleanTopic, llmResult.lessons);
+      const auditResult = await this.verifyReelVideoRelevance(cleanTopic, confirmedCurriculum.lessons);
       if (auditResult && Array.isArray(auditResult.verifications)) {
         auditResult.verifications.forEach((v) => {
-          const les = llmResult.lessons.find(l => l.reel_index === v.reel_index);
+          const les = confirmedCurriculum.lessons.find(l => l.reel_index === v.reel_index);
           if (les && les.candidates && les.candidates[v.selected_index]) {
             const bestCand = les.candidates[v.selected_index];
             les.video_id = bestCand.video_id;
             les.video_title = bestCand.title;
             les.audit_score = v.confidence || 90;
-            les.audit_reason = v.reason || 'Verified relevant to NOS criteria';
+            les.audit_reason = v.reason || 'Verified relevant to chapter goal';
           }
         });
       }
@@ -247,18 +224,21 @@ Generate 11 distinct NOS units with specific, domain-relevant YouTube video sear
     }
 
     try {
-      await dbClient.saveCurriculum(llmResult);
+      await dbClient.saveCurriculum(confirmedCurriculum);
     } catch (saveErr) {
       console.warn(`[AI-LOG] Background DB save warning: ${saveErr.message}`);
     }
 
-    onProgress(4, '11 Reel Candidates Verified & Ready for Creator Confirmation!', 100);
-    return llmResult;
+    onProgress(4, '11 Chapter Reels Resolved & Ready for Creator Confirmation Studio!', 100);
+    return confirmedCurriculum;
   }
 
+  /**
+   * Helper call for Sarvam AI (sarvam-105b)
+   */
   async callSarvamModel(topic, modelName, apiKey, confirmedPrompt = '') {
-    const defaultPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Curriculum Architect.
-Generate an 11-step standardized micro-learning skill curriculum for: "${topic}".`;
+    const defaultPrompt = `You are an expert Curriculum Architect.
+Generate an 11-chapter standardized micro-learning skill curriculum for: "${topic}".`;
 
     const systemPrompt = `${confirmedPrompt || defaultPrompt}
 
@@ -271,20 +251,14 @@ Respond ONLY with a valid JSON object matching this exact structure:
     {
       "id": 1,
       "reel_index": 1,
-      "nos_code": "CUST/N0101",
-      "title": "Reel 1: Step Name",
-      "subtitle": "Short description of Reel 1",
-      "search_query": "${topic} Step 1 tutorial",
-      "pcs": [
-        "PC1. First performance criteria description",
-        "PC2. Second performance criteria description",
-        "PC3. Third performance criteria description"
-      ]
+      "title": "Chapter 1: Step Name",
+      "subtitle": "Short summary description of Chapter 1",
+      "search_query": "${topic} Step 1 tutorial"
     }
   ]
 }
 Rules:
-1. Provide EXACTLY 11 lessons with reel_index 1 through 11.
+1. Provide EXACTLY 11 chapter lessons with reel_index 1 through 11.
 2. Return raw JSON only (no markdown codeblock formatting).`;
 
     const controller = new AbortController();
@@ -302,7 +276,7 @@ Rules:
           model: modelName,
           messages: [
             { role: 'system', content: systemPrompt },
-            { role: 'user', content: `Build an 11-reel NSQF skill curriculum for: "${topic}"` }
+            { role: 'user', content: `Build an 11-chapter skill curriculum for: "${topic}"` }
           ],
           temperature: 0.3
         })
@@ -325,17 +299,11 @@ Rules:
         parsed.lessons = parsed.lessons.map((les, idx) => ({
           id: `les_${idx + 1}`,
           reel_index: idx + 1,
-          nos_code: les.nos_code || `CUST/N0${Math.floor(idx / 3) + 1}0${(idx % 3) + 1}`,
-          title: les.title || `Reel ${idx + 1}: ${topic} Step ${idx + 1}`,
-          subtitle: les.subtitle || `Mastering ${topic} — Stage ${idx + 1} of 11`,
+          title: les.title || `Chapter ${idx + 1}: ${topic} Part ${idx + 1}`,
+          subtitle: les.subtitle || `Mastering ${topic} — Part ${idx + 1} of 11`,
           video_platform: 'youtube',
           video_id: les.video_id || '',
-          search_query: les.search_query || `${topic} Step ${idx + 1} tutorial`,
-          pcs: Array.isArray(les.pcs) && les.pcs.length > 0 ? les.pcs : [
-            `PC1. Follow safety guidelines for ${topic}.`,
-            `PC2. Execute step ${idx + 1} per standard procedure.`,
-            `PC3. Perform quality verification check.`
-          ]
+          search_query: les.search_query || `${topic} Chapter ${idx + 1} tutorial`
         }));
         return parsed;
       } else {
@@ -384,8 +352,8 @@ Rules:
   }
 
   async callOpenRouterModel(topic, modelName, apiKey, confirmedPrompt = '') {
-    const defaultPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Curriculum Architect.
-Generate an 11-step standardized micro-learning skill curriculum for: "${topic}".`;
+    const defaultPrompt = `You are an expert Curriculum Architect.
+Generate an 11-chapter micro-learning skill curriculum for: "${topic}".`;
 
     const systemPrompt = `${confirmedPrompt || defaultPrompt}
 
@@ -398,20 +366,14 @@ Respond ONLY with a valid JSON object matching this exact structure:
     {
       "id": 1,
       "reel_index": 1,
-      "nos_code": "CUST/N0101",
-      "title": "Reel 1: Step Name",
-      "subtitle": "Short description of Reel 1",
-      "search_query": "${topic} Step 1 tutorial",
-      "pcs": [
-        "PC1. First performance criteria description",
-        "PC2. Second performance criteria description",
-        "PC3. Third performance criteria description"
-      ]
+      "title": "Chapter 1: Step Name",
+      "subtitle": "Short summary description of Chapter 1",
+      "search_query": "${topic} Step 1 tutorial"
     }
   ]
 }
 Rules:
-1. Provide EXACTLY 11 lessons with reel_index 1 through 11.
+1. Provide EXACTLY 11 chapter lessons with reel_index 1 through 11.
 2. Return raw JSON only (no markdown codeblock formatting).`;
 
     const controller = new AbortController();
@@ -431,7 +393,7 @@ Rules:
           model: modelName,
           messages: [
             { role: 'system', content: systemPrompt },
-            { role: 'user', content: `Build an 11-reel NSQF skill curriculum for: "${topic}"` }
+            { role: 'user', content: `Build an 11-chapter skill curriculum for: "${topic}"` }
           ],
           temperature: 0.4
         })
@@ -454,17 +416,11 @@ Rules:
         parsed.lessons = parsed.lessons.map((les, idx) => ({
           id: `les_${idx + 1}`,
           reel_index: idx + 1,
-          nos_code: les.nos_code || `CUST/N0${Math.floor(idx / 3) + 1}0${(idx % 3) + 1}`,
-          title: les.title || `Reel ${idx + 1}: ${topic} Step ${idx + 1}`,
-          subtitle: les.subtitle || `Mastering ${topic} — Stage ${idx + 1} of 11`,
+          title: les.title || `Chapter ${idx + 1}: ${topic} Part ${idx + 1}`,
+          subtitle: les.subtitle || `Mastering ${topic} — Part ${idx + 1} of 11`,
           video_platform: 'youtube',
           video_id: les.video_id || '',
-          search_query: les.search_query || `${topic} Step ${idx + 1} tutorial`,
-          pcs: Array.isArray(les.pcs) && les.pcs.length > 0 ? les.pcs : [
-            `PC1. Follow safety guidelines for ${topic}.`,
-            `PC2. Execute step ${idx + 1} per standard procedure.`,
-            `PC3. Perform quality verification check.`
-          ]
+          search_query: les.search_query || `${topic} Chapter ${idx + 1} tutorial`
         }));
         return parsed;
       } else {
@@ -479,15 +435,14 @@ Rules:
   async verifyReelVideoRelevance(topic, lessons) {
     const auditPayload = lessons.map(l => ({
       reel_index: l.reel_index,
-      nos_code: l.nos_code,
       title: l.title,
-      pcs: l.pcs ? l.pcs.slice(0, 2) : [],
+      subtitle: l.subtitle,
       candidates: (l.candidates || []).map((c, i) => ({ index: i, video_id: c.video_id, title: c.title }))
     }));
 
-    const systemPrompt = `You are an expert NSQF Skill Curriculum Auditor.
-For the skill course "${topic}", verify candidate YouTube video titles against each reel's NOS requirements.
-For each reel, select the candidate index whose title is MOST relevant to the NOS step.
+    const systemPrompt = `You are an expert Skill Curriculum Auditor.
+For the skill course "${topic}", verify candidate YouTube video titles against each chapter's topic goals.
+For each chapter, select the candidate index whose title is MOST relevant to the chapter title.
 
 Respond ONLY with raw JSON:
 {
@@ -535,25 +490,18 @@ Respond ONLY with raw JSON:
       type: 'custom_ai',
       version: '1.0',
       title: formattedTitle,
-      subtitle: `11-Reel Vocational Micro-Learning Package for ${formattedTitle}`,
+      subtitle: `11-Chapter Micro-Learning Skill Package for ${formattedTitle}`,
       sector: 'Custom Micro-Learning',
-      nsqf_level: 3,
       total_reels: 11,
       created_at: new Date().toISOString(),
       lessons: Array.from({ length: 11 }, (_, i) => ({
         id: `les_${i + 1}`,
         reel_index: i + 1,
-        nos_code: `CUST/N0${Math.floor(i / 3) + 1}0${(i % 3) + 1}`,
-        title: `Reel ${i + 1}: ${formattedTitle} Step ${i + 1}`,
-        subtitle: `Mastering essential technique for ${formattedTitle} — Stage ${i + 1} of 11`,
+        title: `Chapter ${i + 1}: ${formattedTitle} Part ${i + 1}`,
+        subtitle: `Mastering essential procedure for ${formattedTitle} — Chapter ${i + 1} of 11`,
+        search_query: `${formattedTitle} Chapter ${i + 1} tutorial`,
         video_platform: 'youtube',
-        video_id: '',
-        pcs: [
-          `PC1. Review safety standards and prerequisites for ${formattedTitle}.`,
-          `PC2. Execute step ${i + 1} using standard tools and procedures.`,
-          `PC3. Perform quality and safety verification check.`,
-          `PC4. Document progress and prepare for stage ${i + 2}.`
-        ]
+        video_id: ''
       }))
     };
   }
