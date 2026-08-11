@@ -627,8 +627,11 @@
         loadMyReports();
       } else if (tabId === 'profile') {
         loadPaymentMethods();
+      } else if (tabId === 'curator') {
+        loadAgentSuggestions();
       }
     }
+
 
     async function loadUserData() {
       try {
@@ -1349,7 +1352,13 @@
       loadReportCatalog(); 
       loadMyReports(); 
       loadAgentSuggestions();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('tab') === 'curator') {
+        switchDashTab('curator');
+      }
     };
+
   </script>
 
 
