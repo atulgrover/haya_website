@@ -604,12 +604,20 @@
 
   <script>
     const token = localStorage.getItem('haya_portal_token');
-    if (!token) window.location.href = 'index.html';
+    if (!token) {
+      const currentUrl = window.location.href;
+      if (currentUrl.includes('tab=curator')) {
+        window.location.href = 'login.html?role=admin&tab=curator';
+      } else {
+        window.location.href = 'login.html';
+      }
+    }
 
     function logout() {
       localStorage.removeItem('haya_portal_token');
-      window.location.href = 'index.html';
+      window.location.href = 'login.html';
     }
+
 
     function switchDashTab(tabId) {
       document.querySelectorAll('.dash-tab').forEach(btn => btn.classList.remove('active'));

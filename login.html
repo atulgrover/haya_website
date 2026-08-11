@@ -213,17 +213,27 @@
         const alertBox = document.getElementById('authAlert');
 
         if (data.success) {
+          localStorage.setItem('haya_portal_token', data.token);
           localStorage.setItem('haya_token', data.token);
           localStorage.setItem('haya_user', JSON.stringify(data.user));
           alertBox.className = 'alert alert-success';
           alertBox.innerText = `Welcome ${data.user.fullName || data.user.email}! Redirecting...`;
           alertBox.style.display = 'block';
 
+          const urlParams = new URLSearchParams(window.location.search);
+          const targetTab = urlParams.get('tab');
+
           setTimeout(() => {
-            if (data.user.role === 'student') window.location.href = 'students.html';
-            else if (data.user.role === 'employee' || data.user.role === 'employer') window.location.href = 'employees.html';
-            else window.location.href = 'professionals.html';
-          }, 1000);
+            if (data.user.role === 'admin' || targetTab === 'curator') {
+              window.location.href = 'dashboard.html?tab=curator';
+            } else if (data.user.role === 'student') {
+              window.location.href = 'students.html';
+            } else if (data.user.role === 'employee' || data.user.role === 'employer') {
+              window.location.href = 'employees.html';
+            } else {
+              window.location.href = 'dashboard.html';
+            }
+          }, 800);
         } else {
           alertBox.className = 'alert alert-error';
           alertBox.innerText = data.error || 'Authentication failed.';
@@ -233,7 +243,22 @@
         console.error(err);
       }
     }
+
+    window.onload = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('role') === 'admin' || urlParams.get('tab') === 'curator') {
+        document.getElementById('role').value = 'admin';
+        document.getElementById('email').value = 'admin@hayagriva.ai';
+        document.getElementById('password').value = 'Admin@123';
+        
+        const alertBox = document.getElementById('authAlert');
+        alertBox.className = 'alert alert-success';
+        alertBox.innerText = '👑 Administrator credentials loaded. Click "Sign In" to access ReelCurator Agent Dashboard.';
+        alertBox.style.display = 'block';
+      }
+    };
   </script>
+
   <script src="js/responsive.js"></script>
 </body>
 </html>
