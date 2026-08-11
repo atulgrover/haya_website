@@ -369,32 +369,36 @@ router.get('/nsqf/curriculum/:qpCode', async (req, res) => {
         const qpName = qpRow ? qpRow.qp_name : `Qualification Pack ${qpCode}`;
         const sector = qpRow ? qpRow.sector : 'Vocational Training';
 
-        // Return baseline structured curriculum
+        // Return 11 clean fallback module reels for any unseeded QP
+        const fallbackModules = [
+            { module_title: `Introduction & Overview of ${qpName}`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} training tutorial overview`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC1', pc_intent: 'Understand Job Role & Standard Guidelines', pc_desc: `Overview of ${qpName} role` }] },
+            { module_title: `Workplace Safety & Personal Protective Equipment`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} safety PPE guidelines`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC2', pc_intent: 'Inspect & Wear Safety Gear', pc_desc: 'Wear PPE equipment' }] },
+            { module_title: `Tool Setup & Equipment Inspection`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} equipment setup tools`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC3', pc_intent: 'Pre-operational Equipment Check', pc_desc: 'Check machinery readiness' }] },
+            { module_title: `Core Operational Procedure Step 1`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} operational process step 1`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC4', pc_intent: 'Execute Primary Operation', pc_desc: 'Execute primary process' }] },
+            { module_title: `Core Operational Procedure Step 2`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} operational process step 2`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC5', pc_intent: 'Execute Secondary Assembly', pc_desc: 'Execute secondary process' }] },
+            { module_title: `Quality Inspection & Defect Control`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} quality inspection defect control`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC6', pc_intent: 'Audit Product Quality & Log Defects', pc_desc: 'Audit output quality' }] },
+            { module_title: `Measurement & Specification Verification`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} measurement specification check`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC7', pc_intent: 'Verify Dimensions against Spec Sheet', pc_desc: 'Verify dimensions' }] },
+            { module_title: `Documentation & Logbook Entry`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} documentation logbook entry`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC8', pc_intent: 'Record Shift Logs & Production Data', pc_desc: 'Record shift metrics' }] },
+            { module_title: `Maintenance & Cleaning Standards`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} machine maintenance cleaning`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC9', pc_intent: 'Perform Daily Machine Maintenance', pc_desc: 'Clean and oil equipment' }] },
+            { module_title: `Troubleshooting & Incident Reporting`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} troubleshooting error reporting`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC10', pc_intent: 'Escalate Operational Faults', pc_desc: 'Escalate equipment faults' }] },
+            { module_title: `Handover & Shift Wrap-up`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} shift handover wrapup`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC11', pc_intent: 'Complete Shift Handover Briefing', pc_desc: 'Handover to next shift' }] }
+        ];
+
         const fallbackSchema = {
             qp_code: qpCode,
             qp_name: qpName,
             version: qpRow ? qpRow.version : '1.0',
             sector: sector,
+            total_modules: 11,
             total_pcs: 11,
-            nos_modules: [
-                {
-                    nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`,
-                    nos_title: `Core Occupational Standards for ${qpName}`,
-                    pcs: Array.from({ length: 11 }, (_, i) => ({
-                        pc_id: `PC${i + 1}`,
-                        pc_desc: `Perform step ${i + 1} operational procedure for ${qpName}`,
-                        intent_query: `${qpName} procedure part ${i + 1}`,
-                        video_id: 'x9PQgbB4y6M',
-                        video_title: `${qpName} Demonstration Part ${i + 1}`
-                    }))
-                }
-            ]
+            nos_modules: fallbackModules
         };
 
         res.json({
             success: true,
             curriculum: fallbackSchema
         });
+
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
