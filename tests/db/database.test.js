@@ -41,8 +41,9 @@ test('Database Engine & Table Schema Verification', async (t) => {
   await t.test('nsqf_qps table exposes populated curriculum_pdf_url', async () => {
     const row = await db.prepare("SELECT qp_code, curriculum_pdf_url FROM nsqf_qps WHERE qp_code IS NOT NULL LIMIT 1").get();
     assert.ok(row, 'nsqf_qps row should exist');
-    assert.ok(row.curriculum_pdf_url.startsWith('https://nqr.gov.in/qualification-title'), 'curriculum_pdf_url should point to NQR qualification portal');
+    assert.ok(row.curriculum_pdf_url.startsWith('https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/'), 'curriculum_pdf_url should point to direct NSDC S3 PDF file');
   });
 });
+
 
 

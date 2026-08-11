@@ -712,6 +712,7 @@
           }
 
           grid.innerHTML = data.cards.map(card => {
+            const pdfUrl = card.curriculum_pdf_url || `https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/${(card.qp_code || '').replace(/\//g, '_')}_v${(card.version || '1.0').replace(/^v/i, '')}.pdf`;
             return `
             <div class="qp-card">
               <div>
@@ -728,12 +729,12 @@
               </div>
 
               <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
-                <button class="btn-learn" onclick="openDetailInspector('${card.qp_code}', '${encodeURIComponent(card.qp_name)}')">
+                <button class="btn-learn" onclick="openDetailInspector('${card.qp_code}', '${encodeURIComponent(card.qp_name)}', '${pdfUrl}')">
                   🎬 Learn Now
                 </button>
-                <button onclick="openNqrPortal('${card.qp_code}')" class="btn-learn" style="background:rgba(255,255,255,0.08); color:#38BDF8; border:1px solid rgba(56,189,248,0.3); display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:700; cursor:pointer;">
-                  📄 Search NQR Official File ↗
-                </button>
+                <a href="${pdfUrl}" target="_blank" rel="noopener" class="btn-learn" style="background:rgba(255,255,255,0.08); color:#38BDF8; border:1px solid rgba(56,189,248,0.3); text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:700;">
+                  📄 View Official Curriculum PDF ↗
+                </a>
               </div>
             </div>
           `;
@@ -745,18 +746,12 @@
       } catch (err) { console.error(err); }
     }
 
-    function openNqrPortal(qpCode) {
-      if (navigator.clipboard && qpCode) {
-        navigator.clipboard.writeText(qpCode).catch(() => {});
-      }
-      window.open('https://nqr.gov.in/qualification-title', '_blank');
-    }
-
-    function openDetailInspector(qpCode, qpNameEnc) {
+    function openDetailInspector(qpCode, qpNameEnc, pdfUrl = '') {
       const qpName = decodeURIComponent(qpNameEnc);
       const rightPanel = document.getElementById('panelRight');
       const title = document.getElementById('inspectorTitle');
       const content = document.getElementById('inspectorContent');
+      const targetPdfUrl = pdfUrl || `https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/${(qpCode || '').replace(/\//g, '_')}_v1.0.pdf`;
 
       title.innerText = qpCode;
       content.innerHTML = `
@@ -770,13 +765,14 @@
           <a href="public/skillpedia/index.html?qp=${qpCode}" target="_blank" class="btn-learn" style="text-align: center; text-decoration: none;">
             🚀 Open Full Reel Viewer
           </a>
-          <button onclick="openNqrPortal('${qpCode}')" class="btn-learn" style="background:#0F172A; color:#38BDF8; border:1px solid rgba(56,189,248,0.4); display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:700; cursor:pointer;">
-            📄 Search NQR Official File (${qpCode}) ↗
-          </button>
+          <a href="${targetPdfUrl}" target="_blank" rel="noopener" class="btn-learn" style="background:#0F172A; color:#38BDF8; border:1px solid rgba(56,189,248,0.4); text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:700;">
+            📄 View Official NCVET Curriculum PDF ↗
+          </a>
         </div>
       `;
       rightPanel.classList.add('active');
     }
+
 
 
 

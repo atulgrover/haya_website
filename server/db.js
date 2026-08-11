@@ -192,11 +192,17 @@ async function initSchema() {
         try { await db.exec(`ALTER TABLE users ADD COLUMN firm_name TEXT;`); } catch (e) {}
         try { await db.exec(`ALTER TABLE users ADD COLUMN ip_registration_no TEXT;`); } catch (e) {}
 
-        // Migration safety: Ensure nsqf_qps table has curriculum_pdf_url and populate NQR links
+        // Migration safety: Ensure nsqf_qps table has curriculum_pdf_url and populate direct NSDC S3 PDF links
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN curriculum_pdf_url TEXT;`); } catch (e) {}
         try {
-            await db.exec(`UPDATE nsqf_qps SET curriculum_pdf_url = 'https://nqr.gov.in/qualification-title' WHERE curriculum_pdf_url IS NULL OR curriculum_pdf_url = '' OR curriculum_pdf_url LIKE '%qualification-file%';`);
+            await db.exec(`
+                UPDATE nsqf_qps 
+                SET curriculum_pdf_url = 'https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/' 
+                    || REPLACE(qp_code, '/', '_') 
+                    || '_v' || CASE WHEN version LIKE 'v%' THEN SUBSTR(version, 2) ELSE COALESCE(NULLIF(version, ''), '1.0') END || '.pdf';
+            `);
         } catch (e) {}
+
 
 
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
