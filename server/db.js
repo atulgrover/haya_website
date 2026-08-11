@@ -184,7 +184,15 @@ async function initSchema() {
                 min_job_entry_age TEXT
             );
         `);
+
+        // Migration safety: Ensure legacy users table has role, company_id, firm_name, ip_registration_no columns
+        try { await db.exec(`ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'student';`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE users ADD COLUMN company_id TEXT;`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE users ADD COLUMN firm_name TEXT;`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE users ADD COLUMN ip_registration_no TEXT;`); } catch (e) {}
+
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
+
 
         // Auto-seed NSQF database if nsqf_qps table is empty
         await seedNSQFFromJSON();
