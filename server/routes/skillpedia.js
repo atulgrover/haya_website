@@ -350,13 +350,14 @@ router.get('/qps/cards', async (req, res) => {
 });
 
 // GET /api/skillpedia/nsqf/curriculum — fetch parsed NOS modules & Performance Criteria (PC) for student player
-router.get('/nsqf/curriculum*', async (req, res) => {
+router.get('/nsqf/curriculum', async (req, res) => {
     try {
-        let rawCode = req.query.qp || req.params[0] || req.params.qpCode || '';
+        let rawCode = req.query.qp || req.query.qpCode || '';
         if (rawCode.startsWith('/')) rawCode = rawCode.substring(1);
         const qpCode = decodeURIComponent(rawCode).trim().replace('_', '/');
         
         let row = await db.prepare(`SELECT * FROM nsqf_curricula WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
+
         
         if (row && row.schema_json) {
             return res.json({

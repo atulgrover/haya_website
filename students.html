@@ -752,13 +752,8 @@
       const title = document.getElementById('inspectorTitle');
       const content = document.getElementById('inspectorContent');
 
-      title.innerText = qpCode;
+      title.innerText = `${qpName} (${qpCode})`;
       content.innerHTML = `
-        <div style="background: var(--primary-light); padding: 12px; border-radius: 6px; margin-bottom: 12px;">
-          <h3 style="font-size: 15px; color: var(--primary-color); font-weight: 700;">${qpName}</h3>
-          <span style="font-size: 12px; color: var(--text-muted);">National Code: ${qpCode}</span>
-        </div>
-
         <div id="inspectorAccordionWrap">
           <div style="font-size:12px; color:var(--text-muted); padding:16px; text-align:center;">⏳ Loading NOS & Module Reels...</div>
         </div>
@@ -766,9 +761,13 @@
       rightPanel.classList.add('active');
 
       try {
-        const res = await fetch(`/api/skillpedia/nsqf/curriculum?qp=${encodeURIComponent(qpCode)}`);
+        const cleanQp = (qpCode || '').replace(/\//g, '_');
+        const apiUrl = `/api/skillpedia/nsqf/curriculum?qp=${encodeURIComponent(cleanQp)}`;
+        const res = await fetch(apiUrl);
         const data = await res.json();
         const accordionWrap = document.getElementById('inspectorAccordionWrap');
+
+
 
         if (data.success && data.curriculum && Array.isArray(data.curriculum.nos_modules)) {
           const mods = data.curriculum.nos_modules;
