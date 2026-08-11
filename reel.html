@@ -260,6 +260,7 @@
 
     const params   = new URLSearchParams(window.location.search);
     const skillId  = params.get('skill');
+    const qpCode   = params.get('qp');
 
     let curriculum  = null;
     let ytReady     = false;
@@ -276,7 +277,7 @@
     }
 
     /* =========================================================
-       INIT — fetch skill from haya_portal API
+       INIT — fetch skill or NSQF QP curriculum from API
        ========================================================= */
     async function initReelPage() {
       // Hide duplicate back button if embedded in an iframe modal
@@ -285,35 +286,76 @@
         if (backBtn) backBtn.style.display = 'none';
       }
 
-      if (!skillId) {
+      if (!skillId && !qpCode) {
         document.getElementById('reelPageLoading').innerHTML = `
           <div style="font-size:40px;margin-bottom:12px">📚</div>
-          <span class="load-text">No skill specified.</span>
-          <a href="employees.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
+          <span class="load-text">No skill or NSQF QP specified.</span>
+          <a href="students.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse NSQF QPs</a>`;
         return;
       }
 
       try {
-        const res  = await fetch(`/api/skillpedia/skill/${skillId}`);
-        const data = await res.json();
+        let raw;
 
-        if (!data.success || !data.skill) throw new Error('Skill not found');
+        if (qpCode) {
+          // Fetch official parsed NSQF QP Curriculum
+          const res = await fetch(`/api/skillpedia/nsqf/curriculum/${encodeURIComponent(qpCode)}`);
+          const data = await res.json();
+          if (!data.success || !data.curriculum) throw new Error(`NSQF Curriculum for ${qpCode} not found`);
 
-        const skill = data.skill;
+          const nsqf = data.curriculum;
+          const flatLessons = [];
 
-        // Build curriculum object compatible with formatStandardizedCurriculum
-        const raw = {
-          id:          `CUSTOM-${skill.id}`,
-          type:        'custom_ai',
-          title:       skill.title,
-          subtitle:    skill.subtitle || '11-Reel AI Skill Package',
-          sector:      skill.sector   || 'Custom Micro-Learning',
-          nsqf_level:  skill.nsqf_level || 3,
-          total_reels: skill.lessons.length,
-          creator_id:  'hayagriva',
-          created_at:  skill.created_at,
-          lessons:     skill.lessons
-        };
+          if (Array.isArray(nsqf.nos_modules)) {
+            nsqf.nos_modules.forEach(mod => {
+              if (Array.isArray(mod.pcs)) {
+                mod.pcs.forEach(pc => {
+                  flatLessons.push({
+                    id: `${mod.nos_code}_${pc.pc_id}`,
+                    title: `${pc.pc_id}: ${pc.pc_desc || pc.title}`,
+                    subtitle: `Module: ${mod.nos_title || mod.nos_code}`,
+                    nos_code: mod.nos_code,
+                    pcs: [pc.pc_desc || pc.title],
+                    search_query: pc.intent_query || pc.search_query || '',
+                    video_id: pc.video_id || 'x9PQgbB4y6M'
+                  });
+                });
+              }
+            });
+          }
+
+          raw = {
+            id: `NSQF-${nsqf.qp_code}`,
+            type: 'nsqf_qp',
+            title: `${nsqf.qp_name} (${nsqf.qp_code})`,
+            subtitle: `NSQF Level Curriculum — ${flatLessons.length} Performance Criteria (PC) Video Reels`,
+            sector: nsqf.sector || 'Vocational Training',
+            total_reels: flatLessons.length,
+            creator_id: 'ncvet_nsdc',
+            created_at: new Date().toISOString(),
+            lessons: flatLessons
+          };
+        } else {
+          // Fetch Enterprise Custom Skill
+          const res  = await fetch(`/api/skillpedia/skill/${skillId}`);
+          const data = await res.json();
+          if (!data.success || !data.skill) throw new Error('Skill not found');
+
+          const skill = data.skill;
+          raw = {
+            id:          `CUSTOM-${skill.id}`,
+            type:        'custom_ai',
+            title:       skill.title,
+            subtitle:    skill.subtitle || '11-Reel AI Skill Package',
+            sector:      skill.sector   || 'Custom Micro-Learning',
+            nsqf_level:  skill.nsqf_level || 3,
+            total_reels: skill.lessons.length,
+            creator_id:  'hayagriva',
+            created_at:  skill.created_at,
+            lessons:     skill.lessons
+          };
+        }
+
 
         // Validate + format via schemas.js if available
         try {

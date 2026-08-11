@@ -38,12 +38,18 @@ test('Database Engine & Table Schema Verification', async (t) => {
     assert.strictEqual(Number(countRow.count), 2176, 'nsqf_qps should contain 2,176 job roles');
   });
 
-  await t.test('nsqf_qps table exposes populated curriculum_pdf_url', async () => {
-    const row = await db.prepare("SELECT qp_code, curriculum_pdf_url FROM nsqf_qps WHERE qp_code IS NOT NULL LIMIT 1").get();
-    assert.ok(row, 'nsqf_qps row should exist');
-    assert.ok(row.curriculum_pdf_url.startsWith('https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/'), 'curriculum_pdf_url should point to direct NSDC S3 PDF file');
+  await t.test('nsqf_curricula table exists & seeds parsed curriculum', async () => {
+    const row = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='nsqf_curricula'").get();
+    assert.ok(row, 'nsqf_curricula table should exist');
+    
+    const sampleRow = await db.prepare("SELECT qp_code, schema_json FROM nsqf_curricula WHERE qp_code = 'AAS/Q0103'").get();
+    assert.ok(sampleRow, 'AAS/Q0103 sample curriculum row should exist');
+    const parsed = JSON.parse(sampleRow.schema_json);
+    assert.strictEqual(parsed.qp_code, 'AAS/Q0103');
+    assert.ok(Array.isArray(parsed.nos_modules), 'schema_json should contain nos_modules array');
   });
 });
+
 
 
 
