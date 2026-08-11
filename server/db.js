@@ -231,30 +231,28 @@ async function initSchema() {
 
 async function seedNsqfCurriculaIfEmpty() {
     try {
-        const countRow = await db.prepare(`SELECT COUNT(*) as count FROM nsqf_curricula`).get();
-        if (countRow && countRow.count === 0) {
-            const fs = require('fs');
-            const sampleSchemaPath = '/Users/atulgrover/.gemini/antigravity-ide/brain/63c4db05-0fe5-419b-a156-462feb454b3a/scratch/PARSED_NOS_SCHEMA_AAS_Q0103.json';
-            if (fs.existsSync(sampleSchemaPath)) {
-                const schemaObj = JSON.parse(fs.readFileSync(sampleSchemaPath, 'utf8'));
-                await db.prepare(`
-                    INSERT OR REPLACE INTO nsqf_curricula (qp_code, qp_name, version, sector, total_pcs, schema_json)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                `).run(
-                    schemaObj.qp_code,
-                    schemaObj.qp_name,
-                    schemaObj.version,
-                    schemaObj.sector,
-                    schemaObj.total_reels || 182,
-                    JSON.stringify(schemaObj)
-                );
-                console.log('[Haya Portal DB] Seeded sample NSQF Curriculum for AAS/Q0103 into nsqf_curricula.');
-            }
+        const fs = require('fs');
+        const sampleSchemaPath = '/Users/atulgrover/.gemini/antigravity-ide/brain/63c4db05-0fe5-419b-a156-462feb454b3a/scratch/PARSED_NOS_SCHEMA_AAS_Q0103.json';
+        if (fs.existsSync(sampleSchemaPath)) {
+            const schemaObj = JSON.parse(fs.readFileSync(sampleSchemaPath, 'utf8'));
+            await db.prepare(`
+                INSERT OR REPLACE INTO nsqf_curricula (qp_code, qp_name, version, sector, total_pcs, schema_json)
+                VALUES (?, ?, ?, ?, ?, ?)
+            `).run(
+                schemaObj.qp_code,
+                schemaObj.qp_name,
+                schemaObj.version,
+                schemaObj.sector,
+                schemaObj.total_pcs || 182,
+                JSON.stringify(schemaObj)
+            );
+            console.log('[Haya Portal DB] Updated sample NSQF 11-Module Curriculum for AAS/Q0103 in nsqf_curricula.');
         }
     } catch (e) {
         console.warn('[Haya Portal DB] nsqf_curricula seed warning:', e.message);
     }
 }
+
 
 
 async function seedNSQFFromJSON() {

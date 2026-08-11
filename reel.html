@@ -307,20 +307,20 @@
           const flatLessons = [];
 
           if (Array.isArray(nsqf.nos_modules)) {
-            nsqf.nos_modules.forEach(mod => {
-              if (Array.isArray(mod.pcs)) {
-                mod.pcs.forEach(pc => {
-                  flatLessons.push({
-                    id: `${mod.nos_code}_${pc.pc_id}`,
-                    title: `${pc.pc_id}: ${pc.pc_desc || pc.title}`,
-                    subtitle: `Module: ${mod.nos_title || mod.nos_code}`,
-                    nos_code: mod.nos_code,
-                    pcs: [pc.pc_desc || pc.title],
-                    search_query: pc.intent_query || pc.search_query || '',
-                    video_id: pc.video_id || 'x9PQgbB4y6M'
-                  });
-                });
-              }
+            nsqf.nos_modules.forEach((mod, idx) => {
+              const pcList = Array.isArray(mod.pcs)
+                ? mod.pcs.map(p => `${p.pc_id}: ${p.pc_intent || p.pc_desc || p.title}`)
+                : [];
+
+              flatLessons.push({
+                id: `${mod.nos_code}_MOD_${idx + 1}`,
+                title: mod.module_title || `Module ${idx + 1}: ${mod.nos_title || mod.nos_code}`,
+                subtitle: `NOS Unit: ${mod.nos_code} — ${mod.nos_title || 'Core Competency'}`,
+                nos_code: mod.nos_code,
+                pcs: pcList,
+                search_query: mod.intent_query || `${nsqf.qp_name} ${mod.module_title}`,
+                video_id: mod.video_id || 'x9PQgbB4y6M'
+              });
             });
           }
 
@@ -328,13 +328,14 @@
             id: `NSQF-${nsqf.qp_code}`,
             type: 'nsqf_qp',
             title: `${nsqf.qp_name} (${nsqf.qp_code})`,
-            subtitle: `NSQF Level Curriculum — ${flatLessons.length} Performance Criteria (PC) Video Reels`,
+            subtitle: `NSQF Qualification Pack — ${flatLessons.length} Core Module Reels (${nsqf.total_pcs || 182} PCs)`,
             sector: nsqf.sector || 'Vocational Training',
             total_reels: flatLessons.length,
             creator_id: 'ncvet_nsdc',
             created_at: new Date().toISOString(),
             lessons: flatLessons
           };
+
         } else {
           // Fetch Enterprise Custom Skill
           const res  = await fetch(`/api/skillpedia/skill/${skillId}`);
