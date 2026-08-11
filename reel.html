@@ -244,7 +244,7 @@
   <div id="reelProgressBar"></div>
 
   <!-- Back button -->
-  <a id="backBtn" href="employees.html">← Skills</a>
+  <a id="backBtn" href="javascript:void(0)" onclick="handleBackNavigation(event)">← Back</a>
 
   <!-- Mute toggle -->
   <button id="muteBtn" title="Toggle Mute" onclick="toggleMute()">🔇</button>
@@ -253,6 +253,23 @@
   <div id="reelsContainer"></div>
 
   <script>
+    function handleBackNavigation(event) {
+      if (event) event.preventDefault();
+      if (window.opener || window.history.length === 1) {
+        window.close();
+        return;
+      }
+      if (document.referrer && document.referrer.includes('students.html')) {
+        window.location.href = 'students.html';
+        return;
+      }
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+      window.location.href = 'students.html';
+    }
+
     /* ===========================================================
        HAYAGRIVA TIKTOK-STYLE REEL PLAYER
        Reads: /api/skillpedia/skill/:id via ?skill=<id>
@@ -371,9 +388,12 @@
           curriculum = raw;
         }
 
-        // Update back button to show skill title
-        document.title = `${skill.title} — HAYAGRIVA Reels`;
-        document.getElementById('backBtn').title = skill.title;
+        // Update title and back button
+        const pageTitle = (curriculum && (curriculum.title || curriculum.qp_name)) || 'HAYAGRIVA Reels';
+        document.title = `${pageTitle} — HAYAGRIVA Reels`;
+        const backBtnEl = document.getElementById('backBtn');
+        if (backBtnEl) backBtnEl.title = pageTitle;
+
 
         renderReels(curriculum);
 
