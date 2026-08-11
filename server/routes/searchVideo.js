@@ -35,9 +35,10 @@ router.get('/', async (req, res) => {
 
   try {
     const cleanQ = query.trim();
-    const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(cleanQ)}&key=${apiKey.trim()}`;
+    const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoEmbeddable=true&maxResults=6&q=${encodeURIComponent(cleanQ)}&key=${apiKey.trim()}`;
 
     console.log(`[YOUTUBE-API] Fetching official YouTube Data API v3 results for: "${cleanQ}"`);
+
 
     const apiRes = await fetch(apiUrl, {
       headers: { 'Accept': 'application/json' },
