@@ -751,39 +751,29 @@
       const rightPanel = document.getElementById('panelRight');
       const title = document.getElementById('inspectorTitle');
       const content = document.getElementById('inspectorContent');
-      const targetPdfUrl = pdfUrl || `https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/${(qpCode || '').replace(/\//g, '_')}_v1.0.pdf`;
 
       title.innerText = qpCode;
       content.innerHTML = `
-        <div style="background: var(--primary-light); padding: 12px; border-radius: 6px;">
+        <div style="background: var(--primary-light); padding: 12px; border-radius: 6px; margin-bottom: 12px;">
           <h3 style="font-size: 15px; color: var(--primary-color); font-weight: 700;">${qpName}</h3>
           <span style="font-size: 12px; color: var(--text-muted);">National Code: ${qpCode}</span>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <button class="btn-learn" onclick="openStudentReelModal('${encodeURIComponent(qpCode)}', 0)">
-            🚀 Open Full Reel Player Modal
-          </button>
-          <a href="${targetPdfUrl}" target="_blank" rel="noopener" class="btn-learn" style="background:#0F172A; color:#38BDF8; border:1px solid rgba(56,189,248,0.4); text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:700;">
-            📄 View Official NCVET Curriculum PDF ↗
-          </a>
-        </div>
-
-        <div id="inspectorAccordionWrap" style="margin-top:12px;">
-          <div style="font-size:12px; color:var(--text-muted); padding:10px; text-align:center;">⏳ Loading NOS & Module Reels...</div>
+        <div id="inspectorAccordionWrap">
+          <div style="font-size:12px; color:var(--text-muted); padding:16px; text-align:center;">⏳ Loading NOS & Module Reels...</div>
         </div>
       `;
       rightPanel.classList.add('active');
 
       try {
-        const res = await fetch(`/api/skillpedia/nsqf/curriculum/${encodeURIComponent(qpCode)}`);
+        const res = await fetch(`/api/skillpedia/nsqf/curriculum?qp=${encodeURIComponent(qpCode)}`);
         const data = await res.json();
         const accordionWrap = document.getElementById('inspectorAccordionWrap');
 
         if (data.success && data.curriculum && Array.isArray(data.curriculum.nos_modules)) {
           const mods = data.curriculum.nos_modules;
           accordionWrap.innerHTML = `
-            <div style="font-size:13px; font-weight:700; color:var(--text-main); margin-bottom:8px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text-main); margin-bottom:10px;">
               🎬 11-Module Video Curriculum (${data.curriculum.total_pcs || 182} Performance Criteria)
             </div>
             <div style="display:flex; flex-direction:column; gap:8px;">
@@ -814,11 +804,20 @@
               `).join('')}
             </div>
           `;
+        } else {
+          document.getElementById('inspectorAccordionWrap').innerHTML = `
+            <div style="font-size:12px; color:#EF4444; padding:16px; text-align:center;">⚠️ Unable to load curriculum. Please try again.</div>
+          `;
         }
       } catch (err) {
-        console.warn('Accordion fetch warning:', err);
+        console.warn('Accordion fetch error:', err);
+        const wrap = document.getElementById('inspectorAccordionWrap');
+        if (wrap) {
+          wrap.innerHTML = `<div style="font-size:12px; color:#EF4444; padding:16px; text-align:center;">⚠️ Fetch error: ${err.message}</div>`;
+        }
       }
     }
+
 
 
     function toggleAccordionFolder(id) {

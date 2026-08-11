@@ -349,10 +349,11 @@ router.get('/qps/cards', async (req, res) => {
     }
 });
 
-// GET /api/skillpedia/nsqf/curriculum/:qpCode — fetch parsed NOS modules & Performance Criteria (PC) for student player
-router.get('/nsqf/curriculum/:qpCode', async (req, res) => {
+// GET /api/skillpedia/nsqf/curriculum — fetch parsed NOS modules & Performance Criteria (PC) for student player
+router.get('/nsqf/curriculum*', async (req, res) => {
     try {
-        const rawCode = req.params.qpCode;
+        let rawCode = req.query.qp || req.params[0] || req.params.qpCode || '';
+        if (rawCode.startsWith('/')) rawCode = rawCode.substring(1);
         const qpCode = decodeURIComponent(rawCode).trim().replace('_', '/');
         
         let row = await db.prepare(`SELECT * FROM nsqf_curricula WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
@@ -366,8 +367,9 @@ router.get('/nsqf/curriculum/:qpCode', async (req, res) => {
 
         // Fallback: Fetch metadata from nsqf_qps table to construct clean fallback curriculum
         const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
-        const qpName = qpRow ? qpRow.qp_name : `Qualification Pack ${qpCode}`;
+        const qpName = qpRow ? qpRow.qp_name : `Qualification Pack ${qpCode || 'Skill'}`;
         const sector = qpRow ? qpRow.sector : 'Vocational Training';
+
 
         // Return 11 clean fallback module reels for any unseeded QP
         const fallbackModules = [
