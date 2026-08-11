@@ -377,10 +377,29 @@
 
         renderReels(curriculum);
 
+        // Resolve hash target index (#reel-1.1, #reel-1.2, #reel-2.1...)
+        let targetIndex = 0;
+        const hash = window.location.hash || '';
+        const hashMatch = hash.match(/#reel-([A-Za-z0-9._-]+)/i);
+        if (hashMatch) {
+          const targetCode = hashMatch[1].trim();
+          const foundIdx = curriculum.lessons.findIndex((l, i) => {
+            const m = String(l.title || '').match(/Module\s*(\d+\.\d+)/i);
+            const code = m ? m[1] : `${i + 1}`;
+            return code === targetCode || String(i) === targetCode;
+          });
+          if (foundIdx >= 0) targetIndex = foundIdx;
+        }
+
+        activeIndex = targetIndex;
+        if (slides[targetIndex]) {
+          slides[targetIndex].scrollIntoView({ behavior: 'auto' });
+        }
+
         setTimeout(() => {
           if (ytReady || typeof YT !== 'undefined') {
             ytReady = true;
-            createPlayerForIndex(0);
+            createPlayerForIndex(targetIndex);
           }
         }, 100);
 
@@ -390,7 +409,7 @@
         document.getElementById('reelPageLoading').innerHTML = `
           <div style="font-size:40px;margin-bottom:12px">😕</div>
           <span class="load-text">${err.message}</span>
-          <a href="employees.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
+          <a href="students.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
       }
     }
 
@@ -400,7 +419,6 @@
     function renderReels(curr) {
       const container = document.getElementById('reelsContainer');
       const pillBar   = document.getElementById('reelProgressBar');
-      const shareBase = `${window.location.origin}/reel.html?skill=${skillId}`;
 
       pillBar.innerHTML = curr.lessons.map((_, i) =>
         `<div class="rp-pill ${i === 0 ? 'active' : ''}" id="pill-${i}"></div>`
@@ -415,6 +433,13 @@
         const lessonSubtitle = lesson.subtitle || lesson.title || '';
         const nosCode        = lesson.nos_code  || `CUST/N${String(idx+1).padStart(4,'0')}`;
         const pcs            = Array.isArray(lesson.pcs) ? lesson.pcs : [];
+
+        const match = String(lesson.title || '').match(/Module\s*(\d+\.\d+)/i);
+        const modCode = match ? match[1] : `${idx + 1}`;
+        const cleanQp = String(qpCode || '').replace(/\//g, '_');
+        const shareBase = qpCode
+          ? `${window.location.origin}/reel.html?qp=${encodeURIComponent(cleanQp)}#reel-${modCode}`
+          : `${window.location.origin}/reel.html?skill=${encodeURIComponent(skillId || '')}#reel-${idx + 1}`;
 
         slide.innerHTML = `
           <!-- YouTube player mount -->
@@ -465,15 +490,16 @@
           <!-- SHARE DRAWER -->
           <div class="reel-drawer" id="drawer-url-${idx}">
             <div class="drawer-handle"></div>
-            <div class="drawer-title">🔗 Share This Skill</div>
+            <div class="drawer-title">Share Module Reel</div>
             <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:8px;">
-              Share this 11-reel skill course directly — opens reel player on any device:
+              Direct permalink for Module ${modCode} — opens directly on any phone:
             </p>
             <div class="drawer-url-box">
               <span class="drawer-url-text">${shareBase}</span>
-              <button class="drawer-url-copy-btn" onclick="copyUrl('${shareBase}')">📋 Copy</button>
+              <button class="drawer-url-copy-btn" onclick="copyUrl('${shareBase}', this)">Copy Link</button>
             </div>
           </div>
+
 
           <!-- BOTTOM ACTION BAR -->
           <div class="reel-action-bar">
@@ -690,14 +716,26 @@
     /* =========================================================
        COPY URL
        ========================================================= */
-    function copyUrl(url) {
+    function copyUrl(url, btn) {
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(url);
-        alert(`🔗 Link Copied!\n\n${url}\n\nPaste in WhatsApp to share this skill course.`);
-      } else {
-        alert(`🔗 Share Link:\n${url}`);
+        navigator.clipboard.writeText(url).then(() => {
+          if (btn) {
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.style.background = '#10B981';
+            btn.style.color = '#FFF';
+            setTimeout(() => {
+              btn.textContent = orig;
+              btn.style.background = '';
+              btn.style.color = '';
+            }, 2000);
+          }
+        }).catch(err => {
+          console.warn('Clipboard write error:', err);
+        });
       }
     }
+
 
     /* =========================================================
        START

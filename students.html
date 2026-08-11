@@ -803,26 +803,35 @@
 
                     <!-- NOS Modules Container -->
                     <div id="nos-grp-${nIdx}" style="padding:10px 12px; border-top:1px solid var(--border-color); display:${isExpanded ? 'flex' : 'none'}; flex-direction:column; gap:10px; background:#FAFAFA;">
-                      ${grp.modules.map((mod) => `
-                        <div style="border:1px solid rgba(0,0,0,0.08); border-radius:8px; padding:10px; background:#FFF;">
-                          <!-- Hyperlinked Module Title -->
-                          <a href="javascript:void(0)" onclick="openStudentReelModal('${encodeURIComponent(qpCode)}', ${mod.globalIdx});" style="font-size:13px; font-weight:700; color:#0284C7; text-decoration:none; line-height:1.3; display:inline-flex; align-items:center; gap:4px;">
-                            ${mod.module_title || mod.nos_title} <span style="font-size:11px; font-weight:800;">↗</span>
-                          </a>
+                      ${grp.modules.map((mod, mSubIdx) => {
+                        const match = String(mod.module_title || '').match(/Module\s*(\d+\.\d+)/i);
+                        const modCode = match ? match[1] : `${nIdx + 1}.${mSubIdx + 1}`;
+                        return `
+                          <div style="border:1px solid rgba(0,0,0,0.08); border-radius:8px; padding:10px; background:#FFF;">
+                            <!-- Hyperlinked Module Title & Copy Link Button -->
+                            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; flex-wrap:wrap;">
+                              <a href="javascript:void(0)" onclick="openStudentReelModal('${encodeURIComponent(qpCode)}', ${mod.globalIdx}, '${modCode}');" style="font-size:13px; font-weight:700; color:#0284C7; text-decoration:none; line-height:1.3; display:inline-flex; align-items:center; gap:4px; flex:1;">
+                                ${mod.module_title || mod.nos_title} <span style="font-size:11px; font-weight:800;">↗</span>
+                              </a>
+                              <button onclick="copyModuleReelLink(this, '${encodeURIComponent(qpCode)}', '${modCode}')" style="background:rgba(2,132,199,0.08); color:#0284C7; border:1px solid rgba(2,132,199,0.25); border-radius:4px; font-size:11px; font-weight:600; padding:2px 8px; cursor:pointer; white-space:nowrap;">
+                                Copy Link
+                              </button>
+                            </div>
 
-                          <!-- Distilled PC Intent Checklist -->
-                          <div style="margin-top:8px; display:flex; flex-direction:column; gap:5px; padding-left:4px;">
-                            ${(mod.pcs || []).map(pc => `
-                              <div style="font-size:12px; color:var(--text-main); display:flex; align-items:center; gap:6px; line-height:1.3;">
-                                <span style="color:#10B981; font-weight:800; font-size:11px;">☑</span>
-                                <div>
-                                  <strong style="color:var(--text-muted); font-size:11px;">${pc.pc_id}:</strong> ${pc.pc_intent || pc.pc_desc || pc.title}
+                            <!-- Distilled PC Intent Checklist -->
+                            <div style="margin-top:8px; display:flex; flex-direction:column; gap:5px; padding-left:4px;">
+                              ${(mod.pcs || []).map(pc => `
+                                <div style="font-size:12px; color:var(--text-main); display:flex; align-items:center; gap:6px; line-height:1.3;">
+                                  <span style="color:#10B981; font-weight:800; font-size:11px;">☑</span>
+                                  <div>
+                                    <strong style="color:var(--text-muted); font-size:11px;">${pc.pc_id}:</strong> ${pc.pc_intent || pc.pc_desc || pc.title}
+                                  </div>
                                 </div>
-                              </div>
-                            `).join('')}
+                              `).join('')}
+                            </div>
                           </div>
-                        </div>
-                      `).join('')}
+                        `;
+                      }).join('')}
                     </div>
                   </div>
                 `;
@@ -853,13 +862,38 @@
       }
     }
 
-    function openStudentReelModal(qpCodeEnc, reelIdx = 0) {
+    function openStudentReelModal(qpCodeEnc, reelIdx = 0, modCode = '') {
       const qpCode = decodeURIComponent(qpCodeEnc);
+      const cleanQp = String(qpCode || '').replace(/\//g, '_');
       const iframe = document.getElementById('studentReelIframe');
       const modal  = document.getElementById('studentReelModal');
-      iframe.src   = `reel.html?qp=${encodeURIComponent(qpCode)}#reel-${reelIdx}`;
+      const hash   = modCode ? `#reel-${modCode}` : `#reel-${reelIdx}`;
+      iframe.src   = `reel.html?qp=${encodeURIComponent(cleanQp)}${hash}`;
       modal.style.display = 'flex';
     }
+
+    function copyModuleReelLink(btn, qpCodeEnc, modCode) {
+      const qpCode = decodeURIComponent(qpCodeEnc);
+      const cleanQp = String(qpCode || '').replace(/\//g, '_');
+      const permalink = `${window.location.origin}/reel.html?qp=${encodeURIComponent(cleanQp)}#reel-${modCode}`;
+      
+      navigator.clipboard.writeText(permalink).then(() => {
+        const origText = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.style.background = 'rgba(16,185,129,0.15)';
+        btn.style.color = '#10B981';
+        btn.style.borderColor = 'rgba(16,185,129,0.4)';
+        setTimeout(() => {
+          btn.textContent = origText;
+          btn.style.background = 'rgba(2,132,199,0.08)';
+          btn.style.color = '#0284C7';
+          btn.style.borderColor = 'rgba(2,132,199,0.25)';
+        }, 2000);
+      }).catch(err => {
+        console.warn('Clipboard error:', err);
+      });
+    }
+
 
 
     function closeStudentReelModal() {
