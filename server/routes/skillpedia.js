@@ -471,6 +471,55 @@ router.post('/nsqf/swap-video', async (req, res) => {
     }
 });
 
+// ReelCurator AI Agent Routes
+const reelCuratorAgent = require('../services/reelCuratorAgent');
+
+// GET /api/skillpedia/agent/suggestions — fetch pending AI video swap suggestions
+router.get('/agent/suggestions', async (req, res) => {
+    try {
+        const suggestions = await reelCuratorAgent.getPendingSwapSuggestions();
+        res.json({ success: true, suggestions });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// POST /api/skillpedia/agent/accept-swap — accept AI video swap suggestion
+router.post('/agent/accept-swap', async (req, res) => {
+    try {
+        const { suggestionId } = req.body;
+        if (!suggestionId) return res.status(400).json({ error: 'suggestionId is required.' });
+        const result = await reelCuratorAgent.acceptSwapSuggestion(suggestionId);
+        res.json(result);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// POST /api/skillpedia/agent/reject-swap — reject AI video swap suggestion
+router.post('/agent/reject-swap', async (req, res) => {
+    try {
+        const { suggestionId } = req.body;
+        if (!suggestionId) return res.status(400).json({ error: 'suggestionId is required.' });
+        const result = await reelCuratorAgent.rejectSwapSuggestion(suggestionId);
+        res.json(result);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// POST /api/skillpedia/agent/trigger-audit — trigger AI audit for a QP
+router.post('/agent/trigger-audit', async (req, res) => {
+    try {
+        const qpCode = req.body.qpCode || 'AMH/Q0103';
+        const result = await reelCuratorAgent.auditQpVideos(qpCode);
+        res.json({ success: true, qpCode, ...result });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+
 
 // POST /api/skillpedia/save-skill
 router.post('/save-skill', async (req, res) => {

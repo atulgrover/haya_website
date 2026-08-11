@@ -242,7 +242,33 @@ async function initSchema() {
             `);
         } catch (e) {}
 
+        try {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS video_swap_suggestions (
+
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    qp_code TEXT NOT NULL,
+                    nos_code TEXT NOT NULL,
+                    module_title TEXT NOT NULL,
+                    pc_id TEXT NOT NULL,
+                    pc_intent TEXT NOT NULL,
+                    current_video_id TEXT NOT NULL,
+                    current_video_title TEXT,
+                    current_audit_score INTEGER DEFAULT 0,
+                    suggested_video_id TEXT NOT NULL,
+                    suggested_video_title TEXT,
+                    suggested_video_url TEXT,
+                    suggested_audit_score INTEGER DEFAULT 0,
+                    ai_rationale TEXT,
+                    status TEXT DEFAULT 'pending',
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(qp_code, pc_id, suggested_video_id)
+                );
+            `);
+        } catch (e) {}
+
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
+
 
 
         // Auto-seed NSQF database if nsqf_qps table is empty
