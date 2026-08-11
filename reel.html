@@ -299,9 +299,11 @@
 
         if (qpCode) {
           // Fetch official parsed NSQF QP Curriculum
-          const res = await fetch(`/api/skillpedia/nsqf/curriculum/${encodeURIComponent(qpCode)}`);
+          const cleanQp = String(qpCode || '').replace(/\//g, '_');
+          const res = await fetch(`/api/skillpedia/nsqf/curriculum?qp=${encodeURIComponent(cleanQp)}`);
           const data = await res.json();
           if (!data.success || !data.curriculum) throw new Error(`NSQF Curriculum for ${qpCode} not found`);
+
 
           const nsqf = data.curriculum;
           const flatLessons = [];
@@ -319,10 +321,11 @@
                 nos_code: mod.nos_code,
                 pcs: pcList,
                 search_query: mod.intent_query || `${nsqf.qp_name} ${mod.module_title}`,
-                video_id: mod.video_id || 'x9PQgbB4y6M'
+                video_id: (mod.pcs && mod.pcs[0] && mod.pcs[0].video_id) || mod.video_id || 'x9PQgbB4y6M'
               });
             });
           }
+
 
           raw = {
             id: `NSQF-${nsqf.qp_code}`,
