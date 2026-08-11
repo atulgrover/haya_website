@@ -181,7 +181,8 @@ async function initSchema() {
                 ojt_recommended_duration TEXT,
                 total_qp_hours TEXT,
                 min_education_exp TEXT,
-                min_job_entry_age TEXT
+                min_job_entry_age TEXT,
+                curriculum_pdf_url TEXT
             );
         `);
 
@@ -191,7 +192,14 @@ async function initSchema() {
         try { await db.exec(`ALTER TABLE users ADD COLUMN firm_name TEXT;`); } catch (e) {}
         try { await db.exec(`ALTER TABLE users ADD COLUMN ip_registration_no TEXT;`); } catch (e) {}
 
+        // Migration safety: Ensure nsqf_qps table has curriculum_pdf_url and populate NQR links
+        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN curriculum_pdf_url TEXT;`); } catch (e) {}
+        try {
+            await db.exec(`UPDATE nsqf_qps SET curriculum_pdf_url = 'https://nqr.gov.in/qualification-file?q_code=' || qp_code WHERE curriculum_pdf_url IS NULL OR curriculum_pdf_url = '';`);
+        } catch (e) {}
+
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
+
 
 
         // Auto-seed NSQF database if nsqf_qps table is empty

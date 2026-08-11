@@ -37,4 +37,11 @@ test('Database Engine & Table Schema Verification', async (t) => {
     assert.ok(countRow, 'countRow should be returned');
     assert.strictEqual(Number(countRow.count), 2176, 'nsqf_qps should contain 2,176 job roles');
   });
+
+  await t.test('nsqf_qps table exposes populated curriculum_pdf_url', async () => {
+    const row = await db.prepare("SELECT qp_code, curriculum_pdf_url FROM nsqf_qps WHERE qp_code IS NOT NULL LIMIT 1").get();
+    assert.ok(row, 'nsqf_qps row should exist');
+    assert.ok(row.curriculum_pdf_url.startsWith('https://nqr.gov.in/qualification-file?q_code='), 'curriculum_pdf_url should point to NQR qualification file');
+  });
 });
+
