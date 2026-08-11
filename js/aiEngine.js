@@ -1,52 +1,101 @@
 /**
  * SkillPedia AI 11-Reel Curriculum Engine
- * Real-Time Video Search Engine + LLM Curriculum Synthesis + 2-Pass Audit
- * With 100+ Step-by-Step Color-Coded Debug Logging
+ * Official YouTube Data API v3 Integration + LLM Curriculum Synthesis + Domain Prompt Confirmation
+ * With Strict Error Handling and Zero Static Video Fallbacks
  */
 
 class AICurriculumEngine {
 
-  async generate11ReelCurriculum(topic, onProgress = () => {}, forceFresh = false) {
+  /**
+   * Synthesize a Domain-Specific Master Prompt based on User Topic, Tag, and Description
+   */
+  async generateDomainPrompt(topic, tag = '', description = '') {
+    console.log(`[AI-LOG] generateDomainPrompt for topic="${topic}", tag="${tag}"`);
+    const apiKey = (window.OPENROUTER_API_KEY || atob("c2stb3ItdjEtZjY3ODU4OWEyOTQ4ZTk0YTA1MTBkNDMwYTBmYWQwZGZkYTNkZGE5MDFjYWNjODMyY2Y4Nzk4NjAwOTY3NTJkNA==")).trim();
+
+    const userContext = `Topic: "${topic}"\nCategory/Sector Tag: "${tag || 'General'}"\nDescription: "${description || 'Enterprise skill curriculum'}"`;
+
+    const systemPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Master Curriculum Architect.
+The user wants to generate an 11-step standardized micro-learning skill course based on the following enterprise details:
+${userContext}
+
+Your task: Synthesize a highly detailed, domain-specific System Instruction Prompt that will guide the LLM to build 11 National Occupational Standards (NOS) units and exact search queries for YouTube videos.
+
+Requirements:
+- Make the prompt domain-specific, tailored to the sector, keywords, and practical procedures described.
+- Clearly outline what each of the 11 reels should focus on.
+- Explicitly instruct the AI to generate precise, highly relevant YouTube search queries (including technical keywords, 'how to', 'tutorial', 'demonstration').
+- Keep the output formatted cleanly in natural English as a ready-to-use Master Prompt.`;
+
+    const candidateModels = [
+      'meta-llama/llama-3.3-70b-instruct:free',
+      'meta-llama/llama-3.1-8b-instruct:free',
+      'google/gemini-2.0-flash-exp:free',
+      'openrouter/free'
+    ];
+
+    for (const modelName of candidateModels) {
+      try {
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://hayagriva.app',
+            'X-Title': 'SkillPedia PWA'
+          },
+          body: JSON.stringify({
+            model: modelName,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: `Generate the domain-specific master curriculum prompt for: ${topic}` }
+            ],
+            temperature: 0.5
+          })
+        });
+
+        if (!response.ok) continue;
+        const data = await response.json();
+        const content = data.choices?.[0]?.message?.content?.trim();
+        if (content) return content;
+      } catch (err) {
+        console.warn(`[AI-LOG] Domain prompt trial failed for ${modelName}: ${err.message}`);
+      }
+    }
+
+    return `You are an expert NSQF Curriculum Architect for the domain "${topic}" (Sector: ${tag || 'General'}).
+Build an 11-step standardized micro-learning skill curriculum for "${topic}" covering key operational procedures, safety, and domain compliance: ${description}.
+Generate 11 distinct NOS units with specific, domain-relevant YouTube video search queries for each step.`;
+  }
+
+  async generate11ReelCurriculum(topic, confirmedPrompt = '', onProgress = () => {}, forceFresh = false) {
     console.log(`%c[AI-LOG 1/10] 🚀 generate11ReelCurriculum("${topic}") initiated!`, 'color: #c084fc; font-weight: bold; font-size: 14px');
 
-    // 1. Sanitize & check safety
     const safetyCheck = sanitizeAndCheckPrompt(topic);
-    console.log(`[AI-LOG 1.1/10] Safety audit result for "${topic}":`, safetyCheck);
-
     if (!safetyCheck.safe) {
-      console.error(`[AI-LOG 1.2/10] ❌ Safety check FAILED: ${safetyCheck.reason}`);
       throw new Error(`[Content Moderation] ${safetyCheck.reason}`);
     }
 
     const cleanTopic = topic.trim();
     const formattedTitle = cleanTopic.charAt(0).toUpperCase() + cleanTopic.slice(1);
 
-    // 2. Check if pre-existing in Turso Edge Database first
     if (!forceFresh) {
-      console.log(`[AI-LOG 2/10] Checking Turso Edge DB for pre-existing match for "${cleanTopic}"...`);
       try {
         const existing = await dbClient.searchCurricula(cleanTopic, '', 'custom_ai');
-        console.log(`[AI-LOG 2.1/10] Turso DB returned ${existing ? existing.length : 0} candidate matches:`, existing);
-
-        const exactMatch = existing ? existing.find(c => c.title.toLowerCase() === cleanTopic.toLowerCase() || c.title.toLowerCase().includes(cleanTopic.toLowerCase())) : null;
+        const exactMatch = existing ? existing.find(c => c.title.toLowerCase() === cleanTopic.toLowerCase()) : null;
         if (exactMatch && exactMatch.lessons && exactMatch.lessons.length === REEL_STANDARD_COUNT) {
-          console.log(`%c[AI-LOG 2.2/10] ✅ Instant Turso DB match found for "${cleanTopic}"!`, 'color: #4ade80; font-weight: bold');
-          console.log(`[AI-LOG 2.3/10] DB Course Reels Summary:`, exactMatch.lessons.map(l => ({ reel: l.reel_index, title: l.title, video_id: l.video_id })));
           onProgress(4, 'Found pre-existing Skill Pack in DB!', 100);
           return exactMatch;
         }
       } catch (dbErr) {
-        console.warn(`[AI-LOG 2.4/10] Turso DB pre-check warning: ${dbErr.message}`);
+        console.warn(`[AI-LOG] Turso DB pre-check warning: ${dbErr.message}`);
       }
     }
 
-    // 3. Resolve API Key
     const apiKey = (window.OPENROUTER_API_KEY || atob("c2stb3ItdjEtZjY3ODU4OWEyOTQ4ZTk0YTA1MTBkNDMwYTBmYWQwZGZkYTNkZGE5MDFjYWNjODMyY2Y4Nzk4NjAwOTY3NTJkNA==")).trim();
-    console.log(`[AI-LOG 3/10] Resolved OpenRouter API Key (Length: ${apiKey.length} chars)`);
 
-    onProgress(1, `Synthesizing 11 NOS Units & Performance Criteria for "${formattedTitle}"...`, 35);
+    onProgress(1, `Synthesizing 11 NOS Units using confirmed Domain Prompt for "${formattedTitle}"...`, 35);
 
-    // 4. Model Slugs Array
     const candidateModels = [
       'meta-llama/llama-3.3-70b-instruct:free',
       'meta-llama/llama-3.1-8b-instruct:free',
@@ -60,106 +109,65 @@ class AICurriculumEngine {
 
     for (let mIdx = 0; mIdx < candidateModels.length; mIdx++) {
       const modelName = candidateModels[mIdx];
-      console.log(`[AI-LOG 4/10] Trial ${mIdx + 1}/${candidateModels.length}: Calling OpenRouter model "${modelName}" for topic "${cleanTopic}"...`);
       try {
-        llmResult = await this.callOpenRouterModel(cleanTopic, modelName, apiKey);
+        llmResult = await this.callOpenRouterModel(cleanTopic, modelName, apiKey, confirmedPrompt);
         if (llmResult && Array.isArray(llmResult.lessons) && llmResult.lessons.length === 11) {
-          console.log(`%c[AI-LOG 4.1/10] ✅ OpenRouter model "${modelName}" returned 11 NOS units!`, 'color: #4ade80; font-weight: bold');
-          console.log(`[AI-LOG 4.2/10] Raw LLM Synthesized NOS Titles:`, llmResult.lessons.map(l => `Reel ${l.reel_index}: ${l.title}`));
           break;
         }
       } catch (err) {
         lastLlmError = err;
-        console.warn(`[AI-LOG 4.3/10] OpenRouter model "${modelName}" attempt failed (${err.message}). Trying next model...`);
       }
     }
 
-    // 5. Fallback Generator if LLM endpoint fails or rate-limits
     if (!llmResult || !Array.isArray(llmResult.lessons) || llmResult.lessons.length !== 11) {
-      console.warn(`[AI-LOG 5/10] ⚠️ All OpenRouter models failed/throttled (${lastLlmError?.message}). Using High-Quality Curriculum Architect Fallback for "${formattedTitle}"`);
+      console.warn(`[AI-LOG] OpenRouter models failed/throttled (${lastLlmError?.message}). Using Fallback Generator.`);
       llmResult = this.generateFallbackCurriculum(cleanTopic, formattedTitle);
-      console.log(`[AI-LOG 5.1/10] Fallback Curriculum Generated:`, llmResult.lessons.map(l => `Reel ${l.reel_index}: ${l.title}`));
     }
 
-    // 6. Parallel Live Video Search for All 11 Reels
-    onProgress(2, `Searching Live YouTube Index for 11 Relevant Video Reels...`, 70);
-    console.log(`%c[AI-LOG 6/10] Resolving video candidates in parallel for all 11 reels of "${cleanTopic}"...`, 'color: #38bdf8; font-weight: bold');
-
-    // Generic neutral fallback video IDs — broad educational content, never domain-specific
-    // Used ONLY when the live proxy fails for ALL queries. These are safe, topic-agnostic.
-    const neutralFallbackVids = [
-      'ZbZSe6N_BXs', // How to Stay Calm Under Pressure (TED-Ed)
-      'arj7oStGLkU', // Inside the Mind of a Master Procrastinator (TED)
-      'H14bBuluwB8', // How to Speak so People Want to Listen (TED)
-      'eIho2S0ZahI', // The Art of Misdirection (TED-Ed)
-      'UyyjU8fzEYU', // How great leaders inspire action (TED - Simon Sinek)
-      'Unzc731iCUY', // How to make stress your friend (TED)
-      'wnHW6o8WMas', // The Power of Vulnerability (TED - Brené Brown)
-      'RcGyVTAoXEU', // Why We Do What We Do (TED - Tony Robbins)
-      'X4y_3PtB6IY', // 10 ways to have a better conversation (TED)
-      'NbuUW9i-mHs', // The Happy Secret to Better Work (TED)
-      'fLJsdqxnZb0'  // Your body language may shape who you are (TED)
-    ];
+    // Official YouTube API Parallel Video Search
+    onProgress(2, `Querying Official YouTube Data API v3 for 11 Relevant Video Reels...`, 60);
 
     const lessonsWithVideos = await Promise.all(llmResult.lessons.map(async (les, idx) => {
       const reelIndex = idx + 1;
-      // Primary query: topic + lesson title
       const stepQuery = `${cleanTopic} ${les.title.replace(/^Reel \d+:\s*/i, '')}`;
 
-      console.log(`[AI-LOG 6.1/10] Searching video proxy for Reel ${reelIndex}: "${stepQuery}"`);
-      let candidates = await this.searchLiveYouTubeVideoCandidates(stepQuery);
+      console.log(`[AI-LOG] Official YouTube API Search for Reel ${reelIndex}: "${stepQuery}"`);
+      let searchRes = await this.searchLiveYouTubeVideoCandidates(stepQuery);
 
-      // Secondary attempt: use the LLM's own search_query if primary returns nothing
-      if ((!candidates || candidates.length === 0) && les.search_query && les.search_query !== stepQuery) {
-        console.log(`[AI-LOG 6.1b/10] Reel ${reelIndex}: primary empty, retrying with LLM search_query: "${les.search_query}"`);
-        candidates = await this.searchLiveYouTubeVideoCandidates(les.search_query);
+      if (!searchRes.success && les.search_query && les.search_query !== stepQuery) {
+        searchRes = await this.searchLiveYouTubeVideoCandidates(les.search_query);
       }
 
-      // Tertiary attempt: search cleanTopic alone if both primary & secondary return empty
-      if (!candidates || candidates.length === 0) {
-        console.log(`[AI-LOG 6.1c/10] Reel ${reelIndex}: secondary empty, retrying with cleanTopic: "${cleanTopic}"`);
-        candidates = await this.searchLiveYouTubeVideoCandidates(cleanTopic);
+      if (!searchRes.success) {
+        searchRes = await this.searchLiveYouTubeVideoCandidates(cleanTopic);
       }
 
-      console.log(`[AI-LOG 6.2/10] Reel ${reelIndex} candidates found (${candidates.length}):`, candidates);
+      if (!searchRes.success || !searchRes.candidates || searchRes.candidates.length === 0) {
+        console.error(`[AI-LOG] Video resolution FAILED for Reel ${reelIndex}: ${searchRes.error || 'No candidates'}`);
+        // Strict error policy: Throw error if video resolution fails completely
+        throw new Error(`Official YouTube API Video Error: Could not resolve video for Reel ${reelIndex} ("${les.title}"). ${searchRes.error || 'No matching videos found.'}`);
+      }
 
-      const topVid = (candidates && candidates.length > 0)
-        ? candidates[0].video_id
-        : (les.video_id && les.video_id.length === 11 ? les.video_id : neutralFallbackVids[idx % 11]);
+      const candidates = searchRes.candidates;
+      const topVid = candidates[0].video_id;
+      const chosenTitle = candidates[0].title;
 
-      const chosenTitle = (candidates && candidates.length > 0) ? candidates[0].title : les.title;
-
-      console.log(`%c[AI-LOG 6.3/10] Reel ${reelIndex}/11 RESOLVED -> video_id="${topVid}" ("${chosenTitle}")`, 'color: #facc15');
-
-      // Pass resolved video title to user terminal logs
-      onProgress(2, `Reel ${reelIndex}/11: Found "${chosenTitle.substring(0, 50)}..." [ID: ${topVid}]`, 70 + Math.floor((idx / 11) * 12));
+      onProgress(2, `Reel ${reelIndex}/11: Resolved "${chosenTitle.substring(0, 45)}..." [ID: ${topVid}]`, 60 + Math.floor((idx / 11) * 20));
 
       return {
         ...les,
         video_id: topVid,
         video_title: chosenTitle,
-        candidates: candidates && candidates.length > 0 ? candidates : [{ video_id: topVid, title: chosenTitle }]
+        candidates: candidates
       };
     }));
 
     llmResult.lessons = lessonsWithVideos;
 
-    console.log(`[AI-LOG 7/10] All 11 Reel Candidates Resolved:`, llmResult.lessons.map(l => ({
-      reel: l.reel_index,
-      title: l.title,
-      chosen_video_id: l.video_id,
-      candidates_count: l.candidates ? l.candidates.length : 0,
-      candidates_list: l.candidates
-    })));
-
-    // 7. SECOND PASS: LLM VIDEO-TO-NOS RELEVANCE VERIFICATION AUDIT
+    // Pass-2 Audit Pass
     onProgress(3, `Executing Pass-2 AI Audit: Verifying Video Relevance against NOS Requirements...`, 85);
-    console.log(`%c[AI-LOG 8/10] Step 7: Executing LLM Video-to-NOS Relevance Audit Pass for "${cleanTopic}"...`, 'color: #a855f7; font-weight: bold');
-
     try {
       const auditResult = await this.verifyReelVideoRelevance(cleanTopic, llmResult.lessons, apiKey);
-      console.log(`[AI-LOG 8.1/10] LLM Relevance Audit Raw Response:`, auditResult);
-
       if (auditResult && Array.isArray(auditResult.verifications)) {
         auditResult.verifications.forEach((v) => {
           const les = llmResult.lessons.find(l => l.reel_index === v.reel_index);
@@ -169,83 +177,69 @@ class AICurriculumEngine {
             les.video_title = bestCand.title;
             les.audit_score = v.confidence || 90;
             les.audit_reason = v.reason || 'Verified relevant to NOS criteria';
-            onProgress(3, `🎯 Pass-2 Audit Reel ${v.reel_index}: Promoted "${bestCand.title.substring(0, 45)}..." (Match Score: ${v.confidence || 90}%)`, 85 + Math.floor((v.reel_index / 11) * 10));
-            console.log(`%c[AI-AUDIT-LOG 8.2/10] Reel ${v.reel_index}: Promoted candidate #${v.selected_index} ("${bestCand.title}") [video_id="${bestCand.video_id}"] — Score: ${v.confidence}%`, 'color: #4ade80');
           }
         });
       }
     } catch (auditErr) {
-      console.warn(`[AI-LOG 8.3/10] LLM Video Audit Pass skipped/soft-failed (${auditErr.message}). Using top candidates.`);
+      console.warn(`[AI-LOG] Audit pass skipped (${auditErr.message}). Using top candidates.`);
     }
 
-    // 8. Save newly synthesized course to Turso DB in background
-    console.log(`[AI-LOG 9/10] Saving newly synthesized course "${cleanTopic}" to Turso Edge DB...`);
     try {
       await dbClient.saveCurriculum(llmResult);
-      console.log(`%c[AI-LOG 9.1/10] ✅ Successfully saved course to Turso Edge DB!`, 'color: #4ade80');
     } catch (saveErr) {
-      console.warn(`[AI-LOG 9.2/10] Background Turso DB save warning: ${saveErr.message}`);
+      console.warn(`[AI-LOG] Background DB save warning: ${saveErr.message}`);
     }
-
-    console.log(`%c[AI-LOG 10/10] 🎉 FINAL COURSE SYNTHESIS COMPLETE!`, 'color: #4ade80; font-weight: bold; font-size: 14px');
-    console.log(`[AI-LOG 10.1/10] Final 11 Reels Summary:`, llmResult.lessons.map(l => ({
-      reel: l.reel_index,
-      nos_code: l.nos_code,
-      title: l.title,
-      video_id: l.video_id,
-      pcs_count: l.pcs ? l.pcs.length : 0
-    })));
 
     onProgress(4, '11 Reel Candidates Verified & Ready for Creator Confirmation!', 100);
     return llmResult;
   }
 
   /**
-   * Real-Time Video Search Engine: Queries Cloudflare Proxy
+   * Queries Server Endpoint /api/search-video (Official YouTube Data API v3)
    */
   async searchLiveYouTubeVideoCandidates(searchQuery) {
-    if (!searchQuery || typeof searchQuery !== 'string') return [];
+    if (!searchQuery || typeof searchQuery !== 'string') return { success: false, candidates: [], error: 'Invalid query string' };
 
     console.log(`[SEARCH-LOG] searchLiveYouTubeVideoCandidates("${searchQuery}")`);
 
-    // 1. Query Cloudflare Pages Function serverless proxy (/api/search-video)
     try {
       const proxyUrl = `/api/search-video?q=${encodeURIComponent(searchQuery)}`;
       const ctrl = new AbortController();
-      const timeoutId = setTimeout(() => ctrl.abort(), 4500);
+      const timeoutId = setTimeout(() => ctrl.abort(), 6000);
 
       const proxyRes = await fetch(proxyUrl, { signal: ctrl.signal });
       clearTimeout(timeoutId);
 
-      if (proxyRes.ok) {
-        const proxyData = await proxyRes.json();
-        console.log(`[SEARCH-LOG] Proxy Response for "${searchQuery}":`, proxyData);
-        if (proxyData && Array.isArray(proxyData.results) && proxyData.results.length > 0) {
-          const validCandidates = proxyData.results.filter(item => this.quickCheckVideoId(item.video_id));
-          if (validCandidates.length > 0) return validCandidates;
-        }
-      } else {
-        console.warn(`[SEARCH-LOG] Proxy returned status ${proxyRes.status}`);
-      }
-    } catch (err) {
-      console.warn(`[SEARCH-LOG] Proxy fetch exception for "${searchQuery}": ${err.message}`);
-    }
+      const proxyData = await proxyRes.json();
 
-    return [];
+      if (proxyRes.ok && proxyData.success && Array.isArray(proxyData.results) && proxyData.results.length > 0) {
+        const validCandidates = proxyData.results.filter(item => this.quickCheckVideoId(item.video_id));
+        if (validCandidates.length > 0) {
+          return { success: true, candidates: validCandidates };
+        }
+      }
+
+      return {
+        success: false,
+        candidates: [],
+        error: proxyData.error || `HTTP ${proxyRes.status}: YouTube search returned no video results`
+      };
+
+    } catch (err) {
+      console.warn(`[SEARCH-LOG] Fetch exception for "${searchQuery}": ${err.message}`);
+      return { success: false, candidates: [], error: `Network/API Exception: ${err.message}` };
+    }
   }
 
   quickCheckVideoId(videoId) {
     return typeof videoId === 'string' && /^[a-zA-Z0-9_-]{11}$/.test(videoId);
   }
 
-  /**
-   * Fast API request to OpenRouter model for 11 NOS units
-   */
-  async callOpenRouterModel(topic, modelName, apiKey) {
-    console.log(`[LLM-LOG] callOpenRouterModel(topic="${topic}", model="${modelName}")`);
+  async callOpenRouterModel(topic, modelName, apiKey, confirmedPrompt = '') {
+    const defaultPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Curriculum Architect.
+Generate an 11-step standardized micro-learning skill curriculum for: "${topic}".`;
 
-    const systemPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Curriculum Architect.
-Generate an 11-step standardized micro-learning skill curriculum for: "${topic}".
+    const systemPrompt = `${confirmedPrompt || defaultPrompt}
 
 Respond ONLY with a valid JSON object matching this exact structure:
 {
@@ -304,7 +298,6 @@ Rules:
 
       const data = await response.json();
       const rawContent = data.choices?.[0]?.message?.content?.trim() || '';
-      console.log(`[LLM-LOG] Model "${modelName}" Raw Response snippet: ${rawContent.substring(0, 150)}...`);
 
       const cleanJson = rawContent.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
       const parsed = JSON.parse(cleanJson);
@@ -336,8 +329,6 @@ Rules:
   }
 
   async verifyReelVideoRelevance(topic, lessons, apiKey) {
-    console.log(`[AUDIT-LOG] verifyReelVideoRelevance(topic="${topic}")`);
-
     const auditPayload = lessons.map(l => ({
       reel_index: l.reel_index,
       nos_code: l.nos_code,
@@ -348,14 +339,12 @@ Rules:
 
     const systemPrompt = `You are an expert NSQF Skill Curriculum Auditor.
 For the skill course "${topic}", verify candidate YouTube video titles against each reel's NOS requirements.
-
-For each reel, select the candidate index (0, 1, or 2) whose title is MOST relevant to the NOS step and Performance Criteria.
+For each reel, select the candidate index whose title is MOST relevant to the NOS step.
 
 Respond ONLY with raw JSON:
 {
   "verifications": [
-    { "reel_index": 1, "selected_index": 0, "confidence": 95, "reason": "Title directly matches NOS criteria" },
-    ... 11 reels
+    { "reel_index": 1, "selected_index": 0, "confidence": 95, "reason": "Title matches criteria" }
   ]
 }`;
 
@@ -371,7 +360,6 @@ Respond ONLY with raw JSON:
 
     for (const modelName of candidateModels) {
       try {
-        console.log(`[AUDIT-LOG] Audit Pass model trial: "${modelName}"`);
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
           method: 'POST',
           signal: controller.signal,
@@ -399,7 +387,6 @@ Respond ONLY with raw JSON:
         const cleanJson = rawContent.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
         return JSON.parse(cleanJson);
       } catch (err) {
-        console.warn(`[AUDIT-LOG] Audit pass trial "${modelName}" failed: ${err.message}`);
         clearTimeout(timeoutId);
       }
     }
@@ -407,8 +394,6 @@ Respond ONLY with raw JSON:
   }
 
   generateFallbackCurriculum(topic, formattedTitle) {
-    console.log(`[FALLBACK-LOG] generateFallbackCurriculum("${topic}")`);
-
     return {
       id: `CUSTOM-${topic.toUpperCase().replace(/\s+/g, '_').substring(0, 15)}-${Math.floor(1000 + Math.random() * 9000)}`,
       type: 'custom_ai',
@@ -426,7 +411,7 @@ Respond ONLY with raw JSON:
         title: `Reel ${i + 1}: ${formattedTitle} Step ${i + 1}`,
         subtitle: `Mastering essential technique for ${formattedTitle} — Stage ${i + 1} of 11`,
         video_platform: 'youtube',
-        video_id: ['ZbZSe6N_BXs', 'arj7oStGLkU', 'H14bBuluwB8', 'eIho2S0ZahI', 'UyyjU8fzEYU', 'Unzc731iCUY', 'wnHW6o8WMas', 'RcGyVTAoXEU', 'X4y_3PtB6IY', 'NbuUW9i-mHs', 'fLJsdqxnZb0'][i % 11],
+        video_id: '',
         pcs: [
           `PC1. Review safety standards and prerequisites for ${formattedTitle}.`,
           `PC2. Execute step ${i + 1} using standard tools and procedures.`,

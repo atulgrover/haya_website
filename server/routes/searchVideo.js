@@ -1,8 +1,9 @@
 'use strict';
 /**
- * YouTube Video Search Proxy — Express port of skillpedia Cloudflare function
+ * Official YouTube Data API v3 Search Endpoint
  * Route: GET /api/search-video?q=QUERY
- * DuckDuckGo video search → extract YouTube video IDs → return candidates
+ * Uses YOUTUBE_API_KEY from environment variables to query Google's YouTube v3 API.
+ * Returns official YouTube video candidates with titles, channel names, thumbnails, and video IDs.
  */
 
 const express = require('express');
@@ -11,7 +12,6 @@ const router  = express.Router();
 router.get('/', async (req, res) => {
   const query = req.query.q;
 
-  // CORS headers for browser fetch calls
   res.set({
     'Access-Control-Allow-Origin':  '*',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
@@ -19,91 +19,73 @@ router.get('/', async (req, res) => {
   });
 
   if (!query || typeof query !== 'string') {
-    return res.json({ query: '', results: [], log: 'Missing query parameter' });
+    return res.status(400).json({ success: false, query: '', results: [], error: 'Missing query parameter' });
+  }
+
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  if (!apiKey || apiKey.trim() === '') {
+    console.error('[YOUTUBE-API] Error: YOUTUBE_API_KEY is not configured in .env');
+    return res.status(500).json({
+      success: false,
+      query,
+      results: [],
+      error: 'Official YOUTUBE_API_KEY missing in server .env configuration.'
+    });
   }
 
   try {
-    const cleanQ   = query.trim();
-    const qEncoded = encodeURIComponent(`${cleanQ} youtube`);
-    const searchUrl = `https://duckduckgo.com/?q=${qEncoded}&t=h_&iax=videos&ia=videos`;
+    const cleanQ = query.trim();
+    const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=6&q=${encodeURIComponent(cleanQ)}&key=${apiKey.trim()}`;
 
-    console.log(`[SEARCH-PROXY] Fetching DDG token for: "${cleanQ}"`);
+    console.log(`[YOUTUBE-API] Fetching official YouTube Data API v3 results for: "${cleanQ}"`);
 
-    const htmlRes = await fetch(searchUrl, {
-      headers: {
-        'User-Agent':      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-        'Accept':          'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9'
-      },
-      signal: AbortSignal.timeout(6000)
-    });
-
-    if (!htmlRes.ok) {
-      console.warn(`[SEARCH-PROXY] DDG HTML fetch failed: ${htmlRes.status}`);
-      return res.json({ query: cleanQ, results: [], log: `DDG HTTP ${htmlRes.status}` });
-    }
-
-    const htmlText = await htmlRes.text();
-
-    // Extract vqd token — supports all DuckDuckGo HTML variants
-    const vqdMatch = htmlText.match(/vqd=['"]?([\d-]+)['"]?/)
-                  || htmlText.match(/["']vqd["']\s*:\s*["']([\d-]+)["']/)
-                  || htmlText.match(/vqd=([a-zA-Z0-9_-]+)/);
-
-    if (!vqdMatch) {
-      console.warn('[SEARCH-PROXY] vqd token not found in DDG response');
-      return res.json({ query: cleanQ, results: [], log: 'vqd token missing' });
-    }
-
-    const vqd = vqdMatch[1];
-    const videoApiUrl = `https://duckduckgo.com/v.js?q=${qEncoded}&vqd=${vqd}&p=1`;
-
-    const apiRes = await fetch(videoApiUrl, {
-      headers: {
-        'User-Agent':        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-        'Accept':            'application/json, text/javascript, */*; q=0.01',
-        'X-Requested-With':  'XMLHttpRequest'
-      },
-      signal: AbortSignal.timeout(6000)
+    const apiRes = await fetch(apiUrl, {
+      headers: { 'Accept': 'application/json' },
+      signal: AbortSignal.timeout(8000)
     });
 
     if (!apiRes.ok) {
-      console.warn(`[SEARCH-PROXY] DDG Video API failed: ${apiRes.status}`);
-      return res.json({ query: cleanQ, results: [], log: `DDG API HTTP ${apiRes.status}` });
+      const errText = await apiRes.text();
+      console.error(`[YOUTUBE-API] Google API HTTP ${apiRes.status} Error: ${errText}`);
+      return res.status(apiRes.status).json({
+        success: false,
+        query: cleanQ,
+        results: [],
+        error: `Official YouTube API Error (${apiRes.status}): ${errText}`
+      });
     }
 
-    const data       = await apiRes.json();
+    const data = await apiRes.json();
     const candidates = [];
 
-    if (data && Array.isArray(data.results)) {
-      for (const item of data.results) {
-        if (candidates.length >= 3) break;
-        if (item.content && item.content.includes('youtube.com')) {
-          const match = item.content.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-          if (match && match[1]) {
-            const vid = match[1];
-            if (!candidates.some(c => c.video_id === vid)) {
-              candidates.push({
-                video_id:  vid,
-                title:     item.title || cleanQ,
-                publisher: item.publisher || 'YouTube'
-              });
-            }
-          }
+    if (data && Array.isArray(data.items)) {
+      for (const item of data.items) {
+        if (item.id && item.id.videoId && item.snippet) {
+          candidates.push({
+            video_id: item.id.videoId,
+            title: item.snippet.title,
+            channelTitle: item.snippet.channelTitle || 'YouTube',
+            thumbnail: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url || `https://img.youtube.com/vi/${item.id.videoId}/mqdefault.jpg`,
+            publishedAt: item.snippet.publishedAt
+          });
         }
       }
     }
 
-    console.log(`[SEARCH-PROXY] "${cleanQ}" → ${candidates.length} candidates`);
-    return res.json({ query: cleanQ, results: candidates, log: 'Success' });
+    console.log(`[YOUTUBE-API] Successfully resolved ${candidates.length} official candidates for "${cleanQ}"`);
+    return res.json({ success: true, query: cleanQ, results: candidates });
 
   } catch (err) {
-    console.error(`[SEARCH-PROXY] Exception: ${err.message}`);
-    return res.json({ query, results: [], log: `Exception: ${err.message}` });
+    console.error(`[YOUTUBE-API] Exception during YouTube search: ${err.message}`);
+    return res.status(500).json({
+      success: false,
+      query,
+      results: [],
+      error: `YouTube API Request Failed: ${err.message}`
+    });
   }
 });
 
-// Handle OPTIONS preflight
 router.options('/', (req, res) => res.sendStatus(204));
 
 module.exports = router;
