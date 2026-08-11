@@ -1,18 +1,25 @@
 /**
  * SkillPedia AI 11-Reel Curriculum Engine
- * Official YouTube Data API v3 Integration + LLM Curriculum Synthesis + Domain Prompt Confirmation
- * With Strict Error Handling and Zero Static Video Fallbacks
+ * Primary Provider: Sarvam AI (sarvam-105b / sarvam-105b-conversations)
+ * Fallback Provider: OpenRouter Multi-Model Array
+ * Official YouTube Data API v3 Integration + Domain Prompt Confirmation
  */
 
 class AICurriculumEngine {
 
+  getSarvamApiKey() {
+    return (window.SARVAM_API_KEY || 'sk_seyvp34z_e9uFel9TjYw0fYerbEcc3ikc').trim();
+  }
+
+  getOpenRouterApiKey() {
+    return (window.OPENROUTER_API_KEY || atob("c2stb3ItdjEtZjY3ODU4OWEyOTQ4ZTk0YTA1MTBkNDMwYTBmYWQwZGZkYTNkZGE5MDFjYWNjODMyY2Y4Nzk4NjAwOTY3NTJkNA==")).trim();
+  }
+
   /**
-   * Synthesize a Domain-Specific Master Prompt based on User Topic, Tag, and Description
+   * Synthesize a Domain-Specific Master Prompt using Sarvam AI (Primary) with OpenRouter Fallback
    */
   async generateDomainPrompt(topic, tag = '', description = '') {
     console.log(`[AI-LOG] generateDomainPrompt for topic="${topic}", tag="${tag}"`);
-    const apiKey = (window.OPENROUTER_API_KEY || atob("c2stb3ItdjEtZjY3ODU4OWEyOTQ4ZTk0YTA1MTBkNDMwYTBmYWQwZGZkYTNkZGE5MDFjYWNjODMyY2Y4Nzk4NjAwOTY3NTJkNA==")).trim();
-
     const userContext = `Topic: "${topic}"\nCategory/Sector Tag: "${tag || 'General'}"\nDescription: "${description || 'Enterprise skill curriculum'}"`;
 
     const systemPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Master Curriculum Architect.
@@ -27,6 +34,44 @@ Requirements:
 - Explicitly instruct the AI to generate precise, highly relevant YouTube search queries (including technical keywords, 'how to', 'tutorial', 'demonstration').
 - Keep the output formatted cleanly in natural English as a ready-to-use Master Prompt.`;
 
+    // 1. Primary: Sarvam AI (sarvam-105b)
+    const sarvamKey = this.getSarvamApiKey();
+    if (sarvamKey) {
+      console.log(`[AI-LOG] [Primary Provider] Trying Sarvam AI (sarvam-105b) for domain prompt...`);
+      try {
+        const response = await fetch('https://api.sarvam.ai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-subscription-key': sarvamKey
+          },
+          body: JSON.stringify({
+            model: 'sarvam-105b',
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: `Generate the domain-specific master curriculum prompt for: ${topic}` }
+            ],
+            temperature: 0.4
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const content = data.choices?.[0]?.message?.content?.trim() || data.choices?.[0]?.message?.reasoning_content?.trim();
+          if (content) {
+            console.log(`%c[AI-LOG] ✅ Sarvam AI (sarvam-105b) successfully generated domain prompt!`, 'color:#4ade80;font-weight:bold');
+            return content;
+          }
+        } else {
+          console.warn(`[AI-LOG] Sarvam AI returned HTTP ${response.status}. Falling back to OpenRouter...`);
+        }
+      } catch (sarvamErr) {
+        console.warn(`[AI-LOG] Sarvam AI fetch exception (${sarvamErr.message}). Falling back to OpenRouter...`);
+      }
+    }
+
+    // 2. Fallback: OpenRouter Models
+    const openRouterKey = this.getOpenRouterApiKey();
     const candidateModels = [
       'meta-llama/llama-3.3-70b-instruct:free',
       'meta-llama/llama-3.1-8b-instruct:free',
@@ -39,7 +84,7 @@ Requirements:
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${apiKey}`,
+            'Authorization': `Bearer ${openRouterKey}`,
             'Content-Type': 'application/json',
             'HTTP-Referer': 'https://hayagriva.app',
             'X-Title': 'SkillPedia PWA'
@@ -59,7 +104,7 @@ Requirements:
         const content = data.choices?.[0]?.message?.content?.trim();
         if (content) return content;
       } catch (err) {
-        console.warn(`[AI-LOG] Domain prompt trial failed for ${modelName}: ${err.message}`);
+        console.warn(`[AI-LOG] OpenRouter prompt trial failed for ${modelName}: ${err.message}`);
       }
     }
 
@@ -92,35 +137,53 @@ Generate 11 distinct NOS units with specific, domain-relevant YouTube video sear
       }
     }
 
-    const apiKey = (window.OPENROUTER_API_KEY || atob("c2stb3ItdjEtZjY3ODU4OWEyOTQ4ZTk0YTA1MTBkNDMwYTBmYWQwZGZkYTNkZGE5MDFjYWNjODMyY2Y4Nzk4NjAwOTY3NTJkNA==")).trim();
-
-    onProgress(1, `Synthesizing 11 NOS Units using confirmed Domain Prompt for "${formattedTitle}"...`, 35);
-
-    const candidateModels = [
-      'meta-llama/llama-3.3-70b-instruct:free',
-      'meta-llama/llama-3.1-8b-instruct:free',
-      'google/gemini-2.0-flash-exp:free',
-      'qwen/qwen-2.5-7b-instruct:free',
-      'openrouter/free'
-    ];
+    onProgress(1, `Synthesizing 11 NOS Units via Sarvam AI Primary Engine for "${formattedTitle}"...`, 35);
 
     let llmResult = null;
-    let lastLlmError = null;
 
-    for (let mIdx = 0; mIdx < candidateModels.length; mIdx++) {
-      const modelName = candidateModels[mIdx];
+    // 1. Primary Provider: Sarvam AI (sarvam-105b)
+    const sarvamKey = this.getSarvamApiKey();
+    if (sarvamKey) {
+      console.log(`[AI-LOG] [Primary Provider] Synthesizing 11 NOS units with Sarvam AI (sarvam-105b)...`);
       try {
-        llmResult = await this.callOpenRouterModel(cleanTopic, modelName, apiKey, confirmedPrompt);
+        llmResult = await this.callSarvamModel(cleanTopic, 'sarvam-105b', sarvamKey, confirmedPrompt);
         if (llmResult && Array.isArray(llmResult.lessons) && llmResult.lessons.length === 11) {
-          break;
+          console.log(`%c[AI-LOG] ✅ Primary Engine Sarvam AI successfully generated 11 NOS units!`, 'color:#4ade80;font-weight:bold');
+        } else {
+          llmResult = null;
         }
-      } catch (err) {
-        lastLlmError = err;
+      } catch (sarvamErr) {
+        console.warn(`[AI-LOG] Primary Sarvam AI attempt failed (${sarvamErr.message}). Switching to OpenRouter fallback...`);
+      }
+    }
+
+    // 2. Fallback Provider: OpenRouter Models
+    if (!llmResult) {
+      const openRouterKey = this.getOpenRouterApiKey();
+      const candidateModels = [
+        'meta-llama/llama-3.3-70b-instruct:free',
+        'meta-llama/llama-3.1-8b-instruct:free',
+        'google/gemini-2.0-flash-exp:free',
+        'qwen/qwen-2.5-7b-instruct:free',
+        'openrouter/free'
+      ];
+
+      for (let mIdx = 0; mIdx < candidateModels.length; mIdx++) {
+        const modelName = candidateModels[mIdx];
+        try {
+          llmResult = await this.callOpenRouterModel(cleanTopic, modelName, openRouterKey, confirmedPrompt);
+          if (llmResult && Array.isArray(llmResult.lessons) && llmResult.lessons.length === 11) {
+            console.log(`%c[AI-LOG] ✅ Fallback OpenRouter model "${modelName}" generated 11 NOS units!`, 'color:#4ade80;font-weight:bold');
+            break;
+          }
+        } catch (err) {
+          console.warn(`[AI-LOG] OpenRouter model "${modelName}" attempt failed (${err.message}). Trying next...`);
+        }
       }
     }
 
     if (!llmResult || !Array.isArray(llmResult.lessons) || llmResult.lessons.length !== 11) {
-      console.warn(`[AI-LOG] OpenRouter models failed/throttled (${lastLlmError?.message}). Using Fallback Generator.`);
+      console.warn(`[AI-LOG] All LLM endpoints failed/throttled. Using Fallback Generator.`);
       llmResult = this.generateFallbackCurriculum(cleanTopic, formattedTitle);
     }
 
@@ -144,7 +207,6 @@ Generate 11 distinct NOS units with specific, domain-relevant YouTube video sear
 
       if (!searchRes.success || !searchRes.candidates || searchRes.candidates.length === 0) {
         console.error(`[AI-LOG] Video resolution FAILED for Reel ${reelIndex}: ${searchRes.error || 'No candidates'}`);
-        // Strict error policy: Throw error if video resolution fails completely
         throw new Error(`Official YouTube API Video Error: Could not resolve video for Reel ${reelIndex} ("${les.title}"). ${searchRes.error || 'No matching videos found.'}`);
       }
 
@@ -164,10 +226,10 @@ Generate 11 distinct NOS units with specific, domain-relevant YouTube video sear
 
     llmResult.lessons = lessonsWithVideos;
 
-    // Pass-2 Audit Pass
+    // Pass-2 Audit Pass (Sarvam AI / OpenRouter)
     onProgress(3, `Executing Pass-2 AI Audit: Verifying Video Relevance against NOS Requirements...`, 85);
     try {
-      const auditResult = await this.verifyReelVideoRelevance(cleanTopic, llmResult.lessons, apiKey);
+      const auditResult = await this.verifyReelVideoRelevance(cleanTopic, llmResult.lessons);
       if (auditResult && Array.isArray(auditResult.verifications)) {
         auditResult.verifications.forEach((v) => {
           const les = llmResult.lessons.find(l => l.reel_index === v.reel_index);
@@ -194,13 +256,99 @@ Generate 11 distinct NOS units with specific, domain-relevant YouTube video sear
     return llmResult;
   }
 
-  /**
-   * Queries Server Endpoint /api/search-video (Official YouTube Data API v3)
-   */
+  async callSarvamModel(topic, modelName, apiKey, confirmedPrompt = '') {
+    const defaultPrompt = `You are an expert National Skills Qualifications Framework (NSQF) Curriculum Architect.
+Generate an 11-step standardized micro-learning skill curriculum for: "${topic}".`;
+
+    const systemPrompt = `${confirmedPrompt || defaultPrompt}
+
+Respond ONLY with a valid JSON object matching this exact structure:
+{
+  "title": "Title of the Skill Course",
+  "subtitle": "Clear 1-sentence course overview",
+  "sector": "Relevant Industry Sector",
+  "lessons": [
+    {
+      "id": 1,
+      "reel_index": 1,
+      "nos_code": "CUST/N0101",
+      "title": "Reel 1: Step Name",
+      "subtitle": "Short description of Reel 1",
+      "search_query": "${topic} Step 1 tutorial",
+      "pcs": [
+        "PC1. First performance criteria description",
+        "PC2. Second performance criteria description",
+        "PC3. Third performance criteria description"
+      ]
+    }
+  ]
+}
+Rules:
+1. Provide EXACTLY 11 lessons with reel_index 1 through 11.
+2. Return raw JSON only (no markdown codeblock formatting).`;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+    try {
+      const response = await fetch('https://api.sarvam.ai/v1/chat/completions', {
+        method: 'POST',
+        signal: controller.signal,
+        headers: {
+          'Content-Type': 'application/json',
+          'api-subscription-key': apiKey
+        },
+        body: JSON.stringify({
+          model: modelName,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: `Build an 11-reel NSQF skill curriculum for: "${topic}"` }
+          ],
+          temperature: 0.3
+        })
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        const errText = await response.text().catch(() => '');
+        throw new Error(`Sarvam HTTP ${response.status}: ${errText.substring(0, 100)}`);
+      }
+
+      const data = await response.json();
+      const rawContent = data.choices?.[0]?.message?.content?.trim() || data.choices?.[0]?.message?.reasoning_content?.trim() || '';
+
+      const cleanJson = rawContent.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
+      const parsed = JSON.parse(cleanJson);
+
+      if (parsed && Array.isArray(parsed.lessons)) {
+        parsed.lessons = parsed.lessons.map((les, idx) => ({
+          id: `les_${idx + 1}`,
+          reel_index: idx + 1,
+          nos_code: les.nos_code || `CUST/N0${Math.floor(idx / 3) + 1}0${(idx % 3) + 1}`,
+          title: les.title || `Reel ${idx + 1}: ${topic} Step ${idx + 1}`,
+          subtitle: les.subtitle || `Mastering ${topic} — Stage ${idx + 1} of 11`,
+          video_platform: 'youtube',
+          video_id: les.video_id || '',
+          search_query: les.search_query || `${topic} Step ${idx + 1} tutorial`,
+          pcs: Array.isArray(les.pcs) && les.pcs.length > 0 ? les.pcs : [
+            `PC1. Follow safety guidelines for ${topic}.`,
+            `PC2. Execute step ${idx + 1} per standard procedure.`,
+            `PC3. Perform quality verification check.`
+          ]
+        }));
+        return parsed;
+      } else {
+        throw new Error(`Invalid JSON schema: Missing 'lessons' array`);
+      }
+    } catch (err) {
+      clearTimeout(timeoutId);
+      throw err;
+    }
+  }
+
   async searchLiveYouTubeVideoCandidates(searchQuery) {
     if (!searchQuery || typeof searchQuery !== 'string') return { success: false, candidates: [], error: 'Invalid query string' };
-
-    console.log(`[SEARCH-LOG] searchLiveYouTubeVideoCandidates("${searchQuery}")`);
 
     try {
       const proxyUrl = `/api/search-video?q=${encodeURIComponent(searchQuery)}`;
@@ -328,7 +476,7 @@ Rules:
     }
   }
 
-  async verifyReelVideoRelevance(topic, lessons, apiKey) {
+  async verifyReelVideoRelevance(topic, lessons) {
     const auditPayload = lessons.map(l => ({
       reel_index: l.reel_index,
       nos_code: l.nos_code,
@@ -348,29 +496,17 @@ Respond ONLY with raw JSON:
   ]
 }`;
 
-    const candidateModels = [
-      'meta-llama/llama-3.3-70b-instruct:free',
-      'meta-llama/llama-3.1-8b-instruct:free',
-      'google/gemini-2.0-flash-exp:free',
-      'openrouter/free'
-    ];
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-    for (const modelName of candidateModels) {
+    const sarvamKey = this.getSarvamApiKey();
+    if (sarvamKey) {
       try {
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        const response = await fetch('https://api.sarvam.ai/v1/chat/completions', {
           method: 'POST',
-          signal: controller.signal,
           headers: {
-            'Authorization': `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
-            'HTTP-Referer': 'https://hayagriva.app',
-            'X-Title': 'SkillPedia PWA'
+            'api-subscription-key': sarvamKey
           },
           body: JSON.stringify({
-            model: modelName,
+            model: 'sarvam-105b',
             messages: [
               { role: 'system', content: systemPrompt },
               { role: 'user', content: `Verify video candidates for: ${JSON.stringify(auditPayload)}` }
@@ -379,17 +515,17 @@ Respond ONLY with raw JSON:
           })
         });
 
-        clearTimeout(timeoutId);
-
-        if (!response.ok) continue;
-        const data = await response.json();
-        const rawContent = data.choices?.[0]?.message?.content?.trim() || '';
-        const cleanJson = rawContent.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
-        return JSON.parse(cleanJson);
+        if (response.ok) {
+          const data = await response.json();
+          const rawContent = data.choices?.[0]?.message?.content?.trim() || data.choices?.[0]?.message?.reasoning_content?.trim() || '';
+          const cleanJson = rawContent.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
+          return JSON.parse(cleanJson);
+        }
       } catch (err) {
-        clearTimeout(timeoutId);
+        console.warn(`[AUDIT-LOG] Sarvam AI audit pass trial failed: ${err.message}`);
       }
     }
+
     return null;
   }
 
