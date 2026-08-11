@@ -777,7 +777,7 @@
           mods.forEach((mod, globalIdx) => {
             const code = mod.nos_code || 'NOS';
             if (!nosGroups[code]) {
-              nosGroups[code] = { code, modules: [] };
+              nosGroups[code] = { code, title: mod.nos_title || '', modules: [] };
             }
             nosGroups[code].modules.push({ ...mod, globalIdx });
           });
@@ -785,9 +785,6 @@
           const groupKeys = Object.keys(nosGroups);
 
           accordionWrap.innerHTML = `
-            <div style="font-size:12px; font-weight:700; color:var(--text-muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">
-              VOCATIONAL NOS UNITS (${groupKeys.length} NOS • ${data.curriculum.total_pcs || 11} Performance Criteria)
-            </div>
             <div style="display:flex; flex-direction:column; gap:10px;">
               ${groupKeys.map((nosCode, nIdx) => {
                 const grp = nosGroups[nosCode];
@@ -796,12 +793,13 @@
                   <div style="border:1px solid var(--border-color); border-radius:10px; overflow:hidden; background:#FFF; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
                     <!-- Parent NOS Accordion Bar -->
                     <div style="padding:12px 14px; background:#F1F5F9; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="toggleAccordionFolder('nos-grp-${nIdx}')">
-                      <div>
-                        <div style="font-size:11px; font-weight:800; color:var(--primary-color); letter-spacing:0.5px;">${grp.code}</div>
-                        <div style="font-size:12px; font-weight:600; color:var(--text-muted);">${grp.modules.length} Training Modules • ${grp.modules.reduce((acc, m) => acc + (m.pcs || []).length, 0)} PC Items</div>
+                      <div style="flex:1; padding-right:10px;">
+                        <div style="font-size:12px; font-weight:800; color:var(--primary-color); line-height:1.3;">${grp.code}: ${grp.title || 'Occupational Standards'}</div>
+                        <div style="font-size:11px; font-weight:600; color:var(--text-muted); margin-top:2px;">${grp.modules.length} Modules • ${grp.modules.reduce((acc, m) => acc + (m.pcs || []).length, 0)} Performance Criteria</div>
                       </div>
                       <span id="acc-icon-nos-grp-${nIdx}" style="font-size:12px; font-weight:700; color:var(--text-muted);">${isExpanded ? '▲' : '▼'}</span>
                     </div>
+
 
                     <!-- NOS Modules Container -->
                     <div id="nos-grp-${nIdx}" style="padding:10px 12px; border-top:1px solid var(--border-color); display:${isExpanded ? 'flex' : 'none'}; flex-direction:column; gap:10px; background:#FAFAFA;">
