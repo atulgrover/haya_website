@@ -206,37 +206,44 @@ async function initSchema() {
 
 
         // Create nsqf_curricula table for parsed NOS modules & Performance Criteria (PC)
-        await db.exec(`
-            CREATE TABLE IF NOT EXISTS nsqf_curricula (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                qp_code TEXT UNIQUE NOT NULL,
-                qp_name TEXT,
-                version TEXT,
-                sector TEXT,
-                total_pcs INTEGER DEFAULT 0,
-                schema_json TEXT NOT NULL,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-            );
+        try {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS nsqf_curricula (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    qp_code TEXT UNIQUE NOT NULL,
+                    qp_name TEXT,
+                    version TEXT,
+                    sector TEXT,
+                    total_pcs INTEGER DEFAULT 0,
+                    schema_json TEXT NOT NULL,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+            `);
+        } catch (e) {}
 
-            CREATE TABLE IF NOT EXISTS nsqf_videos (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                qp_code TEXT NOT NULL,
-                nos_code TEXT NOT NULL,
-                nos_title TEXT,
-                module_title TEXT NOT NULL,
-                pc_id TEXT NOT NULL,
-                pc_intent TEXT NOT NULL,
-                pc_desc TEXT,
-                video_id TEXT NOT NULL,
-                video_title TEXT,
-                video_url TEXT,
-                audit_score INTEGER DEFAULT 90,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                UNIQUE(qp_code, pc_id)
-            );
-        `);
+        try {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS nsqf_videos (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    qp_code TEXT NOT NULL,
+                    nos_code TEXT NOT NULL,
+                    nos_title TEXT,
+                    module_title TEXT NOT NULL,
+                    pc_id TEXT NOT NULL,
+                    pc_intent TEXT NOT NULL,
+                    pc_desc TEXT,
+                    video_id TEXT NOT NULL,
+                    video_title TEXT,
+                    video_url TEXT,
+                    audit_score INTEGER DEFAULT 90,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(qp_code, nos_code, module_title, pc_id)
+                );
+            `);
+        } catch (e) {}
 
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
+
 
         // Auto-seed NSQF database if nsqf_qps table is empty
         await seedNSQFFromJSON();

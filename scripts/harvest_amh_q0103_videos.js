@@ -34,9 +34,18 @@ async function searchYouTube(query) {
 }
 
 async function harvestAmhQ0103Videos() {
+    if (db.readyPromise) {
+        await db.readyPromise;
+    }
+    // Small delay to ensure all async table creations finish
+    await new Promise(r => setTimeout(r, 200));
+
     console.log('⚡ Starting YouTube Data API v3 Harvester for AMH/Q0103 (32 Performance Criteria)...');
 
+
+
     const rows = await db.prepare(`
+
         SELECT id, qp_code, nos_code, module_title, pc_id, pc_intent, pc_desc 
         FROM nsqf_videos 
         WHERE qp_code = 'AMH/Q0103'
