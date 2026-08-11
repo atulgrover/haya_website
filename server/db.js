@@ -195,8 +195,9 @@ async function initSchema() {
         // Migration safety: Ensure nsqf_qps table has curriculum_pdf_url and populate NQR links
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN curriculum_pdf_url TEXT;`); } catch (e) {}
         try {
-            await db.exec(`UPDATE nsqf_qps SET curriculum_pdf_url = 'https://nqr.gov.in/qualification-file?q_code=' || qp_code WHERE curriculum_pdf_url IS NULL OR curriculum_pdf_url = '';`);
+            await db.exec(`UPDATE nsqf_qps SET curriculum_pdf_url = 'https://nqr.gov.in/qualification-title' WHERE curriculum_pdf_url IS NULL OR curriculum_pdf_url = '' OR curriculum_pdf_url LIKE '%qualification-file%';`);
         } catch (e) {}
+
 
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
 
