@@ -217,6 +217,23 @@ async function initSchema() {
                 schema_json TEXT NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             );
+
+            CREATE TABLE IF NOT EXISTS nsqf_videos (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                nos_title TEXT,
+                module_title TEXT NOT NULL,
+                pc_id TEXT NOT NULL,
+                pc_intent TEXT NOT NULL,
+                pc_desc TEXT,
+                video_id TEXT NOT NULL,
+                video_title TEXT,
+                video_url TEXT,
+                audit_score INTEGER DEFAULT 90,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(qp_code, pc_id)
+            );
         `);
 
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
@@ -249,13 +266,44 @@ async function seedNsqfCurriculaIfEmpty() {
                     schemaObj.total_pcs || 32,
                     JSON.stringify(schemaObj)
                 );
+
+                // Populate relational nsqf_videos table
+                if (Array.isArray(schemaObj.nos_modules)) {
+                    for (const mod of schemaObj.nos_modules) {
+                        if (Array.isArray(mod.pcs)) {
+                            for (const pc of mod.pcs) {
+                                const vId = pc.video_id || mod.video_id || 'x9PQgbB4y6M';
+                                const vTitle = pc.video_title || `${schemaObj.qp_name} Demonstration ${pc.pc_id}`;
+                                const vUrl = `https://www.youtube.com/watch?v=${vId}`;
+                                await db.prepare(`
+                                    INSERT OR REPLACE INTO nsqf_videos 
+                                    (qp_code, nos_code, nos_title, module_title, pc_id, pc_intent, pc_desc, video_id, video_title, video_url, audit_score)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                `).run(
+                                    schemaObj.qp_code,
+                                    mod.nos_code || 'NOS',
+                                    mod.nos_title || '',
+                                    mod.module_title || mod.nos_title,
+                                    pc.pc_id,
+                                    pc.pc_intent || pc.pc_desc || pc.title || pc.pc_id,
+                                    pc.pc_desc || pc.pc_intent || '',
+                                    vId,
+                                    vTitle,
+                                    vUrl,
+                                    90
+                                );
+                            }
+                        }
+                    }
+                }
             }
         }
-        console.log('[Haya Portal DB] Updated sample NSQF Curricula for AAS/Q0103 and AMH/Q0103 in nsqf_curricula.');
+        console.log('[Haya Portal DB] Updated sample NSQF Curricula & PC Video records for AAS/Q0103 and AMH/Q0103.');
     } catch (e) {
         console.warn('[Haya Portal DB] nsqf_curricula seed warning:', e.message);
     }
 }
+
 
 
 

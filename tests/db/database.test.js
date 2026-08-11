@@ -38,17 +38,16 @@ test('Database Engine & Table Schema Verification', async (t) => {
     assert.strictEqual(Number(countRow.count), 2176, 'nsqf_qps should contain 2,176 job roles');
   });
 
-  await t.test('nsqf_curricula table exists & seeds parsed curriculum', async () => {
-    const row = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='nsqf_curricula'").get();
-    assert.ok(row, 'nsqf_curricula table should exist');
+  await t.test('nsqf_videos table exists & stores PC video mappings', async () => {
+    const row = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='nsqf_videos'").get();
+    assert.ok(row, 'nsqf_videos table should exist');
     
-    const sampleRow = await db.prepare("SELECT qp_code, schema_json FROM nsqf_curricula WHERE qp_code = 'AAS/Q0103'").get();
-    assert.ok(sampleRow, 'AAS/Q0103 sample curriculum row should exist');
-    const parsed = JSON.parse(sampleRow.schema_json);
-    assert.strictEqual(parsed.qp_code, 'AAS/Q0103');
-    assert.ok(Array.isArray(parsed.nos_modules), 'schema_json should contain nos_modules array');
+    const sampleVideos = await db.prepare("SELECT * FROM nsqf_videos WHERE qp_code = 'AMH/Q0103'").all();
+    assert.ok(Array.isArray(sampleVideos) && sampleVideos.length > 0, 'AMH/Q0103 should have PC video records');
+    assert.ok(sampleVideos[0].video_id, 'PC video record should have video_id');
   });
 });
+
 
 
 

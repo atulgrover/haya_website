@@ -356,8 +356,60 @@ router.get('/nsqf/curriculum', async (req, res) => {
         if (rawCode.startsWith('/')) rawCode = rawCode.substring(1);
         const qpCode = decodeURIComponent(rawCode).trim().replace('_', '/');
         
-        let row = await db.prepare(`SELECT * FROM nsqf_curricula WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
+        // 1. First check relational nsqf_videos table for PC video records
+        const videoRows = await db.prepare(`
+            SELECT * FROM nsqf_videos 
+            WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?
+            ORDER BY id ASC
+        `).all(qpCode, qpCode.replace('/', '_'));
 
+        // Fetch QP metadata
+        const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
+        const qpName = qpRow ? qpRow.qp_name : `Qualification Pack ${qpCode || 'Skill'}`;
+        const sector = qpRow ? qpRow.sector : 'Vocational Training';
+
+        if (Array.isArray(videoRows) && videoRows.length > 0) {
+            // Group PC video rows into NOS modules
+            const moduleMap = {};
+            videoRows.forEach(row => {
+                const key = `${row.nos_code}_${row.module_title}`;
+                if (!moduleMap[key]) {
+                    moduleMap[key] = {
+                        nos_code: row.nos_code,
+                        nos_title: row.nos_title || '',
+                        module_title: row.module_title,
+                        video_id: row.video_id,
+                        pcs: []
+                    };
+                }
+                moduleMap[key].pcs.push({
+                    pc_id: row.pc_id,
+                    pc_intent: row.pc_intent,
+                    pc_desc: row.pc_desc || row.pc_intent,
+                    video_id: row.video_id,
+                    video_title: row.video_title,
+                    video_url: row.video_url,
+                    audit_score: row.audit_score || 90
+                });
+            });
+
+            const nosModules = Object.values(moduleMap);
+            return res.json({
+                success: true,
+                curriculum: {
+                    qp_code: qpCode,
+                    qp_name: qpName,
+                    version: qpRow ? qpRow.version : '1.0',
+                    sector: sector,
+                    total_modules: nosModules.length,
+                    total_pcs: videoRows.length,
+                    nos_modules: nosModules
+                }
+            });
+        }
+
+        // 2. Fallback: Fetch schema_json from nsqf_curricula table
+        let row = await db.prepare(`SELECT * FROM nsqf_curricula WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
         
         if (row && row.schema_json) {
             return res.json({
@@ -366,13 +418,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
             });
         }
 
-        // Fallback: Fetch metadata from nsqf_qps table to construct clean fallback curriculum
-        const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
-        const qpName = qpRow ? qpRow.qp_name : `Qualification Pack ${qpCode || 'Skill'}`;
-        const sector = qpRow ? qpRow.sector : 'Vocational Training';
-
-
-        // Return 11 clean fallback module reels for any unseeded QP
+        // 3. Fallback: Return 11 baseline fallback module reels for unseeded QP
         const fallbackModules = [
             { module_title: `Introduction & Overview of ${qpName}`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} training tutorial overview`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC1', pc_intent: 'Understand Job Role & Standard Guidelines', pc_desc: `Overview of ${qpName} role` }] },
             { module_title: `Workplace Safety & Personal Protective Equipment`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} safety PPE guidelines`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC2', pc_intent: 'Inspect & Wear Safety Gear', pc_desc: 'Wear PPE equipment' }] },
@@ -387,25 +433,44 @@ router.get('/nsqf/curriculum', async (req, res) => {
             { module_title: `Handover & Shift Wrap-up`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} shift handover wrapup`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC11', pc_intent: 'Complete Shift Handover Briefing', pc_desc: 'Handover to next shift' }] }
         ];
 
-        const fallbackSchema = {
-            qp_code: qpCode,
-            qp_name: qpName,
-            version: qpRow ? qpRow.version : '1.0',
-            sector: sector,
-            total_modules: 11,
-            total_pcs: 11,
-            nos_modules: fallbackModules
-        };
-
         res.json({
             success: true,
-            curriculum: fallbackSchema
+            curriculum: {
+                qp_code: qpCode,
+                qp_name: qpName,
+                version: qpRow ? qpRow.version : '1.0',
+                sector: sector,
+                total_modules: 11,
+                total_pcs: 11,
+                nos_modules: fallbackModules
+            }
         });
 
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
 });
+
+// POST /api/skillpedia/nsqf/swap-video — swap single PC video in nsqf_videos table
+router.post('/nsqf/swap-video', async (req, res) => {
+    try {
+        const { qpCode, pcId, videoId, videoTitle } = req.body;
+        if (!qpCode || !pcId || !videoId) {
+            return res.status(400).json({ error: 'qpCode, pcId, and videoId are required.' });
+        }
+        const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        await db.prepare(`
+            UPDATE nsqf_videos 
+            SET video_id = ?, video_title = ?, video_url = ? 
+            WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?) AND pc_id = ?
+        `).run(videoId, videoTitle || 'Updated Video', videoUrl, qpCode, qpCode.replace('/', '_'), pcId);
+
+        res.json({ success: true, message: `Updated video for ${qpCode} ${pcId}` });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 
 // POST /api/skillpedia/save-skill
 router.post('/save-skill', async (req, res) => {
