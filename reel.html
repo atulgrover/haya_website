@@ -302,7 +302,8 @@
     /* ===========================================================
        HAYAGRIVA TIKTOK-STYLE REEL PLAYER
        Reads: /api/skillpedia/skill/:id via ?skill=<id>
-       =======================================================    const params       = new URLSearchParams(window.location.search);
+       ======================================================= */
+    const params       = new URLSearchParams(window.location.search);
     const skillId      = params.get('skill');
     const qpCode       = params.get('qp');
     const nosParam     = params.get('nos');
@@ -474,8 +475,6 @@
           <div style="font-size:40px;margin-bottom:12px">😕</div>
           <span class="load-text">${err.message}</span>
           <a href="students.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
-      }
-    } Skills</a>`;
       }
     }
 
