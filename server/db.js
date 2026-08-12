@@ -347,8 +347,35 @@ async function initSchema() {
         // Auto-seed NSQF database if nsqf_qps table is empty
         await seedNSQFFromJSON();
         await seedNsqfCurriculaIfEmpty();
+        await syncNsqfQpCounts();
     } catch (err) {
         console.error('[Haya Portal DB] Initialization error:', err.message);
+    }
+}
+
+async function syncNsqfQpCounts() {
+    try {
+        const qpList = ['AMH/Q0103', 'AAS/Q0103'];
+        for (const qp of qpList) {
+            const nosCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_nos WHERE qp_code = ?`).get(qp)).c;
+            const pcCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_pcs WHERE qp_code = ?`).get(qp)).c;
+
+            if (nosCount > 0 || pcCount > 0) {
+                await db.prepare(`
+                    UPDATE nsqf_qps 
+                    SET total_nos = ?, total_pcs = ?, pipeline_status = 'video_harvested'
+                    WHERE qp_code = ?
+                `).run(nosCount, pcCount, qp);
+
+                await db.prepare(`
+                    UPDATE nsqf_curricula 
+                    SET total_pcs = ?
+                    WHERE qp_code = ?
+                `).run(pcCount, qp);
+            }
+        }
+    } catch (e) {
+        console.warn('[Haya Portal DB] Sync counts warning:', e.message);
     }
 }
 
@@ -427,6 +454,22 @@ async function seedNsqfCurriculaIfEmpty() {
                         }
                     }
                 }
+
+                // Sync master nsqf_qps table and legacy nsqf_curricula table counts
+                const actualNosCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_nos WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
+                const actualPcCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_pcs WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
+
+                await db.prepare(`
+                    UPDATE nsqf_qps 
+                    SET total_nos = ?, total_pcs = ?, pipeline_status = 'video_harvested'
+                    WHERE qp_code = ?
+                `).run(actualNosCount, actualPcCount, schemaObj.qp_code);
+
+                await db.prepare(`
+                    UPDATE nsqf_curricula 
+                    SET total_pcs = ?
+                    WHERE qp_code = ?
+                `).run(actualPcCount, schemaObj.qp_code);
             }
         }
         console.log('[Haya Portal DB] Updated sample NSQF Curricula & PC Video records for AAS/Q0103 and AMH/Q0103.');
