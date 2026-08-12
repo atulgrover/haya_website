@@ -186,8 +186,9 @@ Generate 11 distinct chapters with specific, domain-relevant YouTube video searc
         ? searchRes.candidates
         : [{ video_id: 'sR7RKyHHyTg', title: `${les.title} Demonstration`, channelTitle: 'HAYAGRIVA Skillpedia' }];
 
-      const topVid = candidates[0].video_id;
-      const chosenTitle = candidates[0].title;
+      const topVid = candidates[0].video_id || candidates[0].id || 'sR7RKyHHyTg';
+      const rawTitle = candidates[0].title || candidates[0].video_title || les.title || 'Demonstration Video';
+      const chosenTitle = String(rawTitle);
 
       onProgress(2, `Chapter ${reelIndex}/11: Resolved "${chosenTitle.substring(0, 45)}..." [ID: ${topVid}]`, 60 + Math.floor((idx / 11) * 20));
 
@@ -210,8 +211,8 @@ Generate 11 distinct chapters with specific, domain-relevant YouTube video searc
           const les = confirmedCurriculum.lessons.find(l => l.reel_index === v.reel_index);
           if (les && les.candidates && les.candidates[v.selected_index]) {
             const bestCand = les.candidates[v.selected_index];
-            les.video_id = bestCand.video_id;
-            les.video_title = bestCand.title;
+            les.video_id = bestCand.video_id || bestCand.id || les.video_id;
+            les.video_title = String(bestCand.title || bestCand.video_title || les.video_title);
             les.audit_score = v.confidence || 90;
             les.audit_reason = v.reason || 'Verified relevant to chapter goal';
           }
@@ -221,10 +222,12 @@ Generate 11 distinct chapters with specific, domain-relevant YouTube video searc
       console.warn(`[AI-LOG] Audit pass skipped (${auditErr.message}). Using top candidates.`);
     }
 
-    try {
-      await dbClient.saveCurriculum(confirmedCurriculum);
-    } catch (saveErr) {
-      console.warn(`[AI-LOG] Background DB save warning: ${saveErr.message}`);
+    if (typeof dbClient !== 'undefined' && typeof dbClient.saveCurriculum === 'function') {
+      try {
+        await dbClient.saveCurriculum(confirmedCurriculum);
+      } catch (saveErr) {
+        console.warn(`[AI-LOG] Background DB save warning: ${saveErr.message}`);
+      }
     }
 
     onProgress(4, '11 Chapter Reels Resolved & Ready for Creator Confirmation Studio!', 100);

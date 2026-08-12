@@ -252,6 +252,28 @@
       max-width: 380px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
+    /* Button Loading Spinner Utility */
+    @keyframes btnSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .btn-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #FFFFFF;
+      border-radius: 50%;
+      animation: btnSpin 0.8s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    button:disabled {
+      opacity: 0.65 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+
   </style>
 </head>
 <body>
@@ -383,7 +405,7 @@
           placeholder="1-2 lines about this skill..."></textarea>
       </div>
 
-      <button class="btn-learn" onclick="submitCreateSkill()" style="margin-top: 4px;">
+      <button class="btn-learn" id="btnGenInitialSkill" onclick="submitCreateSkill()" style="margin-top: 4px;">
         🚀 Generate 11-Reel AI Skill Pack
       </button>
     </div>
@@ -410,10 +432,10 @@
         <textarea id="domainPromptTextarea" style="width:100%; height:180px; background:#020617; border:1px solid rgba(255,255,255,0.12); border-radius:10px; color:#F8FAFC; font-family:'Roboto Mono', monospace; font-size:12px; padding:12px; resize:vertical; outline:none;"></textarea>
 
         <div style="display:flex; justify-content:space-between; gap:10px; margin-top:6px;">
-          <button onclick="regenerateDomainPrompt()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#E2E8F0; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px;">
+          <button id="btnRegenPrompt" onclick="regenerateDomainPrompt()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#E2E8F0; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px;">
             🔄 Rewrite / Try Again with AI
           </button>
-          <button onclick="confirmPromptAndGenerateChapters()" style="background:linear-gradient(135deg, #1E6C93, #38BDF8); color:#FFFFFF; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 12px rgba(56,189,248,0.25);">
+          <button id="btnConfirmPrompt" onclick="confirmPromptAndGenerateChapters()" style="background:linear-gradient(135deg, #1E6C93, #38BDF8); color:#FFFFFF; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 12px rgba(56,189,248,0.25);">
             ✅ Confirm Prompt ➔ Generate 11 Chapters ➔
           </button>
         </div>
@@ -442,10 +464,10 @@
       </div>
 
       <div style="display:flex; justify-content:space-between; gap:10px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.1); flex-shrink:0;">
-        <button onclick="regenerateChaptersList()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#E2E8F0; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px;">
+        <button id="btnRegenChapters" onclick="regenerateChaptersList()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#E2E8F0; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px;">
           🔄 Regenerate Chapters with AI
         </button>
-        <button onclick="confirmChaptersAndStartVideoSearch()" style="background:linear-gradient(135deg, #1E6C93, #38BDF8); color:#FFFFFF; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 12px rgba(56,189,248,0.25);">
+        <button id="btnConfirmChapters" onclick="confirmChaptersAndStartVideoSearch()" style="background:linear-gradient(135deg, #1E6C93, #38BDF8); color:#FFFFFF; border:none; padding:10px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 12px rgba(56,189,248,0.25);">
           ✅ Confirm 11 Chapters ➔ Search YouTube Videos 🔍
         </button>
       </div>
@@ -660,6 +682,11 @@
     }
 
     async function regenerateDomainPrompt() {
+      const btn = document.getElementById('btnRegenPrompt');
+      const confirmBtn = document.getElementById('btnConfirmPrompt');
+      if (btn) { btn.disabled = true; btn.innerHTML = '<span class="btn-spinner"></span> Rewriting...'; }
+      if (confirmBtn) { confirmBtn.disabled = true; }
+
       const loadingState = document.getElementById('promptLoadingState');
       const editorState  = document.getElementById('promptEditorState');
       const textarea     = document.getElementById('domainPromptTextarea');
@@ -676,6 +703,9 @@
         alert(`Prompt rewrite failed: ${err.message}`);
         loadingState.style.display = 'none';
         editorState.style.display  = 'flex';
+      } finally {
+        if (btn) { btn.disabled = false; btn.innerHTML = '🔄 Rewrite / Try Again with AI'; }
+        if (confirmBtn) { confirmBtn.disabled = false; }
       }
     }
 
@@ -690,8 +720,12 @@
         return;
       }
 
+      const confirmBtn = document.getElementById('btnConfirmPrompt');
+      if (confirmBtn) { confirmBtn.disabled = true; confirmBtn.innerHTML = '<span class="btn-spinner"></span> Generating Chapters...'; }
+
       closePromptReviewModal();
       openChaptersReviewModal();
+      if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.innerHTML = '✅ Confirm Prompt ➔ Generate 11 Chapters ➔'; }
     }
 
     async function openChaptersReviewModal() {
@@ -719,6 +753,11 @@
     }
 
     async function regenerateChaptersList() {
+      const btn = document.getElementById('btnRegenChapters');
+      const confirmBtn = document.getElementById('btnConfirmChapters');
+      if (btn) { btn.disabled = true; btn.innerHTML = '<span class="btn-spinner"></span> Regenerating...'; }
+      if (confirmBtn) { confirmBtn.disabled = true; }
+
       const loadingState = document.getElementById('chaptersLoadingState');
       const editorState  = document.getElementById('chaptersEditorState');
 
@@ -734,6 +773,9 @@
         alert(`Chapter regeneration failed: ${err.message}`);
         loadingState.style.display = 'none';
         editorState.style.display  = 'flex';
+      } finally {
+        if (btn) { btn.disabled = false; btn.innerHTML = '🔄 Regenerate Chapters with AI'; }
+        if (confirmBtn) { confirmBtn.disabled = false; }
       }
     }
 
@@ -991,7 +1033,7 @@
       if (!studioDraft) return;
       const publishBtn = document.getElementById('publishBtn');
       publishBtn.disabled = true;
-      publishBtn.textContent = '💾 Saving...';
+      publishBtn.innerHTML = '<span class="btn-spinner"></span> 💾 Saving to Portal DB...';
 
       // Build the full schema to persist
       const schemaJson = {
@@ -1026,12 +1068,12 @@
         } else {
           alert('Save failed: ' + (data.error || 'Unknown error'));
           publishBtn.disabled = false;
-          publishBtn.textContent = '✅ Publish Skill Pack';
+          publishBtn.innerHTML = '✅ Publish Skill Pack (Confirm All 11 Reels First)';
         }
       } catch (err) {
         alert('Network error: ' + err.message);
         publishBtn.disabled = false;
-        publishBtn.textContent = '✅ Publish Skill Pack';
+        publishBtn.innerHTML = '✅ Publish Skill Pack (Confirm All 11 Reels First)';
       }
     }
 
