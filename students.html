@@ -452,12 +452,15 @@
         <button class="btn-clear-sector" onclick="resetSectorGrid()">Clear Filter ✕</button>
       </div>
 
-      <div class="results-header">
-        <span class="results-count" id="resultsCount">Loading NCVET NSQF Database...</span>
-      </div>
+      <!-- Job Roles Catalog Container (Hidden on initial load, revealed upon selecting a sector) -->
+      <div id="jobRolesSection" style="display: none;">
+        <div class="results-header">
+          <span class="results-count" id="resultsCount">Loading NCVET NSQF Database...</span>
+        </div>
 
-      <div class="qp-grid" id="cardsGrid">
-        <!-- Dynamic Qualification Cards Rendered Here -->
+        <div class="qp-grid" id="cardsGrid">
+          <!-- Dynamic Qualification Cards Rendered Here -->
+        </div>
       </div>
 
     </main>
@@ -487,7 +490,6 @@
     window.addEventListener('DOMContentLoaded', () => {
       initCascadingFilters();
       loadSectorCards();
-      fetchCards();
     });
 
     async function loadSectorCards() {
@@ -506,14 +508,18 @@
 
       grid.innerHTML = sectors.map(s => {
         const cleanName = s.nsqfSectorName.replace(/'/g, "\\'");
+        const cleanDesc = (s.description || 'Explore National Qualifications & Vocational Skill Packs in this sector.')
+          .replace(/Õ/g, "'")
+          .replace(/Ê/g, " ");
+        const cleanTitle = (s.title || '').replace(/Õ/g, "'").replace(/Ê/g, " ");
         return `
           <div class="sid-sector-card" onclick="selectSectorCard('${cleanName}')">
             <div class="sid-sector-img-wrap">
-              <img src="${s.localImage}" alt="${s.title}" class="sid-sector-img" loading="lazy" onerror="this.src='resources/sectors/sector_1.jpg'" />
+              <img src="${s.localImage}" alt="${cleanTitle}" class="sid-sector-img" loading="lazy" onerror="this.src='resources/sectors/sector_1.jpg'" />
             </div>
             <div class="sid-sector-body">
-              <div class="sid-sector-title">${s.title}</div>
-              <div class="sid-sector-desc">${s.description || 'Explore National Qualifications & Vocational Skill Packs in this sector.'}</div>
+              <div class="sid-sector-title">${cleanTitle}</div>
+              <div class="sid-sector-desc">${cleanDesc}</div>
             </div>
           </div>
         `;
@@ -542,6 +548,9 @@
       if (backBtn) backBtn.style.display = 'inline-flex';
       const grid = document.getElementById('sidSectorGrid');
       if (grid) grid.style.display = 'none';
+
+      const jobRolesSection = document.getElementById('jobRolesSection');
+      if (jobRolesSection) jobRolesSection.style.display = 'block';
 
       await onSectorChange();
 
@@ -667,7 +676,8 @@
       const grid = document.getElementById('sidSectorGrid');
       if (grid) grid.style.display = 'grid';
 
-      fetchCards();
+      const jobRolesSection = document.getElementById('jobRolesSection');
+      if (jobRolesSection) jobRolesSection.style.display = 'none';
     }
 
     function populateSelect(id, items, defaultLabel, mapFn = item => ({ value: item, text: item })) {

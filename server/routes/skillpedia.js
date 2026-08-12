@@ -324,16 +324,16 @@ router.get('/qps/cards', async (req, res) => {
             args.push(jobrole);
         }
 
-        // Get total matching count
-        const countRow = await db.prepare(`SELECT COUNT(*) as total ${baseSql}`).get(...args);
+        // Get total matching count (distinct QPs)
+        const countRow = await db.prepare(`SELECT COUNT(DISTINCT qp_code) as total ${baseSql}`).get(...args);
         const matchCount = countRow ? countRow.total : 0;
 
-        // Get overall database count
-        const dbCountRow = await db.prepare(`SELECT COUNT(*) as total FROM nsqf_qps`).get();
+        // Get overall database count (distinct QPs)
+        const dbCountRow = await db.prepare(`SELECT COUNT(DISTINCT qp_code) as total FROM nsqf_qps`).get();
         const totalDatabaseCount = dbCountRow ? dbCountRow.total : 2176;
 
         const maxLimit = limit ? parseInt(limit) : 60;
-        const querySql = `SELECT * ${baseSql} ORDER BY id ASC LIMIT ${maxLimit}`;
+        const querySql = `SELECT * ${baseSql} GROUP BY qp_code ORDER BY id ASC LIMIT ${maxLimit}`;
 
         const cards = await db.prepare(querySql).all(...args);
         res.json({
