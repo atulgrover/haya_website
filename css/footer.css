@@ -14,18 +14,21 @@
 
 .footer-single-row-grid {
   display: grid;
-  grid-template-columns: 18% 46% 36%;
+  grid-template-columns: 1.2fr 2.6fr 2fr;
   gap: 20px;
   align-items: stretch;
+  max-width: 1280px;
+  margin: 0 auto;
   width: 100%;
+  box-sizing: border-box;
 }
 
-/* Section 1 (18%): Logo & Brand */
+/* Section 1: Logo & Brand */
 .footer-col-logo {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 16px 14px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,8 +41,8 @@
 }
 
 .footer-logo-img {
-  width: 90%;
-  max-width: 220px;
+  width: 100%;
+  max-width: 260px;
   height: auto;
   filter: invert(1);
   mix-blend-mode: screen;
@@ -53,12 +56,12 @@
   color: #FFFFFF;
 }
 
-/* Section 2 (46%): Sanskrit Shloka */
+/* Section 2: Sanskrit Shloka */
 .footer-col-shloka {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 18px 22px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,26 +72,26 @@
 
 .shloka-devanagari-banner {
   font-family: 'Noto Serif Devanagari', serif;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 400;
   color: #FFFFFF;
-  margin-bottom: 4px;
-  line-height: 1.5;
+  margin-bottom: 6px;
+  line-height: 1.55;
   letter-spacing: 0.4px;
 }
 
 .shloka-meaning-banner {
-  font-size: 12.5px;
+  font-size: 14.5px;
   color: #CBD5E1;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-/* Section 3 (36%): Compact 3-Field Volunteer Form */
+/* Section 3: Compact 3-Field Volunteer Form */
 .footer-col-volunteer {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 18px 22px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -171,9 +174,9 @@
 }
 
 .footer-bottom {
-  max-width: 100%;
-  margin: 30px 0 0;
-  padding-top: 18px;
+  max-width: 1280px;
+  margin: 24px auto 0;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   justify-content: space-between;
