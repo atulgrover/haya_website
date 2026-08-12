@@ -255,29 +255,35 @@ async function processBatchVideoHarvesting() {
 
     const startTime = Date.now();
     let harvestedCount = 0;
+    const CONCURRENCY_WORKERS = 10;
 
-    for (let i = 0; i < pcsToHarvest.length; i++) {
-        const item = pcsToHarvest[i];
-        const { engRes, hiRes } = await harvestDualVideos(item);
+    for (let i = 0; i < pcsToHarvest.length; i += CONCURRENCY_WORKERS) {
+        const chunk = pcsToHarvest.slice(i, i + CONCURRENCY_WORKERS);
+        const results = await Promise.all(chunk.map(item => harvestDualVideos(item)));
 
-        await db.prepare(`
-            UPDATE nsqf_pcs
-            SET video_id = ?, video_title = ?, video_url = ?, thumbnail_url = ?, audit_score = ?,
-                video_id_hi = ?, video_title_hi = ?, video_url_hi = ?
-            WHERE id = ?
-        `).run(
-            engRes.videoId, engRes.videoTitle, engRes.videoUrl, engRes.thumbnailUrl, engRes.auditScore,
-            hiRes.videoId, hiRes.videoTitle, hiRes.videoUrl,
-            item.id
-        );
+        for (let j = 0; j < chunk.length; j++) {
+            const item = chunk[j];
+            const { engRes, hiRes } = results[j];
 
-        harvestedCount++;
+            await db.prepare(`
+                UPDATE nsqf_pcs
+                SET video_id = ?, video_title = ?, video_url = ?, thumbnail_url = ?, audit_score = ?,
+                    video_id_hi = ?, video_title_hi = ?, video_url_hi = ?
+                WHERE id = ?
+            `).run(
+                engRes.videoId, engRes.videoTitle, engRes.videoUrl, engRes.thumbnailUrl, engRes.auditScore,
+                hiRes.videoId, hiRes.videoTitle, hiRes.videoUrl,
+                item.id
+            );
 
-        if (i < 5 || (i + 1) % 25 === 0 || i === pcsToHarvest.length - 1) {
-            console.log(`[${i + 1}/${pcsToHarvest.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_intent}"`);
-            console.log(`        🇬🇧 English Video ID: "${engRes.videoId}" | Title: "${engRes.videoTitle?.substring(0, 45)}..."`);
-            console.log(`        🇮🇳 Hindi Video ID:   "${hiRes.videoId}"  | Title: "${hiRes.videoTitle?.substring(0, 45)}..."`);
-            console.log('--------------------------------------------------------------------------------');
+            harvestedCount++;
+
+            if (i < 20 || (i + j + 1) % 50 === 0 || i + CONCURRENCY_WORKERS >= pcsToHarvest.length) {
+                console.log(`[${i + j + 1}/${pcsToHarvest.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_intent}"`);
+                console.log(`        🇬🇧 English Video ID: "${engRes.videoId}" | Title: "${engRes.videoTitle?.substring(0, 40)}..."`);
+                console.log(`        🇮🇳 Hindi Video ID:   "${hiRes.videoId}"  | Title: "${hiRes.videoTitle?.substring(0, 40)}..."`);
+                console.log('--------------------------------------------------------------------------------');
+            }
         }
     }
 
