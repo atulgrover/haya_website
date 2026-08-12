@@ -107,8 +107,11 @@
     .progress-bar { height: 6px; background: #334155; border-radius: 4px; overflow: hidden; margin-top: 6px; }
     .progress-fill { height: 100%; background: #38BDF8; border-radius: 4px; }
 
-    /* Segment Cards 6-Grid */
-    .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    /* Segment Cards 6-Grid (3 Cards Per Row) */
+    .segments-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 992px) {
+      .segments-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    }
     .segment-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
       box-shadow: var(--card-shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
