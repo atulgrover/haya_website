@@ -51,7 +51,8 @@ Requirements:
               { role: 'system', content: systemPrompt },
               { role: 'user', content: `Generate the domain-specific master curriculum prompt for: ${topic}` }
             ],
-            temperature: 0.4
+            temperature: 0.4,
+            max_tokens: 1500
           })
         });
 
@@ -93,7 +94,8 @@ Requirements:
               { role: 'system', content: systemPrompt },
               { role: 'user', content: `Generate the domain-specific master curriculum prompt for: ${topic}` }
             ],
-            temperature: 0.5
+            temperature: 0.5,
+            max_tokens: 1500
           })
         });
 
