@@ -403,16 +403,16 @@ function updateAuthButtonsUI() {
 
             if (user.role === 'admin') {
                 portalPage = 'admin.html';
-                portalLabel = '👑 ReelCurator Admin';
+                portalLabel = 'ReelCurator Agent';
             } else if (user.role === 'student') {
                 portalPage = 'students.html';
-                portalLabel = 'Go to Student Portal';
+                portalLabel = 'Student Portal';
             } else if (user.role === 'professional') {
                 portalPage = 'professionals.html';
-                portalLabel = 'Go to Professional Portal';
+                portalLabel = 'Professional Portal';
             } else {
                 portalPage = 'dashboard.html';
-                portalLabel = 'Go to Employee Portal';
+                portalLabel = 'Employee Portal';
             }
 
             // Create/update User Profile Dropdown attached to parent
@@ -430,22 +430,10 @@ function updateAuthButtonsUI() {
                     <div class="user-profile-email">${user.email}</div>
                     <span class="user-profile-role-badge">${user.role || 'Member'}</span>
                 </div>
-                <a href="${portalPage}" class="user-profile-item">
-                    <span>${portalLabel}</span>
-                    <span>➔</span>
-                </a>
-                <a href="billing.html" class="user-profile-item">
-                    <span>License &amp; Billing</span>
-                    <span>🔑</span>
-                </a>
-                <a href="dashboard.html" class="user-profile-item">
-                    <span>Portal Asset Library</span>
-                    <span>📊</span>
-                </a>
-                <a href="#" onclick="handleSignOut(event)" class="user-profile-item logout">
-                    <span>Sign Out</span>
-                    <span>🚪</span>
-                </a>
+                <a href="${portalPage}" class="user-profile-item">${portalLabel}</a>
+                <a href="billing.html" class="user-profile-item">License &amp; Billing</a>
+                <a href="dashboard.html" class="user-profile-item">Asset Library</a>
+                <a href="#" onclick="handleSignOut(event)" class="user-profile-item logout">Sign Out</a>
             `;
         } else {
             btn.textContent = 'Login';
