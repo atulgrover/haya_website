@@ -353,6 +353,19 @@ async function initSchema() {
                     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                     UNIQUE(user_id, qp_code, pc_code)
                 );
+
+                CREATE TABLE IF NOT EXISTS youtube_search_cache (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    query_hash TEXT UNIQUE NOT NULL,
+                    search_query TEXT NOT NULL,
+                    video_id TEXT NOT NULL,
+                    video_title TEXT,
+                    video_url TEXT,
+                    thumbnail_url TEXT,
+                    duration_sec INTEGER DEFAULT 300,
+                    audit_score INTEGER DEFAULT 90,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
             `);
         } catch (e) {}
 
