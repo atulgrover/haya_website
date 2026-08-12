@@ -445,3 +445,23 @@ function updateAuthButtonsUI() {
         }
     });
 }
+
+/* ── Volunteer Form Handler ───────────────────────────────────────── */
+function handleVolunteerSubmit(e) {
+    if (e) e.preventDefault();
+    const name  = document.getElementById('volName')?.value.trim();
+    const email = document.getElementById('volEmail')?.value.trim();
+    const phone = document.getElementById('volPhone')?.value.trim();
+    const msg   = document.getElementById('volunteer-msg');
+
+    if (name && email && phone) {
+        if (msg) {
+            msg.className = 'volunteer-status-msg success';
+            msg.innerText = '✨ Thank you for volunteering! Our team will contact you shortly.';
+            msg.style.display = 'block';
+        }
+        document.getElementById('volName').value = '';
+        document.getElementById('volEmail').value = '';
+        document.getElementById('volPhone').value = '';
+    }
+}

@@ -14,23 +14,23 @@
 
 .footer-single-row-grid {
   display: grid;
-  grid-template-columns: 20% 52% 28%;
-  gap: 24px;
+  grid-template-columns: 18% 46% 36%;
+  gap: 20px;
   align-items: stretch;
   width: 100%;
 }
 
-/* Section 1 (20%): Logo & Brand */
+/* Section 1 (18%): Logo & Brand */
 .footer-col-logo {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 22px 18px;
+  padding: 16px 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   height: 100%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -53,12 +53,12 @@
   color: #FFFFFF;
 }
 
-/* Section 2 (52%): Sanskrit Shloka */
+/* Section 2 (46%): Sanskrit Shloka */
 .footer-col-shloka {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 22px 28px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,26 +69,26 @@
 
 .shloka-devanagari-banner {
   font-family: 'Noto Serif Devanagari', serif;
-  font-size: 18.5px;
+  font-size: 17px;
   font-weight: 700;
   color: #FFFFFF;
   margin-bottom: 4px;
-  line-height: 1.55;
+  line-height: 1.5;
   letter-spacing: 0.4px;
 }
 
 .shloka-meaning-banner {
-  font-size: 13px;
+  font-size: 12.5px;
   color: #CBD5E1;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
-/* Section 3 (28%): Contact Details */
-.footer-col-contact {
+/* Section 3 (36%): Compact 3-Field Volunteer Form */
+.footer-col-volunteer {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 22px 28px;
+  padding: 16px 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -97,51 +97,77 @@
   box-sizing: border-box;
 }
 
-.footer-contact-title {
+.footer-volunteer-title {
   font-family: var(--font-heading, sans-serif);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   letter-spacing: 0.5px;
 }
 
-.footer-contact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-contact-list li {
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 8px;
-  line-height: 1.5;
+.footer-volunteer-form {
   display: flex;
-  align-items: baseline;
-  gap: 6px;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.footer-contact-list li:last-child {
-  margin-bottom: 0;
+.volunteer-field-group {
+  width: 100%;
 }
 
-.contact-icon-label {
-  font-weight: 700;
-  color: #93C5FD;
-  font-size: 13px;
-  min-width: 65px;
-  display: inline-block;
-}
-
-.footer-contact-list a {
+.volunteer-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 6px 10px;
   color: #FFFFFF;
-  text-decoration: underline;
-  transition: color 0.2s;
+  font-size: 12px;
+  font-family: var(--font-body, sans-serif);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
 }
 
-.footer-contact-list a:hover {
-  color: #93C5FD;
+.volunteer-input:focus {
+  border-color: #93C5FD;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.volunteer-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.volunteer-submit-btn {
+  width: 100%;
+  background: #1E6C93;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 2px;
+}
+
+.volunteer-submit-btn:hover {
+  background: #165272;
+  transform: translateY(-1px);
+}
+
+.volunteer-status-msg {
+  margin-top: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-align: center;
+  display: none;
+}
+
+.volunteer-status-msg.success {
+  color: #86EFAC;
 }
 
 .footer-bottom {

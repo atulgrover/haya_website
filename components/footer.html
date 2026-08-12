@@ -17,14 +17,22 @@
       <p class="shloka-meaning-banner">&ldquo;We meditate upon Lord Hayagriva, who is the very embodiment of knowledge and pure bliss, who possesses a radiant form as clear as a blemishless crystal, and who is the ultimate foundation of all learning and sciences.&rdquo;</p>
     </div>
 
-    <!-- Section 3 (28%): Bulleted Contact Details -->
-    <div class="footer-col-contact">
-      <h3 class="footer-contact-title">Contact Us</h3>
-      <ul class="footer-contact-list">
-        <li><span class="contact-icon-label">Phone:</span> +91-98140-40900</li>
-        <li><span class="contact-icon-label">Email:</span> <a href="mailto:hayagriva.app@gmail.com">hayagriva.app@gmail.com</a></li>
-        <li><span class="contact-icon-label">Address:</span> House No 1634, Sector 18-D, Chandigarh</li>
-      </ul>
+    <!-- Section 3 (36%): Compact 3-Field Volunteer Form -->
+    <div class="footer-col-volunteer">
+      <h3 class="footer-volunteer-title">Volunteer With Us</h3>
+      <form class="footer-volunteer-form" onsubmit="handleVolunteerSubmit(event)">
+        <div class="volunteer-field-group">
+          <input type="text" id="volName" class="volunteer-input" placeholder="Full Name *" required />
+        </div>
+        <div class="volunteer-field-group">
+          <input type="email" id="volEmail" class="volunteer-input" placeholder="Email Address *" required />
+        </div>
+        <div class="volunteer-field-group">
+          <input type="tel" id="volPhone" class="volunteer-input" placeholder="Phone Number *" required />
+        </div>
+        <button type="submit" class="volunteer-submit-btn">Join as Volunteer</button>
+      </form>
+      <div id="volunteer-msg" class="volunteer-status-msg"></div>
     </div>
 
   </div>
