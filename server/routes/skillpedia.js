@@ -532,12 +532,18 @@ router.post('/save-skill', async (req, res) => {
 
         // Default anonymous builder if no email provided
         const normalizedEmail = (employeeEmailId || 'builder@hayagriva.ai').trim().toLowerCase();
-        const schemaString = typeof schemaJson === 'string' ? schemaJson : JSON.stringify(schemaJson);
+        // Extract tag and description from parsed schema if available
+        let extractedTag = 'General';
+        let extractedDesc = '';
+        if (typeof schemaJson === 'object' && schemaJson !== null) {
+            extractedTag = schemaJson.tag || schemaJson.sector || 'General';
+            extractedDesc = schemaJson.description || schemaJson.subtitle || '';
+        }
 
         const result = await db.prepare(`
-            INSERT INTO custom_skills (title, company_id, employee_email_id, schema_json)
-            VALUES (?, ?, ?, ?)
-        `).run(title.trim(), companyId ? companyId.trim() : null, normalizedEmail, schemaString);
+            INSERT INTO custom_skills (title, tag, description, company_id, employee_email_id, schema_json)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `).run(title.trim(), extractedTag, extractedDesc, companyId ? companyId.trim() : null, normalizedEmail, schemaString);
 
         res.json({
             success: true,

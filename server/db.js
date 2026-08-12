@@ -192,8 +192,16 @@ async function initSchema() {
         try { await db.exec(`ALTER TABLE users ADD COLUMN firm_name TEXT;`); } catch (e) {}
         try { await db.exec(`ALTER TABLE users ADD COLUMN ip_registration_no TEXT;`); } catch (e) {}
 
-        // Migration safety: Ensure nsqf_qps table has curriculum_pdf_url and populate direct NSDC S3 PDF links
+        // Migration safety: Ensure custom_skills table has tag and description indexing columns
+        try { await db.exec(`ALTER TABLE custom_skills ADD COLUMN tag TEXT DEFAULT 'General';`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE custom_skills ADD COLUMN description TEXT;`); } catch (e) {}
+
+        // Migration safety: Ensure nsqf_qps table has pipeline tracking columns
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN curriculum_pdf_url TEXT;`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN markdown_path TEXT;`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN total_nos INTEGER DEFAULT 0;`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN total_pcs INTEGER DEFAULT 0;`); } catch (e) {}
+        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN pipeline_status TEXT DEFAULT 'pending_pdf';`); } catch (e) {}
         try {
             await db.exec(`
                 UPDATE nsqf_qps 
@@ -203,9 +211,77 @@ async function initSchema() {
             `);
         } catch (e) {}
 
+        // Create 5-Table NSQF Pipeline Schema
+        try {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS nsqf_nos (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    qp_code TEXT NOT NULL,
+                    nos_code TEXT NOT NULL,
+                    nos_title TEXT NOT NULL,
+                    nos_type TEXT DEFAULT 'Compulsory',
+                    credits INTEGER DEFAULT 0,
+                    sequence_order INTEGER DEFAULT 1,
+                    UNIQUE(qp_code, nos_code)
+                );
+            `);
+        } catch (e) {}
 
+        try {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS nsqf_modules (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    qp_code TEXT NOT NULL,
+                    nos_code TEXT NOT NULL,
+                    module_title TEXT NOT NULL,
+                    sequence_order INTEGER DEFAULT 1
+                );
+            `);
+        } catch (e) {}
 
-        // Create nsqf_curricula table for parsed NOS modules & Performance Criteria (PC)
+        try {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS nsqf_pcs (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    qp_code TEXT NOT NULL,
+                    nos_code TEXT NOT NULL,
+                    module_id INTEGER,
+                    pc_code TEXT NOT NULL,
+                    pc_description TEXT NOT NULL,
+                    pc_intent TEXT,
+                    contextual_search_query TEXT,
+                    video_id TEXT,
+                    video_title TEXT,
+                    video_url TEXT,
+                    thumbnail_url TEXT,
+                    audit_score INTEGER DEFAULT 90,
+                    sequence_order INTEGER DEFAULT 1,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(qp_code, nos_code, pc_code)
+                );
+            `);
+        } catch (e) {}
+
+        try {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS nsqf_video_audit_logs (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    pc_table_id INTEGER,
+                    qp_code TEXT NOT NULL,
+                    pc_code TEXT NOT NULL,
+                    old_video_id TEXT,
+                    suggested_video_id TEXT NOT NULL,
+                    suggested_video_title TEXT,
+                    suggested_video_url TEXT,
+                    match_score INTEGER DEFAULT 90,
+                    ai_rationale TEXT,
+                    status TEXT DEFAULT 'suggested',
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+            `);
+        } catch (e) {}
+
+        // Create legacy nsqf_curricula table for backward compatibility
         try {
             await db.exec(`
                 CREATE TABLE IF NOT EXISTS nsqf_curricula (
@@ -245,7 +321,6 @@ async function initSchema() {
         try {
             await db.exec(`
                 CREATE TABLE IF NOT EXISTS video_swap_suggestions (
-
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     qp_code TEXT NOT NULL,
                     nos_code TEXT NOT NULL,
@@ -268,8 +343,6 @@ async function initSchema() {
         } catch (e) {}
 
         console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
-
-
 
         // Auto-seed NSQF database if nsqf_qps table is empty
         await seedNSQFFromJSON();
@@ -300,30 +373,55 @@ async function seedNsqfCurriculaIfEmpty() {
                     JSON.stringify(schemaObj)
                 );
 
-                // Populate relational nsqf_videos table
+                // Populate relational nsqf_nos, nsqf_modules, and nsqf_pcs tables
                 if (Array.isArray(schemaObj.nos_modules)) {
+                    let nosOrder = 1;
+                    let modOrder = 1;
+                    let pcOrder = 1;
+
                     for (const mod of schemaObj.nos_modules) {
+                        const nosCode = mod.nos_code || 'NOS';
+                        const nosTitle = mod.nos_title || mod.module_title || 'NOS Module';
+                        const modTitle = mod.module_title || nosTitle;
+
+                        // Insert NOS
+                        await db.prepare(`
+                            INSERT OR REPLACE INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
+                            VALUES (?, ?, ?, ?)
+                        `).run(schemaObj.qp_code, nosCode, nosTitle, nosOrder++);
+
+                        // Insert Module
+                        const modInfo = await db.prepare(`
+                            INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
+                            VALUES (?, ?, ?, ?)
+                        `).run(schemaObj.qp_code, nosCode, modTitle, modOrder++);
+                        const modId = modInfo.lastInsertRowid;
+
                         if (Array.isArray(mod.pcs)) {
                             for (const pc of mod.pcs) {
                                 const vId = pc.video_id || mod.video_id || 'x9PQgbB4y6M';
                                 const vTitle = pc.video_title || `${schemaObj.qp_name} Demonstration ${pc.pc_id}`;
                                 const vUrl = `https://www.youtube.com/watch?v=${vId}`;
+                                const pcIntent = pc.pc_intent || pc.pc_desc || pc.title || pc.pc_id;
+                                const pcDesc = pc.pc_desc || pcIntent;
+                                const contextQuery = `${schemaObj.qp_name} ${nosTitle} ${modTitle} ${pcIntent} ${pcDesc}`;
+
+                                // Legacy table sync
                                 await db.prepare(`
                                     INSERT OR REPLACE INTO nsqf_videos 
                                     (qp_code, nos_code, nos_title, module_title, pc_id, pc_intent, pc_desc, video_id, video_title, video_url, audit_score)
                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                                 `).run(
-                                    schemaObj.qp_code,
-                                    mod.nos_code || 'NOS',
-                                    mod.nos_title || '',
-                                    mod.module_title || mod.nos_title,
-                                    pc.pc_id,
-                                    pc.pc_intent || pc.pc_desc || pc.title || pc.pc_id,
-                                    pc.pc_desc || pc.pc_intent || '',
-                                    vId,
-                                    vTitle,
-                                    vUrl,
-                                    90
+                                    schemaObj.qp_code, nosCode, nosTitle, modTitle, pc.pc_id, pcIntent, pcDesc, vId, vTitle, vUrl, 90
+                                );
+
+                                // Restructured nsqf_pcs table sync
+                                await db.prepare(`
+                                    INSERT OR REPLACE INTO nsqf_pcs 
+                                    (qp_code, nos_code, module_id, pc_code, pc_description, pc_intent, contextual_search_query, video_id, video_title, video_url, audit_score, sequence_order)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                `).run(
+                                    schemaObj.qp_code, nosCode, modId, pc.pc_id, pcDesc, pcIntent, contextQuery, vId, vTitle, vUrl, 90, pcOrder++
                                 );
                             }
                         }
