@@ -816,10 +816,10 @@
                     <div id="nos-grp-${nIdx}" style="padding:10px 12px; border-top:1px solid var(--border-color); display:${isExpanded ? 'flex' : 'none'}; flex-direction:column; gap:10px; background:#FAFAFA;">
                       ${grp.modules.map((mod, mSubIdx) => {
                         const match = String(mod.module_title || '').match(/Module\s*(\d+\.\d+)/i);
-                        const modCode = match ? match[1] : `${nIdx                        const cleanQpCode = String(qpCode || '').replace(/\//g, '_');
+                        const modCode = match ? match[1] : `${nIdx + 1}.${mSubIdx + 1}`;
+                        const cleanQpCode = String(qpCode || '').replace(/\//g, '_');
                         const reelUrl = `reel.html?qp=${encodeURIComponent(cleanQpCode)}&nos=${encodeURIComponent(nosCode)}&module=${encodeURIComponent(modCode)}`;
                         return `
-
                           <div style="border:1px solid rgba(0,0,0,0.08); border-radius:8px; padding:10px; background:#FFF;">
                             <!-- Hyperlinked Module Title & Copy Link Button -->
                             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; flex-wrap:wrap;">
@@ -846,7 +846,6 @@
                               `;}).join('')}
                             </div>
                           </div>
-                        `;
                         `;
                       }).join('')}
                     </div>
