@@ -354,22 +354,79 @@ router.get('/nsqf/curriculum', async (req, res) => {
     try {
         let rawCode = req.query.qp || req.query.qpCode || '';
         if (rawCode.startsWith('/')) rawCode = rawCode.substring(1);
-        const qpCode = decodeURIComponent(rawCode).trim().replace('_', '/');
-        
-        // 1. First check relational nsqf_videos table for PC video records
+        const qpCode = decodeURIComponent(rawCode).trim().replace(/_/g, '/');
+        const cleanQp = qpCode.replace(/\//g, '_');
+
+        // Fetch QP metadata
+        const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, cleanQp);
+        const qpName = qpRow ? qpRow.qp_name : `Qualification Pack ${qpCode || 'Skill'}`;
+        const sector = qpRow ? qpRow.sector : 'Vocational Training';
+
+        // 1. Query relational 5-table schema (nsqf_pcs + nsqf_nos + nsqf_modules)
+        const pcRows = await db.prepare(`
+            SELECT 
+                p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, 
+                p.video_id, p.video_title, p.video_url, p.video_id_hi, p.video_title_hi, p.video_url_hi,
+                COALESCE(n.nos_title, 'Occupational Standards') as nos_title,
+                COALESCE(m.module_title, 'Module') as module_title
+            FROM nsqf_pcs p
+            LEFT JOIN nsqf_nos n ON p.qp_code = n.qp_code AND p.nos_code = n.nos_code
+            LEFT JOIN nsqf_modules m ON p.module_id = m.id
+            WHERE p.qp_code = ? OR REPLACE(p.qp_code, '/', '_') = ?
+            ORDER BY p.id ASC
+        `).all(qpCode, cleanQp);
+
+        if (Array.isArray(pcRows) && pcRows.length > 0) {
+            // Group PC rows into NOS modules
+            const moduleMap = {};
+            pcRows.forEach(row => {
+                const key = `${row.nos_code}_${row.module_title}`;
+                if (!moduleMap[key]) {
+                    moduleMap[key] = {
+                        nos_code: row.nos_code,
+                        nos_title: row.nos_title,
+                        module_title: row.module_title,
+                        video_id: row.video_id || 'x9PQgbB4y6M',
+                        pcs: []
+                    };
+                }
+                moduleMap[key].pcs.push({
+                    pc_id: row.pc_code,
+                    pc_intent: row.pc_intent || row.pc_description,
+                    pc_desc: row.pc_description,
+                    video_id: row.video_id || 'x9PQgbB4y6M',
+                    video_title: row.video_title || 'NSQF Vocational Reel',
+                    video_url: row.video_url || 'https://www.youtube.com/watch?v=x9PQgbB4y6M',
+                    video_id_hi: row.video_id_hi,
+                    video_title_hi: row.video_title_hi,
+                    video_url_hi: row.video_url_hi,
+                    audit_score: 90
+                });
+            });
+
+            const nosModules = Object.values(moduleMap);
+            return res.json({
+                success: true,
+                curriculum: {
+                    qp_code: qpCode,
+                    qp_name: qpName,
+                    version: qpRow ? qpRow.version : '1.0',
+                    sector: sector,
+                    total_modules: nosModules.length,
+                    total_pcs: pcRows.length,
+                    nos_modules: nosModules
+                }
+            });
+        }
+
+        // 2. Fallback: Check nsqf_videos legacy table
         const videoRows = await db.prepare(`
             SELECT * FROM nsqf_videos 
             WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?
             ORDER BY id ASC
-        `).all(qpCode, qpCode.replace('/', '_'));
-
-        // Fetch QP metadata
-        const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
-        const qpName = qpRow ? qpRow.qp_name : `Qualification Pack ${qpCode || 'Skill'}`;
-        const sector = qpRow ? qpRow.sector : 'Vocational Training';
+        `).all(qpCode, cleanQp);
 
         if (Array.isArray(videoRows) && videoRows.length > 0) {
-            // Group PC video rows into NOS modules
             const moduleMap = {};
             videoRows.forEach(row => {
                 const key = `${row.nos_code}_${row.module_title}`;
