@@ -120,12 +120,30 @@ While the current platform reliably delivers desktop binaries, quantized GGUF LL
 
 ---
 
+### Pillar 7: 🏢 Enterprise Custom Skills Subsystem Evolution (Manager-to-Employee Workspaces)
+
+#### Current Architecture (Phase 1: Simplified Manager-to-Employee Skill Sharing):
+- **Authoring**: Employer / Manager creates custom 11-reel SOP skill packs via `aiEngine.js` in `employees.html`.
+- **Storage Model**: Compact, portable document payload (`schema_json`) stored in `custom_skills` table.
+- **Sharing & Discovery**: Skills filtered by corporate email domain (`@company.com`) and accessible to team members via shareable deep-links (`reel.html?skill=ID`).
+
+#### Future Strategic Shift (Phase 2: Enterprise Compliance & Management Engine):
+- **Manager Authoring & Targeting Controls**:
+  - Employers/Managers set **`is_mandatory`** compliance flags (0 = Optional, 1 = Mandatory Safety/Onboarding Drill) and completion **`due_date`**.
+  - Target assignments by **`company_wide`**, **`department`** (e.g. Assembly, Operations, Safety, HR), or **`individual_emails`**.
+- **Dedicated Relational Compliance Table (`custom_skill_assignments`)**:
+  - Stores `skill_id`, `company_id`, `employee_email_id`, `assigned_by_email`, `status` (`assigned` | `in_progress` | `completed` | `overdue`), `completion_percentage`, `score`, and `completed_at`.
+- **Manager Executive Oversight Dashboard**:
+  - Real-time team compliance reports, completion metrics, and automated reminders for overdue workforce drills.
+
+---
+
 ## 📅 Implementation Phasing & Milestones
 
 | Phase | Timeline | Target Deliverables |
 | :--- | :--- | :--- |
-| **Phase 1: Web Experience** | Q3 2026 | Web Agent PDF Auditor Sandbox, Updated Nav Labels & Razorpay Payment History |
-| **Phase 2: Enterprise** | Q4 2026 | Multi-Seat Firm Workspaces, Corporate Invoice Management, Credit Wallet System |
+| **Phase 1: Web Experience** | Q3 2026 | Web Agent PDF Auditor Sandbox, Updated Nav Labels, Simplified Manager-to-Employee Skill Sharing |
+| **Phase 2: Enterprise & Skills** | Q4 2026 | Multi-Seat Firm Workspaces, Manager-to-Employee Compliance Engine (`custom_skill_assignments`), Credit Wallet System |
 | **Phase 3: Real-Time Sync** | Q1 2027 | Automated Daily NCLT/IBBI Order Crawlers, `.diff.vlt` Incremental Sync Protocol |
 | **Phase 4: Marketplace** | Q2 2027 | Community Asset Creator Marketplace, Developer API Access, Interactive Knowledge Graph |
 
