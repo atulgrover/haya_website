@@ -64,23 +64,24 @@
     }
     .filter-input:focus { border-color: var(--primary-color); }
 
-    /* Consolidated Keyword Tag List */
-    .tag-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+    /* Sleek High-Density Tag Directory */
+    .tag-list { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
     .tag-item {
-      display: flex; justify-content: space-between; align-items: center; padding: 9px 12px;
-      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px;
-      font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      display: flex; justify-content: space-between; align-items: center; padding: 7px 10px;
+      background: transparent; border-radius: 6px; border-left: 3px solid transparent;
+      font-size: 13px; font-weight: 500; color: var(--text-main); cursor: pointer; transition: all 0.15s ease;
     }
-    .tag-item:hover, .tag-item.active { background: var(--primary-light); color: var(--primary-color); border-color: var(--primary-color); }
-    .tag-badge { background: #E2E8F0; color: var(--text-main); font-size: 11px; padding: 2px 7px; border-radius: 10px; }
+    .tag-item:hover { background: rgba(30, 108, 147, 0.06); color: var(--primary-color); }
+    .tag-item.active { background: var(--primary-light); color: var(--primary-color); font-weight: 700; border-left-color: var(--primary-color); }
+    .tag-badge { background: #E2E8F0; color: #475569; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 10px; }
 
     /* CENTER PANEL: Enterprise Skill Cards Grid */
     .panel-center {
       flex: 1; background: var(--bg-primary); padding: 24px; display: flex; flex-direction: column; gap: 20px;
     }
     .btn-create-skill {
-      background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px 16px; border-radius: 6px;
-      font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
+      background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px 18px; border-radius: 6px;
+      font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
     }
     .btn-create-skill:hover { background: var(--primary-hover); }
 
@@ -295,22 +296,17 @@
 
     <!-- LEFT PANEL: Search & Consolidated Tag Directory -->
     <aside class="panel-left">
-      <h2 class="panel-title">Filter Custom Skills</h2>
+      <h2 class="panel-title">Navigation &amp; Directory</h2>
 
       <!-- Keyword Search Input -->
       <div class="filter-group">
-        <label class="filter-label" for="searchInput">Search Keyword</label>
-        <input type="text" id="searchInput" class="filter-input" placeholder="Search title or email..." oninput="handleSearchInput()" />
+        <label class="filter-label" for="searchInput">Search Keywords</label>
+        <input type="text" id="searchInput" class="filter-input" placeholder="Search title, tag, or email..." oninput="handleSearchInput()" />
       </div>
-
-      <!-- Create Custom Skill Button (Shifted under Search Keyword) -->
-      <button class="btn-create-skill" onclick="openCreateModal()">
-        ➕ Create Custom Skill
-      </button>
 
       <!-- Consolidated Tag / Category Directory -->
       <div class="filter-group">
-        <label class="filter-label">Keyword / Category Directory</label>
+        <label class="filter-label">Skill Categories</label>
         <div class="tag-list" id="tagList">
           <!-- Loaded dynamically via API -->
         </div>
@@ -319,6 +315,17 @@
 
     <!-- CENTER PANEL: Enterprise Custom Skill Cards -->
     <main class="panel-center">
+      <!-- Workspace Top Header Bar -->
+      <div style="background:#FFFFFF; border:1px solid var(--border-color); border-radius:10px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 1px 3px rgba(0,0,0,0.04); flex-wrap:wrap; gap:12px;">
+        <div>
+          <h2 style="font-family:var(--font-heading); font-size:20px; font-weight:700; color:var(--text-main); margin-bottom:4px;">Enterprise Custom Skills</h2>
+          <p style="font-size:13.5px; color:var(--text-muted);">Corporate SOP micro-learning reels, domain workflows, and team onboarding video packs.</p>
+        </div>
+        <button class="btn-create-skill" onclick="openCreateModal()" style="width:auto; flex-shrink:0;">
+          ✨ Build AI Custom Skill
+        </button>
+      </div>
+
       <!-- Mobile filter toggle -->
       <button class="filter-drawer-toggle" id="filterDrawerToggle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
