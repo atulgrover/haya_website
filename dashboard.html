@@ -264,6 +264,8 @@
       <div class="brand-title">HAYA PORTAL</div>
       <div style="display:flex; align-items:center; gap: 0.75rem;">
         <span class="user-badge" id="user-tier">Starter (Free)</span>
+        <a href="billing.html" class="btn btn-outline" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">🔑 License &amp; Billing</a>
+        <a href="admin.html" id="admin-hub-btn" class="btn btn-outline" style="display: none; padding: 0.4rem 0.95rem; font-size: 0.82rem;">👑 Admin Hub</a>
         <a href="/" class="btn btn-outline" style="padding: 0.4rem 0.95rem; font-size: 0.82rem; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">← Home</a>
         <button class="btn btn-outline" onclick="logout()" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">Logout</button>
       </div>
@@ -271,58 +273,17 @@
 
     <!-- DASHBOARD SUB-SECTION TABS -->
     <nav class="dashboard-tabs">
-      <button class="dash-tab active" id="tab-btn-license" onclick="switchDashTab('license')">🔑 License & Payments</button>
-      <button class="dash-tab" id="tab-btn-installer" onclick="switchDashTab('installer')">🖥️ Hayagriva IPE</button>
+      <button class="dash-tab active" id="tab-btn-installer" onclick="switchDashTab('installer')">🖥️ Hayagriva IPE</button>
       <button class="dash-tab" id="tab-btn-models" onclick="switchDashTab('models')">🧠 LLM Models</button>
       <button class="dash-tab" id="tab-btn-vaults" onclick="switchDashTab('vaults')">📚 Data Vaults</button>
       <button class="dash-tab" id="tab-btn-agents" onclick="switchDashTab('agents')">🤖 IBC Agents</button>
-      <button class="dash-tab" id="tab-btn-curator" onclick="switchDashTab('curator')">🎬 ReelCurator AI Agent</button>
       <button class="dash-tab" id="tab-btn-reports" onclick="switchDashTab('reports')">📊 Marketplace Reports</button>
-      <button class="dash-tab" id="tab-btn-profile" onclick="switchDashTab('profile')">👤 Profile & Settings</button>
+      <button class="dash-tab" id="tab-btn-profile" onclick="switchDashTab('profile')">👤 Profile &amp; Settings</button>
     </nav>
 
 
-    <!-- TAB 1: LICENSE & PAYMENTS -->
-    <div id="dashtab-license" class="dash-panel active">
-      <!-- LICENSE KEY CARD -->
-      <div class="card">
-        <div class="card-title">
-          <span>🔑 Your Ed25519 Desktop License Key</span>
-          <button class="btn" onclick="issueLicense()">Generate Fresh Key</button>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
-          Copy the license string below and paste it into Hayagriva Desktop's <strong>Settings ➔ MARKETPLACE (rbz) ➔ License Key</strong> to activate your features offline.
-        </p>
-        <div class="key-box" id="license-key-box">Click "Generate Fresh Key" to issue your license token.</div>
-        <button class="btn btn-outline" onclick="copyKey()">📋 Copy License Key to Clipboard</button>
-      </div>
-
-      <!-- PURCHASED A LA CARTE UNLOCKS CARD -->
-      <div class="card">
-        <div class="card-title">📦 Your Purchased A La Carte Assets & Offline Unlocks</div>
-        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
-          Every model, data vault, or agent you unlock is permanently bound to your master Ed25519 license key. Download packages and import them into your Hayagriva Desktop IDE for 100% offline access.
-        </div>
-        <div id="unlocked-assets-summary" style="font-size: 0.9rem; color: var(--text-main); font-weight: 600;">
-          Loading unlocked assets...
-        </div>
-      </div>
-
-      <!-- RAZORPAY PAYMENT & SUBSCRIPTION HISTORY CARD -->
-      <div class="card">
-        <div class="card-title">
-          <span>💳 Razorpay Payment & Subscription History</span>
-          <button class="btn btn-outline" style="padding: 0.3rem 0.75rem; font-size: 0.8rem;" onclick="loadPaymentHistory()">Refresh History</button>
-        </div>
-        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">View your past subscription upgrades and asset purchases made via Razorpay API.</div>
-        <div id="payment-history-table-container">
-          <div style="color: var(--text-muted); font-size: 0.88rem;">Loading payment history...</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 2: HAYAGRIVA IPE -->
-    <div id="dashtab-installer" class="dash-panel">
+    <!-- TAB 1: HAYAGRIVA IPE -->
+    <div id="dashtab-installer" class="dash-panel active">
       <div class="card">
         <div class="card-title">🖥️ Hayagriva IPE App Installers</div>
         <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Native Desktop IDE builds for macOS, Windows, and Linux.</div>
@@ -490,48 +451,7 @@
       </div>
     </div>
 
-    <!-- TAB: REELCURATOR AI AGENT -->
-    <div id="dashtab-curator" class="dash-panel">
-      <!-- LIVE AGENT HEALTH CARD -->
-      <div class="card">
-        <div class="card-title">
-          <span>🎬 ReelCurator AI Agent — Autonomous Video Auditor</span>
-          <button class="btn" onclick="triggerAgentAudit('AMH/Q0103')">⚡ Run AI Audit (AMH/Q0103)</button>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
-          Background AI Agent continuously audits YouTube video alignment for NCVET Performance Criteria (PC), calculates AI Match Scores, and queues 1-click video swap suggestions for admin review.
-        </p>
-        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
-          <div style="background:var(--input-bg); border:1px solid var(--border-color); border-radius:8px; padding:0.8rem 1.2rem; flex:1; min-width:180px;">
-            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">AGENT STATUS</div>
-            <div style="font-size:1.1rem; font-weight:800; color:#10B981;">🟢 Active (Harvester Ready)</div>
-          </div>
-          <div style="background:var(--input-bg); border:1px solid var(--border-color); border-radius:8px; padding:0.8rem 1.2rem; flex:1; min-width:180px;">
-            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">TARGET QUALIFICATION PACK</div>
-            <div style="font-size:1.1rem; font-weight:800; color:var(--color-primary);">AMH/Q0103 (32 PCs)</div>
-          </div>
-          <div style="background:var(--input-bg); border:1px solid var(--border-color); border-radius:8px; padding:0.8rem 1.2rem; flex:1; min-width:180px;">
-            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">PENDING SWAP SUGGESTIONS</div>
-            <div style="font-size:1.1rem; font-weight:800; color:#F59E0B;" id="agent-pending-count">0 Suggestions</div>
-          </div>
-        </div>
-        <div id="curator-audit-msg" class="status-msg"></div>
-      </div>
 
-      <!-- PENDING SWAP SUGGESTIONS QUEUE -->
-      <div class="card">
-        <div class="card-title">
-          <span>🎯 Pending AI Video Swap Suggestions</span>
-          <button class="btn btn-outline" onclick="loadAgentSuggestions()">🔄 Refresh Queue</button>
-        </div>
-        <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-          Review side-by-side video comparisons curated by Sarvam AI. Click <strong>Accept Swap</strong> to update student reels permanently in SQLite.
-        </div>
-        <div id="curator-suggestions-list" style="display:flex; flex-direction:column; gap:1.25rem;">
-          <div style="color:var(--text-muted); font-size:0.9rem; text-align:center; padding:1.5rem;">Click "Refresh Queue" or "Run AI Audit" to fetch pending suggestions.</div>
-        </div>
-      </div>
-    </div>
 
 
 
@@ -630,18 +550,7 @@
       if (activeBtn) activeBtn.classList.add('active');
       if (activePanel) activePanel.classList.add('active');
 
-      if (tabId === 'license') {
-        loadPaymentHistory();
-      } else if (tabId === 'reports') {
-        loadReportCatalog();
-        loadMyReports();
-      } else if (tabId === 'profile') {
-        loadPaymentMethods();
-      } else if (tabId === 'curator') {
-        loadAgentSuggestions();
-      }
     }
-
 
     async function loadUserData() {
       try {
@@ -649,9 +558,15 @@
         if (!res.ok) { logout(); return; }
         const data = await res.json();
         
-        document.getElementById('user-tier').innerText = `Pay-As-You-Go`;
-        if (data.activeLicense) {
-          document.getElementById('license-key-box').innerText = data.activeLicense.license_key;
+        const tier = data.subscription ? data.subscription.tier : 'starter';
+        const tierBadge = document.getElementById('user-tier');
+        if (tierBadge) {
+          tierBadge.textContent = tier.toUpperCase();
+        }
+
+        if (data.user && (data.user.role === 'admin' || data.user.email === 'admin@hayagriva.ai')) {
+          const adminBtn = document.getElementById('admin-hub-btn');
+          if (adminBtn) adminBtn.style.display = 'inline-flex';
         }
 
         if (data.user) {
@@ -1358,15 +1273,8 @@
     window.onload = () => { 
       loadUserData(); 
       loadCatalog(); 
-      loadPaymentHistory(); 
       loadReportCatalog(); 
       loadMyReports(); 
-      loadAgentSuggestions();
-
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('tab') === 'curator') {
-        switchDashTab('curator');
-      }
     };
 
   </script>

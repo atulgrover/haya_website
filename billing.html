@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>License &amp; Billing Hub — HAYAGRIVA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  
+  <style>
+    :root {
+      --bg-primary: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --color-primary: #1E6C93;
+      --color-primary-hover: #165272;
+      --text-main: #212121;
+      --text-muted: #5F6368;
+      --border-color: #E2E8F0;
+      --input-bg: #F8FAFC;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; min-height: 100vh; }
+    a { color: var(--color-primary); text-decoration: none; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    .header-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .brand-title { font-family: 'Google Sans', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: 1.5px; }
+    .user-badge {
+      font-size: 0.78rem; font-weight: 800; color: #1E6C93; background: rgba(30, 108, 147, 0.12);
+      padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.8px;
+    }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+      box-shadow: var(--card-shadow);
+    }
+    .card-title {
+      font-family: 'Google Sans', sans-serif; font-size: 1.25rem; font-weight: 600;
+      margin-bottom: 1rem; color: var(--text-main); display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .key-box {
+      background: var(--input-bg); border: 1px solid var(--border-color);
+      border-radius: 8px; padding: 1.1rem; font-family: 'Roboto Mono', monospace;
+      font-size: 0.88rem; word-break: break-all; color: var(--color-primary);
+      margin-bottom: 1.25rem; font-weight: 500;
+    }
+
+    .btn {
+      background-color: var(--color-primary); color: #ffffff; border: none;
+      padding: 0.68rem 1.35rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem;
+      cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn:hover { background-color: var(--color-primary-hover); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--color-primary); border: 1px solid var(--border-color); }
+    .btn-outline:hover { background: var(--input-bg); color: var(--color-primary-hover); }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .form-input {
+      width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--border-color);
+      border-radius: 6px; background: #FFF; font-size: 0.9rem; font-family: inherit;
+    }
+    .grid { display: grid; gap: 1rem; }
+
+    .status-msg { margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; }
+    .status-msg.success { color: #166534; }
+    .status-msg.error { color: #991B1B; }
+
+    .table-container { overflow-x: auto; margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; }
+    th, td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border-color); }
+    th { font-weight: 700; color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; background: var(--input-bg); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-bar">
+      <div style="display:flex; align-items:center; gap: 0.75rem;">
+        <div class="brand-title">HAYA PORTAL</div>
+        <span class="user-badge" id="user-tier">Starter (Free)</span>
+      </div>
+      <div style="display:flex; align-items:center; gap: 0.75rem;">
+        <a href="dashboard.html" class="btn btn-outline" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">← Asset Library</a>
+        <button class="btn btn-outline" onclick="logout()" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">Logout</button>
+      </div>
+    </div>
+
+    <!-- LICENSE KEY CARD -->
+    <div class="card">
+      <div class="card-title">
+        <span>🔑 Your Ed25519 Desktop License Key</span>
+        <button class="btn" onclick="issueLicense()">Generate Fresh Key</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
+        Copy the license string below and paste it into Hayagriva Desktop's <strong>Settings ➔ MARKETPLACE (rbz) ➔ License Key</strong> to activate your features offline.
+      </p>
+      <div class="key-box" id="license-key-box">Click "Generate Fresh Key" to issue your license token.</div>
+      <button class="btn btn-outline" onclick="copyKey()">📋 Copy License Key to Clipboard</button>
+    </div>
+
+    <!-- PURCHASED A LA CARTE UNLOCKS CARD -->
+    <div class="card">
+      <div class="card-title">📦 Your Purchased A La Carte Assets &amp; Offline Unlocks</div>
+      <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+        Every model, data vault, or agent you unlock is permanently bound to your master Ed25519 license key. Download packages and import them into your Hayagriva Desktop IDE for 100% offline access.
+      </div>
+      <div id="unlocked-assets-summary" style="font-size: 0.9rem; color: var(--text-main); font-weight: 600;">
+        Loading unlocked assets...
+      </div>
+    </div>
+
+    <!-- RAZORPAY PAYMENT & SUBSCRIPTION HISTORY CARD -->
+    <div class="card">
+      <div class="card-title">
+        <span>💳 Razorpay Payment &amp; Subscription History</span>
+        <button class="btn btn-outline" style="padding: 0.3rem 0.75rem; font-size: 0.8rem;" onclick="loadPaymentHistory()">Refresh History</button>
+      </div>
+      <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">View your past subscription upgrades and asset purchases made via Razorpay API.</div>
+      <div id="payment-history-table-container">
+        <div style="color: var(--text-muted); font-size: 0.88rem;">Loading payment history...</div>
+      </div>
+    </div>
+
+    <!-- PAYMENT METHODS & CREDIT CARDS CARD -->
+    <div class="card">
+      <div class="card-title">
+        <span>💳 Saved Payment Methods &amp; Credit Cards</span>
+        <button class="btn btn-outline" onclick="toggleAddCardForm()">+ Add New Card</button>
+      </div>
+      <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Manage your saved payment cards for quick subscription and asset purchases.</div>
+
+      <!-- Add Card Form Container -->
+      <div id="add-card-container" style="display: none; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+        <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 1rem; color: var(--color-primary);">Add New Credit / Debit Card</div>
+        <form id="card-form" onsubmit="event.preventDefault(); addPaymentMethod();">
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+            <div class="form-group">
+              <label class="form-label">Cardholder Name</label>
+              <input type="text" id="card-holder" class="form-input" placeholder="e.g. RAJESH SHARMA" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Card Number</label>
+              <input type="text" id="card-number" class="form-input" placeholder="4111 1111 1111 4242" required maxlength="19" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Expiry Month (MM)</label>
+              <input type="text" id="card-exp-month" class="form-input" placeholder="08" required maxlength="2" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Expiry Year (YY)</label>
+              <input type="text" id="card-exp-year" class="form-input" placeholder="28" required maxlength="2" />
+            </div>
+          </div>
+          <div style="display:flex; gap: 0.75rem; margin-top: 0.5rem;">
+            <button type="submit" class="btn">Save Payment Method</button>
+            <button type="button" class="btn btn-outline" onclick="toggleAddCardForm()">Cancel</button>
+          </div>
+          <div id="card-msg" class="status-msg"></div>
+        </form>
+      </div>
+
+      <div id="payment-methods-grid">
+        <div style="color: var(--text-muted); font-size: 0.9rem;">Loading payment methods...</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script>
+    const token = localStorage.getItem('haya_portal_token') || localStorage.getItem('haya_token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
+
+    function logout() {
+      localStorage.removeItem('haya_portal_token');
+      localStorage.removeItem('haya_token');
+      localStorage.removeItem('haya_user');
+      window.location.href = 'login.html';
+    }
+
+    async function loadUserData() {
+      try {
+        const res = await fetch('/api/auth/me', { headers: { 'Authorization': `Bearer ${token}` } });
+        if (!res.ok) { logout(); return; }
+        const data = await res.json();
+        
+        const tier = data.subscription ? data.subscription.tier : 'starter';
+        const tierBadge = document.getElementById('user-tier');
+        if (tierBadge) {
+          tierBadge.textContent = tier.toUpperCase();
+        }
+
+        const licenseBox = document.getElementById('license-key-box');
+        if (licenseBox && data.activeLicense) {
+          licenseBox.textContent = data.activeLicense.license_key;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function issueLicense() {
+      try {
+        const res = await fetch('/api/license/issue', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tier: 'professional' })
+        });
+        const data = await res.json();
+        if (data.licenseKey) {
+          document.getElementById('license-key-box').textContent = data.licenseKey;
+          alert('🔑 Fresh Ed25519 Master License Key issued successfully!');
+        }
+      } catch (e) {
+        alert('Failed to issue license.');
+      }
+    }
+
+    function copyKey() {
+      const text = document.getElementById('license-key-box').textContent;
+      navigator.clipboard.writeText(text);
+      alert('📋 License Key copied to clipboard!');
+    }
+
+    async function loadPaymentHistory() {
+      const container = document.getElementById('payment-history-table-container');
+      const unlockedSummary = document.getElementById('unlocked-assets-summary');
+      if (!container) return;
+
+      try {
+        const res = await fetch('/api/payments/history', { headers: { 'Authorization': `Bearer ${token}` } });
+        const data = await res.json();
+
+        if (data.success) {
+          if (unlockedSummary) {
+            const count = data.history ? data.history.length : 0;
+            unlockedSummary.innerHTML = `✅ You have <strong>${count}</strong> unlocked assets &amp; subscriptions active on your master Ed25519 key.`;
+          }
+
+          if (!data.history || data.history.length === 0) {
+            container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.88rem;">No payment transactions recorded yet.</div>';
+            return;
+          }
+
+          container.innerHTML = `
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Asset / Tier</th>
+                    <th>Amount</th>
+                    <th>Provider</th>
+                    <th>Transaction ID</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${data.history.map(item => `
+                    <tr>
+                      <td>${new Date(item.created_at || item.purchased_at).toLocaleDateString()}</td>
+                      <td><strong>${item.asset_id || item.tier || 'Asset Unlock'}</strong></td>
+                      <td>₹${item.amount || '0'}</td>
+                      <td>${item.payment_provider || 'Razorpay'}</td>
+                      <td style="font-family: monospace; font-size: 0.8rem;">${item.transaction_id || 'N/A'}</td>
+                      <td><span style="color: #10B981; font-weight: 700;">ACTIVE</span></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `;
+        }
+      } catch (e) {
+        if (container) container.innerHTML = '<div style="color: #991B1B; font-size: 0.88rem;">Failed to load payment history.</div>';
+      }
+    }
+
+    function toggleAddCardForm() {
+      const form = document.getElementById('add-card-container');
+      if (form) form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+    }
+
+    async function loadPaymentMethods() {
+      const container = document.getElementById('payment-methods-grid');
+      if (!container) return;
+
+      try {
+        const res = await fetch('/api/auth/payment-methods', { headers: { 'Authorization': `Bearer ${token}` } });
+        const data = await res.json();
+
+        if (data.success && data.paymentMethods && data.paymentMethods.length > 0) {
+          container.innerHTML = `
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+              ${data.paymentMethods.map(card => `
+                <div style="border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; background: #FFF; position: relative;">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-main); margin-bottom: 4px;">${card.card_brand} •••• ${card.card_last4}</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">${card.card_holder} | Exp ${card.exp_month}/${card.exp_year}</div>
+                  <button onclick="deletePaymentMethod(${card.id})" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #EF4444; font-size: 0.8rem; cursor: pointer;">Remove</button>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } else {
+          container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.88rem;">No saved payment cards. Click "+ Add New Card" above to add one.</div>';
+        }
+      } catch (e) {
+        container.innerHTML = '<div style="color: #991B1B; font-size: 0.88rem;">Failed to load saved payment cards.</div>';
+      }
+    }
+
+    async function addPaymentMethod() {
+      const holder = document.getElementById('card-holder').value.trim();
+      const num    = document.getElementById('card-number').value.trim();
+      const m      = document.getElementById('card-exp-month').value.trim();
+      const y      = document.getElementById('card-exp-year').value.trim();
+      const msg    = document.getElementById('card-msg');
+
+      try {
+        const res = await fetch('/api/auth/payment-methods', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cardHolder: holder, cardNumber: num, expMonth: m, expYear: y })
+        });
+        const data = await res.json();
+        if (data.success) {
+          if (msg) { msg.className = 'status-msg success'; msg.innerText = '✅ Payment card saved successfully.'; }
+          toggleAddCardForm();
+          loadPaymentMethods();
+        } else {
+          if (msg) { msg.className = 'status-msg error'; msg.innerText = data.error || 'Failed to save card.'; }
+        }
+      } catch (e) {
+        if (msg) { msg.className = 'status-msg error'; msg.innerText = 'Network error saving card.'; }
+      }
+    }
+
+    async function deletePaymentMethod(cardId) {
+      if (!confirm('Remove this payment method?')) return;
+      try {
+        await fetch(`/api/auth/payment-methods/${cardId}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        loadPaymentMethods();
+      } catch (e) {}
+    }
+
+    window.onload = () => {
+      loadUserData();
+      loadPaymentHistory();
+      loadPaymentMethods();
+    };
+  </script>
+
+  <script src="js/components.js"></script>
+</body>
+</html>

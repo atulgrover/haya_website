@@ -225,7 +225,7 @@
 
           setTimeout(() => {
             if (data.user.role === 'admin' || targetTab === 'curator') {
-              window.location.href = 'dashboard.html?tab=curator';
+              window.location.href = 'admin.html';
             } else if (data.user.role === 'student') {
               window.location.href = 'students.html';
             } else if (data.user.role === 'employee' || data.user.role === 'employer') {

@@ -402,8 +402,8 @@ function updateAuthButtonsUI() {
             let portalLabel = 'Go to Employee Portal';
 
             if (user.role === 'admin') {
-                portalPage = 'dashboard.html?tab=curator';
-                portalLabel = 'Go to Admin ReelCurator';
+                portalPage = 'admin.html';
+                portalLabel = '👑 ReelCurator Admin';
             } else if (user.role === 'student') {
                 portalPage = 'students.html';
                 portalLabel = 'Go to Student Portal';
@@ -434,8 +434,12 @@ function updateAuthButtonsUI() {
                     <span>${portalLabel}</span>
                     <span>➔</span>
                 </a>
+                <a href="billing.html" class="user-profile-item">
+                    <span>License &amp; Billing</span>
+                    <span>🔑</span>
+                </a>
                 <a href="dashboard.html" class="user-profile-item">
-                    <span>Portal Dashboard &amp; Vault</span>
+                    <span>Portal Asset Library</span>
                     <span>📊</span>
                 </a>
                 <a href="#" onclick="handleSignOut(event)" class="user-profile-item logout">

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReelCurator AI Agent Admin Hub — HAYAGRIVA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <style>
+    :root {
+      --bg-primary: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --color-primary: #1E6C93;
+      --color-primary-hover: #165272;
+      --text-main: #212121;
+      --text-muted: #5F6368;
+      --border-color: #E2E8F0;
+      --input-bg: #F8FAFC;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; min-height: 100vh; }
+    a { color: var(--color-primary); text-decoration: none; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    .header-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .brand-title { font-family: 'Google Sans', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: 1.5px; }
+    .admin-badge {
+      font-size: 0.78rem; font-weight: 800; color: #1E6C93; background: rgba(30, 108, 147, 0.12);
+      padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.8px;
+    }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+      box-shadow: var(--card-shadow);
+    }
+    .card-title {
+      font-family: 'Google Sans', sans-serif; font-size: 1.25rem; font-weight: 600;
+      margin-bottom: 1rem; color: var(--text-main); display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .btn {
+      background-color: var(--color-primary); color: #ffffff; border: none;
+      padding: 0.68rem 1.35rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem;
+      cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn:hover { background-color: var(--color-primary-hover); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--color-primary); border: 1px solid var(--border-color); }
+    .btn-outline:hover { background: var(--input-bg); color: var(--color-primary-hover); }
+
+    .status-msg { margin-top: 1rem; font-size: 0.9rem; font-weight: 600; }
+    .status-msg.success { color: #166534; }
+    .status-msg.error { color: #991B1B; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-bar">
+      <div style="display:flex; align-items:center; gap: 0.75rem;">
+        <div class="brand-title">HAYA PORTAL</div>
+        <span class="admin-badge">👑 Admin Hub</span>
+      </div>
+      <div style="display:flex; align-items:center; gap: 0.75rem;">
+        <a href="billing.html" class="btn btn-outline" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">🔑 License &amp; Billing</a>
+        <a href="dashboard.html" class="btn btn-outline" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">← Asset Library</a>
+        <button class="btn btn-outline" onclick="logout()" style="padding: 0.4rem 0.95rem; font-size: 0.82rem;">Logout</button>
+      </div>
+    </div>
+
+    <!-- LIVE AGENT HEALTH CARD -->
+    <div class="card">
+      <div class="card-title">
+        <span>🎬 ReelCurator AI Agent — Autonomous Video Auditor</span>
+        <button class="btn" onclick="triggerAgentAudit('AMH/Q0103')">⚡ Run AI Audit (AMH/Q0103)</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
+        Background AI Agent continuously audits YouTube video alignment for NCVET Performance Criteria (PC), calculates AI Match Scores, and queues 1-click video swap suggestions for admin review.
+      </p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <div style="background:var(--input-bg); border:1px solid var(--border-color); border-radius:8px; padding:0.8rem 1.2rem; flex:1; min-width:180px;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">AGENT STATUS</div>
+          <div style="font-size:1.1rem; font-weight:800; color:#10B981;">🟢 Active (Harvester Ready)</div>
+        </div>
+        <div style="background:var(--input-bg); border:1px solid var(--border-color); border-radius:8px; padding:0.8rem 1.2rem; flex:1; min-width:180px;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">TARGET QUALIFICATION PACK</div>
+          <div style="font-size:1.1rem; font-weight:800; color:var(--color-primary);">AMH/Q0103 (32 PCs)</div>
+        </div>
+        <div style="background:var(--input-bg); border:1px solid var(--border-color); border-radius:8px; padding:0.8rem 1.2rem; flex:1; min-width:180px;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">PENDING SWAP SUGGESTIONS</div>
+          <div style="font-size:1.1rem; font-weight:800; color:#F59E0B;" id="agent-pending-count">0 Suggestions</div>
+        </div>
+      </div>
+      <div id="curator-audit-msg" class="status-msg"></div>
+    </div>
+
+    <!-- PENDING SWAP SUGGESTIONS QUEUE -->
+    <div class="card">
+      <div class="card-title">
+        <span>🎯 Pending AI Video Swap Suggestions</span>
+        <button class="btn btn-outline" onclick="loadAgentSuggestions()">🔄 Refresh Queue</button>
+      </div>
+      <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Review side-by-side video comparisons curated by Sarvam AI. Click <strong>Accept Swap</strong> to update student reels permanently in SQLite.
+      </div>
+      <div id="curator-suggestions-list" style="display:flex; flex-direction:column; gap:1.25rem;">
+        <div style="color:var(--text-muted); font-size:0.9rem; text-align:center; padding:1.5rem;">Click "Refresh Queue" or "Run AI Audit" to fetch pending suggestions.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script>
+    const token = localStorage.getItem('haya_portal_token') || localStorage.getItem('haya_token');
+    const userJson = localStorage.getItem('haya_user');
+    const user = userJson ? JSON.parse(userJson) : null;
+
+    if (!token || !user) {
+      window.location.href = 'login.html?role=admin';
+    } else if (user.role !== 'admin' && user.email !== 'admin@hayagriva.ai') {
+      alert('Access restricted to Administrators only.');
+      window.location.href = 'dashboard.html';
+    }
+
+    function logout() {
+      localStorage.removeItem('haya_portal_token');
+      localStorage.removeItem('haya_token');
+      localStorage.removeItem('haya_user');
+      window.location.href = 'login.html';
+    }
+
+    async function loadAgentSuggestions() {
+      const container = document.getElementById('curator-suggestions-list');
+      const countEl   = document.getElementById('agent-pending-count');
+      if (!container) return;
+      
+      try {
+        const res = await fetch('/api/skillpedia/agent/suggestions');
+        const data = await res.json();
+        
+        if (data.success && Array.isArray(data.suggestions)) {
+          if (countEl) countEl.innerText = `${data.suggestions.length} Suggestions`;
+          
+          if (data.suggestions.length === 0) {
+            container.innerHTML = `
+              <div style="background:var(--input-bg); border:1px dashed var(--border-color); border-radius:8px; padding:2rem; text-align:center; color:var(--text-muted); font-size:0.9rem;">
+                🎉 All videos verified with high AI match scores! Click "Run AI Audit" to trigger a fresh background audit.
+              </div>`;
+            return;
+          }
+          
+          container.innerHTML = data.suggestions.map(s => `
+            <div style="border:1px solid var(--border-color); border-radius:10px; padding:1.25rem; background:#FFF; display:flex; flex-direction:column; gap:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="font-weight:800; font-size:0.82rem; background:rgba(56,189,248,0.15); color:#0284C7; padding:3px 8px; border-radius:6px;">${s.qp_code}</span>
+                  <span style="font-weight:700; font-size:0.9rem; color:var(--text-main);">${s.pc_id}: ${s.pc_intent}</span>
+                </div>
+                <span style="font-size:0.75rem; color:var(--text-muted);">${s.module_title}</span>
+              </div>
+              
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; background:var(--input-bg); padding:1rem; border-radius:8px; border:1px solid var(--border-color);">
+                <div style="border:1px solid rgba(239,68,68,0.3); background:rgba(239,68,68,0.03); padding:0.8rem; border-radius:6px;">
+                  <div style="font-size:0.75rem; font-weight:800; color:#EF4444; margin-bottom:4px;">🔴 CURRENT ASSIGNED VIDEO (Score: ${s.current_audit_score}%)</div>
+                  <div style="font-weight:700; font-size:0.88rem; color:var(--text-main); margin-bottom:4px;">${s.current_video_title}</div>
+                  <div style="font-size:0.75rem; color:var(--text-muted); font-family:monospace;">ID: ${s.current_video_id}</div>
+                </div>
+                
+                <div style="border:1px solid rgba(16,185,129,0.3); background:rgba(16,185,129,0.04); padding:0.8rem; border-radius:6px;">
+                  <div style="font-size:0.75rem; font-weight:800; color:#10B981; margin-bottom:4px;">🟢 AI SUGGESTED BETTER VIDEO (Score: ${s.suggested_audit_score}%)</div>
+                  <div style="font-weight:700; font-size:0.88rem; color:var(--text-main); margin-bottom:4px;">${s.suggested_video_title}</div>
+                  <div style="font-size:0.75rem; color:var(--text-muted); font-family:monospace;">ID: ${s.suggested_video_id}</div>
+                </div>
+              </div>
+              
+              <div style="font-size:0.82rem; color:var(--text-muted); background:rgba(0,0,0,0.02); padding:0.6rem 0.8rem; border-radius:6px; border-left:3px solid var(--color-primary);">
+                🤖 <strong>AI Audit Rationale:</strong> ${s.ai_rationale || 'High relevance match.'}
+              </div>
+              
+              <div style="display:flex; gap:0.75rem; justify-content:flex-end; align-items:center;">
+                <button class="btn btn-outline" style="border-color:#EF4444; color:#EF4444; padding:0.4rem 0.9rem; font-size:0.82rem;" onclick="rejectAgentSwap(${s.id})">❌ Keep Current</button>
+                <button class="btn" style="background:#10B981; padding:0.4rem 1rem; font-size:0.82rem;" onclick="acceptAgentSwap(${s.id})">✅ Accept AI Swap</button>
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch (e) {
+        container.innerHTML = '<div style="color:var(--color-red); font-size:0.88rem;">Failed to load agent suggestions.</div>';
+      }
+    }
+
+    async function acceptAgentSwap(suggestionId) {
+      try {
+        const res = await fetch('/api/skillpedia/agent/accept-swap', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ suggestionId })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('✅ Accepted AI Video Swap! Video updated permanently in student reels.');
+          loadAgentSuggestions();
+        } else {
+          alert(data.error || 'Failed to accept swap.');
+        }
+      } catch (e) {
+        alert('Network error accepting swap.');
+      }
+    }
+
+    async function rejectAgentSwap(suggestionId) {
+      try {
+        const res = await fetch('/api/skillpedia/agent/reject-swap', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ suggestionId })
+        });
+        const data = await res.json();
+        if (data.success) {
+          loadAgentSuggestions();
+        }
+      } catch (e) {}
+    }
+
+    async function triggerAgentAudit(qpCode) {
+      const msg = document.getElementById('curator-audit-msg');
+      if (msg) {
+        msg.className = 'status-msg';
+        msg.innerText = `⚡ Running Sarvam AI Audit for ${qpCode}...`;
+      }
+      try {
+        const res = await fetch('/api/skillpedia/agent/trigger-audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ qpCode })
+        });
+        const data = await res.json();
+        if (data.success) {
+          if (msg) {
+            msg.className = 'status-msg success';
+            msg.innerText = `✅ AI Audit Complete! Audited ${data.audited} PCs, created ${data.suggestionsCreated} swap suggestions.`;
+          }
+          loadAgentSuggestions();
+        } else {
+          if (msg) {
+            msg.className = 'status-msg error';
+            msg.innerText = data.error || 'Audit failed.';
+          }
+        }
+      } catch (e) {
+        if (msg) {
+          msg.className = 'status-msg error';
+          msg.innerText = 'Network error triggering audit.';
+        }
+      }
+    }
+
+    window.onload = () => {
+      loadAgentSuggestions();
+    };
+  </script>
+
+  <script src="js/components.js"></script>
+</body>
+</html>
