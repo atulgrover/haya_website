@@ -252,9 +252,14 @@ async function initSchema() {
                     intent_confidence INTEGER DEFAULT NULL,
                     contextual_search_query TEXT,
                     query_confidence INTEGER DEFAULT NULL,
+                    contextual_search_query_hi TEXT,
+                    query_confidence_hi INTEGER DEFAULT NULL,
                     video_id TEXT,
                     video_title TEXT,
                     video_url TEXT,
+                    video_id_hi TEXT,
+                    video_title_hi TEXT,
+                    video_url_hi TEXT,
                     thumbnail_url TEXT,
                     audit_score INTEGER DEFAULT 90,
                     sequence_order INTEGER DEFAULT 1,
@@ -264,6 +269,11 @@ async function initSchema() {
             `);
             try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN intent_confidence INTEGER DEFAULT NULL;`); } catch (_) {}
             try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN query_confidence INTEGER DEFAULT NULL;`); } catch (_) {}
+            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN contextual_search_query_hi TEXT;`); } catch (_) {}
+            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN query_confidence_hi INTEGER DEFAULT NULL;`); } catch (_) {}
+            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_id_hi TEXT;`); } catch (_) {}
+            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_title_hi TEXT;`); } catch (_) {}
+            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_url_hi TEXT;`); } catch (_) {}
         } catch (e) {}
 
         try {
