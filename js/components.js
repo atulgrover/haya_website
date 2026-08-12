@@ -473,19 +473,12 @@ function updateAuthButtonsUI() {
                 parent.appendChild(dropdown);
             }
 
-            const adminDropdownItem = isAdmin ? `
-                <a href="dashboard.html?tab=curator" class="user-profile-item" style="color: #1E6C93; font-weight: 700;">
-                    <span>👑 ReelCurator Admin</span>
-                    <span>⚙️</span>
-                </a>` : '';
-
             dropdown.innerHTML = `
                 <div class="user-profile-header">
                     <div class="user-profile-name">${userName}</div>
                     <div class="user-profile-email">${user.email}</div>
                     <span class="user-profile-role-badge">${user.role || 'Member'}</span>
                 </div>
-                ${adminDropdownItem}
                 <a href="${portalPage}" class="user-profile-item">
                     <span>${portalLabel}</span>
                     <span>➔</span>
