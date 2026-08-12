@@ -127,51 +127,51 @@ function injectAuthModal() {
         /* ── User Profile Dropdown ────────────────────────────── */
         .user-profile-dropdown {
             position: absolute;
-            top: calc(100% + 8px);
+            top: calc(100% + 6px);
             right: 0;
-            width: 230px;
+            width: 180px;
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             z-index: 5500;
             display: none;
             flex-direction: column;
-            padding: 6px 0;
+            padding: 4px 0;
             box-sizing: border-box;
             animation: userDropdownPop 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         .user-profile-dropdown.active { display: flex; }
         @keyframes userDropdownPop {
-            from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+            from { opacity: 0; transform: translateY(-4px) scale(0.98); }
             to   { opacity: 1; transform: translateY(0) scale(1); }
         }
         .user-profile-header {
-            padding: 10px 14px 10px;
+            padding: 8px 12px 6px;
             border-bottom: 1px solid #F1F5F9;
             text-align: left;
         }
         .user-profile-name {
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             color: #0F172A;
-            margin-bottom: 3px;
+            margin-bottom: 1px;
             word-break: break-word;
         }
         .user-profile-email {
             font-size: 11px;
             color: #64748B;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             word-break: break-all;
         }
         .user-profile-role-badge {
             display: inline-block;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             color: #1E6C93;
             background: rgba(30, 108, 147, 0.1);
-            padding: 2px 8px;
-            border-radius: 6px;
+            padding: 1px 6px;
+            border-radius: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -179,9 +179,9 @@ function injectAuthModal() {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 14px;
+            padding: 6px 12px;
             color: #334155;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
@@ -195,7 +195,7 @@ function injectAuthModal() {
         .user-profile-item.logout {
             color: #DC2626;
             border-top: 1px solid #F1F5F9;
-            margin-top: 4px;
+            margin-top: 2px;
         }
         .user-profile-item.logout:hover {
             background: #FEE2E2;
