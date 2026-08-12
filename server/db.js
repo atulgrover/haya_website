@@ -196,12 +196,23 @@ async function initSchema() {
         try { await db.exec(`ALTER TABLE custom_skills ADD COLUMN tag TEXT DEFAULT 'General';`); } catch (e) {}
         try { await db.exec(`ALTER TABLE custom_skills ADD COLUMN description TEXT;`); } catch (e) {}
 
-        // Migration safety: Ensure nsqf_qps table has pipeline tracking columns
+        // Migration safety: Ensure nsqf_qps table has pipeline tracking columns & deduplication
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN curriculum_pdf_url TEXT;`); } catch (e) {}
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN markdown_path TEXT;`); } catch (e) {}
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN total_nos INTEGER DEFAULT 0;`); } catch (e) {}
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN total_pcs INTEGER DEFAULT 0;`); } catch (e) {}
         try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN pipeline_status TEXT DEFAULT 'pending_pdf';`); } catch (e) {}
+        try {
+            await db.exec(`
+                DELETE FROM nsqf_qps 
+                WHERE id NOT IN (
+                    SELECT MAX(id) 
+                    FROM nsqf_qps 
+                    GROUP BY qp_code
+                );
+                CREATE UNIQUE INDEX IF NOT EXISTS idx_nsqf_qps_unique_qp_code ON nsqf_qps(qp_code);
+            `);
+        } catch (e) {}
         try {
             await db.exec(`
                 UPDATE nsqf_qps 
