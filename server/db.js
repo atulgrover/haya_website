@@ -391,117 +391,17 @@ async function syncNsqfQpCounts() {
 
 async function seedNsqfCurriculaIfEmpty() {
     try {
-        const fs = require('fs');
-        const aasPath = '/Users/atulgrover/.gemini/antigravity-ide/brain/63c4db05-0fe5-419b-a156-462feb454b3a/scratch/PARSED_NOS_SCHEMA_AAS_Q0103.json';
-        const amhPath = '/Users/atulgrover/.gemini/antigravity-ide/brain/63c4db05-0fe5-419b-a156-462feb454b3a/scratch/PARSED_NOS_SCHEMA_AMH_Q0103.json';
-
-        for (const p of [aasPath, amhPath]) {
-            if (fs.existsSync(p)) {
-                const schemaObj = JSON.parse(fs.readFileSync(p, 'utf8'));
-                await db.prepare(`
-                    INSERT OR REPLACE INTO nsqf_curricula (qp_code, qp_name, version, sector, total_pcs, schema_json)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                `).run(
-                    schemaObj.qp_code,
-                    schemaObj.qp_name,
-                    schemaObj.version,
-                    schemaObj.sector,
-                    schemaObj.total_pcs || 32,
-                    JSON.stringify(schemaObj)
-                );
-
-                // Clean previous module/pc records for fresh seed alignment
-                await db.prepare(`DELETE FROM nsqf_nos WHERE qp_code = ?`).run(schemaObj.qp_code);
-                await db.prepare(`DELETE FROM nsqf_modules WHERE qp_code = ?`).run(schemaObj.qp_code);
-                await db.prepare(`DELETE FROM nsqf_pcs WHERE qp_code = ?`).run(schemaObj.qp_code);
-
-                // Populate relational nsqf_nos, nsqf_modules, and nsqf_pcs tables
-                if (Array.isArray(schemaObj.nos_modules)) {
-                    let nosOrder = 1;
-                    let modOrder = 1;
-                    let pcOrder = 1;
-                    const moduleMap = new Map();
-
-                    for (const mod of schemaObj.nos_modules) {
-                        const nosCode = mod.nos_code || 'NOS';
-                        const nosTitle = mod.nos_title || mod.module_title || 'NOS Module';
-                        const modTitle = mod.module_title || nosTitle;
-
-                        // Insert NOS if unique
-                        await db.prepare(`
-                            INSERT OR IGNORE INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
-                            VALUES (?, ?, ?, ?)
-                        `).run(schemaObj.qp_code, nosCode, nosTitle, nosOrder++);
-
-                        // Insert Module if unique (1 Module = 1 Reel)
-                        let modId = moduleMap.get(`${nosCode}:${modTitle}`);
-                        if (!modId) {
-                            const modInfo = await db.prepare(`
-                                INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
-                                VALUES (?, ?, ?, ?)
-                            `).run(schemaObj.qp_code, nosCode, modTitle, modOrder++);
-                            modId = modInfo.lastInsertRowid;
-                            moduleMap.set(`${nosCode}:${modTitle}`, modId);
-                        }
-
-                        if (Array.isArray(mod.pcs)) {
-                            for (const pc of mod.pcs) {
-                                const vId = pc.video_id || mod.video_id || 'x9PQgbB4y6M';
-                                const vTitle = pc.video_title || `${schemaObj.qp_name} Demonstration ${pc.pc_id}`;
-                                const vUrl = `https://www.youtube.com/watch?v=${vId}`;
-                                const pcIntent = pc.pc_intent || pc.pc_desc || pc.title || pc.pc_id;
-                                const pcDesc = pc.pc_desc || pcIntent;
-                                const contextQuery = `${schemaObj.qp_name} ${nosTitle} ${modTitle} ${pcIntent} ${pcDesc}`;
-
-                                // Legacy table sync
-                                await db.prepare(`
-                                    INSERT OR REPLACE INTO nsqf_videos 
-                                    (qp_code, nos_code, nos_title, module_title, pc_id, pc_intent, pc_desc, video_id, video_title, video_url, audit_score)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                                `).run(
-                                    schemaObj.qp_code, nosCode, nosTitle, modTitle, pc.pc_id, pcIntent, pcDesc, vId, vTitle, vUrl, 90
-                                );
-
-                                // Restructured nsqf_pcs table sync (1 PC = 1 Video inside Module Reel)
-                                await db.prepare(`
-                                    INSERT OR REPLACE INTO nsqf_pcs 
-                                    (qp_code, nos_code, module_id, pc_code, pc_description, pc_intent, contextual_search_query, video_id, video_title, video_url, audit_score, sequence_order)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                                `).run(
-                                    schemaObj.qp_code, nosCode, modId, pc.pc_id, pcDesc, pcIntent, contextQuery, vId, vTitle, vUrl, 90, pcOrder++
-                                );
-                            }
-                        }
-                    }
-                }
-
-                // Purge empty 0-PC modules from nsqf_modules
-                await db.prepare(`
-                    DELETE FROM nsqf_modules 
-                    WHERE qp_code = ? AND id NOT IN (
-                        SELECT DISTINCT module_id FROM nsqf_pcs WHERE qp_code = ? AND module_id IS NOT NULL
-                    )
-                `).run(schemaObj.qp_code, schemaObj.qp_code);
-
-                // Sync master nsqf_qps table and legacy nsqf_curricula table counts
-                const actualNosCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_nos WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
-                const actualModCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_modules WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
-                const actualPcCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_pcs WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
-
-                await db.prepare(`
-                    UPDATE nsqf_qps 
-                    SET total_nos = ?, total_pcs = ?, pipeline_status = 'video_harvested'
-                    WHERE qp_code = ?
-                `).run(actualNosCount, actualPcCount, schemaObj.qp_code);
-
-                await db.prepare(`
-                    UPDATE nsqf_curricula 
-                    SET total_pcs = ?
-                    WHERE qp_code = ?
-                `).run(actualPcCount, schemaObj.qp_code);
-            }
+        const existingCount = await db.prepare(`SELECT COUNT(*) as c FROM nsqf_pcs`).get().c;
+        if (existingCount > 100) {
+            // Real PDF extraction data is already present; sync total_nos and total_pcs counts dynamically
+            await db.prepare(`
+                UPDATE nsqf_qps
+                SET total_nos = (SELECT COUNT(*) FROM nsqf_nos WHERE nsqf_nos.qp_code = nsqf_qps.qp_code),
+                    total_pcs = (SELECT COUNT(*) FROM nsqf_pcs WHERE nsqf_pcs.qp_code = nsqf_qps.qp_code)
+                WHERE qp_code IN (SELECT qp_code FROM nsqf_pcs);
+            `).run();
+            return;
         }
-        console.log('[Haya Portal DB] Updated sample NSQF Curricula & PC Video records for AAS/Q0103 and AMH/Q0103.');
     } catch (e) {
         console.warn('[Haya Portal DB] nsqf_curricula seed warning:', e.message);
     }
