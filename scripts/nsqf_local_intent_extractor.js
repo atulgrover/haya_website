@@ -96,6 +96,57 @@ function synthesizeLocalIntent(pcDesc) {
 }
 
 /**
+ * Compute Mathematical 4-Factor Intent Confidence Score (0 - 100%)
+ */
+function computeIntentConfidence(rawDesc, intent) {
+    if (!intent || intent === 'Practical Execution') return 40;
+
+    let score = 0;
+
+    // Factor 1: Leading Action Verb Strength (+30 Points)
+    const firstWord = intent.split(' ')[0].toLowerCase();
+    if (['inspect', 'verify', 'assemble', 'calibrate', 'install', 'operate', 'repair', 'clean', 'measure', 'prepare', 'log', 'report', 'identify', 'test', 'execute'].includes(firstWord)) {
+        score += 30;
+    } else if (['check', 'use', 'set', 'make', 'apply', 'handle'].includes(firstWord)) {
+        score += 20;
+    } else {
+        score += 10;
+    }
+
+    // Factor 2: Length & Conciseness (+25 Points)
+    const wordCount = intent.split(' ').length;
+    if (wordCount >= 3 && wordCount <= 6) {
+        score += 25;
+    } else if (wordCount === 7 || wordCount === 8) {
+        score += 15;
+    } else {
+        score += 5;
+    }
+
+    // Factor 3: Boilerplate Purity (+25 Points)
+    const hasBoilerplate = /check that|ensure that|follow instructions|ability to|assist in|user\/individual/i.test(intent);
+    if (!hasBoilerplate) {
+        score += 25;
+    } else {
+        score += 0;
+    }
+
+    // Factor 4: Domain Noun Preservation (+20 Points)
+    const rawTokens = new Set(String(rawDesc || '').toLowerCase().split(/\W+/).filter(w => w.length > 3));
+    const intentTokens = intent.toLowerCase().split(/\W+/).filter(w => w.length > 3);
+    const matches = intentTokens.filter(t => rawTokens.has(t));
+    if (matches.length >= 2) {
+        score += 20;
+    } else if (matches.length === 1) {
+        score += 10;
+    } else {
+        score += 5;
+    }
+
+    return Math.min(100, Math.max(0, score));
+}
+
+/**
  * Build 5-part natural language search query for YouTube harvesting
  */
 function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent) {
@@ -168,29 +219,33 @@ async function runLocalIntentExtractor() {
 
     const startTime = Date.now();
     let updatedCount = 0;
-
-    const updateStmt = db.prepare(`
-        UPDATE nsqf_pcs
-        SET pc_intent = ?, contextual_search_query = ?
-        WHERE id = ?
-    `);
+    let totalConfidence = 0;
+    let highConfCount = 0;
+    let medConfCount = 0;
+    let lowConfCount = 0;
 
     for (let i = 0; i < pcsToProcess.length; i++) {
         const item = pcsToProcess[i];
         const intent = synthesizeLocalIntent(item.pc_description);
+        const confidence = computeIntentConfidence(item.pc_description, intent);
         const query = buildContextualSearchQuery(item.sector, item.qp_name, item.nos_title, item.module_title, intent);
 
         await db.prepare(`
             UPDATE nsqf_pcs
-            SET pc_intent = ?, contextual_search_query = ?
+            SET pc_intent = ?, intent_confidence = ?, contextual_search_query = ?
             WHERE id = ?
-        `).run(intent, query, item.id);
+        `).run(intent, confidence, query, item.id);
         updatedCount++;
+        totalConfidence += confidence;
+
+        if (confidence >= 80) highConfCount++;
+        else if (confidence >= 70) medConfCount++;
+        else lowConfCount++;
 
         if (isAudit && (i < 8 || (i + 1) % 40 === 0)) {
-            console.log(`[${i + 1}/${pcsToProcess.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_description.substring(0, 60)}..."`);
-            console.log(`        💡 Extracted Intent: "${intent}"`);
-            console.log(`        🔍 Search Vector:   "${query.substring(0, 80)}..."`);
+            console.log(`[${i + 1}/${pcsToProcess.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_description.substring(0, 50)}..."`);
+            console.log(`        💡 Extracted Intent: "${intent}" (Confidence: ${confidence}%)`);
+            console.log(`        🔍 Search Vector:   "${query.substring(0, 75)}..."`);
             console.log('--------------------------------------------------------------------------------');
         }
     }
@@ -203,9 +258,15 @@ async function runLocalIntentExtractor() {
         await db.prepare(`UPDATE nsqf_qps SET pipeline_status = 'intent_synthesized' WHERE qp_code = ?`).run(qp);
     }
 
+    const avgConfidence = updatedCount > 0 ? (totalConfidence / updatedCount).toFixed(1) : 0;
+
     console.log('\n================================================================================');
-    console.log(`📊 LOCAL INTENT EXTRACTION & AUDIT SUMMARY:`);
+    console.log(`📊 LOCAL INTENT EXTRACTION & CONFIDENCE SCORING SUMMARY:`);
     console.log(`   Total PCs Extracted:     ${updatedCount.toLocaleString()}`);
+    console.log(`   Average Intent Score:    ${avgConfidence}%`);
+    console.log(`   High Quality (>= 80%):   ${highConfCount.toLocaleString()} (${((highConfCount/updatedCount)*100).toFixed(1)}%)`);
+    console.log(`   Medium Quality (70-79%): ${medConfCount.toLocaleString()} (${((medConfCount/updatedCount)*100).toFixed(1)}%)`);
+    console.log(`   Low Quality (< 70%):     ${lowConfCount.toLocaleString()} (${((lowConfCount/updatedCount)*100).toFixed(1)}%)`);
     console.log(`   Execution Time:          ${(elapsedMs / 1000).toFixed(2)} seconds`);
     console.log(`   Speed Throughput:        ${Math.round(updatedCount / (elapsedMs / 1000)).toLocaleString()} PCs / sec`);
     console.log(`   Financial Cost:          ₹0 ($0.00 FREE)`);

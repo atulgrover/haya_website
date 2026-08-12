@@ -249,6 +249,7 @@ async function initSchema() {
                     pc_code TEXT NOT NULL,
                     pc_description TEXT NOT NULL,
                     pc_intent TEXT,
+                    intent_confidence INTEGER DEFAULT NULL,
                     contextual_search_query TEXT,
                     video_id TEXT,
                     video_title TEXT,
@@ -260,6 +261,7 @@ async function initSchema() {
                     UNIQUE(qp_code, nos_code, pc_code)
                 );
             `);
+            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN intent_confidence INTEGER DEFAULT NULL;`); } catch (_) {}
         } catch (e) {}
 
         try {
