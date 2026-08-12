@@ -220,6 +220,7 @@ function injectAuthModal() {
                             <option value="student">Student</option>
                             <option value="employee">Employee</option>
                             <option value="professional">Professional</option>
+                            <option value="admin">Administrator</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -306,10 +307,12 @@ function toggleUserDropdown(e) {
 function handleSignOut(e) {
     if (e) e.preventDefault();
     localStorage.removeItem('haya_token');
+    localStorage.removeItem('haya_portal_token');
     localStorage.removeItem('haya_user');
     const dropdown = document.getElementById('userProfileDropdown');
     if (dropdown) dropdown.classList.remove('active');
     updateAuthButtonsUI();
+    window.location.reload();
 }
 
 /* ── Auth Form Handler ───────────────────────────────────────── */
@@ -342,6 +345,7 @@ async function handleAuthSubmit(e) {
 
         if (data.success) {
             localStorage.setItem('haya_token', data.token);
+            localStorage.setItem('haya_portal_token', data.token);
             localStorage.setItem('haya_user', JSON.stringify(data.user));
 
             alertBox.className = 'auth-modal-alert success';
@@ -351,7 +355,9 @@ async function handleAuthSubmit(e) {
             setTimeout(() => {
                 closeAuthModal();
                 updateAuthButtonsUI();
-                if (data.user.role === 'student' && !window.location.pathname.endsWith('students.html')) {
+                if (data.user.role === 'admin') {
+                    window.location.href = 'dashboard.html?tab=curator';
+                } else if (data.user.role === 'student' && !window.location.pathname.endsWith('students.html')) {
                     window.location.href = 'students.html';
                 } else if (data.user.role === 'employee' && !window.location.pathname.endsWith('employees.html')) {
                     window.location.href = 'employees.html';
@@ -380,6 +386,55 @@ async function handleAuthSubmit(e) {
 function updateAuthButtonsUI() {
     const userJson = localStorage.getItem('haya_user');
     const user     = userJson ? JSON.parse(userJson) : null;
+    const isAdmin  = !!(user && (user.role === 'admin' || user.email === 'admin@hayagriva.ai'));
+
+    // Handle Top Bar Admin Link (.nav-links)
+    let adminLi = document.getElementById('admin-nav-item');
+    if (isAdmin) {
+        if (!adminLi) {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks) {
+                adminLi = document.createElement('li');
+                adminLi.id = 'admin-nav-item';
+                adminLi.innerHTML = '<a href="dashboard.html?tab=curator" class="nav-link">👑 Admin Portal</a>';
+                const loginBtnElement = navLinks.querySelector('.login-btn, #main-auth-btn');
+                const loginLi = loginBtnElement ? loginBtnElement.parentElement : null;
+                if (loginLi) {
+                    navLinks.insertBefore(adminLi, loginLi);
+                } else {
+                    navLinks.appendChild(adminLi);
+                }
+            }
+        } else {
+            adminLi.style.display = '';
+        }
+    } else if (adminLi) {
+        adminLi.style.display = 'none';
+    }
+
+    // Handle Mobile Drawer Admin Link (.nav-mobile-drawer)
+    const mobileDrawer = document.getElementById('navMobileDrawer');
+    if (mobileDrawer) {
+        let mobileAdminItem = document.getElementById('admin-mobile-nav-item');
+        if (isAdmin) {
+            if (!mobileAdminItem) {
+                mobileAdminItem = document.createElement('a');
+                mobileAdminItem.id = 'admin-mobile-nav-item';
+                mobileAdminItem.href = 'dashboard.html?tab=curator';
+                mobileAdminItem.innerHTML = '👑 Admin Portal';
+                const mobileLoginBtn = mobileDrawer.querySelector('.login-btn');
+                if (mobileLoginBtn) {
+                    mobileDrawer.insertBefore(mobileAdminItem, mobileLoginBtn);
+                } else {
+                    mobileDrawer.appendChild(mobileAdminItem);
+                }
+            } else {
+                mobileAdminItem.style.display = '';
+            }
+        } else if (mobileAdminItem) {
+            mobileAdminItem.style.display = 'none';
+        }
+    }
 
     document.querySelectorAll('.login-btn, #main-auth-btn').forEach(btn => {
         const parent = btn.parentElement;
@@ -395,7 +450,10 @@ function updateAuthButtonsUI() {
             let portalPage = 'dashboard.html';
             let portalLabel = 'Go to Employee Portal';
 
-            if (user.role === 'student') {
+            if (user.role === 'admin') {
+                portalPage = 'dashboard.html?tab=curator';
+                portalLabel = 'Go to Admin ReelCurator';
+            } else if (user.role === 'student') {
                 portalPage = 'students.html';
                 portalLabel = 'Go to Student Portal';
             } else if (user.role === 'professional') {
@@ -415,12 +473,19 @@ function updateAuthButtonsUI() {
                 parent.appendChild(dropdown);
             }
 
+            const adminDropdownItem = isAdmin ? `
+                <a href="dashboard.html?tab=curator" class="user-profile-item" style="color: #1E6C93; font-weight: 700;">
+                    <span>👑 ReelCurator Admin</span>
+                    <span>⚙️</span>
+                </a>` : '';
+
             dropdown.innerHTML = `
                 <div class="user-profile-header">
                     <div class="user-profile-name">${userName}</div>
                     <div class="user-profile-email">${user.email}</div>
                     <span class="user-profile-role-badge">${user.role || 'Member'}</span>
                 </div>
+                ${adminDropdownItem}
                 <a href="${portalPage}" class="user-profile-item">
                     <span>${portalLabel}</span>
                     <span>➔</span>

@@ -33,7 +33,7 @@ router.post('/signup', async (req, res) => {
         }
 
         const normalizedEmail = email.trim().toLowerCase();
-        const userRole = role && ['student', 'employee', 'employer', 'professional'].includes(role) ? role : 'student';
+        const userRole = role && ['student', 'employee', 'employer', 'professional', 'admin'].includes(role) ? role : 'student';
         const existing = await db.prepare('SELECT id FROM users WHERE email = ?').get(normalizedEmail);
         if (existing) {
             return res.status(400).json({ error: 'An account with this email address already exists.' });

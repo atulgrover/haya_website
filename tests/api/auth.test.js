@@ -49,4 +49,23 @@ test('Authentication & JWT Security Suite', async (t) => {
     assert.strictEqual(decoded.email, payload.email);
     assert.strictEqual(decoded.role, payload.role);
   });
+
+  await t.test('Administrator role persistence and JWT verification', async () => {
+    const adminEmail = `admin_test_${Date.now()}@hayagriva.ai`;
+    const hash = await bcrypt.hash(testPassword, 10);
+    const result = await db.prepare(`
+      INSERT INTO users (email, password_hash, full_name, role)
+      VALUES (?, ?, 'System Administrator', 'admin')
+    `).run(adminEmail, hash);
+
+    assert.ok(result.lastInsertRowid > 0, 'Admin User ID should be greater than 0');
+
+    const user = await db.prepare('SELECT id, email, role FROM users WHERE id = ?').get(result.lastInsertRowid);
+    assert.ok(user, 'Admin user should be retrieved from DB');
+    assert.strictEqual(user.role, 'admin', 'User role must be admin');
+
+    const token = jwt.sign({ userId: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+    const decoded = jwt.verify(token, JWT_SECRET);
+    assert.strictEqual(decoded.role, 'admin');
+  });
 });
