@@ -5,7 +5,7 @@
 .compact-footer {
   background-color: #0F172A;
   border-top: 4px solid #1E6C93;
-  padding: 40px 24px 24px;
+  padding: 32px 36px 20px;
   width: 100%;
   box-sizing: border-box;
   border-radius: 0;
@@ -14,10 +14,10 @@
 
 .footer-single-row-grid {
   display: grid;
-  grid-template-columns: 1.2fr 2.6fr 2fr;
+  grid-template-columns: 1.1fr 3fr 1.8fr;
   gap: 20px;
   align-items: stretch;
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
@@ -28,7 +28,7 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 18px 16px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@
 
 .footer-logo-img {
   width: 100%;
-  max-width: 260px;
+  max-width: 230px;
   height: auto;
   filter: invert(1);
   mix-blend-mode: screen;
@@ -61,10 +61,12 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 18px 22px;
+  padding: 18px 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   height: 100%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
@@ -72,18 +74,20 @@
 
 .shloka-devanagari-banner {
   font-family: 'Noto Serif Devanagari', serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 400;
   color: #FFFFFF;
-  margin-bottom: 6px;
-  line-height: 1.55;
-  letter-spacing: 0.4px;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .shloka-meaning-banner {
-  font-size: 14.5px;
+  font-size: 13.5px;
   color: #CBD5E1;
   line-height: 1.5;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* Section 3: Compact 3-Field Volunteer Form */
