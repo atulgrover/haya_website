@@ -735,15 +735,14 @@
                 <div class="qp-meta-line"><strong>Sub-Sector:</strong> ${card.sub_sector || 'N/A'}</div>
                 <div class="qp-meta-line"><strong>Occupation:</strong> ${card.occupation || 'N/A'}</div>
                 <div class="qp-meta-line"><strong>Awarding Body:</strong> ${card.awarding_body || 'NCVET'}</div>
-                <div class="qp-meta-line"><strong>Min Qualification:</strong> ${card.min_education_exp || 'N/A'}</div>
               </div>
 
               <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
                 <button class="btn-learn" onclick="openDetailInspector('${card.qp_code}', '${encodeURIComponent(card.qp_name)}', '${pdfUrl}')">
-                  🎬 Learn Now
+                  Learn Now
                 </button>
-                <a href="${pdfUrl}" target="_blank" rel="noopener" class="btn-learn" style="background:rgba(255,255,255,0.08); color:#38BDF8; border:1px solid rgba(56,189,248,0.3); text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:700;">
-                  📄 View Official Curriculum PDF ↗
+                <a href="${pdfUrl}" target="_blank" rel="noopener" class="btn-learn" style="background:#0F172A; color:#FFFFFF; border:1px solid #1E293B; text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700;">
+                  Skill Curriculum
                 </a>
               </div>
             </div>
