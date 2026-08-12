@@ -400,29 +400,39 @@ async function seedNsqfCurriculaIfEmpty() {
                     JSON.stringify(schemaObj)
                 );
 
+                // Clean previous module/pc records for fresh seed alignment
+                await db.prepare(`DELETE FROM nsqf_nos WHERE qp_code = ?`).run(schemaObj.qp_code);
+                await db.prepare(`DELETE FROM nsqf_modules WHERE qp_code = ?`).run(schemaObj.qp_code);
+                await db.prepare(`DELETE FROM nsqf_pcs WHERE qp_code = ?`).run(schemaObj.qp_code);
+
                 // Populate relational nsqf_nos, nsqf_modules, and nsqf_pcs tables
                 if (Array.isArray(schemaObj.nos_modules)) {
                     let nosOrder = 1;
                     let modOrder = 1;
                     let pcOrder = 1;
+                    const moduleMap = new Map();
 
                     for (const mod of schemaObj.nos_modules) {
                         const nosCode = mod.nos_code || 'NOS';
                         const nosTitle = mod.nos_title || mod.module_title || 'NOS Module';
                         const modTitle = mod.module_title || nosTitle;
 
-                        // Insert NOS
+                        // Insert NOS if unique
                         await db.prepare(`
-                            INSERT OR REPLACE INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
+                            INSERT OR IGNORE INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
                             VALUES (?, ?, ?, ?)
                         `).run(schemaObj.qp_code, nosCode, nosTitle, nosOrder++);
 
-                        // Insert Module
-                        const modInfo = await db.prepare(`
-                            INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
-                            VALUES (?, ?, ?, ?)
-                        `).run(schemaObj.qp_code, nosCode, modTitle, modOrder++);
-                        const modId = modInfo.lastInsertRowid;
+                        // Insert Module if unique (1 Module = 1 Reel)
+                        let modId = moduleMap.get(`${nosCode}:${modTitle}`);
+                        if (!modId) {
+                            const modInfo = await db.prepare(`
+                                INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
+                                VALUES (?, ?, ?, ?)
+                            `).run(schemaObj.qp_code, nosCode, modTitle, modOrder++);
+                            modId = modInfo.lastInsertRowid;
+                            moduleMap.set(`${nosCode}:${modTitle}`, modId);
+                        }
 
                         if (Array.isArray(mod.pcs)) {
                             for (const pc of mod.pcs) {
@@ -442,7 +452,7 @@ async function seedNsqfCurriculaIfEmpty() {
                                     schemaObj.qp_code, nosCode, nosTitle, modTitle, pc.pc_id, pcIntent, pcDesc, vId, vTitle, vUrl, 90
                                 );
 
-                                // Restructured nsqf_pcs table sync
+                                // Restructured nsqf_pcs table sync (1 PC = 1 Video inside Module Reel)
                                 await db.prepare(`
                                     INSERT OR REPLACE INTO nsqf_pcs 
                                     (qp_code, nos_code, module_id, pc_code, pc_description, pc_intent, contextual_search_query, video_id, video_title, video_url, audit_score, sequence_order)
@@ -455,8 +465,17 @@ async function seedNsqfCurriculaIfEmpty() {
                     }
                 }
 
+                // Purge empty 0-PC modules from nsqf_modules
+                await db.prepare(`
+                    DELETE FROM nsqf_modules 
+                    WHERE qp_code = ? AND id NOT IN (
+                        SELECT DISTINCT module_id FROM nsqf_pcs WHERE qp_code = ? AND module_id IS NOT NULL
+                    )
+                `).run(schemaObj.qp_code, schemaObj.qp_code);
+
                 // Sync master nsqf_qps table and legacy nsqf_curricula table counts
                 const actualNosCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_nos WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
+                const actualModCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_modules WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
                 const actualPcCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_pcs WHERE qp_code = ?`).get(schemaObj.qp_code)).c;
 
                 await db.prepare(`
