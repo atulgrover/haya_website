@@ -285,6 +285,7 @@ async function initSchema() {
             try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_id_hi TEXT;`); } catch (_) {}
             try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_title_hi TEXT;`); } catch (_) {}
             try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_url_hi TEXT;`); } catch (_) {}
+            try { await db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_nsqf_pcs_unique ON nsqf_pcs(qp_code, nos_code, pc_code);`); } catch (_) {}
         } catch (e) {}
 
         try {
