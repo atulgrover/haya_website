@@ -661,10 +661,38 @@ router.post('/save-progress', async (req, res) => {
             `).run(userId || null, normalizedEmail, String(skillId), pcsString, score || 0);
         }
 
-        res.json({
-            success: true,
-            message: 'Progress saved successfully.'
-        });
+        res.json({ success: true, message: 'Progress saved successfully.' });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// POST /api/skillpedia/progress/toggle-pc — toggle completed status of a Performance Criteria (PC)
+router.post('/progress/toggle-pc', async (req, res) => {
+    try {
+        const { userId, qpCode, pcCode, completed } = req.body;
+        if (!qpCode || !pcCode) {
+            return res.status(400).json({ error: 'qpCode and pcCode are required.' });
+        }
+        const uId = userId || 0;
+        const isComp = completed ? 1 : 0;
+
+        if (isComp) {
+            await db.prepare(`
+                INSERT OR REPLACE INTO user_pc_progress (user_id, qp_code, pc_code, completed, updated_at)
+                VALUES (?, ?, ?, 1, CURRENT_TIMESTAMP)
+            `).run(uId, qpCode, pcCode);
+        } else {
+            await db.prepare(`
+                DELETE FROM user_pc_progress WHERE user_id = ? AND qp_code = ? AND pc_code = ?
+            `).run(uId, qpCode, pcCode);
+        }
+
+        const countRow = await db.prepare(`
+            SELECT COUNT(*) as c FROM user_pc_progress WHERE user_id = ? AND qp_code = ? AND completed = 1
+        `).get(uId, qpCode);
+
+        res.json({ success: true, completedCount: countRow ? countRow.c : 0 });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }

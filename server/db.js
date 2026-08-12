@@ -339,6 +339,16 @@ async function initSchema() {
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                     UNIQUE(qp_code, pc_id, suggested_video_id)
                 );
+
+                CREATE TABLE IF NOT EXISTS user_pc_progress (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER DEFAULT 0,
+                    qp_code TEXT NOT NULL,
+                    pc_code TEXT NOT NULL,
+                    completed INTEGER DEFAULT 1,
+                    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(user_id, qp_code, pc_code)
+                );
             `);
         } catch (e) {}
 

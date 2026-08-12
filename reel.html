@@ -195,6 +195,35 @@
     .drawer-backdrop { position: absolute; inset: 0; z-index: 99; display: none; }
     .drawer-backdrop.visible { display: block; }
 
+    /* ===== INTERACTIVE PC JUMP BAR ===== */
+    .pc-jump-bar {
+      position: absolute;
+      bottom: 105px; left: 16px; right: 80px;
+      z-index: 90;
+      display: flex; gap: 6px;
+      overflow-x: auto;
+      padding: 4px 2px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .pc-jump-bar::-webkit-scrollbar { display: none; }
+    .pc-jump-pill {
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 11px; font-weight: 700;
+      padding: 5px 11px; border-radius: 16px;
+      cursor: pointer; white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .pc-jump-pill:hover, .pc-jump-pill.active {
+      background: rgba(56, 189, 248, 0.35);
+      border-color: rgba(56, 189, 248, 0.8);
+      color: #FFFFFF;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
     /* ===== SCROLL HINT ===== */
     .scroll-hint {
       position: absolute; bottom: 90px; left: 50%;
@@ -338,6 +367,7 @@
                 subtitle: `NOS Unit: ${mod.nos_code} — ${mod.nos_title || 'Core Competency'}`,
                 nos_code: mod.nos_code,
                 pcs: pcList,
+                pcs_obj: mod.pcs || [],
                 search_query: mod.intent_query || `${nsqf.qp_name} ${mod.module_title}`,
                 video_id: (mod.pcs && mod.pcs[0] && mod.pcs[0].video_id) || mod.video_id || 'x9PQgbB4y6M'
               });
@@ -537,6 +567,23 @@
           </div>
 
 
+          <!-- INTERACTIVE PC JUMP SELECTOR BAR -->
+          ${pcs.length > 0 ? `
+          <div class="pc-jump-bar" id="pc-jump-bar-${idx}">
+            ${pcs.map((pcItem, pIdx) => {
+              const pcCodeMatch = String(pcItem).match(/^(PC[\d\.]+)/i);
+              const pcCodeStr = pcCodeMatch ? pcCodeMatch[1] : `PC ${pIdx + 1}`;
+              const vId = (lesson.pcs_obj && lesson.pcs_obj[pIdx] && lesson.pcs_obj[pIdx].video_id) || lesson.video_id;
+              return `
+                <button class="pc-jump-pill ${pIdx === 0 ? 'active' : ''}" 
+                  id="pc-pill-${idx}-${pIdx}"
+                  onclick="switchPcVideo(${idx}, ${pIdx}, '${vId}', '${pcCodeStr}')">
+                  ▶ ${pcCodeStr}
+                </button>
+              `;
+            }).join('')}
+          </div>` : ''}
+
           <!-- BOTTOM ACTION BAR -->
           <div class="reel-action-bar">
             <div class="reel-meta">
@@ -734,19 +781,58 @@
     }
 
     /* =========================================================
-       PC CHECKLIST
+       DIRECT PC VIDEO JUMP & PROGRESS TRACKING
        ========================================================= */
-    function togglePC(skillId, lessonId, pcIdx, slideIdx, checkbox) {
+    function switchPcVideo(slideIdx, pcIdx, videoId, pcCode) {
+      // Update active pill styling
+      const pills = document.querySelectorAll(`#pc-jump-bar-${slideIdx} .pc-jump-pill`);
+      pills.forEach((p, i) => {
+        if (i === pcIdx) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+
+      // Swap YouTube video via API
+      if (players[slideIdx] && typeof players[slideIdx].loadVideoById === 'function') {
+        try {
+          players[slideIdx].loadVideoById(videoId);
+        } catch (_) {}
+      }
+
+      // Sync browser URL search params without page reload
+      try {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('pc', pcCode);
+        window.history.replaceState({}, '', currentUrl.toString());
+      } catch (_) {}
+    }
+
+    async function togglePC(skillId, lessonId, pcIdx, slideIdx, checkbox) {
       const key  = `pc_prog_${skillId}_${lessonId}`;
       let saved  = JSON.parse(localStorage.getItem(key) || '[]');
       if (checkbox.checked) {
         if (!saved.includes(pcIdx)) saved.push(pcIdx);
-        checkbox.closest('.drawer-pc-item').classList.add('checked');
+        checkbox.closest('.drawer-pc-item')?.classList.add('checked');
       } else {
         saved = saved.filter(i => i !== pcIdx);
-        checkbox.closest('.drawer-pc-item').classList.remove('checked');
+        checkbox.closest('.drawer-pc-item')?.classList.remove('checked');
       }
       localStorage.setItem(key, JSON.stringify(saved));
+
+      // Database sync
+      try {
+        const pcText = checkbox.nextElementSibling?.textContent || '';
+        const pcCodeMatch = pcText.match(/^(PC[\d\.]+)/i);
+        const pcCode = pcCodeMatch ? pcCodeMatch[1] : `PC_${pcIdx + 1}`;
+        await fetch('/api/skillpedia/progress/toggle-pc', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            qpCode: qpCode || skillId,
+            pcCode: pcCode,
+            completed: checkbox.checked
+          })
+        });
+      } catch (_) {}
     }
 
     /* =========================================================
