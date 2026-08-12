@@ -273,11 +273,13 @@
     /* ===========================================================
        HAYAGRIVA TIKTOK-STYLE REEL PLAYER
        Reads: /api/skillpedia/skill/:id via ?skill=<id>
-       =========================================================== */
-
-    const params   = new URLSearchParams(window.location.search);
-    const skillId  = params.get('skill');
-    const qpCode   = params.get('qp');
+       =======================================================    const params       = new URLSearchParams(window.location.search);
+    const skillId      = params.get('skill');
+    const qpCode       = params.get('qp');
+    const nosParam     = params.get('nos');
+    const moduleParam  = params.get('module');
+    const pcParam      = params.get('pc');
+    const videoParam   = params.get('video');
 
     let curriculum  = null;
     let ytReady     = false;
@@ -321,7 +323,6 @@
           const data = await res.json();
           if (!data.success || !data.curriculum) throw new Error(`NSQF Curriculum for ${qpCode} not found`);
 
-
           const nsqf = data.curriculum;
           const flatLessons = [];
 
@@ -343,12 +344,11 @@
             });
           }
 
-
           raw = {
             id: `NSQF-${nsqf.qp_code}`,
             type: 'nsqf_qp',
             title: `${nsqf.qp_name} (${nsqf.qp_code})`,
-            subtitle: `NSQF Qualification Pack — ${flatLessons.length} Core Module Reels (${nsqf.total_pcs || 182} PCs)`,
+            subtitle: `NSQF Qualification Pack — ${flatLessons.length} Core Module Reels (${nsqf.total_pcs || 32} PCs)`,
             sector: nsqf.sector || 'Vocational Training',
             total_reels: flatLessons.length,
             creator_id: 'ncvet_nsdc',
@@ -357,14 +357,15 @@
           };
 
         } else {
-          // Fetch Enterprise Custom Skill
-          const res  = await fetch(`/api/skillpedia/skill/${skillId}`);
+          // Fetch Enterprise Custom Skill by Numeric ID or Title Slug
+          const res  = await fetch(`/api/skillpedia/skill/${encodeURIComponent(skillId)}`);
           const data = await res.json();
           if (!data.success || !data.skill) throw new Error('Skill not found');
 
           const skill = data.skill;
           raw = {
-            id:          `CUSTOM-${skill.id}`,
+            id:          skill.id,
+            slug:        skill.title ? skill.title.toLowerCase().replace(/[- ]+/g, '_') : `skill_${skill.id}`,
             type:        'custom_ai',
             title:       skill.title,
             subtitle:    skill.subtitle || '11-Reel AI Skill Package',
@@ -376,7 +377,6 @@
             lessons:     skill.lessons
           };
         }
-
 
         // Validate + format via schemas.js if available
         try {
@@ -394,21 +394,35 @@
         const backBtnEl = document.getElementById('backBtn');
         if (backBtnEl) backBtnEl.title = pageTitle;
 
-
         renderReels(curriculum);
 
-        // Resolve hash target index (#reel-1.1, #reel-1.2, #reel-2.1...)
+        // Resolve target reel/video index from Option A deep-link parameters (module, pc, video, or hash)
         let targetIndex = 0;
-        const hash = window.location.hash || '';
-        const hashMatch = hash.match(/#reel-([A-Za-z0-9._-]+)/i);
-        if (hashMatch) {
-          const targetCode = hashMatch[1].trim();
+
+        if (videoParam && /^\d+$/.test(videoParam)) {
+          const vNum = parseInt(videoParam) - 1;
+          if (vNum >= 0 && vNum < curriculum.lessons.length) targetIndex = vNum;
+        } else if (moduleParam || pcParam || nosParam) {
+          const searchTarget = (pcParam || moduleParam || nosParam || '').toLowerCase();
           const foundIdx = curriculum.lessons.findIndex((l, i) => {
-            const m = String(l.title || '').match(/Module\s*(\d+\.\d+)/i);
-            const code = m ? m[1] : `${i + 1}`;
-            return code === targetCode || String(i) === targetCode;
+            const lTitle = (l.title || '').toLowerCase();
+            const lNos   = (l.nos_code || '').toLowerCase();
+            const lPcs   = Array.isArray(l.pcs) ? l.pcs.join(' ').toLowerCase() : '';
+            return lTitle.includes(searchTarget) || lNos.includes(searchTarget) || lPcs.includes(searchTarget) || String(i + 1) === searchTarget;
           });
           if (foundIdx >= 0) targetIndex = foundIdx;
+        } else {
+          const hash = window.location.hash || '';
+          const hashMatch = hash.match(/#reel-([A-Za-z0-9._-]+)/i);
+          if (hashMatch) {
+            const targetCode = hashMatch[1].trim();
+            const foundIdx = curriculum.lessons.findIndex((l, i) => {
+              const m = String(l.title || '').match(/Module\s*(\d+\.\d+)/i);
+              const code = m ? m[1] : `${i + 1}`;
+              return code === targetCode || String(i) === targetCode;
+            });
+            if (foundIdx >= 0) targetIndex = foundIdx;
+          }
         }
 
         activeIndex = targetIndex;
@@ -430,6 +444,8 @@
           <div style="font-size:40px;margin-bottom:12px">😕</div>
           <span class="load-text">${err.message}</span>
           <a href="students.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
+      }
+    } Skills</a>`;
       }
     }
 

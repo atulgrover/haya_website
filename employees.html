@@ -616,7 +616,8 @@
           grid.innerHTML = data.skills.map(skill => {
             const desc     = skill.description || 'Enterprise SOP micro-learning reel and operational workflow.';
             const reelCount = (skill.lessons && skill.lessons.length) || 0;
-            const shareUrl = `${window.location.origin}/reel.html?skill=${skill.id}`;
+            const slug     = skill.title ? skill.title.toLowerCase().replace(/[- ]+/g, '_') : skill.id;
+            const shareUrl = `${window.location.origin}/reel.html?skill=${slug}`;
             return `
               <div class="skill-card">
                 <div>
@@ -631,8 +632,8 @@
                 
                 </div>
                 <div style="display:flex; gap:6px; margin-top:4px;">
-                  <button class="btn-card-play" onclick="openPlayerModal(${skill.id}, '${encodeURIComponent(skill.title)}')">▶ Play</button>
-                  <button class="btn-card-share" onclick="shareSkill(${skill.id}, '${encodeURIComponent(skill.title)}')" title="Copy shareable link">🔗 Share</button>
+                  <button class="btn-card-play" onclick="openPlayerModal('${slug}', '${encodeURIComponent(skill.title)}')">▶ Play</button>
+                  <button class="btn-card-share" onclick="shareSkill('${slug}', '${encodeURIComponent(skill.title)}')" title="Copy shareable link">🔗 Share</button>
                 </div>
               </div>`;
           }).join('');

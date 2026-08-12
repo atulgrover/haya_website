@@ -555,10 +555,21 @@ router.post('/save-skill', async (req, res) => {
     }
 });
 
-// GET /api/skillpedia/skill/:id  — fetch one custom skill by ID (used by reel.html deep-link)
+// GET /api/skillpedia/skill/:id  — fetch one custom skill by numeric ID or title slug
 router.get('/skill/:id', async (req, res) => {
     try {
-        const row = await db.prepare(`SELECT * FROM custom_skills WHERE id = ?`).get(req.params.id);
+        const param = req.params.id.trim();
+        let row = null;
+        if (/^\d+$/.test(param)) {
+            row = await db.prepare(`SELECT * FROM custom_skills WHERE id = ?`).get(param);
+        }
+        if (!row) {
+            const cleanSlug = param.toLowerCase().replace(/[- ]+/g, '_');
+            row = await db.prepare(`
+                SELECT * FROM custom_skills 
+                WHERE LOWER(REPLACE(REPLACE(title, ' ', '_'), '-', '_')) = ?
+            `).get(cleanSlug);
+        }
         if (!row) return res.status(404).json({ error: 'Skill not found.' });
 
         let schema = {};
