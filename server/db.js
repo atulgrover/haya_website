@@ -251,6 +251,7 @@ async function initSchema() {
                     pc_intent TEXT,
                     intent_confidence INTEGER DEFAULT NULL,
                     contextual_search_query TEXT,
+                    query_confidence INTEGER DEFAULT NULL,
                     video_id TEXT,
                     video_title TEXT,
                     video_url TEXT,
@@ -262,6 +263,7 @@ async function initSchema() {
                 );
             `);
             try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN intent_confidence INTEGER DEFAULT NULL;`); } catch (_) {}
+            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN query_confidence INTEGER DEFAULT NULL;`); } catch (_) {}
         } catch (e) {}
 
         try {

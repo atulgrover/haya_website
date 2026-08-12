@@ -158,6 +158,50 @@ function computeStrict99Confidence(rawDesc, intent) {
 }
 
 /**
+ * Compute 4-Factor Search Vector Confidence Score (0 - 100%)
+ */
+function computeQueryConfidence(query, qpName, pcIntent) {
+    if (!query) return 0;
+
+    let score = 0;
+
+    // Factor 1: Job Role Title Clarity (+25 Points)
+    const cleanRole = String(qpName || '').replace(/[-_]/g, ' ').trim();
+    if (cleanRole && !/\//.test(cleanRole) && query.toLowerCase().includes(cleanRole.toLowerCase().split(' ')[0])) {
+        score += 25;
+    } else {
+        score += 10;
+    }
+
+    // Factor 2: Action Verb Presence (+25 Points)
+    const firstVerb = String(pcIntent || '').split(' ')[0].toLowerCase().replace(/[^a-z]/g, '');
+    if (['inspect', 'verify', 'assemble', 'calibrate', 'install', 'operate', 'repair', 'clean', 'measure', 'prepare', 'log', 'report', 'identify', 'test', 'execute', 'broadcast', 'dispatch', 'maintain'].includes(firstVerb)) {
+        score += 25;
+    } else {
+        score += 10;
+    }
+
+    // Factor 3: Search Suffix Alignment (+25 Points)
+    if (query.endsWith('practical demonstration tutorial')) {
+        score += 25;
+    } else if (query.includes('tutorial')) {
+        score += 15;
+    }
+
+    // Factor 4: YouTube BM25 Word-Length Golden Ratio (+25 Points)
+    const wordCount = query.split(' ').length;
+    if (wordCount >= 6 && wordCount <= 11) {
+        score += 25;
+    } else if (wordCount >= 12 && wordCount <= 14) {
+        score += 15;
+    } else {
+        score += 5;
+    }
+
+    return Math.min(100, Math.max(0, score));
+}
+
+/**
  * Build Optimal YouTube Search Vector (Role + Clean Intent + practical demonstration tutorial)
  */
 function buildOptimalYoutubeQuery(qpName, pcIntent) {
@@ -176,8 +220,8 @@ async function processYoutubeQueryOptimization() {
     let limit = 2176;
 
     console.log('================================================================================');
-    console.log('🎥 [SUB-STEP 1.3] 99% INTENT & OPTIMAL YOUTUBE QUERY ENGINE');
-    console.log('   (Enforcing Strict 3-Grammar Rule & Pinpoint Search Vector Generation)');
+    console.log('🎥 [SUB-STEP 1.3] YOUTUBE SEARCH VECTOR CONFIDENCE SCORER');
+    console.log('   (Computing 4-Factor Search Vector Quality across 207,059 PCs)');
     console.log('================================================================================\n');
 
     let pcsToProcess = [];
@@ -198,11 +242,11 @@ async function processYoutubeQueryOptimization() {
         `).all();
     }
 
-    console.log(`Optimizing ${pcsToProcess.length.toLocaleString()} Performance Criteria for YouTube Harvesting...\n`);
+    console.log(`Scoring Search Vectors for ${pcsToProcess.length.toLocaleString()} Performance Criteria...\n`);
 
     const startTime = Date.now();
     let updatedCount = 0;
-    let totalConfidence = 0;
+    let totalQueryConfidence = 0;
     let highConfCount = 0;
     let medConfCount = 0;
     let lowConfCount = 0;
@@ -210,42 +254,42 @@ async function processYoutubeQueryOptimization() {
     for (let i = 0; i < pcsToProcess.length; i++) {
         const item = pcsToProcess[i];
         const intent = optimizeIntent99(item.pc_description);
-        const confidence = computeStrict99Confidence(item.pc_description, intent);
         const query = buildOptimalYoutubeQuery(item.qp_name, intent);
+        const queryConf = computeQueryConfidence(query, item.qp_name, intent);
 
         await db.prepare(`
             UPDATE nsqf_pcs
-            SET pc_intent = ?, intent_confidence = ?, contextual_search_query = ?
+            SET pc_intent = ?, contextual_search_query = ?, query_confidence = ?
             WHERE id = ?
-        `).run(intent, confidence, query, item.id);
+        `).run(intent, query, queryConf, item.id);
 
         updatedCount++;
-        totalConfidence += confidence;
+        totalQueryConfidence += queryConf;
 
-        if (confidence >= 80) highConfCount++;
-        else if (confidence >= 70) medConfCount++;
+        if (queryConf >= 80) highConfCount++;
+        else if (queryConf >= 70) medConfCount++;
         else lowConfCount++;
 
         if (isAudit && (i < 8 || (i + 1) % 40 === 0)) {
             console.log(`[${i + 1}/${pcsToProcess.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_description.substring(0, 50)}..."`);
-            console.log(`        ✨ 99% Intent:       "${intent}" (Confidence: ${confidence}%)`);
-            console.log(`        🎥 Optimal YouTube:  "${query}"`);
+            console.log(`        ✨ 99% Intent:        "${intent}"`);
+            console.log(`        🎥 YouTube Query:     "${query}" (Query Confidence: ${queryConf}%)`);
             console.log('--------------------------------------------------------------------------------');
         }
     }
 
     const elapsedMs = Date.now() - startTime;
-    const avgConfidence = updatedCount > 0 ? (totalConfidence / updatedCount).toFixed(1) : 0;
+    const avgQueryConfidence = updatedCount > 0 ? (totalQueryConfidence / updatedCount).toFixed(1) : 0;
 
     console.log('\n================================================================================');
-    console.log(`📊 YOUTUBE QUERY OPTIMIZATION SUMMARY:`);
-    console.log(`   Total PCs Processed:     ${updatedCount.toLocaleString()}`);
-    console.log(`   Catalog Average Intent:  ${avgConfidence}%`);
-    console.log(`   High Quality (>= 80%):   ${highConfCount.toLocaleString()} (${((highConfCount/updatedCount)*100).toFixed(1)}%)`);
-    console.log(`   Medium Quality (70-79%): ${medConfCount.toLocaleString()} (${((medConfCount/updatedCount)*100).toFixed(1)}%)`);
-    console.log(`   Low Quality (< 70%):     ${lowConfCount.toLocaleString()} (${((lowConfCount/updatedCount)*100).toFixed(1)}%)`);
-    console.log(`   Execution Time:          ${(elapsedMs / 1000).toFixed(2)} seconds`);
-    console.log(`   Speed Throughput:        ${Math.round(updatedCount / (elapsedMs / 1000)).toLocaleString()} PCs / sec`);
+    console.log(`📊 YOUTUBE SEARCH VECTOR CONFIDENCE SCORING SUMMARY:`);
+    console.log(`   Total Search Vectors Scored: ${updatedCount.toLocaleString()}`);
+    console.log(`   Average Query Confidence:    ${avgQueryConfidence}%`);
+    console.log(`   High Quality (>= 80%):       ${highConfCount.toLocaleString()} (${((highConfCount/updatedCount)*100).toFixed(1)}%)`);
+    console.log(`   Medium Quality (70-79%):     ${medConfCount.toLocaleString()} (${((medConfCount/updatedCount)*100).toFixed(1)}%)`);
+    console.log(`   Low Quality (< 70%):         ${lowConfCount.toLocaleString()} (${((lowConfCount/updatedCount)*100).toFixed(1)}%)`);
+    console.log(`   Execution Time:              ${(elapsedMs / 1000).toFixed(2)} seconds`);
+    console.log(`   Throughput Speed:            ${Math.round(updatedCount / (elapsedMs / 1000)).toLocaleString()} Vectors / sec`);
     console.log('================================================================================\n');
 }
 
