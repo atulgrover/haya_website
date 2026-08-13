@@ -52,8 +52,30 @@ if (process.env.RENDER_EXTERNAL_URL) {
         fetch(pingUrl)
             .then(res => console.log(`[Keep-Alive Ping] Sent to ${pingUrl} -> HTTP ${res.status}`))
             .catch(err => console.warn(`[Keep-Alive Ping Warning] ${err.message}`));
-    }, PING_INTERVAL);
+// Autonomous ReelCurator AI Agent Background Worker
+const { auditQpVideos } = require('./services/reelCuratorAgent');
+async function startBackgroundReelCuratorWorker() {
+    try {
+        const randomQps = await db.prepare(`
+            SELECT qp_code FROM nsqf_qps 
+            ORDER BY RANDOM() 
+            LIMIT 3
+        `).all();
+
+        if (Array.isArray(randomQps) && randomQps.length > 0) {
+            console.log(`🤖 [ReelCurator Worker] Running background AI audit for ${randomQps.length} QPs...`);
+            for (const qp of randomQps) {
+                await auditQpVideos(qp.qp_code, 70);
+            }
+        }
+    } catch (err) {
+        console.warn('[ReelCurator Worker Warning]:', err.message);
+    }
 }
+
+// Run background ReelCurator Worker every 15 minutes
+setInterval(startBackgroundReelCuratorWorker, 15 * 60 * 1000);
+setTimeout(startBackgroundReelCuratorWorker, 15 * 1000); // Initial run 15s after startup
 
 app.listen(PORT, () => {
     console.log(`=======================================================`);
