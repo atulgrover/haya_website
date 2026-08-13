@@ -49,7 +49,7 @@ async function pushLocalToNeon() {
         await client.query('BEGIN');
 
         // 1. Sync nsqf_pcs
-        const pcs = sqliteDb.prepare(`SELECT id, qp_code, nos_code, module_title, pc_code, pc_intent, pc_description, video_id, video_title, video_url FROM nsqf_pcs`).all();
+        const pcs = sqliteDb.prepare(`SELECT id, qp_code, nos_code, pc_code, pc_intent, pc_description, video_id, video_title, video_url FROM nsqf_pcs`).all();
         console.log(`📦 Found ${pcs.length.toLocaleString()} PCs in local SQLite.`);
 
         console.log(`⏳ Updating Neon nsqf_pcs in batch transactions...`);
@@ -60,9 +60,9 @@ async function pushLocalToNeon() {
             for (const row of batch) {
                 await client.query(`
                     UPDATE nsqf_pcs 
-                    SET video_id = $1, video_title = $2, video_url = $3 
-                    WHERE id = $4
-                `, [row.video_id, row.video_title, row.video_url, row.id]);
+                    SET nos_code = $1, pc_code = $2, pc_intent = $3, pc_description = $4, video_id = $5, video_title = $6, video_url = $7 
+                    WHERE id = $8
+                `, [row.nos_code, row.pc_code, row.pc_intent, row.pc_description, row.video_id, row.video_title, row.video_url, row.id]);
                 syncedPcs++;
             }
         }

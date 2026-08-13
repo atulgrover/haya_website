@@ -9,12 +9,14 @@ const isPostgres = !process.env.USE_LOCAL_SQLITE && !!process.env.DATABASE_URL;
 const isTurso = !isPostgres && !process.env.USE_LOCAL_SQLITE && !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
 
 if (isPostgres) {
-    console.log(`[Haya Portal DB] Connecting to PostgreSQL (Neon Cloud DB)...`);
+    console.log(`[Haya Portal DB] Connecting to PostgreSQL (${process.env.DATABASE_URL})...`);
     const { Pool } = require('pg');
-    const pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-        ssl: { rejectUnauthorized: false }
-    });
+    const isLocalPg = process.env.DATABASE_URL.includes('localhost') || process.env.DATABASE_URL.includes('127.0.0.1');
+    const poolConfig = { connectionString: process.env.DATABASE_URL };
+    if (!isLocalPg) {
+        poolConfig.ssl = { rejectUnauthorized: false };
+    }
+    const pool = new Pool(poolConfig);
 
     const convertSql = (sql) => {
         let idx = 1;
@@ -90,6 +92,45 @@ if (isPostgres) {
 async function initSchema() {
     try {
         if (isPostgres) {
+            await db.exec(`
+                CREATE TABLE IF NOT EXISTS users (
+                    id SERIAL PRIMARY KEY,
+                    email VARCHAR(255) UNIQUE NOT NULL,
+                    password_hash TEXT NOT NULL,
+                    full_name TEXT NOT NULL,
+                    firm_name TEXT,
+                    ip_registration_no TEXT,
+                    role VARCHAR(50) DEFAULT 'student',
+                    company_id TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+
+                CREATE TABLE IF NOT EXISTS custom_skills (
+                    id SERIAL PRIMARY KEY,
+                    title TEXT NOT NULL,
+                    company_id TEXT,
+                    employee_email_id TEXT NOT NULL,
+                    schema_json TEXT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+
+                CREATE TABLE IF NOT EXISTS skill_progress (
+                    id SERIAL PRIMARY KEY,
+                    user_id INT,
+                    employee_email_id TEXT NOT NULL,
+                    skill_id TEXT NOT NULL,
+                    completed_pcs TEXT DEFAULT '[]',
+                    score INT DEFAULT 0,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+
+                CREATE TABLE IF NOT EXISTS youtube_search_cache (
+                    search_query VARCHAR(500) PRIMARY KEY,
+                    video_id VARCHAR(50),
+                    video_title TEXT,
+                    searched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+            `);
             console.log('[Haya Portal DB] PostgreSQL database schema verified & connected.');
             return;
         }

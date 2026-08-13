@@ -52,7 +52,8 @@ if (process.env.RENDER_EXTERNAL_URL) {
         fetch(pingUrl)
             .then(res => console.log(`[Keep-Alive Ping] Sent to ${pingUrl} -> HTTP ${res.status}`))
             .catch(err => console.warn(`[Keep-Alive Ping Warning] ${err.message}`));
-// Autonomous ReelCurator AI Agent Background Worker
+    }, PING_INTERVAL);
+}
 const { auditQpVideos } = require('./services/reelCuratorAgent');
 async function startBackgroundReelCuratorWorker() {
     try {

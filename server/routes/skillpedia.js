@@ -369,17 +369,29 @@ router.get('/nsqf/curriculum', async (req, res) => {
         const pcRows = await db.prepare(`
             SELECT 
                 p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, 
-                p.video_id, p.video_title, p.video_url, p.video_id_hi, p.video_title_hi, p.video_url_hi,
+                p.video_id, p.video_title, p.video_url,
                 COALESCE(n.nos_title, 'Occupational Standards') as nos_title,
                 COALESCE(m.module_title, 'Module') as module_title
             FROM nsqf_pcs p
             LEFT JOIN nsqf_nos n ON p.qp_code = n.qp_code AND p.nos_code = n.nos_code
-            LEFT JOIN nsqf_modules m ON p.module_id = m.id
+            LEFT JOIN nsqf_modules m ON p.qp_code = m.qp_code AND p.nos_code = m.nos_code
             WHERE p.qp_code = ? OR REPLACE(p.qp_code, '/', '_') = ?
             ORDER BY p.id ASC
         `).all(qpCode, cleanQp);
 
         if (Array.isArray(pcRows) && pcRows.length > 0) {
+            // Helper to extract numeric order from PC code / intent / module title
+            const getPcNum = (code, text) => {
+                const m1 = (code || '').match(/\d+/);
+                if (m1) return parseInt(m1[0]);
+                const m2 = (text || '').match(/(?:pc|module)\s*(\d+)/i);
+                if (m2) return parseInt(m2[1]);
+                return 999;
+            };
+
+            // Sort pcRows in natural numeric order so PC1, PC2... always come first
+            pcRows.sort((a, b) => getPcNum(a.pc_code, a.pc_intent) - getPcNum(b.pc_code, b.pc_intent));
+
             // Group PC rows into NOS modules
             const moduleMap = {};
             pcRows.forEach(row => {
@@ -389,6 +401,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
                         nos_code: row.nos_code,
                         nos_title: row.nos_title,
                         module_title: row.module_title,
+                        min_pc_num: getPcNum(row.pc_code, row.pc_intent),
                         video_id: row.video_id || 'x9PQgbB4y6M',
                         pcs: []
                     };
@@ -407,7 +420,26 @@ router.get('/nsqf/curriculum', async (req, res) => {
                 });
             });
 
-            const nosModules = Object.values(moduleMap);
+            // Extract explicit Module number (Module 1 -> 1, Module 2 -> 2)
+            const getModNum = (modTitle, pcs) => {
+                const m = (modTitle || '').match(/module\s*(\d+)/i);
+                if (m) return parseInt(m[1]);
+                if (Array.isArray(pcs)) {
+                    for (const pc of pcs) {
+                        const m2 = (pc.pc_intent || pc.pc_desc || '').match(/module\s*(\d+)/i);
+                        if (m2) return parseInt(m2[1]);
+                    }
+                }
+                return 999;
+            };
+
+            // Sort modules naturally by explicit Module number (Module 1 before Module 4)
+            const nosModules = Object.values(moduleMap).sort((a, b) => {
+                const numA = getModNum(a.module_title, a.pcs);
+                const numB = getModNum(b.module_title, b.pcs);
+                if (numA !== numB) return numA - numB;
+                return a.min_pc_num - b.min_pc_num;
+            });
             return res.json({
                 success: true,
                 curriculum: {
