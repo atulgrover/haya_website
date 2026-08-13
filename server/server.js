@@ -44,6 +44,17 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', service: 'Haya Portal Server', timestamp: new Date().toISOString() });
 });
 
+// Self-Ping Keep-Alive (Prevents Render free tier auto-sleep)
+if (process.env.RENDER_EXTERNAL_URL) {
+    const PING_INTERVAL = 10 * 60 * 1000; // Ping every 10 mins (Render sleeps after 15 mins)
+    setInterval(() => {
+        const pingUrl = `${process.env.RENDER_EXTERNAL_URL}/api/health`;
+        fetch(pingUrl)
+            .then(res => console.log(`[Keep-Alive Ping] Sent to ${pingUrl} -> HTTP ${res.status}`))
+            .catch(err => console.warn(`[Keep-Alive Ping Warning] ${err.message}`));
+    }, PING_INTERVAL);
+}
+
 app.listen(PORT, () => {
     console.log(`=======================================================`);
     console.log(`🚀 HAYA PORTAL Server running at http://localhost:${PORT}`);
