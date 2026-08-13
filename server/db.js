@@ -5,9 +5,45 @@ const path = require('path');
 
 let db;
 
-const isTurso = !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
+const isPostgres = !!process.env.DATABASE_URL;
+const isTurso = !isPostgres && !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
 
-if (isTurso) {
+if (isPostgres) {
+    console.log(`[Haya Portal DB] Connecting to PostgreSQL (Neon Cloud DB)...`);
+    const { Pool } = require('pg');
+    const pool = new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false }
+    });
+
+    const convertSql = (sql) => {
+        let idx = 1;
+        return sql.replace(/\?/g, () => `$${idx++}`);
+    };
+
+    db = {
+        prepare: (sql) => ({
+            run: async (...args) => {
+                const pgSql = convertSql(sql);
+                const res = await pool.query(pgSql, args);
+                return { lastInsertRowid: res.rows[0]?.id || 0, changes: res.rowCount };
+            },
+            get: async (...args) => {
+                const pgSql = convertSql(sql);
+                const res = await pool.query(pgSql, args);
+                return res.rows[0] || null;
+            },
+            all: async (...args) => {
+                const pgSql = convertSql(sql);
+                const res = await pool.query(pgSql, args);
+                return res.rows;
+            }
+        }),
+        exec: async (sql) => {
+            return await pool.query(sql);
+        }
+    };
+} else if (isTurso) {
     console.log(`[Haya Portal DB] Connecting to Turso Cloud SQLite: ${process.env.TURSO_DATABASE_URL}`);
     const { createClient } = require('@libsql/client');
     const client = createClient({
