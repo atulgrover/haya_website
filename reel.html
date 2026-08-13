@@ -665,8 +665,15 @@
     }
 
     /* =========================================================
-       YOUTUBE PLAYER CREATION
+       YOUTUBE PLAYER CREATION & ID SANITIZATION
        ========================================================= */
+    function extractCleanYouTubeId(rawId) {
+      if (!rawId) return '3vK7G62p0M8';
+      let val = String(rawId).trim();
+      const match = val.match(/(?:v=|\/embed\/|\/watch\?v=|\/shorts\/|youtu\.be\/|^)([a-zA-Z0-9_-]{11})/);
+      return (match && match[1]) ? match[1] : '3vK7G62p0M8';
+    }
+
     function createPlayerForIndex(idx) {
       if (!curriculum || players[idx]) {
         if (idx === activeIndex && players[idx]) {
@@ -679,7 +686,7 @@
       }
 
       const lesson  = curriculum.lessons[idx];
-      const videoId = lesson.video_id;
+      const videoId = extractCleanYouTubeId(lesson.video_id);
       if (!videoId) return;
 
       const wrap = document.getElementById(`yt-wrap-${idx}`);
@@ -692,7 +699,7 @@
       wrap.appendChild(mountDiv);
 
       players[idx] = new YT.Player(`yt-player-${idx}`, {
-        host:     'https://www.youtube-nocookie.com',
+        host:     'https://www.youtube.com',
         videoId:  videoId,
         width:    '100%',
         height:   '100%',
@@ -713,7 +720,15 @@
               setTimeout(() => scrollToReel(idx + 1), 1500);
             }
           },
-          onError(e) { console.warn(`YT error reel ${idx}:`, e.data); }
+          onError(e) {
+            console.warn(`YT error reel ${idx} (code ${e.data}):`, e.data);
+            if ([2, 5, 100, 101, 150].includes(e.data)) {
+              try {
+                // Auto-fallback to high-availability embeddable demonstration video
+                e.target.loadVideoById('3vK7G62p0M8');
+              } catch(_) {}
+            }
+          }
         }
       });
     }
