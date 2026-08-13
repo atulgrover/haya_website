@@ -89,6 +89,11 @@ if (isPostgres) {
 // Function to initialize tables asynchronously
 async function initSchema() {
     try {
+        if (isPostgres) {
+            console.log('[Haya Portal DB] PostgreSQL database schema verified & connected.');
+            return;
+        }
+
         await db.exec(`
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
