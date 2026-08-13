@@ -95,8 +95,26 @@ async function harvestDistinctPcVideos() {
                 const intentText = pc.pc_intent || pc.pc_description || '';
                 const searchQ = `${qp.qp_name} ${intentText} tutorial ${qp.sector}`;
 
-                // Search YouTube for candidates
-                const candidates = await searchYouTubeVideos(searchQ, 6);
+                // 1. Cache-First Lookup in youtube_search_cache (188,118 entries)
+                const cacheQuery = `%${intentText.slice(0, 25)}%`;
+                const cachedRes = await client.query(`
+                    SELECT video_id, video_title, video_url 
+                    FROM youtube_search_cache 
+                    WHERE search_query LIKE $1 AND video_id NOT IN ('sR7RKyHHyTg', 'x9PQgbB4y6M', '3vK7G62p0M8')
+                    LIMIT 5
+                `, [cacheQuery]);
+
+                let candidates = cachedRes.rows.map(r => ({
+                    video_id: r.video_id,
+                    video_title: r.video_title,
+                    video_url: r.video_url || `https://www.youtube.com/watch?v=${r.video_id}`
+                }));
+
+                // 2. If no cache match, fetch via videoHarvester with 350ms pacing delay
+                if (candidates.length === 0) {
+                    await new Promise(r => setTimeout(r, 350));
+                    candidates = await searchYouTubeVideos(searchQ, 5);
+                }
 
                 let selectedVideo = null;
 
