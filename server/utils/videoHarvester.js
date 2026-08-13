@@ -77,11 +77,12 @@ async function searchYouTubeVideos(query, maxResults = 6) {
 
     // 3. Fallback placeholder if both fail
     return [{
-        video_id: 'sR7RKyHHyTg',
-        video_title: `${cleanQ} Demonstration`,
-        video_url: 'https://www.youtube.com/watch?v=sR7RKyHHyTg',
-        thumbnail: 'https://img.youtube.com/vi/sR7RKyHHyTg/mqdefault.jpg',
-        channelTitle: 'HAYAGRIVA Skillpedia'
+        video_id: 'FW_bw9jdrlQ',
+        video_title: 'NSQF Vocational Skill Demonstration Reel',
+        video_url: 'https://www.youtube.com/watch?v=FW_bw9jdrlQ',
+        thumbnail: 'https://img.youtube.com/vi/FW_bw9jdrlQ/mqdefault.jpg',
+        channelTitle: 'HAYAGRIVA Skillpedia',
+        isFallback: true
     }];
 }
 

@@ -83,6 +83,7 @@ async function auditQpVideos(qpCode = 'AMH/Q0103', autoApplyThreshold = 75) {
             let bestScore = currentScore;
 
             for (const cand of candidates) {
+                if (cand.isFallback || ['sR7RKyHHyTg', 'x9PQgbB4y6M', '3vK7G62p0M8', 'FW_bw9jdrlQ'].includes(cand.video_id)) continue;
                 if (cand.video_id === r.video_id) continue;
                 const candScore = scoreVideoAlignment(intentText, cand.video_title);
                 if (candScore > bestScore) {
