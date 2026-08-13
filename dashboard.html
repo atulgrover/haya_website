@@ -1177,14 +1177,20 @@
                 <div style="border:1px solid rgba(239,68,68,0.3); background:rgba(239,68,68,0.03); padding:0.8rem; border-radius:6px;">
                   <div style="font-size:0.75rem; font-weight:800; color:#EF4444; margin-bottom:4px;">🔴 CURRENT ASSIGNED VIDEO (Score: ${s.current_audit_score}%)</div>
                   <div style="font-weight:700; font-size:0.88rem; color:var(--text-main); margin-bottom:4px;">${s.current_video_title}</div>
-                  <div style="font-size:0.75rem; color:var(--text-muted); font-family:monospace;">ID: ${s.current_video_id}</div>
+                  <div style="font-size:0.75rem; color:var(--text-muted); font-family:monospace; margin-bottom:8px;">ID: ${s.current_video_id}</div>
+                  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px; background:#000; margin-top:6px;">
+                    <iframe src="https://www.youtube-nocookie.com/embed/${s.current_video_id}" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
                 </div>
                 
                 <!-- AI Suggested Video -->
                 <div style="border:1px solid rgba(16,185,129,0.3); background:rgba(16,185,129,0.04); padding:0.8rem; border-radius:6px;">
                   <div style="font-size:0.75rem; font-weight:800; color:#10B981; margin-bottom:4px;">🟢 AI SUGGESTED BETTER VIDEO (Score: ${s.suggested_audit_score}%)</div>
                   <div style="font-weight:700; font-size:0.88rem; color:var(--text-main); margin-bottom:4px;">${s.suggested_video_title}</div>
-                  <div style="font-size:0.75rem; color:var(--text-muted); font-family:monospace;">ID: ${s.suggested_video_id}</div>
+                  <div style="font-size:0.75rem; color:var(--text-muted); font-family:monospace; margin-bottom:8px;">ID: ${s.suggested_video_id}</div>
+                  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px; background:#000; margin-top:6px;">
+                    <iframe src="https://www.youtube-nocookie.com/embed/${s.suggested_video_id}" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
                 </div>
               </div>
               
