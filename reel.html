@@ -667,6 +667,8 @@
     /* =========================================================
        YOUTUBE PLAYER CREATION & ID SANITIZATION
        ========================================================= */
+    const mountedPlayers = {};
+
     function extractCleanYouTubeId(rawId) {
       if (!rawId) return '3vK7G62p0M8';
       let val = String(rawId).trim();
@@ -675,7 +677,7 @@
     }
 
     function createPlayerForIndex(idx) {
-      if (!curriculum || players[idx]) {
+      if (!curriculum || mountedPlayers[idx]) {
         if (idx === activeIndex && players[idx]) {
           try {
             if (isMuted) players[idx].mute(); else players[idx].unMute();
@@ -692,45 +694,50 @@
       const wrap = document.getElementById(`yt-wrap-${idx}`);
       if (!wrap) return;
 
+      mountedPlayers[idx] = true;
+
       const mountDiv = document.createElement('div');
       mountDiv.id = `yt-player-${idx}`;
       mountDiv.style.cssText = 'width:100%;height:100%;';
       wrap.innerHTML = '';
       wrap.appendChild(mountDiv);
 
-      players[idx] = new YT.Player(`yt-player-${idx}`, {
-        host:     'https://www.youtube.com',
-        videoId:  videoId,
-        width:    '100%',
-        height:   '100%',
-        playerVars: {
-          autoplay: idx === activeIndex ? 1 : 0,
-          mute: 1, controls: 1, playsinline: 1,
-          rel: 0, modestbranding: 1, enablejsapi: 1,
-          origin: window.location.origin
-        },
-        events: {
-          onReady(e) {
-            if (isMuted) e.target.mute(); else e.target.unMute();
-            if (idx === activeIndex) e.target.playVideo();
+      try {
+        players[idx] = new YT.Player(`yt-player-${idx}`, {
+          host:     'https://www.youtube.com',
+          videoId:  videoId,
+          width:    '100%',
+          height:   '100%',
+          playerVars: {
+            autoplay: idx === activeIndex ? 1 : 0,
+            mute: 1, controls: 1, playsinline: 1,
+            rel: 0, modestbranding: 1, enablejsapi: 1
           },
-          onStateChange(e) {
-            if (e.data === YT.PlayerState.ENDED && idx === activeIndex) {
-              showNextCta(idx);
-              setTimeout(() => scrollToReel(idx + 1), 1500);
-            }
-          },
-          onError(e) {
-            console.warn(`YT error reel ${idx} (code ${e.data}):`, e.data);
-            if ([2, 5, 100, 101, 150].includes(e.data)) {
-              try {
-                // Auto-fallback to high-availability embeddable demonstration video
-                e.target.loadVideoById('3vK7G62p0M8');
-              } catch(_) {}
+          events: {
+            onReady(e) {
+              if (isMuted) e.target.mute(); else e.target.unMute();
+              if (idx === activeIndex) e.target.playVideo();
+            },
+            onStateChange(e) {
+              if (e.data === YT.PlayerState.ENDED && idx === activeIndex) {
+                showNextCta(idx);
+                setTimeout(() => scrollToReel(idx + 1), 1500);
+              }
+            },
+            onError(e) {
+              console.warn(`YT error reel ${idx} (code ${e.data}):`, e.data);
+              // Prevent recursive error loop: only attempt fallback if not already on fallback video
+              if (videoId !== '3vK7G62p0M8') {
+                try {
+                  e.target.loadVideoById('3vK7G62p0M8');
+                } catch(_) {}
+              }
             }
           }
-        }
-      });
+        });
+      } catch (err) {
+        console.warn(`Failed to mount YT player for reel ${idx}:`, err.message);
+      }
     }
 
     /* =========================================================
