@@ -333,7 +333,10 @@ router.get('/qps/cards', async (req, res) => {
         const totalDatabaseCount = dbCountRow ? dbCountRow.total : 2176;
 
         const maxLimit = limit ? parseInt(limit) : 60;
-        const querySql = `SELECT * ${baseSql} GROUP BY qp_code ORDER BY id ASC LIMIT ${maxLimit}`;
+        const isPostgres = !!process.env.DATABASE_URL;
+        const querySql = isPostgres 
+            ? `SELECT DISTINCT ON (qp_code) * ${baseSql} ORDER BY qp_code, id ASC LIMIT ${maxLimit}`
+            : `SELECT * ${baseSql} GROUP BY qp_code ORDER BY id ASC LIMIT ${maxLimit}`;
 
         const cards = await db.prepare(querySql).all(...args);
         res.json({
