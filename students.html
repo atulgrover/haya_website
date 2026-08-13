@@ -58,6 +58,8 @@
       border-bottom: 1px solid var(--border-color);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       flex-shrink: 0;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
 
@@ -113,9 +115,10 @@
       display: flex;
       flex: 1;
       min-height: calc(100vh - 64px);
+      align-items: flex-start;
     }
 
-    /* LEFT PANEL: Filters & Cascade Selector */
+    /* LEFT PANEL: Filters & Cascade Selector (Pinned Sticky Sidebar) */
     .panel-left {
       width: 250px;
       min-width: 220px;
@@ -130,6 +133,8 @@
       flex-direction: column;
       gap: 16px;
       flex-shrink: 0;
+      align-self: flex-start;
+      z-index: 100;
     }
 
     .panel-title {
@@ -304,18 +309,23 @@
       background: var(--primary-hover);
     }
 
-    /* RIGHT PANEL: Detail Inspector */
+    /* RIGHT PANEL: Detail Inspector (Pinned Sticky Sidebar) */
     .panel-right {
       width: 400px;
       min-width: 320px;
       background: #FFFFFF;
       border-left: 1px solid var(--border-color);
       padding: 20px;
+      position: sticky;
+      top: 64px;
+      height: calc(100vh - 64px);
       overflow-y: auto;
       display: none;
       flex-direction: column;
       gap: 16px;
       flex-shrink: 0;
+      align-self: flex-start;
+      z-index: 100;
     }
 
     .panel-right.active {
@@ -770,6 +780,7 @@
         </div>
       `;
       rightPanel.classList.add('active');
+      rightPanel.scrollTop = 0;
 
       try {
         const cleanQp = (qpCode || '').replace(/\//g, '_');
