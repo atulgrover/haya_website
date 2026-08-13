@@ -5,8 +5,8 @@ const path = require('path');
 
 let db;
 
-const isPostgres = !!process.env.DATABASE_URL;
-const isTurso = !isPostgres && !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
+const isPostgres = !process.env.USE_LOCAL_SQLITE && !!process.env.DATABASE_URL;
+const isTurso = !isPostgres && !process.env.USE_LOCAL_SQLITE && !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
 
 if (isPostgres) {
     console.log(`[Haya Portal DB] Connecting to PostgreSQL (Neon Cloud DB)...`);
