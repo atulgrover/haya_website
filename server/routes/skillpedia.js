@@ -583,21 +583,28 @@ router.post('/agent/trigger-audit', async (req, res) => {
 
 // POST /api/skillpedia/save-skill
 router.post('/save-skill', async (req, res) => {
-
     try {
         const { title, companyId, employeeEmailId, schemaJson } = req.body;
         if (!title || !schemaJson) {
             return res.status(400).json({ error: 'Title and schemaJson are required.' });
         }
 
+        const schemaString = typeof schemaJson === 'string' ? schemaJson : JSON.stringify(schemaJson);
+
         // Default anonymous builder if no email provided
         const normalizedEmail = (employeeEmailId || 'builder@hayagriva.ai').trim().toLowerCase();
+        
         // Extract tag and description from parsed schema if available
         let extractedTag = 'General';
         let extractedDesc = '';
-        if (typeof schemaJson === 'object' && schemaJson !== null) {
-            extractedTag = schemaJson.tag || schemaJson.sector || 'General';
-            extractedDesc = schemaJson.description || schemaJson.subtitle || '';
+        let parsedSchema = null;
+        try {
+            parsedSchema = typeof schemaJson === 'string' ? JSON.parse(schemaJson) : schemaJson;
+        } catch (_) {}
+
+        if (parsedSchema && typeof parsedSchema === 'object') {
+            extractedTag = parsedSchema.tag || parsedSchema.sector || 'General';
+            extractedDesc = parsedSchema.description || parsedSchema.subtitle || '';
         }
 
         const result = await db.prepare(`
