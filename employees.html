@@ -544,10 +544,15 @@
       </div>
       <!-- Reel cards container -->
       <div id="studioReelCards" style="display:flex; flex-direction:column; gap:16px;"></div>
-      <!-- Publish -->
-      <button class="studio-publish-btn" id="publishBtn" onclick="publishSkill()" disabled>
-        ✅ Publish Skill Pack (Confirm All 11 Reels First)
-      </button>
+      <!-- Publish & Confirm All Actions -->
+      <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap;">
+        <button id="btnConfirmAllPublish" onclick="confirmAllAndPublish()" style="flex:1; min-width:260px; background:linear-gradient(135deg, #10B981, #059669); color:#FFFFFF; border:none; padding:14px 20px; border-radius:10px; font-weight:800; font-size:14px; cursor:pointer; box-shadow:0 4px 14px rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; gap:8px;">
+          ⚡ Confirm All & Publish Now
+        </button>
+        <button class="studio-publish-btn" id="publishBtn" onclick="publishSkill()" disabled style="flex:1; min-width:260px;">
+          ✅ Publish Skill Pack (Confirm All 11 Reels First)
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1038,6 +1043,15 @@
         return;
       }
       swapStudioVideo(idx, val, 'Custom Selected YouTube Video');
+    }
+
+    function confirmAllAndPublish() {
+      if (!studioDraft || !studioDraft.lessons) return;
+      for (let i = 0; i < studioDraft.lessons.length; i++) {
+        confirmedReels.add(i);
+      }
+      renderStudioCards();
+      publishSkill();
     }
 
     /* ============================================================
