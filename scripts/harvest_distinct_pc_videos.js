@@ -72,7 +72,8 @@ async function harvestDistinctPcVideos() {
 
         let totalPcsUpdated = 0;
 
-        for (const qp of qps) {
+        for (let qpIdx = 0; qpIdx < qps.length; qpIdx++) {
+            const qp = qps[qpIdx];
             console.log(`================================================================================`);
             console.log(`🔍 Processing QP: ${qp.qp_name} (${qp.qp_code}) [Sector: ${qp.sector}]`);
             console.log(`================================================================================`);
@@ -134,7 +135,9 @@ async function harvestDistinctPcVideos() {
                 }
             }
 
-            console.log(`   🎉 QP ${qp.qp_code} complete: ${qpUpdatedCount} / ${pcs.length} PCs updated with unique YouTube videos.\n`);
+            const pct = ((qpIdx + 1) / qps.length * 100).toFixed(1);
+            console.log(`   🎉 QP ${qp.qp_code} complete: ${qpUpdatedCount} / ${pcs.length} PCs updated.`);
+            console.log(`   📊 [PROGRESS] ${qpIdx + 1} / ${qps.length} QPs (${pct}%) | Total PCs Updated: ${totalPcsUpdated.toLocaleString()}\n`);
         }
 
         console.log(`================================================================================`);
