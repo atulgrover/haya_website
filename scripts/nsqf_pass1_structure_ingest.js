@@ -76,15 +76,16 @@ function isGenericNos(code, title) {
 }
 
 // ── Regex patterns ────────────────────────────────────────────────────────────
-// Matches 2-part (AGR/N0101) and 3-part (NIE/ELE/N0810, DGT/VSQ/N0101) NSQF codes
-const NOS_CODE_RE = /([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){1,2}\/N\d{3,4})/gi;
+// Matches 2-part (AGR/N0101) and 3-part (NIE/ELE/N0810, DGT/VSQ/N0101) NSQF codes.
+// {0,2} makes the middle segment(s) optional — handles both forms.
+const NOS_CODE_RE = /([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){0,2}\/N\d{3,4})/gi;
 
 // Matches PC lines in v2 MD format: "- PC1. text" or "PC1. text" or "| PC1. | text |"
 const PC_LINE_RE   = /^[-*]?\s*PC\s*(\d+)[.:]\s*(.+)/i;
 const PC_TABLE_RE  = /^\|\s*PC\s*(\d+)[.:]\s*\|\s*([^|]+)/i;
 
-// NOS heading line in v2 MD: "#### NIE/ELE/N0812: Software Repair and Data Recovery"
-const NOS_HEADING_RE = /^####\s*([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){1,2}\/N\d{3,4})\s*[:\-]?\s*(.*)/i;
+// NOS heading line in v2 MD: "#### AGR/N0101: Seed Prep" or "#### NIE/ELE/N0812: Software Repair"
+const NOS_HEADING_RE = /^####\s*([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){0,2}\/N\d{3,4})\s*[:\-]?\s*(.*)/i;
 
 // Module heading: "#### Module 1: ..." or "#### Section 1" or "#### Unit 1"
 const MOD_HEADING_RE = /^####\s*(Module|Section|Unit|Element)\s*\d*/i;
@@ -378,6 +379,18 @@ async function main() {
         }
 
         // ── 1. Upsert nsqf_nos (preserve existing data) ──────────────────────
+        // First: remove any synthetic fallback NOS codes left from prior runs
+        // (real NOS codes now detected, synthetic _N01 rows are stale)
+        if (nosList.length > 0 && !nosList[0].nos_code.endsWith('_N01')) {
+            await pool.query(
+                `DELETE FROM nsqf_nos WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
+                [qp.qp_code]
+            );
+            await pool.query(
+                `DELETE FROM nsqf_pcs WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
+                [qp.qp_code]
+            );
+        }
         for (const n of nosList) {
             await pool.query(`
                 INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
