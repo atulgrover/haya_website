@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - HAYAGRIVA Platform</title>
+  <meta name="description" content="Privacy Policy for HAYAGRIVA Universal Integrated Professional Environment (IPE) Platform and NSQF Skillpedia. Learn about our local-first privacy, zero-cloud data sovereignty, and YouTube API Services compliance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/footer.css">
+  
+  <style>
+    :root {
+      --bg-primary: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --bg-accent: #EFF6FF;
+      --text-main: #212121;
+      --text-muted: #5F6368;
+      --primary-color: #1E6C93;
+      --primary-hover: #165272;
+      --primary-light: rgba(30, 108, 147, 0.1);
+      --border-color: #E2E8F0;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --font-main: 'Lato', sans-serif;
+      --font-heading: 'Google Sans', sans-serif;
+      --font-mono: 'Roboto Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; }
+    a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
+    a:hover { color: var(--primary-hover); text-decoration: underline; }
+
+    /* Top Navigation Bar */
+    .header-nav {
+      height: 64px; background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-shrink: 0; z-index: 1000; position: sticky; top: 0;
+    }
+    .nav-container {
+      max-width: 1400px; margin: 0 auto; padding: 0 24px; height: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo { font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 1.5px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+    .brand-logo span { color: var(--primary-color); }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-link { padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); text-decoration: none; }
+    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
+
+    /* Policy Content Layout */
+    .policy-wrapper {
+      flex: 1;
+      max-width: 1000px;
+      margin: 40px auto 60px;
+      padding: 0 24px;
+      width: 100%;
+    }
+    .policy-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: var(--card-shadow);
+    }
+    .policy-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      background: var(--primary-light);
+      color: var(--primary-color);
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .policy-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    .policy-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .policy-section {
+      margin-bottom: 32px;
+    }
+    .policy-section h2 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .policy-section p {
+      font-size: 15px;
+      color: #334155;
+      margin-bottom: 14px;
+    }
+    .policy-section ul {
+      margin: 12px 0 16px 24px;
+      color: #334155;
+      font-size: 15px;
+    }
+    .policy-section li {
+      margin-bottom: 8px;
+    }
+    .highlight-box {
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 16px 0;
+      font-size: 14.5px;
+      color: #166534;
+    }
+    .notice-box {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 16px 0;
+      font-size: 14.5px;
+      color: #1E40AF;
+    }
+
+    @media (max-width: 768px) {
+      .policy-card { padding: 28px 20px; }
+      .policy-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Nav -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" style="text-decoration: none;">
+        <span>HAYAGRIVA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="students.html" class="nav-link">Students</a></li>
+        <li><a href="employees.html" class="nav-link">Employees</a></li>
+        <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+        <li><a href="brochure.html" class="nav-link">Brochure</a></li>
+        <li><a href="dashboard.html" class="nav-link login-btn" id="main-auth-btn">Sign In</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Policy Content -->
+  <main class="policy-wrapper">
+    <div class="policy-card">
+      <span class="policy-badge">Data Privacy &amp; Sovereignty</span>
+      <h1 class="policy-title">Privacy Policy</h1>
+      <div class="policy-meta">
+        <strong>Effective Date:</strong> August 14, 2026 &nbsp;|&nbsp; <strong>Domain:</strong> https://hayagriva.app &nbsp;|&nbsp; <strong>Platform:</strong> HAYAGRIVA IPE &amp; Skillpedia
+      </div>
+
+      <div class="highlight-box">
+        🔒 <strong>Core Privacy Guarantee:</strong> HAYAGRIVA is architected around a <strong>Local-First &amp; Zero Cloud Data Transmission</strong> principle. All confidential case files, company domain records, financial ledgers, and local AI agent inferences execute strictly on your local device.
+      </div>
+
+      <div class="policy-section">
+        <h2>1. Introduction &amp; Scope</h2>
+        <p>HAYAGRIVA (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) operates the HAYAGRIVA Universal Integrated Professional Environment (IPE) Platform, the NSQF Skillpedia learning hub, and the web portal hosted at <a href="https://hayagriva.app">https://hayagriva.app</a>.</p>
+        <p>This Privacy Policy explains what data is processed when you access our web portal, download desktop binaries, use our NSQF micro-learning video reels, or purchase software licenses and marketplace intelligence reports.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>2. Information We Collect</h2>
+        <p>We only collect information necessary to provide authentication, licensing, and access to educational materials:</p>
+        <ul>
+          <li><strong>Account &amp; Profile Information:</strong> When you register on the portal, we store your full name, email address, password hash (encrypted using salt-hashed bcrypt), role persona (Student, Employee, or Professional), and optional firm/organization name.</li>
+          <li><strong>Authentication &amp; Session Data:</strong> We issue secure JSON Web Tokens (JWT) stored locally in your browser&rsquo;s <code>localStorage</code> to maintain authenticated sessions.</li>
+          <li><strong>Licensing &amp; Transaction Details:</strong> For licensed professionals, we store cryptographic license keys, purchase tiers, transaction identifiers, and expiration dates.</li>
+          <li><strong>Marketplace Report Orders:</strong> When ordering valuation or intelligence reports, we collect order specifications (company name, report parameters, notes) to fulfill the requested analysis.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>3. Local-First &amp; Zero-Cloud Data Sovereignty</h2>
+        <p>For users of the <strong>HAYAGRIVA Desktop IPE</strong> (Insolvency Professionals, Legal Counsel, and Enterprise Teams):</p>
+        <ul>
+          <li><strong>No Cloud Document Uploads:</strong> Case papers, valuation sheets, Section 29A verification files, and corporate debtor records processed in the Desktop IPE are stored exclusively in your local encrypted vaults (<code>.vlt</code>) and local SQLite instances.</li>
+          <li><strong>Local AI Inferences:</strong> Multi-agent audits and LLM workflows run via local quantized models (GGUF / local inference runtimes) without transmitting sensitive prompts or documents over the public internet.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>4. Third-Party Integrations &amp; YouTube API Services</h2>
+        <p>HAYAGRIVA Skillpedia integrates with <strong>YouTube API Services</strong> to provide relevant, verified vocational training demonstrations mapped to the National Skills Qualification Framework (NSQF).</p>
+        
+        <div class="notice-box">
+          📺 <strong>YouTube API Terms &amp; Google Privacy Notice:</strong><br>
+          By using video features on HAYAGRIVA, users acknowledge and agree that:
+          <ul style="margin-top: 8px; margin-bottom: 0;">
+            <li>HAYAGRIVA utilizes YouTube API Services to retrieve video metadata, titles, and playable tutorial embeds.</li>
+            <li>Users are bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.</li>
+            <li>The processing of YouTube data is governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</li>
+            <li>HAYAGRIVA does not sell, broker, or exploit personal data through YouTube API integrations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="policy-section">
+        <h2>5. Payments &amp; Financial Security</h2>
+        <p>Online transactions and subscription payments are processed through PCI-DSS Level 1 certified payment gateways (Razorpay). <strong>HAYAGRIVA does not store or process raw credit card numbers, CVVs, or banking PINs.</strong> All payment processing is securely tokenized through the payment gateway.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>6. Cookies &amp; Local Storage</h2>
+        <p>We use standard browser local storage (<code>localStorage</code>) strictly for functional session management (JWT token persistence, active tab state, and theme preferences). We do not use third-party behavioral advertising trackers or cross-site tracking cookies.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>7. Data Security &amp; Compliance</h2>
+        <p>We implement robust technical and organizational security measures:</p>
+        <ul>
+          <li>All web traffic is encrypted in transit using industry-standard TLS / HTTPS (256-bit).</li>
+          <li>Database backups are encrypted at rest.</li>
+          <li>We adhere to data protection principles set out under the <strong>Digital Personal Data Protection Act, 2023 (DPDP Act, India)</strong> and global privacy standards.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>8. Your Rights &amp; Data Deletion</h2>
+        <p>You have the right to access, update, export, or request the deletion of your account and personal profile data at any time. To request account deletion or data rectification, contact our grievance team at the email below.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>9. Contact &amp; Grievance Redressal</h2>
+        <p>If you have any questions, concerns, or grievances regarding this Privacy Policy or our data practices, please reach out to:</p>
+        <p>
+          <strong>HAYAGRIVA Legal &amp; Data Privacy Office</strong><br>
+          Email: <a href="mailto:privacy@hayagriva.app">privacy@hayagriva.app</a><br>
+          Website: <a href="https://hayagriva.app">https://hayagriva.app</a><br>
+          Location: New Delhi, India
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Site Footer (Loaded dynamically via components/footer.html) -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Component Script -->
+  <script src="js/components.js"></script>
+</body>
+</html>

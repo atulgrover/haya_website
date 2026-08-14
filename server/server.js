@@ -39,6 +39,15 @@ app.use('/api/ipie', ipieRouter);
 app.use('/api/skillpedia',    skillpediaRouter);
 app.use('/api/search-video', searchVideoRouter);
 
+// Legal & Policy Direct Route Endpoints (https://hayagriva.app/privacy & https://hayagriva.app/terms)
+app.get('/privacy', (req, res) => {
+    res.sendFile(path.join(__dirname, '../privacy.html'));
+});
+
+app.get('/terms', (req, res) => {
+    res.sendFile(path.join(__dirname, '../terms.html'));
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', service: 'Haya Portal Server', timestamp: new Date().toISOString() });

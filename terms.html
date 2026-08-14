@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - HAYAGRIVA Platform</title>
+  <meta name="description" content="Terms of Service for HAYAGRIVA Universal Integrated Professional Environment (IPE) Platform, Desktop IPE, and NSQF Skillpedia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/footer.css">
+  
+  <style>
+    :root {
+      --bg-primary: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --bg-accent: #EFF6FF;
+      --text-main: #212121;
+      --text-muted: #5F6368;
+      --primary-color: #1E6C93;
+      --primary-hover: #165272;
+      --primary-light: rgba(30, 108, 147, 0.1);
+      --border-color: #E2E8F0;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --font-main: 'Lato', sans-serif;
+      --font-heading: 'Google Sans', sans-serif;
+      --font-mono: 'Roboto Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; }
+    a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
+    a:hover { color: var(--primary-hover); text-decoration: underline; }
+
+    /* Top Navigation Bar */
+    .header-nav {
+      height: 64px; background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-shrink: 0; z-index: 1000; position: sticky; top: 0;
+    }
+    .nav-container {
+      max-width: 1400px; margin: 0 auto; padding: 0 24px; height: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo { font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 1.5px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+    .brand-logo span { color: var(--primary-color); }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-link { padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); text-decoration: none; }
+    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
+
+    /* Terms Content Layout */
+    .policy-wrapper {
+      flex: 1;
+      max-width: 1000px;
+      margin: 40px auto 60px;
+      padding: 0 24px;
+      width: 100%;
+    }
+    .policy-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: var(--card-shadow);
+    }
+    .policy-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      background: var(--primary-light);
+      color: var(--primary-color);
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .policy-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    .policy-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .policy-section {
+      margin-bottom: 32px;
+    }
+    .policy-section h2 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .policy-section p {
+      font-size: 15px;
+      color: #334155;
+      margin-bottom: 14px;
+    }
+    .policy-section ul {
+      margin: 12px 0 16px 24px;
+      color: #334155;
+      font-size: 15px;
+    }
+    .policy-section li {
+      margin-bottom: 8px;
+    }
+    .notice-box {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 16px 0;
+      font-size: 14.5px;
+      color: #1E40AF;
+    }
+    .warning-box {
+      background: #FEF3C7;
+      border: 1px solid #FDE68A;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 16px 0;
+      font-size: 14.5px;
+      color: #92400E;
+    }
+
+    @media (max-width: 768px) {
+      .policy-card { padding: 28px 20px; }
+      .policy-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Nav -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" style="text-decoration: none;">
+        <span>HAYAGRIVA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="students.html" class="nav-link">Students</a></li>
+        <li><a href="employees.html" class="nav-link">Employees</a></li>
+        <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+        <li><a href="brochure.html" class="nav-link">Brochure</a></li>
+        <li><a href="dashboard.html" class="nav-link login-btn" id="main-auth-btn">Sign In</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Terms Content -->
+  <main class="policy-wrapper">
+    <div class="policy-card">
+      <span class="policy-badge">User Agreement</span>
+      <h1 class="policy-title">Terms of Service</h1>
+      <div class="policy-meta">
+        <strong>Effective Date:</strong> August 14, 2026 &nbsp;|&nbsp; <strong>Domain:</strong> https://hayagriva.app &nbsp;|&nbsp; <strong>Platform:</strong> HAYAGRIVA
+      </div>
+
+      <div class="policy-section">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using the website <a href="https://hayagriva.app">https://hayagriva.app</a>, our online portals, desktop binaries, or related services (collectively, the &ldquo;Platform&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;). If you do not agree to these Terms, please do not access or use the Platform.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>2. Description of Services</h2>
+        <p>HAYAGRIVA provides software and intelligence tools tailored for three primary user personas:</p>
+        <ul>
+          <li><strong>Students &amp; Learners:</strong> Access to the National Skills Qualification Framework (NSQF) Skillpedia engine, featuring 2,176 NCVET job roles and curated 11-step micro-learning video reels.</li>
+          <li><strong>Corporate Employees &amp; Enterprises:</strong> Skill assessment matrices, custom SOP video creators, and domain-isolated company skill profiles.</li>
+          <li><strong>Insolvency Professionals &amp; Legal Practitioners:</strong> Desktop Integrated Professional Environment (IPE) binaries, offline cryptographic statutory data vaults (<code>.vlt</code>), local AI agent frameworks, and specialized marketplace reports.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>3. Third-Party YouTube Content &amp; Terms</h2>
+        <p>Our educational micro-learning features integrate with the YouTube API to surface instructional content.</p>
+        
+        <div class="notice-box">
+          📺 <strong>YouTube API Integration Agreement:</strong><br>
+          By using our video discovery and learning reel tools, you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>. All YouTube trademarks, videos, and content remain the intellectual property of their respective creators and Google LLC.
+        </div>
+      </div>
+
+      <div class="policy-section">
+        <h2>4. User Accounts &amp; Security</h2>
+        <p>When creating an account, you agree to provide accurate, current, and complete information. You are responsible for safeguarding your password and account credentials. You must notify us immediately of any unauthorized use or security breach.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>5. Software Licensing &amp; Desktop IPE</h2>
+        <p>Desktop binaries, cryptographic license keys (Ed25519 signed), and data vaults provided by HAYAGRIVA are licensed, not sold:</p>
+        <ul>
+          <li><strong>License Scope:</strong> You are granted a non-exclusive, non-transferable license to install and run the Desktop IPE on designated computing devices according to your subscription tier.</li>
+          <li><strong>Air-Gapped Operation:</strong> You are solely responsible for managing your local device backups, encrypted vault keys, and local SQLite data files.</li>
+          <li><strong>Prohibitions:</strong> You may not reverse-engineer, decompile, resell, or distribute unauthorized cracked keys of the platform binaries.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>6. Professional Disclaimer &amp; Limitation of Liability</h2>
+        <div class="warning-box">
+          ⚠️ <strong>Legal &amp; Statutory Notice:</strong><br>
+          AI agents, case analyzers, Section 29A filters, and valuation tools provided within the HAYAGRIVA Platform are assistive technologies designed to aid licensed practitioners. They do not constitute formal legal counsel, audit certifications, or binding insolvency rulings. Practitioners must independently verify all statutory compliance and filings.
+        </div>
+        <p>To the maximum extent permitted by applicable law, HAYAGRIVA and its operators shall not be liable for any indirect, incidental, special, or consequential damages resulting from the use or inability to use the platform.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>7. Subscriptions, Fees &amp; Marketplace Orders</h2>
+        <p>Certain features, desktop tiers, and marketplace intelligence reports require payment of fees:</p>
+        <ul>
+          <li>All prices are listed in Indian Rupees (INR) or designated currencies and are subject to applicable taxes.</li>
+          <li>Payments are processed securely via verified third-party gateways (Razorpay).</li>
+          <li>Refunds for digital downloads or completed marketplace reports are evaluated on a case-by-case basis as detailed in our billing terms.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>8. Governing Law &amp; Jurisdiction</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of India. Any disputes arising out of or related to these Terms or the Platform shall be subject to the exclusive jurisdiction of the competent courts in <strong>New Delhi, India</strong>.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>9. Modifications to Terms</h2>
+        <p>We reserve the right to modify or replace these Terms at any time. Material changes will be posted directly on this page with an updated effective date.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>10. Contact Us</h2>
+        <p>For questions or notices regarding these Terms, please contact:</p>
+        <p>
+          <strong>HAYAGRIVA Platform Support</strong><br>
+          Email: <a href="mailto:support@hayagriva.app">support@hayagriva.app</a><br>
+          Website: <a href="https://hayagriva.app">https://hayagriva.app</a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Site Footer (Loaded dynamically via components/footer.html) -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Component Script -->
+  <script src="js/components.js"></script>
+</body>
+</html>
