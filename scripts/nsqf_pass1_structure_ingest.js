@@ -42,10 +42,11 @@ const GENERIC_NOS_CODES = new Set([
 ]);
 
 const GENERIC_NOS_TITLE_PATTERNS = [
-    /employability\s*skills/i,
+    /employability/i,                  // catches: Employability Skills, Employability Skills-3, etc.
     /entrepreneurship/i,
     /english\s*communication/i,
     /it\s*literacy/i,
+    /digital\s*literacy/i,
     /basic\s*discipline/i,
     /soft\s*skills/i,
     /gender\s*sensitivity/i,
@@ -53,6 +54,8 @@ const GENERIC_NOS_TITLE_PATTERNS = [
     /health\s*and\s*sanitation/i,
     /personal\s*hygiene/i,
     /life\s*skills/i,
+    /communication\s*skills/i,
+    /vocational\s*skills/i,
 ];
 
 function isGenericNos(code, title) {
@@ -248,7 +251,17 @@ function parseMarkdownToStructure(filePath, qpCode, qpName) {
         }
     }
 
-    return { nosList, modulesList, pcsList };
+    // ── STEP 3: Filter generic NOS and cascade to modules & pcs ─────────────
+    const validNosList = nosList.filter(n => !isGenericNos(n.nos_code, n.nos_title));
+    const validNosCodes = new Set(validNosList.map(n => n.nos_code));
+
+    // Re-index sequence_order
+    validNosList.forEach((n, idx) => { n.sequence_order = idx + 1; });
+
+    const validModulesList = modulesList.filter(m => validNosCodes.has(m.nos_code));
+    const validPcsList     = pcsList.filter(p => validNosCodes.has(p.nos_code));
+
+    return { nosList: validNosList, modulesList: validModulesList, pcsList: validPcsList };
 }
 
 // ── Sequence reorder: SQL window function — no field shuffling ────────────────
@@ -433,28 +446,45 @@ async function main() {
         }
         totalPcs += pcsList.length;
 
-        // ── 4. Delete PCs for ANY generic NOS — unconditionally ───────────────
-        // This handles stale rows from previous runs / Neon restore
+        // ── 4. Delete PCs + NOS for ANY generic NOS — unconditionally ────────
+        // Handles: DGT/VSQ/ prefix, N99xx range, AND title-based generic keywords
+        const GENERIC_NOS_TITLE_SQL = `(
+            nos_title ILIKE '%employability%'
+            OR nos_title ILIKE '%entrepreneurship%'
+            OR nos_title ILIKE '%english communication%'
+            OR nos_title ILIKE '%it literacy%'
+            OR nos_title ILIKE '%digital literacy%'
+            OR nos_title ILIKE '%soft skills%'
+            OR nos_title ILIKE '%gender sensitivity%'
+            OR nos_title ILIKE '%life skills%'
+            OR nos_title ILIKE '%communication skills%'
+            OR nos_title ILIKE '%vocational skills%'
+        )`;
+
         await pool.query(`
             DELETE FROM nsqf_pcs
             WHERE qp_code = $1
               AND (
                 nos_code LIKE 'DGT/VSQ/%'
                 OR nos_code LIKE 'VSQ/%'
-                OR nos_code ~ '\/N99[0-9][0-9]$'
+                OR nos_code ~ '\\/N99[0-9][0-9]$'
                 OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
+                OR nos_code IN (
+                    SELECT nos_code FROM nsqf_nos
+                    WHERE qp_code = $1 AND ${GENERIC_NOS_TITLE_SQL}
+                )
               )
         `, [qp.qp_code]);
 
-        // Also remove from nsqf_nos
         await pool.query(`
             DELETE FROM nsqf_nos
             WHERE qp_code = $1
               AND (
                 nos_code LIKE 'DGT/VSQ/%'
                 OR nos_code LIKE 'VSQ/%'
-                OR nos_code ~ '\/N99[0-9][0-9]$'
+                OR nos_code ~ '\\/N99[0-9][0-9]$'
                 OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
+                OR ${GENERIC_NOS_TITLE_SQL}
               )
         `, [qp.qp_code]);
 
@@ -465,14 +495,36 @@ async function main() {
             // Non-fatal — ordering can be fixed later
         }
 
-        // ── 6. Update master QP status ─────────────────────────────────────────
+        // ── 6. Detect abbreviated-format PDFs ────────────────────────────────
+        // Some PDFs (e.g. GNU/ASC/Q0601) have PCs that are just the role name
+        // repeated in every row (assessment reference format, not curriculum).
+        // Detection: if ALL PCs share the same normalised description → abbreviated.
+        let isAbbreviated = false;
+        if (pcsList.length > 0) {
+            const uniqueDescs = new Set(
+                pcsList.map(p => p.pc_description.trim().toLowerCase().substring(0, 60))
+            );
+            if (uniqueDescs.size === 1) {
+                // All PCs identical — almost certainly an abbreviated format
+                isAbbreviated = true;
+                console.log(`  ⚠️  Abbreviated PDF detected for ${qp.qp_code} — all ${pcsList.length} PCs identical: "${[...uniqueDescs][0].substring(0, 50)}"`);
+                // Remove the garbage PCs — better to have 0 than misleading data
+                await pool.query(
+                    `DELETE FROM nsqf_pcs WHERE qp_code = $1`,
+                    [qp.qp_code]
+                );
+            }
+        }
+
+        // ── 7. Update master QP status ─────────────────────────────────────────
+        const finalStatus = isAbbreviated ? 'abbreviated_pdf_no_pcs' : 'structure_ingested';
         await pool.query(`
             UPDATE nsqf_qps
             SET total_nos       = $1,
                 total_pcs       = $2,
-                pipeline_status = 'structure_ingested'
-            WHERE id = $3
-        `, [nosList.length, pcsList.length, qp.id]);
+                pipeline_status = $3
+            WHERE id = $4
+        `, [nosList.length, isAbbreviated ? 0 : pcsList.length, finalStatus, qp.id]);
 
         successCount++;
         saveCheckpoint(qp.id, qp.qp_code);

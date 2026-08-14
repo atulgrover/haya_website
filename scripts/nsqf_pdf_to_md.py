@@ -61,14 +61,22 @@ NOS_RE = re.compile(
     re.IGNORECASE
 )
 
-PC_RE = re.compile(r'^PC\s*\d+[.:]', re.IGNORECASE)
+PC_RE    = re.compile(r'^PC\s*(\d+)[.:]\s*(.+)', re.IGNORECASE)
+NUM_RE   = re.compile(r'^(\d+)\.\s+(.+)')
+KU_GS_RE = re.compile(r'^(KU\d+|GS\d+)[.:]\s*(.+)', re.IGNORECASE)
 
-# Tightened SECTION_RE — only genuine structural headings.
-# Removed: Table, Knowledge, Skills, Assessment, Employability, numbered list items.
-# These were causing false #### headings throughout the corpus.
+PC_START_RE = re.compile(r'^(Elements\s+and\s+Performance|To\s+be\s+competent)', re.IGNORECASE)
+PC_END_RE   = re.compile(
+    r'^(Knowledge\s+and\s+Understanding|Generic\s+Skills|Assessment\s+Criteria|'
+    r'National\s+Occupational\s+Standards\s+\(NOS\)\s+Parameters)',
+    re.IGNORECASE
+)
+
+# Tightened SECTION_RE — structural headings
 SECTION_RE = re.compile(
     r'^(Module\s+\d|NOS\s+\d|Unit\s+\d|Section\s+\d|'
-    r'Performance\s+Criteria\s*$|Elements\s+and\s+Performance)',
+    r'Performance\s+Criteria\s*$|Elements\s+and\s+Performance|'
+    r'Knowledge\s+and\s+Understanding|Generic\s+Skills)',
     re.IGNORECASE
 )
 
@@ -76,8 +84,6 @@ ENDS_SENT  = re.compile(r'[.;:]\s*$')
 WHITESPACE = re.compile(r'\s+')
 
 # Proper-noun guard for join_continuations:
-# If the previous line ends with a capitalized word, it's likely a complete
-# phrase and the next line is NOT a continuation (e.g. "...refer to Safety Guidelines")
 ENDS_PROPER = re.compile(r'\b[A-Z][a-z]{2,}\s*$')
 
 
@@ -191,6 +197,7 @@ def join_continuations(raw_lines):
         # Never merge structural elements
         if (line.startswith('|') or prev.startswith('|')
                 or PC_RE.match(line) or NOS_RE.match(line)
+                or NUM_RE.match(line) or KU_GS_RE.match(line)
                 or SECTION_RE.match(line) or line.startswith('#')
                 or PC_RE.match(prev) or NOS_RE.match(prev)):
             result.append(line)
@@ -214,23 +221,46 @@ def join_continuations(raw_lines):
 # ─────────────────────────────────────────────────────────────
 # Classify and format a single text line
 # ─────────────────────────────────────────────────────────────
-def classify_line(line):
+def classify_line(line, in_pc_section=False):
     """
-    Return (markdown_prefix, line_text).
+    Return (markdown_prefix, line_text, next_in_pc_section).
 
     Priority order:
-      1. NOS/QP code      → #### heading   (NOS section boundary)
-      2. Structural header → #### heading   (Module/Section/Unit/Performance Criteria)
-      3. PC line           → - list item    (PC1. description)
-      4. Everything else   → plain text
+      1. NOS/QP code       → #### heading   (NOS section boundary, resets in_pc_section)
+      2. PC end markers    → #### heading   (resets in_pc_section)
+      3. PC start markers  → #### heading   (activates in_pc_section)
+      4. Structural header → #### heading   (Module/Section/Unit)
+      5. Explicit PC line  → - list item    (PC1. description)
+      6. Numbered criteria → - list item    (1. description if in_pc_section)
+      7. KU / GS items     → - list item    (KU1. / GS1.)
+      8. Everything else   → plain text
     """
     if NOS_RE.match(line):
-        return '####', line
+        return '####', line, False
+    if PC_END_RE.match(line):
+        return '####', line, False
+    if PC_START_RE.match(line):
+        return '####', line, True
     if SECTION_RE.match(line) and len(line) < 120:
-        return '####', line
-    if PC_RE.match(line):
-        return '-', line
-    return '', line
+        return '####', line, in_pc_section
+
+    # Explicit PC line (e.g. PC1. or PC 1:)
+    m_pc = PC_RE.match(line)
+    if m_pc:
+        return '-', f'PC{m_pc.group(1)}. {m_pc.group(2)}', in_pc_section
+
+    # Numbered criteria inside Elements & Performance Criteria section
+    if in_pc_section:
+        m_num = NUM_RE.match(line)
+        if m_num:
+            return '-', f'PC{m_num.group(1)}. {m_num.group(2)}', in_pc_section
+
+    # Knowledge & Skills list items
+    m_kugs = KU_GS_RE.match(line)
+    if m_kugs:
+        return '-', f'{m_kugs.group(1)}. {m_kugs.group(2)}', in_pc_section
+
+    return '', line, in_pc_section
 
 
 # ─────────────────────────────────────────────────────────────
@@ -265,6 +295,7 @@ def extract_pdf_to_markdown(pdf_path, qp_code, qp_name=''):
     clean_qp = qp_code.replace('/', '_')
     md_lines = []
     pc_count = 0
+    in_pc_section = False
 
     with pdfplumber.open(pdf_path) as pdf:
         num_pages = len(pdf.pages)
@@ -310,12 +341,13 @@ def extract_pdf_to_markdown(pdf_path, qp_code, qp_name=''):
                 if line_in_table(line, table_text_set):
                     continue  # already in a rendered table
 
-                prefix, text_out = classify_line(line)
+                prefix, text_out, in_pc_section = classify_line(line, in_pc_section)
                 if prefix == '####':
                     page_md.append(f'#### {text_out}')
                 elif prefix == '-':
                     page_md.append(f'- {text_out}')
-                    pc_count += 1
+                    if text_out.startswith('PC'):
+                        pc_count += 1
                 else:
                     page_md.append(text_out)
 
