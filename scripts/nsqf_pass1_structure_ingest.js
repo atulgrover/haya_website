@@ -1,150 +1,247 @@
 'use strict';
 
 /**
- * Pass 1 Script: Instant Structural Ingestion into SQLite
- * Parses all converted Markdown files in data/md/, filters out generic soft skills (VSQ/DGT Employability Skills),
- * extracts core vocational NOS, Modules, and PCs, and populates SQLite relational tables:
- *   - nsqf_nos
- *   - nsqf_modules
- *   - nsqf_pcs (with pc_intent = NULL, ready for Pass 2 LLM Intent Synthesis)
+ * ╔══════════════════════════════════════════════════════════════════════════╗
+ * ║  PASS 1: NSQF Structural Ingestion  (v2 — PostgreSQL, non-destructive)  ║
+ * ╠══════════════════════════════════════════════════════════════════════════╣
+ * ║  Reads v2 Markdown files from data/md/, extracts NOS / Module / PC     ║
+ * ║  structure, and upserts into local hayadb (nsqf_nos, nsqf_modules,     ║
+ * ║  nsqf_pcs).                                                             ║
+ * ║                                                                          ║
+ * ║  Key improvements over v1:                                               ║
+ * ║  1. PostgreSQL ON CONFLICT upserts — video_id/title preserved on re-run ║
+ * ║  2. v2 MD format: handles leading "- PC1." list-item style              ║
+ * ║  3. NOS regex: handles 2-part AND 3-part NSQF codes                     ║
+ * ║  4. NOS headings (#### NIE/ELE/N0812: ...) detected as NOS+module break ║
+ * ║  5. Expanded generic soft-skill NOS blocklist (N9901/2/3, DGT, VSQ)    ║
+ * ║  6. Sequence_order corrected via SQL window function after each QP      ║
+ * ║  7. Resume checkpoint — --resume picks up from last completed QP        ║
+ * ║  8. No default placeholder video_id written                              ║
+ * ╚══════════════════════════════════════════════════════════════════════════╝
  *
  * Usage:
- *   node scripts/nsqf_pass1_structure_ingest.js --limit=5
- *   node scripts/nsqf_pass1_structure_ingest.js --qp=WBSC/HCS/Q0501
- *   node scripts/nsqf_pass1_structure_ingest.js --limit=2176
+ *   node scripts/nsqf_pass1_structure_ingest.js --limit=10
+ *   node scripts/nsqf_pass1_structure_ingest.js --qp=NIE/ELE/Q0803
+ *   node scripts/nsqf_pass1_structure_ingest.js --all
+ *   node scripts/nsqf_pass1_structure_ingest.js --all --resume
  */
 
-const fs = require('fs');
+require('dotenv').config();
+const fs   = require('fs');
 const path = require('path');
-const db = require('../server/db');
+const db   = require('../server/db');
 
-const MD_DIR = path.join(__dirname, '..', 'data', 'md');
+const MD_DIR          = path.join(__dirname, '..', 'data', 'md');
+const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.pass1_checkpoint.json');
 
-/**
- * Filter out generic employability / soft skills NOS codes & titles
- */
-function isGenericSoftSkillNos(code, title) {
-    const cUpper = String(code || '').toUpperCase();
-    const tUpper = String(title || '').toUpperCase();
+// ── Generic soft-skill NOS blocklist ─────────────────────────────────────────
+// These NOS units are curriculum boilerplate — not vocational skill content.
+const GENERIC_NOS_CODES = new Set([
+    'DGT/VSQ/N0101', 'VSQ/N0101', 'N0101',   // Employability Skills (universal)
+    'N9901', 'N9902', 'N9903',                 // Generic NSQF life-skills
+]);
 
-    // Check generic prefixes
-    if (cUpper.startsWith('VSQ/') || cUpper.startsWith('DGT/') || cUpper.includes('/VSQ/')) return true;
+const GENERIC_NOS_TITLE_PATTERNS = [
+    /employability\s*skills/i,
+    /entrepreneurship/i,
+    /english\s*communication/i,
+    /it\s*literacy/i,
+    /basic\s*discipline/i,
+    /soft\s*skills/i,
+    /gender\s*sensitivity/i,
+    /environmental\s*health/i,
+    /health\s*and\s*sanitation/i,
+    /personal\s*hygiene/i,
+    /life\s*skills/i,
+];
 
-    // Check soft skill title keywords
-    if (/employability skills|english communication|basic discipline|soft skills|gender sensitivity|environmental health/i.test(tUpper)) {
-        if (/employability/i.test(tUpper)) return true;
-    }
+function isGenericNos(code, title) {
+    const c = String(code || '').toUpperCase().trim();
+    const t = String(title || '');
+
+    // Exact code blocklist
+    if (GENERIC_NOS_CODES.has(c)) return true;
+
+    // Prefix blocklist
+    if (c.startsWith('VSQ/') || c.startsWith('DGT/VSQ/') || c.includes('/VSQ/')) return true;
+
+    // N9901-N9999 range = generic cross-sector NOS
+    const nosNum = parseInt((c.match(/\/N(\d{4})$/) || [])[1] || '0');
+    if (nosNum >= 9901 && nosNum <= 9999) return true;
+
+    // Title keyword blocklist
+    if (GENERIC_NOS_TITLE_PATTERNS.some(p => p.test(t))) return true;
 
     return false;
 }
 
-/**
- * Clean text strings
- */
+// ── Regex patterns ────────────────────────────────────────────────────────────
+// Matches 2-part (AGR/N0101) and 3-part (NIE/ELE/N0810, DGT/VSQ/N0101) NSQF codes
+const NOS_CODE_RE = /([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){1,2}\/N\d{3,4})/gi;
+
+// Matches PC lines in v2 MD format: "- PC1. text" or "PC1. text" or "| PC1. | text |"
+const PC_LINE_RE   = /^[-*]?\s*PC\s*(\d+)[.:]\s*(.+)/i;
+const PC_TABLE_RE  = /^\|\s*PC\s*(\d+)[.:]\s*\|\s*([^|]+)/i;
+
+// NOS heading line in v2 MD: "#### NIE/ELE/N0812: Software Repair and Data Recovery"
+const NOS_HEADING_RE = /^####\s*([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){1,2}\/N\d{3,4})\s*[:\-]?\s*(.*)/i;
+
+// Module heading: "#### Module 1: ..." or "#### Section 1" or "#### Unit 1"
+const MOD_HEADING_RE = /^####\s*(Module|Section|Unit|Element)\s*\d*/i;
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
 function cleanText(txt) {
-    return String(txt || '').replace(/\s+/g, ' ').replace(/\.{3,}/g, '').trim();
+    return String(txt || '').replace(/\s+/g, ' ').replace(/\.{3,}/g, '').replace(/[|]/g, '').trim();
 }
 
-/**
- * Parse a Markdown file into structured NOS, Modules, and PCs
- */
+function extractPcNum(pcCode) {
+    const m = String(pcCode || '').match(/\d+/);
+    return m ? parseInt(m[0]) : 999;
+}
+
+function extractNosNum(nosCode) {
+    const m = String(nosCode || '').match(/(\d{3,4})$/);
+    return m ? parseInt(m[1]) : 999;
+}
+
+// ── Core MD parser ────────────────────────────────────────────────────────────
 function parseMarkdownToStructure(filePath, qpCode, qpName) {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const lines = content.split('\n');
+    const lines   = content.split('\n');
 
-    const nosList = [];
+    const nosList     = [];
     const modulesList = [];
-    const pcsList = [];
+    const pcsList     = [];
+    const seenNos     = new Set();
+    const seenPcs     = new Set();  // dedup: "nosCode:pcCode"
 
-    let currentNos = null;
-    let currentModule = null;
-    let nosOrder = 1;
-    let modOrder = 1;
-    let pcOrder = 1;
-
-    // 1. Scan NOS catalog summary section first
-    const nosSummaryRegex = /([A-Z0-9_]{3,8}\/[A-Z0-9_]{2,8}\/N[0-9]{3,4}|[A-Z0-9_]{3,8}\/N[0-9]{3,4})\s*:?\s*([^\n]+)/gi;
-    let summaryMatch;
-    const seenNosCodes = new Set();
-
-    while ((summaryMatch = nosSummaryRegex.exec(content)) !== null) {
-        const code = summaryMatch[1].trim();
-        let title = cleanText(summaryMatch[2].replace(/^NOS Name|^Description|^-\s*/i, ''));
-        title = title.replace(/[\.\s]*\d+\s*$/, ''); // Strip page number tails
-
-        if (!seenNosCodes.has(code) && !isGenericSoftSkillNos(code, title)) {
-            seenNosCodes.add(code);
+    // ── STEP 1: Pre-scan full content for all NOS codes ──────────────────────
+    let m;
+    NOS_CODE_RE.lastIndex = 0;
+    while ((m = NOS_CODE_RE.exec(content)) !== null) {
+        const code = m[1].trim().toUpperCase();
+        if (!seenNos.has(code) && !isGenericNos(code, '')) {
+            seenNos.add(code);
             nosList.push({
-                nos_code: code,
-                nos_title: title || `${code} Vocational Unit`,
-                sequence_order: nosOrder++
+                nos_code:       code,
+                nos_title:      code,
+                sequence_order: nosList.length + 1,
             });
         }
     }
 
-    // Default Fallback NOS if none matched summary
+    // Fallback: if no NOS codes found in content, create a synthetic one
     if (nosList.length === 0) {
-        const defaultNosCode = `${qpCode.replace('/', '_')}_N01`;
+        const synCode = qpCode.replace(/\//g, '_') + '_N01';
         nosList.push({
-            nos_code: defaultNosCode,
-            nos_title: `${qpName || qpCode} Core Vocational Operations`,
-            sequence_order: 1
+            nos_code:       synCode,
+            nos_title:      `${qpName || qpCode} Core Vocational Operations`,
+            sequence_order: 1,
         });
     }
 
-    currentNos = nosList[0];
+    // ── STEP 2: Line-by-line scan for Modules and PCs ────────────────────────
+    let currentNos    = nosList[0];
+    let currentModule = null;
+    let modOrder      = 1;
 
-    // 2. Scan Modules and PCs
     for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
+        const raw  = lines[i];
+        const line = raw.trim();
+        if (!line) continue;
 
-        // Check if line indicates a new NOS section
-        const nosCheck = line.match(/([A-Z0-9_]{3,8}\/[A-Z0-9_]{2,8}\/N[0-9]{3,4}|[A-Z0-9_]{3,8}\/N[0-9]{3,4})\s*:?\s*([^\n]+)/i);
-        if (nosCheck) {
-            const foundCode = nosCheck[1].trim();
-            const matchingNos = nosList.find(n => n.nos_code === foundCode);
-            if (matchingNos) {
-                currentNos = matchingNos;
-                currentModule = null; // reset active module
-            }
-        }
-
-        // Check if line indicates a Training Module
-        if (/^####\s*(Module|Unit\s*\d+|Section\s*\d+)/i.test(line) || /^Module\s*\d+/i.test(line)) {
-            const modTitle = cleanText(line.replace(/^####\s*/, ''));
-            if (modTitle.length > 3) {
+        // ── NOS heading (#### NIE/ELE/N0812: Software Repair) ────────────────
+        const nosHeadMatch = line.match(NOS_HEADING_RE);
+        if (nosHeadMatch) {
+            const code  = nosHeadMatch[1].trim().toUpperCase();
+            const title = cleanText(nosHeadMatch[2] || code)
+                .replace(/\s+\d{1,3}$/, '')    // strip trailing page-number artifact
+                .trim();
+            const found = nosList.find(n => n.nos_code === code);
+            if (found) {
+                if (!found._titleSet) { found.nos_title = title || code; found._titleSet = true; }
+                currentNos = found;
                 currentModule = {
-                    nos_code: currentNos ? currentNos.nos_code : nosList[0].nos_code,
-                    module_title: modTitle,
-                    sequence_order: modOrder++
+                    nos_code:       code,
+                    module_title:   title || code,
+                    sequence_order: modOrder++,
                 };
                 modulesList.push(currentModule);
             }
+            continue;
         }
 
-        // Check if line indicates a Performance Criteria (PC)
-        const pcMatch = line.match(/^(####\s*)?(PC\s*\d+[\.\d]*)\s*[\.:-]?\s*(.+)/i) || line.match(/^\|\s*(PC\s*\d+[\.\d]*)\s*[\.:-]?\s*([^|]+)/i);
-        if (pcMatch) {
-            const pcCode = pcMatch[2].replace(/\s+/g, '').toUpperCase();
-            const pcDesc = cleanText(pcMatch[3]);
+        // ── Module/Section heading (#### Module 1: ...) ───────────────────────
+        if (MOD_HEADING_RE.test(line)) {
+            const modTitle = cleanText(line.replace(/^####\s*/, ''));
+            if (modTitle.length > 3) {
+                currentModule = {
+                    nos_code:       currentNos.nos_code,
+                    module_title:   modTitle,
+                    sequence_order: modOrder++,
+                };
+                modulesList.push(currentModule);
+            }
+            continue;
+        }
 
-            if (pcDesc.length > 5) {
-                // Ensure parent module exists
-                if (!currentModule) {
-                    currentModule = {
-                        nos_code: currentNos ? currentNos.nos_code : nosList[0].nos_code,
-                        module_title: `Module ${modulesList.length + 1}: ${currentNos ? currentNos.nos_title : 'Core Practical Execution'}`,
-                        sequence_order: modOrder++
-                    };
-                    modulesList.push(currentModule);
+        // ── Generic #### heading — also check if it contains a NOS code ──────
+        if (line.startsWith('####')) {
+            const innerNosMatch = line.match(NOS_CODE_RE);
+            if (innerNosMatch) {
+                const code = innerNosMatch[0].trim().toUpperCase();
+                const found = nosList.find(n => n.nos_code === code);
+                if (found) {
+                    currentNos = found;
+                    if (!currentModule || currentModule.nos_code !== code) {
+                        currentModule = {
+                            nos_code:       code,
+                            module_title:   cleanText(line.replace(/^####\s*/, '').replace(code, '').replace(/^[:\-\s]+/, '')).trim() || code,
+                            sequence_order: modOrder++,
+                        };
+                        modulesList.push(currentModule);
+                    }
                 }
+            }
+            continue;
+        }
 
+        // ── Inline NOS code in plain text (e.g. a table row with NOS code) ──
+        // Switch currentNos if a known NOS code appears inline
+        const inlineNosMatch = line.match(new RegExp(NOS_CODE_RE.source, 'i'));
+        if (inlineNosMatch && !PC_LINE_RE.test(line) && !PC_TABLE_RE.test(line)) {
+            const code = inlineNosMatch[0].trim().toUpperCase();
+            const found = nosList.find(n => n.nos_code === code);
+            if (found) currentNos = found;
+        }
+
+        // ── Performance Criteria — list item: "- PC1. text" ──────────────────
+        const pcMatch = line.match(PC_LINE_RE) || line.match(PC_TABLE_RE);
+        if (pcMatch) {
+            const pcNum  = pcMatch[1];
+            const pcCode = `PC${pcNum}.`;
+            const pcDesc = cleanText(pcMatch[2]);
+
+            if (pcDesc.length < 5) continue;
+
+            // Ensure a module exists for this NOS
+            if (!currentModule || currentModule.nos_code !== currentNos.nos_code) {
+                currentModule = {
+                    nos_code:       currentNos.nos_code,
+                    module_title:   `${currentNos.nos_title} — Core Practical Execution`,
+                    sequence_order: modOrder++,
+                };
+                modulesList.push(currentModule);
+            }
+
+            const dedupKey = `${currentNos.nos_code}:${pcCode}`;
+            if (!seenPcs.has(dedupKey)) {
+                seenPcs.add(dedupKey);
                 pcsList.push({
-                    nos_code: currentModule.nos_code,
-                    module_title: currentModule.module_title,
-                    pc_code: pcCode,
+                    nos_code:       currentNos.nos_code,
+                    module_title:   currentModule.module_title,
+                    pc_code:        pcCode,
                     pc_description: pcDesc,
-                    sequence_order: pcOrder++
                 });
             }
         }
@@ -153,122 +250,249 @@ function parseMarkdownToStructure(filePath, qpCode, qpName) {
     return { nosList, modulesList, pcsList };
 }
 
-/**
- * Main Pass 1 Structural Ingestion Function
- */
-async function processPass1Ingestion() {
-    const args = process.argv.slice(2);
-    let limit = 2176;
-    let targetQp = null;
+// ── Sequence reorder: SQL window function — no field shuffling ────────────────
+async function reorderPcs(qpCode, pool) {
+    await pool.query(`
+        WITH ranked AS (
+            SELECT
+                id,
+                ROW_NUMBER() OVER (
+                    PARTITION BY qp_code
+                    ORDER BY
+                        (SELECT sequence_order FROM nsqf_nos
+                         WHERE nsqf_nos.qp_code = nsqf_pcs.qp_code
+                           AND nsqf_nos.nos_code = nsqf_pcs.nos_code
+                         LIMIT 1) NULLS LAST,
+                        COALESCE(
+                            NULLIF(REGEXP_REPLACE(pc_code, '[^0-9]', '', 'g'), '')::INT,
+                            999
+                        )
+                ) AS rn
+            FROM nsqf_pcs
+            WHERE qp_code = $1
+        )
+        UPDATE nsqf_pcs SET sequence_order = ranked.rn
+        FROM ranked
+        WHERE nsqf_pcs.id = ranked.id
+    `, [qpCode]);
+}
 
-    args.forEach(arg => {
-        if (arg.startsWith('--limit=')) limit = parseInt(arg.split('=')[1]);
-        if (arg.startsWith('--qp=')) targetQp = arg.split('=')[1].trim();
-    });
+// ── Checkpoint helpers ────────────────────────────────────────────────────────
+function loadCheckpoint() {
+    try {
+        if (fs.existsSync(CHECKPOINT_PATH)) {
+            return JSON.parse(fs.readFileSync(CHECKPOINT_PATH, 'utf-8'));
+        }
+    } catch {}
+    return null;
+}
+
+function saveCheckpoint(qpId, qpCode) {
+    fs.writeFileSync(CHECKPOINT_PATH, JSON.stringify({
+        last_processed_id:  qpId,
+        last_processed_qp:  qpCode,
+        timestamp:          new Date().toISOString(),
+    }), 'utf-8');
+}
+
+function clearCheckpoint() {
+    try { fs.unlinkSync(CHECKPOINT_PATH); } catch {}
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+async function main() {
+    const args       = process.argv.slice(2);
+    const doAll      = args.includes('--all');
+    const doResume   = args.includes('--resume');
+    const limitFlag  = args.find(a => a.startsWith('--limit='));
+    const qpFlag     = args.find(a => a.startsWith('--qp='));
+    const limit      = limitFlag ? parseInt(limitFlag.split('=')[1]) : 5;
+    const targetQp   = qpFlag ? qpFlag.split('=')[1].trim() : null;
 
     console.log('================================================================================');
-    console.log('🏛️ [PASS 1] INSTANT STRUCTURAL INGESTION INTO SQLITE DATABASE');
-    console.log('   (Populating nsqf_nos, nsqf_modules, and nsqf_pcs with pc_intent = NULL)');
+    console.log('🏛️  [PASS 1] NSQF STRUCTURAL INGESTION  (v2 — PostgreSQL, non-destructive)');
+    console.log('   Targets: nsqf_nos, nsqf_modules, nsqf_pcs  →  local hayadb');
     console.log('================================================================================\n');
 
+    // ── Fetch QP list ─────────────────────────────────────────────────────────
     let rows = [];
     if (targetQp) {
-        rows = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).all(targetQp, targetQp.replace('/', '_'));
+        const clean = targetQp.replace(/\//g, '_');
+        rows = await db.prepare(
+            `SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`
+        ).all(targetQp, clean);
+    } else if (doAll) {
+        rows = await db.prepare(`SELECT * FROM nsqf_qps ORDER BY id ASC`).all();
     } else {
         rows = await db.prepare(`SELECT * FROM nsqf_qps ORDER BY id ASC LIMIT ?`).all(limit);
     }
 
     if (rows.length === 0) {
-        console.log('❌ No Qualification Packs found matching target criteria.');
-        return;
+        console.log('❌  No Qualification Packs found. Is hayadb seeded?');
+        process.exit(1);
     }
 
-    console.log(`Processing Pass 1 Ingestion for ${rows.length} Qualification Packs...\n`);
+    // ── Resume: skip already-processed QPs ───────────────────────────────────
+    let startIdx = 0;
+    if (doResume && !targetQp) {
+        const cp = loadCheckpoint();
+        if (cp) {
+            const idx = rows.findIndex(r => r.id === cp.last_processed_id);
+            startIdx = idx >= 0 ? idx + 1 : 0;
+            console.log(`⏩  Resuming from QP #${cp.last_processed_id} (${cp.last_processed_qp}) — skipping ${startIdx} already done.\n`);
+        }
+    }
 
-    let totalNosInserted = 0;
-    let totalModulesInserted = 0;
-    let totalPcsInserted = 0;
-    let successQpCount = 0;
+    console.log(`Processing ${rows.length - startIdx} of ${rows.length} QP(s)...\n`);
 
-    for (let i = 0; i < rows.length; i++) {
-        const qp = rows[i];
+    // ── Get raw pool for sequence_order UPDATE ────────────────────────────────
+    // db.query is the raw pg pool exposed by new db.js
+    const pool = { query: db.query.bind(db) };
+
+    let totalNos = 0, totalMods = 0, totalPcs = 0, successCount = 0, skipCount = 0;
+
+    for (let i = startIdx; i < rows.length; i++) {
+        const qp        = rows[i];
         const cleanCode = qp.qp_code.replace(/\//g, '_');
-        const mdPath = path.join(MD_DIR, `${cleanCode}.md`);
+        const mdPath    = path.join(MD_DIR, `${cleanCode}.md`);
 
         if (!fs.existsSync(mdPath)) {
+            skipCount++;
             continue;
         }
 
-        const { nosList, modulesList, pcsList } = parseMarkdownToStructure(mdPath, qp.qp_code, qp.qp_name);
+        let parsed;
+        try {
+            parsed = parseMarkdownToStructure(mdPath, qp.qp_code, qp.qp_name);
+        } catch (e) {
+            console.error(`  ❌  Parse error for ${qp.qp_code}: ${e.message}`);
+            skipCount++;
+            continue;
+        }
 
-        // Clean previous records for fresh Pass 1 alignment
-        await db.prepare(`DELETE FROM nsqf_nos WHERE qp_code = ?`).run(qp.qp_code);
-        await db.prepare(`DELETE FROM nsqf_modules WHERE qp_code = ?`).run(qp.qp_code);
-        await db.prepare(`DELETE FROM nsqf_pcs WHERE qp_code = ?`).run(qp.qp_code);
+        const { nosList, modulesList, pcsList } = parsed;
 
-        // 1. Insert nsqf_nos
+        if (nosList.length === 0 && pcsList.length === 0) {
+            skipCount++;
+            continue;
+        }
+
+        // ── 1. Upsert nsqf_nos (preserve existing data) ──────────────────────
         for (const n of nosList) {
-            await db.prepare(`
-                INSERT OR IGNORE INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
-                VALUES (?, ?, ?, ?)
-            `).run(qp.qp_code, n.nos_code, n.nos_title, n.sequence_order);
-            totalNosInserted++;
+            await pool.query(`
+                INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
+                VALUES ($1, $2, $3, $4)
+                ON CONFLICT (qp_code, nos_code) DO UPDATE SET
+                    nos_title      = EXCLUDED.nos_title,
+                    sequence_order = EXCLUDED.sequence_order
+            `, [qp.qp_code, n.nos_code, n.nos_title, n.sequence_order]);
         }
+        totalNos += nosList.length;
 
-        // 2. Insert nsqf_modules & map module_id
-        const moduleMap = new Map();
+        // ── 2. Modules: delete old, insert fresh (no video data here) ─────────
+        await pool.query(`DELETE FROM nsqf_modules WHERE qp_code = $1`, [qp.qp_code]);
+        const moduleMap = new Map();  // "nos_code:module_title" → new id
         for (const m of modulesList) {
-            const key = `${m.nos_code}:${m.module_title}`;
-            if (!moduleMap.has(key)) {
-                const info = await db.prepare(`
-                    INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
-                    VALUES (?, ?, ?, ?)
-                `).run(qp.qp_code, m.nos_code, m.module_title, m.sequence_order);
-                moduleMap.set(key, info.lastInsertRowid);
-                totalModulesInserted++;
-            }
+            const key  = `${m.nos_code}:${m.module_title}`;
+            if (moduleMap.has(key)) continue;
+            const r = await pool.query(`
+                INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
+                VALUES ($1, $2, $3, $4)
+                RETURNING id
+            `, [qp.qp_code, m.nos_code, m.module_title, m.sequence_order]);
+            moduleMap.set(key, r.rows[0].id);
         }
+        totalMods += modulesList.length;
 
-        // 3. Insert nsqf_pcs (with pc_intent = NULL for Pass 2 enrichment)
+        // ── 3. Upsert nsqf_pcs — NEVER overwrite video_id on conflict ─────────
         for (const p of pcsList) {
-            const key = `${p.nos_code}:${p.module_title}`;
+            const key   = `${p.nos_code}:${p.module_title}`;
             const modId = moduleMap.get(key) || null;
-            const defaultVideoId = 'x9PQgbB4y6M';
-            const defaultVideoTitle = `${qp.qp_name} Demonstration ${p.pc_code}`;
+            await pool.query(`
+                INSERT INTO nsqf_pcs
+                    (qp_code, nos_code, module_id, pc_code, pc_description, sequence_order)
+                VALUES ($1, $2, $3, $4, $5, $6)
+                ON CONFLICT (qp_code, nos_code, pc_code) DO UPDATE SET
+                    pc_description = EXCLUDED.pc_description,
+                    module_id      = EXCLUDED.module_id,
+                    sequence_order = EXCLUDED.sequence_order
+            `, [qp.qp_code, p.nos_code, modId, p.pc_code, p.pc_description, 0]);
+        }
+        totalPcs += pcsList.length;
 
-            await db.prepare(`
-                INSERT OR REPLACE INTO nsqf_pcs 
-                (qp_code, nos_code, module_id, pc_code, pc_description, pc_intent, contextual_search_query, video_id, video_title, video_url, audit_score, sequence_order)
-                VALUES (?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?)
-            `).run(
-                qp.qp_code, p.nos_code, modId, p.pc_code, p.pc_description,
-                defaultVideoId, defaultVideoTitle, `https://www.youtube.com/watch?v=${defaultVideoId}`, 80, p.sequence_order
-            );
-            totalPcsInserted++;
+        // ── 4. Delete PCs for ANY generic NOS — unconditionally ───────────────
+        // This handles stale rows from previous runs / Neon restore
+        await pool.query(`
+            DELETE FROM nsqf_pcs
+            WHERE qp_code = $1
+              AND (
+                nos_code LIKE 'DGT/VSQ/%'
+                OR nos_code LIKE 'VSQ/%'
+                OR nos_code ~ '\/N99[0-9][0-9]$'
+                OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
+              )
+        `, [qp.qp_code]);
+
+        // Also remove from nsqf_nos
+        await pool.query(`
+            DELETE FROM nsqf_nos
+            WHERE qp_code = $1
+              AND (
+                nos_code LIKE 'DGT/VSQ/%'
+                OR nos_code LIKE 'VSQ/%'
+                OR nos_code ~ '\/N99[0-9][0-9]$'
+                OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
+              )
+        `, [qp.qp_code]);
+
+        // ── 5. Fix sequence_order via SQL window function ──────────────────────
+        try {
+            await reorderPcs(qp.qp_code, pool);
+        } catch (e) {
+            // Non-fatal — ordering can be fixed later
         }
 
-        // Update master nsqf_qps status
-        await db.prepare(`
-            UPDATE nsqf_qps 
-            SET total_nos = ?, total_pcs = ?, pipeline_status = 'structure_ingested'
-            WHERE id = ?
-        `).run(nosList.length, pcsList.length, qp.id);
+        // ── 6. Update master QP status ─────────────────────────────────────────
+        await pool.query(`
+            UPDATE nsqf_qps
+            SET total_nos       = $1,
+                total_pcs       = $2,
+                pipeline_status = 'structure_ingested'
+            WHERE id = $3
+        `, [nosList.length, pcsList.length, qp.id]);
 
-        successQpCount++;
+        successCount++;
+        saveCheckpoint(qp.id, qp.qp_code);
 
-        if (successQpCount % 200 === 0 || i === rows.length - 1 || rows.length <= 10) {
-            console.log(`[${i + 1}/${rows.length}] 📌 Ingested QP: ${qp.qp_code} ➔ (NOS: ${nosList.length}, Modules: ${modulesList.length}, PCs: ${pcsList.length})`);
+        // Progress every 50 QPs or always if small batch
+        if (successCount % 50 === 0 || rows.length <= 20 || i === rows.length - 1) {
+            const pct = ((i + 1) / rows.length * 100).toFixed(1);
+            console.log(`[${i + 1}/${rows.length}] (${pct}%) ✅  ${qp.qp_code}  →  NOS: ${nosList.length}  Modules: ${modulesList.length}  PCs: ${pcsList.length}`);
         }
     }
 
-    console.log('\n================================================================================');
-    console.log(`📊 PASS 1 STRUCTURAL INGESTION SUMMARY:`);
-    console.log(`   Total QPs Ingested:       ${successQpCount} / ${rows.length}`);
-    console.log(`   Total NOS Records:       ${totalNosInserted}`);
-    console.log(`   Total Module Reels:      ${totalModulesInserted}`);
-    console.log(`   Total Performance PCs:   ${totalPcsInserted}`);
-    console.log(`   Database Status:         pipeline_status = 'structure_ingested'`);
+    if (successCount === rows.length - startIdx) {
+        clearCheckpoint();
+        console.log('\n✅  All QPs processed — checkpoint cleared.\n');
+    } else {
+        console.log(`\n⚠️  ${skipCount} QPs skipped (no MD file or parse error). Run --resume to retry.\n`);
+    }
+
+    console.log('================================================================================');
+    console.log('📊 PASS 1 SUMMARY');
+    console.log(`   QPs Processed:     ${successCount}`);
+    console.log(`   QPs Skipped:       ${skipCount}`);
+    console.log(`   NOS Records:       ${totalNos}`);
+    console.log(`   Module Reels:      ${totalMods}`);
+    console.log(`   Performance Criteria: ${totalPcs}`);
+    console.log(`   DB Status:         pipeline_status = 'structure_ingested'`);
     console.log('================================================================================\n');
+
+    process.exit(0);
 }
 
-processPass1Ingestion().catch(console.error);
+main().catch(e => {
+    console.error('\n❌  Fatal error in Pass 1:', e.message);
+    console.error(e.stack);
+    process.exit(1);
+});
