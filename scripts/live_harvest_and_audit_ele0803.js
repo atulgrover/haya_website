@@ -12,6 +12,10 @@
  *  2. Deduplication guard — never assigns the same video_id to more than one PC
  *  3. Per-NOS video diversity — rotates fallback pool per NOS group, not per keyword only
  *  4. Real confidence scoring — based on keyword overlap instead of hardcoded 92
+ *
+ * DB ROUTING (NODE_ENV):
+ *  development → LOCAL_DATABASE_URL (local hayadb) — safe for testing, never touches Neon
+ *  production  → NEON_DATABASE_URL (Neon cloud)    — push only after local validation
  */
 
 require('dotenv').config();
@@ -20,15 +24,26 @@ const path = require('path');
 const { Pool } = require('pg');
 const ytsr = require('youtube-sr').default;
 
-const urlObj = new URL(process.env.NEON_DATABASE_URL);
-const pool = new Pool({
-    user:     decodeURIComponent(urlObj.username),
-    password: decodeURIComponent(urlObj.password),
-    host:     '52.76.108.241',
-    port:     5432,
-    database: urlObj.pathname.slice(1),
-    ssl:      { rejectUnauthorized: false, servername: urlObj.hostname }
-});
+const isDev = process.env.NODE_ENV !== 'production';
+let pool;
+
+if (isDev) {
+    const localUrl = process.env.LOCAL_DATABASE_URL || 'postgresql://postgres:hayapass@localhost:5432/hayadb';
+    console.log(`[DB] 🛠  DEV mode → Local PostgreSQL: ${localUrl}`);
+    pool = new Pool({ connectionString: localUrl });
+} else {
+    const urlObj = new URL(process.env.NEON_DATABASE_URL);
+    console.log(`[DB] 🚀 PROD mode → Neon PostgreSQL: ${urlObj.hostname}`);
+    pool = new Pool({
+        user:     decodeURIComponent(urlObj.username),
+        password: decodeURIComponent(urlObj.password),
+        host:     '52.76.108.241',
+        port:     5432,
+        database: urlObj.pathname.slice(1),
+        ssl:      { rejectUnauthorized: false, servername: urlObj.hostname }
+    });
+}
+
 
 // ============================================================
 //  GENERIC NOS BLOCKLIST
