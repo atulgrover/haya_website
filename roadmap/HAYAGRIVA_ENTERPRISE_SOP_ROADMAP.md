@@ -1,8 +1,8 @@
 # HAYAGRIVA Enterprise SOP & 4-Pillar Persona Roadmap
 
-**Document Version:** 2.2  
+**Document Version:** 2.3  
 **Date Updated:** August 15, 2026  
-**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem with Enterprise SOP Transformation Engine
+**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem with Immutable National SOP Benchmark & Bespoke Enterprise Services
 
 ---
 
@@ -16,7 +16,7 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 ├──────────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                          │
 │  [1] 🎓 STUDENTS (NSQF)        ──► students.html   ──► 2,176 NSQF Job Roles & Certs      │
-│  [2] 🏢 EMPLOYERS (SOPs)       ──► employers.html  ──► Ready-Made Industry SOP Reels    │
+│  [2] 🏢 EMPLOYERS (SOPs)       ──► employers.html  ──► Immutable National SOP Benchmarks │
 │  [3] 👤 EMPLOYEES (On-The-Fly) ──► employees.html  ──► Custom 11-Reel AI Generator       │
 │  [4] ⚖️ PROFESSIONALS (IDE)    ──► professionals.html ──► Desktop IPE & Offline LLMs    │
 │                                                                                          │
@@ -38,12 +38,12 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 
 ---
 
-### 2. 🏢 Employers Portal (`employers.html`) — Ready-Made Industry Standard Operating Procedures (SOPs)
+### 2. 🏢 Employers Portal (`employers.html`) — Immutable National Standard Operating Procedures (SOPs)
 * **Target Audience:** Business owners, Hotel General Managers, Restaurant Operators, Plant Supervisors, Hospital Administrators, Store Managers.
 * **Visual Aesthetic:** **Shin-Hanga Architectural Precision & Modern Line Art** (Clean geometric lines, dramatic cinematic lighting, executive authority).
-* **Core Problem Solved:** Eliminates 150-page PDF manual binders and removes the need for managers to manually write SOP training guides.
-* **Core Functionality:**
-  * **Zero-Setup Pre-Generated SOP Catalog:** Direct access to thousands of ready-made workplace SOPs synthesized automatically by AI from statutory NSQF standards.
+* **Governance Model:** **100% Fixed & Immutable Reference Standard (Admin-Controlled Only)**.
+  * Just like the NSQF curriculum, the National SOP Benchmark catalog is read-only for public employers and can only be modified by HAYAGRIVA Admins.
+  * Pre-synthesized from statutory NSQF standards with zero employer setup required.
   * **Exact 1:1 Sector Grid Alignment:** Identical 38+ Sector Cards as the student portal (neither more nor less).
   * **Human-Friendly Semantic Action Slugs:** Clean readable URLs (e.g. `reel.html?sop=fine-dining-table-setup`).
   * **Actionable SOP Reel Player:** Each SOP launches a fast, step-by-step practical video reel with:
@@ -74,7 +74,16 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 
 ---
 
-## 3. NSQF ➔ Enterprise SOP Data Transformation Mapping
+## 3. Bespoke Enterprise Custom SOP Services (High-Margin B2B Model)
+
+For large corporate clients (*Taj Hotels, Tata Motors, Marriott, Apollo Hospitals, Reliance*):
+* **Custom Proprietary Ingestion**: The enterprise provides their internal training manuals, brand guidelines, and proprietary operational videos.
+* **Private Isolated Domain Vault**: HAYAGRIVA ingests the client's internal documents into a private encrypted workspace keyed to their domain (e.g. `@tajhotels.com`).
+* **Bespoke Brand Reels**: The client's employees see their own brand-specific SOP reels, turn-down standards, and custom uniform rules without polluting the public National Benchmark catalog.
+
+---
+
+## 4. NSQF ➔ Enterprise SOP Data Transformation Mapping
 
 The underlying data is **100% sourced from the existing NSQF tables**, but transformed into dedicated enterprise tables with specialized operational columns:
 
@@ -108,9 +117,7 @@ The underlying data is **100% sourced from the existing NSQF tables**, but trans
 
 ---
 
-## 4. Dual Japanese Visual Identity & Sector Card Specification
-
-Instead of generic, low-resolution government or internet stock photos, HAYAGRIVA features **two distinct, bespoke visual languages**:
+## 5. Dual Japanese Visual Identity & Sector Card Specification
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────┐
@@ -131,10 +138,10 @@ Instead of generic, low-resolution government or internet stock photos, HAYAGRIV
 
 ---
 
-## 5. Enterprise-Ready PostgreSQL Database Schema (`hayadb`)
+## 6. Enterprise-Ready PostgreSQL Database Schema (`hayadb`)
 
 ```sql
--- 1. MASTER SOP SPECIFICATION TABLE
+-- 1. MASTER SOP SPECIFICATION TABLE (Immutable National Benchmark)
 CREATE TABLE IF NOT EXISTS enterprise_sops (
     id SERIAL PRIMARY KEY,
     sop_code VARCHAR(50) UNIQUE NOT NULL,            -- e.g. 'SOP-HOSP-001'
@@ -178,7 +185,7 @@ CREATE TABLE IF NOT EXISTS enterprise_sop_steps (
     UNIQUE(sop_code, step_number)
 );
 
--- 3. CORPORATE DOMAIN ISOLATION & TEAM ASSIGNMENTS
+-- 3. CORPORATE DOMAIN ISOLATION & BESPOKE CLIENT OVERRIDES
 CREATE TABLE IF NOT EXISTS enterprise_sop_assignments (
     id SERIAL PRIMARY KEY,
     company_domain VARCHAR(100) NOT NULL,             -- e.g. 'tajhotels.com', 'marriott.com'
@@ -205,9 +212,7 @@ CREATE TABLE IF NOT EXISTS enterprise_sop_executions (
 
 ---
 
-## 6. Universal Navigation Header Update
-
-The universal navigation header across all portal pages:
+## 7. Universal Navigation Header Update
 
 ```html
 <nav class="portal-nav-bar">
@@ -226,7 +231,7 @@ The universal navigation header across all portal pages:
 
 ---
 
-## 7. Implementation Plan & Execution Phases
+## 8. Implementation Plan & Execution Phases
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────┐
@@ -236,6 +241,7 @@ The universal navigation header across all portal pages:
 │  PHASE 1: Database Schema & Auto-Transformation Engine                                   │
 │  • Add `enterprise_sops` and `enterprise_sop_steps` DDL in `server/db.js`.               │
 │  • Build `scripts/nsqf_auto_sop_generator.js` to transform NSQF data into SOPs.          │
+│  • Filter out soft-skill NOS (`N9901–N9999`) to maintain strict technical focus.         │
 │  • Export portable `.md` files to `data/sops/{sector}/{slug}.md`.                        │
 │                                                                                          │
 │  PHASE 2: Bespoke Sector Asset Generation                                                │
