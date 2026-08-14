@@ -209,6 +209,30 @@ const VOCATIONAL_HINDI_DICT = {
     'cnc': 'सीएनसी मशीन',
     'cad': 'सीएडी 3डी',
     'robotics': 'रोबोटिक्स',
+
+    // Pedagogical & Technical Descriptors
+    'describe': 'विवरण समझें',
+    'functions': 'कार्य और उपयोग',
+    'function': 'कार्य',
+    'components': 'पुर्जे और कंपोनेंट',
+    'component': 'कंपोनेंट',
+    'parameters': 'पैरामीटर',
+    'safety': 'सुरक्षा सावधानियां',
+    'guidelines': 'दिशानिर्देश',
+    'procedure': 'प्रक्रिया',
+    'handling': 'संभालना',
+    'diagram': 'डायग्राम और नक्शा',
+    'diagrams': 'डायग्राम',
+    'schematics': 'सर्किट डायग्राम',
+    'schematic': 'सर्किट डायग्राम',
+    'testing': 'टेस्टिंग और जांच',
+    'quality': 'गुणवत्ता',
+    'management': 'प्रबंधन',
+    'equipment': 'उपकरण',
+    'tools': 'औजार और टूल्स',
+    'interpret': 'समझें और पढ़ें',
+    'utilize': 'उपयोग करें',
+    'precautions': 'सावधानियां',
 };
 
 // ── 4. Sector to Complete YouTube Category Mapping (All 15 Categories) ─────
@@ -219,6 +243,8 @@ const SECTOR_YOUTUBE_CATEGORY = {
     'it-ites':         { id: 28, name: 'Science & Technology' },
     'it':              { id: 28, name: 'Science & Technology' },
     'instrumentation': { id: 28, name: 'Science & Technology' },
+    'life sciences':   { id: 28, name: 'Science & Technology' },
+    'hydrocarbon':     { id: 28, name: 'Science & Technology' },
 
     // 2: Autos & Vehicles
     'automotive':      { id: 2,  name: 'Autos & Vehicles' },
@@ -321,7 +347,7 @@ function getNegativeKeywords(sector) {
     if (s.includes('agri')) specific = ' -protest -politics -msp -news';
     else if (s.includes('auto')) specific = ' -race -crash -stunt -review';
     else if (s.includes('health')) specific = ' -movie -scene -comedy -fake';
-    else if (s.includes('electronic')) specific = ' -unboxing -leak -rumor -drop_test';
+    else if (s.includes('electronic')) specific = ' -leak -rumor -drop_test';
 
     return `-unboxing -review -prank -reaction -gameplay -shorts -teaser${specific}`;
 }

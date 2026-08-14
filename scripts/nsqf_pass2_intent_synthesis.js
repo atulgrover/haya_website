@@ -253,13 +253,17 @@ async function processPass2Synthesis() {
                     youtube_category_id        = $5,
                     youtube_category_name      = $6,
                     tool_keywords              = $7,
-                    negative_keywords          = $8
-                WHERE id = $9
+                    negative_keywords          = $8,
+                    positive_signals           = $9,
+                    min_duration_seconds       = 180,
+                    max_duration_seconds       = 900
+                WHERE id = $10
             `, [
                 r.pcIntent, r.pcIntentHi,
                 r.queryEn, r.queryHi,
                 r.catId, r.catName,
                 r.toolKeywords, r.negKeywords,
+                'step by step, how to, practical demonstration, live repair, proper method, hands on tutorial, स्टेप बाय स्टेप, प्रैक्टिकल डेमो, सही तरीका',
                 item.id
             ]);
 
