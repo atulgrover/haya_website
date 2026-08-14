@@ -1,258 +1,184 @@
 'use strict';
 
-const Database = require('better-sqlite3');
-const path = require('path');
+/**
+ * ╔══════════════════════════════════════════════════════════════════╗
+ * ║  Haya Portal — Database Connection  (LOCAL POSTGRESQL ONLY)     ║
+ * ║                                                                  ║
+ * ║  ARCHITECTURE CONTRACT:                                          ║
+ * ║  • This file ALWAYS connects to LOCAL PostgreSQL (hayadb).       ║
+ * ║  • SQLite and Turso are permanently archived — never used again. ║
+ * ║  • Neon (cloud/prod) is NEVER written to from application code.  ║
+ * ║  • The ONLY path to Neon is:                                     ║
+ * ║      node scripts/push_local_pg_to_neon.js  (explicit HIL only) ║
+ * ╚══════════════════════════════════════════════════════════════════╝
+ *
+ * Required env var:  LOCAL_DATABASE_URL
+ *   e.g.  postgresql://postgres:hayapass@localhost:5432/hayadb
+ *
+ * The server will CRASH immediately at startup if LOCAL_DATABASE_URL
+ * is not set — this is intentional to prevent silent fallback to Neon.
+ */
 
-let db;
+require('dotenv').config();
+const { Pool } = require('pg');
+const path    = require('path');
 
-const pgUrl = process.env.NEON_DATABASE_URL || process.env.DATABASE_URL;
-const isPostgres = !process.env.USE_LOCAL_SQLITE && !!pgUrl;
-const isTurso = !isPostgres && !process.env.USE_LOCAL_SQLITE && !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
-
-if (isPostgres) {
-    console.log(`[Haya Portal DB] Connecting to PostgreSQL (${pgUrl})...`);
-    const { Pool } = require('pg');
-    const isLocalPg = pgUrl.includes('localhost') || pgUrl.includes('127.0.0.1');
-    let poolConfig = { connectionString: pgUrl };
-    if (!isLocalPg) {
-        const urlObj = new URL(pgUrl);
-        poolConfig = {
-            user: decodeURIComponent(urlObj.username),
-            password: decodeURIComponent(urlObj.password),
-            host: '52.76.108.241',
-            port: 5432,
-            database: urlObj.pathname.slice(1),
-            ssl: { rejectUnauthorized: false, servername: urlObj.hostname }
-        };
-    }
-    const pool = new Pool(poolConfig);
-
-    const convertSql = (sql) => {
-        let idx = 1;
-        return sql.replace(/\?/g, () => `$${idx++}`);
-    };
-
-    db = {
-        prepare: (sql) => ({
-            run: async (...args) => {
-                const pgSql = convertSql(sql);
-                const res = await pool.query(pgSql, args);
-                return { lastInsertRowid: res.rows[0]?.id || 0, changes: res.rowCount };
-            },
-            get: async (...args) => {
-                const pgSql = convertSql(sql);
-                const res = await pool.query(pgSql, args);
-                return res.rows[0] || null;
-            },
-            all: async (...args) => {
-                const pgSql = convertSql(sql);
-                const res = await pool.query(pgSql, args);
-                return res.rows;
-            }
-        }),
-        exec: async (sql) => {
-            return await pool.query(sql);
-        }
-    };
-} else if (isTurso) {
-    console.log(`[Haya Portal DB] Connecting to Turso Cloud SQLite: ${process.env.TURSO_DATABASE_URL}`);
-    const { createClient } = require('@libsql/client');
-    const client = createClient({
-        url: process.env.TURSO_DATABASE_URL,
-        authToken: process.env.TURSO_AUTH_TOKEN
-    });
-
-    db = {
-        prepare: (sql) => ({
-            run: async (...args) => {
-                const res = await client.execute({ sql, args });
-                return { lastInsertRowid: res.lastInsertRowid ? Number(res.lastInsertRowid) : 0, changes: res.rowsAffected };
-            },
-            get: async (...args) => {
-                const res = await client.execute({ sql, args });
-                return res.rows[0] || null;
-            },
-            all: async (...args) => {
-                const res = await client.execute({ sql, args });
-                return res.rows;
-            }
-        }),
-        exec: async (sql) => {
-            return await client.executeMultiple(sql);
-        }
-    };
-} else {
-    const dbPath = path.join(__dirname, 'portal_database.db');
-    const localDb = new Database(dbPath);
-    localDb.pragma('journal_mode = WAL');
-    console.log(`[Haya Portal DB] Local SQLite database initialized at ${dbPath}`);
-
-    db = {
-        prepare: (sql) => ({
-            run: (...args) => localDb.prepare(sql).run(...args),
-            get: (...args) => localDb.prepare(sql).get(...args),
-            all: (...args) => localDb.prepare(sql).all(...args)
-        }),
-        exec: (sql) => localDb.exec(sql)
-    };
+// ── Hard guard: refuse to start if local DB is not configured ─────────────────
+const LOCAL_DB_URL = process.env.LOCAL_DATABASE_URL;
+if (!LOCAL_DB_URL) {
+    console.error('\n❌  FATAL: LOCAL_DATABASE_URL is not set in .env');
+    console.error('   Set it to: postgresql://postgres:hayapass@localhost:5432/hayadb');
+    console.error('   Do NOT use NEON_DATABASE_URL here. Neon is prod-push-only.\n');
+    process.exit(1);
 }
 
-// Function to initialize tables asynchronously
+// ── Neon guard: crash if someone accidentally put Neon URL as LOCAL ───────────
+if (LOCAL_DB_URL.includes('neon.tech') || LOCAL_DB_URL.includes('neondb')) {
+    console.error('\n❌  FATAL: LOCAL_DATABASE_URL must not point to Neon cloud.');
+    console.error('   LOCAL_DATABASE_URL should be your local hayadb.');
+    console.error('   To push to Neon, run: node scripts/push_local_pg_to_neon.js\n');
+    process.exit(1);
+}
+
+console.log(`[Haya Portal DB] 🛠  Connecting to LOCAL PostgreSQL: ${LOCAL_DB_URL.replace(/:([^:@]+)@/, ':***@')}`);
+
+const pool = new Pool({ connectionString: LOCAL_DB_URL });
+
+// ── SQL placeholder converter: ? → $1, $2, ... (SQLite → PG compat layer) ────
+const convertSql = (sql) => {
+    let idx = 1;
+    return sql.replace(/\?/g, () => `$${idx++}`);
+};
+
+// ── Unified async DB interface (mirrors the old better-sqlite3 API shape) ─────
+const db = {
+    prepare: (sql) => ({
+        run: async (...args) => {
+            const res = await pool.query(convertSql(sql), args);
+            return { lastInsertRowid: res.rows[0]?.id || 0, changes: res.rowCount };
+        },
+        get: async (...args) => {
+            const res = await pool.query(convertSql(sql), args);
+            return res.rows[0] || null;
+        },
+        all: async (...args) => {
+            const res = await pool.query(convertSql(sql), args);
+            return res.rows;
+        }
+    }),
+    exec: async (sql) => pool.query(sql),
+    // Raw pool access for advanced queries (DISTINCT ON, CTEs, etc.)
+    query: (...args) => pool.query(...args)
+};
+
+// ── Schema bootstrap (idempotent — safe to run on every startup) ──────────────
 async function initSchema() {
     try {
-        if (isPostgres) {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS users (
-                    id SERIAL PRIMARY KEY,
-                    email VARCHAR(255) UNIQUE NOT NULL,
-                    password_hash TEXT NOT NULL,
-                    full_name TEXT NOT NULL,
-                    firm_name TEXT,
-                    ip_registration_no TEXT,
-                    role VARCHAR(50) DEFAULT 'student',
-                    company_id TEXT,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                );
-
-                CREATE TABLE IF NOT EXISTS custom_skills (
-                    id SERIAL PRIMARY KEY,
-                    title TEXT NOT NULL,
-                    company_id TEXT,
-                    employee_email_id TEXT NOT NULL,
-                    schema_json TEXT NOT NULL,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                );
-
-                CREATE TABLE IF NOT EXISTS skill_progress (
-                    id SERIAL PRIMARY KEY,
-                    user_id INT,
-                    employee_email_id TEXT NOT NULL,
-                    skill_id TEXT NOT NULL,
-                    completed_pcs TEXT DEFAULT '[]',
-                    score INT DEFAULT 0,
-                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                );
-
-                CREATE TABLE IF NOT EXISTS youtube_search_cache (
-                    search_query VARCHAR(500) PRIMARY KEY,
-                    video_id VARCHAR(50),
-                    video_title TEXT,
-                    searched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                );
-            `);
-            console.log('[Haya Portal DB] PostgreSQL database schema verified & connected.');
-            return;
-        }
-
-        await db.exec(`
+        await pool.query(`
             CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                email TEXT UNIQUE NOT NULL,
+                id SERIAL PRIMARY KEY,
+                email VARCHAR(255) UNIQUE NOT NULL,
                 password_hash TEXT NOT NULL,
                 full_name TEXT NOT NULL,
                 firm_name TEXT,
                 ip_registration_no TEXT,
-                role TEXT DEFAULT 'student',
+                role VARCHAR(50) DEFAULT 'student',
                 company_id TEXT,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS custom_skills (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id SERIAL PRIMARY KEY,
                 title TEXT NOT NULL,
                 company_id TEXT,
                 employee_email_id TEXT NOT NULL,
+                tag TEXT DEFAULT 'General',
+                description TEXT,
                 schema_json TEXT NOT NULL,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS skill_progress (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER,
+                id SERIAL PRIMARY KEY,
+                user_id INT,
                 employee_email_id TEXT NOT NULL,
                 skill_id TEXT NOT NULL,
                 completed_pcs TEXT DEFAULT '[]',
-                score INTEGER DEFAULT 0,
-                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                score INT DEFAULT 0,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS subscriptions (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
+                id SERIAL PRIMARY KEY,
+                user_id INT NOT NULL,
                 tier TEXT DEFAULT 'starter',
                 status TEXT DEFAULT 'active',
-                expires_at DATETIME,
+                expires_at TIMESTAMP,
                 payment_provider TEXT,
                 transaction_id TEXT,
-                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS licenses (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
+                id SERIAL PRIMARY KEY,
+                user_id INT NOT NULL,
                 tier TEXT NOT NULL,
                 license_key TEXT UNIQUE NOT NULL,
-                expires_at DATETIME NOT NULL,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                expires_at TIMESTAMP NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS download_logs (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
+                id SERIAL PRIMARY KEY,
+                user_id INT NOT NULL,
                 asset_id TEXT NOT NULL,
                 ip_address TEXT,
-                downloaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                downloaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS user_purchases (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
+                id SERIAL PRIMARY KEY,
+                user_id INT NOT NULL,
                 asset_id TEXT NOT NULL,
-                amount INTEGER NOT NULL,
+                amount INT NOT NULL,
                 currency TEXT DEFAULT 'INR',
                 transaction_id TEXT,
-                purchased_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                purchased_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS user_payment_methods (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
+                id SERIAL PRIMARY KEY,
+                user_id INT NOT NULL,
                 card_holder TEXT NOT NULL,
                 card_last4 TEXT NOT NULL,
                 card_brand TEXT DEFAULT 'Visa',
                 exp_month TEXT NOT NULL,
                 exp_year TEXT NOT NULL,
-                is_default INTEGER DEFAULT 0,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                is_default BOOLEAN DEFAULT FALSE,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS report_orders (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
+                id SERIAL PRIMARY KEY,
+                user_id INT NOT NULL,
                 report_type TEXT NOT NULL,
                 title TEXT NOT NULL,
                 company_name TEXT,
                 notes TEXT,
                 status TEXT DEFAULT 'in_processing',
                 file_url TEXT,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS nsqf_qps (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id SERIAL PRIMARY KEY,
                 s_no TEXT,
                 sector TEXT,
                 sub_sector TEXT,
                 occupation TEXT,
                 qp_name TEXT,
-                qp_code TEXT,
+                qp_code TEXT UNIQUE,
                 version TEXT,
                 awarding_body TEXT,
                 last_reviewed_on TEXT,
@@ -273,285 +199,166 @@ async function initSchema() {
                 total_qp_hours TEXT,
                 min_education_exp TEXT,
                 min_job_entry_age TEXT,
-                curriculum_pdf_url TEXT
+                curriculum_pdf_url TEXT,
+                markdown_path TEXT,
+                total_nos INT DEFAULT 0,
+                total_pcs INT DEFAULT 0,
+                pipeline_status TEXT DEFAULT 'pending_pdf'
+            );
+
+            CREATE TABLE IF NOT EXISTS nsqf_nos (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                nos_title TEXT NOT NULL,
+                nos_type TEXT DEFAULT 'Compulsory',
+                credits INT DEFAULT 0,
+                sequence_order INT DEFAULT 1,
+                UNIQUE(qp_code, nos_code)
+            );
+
+            CREATE TABLE IF NOT EXISTS nsqf_modules (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                module_title TEXT NOT NULL,
+                sequence_order INT DEFAULT 1
+            );
+
+            CREATE TABLE IF NOT EXISTS nsqf_pcs (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                module_id INT,
+                pc_code TEXT NOT NULL,
+                pc_description TEXT NOT NULL,
+                pc_intent TEXT,
+                intent_confidence INT DEFAULT NULL,
+                contextual_search_query TEXT,
+                query_confidence INT DEFAULT NULL,
+                contextual_search_query_hi TEXT,
+                query_confidence_hi INT DEFAULT NULL,
+                video_id TEXT,
+                video_title TEXT,
+                video_url TEXT,
+                video_id_hi TEXT,
+                video_title_hi TEXT,
+                video_url_hi TEXT,
+                thumbnail_url TEXT,
+                audit_score INT DEFAULT 90,
+                sequence_order INT DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(qp_code, nos_code, pc_code)
+            );
+
+            CREATE TABLE IF NOT EXISTS nsqf_curricula (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT UNIQUE NOT NULL,
+                qp_name TEXT,
+                version TEXT,
+                sector TEXT,
+                total_pcs INT DEFAULT 0,
+                schema_json TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+
+            CREATE TABLE IF NOT EXISTS nsqf_videos (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                nos_title TEXT,
+                module_title TEXT NOT NULL,
+                pc_id TEXT NOT NULL,
+                pc_intent TEXT NOT NULL,
+                pc_desc TEXT,
+                video_id TEXT NOT NULL,
+                video_title TEXT,
+                video_url TEXT,
+                audit_score INT DEFAULT 90,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(qp_code, nos_code, module_title, pc_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS nsqf_video_audit_logs (
+                id SERIAL PRIMARY KEY,
+                pc_table_id INT,
+                qp_code TEXT NOT NULL,
+                pc_code TEXT NOT NULL,
+                old_video_id TEXT,
+                suggested_video_id TEXT NOT NULL,
+                suggested_video_title TEXT,
+                suggested_video_url TEXT,
+                match_score INT DEFAULT 90,
+                ai_rationale TEXT,
+                status TEXT DEFAULT 'suggested',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+
+            CREATE TABLE IF NOT EXISTS video_swap_suggestions (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                module_title TEXT NOT NULL,
+                pc_id TEXT NOT NULL,
+                pc_intent TEXT NOT NULL,
+                current_video_id TEXT NOT NULL,
+                current_video_title TEXT,
+                current_audit_score INT DEFAULT 0,
+                suggested_video_id TEXT NOT NULL,
+                suggested_video_title TEXT,
+                suggested_video_url TEXT,
+                suggested_audit_score INT DEFAULT 0,
+                ai_rationale TEXT,
+                status TEXT DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(qp_code, pc_id, suggested_video_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS user_pc_progress (
+                id SERIAL PRIMARY KEY,
+                user_id INT DEFAULT 0,
+                qp_code TEXT NOT NULL,
+                pc_code TEXT NOT NULL,
+                completed INT DEFAULT 1,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(user_id, qp_code, pc_code)
+            );
+
+            CREATE TABLE IF NOT EXISTS youtube_search_cache (
+                id SERIAL PRIMARY KEY,
+                query_hash TEXT UNIQUE NOT NULL,
+                search_query TEXT NOT NULL,
+                video_id TEXT NOT NULL,
+                video_title TEXT,
+                video_url TEXT,
+                thumbnail_url TEXT,
+                duration_sec INT DEFAULT 300,
+                audit_score INT DEFAULT 90,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
 
-        // Migration safety: Ensure legacy users table has role, company_id, firm_name, ip_registration_no columns
-        try { await db.exec(`ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'student';`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE users ADD COLUMN company_id TEXT;`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE users ADD COLUMN firm_name TEXT;`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE users ADD COLUMN ip_registration_no TEXT;`); } catch (e) {}
+        console.log('[Haya Portal DB] ✅ Local PostgreSQL schema verified & connected.');
 
-        // Migration safety: Ensure custom_skills table has tag and description indexing columns
-        try { await db.exec(`ALTER TABLE custom_skills ADD COLUMN tag TEXT DEFAULT 'General';`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE custom_skills ADD COLUMN description TEXT;`); } catch (e) {}
-
-        // Migration safety: Ensure nsqf_qps table has pipeline tracking columns & deduplication
-        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN curriculum_pdf_url TEXT;`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN markdown_path TEXT;`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN total_nos INTEGER DEFAULT 0;`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN total_pcs INTEGER DEFAULT 0;`); } catch (e) {}
-        try { await db.exec(`ALTER TABLE nsqf_qps ADD COLUMN pipeline_status TEXT DEFAULT 'pending_pdf';`); } catch (e) {}
-        try {
-            await db.exec(`
-                DELETE FROM nsqf_qps 
-                WHERE id NOT IN (
-                    SELECT MAX(id) 
-                    FROM nsqf_qps 
-                    GROUP BY qp_code
-                );
-                CREATE UNIQUE INDEX IF NOT EXISTS idx_nsqf_qps_unique_qp_code ON nsqf_qps(qp_code);
-            `);
-        } catch (e) {}
-        try {
-            await db.exec(`
-                UPDATE nsqf_qps 
-                SET curriculum_pdf_url = 'https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/' 
-                    || REPLACE(qp_code, '/', '_') 
-                    || '_v' || CASE WHEN version LIKE 'v%' THEN SUBSTR(version, 2) ELSE COALESCE(NULLIF(version, ''), '1.0') END || '.pdf';
-            `);
-        } catch (e) {}
-
-        // Create 5-Table NSQF Pipeline Schema
-        try {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS nsqf_nos (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    qp_code TEXT NOT NULL,
-                    nos_code TEXT NOT NULL,
-                    nos_title TEXT NOT NULL,
-                    nos_type TEXT DEFAULT 'Compulsory',
-                    credits INTEGER DEFAULT 0,
-                    sequence_order INTEGER DEFAULT 1,
-                    UNIQUE(qp_code, nos_code)
-                );
-            `);
-        } catch (e) {}
-
-        try {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS nsqf_modules (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    qp_code TEXT NOT NULL,
-                    nos_code TEXT NOT NULL,
-                    module_title TEXT NOT NULL,
-                    sequence_order INTEGER DEFAULT 1
-                );
-            `);
-        } catch (e) {}
-
-        try {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS nsqf_pcs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    qp_code TEXT NOT NULL,
-                    nos_code TEXT NOT NULL,
-                    module_id INTEGER,
-                    pc_code TEXT NOT NULL,
-                    pc_description TEXT NOT NULL,
-                    pc_intent TEXT,
-                    intent_confidence INTEGER DEFAULT NULL,
-                    contextual_search_query TEXT,
-                    query_confidence INTEGER DEFAULT NULL,
-                    contextual_search_query_hi TEXT,
-                    query_confidence_hi INTEGER DEFAULT NULL,
-                    video_id TEXT,
-                    video_title TEXT,
-                    video_url TEXT,
-                    video_id_hi TEXT,
-                    video_title_hi TEXT,
-                    video_url_hi TEXT,
-                    thumbnail_url TEXT,
-                    audit_score INTEGER DEFAULT 90,
-                    sequence_order INTEGER DEFAULT 1,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(qp_code, nos_code, pc_code)
-                );
-            `);
-            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN intent_confidence INTEGER DEFAULT NULL;`); } catch (_) {}
-            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN query_confidence INTEGER DEFAULT NULL;`); } catch (_) {}
-            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN contextual_search_query_hi TEXT;`); } catch (_) {}
-            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN query_confidence_hi INTEGER DEFAULT NULL;`); } catch (_) {}
-            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_id_hi TEXT;`); } catch (_) {}
-            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_title_hi TEXT;`); } catch (_) {}
-            try { await db.exec(`ALTER TABLE nsqf_pcs ADD COLUMN video_url_hi TEXT;`); } catch (_) {}
-            try { await db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_nsqf_pcs_unique ON nsqf_pcs(qp_code, nos_code, pc_code);`); } catch (_) {}
-        } catch (e) {}
-
-        try {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS nsqf_video_audit_logs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    pc_table_id INTEGER,
-                    qp_code TEXT NOT NULL,
-                    pc_code TEXT NOT NULL,
-                    old_video_id TEXT,
-                    suggested_video_id TEXT NOT NULL,
-                    suggested_video_title TEXT,
-                    suggested_video_url TEXT,
-                    match_score INTEGER DEFAULT 90,
-                    ai_rationale TEXT,
-                    status TEXT DEFAULT 'suggested',
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-                );
-            `);
-        } catch (e) {}
-
-        // Create legacy nsqf_curricula table for backward compatibility
-        try {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS nsqf_curricula (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    qp_code TEXT UNIQUE NOT NULL,
-                    qp_name TEXT,
-                    version TEXT,
-                    sector TEXT,
-                    total_pcs INTEGER DEFAULT 0,
-                    schema_json TEXT NOT NULL,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-                );
-            `);
-        } catch (e) {}
-
-        try {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS nsqf_videos (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    qp_code TEXT NOT NULL,
-                    nos_code TEXT NOT NULL,
-                    nos_title TEXT,
-                    module_title TEXT NOT NULL,
-                    pc_id TEXT NOT NULL,
-                    pc_intent TEXT NOT NULL,
-                    pc_desc TEXT,
-                    video_id TEXT NOT NULL,
-                    video_title TEXT,
-                    video_url TEXT,
-                    audit_score INTEGER DEFAULT 90,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(qp_code, nos_code, module_title, pc_id)
-                );
-            `);
-        } catch (e) {}
-
-        try {
-            await db.exec(`
-                CREATE TABLE IF NOT EXISTS video_swap_suggestions (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    qp_code TEXT NOT NULL,
-                    nos_code TEXT NOT NULL,
-                    module_title TEXT NOT NULL,
-                    pc_id TEXT NOT NULL,
-                    pc_intent TEXT NOT NULL,
-                    current_video_id TEXT NOT NULL,
-                    current_video_title TEXT,
-                    current_audit_score INTEGER DEFAULT 0,
-                    suggested_video_id TEXT NOT NULL,
-                    suggested_video_title TEXT,
-                    suggested_video_url TEXT,
-                    suggested_audit_score INTEGER DEFAULT 0,
-                    ai_rationale TEXT,
-                    status TEXT DEFAULT 'pending',
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(qp_code, pc_id, suggested_video_id)
-                );
-
-                CREATE TABLE IF NOT EXISTS user_pc_progress (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    user_id INTEGER DEFAULT 0,
-                    qp_code TEXT NOT NULL,
-                    pc_code TEXT NOT NULL,
-                    completed INTEGER DEFAULT 1,
-                    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(user_id, qp_code, pc_code)
-                );
-
-                CREATE TABLE IF NOT EXISTS youtube_search_cache (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    query_hash TEXT UNIQUE NOT NULL,
-                    search_query TEXT NOT NULL,
-                    video_id TEXT NOT NULL,
-                    video_title TEXT,
-                    video_url TEXT,
-                    thumbnail_url TEXT,
-                    duration_sec INTEGER DEFAULT 300,
-                    audit_score INTEGER DEFAULT 90,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-                );
-            `);
-        } catch (e) {}
-
-        console.log('[Haya Portal DB] Database tables verified & initialized successfully.');
-
-        // Auto-seed NSQF database if nsqf_qps table is empty
+        // Auto-seed QPs if table is empty (first boot after fresh hayadb)
         await seedNSQFFromJSON();
-        await seedNsqfCurriculaIfEmpty();
-        await syncNsqfQpCounts();
+
     } catch (err) {
-        console.error('[Haya Portal DB] Initialization error:', err.message);
+        console.error('[Haya Portal DB] ❌ Initialization error:', err.message);
     }
 }
-
-async function syncNsqfQpCounts() {
-    try {
-        const qpList = ['AMH/Q0103', 'AAS/Q0103'];
-        for (const qp of qpList) {
-            const nosCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_nos WHERE qp_code = ?`).get(qp)).c;
-            const pcCount = (await db.prepare(`SELECT COUNT(*) as c FROM nsqf_pcs WHERE qp_code = ?`).get(qp)).c;
-
-            if (nosCount > 0 || pcCount > 0) {
-                await db.prepare(`
-                    UPDATE nsqf_qps 
-                    SET total_nos = ?, total_pcs = ?, pipeline_status = 'video_harvested'
-                    WHERE qp_code = ?
-                `).run(nosCount, pcCount, qp);
-
-                await db.prepare(`
-                    UPDATE nsqf_curricula 
-                    SET total_pcs = ?
-                    WHERE qp_code = ?
-                `).run(pcCount, qp);
-            }
-        }
-    } catch (e) {
-        console.warn('[Haya Portal DB] Sync counts warning:', e.message);
-    }
-}
-
-async function seedNsqfCurriculaIfEmpty() {
-    try {
-        const existingCount = await db.prepare(`SELECT COUNT(*) as c FROM nsqf_pcs`).get().c;
-        if (existingCount > 100) {
-            // Real PDF extraction data is already present; sync total_nos and total_pcs counts dynamically
-            await db.prepare(`
-                UPDATE nsqf_qps
-                SET total_nos = (SELECT COUNT(*) FROM nsqf_nos WHERE nsqf_nos.qp_code = nsqf_qps.qp_code),
-                    total_pcs = (SELECT COUNT(*) FROM nsqf_pcs WHERE nsqf_pcs.qp_code = nsqf_qps.qp_code)
-                WHERE qp_code IN (SELECT qp_code FROM nsqf_pcs);
-            `).run();
-            return;
-        }
-    } catch (e) {
-        console.warn('[Haya Portal DB] nsqf_curricula seed warning:', e.message);
-    }
-}
-
-
-
-
 
 async function seedNSQFFromJSON() {
     try {
-        const countRow = await db.prepare(`SELECT COUNT(*) as count FROM nsqf_qps`).get();
-        if (countRow && countRow.count === 0) {
-            const fs = require('fs');
+        const result = await pool.query('SELECT COUNT(*) AS count FROM nsqf_qps');
+        if (parseInt(result.rows[0].count) === 0) {
+            const fs   = require('fs');
             const seedPath = path.join(__dirname, 'nsqf_seed.json');
             if (fs.existsSync(seedPath)) {
                 console.log('[Haya Portal DB] Seeding 2,176 NCVET NSQF Job Roles from nsqf_seed.json...');
                 const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
                 for (const r of seedData) {
-                    await db.prepare(`
+                    await pool.query(`
                         INSERT INTO nsqf_qps (
                             s_no, sector, sub_sector, occupation, qp_name, qp_code, version,
                             awarding_body, last_reviewed_on, next_review_date, nsqc_approval_date,
@@ -559,21 +366,22 @@ async function seedNSQFFromJSON() {
                             technical_type, sector_type, nqr_code, qp_type, theory_duration,
                             practical_duration, ojt_mandatory_duration, ojt_recommended_duration,
                             total_qp_hours, min_education_exp, min_job_entry_age
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    `).run(
+                        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26)
+                        ON CONFLICT (qp_code) DO NOTHING
+                    `, [
                         r.s_no, r.sector, r.sub_sector, r.occupation, r.qp_name, r.qp_code, r.version,
                         r.awarding_body, r.last_reviewed_on, r.next_review_date, r.nsqc_approval_date,
                         r.nsqf_level, r.common_norms_category, r.economic_category, r.deactivation_date,
                         r.technical_type, r.sector_type, r.nqr_code, r.qp_type, r.theory_duration,
                         r.practical_duration, r.ojt_mandatory_duration, r.ojt_recommended_duration,
                         r.total_qp_hours, r.min_education_exp, r.min_job_entry_age
-                    );
+                    ]);
                 }
-                console.log(`[Haya Portal DB] Successfully seeded ${seedData.length} NSQF Job Roles.`);
+                console.log(`[Haya Portal DB] Seeded ${seedData.length} NSQF Job Roles.`);
             }
         }
     } catch (e) {
-        console.error('[Haya Portal DB] Error seeding NSQF DB:', e.message);
+        console.error('[Haya Portal DB] Seed error:', e.message);
     }
 }
 
