@@ -166,19 +166,60 @@ async function isVideoEmbeddable(videoId) {
     }
 }
 
-// ── 4. YouTube Video Search Engine with Multi-Factor Evaluation ──────────────
-async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = new Set()) {
-    const rawQuery = lang === 'hi'
-        ? (pcData.contextual_search_query_hi || `${pcData.qp_name} ${pcData.pc_intent_hi || pcData.pc_intent} हिंदी वीडियो`)
-        : (pcData.contextual_search_query || `${pcData.qp_name} ${pcData.pc_intent} practical tutorial`);
+// ── 3.8. Query Variation Generator for Autonomous Multi-Query Retry ──────────
+function generateQueryVariations(pcData, lang = 'eng') {
+    const cleanQp = String(pcData.qp_name || '').replace(/[\\"()\[\]]/g, '').trim();
+    const cleanIntent = String(pcData.pc_intent || '').replace(/[\\"()\[\]]/g, '').trim();
+    const cleanIntentHi = String(pcData.pc_intent_hi || cleanIntent).replace(/[\\"()\[\]]/g, '').trim();
+    const toolFirst = pcData.tool_keywords ? pcData.tool_keywords.split(',')[0].trim() : '';
 
-    const queryHash = hashQuery(rawQuery, lang);
+    const queries = [];
+
+    if (lang === 'hi') {
+        // Attempt 1: Primary Contextual Search Vector
+        if (pcData.contextual_search_query_hi) {
+            queries.push(pcData.contextual_search_query_hi);
+        }
+        // Attempt 2: Action & Pedagogical Vector
+        if (cleanIntentHi) {
+            let q2 = `${cleanIntentHi} प्रैक्टिकल सीखें वीडियो`.substring(0, 95).trim();
+            queries.push(q2);
+        }
+        // Attempt 3: Role + Intent Hindi Vector
+        let q3 = `${cleanQp.slice(0, 30)} ${cleanIntentHi} हिंदी वीडियो`.substring(0, 95).trim();
+        queries.push(q3);
+    } else {
+        // Attempt 1: Primary Contextual Search Vector
+        if (pcData.contextual_search_query) {
+            queries.push(pcData.contextual_search_query);
+        }
+        // Attempt 2: Tool-Centric Vector
+        if (toolFirst && cleanIntent) {
+            let q2 = `${toolFirst} ${cleanIntent} practical demonstration`.substring(0, 95).trim();
+            queries.push(q2);
+        }
+        // Attempt 3: Pure Action Intent + Step-by-Step Vector
+        let q3 = `${cleanIntent} step by step practical tutorial how to`.substring(0, 95).trim();
+        queries.push(q3);
+    }
+
+    // Deduplicate queries
+    return Array.from(new Set(queries.filter(q => q && q.length > 5)));
+}
+
+const QUALITY_TARGET = 65;
+
+// ── 4. YouTube Video Search Engine with Multi-Factor Evaluation & Multi-Query Retry ───
+async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = new Set()) {
+    const candidateQueries = generateQueryVariations(pcData, lang);
+    const primaryQuery = candidateQueries[0] || (lang === 'hi' ? `${pcData.qp_name} हिंदी वीडियो` : `${pcData.qp_name} practical tutorial`);
+    const primaryHash = hashQuery(primaryQuery, lang);
 
     // 1. Cache Check
     try {
         const cachedRes = await pool.query(
             `SELECT * FROM youtube_search_cache WHERE query_hash = $1`,
-            [queryHash]
+            [primaryHash]
         );
         if (cachedRes.rows.length > 0) {
             const row = cachedRes.rows[0];
@@ -201,43 +242,50 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
     let bestCandidate = null;
     let highestScore  = -1;
 
-    try {
-        // Query youtube-sr with safe search
-        const results = await ytsr.search(rawQuery, { limit: 6, safeSearch: true });
+    // 2. Autonomous Multi-Query Retry Loop (Iterates until candidate score >= QUALITY_TARGET)
+    for (const query of candidateQueries) {
+        try {
+            const results = await ytsr.search(query, { limit: 6, safeSearch: true });
 
-        for (const vid of results) {
-            if (!vid.id || vid.id.length !== 11) continue;
+            for (const vid of results) {
+                if (!vid.id || vid.id.length !== 11) continue;
 
-            let calculatedScore = scoreCandidateVideo(vid, pcData, lang);
+                let calculatedScore = scoreCandidateVideo(vid, pcData, lang);
 
-            // Diversity Guard: If video was already used in this QP, apply -25 penalty
-            if (usedInQp.has(vid.id)) {
-                calculatedScore = Math.max(20, calculatedScore - 25);
-            }
-
-            if (calculatedScore > highestScore) {
-                // 🔒 Live oEmbed Verification: Check that video is 100% public & embeddable
-                const embeddable = await isVideoEmbeddable(vid.id);
-                if (!embeddable) {
-                    continue; // Skip video with disabled embedding (Error 101/150)
+                // Diversity Guard: If video was already used in this QP, apply -25 penalty
+                if (usedInQp.has(vid.id)) {
+                    calculatedScore = Math.max(20, calculatedScore - 25);
                 }
 
-                highestScore = calculatedScore;
-                const durSec = vid.duration ? Math.round(vid.duration / 1000) : 300;
-                bestCandidate = {
-                    videoId:         vid.id,
-                    videoTitle:      vid.title || 'NSQF Practical Demonstration',
-                    videoUrl:        `https://www.youtube.com/watch?v=${vid.id}`,
-                    channelTitle:    vid.channel?.name || 'Vocational Skill Studio',
-                    durationSeconds: durSec,
-                    thumbnailUrl:    vid.thumbnail?.url || `https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg`,
-                    auditScore:      calculatedScore,
-                    isCached:        false
-                };
+                if (calculatedScore > highestScore) {
+                    // 🔒 Live oEmbed Verification: Check that video is 100% public & embeddable
+                    const embeddable = await isVideoEmbeddable(vid.id);
+                    if (!embeddable) {
+                        continue; // Skip video with disabled embedding (Error 101/150)
+                    }
+
+                    highestScore = calculatedScore;
+                    const durSec = vid.duration ? Math.round(vid.duration / 1000) : 300;
+                    bestCandidate = {
+                        videoId:         vid.id,
+                        videoTitle:      vid.title || 'NSQF Practical Demonstration',
+                        videoUrl:        `https://www.youtube.com/watch?v=${vid.id}`,
+                        channelTitle:    vid.channel?.name || 'Vocational Skill Studio',
+                        durationSeconds: durSec,
+                        thumbnailUrl:    vid.thumbnail?.url || `https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg`,
+                        auditScore:      calculatedScore,
+                        isCached:        false
+                    };
+                }
             }
+        } catch (_) {
+            // Network or rate-limit exception
         }
-    } catch (_) {
-        // Network or rate-limit exception
+
+        // If candidate exceeds our target quality threshold, break early!
+        if (highestScore >= QUALITY_TARGET) {
+            break;
+        }
     }
 
     // 2. Curated Sector Fallback if search yielded no valid candidate
