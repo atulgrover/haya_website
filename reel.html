@@ -163,18 +163,38 @@
       display: flex; align-items: center; justify-content: center;
     }
 
-    /* ===== YOUTUBE PLAYER ===== */
+    /* ===== YOUTUBE PLAYER WITH ZERO-FLICKER TRANSITIONS ===== */
     .yt-player-wrap {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
       background: #000;
+      overflow: hidden;
+    }
+    .yt-player-mount {
+      width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .yt-player-mount.ready {
+      opacity: 1;
+    }
+    .yt-player-mount.transitioning {
+      opacity: 0.15;
     }
     .yt-player-wrap iframe { width: 100%; height: 100%; border: none; }
 
     .slide-loading {
+      position: absolute;
       display: flex; flex-direction: column;
       align-items: center; gap: 12px;
-      color: rgba(255,255,255,0.5); font-size: 13px;
+      color: rgba(255,255,255,0.4); font-size: 13px;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.25s ease;
+    }
+    .yt-player-wrap.has-player .slide-loading {
+      opacity: 0;
+      pointer-events: none;
     }
     .slide-spinner {
       width: 36px; height: 36px;
@@ -578,8 +598,9 @@
           : `${window.location.origin}/reel.html?skill=${encodeURIComponent(skillId || '')}#reel-${idx + 1}`;
 
         slide.innerHTML = `
-          <!-- YouTube player mount -->
+          <!-- YouTube player mount with zero-flicker structure -->
           <div class="yt-player-wrap" id="yt-wrap-${idx}">
+            <div class="yt-player-mount" id="yt-mount-${idx}"></div>
             <div class="slide-loading">
               <div class="slide-spinner"></div>
               <span>Reel ${idx + 1}</span>
@@ -643,10 +664,6 @@
             ${pcs.map((pcItem, pIdx) => {
               const pcCodeMatch = String(pcItem).match(/^(PC[\d\.]+)/i);
               const pcCodeStr = pcCodeMatch ? pcCodeMatch[1] : `PC ${pIdx + 1}`;
-              const pcObj = lesson.pcs_obj && lesson.pcs_obj[pIdx];
-              const vId = (currentLang === 'hi' && pcObj && pcObj.video_id_hi)
-                ? pcObj.video_id_hi 
-                : ((pcObj && pcObj.video_id) || lesson.video_id);
               return `
                 <button class="pc-jump-pill ${pIdx === 0 ? 'active' : ''}" 
                   id="pc-pill-${idx}-${pIdx}"
@@ -699,19 +716,24 @@
     }
 
     /* =========================================================
-       INTERSECTION OBSERVER
+       INTERSECTION OBSERVER (DEBOUNCED SMOOTH TRANSITIONS)
        ========================================================= */
+    let scrollDebounceTimer = null;
+
     function setupScrollObserver(curr) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const idx = parseInt(entry.target.dataset.index);
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.65) {
-            activateReel(idx);
-          } else {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+            clearTimeout(scrollDebounceTimer);
+            scrollDebounceTimer = setTimeout(() => {
+              activateReel(idx);
+            }, 100);
+          } else if (!entry.isIntersecting || entry.intersectionRatio < 0.25) {
             pauseReel(idx);
           }
         });
-      }, { threshold: [0.65], root: document.getElementById('reelsContainer') });
+      }, { threshold: [0.25, 0.6], root: document.getElementById('reelsContainer') });
 
       slides.forEach(slide => observer.observe(slide));
     }
@@ -728,7 +750,10 @@
 
       if (ytReady) {
         createPlayerForIndex(idx);
-        if (idx + 1 < slides.length) createPlayerForIndex(idx + 1);
+        // Preload next adjacent slide to eliminate snap delay
+        if (idx + 1 < slides.length) {
+          setTimeout(() => createPlayerForIndex(idx + 1), 250);
+        }
       }
     }
 
@@ -739,7 +764,7 @@
     }
 
     /* =========================================================
-       YOUTUBE PLAYER CREATION & ID SANITIZATION
+       YOUTUBE PLAYER CREATION & RECYCLING (ZERO-FLICKER)
        ========================================================= */
     const mountedPlayers = {};
 
@@ -751,7 +776,13 @@
     }
 
     function createPlayerForIndex(idx) {
-      if (!curriculum || mountedPlayers[idx]) {
+      if (!curriculum) return;
+
+      const wrap = document.getElementById(`yt-wrap-${idx}`);
+      const mount = document.getElementById(`yt-mount-${idx}`);
+      if (!wrap || !mount) return;
+
+      if (mountedPlayers[idx]) {
         if (idx === activeIndex && players[idx]) {
           try {
             if (isMuted) players[idx].mute(); else players[idx].unMute();
@@ -761,24 +792,15 @@
         return;
       }
 
-      const lesson  = curriculum.lessons[idx];
+      const lesson = curriculum.lessons[idx];
       const targetVid = (currentLang === 'hi' && lesson.video_id_hi) ? lesson.video_id_hi : lesson.video_id;
       const videoId = extractCleanYouTubeId(targetVid);
       if (!videoId) return;
 
-      const wrap = document.getElementById(`yt-wrap-${idx}`);
-      if (!wrap) return;
-
       mountedPlayers[idx] = true;
 
-      const mountDiv = document.createElement('div');
-      mountDiv.id = `yt-player-${idx}`;
-      mountDiv.style.cssText = 'width:100%;height:100%;';
-      wrap.innerHTML = '';
-      wrap.appendChild(mountDiv);
-
       try {
-        players[idx] = new YT.Player(`yt-player-${idx}`, {
+        players[idx] = new YT.Player(`yt-mount-${idx}`, {
           host:     'https://www.youtube.com',
           videoId:  videoId,
           width:    '100%',
@@ -790,10 +812,21 @@
           },
           events: {
             onReady(e) {
+              wrap.classList.add('has-player');
+              const m = document.getElementById(`yt-mount-${idx}`);
+              if (m) m.classList.add('ready');
               if (isMuted) e.target.mute(); else e.target.unMute();
               if (idx === activeIndex) e.target.playVideo();
             },
             onStateChange(e) {
+              const m = document.getElementById(`yt-mount-${idx}`);
+              if (e.data === YT.PlayerState.PLAYING || e.data === YT.PlayerState.BUFFERING) {
+                wrap.classList.add('has-player');
+                if (m) {
+                  m.classList.remove('transitioning');
+                  m.classList.add('ready');
+                }
+              }
               if (e.data === YT.PlayerState.ENDED && idx === activeIndex) {
                 showNextCta(idx);
                 setTimeout(() => scrollToReel(idx + 1), 1500);
@@ -801,7 +834,6 @@
             },
             onError(e) {
               console.warn(`YT error reel ${idx} (code ${e.data}):`, e.data);
-              // Prevent recursive error loop: only attempt fallback if not already on fallback video
               if (videoId !== '3vK7G62p0M8') {
                 try {
                   e.target.loadVideoById('3vK7G62p0M8');
@@ -877,17 +909,17 @@
     }
 
     /* =========================================================
-       DIRECT PC VIDEO JUMP & LANGUAGE CONTROLS
+       DIRECT PC VIDEO JUMP & LANGUAGE CONTROLS (SMOOTH CROSSFADE)
        ========================================================= */
     function getActiveVideoIdForPc(slideIdx, pcIdx, lang = currentLang) {
-      if (!curriculum || !curriculum.lessons || !curriculum.lessons[slideIdx]) return 'x9PQgbB4y6M';
+      if (!curriculum || !curriculum.lessons || !curriculum.lessons[slideIdx]) return '8EYMWz7lmvs';
       const lesson = curriculum.lessons[slideIdx];
       const pcObj = lesson.pcs_obj && lesson.pcs_obj[pcIdx];
       if (lang === 'hi') {
         if (pcObj && pcObj.video_id_hi) return pcObj.video_id_hi;
         if (lesson.video_id_hi) return lesson.video_id_hi;
       }
-      return (pcObj && pcObj.video_id) || lesson.video_id || 'x9PQgbB4y6M';
+      return (pcObj && pcObj.video_id) || lesson.video_id || '8EYMWz7lmvs';
     }
 
     function handlePillClick(slideIdx, pcIdx, pcCode) {
@@ -904,6 +936,12 @@
       });
 
       const cleanId = extractCleanYouTubeId(videoId);
+      const mount = document.getElementById(`yt-mount-${slideIdx}`);
+
+      // Apply subtle opacity transition to mask YouTube manifest swap
+      if (mount) {
+        mount.classList.add('transitioning');
+      }
 
       // Swap YouTube video via API
       if (players[slideIdx] && typeof players[slideIdx].loadVideoById === 'function') {
@@ -937,7 +975,9 @@
         }
       }
 
-      // Refresh currently active video player on current slide
+      showLanguageToast(lang === 'hi' ? '🇮🇳 Switched to Hindi (हिन्दी) demonstrations' : '🇬🇧 Switched to English demonstrations');
+
+      // Refresh currently active video player on current slide with smooth crossfade
       if (curriculum && Array.isArray(curriculum.lessons) && players[activeIndex]) {
         const activePill = document.querySelector(`#pc-jump-bar-${activeIndex} .pc-jump-pill.active`);
         let activePcIdx = 0;
@@ -947,14 +987,15 @@
         }
 
         const targetVid = getActiveVideoIdForPc(activeIndex, activePcIdx, lang);
+        const mount = document.getElementById(`yt-mount-${activeIndex}`);
+        if (mount) mount.classList.add('transitioning');
+
         if (targetVid && typeof players[activeIndex].loadVideoById === 'function') {
           try {
             players[activeIndex].loadVideoById(extractCleanYouTubeId(targetVid));
           } catch (_) {}
         }
       }
-
-      showLanguageToast(lang === 'hi' ? '🇮🇳 Switched to Hindi (हिन्दी) demonstrations' : '🇬🇧 Switched to English demonstrations');
     }
 
     let toastTimer = null;
