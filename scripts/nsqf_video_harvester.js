@@ -165,12 +165,14 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
             // If cached video was not already used in this QP, reuse it
             if (!usedInQp.has(row.video_id)) {
                 return {
-                    videoId:      row.video_id,
-                    videoTitle:   row.video_title,
-                    videoUrl:     row.video_url,
-                    thumbnailUrl: row.thumbnail_url,
-                    auditScore:   row.audit_score,
-                    isCached:     true
+                    videoId:         row.video_id,
+                    videoTitle:      row.video_title,
+                    videoUrl:        row.video_url,
+                    channelTitle:    row.channel_title || 'Vocational Skill Studio',
+                    durationSeconds: Number(row.duration_seconds) || 300,
+                    thumbnailUrl:    row.thumbnail_url,
+                    auditScore:      row.audit_score,
+                    isCached:        true
                 };
             }
         }
@@ -195,13 +197,16 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
 
             if (calculatedScore > highestScore) {
                 highestScore = calculatedScore;
+                const durSec = vid.duration ? Math.round(vid.duration / 1000) : 300;
                 bestCandidate = {
-                    videoId:      vid.id,
-                    videoTitle:   vid.title || 'NSQF Practical Demonstration',
-                    videoUrl:     `https://www.youtube.com/watch?v=${vid.id}`,
-                    thumbnailUrl: vid.thumbnail?.url || `https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg`,
-                    auditScore:   calculatedScore,
-                    isCached:     false
+                    videoId:         vid.id,
+                    videoTitle:      vid.title || 'NSQF Practical Demonstration',
+                    videoUrl:        `https://www.youtube.com/watch?v=${vid.id}`,
+                    channelTitle:    vid.channel?.name || 'Vocational Skill Studio',
+                    durationSeconds: durSec,
+                    thumbnailUrl:    vid.thumbnail?.url || `https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg`,
+                    auditScore:      calculatedScore,
+                    isCached:        false
                 };
             }
         }
@@ -221,12 +226,14 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
         const fb = fbDict[lang] || fbDict['eng'];
 
         bestCandidate = {
-            videoId:      fb.id,
-            videoTitle:   fb.title,
-            videoUrl:     `https://www.youtube.com/watch?v=${fb.id}`,
-            thumbnailUrl: `https://i.ytimg.com/vi/${fb.id}/hqdefault.jpg`,
-            auditScore:   75,
-            isCached:     false
+            videoId:         fb.id,
+            videoTitle:      fb.title,
+            videoUrl:        `https://www.youtube.com/watch?v=${fb.id}`,
+            channelTitle:    'NSQF Vocational Skill Studio',
+            durationSeconds: 360,
+            thumbnailUrl:    `https://i.ytimg.com/vi/${fb.id}/hqdefault.jpg`,
+            auditScore:      75,
+            isCached:        false
         };
     }
 
@@ -234,19 +241,22 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
     try {
         await pool.query(`
             INSERT INTO youtube_search_cache
-                (query_hash, search_query, lang, video_id, video_title, video_url, thumbnail_url, audit_score)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                (query_hash, search_query, lang, video_id, video_title, video_url, channel_title, duration_seconds, thumbnail_url, audit_score)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
             ON CONFLICT (query_hash) DO UPDATE SET
-                video_id      = EXCLUDED.video_id,
-                video_title   = EXCLUDED.video_title,
-                video_url     = EXCLUDED.video_url,
-                thumbnail_url = EXCLUDED.thumbnail_url,
-                audit_score   = EXCLUDED.audit_score,
-                cached_at     = CURRENT_TIMESTAMP
+                video_id         = EXCLUDED.video_id,
+                video_title      = EXCLUDED.video_title,
+                video_url        = EXCLUDED.video_url,
+                channel_title    = EXCLUDED.channel_title,
+                duration_seconds = EXCLUDED.duration_seconds,
+                thumbnail_url    = EXCLUDED.thumbnail_url,
+                audit_score      = EXCLUDED.audit_score,
+                cached_at        = CURRENT_TIMESTAMP
         `, [
             queryHash, rawQuery, lang,
             bestCandidate.videoId, bestCandidate.videoTitle,
-            bestCandidate.videoUrl, bestCandidate.thumbnailUrl,
+            bestCandidate.videoUrl, bestCandidate.channelTitle,
+            bestCandidate.durationSeconds, bestCandidate.thumbnailUrl,
             bestCandidate.auditScore
         ]);
     } catch (_) {}
@@ -402,18 +412,24 @@ async function runVideoHarvester() {
             if (!isDryRun) {
                 await pool.query(`
                     UPDATE nsqf_pcs
-                    SET video_id       = $1,
-                        video_title    = $2,
-                        video_url      = $3,
-                        thumbnail_url  = $4,
-                        video_id_hi    = $5,
-                        video_title_hi = $6,
-                        video_url_hi   = $7,
-                        audit_score    = $8
-                    WHERE id = $9
+                    SET video_id            = $1,
+                        video_title         = $2,
+                        video_url           = $3,
+                        channel_title       = $4,
+                        duration_seconds    = $5,
+                        thumbnail_url       = $6,
+                        video_id_hi         = $7,
+                        video_title_hi      = $8,
+                        video_url_hi        = $9,
+                        channel_title_hi    = $10,
+                        duration_seconds_hi = $11,
+                        audit_score         = $12
+                    WHERE id = $13
                 `, [
-                    engVid.videoId, engVid.videoTitle, engVid.videoUrl, engVid.thumbnailUrl,
+                    engVid.videoId, engVid.videoTitle, engVid.videoUrl,
+                    engVid.channelTitle, engVid.durationSeconds, engVid.thumbnailUrl,
                     hiVid.videoId, hiVid.videoTitle, hiVid.videoUrl,
+                    hiVid.channelTitle, hiVid.durationSeconds,
                     compositeScore,
                     item.id
                 ]);

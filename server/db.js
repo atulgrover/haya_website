@@ -261,9 +261,13 @@ async function initSchema() {
                 video_id TEXT,
                 video_title TEXT,
                 video_url TEXT,
+                channel_title TEXT,
+                duration_seconds INT,
                 video_id_hi TEXT,
                 video_title_hi TEXT,
                 video_url_hi TEXT,
+                channel_title_hi TEXT,
+                duration_seconds_hi INT,
                 thumbnail_url TEXT,
                 audit_score INT DEFAULT 90,
                 sequence_order INT DEFAULT 1,
@@ -336,7 +340,7 @@ async function initSchema() {
 
             CREATE TABLE IF NOT EXISTS user_pc_progress (
                 id SERIAL PRIMARY KEY,
-                user_id INT DEFAULT 0,
+                user_id INT NOT NULL,
                 qp_code TEXT NOT NULL,
                 pc_code TEXT NOT NULL,
                 completed INT DEFAULT 1,
@@ -348,13 +352,15 @@ async function initSchema() {
                 id SERIAL PRIMARY KEY,
                 query_hash TEXT UNIQUE NOT NULL,
                 search_query TEXT NOT NULL,
+                lang VARCHAR(10) DEFAULT 'eng',
                 video_id TEXT NOT NULL,
                 video_title TEXT,
                 video_url TEXT,
+                channel_title TEXT,
+                duration_seconds INT,
                 thumbnail_url TEXT,
-                duration_sec INT DEFAULT 300,
                 audit_score INT DEFAULT 90,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                cached_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
 
