@@ -2,19 +2,20 @@
 
 /**
  * ╔══════════════════════════════════════════════════════════════════════════╗
- * ║  PASS 2: Unified Intent & Bilingual Search Vector Generator (v2)        ║
+ * ║  PASS 2: Unified Intent, Category & Harvester Guidance Engine (v3)       ║
  * ╠══════════════════════════════════════════════════════════════════════════╣
- * ║  High-Speed, 0-Cost Local NLP Action-Verb & Bilingual Vector Generator   ║
- * ║  for NSQF Performance Criteria (nsqf_pcs).                              ║
+ * ║  Generates the complete 7-parameter harvesting & learning payload        ║
+ * ║  for NSQF Performance Criteria (nsqf_pcs) in local hayadb:               ║
  * ║                                                                          ║
- * ║  Features:                                                               ║
- * ║  1. Accurate Action Verb Normalization (Maintain, Inspect, Solder, etc.) ║
- * ║  2. Concise 3-6 word Practical Intent (pc_intent)                       ║
- * ║  3. Deduplicated English Search Vector (contextual_search_query)         ║
- * ║  4. Devanagari Hindi Search Vector (contextual_search_query_hi)          ║
- * ║  5. 4-Factor Mathematical Intent & Query Confidence Scoring             ║
- * ║  6. Fast PostgreSQL Batch Updates into local hayadb                     ║
- * ║  7. Supports --qp=, --limit=, --all, --resume, --force, --audit         ║
+ * ║  1. pc_intent                 (5-8 word English practical action)       ║
+ * ║  2. pc_intent_hi              (5-8 word Devanagari Hindi action headline)║
+ * ║  3. contextual_search_query   (Deduplicated English YouTube vector)     ║
+ * ║  4. contextual_search_query_hi(Devanagari Hindi YouTube search vector)  ║
+ * ║  5. youtube_category_id/name  (28 Science, 27 Education, 2 Autos, etc.) ║
+ * ║  6. tool_keywords             (Physical tools, testers, and components) ║
+ * ║  7. negative_keywords         (Exclusions: -unboxing -review -prank)    ║
+ * ║  8. positive_signals          (Hands-on markers: step by step, demo)    ║
+ * ║  9. min/max duration bounds   (180s - 900s / 3-15 min window)           ║
  * ╚══════════════════════════════════════════════════════════════════════════╝
  *
  * Usage:
@@ -175,6 +176,7 @@ const VOCATIONAL_HINDI_DICT = {
     'seed': 'बीज',
     'fertilizer': 'खाद',
     'pesticide': 'कीटनाशक',
+    'fungicide': 'फफूंदनाशी',
     'nutrient': 'पोषक तत्व',
     'soil': 'मिट्टी',
     'weed': 'खरपतवार',
@@ -209,7 +211,90 @@ const VOCATIONAL_HINDI_DICT = {
     'robotics': 'रोबोटिक्स',
 };
 
-// ── 4. Core Intent Synthesizer (NLP) ──────────────────────────────────────────
+// ── 4. Sector to YouTube Category ID Mapping ────────────────────────────────
+const SECTOR_YOUTUBE_CATEGORY = {
+    'electronics':     { id: 28, name: 'Science & Technology' },
+    'telecom':         { id: 28, name: 'Science & Technology' },
+    'it-ites':         { id: 28, name: 'Science & Technology' },
+    'it':              { id: 28, name: 'Science & Technology' },
+    'media':           { id: 28, name: 'Science & Technology' },
+    'automotive':      { id: 2,  name: 'Autos & Vehicles' },
+    'aerospace':       { id: 2,  name: 'Autos & Vehicles' },
+    'textile':         { id: 26, name: 'Howto & Style' },
+    'apparel':         { id: 26, name: 'Howto & Style' },
+    'beauty':          { id: 26, name: 'Howto & Style' },
+    'food':            { id: 26, name: 'Howto & Style' },
+    'handicrafts':     { id: 26, name: 'Howto & Style' },
+    'agriculture':     { id: 15, name: 'Pets & Animals' },
+    'healthcare':      { id: 27, name: 'Education' },
+    'construction':    { id: 27, name: 'Education' },
+    'power':           { id: 27, name: 'Education' },
+    'iron and steel':  { id: 27, name: 'Education' },
+    'capital goods':   { id: 27, name: 'Education' },
+    'plumbing':        { id: 27, name: 'Education' },
+    'green jobs':      { id: 27, name: 'Education' },
+};
+
+function mapSectorToCategory(sector) {
+    const s = String(sector || '').toLowerCase();
+    for (const [k, v] of Object.entries(SECTOR_YOUTUBE_CATEGORY)) {
+        if (s.includes(k)) return v;
+    }
+    return { id: 27, name: 'Education' };
+}
+
+// ── 5. Domain Physical Tool Recognition ──────────────────────────────────────
+const KNOWN_TOOLS = [
+    // Electronics
+    'multimeter', 'digital multimeter', 'oscilloscope', 'dc power supply', 'smd rework station',
+    'hot air gun', 'soldering iron', 'solder wire', 'desoldering pump', 'flux', 'esd mat',
+    'anti-static wrist strap', 'tweezers', 'opening pick', 'suction cup', 'b-7000 glue',
+    'screw driver', 'magnifier lamp', 'pcb cleaner', 'microscope',
+    // Agriculture
+    'knapsack sprayer', 'seed drill', 'rotavator', 'soil testing kit', 'ph meter',
+    'fungicide', 'pesticide', 'seed tray', 'tillage plow', 'drip irrigation line',
+    // Textile
+    'ring frame', 'roving bobbin', 'traveller', 'spindle', 'splicer', 'yarn tension meter',
+    // Automotive & Mech
+    'torque wrench', 'diagnostic scanner', 'feeler gauge', 'hydraulic lift', 'spark plug gap tool',
+    'dial indicator', 'vernier caliper', 'micrometer', 'bearing puller', 'welding torch',
+    // Healthcare
+    'sphygmomanometer', 'stethoscope', 'pulse oximeter', 'thermometer', 'glucometer',
+    'ppe kit', 'autoclave', 'disinfectant'
+];
+
+function extractToolKeywords(text, sector) {
+    const lower = text.toLowerCase();
+    const found = KNOWN_TOOLS.filter(tool => lower.includes(tool));
+    if (found.length > 0) return found.slice(0, 5).join(', ');
+
+    // Fallback sector default instruments
+    const s = String(sector || '').toLowerCase();
+    if (s.includes('electronic') || s.includes('telecom')) return 'digital multimeter, soldering iron, smd rework';
+    if (s.includes('agri')) return 'sprayer, soil testing kit, seed equipment';
+    if (s.includes('auto')) return 'torque wrench, diagnostic scanner, multimeter';
+    if (s.includes('textile')) return 'ring frame, roving bobbin, spindle';
+    if (s.includes('health')) return 'stethoscope, thermometer, ppe kit';
+    return 'measuring instruments, standard tools, safety gear';
+}
+
+// ── 6. Negative Keywords & Positive Signals Assembly ─────────────────────────
+function getNegativeKeywords(sector) {
+    const s = String(sector || '').toLowerCase();
+    let specific = '';
+    if (s.includes('agri')) specific = ' -protest -politics -msp -news';
+    else if (s.includes('auto')) specific = ' -race -crash -stunt -review';
+    else if (s.includes('health')) specific = ' -movie -scene -comedy -fake';
+    else if (s.includes('electronic')) specific = ' -unboxing -leak -rumor -drop_test';
+
+    return `-unboxing -review -prank -reaction -gameplay -shorts -teaser${specific}`;
+}
+
+function getPositiveSignals() {
+    return 'step by step, how to, practical demonstration, live repair, proper method, hands on tutorial, स्टेप बाय स्टेप, प्रैक्टिकल डेमो, सही तरीका';
+}
+
+// ── 7. Core Intent Synthesizer (NLP) ──────────────────────────────────────────
 function synthesizeLocalIntent(pcDesc) {
     let text = String(pcDesc || '')
         .replace(/^####\s*|^[-*]?\s*PC\d+[\.:-]?\s*/i, '')
@@ -251,30 +336,40 @@ function synthesizeLocalIntent(pcDesc) {
             continue;
         }
         importantWords.push(w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-        if (importantWords.length >= 8) break; // Expanded to 5-8 salient words
+        if (importantWords.length >= 8) break; // 5-8 salient words target
     }
 
     const intent = importantWords.join(' ');
     return intent || text.substring(0, 55);
 }
 
-// ── 5. Deduplicated Contextual English Search Vector ─────────────────────────
+// ── 8. Devanagari Hindi Intent Headline (For Student UI) ─────────────────────
+function synthesizeHindiIntent(pcIntent) {
+    const tokens = pcIntent.split(/\s+/);
+    const translated = tokens.map(t => {
+        const lower = t.toLowerCase().replace(/[^a-z]/g, '');
+        return VOCATIONAL_HINDI_DICT[lower] || t;
+    });
+
+    return translated.join(' ').trim();
+}
+
+// ── 9. Deduplicated Contextual English Search Vector ─────────────────────────
 function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent) {
     const cleanSector = String(sector || '')
         .replace(/sector|council|skill|india/gi, '')
         .trim();
 
     const cleanQp = String(qpName || '')
-        .replace(/assistant|technician|operator/gi, (m) => m) // keep key role nouns
+        .replace(/assistant|technician|operator/gi, (m) => m)
         .trim();
 
     const cleanNos = String(nosTitle || '')
-        .replace(/^[A-Z0-9_\/]+:\s*/i, '') // strip NOS code prefix
-        .replace(/\s+\d{1,3}$/, '')        // strip page numbers
+        .replace(/^[A-Z0-9_\/]+:\s*/i, '')
+        .replace(/\s+\d{1,3}$/, '')
         .replace(/\.\.\.*/g, '')
         .trim();
 
-    // Deduplicate words across Sector, QP, NOS, and Intent
     const seenWords = new Set();
     const queryParts = [];
 
@@ -294,12 +389,11 @@ function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent
     addTokens(cleanNos);
     addTokens(pcIntent);
 
-    // Limit to top 12 unique salient words + tutorial suffix
     const finalTokens = queryParts.slice(0, 12);
     return `${finalTokens.join(' ')} practical tutorial demonstration`.trim();
 }
 
-// ── 6. Devanagari Hindi Search Vector ─────────────────────────────────────────
+// ── 10. Devanagari Hindi Search Vector (For YouTube Harvester) ───────────────
 function synthesizeHindiSearchVector(englishQuery, pcIntent) {
     const textToTranslate = `${pcIntent} ${englishQuery}`.toLowerCase();
     const words = textToTranslate.split(/[\s,.:()/-]+/).filter(w => w.length > 2);
@@ -318,12 +412,11 @@ function synthesizeHindiSearchVector(englishQuery, pcIntent) {
         return `${translatedParts.slice(0, 10).join(' ')} प्रैक्टिकल वीडियो कैसे करें`.trim();
     }
 
-    // Fallback: Use core intent words + common Hindi vocational suffix
     const intentTokens = pcIntent.split(' ').map(w => VOCATIONAL_HINDI_DICT[w.toLowerCase()] || w);
     return `${intentTokens.join(' ')} प्रैक्टिकल सीखें हिंदी वीडियो`.trim();
 }
 
-// ── 7. Mathematical Confidence Scoring ────────────────────────────────────────
+// ── 11. Confidence Scoring ───────────────────────────────────────────────────
 function computeIntentConfidence(rawDesc, intent) {
     if (!intent || intent === 'Practical Execution') return 40;
 
@@ -389,7 +482,7 @@ function computeHindiConfidence(queryHi) {
     return Math.min(100, score);
 }
 
-// ── 8. Checkpoint Helpers ─────────────────────────────────────────────────────
+// ── 12. Checkpoint Helpers ───────────────────────────────────────────────────
 function loadCheckpoint() {
     try {
         if (fs.existsSync(CHECKPOINT_PATH)) {
@@ -411,8 +504,8 @@ function clearCheckpoint() {
     try { fs.unlinkSync(CHECKPOINT_PATH); } catch {}
 }
 
-// ── 9. Main Batch Execution ───────────────────────────────────────────────────
-async function runLocalIntentExtractor() {
+// ── 13. Main Batch Execution ─────────────────────────────────────────────────
+async function runPass2GuidanceEngine() {
     const args      = process.argv.slice(2);
     const isAudit   = args.includes('--audit');
     const doAll     = args.includes('--all');
@@ -424,15 +517,14 @@ async function runLocalIntentExtractor() {
     const targetQp  = qpFlag ? qpFlag.split('=')[1].trim() : null;
 
     console.log('================================================================================');
-    console.log('⚡ [PASS 2] UNIFIED INTENT & BILINGUAL SEARCH VECTOR GENERATOR (v2)');
-    console.log('   (Local Deterministic NLP • Dual EN/HI Vectors • Local PostgreSQL: hayadb)');
+    console.log('⚡ [PASS 2] UNIFIED INTENT, CATEGORY & HARVESTER GUIDANCE ENGINE (v3)');
+    console.log('   (Dual EN/HI Intent • Dual Search Vectors • YouTube Category & Tool Signals)');
     console.log('================================================================================\n');
 
-    // ── Fetch Target PCs ──────────────────────────────────────────────────────
     let pcsToProcess = [];
     const pool = { query: db.query.bind(db) };
 
-    const intentFilter = doForce ? '' : 'AND (p.pc_intent IS NULL OR p.contextual_search_query_hi IS NULL)';
+    const intentFilter = doForce ? '' : 'AND (p.pc_intent IS NULL OR p.pc_intent_hi IS NULL OR p.negative_keywords IS NULL)';
 
     if (targetQp) {
         const clean = targetQp.replace(/\//g, '_');
@@ -491,11 +583,10 @@ async function runLocalIntentExtractor() {
     }
 
     if (pcsToProcess.length === 0) {
-        console.log('✅  All criteria already have intents & bilingual search vectors! (Use --force to recompute)');
+        console.log('✅  All criteria already have full intents, categories & harvester guidance! (Use --force to recompute)');
         process.exit(0);
     }
 
-    // Resume logic
     let startIdx = 0;
     if (doResume && !targetQp && !isAudit) {
         const cp = loadCheckpoint();
@@ -518,29 +609,47 @@ async function runLocalIntentExtractor() {
     let medConfCount = 0;
     let lowConfCount = 0;
 
-    // ── Batch Process in Chunks of 100 for high performance ───────────────────
     const BATCH_SIZE = 100;
     for (let i = 0; i < items.length; i += BATCH_SIZE) {
         const chunk = items.slice(i, i + BATCH_SIZE);
 
         for (const item of chunk) {
-            const intent     = synthesizeLocalIntent(item.pc_description);
-            const intentConf = computeIntentConfidence(item.pc_description, intent);
-            const queryEn    = buildContextualSearchQuery(item.sector, item.qp_name, item.nos_title, item.module_title, intent);
-            const queryConf  = computeQueryConfidence(queryEn);
-            const queryHi    = synthesizeHindiSearchVector(queryEn, intent);
-            const queryHiConf= computeHindiConfidence(queryHi);
+            const intent        = synthesizeLocalIntent(item.pc_description);
+            const intentHi      = synthesizeHindiIntent(intent);
+            const intentConf    = computeIntentConfidence(item.pc_description, intent);
+            const queryEn       = buildContextualSearchQuery(item.sector, item.qp_name, item.nos_title, item.module_title, intent);
+            const queryConf     = computeQueryConfidence(queryEn);
+            const queryHi       = synthesizeHindiSearchVector(queryEn, intent);
+            const queryHiConf   = computeHindiConfidence(queryHi);
+            const cat           = mapSectorToCategory(item.sector);
+            const toolKeywords  = extractToolKeywords(item.pc_description, item.sector);
+            const negKeywords   = getNegativeKeywords(item.sector);
+            const posSignals    = getPositiveSignals();
 
             await pool.query(`
                 UPDATE nsqf_pcs
                 SET pc_intent                  = $1,
-                    intent_confidence          = $2,
-                    contextual_search_query    = $3,
-                    query_confidence           = $4,
-                    contextual_search_query_hi = $5,
-                    query_confidence_hi        = $6
-                WHERE id = $7
-            `, [intent, intentConf, queryEn, queryConf, queryHi, queryHiConf, item.id]);
+                    pc_intent_hi               = $2,
+                    intent_confidence          = $3,
+                    contextual_search_query    = $4,
+                    query_confidence           = $5,
+                    contextual_search_query_hi = $6,
+                    query_confidence_hi        = $7,
+                    youtube_category_id        = $8,
+                    youtube_category_name      = $9,
+                    tool_keywords              = $10,
+                    negative_keywords          = $11,
+                    positive_signals           = $12,
+                    min_duration_seconds       = 180,
+                    max_duration_seconds       = 900
+                WHERE id = $13
+            `, [
+                intent, intentHi, intentConf,
+                queryEn, queryConf, queryHi, queryHiConf,
+                cat.id, cat.name,
+                toolKeywords, negKeywords, posSignals,
+                item.id
+            ]);
 
             updatedCount++;
             totalConfidence += intentConf;
@@ -549,11 +658,14 @@ async function runLocalIntentExtractor() {
             else if (intentConf >= 70) medConfCount++;
             else lowConfCount++;
 
-            if (isAudit && (updatedCount <= 8 || updatedCount % 30 === 0)) {
-                console.log(`[${updatedCount}/${items.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_description.substring(0, 60)}..."`);
-                console.log(`        💡 Intent:     "${intent}" (Confidence: ${intentConf}%)`);
-                console.log(`        🔍 EN Vector:  "${queryEn}"`);
-                console.log(`        🇮🇳 HI Vector:  "${queryHi}"`);
+            if (isAudit && (updatedCount <= 6 || updatedCount % 40 === 0)) {
+                console.log(`[${updatedCount}/${items.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_description.substring(0, 55)}..."`);
+                console.log(`        💡 Intent (EN): "${intent}" (${intentConf}%)`);
+                console.log(`        🇮🇳 Intent (HI): "${intentHi}"`);
+                console.log(`        🏷️ Category:    ${cat.id} (${cat.name})`);
+                console.log(`        🔧 Tools:       "${toolKeywords}"`);
+                console.log(`        🔍 Search EN:   "${queryEn}"`);
+                console.log(`        🔍 Search HI:   "${queryHi}"`);
                 console.log('--------------------------------------------------------------------------------');
             }
         }
@@ -581,23 +693,23 @@ async function runLocalIntentExtractor() {
     const avgConfidence = updatedCount > 0 ? (totalConfidence / updatedCount).toFixed(1) : 0;
 
     console.log('\n================================================================================');
-    console.log(`📊 PASS 2 SUMMARY:`);
+    console.log(`📊 PASS 2 HARVESTER GUIDANCE SUMMARY:`);
     console.log(`   Total PCs Processed:     ${updatedCount.toLocaleString()}`);
     console.log(`   Average Intent Score:    ${avgConfidence}%`);
     console.log(`   High Quality (>= 80%):   ${highConfCount.toLocaleString()} (${((highConfCount / updatedCount) * 100).toFixed(1)}%)`);
-    console.log(`   Medium Quality (70-79%): ${medConfCount.toLocaleString()} (${((medConfCount / updatedCount) * 100).toFixed(1)}%)`);
-    console.log(`   Low Quality (< 70%):     ${lowConfCount.toLocaleString()} (${((lowConfCount / updatedCount) * 100).toFixed(1)}%)`);
     console.log(`   Execution Time:          ${(elapsedMs / 1000).toFixed(2)} seconds`);
     console.log(`   Throughput Speed:        ${Math.round(updatedCount / (elapsedMs / 1000)).toLocaleString()} PCs / sec`);
-    console.log(`   Bilingual Vectors:       100% (English + Devanagari Hindi generated)`);
-    console.log(`   Database Status:         pipeline_status = 'intent_synthesized'`);
+    console.log(`   Dual EN/HI Intent:       100% Generated (pc_intent + pc_intent_hi)`);
+    console.log(`   YouTube Categories:      100% Mapped (Science, Autos, Education, Howto)`);
+    console.log(`   Tool Signals & Filters:  100% Attached (tool_keywords, negative_keywords)`);
+    console.log(`   Database Status:         pipeline_status = 'intent_synthesized' in hayadb`);
     console.log('================================================================================\n');
 
     process.exit(0);
 }
 
-runLocalIntentExtractor().catch(e => {
-    console.error('\n❌ Fatal error in Pass 2:', e.message);
+runPass2GuidanceEngine().catch(e => {
+    console.error('\n❌ Fatal error in Pass 2 Guidance Engine:', e.message);
     console.error(e.stack);
     process.exit(1);
 });
