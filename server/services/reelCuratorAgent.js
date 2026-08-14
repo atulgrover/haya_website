@@ -97,55 +97,46 @@ async function auditQpVideos(qpCode = 'AMH/Q0103', autoApplyThreshold = 75) {
                 console.log(`   🟢 Candidate Title:     "${bestCand.video_title}"`);
                 console.log(`   📈 Candidate Score:     ${bestScore}% similarity (+${bestScore - currentScore}% improvement)`);
 
-                // If candidate is a high-quality match (>= autoApplyThreshold), auto-update nsqf_pcs directly!
-                if (bestScore >= autoApplyThreshold) {
+                // 👤 Pass 4 is strictly Human-In-The-Loop (HIL Only):
+                // All improvements are queued into video_swap_suggestions for Admin review in dashboard.html.
+                // Zero auto-overwrites to nsqf_pcs without explicit human authorization!
+                const rationale = `AI Curator evaluated candidate "${bestCand.video_title}" with ${bestScore}% match score (vs. current ${currentScore}%). Demonstrates PC intent: "${intentText}".`;
+                try {
                     await db.prepare(`
-                        UPDATE nsqf_pcs 
-                        SET video_id = ?, video_title = ?, video_url = ?
-                        WHERE id = ?
-                    `).run(bestCand.video_id, bestCand.video_title, bestCand.video_url, r.id);
-
-                    updatedCount++;
-                    console.log(`   ✅ ACTION: [AUTO-APPLIED INTENT MATCH] ➔ Updated nsqf_pcs #${r.id} with video [${bestCand.video_id}]`);
-                } else {
-                    const rationale = `AI Curator evaluated candidate "${bestCand.video_title}" with ${bestScore}% match score (vs. current ${currentScore}%). Demonstrates PC intent: "${intentText}".`;
-                    try {
-                        await db.prepare(`
-                            INSERT INTO video_swap_suggestions
-                            (qp_code, nos_code, module_title, pc_id, pc_intent, current_video_id, current_video_title, current_audit_score, suggested_video_id, suggested_video_title, suggested_video_url, suggested_audit_score, ai_rationale, status)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
-                            ON CONFLICT (qp_code, pc_id, suggested_video_id) DO UPDATE SET
-                                nos_code = EXCLUDED.nos_code,
-                                module_title = EXCLUDED.module_title,
-                                pc_intent = EXCLUDED.pc_intent,
-                                current_video_id = EXCLUDED.current_video_id,
-                                current_video_title = EXCLUDED.current_video_title,
-                                current_audit_score = EXCLUDED.current_audit_score,
-                                suggested_video_title = EXCLUDED.suggested_video_title,
-                                suggested_video_url = EXCLUDED.suggested_video_url,
-                                suggested_audit_score = EXCLUDED.suggested_audit_score,
-                                ai_rationale = EXCLUDED.ai_rationale,
-                                status = 'pending'
-                        `).run(
-                            r.qp_code,
-                            r.nos_code || 'NOS',
-                            r.module_title || 'Module',
-                            r.pc_code || String(r.id),
-                            intentText,
-                            r.video_id || '',
-                            r.video_title || 'Current Video',
-                            currentScore,
-                            bestCand.video_id,
-                            bestCand.video_title,
-                            bestCand.video_url,
-                            bestScore,
-                            rationale
-                        );
-                        suggestionsCreated++;
-                        console.log(`   💡 ACTION: [SWAP SUGGESTION CREATED] ➔ Queued for Admin Review`);
-                    } catch (e) {
-                        console.warn(`   ⚠️ Warning creating suggestion for ${r.id}:`, e.message);
-                    }
+                        INSERT INTO video_swap_suggestions
+                        (qp_code, nos_code, module_title, pc_id, pc_intent, current_video_id, current_video_title, current_audit_score, suggested_video_id, suggested_video_title, suggested_video_url, suggested_audit_score, ai_rationale, status)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+                        ON CONFLICT (qp_code, pc_id, suggested_video_id) DO UPDATE SET
+                            nos_code = EXCLUDED.nos_code,
+                            module_title = EXCLUDED.module_title,
+                            pc_intent = EXCLUDED.pc_intent,
+                            current_video_id = EXCLUDED.current_video_id,
+                            current_video_title = EXCLUDED.current_video_title,
+                            current_audit_score = EXCLUDED.current_audit_score,
+                            suggested_video_title = EXCLUDED.suggested_video_title,
+                            suggested_video_url = EXCLUDED.suggested_video_url,
+                            suggested_audit_score = EXCLUDED.suggested_audit_score,
+                            ai_rationale = EXCLUDED.ai_rationale,
+                            status = 'pending'
+                    `).run(
+                        r.qp_code,
+                        r.nos_code || 'NOS',
+                        r.module_title || 'Module',
+                        r.pc_code || String(r.id),
+                        intentText,
+                        r.video_id || '',
+                        r.video_title || 'Current Video',
+                        currentScore,
+                        bestCand.video_id,
+                        bestCand.video_title,
+                        bestCand.video_url,
+                        bestScore,
+                        rationale
+                    );
+                    suggestionsCreated++;
+                    console.log(`   💡 ACTION: [HIL REVIEW QUEUED] ➔ Sent to Admin Dashboard for Review (Zero Auto-Overwrite)`);
+                } catch (e) {
+                    console.warn(`   ⚠️ Warning creating suggestion for ${r.id}:`, e.message);
                 }
             } else {
                 console.log(`   ✅ ACTION: [CURRENT VIDEO VERIFIED] ➔ Current video remains best available match.`);
@@ -156,13 +147,13 @@ async function auditQpVideos(qpCode = 'AMH/Q0103', autoApplyThreshold = 75) {
     }
 
     console.log(`\n================================================================================`);
-    console.log(`✅ [ReelCurator Agent] AUDIT COMPLETE FOR ${qpCode}`);
-    console.log(`   Total PCs Audited: ${auditedCount}`);
-    console.log(`   PCs Auto-Updated:  ${updatedCount}`);
-    console.log(`   Suggestions Queued: ${suggestionsCreated}`);
+    console.log(`✅ [ReelCurator Agent] HIL AUDIT COMPLETE FOR ${qpCode}`);
+    console.log(`   Total PCs Audited:       ${auditedCount}`);
+    console.log(`   HIL Suggestions Queued:  ${suggestionsCreated}`);
+    console.log(`   Database Status:         Zero Auto-Overwrites (100% Human-in-the-Loop)`);
     console.log(`================================================================================\n`);
 
-    return { audited: auditedCount, updated: updatedCount, suggestionsCreated };
+    return { audited: auditedCount, updated: 0, suggestionsCreated };
 }
 
 
@@ -189,6 +180,24 @@ async function getPendingSwapSuggestions() {
 async function acceptSwapSuggestion(suggestionId) {
     const suggestion = await db.prepare(`SELECT * FROM video_swap_suggestions WHERE id = ?`).get(suggestionId);
     if (!suggestion) throw new Error(`Suggestion #${suggestionId} not found`);
+
+    // Explicit Human-Approved Update directly into nsqf_pcs
+    await db.prepare(`
+        UPDATE nsqf_pcs
+        SET video_id = ?,
+            video_title = ?,
+            video_url = ?,
+            audit_score = ?
+        WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?)
+          AND (pc_code = ? OR id::text = ?)
+    `).run(
+        suggestion.suggested_video_id,
+        suggestion.suggested_video_title,
+        suggestion.suggested_video_url,
+        suggestion.suggested_audit_score,
+        suggestion.qp_code, suggestion.qp_code.replace('/', '_'),
+        suggestion.pc_id, suggestion.pc_id
+    );
 
     await saveVideoForever({
         qpCode: suggestion.qp_code,
