@@ -1,8 +1,8 @@
 # HAYAGRIVA Enterprise SOP & 4-Pillar Persona Roadmap
 
-**Document Version:** 1.0  
-**Date Created:** August 15, 2026  
-**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem
+**Document Version:** 2.0  
+**Date Updated:** August 15, 2026  
+**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem with Dual Japanese Visual Identity
 
 ---
 
@@ -29,6 +29,7 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 
 ### 1. 🎓 Students Portal (`students.html`) — National Qualification Framework (NSQF)
 * **Target Audience:** College students, vocational trainees, ITI learners, job seekers.
+* **Visual Aesthetic:** **Studio Ghibli Hand-Painted Gouache & Watercolor** (Warm, sunlit, hopeful, inspiring craft mastery).
 * **Core Functionality:**
   * Browse 38+ Industry Sectors & 2,176 National Qualification Packs (NQPs).
   * 11-to-48 step educational micro-learning reels.
@@ -39,10 +40,11 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 
 ### 2. 🏢 Employers Portal (`employers.html`) — Ready-Made Industry Standard Operating Procedures (SOPs)
 * **Target Audience:** Business owners, Hotel General Managers, Restaurant Operators, Plant Supervisors, Hospital Administrators, Store Managers.
+* **Visual Aesthetic:** **Shin-Hanga Architectural Precision & Modern Line Art** (Clean geometric lines, dramatic cinematic lighting, executive authority).
 * **Core Problem Solved:** Eliminates 150-page PDF manual binders and removes the need for managers to manually write SOP training guides.
 * **Core Functionality:**
   * **Zero-Setup Pre-Generated SOP Catalog:** Direct access to thousands of ready-made workplace SOPs synthesized automatically by AI from statutory NSQF standards.
-  * **Sector Grid Navigation:** (Hospitality, Electronics Repair, Automotive Garage, Healthcare Nursing, Retail Store, Manufacturing & Logistics).
+  * **Exact 1:1 Sector Grid Alignment:** Identical 38+ Sector Cards as the student portal (neither more nor less).
   * **Actionable SOP Reel Player:** Each SOP launches a fast, step-by-step practical video reel (`reel.html?sop=SOP-TH-01`) with:
     1. Operational Standard Time Limit (e.g. `⏱️ 4 min SOP`).
     2. Number of Critical Action Steps (e.g. `6 Steps`).
@@ -71,7 +73,40 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 
 ---
 
-## 3. Database Schema & Architecture for `employers.html` (SOPs)
+## 3. Dual Japanese Visual Identity & Sector Card Specification
+
+Instead of generic, low-resolution government or internet stock photos, HAYAGRIVA features **two distinct, bespoke visual languages**:
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────────────┐
+│                           THE DUAL VISUAL IDENTITY MATRIX                                │
+├──────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                          │
+│  🎓 STUDENTS (students.html)                       🏢 EMPLOYERS (employers.html)         │
+│  "The Inspiring Journey of Craft Mastery"          "The Architectural Precision of SOPs" │
+│                                                                                          │
+│  🎨 Studio Ghibli Hand-Painted Gouache             🎨 Shin-Hanga / Precision Line Art    │
+│  • Directory: `assets/sectors/students/`           • Directory: `assets/sectors/employers/`
+│  • Warm sunlit lighting, vibrant watercolors       • Clean geometric lines, dramatic light
+│  • Hopeful trainees mastering crafts               • Spotless 5-star operations & plants │
+│  • Fluffy clouds, lush environments, cozy tools    • High-contrast shadows, clean setups │
+│                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Visual Prompts & Comparison Matrix Across Benchmark Sectors
+
+| Sector | 🎓 Student Style (Studio Ghibli Watercolor) | 🏢 Employer Style (Shin-Hanga Architectural Precision) |
+| :--- | :--- | :--- |
+| **🏨 Hospitality & Hotels** | `A young apprentice chef smiling in a sunlit kitchen, garnishing freshly baked artisan bread with morning light streaming through windows, Studio Ghibli aesthetic, lush hand-painted watercolor, anime realism, warm colors.` | `A pristine, elegant 5-star fine-dining restaurant dining room, gleaming cutlery aligned with precision, polished wine glasses, warm glowing lanterns, Shin-Hanga modern Japanese woodblock style, dramatic evening lighting, clean architectural lines.` |
+| **📱 Electronics & Hardware** | `A young vocational student repairing a smartphone circuit board at a cozy workbench surrounded by green potted plants, warm brass desk lamp, Studio Ghibli style, soft watercolor textures, gentle dust motes, inspiring atmosphere.` | `A state-of-the-art cleanroom electronics laboratory, isometric precision line art, digital multimeters, oscilloscope screens with cyan waveforms, Shin-Hanga woodblock aesthetic with neon accents, structured architectural perspective.` |
+| **🌾 Agriculture & Farming** | `Trainees walking through golden rolling wheat fields under a vibrant blue Ghibli sky with fluffy cumulus clouds, high-tech modern greenhouse in the background, Hayao Miyazaki style, rich green and golden watercolor tones.` | `A high-precision smart-irrigation farm layout, geometric drone flight paths, structured drip-line blueprints, Shin-Hanga style with deep indigo dusk sky and warm amber tractor headlamps, clean composition.` |
+| **🚗 Automotive & Garage** | `An apprentice mechanic tuning a motorcycle engine in an open-air workshop with sunlight reflecting off chrome tools, blooming cherry blossoms in the background, Studio Ghibli gouache style, warm nostalgic atmosphere.` | `A spotless automotive diagnostic bay, laser wheel alignment lasers, polished epoxy floor, structured tool shadow board, Shin-Hanga woodblock style, dramatic overhead industrial lighting, precision symmetry.` |
+| **🏥 Healthcare & Nursing** | `A compassionate nursing student comforting a patient in a bright, peaceful clinic, soft pastel greens and golden sunlight, Studio Ghibli hand-painted aesthetic, welcoming, gentle, inspiring healthcare scene.` | `A high-standard hospital surgical suite and emergency triage bay, clean structured clinical carts, medical monitors glowing softly in the dark, Shin-Hanga architectural style, serene, sterile, executive clarity.` |
+
+---
+
+## 4. Database Schema & Architecture for `employers.html` (SOPs)
 
 ### PostgreSQL Schema (`hayadb`):
 
@@ -82,7 +117,7 @@ CREATE TABLE IF NOT EXISTS nsqf_sops (
     sop_code VARCHAR(50) UNIQUE NOT NULL,         -- e.g. 'SOP-HOSP-01'
     qp_code TEXT NOT NULL,                         -- Links to base NSQF QP (e.g. 'THC/Q0301')
     nos_code TEXT NOT NULL,                        -- Links to base NOS (e.g. 'THC/N0301')
-    sector VARCHAR(100) NOT NULL,                  -- e.g. 'Tourism & Hospitality'
+    sector VARCHAR(100) NOT NULL,                  -- Exactly matches nsqf_qps.sector
     sop_title TEXT NOT NULL,                       -- e.g. 'Fine Dining Table Setup & Cutlery Alignment'
     sop_title_hi TEXT,                             -- e.g. 'डाइनिंग टेबल सेटअप और कटलरी अलाइनमेंट'
     sop_objective TEXT,                            -- Core operational outcome
@@ -110,20 +145,6 @@ CREATE TABLE IF NOT EXISTS nsqf_sop_steps (
     UNIQUE(sop_code, step_number)
 );
 ```
-
----
-
-## 4. Hospitality/Restaurant Real-World SOP Catalog Example
-
-| SOP Code | Sector | SOP Title | Target Time | Key Operational Steps | Reused Video Streams |
-| :--- | :--- | :--- | :---: | :---: | :---: |
-| **SOP-TH-01** | Hospitality | **5-Star Table Linen & Cutlery Alignment** | 4 min | 6 Steps | 🇬🇧 English + 🇮🇳 Hindi |
-| **SOP-TH-02** | Hospitality | **Pre-Shift Side Station Mise-en-Place & Glass Polishing** | 5 min | 5 Steps | 🇬🇧 English + 🇮🇳 Hindi |
-| **SOP-TH-03** | Hospitality | **Guest Greeting, Seating & 30-Second Water Service** | 3 min | 4 Steps | 🇬🇧 English + 🇮🇳 Hindi |
-| **SOP-TH-04** | Hospitality | **POS Order Taking & Food Allergy Protocol** | 4 min | 5 Steps | 🇬🇧 English + 🇮🇳 Hindi |
-| **SOP-TH-05** | Hospitality | **Silver Food Service & Crumbing Technique** | 5 min | 6 Steps | 🇬🇧 English + 🇮🇳 Hindi |
-| **SOP-TH-06** | Hospitality | **Guest Room Bed Making & Duvet Tuck Protocol** | 6 min | 8 Steps | 🇬🇧 English + 🇮🇳 Hindi |
-| **SOP-TH-07** | Hospitality | **Bathroom Sanitization & Amenities Restocking** | 8 min | 7 Steps | 🇬🇧 English + 🇮🇳 Hindi |
 
 ---
 
@@ -159,15 +180,19 @@ The universal navigation header across all portal pages will be standardized:
 │  • Create `nsqf_sops` and `nsqf_sop_steps` tables in `hayadb`.                           │
 │  • Build `scripts/nsqf_auto_sop_generator.js` to map NOS modules to ready-made SOPs.    │
 │                                                                                          │
-│  PHASE 2: Employers Portal Frontend (`employers.html`)                                   │
-│  • Build Sector Selection Grid (Hospitality, Electronics, Auto, Healthcare, Retail).     │
+│  PHASE 2: Bespoke Sector Asset Generation                                                │
+│  • Generate Studio Ghibli illustrations in `assets/sectors/students/` (38 sectors).      │
+│  • Generate Shin-Hanga Architectural illustrations in `assets/sectors/employers/` (38).  │
+│                                                                                          │
+│  PHASE 3: Employers Portal Frontend (`employers.html`)                                   │
+│  • Build Sector Selection Grid with Shin-Hanga cards (1:1 with students.html sectors).   │
 │  • Render Ready-Made SOP Cards with time standards, step counts, and language badges.    │
 │                                                                                          │
-│  PHASE 3: SOP Reel Mode in `reel.html`                                                   │
+│  PHASE 4: SOP Reel Mode in `reel.html`                                                   │
 │  • Support `?sop=SOP-TH-01` query parameter for operational compliance viewing.          │
 │  • Display SOP Procedure Headlines and Digital Shift Checklist.                          │
 │                                                                                          │
-│  PHASE 4: Universal Navigation Synchronization                                           │
+│  PHASE 5: Universal Navigation Synchronization                                           │
 │  • Update header nav across `index.html`, `students.html`, `employers.html`,             │
 │    `employees.html`, `professionals.html`, and `dashboard.html`.                         │
 │                                                                                          │
