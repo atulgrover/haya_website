@@ -1,8 +1,8 @@
 # HAYAGRIVA Enterprise SOP & 4-Pillar Persona Roadmap
 
-**Document Version:** 2.1  
+**Document Version:** 2.2  
 **Date Updated:** August 15, 2026  
-**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem with Enterprise SOP Engine & Human-Friendly Semantic Naming
+**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem with Enterprise SOP Transformation Engine
 
 ---
 
@@ -74,56 +74,64 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 
 ---
 
-## 3. Human-Friendly Semantic Naming & Markdown Specification
+## 3. NSQF ➔ Enterprise SOP Data Transformation Mapping
 
-All SOPs are saved both in **PostgreSQL (`hayadb`)** and as **Portable Markdown Files (`data/sops/{sector}/{slug}.md`)**:
+The underlying data is **100% sourced from the existing NSQF tables**, but transformed into dedicated enterprise tables with specialized operational columns:
 
-### Semantic File Naming:
-* ❌ `data/sops/hospitality/SOP-HOSP-001.md` *(Cryptic)*
-* ✅ **`data/sops/tourism_hospitality/fine-dining-table-setup.md`**
-* ✅ **`data/sops/electronics/smartphone-battery-replacement.md`**
-* ✅ **`data/sops/automotive/motorcycle-carburetor-tuning.md`**
-* ✅ **`data/sops/healthcare/sterile-iv-cannula-insertion.md`**
+```
+┌──────────────────────────────────────────────────────────────────────────────────────────┐
+│                         NSQF ➔ ENTERPRISE TABLE TRANSFORMATION                           │
+├──────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                          │
+│  [NSQF STATUTORY SOURCE]                            [ENTERPRISE OPERATIONAL TARGET]      │
+│  nsqf_qps (Job Roles)           ══════════════►     Sector & Job Role Scope              │
+│  nsqf_modules (Curriculum Unit) ══════════════►     enterprise_sops (Master SOP)         │
+│  nsqf_pcs (Performance Criteria)═════════════►     enterprise_sop_steps (Action Steps)  │
+│  youtube_search_cache           ══════════════►     Video Streams (Reused 0ms)           │
+│                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────┘
+```
 
-### Human-Friendly Markdown Frontmatter & Structure:
+### Direct Field Mapping Specification:
 
-```markdown
-# 🍽️ How to Set a Fine-Dining Table (Linen & Cutlery Alignment)
-> **Standard Operating Procedure** • ⏱️ 4 min benchmark • 6 practical steps • Tourism & Hospitality
+| Source (NSQF Tables) | Target (Enterprise Tables) | Transformation Logic / Applied Enhancement |
+| :--- | :--- | :--- |
+| `nsqf_modules.module_title` | `enterprise_sops.sop_title` | Converted to action standard (e.g. *"Table Setup & Cutlery Standard"*). |
+| `nsqf_modules.module_title` | `enterprise_sops.slug` | Converted to kebab-case URL slug (e.g. `fine-dining-table-setup`). |
+| `nsqf_qps.sector` | `enterprise_sops.sector` | 1:1 Identity match with 38 statutory sectors. |
+| `nsqf_pcs.pc_intent` | `enterprise_sop_steps.action_headline` | 5–8 word action verb headline for quick reading on mobile. |
+| `nsqf_pcs.pc_description` | `enterprise_sop_steps.procedure_text` | Detailed standard operational instructions. |
+| `nsqf_pcs.video_id` / `_hi` | `enterprise_sop_steps.video_id` / `_hi` | 1:1 Video binding without additional harvesting. |
+| `nsqf_pcs.duration_seconds` | `enterprise_sops.target_duration_seconds` | $\sum(\text{step durations})$ = Total benchmark execution time. |
+| `nsqf_pcs.pc_description` | `enterprise_sop_steps.is_mandatory_safety` | `TRUE` if text contains `safety`, `ppe`, `esd`, `hygiene`, or `hazard`. |
+| `nsqf_pcs.tool_keywords` | `enterprise_sops.tools_required` | Extracted tool keywords (e.g. *Multimeter, Lint-free cloth*). |
 
 ---
 
-### 📋 Overview
-Ensure all guest tables are set with 5-star geometric symmetry, clean silence pads, 12-inch linen drops, and spotlessly polished cutlery before service starts.
+## 4. Dual Japanese Visual Identity & Sector Card Specification
 
----
+Instead of generic, low-resolution government or internet stock photos, HAYAGRIVA features **two distinct, bespoke visual languages**:
 
-### 🧰 What You Need at the Station
-- Clean silence cloth (Molleton pad)
-- Master cotton tablecloth
-- Polished dinner knives, dinner forks, and dessert spoons (held with lint-free service cloth)
-- Crystal water goblets (polished, zero water spots)
-
----
-
-### 🎬 Step-by-Step Procedure
-
-#### Step 1: Lay the Silence Cloth
-* **The Standard:** Inspect table surface for moisture. Place molleton pad flat with zero wrinkles.
-* **Watch Video (45s):** [Hospitality School Tutorial](https://youtube.com/watch?v=...)
-
-#### Step 2: Drop the Master Linen
-* **The Standard:** Unfold master linen from center outward, ensuring an exact 12-inch even drop on all four sides.
-* **Watch Video (60s):** [Silver Service Masterclass](https://youtube.com/watch?v=...)
-
-#### Step 3: Align Cutlery & Water Goblet [🔴 Critical Quality Check]
-* **The Standard:** Position knife on right (blade facing inward) and fork on left, exact 1 inch from table edge. Place water goblet directly 1 inch above knife tip.
-* **Watch Video (55s):** [F&B Pro Service](https://youtube.com/watch?v=...)
+```
+┌──────────────────────────────────────────────────────────────────────────────────────────┐
+│                           THE DUAL VISUAL IDENTITY MATRIX                                │
+├──────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                          │
+│  🎓 STUDENTS (students.html)                       🏢 EMPLOYERS (employers.html)         │
+│  "The Inspiring Journey of Craft Mastery"          "The Architectural Precision of SOPs" │
+│                                                                                          │
+│  🎨 Studio Ghibli Hand-Painted Gouache             🎨 Shin-Hanga / Precision Line Art    │
+│  • Directory: `assets/sectors/students/`           • Directory: `assets/sectors/employers/`
+│  • Warm sunlit lighting, vibrant watercolors       • Clean geometric lines, dramatic light
+│  • Hopeful trainees mastering crafts               • Spotless 5-star operations & plants │
+│  • Fluffy clouds, lush environments, cozy tools    • High-contrast shadows, clean setups │
+│                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 4. Enterprise-Ready PostgreSQL Database Schema (`hayadb`)
+## 5. Enterprise-Ready PostgreSQL Database Schema (`hayadb`)
 
 ```sql
 -- 1. MASTER SOP SPECIFICATION TABLE
@@ -197,7 +205,7 @@ CREATE TABLE IF NOT EXISTS enterprise_sop_executions (
 
 ---
 
-## 5. Universal Navigation Header Update
+## 6. Universal Navigation Header Update
 
 The universal navigation header across all portal pages:
 
@@ -218,20 +226,35 @@ The universal navigation header across all portal pages:
 
 ---
 
-## 6. Implementation Plan & Next Action
+## 7. Implementation Plan & Execution Phases
 
-1. **Step 1 — Create PostgreSQL Tables in `server/db.js`**:
-   * Add `enterprise_sops`, `enterprise_sop_steps`, `enterprise_sop_assignments`, `enterprise_sop_executions`.
-2. **Step 2 — Build Auto-SOP Generator Script (`scripts/nsqf_auto_sop_generator.js`)**:
-   * Synthesize ~9,000–11,000 ready-made SOPs from existing `nsqf_modules` & `nsqf_pcs`.
-   * Export corresponding `.md` files to `data/sops/{sector}/{slug}.md`.
-3. **Step 3 — Build Employers Portal (`employers.html`)**:
-   * Render 38 Sector Cards with Shin-Hanga architectural style.
-   * Render Ready-Made SOP Cards with benchmark time limits and language badges.
-4. **Step 4 — Update `reel.html` for SOP Operational Mode**:
-   * Support `?sop=fine-dining-table-setup` with procedure headlines and compliance checklist.
-5. **Step 5 — Universal Navigation Sync**:
-   * Standardize header across all HTML portals.
+```
+┌──────────────────────────────────────────────────────────────────────────────────────────┐
+│                            ENTERPRISE SOP IMPLEMENTATION PHASES                          │
+├──────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                          │
+│  PHASE 1: Database Schema & Auto-Transformation Engine                                   │
+│  • Add `enterprise_sops` and `enterprise_sop_steps` DDL in `server/db.js`.               │
+│  • Build `scripts/nsqf_auto_sop_generator.js` to transform NSQF data into SOPs.          │
+│  • Export portable `.md` files to `data/sops/{sector}/{slug}.md`.                        │
+│                                                                                          │
+│  PHASE 2: Bespoke Sector Asset Generation                                                │
+│  • Generate Studio Ghibli illustrations in `assets/sectors/students/` (38 sectors).      │
+│  • Generate Shin-Hanga Architectural illustrations in `assets/sectors/employers/` (38).  │
+│                                                                                          │
+│  PHASE 3: Employers Portal Frontend (`employers.html`)                                   │
+│  • Build Sector Selection Grid with Shin-Hanga cards (1:1 with students.html sectors).   │
+│  • Render Ready-Made SOP Cards with time standards, step counts, and language badges.    │
+│                                                                                          │
+│  PHASE 4: SOP Reel Mode in `reel.html`                                                   │
+│  • Support `?sop=fine-dining-table-setup` with procedure headlines & compliance check.   │
+│                                                                                          │
+│  PHASE 5: Universal Navigation Synchronization                                           │
+│  • Update header nav across `index.html`, `students.html`, `employers.html`,             │
+│    `employees.html`, `professionals.html`, and `dashboard.html`.                         │
+│                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 *Saved and synchronized in `roadmap/HAYAGRIVA_ENTERPRISE_SOP_ROADMAP.md`.*
