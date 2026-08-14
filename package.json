@@ -10,16 +10,14 @@
     "test:api": "node --test tests/api/*.test.js",
     "test:db": "node --test tests/db/*.test.js",
     "test:youtube": "node --test tests/api/youtube.test.js",
-    "db:backup": "node scripts/backup_database.js",
-    "db:restore": "node scripts/rollback_pcs_to_local_sqlite.js",
+    "db:backup": "node scripts/backup_local_pg.js",
+    "db:restore": "node scripts/restore_local_pg.js",
     "db:push-to-neon": "node scripts/push_local_pg_to_neon.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1098.0",
     "@aws-sdk/s3-request-presigner": "^3.1098.0",
-    "@libsql/client": "^0.17.4",
     "bcryptjs": "^2.4.3",
-    "better-sqlite3": "^11.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",

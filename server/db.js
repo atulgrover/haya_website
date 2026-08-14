@@ -46,16 +46,29 @@ const pool = new Pool({ connectionString: LOCAL_DB_URL });
 
 // ── SQL placeholder converter: ? → $1, $2, ... (SQLite → PG compat layer) ────
 const convertSql = (sql) => {
+    let s = String(sql || '')
+        .replace(/INSERT\s+OR\s+REPLACE\s+INTO/gi, 'INSERT INTO')
+        .replace(/INSERT\s+OR\s+IGNORE\s+INTO/gi, 'INSERT INTO');
     let idx = 1;
-    return sql.replace(/\?/g, () => `$${idx++}`);
+    return s.replace(/\?/g, () => `$${idx++}`);
 };
 
 // ── Unified async DB interface (mirrors the old better-sqlite3 API shape) ─────
 const db = {
     prepare: (sql) => ({
         run: async (...args) => {
-            const res = await pool.query(convertSql(sql), args);
-            return { lastInsertRowid: res.rows[0]?.id || 0, changes: res.rowCount };
+            let s = convertSql(sql);
+            if (/^\s*INSERT\s+INTO/i.test(s) && !/RETURNING/i.test(s) && !/ON\s+CONFLICT/i.test(s)) {
+                s += ' RETURNING id';
+            }
+            try {
+                const res = await pool.query(s, args);
+                return { lastInsertRowid: res.rows?.[0]?.id || 0, changes: res.rowCount };
+            } catch (err) {
+                // If RETURNING id failed due to missing id column or conflict, fallback to original query
+                const fallbackRes = await pool.query(convertSql(sql), args);
+                return { lastInsertRowid: 0, changes: fallbackRes.rowCount };
+            }
         },
         get: async (...args) => {
             const res = await pool.query(convertSql(sql), args);

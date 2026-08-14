@@ -36,6 +36,9 @@ test('Authentication & JWT Security Suite', async (t) => {
     assert.ok(user, 'User should be found in database');
     assert.strictEqual(user.email, testEmail);
     assert.strictEqual(user.role, 'professional');
+
+    // Clean up test account
+    await db.prepare('DELETE FROM users WHERE id = ?').run(result.lastInsertRowid);
   });
 
   await t.test('JWT token signing and verification payload integrity', () => {
@@ -67,5 +70,8 @@ test('Authentication & JWT Security Suite', async (t) => {
     const token = jwt.sign({ userId: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
     const decoded = jwt.verify(token, JWT_SECRET);
     assert.strictEqual(decoded.role, 'admin');
+
+    // Clean up test admin account
+    await db.prepare('DELETE FROM users WHERE id = ?').run(result.lastInsertRowid);
   });
 });

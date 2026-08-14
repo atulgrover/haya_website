@@ -5,7 +5,7 @@
  * Provides a common video search engine with automatic failover:
  * 1. Primary: Official YouTube Data API v3 (using YOUTUBE_API_KEY)
  * 2. Failover: youtube-sr Scraper (No-Key / Unlimited)
- * 3. Persistence: Saves videos FOREVER into SQLite nsqf_videos table
+ * 3. Persistence: Saves videos into PostgreSQL nsqf_videos / nsqf_pcs tables (hayadb)
  */
 
 const db = require('../db');
@@ -87,7 +87,7 @@ async function searchYouTubeVideos(query, maxResults = 6) {
 }
 
 /**
- * Permanently save video mapping into nsqf_videos SQLite table FOREVER
+ * Permanently save video mapping into PostgreSQL (hayadb)
  */
 async function saveVideoForever({ qpCode, nosCode, nosTitle, moduleTitle, pcId, pcIntent, pcDesc, videoId, videoTitle, videoUrl, auditScore = 95 }) {
     try {

@@ -172,7 +172,7 @@ async function getPendingSwapSuggestions() {
 }
 
 /**
- * Accept AI Swap Suggestion and update nsqf_videos SQLite table permanently
+ * Accept AI Swap Suggestion and update nsqf_pcs PostgreSQL table (hayadb)
  */
 async function acceptSwapSuggestion(suggestionId) {
     const suggestion = await db.prepare(`SELECT * FROM video_swap_suggestions WHERE id = ?`).get(suggestionId);
