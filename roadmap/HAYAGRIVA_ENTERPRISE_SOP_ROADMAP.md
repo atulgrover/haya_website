@@ -1,8 +1,8 @@
 # HAYAGRIVA Enterprise SOP & 4-Pillar Persona Roadmap
 
-**Document Version:** 2.0  
+**Document Version:** 2.1  
 **Date Updated:** August 15, 2026  
-**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem with Dual Japanese Visual Identity
+**Status:** Approved Strategic Architecture for Quad-Portal Ecosystem with Enterprise SOP Engine & Human-Friendly Semantic Naming
 
 ---
 
@@ -45,7 +45,8 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 * **Core Functionality:**
   * **Zero-Setup Pre-Generated SOP Catalog:** Direct access to thousands of ready-made workplace SOPs synthesized automatically by AI from statutory NSQF standards.
   * **Exact 1:1 Sector Grid Alignment:** Identical 38+ Sector Cards as the student portal (neither more nor less).
-  * **Actionable SOP Reel Player:** Each SOP launches a fast, step-by-step practical video reel (`reel.html?sop=SOP-TH-01`) with:
+  * **Human-Friendly Semantic Action Slugs:** Clean readable URLs (e.g. `reel.html?sop=fine-dining-table-setup`).
+  * **Actionable SOP Reel Player:** Each SOP launches a fast, step-by-step practical video reel with:
     1. Operational Standard Time Limit (e.g. `⏱️ 4 min SOP`).
     2. Number of Critical Action Steps (e.g. `6 Steps`).
     3. Mandatory Hygiene & Safety Verification.
@@ -73,84 +74,132 @@ The HAYAGRIVA platform provides four tailored, purpose-built portals serving dis
 
 ---
 
-## 3. Dual Japanese Visual Identity & Sector Card Specification
+## 3. Human-Friendly Semantic Naming & Markdown Specification
 
-Instead of generic, low-resolution government or internet stock photos, HAYAGRIVA features **two distinct, bespoke visual languages**:
+All SOPs are saved both in **PostgreSQL (`hayadb`)** and as **Portable Markdown Files (`data/sops/{sector}/{slug}.md`)**:
 
-```
-┌──────────────────────────────────────────────────────────────────────────────────────────┐
-│                           THE DUAL VISUAL IDENTITY MATRIX                                │
-├──────────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                          │
-│  🎓 STUDENTS (students.html)                       🏢 EMPLOYERS (employers.html)         │
-│  "The Inspiring Journey of Craft Mastery"          "The Architectural Precision of SOPs" │
-│                                                                                          │
-│  🎨 Studio Ghibli Hand-Painted Gouache             🎨 Shin-Hanga / Precision Line Art    │
-│  • Directory: `assets/sectors/students/`           • Directory: `assets/sectors/employers/`
-│  • Warm sunlit lighting, vibrant watercolors       • Clean geometric lines, dramatic light
-│  • Hopeful trainees mastering crafts               • Spotless 5-star operations & plants │
-│  • Fluffy clouds, lush environments, cozy tools    • High-contrast shadows, clean setups │
-│                                                                                          │
-└──────────────────────────────────────────────────────────────────────────────────────────┘
-```
+### Semantic File Naming:
+* ❌ `data/sops/hospitality/SOP-HOSP-001.md` *(Cryptic)*
+* ✅ **`data/sops/tourism_hospitality/fine-dining-table-setup.md`**
+* ✅ **`data/sops/electronics/smartphone-battery-replacement.md`**
+* ✅ **`data/sops/automotive/motorcycle-carburetor-tuning.md`**
+* ✅ **`data/sops/healthcare/sterile-iv-cannula-insertion.md`**
 
-### Visual Prompts & Comparison Matrix Across Benchmark Sectors
+### Human-Friendly Markdown Frontmatter & Structure:
 
-| Sector | 🎓 Student Style (Studio Ghibli Watercolor) | 🏢 Employer Style (Shin-Hanga Architectural Precision) |
-| :--- | :--- | :--- |
-| **🏨 Hospitality & Hotels** | `A young apprentice chef smiling in a sunlit kitchen, garnishing freshly baked artisan bread with morning light streaming through windows, Studio Ghibli aesthetic, lush hand-painted watercolor, anime realism, warm colors.` | `A pristine, elegant 5-star fine-dining restaurant dining room, gleaming cutlery aligned with precision, polished wine glasses, warm glowing lanterns, Shin-Hanga modern Japanese woodblock style, dramatic evening lighting, clean architectural lines.` |
-| **📱 Electronics & Hardware** | `A young vocational student repairing a smartphone circuit board at a cozy workbench surrounded by green potted plants, warm brass desk lamp, Studio Ghibli style, soft watercolor textures, gentle dust motes, inspiring atmosphere.` | `A state-of-the-art cleanroom electronics laboratory, isometric precision line art, digital multimeters, oscilloscope screens with cyan waveforms, Shin-Hanga woodblock aesthetic with neon accents, structured architectural perspective.` |
-| **🌾 Agriculture & Farming** | `Trainees walking through golden rolling wheat fields under a vibrant blue Ghibli sky with fluffy cumulus clouds, high-tech modern greenhouse in the background, Hayao Miyazaki style, rich green and golden watercolor tones.` | `A high-precision smart-irrigation farm layout, geometric drone flight paths, structured drip-line blueprints, Shin-Hanga style with deep indigo dusk sky and warm amber tractor headlamps, clean composition.` |
-| **🚗 Automotive & Garage** | `An apprentice mechanic tuning a motorcycle engine in an open-air workshop with sunlight reflecting off chrome tools, blooming cherry blossoms in the background, Studio Ghibli gouache style, warm nostalgic atmosphere.` | `A spotless automotive diagnostic bay, laser wheel alignment lasers, polished epoxy floor, structured tool shadow board, Shin-Hanga woodblock style, dramatic overhead industrial lighting, precision symmetry.` |
-| **🏥 Healthcare & Nursing** | `A compassionate nursing student comforting a patient in a bright, peaceful clinic, soft pastel greens and golden sunlight, Studio Ghibli hand-painted aesthetic, welcoming, gentle, inspiring healthcare scene.` | `A high-standard hospital surgical suite and emergency triage bay, clean structured clinical carts, medical monitors glowing softly in the dark, Shin-Hanga architectural style, serene, sterile, executive clarity.` |
+```markdown
+# 🍽️ How to Set a Fine-Dining Table (Linen & Cutlery Alignment)
+> **Standard Operating Procedure** • ⏱️ 4 min benchmark • 6 practical steps • Tourism & Hospitality
 
 ---
 
-## 4. Database Schema & Architecture for `employers.html` (SOPs)
+### 📋 Overview
+Ensure all guest tables are set with 5-star geometric symmetry, clean silence pads, 12-inch linen drops, and spotlessly polished cutlery before service starts.
 
-### PostgreSQL Schema (`hayadb`):
+---
+
+### 🧰 What You Need at the Station
+- Clean silence cloth (Molleton pad)
+- Master cotton tablecloth
+- Polished dinner knives, dinner forks, and dessert spoons (held with lint-free service cloth)
+- Crystal water goblets (polished, zero water spots)
+
+---
+
+### 🎬 Step-by-Step Procedure
+
+#### Step 1: Lay the Silence Cloth
+* **The Standard:** Inspect table surface for moisture. Place molleton pad flat with zero wrinkles.
+* **Watch Video (45s):** [Hospitality School Tutorial](https://youtube.com/watch?v=...)
+
+#### Step 2: Drop the Master Linen
+* **The Standard:** Unfold master linen from center outward, ensuring an exact 12-inch even drop on all four sides.
+* **Watch Video (60s):** [Silver Service Masterclass](https://youtube.com/watch?v=...)
+
+#### Step 3: Align Cutlery & Water Goblet [🔴 Critical Quality Check]
+* **The Standard:** Position knife on right (blade facing inward) and fork on left, exact 1 inch from table edge. Place water goblet directly 1 inch above knife tip.
+* **Watch Video (55s):** [F&B Pro Service](https://youtube.com/watch?v=...)
+```
+
+---
+
+## 4. Enterprise-Ready PostgreSQL Database Schema (`hayadb`)
 
 ```sql
--- Table: nsqf_sops (Ready-Made Industry SOPs)
-CREATE TABLE IF NOT EXISTS nsqf_sops (
+-- 1. MASTER SOP SPECIFICATION TABLE
+CREATE TABLE IF NOT EXISTS enterprise_sops (
     id SERIAL PRIMARY KEY,
-    sop_code VARCHAR(50) UNIQUE NOT NULL,         -- e.g. 'SOP-HOSP-01'
-    qp_code TEXT NOT NULL,                         -- Links to base NSQF QP (e.g. 'THC/Q0301')
-    nos_code TEXT NOT NULL,                        -- Links to base NOS (e.g. 'THC/N0301')
-    sector VARCHAR(100) NOT NULL,                  -- Exactly matches nsqf_qps.sector
-    sop_title TEXT NOT NULL,                       -- e.g. 'Fine Dining Table Setup & Cutlery Alignment'
-    sop_title_hi TEXT,                             -- e.g. 'डाइनिंग टेबल सेटअप और कटलरी अलाइनमेंट'
-    sop_objective TEXT,                            -- Core operational outcome
-    target_duration_seconds INT DEFAULT 300,       -- Benchmark completion time (e.g. 5 mins)
+    sop_code VARCHAR(50) UNIQUE NOT NULL,            -- e.g. 'SOP-HOSP-001'
+    slug VARCHAR(120) UNIQUE NOT NULL,               -- e.g. 'fine-dining-table-setup'
+    qp_code VARCHAR(50) NOT NULL,                    -- Links to source NSQF QP ('THC/Q0301')
+    nos_code VARCHAR(50) NOT NULL,                   -- Links to source NOS ('THC/N0301')
+    sector VARCHAR(100) NOT NULL,                     -- 1:1 match with nsqf_qps.sector
+    sop_title TEXT NOT NULL,                          -- 'Fine Dining Table Setup & Cutlery Alignment Standard'
+    sop_title_hi TEXT,                                -- '5-स्टार टेबल लिनेन और कटलरी अलाइनमेंट मानक'
+    workstation_name TEXT,                            -- 'Dining Room Side Station'
+    objective TEXT NOT NULL,                          -- Operational outcome statement
+    target_duration_seconds INT DEFAULT 300,          -- Benchmark execution time (e.g. 5 mins)
     total_steps INT DEFAULT 6,
-    pipeline_status VARCHAR(50) DEFAULT 'ready',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    tools_required TEXT,                              -- 'Lint-free cloth, Molleton pad, Cruet set'
+    ppe_requirements TEXT,                            -- 'Service gloves, Apron'
+    compliance_standard VARCHAR(100) DEFAULT 'ISO 9001 / Industry Standard',
+    version VARCHAR(20) DEFAULT '1.0',
+    status VARCHAR(30) DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Table: nsqf_sop_steps (Step-by-step SOP Actions)
-CREATE TABLE IF NOT EXISTS nsqf_sop_steps (
+-- 2. PROCEDURAL ACTION STEPS & DUAL VIDEO BINDINGS
+CREATE TABLE IF NOT EXISTS enterprise_sop_steps (
     id SERIAL PRIMARY KEY,
-    sop_code VARCHAR(50) NOT NULL REFERENCES nsqf_sops(sop_code) ON DELETE CASCADE,
-    step_number INT NOT NULL,
-    pc_id TEXT,                                    -- Source NSQF PC reference
-    step_action TEXT NOT NULL,                     -- Action verb headline
-    step_action_hi TEXT,
-    step_description TEXT,
-    video_id TEXT NOT NULL,                        -- Reused from nsqf_pcs
-    video_id_hi TEXT,
-    channel_title TEXT,
+    sop_code VARCHAR(50) NOT NULL REFERENCES enterprise_sops(sop_code) ON DELETE CASCADE,
+    step_number INT NOT NULL,                         -- 1, 2, 3, 4, 5...
+    pc_id VARCHAR(50),                                -- Original NSQF PC code ('PC1.')
+    action_headline TEXT NOT NULL,                    -- English 5-8 word action headline
+    action_headline_hi TEXT,                          -- Hindi action headline
+    procedure_text TEXT NOT NULL,                     -- Detailed standard operating instructions
+    procedure_text_hi TEXT,
+    video_id VARCHAR(30) NOT NULL,                    -- Harvested English YouTube video ID
+    video_id_hi VARCHAR(30),                          -- Harvested Hindi YouTube video ID
+    channel_title TEXT,                               -- Channel attribution
+    channel_title_hi TEXT,
     duration_seconds INT DEFAULT 180,
-    is_mandatory_safety INT DEFAULT 0,
+    is_mandatory_safety BOOLEAN DEFAULT FALSE,        -- 🔴 Safety & Compliance flag
+    critical_control_point TEXT,                      -- Defect warning: 'Never touch blade with fingers'
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(sop_code, step_number)
 );
+
+-- 3. CORPORATE DOMAIN ISOLATION & TEAM ASSIGNMENTS
+CREATE TABLE IF NOT EXISTS enterprise_sop_assignments (
+    id SERIAL PRIMARY KEY,
+    company_domain VARCHAR(100) NOT NULL,             -- e.g. 'tajhotels.com', 'marriott.com'
+    sop_code VARCHAR(50) NOT NULL REFERENCES enterprise_sops(sop_code) ON DELETE CASCADE,
+    department VARCHAR(100),                          -- e.g. 'Food & Beverage Service'
+    assigned_by INT,                                  -- Manager User ID
+    assigned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(company_domain, sop_code)
+);
+
+-- 4. LIVE AUDIT LOG & COMPLIANCE VERIFICATION
+CREATE TABLE IF NOT EXISTS enterprise_sop_executions (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,                             -- Employee User ID
+    company_domain VARCHAR(100),                      -- '@company.com'
+    sop_code VARCHAR(50) NOT NULL REFERENCES enterprise_sops(sop_code),
+    step_number INT NOT NULL,
+    status VARCHAR(20) DEFAULT 'completed',           -- 'completed', 'verified', 'flagged'
+    completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    supervisor_verified_by INT,                       -- Shift Supervisor User ID
+    UNIQUE(user_id, sop_code, step_number, completed_at)
+);
 ```
 
 ---
 
-## 5. Global Navigation Header Update
+## 5. Universal Navigation Header Update
 
-The universal navigation header across all portal pages will be standardized:
+The universal navigation header across all portal pages:
 
 ```html
 <nav class="portal-nav-bar">
@@ -169,35 +218,20 @@ The universal navigation header across all portal pages will be standardized:
 
 ---
 
-## 6. Implementation Roadmap
+## 6. Implementation Plan & Next Action
 
-```
-┌──────────────────────────────────────────────────────────────────────────────────────────┐
-│                            ENTERPRISE SOP IMPLEMENTATION PHASES                          │
-├──────────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                          │
-│  PHASE 1: Database Schema & Auto-Synthesis Script                                        │
-│  • Create `nsqf_sops` and `nsqf_sop_steps` tables in `hayadb`.                           │
-│  • Build `scripts/nsqf_auto_sop_generator.js` to map NOS modules to ready-made SOPs.    │
-│                                                                                          │
-│  PHASE 2: Bespoke Sector Asset Generation                                                │
-│  • Generate Studio Ghibli illustrations in `assets/sectors/students/` (38 sectors).      │
-│  • Generate Shin-Hanga Architectural illustrations in `assets/sectors/employers/` (38).  │
-│                                                                                          │
-│  PHASE 3: Employers Portal Frontend (`employers.html`)                                   │
-│  • Build Sector Selection Grid with Shin-Hanga cards (1:1 with students.html sectors).   │
-│  • Render Ready-Made SOP Cards with time standards, step counts, and language badges.    │
-│                                                                                          │
-│  PHASE 4: SOP Reel Mode in `reel.html`                                                   │
-│  • Support `?sop=SOP-TH-01` query parameter for operational compliance viewing.          │
-│  • Display SOP Procedure Headlines and Digital Shift Checklist.                          │
-│                                                                                          │
-│  PHASE 5: Universal Navigation Synchronization                                           │
-│  • Update header nav across `index.html`, `students.html`, `employers.html`,             │
-│    `employees.html`, `professionals.html`, and `dashboard.html`.                         │
-│                                                                                          │
-└──────────────────────────────────────────────────────────────────────────────────────────┘
-```
+1. **Step 1 — Create PostgreSQL Tables in `server/db.js`**:
+   * Add `enterprise_sops`, `enterprise_sop_steps`, `enterprise_sop_assignments`, `enterprise_sop_executions`.
+2. **Step 2 — Build Auto-SOP Generator Script (`scripts/nsqf_auto_sop_generator.js`)**:
+   * Synthesize ~9,000–11,000 ready-made SOPs from existing `nsqf_modules` & `nsqf_pcs`.
+   * Export corresponding `.md` files to `data/sops/{sector}/{slug}.md`.
+3. **Step 3 — Build Employers Portal (`employers.html`)**:
+   * Render 38 Sector Cards with Shin-Hanga architectural style.
+   * Render Ready-Made SOP Cards with benchmark time limits and language badges.
+4. **Step 4 — Update `reel.html` for SOP Operational Mode**:
+   * Support `?sop=fine-dining-table-setup` with procedure headlines and compliance checklist.
+5. **Step 5 — Universal Navigation Sync**:
+   * Standardize header across all HTML portals.
 
 ---
 *Saved and synchronized in `roadmap/HAYAGRIVA_ENTERPRISE_SOP_ROADMAP.md`.*
