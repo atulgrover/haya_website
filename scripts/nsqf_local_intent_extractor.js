@@ -416,20 +416,25 @@ function synthesizeHindiIntent(pcIntent) {
     return translated.join(' ').trim();
 }
 
-// ── 9. Deduplicated Contextual English Search Vector ─────────────────────────
+// ── 9. Deduplicated Contextual English Search Vector (Capped <= 95 Chars) ────
 function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent) {
     const cleanSector = String(sector || '')
-        .replace(/sector|council|skill|india/gi, '')
+        .replace(/sector|council|skill|india|[\\"()\[\]]/gi, '')
         .trim();
 
     const cleanQp = String(qpName || '')
-        .replace(/assistant|technician|operator/gi, (m) => m)
+        .replace(/[\\"()\[\]]/g, '')
         .trim();
 
     const cleanNos = String(nosTitle || '')
         .replace(/^[A-Z0-9_\/]+:\s*/i, '')
         .replace(/\s+\d{1,3}$/, '')
         .replace(/\.\.\.*/g, '')
+        .replace(/[\\"()\[\]]/g, '')
+        .trim();
+
+    const cleanIntent = String(pcIntent || '')
+        .replace(/[\\"()\[\]]/g, '')
         .trim();
 
     const seenWords = new Set();
@@ -439,7 +444,7 @@ function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent
         const tokens = str.split(/\s+/).filter(t => t.length > 1);
         for (const t of tokens) {
             const lower = t.toLowerCase();
-            if (!seenWords.has(lower) && !/^(and|or|of|in|on|to|for|the|a|an|is|are)$/i.test(lower)) {
+            if (!seenWords.has(lower) && !/^(and|or|of|in|on|to|for|the|a|an|is|are|with|by|as)$/i.test(lower)) {
                 seenWords.add(lower);
                 queryParts.push(t);
             }
@@ -449,15 +454,20 @@ function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent
     addTokens(cleanSector);
     addTokens(cleanQp);
     addTokens(cleanNos);
-    addTokens(pcIntent);
+    addTokens(cleanIntent);
 
-    const finalTokens = queryParts.slice(0, 12);
-    return `${finalTokens.join(' ')} practical tutorial demonstration`.trim();
+    // Limit salient tokens so total length + "practical tutorial" <= 95 characters
+    let q = queryParts.slice(0, 8).join(' ');
+    let full = `${q} practical tutorial`.trim();
+    if (full.length > 95) {
+        full = full.substring(0, 95).trim();
+    }
+    return full;
 }
 
-// ── 10. Devanagari Hindi Search Vector (For YouTube Harvester) ───────────────
+// ── 10. Devanagari Hindi Search Vector (Capped <= 95 Chars) ───────────────────
 function synthesizeHindiSearchVector(englishQuery, pcIntent) {
-    const textToTranslate = `${pcIntent} ${englishQuery}`.toLowerCase();
+    const textToTranslate = `${pcIntent} ${englishQuery}`.toLowerCase().replace(/[\\"()\[\]]/g, '');
     const words = textToTranslate.split(/[\s,.:()/-]+/).filter(w => w.length > 2);
 
     const seenHindi = new Set();
@@ -470,12 +480,18 @@ function synthesizeHindiSearchVector(englishQuery, pcIntent) {
         }
     }
 
+    let fullHi = '';
     if (translatedParts.length >= 2) {
-        return `${translatedParts.slice(0, 10).join(' ')} प्रैक्टिकल वीडियो कैसे करें`.trim();
+        fullHi = `${translatedParts.slice(0, 7).join(' ')} प्रैक्टिकल वीडियो कैसे करें`.trim();
+    } else {
+        const intentTokens = pcIntent.split(' ').map(w => VOCATIONAL_HINDI_DICT[w.toLowerCase().replace(/[^a-z]/g, '')] || w);
+        fullHi = `${intentTokens.slice(0, 6).join(' ')} प्रैक्टिकल सीखें वीडियो`.trim();
     }
 
-    const intentTokens = pcIntent.split(' ').map(w => VOCATIONAL_HINDI_DICT[w.toLowerCase()] || w);
-    return `${intentTokens.join(' ')} प्रैक्टिकल सीखें हिंदी वीडियो`.trim();
+    if (fullHi.length > 95) {
+        fullHi = fullHi.substring(0, 95).trim();
+    }
+    return fullHi;
 }
 
 // ── 11. Confidence Scoring ───────────────────────────────────────────────────

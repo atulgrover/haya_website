@@ -147,7 +147,7 @@ function scoreCandidateVideo(video, pcData, lang = 'eng') {
 }
 
 // ── 4. YouTube Video Search Engine with Multi-Factor Evaluation ──────────────
-async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool) {
+async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = new Set()) {
     const rawQuery = lang === 'hi'
         ? (pcData.contextual_search_query_hi || `${pcData.qp_name} ${pcData.pc_intent_hi || pcData.pc_intent} हिंदी वीडियो`)
         : (pcData.contextual_search_query || `${pcData.qp_name} ${pcData.pc_intent} practical tutorial`);
@@ -162,14 +162,17 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool) {
         );
         if (cachedRes.rows.length > 0) {
             const row = cachedRes.rows[0];
-            return {
-                videoId:      row.video_id,
-                videoTitle:   row.video_title,
-                videoUrl:     row.video_url,
-                thumbnailUrl: row.thumbnail_url,
-                auditScore:   row.audit_score,
-                isCached:     true
-            };
+            // If cached video was not already used in this QP, reuse it
+            if (!usedInQp.has(row.video_id)) {
+                return {
+                    videoId:      row.video_id,
+                    videoTitle:   row.video_title,
+                    videoUrl:     row.video_url,
+                    thumbnailUrl: row.thumbnail_url,
+                    auditScore:   row.audit_score,
+                    isCached:     true
+                };
+            }
         }
     } catch (_) {}
 
@@ -178,12 +181,17 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool) {
 
     try {
         // Query youtube-sr with safe search
-        const results = await ytsr.search(rawQuery, { limit: 5, safeSearch: true });
+        const results = await ytsr.search(rawQuery, { limit: 6, safeSearch: true });
 
         for (const vid of results) {
             if (!vid.id || vid.id.length !== 11) continue;
 
-            const calculatedScore = scoreCandidateVideo(vid, pcData, lang);
+            let calculatedScore = scoreCandidateVideo(vid, pcData, lang);
+
+            // Diversity Guard: If video was already used in this QP, apply -25 penalty
+            if (usedInQp.has(vid.id)) {
+                calculatedScore = Math.max(20, calculatedScore - 25);
+            }
 
             if (calculatedScore > highestScore) {
                 highestScore = calculatedScore;
@@ -364,14 +372,25 @@ async function runVideoHarvester() {
     let processedCount = 0;
     let totalScore = 0;
 
+    const qpUsedMap = new Map(); // qp_code -> { en: Set, hi: Set }
+    function getQpSets(qpCode) {
+        if (!qpUsedMap.has(qpCode)) {
+            qpUsedMap.set(qpCode, { en: new Set(), hi: new Set() });
+        }
+        return qpUsedMap.get(qpCode);
+    }
+
     for (let i = 0; i < items.length; i += CONCURRENCY_WORKERS) {
         const chunk = items.slice(i, i + CONCURRENCY_WORKERS);
 
         const results = await Promise.all(chunk.map(async (item) => {
+            const qpSets = getQpSets(item.qp_code);
             const [engVid, hiVid] = await Promise.all([
-                searchYoutubeMultiFactor(item, 'eng', pool),
-                searchYoutubeMultiFactor(item, 'hi', pool)
+                searchYoutubeMultiFactor(item, 'eng', pool, qpSets.en),
+                searchYoutubeMultiFactor(item, 'hi', pool, qpSets.hi)
             ]);
+            qpSets.en.add(engVid.videoId);
+            qpSets.hi.add(hiVid.videoId);
             return { item, engVid, hiVid };
         }));
 
