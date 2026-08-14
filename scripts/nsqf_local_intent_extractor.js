@@ -211,21 +211,51 @@ const VOCATIONAL_HINDI_DICT = {
     'robotics': 'रोबोटिक्स',
 };
 
-// ── 4. Sector to YouTube Category ID Mapping ────────────────────────────────
+// ── 4. Sector to Complete YouTube Category Mapping (All 15 Categories) ─────
 const SECTOR_YOUTUBE_CATEGORY = {
+    // 28: Science & Technology
     'electronics':     { id: 28, name: 'Science & Technology' },
     'telecom':         { id: 28, name: 'Science & Technology' },
     'it-ites':         { id: 28, name: 'Science & Technology' },
     'it':              { id: 28, name: 'Science & Technology' },
-    'media':           { id: 28, name: 'Science & Technology' },
+    'instrumentation': { id: 28, name: 'Science & Technology' },
+
+    // 2: Autos & Vehicles
     'automotive':      { id: 2,  name: 'Autos & Vehicles' },
     'aerospace':       { id: 2,  name: 'Autos & Vehicles' },
+    'aviation':        { id: 2,  name: 'Autos & Vehicles' },
+
+    // 26: Howto & Style
     'textile':         { id: 26, name: 'Howto & Style' },
     'apparel':         { id: 26, name: 'Howto & Style' },
     'beauty':          { id: 26, name: 'Howto & Style' },
     'food':            { id: 26, name: 'Howto & Style' },
     'handicrafts':     { id: 26, name: 'Howto & Style' },
+    'gems':            { id: 26, name: 'Howto & Style' },
+    'leather':         { id: 26, name: 'Howto & Style' },
+
+    // 15: Pets & Animals (Agriculture / Livestock / Farming)
     'agriculture':     { id: 15, name: 'Pets & Animals' },
+    'animal':          { id: 15, name: 'Pets & Animals' },
+    'dairy':           { id: 15, name: 'Pets & Animals' },
+    'fisheries':       { id: 15, name: 'Pets & Animals' },
+
+    // 1: Film & Animation
+    'media':           { id: 1,  name: 'Film & Animation' },
+    'animation':       { id: 1,  name: 'Film & Animation' },
+
+    // 20: Gaming
+    'gaming':          { id: 20, name: 'Gaming' },
+
+    // 19: Travel & Events
+    'tourism':         { id: 19, name: 'Travel & Events' },
+    'hospitality':     { id: 19, name: 'Travel & Events' },
+
+    // 17: Sports
+    'sports':          { id: 17, name: 'Sports' },
+    'fitness':         { id: 17, name: 'Sports' },
+
+    // 27: Education (General Technical & Vocational)
     'healthcare':      { id: 27, name: 'Education' },
     'construction':    { id: 27, name: 'Education' },
     'power':           { id: 27, name: 'Education' },
@@ -233,6 +263,12 @@ const SECTOR_YOUTUBE_CATEGORY = {
     'capital goods':   { id: 27, name: 'Education' },
     'plumbing':        { id: 27, name: 'Education' },
     'green jobs':      { id: 27, name: 'Education' },
+    'mining':          { id: 27, name: 'Education' },
+    'chemical':        { id: 27, name: 'Education' },
+    'security':        { id: 27, name: 'Education' },
+    'retail':          { id: 27, name: 'Education' },
+    'bfsi':            { id: 27, name: 'Education' },
+    'logistics':       { id: 27, name: 'Education' },
 };
 
 function mapSectorToCategory(sector) {
