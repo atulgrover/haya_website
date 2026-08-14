@@ -211,7 +211,7 @@ function injectAuthModal() {
                     <h2 class="auth-modal-title" id="authModalTitle">HAYAGRIVA SSO</h2>
                     <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
                 </div>
-                <p class="auth-modal-sub" id="authModalSub">Single Sign-On for Students, Employees &amp; Professionals</p>
+                <p class="auth-modal-sub" id="authModalSub">Single Sign-On for Students, Employers &amp; Professionals</p>
                 <div class="auth-modal-alert" id="authModalAlert"></div>
                 <form class="auth-modal-form" id="authModalForm" onsubmit="handleAuthSubmit(event)">
                     <div class="form-group">

@@ -71,6 +71,62 @@
       letter-spacing: 0.3px;
     }
 
+    /* ===== LANGUAGE TOGGLE ===== */
+    #langToggleWrap {
+      position: fixed;
+      top: 18px; right: 62px;
+      z-index: 2001;
+      display: flex; align-items: center; gap: 2px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      padding: 2px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+    }
+    .lang-pill {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+    .lang-pill:hover { color: #FFFFFF; }
+    .lang-pill.active {
+      background: #0284C7;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.5);
+    }
+
+    /* ===== LANGUAGE TOAST ===== */
+    #langToast {
+      position: fixed;
+      top: 66px; left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 20px;
+      z-index: 3000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    #langToast.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
     /* ===== MUTE BUTTON ===== */
     #muteBtn {
       position: fixed;
@@ -275,6 +331,15 @@
   <!-- Back button -->
   <a id="backBtn" href="javascript:void(0)" onclick="handleBackNavigation(event)">← Back</a>
 
+  <!-- Language Toggle (EN | हिन्दी) -->
+  <div id="langToggleWrap" title="Switch Language">
+    <button class="lang-pill active" id="lang-en" onclick="setLanguage('en')">EN</button>
+    <button class="lang-pill" id="lang-hi" onclick="setLanguage('hi')">हिन्दी</button>
+  </div>
+
+  <!-- Language Switch Toast Notification -->
+  <div id="langToast"></div>
+
   <!-- Mute toggle -->
   <button id="muteBtn" title="Toggle Mute" onclick="toggleMute()">🔇</button>
 
@@ -311,6 +376,7 @@
     const pcParam      = params.get('pc');
     const videoParam   = params.get('video');
 
+    let currentLang = localStorage.getItem('haya_reel_lang') || params.get('lang') || 'en';
     let curriculum  = null;
     let ytReady     = false;
     let isMuted     = true;
@@ -362,6 +428,9 @@
                 ? mod.pcs.map(p => `${p.pc_id}: ${p.pc_intent || p.pc_desc || p.title}`)
                 : [];
 
+              const primaryVid = (mod.pcs && mod.pcs[0] && mod.pcs[0].video_id) || mod.video_id || 'x9PQgbB4y6M';
+              const primaryVidHi = (mod.pcs && mod.pcs[0] && mod.pcs[0].video_id_hi) || mod.video_id_hi || '';
+
               flatLessons.push({
                 id: `${mod.nos_code}_MOD_${idx + 1}`,
                 title: mod.module_title || `Module ${idx + 1}: ${mod.nos_title || mod.nos_code}`,
@@ -370,7 +439,9 @@
                 pcs: pcList,
                 pcs_obj: mod.pcs || [],
                 search_query: mod.intent_query || `${nsqf.qp_name} ${mod.module_title}`,
-                video_id: (mod.pcs && mod.pcs[0] && mod.pcs[0].video_id) || mod.video_id || 'x9PQgbB4y6M'
+                video_id: primaryVid,
+                video_id_hi: primaryVidHi,
+                video_title_hi: (mod.pcs && mod.pcs[0] && mod.pcs[0].video_title_hi) || ''
               });
             });
           }
@@ -572,11 +643,14 @@
             ${pcs.map((pcItem, pIdx) => {
               const pcCodeMatch = String(pcItem).match(/^(PC[\d\.]+)/i);
               const pcCodeStr = pcCodeMatch ? pcCodeMatch[1] : `PC ${pIdx + 1}`;
-              const vId = (lesson.pcs_obj && lesson.pcs_obj[pIdx] && lesson.pcs_obj[pIdx].video_id) || lesson.video_id;
+              const pcObj = lesson.pcs_obj && lesson.pcs_obj[pIdx];
+              const vId = (currentLang === 'hi' && pcObj && pcObj.video_id_hi)
+                ? pcObj.video_id_hi 
+                : ((pcObj && pcObj.video_id) || lesson.video_id);
               return `
                 <button class="pc-jump-pill ${pIdx === 0 ? 'active' : ''}" 
                   id="pc-pill-${idx}-${pIdx}"
-                  onclick="switchPcVideo(${idx}, ${pIdx}, '${vId}', '${pcCodeStr}')">
+                  onclick="handlePillClick(${idx}, ${pIdx}, '${pcCodeStr}')">
                   ▶ ${pcCodeStr}
                 </button>
               `;
@@ -688,7 +762,8 @@
       }
 
       const lesson  = curriculum.lessons[idx];
-      const videoId = extractCleanYouTubeId(lesson.video_id);
+      const targetVid = (currentLang === 'hi' && lesson.video_id_hi) ? lesson.video_id_hi : lesson.video_id;
+      const videoId = extractCleanYouTubeId(targetVid);
       if (!videoId) return;
 
       const wrap = document.getElementById(`yt-wrap-${idx}`);
@@ -802,8 +877,24 @@
     }
 
     /* =========================================================
-       DIRECT PC VIDEO JUMP & PROGRESS TRACKING
+       DIRECT PC VIDEO JUMP & LANGUAGE CONTROLS
        ========================================================= */
+    function getActiveVideoIdForPc(slideIdx, pcIdx, lang = currentLang) {
+      if (!curriculum || !curriculum.lessons || !curriculum.lessons[slideIdx]) return 'x9PQgbB4y6M';
+      const lesson = curriculum.lessons[slideIdx];
+      const pcObj = lesson.pcs_obj && lesson.pcs_obj[pcIdx];
+      if (lang === 'hi') {
+        if (pcObj && pcObj.video_id_hi) return pcObj.video_id_hi;
+        if (lesson.video_id_hi) return lesson.video_id_hi;
+      }
+      return (pcObj && pcObj.video_id) || lesson.video_id || 'x9PQgbB4y6M';
+    }
+
+    function handlePillClick(slideIdx, pcIdx, pcCode) {
+      const vId = getActiveVideoIdForPc(slideIdx, pcIdx, currentLang);
+      switchPcVideo(slideIdx, pcIdx, vId, pcCode);
+    }
+
     function switchPcVideo(slideIdx, pcIdx, videoId, pcCode) {
       // Update active pill styling
       const pills = document.querySelectorAll(`#pc-jump-bar-${slideIdx} .pc-jump-pill`);
@@ -812,10 +903,12 @@
         else p.classList.remove('active');
       });
 
+      const cleanId = extractCleanYouTubeId(videoId);
+
       // Swap YouTube video via API
       if (players[slideIdx] && typeof players[slideIdx].loadVideoById === 'function') {
         try {
-          players[slideIdx].loadVideoById(videoId);
+          players[slideIdx].loadVideoById(cleanId);
         } catch (_) {}
       }
 
@@ -825,6 +918,55 @@
         currentUrl.searchParams.set('pc', pcCode);
         window.history.replaceState({}, '', currentUrl.toString());
       } catch (_) {}
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('haya_reel_lang', lang);
+
+      // Update toggle buttons UI
+      const enBtn = document.getElementById('lang-en');
+      const hiBtn = document.getElementById('lang-hi');
+      if (enBtn && hiBtn) {
+        if (lang === 'hi') {
+          hiBtn.classList.add('active');
+          enBtn.classList.remove('active');
+        } else {
+          enBtn.classList.add('active');
+          hiBtn.classList.remove('active');
+        }
+      }
+
+      // Refresh currently active video player on current slide
+      if (curriculum && Array.isArray(curriculum.lessons) && players[activeIndex]) {
+        const activePill = document.querySelector(`#pc-jump-bar-${activeIndex} .pc-jump-pill.active`);
+        let activePcIdx = 0;
+        if (activePill && activePill.id) {
+          const parts = activePill.id.split('-');
+          activePcIdx = parseInt(parts[parts.length - 1]) || 0;
+        }
+
+        const targetVid = getActiveVideoIdForPc(activeIndex, activePcIdx, lang);
+        if (targetVid && typeof players[activeIndex].loadVideoById === 'function') {
+          try {
+            players[activeIndex].loadVideoById(extractCleanYouTubeId(targetVid));
+          } catch (_) {}
+        }
+      }
+
+      showLanguageToast(lang === 'hi' ? '🇮🇳 Switched to Hindi (हिन्दी) demonstrations' : '🇬🇧 Switched to English demonstrations');
+    }
+
+    let toastTimer = null;
+    function showLanguageToast(msg) {
+      const toast = document.getElementById('langToast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('visible');
+      }, 2200);
     }
 
     async function togglePC(skillId, lessonId, pcIdx, slideIdx, checkbox) {

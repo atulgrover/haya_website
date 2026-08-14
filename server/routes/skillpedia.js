@@ -370,6 +370,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
             SELECT 
                 p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, 
                 p.video_id, p.video_title, p.video_url,
+                p.video_id_hi, p.video_title_hi, p.video_url_hi, p.contextual_search_query_hi,
                 COALESCE(n.nos_title, 'Occupational Standards') as nos_title,
                 COALESCE(m.module_title, 'Module') as module_title
             FROM nsqf_pcs p
