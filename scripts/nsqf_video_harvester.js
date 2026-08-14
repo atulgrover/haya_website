@@ -146,6 +146,26 @@ function scoreCandidateVideo(video, pcData, lang = 'eng') {
     return Math.min(100, Math.max(20, score));
 }
 
+// ── 3.5. YouTube oEmbed Playability & Embed Verification Guard ───────────────
+const oEmbedCache = new Map(); // videoId -> boolean
+
+async function isVideoEmbeddable(videoId) {
+    if (!videoId || videoId.length !== 11) return false;
+    if (oEmbedCache.has(videoId)) return oEmbedCache.get(videoId);
+
+    try {
+        const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`, {
+            signal: AbortSignal.timeout(2000)
+        });
+        const isOk = res.status === 200;
+        oEmbedCache.set(videoId, isOk);
+        return isOk;
+    } catch (_) {
+        // If transient timeout occurs, do not block pipeline
+        return true;
+    }
+}
+
 // ── 4. YouTube Video Search Engine with Multi-Factor Evaluation ──────────────
 async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = new Set()) {
     const rawQuery = lang === 'hi'
@@ -196,6 +216,12 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
             }
 
             if (calculatedScore > highestScore) {
+                // 🔒 Live oEmbed Verification: Check that video is 100% public & embeddable
+                const embeddable = await isVideoEmbeddable(vid.id);
+                if (!embeddable) {
+                    continue; // Skip video with disabled embedding (Error 101/150)
+                }
+
                 highestScore = calculatedScore;
                 const durSec = vid.duration ? Math.round(vid.duration / 1000) : 300;
                 bestCandidate = {
