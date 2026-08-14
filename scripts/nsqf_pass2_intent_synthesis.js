@@ -31,8 +31,8 @@ function fallbackSynthesizeIntent(qpName, nosTitle, modTitle, pcDesc) {
     if (words.length <= 8) return clean;
 
     const important = words.filter(w => !/^(the|a|an|and|or|in|on|at|to|for|of|with|by|as|is|are|be|must|able|able to)$/i.test(w));
-    const intent = important.slice(0, 6).join(' ');
-    return intent || clean.substring(0, 40);
+    const intent = important.slice(0, 8).join(' ');
+    return intent || clean.substring(0, 55);
 }
 
 /**
@@ -70,11 +70,11 @@ Given the following training context:
 - Module Reel: "${modTitle}"
 - Performance Criteria Statement: "${pcDesc}"
 
-Synthesize a precise, action-oriented 3 to 6 word practical skill intent for this criteria.
+Synthesize a precise, action-oriented 5 to 8 word practical skill intent for this criteria (Action Verb + Specific Component + Tool/Context).
 Requirements:
 1. Do NOT include raw codes, IDs, or introductory words like "Check that" or "Ensure".
 2. Focus strictly on the core physical/practical action.
-3. Respond ONLY with raw JSON: { "pc_intent": "Exact 3-6 Word Practical Action" }`;
+3. Respond ONLY with raw JSON: { "pc_intent": "Exact 5-8 Word Practical Action" }`;
 
                 const res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
                     method: 'POST',

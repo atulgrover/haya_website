@@ -237,8 +237,8 @@ function synthesizeLocalIntent(pcDesc) {
         words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
     }
 
-    // If description is already concise (3-6 words), return title-cased
-    if (words.length >= 3 && words.length <= 6) {
+    // If description is already concise (5-8 words), return title-cased
+    if (words.length >= 5 && words.length <= 8) {
         return words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     }
 
@@ -251,11 +251,11 @@ function synthesizeLocalIntent(pcDesc) {
             continue;
         }
         importantWords.push(w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-        if (importantWords.length >= 6) break; // Limit to max 6 keywords
+        if (importantWords.length >= 8) break; // Expanded to 5-8 salient words
     }
 
     const intent = importantWords.join(' ');
-    return intent || text.substring(0, 45);
+    return intent || text.substring(0, 55);
 }
 
 // ── 5. Deduplicated Contextual English Search Vector ─────────────────────────
@@ -294,8 +294,8 @@ function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent
     addTokens(cleanNos);
     addTokens(pcIntent);
 
-    // Limit to top 10 unique salient words + tutorial suffix
-    const finalTokens = queryParts.slice(0, 10);
+    // Limit to top 12 unique salient words + tutorial suffix
+    const finalTokens = queryParts.slice(0, 12);
     return `${finalTokens.join(' ')} practical tutorial demonstration`.trim();
 }
 
@@ -315,7 +315,7 @@ function synthesizeHindiSearchVector(englishQuery, pcIntent) {
     }
 
     if (translatedParts.length >= 2) {
-        return `${translatedParts.slice(0, 8).join(' ')} प्रैक्टिकल वीडियो कैसे करें`.trim();
+        return `${translatedParts.slice(0, 10).join(' ')} प्रैक्टिकल वीडियो कैसे करें`.trim();
     }
 
     // Fallback: Use core intent words + common Hindi vocational suffix
@@ -339,11 +339,11 @@ function computeIntentConfidence(rawDesc, intent) {
         score += 10;
     }
 
-    // Factor 2: Length & Conciseness (+25 Points)
+    // Factor 2: Length & Conciseness (+25 Points) - Target: 5 to 8 words
     const wordCount = intent.split(' ').length;
-    if (wordCount >= 3 && wordCount <= 6) {
+    if (wordCount >= 5 && wordCount <= 8) {
         score += 25;
-    } else if (wordCount === 7 || wordCount === 8) {
+    } else if (wordCount === 4 || wordCount === 9) {
         score += 15;
     } else {
         score += 5;
