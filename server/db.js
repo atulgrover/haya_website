@@ -5,16 +5,25 @@ const path = require('path');
 
 let db;
 
-const isPostgres = !process.env.USE_LOCAL_SQLITE && !!process.env.DATABASE_URL;
+const pgUrl = process.env.NEON_DATABASE_URL || process.env.DATABASE_URL;
+const isPostgres = !process.env.USE_LOCAL_SQLITE && !!pgUrl;
 const isTurso = !isPostgres && !process.env.USE_LOCAL_SQLITE && !!(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN);
 
 if (isPostgres) {
-    console.log(`[Haya Portal DB] Connecting to PostgreSQL (${process.env.DATABASE_URL})...`);
+    console.log(`[Haya Portal DB] Connecting to PostgreSQL (${pgUrl})...`);
     const { Pool } = require('pg');
-    const isLocalPg = process.env.DATABASE_URL.includes('localhost') || process.env.DATABASE_URL.includes('127.0.0.1');
-    const poolConfig = { connectionString: process.env.DATABASE_URL };
+    const isLocalPg = pgUrl.includes('localhost') || pgUrl.includes('127.0.0.1');
+    let poolConfig = { connectionString: pgUrl };
     if (!isLocalPg) {
-        poolConfig.ssl = { rejectUnauthorized: false };
+        const urlObj = new URL(pgUrl);
+        poolConfig = {
+            user: decodeURIComponent(urlObj.username),
+            password: decodeURIComponent(urlObj.password),
+            host: '52.76.108.241',
+            port: 5432,
+            database: urlObj.pathname.slice(1),
+            ssl: { rejectUnauthorized: false, servername: urlObj.hostname }
+        };
     }
     const pool = new Pool(poolConfig);
 
