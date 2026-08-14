@@ -93,9 +93,17 @@ async function saveVideoForever({ qpCode, nosCode, nosTitle, moduleTitle, pcId, 
     try {
         const vUrl = videoUrl || `https://www.youtube.com/watch?v=${videoId}`;
         await db.prepare(`
-            INSERT OR REPLACE INTO nsqf_videos
+            INSERT INTO nsqf_videos
             (qp_code, nos_code, nos_title, module_title, pc_id, pc_intent, pc_desc, video_id, video_title, video_url, audit_score)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (qp_code, nos_code, module_title, pc_id) DO UPDATE SET
+                nos_title = EXCLUDED.nos_title,
+                pc_intent = EXCLUDED.pc_intent,
+                pc_desc = EXCLUDED.pc_desc,
+                video_id = EXCLUDED.video_id,
+                video_title = EXCLUDED.video_title,
+                video_url = EXCLUDED.video_url,
+                audit_score = EXCLUDED.audit_score
         `).run(
             qpCode,
             nosCode || 'NOS',

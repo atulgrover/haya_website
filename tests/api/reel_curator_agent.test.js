@@ -11,7 +11,7 @@ test('ReelCurator AI Agent Suite', async (t) => {
 
     await t.test('1. video_swap_suggestions table exists in database', async () => {
         if (db.readyPromise) await db.readyPromise;
-        const row = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='video_swap_suggestions'").get();
+        const row = await db.prepare("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name='video_swap_suggestions'").get();
         assert.ok(row, 'video_swap_suggestions table should exist');
     });
 
@@ -29,9 +29,12 @@ test('ReelCurator AI Agent Suite', async (t) => {
     await t.test('4. Accept and Reject swap flows execute cleanly', async () => {
         // Create mock suggestion
         await db.prepare(`
-            INSERT OR REPLACE INTO video_swap_suggestions
+            INSERT INTO video_swap_suggestions
             (qp_code, nos_code, module_title, pc_id, pc_intent, current_video_id, current_video_title, current_audit_score, suggested_video_id, suggested_video_title, suggested_video_url, suggested_audit_score, ai_rationale, status)
             VALUES ('TEST/Q999', 'TEST/N01', 'Module 1.1 Test', 'PC1.1', 'Test PC Intent', 'CURR_VID', 'Current Title', 50, 'SUGG_VID', 'Suggested Title', 'https://youtube.com/watch?v=SUGG_VID', 95, 'AI test rationale', 'pending')
+            ON CONFLICT (qp_code, pc_id, suggested_video_id) DO UPDATE SET
+                status = 'pending',
+                ai_rationale = 'AI test rationale'
         `).run();
 
         const pending = await reelCuratorAgent.getPendingSwapSuggestions();

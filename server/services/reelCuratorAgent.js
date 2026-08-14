@@ -111,9 +111,21 @@ async function auditQpVideos(qpCode = 'AMH/Q0103', autoApplyThreshold = 75) {
                     const rationale = `AI Curator evaluated candidate "${bestCand.video_title}" with ${bestScore}% match score (vs. current ${currentScore}%). Demonstrates PC intent: "${intentText}".`;
                     try {
                         await db.prepare(`
-                            INSERT OR REPLACE INTO video_swap_suggestions
+                            INSERT INTO video_swap_suggestions
                             (qp_code, nos_code, module_title, pc_id, pc_intent, current_video_id, current_video_title, current_audit_score, suggested_video_id, suggested_video_title, suggested_video_url, suggested_audit_score, ai_rationale, status)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+                            ON CONFLICT (qp_code, pc_id, suggested_video_id) DO UPDATE SET
+                                nos_code = EXCLUDED.nos_code,
+                                module_title = EXCLUDED.module_title,
+                                pc_intent = EXCLUDED.pc_intent,
+                                current_video_id = EXCLUDED.current_video_id,
+                                current_video_title = EXCLUDED.current_video_title,
+                                current_audit_score = EXCLUDED.current_audit_score,
+                                suggested_video_title = EXCLUDED.suggested_video_title,
+                                suggested_video_url = EXCLUDED.suggested_video_url,
+                                suggested_audit_score = EXCLUDED.suggested_audit_score,
+                                ai_rationale = EXCLUDED.ai_rationale,
+                                status = 'pending'
                         `).run(
                             r.qp_code,
                             r.nos_code || 'NOS',
