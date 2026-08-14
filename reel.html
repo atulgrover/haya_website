@@ -221,7 +221,11 @@
     }
     .reel-meta { flex: 1; padding-right: 12px; }
     .reel-course-name { font-size: 12px; font-weight: 700; color: rgba(56,189,248,0.9); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
-    .reel-nos-label { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); padding: 2px 7px; border-radius: 4px; margin-bottom: 6px; letter-spacing: 0.4px; }
+    .reel-badge-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
+    .reel-nos-label { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); padding: 2px 7px; border-radius: 4px; letter-spacing: 0.4px; }
+    .reel-channel-badge { display: inline-flex; align-items: center; background: rgba(15,23,42,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(56,189,248,0.4); border-radius: 12px; padding: 2px 8px; font-size: 10.5px; font-weight: 700; color: #38bdf8; max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+    .reel-channel-badge svg { margin-right: 4px; flex-shrink: 0; color: #38bdf8; }
+    .reel-duration-tag { display: inline-flex; align-items: center; gap: 3px; background: rgba(0,0,0,0.65); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #e2e8f0; white-space: nowrap; }
     .reel-index-label { font-size: 13px; font-weight: 800; color: #fff; line-height: 1.3; }
 
     /* ===== ICON BUTTONS ===== */
@@ -461,7 +465,11 @@
                 search_query: mod.intent_query || `${nsqf.qp_name} ${mod.module_title}`,
                 video_id: primaryVid,
                 video_id_hi: primaryVidHi,
-                video_title_hi: (mod.pcs && mod.pcs[0] && mod.pcs[0].video_title_hi) || ''
+                video_title_hi: (mod.pcs && mod.pcs[0] && mod.pcs[0].video_title_hi) || '',
+                channel_title: (mod.pcs && mod.pcs[0] && mod.pcs[0].channel_title) || 'Vocational Skill Studio',
+                duration_seconds: (mod.pcs && mod.pcs[0] && mod.pcs[0].duration_seconds) || 300,
+                channel_title_hi: (mod.pcs && mod.pcs[0] && mod.pcs[0].channel_title_hi) || 'Vocational Skill Studio',
+                duration_seconds_hi: (mod.pcs && mod.pcs[0] && mod.pcs[0].duration_seconds_hi) || 300
               });
             });
           }
@@ -597,6 +605,13 @@
           ? `${window.location.origin}/reel.html?qp=${encodeURIComponent(cleanQp)}#reel-${modCode}`
           : `${window.location.origin}/reel.html?skill=${encodeURIComponent(skillId || '')}#reel-${idx + 1}`;
 
+        const channelTitle = (currentLang === 'hi' && lesson.channel_title_hi)
+          ? lesson.channel_title_hi
+          : (lesson.channel_title || 'Vocational Skill Studio');
+        const durSec = (currentLang === 'hi' && lesson.duration_seconds_hi)
+          ? lesson.duration_seconds_hi
+          : (lesson.duration_seconds || 300);
+
         slide.innerHTML = `
           <!-- YouTube player mount with zero-flicker structure -->
           <div class="yt-player-wrap" id="yt-wrap-${idx}">
@@ -678,7 +693,16 @@
           <div class="reel-action-bar">
             <div class="reel-meta">
               <div class="reel-course-name">${curr.title}</div>
-              <div class="reel-nos-label">${nosCode}</div>
+              <div class="reel-badge-row">
+                <span class="reel-nos-label">${nosCode}</span>
+                <span class="reel-channel-badge" id="channel-badge-${idx}">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                  <span class="channel-name-txt">${channelTitle}</span>
+                </span>
+                <span class="reel-duration-tag" id="duration-tag-${idx}">
+                  ⏱️ ${Math.max(1, Math.round(durSec / 60))} min
+                </span>
+              </div>
               <div class="reel-index-label">Reel ${idx + 1} of ${curr.lessons.length}</div>
             </div>
             <div class="reel-icon-btns">
@@ -943,6 +967,21 @@
         else p.classList.remove('active');
       });
 
+      // Update channel badge and duration tag dynamically for selected PC
+      const lesson = curriculum && curriculum.lessons && curriculum.lessons[slideIdx];
+      const pcObj = lesson && lesson.pcs_obj && lesson.pcs_obj[pcIdx];
+      const ch = (pcObj && ((currentLang === 'hi' ? (pcObj.channel_title_hi || pcObj.channel_title) : pcObj.channel_title)))
+        || (lesson && ((currentLang === 'hi' ? (lesson.channel_title_hi || lesson.channel_title) : lesson.channel_title)))
+        || 'Vocational Skill Studio';
+      const dur = (pcObj && ((currentLang === 'hi' ? (pcObj.duration_seconds_hi || pcObj.duration_seconds) : pcObj.duration_seconds)))
+        || (lesson && ((currentLang === 'hi' ? (lesson.duration_seconds_hi || lesson.duration_seconds) : lesson.duration_seconds)))
+        || 300;
+
+      const chBadge = document.querySelector(`#channel-badge-${slideIdx} .channel-name-txt`);
+      const durTag = document.getElementById(`duration-tag-${slideIdx}`);
+      if (chBadge) chBadge.textContent = ch;
+      if (durTag) durTag.textContent = `⏱️ ${Math.max(1, Math.round(dur / 60))} min`;
+
       const cleanId = extractCleanYouTubeId(videoId);
       const mount = document.getElementById(`yt-mount-${slideIdx}`);
 
@@ -981,6 +1020,30 @@
           enBtn.classList.add('active');
           hiBtn.classList.remove('active');
         }
+      }
+
+      // Update all slide channel badges & duration tags for the newly selected language
+      if (curriculum && Array.isArray(curriculum.lessons)) {
+        curriculum.lessons.forEach((l, i) => {
+          const activePill = document.querySelector(`#pc-jump-bar-${i} .pc-jump-pill.active`);
+          let pIdx = 0;
+          if (activePill && activePill.id) {
+            const parts = activePill.id.split('-');
+            pIdx = parseInt(parts[parts.length - 1]) || 0;
+          }
+          const pcObj = l.pcs_obj && l.pcs_obj[pIdx];
+          const ch = (pcObj && ((lang === 'hi' ? (pcObj.channel_title_hi || pcObj.channel_title) : pcObj.channel_title)))
+            || ((lang === 'hi' ? (l.channel_title_hi || l.channel_title) : l.channel_title))
+            || 'Vocational Skill Studio';
+          const dur = (pcObj && ((lang === 'hi' ? (pcObj.duration_seconds_hi || pcObj.duration_seconds) : pcObj.duration_seconds)))
+            || ((lang === 'hi' ? (l.duration_seconds_hi || l.duration_seconds) : l.duration_seconds))
+            || 300;
+
+          const chBadge = document.querySelector(`#channel-badge-${i} .channel-name-txt`);
+          const durTag = document.getElementById(`duration-tag-${i}`);
+          if (chBadge) chBadge.textContent = ch;
+          if (durTag) durTag.textContent = `⏱️ ${Math.max(1, Math.round(dur / 60))} min`;
+        });
       }
 
       showLanguageToast(lang === 'hi' ? '🇮🇳 Switched to Hindi (हिन्दी) demonstrations' : '🇬🇧 Switched to English demonstrations');

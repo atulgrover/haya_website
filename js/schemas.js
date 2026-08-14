@@ -53,7 +53,14 @@ function formatStandardizedCurriculum(raw) {
       subtitle: lesson.subtitle || 'Skill learning objective',
       video_platform: lesson.video_platform || 'youtube',
       video_id: originalVideoId,
-      pcs: Array.isArray(lesson.pcs) ? lesson.pcs : ['PC1. Demonstrate basic technique cleanly and safely.']
+      video_id_hi: lesson.video_id_hi,
+      video_title_hi: lesson.video_title_hi,
+      channel_title: lesson.channel_title,
+      duration_seconds: lesson.duration_seconds,
+      channel_title_hi: lesson.channel_title_hi,
+      duration_seconds_hi: lesson.duration_seconds_hi,
+      pcs: Array.isArray(lesson.pcs) ? lesson.pcs : ['PC1. Demonstrate basic technique cleanly and safely.'],
+      pcs_obj: lesson.pcs_obj || []
     };
   });
 

@@ -368,9 +368,10 @@ router.get('/nsqf/curriculum', async (req, res) => {
         // 1. Query relational 5-table schema (nsqf_pcs + nsqf_nos + nsqf_modules)
         const pcRows = await db.prepare(`
             SELECT 
-                p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, 
-                p.video_id, p.video_title, p.video_url,
-                p.video_id_hi, p.video_title_hi, p.video_url_hi, p.contextual_search_query_hi,
+                p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
+                p.video_id, p.video_title, p.video_url, p.channel_title, p.duration_seconds,
+                p.video_id_hi, p.video_title_hi, p.video_url_hi, p.channel_title_hi, p.duration_seconds_hi,
+                p.contextual_search_query_hi, p.audit_score,
                 COALESCE(n.nos_title, 'Occupational Standards') as nos_title,
                 COALESCE(m.module_title, 'Module') as module_title
             FROM nsqf_pcs p
@@ -410,14 +411,19 @@ router.get('/nsqf/curriculum', async (req, res) => {
                 moduleMap[key].pcs.push({
                     pc_id: row.pc_code,
                     pc_intent: row.pc_intent || row.pc_description,
+                    pc_intent_hi: row.pc_intent_hi,
                     pc_desc: row.pc_description,
                     video_id: row.video_id || 'x9PQgbB4y6M',
                     video_title: row.video_title || 'NSQF Vocational Reel',
                     video_url: row.video_url || 'https://www.youtube.com/watch?v=x9PQgbB4y6M',
+                    channel_title: row.channel_title || 'Vocational Skill Studio',
+                    duration_seconds: row.duration_seconds || 300,
                     video_id_hi: row.video_id_hi,
                     video_title_hi: row.video_title_hi,
                     video_url_hi: row.video_url_hi,
-                    audit_score: 90
+                    channel_title_hi: row.channel_title_hi || 'Vocational Skill Studio',
+                    duration_seconds_hi: row.duration_seconds_hi || 300,
+                    audit_score: row.audit_score || 90
                 });
             });
 
@@ -779,8 +785,11 @@ router.post('/progress/toggle-pc', async (req, res) => {
 
         if (isComp) {
             await db.prepare(`
-                INSERT OR REPLACE INTO user_pc_progress (user_id, qp_code, pc_code, completed, updated_at)
+                INSERT INTO user_pc_progress (user_id, qp_code, pc_code, completed, updated_at)
                 VALUES (?, ?, ?, 1, CURRENT_TIMESTAMP)
+                ON CONFLICT (user_id, qp_code, pc_code) DO UPDATE SET
+                    completed = 1,
+                    updated_at = CURRENT_TIMESTAMP
             `).run(uId, qpCode, pcCode);
         } else {
             await db.prepare(`
