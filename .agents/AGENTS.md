@@ -7,16 +7,16 @@
 ### Core Architecture & Portal Layout
 - **Public Marketing & Router Hub**: `index.html` (Central entrance hub introducing the 4 economic pillars with unified navigation header).
 - **Targeted Symmetrical Segment Portals**:
-  - `employees_nsqf.html` (Employees - NSQF): National Qualification Framework (NSQF) engine with 2,176 NCVET job roles & 11-step assessment masterclass reels.
-  - `employers_sop.html` (Employers - SOP): Enterprise skill matrix, corporate domain isolation (`@company.com`), SOP reel builder, and PC checklists.
+  - `employees_nsqf.html` (Employees - NSQF): National Qualification Framework (NSQF) engine with 2,176 NCVET job roles & dynamic PC-based vocational micro-learning reels.
+  - `employers_sop.html` (Employers - SOP): National Standard Operating Procedures (SOP) catalog across 41 sectors, station workflows, and corporate domain isolation (`@company.com`).
   - `entrepreneurs_msme.html` (Entrepreneurs - MSME): Turnkey MSME business blueprints, tool & machinery BOMs, day-1 operational playbooks, and bankable project profiles (PMEGP/Mudra).
   - `professionals_apnet.html` (Professionals - APNET): **Agentic Professionals Network** showcasing Desktop IPE binaries, local GGUF models, `.vlt` statutory data vaults, and marketplace report ordering.
 - **Interactive Collateral & Utilities**: `brochure.html` (Digital pitch deck), `workshop.html` (Masterclass registration), `handbook.html` (Operational docs viewer), `reel.html` (Video search & reel hub).
 - **Logged-In User Portal Dashboard**: `dashboard.html` (Logged-in control panel with tabs: `🔑 License & Payments`, `🖥️ Hayagriva IPE`, `🧠 LLM Models`, `📚 Data Vaults`, `🤖 IBC Agents`, `📊 Marketplace Reports`, `👤 Profile & Settings`).
-- **Auth Flow**: `login.html` and `signup.html` backed by `server/routes/auth.js` using SQLite (`server/db.js`), `bcryptjs`, and JWT tokens.
+- **Auth Flow**: `login.html` and `signup.html` backed by `server/routes/auth.js` using PostgreSQL (`server/db.js`), `bcryptjs`, and JWT tokens.
 - **Pricing & Licensing**: Ed25519 cryptographic master key generation (`server/routes/license.js`) & dynamic Razorpay checkout (`server/routes/payments.js`).
-- **Data Engine**: Local SQLite (WAL mode) with Turso Cloud SQLite fallback (`@libsql/client`) and pre-seeded 2,176 NCVET NSQF Job Roles.
-- **Marketplace Reports**: Custom report ordering system backed by `server/routes/reports.js` and `report_orders` SQLite table.
+- **Data Engine**: Local PostgreSQL (`hayadb`) with 2,176 NCVET NSQF Job Roles, 11,420 NOS units, and 207,363 Performance Criteria.
+- **Marketplace Reports**: Custom report ordering system backed by `server/routes/reports.js` and `report_orders` PostgreSQL table.
 - **Strategic Roadmap**: `roadmap/HAYAGRIVA_PORTAL_ROADMAP.md`.
 
 ### NSQF Data Pipeline Invariants & Memory

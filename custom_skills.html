@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enterprise Workspace | Custom Skills Builder | HAYAGRIVA</title>
-  <meta name="description" content="Private Enterprise Skill Hub for Corporate Workforce. Create, customize, and publish company custom 11-reel SOP skills.">
+  <meta name="description" content="Private Enterprise Skill Hub for Corporate Workforce. Create, customize, and publish company custom SOP skills with step-by-step checklists.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
@@ -377,7 +377,7 @@
         <button class="btn-close" onclick="closeCreateModal()">×</button>
       </div>
       <p style="font-size: 13px; color: var(--text-muted); margin-top: -8px; line-height: 1.5;">
-        Enter a skill topic and our AI will generate an <strong>11-reel vocational curriculum</strong> with real YouTube videos, NOS codes, and Performance Criteria.
+        Enter a skill topic and our AI will generate a <strong>modular vocational curriculum</strong> with real YouTube videos, NOS codes, and Performance Criteria.
       </p>
 
       <div class="filter-group">
@@ -397,7 +397,7 @@
       </div>
 
       <button class="btn-learn" id="btnGenInitialSkill" onclick="submitCreateSkill()" style="margin-top: 4px;">
-        🚀 Generate 11-Reel AI Skill Pack
+        🚀 Generate AI Custom Skill Pack
       </button>
     </div>
   </div>
@@ -505,7 +505,7 @@
     </div>
   </div>
 
-  <!-- Creator 11-Reel Confirmation Studio -->
+  <!-- Creator Skill Confirmation Studio -->
   <div class="studio-modal-overlay" id="studioModal">
     <div class="studio-modal-card">
       <div style="display:flex; align-items:center; justify-content:space-between;">
@@ -908,7 +908,7 @@
     }
 
     /* ============================================================
-       CREATOR 11-REEL CONFIRMATION STUDIO
+       CREATOR SKILL CONFIRMATION STUDIO
        ============================================================ */
     function openCreatorStudio(curriculum) {
       studioDraft    = JSON.parse(JSON.stringify(curriculum));
@@ -1046,7 +1046,7 @@
       // Build the full schema to persist
       const schemaJson = {
         title:       studioDraft.title,
-        subtitle:    studioDraft.subtitle || `11-Reel AI Skill Package`,
+        subtitle:    studioDraft.subtitle || `AI Enterprise Skill Package`,
         sector:      studioDraft.sector   || studioDraft.tag || 'Custom Micro-Learning',
         nsqf_level:  studioDraft.nsqf_level || 3,
         tag:         studioDraft.tag || 'General',
