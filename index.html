@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HAYAGRIVA - Universal Integrated Professional Environment (IPE) Platform</title>
-  <meta name="description" content="HAYAGRIVA is a local-first Universal Integrated Professional Environment (IPE) Platform serving Students (NSQF), Employers (SOP), and Professionals (IDE) with 100% offline data sovereignty, AI agent packs, local embeddings, and encrypted domain vaults.">
+  <meta name="description" content="HAYAGRIVA is a local-first Universal Integrated Professional Environment (IPE) Platform serving Employees (NSQF), Employers (SOP), Entrepreneurs (MSME), and Professionals (APNET) with 100% data sovereignty, AI agent packs, and bankable economic blueprints.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
@@ -33,21 +33,6 @@
     a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
     a:hover { color: var(--primary-hover); }
 
-    /* Top Navigation Bar (Identical across all pages: 64px height, padding 0 24px) */
-    .header-nav {
-      height: 64px; background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-shrink: 0; z-index: 1000; position: sticky; top: 0;
-    }
-    .nav-container {
-      max-width: 100%; padding: 0 24px; height: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .brand-logo { font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 1.5px; color: var(--text-main); }
-    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
-    .nav-link { padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
-    .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
-    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
-
     /* Page Load Entrance Animation */
     @keyframes heroPulseIn {
       0% { opacity: 0; transform: perspective(1000px) translateY(30px) scale(0.93); }
@@ -55,34 +40,46 @@
       100% { opacity: 1; transform: perspective(1000px) translateY(0) scale(1); }
     }
 
-    /* Animated Larger Hero Logo Section */
+    /* Animated Hero Section */
     .hero-section {
       background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
-      border-bottom: 1px solid var(--border-color); padding: 60px 24px 50px; text-align: center;
+      border-bottom: 1px solid var(--border-color); padding: 54px 24px 44px; text-align: center;
       display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;
       perspective: 1000px;
     }
     .hero-logo-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 20px;
-      padding: 36px 64px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 32px 56px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       display: inline-flex; align-items: center; justify-content: center;
-      max-width: 680px; width: 100%; transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+      max-width: 660px; width: 100%; transition: transform 0.15s ease-out, box-shadow 0.3s ease;
       animation: heroPulseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       transform-style: preserve-3d; will-change: transform; cursor: pointer;
     }
-    .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 230px; }
+    .hero-logo-card img { max-width: 100%; height: auto; display: block; max-height: 220px; }
 
-    /* Plain Text Anchor Buttons (Zero Emojis/Icons) */
-    .hero-nav-buttons { display: flex; gap: 16px; margin-top: 32px; justify-content: center; flex-wrap: wrap; }
-    .btn-hero-anchor {
-      background: #FFFFFF; border: 1px solid var(--border-color); color: var(--primary-color);
-      padding: 12px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer;
-      transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Live National Economic Metrics Counter Strip */
+    .metrics-bar {
+      background: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      padding: 20px 24px; display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
     }
-    .btn-hero-anchor:hover {
-      background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color);
-      box-shadow: 0 6px 16px rgba(30, 108, 147, 0.25); transform: translateY(-2px);
+    .metrics-container {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      max-width: 1200px; width: 100%; gap: 16px; text-align: center;
     }
+    .metric-box {
+      padding: 12px 16px; border-radius: 8px; background: #F8FAFC; border: 1px solid #EEF2F6;
+      display: flex; flex-direction: column; gap: 4px; transition: all 0.2s ease;
+    }
+    .metric-box:hover {
+      background: var(--primary-light); border-color: var(--primary-color); transform: translateY(-2px);
+    }
+    .metric-value {
+      font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--primary-color);
+      line-height: 1.1;
+    }
+    .metric-label { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .metric-sub { font-size: 11.5px; color: var(--text-muted); }
 
     /* Marketing Section Containers */
     .marketing-section {
@@ -97,7 +94,7 @@
       letter-spacing: 0.8px; margin-bottom: 12px; text-transform: uppercase;
     }
     .sec-title { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
-    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 820px; margin: 0 auto 40px; line-height: 1.6; }
+    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 860px; margin: 0 auto 40px; line-height: 1.6; }
 
     /* Marketing Cards 3-Column Grid */
     .feature-cards-grid {
@@ -112,18 +109,22 @@
     .feature-card:hover {
       box-shadow: var(--hover-shadow); border-color: var(--primary-color); transform: translateY(-3px);
     }
-    .card-num-tag { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--primary-color); margin-bottom: 8px; }
+    .card-num-tag { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary-color); margin-bottom: 8px; letter-spacing: 0.5px; }
     .card-title { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
     .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
     
     .btn-cta-section {
-      display: inline-block; background: var(--primary-color); color: #FFFFFF; font-weight: 700;
-      padding: 13px 32px; border-radius: 8px; font-size: 15px; transition: all 0.2s ease;
+      display: inline-block; background: var(--primary-color); color: #FFFFFF !important; font-weight: 700;
+      padding: 12px 28px; border-radius: 6px; font-size: 14.5px; transition: all 0.2s ease;
       box-shadow: 0 4px 12px rgba(30, 108, 147, 0.2); text-decoration: none;
     }
-    .btn-cta-section:hover { background: var(--primary-hover); color: #FFFFFF; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 108, 147, 0.3); }
+    .btn-cta-section:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 108, 147, 0.3); }
 
-
+    @media (max-width: 768px) {
+      .hero-logo-card { padding: 24px 20px; }
+      .metrics-container { grid-template-columns: 1fr 1fr; }
+      .sec-title { font-size: 26px; }
+    }
   </style>
 </head>
 <body>
@@ -131,145 +132,175 @@
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
   <div id="site-header" data-pillar="home"></div>
 
-  <!-- Larger Animated Hero Section -->
+  <!-- Hero Section -->
   <section class="hero-section" id="heroSection">
     <div class="hero-logo-card" id="heroLogoCard">
       <img src="branding/hayagriva_logo.png" alt="HAYAGRIVA Emblem Logo" />
     </div>
   </section>
 
-  <!-- Section 1: Employees (NSQF) -->
+  <!-- Live National Economic Metrics Counter Strip -->
+  <section class="metrics-bar">
+    <div class="metrics-container">
+      <div class="metric-box">
+        <div class="metric-value">2,176</div>
+        <div class="metric-label">NCVET Qualification Packs</div>
+        <div class="metric-sub">National Standards across 41 Sectors</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">11,420</div>
+        <div class="metric-label">Turnkey MSME Stations</div>
+        <div class="metric-sub">Tool BOMs &amp; Bankable DPR Dossiers</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">13,035</div>
+        <div class="metric-label">ISO 9001 Workstation SOPs</div>
+        <div class="metric-sub">Shopfloor Directives &amp; PPE Checks</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">207,363</div>
+        <div class="metric-label">Performance Criteria</div>
+        <div class="metric-sub">PC-Aligned Micro-Learning Reels</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar 1: Employees (NSQF) -->
   <section id="students-section" class="marketing-section">
+    <span class="section-badge">Pillar 01 / Vocational Excellence</span>
     <h2 class="sec-title">Employees (NSQF): National Qualification Standards &amp; Skillpedia</h2>
     <p class="sec-subtitle">
-      Access 2,176+ National Skills Qualification Framework (NSQF) job roles, interactive 11-step video inspectors, and assessment rubric masterclasses at zero cost.
+      Access 2,176 official National Skills Qualification Framework (NSQF) job roles, atomic PC-based micro-learning video reels, and authenticated examination rubrics at zero cost.
     </p>
 
     <div class="feature-cards-grid">
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">01 / NSQF STANDARDS</div>
-          <h3 class="card-title">National Qualification Packs (QP)</h3>
+          <div class="card-num-tag">01 / NATIONAL STANDARDS</div>
+          <h3 class="card-title">2,176 NCVET Qualification Packs</h3>
           <p class="card-desc">
-            Explore standardized curriculum across Agriculture, Automotive, IT-ITeS, Electronics, Healthcare, and 30+ national industry sectors.
+            Explore standardized curriculum across Agriculture, Automotive EV, Electronics, Healthcare, Renewable Energy, and 36+ national industry sectors.
           </p>
         </div>
       </div>
 
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">02 / VISUAL REELS</div>
-          <h3 class="card-title">11-Step Micro-Learning Reels</h3>
+          <div class="card-num-tag">02 / PC VIDEO REELS</div>
+          <h3 class="card-title">207,363 Atomic Micro-Reels</h3>
           <p class="card-desc">
-            Master complex vocational procedures through high-definition 11-segment micro-learning reels paired with Performance Criteria (PC) checklists.
+            Master exact shopfloor and service competencies through 1:1 video reels mapped directly to each official Performance Criterion with Hindi &amp; English queries.
           </p>
         </div>
       </div>
 
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">03 / FREE CERTIFICATION</div>
-          <h3 class="card-title">Assessment-Grade Prep</h3>
+          <div class="card-num-tag">03 / EXAMINATION RUBRIC</div>
+          <h3 class="card-title">Theory &amp; Practical Marking Rubrics</h3>
           <p class="card-desc">
-            No mandatory subscriptions or hidden paywalls. Anyone can learn, verify job competency, and clear formal assessment criteria.
+            Verify job readiness with official NCVET assessment scorecards, Knowledge (KU) items, and Core Skills (GS) benchmarks to clear formal certification.
           </p>
         </div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 24px;">
-      <a href="employees_nsqf.html" style="display: inline-block; background: var(--primary-color); color: #fff; padding: 10px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">Launch Employees (NSQF) Portal →</a>
+      <a href="employees_nsqf.html" class="btn-cta-section">Launch Employees (NSQF) Portal →</a>
     </div>
   </section>
 
-  <!-- Section 2: Employers (SOP) -->
-  <section id="employees-section" class="marketing-section" style="background-color: #F1F5F9; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-    <h2 class="sec-title">Employers (SOP): Standard Operating Processes &amp; Enterprise Skill Reels</h2>
+  <!-- Pillar 2: Employers (SOP) -->
+  <section id="employees-section" class="marketing-section" style="background-color: #F8FAFC; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <span class="section-badge">Pillar 02 / Enterprise Operations</span>
+    <h2 class="sec-title">Employers (SOP): Standard Operating Procedures &amp; Plant Workstations</h2>
     <p class="sec-subtitle">
-      Empower your enterprise workforce to build, package, and share custom multi-segment video skill reels, Standard Operating Processes (SOP) checklists, and corporate domain knowledge.
+      Deploy 13,035 pre-configured ISO 9001:2015 plant workstation standard operating procedures, statutory PPE checklists, and enterprise domain-isolated skill reels.
     </p>
 
     <div class="feature-cards-grid">
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">01 / CUSTOM BUILDER</div>
-          <h3 class="card-title">Custom Skill Reel Creator</h3>
+          <div class="card-num-tag">01 / WORKSTATION SOPS</div>
+          <h3 class="card-title">13,035 ISO 9001:2015 Shopfloor SOPs</h3>
           <p class="card-desc">
-            Upload internal Standard Operating Processes (SOPs), safety protocols, and operational workflows into interactive 11-step skill reels.
+            Convert government competency modules into audit-ready plant workstation procedures with clear sequential directives and quality acceptance benchmarks.
           </p>
         </div>
       </div>
 
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">02 / DOMAIN ISOLATION</div>
-          <h3 class="card-title">Corporate Email Domain Isolation</h3>
+          <div class="card-num-tag">02 / SAFETY &amp; PPE</div>
+          <h3 class="card-title">Mandatory PPE &amp; Tolerance Limits</h3>
           <p class="card-desc">
-            Filter and isolate custom skill reels by corporate email domain (e.g. <code>@company.com</code>) ensuring confidential workforce knowledge sharing.
+            Enforce zero safety violations with pre-configured PPE checklists (LOTO, 1000V DC insulated gear) and operational parameter thresholds.
           </p>
         </div>
       </div>
 
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">03 / PEER LEARNING</div>
-          <h3 class="card-title">Peer-to-Peer SOP Distribution</h3>
+          <div class="card-num-tag">03 / ENTERPRISE CUSTOMIZER</div>
+          <h3 class="card-title">Domain-Isolated Custom Builder</h3>
           <p class="card-desc">
-            Generate shareable direct deep-links for instant team onboarding, equipment operation drills, and Standard Operating Processes verification.
+            Author company-specific workflows, link internal training reels, and isolate access by corporate email domain (<code>@yourcompany.com</code>).
           </p>
         </div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 24px;">
-      <a href="employers_sop.html" style="display: inline-block; background: var(--primary-color); color: #fff; padding: 10px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">Launch Employers (SOP) Portal →</a>
+      <a href="employers_sop.html" class="btn-cta-section">Launch Employers (SOP) Portal →</a>
     </div>
   </section>
 
-  <!-- Section 3: Entrepreneurs (MSME) -->
+  <!-- Pillar 3: Entrepreneurs (MSME) -->
   <section id="entrepreneurs-section" class="marketing-section" style="background-color: #0F172A; color: #F8FAFC; border-bottom: 1px solid rgba(255,255,255,0.1);">
-    <h2 class="sec-title" style="color: #FFFFFF;">Entrepreneurs (MSME): Turnkey Business Blueprints</h2>
+    <span class="section-badge" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8;">Pillar 03 / Turnkey Business Launchpad</span>
+    <h2 class="sec-title" style="color: #FFFFFF;">Entrepreneurs (MSME): Turnkey Business Blueprints &amp; Bankable DPRs</h2>
     <p class="sec-subtitle" style="color: #94A3B8;">
-      Turn 2,176 National Occupational Standards into Bankable MSME Businesses with instant tool BOMs, day-1 operational playbooks, and loan-ready project profiles.
+      Transform 11,420 National Occupational Standards into bank-sanctioned MSME businesses with turnkey machinery BOMs, Day-1 playbooks, and PMEGP/Mudra project profiles.
     </p>
 
     <div class="feature-cards-grid">
       <div class="feature-card" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1);">
         <div>
-          <div class="card-num-tag" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8;">01 / TRADE OPPORTUNITIES</div>
-          <h3 class="card-title" style="color: #FFFFFF;">2,176 Trade Blueprints</h3>
+          <div class="card-num-tag" style="color: #38BDF8;">01 / TURNKEY STATIONS</div>
+          <h3 class="card-title" style="color: #FFFFFF;">11,420 Micro-Kiosks &amp; B2B Agencies</h3>
           <p class="card-desc" style="color: #94A3B8;">
-            Search and launch micro-enterprises mapped across Solar EPC, Agritech, EV Service, Electronics, and Food Processing.
+            Launch micro-capex businesses (₹50k–₹3.5L) from specialized technical repair desks (EV batteries, solar EPC) to high-margin B2B safety and training agencies.
           </p>
         </div>
       </div>
 
       <div class="feature-card" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1);">
         <div>
-          <div class="card-num-tag" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8;">02 / CAPITAL EQUIPMENT</div>
-          <h3 class="card-title" style="color: #FFFFFF;">Machinery &amp; Tooling BOM</h3>
+          <div class="card-num-tag" style="color: #38BDF8;">02 / CAPITAL EQUIPMENT</div>
+          <h3 class="card-title" style="color: #FFFFFF;">Itemized Machinery &amp; Tool BOM</h3>
           <p class="card-desc" style="color: #94A3B8;">
-            Get exact capital equipment Bill of Materials (BOM) and vendor specifications extracted directly from Performance Criteria.
+            Get exact equipment shopping lists with verified technical specifications, quantities, and realistic Indian OEM vendor pricing.
           </p>
         </div>
       </div>
 
       <div class="feature-card" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1);">
         <div>
-          <div class="card-num-tag" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8;">03 / BANK CREDIT DOSSIERS</div>
-          <h3 class="card-title" style="color: #FFFFFF;">Bankable Project Profiles</h3>
+          <div class="card-num-tag" style="color: #38BDF8;">03 / BANK CREDIT DOSSIER</div>
+          <h3 class="card-title" style="color: #FFFFFF;">Bankable PMEGP / Mudra DPRs</h3>
           <p class="card-desc" style="color: #94A3B8;">
-            Download pre-formatted project profiles ready for PMEGP, Mudra, and CGTMSE institutional credit schemes.
+            Download 5-year financial statements with 5% promoter margin, 35% government subsidy, and audited DSCR debt-service ratios ready for SBI/KVIC.
           </p>
         </div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 24px;">
-      <a href="entrepreneurs_msme.html" style="display: inline-block; background: linear-gradient(135deg, #38BDF8, #2563EB); color: #fff; padding: 10px 24px; border-radius: 6px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(56,189,248,0.3);">Explore MSME Trade Blueprints →</a>
+      <a href="entrepreneurs_msme.html" style="display: inline-block; background: linear-gradient(135deg, #38BDF8, #2563EB); color: #fff !important; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(56,189,248,0.3);">Explore MSME Trade Blueprints →</a>
     </div>
   </section>
 
-  <!-- Section 4: Professionals (APNET) -->
+  <!-- Pillar 4: Professionals (APNET) -->
   <section id="professionals-section" class="marketing-section">
-    <h2 class="sec-title">Professionals (APNET): Agentic Professionals Network</h2>
+    <span class="section-badge">Pillar 04 / Agentic Professional Network</span>
+    <h2 class="sec-title">Professionals (APNET): Sovereign Desktop Integrated Professional Environment</h2>
     <p class="sec-subtitle">
       Air-gapped desktop IDE engine with zero cloud data transmission, cryptographic Ed25519 audit trails, and sovereign statutory data vaults for Insolvency Professionals, Advocates, and Corporate Restructuring Experts.
     </p>
@@ -277,10 +308,10 @@
     <div class="feature-cards-grid">
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">01 / APNET WORKBENCH</div>
-          <h3 class="card-title">Free 3-Panel Monaco Legal IDE</h3>
+          <div class="card-num-tag">01 / SOVEREIGN IPE</div>
+          <h3 class="card-title">Air-Gapped Desktop Monaco IDE</h3>
           <p class="card-desc">
-            Desktop IDE engine with local GGUF models, offline claim matrix auditing, and local file tree explorer.
+            Desktop IDE engine with local GGUF models, offline claim matrix auditing, local file tree explorer, and 100% data sovereignty.
           </p>
         </div>
       </div>
@@ -288,41 +319,34 @@
       <div class="feature-card">
         <div>
           <div class="card-num-tag">02 / STATUTORY VAULTS</div>
-          <h3 class="card-title">Sovereign Vaults &amp; AI Agent Packs</h3>
+          <h3 class="card-title">Encrypted .vlt Legal Repositories</h3>
           <p class="card-desc">
-            Unlock encrypted domain vaults (IBC Laws, NCLAT Precedents) and specialized AI agents (@claims-auditor, @coc-coordinator).
+            Unlock encrypted domain vaults covering the Insolvency &amp; Bankruptcy Code (IBC 2016), Company Law, and NCLAT precedents.
           </p>
         </div>
       </div>
 
       <div class="feature-card">
         <div>
-          <div class="card-num-tag">03 / ON-DEMAND REPORTS</div>
-          <h3 class="card-title">Professional Marketplace</h3>
+          <div class="card-num-tag">03 / AGENT PACKS</div>
+          <h3 class="card-title">Autonomous Domain AI Agents</h3>
           <p class="card-desc">
-            Order specialized CIRP Form Verification Audits, NCLT Bench Precedent Summaries, and PUFE Avoidance Reports.
+            Deploy specialized professional assistants (<code>@claims-auditor</code>, <code>@coc-coordinator</code>, <code>@pufe-investigator</code>) protected by Ed25519 cryptographic keys.
           </p>
         </div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 24px;">
-      <a href="professionals_apnet.html" style="display: inline-block; background: var(--primary-color); color: #fff; padding: 10px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">Launch Professionals (APNET) Portal →</a>
+      <a href="professionals_apnet.html" class="btn-cta-section">Launch Professionals (APNET) Portal →</a>
     </div>
   </section>
 
-  <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
+  <!-- Unified Footer Container (Loaded dynamically via components/footer.html) -->
   <div id="site-footer"></div>
 
   <script src="js/responsive.js"></script>
   <script src="js/components.js"></script>
   <script>
-    function scrollToSection(sectionId) {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
     /* Interactive 3D Parallax Mouse Move Animation for Hero Logo Card */
     function initHeroParallax() {
       const heroCard = document.getElementById('heroLogoCard');
@@ -345,43 +369,7 @@
       }
     }
 
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById('inputName').value;
-      const email = document.getElementById('inputEmail').value;
-      const phone = document.getElementById('inputPhone').value;
-      const message = document.getElementById('inputMessage').value;
-
-      fetch("https://formsubmit.co/ajax/resolutionbazaar@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ _subject: "New HAYAGRIVA Portal Inquiry from " + name, Name: name, Email: email, Phone: phone, Message: message })
-      })
-      .then(res => res.json())
-      .then(() => {
-        document.getElementById('formNotice').style.display = 'block';
-        document.getElementById('contactForm').reset();
-        setTimeout(() => { document.getElementById('formNotice').style.display = 'none'; }, 6000);
-      })
-      .catch(() => {
-        document.getElementById('formNotice').style.display = 'block';
-        document.getElementById('contactForm').reset();
-        setTimeout(() => { document.getElementById('formNotice').style.display = 'none'; }, 6000);
-      });
-    }
-
-    function checkAuthStatus() {
-      const token = localStorage.getItem('haya_portal_token');
-      const authBtn = document.getElementById('main-auth-btn');
-      if (token && authBtn) {
-        authBtn.textContent = 'Logout';
-        authBtn.href = '#';
-        authBtn.onclick = (e) => { e.preventDefault(); localStorage.removeItem('haya_portal_token'); window.location.reload(); };
-      }
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      checkAuthStatus();
       initHeroParallax();
     });
   </script>
