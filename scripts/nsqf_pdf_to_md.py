@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 """
-Sub-Step 1.2: PDF-to-Markdown Converter  (v3 — 3-part NOS, tighter heuristics)
+Sub-Step 1.2: PDF-to-Markdown Converter  (v4 — Table PC extraction, pipe escaping, robust regex)
 Converts downloaded NCVET NSQF Curriculum PDFs (in data/pdfs/) into clean,
 human-readable Markdown files (in data/md/).
 
-v3 fixes vs v2:
-  1. NOS_RE     → handles 3-part codes (NIE/ELE/N0810, DGT/VSQ/N0101)
-  2. SECTION_RE → tightened (no false headings from "Table ...", numbered lists,
-                  "Knowledge", "Skills", "Assessment", "Employability")
-  3. join_continuations → safer 90-char threshold, also checks prev line ends
-                          with a capitalized word (proper noun guard)
-  4. LOCAL_DATABASE_URL → replaces legacy DATABASE_URL for DB tracking
-  5. --resume checkpoint → data/.pdf2md_checkpoint.json; crash-safe restarts
-  6. Zero-PC detection → tags pipeline_status='image_pdf_no_text' in DB
-  7. Stale DB_PATH (SQLite) removed — SQLite permanently archived
+v4 improvements vs v3:
+  1. Table PC Extraction & Pipe Escaping:
+     - Escapes '|' in table cells to prevent broken GFM tables.
+     - Inspects table rows for embedded PC markers (PC1. / 1.) and formats them as structured criteria.
+  2. Pattern Modernization:
+     - NOS_RE: supports leading labels ("NOS Code:", "Unit:", "- ") and version tags.
+     - PC_RE: supports decimals (PC 1.1), alternative dividers (PC-1:, PC #1:), and bullet forms.
+     - NUM_RE: supports decimals (1.1, 1.2) and parentheses.
+  3. State Machine Hardening (in_pc_section):
+     - Expanded PC_START_RE (covers "Elements & Outcomes", "PC Description", "Scope of the NOS").
+     - Expanded PC_END_RE (covers "Technical Knowledge", "Organizational Context", "Core Skills", "Assessment Guidelines", "Acronyms").
+  4. Continuation Line Joining:
+     - Joins lines broken after conjunctions/prepositions ("and", "or", "to", "for", "with", "using", "of", "by", "including") even with uppercase acronyms.
+     - Guards unit abbreviations (pH, dB, kHz, mm, kg) from false joins.
+  5. DB Connection Reuse:
+     - Uses a single persistent psycopg2 connection session across batch runs.
+     - Normalized QP code matching in database updates.
 
 Usage:
     python3 scripts/nsqf_pdf_to_md.py --qp=NIE/ELE/Q0803
@@ -34,9 +41,8 @@ try:
     import psycopg2
     from dotenv import load_dotenv
     load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
-    # LOCAL_DATABASE_URL is the correct env var post-architecture fix
-    _PG_URL  = os.getenv('LOCAL_DATABASE_URL') or os.getenv('DATABASE_URL')
-    _HAS_PG  = bool(_PG_URL) and 'neon.tech' not in (_PG_URL or '')
+    _PG_URL = os.getenv('LOCAL_DATABASE_URL') or os.getenv('DATABASE_URL')
+    _HAS_PG = bool(_PG_URL) and 'neon.tech' not in (_PG_URL or '')
 except ImportError:
     _HAS_PG = False
     _PG_URL = None
@@ -52,43 +58,70 @@ os.makedirs(MD_DIR, exist_ok=True)
 # Patterns
 # ─────────────────────────────────────────────────────────────
 
-# Matches NSQF NOS/QP codes:
-#   2-part: AGR/N0101, MEP/Q9901
-#   3-part: NIE/ELE/N0810, DGT/VSQ/N0101, WBSC/HCS/Q0501
-# Middle segment(s) (e.g. ELE, VSQ) are optional — {0,2} covers both forms.
+# Matches NSQF NOS/QP codes with optional prefixes ("NOS Code:", "Unit:", "- ")
 NOS_RE = re.compile(
-    r'^[A-Z]{2,10}(?:/[A-Z0-9]{2,10}){0,2}/[NQ]\d{3,4}\b',
+    r'^(?:(?:NOS|Unit|Standard|Module)\s*(?:Code)?[:\s\-]*)?[-*]?\s*'
+    r'([A-Z]{2,10}(?:/[A-Z0-9]{2,10}){0,2}/[NQ]\d{3,4}(?:[_\-vV\d.]+)?)\b',
     re.IGNORECASE
 )
 
-PC_RE    = re.compile(r'^PC\s*(\d+)[.:]\s*(.+)', re.IGNORECASE)
-NUM_RE   = re.compile(r'^(\d+)\.\s+(.+)')
-KU_GS_RE = re.compile(r'^(KU\d+|GS\d+)[.:]\s*(.+)', re.IGNORECASE)
-
-PC_START_RE = re.compile(r'^(Elements\s+and\s+Performance|To\s+be\s+competent)', re.IGNORECASE)
-PC_END_RE   = re.compile(
-    r'^(Knowledge\s+and\s+Understanding|Generic\s+Skills|Assessment\s+Criteria|'
-    r'National\s+Occupational\s+Standards\s+\(NOS\)\s+Parameters)',
+# Matches explicit PC markers: "PC1.", "PC 1:", "PC 1.1", "PC-1:", "PC #1", "- PC1."
+PC_RE = re.compile(
+    r'^[-*|]?\s*PC\s*#?\s*(\d+(?:\.\d+)?)[.:\s-]+(.+)',
     re.IGNORECASE
 )
 
-# Tightened SECTION_RE — structural headings
+# Matches numbered criteria: "1.", "1.1", "1)", "(1)"
+NUM_RE = re.compile(
+    r'^[-*|]?\s*\(?(\d+(?:\.\d+)?)\)?[.:\s-]+(.+)'
+)
+
+# Matches Knowledge and Skills list items: "KU1.", "GS1.", "KU 1.1"
+KU_GS_RE = re.compile(
+    r'^[-*|]?\s*(KU\s*\d+(?:\.\d+)?|GS\s*\d+(?:\.\d+)?)[.:\s-]+(.+)',
+    re.IGNORECASE
+)
+
+# Expanded PC start triggers
+PC_START_RE = re.compile(
+    r'^(?:Elements\s*(?:and|&)\s*Performance|Performance\s*Criteria|'
+    r'Elements\s*(?:and|&)\s*Outcomes|To\s+be\s+competent|'
+    r'PC\s*Description|Scope\s*of\s*(?:the\s*)?NOS|Assessment\s*Criteria\s*for\s*Outcomes)',
+    re.IGNORECASE
+)
+
+# Expanded PC section end triggers
+PC_END_RE = re.compile(
+    r'^(?:Knowledge\s*(?:and|&)\s*Understanding|Technical\s*Knowledge|'
+    r'Organizational\s*Context|Generic\s*Skills|Core\s*Skills|'
+    r'Assessment\s*Criteria$|Assessment\s*Guidelines|'
+    r'National\s*Occupational\s*Standards\s*\(NOS\)\s*Parameters|Acronyms|Glossary)',
+    re.IGNORECASE
+)
+
+# Tightened structural headings
 SECTION_RE = re.compile(
-    r'^(Module\s+\d|NOS\s+\d|Unit\s+\d|Section\s+\d|'
-    r'Performance\s+Criteria\s*$|Elements\s+and\s+Performance|'
-    r'Knowledge\s+and\s+Understanding|Generic\s+Skills)',
+    r'^(?:Module\s+\d|NOS\s+\d|Unit\s+\d|Section\s+\d|Element\s+\d|'
+    r'Performance\s+Criteria\s*$|Elements\s*(?:and|&)\s*Performance|'
+    r'Knowledge\s*(?:and|&)\s*Understanding|Generic\s*Skills|Core\s*Skills)',
     re.IGNORECASE
 )
 
 ENDS_SENT  = re.compile(r'[.;:]\s*$')
 WHITESPACE = re.compile(r'\s+')
 
-# Proper-noun guard for join_continuations:
-ENDS_PROPER = re.compile(r'\b[A-Z][a-z]{2,}\s*$')
+# Conjunctions/prepositions that signal mid-sentence wrapping
+ENDS_CONTINUATION_WORD = re.compile(
+    r'\b(?:and|or|the|in|to|for|with|using|of|by|as|including|such\s+as|between|into|from|at|on)\s*$',
+    re.IGNORECASE
+)
+
+# Units/symbols that should not be merged as regular lowercase continuations
+LOWER_BULLET_GUARDS = re.compile(r'^(?:pH|dB|kHz|MHz|GHz|mm|cm|kg|mg|ml|e\.g\.|i\.e\.)\b')
 
 
 # ─────────────────────────────────────────────────────────────
-# Table → Markdown
+# Table → Markdown (with pipe escaping & cell cleaning)
 # ─────────────────────────────────────────────────────────────
 def format_table_to_md(table):
     """Convert a pdfplumber 2-D table array to GFM Markdown table syntax."""
@@ -99,7 +132,11 @@ def format_table_to_md(table):
     for row in table:
         if not row:
             continue
-        cleaned = [WHITESPACE.sub(' ', str(cell or '')).strip() for cell in row]
+        # Escape literal pipes inside cell values to preserve valid Markdown table syntax
+        cleaned = [
+            WHITESPACE.sub(' ', str(cell or '')).replace('|', '\\|').strip()
+            for cell in row
+        ]
         if any(cleaned):
             cleaned_rows.append(cleaned)
 
@@ -123,14 +160,11 @@ def format_table_to_md(table):
 
 
 # ─────────────────────────────────────────────────────────────
-# Table text → dedup set
+# Table text → dedup set & embedded PC extractor
 # ─────────────────────────────────────────────────────────────
 def build_table_text_set(tables):
     """
-    Collect every non-trivial cell string from all tables on a page.
-    Used to skip re-outputting that content during the plain-text pass.
-    Both the full string and an 80-char prefix key are stored so partial
-    lines from mid-column breaks are also caught.
+    Collect cell strings from all tables on a page for plain-text deduping.
     """
     seen = set()
     for table in tables:
@@ -147,8 +181,30 @@ def build_table_text_set(tables):
     return seen
 
 
+def extract_table_pcs(tables):
+    """
+    Extract any explicit PC items found inside table cells.
+    Returns list of formatted "- PCn. description" strings.
+    """
+    extracted_pcs = []
+    for table in tables:
+        for row in table:
+            if not row:
+                continue
+            for cell in row:
+                if not cell:
+                    continue
+                cell_text = str(cell).strip()
+                lines = [l.strip() for l in cell_text.split('\n') if l.strip()]
+                for line in lines:
+                    m_pc = PC_RE.match(line)
+                    if m_pc:
+                        extracted_pcs.append(f"PC{m_pc.group(1)}. {m_pc.group(2).strip()}")
+    return extracted_pcs
+
+
 def line_in_table(line, table_set):
-    """Return True if *line* is substantially covered by table content."""
+    """Return True if line is substantially covered by table content."""
     norm = WHITESPACE.sub(' ', line).strip()
     return norm in table_set or norm[:80] in table_set
 
@@ -159,9 +215,6 @@ def line_in_table(line, table_set):
 def extract_page_text(page):
     """
     Extract text using spatial layout awareness.
-    layout=True tells pdfplumber/pdfminer to group words by column before
-    joining, which prevents mid-sentence column breaks in 2-column NSQF PDFs.
-    Falls back gracefully if the installed version doesn't support layout=True.
     """
     try:
         return page.extract_text(layout=True, x_tolerance=3, y_tolerance=3) or ''
@@ -174,17 +227,7 @@ def extract_page_text(page):
 # ─────────────────────────────────────────────────────────────
 def join_continuations(raw_lines):
     """
-    Merge lines that are right-column continuations of a truncated left-column
-    line.
-
-    Heuristics (all must be true):
-      - Current line starts with a lowercase letter
-      - Previous line did NOT end with sentence-ending punctuation (. ; :)
-      - Previous line did NOT end with a proper noun (capital word)
-      - Previous line is shorter than 90 chars (not a full-width line)
-      - Neither line is a structural element (PC, NOS code, heading, table)
-
-    Threshold reduced from 110 → 90 to reduce false merges on large QPs.
+    Merge lines that are right-column continuations of a truncated left-column line.
     """
     if not raw_lines:
         return []
@@ -203,13 +246,16 @@ def join_continuations(raw_lines):
             result.append(line)
             continue
 
+        is_lower_start = bool(line) and line[0].islower() and not LOWER_BULLET_GUARDS.match(line)
+        is_hanging_word = bool(prev) and bool(ENDS_CONTINUATION_WORD.search(prev))
+
         is_continuation = (
             bool(line)
-            and line[0].islower()
+            and (is_lower_start or is_hanging_word)
             and not ENDS_SENT.search(prev)
-            and not ENDS_PROPER.search(prev)   # proper-noun guard (new v3)
-            and len(prev) < 90                  # tightened from 110 → 90
+            and len(prev) < 95
         )
+
         if is_continuation:
             result[-1] = prev + ' ' + line
         else:
@@ -224,41 +270,39 @@ def join_continuations(raw_lines):
 def classify_line(line, in_pc_section=False):
     """
     Return (markdown_prefix, line_text, next_in_pc_section).
-
-    Priority order:
-      1. NOS/QP code       → #### heading   (NOS section boundary, resets in_pc_section)
-      2. PC end markers    → #### heading   (resets in_pc_section)
-      3. PC start markers  → #### heading   (activates in_pc_section)
-      4. Structural header → #### heading   (Module/Section/Unit)
-      5. Explicit PC line  → - list item    (PC1. description)
-      6. Numbered criteria → - list item    (1. description if in_pc_section)
-      7. KU / GS items     → - list item    (KU1. / GS1.)
-      8. Everything else   → plain text
     """
-    if NOS_RE.match(line):
-        return '####', line, False
+    m_nos = NOS_RE.match(line)
+    if m_nos:
+        nos_code = m_nos.group(1).upper()
+        remainder = line[m_nos.end():].lstrip(': -')
+        heading = f"{nos_code}: {remainder}" if remainder else nos_code
+        return '####', heading, False
+
     if PC_END_RE.match(line):
         return '####', line, False
+
     if PC_START_RE.match(line):
         return '####', line, True
+
     if SECTION_RE.match(line) and len(line) < 120:
         return '####', line, in_pc_section
 
-    # Explicit PC line (e.g. PC1. or PC 1:)
+    # Explicit PC line (e.g. PC1., PC 1.1, PC-1:, PC #1:)
     m_pc = PC_RE.match(line)
     if m_pc:
-        return '-', f'PC{m_pc.group(1)}. {m_pc.group(2)}', in_pc_section
+        return '-', f'PC{m_pc.group(1)}. {m_pc.group(2).strip()}', in_pc_section
 
     # Numbered criteria inside Elements & Performance Criteria section
     if in_pc_section:
         m_num = NUM_RE.match(line)
         if m_num:
-            return '-', f'PC{m_num.group(1)}. {m_num.group(2)}', in_pc_section
+            return '-', f'PC{m_num.group(1)}. {m_num.group(2).strip()}', in_pc_section
 
     # Knowledge & Skills list items
     m_kugs = KU_GS_RE.match(line)
     if m_kugs:
-        return '-', f'{m_kugs.group(1)}. {m_kugs.group(2)}', in_pc_section
+        code_tag = m_kugs.group(1).upper().replace(' ', '')
+        return '-', f'{code_tag}. {m_kugs.group(2).strip()}', in_pc_section
 
     return '', line, in_pc_section
 
@@ -282,20 +326,12 @@ def _bbox_contains(outer_bbox, obj):
 def extract_pdf_to_markdown(pdf_path, qp_code, qp_name=''):
     """
     Parse a single PDF into clean Markdown.
-
-    Per-page strategy:
-      1. Find tables  → render as GFM tables, build dedup set from their cells.
-      2. Extract text from non-table page regions using layout=True.
-      3. Skip any text line already present in the table dedup set.
-      4. Join continuation lines (right-column fragments) with v3 heuristics.
-      5. Classify and emit each line with the correct Markdown prefix.
-
-    Returns: (out_md_path, byte_length, pc_count)
     """
     clean_qp = qp_code.replace('/', '_')
     md_lines = []
     pc_count = 0
     in_pc_section = False
+    seen_pc_signatures = set()
 
     with pdfplumber.open(pdf_path) as pdf:
         num_pages = len(pdf.pages)
@@ -306,18 +342,26 @@ def extract_pdf_to_markdown(pdf_path, qp_code, qp_name=''):
         md_lines.append('')
 
         for idx, page in enumerate(pdf.pages):
+            page_md = [f'### Page {idx + 1}', '']
 
             # 1. Tables
             found_tables   = page.find_tables()
             table_bboxes   = [t.bbox for t in found_tables]
             raw_tables     = [t.extract() for t in found_tables]
             table_text_set = build_table_text_set(raw_tables)
+            table_pcs      = extract_table_pcs(raw_tables)
 
-            page_md = [f'### Page {idx + 1}', '']
             for raw_tbl in raw_tables:
                 fmt = format_table_to_md(raw_tbl)
                 if fmt:
                     page_md.append(fmt)
+
+            # Record any PCs directly extracted from table cells
+            for t_pc in table_pcs:
+                sig = t_pc[:60].lower()
+                if sig not in seen_pc_signatures:
+                    seen_pc_signatures.add(sig)
+                    pc_count += 1
 
             # 2. Text — prefer non-table regions to avoid double-extraction
             if table_bboxes:
@@ -339,7 +383,7 @@ def extract_pdf_to_markdown(pdf_path, qp_code, qp_name=''):
 
             for line in raw_lines:
                 if line_in_table(line, table_text_set):
-                    continue  # already in a rendered table
+                    continue  # already rendered in a table
 
                 prefix, text_out, in_pc_section = classify_line(line, in_pc_section)
                 if prefix == '####':
@@ -347,7 +391,10 @@ def extract_pdf_to_markdown(pdf_path, qp_code, qp_name=''):
                 elif prefix == '-':
                     page_md.append(f'- {text_out}')
                     if text_out.startswith('PC'):
-                        pc_count += 1
+                        sig = text_out[:60].lower()
+                        if sig not in seen_pc_signatures:
+                            seen_pc_signatures.add(sig)
+                            pc_count += 1
                 else:
                     page_md.append(text_out)
 
@@ -390,34 +437,39 @@ def clear_checkpoint():
 # ─────────────────────────────────────────────────────────────
 # DB helpers
 # ─────────────────────────────────────────────────────────────
-def _get_qp_list(args):
+def get_db_connection():
+    if not _HAS_PG:
+        return None
+    try:
+        return psycopg2.connect(_PG_URL)
+    except Exception as e:
+        print(f'  [DB] PostgreSQL connection note: {e} (operating in disk-first mode)')
+        return None
+
+
+def _get_qp_list(args, conn=None):
     """
-    Build the list of (qp_code, qp_name) tuples to process.
-    Priority:
-      1. --qp argument  → single QP
-      2. --all / --limit → read from local PostgreSQL nsqf_qps if available,
-                          otherwise scan PDF_DIR for .pdf files
+    Build list of (qp_code, qp_name) tuples to process.
     """
     if args.qp:
         clean = args.qp.replace('/', '_')
         return [(args.qp, clean)]
 
-    if _HAS_PG:
+    if conn:
         try:
-            conn = psycopg2.connect(_PG_URL)
-            cur  = conn.cursor()
+            cur = conn.cursor()
             if args.all:
                 cur.execute('SELECT qp_code, qp_name FROM nsqf_qps ORDER BY id ASC')
             else:
                 cur.execute('SELECT qp_code, qp_name FROM nsqf_qps ORDER BY id ASC LIMIT %s',
                             (args.limit,))
             rows = cur.fetchall()
-            cur.close(); conn.close()
+            cur.close()
             if rows:
-                print(f'  [DB] Loaded {len(rows)} QP(s) from local PostgreSQL (hayadb).')
+                print(f'  [DB] Loaded {len(rows)} QP(s) from local PostgreSQL.')
                 return rows
         except Exception as e:
-            print(f'  [DB] Local PG unavailable ({e}) — falling back to PDF directory scan.')
+            print(f'  [DB] Query error ({e}) — falling back to PDF directory scan.')
 
     # Fallback: scan PDF_DIR
     pdfs = sorted(f for f in os.listdir(PDF_DIR) if f.endswith('.pdf'))
@@ -426,26 +478,23 @@ def _get_qp_list(args):
     return [(p.replace('.pdf', '').replace('_', '/', 2), p.replace('.pdf', '')) for p in pdfs]
 
 
-def _mark_converted(qp_code, md_path, pc_count):
-    """Update pipeline_status in local hayadb. No-op if PG unavailable."""
-    if not _HAS_PG:
+def _mark_converted(conn, qp_code, md_path, pc_count):
+    """Update pipeline_status in local PostgreSQL using persistent connection."""
+    if not conn:
         return
     try:
-        conn = psycopg2.connect(_PG_URL)
-        cur  = conn.cursor()
-        if pc_count == 0:
-            # Image-only or scanned PDF — no extractable text
-            status = 'image_pdf_no_text'
-        else:
-            status = 'md_converted'
+        cur = conn.cursor()
+        status = 'image_pdf_no_text' if pc_count == 0 else 'md_converted'
         cur.execute(
-            "UPDATE nsqf_qps SET markdown_path = %s, pipeline_status = %s WHERE qp_code = %s",
-            (md_path, status, qp_code)
+            """UPDATE nsqf_qps 
+               SET markdown_path = %s, pipeline_status = %s 
+               WHERE qp_code = %s OR REPLACE(qp_code, '/', '_') = %s""",
+            (md_path, status, qp_code, qp_code.replace('/', '_'))
         )
         conn.commit()
-        cur.close(); conn.close()
+        cur.close()
     except Exception:
-        pass  # DB update is optional; PDF→MD conversion already succeeded
+        pass
 
 
 # ─────────────────────────────────────────────────────────────
@@ -453,7 +502,7 @@ def _mark_converted(qp_code, md_path, pc_count):
 # ─────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(
-        description='Convert NSQF PDFs to Markdown (v3 — 3-part NOS, tighter heuristics)'
+        description='Convert NSQF PDFs to Markdown (v4 — Table PC extraction, pipe escaping, robust regex)'
     )
     parser.add_argument('--limit',  type=int, default=5,
                         help='Number of QPs to convert (default 5)')
@@ -465,14 +514,18 @@ def main():
                         help='Resume from last checkpoint (use with --all)')
     args = parser.parse_args()
 
+    db_conn = get_db_connection()
+
     print('================================================================================')
-    print('📝 [Sub-Step 1.2] PDF-to-MARKDOWN CONVERTER  (v3 — 3-part NOS, tighter heuristics)')
-    print(f'   DB: {"local PostgreSQL (" + _PG_URL.split("@")[-1] + ")" if _HAS_PG else "No DB — disk-only mode"}')
+    print('📝 [Sub-Step 1.2] PDF-to-MARKDOWN CONVERTER  (v4 — Robust Table & Text Extraction)')
+    print(f'   DB: {"local PostgreSQL (" + _PG_URL.split("@")[-1] + ")" if db_conn else "Disk-first mode"}')
     print('================================================================================\n')
 
-    qp_list = _get_qp_list(args)
+    qp_list = _get_qp_list(args, db_conn)
     if not qp_list:
         print('❌  No QPs found. Check PDF_DIR or DB.')
+        if db_conn:
+            db_conn.close()
         return
 
     # Resume: skip already-completed QPs
@@ -483,51 +536,59 @@ def main():
             start_idx = cp.get('index', 0) + 1
             print(f'⏩  Resuming from index {start_idx} (after {cp["qp_code"]}).\n')
 
-    total        = len(qp_list)
-    to_process   = qp_list[start_idx:]
+    total      = len(qp_list)
+    to_process = qp_list[start_idx:]
     print(f'Converting {len(to_process)} of {total} Qualification Pack(s)…\n')
 
-    converted_count  = 0
-    failed_count     = 0
-    zero_pc_count    = 0
+    converted_count = 0
+    failed_count    = 0
+    zero_pc_count   = 0
 
-    for i, (qp_code, qp_name) in enumerate(to_process):
-        abs_idx       = start_idx + i
-        clean_code    = qp_code.replace('/', '_')
-        pdf_file_path = os.path.join(PDF_DIR, f'{clean_code}.pdf')
+    try:
+        for i, (qp_code, qp_name) in enumerate(to_process):
+            abs_idx       = start_idx + i
+            clean_code    = qp_code.replace('/', '_')
+            pdf_file_path = os.path.join(PDF_DIR, f'{clean_code}.pdf')
 
-        if not os.path.exists(pdf_file_path):
-            print(f'[{abs_idx + 1}/{total}] ⚠️  PDF not found: {clean_code}.pdf → Skipping')
-            failed_count += 1
+            if not os.path.exists(pdf_file_path):
+                print(f'[{abs_idx + 1}/{total}] ⚠️  PDF not found: {clean_code}.pdf → Skipping')
+                failed_count += 1
+                save_checkpoint(qp_code, abs_idx)
+                continue
+
+            try:
+                out_path, byte_len, pc_count = extract_pdf_to_markdown(
+                    pdf_file_path, qp_code, qp_name
+                )
+                if pc_count == 0:
+                    zero_pc_count += 1
+                    tag = '⚠️  0 PCs (image PDF / no criteria)'
+                else:
+                    tag = f'✅  {pc_count} PCs'
+
+                print(f'[{abs_idx + 1}/{total}] {tag}  {byte_len / 1024:.1f} KB → {clean_code}.md')
+                _mark_converted(db_conn, qp_code, out_path, pc_count)
+                converted_count += 1
+
+            except Exception as e:
+                print(f'[{abs_idx + 1}/{total}] ❌  Error for {qp_code}: {e}')
+                import traceback; traceback.print_exc()
+                failed_count += 1
+
             save_checkpoint(qp_code, abs_idx)
-            continue
 
-        try:
-            out_path, byte_len, pc_count = extract_pdf_to_markdown(
-                pdf_file_path, qp_code, qp_name
-            )
-            if pc_count == 0:
-                zero_pc_count += 1
-                tag = '⚠️  0 PCs (image PDF?)'
-            else:
-                tag = f'✅  {pc_count} PCs'
+        if failed_count == 0:
+            clear_checkpoint()
+            print('\n✅  All QPs processed — checkpoint cleared.\n')
+        else:
+            print(f'\n⚠️  {failed_count} failed. Run with --resume to retry.\n')
 
-            print(f'[{abs_idx + 1}/{total}] {tag}  {byte_len / 1024:.1f} KB → {clean_code}.md')
-            _mark_converted(qp_code, out_path, pc_count)
-            converted_count += 1
-
-        except Exception as e:
-            print(f'[{abs_idx + 1}/{total}] ❌  Error for {qp_code}: {e}')
-            import traceback; traceback.print_exc()
-            failed_count += 1
-
-        save_checkpoint(qp_code, abs_idx)
-
-    if failed_count == 0:
-        clear_checkpoint()
-        print('\n✅  All QPs processed — checkpoint cleared.\n')
-    else:
-        print(f'\n⚠️  {failed_count} failed. Run with --resume to retry.\n')
+    finally:
+        if db_conn:
+            try:
+                db_conn.close()
+            except Exception:
+                pass
 
     print('================================================================================')
     print('📊 SUMMARY')

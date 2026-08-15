@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * Sub-Step 1.1: Automated PDF Harvester & Downloader
+ * Sub-Step 1.1: Automated PDF Harvester & Downloader (v2 — Multi-version S3 fallback)
  * Downloads official NCVET NSQF Curriculum PDFs from NSDC S3 buckets into local data/pdfs/ folder
- * and updates pipeline_status = 'pdf_downloaded' in SQLite.
+ * and updates pipeline_status = 'pdf_downloaded' in local database.
  *
  * Usage:
  *   node scripts/nsqf_pdf_harvester.js --limit=5
@@ -24,18 +24,32 @@ if (!fs.existsSync(PDF_DIR)) {
 }
 
 /**
- * Construct default NSDC S3 PDF URL if missing
+ * Generate candidate NSDC S3 PDF URLs to handle versioning variations
  */
-function getPdfUrl(qpCode, version = '1.0') {
+function getCandidatePdfUrls(qpCode, version = '1.0', explicitUrl = null) {
     const cleanCode = String(qpCode || '').replace(/\//g, '_');
     const cleanVer = String(version || '1.0').replace(/^v/i, '');
-    return `https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/${cleanCode}_v${cleanVer}.pdf`;
+    const base = 'https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf';
+
+    const candidates = [];
+    if (explicitUrl && explicitUrl.startsWith('http')) {
+        candidates.push(explicitUrl);
+    }
+    candidates.push(`${base}/${cleanCode}_v${cleanVer}.pdf`);
+    candidates.push(`${base}/${cleanCode}_v1.0.pdf`);
+    candidates.push(`${base}/${cleanCode}_v1.pdf`);
+    candidates.push(`${base}/${cleanCode}_v2.0.pdf`);
+    candidates.push(`${base}/${cleanCode}_V1.0.pdf`);
+    candidates.push(`${base}/${cleanCode}.pdf`);
+
+    // Return unique non-empty URLs
+    return Array.from(new Set(candidates));
 }
 
 /**
- * Download a file via HTTP/HTTPS with redirect support
+ * Download a single URL via HTTP/HTTPS with redirect support
  */
-function downloadFile(url, destPath) {
+function downloadSingleUrl(url, destPath) {
     return new Promise((resolve, reject) => {
         const fileStream = fs.createWriteStream(destPath);
         const protocol = url.startsWith('https') ? https : http;
@@ -48,8 +62,8 @@ function downloadFile(url, destPath) {
             // Handle redirects
             if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
                 fileStream.close();
-                fs.unlinkSync(destPath);
-                return downloadFile(response.headers.location, destPath).then(resolve).catch(reject);
+                if (fs.existsSync(destPath)) fs.unlinkSync(destPath);
+                return downloadSingleUrl(response.headers.location, destPath).then(resolve).catch(reject);
             }
 
             if (response.statusCode !== 200) {
@@ -64,11 +78,11 @@ function downloadFile(url, destPath) {
                 fileStream.close(() => {
                     const stats = fs.statSync(destPath);
                     if (stats.size < 1000) {
-                        // File too small, likely an error page
-                        fs.unlinkSync(destPath);
+                        // File too small, likely an XML error page
+                        if (fs.existsSync(destPath)) fs.unlinkSync(destPath);
                         return reject(new Error(`Downloaded file too small (${stats.size} bytes)`));
                     }
-                    resolve({ size: stats.size });
+                    resolve({ size: stats.size, url });
                 });
             });
         });
@@ -89,6 +103,22 @@ function downloadFile(url, destPath) {
 }
 
 /**
+ * Attempt downloading from candidate URLs in sequence until one succeeds
+ */
+async function downloadWithFallbacks(candidateUrls, destPath) {
+    let lastError = null;
+    for (const url of candidateUrls) {
+        try {
+            const res = await downloadSingleUrl(url, destPath);
+            return res;
+        } catch (err) {
+            lastError = err;
+        }
+    }
+    throw lastError || new Error('All candidate URLs failed');
+}
+
+/**
  * Main Harvester Function
  */
 async function harvestPdfs() {
@@ -106,10 +136,23 @@ async function harvestPdfs() {
     console.log('================================================================================\n');
 
     let rows = [];
-    if (targetQp) {
-        rows = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).all(targetQp, targetQp.replace('/', '_'));
-    } else {
-        rows = await db.prepare(`SELECT * FROM nsqf_qps ORDER BY id ASC LIMIT ?`).all(limit);
+    try {
+        if (targetQp) {
+            rows = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).all(targetQp, targetQp.replace('/', '_'));
+        } else {
+            rows = await db.prepare(`SELECT * FROM nsqf_qps ORDER BY id ASC LIMIT ?`).all(limit);
+        }
+    } catch (dbErr) {
+        console.warn(`⚠️  Database query note: ${dbErr.message} — falling back to direct mode.`);
+        if (targetQp) {
+            rows = [{
+                id: null,
+                qp_code: targetQp,
+                qp_name: targetQp,
+                version: '1.0',
+                curriculum_pdf_url: null
+            }];
+        }
     }
 
     if (rows.length === 0) {
@@ -128,48 +171,58 @@ async function harvestPdfs() {
         const cleanCode = qp.qp_code.replace(/\//g, '_');
         const pdfFileName = `${cleanCode}.pdf`;
         const destPath = path.join(PDF_DIR, pdfFileName);
-        const pdfUrl = qp.curriculum_pdf_url || getPdfUrl(qp.qp_code, qp.version);
+        const candidates = getCandidatePdfUrls(qp.qp_code, qp.version, qp.curriculum_pdf_url);
 
         console.log(`[${i + 1}/${rows.length}] 📌 QP: ${qp.qp_code} — "${qp.qp_name}"`);
-        console.log(`        Target PDF: ${pdfUrl}`);
 
         if (fs.existsSync(destPath)) {
             const stats = fs.statSync(destPath);
             console.log(`        ✅ Already Exists on Disk (${(stats.size / 1024).toFixed(1)} KB) ➔ ${destPath}`);
             existingCount++;
 
-            // Sync database status (markdown_path set later by nsqf_pdf_to_md.py)
-            await db.prepare(`
-                UPDATE nsqf_qps 
-                SET curriculum_pdf_url = ?, pipeline_status = 'pdf_downloaded'
-                WHERE id = ?
-            `).run(pdfUrl, qp.id);
+            // Sync database status if DB is accessible
+            if (qp.id) {
+                try {
+                    await db.prepare(`
+                        UPDATE nsqf_qps 
+                        SET curriculum_pdf_url = COALESCE(curriculum_pdf_url, ?), pipeline_status = 'pdf_downloaded'
+                        WHERE id = ?
+                    `).run(candidates[0], qp.id);
+                } catch {}
+            }
             continue;
         }
 
         try {
-            console.log(`        ⏳ Downloading PDF stream...`);
-            const res = await downloadFile(pdfUrl, destPath);
+            console.log(`        ⏳ Downloading with S3 fallback candidates...`);
+            const res = await downloadWithFallbacks(candidates, destPath);
             console.log(`        🎉 Download Complete (${(res.size / 1024).toFixed(1)} KB) ➔ Saved to data/pdfs/${pdfFileName}`);
             downloadedCount++;
 
-            // Update database status (markdown_path set later by nsqf_pdf_to_md.py)
-            await db.prepare(`
-                UPDATE nsqf_qps 
-                SET curriculum_pdf_url = ?, pipeline_status = 'pdf_downloaded'
-                WHERE id = ?
-            `).run(pdfUrl, qp.id);
+            // Update database status if DB is accessible
+            if (qp.id) {
+                try {
+                    await db.prepare(`
+                        UPDATE nsqf_qps 
+                        SET curriculum_pdf_url = ?, pipeline_status = 'pdf_downloaded'
+                        WHERE id = ?
+                    `).run(res.url, qp.id);
+                } catch {}
+            }
 
         } catch (err) {
-            console.warn(`        ⚠️ Download Warning: ${err.message}`);
+            console.warn(`        ⚠️ Download Warning for ${qp.qp_code}: ${err.message}`);
             failedCount++;
 
-            // Update database status to pending_pdf
-            await db.prepare(`
-                UPDATE nsqf_qps 
-                SET curriculum_pdf_url = ?, pipeline_status = 'pending_pdf'
-                WHERE id = ?
-            `).run(pdfUrl, qp.id);
+            if (qp.id) {
+                try {
+                    await db.prepare(`
+                        UPDATE nsqf_qps 
+                        SET pipeline_status = 'pending_pdf'
+                        WHERE id = ?
+                    `).run(qp.id);
+                } catch {}
+            }
         }
         console.log('--------------------------------------------------------------------------------');
     }

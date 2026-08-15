@@ -7,7 +7,7 @@
 
 | Repair and Maintenance Assistant "Smart Phones" QP Code: NIE/ELE/Q0803 Version: 1.0 NSQF Level: 3 |
 | --- |
-| National Institute of Electronics and Information Technology (NIELIT) || NIELIT Bhawan, Plot No. 3, PSP Pocket, Sector-8, Dwarka New Delhi-110077 || email:h.sihare@nielit.gov.in |
+| National Institute of Electronics and Information Technology (NIELIT) \|\| NIELIT Bhawan, Plot No. 3, PSP Pocket, Sector-8, Dwarka New Delhi-110077 \|\| email:h.sihare@nielit.gov.in |
 
 
 Qualification Pack
@@ -28,11 +28,11 @@ Qualification Pack (QP) Parameters .............................................
 #### NIE/ELE/N0813: Advanced Repair and Business Skills ....................................................................... 17
 #### DGT/VSQ/N0101: Employability Skills (30 Hours) ............................................................................... 21
 #### NIE/ELE/N0815: Implementation of Repair & Maintenance Project .................................................... 27
-Assessment Guidelines and Weightage ............................................................................................. 30
-Assessment Guidelines ............................................................................................................... 30
+#### Assessment Guidelines and Weightage ............................................................................................. 30
+#### Assessment Guidelines ............................................................................................................... 30
 Assessment Weightage ............................................................................................................... 31
-Acronyms ........................................................................................................................................... 33
-Glossary ............................................................................................................................................. 34
+#### Acronyms ........................................................................................................................................... 33
+#### Glossary ............................................................................................................................................. 34
 NSQC Approved || National Institute of Electronics and Information Technology (NIELIT) 2
 
 ### Page 3
@@ -56,8 +56,7 @@ operating system errors to app-related problems
 Personal Attributes
 Students will develop meticulous attention to detail, problem-solving abilities, and technical proficiency in
 both hardware and software aspects. They will learn to exhibit patience and precision while diagnosing and
-repairing complex issues, and uphold professionalism through ethical practices and effective
-communication. The course also encourages a proactive approach to continuous learning and adaptability,
+repairing complex issues, and uphold professionalism through ethical practices and effective communication. The course also encourages a proactive approach to continuous learning and adaptability,
 essential for keeping pace with evolving technologies and industry standards.
 Applicable National Occupational Standards (NOS)
 Compulsory NOS:
@@ -108,12 +107,10 @@ damage during repairs. This module equips students to analyze, troubleshoot, and
 effectively and safely.
 Scope
 The scope covers the following :
-This module provides students with a thorough understanding of mobile phone technology and
-repair, covering fundamental concepts such as electricity, circuits, voltage, current, and resistance.
+This module provides students with a thorough understanding of mobile phone technology and repair, covering fundamental concepts such as electricity, circuits, voltage, current, and resistance.
 It explores the roles of components like capacitors, resistors, and transistors, and traces the
 historical development of mobile technology from 2G to 5G. Students will learn to differentiate
-between feature phones and smartphones and compare Android and iOS operating systems. They
-will also identify and describe internal mobile phone components, including batteries, displays,
+between feature phones and smartphones and compare Android and iOS operating systems. They will also identify and describe internal mobile phone components, including batteries, displays,
 motherboards, cameras, and sensors. Practical skills include using basic repair tools, understanding
 Electrostatic Discharge (ESD) protection, and applying safe handling practices to ensure an effective
 work environment.
@@ -149,21 +146,17 @@ The individual on the job needs to know and understand:
 - KU1. Grasp the core principles of electricity, circuits, and key electronic components (capacitors,
 resistors, transistors), and understand their roles in mobile phone technology.
 - KU2. Comprehend the evolution of mobile phones from their inception to the present, including the
-development of different generations of mobile technology (2G, 3G, 4G, 5G) and the distinct
-characteristics of feature phones versus smartphones.
+development of different generations of mobile technology (2G, 3G, 4G, 5G) and the distinct characteristics of feature phones versus smartphones.
 - KU3. Identify and describe the internal components of mobile phones, such as the battery, display,
-motherboard, camera, and sensors, and understand their specific functions and contributions
-to the overall operation of the device & Recognize basic tools used in mobile phone repair.
+motherboard, camera, and sensors, and understand their specific functions and contributions to the overall operation of the device & Recognize basic tools used in mobile phone repair.
 - KU4. Appreciate the importance of Electrostatic Discharge (ESD) protection to prevent damage to
 electronic components and apply effective measures to mitigate ESD risks.
 #### Generic Skills (GS)
 User/individual on the job needs to know how to:
 - GS1. Develop a solid understanding of fundamental electronics, including concepts like electricity,
-circuits, voltage, current, and resistance, along with knowledge of key components such as
-capacitors, resistors, and transistors.
+circuits, voltage, current, and resistance, along with knowledge of key components such as capacitors, resistors, and transistors.
 - GS2. Gain insight into the history and evolution of mobile phone technology, different generations
-(2G, 3G, 4G, 5G), and the comparative features of feature phones versus smartphones, as well
-as operating systems like Android and iOS.
+(2G, 3G, 4G, 5G), and the comparative features of feature phones versus smartphones, as well as operating systems like Android and iOS.
 - GS3. Acquire the skills to identify and understand the functions of internal mobile phone components, including batteries, displays, motherboards, cameras, and sensors and learn to
 use basic tools effectively for mobile phone repair,
 - GS4. Understand the importance of Electrostatic Discharge (ESD) protection and implement appropriate measures to safeguard electronic components during repair.
@@ -228,10 +221,9 @@ analysis and troubleshooting, teaching students to understand phone circuits and
 components using multimeters and other diagnostic tools.
 Scope
 The scope covers the following :
-Smartphone Hardware Repair provides a comprehensive understanding of the skills necessary for
-effective smartphone maintenance and repair. It covers troubleshooting techniques to identify
-common issues such as charging problems, display faults, water damage, and software glitches,
-employing both diagnostic tools and visual inspection methods. The module emphasizes safe disassembly and reassembly practices for various phone models, ensuring students can handle the
+Smartphone Hardware Repair provides a comprehensive understanding of the skills necessary for effective smartphone maintenance and repair. It covers troubleshooting techniques to identify
+common issues such as charging problems, display faults, water damage, and software glitches, employing both diagnostic tools and visual inspection methods. The module emphasizes safe
+disassembly and reassembly practices for various phone models, ensuring students can handle the
 intricacies of different devices. Practical skills in replacing key components like displays, batteries,
 charging ports, microphones, and speakers are taught alongside soldering and desoldering techniques. Additionally, the module focuses on basic circuit analysis and troubleshooting, enabling
 students to understand phone circuitry and accurately identify faulty components using multimeters
@@ -283,12 +275,10 @@ issues such as charging problems, display faults, water damage, and software gli
 - GS2. Gain proficiency in using diagnostic tools and conducting visual inspections to accurately
 determine the cause of issues and formulate effective repair strategies.
 - GS3. Develop expertise in replacing critical components such as displays, batteries, charging ports,
-microphones, and speakers, and refine soldering and desoldering techniques to ensure high-
-quality repairs.
+microphones, and speakers, and refine soldering and desoldering techniques to ensure high- quality repairs.
 - GS4. Enhance your ability to understand and analyze smartphone circuits, recognizing the layout
 and function of key components.
-- GS5. Learn to use multimeters and other diagnostic tools to identify and troubleshoot faulty
-components, ensuring accurate and reliable repairs in a professional setting.
+- GS5. Learn to use multimeters and other diagnostic tools to identify and troubleshoot faulty components, ensuring accurate and reliable repairs in a professional setting.
 NSQC Approved || National Institute of Electronics and Information Technology (NIELIT) 10
 
 ### Page 11
@@ -350,11 +340,9 @@ Scope
 The scope covers the following :
 This module focuses on the essential aspects of smartphone software repair. It covers the fundamentals of Android and iOS operating systems, including system settings, app management,
 and file systems. Students will explore techniques for flashing ROMs and rooting Android devices,
-along with understanding the associated risks and benefits. The module also addresses data
-recovery methods, teaching students how to retrieve data from damaged or formatted phones using
+along with understanding the associated risks and benefits. The module also addresses data recovery methods, teaching students how to retrieve data from damaged or formatted phones using
 specialized software. Additionally, it covers security practices, including identifying and removing
-malware and viruses, and ensuring secure installation of apps and updates to maintain optimal
-device performance and security.
+malware and viruses, and ensuring secure installation of apps and updates to maintain optimal device performance and security.
 #### Elements and Performance Criteria
 Operating Systems
 #### To be competent, the user/individual on the job must be able to:
@@ -388,20 +376,15 @@ core features and user interfaces.
 Android and iOS devices.
 - KU3. Learn the techniques for flashing ROMs and rooting Android phones, including the procedures
 involved and the impact on device functionality.
-- KU4. Comprehend the risks and benefits associated with these modifications, ensuring informed
-decisions and appropriate handling.
+- KU4. Comprehend the risks and benefits associated with these modifications, ensuring informed decisions and appropriate handling.
 - KU5. Develop expertise in recovering data from damaged or formatted phones by effectively using
 specialized data recovery software.
-- KU6. Understand the methods for identifying and removing malware and viruses, and implement
-secure practices for installing apps and updates to protect device security.
+- KU6. Understand the methods for identifying and removing malware and viruses, and implement secure practices for installing apps and updates to protect device security.
 #### Generic Skills (GS)
 User/individual on the job needs to know how to:
-- GS1. Develop the ability to manage and configure Android and iOS operating systems, including
-handling system settings, app installations, and file systems efficiently.
-- GS2. Acquire skills in data recovery from damaged or formatted phones, leveraging specialized
-software for effective restoration of lost information.
-- GS3. Cultivate expertise in identifying and removing malware and viruses, and applying secure
-practices for installing apps and updates to maintain device security.
+- GS1. Develop the ability to manage and configure Android and iOS operating systems, including handling system settings, app installations, and file systems efficiently.
+- GS2. Acquire skills in data recovery from damaged or formatted phones, leveraging specialized software for effective restoration of lost information.
+- GS3. Cultivate expertise in identifying and removing malware and viruses, and applying secure practices for installing apps and updates to maintain device security.
 NSQC Approved || National Institute of Electronics and Information Technology (NIELIT) 14
 
 ### Page 15
@@ -454,8 +437,7 @@ Description
 Advanced Repair and Business Skills is designed to provide comprehensive training in both advanced
 technical and business aspects of mobile phone repair. The Advanced Troubleshooting section focuses on
 handling complex phone issues and understanding schematics and component diagrams. The Business
-Management section covers essential topics such as establishing and managing a repair shop,
-implementing effective marketing and customer service strategies, and managing finances and inventory.
+Management section covers essential topics such as establishing and managing a repair shop, implementing effective marketing and customer service strategies, and managing finances and inventory.
 The Professional Ethics section emphasizes the importance of honesty, data privacy, customer satisfaction,
 and maintaining integrity in business operations. Lastly, the Career Opportunities section explores job
 opportunities in the mobile phone repair industry, entrepreneurship, and relevant government initiatives
@@ -468,8 +450,7 @@ includes advanced troubleshooting for complex phone issues and understanding sch
 as business management for setting up and running a repair shop, marketing, customer service, and
 managing finances and inventory. The module emphasizes professional ethics, focusing on honesty,
 data privacy, customer satisfaction, and business integrity. It also explores career opportunities,
-including job prospects, entrepreneurship, and relevant government initiatives. This module
-prepares individuals for both technical and business success in mobile phone repair.
+including job prospects, entrepreneurship, and relevant government initiatives. This module prepares individuals for both technical and business success in mobile phone repair.
 #### Elements and Performance Criteria
 Advanced Troubleshooting
 #### To be competent, the user/individual on the job must be able to:
@@ -564,7 +545,7 @@ NSQC Approved || National Institute of Electronics and Information Technology (N
 ### Page 21
 
 Qualification Pack
-#### DGT/VSQ/N0101:  Employability Skills (30 Hours)
+#### DGT/VSQ/N0101: Employability Skills (30 Hours)
 Description
 This unit is about employability skills, Constitutional values, becoming a professional in the 21st Century,
 digital, financial, and legal literacy, diversity and Inclusion, English and communication skills, customer
@@ -755,8 +736,7 @@ operating system errors to app-related problems.
 Scope
 The scope covers the following :
 The NOS (National Occupational Standards) Scope outlines the essential competencies required for a
-Repair and Maintenance Assistant in the smartphone industry. It defines the key tasks such as
-diagnosing faults, performing repairs, replacing components, and ensuring quality standards.
+Repair and Maintenance Assistant in the smartphone industry. It defines the key tasks such as diagnosing faults, performing repairs, replacing components, and ensuring quality standards.
 Additionally, the scope includes adherence to workplace safety regulations, customer service skills,
 and familiarity with tools and software used in smartphone maintenance. This framework ensures a
 standardized skill set for professionals, enhancing efficiency and service quality in the industry.
@@ -769,10 +749,8 @@ Perform Repair and Maintenance Operations
 - PC4. Follow ESD (Electrostatic Discharge) safety measures during repair.
 #### Knowledge and Understanding (KU)
 The individual on the job needs to know and understand:
-- KU1. Understanding smartphone hardware, software, operating systems, and common faults, along
-with effective troubleshooting and diagnostic techniques.
-- KU2. Knowledge of essential repair tools, safe handling practices, dismantling, reassembly,
-software updates, and quality control measures.
+- KU1. Understanding smartphone hardware, software, operating systems, and common faults, along with effective troubleshooting and diagnostic techniques.
+- KU2. Knowledge of essential repair tools, safe handling practices, dismantling, reassembly, software updates, and quality control measures.
 - KU3. Familiarity with industry safety standards, reporting structures, customer service protocols,
 and proper documentation for repair services.
 - KU4. Awareness of warranty policies, intellectual property rights, e-waste management, business
@@ -826,12 +804,12 @@ NSQC Approved || National Institute of Electronics and Information Technology (N
 
 Qualification Pack
 #### National Occupational Standards (NOS) Parameters
-Assessment Guidelines and Assessment Weightage
-Assessment Guidelines
+#### Assessment Guidelines and Assessment Weightage
+#### Assessment Guidelines
 Assessment of the qualification evaluates candidates to ascertain that they can integrate knowledge, skills
 and values for carrying out relevant tasks as per the defined learning outcomes and assessment criteria.
 The underlying principle of assessment is fairness and transparency. The evidence of the outcomes and
-#### assessment criteria. competence acquired by the candidate can be obtained by conducting Theory,
+assessment criteria. competence acquired by the candidate can be obtained by conducting Theory,
 Practical assessment, Internal assessment. The emphasis is on the practical demonstration of skills &
 knowledge gained by the candidate through the training. Each OUTCOME is assessed & marked separately.
 A candidate is required to pass all OUTCOMES individually based on the passing criteria.
@@ -851,8 +829,7 @@ NSQC Approved || National Institute of Electronics and Information Technology (N
 | NIE/ELE/N0811.Smartphone Hardware Repair | 80 | 35 | 0 | 0 | 115 | 32 |
 
 
-Qualification Pack
-through trained proctors. Once the test begins, remote proctors have full access to candidate's video feeds
+Qualification Pack through trained proctors. Once the test begins, remote proctors have full access to candidate's video feeds
 and computer screens. Proctors authenticate the candidate based on registration details, pre-test image
 captured and I- card in possession of the candidate. Proctors can chat with candidates or give warnings to
 candidates. Proctors can also take screenshots, terminate a specific user's test session, or re-authenticate
@@ -910,7 +887,7 @@ NSQC Approved || National Institute of Electronics and Information Technology (N
 
 
 Qualification Pack
-Acronyms
+#### Acronyms
 NSQC Approved || National Institute of Electronics and Information Technology (NIELIT) 33
 
 ### Page 34
@@ -932,7 +909,7 @@ NSQC Approved || National Institute of Electronics and Information Technology (N
 
 
 Qualification Pack
-Glossary
+#### Glossary
 NSQC Approved || National Institute of Electronics and Information Technology (NIELIT) 34
 
 ### Page 35
