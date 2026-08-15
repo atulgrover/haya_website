@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrepreneurs (MSME) | Turnkey Business Blueprints | HAYAGRIVA</title>
+  <meta name="description" content="Turn 2,176 National Occupational Standards into Bankable MSME Businesses. Get turnkey tool BOMs, day-1 operational playbooks, and project profiles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <style>
+    :root {
+      --bg-primary: #0F172A;
+      --bg-surface: #1E293B;
+      --bg-card: rgba(30, 41, 59, 0.7);
+      --primary-accent: #38BDF8;
+      --primary-gradient: linear-gradient(135deg, #38BDF8 0%, #818CF8 50%, #C084FC 100%);
+      --emerald-accent: #10B981;
+      --amber-accent: #F59E0B;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-glow: rgba(56, 189, 248, 0.3);
+      --font-main: 'Lato', sans-serif;
+      --font-heading: 'Google Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation Bar */
+    .header-nav {
+      height: 64px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .brand-logo span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .nav-link {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .nav-link.active {
+      color: var(--primary-accent);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .login-btn {
+      background: linear-gradient(135deg, #0284C7, #2563EB);
+      color: #FFFFFF !important;
+      font-weight: 600;
+      padding: 7px 18px;
+      border-radius: 6px;
+      border: none;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .login-btn:hover {
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.5);
+      transform: translateY(-1px);
+    }
+
+    /* Mobile Hamburger */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-hamburger svg { width: 24px; height: 24px; }
+    .nav-mobile-drawer {
+      display: none;
+      flex-direction: column;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 24px;
+      gap: 12px;
+    }
+    .nav-mobile-drawer a {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+    .nav-mobile-drawer a.active {
+      color: var(--primary-accent);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    /* Hero Section */
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 40px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--primary-accent);
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+    .hero-title span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #38BDF8, #2563EB);
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.35);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* 4 Key Pillars Grid */
+    .pillars-section {
+      max-width: 1200px;
+      margin: 40px auto 60px;
+      padding: 0 24px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary-accent);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 30px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .pillar-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--primary-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+    .pillar-card:hover::before { opacity: 1; }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .pillar-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .pillar-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .pillar-pill {
+      margin-top: auto;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      width: fit-content;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--primary-accent);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Interactive Trade Blueprint Showcase Preview */
+    .preview-section {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .preview-box {
+      background: linear-gradient(145deg, #1E293B, #0F172A);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .preview-badge {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--emerald-accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .sample-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .sample-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sample-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-accent);
+      text-transform: uppercase;
+    }
+    .sample-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .sample-metrics {
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .metric-chip {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .metric-chip strong { color: #FFFFFF; }
+
+    /* Waitlist / Early Access Card */
+    .waitlist-section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .waitlist-card {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(129, 140, 248, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 48px 32px;
+    }
+    .waitlist-title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+    .waitlist-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 24px;
+    }
+    .waitlist-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 460px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .waitlist-input {
+      flex: 1;
+      min-width: 240px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: rgba(15, 23, 42, 0.8);
+      color: #FFFFFF;
+      font-size: 14px;
+      outline: none;
+    }
+    .waitlist-input:focus { border-color: var(--primary-accent); }
+
+    /* Footer */
+    .footer {
+      margin-top: auto;
+      background: #0B1120;
+      border-top: 1px solid var(--border-color);
+      padding: 30px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+      list-style: none;
+    }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--primary-accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-mobile-drawer.open { display: flex; }
+      .hero-title { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <span>HAYAGRIVA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="employees_nsqf.html" class="nav-link">Employees (NSQF)</a></li>
+        <li><a href="employers_sop.html" class="nav-link">Employers (SOP)</a></li>
+        <li><a href="entrepreneurs_msme.html" class="nav-link active">Entrepreneurs (MSME)</a></li>
+        <li><a href="professionals_apnet.html" class="nav-link">Professionals (APNET)</a></li>
+        <li><a href="login.html" class="nav-link login-btn">Login</a></li>
+      </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="employees_nsqf.html">Employees (NSQF)</a>
+    <a href="employers_sop.html">Employers (SOP)</a>
+    <a href="entrepreneurs_msme.html" class="active">Entrepreneurs (MSME) ●</a>
+    <a href="professionals_apnet.html">Professionals (APNET)</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-container">
+      <div class="hero-badge">
+        🚀 TURNKEY MSME ENGINE
+      </div>
+      <h1 class="hero-title">
+        Turn 2,176 National Standards into<br>
+        <span>Bankable MSME Businesses</span>
+      </h1>
+      <p class="hero-subtitle">
+        Every Qualification Pack is a turnkey business blueprint. Get instant tool Bill of Materials (BOM), Day-1 station operational playbooks, and loan-ready project profiles for PMEGP and Mudra credit.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#preview" class="btn-primary">Explore Trade Blueprints</a>
+        <a href="#waitlist" class="btn-secondary">Request Early Access</a>
+      </div>
+    </section>
+
+    <!-- 4 Key Pillars -->
+    <section class="pillars-section">
+      <div class="section-header">
+        <div class="section-tag">MSME BLUEPRINT STACK</div>
+        <h2 class="section-title">Everything You Need to Launch a Trade</h2>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">🧭</div>
+          <h3 class="pillar-title">Trade Opportunity Explorer</h3>
+          <p class="pillar-desc">
+            Discover commercially viable micro-enterprise trade models mapped across 30+ industry sectors, from Solar PV Micro-grids to Precision Agritech and EV Repair.
+          </p>
+          <div class="pillar-pill">2,176 Trades Indexed</div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">🛠️</div>
+          <h3 class="pillar-title">Tool &amp; Machinery BOM</h3>
+          <p class="pillar-desc">
+            Get an exact capital equipment Bill of Materials (BOM), testing apparatus requirements, and vendor specifications compiled directly from practical Performance Criteria.
+          </p>
+          <div class="pillar-pill">Capital Equipment Matrix</div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">📋</div>
+          <h3 class="pillar-title">Day-1 Operational Playbook</h3>
+          <p class="pillar-desc">
+            Ready-to-deploy standard operating procedures, statutory safety norms, workshop station layouts, and quality checkpoints extracted from official NOS units.
+          </p>
+          <div class="pillar-pill">Zero Setup Guesswork</div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">🏦</div>
+          <h3 class="pillar-title">Bankable Project Profiles</h3>
+          <p class="pillar-desc">
+            Download pre-formatted, loan-ready project profiles tailored for PMEGP, Mudra (Shishu/Kishor/Tarun), and CGTMSE institutional credit schemes.
+          </p>
+          <div class="pillar-pill">Loan-Ready Dossiers</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Preview Box -->
+    <section class="preview-section" id="preview">
+      <div class="preview-box">
+        <div class="preview-header">
+          <div>
+            <div class="section-tag" style="text-align: left;">FEATURED BLUEPRINTS</div>
+            <h3 style="font-family: var(--font-heading); font-size: 22px; color: #FFFFFF;">High-Demand MSME Trade Packages</h3>
+          </div>
+          <div class="preview-badge">● PREVIEW READY</div>
+        </div>
+
+        <div class="sample-grid">
+          <!-- Sample 1 -->
+          <div class="sample-card">
+            <div class="sample-tag">ELECTRONICS &amp; HARDWARE</div>
+            <div class="sample-title">Smartphone &amp; Tablet Refurbishing Lab</div>
+            <p style="font-size: 13px; color: var(--text-muted);">Turnkey setup for component-level BGA rework, battery degradation diagnostics, and screen lamination.</p>
+            <div class="sample-metrics">
+              <div class="metric-chip">Est. Capex: <strong>₹2.5L - ₹5.0L</strong></div>
+              <div class="metric-chip">QP: <strong>ELE/Q0803</strong></div>
+            </div>
+          </div>
+
+          <!-- Sample 2 -->
+          <div class="sample-card">
+            <div class="sample-tag">RENEWABLE ENERGY</div>
+            <div class="sample-title">Rooftop Solar EPC &amp; Maintenance Unit</div>
+            <p style="font-size: 13px; color: var(--text-muted);">Commercial grid-tied inverter installation, PV string testing, net-metering liaison, and annual AMC operations.</p>
+            <div class="sample-metrics">
+              <div class="metric-chip">Est. Capex: <strong>₹4.0L - ₹8.0L</strong></div>
+              <div class="metric-chip">QP: <strong>SGJ/Q0101</strong></div>
+            </div>
+          </div>
+
+          <!-- Sample 3 -->
+          <div class="sample-card">
+            <div class="sample-tag">AGRICULTURE &amp; FOOD</div>
+            <div class="sample-title">Custom Paddy Seed Processing &amp; Treatment</div>
+            <p style="font-size: 13px; color: var(--text-muted);">Automated seed cleaning, bio-fungicide drum treatment, moisture testing, and certified nursery packaging.</p>
+            <div class="sample-metrics">
+              <div class="metric-chip">Est. Capex: <strong>₹3.0L - ₹6.5L</strong></div>
+              <div class="metric-chip">QP: <strong>AGR/Q0101</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Early Access Waitlist -->
+    <section class="waitlist-section" id="waitlist">
+      <div class="waitlist-card">
+        <h3 class="waitlist-title">Get Early Access to MSME Business Kits</h3>
+        <p class="waitlist-desc">
+          We are rolling out turnkey MSME blueprints sector by sector. Enter your email to be the first to access downloadable tool BOMs and bankable project kits.
+        </p>
+        <form class="waitlist-form" onsubmit="handleWaitlist(event)">
+          <input type="email" class="waitlist-input" placeholder="Enter your business or personal email" required id="waitlistEmail">
+          <button type="submit" class="btn-primary" id="waitlistSubmitBtn">Join Waitlist</button>
+        </form>
+        <div id="waitlistSuccess" style="display: none; margin-top: 16px; color: var(--emerald-accent); font-weight: 700; font-size: 14px;">
+          ✓ Thank you! You are on the early access priority list.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="employees_nsqf.html">Employees (NSQF)</a></li>
+      <li><a href="employers_sop.html">Employers (SOP)</a></li>
+      <li><a href="entrepreneurs_msme.html">Entrepreneurs (MSME)</a></li>
+      <li><a href="professionals_apnet.html">Professionals (APNET)</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+    <div>&copy; 2026 HAYAGRIVA Platform. All rights reserved. Powered by NCVET NSQF Standards.</div>
+  </footer>
+
+  <script>
+    // Mobile Drawer Toggle
+    const navHamburger = document.getElementById('navHamburger');
+    const navMobileDrawer = document.getElementById('navMobileDrawer');
+    if (navHamburger && navMobileDrawer) {
+      navHamburger.addEventListener('click', () => {
+        navMobileDrawer.classList.toggle('open');
+      });
+    }
+
+    // Waitlist Form Handler
+    function handleWaitlist(e) {
+      e.preventDefault();
+      const email = document.getElementById('waitlistEmail').value;
+      if (email) {
+        document.getElementById('waitlistSubmitBtn').disabled = true;
+        document.getElementById('waitlistSubmitBtn').innerText = 'Submitting...';
+        setTimeout(() => {
+          document.getElementById('waitlistSuccess').style.display = 'block';
+          document.getElementById('waitlistSubmitBtn').innerText = 'Joined!';
+          document.getElementById('waitlistEmail').value = '';
+        }, 600);
+      }
+    }
+  </script>
+</body>
+</html>

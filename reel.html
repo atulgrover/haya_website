@@ -377,15 +377,15 @@
         window.close();
         return;
       }
-      if (document.referrer && document.referrer.includes('students.html')) {
-        window.location.href = 'students.html';
+      if (document.referrer && document.referrer.includes('employees_nsqf.html')) {
+        window.location.href = 'employees_nsqf.html';
         return;
       }
       if (window.history.length > 1) {
         window.history.back();
         return;
       }
-      window.location.href = 'students.html';
+      window.location.href = 'employees_nsqf.html';
     }
 
     /* ===========================================================
@@ -429,7 +429,7 @@
         document.getElementById('reelPageLoading').innerHTML = `
           <div style="font-size:40px;margin-bottom:12px">📚</div>
           <span class="load-text">No skill or NSQF QP specified.</span>
-          <a href="students.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse NSQF QPs</a>`;
+          <a href="employees_nsqf.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse NSQF QPs</a>`;
         return;
       }
 
@@ -573,7 +573,7 @@
         document.getElementById('reelPageLoading').innerHTML = `
           <div style="font-size:40px;margin-bottom:12px">😕</div>
           <span class="load-text">${err.message}</span>
-          <a href="students.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
+          <a href="employees_nsqf.html" style="color:rgb(56,189,248);font-weight:700;margin-top:8px">← Browse Skills</a>`;
       }
     }
 

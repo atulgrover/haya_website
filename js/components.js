@@ -357,12 +357,14 @@ async function handleAuthSubmit(e) {
                 updateAuthButtonsUI();
                 if (data.user.role === 'admin') {
                     window.location.href = 'dashboard.html?tab=curator';
-                } else if (data.user.role === 'student' && !window.location.pathname.endsWith('students.html')) {
-                    window.location.href = 'students.html';
-                } else if (data.user.role === 'employee' && !window.location.pathname.endsWith('employees.html')) {
-                    window.location.href = 'employees.html';
-                } else if (data.user.role === 'professional' && !window.location.pathname.endsWith('professionals.html')) {
-                    window.location.href = 'professionals.html';
+                } else if ((data.user.role === 'student' || data.user.role === 'employee') && !window.location.pathname.endsWith('employees_nsqf.html')) {
+                    window.location.href = 'employees_nsqf.html';
+                } else if (data.user.role === 'employer' && !window.location.pathname.endsWith('employers_sop.html')) {
+                    window.location.href = 'employers_sop.html';
+                } else if (data.user.role === 'entrepreneur' && !window.location.pathname.endsWith('entrepreneurs_msme.html')) {
+                    window.location.href = 'entrepreneurs_msme.html';
+                } else if (data.user.role === 'professional' && !window.location.pathname.endsWith('professionals_apnet.html')) {
+                    window.location.href = 'professionals_apnet.html';
                 } else {
                     window.location.reload();
                 }
@@ -404,15 +406,21 @@ function updateAuthButtonsUI() {
             if (user.role === 'admin') {
                 portalPage = 'admin.html';
                 portalLabel = 'ReelCurator Agent';
-            } else if (user.role === 'student') {
-                portalPage = 'students.html';
-                portalLabel = 'Student Portal';
+            } else if (user.role === 'student' || user.role === 'employee') {
+                portalPage = 'employees_nsqf.html';
+                portalLabel = 'Employees (NSQF) Portal';
+            } else if (user.role === 'employer') {
+                portalPage = 'employers_sop.html';
+                portalLabel = 'Employers (SOP) Portal';
+            } else if (user.role === 'entrepreneur') {
+                portalPage = 'entrepreneurs_msme.html';
+                portalLabel = 'Entrepreneurs (MSME) Portal';
             } else if (user.role === 'professional') {
-                portalPage = 'professionals.html';
-                portalLabel = 'Professional Portal';
+                portalPage = 'professionals_apnet.html';
+                portalLabel = 'Professionals (APNET) Portal';
             } else {
                 portalPage = 'dashboard.html';
-                portalLabel = 'Employee Portal';
+                portalLabel = 'Control Dashboard';
             }
 
             // Create/update User Profile Dropdown attached to parent

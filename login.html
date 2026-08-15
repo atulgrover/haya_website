@@ -94,9 +94,10 @@
       </a>
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="students.html" class="nav-link">Students (NSQF)</a></li>
-        <li><a href="employees.html" class="nav-link">Employers (SOP)</a></li>
-        <li><a href="professionals.html" class="nav-link">Professionals (IDE)</a></li>
+        <li><a href="employees_nsqf.html" class="nav-link">Employees (NSQF)</a></li>
+        <li><a href="employers_sop.html" class="nav-link">Employers (SOP)</a></li>
+        <li><a href="entrepreneurs_msme.html" class="nav-link">Entrepreneurs (MSME)</a></li>
+        <li><a href="professionals_apnet.html" class="nav-link">Professionals (APNET)</a></li>
         <li><a href="login.html" class="nav-link login-btn active">Login</a></li>
       </ul>
       <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
@@ -112,16 +113,17 @@
   <!-- Mobile Nav Drawer -->
   <nav class="nav-mobile-drawer" id="navMobileDrawer">
     <a href="index.html">Home</a>
-    <a href="students.html">Students (NSQF)</a>
-    <a href="employees.html">Employers (SOP)</a>
-    <a href="professionals.html">Professionals (IDE)</a>
+    <a href="employees_nsqf.html">Employees (NSQF)</a>
+    <a href="employers_sop.html">Employers (SOP)</a>
+    <a href="entrepreneurs_msme.html">Entrepreneurs (MSME)</a>
+    <a href="professionals_apnet.html">Professionals (APNET)</a>
     <a href="login.html" class="login-btn active">Login ●</a>
   </nav>
 
   <div class="auth-wrapper">
     <div class="auth-card">
       <h1 class="auth-title">HAYAGRIVA SSO</h1>
-      <p class="auth-sub">Single Sign-On for Students, Employers &amp; Professionals</p>
+      <p class="auth-sub">Single Sign-On for Employees, Employers, Entrepreneurs &amp; Professionals</p>
 
       <div id="authAlert" class="alert"></div>
 
@@ -226,10 +228,12 @@
           setTimeout(() => {
             if (data.user.role === 'admin' || targetTab === 'curator') {
               window.location.href = 'admin.html';
-            } else if (data.user.role === 'student') {
-              window.location.href = 'students.html';
-            } else if (data.user.role === 'employee' || data.user.role === 'employer') {
-              window.location.href = 'employees.html';
+            } else if (data.user.role === 'student' || data.user.role === 'employee') {
+              window.location.href = 'employees_nsqf.html';
+            } else if (data.user.role === 'employer') {
+              window.location.href = 'employers_sop.html';
+            } else if (data.user.role === 'entrepreneur') {
+              window.location.href = 'entrepreneurs_msme.html';
             } else {
               window.location.href = 'dashboard.html';
             }
