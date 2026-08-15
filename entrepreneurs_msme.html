@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrepreneurs (MSME) | Turnkey Business Blueprints | HAYAGRIVA</title>
-  <meta name="description" content="Turn 2,176 National Occupational Standards into Bankable MSME Businesses. Get turnkey tool BOMs, day-1 operational playbooks, and project profiles.">
+  <title>Entrepreneurs (MSME) | Turnkey Business Blueprints & Bankable DPR | HAYAGRIVA</title>
+  <meta name="description" content="Turn 11,420 National Occupational Standards into Bankable MSME Businesses. Get turnkey tool BOMs, day-1 operational playbooks, and PMEGP/Mudra Detailed Project Reports.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/responsive.css">
   
   <style>
@@ -37,22 +37,6 @@
       overflow-x: hidden;
     }
     a { color: var(--primary-color); text-decoration: none; }
-
-    /* Top Navigation Bar */
-    .header-nav {
-      height: 64px; background-color: #FFFFFF; border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-shrink: 0; z-index: 1000;
-    }
-    .nav-container {
-      max-width: 100%; padding: 0 24px; height: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .brand-logo { font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 1.5px; color: var(--text-main); }
-    .brand-sub { font-size: 13px; font-weight: 500; color: var(--primary-color); background: var(--primary-light); padding: 3px 10px; border-radius: 20px; margin-left: 8px; }
-    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
-    .nav-link { padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--text-main); transition: all 0.2s ease; }
-    .nav-link:hover, .nav-link.active { color: var(--primary-color); background-color: var(--primary-light); }
-    .login-btn { background-color: var(--primary-color); color: #FFFFFF !important; font-weight: 600; padding: 7px 18px; border-radius: 6px; }
 
     /* 3-Panel IDE Layout */
     .ide-container { display: flex; flex: 1; min-height: calc(100vh - 64px); }
@@ -104,19 +88,19 @@
     }
     .blueprint-card.active { border-left: 4px solid var(--primary-color); }
 
-    .bp-top-bar { display: flex; justify-content: space-between; align-items: center; }
-    .bp-sector-tag { background: var(--primary-light); color: var(--primary-color); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-    .bp-capex-badge { background: #ECFDF5; color: #047857; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; border: 1px solid #A7F3D0; }
+    .card-top-bar { display: flex; justify-content: space-between; align-items: center; }
+    .capex-badge { background: #ECFDF5; color: #047857; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .qp-badge { background: var(--primary-light); color: var(--primary-color); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
 
-    .bp-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); line-height: 1.35; }
-    .bp-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.45; }
+    .blueprint-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); line-height: 1.35; }
+    .blueprint-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.45; }
 
-    .bp-meta-row { display: flex; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid #F1F5F9; }
-    .bp-meta-chip { font-size: 11.5px; color: var(--text-muted); background: #F8FAFC; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+    .blueprint-meta-row { display: flex; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid #F1F5F9; flex-wrap: wrap; }
+    .meta-chip { font-size: 11.5px; color: var(--text-muted); background: #F8FAFC; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
 
-    /* RIGHT PANEL: Turnkey Blueprint Inspector */
+    /* RIGHT PANEL: MSME Blueprint Inspector */
     .panel-right {
-      width: 400px; min-width: 360px; background: #FFFFFF; border-left: 1px solid var(--border-color);
+      width: 420px; min-width: 380px; background: #FFFFFF; border-left: 1px solid var(--border-color);
       display: flex; flex-direction: column; position: sticky; top: 64px; height: calc(100vh - 64px); flex-shrink: 0; overflow-y: auto;
     }
     .inspector-header {
@@ -137,37 +121,38 @@
     }
 
     .inspector-content { padding: 20px; display: flex; flex-direction: column; gap: 16px; flex: 1; overflow-y: auto; }
-    
-    .bom-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 6px; }
-    .bom-table th { text-align: left; padding: 8px 6px; background: #F8FAFC; color: var(--text-muted); font-weight: 700; border-bottom: 1px solid var(--border-color); }
-    .bom-table td { padding: 8px 6px; border-bottom: 1px solid #F1F5F9; color: var(--text-main); }
-    .bom-price { font-family: var(--font-mono); font-weight: 600; color: #047857; text-align: right; }
+
+    .bom-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .bom-table th { text-align: left; padding: 8px 10px; background: #F8FAFC; color: var(--text-muted); font-size: 11px; text-transform: uppercase; border-bottom: 1px solid var(--border-color); }
+    .bom-table td { padding: 8px 10px; border-bottom: 1px solid #F1F5F9; color: var(--text-main); }
 
     .sop-step-card {
       background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;
     }
-    .sop-step-title { font-size: 12.5px; font-weight: 700; color: var(--text-main); }
+    .sop-step-title { font-size: 12px; font-weight: 700; color: var(--primary-color); }
     .sop-step-desc { font-size: 11.5px; color: var(--text-muted); }
 
-    .loan-stat-box {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px;
-    }
-    .stat-card {
-      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;
-    }
-    .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
-    .stat-val { font-size: 14px; font-weight: 700; color: var(--text-main); margin-top: 2px; }
+    .loan-stat-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-card { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 2px; }
+    .stat-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .stat-val { font-size: 14px; font-weight: 700; color: var(--text-main); font-family: var(--font-heading); }
 
     .btn-download-kit {
-      background: var(--primary-color); color: #FFFFFF; font-weight: 700; font-size: 13.5px; padding: 12px 16px;
-      border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto;
-      transition: background 0.2s;
+      background: var(--primary-color); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 10px;
+      border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: auto; transition: background 0.2s;
     }
     .btn-download-kit:hover { background: var(--primary-hover); }
 
     @media (max-width: 1024px) {
       .ide-container { flex-direction: column; }
       .panel-left, .panel-right { width: 100%; position: static; height: auto; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      #site-header, #site-footer, .panel-left, .center-header, .blueprint-grid, .inspector-tabs { display: none !important; }
+      .panel-right { width: 100% !important; border: none !important; position: static !important; }
     }
   </style>
 </head>
@@ -179,228 +164,124 @@
   <!-- 3-Panel IDE Workspace Layout -->
   <div class="ide-container">
 
-    <!-- LEFT PANEL: Industry Sector Directory -->
+    <!-- LEFT PANEL: 41 Trade Sectors & Filter -->
     <aside class="panel-left">
       <h2 class="panel-title">Trade Sectors</h2>
       <div class="filter-group">
-        <label class="filter-label" for="searchTrade">Search Blueprint</label>
-        <input type="text" id="searchTrade" class="filter-input" placeholder="e.g. Solar, EV, Seed, Drone..." oninput="filterBlueprints()">
+        <label class="filter-label" for="searchTrade">Search Opportunity</label>
+        <input type="text" id="searchTrade" class="filter-input" placeholder="e.g. Solar, EV, Battery, Seed..." oninput="handleSearch()">
       </div>
 
       <div class="sector-list" id="sectorList">
-        <div class="sector-item active" onclick="selectSector('all', this)">
-          <span>🌐 All MSME Trades</span>
-          <span class="sector-badge">2,176</span>
+        <div class="sector-item active" onclick="filterBySector('all', this)">
+          <span>🌐 All Opportunities</span>
+          <span class="sector-badge" id="allCountBadge">11,420</span>
         </div>
-        <div class="sector-item" onclick="selectSector('Electronics & Hardware', this)">
-          <span>📱 Electronics &amp; HW</span>
-          <span class="sector-badge">184</span>
-        </div>
-        <div class="sector-item" onclick="selectSector('Renewable Energy', this)">
-          <span>☀️ Renewable Energy</span>
-          <span class="sector-badge">76</span>
-        </div>
-        <div class="sector-item" onclick="selectSector('Agriculture & Food', this)">
-          <span>🌾 Agri &amp; Food Tech</span>
-          <span class="sector-badge">240</span>
-        </div>
-        <div class="sector-item" onclick="selectSector('Automotive & EV', this)">
-          <span>⚡ Automotive &amp; EV</span>
-          <span class="sector-badge">192</span>
-        </div>
-        <div class="sector-item" onclick="selectSector('Healthcare & Pharma', this)">
-          <span>🩺 Healthcare &amp; Lab</span>
-          <span class="sector-badge">115</span>
-        </div>
-        <div class="sector-item" onclick="selectSector('Construction & Smart Home', this)">
-          <span>🏗️ Construction &amp; HVAC</span>
-          <span class="sector-badge">138</span>
-        </div>
+        <!-- Loaded dynamically from /api/skillpedia/qps/sectors -->
       </div>
     </aside>
 
-    <!-- CENTER PANEL: Turnkey Trade Blueprint Cards Grid -->
+    <!-- CENTER PANEL: MSME Business Opportunity Cards -->
     <main class="panel-center">
       <div class="center-header">
         <div>
-          <div class="center-header-title">Turnkey MSME Trade Blueprints</div>
-          <div class="center-header-sub">Each Qualification Pack provides a day-1 machinery BOM, operational playbook, and bankable loan profile.</div>
+          <div class="center-header-title">National MSME Turnkey Business Blueprints</div>
+          <div class="center-header-sub">11,420 Government-audited vocational trade opportunities with machinery BOMs and bankable project reports.</div>
         </div>
-        <button class="btn-download-kit" style="margin-top: 0; padding: 8px 14px; font-size: 12.5px;" onclick="openWaitlistModal()">
-          📥 Request Custom BOM
-        </button>
+        <div style="font-size:12px; color:#047857; font-weight:700; background:#ECFDF5; padding:6px 12px; border-radius:20px;">
+          ✓ PMEGP &amp; Mudra Ready
+        </div>
       </div>
 
       <div class="blueprint-grid" id="blueprintGrid">
-        <!-- Blueprint 1 -->
-        <div class="blueprint-card active" onclick="loadBlueprint(0, this)">
-          <div class="bp-top-bar">
-            <span class="bp-sector-tag">ELECTRONICS &amp; HARDWARE</span>
-            <span class="bp-capex-badge">Capex: ₹2.5L - ₹5.0L</span>
-          </div>
-          <h3 class="bp-title">Smartphone &amp; Tablet Micro-Refurbishing Lab</h3>
-          <p class="bp-desc">Turnkey BGA rework, vacuum screen separator, microscope soldering, and battery diagnostics station.</p>
-          <div class="bp-meta-row">
-            <span class="bp-meta-chip">QP: ELE/Q0803</span>
-            <span class="bp-meta-chip">Tool BOM: 14 Items</span>
-            <span class="bp-meta-chip">PMEGP Eligible</span>
-          </div>
-        </div>
-
-        <!-- Blueprint 2 -->
-        <div class="blueprint-card" onclick="loadBlueprint(1, this)">
-          <div class="bp-top-bar">
-            <span class="bp-sector-tag">RENEWABLE ENERGY</span>
-            <span class="bp-capex-badge">Capex: ₹4.0L - ₹8.0L</span>
-          </div>
-          <h3 class="bp-title">Rooftop Solar PV EPC &amp; AMC Service Unit</h3>
-          <p class="bp-desc">Grid-tied string testing, PV curve tracer diagnostics, safety harness rig, and annual maintenance contracting.</p>
-          <div class="bp-meta-row">
-            <span class="bp-meta-chip">QP: SGJ/Q0101</span>
-            <span class="bp-meta-chip">Tool BOM: 18 Items</span>
-            <span class="bp-meta-chip">Mudra Tarun</span>
-          </div>
-        </div>
-
-        <!-- Blueprint 3 -->
-        <div class="blueprint-card" onclick="loadBlueprint(2, this)">
-          <div class="bp-top-bar">
-            <span class="bp-sector-tag">AGRICULTURE &amp; FOOD</span>
-            <span class="bp-capex-badge">Capex: ₹3.0L - ₹6.5L</span>
-          </div>
-          <h3 class="bp-title">Custom Paddy Seed Processing &amp; Drum Treatment</h3>
-          <p class="bp-desc">Mechanical air-screen cleaner, bio-fungicide slurry mixer, moisture analyzer, and certified nursery packaging unit.</p>
-          <div class="bp-meta-row">
-            <span class="bp-meta-chip">QP: AGR/Q0101</span>
-            <span class="bp-meta-chip">Tool BOM: 11 Items</span>
-            <span class="bp-meta-chip">PMEGP Eligible</span>
-          </div>
-        </div>
-
-        <!-- Blueprint 4 -->
-        <div class="blueprint-card" onclick="loadBlueprint(3, this)">
-          <div class="bp-top-bar">
-            <span class="bp-sector-tag">AUTOMOTIVE &amp; EV</span>
-            <span class="bp-capex-badge">Capex: ₹5.5L - ₹10.0L</span>
-          </div>
-          <h3 class="bp-title">Electric 2W/3W Battery Pack &amp; Motor Service Station</h3>
-          <p class="bp-desc">Li-ion cell balancing rig, BMS flasher tool, insulation resistance tester, and dynamometer calibration kit.</p>
-          <div class="bp-meta-row">
-            <span class="bp-meta-chip">QP: ASC/Q1424</span>
-            <span class="bp-meta-chip">Tool BOM: 21 Items</span>
-            <span class="bp-meta-chip">CGTMSE Cover</span>
-          </div>
+        <div style="padding: 40px; text-align: center; color: var(--text-muted); grid-column: 1 / -1;">
+          Loading MSME Opportunities from PostgreSQL...
         </div>
       </div>
     </main>
 
-    <!-- RIGHT PANEL: Blueprint Detail Inspector -->
-    <aside class="panel-right">
+    <!-- RIGHT PANEL: Blueprint & DPR Inspector -->
+    <aside class="panel-right" id="blueprintInspector">
       <div class="inspector-header">
-        <div class="inspector-title" id="inspTitle">Smartphone &amp; Tablet Micro-Refurbishing Lab</div>
-        <div class="inspector-subtitle" id="inspSub">Qualification Pack: ELE/Q0803 • Electronics &amp; Hardware</div>
+        <div class="inspector-title" id="inspTitle">Turnkey MSME Blueprint</div>
+        <div class="inspector-subtitle" id="inspSub">Select a trade opportunity card to inspect Capex BOM and Bankable Loan Report.</div>
       </div>
 
       <div class="inspector-tabs">
-        <button class="inspector-tab active" onclick="switchTab('bom', this)">🛠️ Tool BOM</button>
-        <button class="inspector-tab" onclick="switchTab('sop', this)">📋 Playbook</button>
-        <button class="inspector-tab" onclick="switchTab('loan', this)">🏦 Project Profile</button>
+        <button class="inspector-tab active" onclick="switchMsmeTab('bom', this)">🛠️ Tool BOM</button>
+        <button class="inspector-tab" onclick="switchMsmeTab('playbook', this)">📋 Playbook</button>
+        <button class="inspector-tab" onclick="switchMsmeTab('loan', this)">🏦 Bank DPR</button>
       </div>
 
       <div class="inspector-content" id="inspContent">
-        <!-- Tab 1: BOM (Default) -->
-        <div id="tab-bom">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Capital Equipment &amp; Tooling Bill of Materials
+        <!-- Tab 1: Tool & Machinery BOM -->
+        <div id="tab-bom" style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+              Turnkey Machinery Bill of Materials
+            </span>
+            <span style="font-size: 12px; font-weight: 800; color: #047857;" id="totalCapexBadge">Capex: ₹ 1,19,000</span>
           </div>
+
           <table class="bom-table">
             <thead>
               <tr>
-                <th>Item &amp; Specification</th>
+                <th>Item &amp; Spec</th>
                 <th>Qty</th>
-                <th style="text-align: right;">Est. (₹)</th>
+                <th>Est. Price</th>
               </tr>
             </thead>
             <tbody id="bomTableBody">
-              <tr>
-                <td><strong>BGA Infrared Rework Station</strong><br><span style="color:#64748B; font-size:11px;">Lead-free PID temp control</span></td>
-                <td>1</td>
-                <td class="bom-price">₹45,000</td>
-              </tr>
-              <tr>
-                <td><strong>Trinocular Stereo Microscope</strong><br><span style="color:#64748B; font-size:11px;">7X-45X continuous zoom with camera</span></td>
-                <td>1</td>
-                <td class="bom-price">₹28,500</td>
-              </tr>
-              <tr>
-                <td><strong>LCD Vacuum Screen Separator</strong><br><span style="color:#64748B; font-size:11px;">Heated aluminum plate + suction</span></td>
-                <td>1</td>
-                <td class="bom-price">₹12,000</td>
-              </tr>
-              <tr>
-                <td><strong>DC Programmable Power Supply</strong><br><span style="color:#64748B; font-size:11px;">30V 5A precision ripple output</span></td>
-                <td>2</td>
-                <td class="bom-price">₹14,000</td>
-              </tr>
-              <tr>
-                <td><strong>ESD Workbench &amp; Tooling Rig</strong><br><span style="color:#64748B; font-size:11px;">Antistatic mat, grounding, pliers</span></td>
-                <td>1</td>
-                <td class="bom-price">₹18,000</td>
-              </tr>
+              <!-- Rendered dynamically -->
             </tbody>
           </table>
         </div>
 
-        <!-- Tab 2: Playbook (Hidden by default) -->
-        <div id="tab-sop" style="display: none; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Tab 2: Day-1 Playbook -->
+        <div id="tab-playbook" style="display: none; flex-direction: column; gap: 10px;">
           <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Standard Operating Station Workflows
+            Day-1 Operational Launch Playbook
           </div>
-          <div class="sop-step-card">
-            <div class="sop-step-title">1. ESD Safety &amp; Inward Triage</div>
-            <div class="sop-step-desc">Connect wrist strap, run battery cold resistance test, log serial numbers in triage register.</div>
-          </div>
-          <div class="sop-step-card">
-            <div class="sop-step-title">2. Thermal Disassembly &amp; Screen Extraction</div>
-            <div class="sop-step-desc">Heat bed calibration at 85°C for 180 seconds; deploy molybdenum wire for optical clear adhesive release.</div>
-          </div>
-          <div class="sop-step-card">
-            <div class="sop-step-title">3. PCB Inspection &amp; Micro-Soldering</div>
-            <div class="sop-step-desc">Apply Rosin flux, utilize microscope for 0201 capacitor bridge checks; thermal camera short detection.</div>
+          <div id="playbookList" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Rendered dynamically -->
           </div>
         </div>
 
-        <!-- Tab 3: Loan Profile (Hidden by default) -->
-        <div id="tab-loan" style="display: none; display: flex; flex-direction: column; gap: 12px;">
+        <!-- Tab 3: Bankable Project Profile (PMEGP / Mudra DPR) -->
+        <div id="tab-loan" style="display: none; flex-direction: column; gap: 12px;">
           <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
             Bankable Financial Profile (PMEGP / Mudra)
           </div>
-          <div class="loan-stat-box">
+          <div class="loan-stat-box" id="dprStatBox">
             <div class="stat-card">
               <div class="stat-label">Total Project Cost</div>
-              <div class="stat-val">₹ 3,75,000</div>
+              <div class="stat-val" id="statCost">₹ 1,79,500</div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Promoter Margin (5%)</div>
-              <div class="stat-val">₹ 18,750</div>
+              <div class="stat-val" id="statMargin">₹ 8,975</div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Bank Term Loan</div>
-              <div class="stat-val">₹ 2,81,250</div>
+              <div class="stat-val" id="statLoan">₹ 1,07,700</div>
             </div>
             <div class="stat-card">
-              <div class="stat-label">PMEGP Subsidy (25%)</div>
-              <div class="stat-val">₹ 93,750</div>
+              <div class="stat-label">PMEGP Subsidy (35%)</div>
+              <div class="stat-val" id="statSubsidy">₹ 62,825</div>
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Estimated Debt Service Coverage (DSCR)</div>
-            <div class="stat-val" style="color: #047857;">2.45x (Bank Sound)</div>
+            <div class="stat-val" style="color: #047857;" id="statDscr">2.85x (Bank Sound - Min 1.50x)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Projected Monthly Net EBITDA</div>
+            <div class="stat-val" style="color: #0284C7;" id="statProfit">₹ 36,000 / month</div>
           </div>
         </div>
 
-        <button class="btn-download-kit" onclick="alert('Downloading complete MSME Blueprint Package (BOM + SOPs + Bank Profile)...')">
-          📥 Download Complete Trade Kit (.PDF)
+        <button class="btn-download-kit" onclick="downloadBankReport()">
+          📥 Download Bankable Project Report (.PDF)
         </button>
       </div>
     </aside>
@@ -413,152 +294,173 @@
   <script src="js/responsive.js"></script>
   <script src="js/components.js"></script>
   <script>
-    const BLUEPRINTS = [
-      {
-        title: "Smartphone & Tablet Micro-Refurbishing Lab",
-        sub: "Qualification Pack: ELE/Q0803 • Electronics & Hardware",
-        bom: [
-          { name: "BGA Infrared Rework Station", spec: "Lead-free PID temp control", qty: 1, price: "₹45,000" },
-          { name: "Trinocular Stereo Microscope", spec: "7X-45X continuous zoom with camera", qty: 1, price: "₹28,500" },
-          { name: "LCD Vacuum Screen Separator", spec: "Heated aluminum plate + suction", qty: 1, price: "₹12,000" },
-          { name: "DC Programmable Power Supply", spec: "30V 5A precision ripple output", qty: 2, price: "₹14,000" },
-          { name: "ESD Workbench & Tooling Rig", spec: "Antistatic mat, grounding, pliers", qty: 1, price: "₹18,000" }
-        ],
-        sops: [
-          { title: "1. ESD Safety & Inward Triage", desc: "Connect wrist strap, run battery cold resistance test, log serial numbers." },
-          { title: "2. Thermal Disassembly & Screen Extraction", desc: "Heat bed calibration at 85°C for 180 seconds; deploy molybdenum wire." },
-          { title: "3. PCB Inspection & Micro-Soldering", desc: "Apply Rosin flux, utilize microscope for 0201 capacitor bridge checks." }
-        ],
-        loan: { cost: "₹ 3,75,000", margin: "₹ 18,750", loan: "₹ 2,81,250", subsidy: "₹ 93,750", dscr: "2.45x (Bank Sound)" }
-      },
-      {
-        title: "Rooftop Solar PV EPC & AMC Service Unit",
-        sub: "Qualification Pack: SGJ/Q0101 • Renewable Energy",
-        bom: [
-          { name: "Solar PV Curve Tracer & Analyzer", spec: "1000V 20A I-V characteristic logger", qty: 1, price: "₹85,000" },
-          { name: "Thermal Imaging IR Camera", spec: "Hotspot detection for cell degradation", qty: 1, price: "₹42,000" },
-          { name: "Insulation Resistance Megger", spec: "1000V DC dielectric testing", qty: 1, price: "₹18,500" },
-          { name: "MC4 Hydraulic Crimper Set", spec: "High pressure 2.5-6.0mm pin die", qty: 2, price: "₹11,000" },
-          { name: "Roof Fall Protection Rig & Lanyard", spec: "EN361 certified dual harness", qty: 3, price: "₹24,000" }
-        ],
-        sops: [
-          { title: "1. Site Shading & Structural Survey", desc: "Digital sun-path survey, roof dead-load verification, azimuth optimization." },
-          { title: "2. String Wiring & Inverter Integration", desc: "MC4 weatherproofing, DC string polarity check, SPD lightning arrestor bonding." },
-          { title: "3. Grid Net-Metering Commissioning", desc: "DISCOM synchronization test, anti-islanding trip validation." }
-        ],
-        loan: { cost: "₹ 6,50,000", margin: "₹ 32,500", loan: "₹ 4,87,500", subsidy: "₹ 1,62,500", dscr: "2.80x (High Demand)" }
-      },
-      {
-        title: "Custom Paddy Seed Processing & Drum Treatment",
-        sub: "Qualification Pack: AGR/Q0101 • Agriculture & Food",
-        bom: [
-          { name: "Air-Screen Seed Cleaner & Grader", spec: "2 HP motor, 500kg/hr 3-sieve system", qty: 1, price: "₹1,20,000" },
-          { name: "Bio-Fungicide Slurry Mixing Drum", spec: "Continuous spiral rotational mixer", qty: 1, price: "₹45,000" },
-          { name: "Digital Seed Moisture Meter", spec: "Grain capacitance probe ±0.5% accuracy", qty: 1, price: "₹16,000" },
-          { name: "Continuous Bag Sealer & Stitcher", spec: "Heavy-duty pedal operated stitcher", qty: 1, price: "₹22,000" }
-        ],
-        sops: [
-          { title: "1. Seed Intake & Foreign Matter Screening", desc: "Pass through 3-tier oscillating screen to eliminate chaff and immature grains." },
-          { title: "2. Bio-Slurry Coating & Impregnation", desc: "Uniform slurry dosage with Trichoderma formulation at 10g/kg." },
-          { title: "3. Aerated Curing & Certified Packaging", desc: "Moisture reduction below 12% followed by moisture-proof bag stitching." }
-        ],
-        loan: { cost: "₹ 4,20,000", margin: "₹ 21,000", loan: "₹ 3,15,000", subsidy: "₹ 1,05,000", dscr: "2.15x (Seasonal Peak)" }
-      },
-      {
-        title: "Electric 2W/3W Battery Pack & Motor Service Station",
-        sub: "Qualification Pack: ASC/Q1424 • Automotive & EV",
-        bom: [
-          { name: "Li-Ion Cell Balance Charge/Discharge Rig", spec: "72V 40A automated cycling analyzer", qty: 1, price: "₹1,45,000" },
-          { name: "Pneumatic Spot Welding Machine", spec: "Nickel strip pulse welder 5000A", qty: 1, price: "₹65,000" },
-          { name: "BMS Diagnostic & CAN Flasher Tool", spec: "OBD-II & UART protocol reader", qty: 1, price: "₹38,000" },
-          { name: "Insulated 1000V VDE Master Toolset", spec: "Torque wrenches, insulated sockets", qty: 1, price: "₹29,000" }
-        ],
-        sops: [
-          { title: "1. HV Safety Isolation & Cell Pack Teardown", desc: "Verify sub-50V safe zone, deploy class-D fire suppression standby." },
-          { title: "2. Internal Cell Impedance Mapping", desc: "Log milli-ohm IR readings per series parallel block to detect faulty cells." },
-          { title: "3. Spot Welding & BMS Re-flashing", desc: "Deploy pure nickel strip with 0.15mm weld penetration; calibrate SOC curves." }
-        ],
-        loan: { cost: "₹ 7,80,000", margin: "₹ 39,000", loan: "₹ 5,85,000", subsidy: "₹ 1,95,000", dscr: "3.10x (EV Growth)" }
+    let allCards = [];
+    let currentNosCode = '';
+    let currentBlueprint = null;
+    let selectedSector = 'all';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadSectors();
+      await loadMsmeCards();
+    });
+
+    async function loadSectors() {
+      try {
+        const res = await fetch('/api/skillpedia/qps/sectors');
+        const data = await res.json();
+        if (data.success && data.sectors) {
+          const list = document.getElementById('sectorList');
+          data.sectors.forEach(sec => {
+            const item = document.createElement('div');
+            item.className = 'sector-item';
+            item.onclick = () => filterBySector(sec, item);
+            item.innerHTML = `<span>${sec}</span>`;
+            list.appendChild(item);
+          });
+        }
+      } catch (err) {
+        console.error('Error loading sectors:', err);
       }
-    ];
-
-    let currentBlueprintIdx = 0;
-    let currentTab = 'bom';
-
-    function loadBlueprint(idx, cardEl) {
-      currentBlueprintIdx = idx;
-      document.querySelectorAll('.blueprint-card').forEach(c => c.classList.remove('active'));
-      if (cardEl) cardEl.classList.add('active');
-
-      const bp = BLUEPRINTS[idx];
-      document.getElementById('inspTitle').innerText = bp.title;
-      document.getElementById('inspSub').innerText = bp.sub;
-
-      // Render BOM Table
-      const tbody = document.getElementById('bomTableBody');
-      tbody.innerHTML = bp.bom.map(b => `
-        <tr>
-          <td><strong>${b.name}</strong><br><span style="color:#64748B; font-size:11px;">${b.spec}</span></td>
-          <td>${b.qty}</td>
-          <td class="bom-price">${b.price}</td>
-        </tr>
-      `).join('');
-
-      // Render SOPs
-      const sopContainer = document.getElementById('tab-sop');
-      sopContainer.innerHTML = `
-        <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Standard Operating Station Workflows</div>
-        ${bp.sops.map(s => `
-          <div class="sop-step-card">
-            <div class="sop-step-title">${s.title}</div>
-            <div class="sop-step-desc">${s.desc}</div>
-          </div>
-        `).join('')}
-      `;
-
-      // Render Loan Profile
-      const loanContainer = document.getElementById('tab-loan');
-      loanContainer.innerHTML = `
-        <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Bankable Financial Profile (PMEGP / Mudra)</div>
-        <div class="loan-stat-box">
-          <div class="stat-card"><div class="stat-label">Total Project Cost</div><div class="stat-val">${bp.loan.cost}</div></div>
-          <div class="stat-card"><div class="stat-label">Promoter Margin (5%)</div><div class="stat-val">${bp.loan.margin}</div></div>
-          <div class="stat-card"><div class="stat-label">Bank Term Loan</div><div class="stat-val">${bp.loan.loan}</div></div>
-          <div class="stat-card"><div class="stat-label">PMEGP Subsidy (25%)</div><div class="stat-val">${bp.loan.subsidy}</div></div>
-        </div>
-        <div class="stat-card" style="margin-top: 8px;">
-          <div class="stat-label">Estimated Debt Service Coverage (DSCR)</div>
-          <div class="stat-val" style="color: #047857;">${bp.loan.dscr}</div>
-        </div>
-      `;
     }
 
-    function switchTab(tabId, tabBtn) {
-      currentTab = tabId;
+    async function loadMsmeCards(sector = 'all') {
+      const grid = document.getElementById('blueprintGrid');
+      grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">Loading MSME Opportunities...</div>';
+
+      try {
+        const url = sector === 'all' 
+          ? '/api/skillpedia/msme/cards?limit=60' 
+          : `/api/skillpedia/msme/cards?sector=${encodeURIComponent(sector)}&limit=100`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.success && data.cards && data.cards.length > 0) {
+          allCards = data.cards;
+          renderCards(allCards);
+          inspectCard(allCards[0].nos_code);
+        } else {
+          grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">No MSME opportunities found.</div>';
+        }
+      } catch (err) {
+        console.error('Error loading MSME cards:', err);
+        grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">Failed to load MSME opportunities.</div>';
+      }
+    }
+
+    function renderCards(cards) {
+      const grid = document.getElementById('blueprintGrid');
+      if (!cards || cards.length === 0) {
+        grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">No opportunities match your filter.</div>';
+        return;
+      }
+
+      grid.innerHTML = cards.map(c => `
+        <div class="blueprint-card ${c.nos_code === currentNosCode ? 'active' : ''}" onclick="selectCard('${c.nos_code}', this)">
+          <div class="card-top-bar">
+            <span class="capex-badge">₹ ${(c.total_project_cost_inr || 150000).toLocaleString('en-IN')}</span>
+            <span class="qp-badge">${c.sector || 'General'}</span>
+          </div>
+          <h3 class="blueprint-title">${c.business_title || `Turnkey ${c.nos_code} Unit`}</h3>
+          <p class="blueprint-desc">Turnkey micro-enterprise setup based on ${c.qp_name || c.nos_code}. Pre-configured machinery BOM &amp; PMEGP loan report.</p>
+          <div class="blueprint-meta-row">
+            <span class="meta-chip">NOS: ${c.nos_code}</span>
+            <span class="meta-chip">DSCR: ${c.dscr_ratio || '2.85x'}</span>
+            <span class="meta-chip">⏱️ ${c.payback_period_months || 5.5} Mo Payback</span>
+            <span class="meta-chip" style="color:#047857; background:#ECFDF5;">${c.subsidy_pct || 35}% Subsidy</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function selectCard(nosCode, cardEl) {
+      currentNosCode = nosCode;
+      document.querySelectorAll('.blueprint-card').forEach(c => c.classList.remove('active'));
+      if (cardEl) cardEl.classList.add('active');
+      inspectCard(nosCode);
+    }
+
+    async function inspectCard(nosCode) {
+      currentNosCode = nosCode;
+      try {
+        const res = await fetch(`/api/skillpedia/msme/details?nos=${encodeURIComponent(nosCode)}`);
+        const data = await res.json();
+
+        if (data.success && data.blueprint) {
+          currentBlueprint = data.blueprint;
+          const bp = data.blueprint;
+
+          document.getElementById('inspTitle').innerText = bp.business_title;
+          document.getElementById('inspSub').innerText = `NOS: ${data.nos_code} • Sector: ${data.sector} • ${bp.business_model_type || 'Micro-Enterprise'}`;
+          document.getElementById('totalCapexBadge').innerText = `Project Cost: ₹ ${(bp.total_project_cost_inr || 150000).toLocaleString('en-IN')}`;
+
+          // Tab 1: Tool BOM
+          const bomTable = document.getElementById('bomTableBody');
+          bomTable.innerHTML = (bp.tool_bom || []).map(t => `
+            <tr>
+              <td>
+                <strong style="color:var(--text-main); font-size:12px;">${t.name}</strong>
+                <div style="font-size:11px; color:var(--text-muted);">${t.spec || ''}</div>
+              </td>
+              <td style="font-weight:700;">${t.qty || 1}</td>
+              <td style="font-weight:700; color:var(--primary-color);">₹ ${(t.cost || 0).toLocaleString('en-IN')}</td>
+            </tr>
+          `).join('');
+
+          // Tab 2: Day-1 Playbook
+          const playbookList = document.getElementById('playbookList');
+          playbookList.innerHTML = (bp.day1_playbook || []).map(p => `
+            <div class="sop-step-card">
+              <div class="sop-step-title">${p.phase}</div>
+              <div class="sop-step-desc">${p.action}</div>
+            </div>
+          `).join('');
+
+          // Tab 3: Bank DPR
+          const dpr = bp.financial_dpr || {};
+          document.getElementById('statCost').innerText = `₹ ${(dpr.total_project_cost || bp.total_project_cost_inr || 150000).toLocaleString('en-IN')}`;
+          document.getElementById('statMargin').innerText = `₹ ${(dpr.promoter_contribution_inr || 7500).toLocaleString('en-IN')} (${dpr.promoter_contribution_pct || 5}%)`;
+          document.getElementById('statLoan').innerText = `₹ ${(dpr.bank_term_loan_inr || 90000).toLocaleString('en-IN')}`;
+          document.getElementById('statSubsidy').innerText = `₹ ${(dpr.govt_subsidy_inr || 52500).toLocaleString('en-IN')} (${dpr.govt_subsidy_pct || 35}%)`;
+          document.getElementById('statDscr').innerText = dpr.dscr_ratio || '2.85x (Bank Sound)';
+          document.getElementById('statProfit').innerText = `₹ ${(dpr.monthly_net_profit_ebitda || 35000).toLocaleString('en-IN')} / month`;
+        }
+      } catch (err) {
+        console.error('Error inspecting MSME card:', err);
+      }
+    }
+
+    function switchMsmeTab(tabId, tabBtn) {
       document.querySelectorAll('.inspector-tab').forEach(t => t.classList.remove('active'));
       if (tabBtn) tabBtn.classList.add('active');
 
-      document.getElementById('tab-bom').style.display = tabId === 'bom' ? 'block' : 'none';
-      document.getElementById('tab-sop').style.display = tabId === 'sop' ? 'flex' : 'none';
+      document.getElementById('tab-bom').style.display = tabId === 'bom' ? 'flex' : 'none';
+      document.getElementById('tab-playbook').style.display = tabId === 'playbook' ? 'flex' : 'none';
       document.getElementById('tab-loan').style.display = tabId === 'loan' ? 'flex' : 'none';
     }
 
-    function selectSector(sector, itemEl) {
+    function filterBySector(sector, itemEl) {
+      selectedSector = sector;
       document.querySelectorAll('.sector-item').forEach(s => s.classList.remove('active'));
       if (itemEl) itemEl.classList.add('active');
-      filterBlueprints();
+      loadMsmeCards(sector);
     }
 
-    function filterBlueprints() {
+    function handleSearch() {
       const q = document.getElementById('searchTrade').value.toLowerCase();
-      document.querySelectorAll('.blueprint-card').forEach(c => {
-        const text = c.innerText.toLowerCase();
-        c.style.display = text.includes(q) ? 'flex' : 'none';
-      });
+      const filtered = allCards.filter(c => 
+        (c.business_title && c.business_title.toLowerCase().includes(q)) ||
+        (c.nos_code && c.nos_code.toLowerCase().includes(q)) ||
+        (c.sector && c.sector.toLowerCase().includes(q))
+      );
+      renderCards(filtered);
     }
 
-    function openWaitlistModal() {
-      alert('Custom Tool BOM request received! Our MSME engineering desk will contact your registered email.');
+    function downloadBankReport() {
+      if (!currentBlueprint) {
+        alert('Please select an MSME business opportunity first.');
+        return;
+      }
+      window.print();
     }
   </script>
 </body>

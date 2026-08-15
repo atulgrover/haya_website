@@ -243,6 +243,8 @@ async function initSchema() {
                 nos_type TEXT DEFAULT 'Compulsory',
                 credits INT DEFAULT 0,
                 sequence_order INT DEFAULT 1,
+                business_model_type TEXT DEFAULT 'Turnkey_Service_Kiosk',
+                msme_blueprint_json JSONB,
                 UNIQUE(qp_code, nos_code)
             );
 
