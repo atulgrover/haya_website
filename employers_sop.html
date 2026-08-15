@@ -407,7 +407,7 @@
       inspectCard(qpCode, qpName, sector, level);
     }
 
-    function inspectCard(qpCode, qpName, sector, level) {
+    async function inspectCard(qpCode, qpName, sector, level) {
       currentQpCode = qpCode;
       const showcase = SHOWCASES[qpCode];
 
@@ -419,6 +419,51 @@
       document.getElementById('compStandardTitle').innerText = `NCVET NSQF Level ${level} Certified Process`;
 
       const stationsList = document.getElementById('stationsList');
+      stationsList.innerHTML = '<div style="font-size:12px; color:var(--text-muted); padding:10px;">Loading Workstation SOPs...</div>';
+
+      try {
+        const res = await fetch(`/api/skillpedia/sop/details?qp=${encodeURIComponent(qpCode)}`);
+        const data = await res.json();
+
+        if (data.success && data.sops && data.sops.length > 0) {
+          // Render Live Synthesized Workstation SOPs
+          stationsList.innerHTML = data.sops.map((sop, idx) => `
+            <div class="station-card">
+              <div class="station-badge">${sop.workstation_number || `WORKSTATION 0${idx + 1}`}</div>
+              <div class="station-title">${sop.sop_title || sop.module_title}</div>
+              <div style="font-size:11.5px; color:var(--text-muted); margin-bottom:6px;">${sop.purpose_and_scope || ''}</div>
+              <div class="station-pcs">
+                ${(sop.sequential_execution_steps || []).slice(0, 6).map(st => `
+                  <div class="pc-step-item">
+                    <span class="pc-step-dot">•</span>
+                    <div>
+                      <strong style="color:var(--primary-color);">${st.step_title || `Step ${st.step_number}`}:</strong>
+                      <span>${st.imperative_action_directive || ''}</span>
+                      ${st.parameter_tolerance ? `<div style="font-size:11px; color:#047857; font-weight:600;">⚡ Limit: ${st.parameter_tolerance}</div>` : ''}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `).join('');
+
+          // Update PPE Grid from First SOP
+          const firstSop = data.sops[0];
+          if (firstSop.safety_and_ppe && firstSop.safety_and_ppe.mandatory_ppe) {
+            const ppeGrid = document.getElementById('ppeGrid');
+            if (ppeGrid) {
+              ppeGrid.innerHTML = firstSop.safety_and_ppe.mandatory_ppe.map(item => `
+                <div class="ppe-item">🦺 ${item}</div>
+              `).join('');
+            }
+          }
+          return;
+        }
+      } catch (err) {
+        console.warn('Live SOP fetch fallback:', err);
+      }
+
+      // Fallback if no synthesized SOP yet in DB
       if (showcase) {
         stationsList.innerHTML = showcase.stations.map((st, idx) => `
           <div class="station-card">
@@ -435,7 +480,6 @@
           </div>
         `).join('');
       } else {
-        // Dynamic procedural rendering for any QP
         stationsList.innerHTML = `
           <div class="station-card">
             <div class="station-badge">WORKSTATION 01</div>

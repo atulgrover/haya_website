@@ -525,6 +525,45 @@ router.post('/nsqf/swap-video', async (req, res) => {
     }
 });
 
+// GET /api/skillpedia/sop/details — fetch full ISO 9001 Workstation SOPs for an entire QP
+router.get(['/sop/details', '/sop/details/*'], async (req, res) => {
+    try {
+        let rawCode = req.query.qp || req.query.qpCode || '';
+        if (!rawCode && req.params[0]) {
+            rawCode = req.params[0];
+        }
+        if (rawCode.startsWith('/')) rawCode = rawCode.substring(1);
+        const qpCode = decodeURIComponent(rawCode).trim().replace(/_/g, '/');
+        const cleanQp = qpCode.replace(/\//g, '_');
+
+        const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, cleanQp);
+        const modules = await db.prepare(`SELECT * FROM nsqf_modules WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ? ORDER BY sequence_order ASC, id ASC`).all(qpCode, cleanQp);
+
+        const sops = [];
+        for (const m of modules) {
+            let sopDoc = m.sop_procedure_json;
+            if (typeof sopDoc === 'string') {
+                try { sopDoc = JSON.parse(sopDoc); } catch {}
+            }
+            if (sopDoc) {
+                sops.push(sopDoc);
+            }
+        }
+
+        res.json({
+            success: true,
+            qp_code: qpCode,
+            qp_name: qpRow ? qpRow.qp_name : qpCode,
+            sector: qpRow ? qpRow.sector : 'General',
+            nsqf_level: qpRow ? qpRow.nsqf_level : '4',
+            total_workstations: sops.length,
+            sops
+        });
+    } catch (e) {
+        res.status(500).json({ success: false, error: e.message });
+    }
+});
+
 // ReelCurator AI Agent Routes
 const reelCuratorAgent = require('../services/reelCuratorAgent');
 
