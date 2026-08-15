@@ -560,4 +560,10 @@ function main() {
     console.log('================================================================================\n');
 }
 
-main();
+if (require.main === module) {
+    main();
+}
+
+module.exports = {
+    compileMdToJson,
+};
