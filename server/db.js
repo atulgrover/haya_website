@@ -23,26 +23,25 @@ require('dotenv').config();
 const { Pool } = require('pg');
 const path    = require('path');
 
-// ── Hard guard: refuse to start if local DB is not configured ─────────────────
-const LOCAL_DB_URL = process.env.LOCAL_DATABASE_URL;
-if (!LOCAL_DB_URL) {
-    console.error('\n❌  FATAL: LOCAL_DATABASE_URL is not set in .env');
-    console.error('   Set it to: postgresql://postgres:hayapass@localhost:5432/hayadb');
-    console.error('   Do NOT use NEON_DATABASE_URL here. Neon is prod-push-only.\n');
+// ── Environment Detection: Local Dev vs. Cloud Production (Render / Neon) ───
+const isProd = process.env.NODE_ENV === 'production' || !!process.env.RENDER || (!process.env.LOCAL_DATABASE_URL && (process.env.DATABASE_URL || process.env.NEON_DATABASE_URL));
+
+let DB_URL = isProd
+    ? (process.env.DATABASE_URL || process.env.NEON_DATABASE_URL || process.env.LOCAL_DATABASE_URL)
+    : (process.env.LOCAL_DATABASE_URL || process.env.DATABASE_URL || 'postgresql://postgres:hayapass@localhost:5432/hayadb');
+
+if (!DB_URL) {
+    console.error('\n❌ FATAL: No database connection URL configured in environment.\n');
     process.exit(1);
 }
 
-// ── Neon guard: crash if someone accidentally put Neon URL as LOCAL ───────────
-if (LOCAL_DB_URL.includes('neon.tech') || LOCAL_DB_URL.includes('neondb')) {
-    console.error('\n❌  FATAL: LOCAL_DATABASE_URL must not point to Neon cloud.');
-    console.error('   LOCAL_DATABASE_URL should be your local hayadb.');
-    console.error('   To push to Neon, run: node scripts/push_local_pg_to_neon.js\n');
-    process.exit(1);
-}
+const isNeon = DB_URL.includes('neon.tech') || DB_URL.includes('sslmode=require');
+console.log(`[Haya Portal DB] 🛠  Connecting to ${isNeon ? 'NEON CLOUD (Production)' : 'LOCAL PostgreSQL'}: ${DB_URL.replace(/:([^:@]+)@/, ':***@')}`);
 
-console.log(`[Haya Portal DB] 🛠  Connecting to LOCAL PostgreSQL: ${LOCAL_DB_URL.replace(/:([^:@]+)@/, ':***@')}`);
-
-const pool = new Pool({ connectionString: LOCAL_DB_URL });
+const pool = new Pool({
+    connectionString: DB_URL,
+    ...(isNeon ? { ssl: { rejectUnauthorized: false } } : {})
+});
 
 // ── SQL placeholder converter: ? → $1, $2, ... (SQLite → PG compat layer) ────
 const convertSql = (sql) => {
