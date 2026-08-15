@@ -18,4 +18,12 @@
 - **Marketplace Reports**: Custom report ordering system backed by `server/routes/reports.js` and `report_orders` SQLite table.
 - **Strategic Roadmap**: `roadmap/HAYAGRIVA_PORTAL_ROADMAP.md`.
 
+### NSQF Data Pipeline Invariants & Memory
+- **PDF → Markdown (`nsqf_pdf_to_md.py`) is Lossless & Complete**: 
+  - It is **100% expected, intentional, and correct** for Markdown (`data/md/*.md`) to contain duplicate Performance Criteria (`PC1`, `PC2`, etc.) — once as bullet text in the syllabus/narrative section, and again as rows in the Assessment Criteria Table.
+  - **Rule**: NEVER attempt to deduplicate or strip out the narrative PCs from the Markdown files or the Python converter. The `.md` file is the raw digital mirror of the complete PDF.
+- **MD → JSON (`nsqf_md_to_json.js`) is the Assessment Compiler**:
+  - The JSON compiler strictly extracts Performance Criteria from the **Assessment Criteria Tables** (with theory/practical marks) to form the canonical examination rubric, while extracting `KU` (Knowledge) & `GS` (Skills) from the narrative.
+  - Downstream pipelines (Pass 1 DB ingest & Pass 2 Intent synthesis) consume the clean, deduplicated JSON AST (`data/json/*.json`).
+
 
