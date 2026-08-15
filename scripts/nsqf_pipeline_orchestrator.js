@@ -48,10 +48,17 @@ const PASSES = [
         setsStatus:  'md_converted',
     },
     {
-        id:          'pass1',
-        name:        'Pass 1: Structure Ingest',
-        script:      'nsqf_pass1_structure_ingest.js',
+        id:          'step1.3',
+        name:        'Step 1.3: MD → JSON (Assessment Table Compiler)',
+        script:      'nsqf_md_to_json.js',
         prereq:      'md_converted',
+        setsStatus:  'json_compiled',
+    },
+    {
+        id:          'pass1',
+        name:        'Pass 1: Structure Ingest (JSON-First)',
+        script:      'nsqf_pass1_structure_ingest.js',
+        prereq:      'json_compiled',
         setsStatus:  'structure_ingested',
     },
     {

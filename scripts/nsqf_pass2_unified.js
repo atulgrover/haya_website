@@ -29,6 +29,7 @@ const fs   = require('fs');
 const path = require('path');
 const db   = require('../server/db');
 
+const JSON_DIR        = path.join(__dirname, '..', 'data', 'json');
 const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.pass2_checkpoint.json');
 const SARVAM_API_KEY  = process.env.SARVAM_API_KEY || '';
 
@@ -348,15 +349,38 @@ async function refineIntentWithSarvam(item) {
     const nosTitle = item.nos_title    || item.nos_code;
     const modTitle = item.module_title || 'Core Operational Module';
 
-    const prompt = `You are an expert Vocational Curriculum Specialist.
+    // Retrieve Knowledge & Skills context from canonical JSON AST if available
+    let kuContext = '';
+    let gsContext = '';
+    const cleanCode = item.qp_code.replace(/\//g, '_');
+    const jsonPath  = path.join(JSON_DIR, `${cleanCode}.json`);
+    if (fs.existsSync(jsonPath)) {
+        try {
+            const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+            const nosUnit = (data.nos_units || []).find(n => n.nos_code === item.nos_code);
+            if (nosUnit) {
+                if (nosUnit.kus && nosUnit.kus.length > 0) {
+                    kuContext = nosUnit.kus.slice(0, 4).join('; ');
+                }
+                if (nosUnit.gs && nosUnit.gs.length > 0) {
+                    gsContext = nosUnit.gs.slice(0, 3).join('; ');
+                }
+            }
+        } catch (_) {}
+    }
+
+    let prompt = `You are an expert Vocational Curriculum Specialist.
 Refine the following practical training task into an action-oriented 5 to 8 word title:
 - Sector: "${sector}"
 - Qualification Role: "${qpName}"
 - Occupational Unit: "${nosTitle}"
 - Module Reel: "${modTitle}"
-- Training Task Description: "${pcDesc}"
+- Training Task Description: "${pcDesc}"`;
 
-Requirements:
+    if (kuContext) prompt += `\n- Associated Knowledge Topics: "${kuContext}"`;
+    if (gsContext) prompt += `\n- Applicable Vocational Skills: "${gsContext}"`;
+
+    prompt += `\n\nRequirements:
 1. Begin with an action verb (e.g. Inspect, Verify, Assemble, Calibrate, Execute, Repair).
 2. Do NOT include bullet points, raw codes, or filler words like "check that" or "ensure that".
 3. Return strictly raw JSON: { "pc_intent": "Exact 5-8 Word Refined Action" }`;

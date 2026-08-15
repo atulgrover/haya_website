@@ -32,7 +32,49 @@ const path = require('path');
 const db   = require('../server/db');
 
 const MD_DIR          = path.join(__dirname, '..', 'data', 'md');
+const JSON_DIR        = path.join(__dirname, '..', 'data', 'json');
 const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.pass1_checkpoint.json');
+
+// ── JSON AST Parser (Preferred Canonical Input) ──────────────────────────────
+function parseJsonToStructure(jsonPath, qpCode) {
+    const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+    const nosList     = [];
+    const modulesList = [];
+    const pcsList     = [];
+
+    for (const nos of data.nos_units || []) {
+        if (nos.is_generic || isGenericNos(nos.nos_code, nos.nos_title)) continue;
+
+        nosList.push({
+            nos_code:       nos.nos_code,
+            nos_title:      nos.nos_title,
+            sequence_order: nosList.length + 1,
+        });
+
+        for (const mod of nos.modules || []) {
+            if (!mod.pcs || mod.pcs.length === 0) continue;
+
+            modulesList.push({
+                nos_code:       nos.nos_code,
+                module_title:   mod.module_title,
+                sequence_order: modulesList.length + 1,
+            });
+
+            for (const pc of mod.pcs) {
+                pcsList.push({
+                    nos_code:        nos.nos_code,
+                    module_title:    mod.module_title,
+                    pc_code:         pc.pc_code,
+                    pc_description:  pc.pc_description,
+                    theory_marks:    pc.theory_marks || null,
+                    practical_marks: pc.practical_marks || null,
+                });
+            }
+        }
+    }
+
+    return { nosList, modulesList, pcsList };
+}
 
 // ── Generic soft-skill NOS blocklist ─────────────────────────────────────────
 // These NOS units are curriculum boilerplate — not vocational skill content.
@@ -367,18 +409,27 @@ async function main() {
     for (let i = startIdx; i < rows.length; i++) {
         const qp        = rows[i];
         const cleanCode = qp.qp_code.replace(/\//g, '_');
+        const jsonPath  = path.join(JSON_DIR, `${cleanCode}.json`);
         const mdPath    = path.join(MD_DIR, `${cleanCode}.md`);
 
-        if (!fs.existsSync(mdPath)) {
-            skipCount++;
-            continue;
+        let parsed = null;
+        if (fs.existsSync(jsonPath)) {
+            try {
+                parsed = parseJsonToStructure(jsonPath, qp.qp_code);
+            } catch (e) {
+                console.error(`  ❌  JSON parse error for ${qp.qp_code}: ${e.message}`);
+            }
         }
 
-        let parsed;
-        try {
-            parsed = parseMarkdownToStructure(mdPath, qp.qp_code, qp.qp_name);
-        } catch (e) {
-            console.error(`  ❌  Parse error for ${qp.qp_code}: ${e.message}`);
+        if (!parsed && fs.existsSync(mdPath)) {
+            try {
+                parsed = parseMarkdownToStructure(mdPath, qp.qp_code, qp.qp_name);
+            } catch (e) {
+                console.error(`  ❌  MD parse error for ${qp.qp_code}: ${e.message}`);
+            }
+        }
+
+        if (!parsed) {
             skipCount++;
             continue;
         }
