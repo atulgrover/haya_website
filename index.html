@@ -83,7 +83,7 @@
 
     /* Marketing Section Containers */
     .marketing-section {
-      max-width: 100%; margin: 0; padding: 72px 24px; border-bottom: 1px solid var(--border-color);
+      max-width: 100%; margin: 0; padding: 60px 24px; border-bottom: 1px solid var(--border-color);
       background: #FFFFFF; text-align: center;
     }
     .marketing-section:nth-child(even) { background: var(--bg-primary); }
@@ -93,37 +93,34 @@
       background: var(--primary-light); padding: 4px 12px; border-radius: 20px; display: inline-block;
       letter-spacing: 0.8px; margin-bottom: 12px; text-transform: uppercase;
     }
-    .sec-title { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; }
-    .sec-subtitle { font-size: 16px; color: var(--text-muted); max-width: 860px; margin: 0 auto 40px; line-height: 1.6; }
+    .sec-title { font-family: var(--font-heading); font-size: 30px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+    .sec-title a { color: inherit; text-decoration: none; }
+    .sec-title a:hover { color: var(--primary-color); }
+    .sec-subtitle { font-size: 15px; color: var(--text-muted); max-width: 860px; margin: 0 auto 36px; line-height: 1.6; }
 
     /* Marketing Cards 3-Column Grid */
     .feature-cards-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
-      max-width: 1280px; margin: 0 auto 36px; text-align: left;
+      max-width: 1280px; margin: 0 auto; text-align: left;
     }
     .feature-card {
       background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px;
       padding: 28px; box-shadow: var(--card-shadow); transition: all 0.3s ease;
       display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none; color: inherit;
     }
     .feature-card:hover {
       box-shadow: var(--hover-shadow); border-color: var(--primary-color); transform: translateY(-3px);
     }
     .card-num-tag { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary-color); margin-bottom: 8px; letter-spacing: 0.5px; }
-    .card-title { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
-    .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-    
-    .btn-cta-section {
-      display: inline-block; background: var(--primary-color); color: #FFFFFF !important; font-weight: 700;
-      padding: 12px 28px; border-radius: 6px; font-size: 14.5px; transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.2); text-decoration: none;
-    }
-    .btn-cta-section:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 108, 147, 0.3); }
+    .card-title { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+    .card-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
 
     @media (max-width: 768px) {
       .hero-logo-card { padding: 24px 20px; }
       .metrics-container { grid-template-columns: 1fr 1fr; }
-      .sec-title { font-size: 26px; }
+      .sec-title { font-size: 24px; }
+      .marketing-section { padding: 44px 16px; }
     }
   </style>
 </head>
@@ -168,13 +165,13 @@
   <!-- Pillar 1: Employees (NSQF) -->
   <section id="students-section" class="marketing-section">
     <span class="section-badge">Pillar 01 / Vocational Excellence</span>
-    <h2 class="sec-title">Employees (NSQF): National Qualification Standards &amp; Skillpedia</h2>
+    <h2 class="sec-title"><a href="employees_nsqf.html">Employees (NSQF): National Qualification Standards &amp; Skillpedia</a></h2>
     <p class="sec-subtitle">
       Access 2,176 official National Skills Qualification Framework (NSQF) job roles, atomic PC-based micro-learning video reels, and authenticated examination rubrics at zero cost.
     </p>
 
     <div class="feature-cards-grid">
-      <div class="feature-card">
+      <a href="employees_nsqf.html" class="feature-card">
         <div>
           <div class="card-num-tag">01 / NATIONAL STANDARDS</div>
           <h3 class="card-title">2,176 NCVET Qualification Packs</h3>
@@ -182,9 +179,9 @@
             Explore standardized curriculum across Agriculture, Automotive EV, Electronics, Healthcare, Renewable Energy, and 36+ national industry sectors.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="employees_nsqf.html" class="feature-card">
         <div>
           <div class="card-num-tag">02 / PC VIDEO REELS</div>
           <h3 class="card-title">207,363 Atomic Micro-Reels</h3>
@@ -192,9 +189,9 @@
             Master exact shopfloor and service competencies through 1:1 video reels mapped directly to each official Performance Criterion with Hindi &amp; English queries.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="employees_nsqf.html" class="feature-card">
         <div>
           <div class="card-num-tag">03 / EXAMINATION RUBRIC</div>
           <h3 class="card-title">Theory &amp; Practical Marking Rubrics</h3>
@@ -202,23 +199,20 @@
             Verify job readiness with official NCVET assessment scorecards, Knowledge (KU) items, and Core Skills (GS) benchmarks to clear formal certification.
           </p>
         </div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 24px;">
-      <a href="employees_nsqf.html" class="btn-cta-section">Launch Employees (NSQF) Portal →</a>
+      </a>
     </div>
   </section>
 
   <!-- Pillar 2: Employers (SOP) -->
-  <section id="employees-section" class="marketing-section" style="background-color: #F8FAFC; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+  <section id="employees-section" class="marketing-section">
     <span class="section-badge">Pillar 02 / Enterprise Operations</span>
-    <h2 class="sec-title">Employers (SOP): Standard Operating Procedures &amp; Plant Workstations</h2>
+    <h2 class="sec-title"><a href="employers_sop.html">Employers (SOP): Standard Operating Procedures &amp; Plant Workstations</a></h2>
     <p class="sec-subtitle">
       Deploy 13,035 pre-configured ISO 9001:2015 plant workstation standard operating procedures, statutory PPE checklists, and enterprise domain-isolated skill reels.
     </p>
 
     <div class="feature-cards-grid">
-      <div class="feature-card">
+      <a href="employers_sop.html" class="feature-card">
         <div>
           <div class="card-num-tag">01 / WORKSTATION SOPS</div>
           <h3 class="card-title">13,035 ISO 9001:2015 Shopfloor SOPs</h3>
@@ -226,9 +220,9 @@
             Convert government competency modules into audit-ready plant workstation procedures with clear sequential directives and quality acceptance benchmarks.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="employers_sop.html" class="feature-card">
         <div>
           <div class="card-num-tag">02 / SAFETY &amp; PPE</div>
           <h3 class="card-title">Mandatory PPE &amp; Tolerance Limits</h3>
@@ -236,9 +230,9 @@
             Enforce zero safety violations with pre-configured PPE checklists (LOTO, 1000V DC insulated gear) and operational parameter thresholds.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="custom_skills.html" class="feature-card">
         <div>
           <div class="card-num-tag">03 / ENTERPRISE CUSTOMIZER</div>
           <h3 class="card-title">Domain-Isolated Custom Builder</h3>
@@ -246,67 +240,61 @@
             Author company-specific workflows, link internal training reels, and isolate access by corporate email domain (<code>@yourcompany.com</code>).
           </p>
         </div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 24px;">
-      <a href="employers_sop.html" class="btn-cta-section">Launch Employers (SOP) Portal →</a>
+      </a>
     </div>
   </section>
 
   <!-- Pillar 3: Entrepreneurs (MSME) -->
-  <section id="entrepreneurs-section" class="marketing-section" style="background-color: #0F172A; color: #F8FAFC; border-bottom: 1px solid rgba(255,255,255,0.1);">
-    <span class="section-badge" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8;">Pillar 03 / Turnkey Business Launchpad</span>
-    <h2 class="sec-title" style="color: #FFFFFF;">Entrepreneurs (MSME): Turnkey Business Blueprints &amp; Bankable DPRs</h2>
-    <p class="sec-subtitle" style="color: #94A3B8;">
+  <section id="entrepreneurs-section" class="marketing-section">
+    <span class="section-badge">Pillar 03 / Turnkey Business Launchpad</span>
+    <h2 class="sec-title"><a href="entrepreneurs_msme.html">Entrepreneurs (MSME): Turnkey Business Blueprints &amp; Bankable DPRs</a></h2>
+    <p class="sec-subtitle">
       Transform 11,420 National Occupational Standards into bank-sanctioned MSME businesses with turnkey machinery BOMs, Day-1 playbooks, and PMEGP/Mudra project profiles.
     </p>
 
     <div class="feature-cards-grid">
-      <div class="feature-card" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1);">
+      <a href="entrepreneurs_msme.html" class="feature-card">
         <div>
-          <div class="card-num-tag" style="color: #38BDF8;">01 / TURNKEY STATIONS</div>
-          <h3 class="card-title" style="color: #FFFFFF;">11,420 Micro-Kiosks &amp; B2B Agencies</h3>
-          <p class="card-desc" style="color: #94A3B8;">
+          <div class="card-num-tag">01 / TURNKEY STATIONS</div>
+          <h3 class="card-title">11,420 Micro-Kiosks &amp; B2B Agencies</h3>
+          <p class="card-desc">
             Launch micro-capex businesses (₹50k–₹3.5L) from specialized technical repair desks (EV batteries, solar EPC) to high-margin B2B safety and training agencies.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1);">
+      <a href="entrepreneurs_msme.html" class="feature-card">
         <div>
-          <div class="card-num-tag" style="color: #38BDF8;">02 / CAPITAL EQUIPMENT</div>
-          <h3 class="card-title" style="color: #FFFFFF;">Itemized Machinery &amp; Tool BOM</h3>
-          <p class="card-desc" style="color: #94A3B8;">
+          <div class="card-num-tag">02 / CAPITAL EQUIPMENT</div>
+          <h3 class="card-title">Itemized Machinery &amp; Tool BOM</h3>
+          <p class="card-desc">
             Get exact equipment shopping lists with verified technical specifications, quantities, and realistic Indian OEM vendor pricing.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card" style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1);">
+      <a href="entrepreneurs_msme.html" class="feature-card">
         <div>
-          <div class="card-num-tag" style="color: #38BDF8;">03 / BANK CREDIT DOSSIER</div>
-          <h3 class="card-title" style="color: #FFFFFF;">Bankable PMEGP / Mudra DPRs</h3>
-          <p class="card-desc" style="color: #94A3B8;">
+          <div class="card-num-tag">03 / BANK CREDIT DOSSIER</div>
+          <h3 class="card-title">Bankable PMEGP / Mudra DPRs</h3>
+          <p class="card-desc">
             Download 5-year financial statements with 5% promoter margin, 35% government subsidy, and audited DSCR debt-service ratios ready for SBI/KVIC.
           </p>
         </div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 24px;">
-      <a href="entrepreneurs_msme.html" style="display: inline-block; background: linear-gradient(135deg, #38BDF8, #2563EB); color: #fff !important; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(56,189,248,0.3);">Explore MSME Trade Blueprints →</a>
+      </a>
     </div>
   </section>
 
   <!-- Pillar 4: Professionals (APNET) -->
   <section id="professionals-section" class="marketing-section">
     <span class="section-badge">Pillar 04 / Agentic Professional Network</span>
-    <h2 class="sec-title">Professionals (APNET): Sovereign Desktop Integrated Professional Environment</h2>
+    <h2 class="sec-title"><a href="professionals_apnet.html">Professionals (APNET): Sovereign Desktop Integrated Professional Environment</a></h2>
     <p class="sec-subtitle">
       Air-gapped desktop IDE engine with zero cloud data transmission, cryptographic Ed25519 audit trails, and sovereign statutory data vaults for Insolvency Professionals, Advocates, and Corporate Restructuring Experts.
     </p>
 
     <div class="feature-cards-grid">
-      <div class="feature-card">
+      <a href="professionals_apnet.html" class="feature-card">
         <div>
           <div class="card-num-tag">01 / SOVEREIGN IPE</div>
           <h3 class="card-title">Air-Gapped Desktop Monaco IDE</h3>
@@ -314,9 +302,9 @@
             Desktop IDE engine with local GGUF models, offline claim matrix auditing, local file tree explorer, and 100% data sovereignty.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="professionals_apnet.html" class="feature-card">
         <div>
           <div class="card-num-tag">02 / STATUTORY VAULTS</div>
           <h3 class="card-title">Encrypted .vlt Legal Repositories</h3>
@@ -324,9 +312,9 @@
             Unlock encrypted domain vaults covering the Insolvency &amp; Bankruptcy Code (IBC 2016), Company Law, and NCLAT precedents.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="feature-card">
+      <a href="professionals_apnet.html" class="feature-card">
         <div>
           <div class="card-num-tag">03 / AGENT PACKS</div>
           <h3 class="card-title">Autonomous Domain AI Agents</h3>
@@ -334,10 +322,7 @@
             Deploy specialized professional assistants (<code>@claims-auditor</code>, <code>@coc-coordinator</code>, <code>@pufe-investigator</code>) protected by Ed25519 cryptographic keys.
           </p>
         </div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 24px;">
-      <a href="professionals_apnet.html" class="btn-cta-section">Launch Professionals (APNET) Portal →</a>
+      </a>
     </div>
   </section>
 
