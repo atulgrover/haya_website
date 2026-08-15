@@ -251,7 +251,10 @@ async function initSchema() {
                 qp_code TEXT NOT NULL,
                 nos_code TEXT NOT NULL,
                 module_title TEXT NOT NULL,
-                sequence_order INT DEFAULT 1
+                sequence_order INT DEFAULT 1,
+                sop_procedure_json JSONB,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
             CREATE TABLE IF NOT EXISTS nsqf_pcs (
