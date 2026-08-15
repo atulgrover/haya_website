@@ -510,6 +510,7 @@ function updateAuthButtonsUI() {
                     <span class="user-profile-role-badge">${user.role || 'Member'}</span>
                 </div>
                 <a href="${portalPage}" class="user-profile-item">${portalLabel}</a>
+                ${(user.role === 'employer' || user.role === 'admin' || user.companyId) ? '<a href="custom_skills.html" class="user-profile-item">🏢 Custom Skill Builder</a>' : ''}
                 <a href="billing.html" class="user-profile-item">License &amp; Billing</a>
                 <a href="dashboard.html" class="user-profile-item">Asset Library</a>
                 <a href="#" onclick="handleSignOut(event)" class="user-profile-item logout">Sign Out</a>
