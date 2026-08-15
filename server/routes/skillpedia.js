@@ -461,53 +461,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
             });
         }
 
-        // 2. Fallback: Check nsqf_videos legacy table
-        const videoRows = await db.prepare(`
-            SELECT * FROM nsqf_videos 
-            WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?
-            ORDER BY id ASC
-        `).all(qpCode, cleanQp);
-
-        if (Array.isArray(videoRows) && videoRows.length > 0) {
-            const moduleMap = {};
-            videoRows.forEach(row => {
-                const key = `${row.nos_code}_${row.module_title}`;
-                if (!moduleMap[key]) {
-                    moduleMap[key] = {
-                        nos_code: row.nos_code,
-                        nos_title: row.nos_title || '',
-                        module_title: row.module_title,
-                        video_id: row.video_id,
-                        pcs: []
-                    };
-                }
-                moduleMap[key].pcs.push({
-                    pc_id: row.pc_id,
-                    pc_intent: row.pc_intent,
-                    pc_desc: row.pc_desc || row.pc_intent,
-                    video_id: row.video_id,
-                    video_title: row.video_title,
-                    video_url: row.video_url,
-                    audit_score: row.audit_score || 90
-                });
-            });
-
-            const nosModules = Object.values(moduleMap);
-            return res.json({
-                success: true,
-                curriculum: {
-                    qp_code: qpCode,
-                    qp_name: qpName,
-                    version: qpRow ? qpRow.version : '1.0',
-                    sector: sector,
-                    total_modules: nosModules.length,
-                    total_pcs: videoRows.length,
-                    nos_modules: nosModules
-                }
-            });
-        }
-
-        // 2. Fallback: Fetch schema_json from nsqf_curricula table
+        // 2. Fallback: Fetch schema_json from nsqf_curricula table (legacy JSON blob path)
         let row = await db.prepare(`SELECT * FROM nsqf_curricula WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, qpCode.replace('/', '_'));
         
         if (row && row.schema_json) {
@@ -550,7 +504,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
     }
 });
 
-// POST /api/skillpedia/nsqf/swap-video — swap single PC video in nsqf_videos table
+// POST /api/skillpedia/nsqf/swap-video — swap single PC video in nsqf_pcs table
 router.post('/nsqf/swap-video', async (req, res) => {
     try {
         const { qpCode, pcId, videoId, videoTitle } = req.body;
@@ -558,10 +512,11 @@ router.post('/nsqf/swap-video', async (req, res) => {
             return res.status(400).json({ error: 'qpCode, pcId, and videoId are required.' });
         }
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        // Write to nsqf_pcs (the canonical source — NOT the deprecated nsqf_videos table)
         await db.prepare(`
-            UPDATE nsqf_videos 
+            UPDATE nsqf_pcs 
             SET video_id = ?, video_title = ?, video_url = ? 
-            WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?) AND pc_id = ?
+            WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?) AND pc_code = ?
         `).run(videoId, videoTitle || 'Updated Video', videoUrl, qpCode, qpCode.replace('/', '_'), pcId);
 
         res.json({ success: true, message: `Updated video for ${qpCode} ${pcId}` });

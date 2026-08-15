@@ -155,3 +155,43 @@ While the current platform reliably delivers desktop binaries, quantized GGUF LL
 - **Payment Processing**: Razorpay Checkout SDK & Webhook Listeners.
 - **Diff Engine**: Binary delta generator for `.vlt` archive patches.
 - **Document Processing**: PDF parsing & OCR extraction pipelines for Web Sandbox.
+
+---
+
+## 🎬 NSQF Pipeline — Deferred Roadmap Items
+
+### 📅 Video Staleness Detection (Future: Phase 4C)
+
+> **Status**: Deferred — implement after full 2,001-QP catalog pipeline run completes.
+
+YouTube videos are a **living ecosystem**, not a static library. Videos die due to deletions, copyright strikes, channel terminations, and retroactive region-locks. Once a video dies, students see a black iframe ("Video unavailable").
+
+**The philosophy:** After the initial harvest (Pass 3), video IDs are an *assumption*, not a fact. Assumptions must be periodically re-validated.
+
+**Implementation: `nsqf_video_staleness_check.js`**
+
+```
+Usage:
+  node scripts/nsqf_video_staleness_check.js --sample=2000    (weekly cron)
+  node scripts/nsqf_video_staleness_check.js --all            (monthly full sweep)
+```
+
+**Logic:**
+1. Query distinct `video_id` + `video_id_hi` from `nsqf_pcs` (deduplicated, ~50K–80K unique IDs)
+2. Hit YouTube oEmbed for each: `https://www.youtube.com/oembed?url=...`
+3. Dead videos (HTTP 404/401): `UPDATE nsqf_pcs SET video_id = NULL WHERE video_id = $staleId`
+   → This makes them eligible for Pass 3 re-harvest on next run
+4. Purge `youtube_search_cache` entries older than 90 days
+5. Log: total checked, stale count, affected QPs
+
+**Recommended Cron Schedule:**
+```cron
+# Weekly sample check (Sunday 3 AM IST)
+0 3 * * 0 node /path/to/scripts/nsqf_video_staleness_check.js --sample=2000
+
+# Monthly full sweep (1st of month, 2 AM IST)
+0 2 1 * * node /path/to/scripts/nsqf_video_staleness_check.js --all
+```
+
+**Why not daily?** The death probability curve: Day 1–7 (~3%), Day 8–30 (~1%), Day 91–365 (~0.2%). Checking 200K+ video IDs daily would hammer YouTube with 400K+ oEmbed requests — wasteful and rate-limit risky. Weekly sampling catches channel takedowns fast; monthly full sweeps ensure complete coverage.
+

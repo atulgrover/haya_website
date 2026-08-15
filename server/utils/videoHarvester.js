@@ -92,35 +92,28 @@ async function searchYouTubeVideos(query, maxResults = 6) {
 async function saveVideoForever({ qpCode, nosCode, nosTitle, moduleTitle, pcId, pcIntent, pcDesc, videoId, videoTitle, videoUrl, auditScore = 95 }) {
     try {
         const vUrl = videoUrl || `https://www.youtube.com/watch?v=${videoId}`;
+        // Write to nsqf_pcs (canonical source — nsqf_videos is DEPRECATED)
+        // nsqf_pcs rows are created by Pass 1; this call only updates video fields on existing rows.
         await db.prepare(`
-            INSERT INTO nsqf_videos
-            (qp_code, nos_code, nos_title, module_title, pc_id, pc_intent, pc_desc, video_id, video_title, video_url, audit_score)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT (qp_code, nos_code, module_title, pc_id) DO UPDATE SET
-                nos_title = EXCLUDED.nos_title,
-                pc_intent = EXCLUDED.pc_intent,
-                pc_desc = EXCLUDED.pc_desc,
-                video_id = EXCLUDED.video_id,
-                video_title = EXCLUDED.video_title,
-                video_url = EXCLUDED.video_url,
-                audit_score = EXCLUDED.audit_score
+            UPDATE nsqf_pcs
+            SET video_id    = ?,
+                video_title = ?,
+                video_url   = ?,
+                audit_score = ?
+            WHERE qp_code = ? AND pc_code = ?
         `).run(
-            qpCode,
-            nosCode || 'NOS',
-            nosTitle || '',
-            moduleTitle,
-            pcId,
-            pcIntent || pcDesc || pcId,
-            pcDesc || pcIntent || '',
             videoId,
-            videoTitle || `${pcIntent} Demonstration`,
+            videoTitle || `${pcIntent || pcId} Demonstration`,
             vUrl,
-            auditScore
+            auditScore,
+            qpCode,
+            pcId
         );
     } catch (e) {
         console.warn(`[Harvester] DB Save warning for ${qpCode} ${pcId}:`, e.message);
     }
 }
+
 
 module.exports = {
     searchYouTubeVideos,

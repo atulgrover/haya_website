@@ -84,6 +84,22 @@ const db = {
     query: (...args) => pool.query(...args)
 };
 
+// ── Pipeline Status FSM — canonical pass order ────────────────────────────────
+// Each pass script should validate that QPs are in the correct predecessor state.
+const PIPELINE_STATUSES = [
+    'pending_pdf',
+    'pdf_downloaded',
+    'md_converted',
+    'image_pdf_no_text',        // terminal: scanned/image PDF with no extractable text
+    'abbreviated_pdf_no_pcs',   // terminal: assessment-format PDF (all PCs identical)
+    'structure_ingested',
+    'intent_synthesized',
+    'video_harvested',
+    'pending_editorial_review',
+    'editorial_approved',
+    'production_ready'
+];
+
 // ── Schema bootstrap (idempotent — safe to run on every startup) ──────────────
 async function initSchema() {
     try {
@@ -263,12 +279,13 @@ async function initSchema() {
                 video_url TEXT,
                 channel_title TEXT,
                 duration_seconds INT,
+                thumbnail_url TEXT,
                 video_id_hi TEXT,
                 video_title_hi TEXT,
                 video_url_hi TEXT,
                 channel_title_hi TEXT,
                 duration_seconds_hi INT,
-                thumbnail_url TEXT,
+                thumbnail_url_hi TEXT,
                 audit_score INT DEFAULT 90,
                 sequence_order INT DEFAULT 1,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -286,6 +303,12 @@ async function initSchema() {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 
+            -- ============================================================
+            -- DEPRECATED: nsqf_videos is a legacy table. All video data now
+            -- lives in nsqf_pcs (the canonical source). This table is kept
+            -- for historical data preservation only. No active code reads
+            -- or writes to this table as of the Phase 5B refactor.
+            -- ============================================================
             CREATE TABLE IF NOT EXISTS nsqf_videos (
                 id SERIAL PRIMARY KEY,
                 qp_code TEXT NOT NULL,
@@ -366,8 +389,17 @@ async function initSchema() {
 
         console.log('[Haya Portal DB] ✅ Local PostgreSQL schema verified & connected.');
 
+        // ── Idempotent column migrations (safe on existing hayadb) ───────────
+        const migrations = [
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS thumbnail_url_hi TEXT`,
+        ];
+        for (const sql of migrations) {
+            try { await pool.query(sql); } catch (_) {}
+        }
+
         // Auto-seed QPs if table is empty (first boot after fresh hayadb)
         await seedNSQFFromJSON();
+
 
     } catch (err) {
         console.error('[Haya Portal DB] ❌ Initialization error:', err.message);
@@ -414,3 +446,6 @@ async function seedNSQFFromJSON() {
 initSchema();
 
 module.exports = db;
+module.exports.pool = pool;                    // Raw pg.Pool — for transaction-aware scripts
+module.exports.PIPELINE_STATUSES = PIPELINE_STATUSES;  // FSM — canonical pass order
+

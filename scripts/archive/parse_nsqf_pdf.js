@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
-const SARVAM_API_KEY = process.env.SARVAM_API_KEY || 'sk_seyvp34z_e9uFel9TjYw0fYerbEcc3ikc';
-const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || 'AIzaSyCUVDu9VitrRLhL1hUKqCShjfjW_vLhf2I';
+const SARVAM_API_KEY = process.env.SARVAM_API_KEY || '';
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || ''; // ⚠️ ROTATE OLD KEYS — they were previously committed to source
 
 const scratchDir = '/Users/atulgrover/.gemini/antigravity-ide/brain/63c4db05-0fe5-419b-a156-462feb454b3a/scratch';
 const mdPath = path.join(scratchDir, 'AAS_Q0103_v3.0.md');

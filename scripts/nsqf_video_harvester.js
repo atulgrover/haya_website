@@ -147,7 +147,18 @@ function scoreCandidateVideo(video, pcData, lang = 'eng') {
 }
 
 // ── 3.5. YouTube oEmbed Playability & Embed Verification Guard ───────────────
+// LRU cache: max 10,000 entries — prevents unbounded growth over full catalog run
+const OEMBED_CACHE_MAX = 10000;
 const oEmbedCache = new Map(); // videoId -> boolean
+
+function oEmbedCacheSet(videoId, value) {
+    if (oEmbedCache.size >= OEMBED_CACHE_MAX) {
+        // Evict oldest entry (first insertion-order key)
+        const oldest = oEmbedCache.keys().next().value;
+        oEmbedCache.delete(oldest);
+    }
+    oEmbedCache.set(videoId, value);
+}
 
 async function isVideoEmbeddable(videoId) {
     if (!videoId || videoId.length !== 11) return false;
@@ -158,7 +169,7 @@ async function isVideoEmbeddable(videoId) {
             signal: AbortSignal.timeout(2000)
         });
         const isOk = res.status === 200;
-        oEmbedCache.set(videoId, isOk);
+        oEmbedCacheSet(videoId, isOk);
         return isOk;
     } catch (_) {
         // If transient timeout occurs, do not block pipeline
@@ -327,7 +338,7 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
                 audit_score      = EXCLUDED.audit_score,
                 cached_at        = CURRENT_TIMESTAMP
         `, [
-            queryHash, rawQuery, lang,
+            primaryHash, primaryQuery, lang,
             bestCandidate.videoId, bestCandidate.videoTitle,
             bestCandidate.videoUrl, bestCandidate.channelTitle,
             bestCandidate.durationSeconds, bestCandidate.thumbnailUrl,
@@ -497,16 +508,18 @@ async function runVideoHarvester() {
                         video_url_hi        = $9,
                         channel_title_hi    = $10,
                         duration_seconds_hi = $11,
-                        audit_score         = $12
-                    WHERE id = $13
+                        thumbnail_url_hi    = $12,
+                        audit_score         = $13
+                    WHERE id = $14
                 `, [
                     engVid.videoId, engVid.videoTitle, engVid.videoUrl,
                     engVid.channelTitle, engVid.durationSeconds, engVid.thumbnailUrl,
                     hiVid.videoId, hiVid.videoTitle, hiVid.videoUrl,
-                    hiVid.channelTitle, hiVid.durationSeconds,
+                    hiVid.channelTitle, hiVid.durationSeconds, hiVid.thumbnailUrl,
                     compositeScore,
                     item.id
                 ]);
+
             }
 
             if (processedCount <= 6 || processedCount % 20 === 0 || processedCount === items.length) {
@@ -520,6 +533,15 @@ async function runVideoHarvester() {
 
         const lastItem = chunk[chunk.length - 1];
         if (!isDryRun) saveCheckpoint(lastItem.qp_code, processedCount);
+
+        // ── Memory safety: prune completed QP entries from qpUsedMap ─────────
+        // Determines which QPs appear in the remaining items and keeps only those.
+        const remainingQps = new Set(items.slice(i + CONCURRENCY_WORKERS).map(item => item.qp_code));
+        for (const qpKey of qpUsedMap.keys()) {
+            if (!remainingQps.has(qpKey)) {
+                qpUsedMap.delete(qpKey);
+            }
+        }
     }
 
     if (!isDryRun) {

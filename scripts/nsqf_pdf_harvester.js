@@ -138,12 +138,12 @@ async function harvestPdfs() {
             console.log(`        ✅ Already Exists on Disk (${(stats.size / 1024).toFixed(1)} KB) ➔ ${destPath}`);
             existingCount++;
 
-            // Sync database status
+            // Sync database status (markdown_path set later by nsqf_pdf_to_md.py)
             await db.prepare(`
                 UPDATE nsqf_qps 
-                SET curriculum_pdf_url = ?, markdown_path = ?, pipeline_status = 'pdf_downloaded'
+                SET curriculum_pdf_url = ?, pipeline_status = 'pdf_downloaded'
                 WHERE id = ?
-            `).run(pdfUrl, destPath, qp.id);
+            `).run(pdfUrl, qp.id);
             continue;
         }
 
@@ -153,12 +153,12 @@ async function harvestPdfs() {
             console.log(`        🎉 Download Complete (${(res.size / 1024).toFixed(1)} KB) ➔ Saved to data/pdfs/${pdfFileName}`);
             downloadedCount++;
 
-            // Update database status
+            // Update database status (markdown_path set later by nsqf_pdf_to_md.py)
             await db.prepare(`
                 UPDATE nsqf_qps 
-                SET curriculum_pdf_url = ?, markdown_path = ?, pipeline_status = 'pdf_downloaded'
+                SET curriculum_pdf_url = ?, pipeline_status = 'pdf_downloaded'
                 WHERE id = ?
-            `).run(pdfUrl, destPath, qp.id);
+            `).run(pdfUrl, qp.id);
 
         } catch (err) {
             console.warn(`        ⚠️ Download Warning: ${err.message}`);

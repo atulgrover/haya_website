@@ -359,9 +359,8 @@ async function main() {
 
     console.log(`Processing ${rows.length - startIdx} of ${rows.length} QP(s)...\n`);
 
-    // ── Get raw pool for sequence_order UPDATE ────────────────────────────────
-    // db.query is the raw pg pool exposed by new db.js
-    const pool = { query: db.query.bind(db) };
+    // ── Get raw pg.Pool for transaction-aware per-QP client acquisition ────────
+    const pgPool = db.pool;  // Exposed by db.js: module.exports.pool = pool
 
     let totalNos = 0, totalMods = 0, totalPcs = 0, successCount = 0, skipCount = 0;
 
@@ -391,140 +390,152 @@ async function main() {
             continue;
         }
 
-        // ── 1. Upsert nsqf_nos (preserve existing data) ──────────────────────
-        // First: remove any synthetic fallback NOS codes left from prior runs
-        // (real NOS codes now detected, synthetic _N01 rows are stale)
-        if (nosList.length > 0 && !nosList[0].nos_code.endsWith('_N01')) {
-            await pool.query(
-                `DELETE FROM nsqf_nos WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
-                [qp.qp_code]
-            );
-            await pool.query(
-                `DELETE FROM nsqf_pcs WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
-                [qp.qp_code]
-            );
-        }
-        for (const n of nosList) {
-            await pool.query(`
-                INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
-                VALUES ($1, $2, $3, $4)
-                ON CONFLICT (qp_code, nos_code) DO UPDATE SET
-                    nos_title      = EXCLUDED.nos_title,
-                    sequence_order = EXCLUDED.sequence_order
-            `, [qp.qp_code, n.nos_code, n.nos_title, n.sequence_order]);
-        }
-        totalNos += nosList.length;
-
-        // ── 2. Modules: delete old, insert fresh (no video data here) ─────────
-        await pool.query(`DELETE FROM nsqf_modules WHERE qp_code = $1`, [qp.qp_code]);
-        const moduleMap = new Map();  // "nos_code:module_title" → new id
-        for (const m of modulesList) {
-            const key  = `${m.nos_code}:${m.module_title}`;
-            if (moduleMap.has(key)) continue;
-            const r = await pool.query(`
-                INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
-                VALUES ($1, $2, $3, $4)
-                RETURNING id
-            `, [qp.qp_code, m.nos_code, m.module_title, m.sequence_order]);
-            moduleMap.set(key, r.rows[0].id);
-        }
-        totalMods += modulesList.length;
-
-        // ── 3. Upsert nsqf_pcs — NEVER overwrite video_id on conflict ─────────
-        for (const p of pcsList) {
-            const key   = `${p.nos_code}:${p.module_title}`;
-            const modId = moduleMap.get(key) || null;
-            await pool.query(`
-                INSERT INTO nsqf_pcs
-                    (qp_code, nos_code, module_id, pc_code, pc_description, sequence_order)
-                VALUES ($1, $2, $3, $4, $5, $6)
-                ON CONFLICT (qp_code, nos_code, pc_code) DO UPDATE SET
-                    pc_description = EXCLUDED.pc_description,
-                    module_id      = EXCLUDED.module_id,
-                    sequence_order = EXCLUDED.sequence_order
-            `, [qp.qp_code, p.nos_code, modId, p.pc_code, p.pc_description, 0]);
-        }
-        totalPcs += pcsList.length;
-
-        // ── 4. Delete PCs + NOS for ANY generic NOS — unconditionally ────────
-        // Handles: DGT/VSQ/ prefix, N99xx range, AND title-based generic keywords
-        const GENERIC_NOS_TITLE_SQL = `(
-            nos_title ILIKE '%employability%'
-            OR nos_title ILIKE '%entrepreneurship%'
-            OR nos_title ILIKE '%english communication%'
-            OR nos_title ILIKE '%it literacy%'
-            OR nos_title ILIKE '%digital literacy%'
-            OR nos_title ILIKE '%soft skills%'
-            OR nos_title ILIKE '%gender sensitivity%'
-            OR nos_title ILIKE '%life skills%'
-            OR nos_title ILIKE '%communication skills%'
-            OR nos_title ILIKE '%vocational skills%'
-        )`;
-
-        await pool.query(`
-            DELETE FROM nsqf_pcs
-            WHERE qp_code = $1
-              AND (
-                nos_code LIKE 'DGT/VSQ/%'
-                OR nos_code LIKE 'VSQ/%'
-                OR nos_code ~ '\\/N99[0-9][0-9]$'
-                OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
-                OR nos_code IN (
-                    SELECT nos_code FROM nsqf_nos
-                    WHERE qp_code = $1 AND ${GENERIC_NOS_TITLE_SQL}
-                )
-              )
-        `, [qp.qp_code]);
-
-        await pool.query(`
-            DELETE FROM nsqf_nos
-            WHERE qp_code = $1
-              AND (
-                nos_code LIKE 'DGT/VSQ/%'
-                OR nos_code LIKE 'VSQ/%'
-                OR nos_code ~ '\\/N99[0-9][0-9]$'
-                OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
-                OR ${GENERIC_NOS_TITLE_SQL}
-              )
-        `, [qp.qp_code]);
-
-        // ── 5. Fix sequence_order via SQL window function ──────────────────────
+        // ── Acquire dedicated client and wrap all QP writes in a transaction ──
+        const client = await pgPool.connect();
         try {
-            await reorderPcs(qp.qp_code, pool);
-        } catch (e) {
-            // Non-fatal — ordering can be fixed later
-        }
+            await client.query('BEGIN');
 
-        // ── 6. Detect abbreviated-format PDFs ────────────────────────────────
-        // Some PDFs (e.g. GNU/ASC/Q0601) have PCs that are just the role name
-        // repeated in every row (assessment reference format, not curriculum).
-        // Detection: if ALL PCs share the same normalised description → abbreviated.
-        let isAbbreviated = false;
-        if (pcsList.length > 0) {
-            const uniqueDescs = new Set(
-                pcsList.map(p => p.pc_description.trim().toLowerCase().substring(0, 60))
-            );
-            if (uniqueDescs.size === 1) {
-                // All PCs identical — almost certainly an abbreviated format
-                isAbbreviated = true;
-                console.log(`  ⚠️  Abbreviated PDF detected for ${qp.qp_code} — all ${pcsList.length} PCs identical: "${[...uniqueDescs][0].substring(0, 50)}"`);
-                // Remove the garbage PCs — better to have 0 than misleading data
-                await pool.query(
-                    `DELETE FROM nsqf_pcs WHERE qp_code = $1`,
+            // ── 1. Upsert nsqf_nos (preserve existing data) ──────────────────
+            // First: remove any synthetic fallback NOS codes left from prior runs
+            if (nosList.length > 0 && !nosList[0].nos_code.endsWith('_N01')) {
+                await client.query(
+                    `DELETE FROM nsqf_nos WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
+                    [qp.qp_code]
+                );
+                await client.query(
+                    `DELETE FROM nsqf_pcs WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
                     [qp.qp_code]
                 );
             }
-        }
+            for (const n of nosList) {
+                await client.query(`
+                    INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
+                    VALUES ($1, $2, $3, $4)
+                    ON CONFLICT (qp_code, nos_code) DO UPDATE SET
+                        nos_title      = EXCLUDED.nos_title,
+                        sequence_order = EXCLUDED.sequence_order
+                `, [qp.qp_code, n.nos_code, n.nos_title, n.sequence_order]);
+            }
+            totalNos += nosList.length;
 
-        // ── 7. Update master QP status ─────────────────────────────────────────
-        const finalStatus = isAbbreviated ? 'abbreviated_pdf_no_pcs' : 'structure_ingested';
-        await pool.query(`
-            UPDATE nsqf_qps
-            SET total_nos       = $1,
-                total_pcs       = $2,
-                pipeline_status = $3
-            WHERE id = $4
-        `, [nosList.length, isAbbreviated ? 0 : pcsList.length, finalStatus, qp.id]);
+            // ── 2. Modules: delete old, insert fresh ─────────────────────────
+            await client.query(`DELETE FROM nsqf_modules WHERE qp_code = $1`, [qp.qp_code]);
+            const moduleMap = new Map();  // "nos_code:module_title" → new id
+            for (const m of modulesList) {
+                const key = `${m.nos_code}:${m.module_title}`;
+                if (moduleMap.has(key)) continue;
+                const r = await client.query(`
+                    INSERT INTO nsqf_modules (qp_code, nos_code, module_title, sequence_order)
+                    VALUES ($1, $2, $3, $4)
+                    RETURNING id
+                `, [qp.qp_code, m.nos_code, m.module_title, m.sequence_order]);
+                moduleMap.set(key, r.rows[0].id);
+            }
+            totalMods += modulesList.length;
+
+            // ── 3. Upsert nsqf_pcs — NEVER overwrite video_id on conflict ────
+            for (const p of pcsList) {
+                const key   = `${p.nos_code}:${p.module_title}`;
+                const modId = moduleMap.get(key) || null;
+                await client.query(`
+                    INSERT INTO nsqf_pcs
+                        (qp_code, nos_code, module_id, pc_code, pc_description, sequence_order)
+                    VALUES ($1, $2, $3, $4, $5, $6)
+                    ON CONFLICT (qp_code, nos_code, pc_code) DO UPDATE SET
+                        pc_description = EXCLUDED.pc_description,
+                        module_id      = EXCLUDED.module_id,
+                        sequence_order = EXCLUDED.sequence_order
+                `, [qp.qp_code, p.nos_code, modId, p.pc_code, p.pc_description, 0]);
+            }
+            totalPcs += pcsList.length;
+
+            // ── 4. Delete PCs + NOS for ANY generic NOS — unconditionally ────
+            const GENERIC_NOS_TITLE_SQL = `(
+                nos_title ILIKE '%employability%'
+                OR nos_title ILIKE '%entrepreneurship%'
+                OR nos_title ILIKE '%english communication%'
+                OR nos_title ILIKE '%it literacy%'
+                OR nos_title ILIKE '%digital literacy%'
+                OR nos_title ILIKE '%soft skills%'
+                OR nos_title ILIKE '%gender sensitivity%'
+                OR nos_title ILIKE '%life skills%'
+                OR nos_title ILIKE '%communication skills%'
+                OR nos_title ILIKE '%vocational skills%'
+            )`;
+
+            await client.query(`
+                DELETE FROM nsqf_pcs
+                WHERE qp_code = $1
+                  AND (
+                    nos_code LIKE 'DGT/VSQ/%'
+                    OR nos_code LIKE 'VSQ/%'
+                    OR nos_code ~ '\\/N99[0-9][0-9]$'
+                    OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
+                    OR nos_code IN (
+                        SELECT nos_code FROM nsqf_nos
+                        WHERE qp_code = $1 AND ${GENERIC_NOS_TITLE_SQL}
+                    )
+                  )
+            `, [qp.qp_code]);
+
+            await client.query(`
+                DELETE FROM nsqf_nos
+                WHERE qp_code = $1
+                  AND (
+                    nos_code LIKE 'DGT/VSQ/%'
+                    OR nos_code LIKE 'VSQ/%'
+                    OR nos_code ~ '\\/N99[0-9][0-9]$'
+                    OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
+                    OR ${GENERIC_NOS_TITLE_SQL}
+                  )
+            `, [qp.qp_code]);
+
+            // ── 5. Fix sequence_order via SQL window function ─────────────────
+            try {
+                await client.query(`
+                    UPDATE nsqf_pcs AS p
+                    SET sequence_order = sub.rn
+                    FROM (
+                        SELECT id, ROW_NUMBER() OVER (PARTITION BY qp_code ORDER BY id) AS rn
+                        FROM nsqf_pcs WHERE qp_code = $1
+                    ) AS sub
+                    WHERE p.id = sub.id
+                `, [qp.qp_code]);
+            } catch (_) { /* Non-fatal — ordering can be fixed later */ }
+
+            // ── 6. Detect abbreviated-format PDFs ────────────────────────────
+            let isAbbreviated = false;
+            if (pcsList.length > 0) {
+                const uniqueDescs = new Set(
+                    pcsList.map(p => p.pc_description.trim().toLowerCase().substring(0, 60))
+                );
+                if (uniqueDescs.size === 1) {
+                    isAbbreviated = true;
+                    console.log(`  ⚠️  Abbreviated PDF detected for ${qp.qp_code} — all ${pcsList.length} PCs identical: "${[...uniqueDescs][0].substring(0, 50)}"`);
+                    await client.query(`DELETE FROM nsqf_pcs WHERE qp_code = $1`, [qp.qp_code]);
+                }
+            }
+
+            // ── 7. Update master QP status ───────────────────────────────────
+            const finalStatus = isAbbreviated ? 'abbreviated_pdf_no_pcs' : 'structure_ingested';
+            await client.query(`
+                UPDATE nsqf_qps
+                SET total_nos       = $1,
+                    total_pcs       = $2,
+                    pipeline_status = $3
+                WHERE id = $4
+            `, [nosList.length, isAbbreviated ? 0 : pcsList.length, finalStatus, qp.id]);
+
+            await client.query('COMMIT');
+
+        } catch (txErr) {
+            await client.query('ROLLBACK');
+            console.error(`  ❌  Transaction rolled back for ${qp.qp_code}: ${txErr.message}`);
+            skipCount++;
+            continue;
+        } finally {
+            client.release();
+        }
 
         successCount++;
         saveCheckpoint(qp.id, qp.qp_code);

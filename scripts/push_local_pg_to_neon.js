@@ -46,11 +46,12 @@ const tableFlag = args.find(a => a.startsWith('--tables='));
 const TABLES_TO_PUSH = tableFlag
     ? tableFlag.replace('--tables=', '').split(',')
     : ['nsqf_qps', 'nsqf_nos', 'nsqf_modules', 'nsqf_pcs',
-       'nsqf_videos', 'nsqf_curricula', 'nsqf_video_audit_logs',
+       'nsqf_curricula', 'nsqf_video_audit_logs',
        'youtube_search_cache', 'video_swap_suggestions',
        'users', 'licenses', 'subscriptions', 'download_logs',
        'report_orders', 'skill_progress', 'user_pc_progress',
        'user_purchases', 'user_payment_methods', 'custom_skills'];
+       // Note: nsqf_videos is DEPRECATED — excluded from sync (data lives in nsqf_pcs)
 
 // ── DB pools ──────────────────────────────────────────────────────────────────
 const localPool = new Pool({ connectionString: LOCAL_URL });
