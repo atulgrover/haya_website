@@ -87,38 +87,8 @@
 <body>
 
   <!-- Top Header Navigation Bar -->
-  <header class="header-nav">
-    <div class="nav-container">
-      <a href="index.html" class="brand-logo">
-        <span>HAYAGRIVA</span> <span class="brand-sub">Login</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="employees_nsqf.html" class="nav-link">Employees (NSQF)</a></li>
-        <li><a href="employers_sop.html" class="nav-link">Employers (SOP)</a></li>
-        <li><a href="entrepreneurs_msme.html" class="nav-link">Entrepreneurs (MSME)</a></li>
-        <li><a href="professionals_apnet.html" class="nav-link">Professionals (APNET)</a></li>
-        <li><a href="login.html" class="nav-link login-btn active">Login</a></li>
-      </ul>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile Nav Drawer -->
-  <nav class="nav-mobile-drawer" id="navMobileDrawer">
-    <a href="index.html">Home</a>
-    <a href="employees_nsqf.html">Employees (NSQF)</a>
-    <a href="employers_sop.html">Employers (SOP)</a>
-    <a href="entrepreneurs_msme.html">Entrepreneurs (MSME)</a>
-    <a href="professionals_apnet.html">Professionals (APNET)</a>
-    <a href="login.html" class="login-btn active">Login ●</a>
-  </nav>
+  <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
+  <div id="site-header" data-pillar="login"></div>
 
   <div class="auth-wrapper">
     <div class="auth-card">
@@ -263,6 +233,8 @@
     };
   </script>
 
+  <div id="site-footer"></div>
   <script src="js/responsive.js"></script>
+  <script src="js/components.js"></script>
 </body>
 </html>

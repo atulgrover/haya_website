@@ -149,39 +149,8 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar (Identical across all pages: 64px height, padding 0 24px) -->
-  <header class="header-nav">
-    <div class="nav-container">
-      <a href="index.html" class="brand-logo">
-        <span>HAYAGRIVA</span> <span class="brand-sub">Professionals (APNET)</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="employees_nsqf.html" class="nav-link">Employees (NSQF)</a></li>
-        <li><a href="employers_sop.html" class="nav-link">Employers (SOP)</a></li>
-        <li><a href="entrepreneurs_msme.html" class="nav-link">Entrepreneurs (MSME)</a></li>
-        <li><a href="professionals_apnet.html" class="nav-link active">Professionals (APNET)</a></li>
-        <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
-      </ul>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile Nav Drawer -->
-  <nav class="nav-mobile-drawer" id="navMobileDrawer">
-    <a href="index.html">Home</a>
-    <a href="employees_nsqf.html">Employees (NSQF)</a>
-    <a href="employers_sop.html">Employers (SOP)</a>
-    <a href="entrepreneurs_msme.html">Entrepreneurs (MSME)</a>
-    <a href="professionals_apnet.html" class="active">Professionals (APNET) ●</a>
-    <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Login</a>
-  </nav>
+  <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
+  <div id="site-header" data-pillar="professionals_apnet"></div>
 
   <!-- Panel scrim (mobile overlay backdrop) -->
   <div class="panel-scrim" id="panelScrim"></div>

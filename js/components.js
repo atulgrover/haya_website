@@ -7,7 +7,10 @@
 let authIsSignup = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Load footer
+    // 1. Render universal site header if mount point exists
+    renderSiteHeader();
+
+    // 2. Load footer
     const footerContainer = document.getElementById('site-footer');
     if (footerContainer) {
         try {
@@ -21,13 +24,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // 2. Inject Auth Modal HTML & CSS into document body
+    // 3. Inject Auth Modal HTML & CSS into document body
     injectAuthModal();
 
-    // 3. Update auth buttons & dropdown UI
+    // 4. Update auth buttons & dropdown UI
     updateAuthButtonsUI();
 
-    // 4. Close dropdown on outside click
+    // 5. Close dropdown on outside click
     document.addEventListener('click', (e) => {
         const dropdown = document.getElementById('userProfileDropdown');
         if (dropdown && dropdown.classList.contains('active')) {
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // 5. Auto-open modal if URL query ?login=1 or ?signup=1
+    // 6. Auto-open modal if URL query ?login=1 or ?signup=1
     const params = new URLSearchParams(window.location.search);
     if (params.get('login') === '1' || params.get('auth') === '1') {
         openAuthModal(false);
@@ -46,6 +49,74 @@ document.addEventListener('DOMContentLoaded', async () => {
         openAuthModal(true);
     }
 });
+
+/* ── Universal Dynamic Header Renderer ───────────────────────── */
+function renderSiteHeader() {
+    const headerMount = document.getElementById('site-header');
+    if (!headerMount) return;
+
+    const path = window.location.pathname.toLowerCase();
+    let pillar = headerMount.getAttribute('data-pillar') || '';
+
+    if (!pillar) {
+        if (path.endsWith('employees_nsqf.html') || path.endsWith('students.html')) pillar = 'employees_nsqf';
+        else if (path.endsWith('employers_sop.html') || path.endsWith('employees.html')) pillar = 'employers_sop';
+        else if (path.endsWith('entrepreneurs_msme.html')) pillar = 'entrepreneurs_msme';
+        else if (path.endsWith('professionals_apnet.html') || path.endsWith('professionals.html')) pillar = 'professionals_apnet';
+        else if (path.endsWith('login.html')) pillar = 'login';
+        else if (path.endsWith('index.html') || path === '/' || path === '') pillar = 'home';
+    }
+
+    let subBadge = '';
+    if (pillar === 'employees_nsqf') subBadge = 'Employees (NSQF)';
+    else if (pillar === 'employers_sop') subBadge = 'Employers (SOP)';
+    else if (pillar === 'entrepreneurs_msme') subBadge = 'Entrepreneurs (MSME)';
+    else if (pillar === 'professionals_apnet') subBadge = 'Professionals (APNET)';
+    else if (pillar === 'login') subBadge = 'Login';
+
+    headerMount.innerHTML = `
+      <header class="header-nav">
+        <div class="nav-container">
+          <a href="index.html" class="brand-logo">
+            <span>HAYAGRIVA</span> ${subBadge ? `<span class="brand-sub">${subBadge}</span>` : ''}
+          </a>
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link ${pillar === 'home' ? 'active' : ''}">Home</a></li>
+            <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' ? 'active' : ''}">Employees (NSQF)</a></li>
+            <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' ? 'active' : ''}">Employers (SOP)</a></li>
+            <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' ? 'active' : ''}">Entrepreneurs (MSME)</a></li>
+            <li><a href="professionals_apnet.html" class="nav-link ${pillar === 'professionals_apnet' ? 'active' : ''}">Professionals (APNET)</a></li>
+            <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
+          </ul>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+      <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
+        <a href="index.html" class="${pillar === 'home' ? 'active' : ''}">Home ${pillar === 'home' ? '●' : ''}</a>
+        <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' ? 'active' : ''}">Employees (NSQF) ${pillar === 'employees_nsqf' ? '●' : ''}</a>
+        <a href="employers_sop.html" class="${pillar === 'employers_sop' ? 'active' : ''}">Employers (SOP) ${pillar === 'employers_sop' ? '●' : ''}</a>
+        <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' ? 'active' : ''}">Entrepreneurs (MSME) ${pillar === 'entrepreneurs_msme' ? '●' : ''}</a>
+        <a href="professionals_apnet.html" class="${pillar === 'professionals_apnet' ? 'active' : ''}">Professionals (APNET) ${pillar === 'professionals_apnet' ? '●' : ''}</a>
+        <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Login</a>
+      </nav>
+    `;
+
+    // Bind hamburger toggle
+    const hamburger = headerMount.querySelector('#navHamburger');
+    const drawer = headerMount.querySelector('#navMobileDrawer');
+    if (hamburger && drawer) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = drawer.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+    }
+}
 
 /* ── Inject Auth Modal HTML & CSS ────────────────────────────── */
 function injectAuthModal() {
