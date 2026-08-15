@@ -474,16 +474,32 @@
       document.getElementById('tab-compliance').style.display = tabId === 'compliance' ? 'flex' : 'none';
     }
 
-    function filterBySector(sector, itemEl) {
+    async function filterBySector(sector, itemEl) {
       selectedSector = sector;
       document.querySelectorAll('.sector-item').forEach(s => s.classList.remove('active'));
       if (itemEl) itemEl.classList.add('active');
 
-      if (sector === 'all') {
-        renderCards(allCards);
-      } else {
-        const filtered = allCards.filter(c => c.sector === sector);
-        renderCards(filtered);
+      const grid = document.getElementById('sopGrid');
+      grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">Loading sector SOPs...</div>';
+
+      try {
+        const url = sector === 'all' 
+          ? '/api/skillpedia/qps/cards?limit=60' 
+          : `/api/skillpedia/qps/cards?sector=${encodeURIComponent(sector)}&limit=100`;
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.success && data.cards) {
+          allCards = data.cards;
+          renderCards(allCards);
+          if (allCards.length > 0) {
+            inspectCard(allCards[0].qp_code, allCards[0].qp_name, allCards[0].sector, allCards[0].nsqf_level);
+          }
+        } else {
+          renderCards([]);
+        }
+      } catch (err) {
+        console.error('Error filtering sector:', err);
+        grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">Failed to load sector SOPs.</div>';
       }
     }
 
