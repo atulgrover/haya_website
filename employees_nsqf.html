@@ -334,11 +334,9 @@
     }
 
     .inspector-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 16px 20px;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
+      background: #FAFAFA;
     }
 
     .btn-close {
@@ -460,10 +458,15 @@
     <!-- RIGHT PANEL: Micro-Learning Detail Inspector Drawer -->
     <aside class="panel-right" id="panelRight">
       <div class="inspector-header">
-        <h2 class="panel-title" id="inspectorTitle">Lesson Inspector</h2>
-        <div class="inspector-actions-bar">
-          <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore Inspector (Esc)">⤢</button>
-          <button class="ide-btn-icon" onclick="closeInspector()" title="Close Inspector (Esc)">✕</button>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+          <div>
+            <div class="inspector-title" id="inspectorTitle">Lesson Inspector</div>
+            <div class="inspector-subtitle" id="inspectorSubtitle">Select a job role card to explore NCVET Performance Criteria and micro-learning reels.</div>
+          </div>
+          <div class="inspector-actions-bar">
+            <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore Inspector (Esc)">⤢</button>
+            <button class="ide-btn-icon" onclick="closeInspector()" title="Close Inspector (Esc)">✕</button>
+          </div>
         </div>
       </div>
       <div id="inspectorContent">
