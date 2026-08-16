@@ -75,6 +75,9 @@
 /* ── Resizer Handles (Draggable Splitters) ────────────────────── */
 .ide-resizer {
   width: var(--ide-resizer-width) !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  align-self: stretch !important;
   flex-shrink: 0 !important;
   cursor: col-resize !important;
   background-color: transparent !important;

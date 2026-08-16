@@ -321,7 +321,7 @@
     </main>
 
     <!-- RIGHT PANEL: 9-Chapter Corporate Business Plan & Bankable DPR Dossier -->
-    <aside class="panel-right" id="blueprintInspector">
+    <aside class="panel-right collapsed" id="blueprintInspector">
       <div class="inspector-header">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
           <div>
@@ -759,7 +759,6 @@
         if (data.success && data.cards && data.cards.length > 0) {
           allCards = data.cards;
           renderCards(allCards);
-          inspectCard(allCards[0].nos_code);
         } else {
           grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">No MSME opportunities found.</div>';
         }

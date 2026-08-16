@@ -116,25 +116,20 @@
       display: flex;
       flex: 1;
       min-height: calc(100vh - 64px);
-      align-items: flex-start;
     }
 
-    /* LEFT PANEL: Filters & Cascade Selector (Pinned Sticky Sidebar) */
+    /* LEFT PANEL: Filters & Cascade Selector */
     .panel-left {
       width: 250px;
       min-width: 220px;
       background: #FFFFFF;
       border-right: 1px solid var(--border-color);
       padding: 16px 14px;
-      position: sticky;
-      top: 64px;
-      height: calc(100vh - 64px);
       overflow-y: auto;
       display: flex;
       flex-direction: column;
       gap: 16px;
       flex-shrink: 0;
-      align-self: flex-start;
       z-index: 100;
     }
 
@@ -427,12 +422,6 @@
         </div>
       </div>
 
-      <!-- Active Sector Filter Banner -->
-      <div id="activeSectorBar" class="active-sector-bar" style="display: none;">
-        <span>Active Sector Filter: <strong id="activeSectorName">All Sectors</strong></span>
-        <button class="btn-clear-sector" onclick="resetSectorGrid()">Clear Filter ✕</button>
-      </div>
-
       <!-- Job Roles Catalog Container (Hidden on initial load, revealed upon selecting a sector) -->
       <div id="jobRolesSection" style="display: none;">
         <div class="results-header">
@@ -476,12 +465,30 @@
 
     let activeSectorsList = [];
 
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', async () => {
       if (window.HayaIdeDocking) {
         HayaIdeDocking.init({ storagePrefix: 'haya_interns_ide_' });
       }
-      initCascadingFilters();
-      loadSectorCards();
+      await initCascadingFilters();
+      await loadSectorCards();
+
+      // Deep-linking: auto-open sector if present in URL query
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialSector = urlParams.get('sector');
+      if (initialSector) {
+        selectSectorCard(initialSector, false);
+      }
+    });
+
+    // Browser Back/Forward history navigation
+    window.addEventListener('popstate', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const sectorFromUrl = urlParams.get('sector');
+      if (sectorFromUrl) {
+        selectSectorCard(sectorFromUrl, false);
+      } else {
+        resetFilters(false);
+      }
     });
 
     async function loadSectorCards() {
@@ -518,7 +525,7 @@
       }).join('');
     }
 
-    async function selectSectorCard(sectorName) {
+    async function selectSectorCard(sectorName, updateUrl = true) {
       currentFilters.sector = sectorName;
       currentFilters.sub_sector = '';
       currentFilters.occupation = '';
@@ -527,13 +534,6 @@
       const select = document.getElementById('selectSector');
       if (select) {
         select.value = sectorName;
-      }
-
-      const bar = document.getElementById('activeSectorBar');
-      const barName = document.getElementById('activeSectorName');
-      if (bar && barName) {
-        barName.innerText = sectorName;
-        bar.style.display = 'flex';
       }
 
       const backBtn = document.getElementById('btnBackToSectors');
@@ -547,14 +547,23 @@
       // Expand the left filter panel now that we are in the job roles view
       if (window.HayaIdeDocking) HayaIdeDocking.toggleLeftPanel(true);
 
-      await onSectorChange();
+      // Deep-linking URL update
+      if (updateUrl) {
+        const url = new URL(window.location);
+        url.searchParams.set('sector', sectorName);
+        window.history.pushState({ sector: sectorName }, '', url);
+      }
 
-      const resultsHeader = document.querySelector('.results-header');
-      if (resultsHeader) resultsHeader.scrollIntoView({ behavior: 'smooth' });
+      await onSectorChange(false);
+
+      // Keep window locked to top and reset center panel scroll internally
+      const panelCenter = document.getElementById('panelCenter');
+      if (panelCenter) panelCenter.scrollTop = 0;
+      window.scrollTo(0, 0);
     }
 
     function resetSectorGrid() {
-      resetFilters();
+      resetFilters(true);
     }
 
     async function initCascadingFilters() {
@@ -571,22 +580,21 @@
       } catch (err) { console.error(err); }
     }
 
-    async function onSectorChange() {
+    async function onSectorChange(updateUrl = true) {
       const sec = document.getElementById('selectSector').value || currentFilters.sector;
       currentFilters.sector = sec;
       currentFilters.sub_sector = '';
       currentFilters.occupation = '';
       currentFilters.qp_code = '';
 
-      const bar = document.getElementById('activeSectorBar');
-      const barName = document.getElementById('activeSectorName');
-      if (sec) {
-        if (bar && barName) {
-          barName.innerText = sec;
-          bar.style.display = 'flex';
+      if (updateUrl) {
+        const url = new URL(window.location);
+        if (sec) {
+          url.searchParams.set('sector', sec);
+        } else {
+          url.searchParams.delete('sector');
         }
-      } else {
-        if (bar) bar.style.display = 'none';
+        window.history.pushState({ sector: sec }, '', url);
       }
 
       resetSelect('selectSubsector', 'All Sub Sectors');
@@ -655,16 +663,13 @@
       }, 300);
     }
 
-    function resetFilters() {
+    function resetFilters(updateUrl = true) {
       currentFilters = { sector: '', sub_sector: '', occupation: '', qp_code: '', search: '' };
       document.getElementById('searchInput').value = '';
       document.getElementById('selectSector').value = '';
       resetSelect('selectSubsector', 'All Sub Sectors');
       resetSelect('selectOccupation', 'All Occupations');
       resetSelect('selectJobrole', 'All Job Roles');
-
-      const bar = document.getElementById('activeSectorBar');
-      if (bar) bar.style.display = 'none';
 
       const backBtn = document.getElementById('btnBackToSectors');
       if (backBtn) backBtn.style.display = 'none';
@@ -678,6 +683,18 @@
       if (window.HayaIdeDocking) {
         HayaIdeDocking.toggleLeftPanel(false);
         HayaIdeDocking.closeRightPanel();
+      }
+
+      // Reset scroll position cleanly
+      const panelCenter = document.getElementById('panelCenter');
+      if (panelCenter) panelCenter.scrollTop = 0;
+      window.scrollTo(0, 0);
+
+      // Deep-linking URL update: clear sector param
+      if (updateUrl) {
+        const url = new URL(window.location);
+        url.searchParams.delete('sector');
+        window.history.pushState({}, '', url);
       }
     }
 
