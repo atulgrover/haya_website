@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARCHIVE: 41 Industries NSQF Sector Visual Grid Component</title>
+  <!--
+    ARCHIVE NOTICE:
+    This file preserves the 41-industry visual image grid originally used as the
+    landing view on employees_nsqf.html (Interns / Employees NSQF Qualifications Portal).
+    Images are located in resources/sectors/ (sector_1.jpg to sector_41.jpg).
+    Metadata and active descriptions are located in resources/active_sectors.json.
+  -->
+  <link rel="stylesheet" href="../css/responsive.css">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F8F9FA;
+      padding: 30px;
+    }
+    .sid-sector-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .sid-sector-header {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sid-sector-header-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .sid-sector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .sid-sector-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .sid-sector-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(30, 108, 147, 0.15);
+      border-color: #1E6C93;
+    }
+    .sid-sector-img-wrap {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      background: #F1F5F9;
+    }
+    .sid-sector-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .sid-sector-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .sid-sector-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+    .sid-sector-desc {
+      font-size: 12px;
+      color: #64748B;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sid-sector-container">
+    <div class="sid-sector-header">
+      <div class="sid-sector-header-title">Explore 41 Industries</div>
+    </div>
+    <div class="sid-sector-grid" id="sidSectorGrid">
+      <!-- Loaded dynamically from resources/active_sectors.json -->
+    </div>
+  </div>
+
+  <script>
+    async function loadSectorCards() {
+      try {
+        const res = await fetch('../resources/active_sectors.json');
+        const sectors = await res.json();
+        const grid = document.getElementById('sidSectorGrid');
+        if (!grid) return;
+
+        grid.innerHTML = sectors.map(s => {
+          const cleanName = s.nsqfSectorName.replace(/'/g, "\\'");
+          const cleanDesc = (s.description || 'Explore National Qualifications & Vocational Skill Packs in this sector.')
+            .replace(/Õ/g, "'")
+            .replace(/Ê/g, " ");
+          const cleanTitle = (s.title || '').replace(/Õ/g, "'").replace(/Ê/g, " ");
+          return `
+            <div class="sid-sector-card" onclick="alert('Selected sector: ${cleanName}')">
+              <div class="sid-sector-img-wrap">
+                <img src="../${s.localImage}" alt="${cleanTitle}" class="sid-sector-img" loading="lazy" onerror="this.src='../resources/sectors/sector_1.jpg'" />
+              </div>
+              <div class="sid-sector-body">
+                <div class="sid-sector-title">${cleanTitle}</div>
+                <div class="sid-sector-desc">${cleanDesc}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error('Failed to load active sectors:', err);
+      }
+    }
+    loadSectorCards();
+  </script>
+</body>
+</html>

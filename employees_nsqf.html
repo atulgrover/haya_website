@@ -351,8 +351,8 @@
       <span>▶</span> Show Trades (Cmd+B)
     </button>
 
-    <!-- LEFT PANEL: Filters & 4-Level Cascading Selector — starts collapsed on home screen -->
-    <aside class="panel-left collapsed" id="panelLeft">
+    <!-- LEFT PANEL: Filters & 4-Level Cascading Selector -->
+    <aside class="panel-left" id="panelLeft">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
         <h2 class="panel-title" style="margin-bottom: 0;">Choose Your Trade</h2>
         <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
@@ -409,30 +409,14 @@
         </svg>
         Filter Job Roles
       </button>
-      <!-- Skill India Digital Style 41 NCVET Sector Cards Grid Container -->
-      <div id="sectorCardsSection" class="sid-sector-container">
-        <div class="sid-sector-header">
-          <div class="sid-sector-header-title">Explore 41 Industries</div>
-          <button id="btnBackToSectors" class="btn-back-sectors" style="display: none;" onclick="resetSectorGrid()">
-            ← Back to All 41 Industries
-          </button>
-        </div>
-        <div class="sid-sector-grid" id="sidSectorGrid">
-          <!-- Dynamically populated 41 sector cards -->
-        </div>
+
+      <div class="results-header">
+        <span class="results-count" id="resultsCount">Loading NCVET NSQF Database...</span>
       </div>
 
-      <!-- Job Roles Catalog Container (Hidden on initial load, revealed upon selecting a sector) -->
-      <div id="jobRolesSection" style="display: none;">
-        <div class="results-header">
-          <span class="results-count" id="resultsCount">Loading NCVET NSQF Database...</span>
-        </div>
-
-        <div class="qp-grid" id="cardsGrid">
-          <!-- Dynamic Qualification Cards Rendered Here -->
-        </div>
+      <div class="qp-grid" id="cardsGrid">
+        <!-- Dynamic Qualification Cards Rendered Here -->
       </div>
-
     </main>
 
     <!-- RIGHT PANEL: Micro-Learning Detail Inspector Drawer -->
@@ -463,108 +447,34 @@
     let currentFilters = { sector: '', sub_sector: '', occupation: '', qp_code: '', search: '' };
     let searchDebounce = null;
 
-    let activeSectorsList = [];
-
     window.addEventListener('DOMContentLoaded', async () => {
       if (window.HayaIdeDocking) {
         HayaIdeDocking.init({ storagePrefix: 'haya_interns_ide_' });
       }
       await initCascadingFilters();
-      await loadSectorCards();
 
-      // Deep-linking: auto-open sector if present in URL query
+      // Deep-linking: auto-filter sector if present in URL query
       const urlParams = new URLSearchParams(window.location.search);
       const initialSector = urlParams.get('sector');
       if (initialSector) {
-        selectSectorCard(initialSector, false);
+        currentFilters.sector = initialSector;
+        const select = document.getElementById('selectSector');
+        if (select) select.value = initialSector;
+        await onSectorChange(false);
+      } else {
+        await fetchCards();
       }
     });
 
     // Browser Back/Forward history navigation
     window.addEventListener('popstate', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const sectorFromUrl = urlParams.get('sector');
-      if (sectorFromUrl) {
-        selectSectorCard(sectorFromUrl, false);
-      } else {
-        resetFilters(false);
-      }
-    });
-
-    async function loadSectorCards() {
-      try {
-        const res = await fetch('resources/active_sectors.json');
-        activeSectorsList = await res.json();
-        renderSectorCards(activeSectorsList);
-      } catch (err) {
-        console.error('Failed to load active sectors:', err);
-      }
-    }
-
-    function renderSectorCards(sectors) {
-      const grid = document.getElementById('sidSectorGrid');
-      if (!grid) return;
-
-      grid.innerHTML = sectors.map(s => {
-        const cleanName = s.nsqfSectorName.replace(/'/g, "\\'");
-        const cleanDesc = (s.description || 'Explore National Qualifications & Vocational Skill Packs in this sector.')
-          .replace(/Õ/g, "'")
-          .replace(/Ê/g, " ");
-        const cleanTitle = (s.title || '').replace(/Õ/g, "'").replace(/Ê/g, " ");
-        return `
-          <div class="sid-sector-card" onclick="selectSectorCard('${cleanName}')">
-            <div class="sid-sector-img-wrap">
-              <img src="${s.localImage}" alt="${cleanTitle}" class="sid-sector-img" loading="lazy" onerror="this.src='resources/sectors/sector_1.jpg'" />
-            </div>
-            <div class="sid-sector-body">
-              <div class="sid-sector-title">${cleanTitle}</div>
-              <div class="sid-sector-desc">${cleanDesc}</div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    async function selectSectorCard(sectorName, updateUrl = true) {
-      currentFilters.sector = sectorName;
-      currentFilters.sub_sector = '';
-      currentFilters.occupation = '';
-      currentFilters.qp_code = '';
-
+      const sectorFromUrl = urlParams.get('sector') || '';
+      currentFilters.sector = sectorFromUrl;
       const select = document.getElementById('selectSector');
-      if (select) {
-        select.value = sectorName;
-      }
-
-      const backBtn = document.getElementById('btnBackToSectors');
-      if (backBtn) backBtn.style.display = 'inline-flex';
-      const grid = document.getElementById('sidSectorGrid');
-      if (grid) grid.style.display = 'none';
-
-      const jobRolesSection = document.getElementById('jobRolesSection');
-      if (jobRolesSection) jobRolesSection.style.display = 'block';
-
-      // Expand the left filter panel now that we are in the job roles view
-      if (window.HayaIdeDocking) HayaIdeDocking.toggleLeftPanel(true);
-
-      // Deep-linking URL update
-      if (updateUrl) {
-        const url = new URL(window.location);
-        url.searchParams.set('sector', sectorName);
-        window.history.pushState({ sector: sectorName }, '', url);
-      }
-
-      await onSectorChange(false);
-
-      // Keep window locked to top and reset center panel scroll internally
-      const panelCenter = document.getElementById('panelCenter');
-      if (panelCenter) panelCenter.scrollTop = 0;
-      window.scrollTo(0, 0);
-    }
-
-    function resetSectorGrid() {
-      resetFilters(true);
-    }
+      if (select) select.value = sectorFromUrl;
+      onSectorChange(false);
+    });
 
     async function initCascadingFilters() {
       try {
@@ -671,17 +581,8 @@
       resetSelect('selectOccupation', 'All Occupations');
       resetSelect('selectJobrole', 'All Job Roles');
 
-      const backBtn = document.getElementById('btnBackToSectors');
-      if (backBtn) backBtn.style.display = 'none';
-      const grid = document.getElementById('sidSectorGrid');
-      if (grid) grid.style.display = 'grid';
-
-      const jobRolesSection = document.getElementById('jobRolesSection');
-      if (jobRolesSection) jobRolesSection.style.display = 'none';
-
-      // Collapse left panel and right panel when returning to the home/sector screen
+      // Close right inspector if open
       if (window.HayaIdeDocking) {
-        HayaIdeDocking.toggleLeftPanel(false);
         HayaIdeDocking.closeRightPanel();
       }
 
@@ -696,6 +597,8 @@
         url.searchParams.delete('sector');
         window.history.pushState({}, '', url);
       }
+
+      fetchCards();
     }
 
     function populateSelect(id, items, defaultLabel, mapFn = item => ({ value: item, text: item })) {
@@ -718,7 +621,7 @@
       if (currentFilters.qp_code) params.append('jobrole', currentFilters.qp_code);
       if (currentFilters.search) params.append('q', currentFilters.search);
 
-      const fetchLimit = (currentFilters.sector || currentFilters.sub_sector || currentFilters.occupation || currentFilters.search) ? '100' : '15';
+      const fetchLimit = (currentFilters.sector || currentFilters.sub_sector || currentFilters.occupation || currentFilters.search) ? '100' : '30';
       params.append('limit', fetchLimit);
 
       const url = `/api/skillpedia/qps/cards?${params.toString()}`;
