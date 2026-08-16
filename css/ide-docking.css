@@ -276,21 +276,25 @@ body.ide-dragging .panel-center {
   color: var(--text-muted, #64748B);
   margin-top: 2px;
   line-height: 1.4;
+}
+
 /* Unified Results Counter Bar */
 .results-header {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 12px !important;
   flex-wrap: wrap !important;
   gap: 8px !important;
+  width: 100% !important;
 }
 
 .results-count {
-  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 13.5px !important;
+  font-family: var(--font-heading, 'Google Sans', sans-serif) !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
-  color: var(--text-muted, #64748B) !important;
+  color: var(--text-muted, #5F6368) !important;
+  line-height: 1.5 !important;
 }
 
 .btn-header-utility {
