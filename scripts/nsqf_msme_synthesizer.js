@@ -22,6 +22,57 @@ const db   = require('../server/db');
 
 const SARVAM_API_KEY = process.env.SARVAM_API_KEY || '';
 
+// ── Video Guidance Generators for MSME Machinery & Business Pitch Videos ─────
+
+/**
+ * Builds video harvesting guidance for a single machine/tool in the BOM.
+ * The harvester will use this to find commercial operation demos on YouTube.
+ */
+function buildMachineVideoGuidance(machineName, machineSpec, sector) {
+    const cleanName = String(machineName || '').trim();
+    const cleanSpec = String(machineSpec || '').trim();
+    const sectorStr = String(sector || 'industrial').trim();
+
+    // Extract key spec tokens for tool_keywords
+    const specTokens = cleanSpec.toLowerCase()
+        .split(/[,;()\[\]]+/)
+        .map(t => t.trim())
+        .filter(t => t.length > 3)
+        .slice(0, 4)
+        .join(', ');
+
+    return {
+        search_query: `${cleanName} machine commercial operation demonstration setup`.substring(0, 95).trim(),
+        search_query_hi: `${cleanName} मशीन काम करने का तरीका डेमो`.substring(0, 95).trim(),
+        intent: `${cleanName} commercial operation demonstration`,
+        tool_keywords: `${cleanName.toLowerCase()}, ${specTokens}`.substring(0, 120),
+        positive_signals: 'machine, demo, operation, working, commercial, factory, industrial, setup, how to use',
+        negative_keywords: '-unboxing -review -shorts -DIY -homemade -reaction -vlog -prank',
+        min_duration_seconds: 120,
+        max_duration_seconds: 600
+    };
+}
+
+/**
+ * Builds video harvesting guidance for the overall business pitch video.
+ * Targets "how to start X business" style videos with cost/profit/subsidy info.
+ */
+function buildPitchVideoGuidance(businessTitle, sector) {
+    const cleanBiz = String(businessTitle || '').trim();
+    const sectorStr = String(sector || 'industrial').trim();
+
+    return {
+        search_query: `How to start ${cleanBiz} business investment profit PMEGP`.substring(0, 95).trim(),
+        search_query_hi: `${cleanBiz} बिजनेस कैसे शुरू करें लागत मुनाफा PMEGP`.substring(0, 95).trim(),
+        intent: `Business startup guide for ${cleanBiz}`,
+        tool_keywords: cleanBiz.toLowerCase(),
+        positive_signals: 'business idea, startup, investment, profit, PMEGP, Mudra, subsidy, cost, income, margin, project report',
+        negative_keywords: '-scam -MLM -shorts -reaction -vlog -prank -crypto -forex',
+        min_duration_seconds: 240,
+        max_duration_seconds: 1500
+    };
+}
+
 // ── Deterministic Heuristic Tool BOM & DPR Generator ──────────────────────────
 function generateHeuristicMsmeBlueprint(nosRow, qpRow, pcs) {
     const nosTitle = String(nosRow.nos_title || '').trim();
@@ -131,6 +182,16 @@ function generateHeuristicMsmeBlueprint(nosRow, qpRow, pcs) {
         }
     }
 
+    // Attach video guidance to each tool in the BOM
+    const toolBomWithVideo = tools.map(tool => ({
+        ...tool,
+        video_guidance: buildMachineVideoGuidance(tool.name, tool.spec, qpRow.sector),
+        video: {
+            video_id: null, video_title: null, video_url: null,
+            thumbnail_url: null, duration_seconds: null, audit_score: null
+        }
+    }));
+
     // Financial DPR Projections (Bank-Ready Math)
     const electrificationSetup = 25000;
     const workingCapitalMargin = 30000;
@@ -181,7 +242,7 @@ function generateHeuristicMsmeBlueprint(nosRow, qpRow, pcs) {
         power_requirement: powerReq,
         target_clientele: targetClients,
         
-        tool_bom: tools,
+        tool_bom: toolBomWithVideo,
         total_machinery_capex_inr: baseCapex,
         electrification_fixture_cost_inr: electrificationSetup,
         working_capital_margin_inr: workingCapitalMargin,
@@ -205,6 +266,18 @@ function generateHeuristicMsmeBlueprint(nosRow, qpRow, pcs) {
         },
 
         day1_playbook: playbook,
+
+        // ── Video Harvesting Guidance & Result Slots ──────────────────────────
+        pitch_video_guidance: buildPitchVideoGuidance(businessTitle, qpRow.sector),
+        pitch_video: {
+            video_id: null, video_title: null, video_url: null,
+            thumbnail_url: null, duration_seconds: null, audit_score: null
+        },
+        pitch_video_hi: {
+            video_id: null, video_title: null, video_url: null,
+            thumbnail_url: null, duration_seconds: null, audit_score: null
+        },
+
         generated_by: 'HAYAGRIVA MSME Economic Intelligence Engine',
         generated_at: new Date().toISOString()
     };

@@ -66,6 +66,47 @@ function getSectorSafety(sectorName) {
     return SECTOR_SAFETY_DEFAULTS['default'];
 }
 
+// ── Video Guidance Generator for Workstation-Level SOP Demos ─────────────────
+function buildSopVideoGuidance(cleanModTitle, qpRow, nosRow, equipment) {
+    const sector = String(qpRow.sector || 'Industrial').trim();
+    const qpName = String(qpRow.qp_name || '').trim();
+    const nosTitle = nosRow ? String(nosRow.nos_title || '').trim() : '';
+
+    // Extract tool keywords from prerequisite equipment names
+    const equipToolKeywords = equipment
+        .map(e => String(e.name || '').toLowerCase().replace(/workstation apparatus for /i, '').trim())
+        .filter(t => t.length > 3)
+        .join(', ');
+
+    // Sector-aware negative keywords to reject non-procedural content
+    const sectorNeg = {
+        'electronics': '-unboxing -review -shorts -gaming -reaction -haul -ASMR',
+        'automotive':  '-unboxing -review -shorts -racing -drift -vlog -reaction',
+        'green-jobs':  '-unboxing -review -shorts -reaction -vlog -DIY-home',
+        'agriculture': '-unboxing -review -shorts -reaction -vlog -cooking -recipe',
+        'healthcare':  '-unboxing -review -shorts -reaction -vlog -ASMR -mukbang',
+        'default':     '-unboxing -review -shorts -gaming -reaction -vlog -prank'
+    };
+    const sLower = String(sector).toLowerCase();
+    let negKey = 'default';
+    if (sLower.includes('electr') || sLower.includes('telecom')) negKey = 'electronics';
+    else if (sLower.includes('auto') || sLower.includes('ev')) negKey = 'automotive';
+    else if (sLower.includes('solar') || sLower.includes('green')) negKey = 'green-jobs';
+    else if (sLower.includes('agri') || sLower.includes('food')) negKey = 'agriculture';
+    else if (sLower.includes('health') || sLower.includes('medic')) negKey = 'healthcare';
+
+    return {
+        search_query: `${cleanModTitle} ${sector} standard operating procedure workshop demonstration`.substring(0, 95).trim(),
+        search_query_hi: `${cleanModTitle} ${sector} SOP कार्यशाला प्रदर्शन हिंदी`.substring(0, 95).trim(),
+        intent: `Complete workstation SOP walkthrough for ${cleanModTitle}`,
+        tool_keywords: equipToolKeywords || cleanModTitle.toLowerCase(),
+        positive_signals: 'SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training',
+        negative_keywords: sectorNeg[negKey],
+        min_duration_seconds: 180,
+        max_duration_seconds: 1200
+    };
+}
+
 // ── Deterministic Heuristic SOP Generator (Offline/Fast) ─────────────────────
 function generateHeuristicSop(moduleRow, pcs, qpRow, nosRow, jsonAst) {
     const sectorSafety = getSectorSafety(qpRow.sector);
@@ -95,6 +136,9 @@ function generateHeuristicSop(moduleRow, pcs, qpRow, nosRow, jsonAst) {
         { name: `Workstation Apparatus for ${cleanModTitle}`, specification: 'Calibrated industrial grade tooling', calibration_status: 'Valid within 90 days' },
         { name: 'Standard Inspection & Measurement Kit', specification: 'Precision digital meter / gauge', calibration_status: 'Pre-shift zero-checked' }
     ];
+
+    // Build video guidance for workstation-level demo harvesting
+    const videoGuidance = buildSopVideoGuidance(cleanModTitle, qpRow, nosRow, equipment);
 
     const sopJson = {
         doc_id: `SOP-${moduleRow.qp_code.replace(/\//g, '-')}-M${moduleRow.sequence_order || 1}`,
@@ -134,6 +178,18 @@ function generateHeuristicSop(moduleRow, pcs, qpRow, nosRow, jsonAst) {
             standard: 'ISO 9001:2015 Clause 8.5.1 (Controlled Production Conditions)',
             audit_frequency_days: 90
         },
+
+        // ── Video Harvesting Guidance & Result Slots ──────────────────────────
+        video_guidance: videoGuidance,
+        video: {
+            video_id: null, video_title: null, video_url: null,
+            thumbnail_url: null, duration_seconds: null, audit_score: null
+        },
+        video_hi: {
+            video_id: null, video_title: null, video_url: null,
+            thumbnail_url: null, duration_seconds: null, audit_score: null
+        },
+
         generated_by: 'HAYAGRIVA Industrial SOP Engine',
         generated_at: new Date().toISOString()
     };
@@ -200,6 +256,16 @@ Return strictly a valid raw JSON object matching this exact schema:
   "iso_compliance": {
     "standard": "ISO 9001:2015 Clause 8.5.1",
     "audit_frequency_days": 90
+  },
+  "video_guidance": {
+    "search_query": "[Module title] [Sector] standard operating procedure workshop demonstration",
+    "search_query_hi": "[Module title] [Sector] SOP कार्यशाला प्रदर्शन हिंदी",
+    "intent": "Complete workstation SOP walkthrough for [Module Title]",
+    "tool_keywords": "key equipment names from prerequisite_equipment",
+    "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup",
+    "negative_keywords": "-unboxing -review -shorts -gaming -reaction",
+    "min_duration_seconds": 180,
+    "max_duration_seconds": 1200
   }
 }`;
 
@@ -226,6 +292,19 @@ Return strictly a valid raw JSON object matching this exact schema:
             if (parsed && parsed.sop_title && parsed.sequential_execution_steps) {
                 parsed.generated_by = 'Sarvam AI (sarvam-105b)';
                 parsed.generated_at = new Date().toISOString();
+
+                // Ensure video guidance and empty result slots exist even for LLM output
+                if (!parsed.video_guidance) {
+                    const cleanMod = moduleRow.module_title.replace(/^Module\s*\d+\s*:\s*/i, '').trim();
+                    const eqNames = (parsed.prerequisite_equipment || []).map(e => String(e.name || ''));
+                    parsed.video_guidance = buildSopVideoGuidance(cleanMod, qpRow, nosRow, eqNames.map(n => ({ name: n })));
+                }
+                if (!parsed.video) {
+                    parsed.video = { video_id: null, video_title: null, video_url: null, thumbnail_url: null, duration_seconds: null, audit_score: null };
+                }
+                if (!parsed.video_hi) {
+                    parsed.video_hi = { video_id: null, video_title: null, video_url: null, thumbnail_url: null, duration_seconds: null, audit_score: null };
+                }
                 return parsed;
             }
         }
