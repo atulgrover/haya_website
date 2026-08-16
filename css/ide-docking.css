@@ -276,6 +276,40 @@ body.ide-dragging .panel-center {
   color: var(--text-muted, #64748B);
   margin-top: 2px;
   line-height: 1.4;
+/* Unified Results Counter Bar */
+.results-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 8px !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.results-count {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: var(--text-muted, #64748B) !important;
+}
+
+.btn-header-utility {
+  background: var(--primary-light, rgba(30, 108, 147, 0.08));
+  color: var(--primary-color, #1E6C93);
+  border: 1px solid rgba(30, 108, 147, 0.2);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.btn-header-utility:hover {
+  background: var(--primary-color, #1E6C93);
+  color: #FFFFFF;
 }
 
 /* Responsive Fallbacks */

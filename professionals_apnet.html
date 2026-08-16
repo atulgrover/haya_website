@@ -255,7 +255,6 @@
     </aside>
 
     <!-- CENTER PANEL: WORKBENCH IDE Window + 6 Standalone Engine Cards -->
-    <main class="panel-center" id="panelCenter">
       <!-- Mobile filter toggle -->
       <button class="filter-drawer-toggle" id="filterDrawerToggle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -263,9 +262,9 @@
         </svg>
         Filter Professional Roles
       </button>
-      <div class="workspace-header" id="workspaceHeader">
-        <h1 class="role-header-title" id="roleHeaderTitle">Loading Professional Roles...</h1>
-        <p class="role-header-desc" id="roleHeaderDesc">Select a professional role from the left panel to inspect domain architecture.</p>
+
+      <div class="results-header">
+        <span class="results-count" id="resultsCount">Loading Professional Practice Environments...</span>
       </div>
 
       <!-- Live Role-Dynamic WORKBENCH IDE Window -->
@@ -328,6 +327,21 @@
 
     function renderRoleList(roles) {
       const list = document.getElementById('roleList');
+      const countSpan = document.getElementById('resultsCount');
+
+      if (countSpan) {
+        const q = (document.getElementById('searchRole') ? document.getElementById('searchRole').value.trim() : '');
+        const cat = (document.getElementById('selectCategory') ? document.getElementById('selectCategory').value : 'all');
+        const engine = (document.getElementById('selectEngine') ? document.getElementById('selectEngine').value : 'all');
+        const statute = (document.getElementById('selectStatute') ? document.getElementById('selectStatute').value : 'all');
+        const isFiltered = q || cat !== 'all' || engine !== 'all' || statute !== 'all';
+        if (isFiltered) {
+          countSpan.innerText = `Showing ${roles ? roles.length : 0} matching Professional IDE Workspaces`;
+        } else {
+          countSpan.innerText = `Showing ${roles ? roles.length : 0} of ${allRoles.length || 4} Professional IDE Workspaces — Use Left Filters to Explore All`;
+        }
+      }
+
       if (!roles || roles.length === 0) {
         list.innerHTML = `<div style="padding: 16px 8px; text-align: center; color: var(--text-muted); font-size: 12px;">No matching IDE environments found.</div>`;
         return;
@@ -409,9 +423,6 @@
 
       renderRoleList(filteredRoles);
       closeInspector();
-
-      document.getElementById('roleHeaderTitle').innerText = activeRole.role_title;
-      document.getElementById('roleHeaderDesc').innerText = activeRole.description;
 
       // Render Dynamic WORKBENCH IDE Window tailored for activeRole
       renderWorkbenchIdeSimulator(activeRole);

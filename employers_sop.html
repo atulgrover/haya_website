@@ -306,12 +306,17 @@
 
     <!-- CENTER PANEL: Standard SOP Cards Grid -->
     <main class="panel-center" id="panelCenter">
-      <div class="center-header">
-        <div>
-          <div class="center-header-title">Process Guides &amp; Machine Checklists</div>
-          <div class="center-header-sub">Ready-to-use step-by-step instructions and safety rules for workshops, shops, and small factories.</div>
-        </div>
-        <button class="btn-action-primary" style="margin-top: 0;" onclick="handleEnterpriseCustomizer()">
+      <!-- Mobile filter toggle -->
+      <button class="filter-drawer-toggle" id="filterDrawerToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
+        </svg>
+        Filter Procedures
+      </button>
+
+      <div class="results-header">
+        <span class="results-count" id="resultsCount">Loading Standard Operating Procedures...</span>
+        <button class="btn-header-utility" onclick="handleEnterpriseCustomizer()">
           ✨ Add Company Guides
         </button>
       </div>
@@ -730,9 +735,6 @@
         if (data.success && data.cards) {
           allCards = data.cards;
           renderCards(allCards);
-          if (allCards.length > 0) {
-            inspectCard(allCards[0].qp_code, allCards[0].qp_name, allCards[0].sector, allCards[0].nsqf_level);
-          }
         }
       } catch (err) {
         console.error('Error loading SOP cards:', err);
@@ -742,6 +744,21 @@
 
     function renderCards(cards) {
       const grid = document.getElementById('sopGrid');
+      const countSpan = document.getElementById('resultsCount');
+
+      if (countSpan) {
+        const q = (document.getElementById('searchSop') ? document.getElementById('searchSop').value.trim() : '');
+        const sec = (document.getElementById('selectSector') ? document.getElementById('selectSector').value : 'all');
+        const stn = (document.getElementById('selectStation') ? document.getElementById('selectStation').value : 'all');
+        const haz = (document.getElementById('selectHazard') ? document.getElementById('selectHazard').value : 'all');
+        const isFiltered = q || sec !== 'all' || stn !== 'all' || haz !== 'all';
+        if (isFiltered) {
+          countSpan.innerText = `Showing ${cards ? cards.length : 0} matching Standard Operating Procedures`;
+        } else {
+          countSpan.innerText = `Showing ${cards ? cards.length : 0} of ${allCards.length || 60} Standard Operating Procedures — Use Left Filters to Explore All`;
+        }
+      }
+
       if (!cards || cards.length === 0) {
         grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">No process guides matching criteria.</div>';
         return;
