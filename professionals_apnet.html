@@ -54,20 +54,36 @@
 
     /* LEFT PANEL: Streamlined Professional Titles Directory */
     .panel-left {
-      width: 250px; min-width: 220px; background: #FFFFFF; border-right: 1px solid var(--border-color);
+      width: 260px; min-width: 240px; background: #FFFFFF; border-right: 1px solid var(--border-color);
       display: flex; flex-direction: column; flex-shrink: 0; padding: 16px 14px; gap: 12px;
-      position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;
+      overflow-y: auto; z-index: 100;
     }
-    .panel-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
-    .role-list { display: flex; flex-direction: column; gap: 6px; }
+    .panel-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+    
+    .filter-group { display: flex; flex-direction: column; gap: 4px; }
+    .filter-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .filter-select, .filter-input {
+      padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 6px;
+      font-size: 12.5px; background: #FFFFFF; color: var(--text-main); outline: none; width: 100%;
+    }
+    .filter-select:focus, .filter-input:focus { border-color: var(--primary-color); }
+    .btn-reset {
+      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--text-muted);
+      padding: 7px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-reset:hover { background: #E2E8F0; color: var(--text-main); }
+
+    .role-list { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
     .role-item {
-      padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border-color);
-      background: #FFFFFF; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border-color);
+      background: #FFFFFF; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 4px;
     }
     .role-item:hover, .role-item.active {
       border-color: var(--primary-color); background-color: var(--primary-light); color: var(--primary-color); font-weight: 700;
     }
-    .role-title { font-size: 14px; font-weight: 600; }
+    .role-title { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .role-item.active .role-title { color: var(--primary-color); }
+    .role-meta { font-size: 11px; color: var(--text-muted); }
 
     /* CENTER PANEL: WORKBENCH Core Engine + 6 Standalone Segment Cards */
     .panel-center { flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; background: var(--bg-primary); }
@@ -178,16 +194,61 @@
 
     <!-- Floating Restore Button when Left Sidebar is Collapsed -->
     <button id="btnRestoreLeft" class="ide-restore-left-btn">
-      <span>▶</span> Show Roles (Cmd+B)
+      <span>▶</span> Show Professional IDEs (Cmd+B)
     </button>
 
-    <!-- LEFT PANEL: Streamlined Professional Titles Directory -->
+    <!-- LEFT PANEL: Structured Professional IDE Filters & Practices Directory -->
     <aside class="panel-left" id="panelLeft">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-        <h2 class="panel-title" style="margin-bottom: 0;">Professional Roles</h2>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <h2 class="panel-title" style="margin-bottom: 0;">Download Professional IDEs</h2>
         <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
       </div>
 
+      <!-- Keyword Search -->
+      <div class="filter-group">
+        <label class="filter-label" for="searchRole">Search Keyword</label>
+        <input type="text" id="searchRole" class="filter-input" placeholder="e.g. Patent, IBC, Litigation, Arbitration..." oninput="handleCombinedFilter()">
+      </div>
+
+      <!-- 1. Practice Domain Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="selectCategory">1. Practice Domain</label>
+        <select id="selectCategory" class="filter-select" onchange="handleCombinedFilter()">
+          <option value="all">All Practice Disciplines</option>
+          <option value="Intellectual Property">Intellectual Property & Patents</option>
+          <option value="Insolvency & Bankruptcy">Insolvency & Bankruptcy (IBC)</option>
+          <option value="Corporate & Litigation">Corporate & High Court Litigation</option>
+          <option value="Arbitration & Contracts">Commercial Arbitration & ADR</option>
+        </select>
+      </div>
+
+      <!-- 2. Local AI & LLM Architecture Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="selectEngine">2. Local AI & LLM Engine</label>
+        <select id="selectEngine" class="filter-select" onchange="handleCombinedFilter()">
+          <option value="all">All AI Architectures</option>
+          <option value="GGUF">100% Local Air-Gapped GGUF (8090)</option>
+          <option value="Dual RAG">Dual RAG Vector Pipeline</option>
+          <option value="InLegal-SBERT">InLegal-SBERT Vectors</option>
+          <option value="SaulLM-7B">SaulLM-7B Specialized Legal LLM</option>
+        </select>
+      </div>
+
+      <!-- 3. Statutory Authority / Court Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="selectStatute">3. Statutory Authority / Court</label>
+        <select id="selectStatute" class="filter-select" onchange="handleCombinedFilter()">
+          <option value="all">All Regulatory Bodies</option>
+          <option value="USPTO">USPTO & Indian Patent Office (IPO)</option>
+          <option value="IBBI">IBBI / NCLT / NCLAT (IBC 2016)</option>
+          <option value="Supreme Court">Supreme Court & High Courts (CPC)</option>
+          <option value="Arbitration">Arbitration & Conciliation Act 1996</option>
+        </select>
+      </div>
+
+      <button class="btn-reset" onclick="resetFilters()">Reset All Filters</button>
+
+      <!-- Filtered Professional Practice Cards List -->
       <div class="role-list" id="roleList">
         <!-- Professional Roles loaded dynamically -->
       </div>
@@ -241,6 +302,7 @@
 
   <script>
     let allRoles = [];
+    let filteredRoles = [];
     let activeRole = null;
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -257,7 +319,8 @@
         const data = await res.json();
         if (data.success && data.roles.length > 0) {
           allRoles = data.roles;
-          renderRoleList(allRoles);
+          filteredRoles = [...allRoles];
+          renderRoleList(filteredRoles);
           selectRole(allRoles[0].id);
         }
       } catch (err) { console.error(err); }
@@ -265,18 +328,86 @@
 
     function renderRoleList(roles) {
       const list = document.getElementById('roleList');
+      if (!roles || roles.length === 0) {
+        list.innerHTML = `<div style="padding: 16px 8px; text-align: center; color: var(--text-muted); font-size: 12px;">No matching IDE environments found.</div>`;
+        return;
+      }
+
       list.innerHTML = roles.map(r => `
         <div class="role-item ${activeRole && activeRole.id === r.id ? 'active' : ''}" onclick="selectRole('${r.id}')">
           <span class="role-title">${r.role_title}</span>
+          <span class="role-meta">${r.category || 'Practice'}</span>
         </div>
       `).join('');
+    }
+
+    function handleCombinedFilter() {
+      const q = (document.getElementById('searchRole').value || '').trim().toLowerCase();
+      const cat = document.getElementById('selectCategory').value;
+      const engine = document.getElementById('selectEngine').value;
+      const statute = document.getElementById('selectStatute').value;
+
+      filteredRoles = allRoles.filter(r => {
+        // Keyword search
+        if (q) {
+          const matchTitle = (r.role_title || '').toLowerCase().includes(q);
+          const matchDesc = (r.description || '').toLowerCase().includes(q);
+          const matchCat = (r.category || '').toLowerCase().includes(q);
+          const matchLLM = (r.llm && r.llm.model_name ? r.llm.model_name : '').toLowerCase().includes(q);
+          const matchStatute = (r.gateway && r.gateway.statutory_body ? r.gateway.statutory_body : '').toLowerCase().includes(q);
+          if (!matchTitle && !matchDesc && !matchCat && !matchLLM && !matchStatute) return false;
+        }
+
+        // Practice Category Filter
+        if (cat !== 'all') {
+          if (r.category !== cat) return false;
+        }
+
+        // AI Engine Architecture Filter
+        if (engine !== 'all') {
+          const embedStr = r.embeddings ? `${r.embeddings.model_name} ${r.embeddings.scope}` : '';
+          const llmStr = r.llm ? `${r.llm.model_name} ${r.llm.details}` : '';
+          const combined = `${embedStr} ${llmStr}`.toLowerCase();
+          if (!combined.includes(engine.toLowerCase())) return false;
+        }
+
+        // Statute / Jurisdiction Filter
+        if (statute !== 'all') {
+          const statStr = r.gateway ? `${r.gateway.statutory_body} ${r.gateway.directives}` : '';
+          if (!statStr.toLowerCase().includes(statute.toLowerCase())) return false;
+        }
+
+        return true;
+      });
+
+      renderRoleList(filteredRoles);
+
+      // If active role is no longer in filtered list, select the first available
+      if (filteredRoles.length > 0) {
+        if (!activeRole || !filteredRoles.some(r => r.id === activeRole.id)) {
+          selectRole(filteredRoles[0].id);
+        }
+      }
+    }
+
+    function resetFilters() {
+      document.getElementById('searchRole').value = '';
+      document.getElementById('selectCategory').value = 'all';
+      document.getElementById('selectEngine').value = 'all';
+      document.getElementById('selectStatute').value = 'all';
+
+      filteredRoles = [...allRoles];
+      renderRoleList(filteredRoles);
+      if (allRoles.length > 0) {
+        selectRole(allRoles[0].id);
+      }
     }
 
     function selectRole(roleId) {
       activeRole = allRoles.find(r => r.id === roleId);
       if (!activeRole) return;
 
-      renderRoleList(allRoles);
+      renderRoleList(filteredRoles);
       closeInspector();
 
       document.getElementById('roleHeaderTitle').innerText = activeRole.role_title;
