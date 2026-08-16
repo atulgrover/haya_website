@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/ide-docking.css">
   
   <style>
     :root {
@@ -166,11 +167,19 @@
   <div id="site-header" data-pillar="owners"></div>
 
   <!-- 3-Panel IDE Workspace Layout -->
-  <div class="ide-container">
+  <div class="ide-container" id="ideContainer">
+
+    <!-- Floating Restore Button when Left Sidebar is Collapsed -->
+    <button id="btnRestoreLeft" class="ide-restore-left-btn">
+      <span>▶</span> Show Industries (Cmd+B)
+    </button>
 
     <!-- LEFT PANEL: 41 Industry Sectors -->
-    <aside class="panel-left">
-      <h2 class="panel-title">Industries</h2>
+    <aside class="panel-left" id="panelLeft">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <h2 class="panel-title" style="margin-bottom: 0;">Industries</h2>
+        <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
+      </div>
       <div class="filter-group">
         <label class="filter-label" for="searchSop">Search Process Guide</label>
         <input type="text" id="searchSop" class="filter-input" placeholder="e.g. Inverter, Solder, Brake, Seed..." oninput="handleSearch()">
@@ -186,7 +195,7 @@
     </aside>
 
     <!-- CENTER PANEL: Standard SOP Cards Grid -->
-    <main class="panel-center">
+    <main class="panel-center" id="panelCenter">
       <div class="center-header">
         <div>
           <div class="center-header-title">Process Guides &amp; Machine Checklists</div>
@@ -208,8 +217,15 @@
     <!-- RIGHT PANEL: SOP Detail & Plant Checklist Inspector -->
     <aside class="panel-right" id="sopInspector">
       <div class="inspector-header">
-        <div class="inspector-title" id="inspTitle">Workshop Process Guide</div>
-        <div class="inspector-subtitle" id="inspSub">Select a work guide to inspect step-by-step machine actions, worker safety gear, and quality standards.</div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+          <div>
+            <div class="inspector-title" id="inspTitle">Workshop Process Guide</div>
+            <div class="inspector-subtitle" id="inspSub">Select a work guide to inspect step-by-step machine actions, worker safety gear, and quality standards.</div>
+          </div>
+          <div class="inspector-actions-bar">
+            <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore View (Esc)">⤢</button>
+          </div>
+        </div>
       </div>
 
       <div class="inspector-tabs">
@@ -336,6 +352,12 @@
     };
 
     document.addEventListener('DOMContentLoaded', async () => {
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.init({ 
+          rightPanelId: 'sopInspector',
+          storagePrefix: 'haya_owners_ide_' 
+        });
+      }
       await loadSectors();
       await loadSopCards();
     });
@@ -405,6 +427,9 @@
       currentQpCode = qpCode;
       document.querySelectorAll('.sop-card').forEach(c => c.classList.remove('active'));
       if (cardEl) cardEl.classList.add('active');
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.openRightPanel();
+      }
       inspectCard(qpCode, qpName, sector, level);
     }
 
@@ -586,5 +611,12 @@
       return String(str).replace(/'/g, "\\'");
     }
   </script>
+
+  <!-- Shared Universal Site Footer Mount Point -->
+  <div id="site-footer"></div>
+
+  <script src="js/ide-docking.js"></script>
+  <script src="js/responsive.js"></script>
+  <script src="js/components.js"></script>
 </body>
 </html>

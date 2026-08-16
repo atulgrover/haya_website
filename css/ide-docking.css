@@ -1,0 +1,281 @@
+/**
+ * HAYAGRIVA Universal IDE Docking & Split-Pane Resizing Engine
+ * Styles for draggable dividers, collapsible sidebars, and maximized inspector mode
+ */
+
+:root {
+  --ide-resizer-width: 6px;
+  --ide-resizer-color: #E2E8F0;
+  --ide-resizer-hover: #1E6C93;
+  --ide-resizer-active: #165272;
+  --ide-transition-speed: 0.22s;
+}
+
+/* ── Container Layout ────────────────────────────────────────── */
+.ide-container {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  height: calc(100vh - 64px) !important;
+  min-height: calc(100vh - 64px) !important;
+  max-height: calc(100vh - 64px) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: var(--bg-primary, #F8F9FA);
+}
+
+/* ── Panels ─────────────────────────────────────────────────── */
+.ide-panel-left,
+.panel-left {
+  position: relative !important;
+  top: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  flex-shrink: 0 !important;
+  transition: width var(--ide-transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1),
+              min-width var(--ide-transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity var(--ide-transition-speed) ease,
+              padding var(--ide-transition-speed) ease !important;
+  background: #FFFFFF !important;
+  z-index: 20;
+  box-sizing: border-box;
+}
+
+.ide-panel-center,
+.panel-center {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  background: var(--bg-primary, #F8F9FA) !important;
+  position: relative !important;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.ide-panel-right,
+.panel-right {
+  position: relative !important;
+  top: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  flex-shrink: 0 !important;
+  background: #FFFFFF !important;
+  z-index: 20;
+  box-sizing: border-box;
+  transition: width var(--ide-transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1),
+              min-width var(--ide-transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity var(--ide-transition-speed) ease,
+              padding var(--ide-transition-speed) ease !important;
+}
+
+/* ── Resizer Handles (Draggable Splitters) ────────────────────── */
+.ide-resizer {
+  width: var(--ide-resizer-width) !important;
+  flex-shrink: 0 !important;
+  cursor: col-resize !important;
+  background-color: transparent !important;
+  position: relative !important;
+  z-index: 30 !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transition: background-color 0.15s ease;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ide-resizer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 2px !important;
+  width: 2px !important;
+  background-color: var(--ide-resizer-color) !important;
+  transition: background-color 0.15s ease, width 0.15s ease, left 0.15s ease;
+}
+
+.ide-resizer::after {
+  content: '⋮' !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #94A3B8 !important;
+  opacity: 0 !important;
+  transition: opacity 0.15s ease;
+  pointer-events: none !important;
+}
+
+.ide-resizer:hover::before,
+.ide-resizer.active::before {
+  background-color: var(--ide-resizer-hover) !important;
+  width: 4px !important;
+  left: 1px !important;
+}
+
+.ide-resizer:hover::after,
+.ide-resizer.active::after {
+  opacity: 1 !important;
+  color: var(--ide-resizer-hover) !important;
+}
+
+/* During active drag: disable transitions and text selection across body */
+body.ide-dragging {
+  cursor: col-resize !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+body.ide-dragging .ide-panel-left,
+body.ide-dragging .panel-left,
+body.ide-dragging .ide-panel-right,
+body.ide-dragging .panel-right,
+body.ide-dragging .ide-panel-center,
+body.ide-dragging .panel-center {
+  transition: none !important;
+}
+
+/* ── Collapsed States ────────────────────────────────────────── */
+.ide-panel-left.collapsed,
+.panel-left.collapsed {
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-right: none !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+.ide-panel-right.collapsed,
+.panel-right.collapsed {
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-left: none !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+.ide-resizer.hidden {
+  display: none !important;
+}
+
+/* ── Maximized Right Inspector Mode ──────────────────────────── */
+.ide-panel-right.maximized,
+.panel-right.maximized {
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 85% !important;
+  max-width: 1400px !important;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.15) !important;
+  z-index: 50 !important;
+}
+
+@media (max-width: 900px) {
+  .ide-panel-right.maximized,
+  .panel-right.maximized {
+    width: 100% !important;
+  }
+}
+
+/* ── Toolbar Icon Buttons (Sleek IDE Controls) ──────────────── */
+.ide-btn-icon {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted, #5F6368);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.15s ease;
+  padding: 0;
+  user-select: none;
+}
+
+.ide-btn-icon:hover {
+  background-color: rgba(30, 108, 147, 0.08);
+  color: var(--primary-color, #1E6C93);
+  border-color: rgba(30, 108, 147, 0.2);
+}
+
+.ide-btn-icon.active {
+  background-color: var(--primary-light, rgba(30, 108, 147, 0.1));
+  color: var(--primary-color, #1E6C93);
+  border-color: var(--primary-color, #1E6C93);
+}
+
+/* Floating Restore Button when Left Sidebar is Collapsed */
+.ide-restore-left-btn {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 40;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color, #E2E8F0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--primary-color, #1E6C93);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.ide-restore-left-btn:hover {
+  background: var(--primary-light, rgba(30, 108, 147, 0.1));
+  border-color: var(--primary-color, #1E6C93);
+  transform: translateY(-1px);
+}
+
+.ide-restore-left-btn.visible {
+  display: inline-flex !important;
+}
+
+/* Inspector Header Action Bar */
+.inspector-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Responsive Fallbacks */
+@media (max-width: 1024px) {
+  .ide-container {
+    height: auto !important;
+    min-height: calc(100vh - 64px) !important;
+    overflow-y: auto !important;
+    flex-direction: column !important;
+  }
+  .ide-resizer {
+    display: none !important;
+  }
+  .ide-panel-left,
+  .panel-left,
+  .ide-panel-right,
+  .panel-right {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    position: static !important;
+  }
+}

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/ide-docking.css">
 
   <style>
     :root {
@@ -99,52 +100,69 @@
     .ide-tree-item { padding: 6px 10px; border-radius: 4px; cursor: pointer; color: #CBD5E1; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 12.5px; transition: background 0.2s; }
     .ide-tree-item.active, .ide-tree-item:hover { background-color: #334155; color: #38BDF8; }
 
-    .ide-editor { padding: 16px 20px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7; background-color: #1E293B; color: #E2E8F0; overflow-x: auto; }
-    .ide-line-num { color: #475569; margin-right: 16px; user-select: none; }
+    .ide-editor { padding: 16px; font-family: var(--font-mono); font-size: 13px; overflow-y: auto; background-color: #1E293B; }
+    .ide-code-line { line-height: 1.6; color: #E2E8F0; }
+    .code-keyword { color: #F43F5E; }
+    .code-string { color: #10B981; }
+    .code-comment { color: #64748B; font-style: italic; }
+    .code-var { color: #38BDF8; }
 
-    .ide-panel { background-color: #0F172A; border-left: 1px solid #334155; padding: 16px; font-size: 13px; }
-    .token-gauge { background-color: #1E293B; border-radius: 6px; padding: 10px 12px; margin-bottom: 14px; }
-    .progress-bar { height: 6px; background: #334155; border-radius: 4px; overflow: hidden; margin-top: 6px; }
-    .progress-fill { height: 100%; background: #38BDF8; border-radius: 4px; }
+    .ide-panel { background-color: #0F172A; border-left: 1px solid #334155; padding: 16px; font-size: 12px; }
+    .ide-panel-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #64748B; margin-bottom: 10px; font-weight: 700; }
+    .ide-panel-content { color: #94A3B8; line-height: 1.5; }
 
-    /* Segment Cards 6-Grid (3 Cards Per Row) */
-    .segments-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    @media (max-width: 992px) {
-      .segments-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    }
+    /* 6 Standalone Segment Engine Cards Grid */
+    .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .segment-card {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px;
-      box-shadow: var(--card-shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px;
+      padding: 16px; box-shadow: var(--card-shadow); transition: all 0.2s ease;
+      display: flex; flex-direction: column; justify-content: space-between;
     }
-    .segment-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; display: inline-block; }
-    .segment-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; margin-top: 6px; }
-    .segment-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-    .btn-more-details {
-      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--primary-color);
-      padding: 9px 14px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s ease;
-      display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
+    .segment-card:hover { transform: translateY(-2px); box-shadow: var(--hover-shadow); border-color: var(--primary-color); }
+    .segment-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .segment-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 2px 8px; border-radius: 4px; }
+    .segment-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+    .segment-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 12px; }
+    .segment-btn {
+      background: #F8FAFC; border: 1px solid var(--border-color); color: var(--text-main);
+      padding: 8px 12px; border-radius: 6px; font-size: 12.5px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s ease; text-align: center; text-decoration: none;
     }
-    .btn-more-details:hover { background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color); }
-
-
+    .segment-btn:hover { background: var(--primary-light); color: var(--primary-color); border-color: var(--primary-color); }
 
     /* RIGHT PANEL: Gateway & Marketplace Inspector */
     .panel-right {
-      width: 380px; background: #FFFFFF; border-left: 1px solid var(--border-color);
-      display: flex; flex-direction: column; flex-shrink: 0; padding: 20px; gap: 16px; overflow-y: auto;
-      transform: translateX(100%); transition: transform 0.3s ease; position: fixed; right: 0; top: 64px; bottom: 0; z-index: 100;
-      box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+      width: 380px; min-width: 320px; background: #FFFFFF; border-left: 1px solid var(--border-color);
+      display: none; flex-direction: column; flex-shrink: 0; padding: 20px; gap: 16px;
+      position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;
     }
-    .panel-right.active { transform: translateX(0); position: relative; top: 0; }
+    .panel-right.active { display: flex; }
     .inspector-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-    .btn-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-muted); }
-    .inspector-section { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; }
-    .inspector-sec-title { font-weight: 700; font-size: 13.5px; color: var(--primary-color); margin-bottom: 6px; }
+    .btn-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+    .btn-close:hover { color: var(--text-main); }
+    .inspector-section { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+    .inspector-sec-title { font-family: var(--font-heading); font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--primary-color); }
     .inspector-sec-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
-    .service-price-tag { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #166534; background: #DCFCE7; padding: 3px 8px; border-radius: 4px; display: inline-block; float: right; }
-    .btn-download { background: var(--primary-color); color: #FFFFFF; padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px; display: block; text-align: center; text-decoration: none; margin-top: 10px; cursor: pointer; border: none; width: 100%; }
-    .btn-download:hover { background: var(--primary-hover); }
-    .cmd-badge { font-family: var(--font-mono); font-size: 12px; background: var(--primary-light); color: var(--primary-color); padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+
+    /* Order Form in Inspector */
+    .order-form { display: flex; flex-direction: column; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-label { font-size: 12px; font-weight: 700; color: var(--text-main); }
+    .form-input, .form-textarea {
+      padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px;
+      font-size: 13px; font-family: var(--font-main); outline: none;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--primary-color); }
+    .btn-order-submit {
+      background: var(--primary-color); color: #FFFFFF; border: none; padding: 10px;
+      border-radius: 6px; font-weight: 700; font-size: 13.5px; cursor: pointer; transition: background 0.2s ease;
+    }
+    .btn-order-submit:hover { background: var(--primary-hover); }
+
+    @media (max-width: 1024px) {
+      .ide-container { flex-direction: column; }
+      .panel-left, .panel-right { width: 100%; position: static; height: auto; }
+    }
   </style>
 </head>
 <body>
@@ -156,11 +174,19 @@
   <div class="panel-scrim" id="panelScrim"></div>
 
   <!-- 3-Panel IDE Layout Container -->
-  <div class="ide-container">
+  <div class="ide-container" id="ideContainer">
+
+    <!-- Floating Restore Button when Left Sidebar is Collapsed -->
+    <button id="btnRestoreLeft" class="ide-restore-left-btn">
+      <span>▶</span> Show Roles (Cmd+B)
+    </button>
 
     <!-- LEFT PANEL: Streamlined Professional Titles Directory -->
-    <aside class="panel-left">
-      <h2 class="panel-title">Professional Roles</h2>
+    <aside class="panel-left" id="panelLeft">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <h2 class="panel-title" style="margin-bottom: 0;">Professional Roles</h2>
+        <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
+      </div>
 
       <div class="role-list" id="roleList">
         <!-- Professional Roles loaded dynamically -->
@@ -168,7 +194,7 @@
     </aside>
 
     <!-- CENTER PANEL: WORKBENCH IDE Window + 6 Standalone Engine Cards -->
-    <main class="panel-center">
+    <main class="panel-center" id="panelCenter">
       <!-- Mobile filter toggle -->
       <button class="filter-drawer-toggle" id="filterDrawerToggle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -196,8 +222,11 @@
     <!-- RIGHT PANEL: Gateway & Marketplace Inspector -->
     <aside class="panel-right" id="panelRight">
       <div class="inspector-header">
-        <h2 class="panel-title" id="inspectorTitle">3rd Segment: Inspector</h2>
-        <button class="btn-close" onclick="closeInspector()">×</button>
+        <h2 class="panel-title" id="inspectorTitle">Inspector</h2>
+        <div class="inspector-actions-bar">
+          <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore View (Esc)">⤢</button>
+          <button class="ide-btn-icon" onclick="closeInspector()" title="Close Inspector (Esc)">✕</button>
+        </div>
       </div>
 
       <div id="inspectorContent">
@@ -215,6 +244,9 @@
     let activeRole = null;
 
     window.addEventListener('DOMContentLoaded', () => {
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.init({ storagePrefix: 'haya_professionals_ide_' });
+      }
       loadProfessionalRoles();
       checkAuthStatus();
     });
@@ -482,7 +514,11 @@
       const title = document.getElementById('inspectorTitle');
       const content = document.getElementById('inspectorContent');
 
-      panel.classList.add('active');
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.openRightPanel();
+      } else {
+        panel.classList.add('active');
+      }
 
       if (segmentType === 'embeddings') {
         title.innerText = '🧠 Embedding Model Specifications';
@@ -619,7 +655,11 @@
     }
 
     function closeInspector() {
-      document.getElementById('panelRight').classList.remove('active');
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.closeRightPanel();
+      } else {
+        document.getElementById('panelRight').classList.remove('active');
+      }
     }
 
     function checkAuthStatus() {
@@ -657,6 +697,7 @@
       });
     }
   </script>
+  <script src="js/ide-docking.js"></script>
   <script src="js/responsive.js"></script>
   <script src="js/components.js"></script>
 </body>
