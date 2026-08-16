@@ -110,46 +110,117 @@
     .inspector-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); }
     .inspector-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-    .inspector-tabs {
-      display: flex; border-bottom: 1px solid var(--border-color); background: #FFFFFF;
+    .inspector-content { padding: 18px; display: flex; flex-direction: column; gap: 16px; flex: 1; overflow-y: auto; }
+
+    /* Workstation Selector Pills Bar */
+    .sop-ws-container {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 8px;
     }
-    .inspector-tab {
-      flex: 1; padding: 10px 8px; font-size: 12.5px; font-weight: 600; text-align: center; color: var(--text-muted);
-      border: none; background: transparent; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s;
+    .sop-ws-label {
+      font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--primary-color);
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .inspector-tab.active {
-      color: var(--primary-color); border-bottom-color: var(--primary-color); font-weight: 700; background: rgba(30, 108, 147, 0.03);
+    .sop-ws-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ws-pill {
+      background: #F1F5F9; border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 10px;
+      font-size: 11.5px; font-weight: 700; color: #475569; cursor: pointer; transition: all 0.15s ease;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .ws-pill:hover { background: rgba(30, 108, 147, 0.08); color: var(--primary-color); border-color: var(--primary-color); }
+    .ws-pill.active {
+      background: var(--primary-color); color: #FFFFFF; border-color: var(--primary-color);
+      box-shadow: 0 2px 4px rgba(30, 108, 147, 0.25);
     }
 
-    .inspector-content { padding: 20px; display: flex; flex-direction: column; gap: 16px; flex: 1; overflow-y: auto; }
-
-    .station-card {
-      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 6px;
+    /* TOC Header & Controls */
+    .sop-toc-bar {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 2px;
     }
-    .station-badge { font-size: 10.5px; font-weight: 700; color: var(--primary-color); text-transform: uppercase; }
-    .station-title { font-size: 13px; font-weight: 700; color: var(--text-main); }
-    .station-pcs { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
-    .pc-step-item { font-size: 12px; color: var(--text-muted); display: flex; gap: 6px; align-items: flex-start; }
-    .pc-step-dot { color: var(--primary-color); font-weight: 700; }
+    .sop-toc-title { font-family: var(--font-heading); font-size: 13px; font-weight: 800; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
+    .sop-toc-actions { display: flex; gap: 6px; }
+    .btn-toc-action {
+      background: #F1F5F9; border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px;
+      font-size: 11px; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+    }
+    .btn-toc-action:hover { background: var(--primary-light); color: var(--primary-color); border-color: var(--primary-color); }
 
+    /* 10-Chapter Accordion Hierarchy */
+    .sop-chapters-list { display: flex; flex-direction: column; gap: 10px; }
+    .chapter-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: border-color 0.2s;
+    }
+    .chapter-card:hover { border-color: #CBD5E1; }
+    .chapter-header {
+      padding: 10px 14px; background: #FAFAFA; display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; user-select: none; border-bottom: 1px solid transparent; transition: background 0.15s;
+    }
+    .chapter-card.open .chapter-header {
+      background: #F1F5F9; border-bottom-color: var(--border-color);
+    }
+    .chapter-header-left { display: flex; align-items: center; gap: 8px; flex: 1; padding-right: 8px; }
+    .chapter-num-badge {
+      font-size: 10px; font-weight: 800; color: #FFFFFF; background: var(--primary-color);
+      padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); flex-shrink: 0;
+    }
+    .chapter-title-text { font-size: 12.5px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+    .chapter-chevron { font-size: 10px; font-weight: 700; color: var(--text-muted); transition: transform 0.2s; }
+    .chapter-card.open .chapter-chevron { transform: rotate(180deg); }
+
+    .chapter-body {
+      padding: 14px; display: none; flex-direction: column; gap: 12px; font-size: 12px; line-height: 1.5; color: var(--text-main);
+    }
+    .chapter-card.open .chapter-body { display: flex; }
+
+    /* Sub-section Blocks */
+    .sec-block { display: flex; flex-direction: column; gap: 4px; }
+    .sec-header { font-size: 11.5px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+    .sec-num { font-family: var(--font-mono); font-weight: 800; color: var(--text-muted); }
+    .sec-text { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+
+    /* RACI Matrix Table */
+    .raci-table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin-top: 4px; }
+    .raci-table th { text-align: left; padding: 6px 8px; background: #F8FAFC; color: var(--text-muted); font-size: 10.5px; text-transform: uppercase; border-bottom: 1px solid var(--border-color); }
+    .raci-table td { padding: 6px 8px; border-bottom: 1px solid #F1F5F9; }
+    .raci-tag { font-family: var(--font-mono); font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+    .raci-r { background: #DCFCE7; color: #166534; }
+    .raci-a { background: #DBEAFE; color: #1E40AF; }
+    .raci-c { background: #FEF3C7; color: #92400E; }
+    .raci-i { background: #F3E8FF; color: #6B21A8; }
+
+    /* Step Execution Cards */
+    .step-card {
+      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 12px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .step-top-row { display: flex; justify-content: space-between; align-items: center; }
+    .step-num-badge { font-size: 10.5px; font-weight: 800; color: var(--primary-color); }
+    .step-pc-tag { font-family: var(--font-mono); font-size: 9.5px; color: #64748B; background: #E2E8F0; padding: 1px 5px; border-radius: 3px; }
+    .step-title-bold { font-size: 12px; font-weight: 700; color: var(--text-main); }
+    .step-directive { font-size: 11.5px; color: var(--text-muted); line-height: 1.4; }
+    .step-tolerance { font-size: 11px; font-weight: 700; color: #047857; background: #ECFDF5; padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; }
+
+    /* Safety and PPE */
     .safety-alert-box {
-      background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 4px;
+      background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;
     }
-    .safety-title { font-size: 12px; font-weight: 700; color: #92400E; display: flex; align-items: center; gap: 6px; }
-    .safety-desc { font-size: 11.5px; color: #78350F; }
+    .safety-title { font-size: 11.5px; font-weight: 700; color: #92400E; display: flex; align-items: center; gap: 6px; }
+    .safety-desc { font-size: 11px; color: #78350F; }
 
-    .ppe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .ppe-item { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 8px; font-size: 11.5px; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
+    .ppe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
+    .ppe-item { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 8px; font-size: 11px; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
 
+    /* Action Buttons */
     .btn-action-primary {
-      background: var(--primary-color); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 10px 14px;
+      background: var(--primary-color); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 11px 14px;
       border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
-      transition: background 0.2s;
+      transition: background 0.2s; box-shadow: 0 2px 4px rgba(30, 108, 147, 0.2);
     }
     .btn-action-primary:hover { background: var(--primary-hover); }
 
     .btn-action-secondary {
-      background: #FFFFFF; color: var(--text-main); font-weight: 600; font-size: 13px; padding: 10px 14px;
+      background: #FFFFFF; color: var(--text-main); font-weight: 600; font-size: 12.5px; padding: 10px 14px;
       border-radius: 6px; border: 1px solid var(--border-color); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
       transition: all 0.2s;
     }
@@ -158,6 +229,19 @@
     @media (max-width: 1024px) {
       .ide-container { flex-direction: column; }
       .panel-left, .panel-right { width: 100%; position: static; height: auto; }
+    }
+
+    /* Print / PDF Export Optimization */
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      #site-header, #site-footer, .panel-left, .center-header, .sop-grid, .sop-toc-actions, .ide-btn-icon, .btn-action-primary, .btn-action-secondary, #btnRestoreLeft {
+        display: none !important;
+      }
+      .ide-container { display: block !important; height: auto !important; max-height: none !important; }
+      .panel-right { width: 100% !important; border: none !important; position: static !important; height: auto !important; overflow: visible !important; padding: 0 !important; }
+      .chapter-card { border: 1px solid #ccc !important; page-break-inside: avoid; margin-bottom: 14px; }
+      .chapter-body { display: flex !important; }
+      .chapter-chevron { display: none !important; }
     }
   </style>
 </head>
@@ -214,13 +298,13 @@
       </div>
     </main>
 
-    <!-- RIGHT PANEL: SOP Detail & Plant Checklist Inspector -->
+    <!-- RIGHT PANEL: 10-Chapter ISO 9001 Standard Operating Procedure (SOP) Dossier -->
     <aside class="panel-right" id="sopInspector">
       <div class="inspector-header">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
           <div>
-            <div class="inspector-title" id="inspTitle">Workshop Process Guide</div>
-            <div class="inspector-subtitle" id="inspSub">Select a work guide to inspect step-by-step machine actions, worker safety gear, and quality standards.</div>
+            <div class="inspector-title" id="inspTitle">Standard Operating Procedure</div>
+            <div class="inspector-subtitle" id="inspSub">Select an industrial process guide to inspect the 10-chapter ISO 9001 audit-grade SOP.</div>
           </div>
           <div class="inspector-actions-bar">
             <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore View (Esc)">⤢</button>
@@ -228,74 +312,301 @@
         </div>
       </div>
 
-      <div class="inspector-tabs">
-        <button class="inspector-tab active" onclick="switchSopTab('stations', this)">🏭 Workstation Steps</button>
-        <button class="inspector-tab" onclick="switchSopTab('safety', this)">🦺 Safety Rules</button>
-        <button class="inspector-tab" onclick="switchSopTab('compliance', this)">📋 Quality Check</button>
-      </div>
-
       <div class="inspector-content" id="inspContent">
-        <!-- Tab 1: Stations & Checkpoints -->
-        <div id="tab-stations" style="display: flex; flex-direction: column; gap: 12px;">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Step-by-Step Actions
+
+        <!-- Workstation Selector Navigation Bar -->
+        <div class="sop-ws-container">
+          <div class="sop-ws-label">
+            <span>🏭 Plant Workstations &amp; Stations</span>
+            <span id="wsCountBadge" style="font-size:10px; font-weight:700; background:#E2E8F0; color:#475569; padding:2px 6px; border-radius:10px;">3 Stations</span>
           </div>
-          <div id="stationsList" style="display: flex; flex-direction: column; gap: 10px;">
-            <!-- Rendered dynamically -->
+          <div class="sop-ws-pills" id="sopWsPills">
+            <!-- Dynamically populated workstation pills -->
           </div>
         </div>
 
-        <!-- Tab 2: Safety & PPE -->
-        <div id="tab-safety" style="display: none; flex-direction: column; gap: 12px;">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Worker Safety Rules &amp; Gear
-          </div>
-          <div class="safety-alert-box">
-            <div class="safety-title">⚠️ Mandatory Safety Check</div>
-            <div class="safety-desc">All workers must put on the required protective gear and check machine safety switches before starting work.</div>
-          </div>
-          </div>
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">
-            Required Personal Protective Equipment (PPE)
-          </div>
-          <div class="ppe-grid" id="ppeGrid">
-            <div class="ppe-item">🧤 High-Temp/Insulated Gloves</div>
-            <div class="ppe-item">🥽 Antiglare Safety Goggles</div>
-            <div class="ppe-item">⚡ Anti-Static ESD Wristband</div>
-            <div class="ppe-item">🥾 Steel-Toe Safety Footwear</div>
+        <!-- Table of Contents Control Bar -->
+        <div class="sop-toc-bar">
+          <div class="sop-toc-title">📑 Plant SOP (10 Chapters)</div>
+          <div class="sop-toc-actions">
+            <button class="btn-toc-action" onclick="expandAllChapters()">Expand All</button>
+            <button class="btn-toc-action" onclick="collapseAllChapters()">Collapse All</button>
           </div>
         </div>
 
-        <!-- Tab 3: Compliance & ISO Alignment -->
-        <div id="tab-compliance" style="display: none; flex-direction: column; gap: 12px;">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Standard &amp; Quality Alignment
-          </div>
-          <div class="station-card">
-            <div class="station-badge">GOVERNMENT BENCHMARK</div>
-            <div class="station-title" id="compStandardTitle">NCVET NSQF Level Alignment</div>
-            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
-              Audited by National Council for Vocational Education and Training (NCVET) for nationwide industrial consistency.
+        <!-- 10-Chapter Collapsible Accordion List -->
+        <div class="sop-chapters-list">
+
+          <!-- CHAPTER 1: Purpose & Objectives (OPEN BY DEFAULT) -->
+          <div class="chapter-card open" id="sop-ch-1">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-1')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">01</span>
+                <span class="chapter-title-text">Purpose &amp; Objectives</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch1-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.1</span> Intent of the SOP</div>
+                <div class="sec-text" id="sop11-text">Standardize operational procedures and calibration parameters to ensure consistent, zero-defect production execution.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.2</span> Standards Met &amp; Business Outcome</div>
+                <div class="sec-text" id="sop12-text">Complies with <strong id="sop12-iso">ISO 9001:2015 Clause 8.5.1</strong> (Controlled Production Conditions) and NCVET NSQF Level benchmarks.</div>
+              </div>
             </div>
           </div>
-          <div class="station-card">
-            <div class="station-badge">PERIODIC AUDIT FREQUENCY</div>
-            <div class="station-title">Quarterly Plant Process Recertification</div>
-            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
-              Recommended 90-day checklist review for continuous ISO 9001:2015 quality adherence.
+
+          <!-- CHAPTER 2: Scope & Applicability -->
+          <div class="chapter-card" id="sop-ch-2">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-2')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">02</span>
+                <span class="chapter-title-text">Scope &amp; Applicability</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch2-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.1</span> Departments &amp; Roles Covered</div>
+                <div class="sec-text" id="sop21-text">Applies to all certified shopfloor technicians, assembly line operators, and maintenance teams in <strong id="sop21-sector">Electronics</strong>.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.2</span> Designated Workstation &amp; Location</div>
+                <div class="sec-text" id="sop22-text">Designated Station: <strong id="sop22-ws">WS-01: Main Assembly Workstation</strong>.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.3</span> Exclusions &amp; Out-of-Scope Scenarios</div>
+                <div class="sec-text" id="sop23-text">Major uncalibrated structural modifications or electrical grid bypasses fall outside the scope of this standard station SOP.</div>
+              </div>
             </div>
           </div>
+
+          <!-- CHAPTER 3: Roles & Responsibilities (RACI) -->
+          <div class="chapter-card" id="sop-ch-3">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-3')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">03</span>
+                <span class="chapter-title-text">Roles &amp; Responsibilities (RACI)</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch3-body">
+              <table class="raci-table">
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Designation</th>
+                    <th>RACI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Line Technician</strong></td>
+                    <td id="raci-tech-title">NSQF Level 4 Certified Operator</td>
+                    <td><span class="raci-tag raci-r">R (Responsible)</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Plant Supervisor</strong></td>
+                    <td>Shopfloor Section Incharge</td>
+                    <td><span class="raci-tag raci-a">A (Accountable)</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Safety Officer</strong></td>
+                    <td>EHS Department Lead</td>
+                    <td><span class="raci-tag raci-c">C (Consulted)</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>QA Lead Auditor</strong></td>
+                    <td>Quality Assurance Inspector</td>
+                    <td><span class="raci-tag raci-i">I (Informed)</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- CHAPTER 4: Definitions & Prerequisites (OPEN BY DEFAULT) -->
+          <div class="chapter-card open" id="sop-ch-4">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-4')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">04</span>
+                <span class="chapter-title-text">Definitions, Tools &amp; PPE Prerequisites</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch4-body">
+              <!-- Safety Alert -->
+              <div class="safety-alert-box">
+                <div class="safety-title">⚠️ Mandatory Safety Check: <span id="sopHazardLevel">Medium (Industrial Standard)</span></div>
+                <div class="safety-desc" id="sopHazardWarning">Verify all pre-operation machine safety guards and ESD groundings before energizing tools.</div>
+              </div>
+
+              <!-- Mandatory PPE Grid -->
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">4.1</span> Mandatory Personal Protective Equipment (PPE)</div>
+                <div class="ppe-grid" id="ppeGrid">
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+
+              <!-- Tooling Matrix -->
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">4.2</span> Calibrated Tooling &amp; Equipment Apparatus</div>
+                <div id="toolingList" style="display:flex; flex-direction:column; gap:4px; margin-top:4px;">
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 5: Process Overview / High-Level Workflow -->
+          <div class="chapter-card" id="sop-ch-5">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-5')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">05</span>
+                <span class="chapter-title-text">Process Overview &amp; Flowchart</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch5-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">5.1</span> Multi-Workstation Flow Sequence</div>
+                <div id="flowSequenceList" style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">5.2</span> Key Quality Hand-Off Points</div>
+                <div class="sec-text">Visual inspection gate must be signed off before transferring workpiece to the downstream station.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 6: Detailed Step-by-Step Procedure (OPEN BY DEFAULT) -->
+          <div class="chapter-card open" id="sop-ch-6">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-6')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">06</span>
+                <span class="chapter-title-text">Detailed Step-by-Step Procedure</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch6-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">6.1</span> Sequential Action Steps &amp; Parameter Tolerances</div>
+                <div id="sopStepsContainer" style="display:flex; flex-direction:column; gap:8px; margin-top:4px;">
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 7: Exceptions & Troubleshooting -->
+          <div class="chapter-card" id="sop-ch-7">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-7')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">07</span>
+                <span class="chapter-title-text">Exceptions, Troubleshooting &amp; Escalation</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch7-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">7.1</span> Common Deviations &amp; Workarounds</div>
+                <div id="troubleshootingList" style="display:flex; flex-direction:column; gap:4px; margin-top:4px;">
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">7.2</span> Non-Conformance Quarantine Protocol</div>
+                <div class="sec-text">Immediately tag defective workpiece with Yellow Quarantine Tag and move to designated isolation bin.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">7.3</span> Supervisor Escalation Trigger</div>
+                <div class="sec-text">If 2 consecutive units fail tolerance check, halt production line and notify Shopfloor Supervisor immediately.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 8: Quality Control & Performance Metrics (KPIs) -->
+          <div class="chapter-card" id="sop-ch-8">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-8')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">08</span>
+                <span class="chapter-title-text">Quality Control &amp; Performance KPIs</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch8-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">8.1</span> Acceptance Criteria &amp; Standards</div>
+                <div id="qaCriteriaList" style="display:flex; flex-direction:column; gap:4px; margin-top:4px;">
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">8.2</span> Audit Cadence &amp; SLA Review</div>
+                <div class="sec-text">Periodic audit cadence: <strong id="sopAuditCadence">Every 90 Days</strong> under ISO 9001 internal plant audit guidelines.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 9: Compliance, Health & Safety Guidelines -->
+          <div class="chapter-card" id="sop-ch-9">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-9')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">09</span>
+                <span class="chapter-title-text">Compliance, Health &amp; Safety</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch9-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">9.1</span> Statutory EHS &amp; OSHA Compliance</div>
+                <div class="sec-text">Mandatory adherence to Factories Act safety guidelines, electrical isolation interlocks, and emergency fire evacuation routes.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">9.2</span> Waste Disposal &amp; Environmental Protection</div>
+                <div class="sec-text">Hazardous materials (e-waste, chemicals, oils) must be collected in labeled containment bins for certified recycling.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 10: Revision History & Appendices -->
+          <div class="chapter-card" id="sop-ch-10">
+            <div class="chapter-header" onclick="toggleChapter('sop-ch-10')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">10</span>
+                <span class="chapter-title-text">Revision History &amp; Appendices</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch10-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">10.1</span> Document Version Control Log</div>
+                <div class="sec-text">Doc ID: <strong id="sopDocId">SOP-ELE-Q0803-M1</strong> • Version: <strong>1.0 (Active)</strong> • Approved by: <strong>NCVET NSQF Framework</strong></div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">10.2</span> Reference Curricula &amp; Standards</div>
+                <div class="sec-text" id="sop102-text">Mapped to National Qualification Pack standards. Full curriculum accessible online.</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Bottom Action CTA Buttons -->
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border-color);">
+        <!-- Action CTA Buttons -->
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
           <button class="btn-action-primary" id="btnAdoptSop" onclick="adoptSopForCompany()">
             🏢 Adopt for My Enterprise (Clone &amp; Customize)
           </button>
           <button class="btn-action-secondary" onclick="exportSopDocument()">
-            📥 Export Standard SOP Sheet (.PDF)
+            📥 Download Official Plant SOP (.PDF)
           </button>
         </div>
+
       </div>
     </aside>
 
@@ -310,6 +621,9 @@
     let allCards = [];
     let currentQpCode = 'ELE/Q0803';
     let selectedSector = 'all';
+    let activeSopList = [];
+    let activeWsIdx = 0;
+    let currentQpData = null;
 
     // Featured Curated Showcases
     const SHOWCASES = {
@@ -317,36 +631,36 @@
         title: "SMD BGA Micro-Rework & Screen Lamination SOP",
         sub: "Sector: Electronics & Hardware • QP: ELE/Q0803",
         stations: [
-          { name: "Station 1: Inward ESD Triage & Diagnostics", pcs: ["Connect ESD grounding strap before opening casing", "Log serial number and battery voltage profile", "Inspect PCB for moisture corrosion or component burn"] },
-          { name: "Station 2: Thermal De-soldering & BGA Rework", pcs: ["Calibrate hot-air bed to 240°C lead-free profile", "Deploy molybdenum wire for vacuum separation", "Apply Rosin flux and perform microscopic bridge check"] },
-          { name: "Station 3: Final Quality & Firmware Calibration", pcs: ["Re-flash firmware via UART diagnostic interface", "Run 100% display touch sensitivity matrix test"] }
+          { name: "Inward ESD Triage & Diagnostics", pcs: ["Connect ESD grounding strap before opening casing", "Log serial number and battery voltage profile", "Inspect PCB for moisture corrosion or component burn"] },
+          { name: "Thermal De-soldering & BGA Rework", pcs: ["Calibrate hot-air bed to 240°C lead-free profile", "Deploy molybdenum wire for vacuum separation", "Apply Rosin flux and perform microscopic bridge check"] },
+          { name: "Final Quality & Firmware Calibration", pcs: ["Re-flash firmware via UART diagnostic interface", "Run 100% display touch sensitivity matrix test"] }
         ]
       },
       'SGJ/Q0101': {
         title: "Rooftop Solar PV Grid Synchronization & AMC SOP",
         sub: "Sector: Renewable Energy • QP: SGJ/Q0101",
         stations: [
-          { name: "Station 1: Roof Structural & Shading Survey", pcs: ["Conduct sun-path digital survey and azimuth orientation check", "Verify roof structural dead-load bearing margin (>15 kg/m²)"] },
-          { name: "Station 2: PV String Wiring & Inverter Integration", pcs: ["Crimp MC4 connectors with calibrated hydraulic tool", "Test DC string Open Circuit Voltage (Voc) within ±5% tolerance", "Bond SPD surge protection device to earth ground (<2 Ohms)"] },
-          { name: "Station 3: Grid Net-Metering Commissioning", pcs: ["Perform anti-islanding trip test with DISCOM grid", "Log initial kWh generation yield on remote monitoring portal"] }
+          { name: "Roof Structural & Shading Survey", pcs: ["Conduct sun-path digital survey and azimuth orientation check", "Verify roof structural dead-load bearing margin (>15 kg/m²)"] },
+          { name: "PV String Wiring & Inverter Integration", pcs: ["Crimp MC4 connectors with calibrated hydraulic tool", "Test DC string Open Circuit Voltage (Voc) within ±5% tolerance", "Bond SPD surge protection device to earth ground (<2 Ohms)"] },
+          { name: "Grid Net-Metering Commissioning", pcs: ["Perform anti-islanding trip test with DISCOM grid", "Log initial kWh generation yield on remote monitoring portal"] }
         ]
       },
       'ASC/Q1424': {
         title: "Electric 2W/3W Battery Pack Assembly & BMS Calibration SOP",
         sub: "Sector: Automotive & EV • QP: ASC/Q1424",
         stations: [
-          { name: "Station 1: High Voltage Isolation & Cell Grading", pcs: ["Verify sub-50V safety zone with class-D fire extinguisher on standby", "Perform milli-ohm Internal Resistance (IR) grading across all cells"] },
-          { name: "Station 2: Pure Nickel Spot Welding", pcs: ["Deploy pneumatic spot welder with 0.15mm weld penetration", "Inspect spot weld pull-strength (>50N threshold)"] },
-          { name: "Station 3: BMS Programming & Charge-Discharge Cycle", pcs: ["Flash CAN-bus protocol firmware on battery management board", "Execute 100% automated full C-rate charge-discharge cycle"] }
+          { name: "High Voltage Isolation & Cell Grading", pcs: ["Verify sub-50V safety zone with class-D fire extinguisher on standby", "Perform milli-ohm Internal Resistance (IR) grading across all cells"] },
+          { name: "Pure Nickel Spot Welding", pcs: ["Deploy pneumatic spot welder with 0.15mm weld penetration", "Inspect spot weld pull-strength (>50N threshold)"] },
+          { name: "BMS Programming & Charge-Discharge Cycle", pcs: ["Flash CAN-bus protocol firmware on battery management board", "Execute 100% automated full C-rate charge-discharge cycle"] }
         ]
       },
       'AGR/Q0101': {
         title: "Seed Processing, Bio-Treatment & Nursery Packaging SOP",
         sub: "Sector: Agriculture & Food • QP: AGR/Q0101",
         stations: [
-          { name: "Station 1: Air-Screen Intake Cleaning", pcs: ["Feed raw grain through 3-tier oscillating screens to remove chaff", "Verify foreign matter presence is below 0.2% by weight"] },
-          { name: "Station 2: Bio-Fungicide Slurry Mixing", pcs: ["Prepare Trichoderma bio-formulation at 10g per kg dosage", "Rotate continuous slurry mixing drum for 180 seconds"] },
-          { name: "Station 3: Aerated Curing & Certified Packaging", pcs: ["Test moisture content with digital probe (must be <12%)", "Deploy heavy-duty bag stitcher and apply seed lot barcode"] }
+          { name: "Air-Screen Intake Cleaning", pcs: ["Feed raw grain through 3-tier oscillating screens to remove chaff", "Verify foreign matter presence is below 0.2% by weight"] },
+          { name: "Bio-Fungicide Slurry Mixing", pcs: ["Prepare Trichoderma bio-formulation at 10g per kg dosage", "Rotate continuous slurry mixing drum for 180 seconds"] },
+          { name: "Aerated Curing & Certified Packaging", pcs: ["Test moisture content with digital probe (must be <12%)", "Deploy heavy-duty bag stitcher and apply seed lot barcode"] }
         ]
       }
     };
@@ -388,7 +702,6 @@
         if (data.success && data.cards) {
           allCards = data.cards;
           renderCards(allCards);
-          // Load first card into inspector
           if (allCards.length > 0) {
             inspectCard(allCards[0].qp_code, allCards[0].qp_name, allCards[0].sector, allCards[0].nsqf_level);
           }
@@ -435,113 +748,280 @@
 
     async function inspectCard(qpCode, qpName, sector, level) {
       currentQpCode = qpCode;
-      const showcase = SHOWCASES[qpCode];
-
-      const title = showcase ? showcase.title : `Standard Operating Procedure: ${qpName}`;
-      const sub = showcase ? showcase.sub : `Sector: ${sector} • QP: ${qpCode} • Level ${level}`;
-
-      document.getElementById('inspTitle').innerText = title;
-      document.getElementById('inspSub').innerText = sub;
-      document.getElementById('compStandardTitle').innerText = `NCVET NSQF Level ${level} Certified Process`;
-
-      const stationsList = document.getElementById('stationsList');
-      stationsList.innerHTML = '<div style="font-size:12px; color:var(--text-muted); padding:10px;">Loading Workstation SOPs...</div>';
+      activeWsIdx = 0;
 
       try {
         const res = await fetch(`/api/skillpedia/sop/details?qp=${encodeURIComponent(qpCode)}`);
         const data = await res.json();
 
         if (data.success && data.sops && data.sops.length > 0) {
-          // Render Live Synthesized Workstation SOPs
-          stationsList.innerHTML = data.sops.map((sop, idx) => `
-            <div class="station-card">
-              <div class="station-badge">${sop.workstation_number || `WORKSTATION 0${idx + 1}`}</div>
-              <div class="station-title">${sop.sop_title || sop.module_title}</div>
-              <div style="font-size:11.5px; color:var(--text-muted); margin-bottom:6px;">${sop.purpose_and_scope || ''}</div>
-              <div class="station-pcs">
-                ${(sop.sequential_execution_steps || []).slice(0, 6).map(st => `
-                  <div class="pc-step-item">
-                    <span class="pc-step-dot">•</span>
-                    <div>
-                      <strong style="color:var(--primary-color);">${st.step_title || `Step ${st.step_number}`}:</strong>
-                      <span>${st.imperative_action_directive || ''}</span>
-                      ${st.parameter_tolerance ? `<div style="font-size:11px; color:#047857; font-weight:600;">⚡ Limit: ${st.parameter_tolerance}</div>` : ''}
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `).join('');
-
-          // Update PPE Grid from First SOP
-          const firstSop = data.sops[0];
-          if (firstSop.safety_and_ppe && firstSop.safety_and_ppe.mandatory_ppe) {
-            const ppeGrid = document.getElementById('ppeGrid');
-            if (ppeGrid) {
-              ppeGrid.innerHTML = firstSop.safety_and_ppe.mandatory_ppe.map(item => `
-                <div class="ppe-item">🦺 ${item}</div>
-              `).join('');
-            }
-          }
-          return;
+          activeSopList = data.sops;
+          currentQpData = data;
+        } else {
+          // Construct fallback multi-station SOPs
+          activeSopList = generateFallbackSops(qpCode, qpName, sector, level);
+          currentQpData = { qp_code: qpCode, qp_name: qpName, sector: sector || 'General', nsqf_level: level || '4' };
         }
       } catch (err) {
         console.warn('Live SOP fetch fallback:', err);
+        activeSopList = generateFallbackSops(qpCode, qpName, sector, level);
+        currentQpData = { qp_code: qpCode, qp_name: qpName, sector: sector || 'General', nsqf_level: level || '4' };
       }
 
-      // Fallback if no synthesized SOP yet in DB
-      if (showcase) {
-        stationsList.innerHTML = showcase.stations.map((st, idx) => `
-          <div class="station-card">
-            <div class="station-badge">WORKSTATION 0${idx + 1}</div>
-            <div class="station-title">${st.name}</div>
-            <div class="station-pcs">
-              ${st.pcs.map(pc => `
-                <div class="pc-step-item">
-                  <span class="pc-step-dot">•</span>
-                  <span>${pc}</span>
-                </div>
-              `).join('')}
+      // Render Workstation Navigation Pills
+      renderWorkstationPills();
+      // Render Active 10-Chapter SOP
+      render10ChapterSop(activeSopList[activeWsIdx]);
+    }
+
+    function renderWorkstationPills() {
+      const pillsContainer = document.getElementById('sopWsPills');
+      const badge = document.getElementById('wsCountBadge');
+      badge.innerText = `${activeSopList.length} Station${activeSopList.length > 1 ? 's' : ''}`;
+
+      pillsContainer.innerHTML = activeSopList.map((sop, idx) => {
+        const title = (sop.module_title || sop.sop_title || `Station 0${idx+1}`).replace(/^Module\s*\d+\s*:\s*|^Standard Operating Procedure:\s*/i, '');
+        return `
+          <div class="ws-pill ${idx === activeWsIdx ? 'active' : ''}" onclick="selectWorkstation(${idx})">
+            <span>${sop.workstation_number || `WS-0${idx+1}`}</span>
+            <span style="font-size:10px; opacity:0.85;">• ${title.substring(0, 16)}${title.length > 16 ? '...' : ''}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectWorkstation(wsIndex) {
+      activeWsIdx = wsIndex;
+      renderWorkstationPills();
+      render10ChapterSop(activeSopList[activeWsIdx]);
+    }
+
+    function render10ChapterSop(sop) {
+      if (!sop) return;
+      const qp = currentQpData || {};
+
+      // Inspector Header
+      document.getElementById('inspTitle').innerText = sop.sop_title || `Standard Operating Procedure: ${sop.module_title || qp.qp_name}`;
+      document.getElementById('inspSub').innerText = `${sop.workstation_number || 'WS-01'} • Sector: ${sop.sector || qp.sector} • NSQF Level ${sop.nsqf_level || qp.nsqf_level || '4'}`;
+
+      // Chapter 1: Purpose & Objectives
+      document.getElementById('sop11-text').innerText = sop.purpose_and_scope || `Define operational parameters, calibration tolerances, and safety controls for ${sop.module_title || qp.qp_name} in compliance with national occupational standards.`;
+      document.getElementById('sop12-iso').innerText = (sop.iso_compliance && sop.iso_compliance.standard) || 'ISO 9001:2015 Clause 8.5.1 (Controlled Production Conditions)';
+
+      // Chapter 2: Scope & Applicability
+      document.getElementById('sop21-sector').innerText = `${sop.sector || qp.sector} Industry Operations`;
+      document.getElementById('sop22-ws').innerText = `${sop.workstation_number || 'WS-01'}: ${sop.module_title || sop.sop_title || 'Core Assembly Workstation'}`;
+      document.getElementById('sop23-text').innerText = `Applies strictly to routine station execution. Major uncalibrated machine redesign or unapproved raw material substitutions fall outside the scope of this standard operating document.`;
+
+      // Chapter 3: Roles & Responsibilities (RACI)
+      document.getElementById('raci-tech-title').innerText = `NSQF Level ${sop.nsqf_level || qp.nsqf_level || '4'} Certified Technical Operator`;
+
+      // Chapter 4: Definitions, Tools & PPE Prerequisites
+      const safety = sop.safety_and_ppe || {};
+      document.getElementById('sopHazardLevel').innerText = safety.hazard_level || 'Medium (Industrial Standard)';
+      document.getElementById('sopHazardWarning').innerText = (safety.hazard_warnings && safety.hazard_warnings[0]) || 'Verify pre-operation safety guards and tool calibration zero-marks before energizing.';
+
+      // PPE Grid
+      const ppeGrid = document.getElementById('ppeGrid');
+      const ppeList = safety.mandatory_ppe || ['Standard Industrial Safety Goggles', 'Puncture-Resistant Work Gloves', 'Steel-Toe Protective Footwear', 'Electrostatic Grounding Strap'];
+      ppeGrid.innerHTML = ppeList.map(p => `<div class="ppe-item">🦺 ${p}</div>`).join('');
+
+      // Tooling Matrix
+      const toolingList = document.getElementById('toolingList');
+      const equipment = sop.prerequisite_equipment || [
+        { name: `Workstation Precision Apparatus for ${sop.module_title || 'Assembly'}`, specification: 'Industrial calibrated tooling apparatus', calibration_status: 'Valid within 90 days' },
+        { name: 'Standard Inspection & Measurement Rig', specification: 'Precision digital gauge / meter', calibration_status: 'Pre-shift zero-checked' }
+      ];
+      toolingList.innerHTML = equipment.map(eq => `
+        <div style="background:#F8FAFC; border:1px solid var(--border-color); border-radius:6px; padding:7px 10px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="color:var(--text-main); font-size:11.5px;">${eq.name}</strong>
+            <div style="font-size:10.5px; color:var(--text-muted);">${eq.specification || ''}</div>
+          </div>
+          <span style="font-size:10px; font-weight:700; color:#047857; background:#ECFDF5; padding:2px 6px; border-radius:4px;">${eq.calibration_status || 'Calibrated'}</span>
+        </div>
+      `).join('');
+
+      // Chapter 5: Process Overview & Multi-Station Flow
+      const flowContainer = document.getElementById('flowSequenceList');
+      flowContainer.innerHTML = activeSopList.map((s, idx) => {
+        const isCurrent = idx === activeWsIdx;
+        return `
+          <div style="background:${isCurrent ? 'var(--primary-light)' : '#F8FAFC'}; border:1px solid ${isCurrent ? 'var(--primary-color)' : 'var(--border-color)'}; border-radius:6px; padding:8px 10px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <strong style="color:${isCurrent ? 'var(--primary-color)' : 'var(--text-main)'}; font-size:11.5px;">${s.workstation_number || `Station 0${idx+1}`}: ${(s.module_title || s.sop_title || 'Workstation').replace(/^Module\s*\d+\s*:\s*/i, '')}</strong>
+              <div style="font-size:10.5px; color:var(--text-muted);">${s.purpose_and_scope ? s.purpose_and_scope.substring(0, 60) + '...' : 'Sequential station workflow.'}</div>
             </div>
+            <span style="font-size:10px; font-weight:700; color:${isCurrent ? '#FFFFFF' : '#475569'}; background:${isCurrent ? 'var(--primary-color)' : '#E2E8F0'}; padding:2px 6px; border-radius:4px;">
+              ${isCurrent ? 'Active Station' : `Step ${idx+1}`}
+            </span>
+          </div>
+        `;
+      }).join('');
+
+      // Chapter 6: Detailed Step-by-Step Procedure
+      const stepsContainer = document.getElementById('sopStepsContainer');
+      const steps = sop.sequential_execution_steps || [];
+      if (steps.length > 0) {
+        stepsContainer.innerHTML = steps.map(st => `
+          <div class="step-card">
+            <div class="step-top-row">
+              <span class="step-num-badge">STEP ${st.step_number || '1'}</span>
+              ${st.derived_from_pc ? `<span class="step-pc-tag">NCVET ${st.derived_from_pc}</span>` : ''}
+            </div>
+            <div class="step-title-bold">${st.step_title || `Action Step ${st.step_number}`}</div>
+            <div class="step-directive">${st.imperative_action_directive || ''}</div>
+            ${st.parameter_tolerance ? `<div class="step-tolerance">⚡ Limit / Tolerance: ${st.parameter_tolerance}</div>` : ''}
+            ${st.critical_safety_note ? `<div style="font-size:10.5px; color:#92400E; background:#FEF3C7; padding:3px 6px; border-radius:4px; margin-top:2px;">⚠️ ${st.critical_safety_note}</div>` : ''}
           </div>
         `).join('');
       } else {
-        stationsList.innerHTML = `
-          <div class="station-card">
-            <div class="station-badge">WORKSTATION 01</div>
-            <div class="station-title">Inward Verification &amp; Setup Triage</div>
-            <div class="station-pcs">
-              <div class="pc-step-item"><span class="pc-step-dot">•</span><span>Verify job order requirements and machine calibration log.</span></div>
-              <div class="pc-step-item"><span class="pc-step-dot">•</span><span>Check raw materials against standard bill of specifications.</span></div>
-            </div>
-          </div>
-          <div class="station-card">
-            <div class="station-badge">WORKSTATION 02</div>
-            <div class="station-title">Core Execution &amp; Tool Operation</div>
-            <div class="station-pcs">
-              <div class="pc-step-item"><span class="pc-step-dot">•</span><span>Execute standard operating procedures as per NCVET PC guidelines.</span></div>
-              <div class="pc-step-item"><span class="pc-step-dot">•</span><span>Monitor operational tolerances and thermal/mechanical limits.</span></div>
-            </div>
-          </div>
-          <div class="station-card">
-            <div class="station-badge">WORKSTATION 03</div>
-            <div class="station-title">Quality Assurance &amp; Safe Shutdown</div>
-            <div class="station-pcs">
-              <div class="pc-step-item"><span class="pc-step-dot">•</span><span>Perform 100% inspection checklist against quality benchmarks.</span></div>
-              <div class="pc-step-item"><span class="pc-step-dot">•</span><span>Log process completion in plant manufacturing execution register.</span></div>
-            </div>
-          </div>
-        `;
+        stepsContainer.innerHTML = `<div style="text-align:center; padding:12px; color:var(--text-muted);">Standard step sequence configured.</div>`;
+      }
+
+      // Chapter 7: Exceptions & Troubleshooting
+      const troubleList = document.getElementById('troubleshootingList');
+      const exceptions = sop.troubleshooting_and_exception_handling || [
+        'If parameter drifts beyond tolerance, immediately halt station operation and notify supervisor.',
+        'Quarantine affected workpiece to designated containment rack with non-conformance tag.'
+      ];
+      troubleList.innerHTML = exceptions.map(ex => `
+        <div style="font-size:11.5px; color:var(--text-muted); display:flex; gap:6px; align-items:flex-start;">
+          <span style="color:#DC2626; font-weight:800;">•</span>
+          <span>${ex}</span>
+        </div>
+      `).join('');
+
+      // Chapter 8: Quality Control & KPIs
+      const qaList = document.getElementById('qaCriteriaList');
+      const qaCriteria = sop.quality_acceptance_criteria || [
+        '100% compliance with step checklist tolerances with zero safety violations.',
+        'Visual and functional verification signed off in plant manufacturing register.'
+      ];
+      qaList.innerHTML = qaCriteria.map(q => `
+        <div style="font-size:11.5px; color:var(--text-muted); display:flex; gap:6px; align-items:flex-start;">
+          <span style="color:#047857; font-weight:800;">✓</span>
+          <span>${q}</span>
+        </div>
+      `).join('');
+      document.getElementById('sopAuditCadence').innerText = `Every ${(sop.iso_compliance && sop.iso_compliance.audit_frequency_days) || 90} Days`;
+
+      // Chapter 10: Revision History & Appendices
+      document.getElementById('sopDocId').innerText = sop.doc_id || `SOP-${(qp.qp_code || 'GEN').replace(/\//g, '-')}-${sop.workstation_number || 'WS01'}`;
+      document.getElementById('sop102-text').innerText = `Certified against NCVET National Qualification Pack standard: ${qp.qp_name || currentQpCode} (${qp.qp_code || currentQpCode}).`;
+    }
+
+    function generateFallbackSops(qpCode, qpName, sector, level) {
+      const showcase = SHOWCASES[qpCode];
+      if (showcase) {
+        return showcase.stations.map((st, idx) => ({
+          doc_id: `SOP-${qpCode.replace(/\//g, '-')}-WS0${idx+1}`,
+          sop_title: `Standard Operating Procedure: ${st.name}`,
+          module_title: st.name,
+          workstation_number: `WS-0${idx+1}`,
+          sector: sector || 'General Industry',
+          nsqf_level: level || '4',
+          purpose_and_scope: `Define standard parameters, safety controls, and quality checklists for ${st.name} in compliance with NCVET NSQF Level ${level || '4'} standards.`,
+          safety_and_ppe: {
+            hazard_level: 'Medium (Industrial Standard)',
+            mandatory_ppe: ['High-Temp Insulated Gloves', 'Antiglare Safety Goggles', 'ESD Wristband', 'Steel-Toe Footwear'],
+            hazard_warnings: ['Ensure pre-operation machine safety switches are functional before beginning job.']
+          },
+          prerequisite_equipment: [
+            { name: `Workstation Tool Kit for ${st.name}`, specification: 'Calibrated industrial grade tooling', calibration_status: 'Valid within 90 days' }
+          ],
+          sequential_execution_steps: st.pcs.map((pcText, pIdx) => ({
+            step_number: pIdx + 1,
+            step_title: `Step ${pIdx + 1}: Execution Phase`,
+            derived_from_pc: `PC${pIdx + 1}`,
+            imperative_action_directive: pcText,
+            parameter_tolerance: 'Maintain execution within nominal engineering tolerances',
+            critical_safety_note: 'Maintain standard PPE throughout operation.'
+          })),
+          quality_acceptance_criteria: [
+            '100% compliance with step checklist parameters with zero safety protocol violations.',
+            'Visual & functional pass confirmation recorded in manufacturing execution register.'
+          ],
+          troubleshooting_and_exception_handling: [
+            'If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.',
+            'Log non-conformance ID and quarantine affected workpiece to containment station.'
+          ],
+          iso_compliance: { standard: 'ISO 9001:2015 Clause 8.5.1', audit_frequency_days: 90 }
+        }));
+      }
+
+      // Universal generic 3-station fallback
+      return [
+        {
+          doc_id: `SOP-${(qpCode || 'GEN').replace(/\//g, '-')}-WS01`,
+          sop_title: `Standard Operating Procedure: Inward Verification & Setup Triage`,
+          module_title: 'Inward Verification & Setup Triage',
+          workstation_number: 'WS-01',
+          sector: sector || 'General Industry',
+          nsqf_level: level || '4',
+          purpose_and_scope: `Verify job requirements, raw material inputs, and tooling calibration before active processing.`,
+          safety_and_ppe: {
+            hazard_level: 'Medium (Industrial Standard)',
+            mandatory_ppe: ['Safety Goggles', 'Protective Work Gloves', 'Steel-Toe Footwear'],
+            hazard_warnings: ['Verify tool calibration log and emergency stop functions before energizing.']
+          },
+          sequential_execution_steps: [
+            { step_number: 1, step_title: 'Job Order Verification', derived_from_pc: 'PC1', imperative_action_directive: 'Verify workpiece serial number and engineering drawing tolerances.', parameter_tolerance: '100% match with bill of materials', critical_safety_note: 'Check workstation illumination level (>300 Lux).' },
+            { step_number: 2, step_title: 'Pre-Shift Calibration Check', derived_from_pc: 'PC2', imperative_action_directive: 'Conduct zero-point calibration on all measurement gauges.', parameter_tolerance: 'Zero drift', critical_safety_note: 'Do not use uncalibrated instruments.' }
+          ]
+        },
+        {
+          doc_id: `SOP-${(qpCode || 'GEN').replace(/\//g, '-')}-WS02`,
+          sop_title: `Standard Operating Procedure: Core Execution & Assembly`,
+          module_title: 'Core Execution & Assembly',
+          workstation_number: 'WS-02',
+          sector: sector || 'General Industry',
+          nsqf_level: level || '4',
+          purpose_and_scope: `Execute primary technical transformation conforming to NCVET NSQF Level ${level || '4'} standards.`,
+          safety_and_ppe: {
+            hazard_level: 'High (Mechanical/Thermal)',
+            mandatory_ppe: ['Heat-Resistant Gloves', 'Safety Glasses', 'Safety Footwear'],
+            hazard_warnings: ['Maintain constant situational awareness near moving/heated tooling components.']
+          },
+          sequential_execution_steps: [
+            { step_number: 1, step_title: 'Tool Engagement & Execution', derived_from_pc: 'PC3', imperative_action_directive: 'Operate precision apparatus per manufacturer speed and feed rates.', parameter_tolerance: '±0.05mm engineering tolerance', critical_safety_note: 'Never bypass safety interlocks.' },
+            { step_number: 2, step_title: 'In-Process Dimension Check', derived_from_pc: 'PC4', imperative_action_directive: 'Measure critical parameters after primary machining pass.', parameter_tolerance: 'Nominal dimension range', critical_safety_note: 'Halt if thermal drift is observed.' }
+          ]
+        },
+        {
+          doc_id: `SOP-${(qpCode || 'GEN').replace(/\//g, '-')}-WS03`,
+          sop_title: `Standard Operating Procedure: Quality Assurance & Hand-Off`,
+          module_title: 'Quality Assurance & Hand-Off',
+          workstation_number: 'WS-03',
+          sector: sector || 'General Industry',
+          nsqf_level: level || '4',
+          purpose_and_scope: `Final quality verification, documentation logging, and protective packaging.`,
+          safety_and_ppe: {
+            hazard_level: 'Low (Inspection Standard)',
+            mandatory_ppe: ['Protective Gloves', 'Safety Footwear'],
+            hazard_warnings: ['Ensure clean inspection surface free from contaminants.']
+          },
+          sequential_execution_steps: [
+            { step_number: 1, step_title: '100% Quality Acceptance Test', derived_from_pc: 'PC5', imperative_action_directive: 'Execute full functional and visual quality rubric verification.', parameter_tolerance: 'Zero cosmetic or functional defects', critical_safety_note: 'Apply inspection pass barcode tag.' },
+            { step_number: 2, step_title: 'Digital Log & Handoff', derived_from_pc: 'PC6', imperative_action_directive: 'Record batch completion metrics in manufacturing execution system.', parameter_tolerance: 'Complete digital signature', critical_safety_note: 'Transfer to dispatch zone.' }
+          ]
+        }
+      ];
+    }
+
+    function toggleChapter(chapterId) {
+      const card = document.getElementById(chapterId);
+      if (card) {
+        card.classList.toggle('open');
       }
     }
 
-    function switchSopTab(tabId, tabBtn) {
-      document.querySelectorAll('.inspector-tab').forEach(t => t.classList.remove('active'));
-      if (tabBtn) tabBtn.classList.add('active');
+    function expandAllChapters() {
+      document.querySelectorAll('.chapter-card').forEach(card => card.classList.add('open'));
+    }
 
-      document.getElementById('tab-stations').style.display = tabId === 'stations' ? 'flex' : 'none';
-      document.getElementById('tab-safety').style.display = tabId === 'safety' ? 'flex' : 'none';
-      document.getElementById('tab-compliance').style.display = tabId === 'compliance' ? 'flex' : 'none';
+    function collapseAllChapters() {
+      document.querySelectorAll('.chapter-card').forEach(card => card.classList.remove('open'));
     }
 
     async function filterBySector(sector, itemEl) {
@@ -603,7 +1083,10 @@
     }
 
     function exportSopDocument() {
-      alert(`Standard Operating Procedure (${currentQpCode}) exported as Plant Documentation PDF!`);
+      expandAllChapters();
+      setTimeout(() => {
+        window.print();
+      }, 250);
     }
 
     function escapeHtml(str) {
