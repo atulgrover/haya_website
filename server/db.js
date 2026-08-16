@@ -396,6 +396,10 @@ async function initSchema() {
         // ── Idempotent column migrations (safe on existing hayadb) ───────────
         const migrations = [
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS thumbnail_url_hi TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS start_seconds INT DEFAULT 0`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS end_seconds INT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS viva_quiz_json JSONB`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS study_takeaways_json JSONB`,
         ];
         for (const sql of migrations) {
             try { await pool.query(sql); } catch (_) {}

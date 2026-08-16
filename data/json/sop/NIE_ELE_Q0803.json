@@ -30,6 +30,8 @@
       "nos_title": "Implementation of Repair & Maintenance Project",
       "sop_title": "Standard Operating Procedure: Implementation of Repair & Maintenance Project",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.152Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:20:03.354Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Implementation of Repair & Maintenance Project",
@@ -57,8 +59,6 @@
         "search_query_hi": "Implementation of Repair & Maintenance Project Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -69,7 +69,9 @@
           "tier1_brand_vector": "Quick Implementation of Repair & Maintenance Project workstation procedure demonstration",
           "tier2_trade_vector": "Implementation of Repair & Maintenance Project standard operating procedure workshop demonstrat",
           "tier3_hinglish_vector": "Implementation of Repair & Maintenance Project SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Implementation of Repair & Maintenance Project in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-05",
@@ -85,6 +87,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Disassemble And Reassemble Smartphones Using Appropriate Tools.",
@@ -123,10 +143,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -147,26 +163,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Implementation of Repair & Maintenance Project"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.925Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Implementation of Repair & Maintenance Project workstation?",
+          "question_hi": "Implementation of Repair & Maintenance Project वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M5"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M5"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M5"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Implementation of Repair & Maintenance Project sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -193,6 +304,8 @@
       "nos_title": "Foundations of Mobile Phones Technology",
       "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.159Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:20:17.665Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Elements and Performance Criteria",
@@ -220,8 +333,6 @@
         "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -232,7 +343,9 @@
           "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
           "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-07",
@@ -248,6 +361,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Define Explain Concepts Electricity Circuits Voltage Current Resistance",
@@ -318,10 +449,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -342,26 +469,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Elements and Performance Criteria"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.928Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Elements and Performance Criteria workstation?",
+          "question_hi": "Elements and Performance Criteria वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M7"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M7"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M7"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Elements and Performance Criteria sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -388,6 +610,8 @@
       "nos_title": "Software Repair",
       "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.161Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:20:45.499Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Elements and Performance Criteria",
@@ -415,8 +639,6 @@
         "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -427,7 +649,9 @@
           "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
           "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-011",
@@ -443,6 +667,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "A Thorough Understanding Basics Android Ios Operating Systems",
@@ -505,10 +747,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -529,26 +767,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Elements and Performance Criteria"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.931Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Elements and Performance Criteria workstation?",
+          "question_hi": "Elements and Performance Criteria वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M11"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M11"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M11"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Elements and Performance Criteria sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -575,6 +908,8 @@
       "nos_title": "Advanced Repair and Business Skills",
       "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.163Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:20:58.758Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Elements and Performance Criteria",
@@ -602,8 +937,6 @@
         "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -614,7 +947,9 @@
           "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
           "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-013",
@@ -630,6 +965,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Identify Diagnose Intricate Phone Issues Apply Appropriate Troubleshooting",
@@ -804,10 +1157,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -828,26 +1177,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Elements and Performance Criteria"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.934Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Elements and Performance Criteria workstation?",
+          "question_hi": "Elements and Performance Criteria वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M13"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M13"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M13"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Elements and Performance Criteria sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -874,6 +1318,8 @@
       "nos_title": "Smartphone Hardware Repair",
       "sop_title": "Standard Operating Procedure: Smartphone Hardware Repair",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.164Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:19:24.102Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Smartphone Hardware Repair",
@@ -901,8 +1347,6 @@
         "search_query_hi": "Smartphone Hardware Repair Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -913,7 +1357,9 @@
           "tier1_brand_vector": "Quick Smartphone Hardware Repair workstation procedure demonstration",
           "tier2_trade_vector": "Smartphone Hardware Repair standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Smartphone Hardware Repair SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Smartphone Hardware Repair in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-02",
@@ -929,6 +1375,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Identify Diagnose Common Smartphone Problems Including Charging Issues",
@@ -999,10 +1463,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -1023,26 +1483,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Smartphone Hardware Repair"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.937Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Smartphone Hardware Repair workstation?",
+          "question_hi": "Smartphone Hardware Repair वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M2"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M2"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M2"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Smartphone Hardware Repair sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -1069,6 +1624,8 @@
       "nos_title": "Software Repair",
       "sop_title": "Standard Operating Procedure: Software Repair",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.166Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:19:37.761Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Software Repair",
@@ -1096,8 +1653,6 @@
         "search_query_hi": "Software Repair Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -1108,7 +1663,9 @@
           "tier1_brand_vector": "Quick Software Repair workstation procedure demonstration",
           "tier2_trade_vector": "Software Repair standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Software Repair SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Software Repair in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-03",
@@ -1124,6 +1681,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "A Thorough Understanding Basics Android Ios Operating Systems",
@@ -1186,10 +1761,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -1210,26 +1781,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Software Repair"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.940Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Software Repair workstation?",
+          "question_hi": "Software Repair वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M3"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M3"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M3"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Software Repair sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -1256,6 +1922,8 @@
       "nos_title": "Foundations of Mobile Phones Technology",
       "sop_title": "Standard Operating Procedure: Foundations of Mobile Phones Technology",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.167Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:19:09.600Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Foundations of Mobile Phones Technology",
@@ -1283,8 +1951,6 @@
         "search_query_hi": "Foundations of Mobile Phones Technology Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -1295,7 +1961,9 @@
           "tier1_brand_vector": "Quick Foundations of Mobile Phones Technology workstation procedure demonstration",
           "tier2_trade_vector": "Foundations of Mobile Phones Technology standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Foundations of Mobile Phones Technology SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Foundations of Mobile Phones Technology in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-01",
@@ -1311,6 +1979,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Define Explain Concepts Electricity Circuits Voltage Current Resistance",
@@ -1381,10 +2067,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -1405,26 +2087,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Foundations of Mobile Phones Technology"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.944Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Foundations of Mobile Phones Technology workstation?",
+          "question_hi": "Foundations of Mobile Phones Technology वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M1"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M1"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M1"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Foundations of Mobile Phones Technology sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -1451,6 +2228,8 @@
       "nos_title": "Advanced Repair and Business Skills",
       "sop_title": "Standard Operating Procedure: Advanced Repair and Business Skills",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.168Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:19:50.174Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Advanced Repair and Business Skills",
@@ -1478,8 +2257,6 @@
         "search_query_hi": "Advanced Repair and Business Skills Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -1490,7 +2267,9 @@
           "tier1_brand_vector": "Quick Advanced Repair and Business Skills workstation procedure demonstration",
           "tier2_trade_vector": "Advanced Repair and Business Skills standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Advanced Repair and Business Skills SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Advanced Repair and Business Skills in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-04",
@@ -1506,6 +2285,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Identify Diagnose Intricate Phone Issues Apply Appropriate Troubleshooting",
@@ -1680,10 +2477,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -1704,26 +2497,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Advanced Repair and Business Skills"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.947Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Advanced Repair and Business Skills workstation?",
+          "question_hi": "Advanced Repair and Business Skills वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M4"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M4"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M4"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Advanced Repair and Business Skills sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -1750,6 +2638,8 @@
       "nos_title": "Smartphone Hardware Repair",
       "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.170Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:20:31.433Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Elements and Performance Criteria",
@@ -1777,8 +2667,6 @@
         "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -1789,7 +2677,9 @@
           "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
           "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-09",
@@ -1805,6 +2695,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Identify Diagnose Common Smartphone Problems Including Charging Issues",
@@ -1875,10 +2783,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -1899,26 +2803,121 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Elements and Performance Criteria"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.950Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Elements and Performance Criteria workstation?",
+          "question_hi": "Elements and Performance Criteria वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M9"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M9"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M9"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Elements and Performance Criteria sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     },
     {
       "video": {
@@ -1945,6 +2944,8 @@
       "nos_title": "Implementation of Repair & Maintenance Project",
       "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
       "nsqf_level": "3.0",
+      "enriched_at": "2026-08-16T15:06:33.171Z",
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
       "generated_at": "2026-08-16T14:21:11.923Z",
       "generated_by": "HAYAGRIVA Industrial SOP Engine",
       "module_title": "Elements and Performance Criteria",
@@ -1972,8 +2973,6 @@
         "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
         "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
         "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
-        "max_duration_seconds": 1200,
-        "min_duration_seconds": 180,
         "oem_brand_aliases": [
           "Quick",
           "Hakko",
@@ -1984,7 +2983,9 @@
           "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
           "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
           "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
-        }
+        },
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180
       },
       "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
       "workstation_number": "WS-016",
@@ -2000,6 +3001,24 @@
           "calibration_status": "Pre-shift zero-checked"
         }
       ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
       "sequential_execution_steps": [
         {
           "step_title": "Disassemble And Reassemble Smartphones Using Appropriate Tools.",
@@ -2038,10 +3057,6 @@
         "100% compliance with step checklist parameters with zero safety protocol violations.",
         "Visual & functional pass confirmation recorded in manufacturing execution register."
       ],
-      "troubleshooting_and_exception_handling": [
-        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
-        "Log non-conformance ID and quarantine affected workpiece to containment station."
-      ],
       "defect_taxonomy_and_containment": [
         {
           "code": "DEF-EL-01",
@@ -2062,28 +3077,123 @@
           "threshold": "3 occurrences per batch triggers stencil check"
         }
       ],
-      "shift_handover_protocol": {
-        "pre_shift_safety_checks": [
-          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
-          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
-          "Perform zero-point calibration verification on all measuring instruments."
-        ],
-        "during_shift_controls": [
-          "Log parameter measurements every 2 hours in station execution sheet.",
-          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
-        ],
-        "post_shift_signoff": {
-          "roles_required": [
-            "Station Operator",
-            "Line Quality Supervisor"
-          ],
-          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
-        }
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "video_clip": {
+        "video_id": "8aGhZQkoFbQ",
+        "start_seconds": 45,
+        "end_seconds": 135,
+        "clip_duration_seconds": 90,
+        "embed_url": "https://www.youtube.com/embed/8aGhZQkoFbQ?start=45&end=135&autoplay=1&enablejsapi=1",
+        "key_moment_title": "Core Practical Demonstration: Elements and Performance Criteria"
       },
-      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
-      "enriched_at": "2026-08-16T14:31:20.953Z"
+      "viva_quiz": [
+        {
+          "question_id": "Q1",
+          "question_en": "What is the optimal temperature range for lead-free soldering on a Elements and Performance Criteria workstation?",
+          "question_hi": "Elements and Performance Criteria वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?",
+          "difficulty": "Standard",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "340°C – 360°C (SAC305 alloy)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "150°C – 180°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "500°C – 550°C",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Room Temperature (25°C)",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.",
+          "related_code": "SOP-NIE-ELE-Q0803-M16"
+        },
+        {
+          "question_id": "Q2",
+          "question_en": "What is the maximum allowable ESD wrist strap resistance before starting PCB handling?",
+          "question_hi": "पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?",
+          "difficulty": "Critical_Safety",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "< 1.0 Mega-Ohm (1 MΩ)",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "> 100 Mega-Ohms",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Zero Ohms (Direct Short)",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Resistance does not matter",
+              "is_correct": false
+            }
+          ],
+          "explanation": "A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.",
+          "related_code": "SOP-NIE-ELE-Q0803-M16"
+        },
+        {
+          "question_id": "Q3",
+          "question_en": "Which defect is identified by a dull, grainy solder surface with incomplete wetting?",
+          "question_hi": "अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?",
+          "difficulty": "Quality_Inspection",
+          "options": [
+            {
+              "option_id": "A",
+              "text": "Cold / Disturbed Solder Joint",
+              "is_correct": true
+            },
+            {
+              "option_id": "B",
+              "text": "Gold Plating Passivation",
+              "is_correct": false
+            },
+            {
+              "option_id": "C",
+              "text": "Optimal Fillet Curvature",
+              "is_correct": false
+            },
+            {
+              "option_id": "D",
+              "text": "Flux Activation Peak",
+              "is_correct": false
+            }
+          ],
+          "explanation": "Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.",
+          "related_code": "SOP-NIE-ELE-Q0803-M16"
+        }
+      ],
+      "study_takeaways": {
+        "pro_tips": [
+          "Verify calibration log certificate date (<90 days) before initiating Elements and Performance Criteria sequence.",
+          "Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue."
+        ],
+        "common_mistakes_to_avoid": [
+          "Bypassing pre-shift zero-point check on precision digital measurement gauges.",
+          "Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time."
+        ],
+        "statutory_safety_rule": "MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access."
+      }
     }
   ],
-  "enriched_at": "2026-08-16T14:31:20.958Z",
+  "enriched_at": "2026-08-16T15:06:33.174Z",
   "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine"
 }

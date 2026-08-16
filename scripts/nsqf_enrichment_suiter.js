@@ -108,6 +108,228 @@ function getSectorIntel(sectorName) {
     return SECTOR_OEM_INTELLIGENCE['default'];
 }
 
+// ── 1.5. Interactive Assessment & Micro-Reel Generators ───────────────────────
+
+function generateVivaQuiz(contextTitle, sectorName, contextCode) {
+    const s = String(sectorName || '').toLowerCase();
+    const clean = String(contextTitle || 'Task').replace(/^Module\s*\d+\s*:\s*/i, '').trim();
+
+    if (s.includes('electr') || s.includes('telecom')) {
+        return [
+            {
+                question_id: 'Q1',
+                question_en: `What is the optimal temperature range for lead-free soldering on a ${clean} workstation?`,
+                question_hi: `${clean} वर्कस्टेशन पर लेड-फ्री सोल्डरिंग के लिए इष्टतम तापमान सीमा क्या है?`,
+                difficulty: 'Standard',
+                options: [
+                    { option_id: 'A', text: '340°C – 360°C (SAC305 alloy)', is_correct: true },
+                    { option_id: 'B', text: '150°C – 180°C', is_correct: false },
+                    { option_id: 'C', text: '500°C – 550°C', is_correct: false },
+                    { option_id: 'D', text: 'Room Temperature (25°C)', is_correct: false }
+                ],
+                explanation: 'Lead-free solder alloys require 340°C–360°C to achieve proper intermetallic bonding without delaminating PCB substrate pads.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q2',
+                question_en: 'What is the maximum allowable ESD wrist strap resistance before starting PCB handling?',
+                question_hi: 'पीसीबी को संभालने से पहले ईएसडी रिस्ट स्ट्रैप का अधिकतम स्वीकार्य प्रतिरोध कितना होना चाहिए?',
+                difficulty: 'Critical_Safety',
+                options: [
+                    { option_id: 'A', text: '< 1.0 Mega-Ohm (1 MΩ)', is_correct: true },
+                    { option_id: 'B', text: '> 100 Mega-Ohms', is_correct: false },
+                    { option_id: 'C', text: 'Zero Ohms (Direct Short)', is_correct: false },
+                    { option_id: 'D', text: 'Resistance does not matter', is_correct: false }
+                ],
+                explanation: 'A 1 MΩ safety resistor allows static charges to drain safely while protecting the operator from electrical shock.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q3',
+                question_en: 'Which defect is identified by a dull, grainy solder surface with incomplete wetting?',
+                question_hi: 'अपूर्ण वेटिंग के साथ सुस्त, दानेदार सोल्डर सतह द्वारा किस दोष की पहचान की जाती है?',
+                difficulty: 'Quality_Inspection',
+                options: [
+                    { option_id: 'A', text: 'Cold / Disturbed Solder Joint', is_correct: true },
+                    { option_id: 'B', text: 'Gold Plating Passivation', is_correct: false },
+                    { option_id: 'C', text: 'Optimal Fillet Curvature', is_correct: false },
+                    { option_id: 'D', text: 'Flux Activation Peak', is_correct: false }
+                ],
+                explanation: 'Cold solder joints occur when insufficient heat or premature movement prevents the alloy from fully liquefying.',
+                related_code: contextCode
+            }
+        ];
+    } else if (s.includes('solar') || s.includes('green') || s.includes('renew')) {
+        return [
+            {
+                question_id: 'Q1',
+                question_en: `What is the maximum allowable contact resistance for an MC4 solar connector during ${clean}?`,
+                question_hi: `${clean} के दौरान MC4 सोलर कनेक्टर के लिए अधिकतम स्वीकार्य संपर्क प्रतिरोध कितना है?`,
+                difficulty: 'Standard',
+                options: [
+                    { option_id: 'A', text: '0.5 Ω (milli-ohm level)', is_correct: true },
+                    { option_id: 'B', text: '5.0 Ω', is_correct: false },
+                    { option_id: 'C', text: '25.0 Ω', is_correct: false },
+                    { option_id: 'D', text: '100.0 Ω', is_correct: false }
+                ],
+                explanation: 'IEC 62852 standards mandate contact resistance < 0.5 Ω to prevent localized heating and DC arc faults.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q2',
+                question_en: 'What is the mandatory earthing resistance limit for solar PV array structures in India?',
+                question_hi: 'भारत में सोलर पीवी एरे संरचनाओं के लिए अनिवार्य अर्थिंग प्रतिरोध सीमा क्या है?',
+                difficulty: 'Critical_Safety',
+                options: [
+                    { option_id: 'A', text: '< 2.0 Ohms (IS 3043 Standard)', is_correct: true },
+                    { option_id: 'B', text: '< 50.0 Ohms', is_correct: false },
+                    { option_id: 'C', text: '> 100.0 Ohms', is_correct: false },
+                    { option_id: 'D', text: 'Earthing is optional', is_correct: false }
+                ],
+                explanation: 'Indian Standard IS 3043 specifies station earthing resistance must not exceed 2.0 Ohms for safe lightning dissipation.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q3',
+                question_en: 'If a negative voltage is observed during string Voc testing, what must be done immediately?',
+                question_hi: 'यदि स्ट्रिंग Voc परीक्षण के दौरान नकारात्मक वोल्टेज देखा जाता है, तो तुरंत क्या किया जाना चाहिए?',
+                difficulty: 'Quality_Inspection',
+                options: [
+                    { option_id: 'A', text: 'Open DC isolator and correct string polarity inversion', is_correct: true },
+                    { option_id: 'B', text: 'Close the inverter AC breaker immediately', is_correct: false },
+                    { option_id: 'C', text: 'Wash the solar panels with cold water', is_correct: false },
+                    { option_id: 'D', text: 'Continue commissioning', is_correct: false }
+                ],
+                explanation: 'Reversed polarity will damage central inverter input bridge rectifiers and must be corrected before combiner connection.',
+                related_code: contextCode
+            }
+        ];
+    } else if (s.includes('auto') || s.includes('ev') || s.includes('motor')) {
+        return [
+            {
+                question_id: 'Q1',
+                question_en: `What is the minimum personal protective rating required for electric vehicle high-voltage servicing in ${clean}?`,
+                question_hi: `${clean} में इलेक्ट्रिक वाहन हाई-वोल्टेज सर्विसिंग के लिए न्यूनतम सुरक्षात्मक रेटिंग क्या है?`,
+                difficulty: 'Critical_Safety',
+                options: [
+                    { option_id: 'A', text: 'Class-0 1000V Insulated Gloves & CAT-IV Meter', is_correct: true },
+                    { option_id: 'B', text: 'Standard Cotton Work Gloves', is_correct: false },
+                    { option_id: 'C', text: 'Latex Disposable Gloves', is_correct: false },
+                    { option_id: 'D', text: 'Bare hands with antistatic wristband', is_correct: false }
+                ],
+                explanation: 'Class-0 rated gloves rated for 1000V AC / 1500V DC are statutory requirements for EV traction battery maintenance.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q2',
+                question_en: 'What maximum voltage delta is acceptable between individual series lithium cells before pack sealing?',
+                question_hi: 'पैक सील करने से पहले व्यक्तिगत लिथियम सेल के बीच अधिकतम कितना वोल्टेज डेल्टा स्वीकार्य है?',
+                difficulty: 'Quality_Inspection',
+                options: [
+                    { option_id: 'A', text: '< 10 mV (0.010V)', is_correct: true },
+                    { option_id: 'B', text: '> 250 mV', is_correct: false },
+                    { option_id: 'C', text: '> 1.0 V', is_correct: false },
+                    { option_id: 'D', text: 'Any voltage difference is fine', is_correct: false }
+                ],
+                explanation: 'Active equalization ensures cell delta < 10 mV to prevent premature BMS low-voltage cut-offs during discharge.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q3',
+                question_en: 'What test must be performed to confirm pulse spot weld nugget strength on battery nickel strips?',
+                question_hi: 'बैटरी निकल स्ट्रिप्स पर स्पॉट वेल्डिंग शक्ति की पुष्टि करने के लिए कौन सा परीक्षण किया जाना चाहिए?',
+                difficulty: 'Standard',
+                options: [
+                    { option_id: 'A', text: 'Destructive 90° Peel Test on sacrificial strip', is_correct: true },
+                    { option_id: 'B', text: 'Thermal imaging camera test', is_correct: false },
+                    { option_id: 'C', text: 'Acoustic resonance test', is_correct: false },
+                    { option_id: 'D', text: 'Water immersion test', is_correct: false }
+                ],
+                explanation: 'A 90° manual peel test must tear the parent nickel strip before the weld nugget separates from the cell terminal.',
+                related_code: contextCode
+            }
+        ];
+    } else {
+        return [
+            {
+                question_id: 'Q1',
+                question_en: `What is the primary statutory safety checkpoint before operating equipment in ${clean}?`,
+                question_hi: `${clean} में उपकरण संचालित करने से पहले प्राथमिक वैधानिक सुरक्षा चेकपॉइंट क्या है?`,
+                difficulty: 'Critical_Safety',
+                options: [
+                    { option_id: 'A', text: 'Verify emergency stop and safety interlocks are operational', is_correct: true },
+                    { option_id: 'B', text: 'Wipe exterior paint with damp cloth', is_correct: false },
+                    { option_id: 'C', text: 'Disable machine alarm beepers', is_correct: false },
+                    { option_id: 'D', text: 'Increase operating speed above maximum', is_correct: false }
+                ],
+                explanation: 'Emergency stop functional checks ensure machinery can be halted instantly in the event of operator entanglement.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q2',
+                question_en: 'How frequently should measuring instrument zero-point calibration be verified on the shopfloor?',
+                question_hi: 'शॉपफ्लोर पर मापने वाले उपकरण के शून्य-बिंदु अंशांकन की कितनी बार पुष्टि की जानी चाहिए?',
+                difficulty: 'Standard',
+                options: [
+                    { option_id: 'A', text: 'Pre-shift daily before commencing work', is_correct: true },
+                    { option_id: 'B', text: 'Once every 5 years', is_correct: false },
+                    { option_id: 'C', text: 'Only when the tool breaks', is_correct: false },
+                    { option_id: 'D', text: 'Never', is_correct: false }
+                ],
+                explanation: 'Pre-shift zero-checks prevent batch calibration drift and ensure dimensional tolerances adhere to ISO 9001 standards.',
+                related_code: contextCode
+            },
+            {
+                question_id: 'Q3',
+                question_en: 'When a quality non-conformance is detected, what is the mandatory containment action?',
+                question_hi: 'जब गुणवत्ता गैर-अनुरूपता का पता चलता है, तो अनिवार्य रोकथाम कार्रवाई क्या है?',
+                difficulty: 'Quality_Inspection',
+                options: [
+                    { option_id: 'A', text: 'Quarantine affected workpiece to designated containment area and log defect ID', is_correct: true },
+                    { option_id: 'B', text: 'Ship the defective piece to the customer', is_correct: false },
+                    { option_id: 'C', text: 'Hide the workpiece in tool locker', is_correct: false },
+                    { option_id: 'D', text: 'Ignore the inspection reading', is_correct: false }
+                ],
+                explanation: 'Immediate quarantine prevents defective parts from progressing downstream in the manufacturing line.',
+                related_code: contextCode
+            }
+        ];
+    }
+}
+
+function generateStudyTakeaways(contextTitle, sectorName) {
+    const s = String(sectorName || '').toLowerCase();
+    const clean = String(contextTitle || 'Workstation').replace(/^Module\s*\d+\s*:\s*/i, '').trim();
+
+    return {
+        pro_tips: [
+            `Verify calibration log certificate date (<90 days) before initiating ${clean} sequence.`,
+            `Maintain standardized station lighting (>300 Lux) and ergonomic tool posture to minimize operator fatigue.`
+        ],
+        common_mistakes_to_avoid: [
+            'Bypassing pre-shift zero-point check on precision digital measurement gauges.',
+            'Applying excessive mechanical force instead of allowing calibrated torque / thermal dwell time.'
+        ],
+        statutory_safety_rule: 'MANDATORY: Follow OSHA 1910.147 / CEA Safety Regulations: Zero-energy state and mandatory PPE must be verified before internal mechanism access.'
+    };
+}
+
+function generateVideoClipBounds(title, videoId) {
+    const vid = videoId || '8aGhZQkoFbQ';
+    const startSec = 45;
+    const endSec = 135;
+    const clipDur = endSec - startSec;
+
+    return {
+        video_id: vid,
+        start_seconds: startSec,
+        end_seconds: endSec,
+        clip_duration_seconds: clipDur,
+        embed_url: `https://www.youtube.com/embed/${vid}?start=${startSec}&end=${endSec}&autoplay=1&enablejsapi=1`,
+        key_moment_title: `Core Practical Demonstration: ${title}`
+    };
+}
+
 // ── 2. SOP Enrichment: Multi-Tier Vectors + ISO Defect Containment ────────────
 function enrichSopJson(sopJson) {
     if (!sopJson || typeof sopJson !== 'object') return sopJson;
@@ -127,10 +349,19 @@ function enrichSopJson(sopJson) {
         tier3_hinglish_vector: `${cleanMod} SOP प्रैक्टिकल कार्यशाला कैसे करें`.substring(0, 95)
     };
 
-    // 🌟 2. ISO 9001 Defect Taxonomy & Non-Conformance Actions
+    // 🌟 2. Micro-Reel Timestamp Bounds
+    sopJson.video_clip = generateVideoClipBounds(cleanMod, sopJson.video?.video_id);
+
+    // 🌟 3. Interactive 3-Question Viva Quiz
+    sopJson.viva_quiz = generateVivaQuiz(cleanMod, sector, sopJson.doc_id);
+
+    // 🌟 4. Study Notes & Takeaways
+    sopJson.study_takeaways = generateStudyTakeaways(cleanMod, sector);
+
+    // 🌟 5. ISO 9001 Defect Taxonomy & Non-Conformance Actions
     sopJson.defect_taxonomy_and_containment = intel.defects;
 
-    // 🌟 3. Shift Handover & Calibration Verification Protocol
+    // 🌟 6. Shift Handover & Calibration Verification Protocol
     sopJson.shift_handover_protocol = {
         pre_shift_safety_checks: [
             'Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).',
@@ -147,7 +378,7 @@ function enrichSopJson(sopJson) {
         }
     };
 
-    // 🌟 4. ISO Standard Clause Mapping
+    // 🌟 7. ISO Standard Clause Mapping
     sopJson.iso_compliance = {
         standard: 'ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)',
         audit_frequency_days: 90,
@@ -178,7 +409,12 @@ function enrichMsmeJson(msmeJson) {
         tier3_hinglish_vector: `${cleanBiz} बिजनेस कैसे शुरू करें कमाई और लागत`.substring(0, 95)
     };
 
-    // 🌟 2. Enriched Tool BOM with Multi-Tier Vectors + HSN + GeM/IndiaMART Channels
+    // 🌟 2. Micro-Reel Pitch Bounds & Viva Quiz
+    msmeJson.pitch_video_clip = generateVideoClipBounds(cleanBiz, msmeJson.pitch_video?.video_id);
+    msmeJson.viva_quiz = generateVivaQuiz(cleanBiz, sector, msmeJson.nos_code);
+    msmeJson.study_takeaways = generateStudyTakeaways(cleanBiz, sector);
+
+    // 🌟 3. Enriched Tool BOM with Multi-Tier Vectors + HSN + GeM/IndiaMART Channels
     if (Array.isArray(msmeJson.tool_bom)) {
         msmeJson.tool_bom = msmeJson.tool_bom.map((tool, idx) => {
             const toolName = String(tool.name || `Machine-${idx + 1}`).trim();
@@ -210,6 +446,7 @@ function enrichMsmeJson(msmeJson) {
                     { platform: 'IndiaMART Certified Sellers', search_keyword: `${brand} ${toolName}` }
                 ],
                 amc_annual_cost_inr: Math.round((Number(tool.cost) || 20000) * 0.05),
+                video_clip: generateVideoClipBounds(toolName, tool.video?.video_id),
                 video_guidance: videoGuidance,
                 video: tool.video || { video_id: null, video_title: null, video_url: null, thumbnail_url: null, audit_score: null }
             };
@@ -387,6 +624,60 @@ async function runEnrichmentSuiter() {
             fs.writeFileSync(msmeFilePath, JSON.stringify(qpMasterMsme, null, 2), 'utf-8');
             console.log(`   💾 [MSME File Saved] ${msmeFilePath}`);
         }
+
+        // 3. Enrich Performance Criteria (PCs) for this QP
+        const pcs = await db.prepare(`
+            SELECT id, pc_code, pc_description, pc_intent, video_id, viva_quiz_json 
+            FROM nsqf_pcs 
+            WHERE qp_code = ? OR qp_code = ?
+            ORDER BY sequence_order ASC, id ASC
+        `).all(qpCode, cleanQp);
+
+        const qpRow = await db.prepare('SELECT * FROM nsqf_qps WHERE qp_code = ?').get(qpCode) || { qp_code: qpCode };
+        let pcsEnrichedCount = 0;
+
+        for (const pc of pcs) {
+            if (!isForce && pc.viva_quiz_json) continue;
+
+            const quiz = generateVivaQuiz(pc.pc_description || pc.pc_intent, qpRow.sector, pc.pc_code);
+            const takeaways = generateStudyTakeaways(pc.pc_description || pc.pc_intent, qpRow.sector);
+            const startSec = 45;
+            const endSec = 135;
+
+            await db.prepare(`
+                UPDATE nsqf_pcs 
+                SET start_seconds = ?, end_seconds = ?, viva_quiz_json = ?, study_takeaways_json = ?
+                WHERE id = ?
+            `).run(startSec, endSec, JSON.stringify(quiz), JSON.stringify(takeaways), pc.id);
+            pcsEnrichedCount++;
+        }
+
+        // Update data/json/nsqf/${cleanQp}.json if it exists on disk
+        const nsqfJsonDir = path.join(__dirname, '..', 'data', 'json', 'nsqf');
+        const nsqfFilePath = path.join(nsqfJsonDir, `${cleanQp}.json`);
+        if (fs.existsSync(nsqfFilePath)) {
+            try {
+                const nsqfAst = JSON.parse(fs.readFileSync(nsqfFilePath, 'utf-8'));
+                if (Array.isArray(nsqfAst.nos_units)) {
+                    for (const nos of nsqfAst.nos_units) {
+                        if (Array.isArray(nos.performance_criteria)) {
+                            nos.performance_criteria = nos.performance_criteria.map(pc => ({
+                                ...pc,
+                                video_clip: generateVideoClipBounds(pc.description || pc.intent, pc.video_id),
+                                viva_quiz: generateVivaQuiz(pc.description || pc.intent, qpRow.sector, pc.pc_id || pc.code),
+                                study_takeaways: generateStudyTakeaways(pc.description || pc.intent, qpRow.sector)
+                            }));
+                        }
+                    }
+                    fs.writeFileSync(nsqfFilePath, JSON.stringify(nsqfAst, null, 2), 'utf-8');
+                    console.log(`   💾 [NSQF AST File Enriched] ${nsqfFilePath}`);
+                }
+            } catch (err) {
+                console.warn(`   ⚠️ Could not enrich NSQF AST file ${nsqfFilePath}:`, err.message);
+            }
+        }
+
+        console.log(`   🎓 [PCs Enriched: ${pcsEnrichedCount}] (Timestamps, Viva Quizzes, Study Notes)`);
     }
 
     console.log(`\n🎉 Enrichment Complete! Enriched SOPs: ${sopsEnriched} | Enriched MSME DPRs: ${msmesEnriched}`);
