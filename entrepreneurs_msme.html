@@ -110,50 +110,124 @@
     .inspector-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); }
     .inspector-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-    .inspector-tabs {
-      display: flex; border-bottom: 1px solid var(--border-color); background: #FFFFFF;
+    .inspector-content { padding: 18px; display: flex; flex-direction: column; gap: 16px; flex: 1; overflow-y: auto; }
+
+    /* Executive Snapshot Cards */
+    .dpr-snapshot-container {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px; padding: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 10px;
     }
-    .inspector-tab {
-      flex: 1; padding: 10px 8px; font-size: 12.5px; font-weight: 600; text-align: center; color: var(--text-muted);
-      border: none; background: transparent; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s;
+    .dpr-snapshot-header {
+      display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; padding-bottom: 8px;
     }
-    .inspector-tab.active {
-      color: var(--primary-color); border-bottom-color: var(--primary-color); font-weight: 700; background: rgba(30, 108, 147, 0.03);
+    .dpr-snapshot-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--primary-color); }
+    .dpr-snapshot-scheme { font-size: 11px; font-weight: 700; background: #ECFDF5; color: #047857; padding: 2px 8px; border-radius: 12px; }
+
+    .dpr-snapshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .dpr-snap-card {
+      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 8px 10px;
+      display: flex; flex-direction: column; gap: 2px;
     }
+    .dpr-snap-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .dpr-snap-val { font-size: 13px; font-weight: 800; color: var(--text-main); font-family: var(--font-heading); }
 
-    .inspector-content { padding: 20px; display: flex; flex-direction: column; gap: 16px; flex: 1; overflow-y: auto; }
-
-    .bom-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-    .bom-table th { text-align: left; padding: 8px 10px; background: #F8FAFC; color: var(--text-muted); font-size: 11px; text-transform: uppercase; border-bottom: 1px solid var(--border-color); }
-    .bom-table td { padding: 8px 10px; border-bottom: 1px solid #F1F5F9; color: var(--text-main); }
-
-    .sop-step-card {
-      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;
+    /* TOC Header & Controls */
+    .dpr-toc-bar {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 4px;
     }
-    .sop-step-title { font-size: 12px; font-weight: 700; color: var(--primary-color); }
-    .sop-step-desc { font-size: 11.5px; color: var(--text-muted); }
+    .dpr-toc-title { font-family: var(--font-heading); font-size: 13px; font-weight: 800; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
+    .dpr-toc-actions { display: flex; gap: 6px; }
+    .btn-toc-action {
+      background: #F1F5F9; border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 8px;
+      font-size: 11px; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+    }
+    .btn-toc-action:hover { background: var(--primary-light); color: var(--primary-color); border-color: var(--primary-color); }
 
-    .loan-stat-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .stat-card { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 2px; }
-    .stat-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .stat-val { font-size: 14px; font-weight: 700; color: var(--text-main); font-family: var(--font-heading); }
+    /* 9-Chapter Accordion Hierarchy */
+    .dpr-chapters-list { display: flex; flex-direction: column; gap: 10px; }
+    .chapter-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: border-color 0.2s;
+    }
+    .chapter-card:hover { border-color: #CBD5E1; }
+    .chapter-header {
+      padding: 10px 14px; background: #FAFAFA; display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; user-select: none; border-bottom: 1px solid transparent; transition: background 0.15s;
+    }
+    .chapter-card.open .chapter-header {
+      background: #F1F5F9; border-bottom-color: var(--border-color);
+    }
+    .chapter-header-left { display: flex; align-items: center; gap: 8px; flex: 1; padding-right: 8px; }
+    .chapter-num-badge {
+      font-size: 10px; font-weight: 800; color: #FFFFFF; background: var(--primary-color);
+      padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); flex-shrink: 0;
+    }
+    .chapter-title-text { font-size: 12.5px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+    .chapter-chevron { font-size: 10px; font-weight: 700; color: var(--text-muted); transition: transform 0.2s; }
+    .chapter-card.open .chapter-chevron { transform: rotate(180deg); }
 
+    .chapter-body {
+      padding: 14px; display: none; flex-direction: column; gap: 12px; font-size: 12px; line-height: 1.5; color: var(--text-main);
+    }
+    .chapter-card.open .chapter-body { display: flex; }
+
+    /* Sub-section Blocks */
+    .sec-block { display: flex; flex-direction: column; gap: 4px; }
+    .sec-header { font-size: 11.5px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+    .sec-num { font-family: var(--font-mono); font-weight: 800; color: var(--text-muted); }
+    .sec-text { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+
+    /* Tables and Component Cards */
+    .bom-table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin-top: 4px; }
+    .bom-table th { text-align: left; padding: 7px 8px; background: #F8FAFC; color: var(--text-muted); font-size: 10.5px; text-transform: uppercase; border-bottom: 1px solid var(--border-color); }
+    .bom-table td { padding: 7px 8px; border-bottom: 1px solid #F1F5F9; color: var(--text-main); }
+
+    .playbook-phase-card {
+      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 8px 10px;
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .playbook-phase-title { font-size: 11.5px; font-weight: 700; color: var(--primary-color); }
+    .playbook-phase-action { font-size: 11px; color: var(--text-muted); }
+
+    .fin-table-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+    .fin-stat-card {
+      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 6px; padding: 8px;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .fin-stat-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .fin-stat-val { font-size: 12.5px; font-weight: 800; color: var(--text-main); }
+
+    /* Action Buttons */
     .btn-download-kit {
-      background: var(--primary-color); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 10px;
-      border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
-      margin-top: auto; transition: background 0.2s;
+      background: var(--primary-color); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 12px;
+      border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 8px; transition: background 0.2s; box-shadow: 0 2px 4px rgba(30, 108, 147, 0.2);
     }
     .btn-download-kit:hover { background: var(--primary-hover); }
+
+    .btn-print-secondary {
+      background: #FFFFFF; color: var(--text-main); font-weight: 600; font-size: 12px; padding: 8px;
+      border-radius: 6px; border: 1px solid var(--border-color); cursor: pointer; text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s;
+    }
+    .btn-print-secondary:hover { background: #F8FAFC; border-color: var(--primary-color); color: var(--primary-color); }
 
     @media (max-width: 1024px) {
       .ide-container { flex-direction: column; }
       .panel-left, .panel-right { width: 100%; position: static; height: auto; }
     }
 
+    /* Print / PDF Export Optimization */
     @media print {
-      body { background: #fff; }
-      #site-header, #site-footer, .panel-left, .center-header, .blueprint-grid, .inspector-tabs { display: none !important; }
-      .panel-right { width: 100% !important; border: none !important; position: static !important; }
+      body { background: #fff !important; color: #000 !important; }
+      #site-header, #site-footer, .panel-left, .center-header, .blueprint-grid, .dpr-toc-actions, .ide-btn-icon, .btn-download-kit, .btn-print-secondary, #btnRestoreLeft {
+        display: none !important;
+      }
+      .ide-container { display: block !important; height: auto !important; max-height: none !important; }
+      .panel-right { width: 100% !important; border: none !important; position: static !important; height: auto !important; overflow: visible !important; padding: 0 !important; }
+      .chapter-card { border: 1px solid #ccc !important; page-break-inside: avoid; margin-bottom: 16px; }
+      .chapter-body { display: flex !important; }
+      .chapter-chevron { display: none !important; }
     }
   </style>
 </head>
@@ -209,13 +283,13 @@
       </div>
     </main>
 
-    <!-- RIGHT PANEL: Blueprint & DPR Inspector -->
+    <!-- RIGHT PANEL: 9-Chapter Corporate Business Plan & Bankable DPR Dossier -->
     <aside class="panel-right" id="blueprintInspector">
       <div class="inspector-header">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
           <div>
             <div class="inspector-title" id="inspTitle">Small Business Plan</div>
-            <div class="inspector-subtitle" id="inspSub">Select a business opportunity card to see machines to buy, launch plan, and bank loan details.</div>
+            <div class="inspector-subtitle" id="inspSub">Select a business opportunity card to generate an official 9-chapter Bankable Project Report (DPR).</div>
           </div>
           <div class="inspector-actions-bar">
             <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore View (Esc)">⤢</button>
@@ -223,82 +297,374 @@
         </div>
       </div>
 
-      <div class="inspector-tabs">
-        <button class="inspector-tab active" onclick="switchMsmeTab('bom', this)">🛠️ Machines to Buy</button>
-        <button class="inspector-tab" onclick="switchMsmeTab('playbook', this)">📋 4-Step Plan</button>
-        <button class="inspector-tab" onclick="switchMsmeTab('loan', this)">🏦 Bank Loan Report</button>
-      </div>
-
       <div class="inspector-content" id="inspContent">
-        <!-- Tab 1: Tool & Machinery BOM -->
-        <div id="tab-bom" style="display: flex; flex-direction: column; gap: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-              Machines &amp; Tools Needed
-            </span>
-            <span style="font-size: 12px; font-weight: 800; color: #047857;" id="totalCapexBadge">Total Cost: ₹ 1,19,000</span>
+        
+        <!-- Executive Snapshot Bar -->
+        <div class="dpr-snapshot-container">
+          <div class="dpr-snapshot-header">
+            <span class="dpr-snapshot-title">📊 Executive Financial Snapshot</span>
+            <span class="dpr-snapshot-scheme" id="snapScheme">PMEGP / Mudra 35% Subsidy</span>
           </div>
-
-          <table class="bom-table">
-            <thead>
-              <tr>
-                <th>Machine &amp; Purpose</th>
-                <th>Qty</th>
-                <th>Est. Price</th>
-              </tr>
-            </thead>
-            <tbody id="bomTableBody">
-              <!-- Rendered dynamically -->
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Tab 2: Day-1 Playbook -->
-        <div id="tab-playbook" style="display: none; flex-direction: column; gap: 10px;">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            4-Step Business Launch Plan
-          </div>
-          <div id="playbookList" style="display: flex; flex-direction: column; gap: 8px;">
-            <!-- Rendered dynamically -->
-          </div>
-        </div>
-
-        <!-- Tab 3: Bankable Project Profile (PMEGP / Mudra DPR) -->
-        <div id="tab-loan" style="display: none; flex-direction: column; gap: 12px;">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Bank Loan Summary (PMEGP / Mudra)
-          </div>
-          <div class="loan-stat-box" id="dprStatBox">
-            <div class="stat-card">
-              <div class="stat-label">Total Setup Cost</div>
-              <div class="stat-val" id="statCost">₹ 1,79,500</div>
+          <div class="dpr-snapshot-grid">
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Total Setup Capex</span>
+              <span class="dpr-snap-val" id="snapCapex" style="color:var(--primary-color);">₹ 1,50,000</span>
             </div>
-            <div class="stat-card">
-              <div class="stat-label">Your Share (5%)</div>
-              <div class="stat-val" id="statMargin">₹ 8,975</div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Promoter Margin (5%)</span>
+              <span class="dpr-snap-val" id="snapMargin">₹ 7,500</span>
             </div>
-            <div class="stat-card">
-              <div class="stat-label">Bank Loan Amount</div>
-              <div class="stat-val" id="statLoan">₹ 1,07,700</div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Bank Term Loan (60%)</span>
+              <span class="dpr-snap-val" id="snapLoan">₹ 90,000</span>
             </div>
-            <div class="stat-card">
-              <div class="stat-label">Govt. Subsidy (35%)</div>
-              <div class="stat-val" id="statSubsidy">₹ 62,825</div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Govt Subsidy (35%)</span>
+              <span class="dpr-snap-val" id="snapSubsidy" style="color:#047857;">₹ 52,500</span>
             </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-label">Bank Health Score</div>
-            <div class="stat-val" style="color: #047857;" id="statDscr">High Approval Chance (2.85x)</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Estimated Monthly Profit</div>
-            <div class="stat-val" style="color: #0284C7;" id="statProfit">₹ 36,000 / month</div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Bank DSCR Score</span>
+              <span class="dpr-snap-val" id="snapDscr" style="color:#047857; font-size:12px;">2.85x (Bank Sound)</span>
+            </div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Est. Monthly Profit</span>
+              <span class="dpr-snap-val" id="snapProfit" style="color:#0284C7; font-size:12px;">₹ 28,000 / mo</span>
+            </div>
           </div>
         </div>
 
-        <button class="btn-download-kit" onclick="downloadBankReport()">
-          📥 Download Bank Loan Project Report (.PDF)
-        </button>
+        <!-- Table of Contents Control Bar -->
+        <div class="dpr-toc-bar">
+          <div class="dpr-toc-title">📑 Project Report (9 Chapters)</div>
+          <div class="dpr-toc-actions">
+            <button class="btn-toc-action" onclick="expandAllChapters()">Expand All</button>
+            <button class="btn-toc-action" onclick="collapseAllChapters()">Collapse All</button>
+          </div>
+        </div>
+
+        <!-- 9-Chapter Collapsible Accordion List -->
+        <div class="dpr-chapters-list">
+
+          <!-- CHAPTER 1: Executive Summary -->
+          <div class="chapter-card open" id="ch-1">
+            <div class="chapter-header" onclick="toggleChapter('ch-1')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">01</span>
+                <span class="chapter-title-text">Executive Summary</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch1-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.1</span> Company Profile &amp; Vision</div>
+                <div class="sec-text" id="sec11-text">Turnkey commercial enterprise establishment designed to provide high-demand vocational services and manufacturing solutions.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.2</span> Problem Statement &amp; Value Proposition</div>
+                <div class="sec-text" id="sec12-text">Addresses acute local market shortages for certified, standardized technical services with transparent pricing and fast turnaround.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.3</span> Target Market &amp; Competitive Edge</div>
+                <div class="sec-text" id="sec13-text">Serving local retail consumers, SME workshops, and commercial fleets utilizing certified NCVET NSQF occupational toolkits.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.4</span> Funding Ask &amp; Financial Highlights</div>
+                <div class="sec-text" id="sec14-text">Total Project Cost: <strong id="ch1-cost">₹ 1,50,000</strong>. Bank Loan required: <strong id="ch1-loan">₹ 90,000</strong> under PMEGP scheme with <strong id="ch1-dscr">2.85x DSCR</strong>.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 2: Business & Industry Overview -->
+          <div class="chapter-card" id="ch-2">
+            <div class="chapter-header" onclick="toggleChapter('ch-2')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">02</span>
+                <span class="chapter-title-text">Business &amp; Industry Overview</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch2-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.1</span> Mission &amp; Core Values</div>
+                <div class="sec-text" id="sec21-text">Deliver reliable, precision technical services adhering to national quality benchmarks with sustainable profitability.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.2</span> Business Model &amp; Revenue Streams</div>
+                <div class="sec-text" id="sec22-text">Dual revenue generation via direct commercial job execution, scheduled maintenance contracts (AMC), and replacement component sales.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.3</span> Industry Analysis &amp; Growth Trends</div>
+                <div class="sec-text" id="sec23-text">Expanding Indian manufacturing and decentralized service sectors driven by Make-in-India and Skill India infrastructure push.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.4</span> Legal Structure &amp; Udyam Registration</div>
+                <div class="sec-text" id="sec24-text">Proposed structure: Sole Proprietorship / Micro-Enterprise under MSME Ministry with mandatory Udyam Registration, GST, and Local Trade License.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 3: Products & Services -->
+          <div class="chapter-card" id="ch-3">
+            <div class="chapter-header" onclick="toggleChapter('ch-3')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">03</span>
+                <span class="chapter-title-text">Products &amp; Services</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch3-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">3.1</span> Description of Commercial Offerings</div>
+                <div class="sec-text" id="sec31-text">End-to-end technical execution and precision maintenance based on NCVET Occupational Standard specifications.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">3.2</span> Key Features, Benefits, &amp; USPs</div>
+                <div class="sec-text" id="sec32-text">100% adherence to manufacturer calibration tolerances, rapid local availability, and computerized job testing reports.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">3.3</span> Quality &amp; Safety Standards</div>
+                <div class="sec-text" id="sec33-text">Conforms to NSQF Level competency guidelines and ISO 9001 quality audit requirements.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">3.4</span> Future Expansion Roadmap</div>
+                <div class="sec-text" id="sec34-text">Phase 2 scaling to multi-workstation capacity and automated digital booking within 18 months of commercial launch.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 4: Market Analysis & Strategy -->
+          <div class="chapter-card" id="ch-4">
+            <div class="chapter-header" onclick="toggleChapter('ch-4')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">04</span>
+                <span class="chapter-title-text">Market Analysis &amp; Strategy</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch4-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">4.1</span> Target Customer Personas</div>
+                <div class="sec-text" id="sec41-text">Local industrial units, commercial workshops, residential consumers, and institutional clients within 15 km radius.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">4.2</span> Market Catchment &amp; Sizing</div>
+                <div class="sec-text" id="sec42-text">Estimated accessible local market size of 1,200+ customer accounts with recurring quarterly service demand.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">4.3</span> Competitive Advantage</div>
+                <div class="sec-text" id="sec43-text">Specialized tooling infrastructure offering 30% faster turnaround than unorganized local providers.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">4.4</span> Sales &amp; Customer Acquisition Channels</div>
+                <div class="sec-text" id="sec44-text">Direct B2B outreach to local industrial clusters, Google Business Profile listings, and local dealer tie-ups.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">4.5</span> Pricing Strategy</div>
+                <div class="sec-text" id="sec45-text">Transparent cost-plus pricing model with modular tiered packages for one-time service and annual contracts.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 5: Operations & Machinery Plan (OPEN BY DEFAULT) -->
+          <div class="chapter-card open" id="ch-5">
+            <div class="chapter-header" onclick="toggleChapter('ch-5')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">05</span>
+                <span class="chapter-title-text">Operations &amp; Machinery Plan</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch5-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">5.1</span> Location, Space &amp; Utility Requirements</div>
+                <div class="sec-text" id="sec51-text">Floor Space Required: <strong id="ch5-space">150 Sq Ft</strong> • Power Load: <strong id="ch5-power">2 kW Single Phase</strong> • Commercial/Industrial Zone.</div>
+              </div>
+
+              <!-- Machinery & Equipment BOM Table -->
+              <div class="sec-block">
+                <div class="sec-header" style="justify-content: space-between;">
+                  <div><span class="sec-num">5.2</span> Machinery, Tools &amp; Equipment BOM</div>
+                  <span id="ch5-bom-total" style="font-size:11px; font-weight:800; color:var(--primary-color);">Total: ₹ 1,19,000</span>
+                </div>
+                <table class="bom-table">
+                  <thead>
+                    <tr>
+                      <th>Machine / Equipment</th>
+                      <th>Qty</th>
+                      <th>Est. Price</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bomTableBody">
+                    <!-- Loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 4-Phase Production Workflow -->
+              <div class="sec-block" style="margin-top: 4px;">
+                <div class="sec-header"><span class="sec-num">5.3</span> 4-Phase Operational Launch Playbook</div>
+                <div id="playbookList" style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
+                  <!-- Loaded dynamically -->
+                </div>
+              </div>
+
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">5.4</span> Supply Chain &amp; Spare Parts Sourcing</div>
+                <div class="sec-text" id="sec54-text">Authorized OEM component distributors and certified regional hardware wholesalers.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 6: Management & Organizational Structure -->
+          <div class="chapter-card" id="ch-6">
+            <div class="chapter-header" onclick="toggleChapter('ch-6')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">06</span>
+                <span class="chapter-title-text">Management &amp; Staffing</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch6-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">6.1</span> Key Leadership &amp; Promoter Role</div>
+                <div class="sec-text" id="sec61-text">Promoter-led operations overseeing business development, customer delivery, and bank compliance.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">6.2</span> Technical Competencies &amp; Skill Level</div>
+                <div class="sec-text" id="sec62-text">Lead technician certified in NSQF Level 4 Qualification Pack with verified performance criteria mastery.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">6.3</span> Staffing Plan &amp; Monthly Wages</div>
+                <div class="sec-text" id="sec63-text">Initial team: 1 Lead Technician + 1 Helper/Apprentice (Estimated Monthly Wage Budget: ₹ 22,000).</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 7: Financial Projections & Analysis (OPEN BY DEFAULT) -->
+          <div class="chapter-card open" id="ch-7">
+            <div class="chapter-header" onclick="toggleChapter('ch-7')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">07</span>
+                <span class="chapter-title-text">Financial Projections &amp; Bank Ratios</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch7-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">7.1</span> Total Project Cost &amp; Means of Finance</div>
+                <div class="fin-table-grid">
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Total Project Cost</span>
+                    <span class="fin-stat-val" id="finStatCost">₹ 1,50,000</span>
+                  </div>
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Promoter Equity (5%)</span>
+                    <span class="fin-stat-val" id="finStatMargin">₹ 7,500</span>
+                  </div>
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Bank Term Loan</span>
+                    <span class="fin-stat-val" id="finStatLoan">₹ 90,000</span>
+                  </div>
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Govt Subsidy (PMEGP)</span>
+                    <span class="fin-stat-val" id="finStatSubsidy" style="color:#047857;">₹ 52,500</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">7.2</span> Pro Forma Cash Flow &amp; Monthly EBITDA</div>
+                <div class="fin-table-grid">
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Projected Monthly Revenue</span>
+                    <span class="fin-stat-val" id="finStatRev" style="color:#0284C7;">₹ 65,000</span>
+                  </div>
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Net Monthly Profit (EBITDA)</span>
+                    <span class="fin-stat-val" id="finStatProfit" style="color:#047857;">₹ 28,000</span>
+                  </div>
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Debt Service Coverage (DSCR)</span>
+                    <span class="fin-stat-val" id="finStatDscr" style="color:#047857;">2.85x (High)</span>
+                  </div>
+                  <div class="fin-stat-card">
+                    <span class="fin-stat-label">Capital Payback Period</span>
+                    <span class="fin-stat-val" id="finStatPayback">5.5 Months</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">7.3</span> Break-Even Capacity &amp; Bank Viability</div>
+                <div class="sec-text">Break-even capacity estimated at <strong>38% operational utilization</strong>, establishing robust financial safety margins for debt repayment.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 8: Risk Analysis & Mitigation -->
+          <div class="chapter-card" id="ch-8">
+            <div class="chapter-header" onclick="toggleChapter('ch-8')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">08</span>
+                <span class="chapter-title-text">Risk Analysis &amp; Mitigation</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch8-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">8.1</span> Operational &amp; Equipment Risks</div>
+                <div class="sec-text" id="sec81-text">Mitigated through mandatory annual maintenance contracts (AMC), voltage stabilization, and scheduled tool calibration.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">8.2</span> Market Demand &amp; Price Risks</div>
+                <div class="sec-text" id="sec82-text">Diversified client portfolio spanning retail, SME, and institutional contracts to ensure steady baseline cash flow.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">8.3</span> Workplace Safety &amp; Legal Compliance</div>
+                <div class="sec-text" id="sec83-text">Strict adherence to statutory safety equipment (PPE), standard earthing, fire extinguisher provisioning, and commercial liability insurance.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAPTER 9: Appendices & Supporting Documentation -->
+          <div class="chapter-card" id="ch-9">
+            <div class="chapter-header" onclick="toggleChapter('ch-9')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">09</span>
+                <span class="chapter-title-text">Appendices &amp; Formal Documentation</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body" id="ch9-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">9.1</span> National Skill Framework Alignment</div>
+                <div class="sec-text" id="sec91-text">Certified against NCVET National Qualification Pack standard curricula and examination rubrics.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">9.2</span> Machinery Vendor Quotations</div>
+                <div class="sec-text" id="sec92-text">Standard GST invoice quotations with warranty certifications attached for bank submission.</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">9.3</span> Statutory Bank Checklist</div>
+                <div class="sec-text" id="sec93-text">Includes PAN Card, Aadhaar Card, Udyam Registration, Land Rent Agreement, 6-Month Bank Statements, and PMEGP/Mudra Application Form.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+          <button class="btn-download-kit" onclick="downloadBankReport()">
+            📥 Download Bank Loan Project Report (.PDF)
+          </button>
+          <button class="btn-print-secondary" onclick="window.print()">
+            🖨️ Print Full 9-Chapter Dossier
+          </button>
+        </div>
+
       </div>
     </aside>
 
@@ -414,54 +780,147 @@
         if (data.success && data.blueprint) {
           currentBlueprint = data.blueprint;
           const bp = data.blueprint;
-
-          document.getElementById('inspTitle').innerText = bp.business_title;
-          document.getElementById('inspSub').innerText = `NOS: ${data.nos_code} • Sector: ${data.sector} • ${bp.business_model_type || 'Micro-Enterprise'}`;
-          document.getElementById('totalCapexBadge').innerText = `Project Cost: ₹ ${(bp.total_project_cost_inr || 150000).toLocaleString('en-IN')}`;
-
-          // Tab 1: Tool BOM
-          const bomTable = document.getElementById('bomTableBody');
-          bomTable.innerHTML = (bp.tool_bom || []).map(t => `
-            <tr>
-              <td>
-                <strong style="color:var(--text-main); font-size:12px;">${t.name}</strong>
-                <div style="font-size:11px; color:var(--text-muted);">${t.spec || ''}</div>
-              </td>
-              <td style="font-weight:700;">${t.qty || 1}</td>
-              <td style="font-weight:700; color:var(--primary-color);">₹ ${(t.cost || 0).toLocaleString('en-IN')}</td>
-            </tr>
-          `).join('');
-
-          // Tab 2: Day-1 Playbook
-          const playbookList = document.getElementById('playbookList');
-          playbookList.innerHTML = (bp.day1_playbook || []).map(p => `
-            <div class="sop-step-card">
-              <div class="sop-step-title">${p.phase}</div>
-              <div class="sop-step-desc">${p.action}</div>
-            </div>
-          `).join('');
-
-          // Tab 3: Bank DPR
           const dpr = bp.financial_dpr || {};
-          document.getElementById('statCost').innerText = `₹ ${(dpr.total_project_cost || bp.total_project_cost_inr || 150000).toLocaleString('en-IN')}`;
-          document.getElementById('statMargin').innerText = `₹ ${(dpr.promoter_contribution_inr || 7500).toLocaleString('en-IN')} (${dpr.promoter_contribution_pct || 5}%)`;
-          document.getElementById('statLoan').innerText = `₹ ${(dpr.bank_term_loan_inr || 90000).toLocaleString('en-IN')}`;
-          document.getElementById('statSubsidy').innerText = `₹ ${(dpr.govt_subsidy_inr || 52500).toLocaleString('en-IN')} (${dpr.govt_subsidy_pct || 35}%)`;
-          document.getElementById('statDscr').innerText = dpr.dscr_ratio || '2.85x (Bank Sound)';
-          document.getElementById('statProfit').innerText = `₹ ${(dpr.monthly_net_profit_ebitda || 35000).toLocaleString('en-IN')} / month`;
+
+          const cost = dpr.total_project_cost || bp.total_project_cost_inr || 150000;
+          const margin = dpr.promoter_contribution_inr || Math.round(cost * 0.05);
+          const marginPct = dpr.promoter_contribution_pct || 5;
+          const loan = dpr.bank_term_loan_inr || Math.round(cost * 0.60);
+          const subsidy = dpr.govt_subsidy_inr || Math.round(cost * 0.35);
+          const subsidyPct = dpr.govt_subsidy_pct || 35;
+          const rev = dpr.monthly_projected_revenue || Math.round(cost * 0.45);
+          const profit = dpr.monthly_net_profit_ebitda || Math.round(cost * 0.20);
+          const dscr = dpr.dscr_ratio || '2.85x';
+          const payback = dpr.payback_period_months || 5.5;
+          const space = bp.space_sqft || 150;
+          const power = bp.power_req || '2 kW Single Phase';
+          const clients = (bp.target_clients && bp.target_clients.length > 0) 
+            ? bp.target_clients.join(', ') 
+            : 'Local consumers, SME workshops, institutional accounts, and commercial fleets';
+
+          // Top Inspector Header
+          document.getElementById('inspTitle').innerText = bp.business_title || `Turnkey ${data.nos_title} Unit`;
+          document.getElementById('inspSub').innerText = `NOS: ${data.nos_code} • Sector: ${data.sector} • NSQF Level ${data.nsqf_level || '4'}`;
+
+          // Snapshot Bar
+          document.getElementById('snapScheme').innerText = `${dpr.scheme || 'PMEGP / Mudra'} (${subsidyPct}% Subsidy)`;
+          document.getElementById('snapCapex').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
+          document.getElementById('snapMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (${marginPct}%)`;
+          document.getElementById('snapLoan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
+          document.getElementById('snapSubsidy').innerText = `₹ ${subsidy.toLocaleString('en-IN')}`;
+          document.getElementById('snapDscr').innerText = `${dscr} (Bank Sound)`;
+          document.getElementById('snapProfit').innerText = `₹ ${profit.toLocaleString('en-IN')} / mo`;
+
+          // Chapter 1: Executive Summary
+          document.getElementById('sec11-text').innerText = `Establishment of a standardized ${bp.business_title || data.nos_title} micro-enterprise in ${data.sector} under ${bp.business_model_type || 'Turnkey Service Model'}.`;
+          document.getElementById('sec12-text').innerText = `Provides precision, NCVET-compliant technical services and production to resolve persistent regional shortages of certified ${data.sector} workmanship.`;
+          document.getElementById('sec13-text').innerText = `Serving ${clients} utilizing standardized commercial apparatus and certified testing protocols.`;
+          document.getElementById('ch1-cost').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
+          document.getElementById('ch1-loan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
+          document.getElementById('ch1-dscr').innerText = `${dscr} DSCR`;
+
+          // Chapter 2: Business & Industry Overview
+          document.getElementById('sec21-text').innerText = `To deliver dependable, precision ${data.nos_title} solutions with high operational safety, transparent billing, and zero customer downtime.`;
+          document.getElementById('sec22-text').innerText = `Direct unit job execution, preventive maintenance contracts (AMC), and OEM component supply with a projected monthly turnover of ₹ ${rev.toLocaleString('en-IN')}.`;
+          document.getElementById('sec23-text').innerText = `Strong growth trajectory in ${data.sector} sector supported by government MSME prioritization, Make-in-India mandates, and national skill infrastructure.`;
+
+          // Chapter 3: Products & Services
+          document.getElementById('sec31-text').innerText = `Commercial execution of ${data.nos_title} specifications, testing calibrations, diagnostics, and repairs conforming to national standards.`;
+          document.getElementById('sec32-text').innerText = `Standardized digital testing logs, verified manufacturer tolerance adherence, and rapid local turnaround within 24-48 hours.`;
+          document.getElementById('sec33-text').innerText = `Fully mapped to NCVET NSQF Level ${data.nsqf_level || '4'} Qualification Pack standards (${data.qp_code}).`;
+
+          // Chapter 4: Market Analysis
+          document.getElementById('sec41-text').innerText = `Target customer profile: ${clients} located within an immediate 15–20 km operational catchment radius.`;
+          document.getElementById('sec44-text').innerText = `Direct B2B institutional outreach, verified Google Business Profile local search presence, and partnership tie-ups with regional ${data.sector} equipment dealers.`;
+
+          // Chapter 5: Operations & Machinery Plan
+          document.getElementById('ch5-space').innerText = `${space} Sq Ft`;
+          document.getElementById('ch5-power').innerText = power;
+          document.getElementById('ch5-bom-total').innerText = `Total Equipment Capex: ₹ ${cost.toLocaleString('en-IN')}`;
+
+          // Tool BOM Table
+          const bomTable = document.getElementById('bomTableBody');
+          const tools = bp.tool_bom || [];
+          if (tools.length > 0) {
+            bomTable.innerHTML = tools.map(t => `
+              <tr>
+                <td>
+                  <strong style="color:var(--text-main); font-size:11.5px;">${t.name}</strong>
+                  <div style="font-size:10.5px; color:var(--text-muted);">${t.spec || 'Standard Specification'}</div>
+                </td>
+                <td style="font-weight:700; text-align:center;">${t.qty || 1}</td>
+                <td style="font-weight:700; color:var(--primary-color);">₹ ${(t.cost || 0).toLocaleString('en-IN')}</td>
+              </tr>
+            `).join('');
+          } else {
+            bomTable.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:12px; color:var(--text-muted);">Standard turnkey apparatus kit pre-configured.</td></tr>`;
+          }
+
+          // 4-Phase Playbook
+          const playbookList = document.getElementById('playbookList');
+          const playbook = bp.day1_playbook || [];
+          if (playbook.length > 0) {
+            playbookList.innerHTML = playbook.map(p => `
+              <div class="playbook-phase-card">
+                <div class="playbook-phase-title">${p.phase}</div>
+                <div class="playbook-phase-action">${p.action}</div>
+              </div>
+            `).join('');
+          } else {
+            playbookList.innerHTML = `
+              <div class="playbook-phase-card">
+                <div class="playbook-phase-title">Phase 1: Site Setup & Utility Wiring</div>
+                <div class="playbook-phase-action">Prepare ${space} sq ft commercial workshop with ${power} power connection and safety earthing.</div>
+              </div>
+              <div class="playbook-phase-card">
+                <div class="playbook-phase-title">Phase 2: Machinery Procurement & Calibration</div>
+                <div class="playbook-phase-action">Procure certified tool BOM apparatus and execute initial calibration tests.</div>
+              </div>
+              <div class="playbook-phase-card">
+                <div class="playbook-phase-title">Phase 3: Pilot Test Operations</div>
+                <div class="playbook-phase-action">Conduct test job runs according to NCVET NSQF Level ${data.nsqf_level || '4'} quality standards.</div>
+              </div>
+              <div class="playbook-phase-card">
+                <div class="playbook-phase-title">Phase 4: Commercial Launch & Client Acquisition</div>
+                <div class="playbook-phase-action">Initiate commercial service delivery and activate local B2B dealer channels.</div>
+              </div>
+            `;
+          }
+
+          // Chapter 6: Management & Staffing
+          document.getElementById('sec62-text').innerText = `Certified against NCVET NSQF Level ${data.nsqf_level || '4'} benchmarks for ${data.nos_title}.`;
+
+          // Chapter 7: Financial Projections
+          document.getElementById('finStatCost').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
+          document.getElementById('finStatMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (${marginPct}%)`;
+          document.getElementById('finStatLoan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
+          document.getElementById('finStatSubsidy').innerText = `₹ ${subsidy.toLocaleString('en-IN')} (${subsidyPct}%)`;
+          document.getElementById('finStatRev').innerText = `₹ ${rev.toLocaleString('en-IN')} / mo`;
+          document.getElementById('finStatProfit').innerText = `₹ ${profit.toLocaleString('en-IN')} / mo`;
+          document.getElementById('finStatDscr').innerText = `${dscr} (High Approval)`;
+          document.getElementById('finStatPayback').innerText = `${payback} Months`;
+
+          // Chapter 9: Appendices
+          document.getElementById('sec91-text').innerText = `Full qualification syllabus, Knowledge Units (KU), and Skill Units (GS) verified under QP Code: ${data.qp_code || 'NCVET Standard'}.`;
         }
       } catch (err) {
         console.error('Error inspecting MSME card:', err);
       }
     }
 
-    function switchMsmeTab(tabId, tabBtn) {
-      document.querySelectorAll('.inspector-tab').forEach(t => t.classList.remove('active'));
-      if (tabBtn) tabBtn.classList.add('active');
+    function toggleChapter(chapterId) {
+      const card = document.getElementById(chapterId);
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
 
-      document.getElementById('tab-bom').style.display = tabId === 'bom' ? 'flex' : 'none';
-      document.getElementById('tab-playbook').style.display = tabId === 'playbook' ? 'flex' : 'none';
-      document.getElementById('tab-loan').style.display = tabId === 'loan' ? 'flex' : 'none';
+    function expandAllChapters() {
+      document.querySelectorAll('.chapter-card').forEach(card => card.classList.add('open'));
+    }
+
+    function collapseAllChapters() {
+      document.querySelectorAll('.chapter-card').forEach(card => card.classList.remove('open'));
     }
 
     function filterBySector(sector, itemEl) {
@@ -483,10 +942,13 @@
 
     function downloadBankReport() {
       if (!currentBlueprint) {
-        alert('Please select an MSME business opportunity first.');
+        alert('Please select a business opportunity card first.');
         return;
       }
-      window.print();
+      expandAllChapters();
+      setTimeout(() => {
+        window.print();
+      }, 250);
     }
   </script>
 </body>
