@@ -20,7 +20,15 @@ const fs   = require('fs');
 const path = require('path');
 const db   = require('../server/db');
 
-const SARVAM_API_KEY = process.env.SARVAM_API_KEY || '';
+const NSQF_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'nsqf');
+const JSON_DIR        = fs.existsSync(NSQF_JSON_DIR) ? NSQF_JSON_DIR : path.join(__dirname, '..', 'data', 'json');
+const MSME_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'msme');
+const SARVAM_API_KEY  = process.env.SARVAM_API_KEY || '';
+
+// Ensure output directories exist
+if (!fs.existsSync(MSME_JSON_DIR)) {
+    fs.mkdirSync(MSME_JSON_DIR, { recursive: true });
+}
 
 // ── Video Guidance Generators for MSME Machinery & Business Pitch Videos ─────
 
@@ -299,7 +307,7 @@ async function processNos(nosRow, qpRow, force = false) {
         WHERE id = ?
     `).run(blueprint.business_model_type, JSON.stringify(blueprint), nosRow.id);
 
-    return { status: 'success', nos_code: nosRow.nos_code, title: blueprint.business_title, capex: blueprint.total_project_cost_inr };
+    return { status: 'success', nos_code: nosRow.nos_code, title: blueprint.business_title, capex: blueprint.total_project_cost_inr, blueprint };
 }
 
 // ── Main Runner ───────────────────────────────────────────────────────────────
@@ -345,16 +353,52 @@ async function runMsmeSynthesizer() {
     let totalProcessed = 0;
     let totalSuccess = 0;
 
+    // Group NOS units by QP to write master QP MSME files
+    const qpGroupMap = new Map();
     for (const nos of targetNosList) {
-        const qpRow = await db.prepare('SELECT * FROM nsqf_qps WHERE qp_code = ?').get(nos.qp_code) || { qp_code: nos.qp_code };
-        const result = await processNos(nos, qpRow, force);
-        totalProcessed++;
+        const qpCode = nos.qp_code;
+        if (!qpGroupMap.has(qpCode)) qpGroupMap.set(qpCode, []);
+        qpGroupMap.get(qpCode).push(nos);
+    }
 
-        if (result.status === 'success') {
-            totalSuccess++;
-            console.log(`   ✅ [${nos.nos_code}] ${result.title} (Capex: ₹${result.capex.toLocaleString('en-IN')})`);
-        } else if (result.status === 'skipped') {
-            console.log(`   ⏩ [${nos.nos_code}] Already synthesized (skipped)`);
+    for (const [qpCode, nosUnits] of qpGroupMap.entries()) {
+        const qpRow = await db.prepare('SELECT * FROM nsqf_qps WHERE qp_code = ?').get(qpCode) || { qp_code: qpCode };
+        console.log(`\n📦 Processing QP: ${qpCode} (${nosUnits.length} NOS units)`);
+        const qpBlueprints = [];
+
+        for (const nos of nosUnits) {
+            const result = await processNos(nos, qpRow, force);
+            totalProcessed++;
+
+            if (result.status === 'success') {
+                totalSuccess++;
+                console.log(`   ✅ [${nos.nos_code}] ${result.title} (Capex: ₹${result.capex.toLocaleString('en-IN')})`);
+                if (result.blueprint) qpBlueprints.push(result.blueprint);
+            } else if (result.status === 'skipped') {
+                console.log(`   ⏩ [${nos.nos_code}] Already synthesized (skipped)`);
+                if (nos.msme_blueprint_json) {
+                    const parsed = typeof nos.msme_blueprint_json === 'string' ? JSON.parse(nos.msme_blueprint_json) : nos.msme_blueprint_json;
+                    qpBlueprints.push(parsed);
+                }
+            }
+        }
+
+        // 💾 Save Master QP MSME File to disk: data/json/msme/${cleanCode}.json
+        if (qpBlueprints.length > 0) {
+            const cleanCode = qpCode.replace(/\//g, '_');
+            const msmeFilePath = path.join(MSME_JSON_DIR, `${cleanCode}.json`);
+            const qpMasterMsme = {
+                qp_code: qpCode,
+                qp_name: qpRow.qp_name || qpCode,
+                sector: qpRow.sector || 'General',
+                nsqf_level: qpRow.nsqf_level || '4',
+                total_blueprints: qpBlueprints.length,
+                blueprints: qpBlueprints,
+                generated_at: new Date().toISOString(),
+                generated_by: 'HAYAGRIVA MSME Economic Intelligence Engine'
+            };
+            fs.writeFileSync(msmeFilePath, JSON.stringify(qpMasterMsme, null, 2), 'utf-8');
+            console.log(`   💾 [File Saved] ${msmeFilePath}`);
         }
     }
 

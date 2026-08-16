@@ -25,7 +25,7 @@ const fs   = require('fs');
 const path = require('path');
 
 const MD_DIR          = path.join(__dirname, '..', 'data', 'md');
-const JSON_DIR        = path.join(__dirname, '..', 'data', 'json');
+const JSON_DIR        = path.join(__dirname, '..', 'data', 'json', 'nsqf');
 const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.md2json_checkpoint.json');
 
 // Ensure output directory exists

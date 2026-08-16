@@ -28,7 +28,12 @@ const fs   = require('fs');
 const path = require('path');
 const db   = require('../server/db');
 
-const SARVAM_API_KEY = process.env.SARVAM_API_KEY || '';
+const SOP_JSON_DIR    = path.join(__dirname, '..', 'data', 'json', 'sop');
+const MSME_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'msme');
+const SARVAM_API_KEY  = process.env.SARVAM_API_KEY || '';
+
+if (!fs.existsSync(SOP_JSON_DIR)) fs.mkdirSync(SOP_JSON_DIR, { recursive: true });
+if (!fs.existsSync(MSME_JSON_DIR)) fs.mkdirSync(MSME_JSON_DIR, { recursive: true });
 
 // ── 1. Sector-Calibrated OEM Brand & Procurement Intelligence ─────────────────
 const SECTOR_OEM_INTELLIGENCE = {
@@ -316,14 +321,34 @@ async function runEnrichmentSuiter() {
             WHERE (qp_code = ? OR qp_code = ?) AND sop_procedure_json IS NOT NULL
         `).all(qpCode, cleanQp);
 
+        const enrichedSopModules = [];
         for (const mod of modules) {
             const raw = typeof mod.sop_procedure_json === 'string' ? JSON.parse(mod.sop_procedure_json) : mod.sop_procedure_json;
-            if (!isForce && raw.enriched_by) continue;
+            const enriched = (!isForce && raw.enriched_by) ? raw : enrichSopJson(raw);
+            if (isForce || !raw.enriched_by) {
+                await db.prepare('UPDATE nsqf_modules SET sop_procedure_json = ? WHERE id = ?').run(JSON.stringify(enriched), mod.id);
+                sopsEnriched++;
+                console.log(`   🏭 [SOP Mod ${mod.id}] Enriched: ${enriched.sop_title || mod.module_title}`);
+            }
+            enrichedSopModules.push(enriched);
+        }
 
-            const enriched = enrichSopJson(raw);
-            await db.prepare('UPDATE nsqf_modules SET sop_procedure_json = ? WHERE id = ?').run(JSON.stringify(enriched), mod.id);
-            sopsEnriched++;
-            console.log(`   🏭 [SOP Mod ${mod.id}] Enriched: ${enriched.sop_title || mod.module_title}`);
+        // Write enriched master SOP file to disk
+        if (enrichedSopModules.length > 0) {
+            const sopFilePath = path.join(SOP_JSON_DIR, `${cleanQp}.json`);
+            const qpRow = await db.prepare('SELECT * FROM nsqf_qps WHERE qp_code = ?').get(qpCode) || { qp_code: qpCode };
+            const qpMasterSop = {
+                qp_code: qpCode,
+                qp_name: qpRow.qp_name || qpCode,
+                sector: qpRow.sector || 'General Industry',
+                nsqf_level: qpRow.nsqf_level || '4',
+                total_workstations: enrichedSopModules.length,
+                workstations: enrichedSopModules,
+                enriched_at: new Date().toISOString(),
+                enriched_by: 'HAYAGRIVA LLM Suiter & Domain Intelligence Engine'
+            };
+            fs.writeFileSync(sopFilePath, JSON.stringify(qpMasterSop, null, 2), 'utf-8');
+            console.log(`   💾 [SOP File Saved] ${sopFilePath}`);
         }
 
         // 2. Enrich MSME Blueprints for this QP
@@ -333,14 +358,34 @@ async function runEnrichmentSuiter() {
             WHERE (qp_code = ? OR qp_code = ?) AND msme_blueprint_json IS NOT NULL
         `).all(qpCode, cleanQp);
 
+        const enrichedMsmeBlueprints = [];
         for (const nos of nosList) {
             const raw = typeof nos.msme_blueprint_json === 'string' ? JSON.parse(nos.msme_blueprint_json) : nos.msme_blueprint_json;
-            if (!isForce && raw.enriched_by) continue;
+            const enriched = (!isForce && raw.enriched_by) ? raw : enrichMsmeJson(raw);
+            if (isForce || !raw.enriched_by) {
+                await db.prepare('UPDATE nsqf_nos SET msme_blueprint_json = ? WHERE id = ?').run(JSON.stringify(enriched), nos.id);
+                msmesEnriched++;
+                console.log(`   🚀 [MSME NOS ${nos.nos_code}] Enriched: ${enriched.business_title || nos.nos_code}`);
+            }
+            enrichedMsmeBlueprints.push(enriched);
+        }
 
-            const enriched = enrichMsmeJson(raw);
-            await db.prepare('UPDATE nsqf_nos SET msme_blueprint_json = ? WHERE id = ?').run(JSON.stringify(enriched), nos.id);
-            msmesEnriched++;
-            console.log(`   🚀 [MSME NOS ${nos.nos_code}] Enriched: ${enriched.business_title || nos.nos_code}`);
+        // Write enriched master MSME file to disk
+        if (enrichedMsmeBlueprints.length > 0) {
+            const msmeFilePath = path.join(MSME_JSON_DIR, `${cleanQp}.json`);
+            const qpRow = await db.prepare('SELECT * FROM nsqf_qps WHERE qp_code = ?').get(qpCode) || { qp_code: qpCode };
+            const qpMasterMsme = {
+                qp_code: qpCode,
+                qp_name: qpRow.qp_name || qpCode,
+                sector: qpRow.sector || 'General',
+                nsqf_level: qpRow.nsqf_level || '4',
+                total_blueprints: enrichedMsmeBlueprints.length,
+                blueprints: enrichedMsmeBlueprints,
+                enriched_at: new Date().toISOString(),
+                enriched_by: 'HAYAGRIVA LLM Suiter & Economic Intelligence Engine'
+            };
+            fs.writeFileSync(msmeFilePath, JSON.stringify(qpMasterMsme, null, 2), 'utf-8');
+            console.log(`   💾 [MSME File Saved] ${msmeFilePath}`);
         }
     }
 

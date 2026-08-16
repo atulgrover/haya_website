@@ -18,9 +18,16 @@ const fs   = require('fs');
 const path = require('path');
 const db   = require('../server/db');
 
-const JSON_DIR        = path.join(__dirname, '..', 'data', 'json');
+const NSQF_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'nsqf');
+const JSON_DIR        = fs.existsSync(NSQF_JSON_DIR) ? NSQF_JSON_DIR : path.join(__dirname, '..', 'data', 'json');
+const SOP_JSON_DIR    = path.join(__dirname, '..', 'data', 'json', 'sop');
 const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.sop_checkpoint.json');
 const SARVAM_API_KEY  = process.env.SARVAM_API_KEY || '';
+
+// Ensure output directories exist
+if (!fs.existsSync(SOP_JSON_DIR)) {
+    fs.mkdirSync(SOP_JSON_DIR, { recursive: true });
+}
 
 // ── Sector PPE & Hazard Templates ─────────────────────────────────────────────
 const SECTOR_SAFETY_DEFAULTS = {
@@ -353,7 +360,7 @@ async function processModule(moduleRow, qpRow, nosRow, force = false) {
         WHERE id = ?
     `).run(JSON.stringify(sop), moduleRow.id);
 
-    return { status: 'success', id: moduleRow.id, title: sop.sop_title };
+    return { status: 'success', id: moduleRow.id, title: sop.sop_title, sop };
 }
 
 // ── Main Runner ───────────────────────────────────────────────────────────────
@@ -407,6 +414,7 @@ async function runSopSynthesizer() {
         const modules = await db.prepare('SELECT * FROM nsqf_modules WHERE qp_code = ? ORDER BY sequence_order ASC').all(qpCode);
 
         console.log(`\n📦 Processing QP: ${qpCode} (${modules.length} modules)`);
+        const qpSopModules = [];
 
         for (const mod of modules) {
             const nosRow = await db.prepare('SELECT * FROM nsqf_nos WHERE qp_code = ? AND nos_code = ?').get(qpCode, mod.nos_code);
@@ -416,11 +424,34 @@ async function runSopSynthesizer() {
             if (result.status === 'success') {
                 totalSuccess++;
                 console.log(`   ✅ [Mod ${mod.id}] ${result.title}`);
+                if (result.sop) qpSopModules.push(result.sop);
             } else if (result.status === 'skipped') {
                 console.log(`   ⏩ [Mod ${mod.id}] Already synthesized (skipped)`);
+                if (mod.sop_procedure_json) {
+                    const parsed = typeof mod.sop_procedure_json === 'string' ? JSON.parse(mod.sop_procedure_json) : mod.sop_procedure_json;
+                    qpSopModules.push(parsed);
+                }
             } else {
                 console.log(`   ⚠️ [Mod ${mod.id}] Skipped (no child PCs found)`);
             }
+        }
+
+        // 💾 Save Master QP SOP File to disk: data/json/sop/${cleanCode}.json
+        if (qpSopModules.length > 0) {
+            const cleanCode = qpCode.replace(/\//g, '_');
+            const sopFilePath = path.join(SOP_JSON_DIR, `${cleanCode}.json`);
+            const qpMasterSop = {
+                qp_code: qpCode,
+                qp_name: qpRow.qp_name || qpCode,
+                sector: qpRow.sector || 'General Industry',
+                nsqf_level: qpRow.nsqf_level || '4',
+                total_workstations: qpSopModules.length,
+                workstations: qpSopModules,
+                generated_at: new Date().toISOString(),
+                generated_by: 'HAYAGRIVA Industrial SOP Engine'
+            };
+            fs.writeFileSync(sopFilePath, JSON.stringify(qpMasterSop, null, 2), 'utf-8');
+            console.log(`   💾 [File Saved] ${sopFilePath}`);
         }
     }
 

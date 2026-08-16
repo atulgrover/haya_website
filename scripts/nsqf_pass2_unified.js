@@ -29,7 +29,8 @@ const fs   = require('fs');
 const path = require('path');
 const db   = require('../server/db');
 
-const JSON_DIR        = path.join(__dirname, '..', 'data', 'json');
+const NSQF_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'nsqf');
+const JSON_DIR        = fs.existsSync(NSQF_JSON_DIR) ? NSQF_JSON_DIR : path.join(__dirname, '..', 'data', 'json');
 const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.pass2_checkpoint.json');
 const SARVAM_API_KEY  = process.env.SARVAM_API_KEY || '';
 

@@ -1,0 +1,2089 @@
+{
+  "qp_code": "NIE/ELE/Q0803",
+  "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+  "sector": "Electronics",
+  "nsqf_level": "3.0",
+  "total_workstations": 10,
+  "workstations": [
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M5",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0815",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Implementation of Repair & Maintenance Project",
+      "sop_title": "Standard Operating Procedure: Implementation of Repair & Maintenance Project",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:20:03.354Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Implementation of Repair & Maintenance Project",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Implementation of Repair & Maintenance Project",
+        "search_query": "Implementation of Repair & Maintenance Project Electronics standard operating procedure worksho",
+        "tool_keywords": "implementation of repair & maintenance project, standard inspection & measurement kit",
+        "search_query_hi": "Implementation of Repair & Maintenance Project Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Implementation of Repair & Maintenance Project workstation procedure demonstration",
+          "tier2_trade_vector": "Implementation of Repair & Maintenance Project standard operating procedure workshop demonstrat",
+          "tier3_hinglish_vector": "Implementation of Repair & Maintenance Project SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Implementation of Repair & Maintenance Project in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-05",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Implementation of Repair & Maintenance Project",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Disassemble And Reassemble Smartphones Using Appropriate Tools.",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Dismantle and reassemble smartphones using appropriate tools."
+        },
+        {
+          "step_title": "Replace Faulty Components Like Screens, Batteries, And Motherboards.",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Replace faulty components like screens, batteries, and motherboards."
+        },
+        {
+          "step_title": "Apply Proper Soldering And Desoldering Techniques When Required.",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Apply proper soldering and desoldering techniques when required."
+        },
+        {
+          "step_title": "Follow ESD (Electrostatic Discharge) Safety Measures During Repair.",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Follow ESD (Electrostatic Discharge) safety measures during repair."
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.925Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M7",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0810",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Foundations of Mobile Phones Technology",
+      "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:20:17.665Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Elements and Performance Criteria",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Elements and Performance Criteria",
+        "search_query": "Elements and Performance Criteria Electronics standard operating procedure workshop demonstrati",
+        "tool_keywords": "elements and performance criteria, standard inspection & measurement kit",
+        "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
+          "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-07",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Elements and Performance Criteria",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Define Explain Concepts Electricity Circuits Voltage Current Resistance",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Define and explain the concepts of electricity, circuits, voltage, current, and resistance."
+        },
+        {
+          "step_title": "Identify Describe Functions Capacitors Resistors Transistors Electronic",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and describe the functions of capacitors, resistors, and transistors in electronic"
+        },
+        {
+          "step_title": "Trace Historical Development Mobile Phones Overview Generations Mobile",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Trace the historical development of mobile phones and Overview of Generations of Mobile"
+        },
+        {
+          "step_title": "Types Mobile Phones Feature Phones Smartphones Desribe Operating",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Types of Mobile Phones: Feature Phones, Smartphones and desribe the Operating Systems:"
+        },
+        {
+          "step_title": "Identify Describe Internal Components Mobile Phone Including Battery",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and describe the internal components of a mobile phone, including the battery,"
+        },
+        {
+          "step_title": "Identify Basic Tools Used In Mobile Phone Repair",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Recognize basic tools used in mobile phone repair"
+        },
+        {
+          "step_title": "Importance Electrostatic Discharge Protection Safe Handling Tools Equipment",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Importance of Electrostatic Discharge Protection and Safe Handling of Tools and Equipment"
+        },
+        {
+          "step_title": "Establish Maintain Safe Work Environment Conducive Effective Efficient",
+          "step_number": 8,
+          "derived_from_pc": "PC8.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Establish and maintain a safe work environment conducive to effective and efficient repair"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.928Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M11",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0812",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Software Repair",
+      "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:20:45.499Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Elements and Performance Criteria",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Elements and Performance Criteria",
+        "search_query": "Elements and Performance Criteria Electronics standard operating procedure workshop demonstrati",
+        "tool_keywords": "elements and performance criteria, standard inspection & measurement kit",
+        "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
+          "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-011",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Elements and Performance Criteria",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "A Thorough Understanding Basics Android Ios Operating Systems",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Demonstrate a thorough understanding of the basics of Android and iOS operating systems."
+        },
+        {
+          "step_title": "Effectively Manage System Settings Applications File Systems Both",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Effectively manage system settings, applications, and file systems on both Android and iOS"
+        },
+        {
+          "step_title": "Apply Techniques Flashing Roms Rooting Android Phones",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Apply techniques for flashing ROMs and rooting Android phones."
+        },
+        {
+          "step_title": "Evaluate Articulate Risks Benefits Associated Flashing Rooting Ensuring",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Evaluate and articulate the risks and benefits associated with flashing and rooting, ensuring"
+        },
+        {
+          "step_title": "Utilize Effective Techniques Recover Data From Damaged Formatted",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Utilize effective techniques to recover data from damaged or formatted phones and Employ"
+        },
+        {
+          "step_title": "Identify And Remove Malware And Viruses From Smartphones.",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and remove malware and viruses from smartphones."
+        },
+        {
+          "step_title": "Implement Secure Practices Installing Apps Updates Safeguard Device",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Implement secure practices for installing apps and updates to safeguard device security and"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.931Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M13",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0813",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Advanced Repair and Business Skills",
+      "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:20:58.758Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Elements and Performance Criteria",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Elements and Performance Criteria",
+        "search_query": "Elements and Performance Criteria Electronics standard operating procedure workshop demonstrati",
+        "tool_keywords": "elements and performance criteria, standard inspection & measurement kit",
+        "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
+          "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-013",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Elements and Performance Criteria",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Identify Diagnose Intricate Phone Issues Apply Appropriate Troubleshooting",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Identify and diagnose intricate phone issues and apply appropriate troubleshooting"
+        },
+        {
+          "step_title": "Interpret Read Schematics Component Diagrams Accurately Utilize Schematics",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Interpret and read schematics and component diagrams accurately and utilize schematics to"
+        },
+        {
+          "step_title": "Plan Establish Mobile Phone Repair Shop Implement Effective",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Plan and establish a mobile phone repair shop and Implement effective management"
+        },
+        {
+          "step_title": "Develop And Execute Marketing Strategies To Attract Customers.",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Develop and execute marketing strategies to attract customers."
+        },
+        {
+          "step_title": "Manage Financial Aspects Including Budgeting Accounting Financial Planning",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Manage financial aspects, including budgeting, accounting, and financial planning and"
+        },
+        {
+          "step_title": "Uphold Principles Honesty Data Privacy Ensure Customer Satisfaction",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Uphold principles of honesty and data privacy and ensure of customer satisfaction."
+        },
+        {
+          "step_title": "Maintain Integrity In All Business Operations And Interactions.",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Maintain integrity in all business operations and interactions."
+        },
+        {
+          "step_title": "Explore Various Job Opportunities Within Mobile Phone Repair",
+          "step_number": 8,
+          "derived_from_pc": "PC8.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Explore various job opportunities within the mobile phone repair industry."
+        },
+        {
+          "step_title": "Develop Business Plan Starting Managing Mobile Phone Repair",
+          "step_number": 9,
+          "derived_from_pc": "PC9.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Develop a business plan for starting and managing a mobile phone repair business."
+        },
+        {
+          "step_title": "And Comply Relevant Government Initiatives Policies Mobile",
+          "step_number": 10,
+          "derived_from_pc": "PC10.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Understand and comply with relevant government initiatives and policies in the mobile"
+        },
+        {
+          "step_title": "Approach Concerned Authorities Exploitation Legal Rights Laws",
+          "step_number": 11,
+          "derived_from_pc": "PC11.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "approach the concerned authorities for any exploitation as per legal rights and laws"
+        },
+        {
+          "step_title": "Operate Digital Devices Use Features Applications Securely Safely",
+          "step_number": 12,
+          "derived_from_pc": "PC12.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "operate digital devices and use its features and applications securely and safely"
+        },
+        {
+          "step_title": "Use Internet Social Media Platforms Securely Safely",
+          "step_number": 13,
+          "derived_from_pc": "PC13.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "use internet and social media platforms securely and safely"
+        },
+        {
+          "step_title": "Identify And Assess Opportunities For Potential Business",
+          "step_number": 14,
+          "derived_from_pc": "PC14.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify and assess opportunities for potential business"
+        },
+        {
+          "step_title": "Identify Sources Arranging Money Associated Financial Legal Challenges",
+          "step_number": 15,
+          "derived_from_pc": "PC15.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify sources for arranging money and associated financial and legal challenges"
+        },
+        {
+          "step_title": "Identify Different Types Of Customers",
+          "step_number": 16,
+          "derived_from_pc": "PC16.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify different types of customers"
+        },
+        {
+          "step_title": "Identify Customer Needs And Address Them Appropriately",
+          "step_number": 17,
+          "derived_from_pc": "PC17.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify customer needs and address them appropriately"
+        },
+        {
+          "step_title": "Follow Appropriate Hygiene And Grooming Standards",
+          "step_number": 18,
+          "derived_from_pc": "PC18.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "follow appropriate hygiene and grooming standards"
+        },
+        {
+          "step_title": "Create Basic Biodata",
+          "step_number": 19,
+          "derived_from_pc": "PC19.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "create a basic biodata"
+        },
+        {
+          "step_title": "Search For Suitable Jobs And Apply",
+          "step_number": 20,
+          "derived_from_pc": "PC20.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "search for suitable jobs and apply"
+        },
+        {
+          "step_title": "Identify And Register Apprenticeship Opportunities As Per Requirement",
+          "step_number": 21,
+          "derived_from_pc": "PC21.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify and register apprenticeship opportunities as per requirement"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.934Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M2",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0811",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Smartphone Hardware Repair",
+      "sop_title": "Standard Operating Procedure: Smartphone Hardware Repair",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:19:24.102Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Smartphone Hardware Repair",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Smartphone Hardware Repair",
+        "search_query": "Smartphone Hardware Repair Electronics standard operating procedure workshop demonstration",
+        "tool_keywords": "smartphone hardware repair, standard inspection & measurement kit",
+        "search_query_hi": "Smartphone Hardware Repair Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Smartphone Hardware Repair workstation procedure demonstration",
+          "tier2_trade_vector": "Smartphone Hardware Repair standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Smartphone Hardware Repair SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Smartphone Hardware Repair in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-02",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Smartphone Hardware Repair",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Identify Diagnose Common Smartphone Problems Including Charging Issues",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Identify and diagnose common smartphone problems, including charging issues, display"
+        },
+        {
+          "step_title": "Use Diagnostic Tools Conduct Visual Inspections Pinpoint Faults",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Use diagnostic tools and conduct visual inspections to pinpoint faults and issues in"
+        },
+        {
+          "step_title": "Safe Disassembly Assembly Techniques Smartphones Avoid Damage",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Demonstrate safe disassembly and assembly techniques for smartphones to avoid damage to"
+        },
+        {
+          "step_title": "Disassembly And Reassembly Processes For Various Phone Models,",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Understand and apply disassembly and reassembly processes for various phone models,"
+        },
+        {
+          "step_title": "Replace Common Smartphone Components Displays Batteries Charging Ports",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Replace common smartphone components such as displays, batteries, charging ports,"
+        },
+        {
+          "step_title": "Utilize Soldering Desoldering Techniques Effectively Component Replacement Ensuring",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Utilize soldering and desoldering techniques effectively for component replacement, ensuring"
+        },
+        {
+          "step_title": "The Basic Circuitry Smartphones Including Function Layout Key",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Understand the basic circuitry of smartphones, including the function and layout of key"
+        },
+        {
+          "step_title": "Identify Diagnose Faulty Components Within Smartphone Circuits Using",
+          "step_number": 8,
+          "derived_from_pc": "PC8.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and diagnose faulty components within smartphone circuits using multimeters and"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.937Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M3",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0812",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Software Repair",
+      "sop_title": "Standard Operating Procedure: Software Repair",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:19:37.761Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Software Repair",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Software Repair",
+        "search_query": "Software Repair Electronics standard operating procedure workshop demonstration",
+        "tool_keywords": "software repair, standard inspection & measurement kit",
+        "search_query_hi": "Software Repair Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Software Repair workstation procedure demonstration",
+          "tier2_trade_vector": "Software Repair standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Software Repair SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Software Repair in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-03",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Software Repair",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "A Thorough Understanding Basics Android Ios Operating Systems",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Demonstrate a thorough understanding of the basics of Android and iOS operating systems."
+        },
+        {
+          "step_title": "Effectively Manage System Settings Applications File Systems Both",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Effectively manage system settings, applications, and file systems on both Android and iOS"
+        },
+        {
+          "step_title": "Apply Techniques Flashing Roms Rooting Android Phones",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Apply techniques for flashing ROMs and rooting Android phones."
+        },
+        {
+          "step_title": "Evaluate Articulate Risks Benefits Associated Flashing Rooting Ensuring",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Evaluate and articulate the risks and benefits associated with flashing and rooting, ensuring"
+        },
+        {
+          "step_title": "Utilize Effective Techniques Recover Data From Damaged Formatted",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Utilize effective techniques to recover data from damaged or formatted phones and Employ"
+        },
+        {
+          "step_title": "Identify And Remove Malware And Viruses From Smartphones.",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and remove malware and viruses from smartphones."
+        },
+        {
+          "step_title": "Implement Secure Practices Installing Apps Updates Safeguard Device",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Implement secure practices for installing apps and updates to safeguard device security and"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.940Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M1",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0810",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Foundations of Mobile Phones Technology",
+      "sop_title": "Standard Operating Procedure: Foundations of Mobile Phones Technology",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:19:09.600Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Foundations of Mobile Phones Technology",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Foundations of Mobile Phones Technology",
+        "search_query": "Foundations of Mobile Phones Technology Electronics standard operating procedure workshop demon",
+        "tool_keywords": "foundations of mobile phones technology, standard inspection & measurement kit",
+        "search_query_hi": "Foundations of Mobile Phones Technology Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Foundations of Mobile Phones Technology workstation procedure demonstration",
+          "tier2_trade_vector": "Foundations of Mobile Phones Technology standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Foundations of Mobile Phones Technology SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Foundations of Mobile Phones Technology in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-01",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Foundations of Mobile Phones Technology",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Define Explain Concepts Electricity Circuits Voltage Current Resistance",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Define and explain the concepts of electricity, circuits, voltage, current, and resistance."
+        },
+        {
+          "step_title": "Identify Describe Functions Capacitors Resistors Transistors Electronic",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and describe the functions of capacitors, resistors, and transistors in electronic"
+        },
+        {
+          "step_title": "Trace Historical Development Mobile Phones Overview Generations Mobile",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Trace the historical development of mobile phones and Overview of Generations of Mobile"
+        },
+        {
+          "step_title": "Types Mobile Phones Feature Phones Smartphones Desribe Operating",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Types of Mobile Phones: Feature Phones, Smartphones and desribe the Operating Systems:"
+        },
+        {
+          "step_title": "Identify Describe Internal Components Mobile Phone Including Battery",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and describe the internal components of a mobile phone, including the battery,"
+        },
+        {
+          "step_title": "Identify Basic Tools Used In Mobile Phone Repair",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Recognize basic tools used in mobile phone repair"
+        },
+        {
+          "step_title": "Importance Electrostatic Discharge Protection Safe Handling Tools Equipment",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Importance of Electrostatic Discharge Protection and Safe Handling of Tools and Equipment"
+        },
+        {
+          "step_title": "Establish Maintain Safe Work Environment Conducive Effective Efficient",
+          "step_number": 8,
+          "derived_from_pc": "PC8.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Establish and maintain a safe work environment conducive to effective and efficient repair"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.944Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M4",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0813",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Advanced Repair and Business Skills",
+      "sop_title": "Standard Operating Procedure: Advanced Repair and Business Skills",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:19:50.174Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Advanced Repair and Business Skills",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Advanced Repair and Business Skills",
+        "search_query": "Advanced Repair and Business Skills Electronics standard operating procedure workshop demonstra",
+        "tool_keywords": "advanced repair and business skills, standard inspection & measurement kit",
+        "search_query_hi": "Advanced Repair and Business Skills Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Advanced Repair and Business Skills workstation procedure demonstration",
+          "tier2_trade_vector": "Advanced Repair and Business Skills standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Advanced Repair and Business Skills SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Advanced Repair and Business Skills in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-04",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Advanced Repair and Business Skills",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Identify Diagnose Intricate Phone Issues Apply Appropriate Troubleshooting",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Identify and diagnose intricate phone issues and apply appropriate troubleshooting"
+        },
+        {
+          "step_title": "Interpret Read Schematics Component Diagrams Accurately Utilize Schematics",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Interpret and read schematics and component diagrams accurately and utilize schematics to"
+        },
+        {
+          "step_title": "Plan Establish Mobile Phone Repair Shop Implement Effective",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Plan and establish a mobile phone repair shop and Implement effective management"
+        },
+        {
+          "step_title": "Develop And Execute Marketing Strategies To Attract Customers.",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Develop and execute marketing strategies to attract customers."
+        },
+        {
+          "step_title": "Manage Financial Aspects Including Budgeting Accounting Financial Planning",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Manage financial aspects, including budgeting, accounting, and financial planning and"
+        },
+        {
+          "step_title": "Uphold Principles Honesty Data Privacy Ensure Customer Satisfaction",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Uphold principles of honesty and data privacy and ensure of customer satisfaction."
+        },
+        {
+          "step_title": "Maintain Integrity In All Business Operations And Interactions.",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Maintain integrity in all business operations and interactions."
+        },
+        {
+          "step_title": "Explore Various Job Opportunities Within Mobile Phone Repair",
+          "step_number": 8,
+          "derived_from_pc": "PC8.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Explore various job opportunities within the mobile phone repair industry."
+        },
+        {
+          "step_title": "Develop Business Plan Starting Managing Mobile Phone Repair",
+          "step_number": 9,
+          "derived_from_pc": "PC9.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Develop a business plan for starting and managing a mobile phone repair business."
+        },
+        {
+          "step_title": "And Comply Relevant Government Initiatives Policies Mobile",
+          "step_number": 10,
+          "derived_from_pc": "PC10.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Understand and comply with relevant government initiatives and policies in the mobile"
+        },
+        {
+          "step_title": "Approach Concerned Authorities Exploitation Legal Rights Laws",
+          "step_number": 11,
+          "derived_from_pc": "PC11.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "approach the concerned authorities for any exploitation as per legal rights and laws"
+        },
+        {
+          "step_title": "Operate Digital Devices Use Features Applications Securely Safely",
+          "step_number": 12,
+          "derived_from_pc": "PC12.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "operate digital devices and use its features and applications securely and safely"
+        },
+        {
+          "step_title": "Use Internet Social Media Platforms Securely Safely",
+          "step_number": 13,
+          "derived_from_pc": "PC13.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "use internet and social media platforms securely and safely"
+        },
+        {
+          "step_title": "Identify And Assess Opportunities For Potential Business",
+          "step_number": 14,
+          "derived_from_pc": "PC14.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify and assess opportunities for potential business"
+        },
+        {
+          "step_title": "Identify Sources Arranging Money Associated Financial Legal Challenges",
+          "step_number": 15,
+          "derived_from_pc": "PC15.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify sources for arranging money and associated financial and legal challenges"
+        },
+        {
+          "step_title": "Identify Different Types Of Customers",
+          "step_number": 16,
+          "derived_from_pc": "PC16.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify different types of customers"
+        },
+        {
+          "step_title": "Identify Customer Needs And Address Them Appropriately",
+          "step_number": 17,
+          "derived_from_pc": "PC17.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify customer needs and address them appropriately"
+        },
+        {
+          "step_title": "Follow Appropriate Hygiene And Grooming Standards",
+          "step_number": 18,
+          "derived_from_pc": "PC18.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "follow appropriate hygiene and grooming standards"
+        },
+        {
+          "step_title": "Create Basic Biodata",
+          "step_number": 19,
+          "derived_from_pc": "PC19.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "create a basic biodata"
+        },
+        {
+          "step_title": "Search For Suitable Jobs And Apply",
+          "step_number": 20,
+          "derived_from_pc": "PC20.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "search for suitable jobs and apply"
+        },
+        {
+          "step_title": "Identify And Register Apprenticeship Opportunities As Per Requirement",
+          "step_number": 21,
+          "derived_from_pc": "PC21.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "identify and register apprenticeship opportunities as per requirement"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.947Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M9",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0811",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Smartphone Hardware Repair",
+      "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:20:31.433Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Elements and Performance Criteria",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Elements and Performance Criteria",
+        "search_query": "Elements and Performance Criteria Electronics standard operating procedure workshop demonstrati",
+        "tool_keywords": "elements and performance criteria, standard inspection & measurement kit",
+        "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
+          "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-09",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Elements and Performance Criteria",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Identify Diagnose Common Smartphone Problems Including Charging Issues",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Identify and diagnose common smartphone problems, including charging issues, display"
+        },
+        {
+          "step_title": "Use Diagnostic Tools Conduct Visual Inspections Pinpoint Faults",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Use diagnostic tools and conduct visual inspections to pinpoint faults and issues in"
+        },
+        {
+          "step_title": "Safe Disassembly Assembly Techniques Smartphones Avoid Damage",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Demonstrate safe disassembly and assembly techniques for smartphones to avoid damage to"
+        },
+        {
+          "step_title": "Disassembly And Reassembly Processes For Various Phone Models,",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Understand and apply disassembly and reassembly processes for various phone models,"
+        },
+        {
+          "step_title": "Replace Common Smartphone Components Displays Batteries Charging Ports",
+          "step_number": 5,
+          "derived_from_pc": "PC5.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Replace common smartphone components such as displays, batteries, charging ports,"
+        },
+        {
+          "step_title": "Utilize Soldering Desoldering Techniques Effectively Component Replacement Ensuring",
+          "step_number": 6,
+          "derived_from_pc": "PC6.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Utilize soldering and desoldering techniques effectively for component replacement, ensuring"
+        },
+        {
+          "step_title": "The Basic Circuitry Smartphones Including Function Layout Key",
+          "step_number": 7,
+          "derived_from_pc": "PC7.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Understand the basic circuitry of smartphones, including the function and layout of key"
+        },
+        {
+          "step_title": "Identify Diagnose Faulty Components Within Smartphone Circuits Using",
+          "step_number": 8,
+          "derived_from_pc": "PC8.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Identify and diagnose faulty components within smartphone circuits using multimeters and"
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.950Z"
+    },
+    {
+      "video": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "doc_id": "SOP-NIE-ELE-Q0803-M16",
+      "sector": "Electronics",
+      "qp_code": "NIE/ELE/Q0803",
+      "qp_name": "Repair and Maintenance Assistant \"Smart Phones\"",
+      "nos_code": "NIE/ELE/N0815",
+      "video_hi": {
+        "video_id": null,
+        "video_url": null,
+        "audit_score": null,
+        "video_title": null,
+        "thumbnail_url": null,
+        "duration_seconds": null
+      },
+      "nos_title": "Implementation of Repair & Maintenance Project",
+      "sop_title": "Standard Operating Procedure: Elements and Performance Criteria",
+      "nsqf_level": "3.0",
+      "generated_at": "2026-08-16T14:21:11.923Z",
+      "generated_by": "HAYAGRIVA Industrial SOP Engine",
+      "module_title": "Elements and Performance Criteria",
+      "iso_compliance": {
+        "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Conditions) & Clause 7.1.5 (Monitoring & Measuring Resources)",
+        "audit_frequency_days": 90,
+        "retention_period_years": 3
+      },
+      "safety_and_ppe": {
+        "hazard_level": "Medium (Thermal & Electrostatic Discharge)",
+        "mandatory_ppe": [
+          "ESD Grounded Wrist Strap (<1M Ohm)",
+          "Antiglare Safety Goggles",
+          "Heat-Resistant Silicone Mat (300°C Rated)"
+        ],
+        "hazard_warnings": [
+          "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "MANDATORY: Activate bench fume extractor before soldering to eliminate rosin fumes."
+        ]
+      },
+      "video_guidance": {
+        "intent": "Complete workstation SOP walkthrough for Elements and Performance Criteria",
+        "search_query": "Elements and Performance Criteria Electronics standard operating procedure workshop demonstrati",
+        "tool_keywords": "elements and performance criteria, standard inspection & measurement kit",
+        "search_query_hi": "Elements and Performance Criteria Electronics SOP कार्यशाला प्रदर्शन हिंदी",
+        "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard, compliance, training",
+        "negative_keywords": "-unboxing -review -shorts -gaming -reaction -haul -ASMR",
+        "max_duration_seconds": 1200,
+        "min_duration_seconds": 180,
+        "oem_brand_aliases": [
+          "Quick",
+          "Hakko",
+          "Fluke",
+          "Rigol"
+        ],
+        "multi_tier_queries": {
+          "tier1_brand_vector": "Quick Elements and Performance Criteria workstation procedure demonstration",
+          "tier2_trade_vector": "Elements and Performance Criteria standard operating procedure workshop demonstration",
+          "tier3_hinglish_vector": "Elements and Performance Criteria SOP प्रैक्टिकल कार्यशाला कैसे करें"
+        }
+      },
+      "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for Elements and Performance Criteria in compliance with NCVET NSQF Level 3.0 standards.",
+      "workstation_number": "WS-016",
+      "prerequisite_equipment": [
+        {
+          "name": "Workstation Apparatus for Elements and Performance Criteria",
+          "specification": "Calibrated industrial grade tooling",
+          "calibration_status": "Valid within 90 days"
+        },
+        {
+          "name": "Standard Inspection & Measurement Kit",
+          "specification": "Precision digital meter / gauge",
+          "calibration_status": "Pre-shift zero-checked"
+        }
+      ],
+      "sequential_execution_steps": [
+        {
+          "step_title": "Disassemble And Reassemble Smartphones Using Appropriate Tools.",
+          "step_number": 1,
+          "derived_from_pc": "PC1.",
+          "parameter_tolerance": "Verify 100% calibration / visual log adherence",
+          "critical_safety_note": "CAUTION: High thermal hazard during hot-air reflow. Do not touch heating nozzles.",
+          "imperative_action_directive": "Dismantle and reassemble smartphones using appropriate tools."
+        },
+        {
+          "step_title": "Replace Faulty Components Like Screens, Batteries, And Motherboards.",
+          "step_number": 2,
+          "derived_from_pc": "PC2.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Replace faulty components like screens, batteries, and motherboards."
+        },
+        {
+          "step_title": "Apply Proper Soldering And Desoldering Techniques When Required.",
+          "step_number": 3,
+          "derived_from_pc": "PC3.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Apply proper soldering and desoldering techniques when required."
+        },
+        {
+          "step_title": "Follow ESD (Electrostatic Discharge) Safety Measures During Repair.",
+          "step_number": 4,
+          "derived_from_pc": "PC4.",
+          "parameter_tolerance": "Perform operation within nominal engineering tolerances",
+          "critical_safety_note": "Maintain standard PPE during execution.",
+          "imperative_action_directive": "Follow ESD (Electrostatic Discharge) safety measures during repair."
+        }
+      ],
+      "quality_acceptance_criteria": [
+        "100% compliance with step checklist parameters with zero safety protocol violations.",
+        "Visual & functional pass confirmation recorded in manufacturing execution register."
+      ],
+      "troubleshooting_and_exception_handling": [
+        "If component or parameter drifts beyond tolerance, immediately halt operation and flag supervisor.",
+        "Log non-conformance ID and quarantine affected workpiece to containment station."
+      ],
+      "defect_taxonomy_and_containment": [
+        {
+          "code": "DEF-EL-01",
+          "name": "Cold Solder Joint / Poor Wetting",
+          "containment": "Quarantine workpiece to Red Bin; re-flow at 350°C with RMA rosin flux; verify 100% under 10x optics.",
+          "threshold": "2 consecutive occurrences triggers line stop"
+        },
+        {
+          "code": "DEF-EL-02",
+          "name": "ESD Damage / Gate Leakage",
+          "containment": "Halt work; test operator wristband (<1 MΩ); replace damaged IC; verify anti-static earth path.",
+          "threshold": "1 occurrence requires immediate station re-audit"
+        },
+        {
+          "code": "DEF-EL-03",
+          "name": "Solder Bridging / SMT Short",
+          "containment": "Apply copper desolder wick with mild flux; clear bridge; verify continuity with DMM.",
+          "threshold": "3 occurrences per batch triggers stencil check"
+        }
+      ],
+      "shift_handover_protocol": {
+        "pre_shift_safety_checks": [
+          "Inspect workstation ESD / earthing resistance log (<1.0 MΩ / <2.0 Ω).",
+          "Verify all mandatory PPE is present, undamaged, and correctly donned.",
+          "Perform zero-point calibration verification on all measuring instruments."
+        ],
+        "during_shift_controls": [
+          "Log parameter measurements every 2 hours in station execution sheet.",
+          "Immediately quarantine any out-of-spec workpiece to designated containment bin."
+        ],
+        "post_shift_signoff": {
+          "roles_required": [
+            "Station Operator",
+            "Line Quality Supervisor"
+          ],
+          "status_declaration": "Workstation cleaned, machine powered down to zero-energy state, defect log submitted."
+        }
+      },
+      "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine",
+      "enriched_at": "2026-08-16T14:31:20.953Z"
+    }
+  ],
+  "enriched_at": "2026-08-16T14:31:20.958Z",
+  "enriched_by": "HAYAGRIVA LLM Suiter & Domain Intelligence Engine"
+}
