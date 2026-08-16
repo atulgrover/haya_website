@@ -310,27 +310,26 @@
       background: var(--primary-hover);
     }
 
-    /* RIGHT PANEL: Detail Inspector (Pinned Sticky Sidebar) */
+    /* RIGHT PANEL: Detail Inspector — visibility managed by ide-docking.js */
     .panel-right {
       width: 400px;
       min-width: 320px;
       background: #FFFFFF;
       border-left: 1px solid var(--border-color);
-      padding: 20px;
       position: sticky;
       top: 64px;
       height: calc(100vh - 64px);
       overflow-y: auto;
-      display: none;
+      display: flex;
       flex-direction: column;
       gap: 16px;
       flex-shrink: 0;
       align-self: flex-start;
       z-index: 100;
     }
-
-    .panel-right.active {
-      display: flex;
+    /* Start collapsed — ide-docking.js will call openRightPanel() when a card is clicked */
+    .panel-right.collapsed {
+      display: none !important;
     }
 
     .inspector-header {
@@ -456,7 +455,7 @@
     </main>
 
     <!-- RIGHT PANEL: Micro-Learning Detail Inspector Drawer -->
-    <aside class="panel-right" id="panelRight">
+    <aside class="panel-right collapsed" id="panelRight">
       <div class="inspector-header">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
           <div>
