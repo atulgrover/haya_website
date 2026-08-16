@@ -51,21 +51,17 @@
 
     .filter-group { display: flex; flex-direction: column; gap: 6px; }
     .filter-label { font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .filter-input {
+    .filter-input, .filter-select {
       width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px;
-      font-size: 13px; font-family: var(--font-main); outline: none; transition: border-color 0.2s;
+      font-size: 13px; font-family: var(--font-main); outline: none; background: #FFFFFF; color: var(--text-main); transition: border-color 0.2s;
     }
-    .filter-input:focus { border-color: var(--primary-color); }
+    .filter-input:focus, .filter-select:focus { border-color: var(--primary-color); }
 
-    .sector-list { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
-    .sector-item {
-      display: flex; justify-content: space-between; align-items: center; padding: 7px 10px;
-      background: transparent; border-radius: 6px; border-left: 3px solid transparent;
-      font-size: 13px; font-weight: 500; color: var(--text-main); cursor: pointer; transition: all 0.15s ease;
+    .btn-reset {
+      background: #F1F5F9; border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 12px;
+      border-radius: 6px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     }
-    .sector-item:hover { background: rgba(30, 108, 147, 0.06); color: var(--primary-color); }
-    .sector-item.active { background: var(--primary-light); color: var(--primary-color); font-weight: 700; border-left-color: var(--primary-color); }
-    .sector-badge { background: #E2E8F0; color: #475569; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 10px; }
+    .btn-reset:hover { background: #E2E8F0; color: var(--text-main); }
 
     /* CENTER PANEL: MSME Trade Blueprint Cards */
     .panel-center {
@@ -244,24 +240,65 @@
       <span>▶</span> Show Industries (Cmd+B)
     </button>
 
-    <!-- LEFT PANEL: 41 Trade Sectors & Filter -->
+    <!-- LEFT PANEL: Structured Business Idea Filters -->
     <aside class="panel-left" id="panelLeft">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-        <h2 class="panel-title" style="margin-bottom: 0;">Industries</h2>
+        <h2 class="panel-title" style="margin-bottom: 0;">Find Business Ideas</h2>
         <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
       </div>
+
+      <!-- Keyword Search -->
       <div class="filter-group">
-        <label class="filter-label" for="searchTrade">Search Business Idea</label>
-        <input type="text" id="searchTrade" class="filter-input" placeholder="e.g. Solar, EV, Battery, Seed..." oninput="handleSearch()">
+        <label class="filter-label" for="searchTrade">Search Keyword</label>
+        <input type="text" id="searchTrade" class="filter-input" placeholder="e.g. Solar, EV, Battery, Seed..." oninput="handleCombinedFilter()">
       </div>
 
-      <div class="sector-list" id="sectorList">
-        <div class="sector-item active" onclick="filterBySector('all', this)">
-          <span>🌐 All Opportunities</span>
-          <span class="sector-badge" id="allCountBadge">11,420</span>
-        </div>
-        <!-- Loaded dynamically from /api/skillpedia/qps/sectors -->
+      <!-- 1. Industry Sector Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="selectSector">1. Industry Sector</label>
+        <select id="selectSector" class="filter-select" onchange="handleCombinedFilter()">
+          <option value="all">All 41 Industries</option>
+          <!-- Loaded dynamically -->
+        </select>
       </div>
+
+      <!-- 2. Investment Budget Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="selectBudget">2. Investment Budget (Capex)</label>
+        <select id="selectBudget" class="filter-select" onchange="handleCombinedFilter()">
+          <option value="all">All Investment Budgets</option>
+          <option value="under1">Under ₹ 1 Lakh (Micro-Kiosk)</option>
+          <option value="1to3">₹ 1 Lakh – ₹ 3 Lakhs (Small Workshop)</option>
+          <option value="3to5">₹ 3 Lakhs – ₹ 5 Lakhs (Semi-Automated)</option>
+          <option value="above5">₹ 5 Lakhs+ (Commercial Setup)</option>
+        </select>
+      </div>
+
+      <!-- 3. Business Model Type Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="selectModel">3. Business Model Type</label>
+        <select id="selectModel" class="filter-select" onchange="handleCombinedFilter()">
+          <option value="all">All Business Models</option>
+          <option value="service">Turnkey Service &amp; Maintenance Kiosk</option>
+          <option value="processing">Value-Add Processing &amp; Packaging</option>
+          <option value="assembly">Assembly &amp; Custom Fabrication</option>
+          <option value="retail">Retail Supply &amp; Dealership</option>
+        </select>
+      </div>
+
+      <!-- 4. Govt Subsidy Scheme Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="selectScheme">4. Govt Loan &amp; Subsidy Scheme</label>
+        <select id="selectScheme" class="filter-select" onchange="handleCombinedFilter()">
+          <option value="all">All Govt Schemes</option>
+          <option value="pmegp">PMEGP (Up to 35% Govt Subsidy)</option>
+          <option value="mudra">Mudra Shishu / Kishore Scheme</option>
+          <option value="msme">MSME Priority Sector Credit</option>
+        </select>
+      </div>
+
+      <!-- Reset Button -->
+      <button class="btn-reset" onclick="resetMsmeFilters()">Reset All Filters</button>
     </aside>
 
     <!-- CENTER PANEL: MSME Business Opportunity Cards -->
@@ -698,14 +735,9 @@
         const res = await fetch('/api/skillpedia/qps/sectors');
         const data = await res.json();
         if (data.success && data.sectors) {
-          const list = document.getElementById('sectorList');
-          data.sectors.forEach(sec => {
-            const item = document.createElement('div');
-            item.className = 'sector-item';
-            item.onclick = () => filterBySector(sec, item);
-            item.innerHTML = `<span>${sec}</span>`;
-            list.appendChild(item);
-          });
+          const select = document.getElementById('selectSector');
+          select.innerHTML = '<option value="all">All 41 Industries</option>' + 
+            data.sectors.map(sec => `<option value="${sec}">${sec}</option>`).join('');
         }
       } catch (err) {
         console.error('Error loading sectors:', err);
@@ -937,21 +969,48 @@
       document.querySelectorAll('.chapter-card').forEach(card => card.classList.remove('open'));
     }
 
-    function filterBySector(sector, itemEl) {
-      selectedSector = sector;
-      document.querySelectorAll('.sector-item').forEach(s => s.classList.remove('active'));
-      if (itemEl) itemEl.classList.add('active');
-      loadMsmeCards(sector);
+    async function handleCombinedFilter() {
+      const q = document.getElementById('searchTrade').value.toLowerCase().trim();
+      const sector = document.getElementById('selectSector').value;
+      const budget = document.getElementById('selectBudget').value;
+
+      if (sector !== selectedSector) {
+        selectedSector = sector;
+        await loadMsmeCards(sector);
+        return;
+      }
+
+      let filtered = allCards;
+      if (q) {
+        filtered = filtered.filter(c => 
+          (c.business_title && c.business_title.toLowerCase().includes(q)) ||
+          (c.nos_code && c.nos_code.toLowerCase().includes(q)) ||
+          (c.sector && c.sector.toLowerCase().includes(q))
+        );
+      }
+
+      if (budget !== 'all') {
+        filtered = filtered.filter(c => {
+          const cost = c.total_project_cost_inr || 150000;
+          if (budget === 'under1') return cost < 100000;
+          if (budget === '1to3') return cost >= 100000 && cost <= 300000;
+          if (budget === '3to5') return cost > 300000 && cost <= 500000;
+          if (budget === 'above5') return cost > 500000;
+          return true;
+        });
+      }
+
+      renderCards(filtered);
     }
 
-    function handleSearch() {
-      const q = document.getElementById('searchTrade').value.toLowerCase();
-      const filtered = allCards.filter(c => 
-        (c.business_title && c.business_title.toLowerCase().includes(q)) ||
-        (c.nos_code && c.nos_code.toLowerCase().includes(q)) ||
-        (c.sector && c.sector.toLowerCase().includes(q))
-      );
-      renderCards(filtered);
+    function resetMsmeFilters() {
+      document.getElementById('searchTrade').value = '';
+      document.getElementById('selectSector').value = 'all';
+      document.getElementById('selectBudget').value = 'all';
+      document.getElementById('selectModel').value = 'all';
+      document.getElementById('selectScheme').value = 'all';
+      selectedSector = 'all';
+      loadMsmeCards('all');
     }
 
     function downloadBankReport() {
