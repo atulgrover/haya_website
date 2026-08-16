@@ -116,7 +116,13 @@ window.HayaIdeDocking = (function () {
             const savedRightWidth = localStorage.getItem(`${activeConfig.storagePrefix}right_width`);
 
             if (leftPanel) {
-                if (savedLeftCollapsed === 'true') {
+                // If the HTML marks this panel as initially collapsed (e.g. employees_nsqf.html
+                // on its home/sector screen), never auto-expand from localStorage.
+                // The page JS will call toggleLeftPanel(true) explicitly when appropriate.
+                const startsCollapsed = leftPanel.classList.contains('collapsed');
+                if (startsCollapsed) {
+                    collapseLeftPanel(); // ensure CSS is clean
+                } else if (savedLeftCollapsed === 'true') {
                     collapseLeftPanel();
                 } else if (savedLeftWidth) {
                     setLeftWidth(parseInt(savedLeftWidth, 10));
@@ -126,7 +132,12 @@ window.HayaIdeDocking = (function () {
             }
 
             if (rightPanel && savedRightWidth) {
-                setRightWidth(parseInt(savedRightWidth, 10));
+                // Only restore width if panel is NOT starting collapsed.
+                // Pages that start the right panel collapsed (e.g. employees_nsqf.html) should
+                // never auto-open on load — the panel is opened explicitly by openRightPanel().
+                if (!rightPanel.classList.contains('collapsed')) {
+                    setRightWidth(parseInt(savedRightWidth, 10));
+                }
             }
         } catch (err) {
             console.warn('[HAYA IDE] Could not read localStorage:', err.message);

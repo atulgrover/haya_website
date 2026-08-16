@@ -310,22 +310,14 @@
       background: var(--primary-hover);
     }
 
-    /* RIGHT PANEL: Detail Inspector — visibility managed by ide-docking.js */
+    /* RIGHT PANEL: Detail Inspector — layout fully owned by ide-docking.css */
     .panel-right {
       width: 400px;
       min-width: 320px;
-      background: #FFFFFF;
-      border-left: 1px solid var(--border-color);
-      position: sticky;
-      top: 64px;
-      height: calc(100vh - 64px);
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
+      /* NOTE: position/height/overflow owned by ide-docking.css (position:relative, height:100%) */
+      /* Removing sticky/height overrides so resizer gets correct flex-container height */
       gap: 16px;
-      flex-shrink: 0;
-      align-self: flex-start;
-      z-index: 100;
+      padding: 0;
     }
     /* Start collapsed — ide-docking.js will call openRightPanel() when a card is clicked */
     .panel-right.collapsed {
@@ -364,8 +356,8 @@
       <span>▶</span> Show Trades (Cmd+B)
     </button>
 
-    <!-- LEFT PANEL: Filters & 4-Level Cascading Selector -->
-    <aside class="panel-left" id="panelLeft">
+    <!-- LEFT PANEL: Filters & 4-Level Cascading Selector — starts collapsed on home screen -->
+    <aside class="panel-left collapsed" id="panelLeft">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
         <h2 class="panel-title" style="margin-bottom: 0;">Choose Your Trade</h2>
         <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
@@ -552,6 +544,9 @@
       const jobRolesSection = document.getElementById('jobRolesSection');
       if (jobRolesSection) jobRolesSection.style.display = 'block';
 
+      // Expand the left filter panel now that we are in the job roles view
+      if (window.HayaIdeDocking) HayaIdeDocking.toggleLeftPanel(true);
+
       await onSectorChange();
 
       const resultsHeader = document.querySelector('.results-header');
@@ -678,6 +673,12 @@
 
       const jobRolesSection = document.getElementById('jobRolesSection');
       if (jobRolesSection) jobRolesSection.style.display = 'none';
+
+      // Collapse left panel and right panel when returning to the home/sector screen
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.toggleLeftPanel(false);
+        HayaIdeDocking.closeRightPanel();
+      }
     }
 
     function populateSelect(id, items, defaultLabel, mapFn = item => ({ value: item, text: item })) {
