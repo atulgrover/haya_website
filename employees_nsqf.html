@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employees (NSQF) | Skillpedia Assessment Hub | HAYAGRIVA</title>
+  <title>Interns | Learn Practical Job Skills | HAYAGRIVA</title>
   <meta name="description"
-    content="National Skill Video Portal for Workforce & Learners. Explore 2,176 NCVET NSQF Qualification Packs, modular micro-learning reels, and Performance Criteria checklists.">
+    content="Learn real job skills with short, step-by-step videos across 2,176 approved job roles and practice for your certification exams.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -353,7 +353,7 @@
 <body>
 
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="employees_nsqf"></div>
+  <div id="site-header" data-pillar="interns"></div>
 
   <!-- Panel scrim (mobile overlay backdrop) -->
   <div class="panel-scrim" id="panelScrim"></div>
@@ -363,44 +363,44 @@
 
     <!-- LEFT PANEL: Filters & 4-Level Cascading Selector -->
     <aside class="panel-left">
-      <h2 class="panel-title">Filter Job Roles</h2>
+      <h2 class="panel-title">Choose Your Trade</h2>
 
       <!-- Keyword Search -->
       <div class="filter-group">
         <label class="filter-label" for="searchInput">Search Keyword</label>
-        <input type="text" id="searchInput" class="filter-input" placeholder="e.g. Airline Cargo, Python, Solar..."
+        <input type="text" id="searchInput" class="filter-input" placeholder="e.g. Solar, EV Repair, Python, Welder..."
           oninput="handleSearchInput()" />
       </div>
 
       <!-- Level 1: Sector -->
       <div class="filter-group">
-        <label class="filter-label" for="selectSector">1. Sector</label>
+        <label class="filter-label" for="selectSector">1. Industry</label>
         <select id="selectSector" class="filter-select" onchange="onSectorChange()">
-          <option value="">All Sectors</option>
+          <option value="">All Industries</option>
         </select>
       </div>
 
       <!-- Level 2: Sub Sector -->
       <div class="filter-group">
-        <label class="filter-label" for="selectSubsector">2. Sub Sector</label>
+        <label class="filter-label" for="selectSubsector">2. Branch</label>
         <select id="selectSubsector" class="filter-select" onchange="onSubsectorChange()">
-          <option value="">All Sub Sectors</option>
+          <option value="">All Branches</option>
         </select>
       </div>
 
       <!-- Level 3: Occupation -->
       <div class="filter-group">
-        <label class="filter-label" for="selectOccupation">3. Occupation</label>
+        <label class="filter-label" for="selectOccupation">3. Field of Work</label>
         <select id="selectOccupation" class="filter-select" onchange="onOccupationChange()">
-          <option value="">All Occupations</option>
+          <option value="">All Fields</option>
         </select>
       </div>
 
       <!-- Level 4: Job Role (QP) -->
       <div class="filter-group">
-        <label class="filter-label" for="selectJobrole">4. Job Role (QP)</label>
+        <label class="filter-label" for="selectJobrole">4. Specific Trade</label>
         <select id="selectJobrole" class="filter-select" onchange="onJobroleChange()">
-          <option value="">All Job Roles</option>
+          <option value="">All Specific Trades</option>
         </select>
       </div>
 
@@ -419,9 +419,9 @@
       <!-- Skill India Digital Style 41 NCVET Sector Cards Grid Container -->
       <div id="sectorCardsSection" class="sid-sector-container">
         <div class="sid-sector-header">
-          <div class="sid-sector-header-title">NCVET Vocational Sectors</div>
+          <div class="sid-sector-header-title">Explore 41 Industries</div>
           <button id="btnBackToSectors" class="btn-back-sectors" style="display: none;" onclick="resetSectorGrid()">
-            ← Back to All 41 Sectors
+            ← Back to All 41 Industries
           </button>
         </div>
         <div class="sid-sector-grid" id="sidSectorGrid">

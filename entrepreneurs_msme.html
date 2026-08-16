@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrepreneurs (MSME) | Turnkey Business Blueprints & Bankable DPR | HAYAGRIVA</title>
-  <meta name="description" content="Turn 11,420 National Occupational Standards into Bankable MSME Businesses. Get turnkey tool BOMs, day-1 operational playbooks, and PMEGP/Mudra Detailed Project Reports.">
+  <title>Startups | Small Business Ideas &amp; Bank Loan Reports | HAYAGRIVA</title>
+  <meta name="description" content="11,420 Ready Small Business Ideas with exact machine shopping lists, 4-step launch plans, and 1-click Bank Project Reports for government loans.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -159,16 +159,16 @@
 <body>
 
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="entrepreneurs_msme"></div>
+  <div id="site-header" data-pillar="startups"></div>
 
   <!-- 3-Panel IDE Workspace Layout -->
   <div class="ide-container">
 
     <!-- LEFT PANEL: 41 Trade Sectors & Filter -->
     <aside class="panel-left">
-      <h2 class="panel-title">Trade Sectors</h2>
+      <h2 class="panel-title">Industries</h2>
       <div class="filter-group">
-        <label class="filter-label" for="searchTrade">Search Opportunity</label>
+        <label class="filter-label" for="searchTrade">Search Business Idea</label>
         <input type="text" id="searchTrade" class="filter-input" placeholder="e.g. Solar, EV, Battery, Seed..." oninput="handleSearch()">
       </div>
 
@@ -185,17 +185,17 @@
     <main class="panel-center">
       <div class="center-header">
         <div>
-          <div class="center-header-title">National MSME Turnkey Business Blueprints</div>
-          <div class="center-header-sub">11,420 Government-audited vocational trade opportunities with machinery BOMs and bankable project reports.</div>
+          <div class="center-header-title">Small Business Ideas &amp; Machine Lists</div>
+          <div class="center-header-sub">11,420 Ready business plans with equipment prices and 1-click bank loan reports.</div>
         </div>
         <div style="font-size:12px; color:#047857; font-weight:700; background:#ECFDF5; padding:6px 12px; border-radius:20px;">
-          ✓ PMEGP &amp; Mudra Ready
+          ✓ Bank Loan Ready
         </div>
       </div>
 
       <div class="blueprint-grid" id="blueprintGrid">
         <div style="padding: 40px; text-align: center; color: var(--text-muted); grid-column: 1 / -1;">
-          Loading MSME Opportunities from PostgreSQL...
+          Loading Small Business Opportunities...
         </div>
       </div>
     </main>
@@ -203,14 +203,14 @@
     <!-- RIGHT PANEL: Blueprint & DPR Inspector -->
     <aside class="panel-right" id="blueprintInspector">
       <div class="inspector-header">
-        <div class="inspector-title" id="inspTitle">Turnkey MSME Blueprint</div>
-        <div class="inspector-subtitle" id="inspSub">Select a trade opportunity card to inspect Capex BOM and Bankable Loan Report.</div>
+        <div class="inspector-title" id="inspTitle">Small Business Plan</div>
+        <div class="inspector-subtitle" id="inspSub">Select a business opportunity card to see machines to buy, launch plan, and bank loan details.</div>
       </div>
 
       <div class="inspector-tabs">
-        <button class="inspector-tab active" onclick="switchMsmeTab('bom', this)">🛠️ Tool BOM</button>
-        <button class="inspector-tab" onclick="switchMsmeTab('playbook', this)">📋 Playbook</button>
-        <button class="inspector-tab" onclick="switchMsmeTab('loan', this)">🏦 Bank DPR</button>
+        <button class="inspector-tab active" onclick="switchMsmeTab('bom', this)">🛠️ Machines to Buy</button>
+        <button class="inspector-tab" onclick="switchMsmeTab('playbook', this)">📋 4-Step Plan</button>
+        <button class="inspector-tab" onclick="switchMsmeTab('loan', this)">🏦 Bank Loan Report</button>
       </div>
 
       <div class="inspector-content" id="inspContent">
@@ -218,15 +218,15 @@
         <div id="tab-bom" style="display: flex; flex-direction: column; gap: 12px;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-              Turnkey Machinery Bill of Materials
+              Machines &amp; Tools Needed
             </span>
-            <span style="font-size: 12px; font-weight: 800; color: #047857;" id="totalCapexBadge">Capex: ₹ 1,19,000</span>
+            <span style="font-size: 12px; font-weight: 800; color: #047857;" id="totalCapexBadge">Total Cost: ₹ 1,19,000</span>
           </div>
 
           <table class="bom-table">
             <thead>
               <tr>
-                <th>Item &amp; Spec</th>
+                <th>Machine &amp; Purpose</th>
                 <th>Qty</th>
                 <th>Est. Price</th>
               </tr>
@@ -240,7 +240,7 @@
         <!-- Tab 2: Day-1 Playbook -->
         <div id="tab-playbook" style="display: none; flex-direction: column; gap: 10px;">
           <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Day-1 Operational Launch Playbook
+            4-Step Business Launch Plan
           </div>
           <div id="playbookList" style="display: flex; flex-direction: column; gap: 8px;">
             <!-- Rendered dynamically -->
@@ -250,38 +250,38 @@
         <!-- Tab 3: Bankable Project Profile (PMEGP / Mudra DPR) -->
         <div id="tab-loan" style="display: none; flex-direction: column; gap: 12px;">
           <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Bankable Financial Profile (PMEGP / Mudra)
+            Bank Loan Summary (PMEGP / Mudra)
           </div>
           <div class="loan-stat-box" id="dprStatBox">
             <div class="stat-card">
-              <div class="stat-label">Total Project Cost</div>
+              <div class="stat-label">Total Setup Cost</div>
               <div class="stat-val" id="statCost">₹ 1,79,500</div>
             </div>
             <div class="stat-card">
-              <div class="stat-label">Promoter Margin (5%)</div>
+              <div class="stat-label">Your Share (5%)</div>
               <div class="stat-val" id="statMargin">₹ 8,975</div>
             </div>
             <div class="stat-card">
-              <div class="stat-label">Bank Term Loan</div>
+              <div class="stat-label">Bank Loan Amount</div>
               <div class="stat-val" id="statLoan">₹ 1,07,700</div>
             </div>
             <div class="stat-card">
-              <div class="stat-label">PMEGP Subsidy (35%)</div>
+              <div class="stat-label">Govt. Subsidy (35%)</div>
               <div class="stat-val" id="statSubsidy">₹ 62,825</div>
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Estimated Debt Service Coverage (DSCR)</div>
-            <div class="stat-val" style="color: #047857;" id="statDscr">2.85x (Bank Sound - Min 1.50x)</div>
+            <div class="stat-label">Bank Health Score</div>
+            <div class="stat-val" style="color: #047857;" id="statDscr">High Approval Chance (2.85x)</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Projected Monthly Net EBITDA</div>
+            <div class="stat-label">Estimated Monthly Profit</div>
             <div class="stat-val" style="color: #0284C7;" id="statProfit">₹ 36,000 / month</div>
           </div>
         </div>
 
         <button class="btn-download-kit" onclick="downloadBankReport()">
-          📥 Download Bankable Project Report (.PDF)
+          📥 Download Bank Loan Project Report (.PDF)
         </button>
       </div>
     </aside>

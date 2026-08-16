@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employers (SOP) | Enterprise Standard Operating Procedures | HAYAGRIVA</title>
-  <meta name="description" content="Explore 2,176 Government-Standard Operating Procedures (SOPs) across 41 industry sectors. Station workflows, safety checklists, and corporate SOP adoption.">
+  <title>Owners | Process Guides &amp; Safety Rules | HAYAGRIVA</title>
+  <meta name="description" content="13,000+ Ready-made process guides, machine instructions, and worker safety checklists to run your workshop or small factory smoothly.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -163,22 +163,22 @@
 <body>
 
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="employers_sop"></div>
+  <div id="site-header" data-pillar="owners"></div>
 
   <!-- 3-Panel IDE Workspace Layout -->
   <div class="ide-container">
 
     <!-- LEFT PANEL: 41 Industry Sectors -->
     <aside class="panel-left">
-      <h2 class="panel-title">Industry Sectors</h2>
+      <h2 class="panel-title">Industries</h2>
       <div class="filter-group">
-        <label class="filter-label" for="searchSop">Search Process SOP</label>
-        <input type="text" id="searchSop" class="filter-input" placeholder="e.g. Solder, Brake, Inverter, Seed..." oninput="handleSearch()">
+        <label class="filter-label" for="searchSop">Search Process Guide</label>
+        <input type="text" id="searchSop" class="filter-input" placeholder="e.g. Inverter, Solder, Brake, Seed..." oninput="handleSearch()">
       </div>
 
       <div class="sector-list" id="sectorList">
         <div class="sector-item active" onclick="filterBySector('all', this)">
-          <span>🌐 All Industry SOPs</span>
+          <span>🌐 All Process Guides</span>
           <span class="sector-badge" id="allCountBadge">2,002</span>
         </div>
         <!-- Loaded dynamically from /api/skillpedia/qps/sectors -->
@@ -189,18 +189,18 @@
     <main class="panel-center">
       <div class="center-header">
         <div>
-          <div class="center-header-title">National Industry Standard Operating Procedures (SOP)</div>
-          <div class="center-header-sub">2,176 Government-audited operational SOPs across 41 sectors with station workflows and safety checklists.</div>
+          <div class="center-header-title">Process Guides &amp; Machine Checklists</div>
+          <div class="center-header-sub">Ready-to-use step-by-step instructions and safety rules for workshops, shops, and small factories.</div>
         </div>
         <button class="btn-action-primary" style="margin-top: 0;" onclick="handleEnterpriseCustomizer()">
-          ✨ Open Private Customizer
+          ✨ Add Company Guides
         </button>
       </div>
 
       <div class="sop-grid" id="sopGrid">
         <!-- Loaded dynamically from /api/skillpedia/qps/cards -->
         <div style="padding: 40px; text-align: center; color: var(--text-muted); grid-column: 1 / -1;">
-          Loading Standard Operating Procedures from PostgreSQL...
+          Loading Process Guides from Database...
         </div>
       </div>
     </main>
@@ -208,21 +208,21 @@
     <!-- RIGHT PANEL: SOP Detail & Plant Checklist Inspector -->
     <aside class="panel-right" id="sopInspector">
       <div class="inspector-header">
-        <div class="inspector-title" id="inspTitle">Standard Operating Procedure</div>
-        <div class="inspector-subtitle" id="inspSub">Select an SOP card to view station workflows and compliance checkpoints.</div>
+        <div class="inspector-title" id="inspTitle">Workshop Process Guide</div>
+        <div class="inspector-subtitle" id="inspSub">Select a work guide to inspect step-by-step machine actions, worker safety gear, and quality standards.</div>
       </div>
 
       <div class="inspector-tabs">
-        <button class="inspector-tab active" onclick="switchSopTab('stations', this)">🏭 Station SOPs</button>
-        <button class="inspector-tab" onclick="switchSopTab('safety', this)">🦺 Safety &amp; PPE</button>
-        <button class="inspector-tab" onclick="switchSopTab('compliance', this)">📋 Compliance</button>
+        <button class="inspector-tab active" onclick="switchSopTab('stations', this)">🏭 Workstation Steps</button>
+        <button class="inspector-tab" onclick="switchSopTab('safety', this)">🦺 Safety Rules</button>
+        <button class="inspector-tab" onclick="switchSopTab('compliance', this)">📋 Quality Check</button>
       </div>
 
       <div class="inspector-content" id="inspContent">
         <!-- Tab 1: Stations & Checkpoints -->
         <div id="tab-stations" style="display: flex; flex-direction: column; gap: 12px;">
           <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Operational Workstation Breakdown
+            Step-by-Step Actions
           </div>
           <div id="stationsList" style="display: flex; flex-direction: column; gap: 10px;">
             <!-- Rendered dynamically -->
@@ -232,11 +232,12 @@
         <!-- Tab 2: Safety & PPE -->
         <div id="tab-safety" style="display: none; flex-direction: column; gap: 12px;">
           <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
-            Mandatory Plant Safety Norms
+            Worker Safety Rules &amp; Gear
           </div>
           <div class="safety-alert-box">
-            <div class="safety-title">⚠️ Mandatory Safety Standard</div>
-            <div class="safety-desc">All plant technicians must complete statutory PPE checks and lock-out/tag-out (LOTO) verification before operating this workstation.</div>
+            <div class="safety-title">⚠️ Mandatory Safety Check</div>
+            <div class="safety-desc">All workers must put on the required protective gear and check machine safety switches before starting work.</div>
+          </div>
           </div>
           <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">
             Required Personal Protective Equipment (PPE)
