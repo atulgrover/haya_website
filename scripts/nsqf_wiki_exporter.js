@@ -44,23 +44,22 @@ function loadBaseTiddlyWikiTemplate() {
     }
 
     const rawHtml = fs.readFileSync(BASE_WIKI_SRC, 'utf8');
-    const storeMatch = rawHtml.match(/<script class="tiddlywiki-tiddler-store" type="application\/json">([\s\S]*?)<\/script>/);
+    const startTag = '<script class="tiddlywiki-tiddler-store" type="application/json">';
+    const endTag   = '</script><div id="storeArea"';
 
-    if (!storeMatch) {
-        throw new Error('Unable to locate tiddlywiki-tiddler-store in base template.');
+    const startIndex = rawHtml.indexOf(startTag);
+    const endIndex   = rawHtml.indexOf(endTag, startIndex);
+
+    if (startIndex === -1 || endIndex === -1) {
+        throw new Error('Unable to locate tiddlywiki-tiddler-store markers in base template.');
     }
 
-    const preStoreHtml  = rawHtml.substring(0, storeMatch.index + '<script class="tiddlywiki-tiddler-store" type="application/json">'.length);
-    const postStoreHtml = rawHtml.substring(storeMatch.index + storeMatch[0].length - '</script>'.length);
-    
-    let baseTiddlers = [];
-    try {
-        baseTiddlers = JSON.parse(storeMatch[1]);
-    } catch (e) {
-        console.warn('Warning: Failed to parse full base tiddler store. Using core fallback.', e.message);
-    }
+    const preStoreHtml  = rawHtml.substring(0, startIndex + startTag.length);
+    const postStoreHtml = rawHtml.substring(endIndex);
+    const storeRaw      = rawHtml.substring(startIndex + startTag.length, endIndex);
+    const baseTiddlers  = JSON.parse(storeRaw);
 
-    // Keep only essential system plugins ($:/core, themes, menubar)
+    // Keep essential system plugins ($:/core, themes, menubar)
     const essentialTiddlers = baseTiddlers.filter(t => 
         t.title === '$:/core' ||
         t.title.startsWith('$:/themes/') ||
@@ -71,7 +70,7 @@ function loadBaseTiddlyWikiTemplate() {
 }
 
 // ── 2. Build TiddlyWiki Tiddlers for a Qualification Pack ────────────────────
-function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopData, msmeData) {
+async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopData, msmeData) {
     const tiddlers = [];
     const cleanQp = qpCode.replace(/\//g, '_');
     const safeQpName = (qpName || qpCode).replace(/[\\"']/g, '');
@@ -292,64 +291,103 @@ html, body {
 
     // ── F. Generate Performance Criteria Tiddlers (Tagged: TikTok) ──
     const defaultStory = [];
-    if (nsqfData && Array.isArray(nsqfData.nos_units)) {
+    let pcList = [];
+
+    // 1. Fetch from PostgreSQL
+    try {
+        const dbRes = await db.query(`
+            SELECT pc_code, pc_description, pc_intent, pc_intent_hi, nos_code, video_id, video_id_hi,
+                   start_seconds, end_seconds, study_takeaways_json, viva_quiz_json
+            FROM nsqf_pcs
+            WHERE qp_code = $1 OR qp_code ILIKE $2
+            ORDER BY sequence_order ASC, id ASC
+        `, [qpCode, `%${cleanQp.replace(/_/g, '%')}%`]);
+        if (dbRes.rows && dbRes.rows.length > 0) {
+            pcList = dbRes.rows;
+        }
+    } catch (e) {
+        console.warn('DB PC Query failed:', e.message);
+    }
+
+    // 2. Fallback to JSON Lake if DB returned empty
+    if (pcList.length === 0 && nsqfData && Array.isArray(nsqfData.nos_units)) {
         nsqfData.nos_units.forEach(nos => {
             const nosCode = nos.nos_code || nos.code || 'NOS';
-            const nosTitle = nos.nos_title || nos.title || 'Occupational Standard';
-
-            (nos.performance_criteria || []).forEach((pc, pIdx) => {
-                const pcCode = pc.pc_id || pc.code || `PC${pIdx + 1}`;
-                const pcTitle = `${pcCode}: ${(pc.pc_intent || pc.intent || pc.description || '').substring(0, 70)}`;
-                const vidId = pc.video_id || '8aGhZQkoFbQ';
-                const startSec = pc.start_seconds || 45;
-                const endSec   = pc.end_seconds || 135;
-                const proTip   = pc.study_takeaways?.pro_tips?.[0] || 'Follow standard shopfloor safety calibration rules.';
-
-                defaultStory.push(pcTitle);
-
-                // Build Markdown/Wikitext Body with Embedded 3-Q Viva Quiz
-                let textBody = `! ${pcTitle}\n\n`;
-                textBody += `* **NOS:** [[${nosCode}: ${nosTitle}]]\n`;
-                textBody += `* **Criterion Code:** \`${pcCode}\`\n`;
-                textBody += `* **Description:** ${pc.description || pc.pc_desc || ''}\n\n`;
-                
-                if (pc.study_takeaways) {
-                    textBody += `!! 💡 Technical Study Pro-Tips\n`;
-                    (pc.study_takeaways.pro_tips || []).forEach(pt => { textBody += `* 🛠️ ${pt}\n`; });
-                    textBody += `\n!! ⚠️ Common Mistakes to Avoid\n`;
-                    (pc.study_takeaways.common_mistakes || []).forEach(cm => { textBody += `* ❌ ${cm}\n`; });
-                    textBody += `\n!! 🛡️ Statutory Safety Standard\n`;
-                    textBody += `* 🔒 ${pc.study_takeaways.safety_mandate || 'IS 3043 / OSHA Shopfloor Compliance'}\n\n`;
-                }
-
-                if (Array.isArray(pc.viva_quiz) && pc.viva_quiz.length > 0) {
-                    textBody += `!! 🧠 Interactive 3-Question Viva Quiz\n`;
-                    pc.viva_quiz.forEach((q, qIdx) => {
-                        textBody += `\n**Q${qIdx + 1}: ${q.question_en}**\n//${q.question_hi || ''}//\n\n`;
-                        (q.options || []).forEach((opt, oIdx) => {
-                            const letter = String.fromCharCode(65 + oIdx);
-                            const mark = opt.is_correct ? '✅ (Correct)' : '⬜';
-                            textBody += `* **${letter}.** ${opt.text} <$reveal type="nomatch" state="$:/state/viva/${pcCode}/${qIdx}" text="show"><$button set="$:/state/viva/${pcCode}/${qIdx}" setTo="show" class="tc-btn-invisible" style="color:#0284C7; font-size:11px;">[Check]</$button></$reveal><$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show"> -- ${mark}</$reveal>\n`;
-                        });
-                        textBody += `<$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show">\n\n> 💡 **Explanation:** ${q.explanation || ''}\n</$reveal>\n`;
+            (nos.modules || []).forEach(mod => {
+                (mod.pcs || []).forEach(pc => {
+                    pcList.push({
+                        pc_code: pc.pc_code || pc.pc_id || 'PC',
+                        pc_description: pc.pc_description || pc.description || '',
+                        pc_intent: pc.pc_intent || pc.intent || pc.pc_description || '',
+                        nos_code: nosCode,
+                        video_id: pc.video_id || '8aGhZQkoFbQ',
+                        start_seconds: pc.start_seconds || 45,
+                        end_seconds: pc.end_seconds || 135,
+                        study_takeaways_json: pc.study_takeaways,
+                        viva_quiz_json: pc.viva_quiz
                     });
-                }
-
-                tiddlers.push({
-                    title: pcTitle,
-                    tags: `TikTok ${nosCode} [[Performance Criteria]] [[${sector}]]`,
-                    youtube_id: vidId,
-                    youtube_id_hi: pc.video_id_hi || vidId,
-                    start_seconds: String(startSec),
-                    end_seconds: String(endSec),
-                    pc_code: pcCode,
-                    nos_code: nosCode,
-                    pro_tip: proTip,
-                    text: textBody
                 });
             });
         });
     }
+
+    // 3. Map to Tiddlers
+    pcList.forEach((pc, pIdx) => {
+        const pcCode = pc.pc_code || `PC${pIdx + 1}`;
+        const nosCode = pc.nos_code || 'NOS';
+        const pcTitle = `${pcCode}: ${(pc.pc_intent || pc.pc_description || '').substring(0, 70)}`;
+        const vidId = pc.video_id || '8aGhZQkoFbQ';
+        const startSec = pc.start_seconds || 45;
+        const endSec   = pc.end_seconds || 135;
+
+        const takeaways = (typeof pc.study_takeaways_json === 'object') ? pc.study_takeaways_json : (pc.study_takeaways_json ? JSON.parse(pc.study_takeaways_json) : null);
+        const vivaQuiz  = (typeof pc.viva_quiz_json === 'object') ? pc.viva_quiz_json : (pc.viva_quiz_json ? JSON.parse(pc.viva_quiz_json) : null);
+
+        const proTip = takeaways?.pro_tips?.[0] || 'Follow standard shopfloor safety and equipment calibration rules.';
+
+        defaultStory.push(pcTitle);
+
+        // Build Markdown/Wikitext Body with Embedded 3-Q Viva Quiz
+        let textBody = `! ${pcTitle}\n\n`;
+        textBody += `* **NOS:** [[${nosCode}]]\n`;
+        textBody += `* **Criterion Code:** \`${pcCode}\`\n`;
+        textBody += `* **Description:** ${pc.pc_description || ''}\n\n`;
+        
+        if (takeaways) {
+            textBody += `!! 💡 Technical Study Pro-Tips\n`;
+            (takeaways.pro_tips || []).forEach(pt => { textBody += `* 🛠️ ${pt}\n`; });
+            textBody += `\n!! ⚠️ Common Mistakes to Avoid\n`;
+            (takeaways.common_mistakes || []).forEach(cm => { textBody += `* ❌ ${cm}\n`; });
+            textBody += `\n!! 🛡️ Statutory Safety Standard\n`;
+            textBody += `* 🔒 ${takeaways.safety_mandate || 'IS 3043 / OSHA Shopfloor Compliance'}\n\n`;
+        }
+
+        if (Array.isArray(vivaQuiz) && vivaQuiz.length > 0) {
+            textBody += `!! 🧠 Interactive 3-Question Viva Quiz\n`;
+            vivaQuiz.forEach((q, qIdx) => {
+                textBody += `\n**Q${qIdx + 1}: ${q.question_en}**\n//${q.question_hi || ''}//\n\n`;
+                (q.options || []).forEach((opt, oIdx) => {
+                    const letter = String.fromCharCode(65 + oIdx);
+                    const mark = opt.is_correct ? '✅ (Correct)' : '⬜';
+                    textBody += `* **${letter}.** ${opt.text} <$reveal type="nomatch" state="$:/state/viva/${pcCode}/${qIdx}" text="show"><$button set="$:/state/viva/${pcCode}/${qIdx}" setTo="show" class="tc-btn-invisible" style="color:#0284C7; font-size:11px;">[Check]</$button></$reveal><$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show"> -- ${mark}</$reveal>\n`;
+                });
+                textBody += `<$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show">\n\n> 💡 **Explanation:** ${q.explanation || ''}\n</$reveal>\n`;
+            });
+        }
+
+        tiddlers.push({
+            title: pcTitle,
+            tags: `TikTok ${nosCode} [[Performance Criteria]] [[${sector}]]`,
+            youtube_id: vidId,
+            youtube_id_hi: pc.video_id_hi || vidId,
+            start_seconds: String(startSec),
+            end_seconds: String(endSec),
+            pc_code: pcCode,
+            nos_code: nosCode,
+            pro_tip: proTip,
+            text: textBody
+        });
+    });
 
     // ── G. Generate SOP Workstation Tiddlers ──
     if (sopData && Array.isArray(sopData.workstations)) {
@@ -454,7 +492,7 @@ async function runTiddlyWikiCompiler() {
         const level  = sopData?.nsqf_level || '4';
 
         // 3. Compile Domain Tiddlers
-        const qpTiddlers = buildQpTiddlers(qpCode, qpName, sector, level, nsqfData, sopData, msmeData);
+        const qpTiddlers = await buildQpTiddlers(qpCode, qpName, sector, level, nsqfData, sopData, msmeData);
 
         // Combine Essential Core Tiddlers + QP Tiddlers
         const fullStore = [...essentialTiddlers, ...qpTiddlers];
