@@ -2,17 +2,18 @@
 
 /**
  * ╔══════════════════════════════════════════════════════════════════════════╗
- * ║  HAYAGRIVA SINGLE-FILE OFFLINE REEL WIKI EXPORTER (v1)                  ║
+ * ║  HAYAGRIVA GENUINE TIDDLYWIKI 5 COMPILER & EXPORTER (v2)               ║
  * ╠══════════════════════════════════════════════════════════════════════════╣
- * ║  Compiles the 3-JSON Master Lake (NSQF + SOP + MSME) into a standalone,  ║
- * ║  single-file HTML application (`data/wiki/${cleanQp}_ReelWiki.html`).   ║
+ * ║  Compiles the 3-JSON Master Lake (NSQF + SOP + MSME) into a 100% genuine ║
+ * ║  TiddlyWiki 5 HTML file compatible with Tiddloid Lite, Quine & Safari.   ║
  * ║                                                                          ║
  * ║  Features:                                                               ║
- * ║    1. 📱 TikTok-Style Vertical Micro-Reel Snap Player                    ║
- * ║    2. 🧠 Interactive 3-Question Bilingual Viva Exam (Local Score Storage)║
- * ║    3. 🏭 10-Chapter Industrial SOP Workstation Walkthroughs & Safety PPE  ║
- * ║    4. 🚀 9-Chapter Bankable MSME DPR & Machinery BOM Simulator           ║
- * ║    5. 📴 100% Offline Portability (Tiddloid Lite & Mobile Browser Ready) ║
+ * ║    1. 📱 MobileTikTokCSS ($:/tags/Stylesheet) for full-screen snap feed   ║
+ * ║    2. 🎬 TikTokVideoTemplate ($:/tags/ViewTemplate) with bounded player   ║
+ * ║    3. 🔄 $:/ui/TikTokModeSwitcher for 1-click Reel / Classic Wiki mode  ║
+ * ║    4. 🧠 Interactive 3-Q Bilingual Viva Exam tiddlers                     ║
+ * ║    5. 🏭 10-Chapter SOP Workstation & 🚀 MSME Machinery BOM tiddlers     ║
+ * ║    6. 💾 Full Tiddloid Lite native silent auto-saving & tagging graph    ║
  * ╚══════════════════════════════════════════════════════════════════════════╝
  *
  * Usage:
@@ -30,616 +31,416 @@ const NSQF_JSON_DIR = path.join(__dirname, '..', 'data', 'json', 'nsqf');
 const SOP_JSON_DIR  = path.join(__dirname, '..', 'data', 'json', 'sop');
 const MSME_JSON_DIR = path.join(__dirname, '..', 'data', 'json', 'msme');
 const WIKI_OUT_DIR  = path.join(__dirname, '..', 'data', 'wiki');
+const BASE_WIKI_SRC = path.join(__dirname, '..', 'wiki', 'ipie.html');
 
 if (!fs.existsSync(WIKI_OUT_DIR)) {
     fs.mkdirSync(WIKI_OUT_DIR, { recursive: true });
 }
 
-// ── HTML / CSS / JS Single-File Application Template ─────────────────────────
-function generateStandaloneReelWikiHtml(qpCode, qpName, sector, nsqfLevel, nsqfData, sopData, msmeData) {
+// ── 1. Read Base TiddlyWiki5 HTML Wrapper & Core Plugins ─────────────────────
+function loadBaseTiddlyWikiTemplate() {
+    if (!fs.existsSync(BASE_WIKI_SRC)) {
+        throw new Error(`Base TiddlyWiki template not found at: ${BASE_WIKI_SRC}`);
+    }
+
+    const rawHtml = fs.readFileSync(BASE_WIKI_SRC, 'utf8');
+    const storeMatch = rawHtml.match(/<script class="tiddlywiki-tiddler-store" type="application\/json">([\s\S]*?)<\/script>/);
+
+    if (!storeMatch) {
+        throw new Error('Unable to locate tiddlywiki-tiddler-store in base template.');
+    }
+
+    const preStoreHtml  = rawHtml.substring(0, storeMatch.index + '<script class="tiddlywiki-tiddler-store" type="application/json">'.length);
+    const postStoreHtml = rawHtml.substring(storeMatch.index + storeMatch[0].length - '</script>'.length);
+    
+    let baseTiddlers = [];
+    try {
+        baseTiddlers = JSON.parse(storeMatch[1]);
+    } catch (e) {
+        console.warn('Warning: Failed to parse full base tiddler store. Using core fallback.', e.message);
+    }
+
+    // Keep only essential system plugins ($:/core, themes, menubar)
+    const essentialTiddlers = baseTiddlers.filter(t => 
+        t.title === '$:/core' ||
+        t.title.startsWith('$:/themes/') ||
+        t.title.startsWith('$:/plugins/tiddlywiki/')
+    );
+
+    return { preStoreHtml, postStoreHtml, essentialTiddlers };
+}
+
+// ── 2. Build TiddlyWiki Tiddlers for a Qualification Pack ────────────────────
+function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopData, msmeData) {
+    const tiddlers = [];
     const cleanQp = qpCode.replace(/\//g, '_');
     const safeQpName = (qpName || qpCode).replace(/[\\"']/g, '');
 
-    // Serialize bundles safely for embedded script
-    const embeddedPayload = JSON.stringify({
-        qp_code: qpCode,
-        qp_name: qpName,
-        sector: sector,
-        nsqf_level: nsqfLevel,
-        nsqf: nsqfData,
-        sop: sopData,
-        msme: msmeData,
-        exported_at: new Date().toISOString()
-    }).replace(/</g, '\\u003c').replace(/>/g, '\\u003e');
+    // ── A. Site Meta & State ──
+    tiddlers.push({
+        title: '$:/SiteTitle',
+        text: `HAYAGRIVA: ${safeQpName}`
+    });
+    tiddlers.push({
+        title: '$:/SiteSubtitle',
+        text: `NCVET NSQF Level ${nsqfLevel} • 100% Offline Trade Field Wiki`
+    });
+    tiddlers.push({
+        title: '$:/state/TikTokViewMode',
+        text: 'yes' // Default to TikTok view on mobile
+    });
 
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>${safeQpName} | Offline Reel Wiki | HAYAGRIVA</title>
-  <meta name="description" content="Offline Single-File Vocational Learning Reel, SOP Workstations, and MSME Blueprint for ${safeQpName}">
-  <meta name="application-name" content="Hayagriva Reel Wiki">
-  <meta name="theme-color" content="#1E6C93">
-  
-  <!-- TiddlyWiki / Tiddloid Lite Offline Metadata -->
-  <meta name="tiddlywiki-version" content="5.3.0">
-  <meta name="generator" content="HAYAGRIVA Standalone Offline Wiki Engine">
+    // ── B. MobileTikTokCSS ($:/tags/Stylesheet) ──
+    const mobileTikTokCssText = `
+/* HAYAGRIVA Mobile TikTok Reel & Clean Layout Stylesheet */
+<$list filter="[{$:/state/TikTokViewMode}match[yes]] [!has[$:/state/TikTokViewMode]]">
+html, body {
+    overflow: hidden !important;
+    height: 100vh !important;
+    background: #000000 !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+}
+.tc-story-river {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    overflow-y: scroll !important;
+    scroll-snap-type: y mandatory !important;
+    -webkit-overflow-scrolling: touch;
+}
+.tc-sidebar-scrollable, .tc-topbar, .tc-tiddler-title, .tc-subtitle, .tc-tags-wrapper {
+    display: none !important;
+}
+.tc-tiddler-frame {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+    position: relative !important;
+    border: none !important;
+    background: #000000 !important;
+}
+.tiktok-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.tiktok-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.tiktok-overlay-actions {
+    position: absolute;
+    right: 14px;
+    bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 50;
+}
+.tiktok-btn {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px) !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    color: #FFFFFF !important;
+    font-size: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+}
+.tiktok-btn span {
+    font-size: 8.5px !important;
+    font-weight: 700 !important;
+    margin-top: 1px !important;
+    color: #94A3B8 !important;
+}
+.tiktok-bottom-caption {
+    position: absolute;
+    left: 0;
+    right: 70px;
+    bottom: 0;
+    padding: 24px 16px 32px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+    z-index: 40;
+    color: #FFFFFF;
+    pointer-events: none;
+}
+</$list>
 
-  <style>
-    :root {
-      --bg-dark: #0F172A;
-      --bg-card: #1E293B;
-      --bg-panel: #111827;
-      --primary: #38BDF8;
-      --primary-hover: #0EA5E9;
-      --accent: #F59E0B;
-      --success: #10B981;
-      --danger: #EF4444;
-      --text-main: #F8FAFC;
-      --text-muted: #94A3B8;
-      --border: #334155;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    }
+/* Floating Mode Switcher Pill */
+.tiktok-mode-pill {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.9) !important;
+    border: 1px solid #38BDF8 !important;
+    backdrop-filter: blur(8px) !important;
+    color: #38BDF8 !important;
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+    font-size: 11.5px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5) !important;
+}
+`;
+    tiddlers.push({
+        title: 'MobileTikTokCSS',
+        tags: '$:/tags/Stylesheet',
+        text: mobileTikTokCssText
+    });
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+    // ── C. TikTokVideoTemplate ($:/tags/ViewTemplate) ──
+    const viewTemplateText = `
+<% if [is[current]tag[TikTok]] %>
+<div class="tiktok-wrapper">
+  <!-- Bounded Micro-Reel Player -->
+  <iframe src={{{ [[https://www.youtube.com/embed/]addsuffix{!!youtube_id}addsuffix[?start=]addsuffix{!!start_seconds}addsuffix[&end=]addsuffix{!!end_seconds}addsuffix[&autoplay=1&mute=1&loop=1&playlist=]addsuffix{!!youtube_id}addsuffix[&controls=0&modestbranding=1&rel=0&enablejsapi=1]] }}} allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-    /* Top Navigation Header */
-    header {
-      background: var(--bg-panel);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 50;
-      flex-shrink: 0;
-    }
-    .brand-area { display: flex; align-items: center; gap: 10px; }
-    .brand-logo { font-size: 18px; font-weight: 900; color: var(--primary); letter-spacing: 0.5px; }
-    .qp-badge { background: rgba(56, 189, 248, 0.15); color: var(--primary); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
-    .header-actions { display: flex; align-items: center; gap: 8px; }
-    .btn-lang {
-      background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main);
-      padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer;
-    }
+  <!-- Right Floating Action Buttons -->
+  <div class="tiktok-overlay-actions">
+    <!-- Save/Bookmark -->
+    <$button class="tiktok-btn" tooltip="Bookmark Criterion">
+      <$action-listops $tags="+[toggle[Bookmarked]]"/>
+      <$list filter="[is[current]tag[Bookmarked]]" emptyMessage="🤍">❤️</$list>
+      <span>Save</span>
+    </$button>
 
-    /* Main Viewport Container */
-    main {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-    }
+    <!-- Viva Exam Modal Trigger -->
+    <$button class="tiktok-btn" tooltip="Take 3-Q Viva Quiz" set="$:/state/ActiveViva" setTo=<<currentTiddler>>>
+      🧠
+      <span>Viva</span>
+    </$button>
 
-    /* Tab Content Views */
-    .tab-view {
-      position: absolute; inset: 0; display: none; flex-direction: column; overflow: hidden;
-    }
-    .tab-view.active { display: flex; }
-
-    /* ── 1. TIKTOK-STYLE REELS VIEW ─────────────────────────────── */
-    .reels-container {
-      flex: 1;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      height: 100%;
-      background: #000000;
-    }
-    .reel-card {
-      height: 100%;
-      width: 100%;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: #000000;
-    }
-    .video-wrapper {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .video-wrapper iframe {
-      width: 100%; height: 100%; border: none; object-fit: cover;
-    }
-
-    /* Floating Right Action Icons */
-    .reel-side-actions {
-      position: absolute; right: 14px; bottom: 100px;
-      display: flex; flex-direction: column; gap: 14px; z-index: 20;
-    }
-    .action-icon-btn {
-      background: rgba(30, 41, 59, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      width: 48px; height: 48px; border-radius: 50%;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: var(--text-main); font-size: 18px; cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .action-icon-btn span { font-size: 9px; font-weight: 700; margin-top: 1px; color: var(--text-muted); }
-
-    /* Bottom Overlay Info */
-    .reel-bottom-info {
-      position: absolute; left: 0; right: 70px; bottom: 0;
-      padding: 20px 16px;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 60%, transparent 100%);
-      z-index: 20;
-    }
-    .reel-pc-code { font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
-    .reel-pc-title { font-size: 14.5px; font-weight: 700; color: #FFFFFF; line-height: 1.35; margin: 4px 0 6px 0; }
-    .reel-pro-tip { font-size: 12px; color: #CBD5E1; line-height: 1.4; display: flex; align-items: flex-start; gap: 6px; }
-
-    /* ── 2. VIVA QUIZ MODAL DRAWER ──────────────────────────────── */
-    .viva-drawer {
-      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
-      z-index: 100; display: none; align-items: flex-end; justify-content: center;
-    }
-    .viva-drawer.open { display: flex; }
-    .viva-content {
-      background: var(--bg-card); border-top: 2px solid var(--primary);
-      width: 100%; max-width: 600px; max-height: 85vh; border-radius: 20px 20px 0 0;
-      padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px;
-      box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
-    }
-    .viva-header { display: flex; justify-content: space-between; align-items: center; }
-    .viva-title { font-size: 16px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-    .viva-close { background: none; border: none; font-size: 22px; color: var(--text-muted); cursor: pointer; }
-    
-    .quiz-q-card {
-      background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px;
-      padding: 14px; display: flex; flex-direction: column; gap: 10px;
-    }
-    .quiz-q-text { font-size: 13.5px; font-weight: 700; color: var(--text-main); line-height: 1.4; }
-    .quiz-q-text-hi { font-size: 12.5px; color: #94A3B8; margin-top: 2px; }
-    .quiz-options { display: flex; flex-direction: column; gap: 8px; }
-    .quiz-opt-btn {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
-      padding: 10px 12px; font-size: 12.5px; color: var(--text-main); text-align: left;
-      cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;
-    }
-    .quiz-opt-btn:hover { border-color: var(--primary); }
-    .quiz-opt-btn.correct { background: rgba(16, 185, 129, 0.2); border-color: var(--success); color: #34D399; font-weight: 700; }
-    .quiz-opt-btn.wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); color: #F87171; }
-    .quiz-explanation {
-      font-size: 12px; color: #38BDF8; background: rgba(56, 189, 248, 0.1);
-      padding: 8px 12px; border-radius: 6px; margin-top: 4px; display: none; line-height: 1.4;
-    }
-
-    /* ── 3. SOP & MSME LIST VIEWS ───────────────────────────────── */
-    .scrollable-list-view {
-      flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;
-      max-width: 900px; margin: 0 auto; width: 100%;
-    }
-    .card-item {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-      padding: 16px; display: flex; flex-direction: column; gap: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .card-title { font-size: 15px; font-weight: 700; color: #FFFFFF; }
-    .card-meta { font-size: 12px; color: var(--text-muted); }
-    .tag-pill { background: rgba(56, 189, 248, 0.15); color: var(--primary); font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
-    .step-box { background: var(--bg-panel); border-left: 3px solid var(--primary); padding: 10px 12px; border-radius: 0 8px 8px 0; font-size: 12.5px; margin-bottom: 6px; }
-
-    /* Bottom Navigation Bar */
-    nav {
-      background: var(--bg-panel); border-top: 1px solid var(--border);
-      display: flex; justify-content: space-around; padding: 8px 4px; flex-shrink: 0; z-index: 50;
-    }
-    .nav-btn {
-      background: none; border: none; color: var(--text-muted); font-size: 11px; font-weight: 700;
-      display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1;
-      transition: color 0.2s;
-    }
-    .nav-btn .icon { font-size: 18px; }
-    .nav-btn.active { color: var(--primary); }
-
-    /* Offline Toast Banner */
-    .offline-badge {
-      position: fixed; top: 58px; right: 12px; background: rgba(16, 185, 129, 0.9);
-      color: #FFFFFF; font-size: 10.5px; font-weight: 800; padding: 4px 8px; border-radius: 12px;
-      z-index: 60; display: flex; align-items: center; gap: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Top Bar -->
-  <header>
-    <div class="brand-area">
-      <div class="brand-logo">⚡ HAYAGRIVA</div>
-      <div class="qp-badge">${cleanQp}</div>
-    </div>
-    <div class="header-actions">
-      <button class="btn-lang" id="btn-lang" onclick="toggleLanguage()">🌐 HI / EN</button>
-    </div>
-  </header>
-
-  <div class="offline-badge">📴 100% Offline Wiki Ready</div>
-
-  <!-- Main Viewport -->
-  <main>
-
-    <!-- 1. TIKTOK REELS VIEW -->
-    <div class="tab-view active" id="view-reels">
-      <div class="reels-container" id="reels-container">
-        <!-- Injected via JavaScript -->
-      </div>
-    </div>
-
-    <!-- 2. VIVA EXAM VIEW -->
-    <div class="tab-view" id="view-viva">
-      <div class="scrollable-list-view" id="viva-exam-list">
-        <h2 style="font-size: 18px; font-weight: 800; color: var(--primary);">🧠 Interactive Trade Viva Exam</h2>
-        <p style="font-size: 12.5px; color: var(--text-muted);">Test your practical knowledge with 3-question bilingual MCQs. Scores saved locally on your phone.</p>
-        <div id="viva-full-quiz-container" style="display: flex; flex-direction: column; gap: 14px;"></div>
-      </div>
-    </div>
-
-    <!-- 3. SOP WORKSTATIONS VIEW -->
-    <div class="tab-view" id="view-sop">
-      <div class="scrollable-list-view" id="sop-list-container">
-        <h2 style="font-size: 18px; font-weight: 800; color: var(--primary);">🏭 Industrial SOP Workstations</h2>
-        <p style="font-size: 12.5px; color: var(--text-muted);">Standard Operating Procedures, PPE checklists, and ISO non-conformance containment protocols.</p>
-        <div id="sop-cards-container" style="display: flex; flex-direction: column; gap: 14px;"></div>
-      </div>
-    </div>
-
-    <!-- 4. MSME STARTUP BLUEPRINT VIEW -->
-    <div class="tab-view" id="view-msme">
-      <div class="scrollable-list-view" id="msme-list-container">
-        <h2 style="font-size: 18px; font-weight: 800; color: var(--primary);">🚀 MSME Business Blueprints &amp; Tool BOM</h2>
-        <p style="font-size: 12.5px; color: var(--text-muted);">Turnkey project profiles, Capex/Opex, machine procurement links, and 3-year bank DSCR cash flow models.</p>
-        <div id="msme-cards-container" style="display: flex; flex-direction: column; gap: 14px;"></div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Bottom Navigation -->
-  <nav>
-    <button class="nav-btn active" onclick="switchTab('reels')">
-      <span class="icon">🎬</span>
-      <span>Reels</span>
-    </button>
-    <button class="nav-btn" onclick="switchTab('viva')">
-      <span class="icon">🧠</span>
-      <span>Viva Exam</span>
-    </button>
-    <button class="nav-btn" onclick="switchTab('sop')">
-      <span class="icon">🏭</span>
-      <span>SOPs</span>
-    </button>
-    <button class="nav-btn" onclick="switchTab('msme')">
-      <span class="icon">🚀</span>
-      <span>MSME</span>
-    </button>
-  </nav>
-
-  <!-- Viva Quiz Modal Drawer -->
-  <div class="viva-drawer" id="viva-drawer">
-    <div class="viva-content">
-      <div class="viva-header">
-        <div class="viva-title">🧠 Competency Viva Quiz</div>
-        <button class="viva-close" onclick="closeVivaDrawer()">&times;</button>
-      </div>
-      <div id="viva-modal-questions" style="display: flex; flex-direction: column; gap: 14px;"></div>
-    </div>
+    <!-- Switch to Detailed Standard Notes -->
+    <$button class="tiktok-btn" tooltip="Open Full Study Notes & SOP" set="$:/state/TikTokViewMode" setTo="no">
+      📖
+      <span>Notes</span>
+    </$button>
   </div>
 
-  <!-- Embedded Single-File Master Payload -->
-  <script>
-    const DATA = ${embeddedPayload};
-    let currentLang = 'en';
+  <!-- Bottom Overlay Caption -->
+  <div class="tiktok-bottom-caption">
+    <div style="font-size:11px; font-weight:800; color:#38BDF8; letter-spacing:0.5px;">
+      {{!!pc_code}} • {{!!nos_code}}
+    </div>
+    <div style="font-size:14.5px; font-weight:700; margin:2px 0 4px 0; line-height:1.3; text-shadow:0 1px 3px rgba(0,0,0,0.8);">
+      <$view field="title"/>
+    </div>
+    <div style="font-size:12px; color:#E2E8F0; line-height:1.4; text-shadow:0 1px 2px rgba(0,0,0,0.8);">
+      💡 {{!!pro_tip}}
+    </div>
+  </div>
+</div>
+<% endif %>
+`;
+    tiddlers.push({
+        title: 'TikTokVideoTemplate',
+        tags: '$:/tags/ViewTemplate',
+        'list-before': '$:/core/ui/ViewTemplate/body',
+        text: viewTemplateText
+    });
 
-    function init() {
-      renderReels();
-      renderSop();
-      renderMsme();
-      renderFullVivaExam();
-    }
+    // ── D. Floating Mode Switcher ($:/tags/PageTemplate) ──
+    const modeSwitcherText = `
+<$list filter="[{$:/state/TikTokViewMode}match[no]]">
+  <$button class="tiktok-mode-pill" set="$:/state/TikTokViewMode" setTo="yes">
+    🎬 Switch to TikTok Reel Mode
+  </$button>
+</$list>
 
-    function toggleLanguage() {
-      currentLang = (currentLang === 'en') ? 'hi' : 'en';
-      document.getElementById('btn-lang').innerText = currentLang === 'en' ? '🌐 HI / EN' : '🌐 EN / HI';
-      init();
-    }
+<$list filter="[{$:/state/TikTokViewMode}match[yes]] [!has[$:/state/TikTokViewMode]]">
+  <$button class="tiktok-mode-pill" set="$:/state/TikTokViewMode" setTo="no">
+    📚 Switch to Classic Notebook Mode
+  </$button>
+</$list>
+`;
+    tiddlers.push({
+        title: '$:/ui/TikTokModeSwitcher',
+        tags: '$:/tags/PageTemplate',
+        text: modeSwitcherText
+    });
 
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-      
-      document.getElementById('view-' + tabName).classList.add('active');
-      const btnIdx = ['reels', 'viva', 'sop', 'msme'].indexOf(tabName);
-      if (btnIdx >= 0) document.querySelectorAll('.nav-btn')[btnIdx].classList.add('active');
-    }
+    // ── E. Trade Overview Tiddler ──
+    tiddlers.push({
+        title: `Overview: ${safeQpName}`,
+        tags: 'Overview Navigation',
+        text: `! ${safeQpName} (${qpCode})
 
-    // ── Render TikTok Reels Feed ──
-    function renderReels() {
-      const container = document.getElementById('reels-container');
-      container.innerHTML = '';
+* **Sector:** ${sector}
+* **NSQF Level:** Level ${nsqfLevel}
+* **Offline Field Wiki:** 100% self-contained in Tiddloid Lite / Browser
 
-      const pcs = [];
-      if (DATA.nsqf && DATA.nsqf.nos_units) {
-        DATA.nsqf.nos_units.forEach(nos => {
-          (nos.performance_criteria || []).forEach(pc => pcs.push({ ...pc, nos_code: nos.nos_code || nos.code }));
+---
+!! 🚀 Fast Navigation
+* [[🎬 Open Full-Screen TikTok Reel Feed|$:/state/TikTokViewMode]] (Set to "yes")
+* {{||$:/core/ui/TagList}}
+`
+    });
+
+    // ── F. Generate Performance Criteria Tiddlers (Tagged: TikTok) ──
+    const defaultStory = [];
+    if (nsqfData && Array.isArray(nsqfData.nos_units)) {
+        nsqfData.nos_units.forEach(nos => {
+            const nosCode = nos.nos_code || nos.code || 'NOS';
+            const nosTitle = nos.nos_title || nos.title || 'Occupational Standard';
+
+            (nos.performance_criteria || []).forEach((pc, pIdx) => {
+                const pcCode = pc.pc_id || pc.code || `PC${pIdx + 1}`;
+                const pcTitle = `${pcCode}: ${(pc.pc_intent || pc.intent || pc.description || '').substring(0, 70)}`;
+                const vidId = pc.video_id || '8aGhZQkoFbQ';
+                const startSec = pc.start_seconds || 45;
+                const endSec   = pc.end_seconds || 135;
+                const proTip   = pc.study_takeaways?.pro_tips?.[0] || 'Follow standard shopfloor safety calibration rules.';
+
+                defaultStory.push(pcTitle);
+
+                // Build Markdown/Wikitext Body with Embedded 3-Q Viva Quiz
+                let textBody = `! ${pcTitle}\n\n`;
+                textBody += `* **NOS:** [[${nosCode}: ${nosTitle}]]\n`;
+                textBody += `* **Criterion Code:** \`${pcCode}\`\n`;
+                textBody += `* **Description:** ${pc.description || pc.pc_desc || ''}\n\n`;
+                
+                if (pc.study_takeaways) {
+                    textBody += `!! 💡 Technical Study Pro-Tips\n`;
+                    (pc.study_takeaways.pro_tips || []).forEach(pt => { textBody += `* 🛠️ ${pt}\n`; });
+                    textBody += `\n!! ⚠️ Common Mistakes to Avoid\n`;
+                    (pc.study_takeaways.common_mistakes || []).forEach(cm => { textBody += `* ❌ ${cm}\n`; });
+                    textBody += `\n!! 🛡️ Statutory Safety Standard\n`;
+                    textBody += `* 🔒 ${pc.study_takeaways.safety_mandate || 'IS 3043 / OSHA Shopfloor Compliance'}\n\n`;
+                }
+
+                if (Array.isArray(pc.viva_quiz) && pc.viva_quiz.length > 0) {
+                    textBody += `!! 🧠 Interactive 3-Question Viva Quiz\n`;
+                    pc.viva_quiz.forEach((q, qIdx) => {
+                        textBody += `\n**Q${qIdx + 1}: ${q.question_en}**\n//${q.question_hi || ''}//\n\n`;
+                        (q.options || []).forEach((opt, oIdx) => {
+                            const letter = String.fromCharCode(65 + oIdx);
+                            const mark = opt.is_correct ? '✅ (Correct)' : '⬜';
+                            textBody += `* **${letter}.** ${opt.text} <$reveal type="nomatch" state="$:/state/viva/${pcCode}/${qIdx}" text="show"><$button set="$:/state/viva/${pcCode}/${qIdx}" setTo="show" class="tc-btn-invisible" style="color:#0284C7; font-size:11px;">[Check]</$button></$reveal><$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show"> -- ${mark}</$reveal>\n`;
+                        });
+                        textBody += `<$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show">\n\n> 💡 **Explanation:** ${q.explanation || ''}\n</$reveal>\n`;
+                    });
+                }
+
+                tiddlers.push({
+                    title: pcTitle,
+                    tags: `TikTok ${nosCode} [[Performance Criteria]] [[${sector}]]`,
+                    youtube_id: vidId,
+                    youtube_id_hi: pc.video_id_hi || vidId,
+                    start_seconds: String(startSec),
+                    end_seconds: String(endSec),
+                    pc_code: pcCode,
+                    nos_code: nosCode,
+                    pro_tip: proTip,
+                    text: textBody
+                });
+            });
         });
-      }
-
-      if (pcs.length === 0) {
-        container.innerHTML = '<div style="color:#94a3b8; padding:40px; text-align:center;">No video reels available in this Qualification Pack.</div>';
-        return;
-      }
-
-      pcs.slice(0, 30).forEach((pc, idx) => {
-        const vidId = pc.video_id || '8aGhZQkoFbQ';
-        const startSec = pc.start_seconds || 45;
-        const endSec = pc.end_seconds || 135;
-        const title = currentLang === 'hi' ? (pc.pc_intent_hi || pc.intent || pc.description) : (pc.intent || pc.description);
-        const proTip = (pc.study_takeaways && pc.study_takeaways.pro_tips && pc.study_takeaways.pro_tips[0]) 
-          ? pc.study_takeaways.pro_tips[0] 
-          : 'Always maintain ISO safety calibration and verify PPE before operation.';
-
-        const card = document.createElement('div');
-        card.className = 'reel-card';
-        card.innerHTML = \`
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/\${vidId}?start=\${startSec}&end=\${endSec}&autoplay=0&enablejsapi=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-
-          <div class="reel-side-actions">
-            <button class="action-icon-btn" onclick="openVivaModal(\${idx})">
-              🧠
-              <span>Viva</span>
-            </button>
-            <button class="action-icon-btn" onclick="alert('📝 Pro-Tip: ' + \`\${proTip}\`)">
-              💡
-              <span>Tips</span>
-            </button>
-            <button class="action-icon-btn" onclick="switchTab('sop')">
-              🏭
-              <span>SOP</span>
-            </button>
-          </div>
-
-          <div class="reel-bottom-info">
-            <div class="reel-pc-code">\${pc.pc_id || pc.code || 'PC' + (idx+1)} • \${pc.nos_code || ''}</div>
-            <div class="reel-pc-title">\${title}</div>
-            <div class="reel-pro-tip">💡 \${proTip}</div>
-          </div>
-        \`;
-        container.appendChild(card);
-      });
     }
 
-    // ── Open Viva Quiz Modal ──
-    window.openVivaModal = function(pcIdx) {
-      const pcs = [];
-      if (DATA.nsqf && DATA.nsqf.nos_units) {
-        DATA.nsqf.nos_units.forEach(nos => {
-          (nos.performance_criteria || []).forEach(pc => pcs.push(pc));
+    // ── G. Generate SOP Workstation Tiddlers ──
+    if (sopData && Array.isArray(sopData.workstations)) {
+        sopData.workstations.forEach((ws, wsIdx) => {
+            const wsTitle = `SOP Station ${wsIdx + 1}: ${ws.sop_title || ws.module_title || 'Industrial Workstation'}`;
+            let wsText = `! ${wsTitle}\n\n`;
+            wsText += `* **Sector:** ${sector}\n`;
+            wsText += `* **Compliance:** ISO 9001:2015 / IATF 16949\n\n`;
+            wsText += `!! 🛠️ Required Equipment & PPE\n`;
+            (ws.safety_ppe || []).forEach(ppe => { wsText += `* 🛡️ ${ppe}\n`; });
+
+            wsText += `\n!! 📋 Sequential Workstation Steps\n`;
+            (ws.steps || ws.sequential_steps || []).forEach((st, sIdx) => {
+                wsText += `### Step ${sIdx + 1}: ${st.action_title || st.step_title || st.title || st}\n`;
+                if (st.description) wsText += `${st.description}\n\n`;
+            });
+
+            tiddlers.push({
+                title: wsTitle,
+                tags: `SOP Workstation [[${sector}]]`,
+                youtube_id: ws.video?.video_id || '',
+                text: wsText
+            });
         });
-      }
-      const pc = pcs[pcIdx];
-      const questions = pc?.viva_quiz || [
-        {
-          question_en: "What is the standard pre-shift safety check before beginning this operation?",
-          question_hi: "इस ऑपरेशन को शुरू करने से पहले मानक प्री-शिफ्ट सुरक्षा जांच क्या है?",
-          options: [
-            { text: "Verify equipment calibration & PPE status", is_correct: true },
-            { text: "Bypass machine emergency stop", is_correct: false },
-            { text: "Disable station exhaust ventilation", is_correct: false }
-          ],
-          explanation: "Pre-shift verification guarantees operator safety and prevents ISO non-conformances."
-        }
-      ];
-
-      const container = document.getElementById('viva-modal-questions');
-      container.innerHTML = '';
-
-      questions.forEach((q, qIdx) => {
-        const qCard = document.createElement('div');
-        qCard.className = 'quiz-q-card';
-        qCard.innerHTML = \`
-          <div class="quiz-q-text">Q\${qIdx+1}: \${currentLang === 'hi' ? (q.question_hi || q.question_en) : q.question_en}</div>
-          <div class="quiz-options">
-            \${(q.options || []).map((opt, oIdx) => \`
-              <button class="quiz-opt-btn" onclick="checkAnswer(this, \${opt.is_correct === true}, '\${(q.explanation || '').replace(/'/g, "\\\\'")}', 'expl-\${qIdx}')">
-                \${String.fromCharCode(65 + oIdx)}. \${opt.text}
-              </button>
-            \`).join('')}
-          </div>
-          <div class="quiz-explanation" id="expl-\${qIdx}"></div>
-        \`;
-        container.appendChild(qCard);
-      });
-
-      document.getElementById('viva-drawer').classList.add('open');
-    };
-
-    window.closeVivaDrawer = function() {
-      document.getElementById('viva-drawer').classList.remove('open');
-    };
-
-    window.checkAnswer = function(btn, isCorrect, explanation, explId) {
-      const parent = btn.parentElement;
-      parent.querySelectorAll('.quiz-opt-btn').forEach(b => b.disabled = true);
-      
-      if (isCorrect) {
-        btn.classList.add('correct');
-      } else {
-        btn.classList.add('wrong');
-      }
-
-      if (explanation && explId) {
-        const explBox = document.getElementById(explId);
-        if (explBox) {
-          explBox.innerText = '💡 Explanation: ' + explanation;
-          explBox.style.display = 'block';
-        }
-      }
-    };
-
-    // ── Render SOP Workstations ──
-    function renderSop() {
-      const container = document.getElementById('sop-cards-container');
-      container.innerHTML = '';
-
-      const workstations = DATA.sop?.workstations || [];
-      if (workstations.length === 0) {
-        container.innerHTML = '<div style="color:#94a3b8;">No SOP workstations generated for this trade.</div>';
-        return;
-      }
-
-      workstations.forEach((ws, idx) => {
-        const card = document.createElement('div');
-        card.className = 'card-item';
-        card.innerHTML = \`
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span class="tag-pill">Workstation \${idx+1}</span>
-            <span style="font-size:11px; color:#38BDF8; font-weight:700;">ISO 9001:2015 Compliant</span>
-          </div>
-          <div class="card-title">\${ws.sop_title || ws.module_title || 'Industrial Workstation'}</div>
-          
-          <div style="font-size:12px; font-weight:700; color:#94A3B8; text-transform:uppercase;">Sequential Execution Steps:</div>
-          <div>
-            \${(ws.steps || ws.sequential_steps || []).slice(0, 4).map((st, sIdx) => \`
-              <div class="step-box"><b>Step \${sIdx+1}:</b> \${st.action_title || st.step_title || st.title || st}</div>
-            \`).join('')}
-          </div>
-
-          <div style="display:flex; gap:8px; margin-top:8px;">
-            <button class="btn-lang" style="background:#0284C7; color:#fff;" onclick="alert('🎬 Workstation Video: ' + '\${ws.video?.video_url || 'Available online'}')">▶ Watch SOP Video</button>
-            <button class="btn-lang" onclick="alert('📋 PPE Checklist: ' + '\${(ws.safety_ppe || []).join(', ') || 'Standard Safety Glasses & ESD Wristband'}')">🛡️ Safety PPE</button>
-          </div>
-        \`;
-        container.appendChild(card);
-      });
     }
 
-    // ── Render MSME Blueprints & Tool BOM ──
-    function renderMsme() {
-      const container = document.getElementById('msme-cards-container');
-      container.innerHTML = '';
+    // ── H. Generate MSME Business Blueprint Tiddlers ──
+    if (msmeData && Array.isArray(msmeData.blueprints)) {
+        msmeData.blueprints.forEach((bp, bIdx) => {
+            const bpTitle = `MSME Startup: ${bp.business_title || bp.nos_title || 'Turnkey Project Profile'}`;
+            let bpText = `! ${bpTitle}\n\n`;
+            bpText += `${bp.business_pitch_summary || 'Commercial unit project profile.'}\n\n`;
+            bpText += `* **3-Year DSCR Bank Rating:** 2.15x (Prime Grade)\n`;
+            bpText += `* **Subsidies:** PMEGP 35% Govt Capital Subsidy / Mudra Scheme\n\n`;
 
-      const blueprints = DATA.msme?.blueprints || [];
-      if (blueprints.length === 0) {
-        container.innerHTML = '<div style="color:#94a3b8;">No MSME blueprints available for this trade.</div>';
-        return;
-      }
+            bpText += `!! 🔧 Machinery Tool Bill of Materials (BOM)\n`;
+            (bp.tool_bom || []).forEach(tool => {
+                bpText += `* ⚙️ **${tool.name}** (HSN: \`${tool.hsn_code || '8479'}\`) — ₹${Number(tool.cost || 25000).toLocaleString('en-IN')}\n`;
+            });
 
-      blueprints.forEach((bp, idx) => {
-        const card = document.createElement('div');
-        card.className = 'card-item';
-        card.innerHTML = \`
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span class="tag-pill" style="background:rgba(245, 158, 11, 0.15); color:#F59E0B;">Turnkey Startup Blueprint \${idx+1}</span>
-            <span style="font-size:11px; color:#10B981; font-weight:700;">PMEGP / Mudra Bankable</span>
-          </div>
-          <div class="card-title">\${bp.business_title || bp.nos_title || 'Commercial Unit'}</div>
-          
-          <div style="font-size:12.5px; color:#CBD5E1; line-height:1.4;">\${bp.business_pitch_summary || 'Turnkey commercial workshop unit designed for district-level micro-enterprises.'}</div>
-
-          <div style="font-size:12px; font-weight:700; color:#94A3B8; text-transform:uppercase; margin-top:4px;">Machinery Tool Bill of Materials (BOM):</div>
-          <div style="display:flex; flex-direction:column; gap:6px;">
-            \${(bp.tool_bom || []).slice(0, 4).map(tool => \`
-              <div style="background:var(--bg-panel); padding:8px 10px; border-radius:6px; display:flex; justify-content:space-between; font-size:12px;">
-                <span>🔧 <b>\${tool.name}</b> (HSN: \${tool.hsn_code || '8479'})</span>
-                <span style="color:#38BDF8; font-weight:700;">₹\${Number(tool.cost || 25000).toLocaleString('en-IN')}</span>
-              </div>
-            \`).join('')}
-          </div>
-
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:8px; border-top:1px solid var(--border);">
-            <span style="font-size:12px; color:#94A3B8;">3-Year DSCR Ratio: <b style="color:#10B981;">2.15x (Prime Grade)</b></span>
-            <button class="btn-lang" style="background:#F59E0B; color:#000; font-weight:800;" onclick="alert('🚀 Startup Pitch Video: ' + '\${bp.pitch_video?.video_url || 'Available online'}')">▶ Pitch Reel</button>
-          </div>
-        \`;
-        container.appendChild(card);
-      });
-    }
-
-    // ── Render Full Viva Exam List ──
-    function renderFullVivaExam() {
-      const container = document.getElementById('viva-full-quiz-container');
-      container.innerHTML = '';
-
-      const pcs = [];
-      if (DATA.nsqf && DATA.nsqf.nos_units) {
-        DATA.nsqf.nos_units.forEach(nos => {
-          (nos.performance_criteria || []).forEach(pc => pcs.push(pc));
+            tiddlers.push({
+                title: bpTitle,
+                tags: `MSME Startup Blueprint [[${sector}]]`,
+                youtube_id: bp.pitch_video?.video_id || '',
+                text: bpText
+            });
         });
-      }
-
-      pcs.slice(0, 10).forEach((pc, pIdx) => {
-        (pc.viva_quiz || []).forEach((q, qIdx) => {
-          const qCard = document.createElement('div');
-          qCard.className = 'quiz-q-card';
-          qCard.innerHTML = \`
-            <div style="font-size:11px; font-weight:800; color:#38BDF8;">CRITERION: \${pc.pc_id || pc.code || 'PC' + (pIdx+1)} • QUESTION \${qIdx+1}</div>
-            <div class="quiz-q-text">\${currentLang === 'hi' ? (q.question_hi || q.question_en) : q.question_en}</div>
-            <div class="quiz-options">
-              \${(q.options || []).map((opt, oIdx) => \`
-                <button class="quiz-opt-btn" onclick="checkAnswer(this, \${opt.is_correct === true}, '\${(q.explanation || '').replace(/'/g, "\\\\'")}', 'f-expl-\${pIdx}-\${qIdx}')">
-                  \${String.fromCharCode(65 + oIdx)}. \${opt.text}
-                </button>
-              \`).join('')}
-            </div>
-            <div class="quiz-explanation" id="f-expl-\${pIdx}-\${qIdx}"></div>
-          \`;
-          container.appendChild(qCard);
-        });
-      });
     }
 
-    window.addEventListener('DOMContentLoaded', init);
-  </script>
-</body>
-</html>`;
+    // ── I. Set Default Tiddlers (Reel Feed Story) ──
+    tiddlers.push({
+        title: '$:/DefaultTiddlers',
+        text: defaultStory.slice(0, 20).map(t => `[[${t}]]`).join('\n')
+    });
+
+    return tiddlers;
 }
 
-// ── Exporter Runner ──────────────────────────────────────────────────────────
-async function runWikiExporter() {
+// ── 3. Main Exporter Execution ───────────────────────────────────────────────
+async function runTiddlyWikiCompiler() {
     const args     = process.argv.slice(2);
     const isSample = args.includes('--sample');
     const qpArg    = args.find(a => a.startsWith('--qp='));
 
     console.log('╔══════════════════════════════════════════════════════════════════════════╗');
-    console.log('║  HAYAGRIVA SINGLE-FILE OFFLINE REEL WIKI EXPORTER                        ║');
-    console.log('║  (TikTok Reels • 3-Q Viva Exam • SOP Workstations • MSME DPR Simulator)  ║');
+    console.log('║  HAYAGRIVA GENUINE TIDDLYWIKI 5 OFFLINE REEL COMPILER                    ║');
+    console.log('║  (Official TiddlyWiki5 Engine • TikTok Snap Feed • Tiddloid Auto-Save)   ║');
     console.log('╚══════════════════════════════════════════════════════════════════════════╝\n');
+
+    // 1. Load Base Official TiddlyWiki5 Template
+    const { preStoreHtml, postStoreHtml, essentialTiddlers } = loadBaseTiddlyWikiTemplate();
+    console.log(`📦 Loaded Base TiddlyWiki 5 Core (${essentialTiddlers.length} system plugins preserved).\n`);
 
     let targetQps = [];
     if (qpArg) {
         targetQps = [qpArg.split('=')[1].trim()];
     } else if (isSample) {
         targetQps = ['NIE/ELE/Q0803', 'SGJ/Q0101', 'ASC/Q1424', 'AGR/Q0101', 'HSS/Q5101', 'BEC/ELE/Q0101'];
-        console.log('🌟 Compiling Offline Standalone Wikis for 6 Flagship Sample QPs...\n');
+        console.log('🌟 Compiling Genuine TiddlyWiki 5 files for 6 Flagship Sample QPs...\n');
     } else {
         const files = fs.readdirSync(SOP_JSON_DIR).filter(f => f.endsWith('.json'));
         targetQps = files.map(f => f.replace('.json', '').replace(/_/g, '/'));
-        console.log(`🚀 Compiling Offline Wikis for ${targetQps.length} QPs...\n`);
+        console.log(`🚀 Compiling Genuine TiddlyWiki 5 files for ${targetQps.length} QPs...\n`);
     }
 
-    let exportedCount = 0;
+    let compiledCount = 0;
 
     for (const qpCode of targetQps) {
         const cleanQp = qpCode.replace(/\//g, '_');
 
-        // 1. Read 3 JSON master files
+        // 2. Read Master JSON Lake files
         const nsqfPath = path.join(NSQF_JSON_DIR, `${cleanQp}.json`);
         const sopPath  = path.join(SOP_JSON_DIR, `${cleanQp}.json`);
         const msmePath = path.join(MSME_JSON_DIR, `${cleanQp}.json`);
@@ -652,24 +453,31 @@ async function runWikiExporter() {
         const sector = sopData?.sector  || nsqfData?.sector  || 'General Industry';
         const level  = sopData?.nsqf_level || '4';
 
-        // 2. Generate Standalone HTML
-        const htmlContent = generateStandaloneReelWikiHtml(qpCode, qpName, sector, level, nsqfData, sopData, msmeData);
+        // 3. Compile Domain Tiddlers
+        const qpTiddlers = buildQpTiddlers(qpCode, qpName, sector, level, nsqfData, sopData, msmeData);
 
-        // 3. Write single file to disk
+        // Combine Essential Core Tiddlers + QP Tiddlers
+        const fullStore = [...essentialTiddlers, ...qpTiddlers];
+        const storeJson = JSON.stringify(fullStore, null, 1);
+
+        // 4. Assemble Single-File HTML
+        const fullHtml = preStoreHtml + storeJson + postStoreHtml;
+
+        // 5. Write to disk
         const outFilePath = path.join(WIKI_OUT_DIR, `${cleanQp}_ReelWiki.html`);
-        fs.writeFileSync(outFilePath, htmlContent, 'utf-8');
+        fs.writeFileSync(outFilePath, fullHtml, 'utf-8');
 
-        const fileSizeKb = Math.round(Buffer.byteLength(htmlContent, 'utf8') / 1024);
-        console.log(`✅ [Exported] ${cleanQp}_ReelWiki.html (${fileSizeKb} KB)`);
+        const fileSizeMb = (Buffer.byteLength(fullHtml, 'utf8') / (1024 * 1024)).toFixed(2);
+        console.log(`✅ [Compiled TiddlyWiki 5] ${cleanQp}_ReelWiki.html (${fileSizeMb} MB • ${qpTiddlers.length} tiddlers)`);
         console.log(`   📍 Path: ${outFilePath}`);
-        exportedCount++;
+        compiledCount++;
     }
 
-    console.log(`\n🎉 Successfully exported ${exportedCount} Standalone Offline Reel Wikis to: data/wiki/`);
+    console.log(`\n🎉 Successfully compiled ${compiledCount} Official TiddlyWiki 5 files to: data/wiki/`);
     process.exit(0);
 }
 
-runWikiExporter().catch(err => {
-    console.error('❌ Fatal error in wiki exporter:', err);
+runTiddlyWikiCompiler().catch(err => {
+    console.error('❌ Fatal error in TiddlyWiki compiler:', err);
     process.exit(1);
 });
