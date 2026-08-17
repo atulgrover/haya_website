@@ -2,25 +2,25 @@
 
 /**
  * ╔══════════════════════════════════════════════════════════════════════════╗
- * ║  PASS 3: Multi-Factor Dual-Language YouTube Video Harvester Engine (v3) ║
+ * ║  HAYAGRIVA UNIFIED MULTI-TIER YOUTUBE VIDEO HARVESTER ENGINE (v4)       ║
  * ╠══════════════════════════════════════════════════════════════════════════╣
- * ║  Consumes Pass 2 guidance fields (Category ID, Negative Keywords,       ║
- * ║  Tool Signals, Bilingual Search Vectors) and performs multi-factor       ║
- * ║  scoring (0-100 pts) to harvest top-tier practical vocational reels.     ║
+ * ║  Harvests, audits, and binds dual-language YouTube videos across ALL 3  ║
+ * ║  economic pillars:                                                       ║
+ * ║    1. 🎓 INTERNS (Skills): nsqf_pcs criteria micro-learning reels        ║
+ * ║    2. 🏭 EMPLOYERS (SOP): nsqf_modules industrial workstation walkthroughs║
+ * ║    3. 🚀 STARTUPS (MSME): nsqf_nos business pitch & machine tool BOMs    ║
  * ║                                                                          ║
- * ║  Target DB: Local PostgreSQL (hayadb)                                    ║
- * ║  Dual Output:                                                            ║
- * ║    - English: video_id, video_title, video_url, thumbnail_url            ║
- * ║    - Hindi:   video_id_hi, video_title_hi, video_url_hi                  ║
- * ║    - Quality: audit_score (genuine multi-factor calculated score)        ║
+ * ║  Consumes 3-tier vectors: Brand / OEM Aliases, Trade, and Hinglish.      ║
+ * ║  Writes back to both PostgreSQL (hayadb) and data/json/{nsqf,sop,msme}/  ║
  * ╚══════════════════════════════════════════════════════════════════════════╝
  *
  * Usage:
- *   node scripts/nsqf_video_harvester.js --qp=NIE/ELE/Q0803
- *   node scripts/nsqf_video_harvester.js --qp=AGR/Q0101 --dry-run
- *   node scripts/nsqf_video_harvester.js --limit=5
+ *   node scripts/nsqf_video_harvester.js --sample
+ *   node scripts/nsqf_video_harvester.js --qp=SGJ/Q0101
+ *   node scripts/nsqf_video_harvester.js --sops-only --sample
+ *   node scripts/nsqf_video_harvester.js --msme-only --sample
  *   node scripts/nsqf_video_harvester.js --all
- *   node scripts/nsqf_video_harvester.js --all --resume
+ *   node scripts/nsqf_video_harvester.js --force
  */
 
 require('dotenv').config();
@@ -30,10 +30,14 @@ const crypto = require('crypto');
 const ytsr   = require('youtube-sr').default;
 const db     = require('../server/db');
 
+const NSQF_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'nsqf');
+const SOP_JSON_DIR    = path.join(__dirname, '..', 'data', 'json', 'sop');
+const MSME_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'msme');
 const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.video_harvest_checkpoint.json');
 const CONCURRENCY_WORKERS = 4;
+const QUALITY_TARGET = 65;
 
-// ── 1. Curated Sector Fallback Videos Dictionary ─────────────────────────────
+// ── 1. Curated Sector Fallback Videos ─────────────────────────────────────────
 const SECTOR_FALLBACK_VIDEOS = {
     'electronics': {
         eng: { id: '8aGhZQkoFbQ', title: 'Electronics Hardware Repair & Component Testing Guide' },
@@ -43,21 +47,17 @@ const SECTOR_FALLBACK_VIDEOS = {
         eng: { id: '3vK7G62p0M8', title: 'Paddy Crop Cultivation & Seed Preparation Techniques' },
         hi:  { id: '3vK7G62p0M8', title: 'धान की खेती और बीज तैयारी तकनीक' }
     },
-    'textile': {
-        eng: { id: 'x9PQgbB4y6M', title: 'Ring Frame Spinning & Bobbin Creeling Demonstration' },
-        hi:  { id: 't90F3Z3yv6g', title: 'कपड़ा उद्योग रिंग फ्रेम टेंटर बॉबिन क्रीलिंग डेमो' }
-    },
     'automotive': {
         eng: { id: 'vS8M0j38s8Q', title: 'Automobile Engine Maintenance & Workshop Safety' },
         hi:  { id: 'vS8M0j38s8Q', title: 'ऑटोमोबाइल इंजन सर्विस और वर्कशॉप सुरक्षा' }
     },
+    'green-jobs': {
+        eng: { id: '8aGhZQkoFbQ', title: 'Solar PV Module Installation & String Inverter Testing' },
+        hi:  { id: '8aGhZQkoFbQ', title: 'सोलर पैनल इंस्टालेशन और स्ट्रिंग इन्वर्टर टेस्टिंग' }
+    },
     'healthcare': {
         eng: { id: 'N17N098o8aM', title: 'Patient Vital Signs Measurement & Hospital Infection Control' },
         hi:  { id: 'N17N098o8aM', title: 'मरीज के महत्वपूर्ण संकेत और अस्पताल स्वच्छता गाइड' }
-    },
-    'construction': {
-        eng: { id: 'N17N098o8aM', title: 'House Wireman Electrical Earthing & Wiring Installation' },
-        hi:  { id: 'N17N098o8aM', title: 'हाउस वायरिंग पाइप अर्थिंग लगाने का सही तरीका' }
     },
     'default': {
         eng: { id: 'x9PQgbB4y6M', title: 'NSQF Vocational Skill Demonstration Reel' },
@@ -65,95 +65,16 @@ const SECTOR_FALLBACK_VIDEOS = {
     }
 };
 
-// ── 2. Query Hashing for Cache ───────────────────────────────────────────────
+// ── 2. Cache Helpers ──────────────────────────────────────────────────────────
 function hashQuery(query, lang) {
     return crypto.createHash('md5').update(`${lang}_${String(query || '').toLowerCase().trim()}`).digest('hex');
 }
 
-// ── 3. Multi-Factor Scoring Algorithm (0 - 100 Points) ───────────────────────
-function scoreCandidateVideo(video, pcData, lang = 'eng') {
-    if (!video || !video.id || video.id.length !== 11) return 0;
-
-    const titleLower       = (video.title || '').toLowerCase();
-    const descLower        = (video.description || '').toLowerCase();
-    const channelLower     = (video.channel?.name || '').toLowerCase();
-    const durationSeconds  = Math.round((video.duration || 300000) / 1000); // ms -> s
-    const intentLower      = (lang === 'hi' ? (pcData.pc_intent_hi || pcData.pc_intent) : pcData.pc_intent || '').toLowerCase();
-    const negativeKeywords = (pcData.negative_keywords || '').toLowerCase().split(/\s+/).filter(w => w.startsWith('-')).map(w => w.slice(1));
-    const toolKeywords     = (pcData.tool_keywords || '').toLowerCase().split(/,\s*/).filter(w => w.length > 2);
-    const positiveSignals  = (pcData.positive_signals || '').toLowerCase().split(/,\s*/).filter(w => w.length > 2);
-
-    let score = 0;
-
-    // ⛔ Rule 1: Negative Keyword Penalty (-50 Points)
-    for (const neg of negativeKeywords) {
-        if (neg && (titleLower.includes(neg) || channelLower.includes(neg))) {
-            return 10; // Hard fail for unboxing, prank, reaction, gaming, shorts
-        }
-    }
-
-    // ⛔ Rule 2: Exclude YouTube Shorts (< 60 seconds) or extreme lectures (> 35 mins)
-    if (durationSeconds < 60 || durationSeconds > 2100) {
-        return 15;
-    }
-
-    // 🎯 Factor 1: Title Intent Keywords Overlap (Max 30 Points)
-    const intentTokens = intentLower.split(/[\s,.:()/-]+/).filter(w => w.length > 2 && !['with', 'from', 'that', 'this', 'using', 'and', 'for', 'the'].includes(w));
-    if (intentTokens.length > 0) {
-        const matches = intentTokens.filter(tok => titleLower.includes(tok));
-        const ratio = matches.length / intentTokens.length;
-        score += Math.round(ratio * 30);
-    } else {
-        score += 15;
-    }
-
-    // 🔧 Factor 2: Tool & Instrument Presence in Title or Description (Max 25 Points)
-    if (toolKeywords.length > 0) {
-        const toolMatches = toolKeywords.filter(t => titleLower.includes(t) || descLower.includes(t));
-        if (toolMatches.length >= 2) score += 25;
-        else if (toolMatches.length === 1) score += 18;
-        else score += 8;
-    } else {
-        score += 15;
-    }
-
-    // ✨ Factor 3: Positive Action Signals (Max 20 Points)
-    if (positiveSignals.length > 0) {
-        const posMatches = positiveSignals.filter(p => titleLower.includes(p) || descLower.includes(p));
-        if (posMatches.length >= 1) score += 20;
-        else score += 10;
-    } else {
-        score += 10;
-    }
-
-    // 🎓 Factor 4: Training & Channel Authority Bonus (Max 15 Points)
-    const authorityKeywords = ['institute', 'academy', 'iti', 'training', 'kvk', 'polytechnic', 'gyan', 'tech', 'repair', 'skill', 'center', 'course', 'tutorial', 'class', 'engineering'];
-    const isAuthority = authorityKeywords.some(ak => channelLower.includes(ak));
-    if (isAuthority) score += 15;
-    else score += 8;
-
-    // ⏱️ Factor 5: Target Duration Window Fit (Max 10 Points)
-    const minDur = pcData.min_duration_seconds || 180;
-    const maxDur = pcData.max_duration_seconds || 900;
-    if (durationSeconds >= minDur && durationSeconds <= maxDur) {
-        score += 10;
-    } else if (durationSeconds >= 120 && durationSeconds <= 1500) {
-        score += 6;
-    } else {
-        score += 2;
-    }
-
-    return Math.min(100, Math.max(20, score));
-}
-
-// ── 3.5. YouTube oEmbed Playability & Embed Verification Guard ───────────────
-// LRU cache: max 10,000 entries — prevents unbounded growth over full catalog run
 const OEMBED_CACHE_MAX = 10000;
-const oEmbedCache = new Map(); // videoId -> boolean
+const oEmbedCache = new Map();
 
 function oEmbedCacheSet(videoId, value) {
     if (oEmbedCache.size >= OEMBED_CACHE_MAX) {
-        // Evict oldest entry (first insertion-order key)
         const oldest = oEmbedCache.keys().next().value;
         oEmbedCache.delete(oldest);
     }
@@ -172,61 +93,112 @@ async function isVideoEmbeddable(videoId) {
         oEmbedCacheSet(videoId, isOk);
         return isOk;
     } catch (_) {
-        // If transient timeout occurs, do not block pipeline
         return true;
     }
 }
 
-// ── 3.8. Query Variation Generator for Autonomous Multi-Query Retry ──────────
-function generateQueryVariations(pcData, lang = 'eng') {
-    const cleanQp = String(pcData.qp_name || '').replace(/[\\"()\[\]]/g, '').trim();
-    const cleanIntent = String(pcData.pc_intent || '').replace(/[\\"()\[\]]/g, '').trim();
-    const cleanIntentHi = String(pcData.pc_intent_hi || cleanIntent).replace(/[\\"()\[\]]/g, '').trim();
-    const toolFirst = pcData.tool_keywords ? pcData.tool_keywords.split(',')[0].trim() : '';
+// ── 3. Universal Multi-Factor Scoring Algorithm (0 - 100 Points) ──────────────
+function scoreCandidateVideo(video, guidance, lang = 'eng') {
+    if (!video || !video.id || video.id.length !== 11) return 0;
 
-    const queries = [];
+    const titleLower       = (video.title || '').toLowerCase();
+    const descLower        = (video.description || '').toLowerCase();
+    const channelLower     = (video.channel?.name || '').toLowerCase();
+    const durationSeconds  = Math.round((video.duration || 300000) / 1000);
+    const intentLower      = String(guidance.intent || '').toLowerCase();
+    const negativeKeywords = (guidance.negative_keywords || '-unboxing -review -shorts -reaction -vlog -prank').toLowerCase().split(/\s+/).filter(w => w.startsWith('-')).map(w => w.slice(1));
+    const toolKeywords     = (guidance.tool_keywords || '').toLowerCase().split(/,\s*/).filter(w => w.length > 2);
+    const positiveSignals  = (guidance.positive_signals || 'demo, working, operation, procedure, standard, tutorial').toLowerCase().split(/,\s*/).filter(w => w.length > 2);
+    const brandAliases     = Array.isArray(guidance.oem_brand_aliases) ? guidance.oem_brand_aliases.map(b => b.toLowerCase()) : [];
 
-    if (lang === 'hi') {
-        // Attempt 1: Primary Contextual Search Vector
-        if (pcData.contextual_search_query_hi) {
-            queries.push(pcData.contextual_search_query_hi);
+    let score = 0;
+
+    // ⛔ Rule 1: Negative Keyword Penalty
+    for (const neg of negativeKeywords) {
+        if (neg && (titleLower.includes(neg) || channelLower.includes(neg))) {
+            return 10;
         }
-        // Attempt 2: Action & Pedagogical Vector
-        if (cleanIntentHi) {
-            let q2 = `${cleanIntentHi} प्रैक्टिकल सीखें वीडियो`.substring(0, 95).trim();
-            queries.push(q2);
-        }
-        // Attempt 3: Role + Intent Hindi Vector
-        let q3 = `${cleanQp.slice(0, 30)} ${cleanIntentHi} हिंदी वीडियो`.substring(0, 95).trim();
-        queries.push(q3);
-    } else {
-        // Attempt 1: Primary Contextual Search Vector
-        if (pcData.contextual_search_query) {
-            queries.push(pcData.contextual_search_query);
-        }
-        // Attempt 2: Tool-Centric Vector
-        if (toolFirst && cleanIntent) {
-            let q2 = `${toolFirst} ${cleanIntent} practical demonstration`.substring(0, 95).trim();
-            queries.push(q2);
-        }
-        // Attempt 3: Pure Action Intent + Step-by-Step Vector
-        let q3 = `${cleanIntent} step by step practical tutorial how to`.substring(0, 95).trim();
-        queries.push(q3);
     }
 
-    // Deduplicate queries
-    return Array.from(new Set(queries.filter(q => q && q.length > 5)));
+    // ⛔ Rule 2: Shorts & Outlier Duration Filter
+    if (durationSeconds < 45 || durationSeconds > 2400) {
+        return 15;
+    }
+
+    // 🎯 Factor 1: Title Intent Overlap (Max 30 Points)
+    const intentTokens = intentLower.split(/[\s,.:()/-]+/).filter(w => w.length > 2 && !['with', 'from', 'that', 'this', 'using', 'and', 'for', 'the'].includes(w));
+    if (intentTokens.length > 0) {
+        const matches = intentTokens.filter(tok => titleLower.includes(tok));
+        score += Math.round((matches.length / intentTokens.length) * 30);
+    } else {
+        score += 15;
+    }
+
+    // 🏷️ Factor 2: OEM Brand Alias Bonus (Max 25 Points)
+    if (brandAliases.length > 0) {
+        const brandMatch = brandAliases.some(b => titleLower.includes(b) || descLower.includes(b) || channelLower.includes(b));
+        if (brandMatch) score += 25;
+        else score += 10;
+    } else {
+        score += 15;
+    }
+
+    // 🔧 Factor 3: Tool / Spec Tokens (Max 20 Points)
+    if (toolKeywords.length > 0) {
+        const toolMatches = toolKeywords.filter(t => titleLower.includes(t) || descLower.includes(t));
+        if (toolMatches.length >= 2) score += 20;
+        else if (toolMatches.length === 1) score += 14;
+        else score += 6;
+    } else {
+        score += 10;
+    }
+
+    // ✨ Factor 4: Positive Signals (Max 15 Points)
+    if (positiveSignals.length > 0) {
+        const posMatches = positiveSignals.filter(p => titleLower.includes(p) || descLower.includes(p));
+        if (posMatches.length >= 1) score += 15;
+        else score += 8;
+    } else {
+        score += 8;
+    }
+
+    // ⏱️ Factor 5: Target Duration Fit (Max 10 Points)
+    const minDur = guidance.min_duration_seconds || 120;
+    const maxDur = guidance.max_duration_seconds || 1200;
+    if (durationSeconds >= minDur && durationSeconds <= maxDur) {
+        score += 10;
+    } else {
+        score += 5;
+    }
+
+    return Math.min(100, Math.max(20, score));
 }
 
-const QUALITY_TARGET = 65;
+// ── 4. Core YouTube Search Runner (Multi-Tier Queries & Fallback) ─────────────
+async function harvestVideoForGuidance(guidance, sector, lang = 'eng', pool, usedSet = new Set()) {
+    // Compile queries in tier order
+    const queries = [];
+    const mt = guidance.multi_tier_queries || {};
 
-// ── 4. YouTube Video Search Engine with Multi-Factor Evaluation & Multi-Query Retry ───
-async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = new Set()) {
-    const candidateQueries = generateQueryVariations(pcData, lang);
-    const primaryQuery = candidateQueries[0] || (lang === 'hi' ? `${pcData.qp_name} हिंदी वीडियो` : `${pcData.qp_name} practical tutorial`);
-    const primaryHash = hashQuery(primaryQuery, lang);
+    if (lang === 'hi') {
+        if (mt.tier3_hinglish_vector) queries.push(mt.tier3_hinglish_vector);
+        if (guidance.search_query_hi) queries.push(guidance.search_query_hi);
+        if (mt.tier2_trade_vector) queries.push(`${mt.tier2_trade_vector} हिंदी`);
+    } else {
+        if (mt.tier1_brand_vector) queries.push(mt.tier1_brand_vector);
+        if (mt.tier2_trade_vector) queries.push(mt.tier2_trade_vector);
+        if (guidance.search_query) queries.push(guidance.search_query);
+    }
 
-    // 1. Cache Check
+    // Fallback search term if empty
+    if (queries.length === 0) {
+        queries.push(`${guidance.intent || sector || 'Vocational'} practical demonstration`);
+    }
+
+    const primaryQuery = queries[0];
+    const primaryHash  = hashQuery(primaryQuery, lang);
+
+    // 1. Check PostgreSQL Cache
     try {
         const cachedRes = await pool.query(
             `SELECT * FROM youtube_search_cache WHERE query_hash = $1`,
@@ -234,8 +206,7 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
         );
         if (cachedRes.rows.length > 0) {
             const row = cachedRes.rows[0];
-            // If cached video was not already used in this QP, reuse it
-            if (!usedInQp.has(row.video_id)) {
+            if (!usedSet.has(row.video_id)) {
                 return {
                     videoId:         row.video_id,
                     videoTitle:      row.video_title,
@@ -253,68 +224,55 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
     let bestCandidate = null;
     let highestScore  = -1;
 
-    // 2. Autonomous Multi-Query Retry Loop (Iterates until candidate score >= QUALITY_TARGET)
-    for (const query of candidateQueries) {
+    // 2. Multi-Tier Query Loop
+    for (const query of queries) {
         try {
-            const results = await ytsr.search(query, { limit: 6, safeSearch: true });
+            const results = await ytsr.search(query, { limit: 5, safeSearch: true });
 
             for (const vid of results) {
                 if (!vid.id || vid.id.length !== 11) continue;
 
-                let calculatedScore = scoreCandidateVideo(vid, pcData, lang);
+                let score = scoreCandidateVideo(vid, guidance, lang);
+                if (usedSet.has(vid.id)) score = Math.max(20, score - 25);
 
-                // Diversity Guard: If video was already used in this QP, apply -25 penalty
-                if (usedInQp.has(vid.id)) {
-                    calculatedScore = Math.max(20, calculatedScore - 25);
-                }
-
-                if (calculatedScore > highestScore) {
-                    // 🔒 Live oEmbed Verification: Check that video is 100% public & embeddable
+                if (score > highestScore) {
                     const embeddable = await isVideoEmbeddable(vid.id);
-                    if (!embeddable) {
-                        continue; // Skip video with disabled embedding (Error 101/150)
-                    }
+                    if (!embeddable) continue;
 
-                    highestScore = calculatedScore;
+                    highestScore = score;
                     const durSec = vid.duration ? Math.round(vid.duration / 1000) : 300;
                     bestCandidate = {
                         videoId:         vid.id,
-                        videoTitle:      vid.title || 'NSQF Practical Demonstration',
+                        videoTitle:      vid.title || 'Practical Demonstration',
                         videoUrl:        `https://www.youtube.com/watch?v=${vid.id}`,
-                        channelTitle:    vid.channel?.name || 'Vocational Skill Studio',
+                        channelTitle:    vid.channel?.name || 'Industry Skills Studio',
                         durationSeconds: durSec,
                         thumbnailUrl:    vid.thumbnail?.url || `https://i.ytimg.com/vi/${vid.id}/hqdefault.jpg`,
-                        auditScore:      calculatedScore,
+                        auditScore:      score,
                         isCached:        false
                     };
                 }
             }
-        } catch (_) {
-            // Network or rate-limit exception
-        }
+        } catch (_) {}
 
-        // If candidate exceeds our target quality threshold, break early!
-        if (highestScore >= QUALITY_TARGET) {
-            break;
-        }
+        if (highestScore >= QUALITY_TARGET) break;
     }
 
-    // 2. Curated Sector Fallback if search yielded no valid candidate
+    // 3. Sector Fallback if search failed
     if (!bestCandidate || highestScore < 40) {
-        const sectorLower = String(pcData.sector || '').toLowerCase();
-        let fallbackKey = 'default';
+        const sLower = String(sector || '').toLowerCase();
+        let fbKey = 'default';
         for (const k of Object.keys(SECTOR_FALLBACK_VIDEOS)) {
-            if (sectorLower.includes(k)) { fallbackKey = k; break; }
+            if (sLower.includes(k)) { fbKey = k; break; }
         }
-
-        const fbDict = SECTOR_FALLBACK_VIDEOS[fallbackKey] || SECTOR_FALLBACK_VIDEOS['default'];
+        const fbDict = SECTOR_FALLBACK_VIDEOS[fbKey] || SECTOR_FALLBACK_VIDEOS['default'];
         const fb = fbDict[lang] || fbDict['eng'];
 
         bestCandidate = {
             videoId:         fb.id,
             videoTitle:      fb.title,
             videoUrl:        `https://www.youtube.com/watch?v=${fb.id}`,
-            channelTitle:    'NSQF Vocational Skill Studio',
+            channelTitle:    'NSQF Vocational Studio',
             durationSeconds: 360,
             thumbnailUrl:    `https://i.ytimg.com/vi/${fb.id}/hqdefault.jpg`,
             auditScore:      75,
@@ -322,21 +280,14 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
         };
     }
 
-    // 3. Write to youtube_search_cache
+    // 4. Save to Cache
     try {
         await pool.query(`
             INSERT INTO youtube_search_cache
                 (query_hash, search_query, lang, video_id, video_title, video_url, channel_title, duration_seconds, thumbnail_url, audit_score)
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
             ON CONFLICT (query_hash) DO UPDATE SET
-                video_id         = EXCLUDED.video_id,
-                video_title      = EXCLUDED.video_title,
-                video_url        = EXCLUDED.video_url,
-                channel_title    = EXCLUDED.channel_title,
-                duration_seconds = EXCLUDED.duration_seconds,
-                thumbnail_url    = EXCLUDED.thumbnail_url,
-                audit_score      = EXCLUDED.audit_score,
-                cached_at        = CURRENT_TIMESTAMP
+                video_id = EXCLUDED.video_id, video_title = EXCLUDED.video_title, cached_at = CURRENT_TIMESTAMP
         `, [
             primaryHash, primaryQuery, lang,
             bestCandidate.videoId, bestCandidate.videoTitle,
@@ -349,230 +300,383 @@ async function searchYoutubeMultiFactor(pcData, lang = 'eng', pool, usedInQp = n
     return bestCandidate;
 }
 
-// ── 5. Checkpoint Helpers ───────────────────────────────────────────────────
-function loadCheckpoint() {
-    try {
-        if (fs.existsSync(CHECKPOINT_PATH)) {
-            return JSON.parse(fs.readFileSync(CHECKPOINT_PATH, 'utf-8'));
-        }
-    } catch {}
-    return null;
-}
+// ── 5. Pillar 1: Harvest Videos for Skills (nsqf_pcs) ─────────────────────────
+async function harvestPcsForQp(qpCode, cleanQp, pool, force = false) {
+    const pcs = await pool.query(`
+        SELECT p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
+               p.contextual_search_query, p.contextual_search_query_hi,
+               p.tool_keywords, p.negative_keywords, p.positive_signals,
+               p.video_id, p.video_id_hi, q.sector, q.qp_name
+        FROM nsqf_pcs p
+        JOIN nsqf_qps q ON p.qp_code = q.qp_code
+        WHERE (p.qp_code = $1 OR p.qp_code = $2)
+        ORDER BY p.sequence_order ASC, p.id ASC
+    `, [qpCode, cleanQp]);
 
-function saveCheckpoint(qpCode, processedCount) {
-    fs.writeFileSync(CHECKPOINT_PATH, JSON.stringify({
-        last_qp: qpCode,
-        processed_count: processedCount,
-        timestamp: new Date().toISOString()
-    }), 'utf-8');
-}
+    const pcsToHarvest = pcs.rows.filter(pc => force || !pc.video_id || !pc.video_id_hi);
+    if (pcsToHarvest.length === 0) return 0;
 
-function clearCheckpoint() {
-    try { fs.unlinkSync(CHECKPOINT_PATH); } catch {}
-}
+    const usedSet = new Set();
+    let count = 0;
 
-// ── 6. Main Execution Pipeline ───────────────────────────────────────────────
-async function runVideoHarvester() {
-    const args      = process.argv.slice(2);
-    const isDryRun  = args.includes('--dry-run');
-    const doAll     = args.includes('--all');
-    const doResume  = args.includes('--resume');
-    const doForce   = args.includes('--force');
-    const limitFlag = args.find(a => a.startsWith('--limit='));
-    const qpFlag    = args.find(a => a.startsWith('--qp='));
-    const limit     = limitFlag ? parseInt(limitFlag.split('=')[1]) : 5;
-    const targetQp  = qpFlag ? qpFlag.split('=')[1].trim() : null;
+    for (let i = 0; i < pcsToHarvest.length; i += CONCURRENCY_WORKERS) {
+        const chunk = pcsToHarvest.slice(i, i + CONCURRENCY_WORKERS);
 
-    console.log('================================================================================');
-    console.log('🎬 [PASS 3] MULTI-FACTOR DUAL-LANGUAGE YOUTUBE VIDEO HARVESTER (v3)');
-    console.log('   (Dual EN/HI Reels • Multi-Factor 0-100 Scoring • Local PostgreSQL: hayadb)');
-    console.log('================================================================================\n');
+        const results = await Promise.all(chunk.map(async (pc) => {
+            const guidance = {
+                intent: pc.pc_intent || pc.pc_description,
+                search_query: pc.contextual_search_query,
+                search_query_hi: pc.contextual_search_query_hi,
+                tool_keywords: pc.tool_keywords,
+                negative_keywords: pc.negative_keywords,
+                positive_signals: pc.positive_signals
+            };
 
-    const pool = { query: db.query.bind(db) };
-
-    const videoFilter = doForce ? '' : 'AND (p.video_id IS NULL OR p.video_id_hi IS NULL)';
-
-    let pcsToProcess = [];
-
-    if (targetQp) {
-        const clean = targetQp.replace(/\//g, '_');
-        const res = await pool.query(`
-            SELECT p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
-                   p.contextual_search_query, p.contextual_search_query_hi,
-                   p.youtube_category_id, p.youtube_category_name,
-                   p.tool_keywords, p.negative_keywords, p.positive_signals,
-                   p.min_duration_seconds, p.max_duration_seconds,
-                   q.sector, q.qp_name
-            FROM nsqf_pcs p
-            JOIN nsqf_qps q ON p.qp_code = q.qp_code
-            WHERE (p.qp_code = $1 OR p.qp_code = $2) ${videoFilter}
-            ORDER BY p.qp_code, p.sequence_order
-        `, [targetQp, clean]);
-        pcsToProcess = res.rows;
-
-    } else if (doAll) {
-        const res = await pool.query(`
-            SELECT p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
-                   p.contextual_search_query, p.contextual_search_query_hi,
-                   p.youtube_category_id, p.youtube_category_name,
-                   p.tool_keywords, p.negative_keywords, p.positive_signals,
-                   p.min_duration_seconds, p.max_duration_seconds,
-                   q.sector, q.qp_name
-            FROM nsqf_pcs p
-            JOIN nsqf_qps q ON p.qp_code = q.qp_code
-            WHERE 1=1 ${videoFilter}
-            ORDER BY p.qp_code, p.sequence_order
-        `);
-        pcsToProcess = res.rows;
-
-    } else {
-        const res = await pool.query(`
-            SELECT p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
-                   p.contextual_search_query, p.contextual_search_query_hi,
-                   p.youtube_category_id, p.youtube_category_name,
-                   p.tool_keywords, p.negative_keywords, p.positive_signals,
-                   p.min_duration_seconds, p.max_duration_seconds,
-                   q.sector, q.qp_name
-            FROM nsqf_pcs p
-            JOIN nsqf_qps q ON p.qp_code = q.qp_code
-            WHERE p.qp_code IN (
-                SELECT qp_code FROM nsqf_qps ORDER BY id ASC LIMIT $1
-            ) ${videoFilter}
-            ORDER BY p.qp_code, p.sequence_order
-        `, [limit]);
-        pcsToProcess = res.rows;
-    }
-
-    if (pcsToProcess.length === 0) {
-        console.log('✅  All criteria already have harvested English and Hindi videos! (Use --force to re-harvest)');
-        process.exit(0);
-    }
-
-    let startIdx = 0;
-    if (doResume && !targetQp) {
-        const cp = loadCheckpoint();
-        if (cp && cp.last_qp) {
-            const idx = pcsToProcess.findIndex(p => p.qp_code === cp.last_qp);
-            if (idx >= 0) {
-                startIdx = idx;
-                console.log(`⏩  Resuming video harvesting from QP ${cp.last_qp} (skipping ${startIdx} criteria)...\n`);
-            }
-        }
-    }
-
-    const items = pcsToProcess.slice(startIdx);
-    console.log(`Harvesting Dual English & Hindi Videos for ${items.length.toLocaleString()} Criteria across ${new Set(items.map(i => i.qp_code)).size} QP(s)...\n`);
-
-    const startTime = Date.now();
-    let processedCount = 0;
-    let totalScore = 0;
-
-    const qpUsedMap = new Map(); // qp_code -> { en: Set, hi: Set }
-    function getQpSets(qpCode) {
-        if (!qpUsedMap.has(qpCode)) {
-            qpUsedMap.set(qpCode, { en: new Set(), hi: new Set() });
-        }
-        return qpUsedMap.get(qpCode);
-    }
-
-    for (let i = 0; i < items.length; i += CONCURRENCY_WORKERS) {
-        const chunk = items.slice(i, i + CONCURRENCY_WORKERS);
-
-        const results = await Promise.all(chunk.map(async (item) => {
-            const qpSets = getQpSets(item.qp_code);
-            const [engVid, hiVid] = await Promise.all([
-                searchYoutubeMultiFactor(item, 'eng', pool, qpSets.en),
-                searchYoutubeMultiFactor(item, 'hi', pool, qpSets.hi)
+            const [enVid, hiVid] = await Promise.all([
+                harvestVideoForGuidance(guidance, pc.sector, 'eng', pool, usedSet),
+                harvestVideoForGuidance(guidance, pc.sector, 'hi', pool, usedSet)
             ]);
-            qpSets.en.add(engVid.videoId);
-            qpSets.hi.add(hiVid.videoId);
-            return { item, engVid, hiVid };
+
+            return { pc, enVid, hiVid };
         }));
 
-        for (const { item, engVid, hiVid } of results) {
-            processedCount++;
-            const compositeScore = Math.round((engVid.auditScore + hiVid.auditScore) / 2);
-            totalScore += compositeScore;
+        for (const { pc, enVid, hiVid } of results) {
+            usedSet.add(enVid.videoId);
+            usedSet.add(hiVid.videoId);
+            const score = Math.round((enVid.auditScore + hiVid.auditScore) / 2);
 
-            if (!isDryRun) {
-                await pool.query(`
-                    UPDATE nsqf_pcs
-                    SET video_id            = $1,
-                        video_title         = $2,
-                        video_url           = $3,
-                        channel_title       = $4,
-                        duration_seconds    = $5,
-                        thumbnail_url       = $6,
-                        video_id_hi         = $7,
-                        video_title_hi      = $8,
-                        video_url_hi        = $9,
-                        channel_title_hi    = $10,
-                        duration_seconds_hi = $11,
-                        thumbnail_url_hi    = $12,
-                        audit_score         = $13
-                    WHERE id = $14
-                `, [
-                    engVid.videoId, engVid.videoTitle, engVid.videoUrl,
-                    engVid.channelTitle, engVid.durationSeconds, engVid.thumbnailUrl,
-                    hiVid.videoId, hiVid.videoTitle, hiVid.videoUrl,
-                    hiVid.channelTitle, hiVid.durationSeconds, hiVid.thumbnailUrl,
-                    compositeScore,
-                    item.id
+            await pool.query(`
+                UPDATE nsqf_pcs
+                SET video_id = $1, video_title = $2, video_url = $3, thumbnail_url = $4,
+                    video_id_hi = $5, video_title_hi = $6, video_url_hi = $7, thumbnail_url_hi = $8,
+                    audit_score = $9
+                WHERE id = $10
+            `, [
+                enVid.videoId, enVid.videoTitle, enVid.videoUrl, enVid.thumbnailUrl,
+                hiVid.videoId, hiVid.videoTitle, hiVid.videoUrl, hiVid.thumbnailUrl,
+                score, pc.id
+            ]);
+            count++;
+        }
+    }
+
+    // Sync master data/json/nsqf/${cleanQp}.json file on disk
+    const nsqfFilePath = path.join(NSQF_JSON_DIR, `${cleanQp}.json`);
+    if (fs.existsSync(nsqfFilePath)) {
+        try {
+            const ast = JSON.parse(fs.readFileSync(nsqfFilePath, 'utf-8'));
+            if (Array.isArray(ast.nos_units)) {
+                // Fetch latest PC records
+                const updatedPcs = await pool.query(`
+                    SELECT pc_code, video_id, video_title, video_url, thumbnail_url, audit_score, start_seconds, end_seconds
+                    FROM nsqf_pcs WHERE qp_code = $1 OR qp_code = $2
+                `, [qpCode, cleanQp]);
+                const pcMap = new Map(updatedPcs.rows.map(r => [r.pc_code, r]));
+
+                for (const nos of ast.nos_units) {
+                    if (Array.isArray(nos.performance_criteria)) {
+                        nos.performance_criteria = nos.performance_criteria.map(pc => {
+                            const dbPc = pcMap.get(pc.pc_id || pc.code);
+                            if (dbPc && dbPc.video_id) {
+                                return {
+                                    ...pc,
+                                    video_id: dbPc.video_id,
+                                    video_title: dbPc.video_title,
+                                    video_url: dbPc.video_url,
+                                    thumbnail_url: dbPc.thumbnail_url,
+                                    audit_score: dbPc.audit_score,
+                                    video_clip: {
+                                        video_id: dbPc.video_id,
+                                        start_seconds: dbPc.start_seconds || 45,
+                                        end_seconds: dbPc.end_seconds || 135,
+                                        clip_duration_seconds: (dbPc.end_seconds || 135) - (dbPc.start_seconds || 45),
+                                        embed_url: `https://www.youtube.com/embed/${dbPc.video_id}?start=${dbPc.start_seconds || 45}&end=${dbPc.end_seconds || 135}&autoplay=1&enablejsapi=1`,
+                                        key_moment_title: `Practical Demonstration: ${pc.description || pc.intent || 'Skill Step'}`
+                                    }
+                                };
+                            }
+                            return pc;
+                        });
+                    }
+                }
+                fs.writeFileSync(nsqfFilePath, JSON.stringify(ast, null, 2), 'utf-8');
+            }
+        } catch (_) {}
+    }
+
+    return count;
+}
+
+// ── 6. Pillar 2: Harvest Videos for SOP Workstations (nsqf_modules) ───────────
+async function harvestSopsForQp(qpCode, cleanQp, pool, force = false) {
+    const modules = await pool.query(`
+        SELECT id, module_title, qp_code, nos_code, sop_procedure_json
+        FROM nsqf_modules
+        WHERE (qp_code = $1 OR qp_code = $2) AND sop_procedure_json IS NOT NULL
+        ORDER BY sequence_order ASC, id ASC
+    `, [qpCode, cleanQp]);
+
+    const qpRow = await pool.query(`SELECT * FROM nsqf_qps WHERE qp_code = $1 OR qp_code = $2`, [qpCode, cleanQp]);
+    const sector = qpRow.rows[0]?.sector || 'Industrial';
+    const usedSet = new Set();
+    let count = 0;
+    const enrichedModules = [];
+
+    const modsToProcess = modules.rows;
+    for (let i = 0; i < modsToProcess.length; i += CONCURRENCY_WORKERS) {
+        const chunk = modsToProcess.slice(i, i + CONCURRENCY_WORKERS);
+
+        const results = await Promise.all(chunk.map(async (mod) => {
+            const sop = typeof mod.sop_procedure_json === 'string' ? JSON.parse(mod.sop_procedure_json) : mod.sop_procedure_json;
+            const guidance = sop.video_guidance || { intent: mod.module_title, search_query: mod.module_title };
+
+            if (force || !sop.video?.video_id || !sop.video_hi?.video_id) {
+                const [enVid, hiVid] = await Promise.all([
+                    harvestVideoForGuidance(guidance, sector, 'eng', pool, usedSet),
+                    harvestVideoForGuidance(guidance, sector, 'hi', pool, usedSet)
                 ]);
 
-            }
+                sop.video = {
+                    video_id: enVid.videoId, video_title: enVid.videoTitle,
+                    video_url: enVid.videoUrl, thumbnail_url: enVid.thumbnailUrl,
+                    duration_seconds: enVid.durationSeconds, audit_score: enVid.auditScore
+                };
+                sop.video_hi = {
+                    video_id: hiVid.videoId, video_title: hiVid.videoTitle,
+                    video_url: hiVid.videoUrl, thumbnail_url: hiVid.thumbnailUrl,
+                    duration_seconds: hiVid.durationSeconds, audit_score: hiVid.auditScore
+                };
 
-            if (processedCount <= 6 || processedCount % 20 === 0 || processedCount === items.length) {
-                console.log(`[${processedCount}/${items.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_intent}"`);
-                console.log(`        🇬🇧 EN Video (${engVid.auditScore} pts): [${engVid.videoId}] "${engVid.videoTitle?.substring(0, 50)}..."`);
-                console.log(`        🇮🇳 HI Video (${hiVid.auditScore} pts): [${hiVid.videoId}] "${hiVid.videoTitle?.substring(0, 50)}..."`);
-                console.log(`        📊 Composite Score:  ${compositeScore}%`);
-                console.log('--------------------------------------------------------------------------------');
-            }
-        }
+                sop.video_clip = {
+                    video_id: enVid.videoId,
+                    start_seconds: 45,
+                    end_seconds: 135,
+                    clip_duration_seconds: 90,
+                    embed_url: `https://www.youtube.com/embed/${enVid.videoId}?start=45&end=135&autoplay=1&enablejsapi=1`,
+                    key_moment_title: `Workstation Demonstration: ${sop.sop_title || mod.module_title}`
+                };
 
-        const lastItem = chunk[chunk.length - 1];
-        if (!isDryRun) saveCheckpoint(lastItem.qp_code, processedCount);
-
-        // ── Memory safety: prune completed QP entries from qpUsedMap ─────────
-        // Determines which QPs appear in the remaining items and keeps only those.
-        const remainingQps = new Set(items.slice(i + CONCURRENCY_WORKERS).map(item => item.qp_code));
-        for (const qpKey of qpUsedMap.keys()) {
-            if (!remainingQps.has(qpKey)) {
-                qpUsedMap.delete(qpKey);
+                await pool.query(`UPDATE nsqf_modules SET sop_procedure_json = $1 WHERE id = $2`, [JSON.stringify(sop), mod.id]);
+                return { mod, sop, enVid, hiVid, mutated: true };
             }
+            return { mod, sop, mutated: false };
+        }));
+
+        for (const res of results) {
+            if (res.mutated) {
+                usedSet.add(res.enVid.videoId);
+                usedSet.add(res.hiVid.videoId);
+                count++;
+                console.log(`      🏭 [SOP ${res.mod.id}] Video: [${res.enVid.videoId}] "${res.enVid.videoTitle.substring(0, 45)}..." (${res.enVid.auditScore} pts)`);
+            }
+            enrichedModules.push(res.sop);
         }
     }
 
-    if (!isDryRun) {
-        const distinctQps = [...new Set(items.map(c => c.qp_code))];
-        for (const qp of distinctQps) {
-            await pool.query(
-                `UPDATE nsqf_qps SET pipeline_status = 'video_harvested' WHERE qp_code = $1`,
-                [qp]
-            );
-        }
-        clearCheckpoint();
+    // Save Master SOP file to disk
+    if (enrichedModules.length > 0) {
+        const sopFilePath = path.join(SOP_JSON_DIR, `${cleanQp}.json`);
+        const qpMasterSop = {
+            qp_code: qpCode,
+            qp_name: qpRow.rows[0]?.qp_name || qpCode,
+            sector: sector,
+            nsqf_level: qpRow.rows[0]?.nsqf_level || '4',
+            total_workstations: enrichedModules.length,
+            workstations: enrichedModules,
+            harvested_at: new Date().toISOString(),
+            generated_by: 'HAYAGRIVA Industrial SOP Engine'
+        };
+        fs.writeFileSync(sopFilePath, JSON.stringify(qpMasterSop, null, 2), 'utf-8');
     }
 
-    const elapsedMs = Date.now() - startTime;
-    const avgScore  = processedCount > 0 ? (totalScore / processedCount).toFixed(1) : 0;
+    return count;
+}
+
+// ── 7. Pillar 3: Harvest Videos for MSME Blueprints & BOM Tools (nsqf_nos) ────
+async function harvestMsmeForQp(qpCode, cleanQp, pool, force = false) {
+    const nosList = await pool.query(`
+        SELECT id, nos_code, qp_code, msme_blueprint_json
+        FROM nsqf_nos
+        WHERE (qp_code = $1 OR qp_code = $2) AND msme_blueprint_json IS NOT NULL
+        ORDER BY sequence_order ASC, id ASC
+    `, [qpCode, cleanQp]);
+
+    const qpRow = await pool.query(`SELECT * FROM nsqf_qps WHERE qp_code = $1 OR qp_code = $2`, [qpCode, cleanQp]);
+    const sector = qpRow.rows[0]?.sector || 'General';
+    const usedSet = new Set();
+    let count = 0;
+    const enrichedBlueprints = [];
+
+    const nosToProcess = nosList.rows;
+    for (let i = 0; i < nosToProcess.length; i += CONCURRENCY_WORKERS) {
+        const chunk = nosToProcess.slice(i, i + CONCURRENCY_WORKERS);
+
+        const results = await Promise.all(chunk.map(async (nos) => {
+            const msme = typeof nos.msme_blueprint_json === 'string' ? JSON.parse(nos.msme_blueprint_json) : nos.msme_blueprint_json;
+            let mutated = false;
+
+            // A. Harvest Pitch Video
+            const pitchGuidance = msme.pitch_video_guidance || { intent: msme.business_title, search_query: msme.business_title };
+            if (force || !msme.pitch_video?.video_id) {
+                const [enVid, hiVid] = await Promise.all([
+                    harvestVideoForGuidance(pitchGuidance, sector, 'eng', pool, usedSet),
+                    harvestVideoForGuidance(pitchGuidance, sector, 'hi', pool, usedSet)
+                ]);
+
+                msme.pitch_video = {
+                    video_id: enVid.videoId, video_title: enVid.videoTitle,
+                    video_url: enVid.videoUrl, thumbnail_url: enVid.thumbnailUrl,
+                    duration_seconds: enVid.durationSeconds, audit_score: enVid.auditScore
+                };
+                msme.pitch_video_hi = {
+                    video_id: hiVid.videoId, video_title: hiVid.videoTitle,
+                    video_url: hiVid.videoUrl, thumbnail_url: hiVid.thumbnailUrl,
+                    duration_seconds: hiVid.durationSeconds, audit_score: hiVid.auditScore
+                };
+                msme.pitch_video_clip = {
+                    video_id: enVid.videoId,
+                    start_seconds: 45,
+                    end_seconds: 135,
+                    clip_duration_seconds: 90,
+                    embed_url: `https://www.youtube.com/embed/${enVid.videoId}?start=45&end=135&autoplay=1&enablejsapi=1`,
+                    key_moment_title: `Business Startup Pitch: ${msme.business_title}`
+                };
+                mutated = true;
+            }
+
+            // B. Harvest Individual BOM Machine Videos (in parallel!)
+            if (Array.isArray(msme.tool_bom)) {
+                const toolsToHarvest = msme.tool_bom.filter(t => force || !t.video?.video_id);
+                if (toolsToHarvest.length > 0) {
+                    await Promise.all(toolsToHarvest.map(async (tool) => {
+                        const toolGuidance = tool.video_guidance || { intent: tool.name, search_query: tool.name };
+                        const machineVid = await harvestVideoForGuidance(toolGuidance, sector, 'eng', pool, usedSet);
+
+                        tool.video = {
+                            video_id: machineVid.videoId, video_title: machineVid.videoTitle,
+                            video_url: machineVid.videoUrl, thumbnail_url: machineVid.thumbnailUrl,
+                            duration_seconds: machineVid.durationSeconds, audit_score: machineVid.auditScore
+                        };
+                        tool.video_clip = {
+                            video_id: machineVid.videoId,
+                            start_seconds: 45,
+                            end_seconds: 135,
+                            clip_duration_seconds: 90,
+                            embed_url: `https://www.youtube.com/embed/${machineVid.videoId}?start=45&end=135&autoplay=1&enablejsapi=1`,
+                            key_moment_title: `Machine Demonstration: ${tool.name}`
+                        };
+                        mutated = true;
+                    }));
+                }
+            }
+
+            if (mutated) {
+                await pool.query(`UPDATE nsqf_nos SET msme_blueprint_json = $1 WHERE id = $2`, [JSON.stringify(msme), nos.id]);
+            }
+
+            return { nos, msme, mutated };
+        }));
+
+        for (const res of results) {
+            if (res.mutated) {
+                count++;
+                if (res.msme.pitch_video?.video_id) usedSet.add(res.msme.pitch_video.video_id);
+                console.log(`      🚀 [MSME Blueprint ${res.nos.nos_code}] Pitch: [${res.msme.pitch_video?.video_id}] | ${res.msme.tool_bom?.length || 0} Machine Tools Harvested`);
+            }
+            enrichedBlueprints.push(res.msme);
+        }
+    }
+
+    // Save Master MSME file to disk
+    if (enrichedBlueprints.length > 0) {
+        const msmeFilePath = path.join(MSME_JSON_DIR, `${cleanQp}.json`);
+        const qpMasterMsme = {
+            qp_code: qpCode,
+            qp_name: qpRow.rows[0]?.qp_name || qpCode,
+            sector: sector,
+            nsqf_level: qpRow.rows[0]?.nsqf_level || '4',
+            total_blueprints: enrichedBlueprints.length,
+            blueprints: enrichedBlueprints,
+            harvested_at: new Date().toISOString(),
+            generated_by: 'HAYAGRIVA MSME Economic Intelligence Engine'
+        };
+        fs.writeFileSync(msmeFilePath, JSON.stringify(qpMasterMsme, null, 2), 'utf-8');
+    }
+
+    return count;
+}
+
+// ── 8. Main Multi-Pillar Runner ──────────────────────────────────────────────
+async function runUnifiedVideoHarvester() {
+    const args      = process.argv.slice(2);
+    const isSample  = args.includes('--sample');
+    const isForce   = args.includes('--force');
+    const pcsOnly   = args.includes('--pcs-only');
+    const sopsOnly  = args.includes('--sops-only');
+    const msmeOnly  = args.includes('--msme-only');
+    const qpArg     = args.find(a => a.startsWith('--qp='));
+
+    console.log('╔══════════════════════════════════════════════════════════════════════════╗');
+    console.log('║  HAYAGRIVA UNIFIED MULTI-TIER YOUTUBE VIDEO HARVESTER (v4)               ║');
+    console.log('║  (Skills • SOP Workstations • MSME Machinery BOMs • Dual EN/HI Reels)    ║');
+    console.log('╚══════════════════════════════════════════════════════════════════════════╝\n');
+
+    const pool = { query: db.query.bind(db) };
+    let targetQps = [];
+
+    if (qpArg) {
+        targetQps = [qpArg.split('=')[1].trim()];
+    } else if (isSample) {
+        targetQps = ['NIE/ELE/Q0803', 'SGJ/Q0101', 'ASC/Q1424', 'AGR/Q0101', 'HSS/Q5101', 'BEC/ELE/Q0101'];
+        console.log(`🌟 Running Sample Video Harvesting across 6 Flagship QPs...`);
+    } else {
+        const all = await pool.query('SELECT DISTINCT qp_code FROM nsqf_qps ORDER BY qp_code');
+        targetQps = all.rows.map(q => q.qp_code);
+        console.log(`🚀 Starting Full Catalog Video Harvesting across ${targetQps.length} Qualification Packs...`);
+    }
+
+    let totalPcsHarvested  = 0;
+    let totalSopsHarvested = 0;
+    let totalMsmeHarvested = 0;
+
+    for (const qpCode of targetQps) {
+        const cleanQp = qpCode.replace(/\//g, '_');
+        console.log(`\n📦 Processing Videos for QP: ${qpCode}`);
+
+        // 1. Harvest Skills / PCs
+        if (!sopsOnly && !msmeOnly) {
+            const pcCount = await harvestPcsForQp(qpCode, cleanQp, pool, isForce);
+            totalPcsHarvested += pcCount;
+            console.log(`   🎓 [Skills] Harvested ${pcCount} PC Video Reels (EN + HI)`);
+        }
+
+        // 2. Harvest SOP Workstations
+        if (!pcsOnly && !msmeOnly) {
+            const sopCount = await harvestSopsForQp(qpCode, cleanQp, pool, isForce);
+            totalSopsHarvested += sopCount;
+            console.log(`   🏭 [SOPs] Harvested ${sopCount} Workstation Videos (EN + HI)`);
+        }
+
+        // 3. Harvest MSME Blueprints & BOM Tools
+        if (!pcsOnly && !sopsOnly) {
+            const msmeCount = await harvestMsmeForQp(qpCode, cleanQp, pool, isForce);
+            totalMsmeHarvested += msmeCount;
+            console.log(`   🚀 [MSME] Harvested ${msmeCount} Business Pitch & Machine BOM Videos`);
+        }
+    }
 
     console.log('\n================================================================================');
-    console.log(`📊 PASS 3 MULTI-FACTOR VIDEO HARVESTING SUMMARY:`);
-    console.log(`   Total PCs Harvested:     ${processedCount.toLocaleString()}`);
-    console.log(`   Average Quality Score:   ${avgScore}%`);
-    console.log(`   Dual EN/HI Binding:      100% (video_id + video_id_hi)`);
-    console.log(`   Execution Time:          ${(elapsedMs / 1000).toFixed(2)} seconds`);
-    console.log(`   Throughput Speed:        ${(processedCount / (elapsedMs / 1000)).toFixed(1)} PCs / sec`);
-    console.log(`   Database Status:         pipeline_status = 'video_harvested' in hayadb`);
+    console.log('🎉 UNIFIED VIDEO HARVESTING COMPLETE!');
+    console.log(`   🎓 Total PC Reels Harvested:          ${totalPcsHarvested}`);
+    console.log(`   🏭 Total SOP Workstations Harvested:  ${totalSopsHarvested}`);
+    console.log(`   🚀 Total MSME Blueprints Harvested:   ${totalMsmeHarvested}`);
+    console.log('   💾 Master JSON files on disk updated: data/json/{nsqf,sop,msme}/*.json');
     console.log('================================================================================\n');
 
     process.exit(0);
 }
 
-runVideoHarvester().catch(e => {
-    console.error('\n❌ Fatal error in Pass 3 Video Harvester:', e.message);
-    console.error(e.stack);
+runUnifiedVideoHarvester().catch(err => {
+    console.error('❌ Fatal error in unified video harvester:', err);
     process.exit(1);
 });
