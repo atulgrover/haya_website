@@ -400,6 +400,8 @@ async function initSchema() {
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS end_seconds INT`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS viva_quiz_json JSONB`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS study_takeaways_json JSONB`,
+            `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS cached_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`,
+            `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`,
         ];
         for (const sql of migrations) {
             try { await pool.query(sql); } catch (_) {}
@@ -451,9 +453,33 @@ async function seedNSQFFromJSON() {
     }
 }
 
-initSchema();
+/**
+ * 🧹 YouTube Developer Policy III.E.4.a-g Compliance Routine:
+ * Automatically purges all cached YouTube API search metadata older than 30 days.
+ */
+async function purgeExpiredYouTubeCache() {
+    try {
+        const res = await pool.query(`
+            DELETE FROM youtube_search_cache 
+            WHERE cached_at < NOW() - INTERVAL '30 days'
+        `);
+        if (res && res.rowCount > 0) {
+            console.log(`[Haya Portal DB] 🧹 Policy III.E.4.a-g Compliance: Purged ${res.rowCount} expired YouTube cache entries (>30 days old).`);
+        }
+    } catch (err) {
+        console.warn('[Haya Portal DB] YouTube Cache Purge warning:', err.message);
+    }
+}
+
+initSchema().then(() => {
+    // Run initial 30-day compliance purge on boot
+    purgeExpiredYouTubeCache();
+    // Schedule daily automated purge (every 24 hours)
+    setInterval(purgeExpiredYouTubeCache, 24 * 60 * 60 * 1000);
+});
 
 module.exports = db;
 module.exports.pool = pool;                    // Raw pg.Pool — for transaction-aware scripts
 module.exports.PIPELINE_STATUSES = PIPELINE_STATUSES;  // FSM — canonical pass order
+module.exports.purgeExpiredYouTubeCache = purgeExpiredYouTubeCache;
 

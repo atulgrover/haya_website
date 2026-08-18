@@ -185,20 +185,44 @@
         </ul>
       </div>
 
-      <div class="policy-section">
+      <div class="policy-section" id="youtube-compliance">
         <h2>4. Third-Party Integrations &amp; YouTube API Services</h2>
-        <p>HAYAGRIVA Skillpedia integrates with <strong>YouTube API Services</strong> to provide relevant, verified vocational training demonstrations mapped to the National Skills Qualification Framework (NSQF).</p>
+        <p>HAYAGRIVA integrates with <strong>YouTube API Services</strong> to provide relevant, verified vocational training demonstration videos mapped to the National Skills Qualification Framework (NSQF) 2,176 job roles and performance criteria.</p>
         
-        <div class="notice-box">
-          📺 <strong>YouTube API Terms &amp; Google Privacy Notice:</strong><br>
-          By using video features on HAYAGRIVA, users acknowledge and agree that:
-          <ul style="margin-top: 8px; margin-bottom: 0;">
-            <li>HAYAGRIVA utilizes YouTube API Services to retrieve video metadata, titles, and playable tutorial embeds.</li>
-            <li>Users are bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.</li>
-            <li>The processing of YouTube data is governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</li>
-            <li>HAYAGRIVA does not sell, broker, or exploit personal data through YouTube API integrations.</li>
+        <div class="notice-box" style="background: rgba(14, 165, 233, 0.08); border-left: 4px solid #0284c7; padding: 18px; border-radius: 8px; margin: 16px 0;">
+          📺 <strong>YouTube API Terms &amp; Google Privacy Disclosures:</strong><br>
+          <ul style="margin-top: 10px; margin-bottom: 0; line-height: 1.6;">
+            <li>HAYAGRIVA uses <strong>YouTube API Services</strong> to retrieve public vocational video metadata and embed instructional video tutorials.</li>
+            <li>By using these video features on HAYAGRIVA, users agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.</li>
+            <li>Please refer to the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> for information on how Google collects and processes data.</li>
+            <li>Users can view and revoke HAYAGRIVA&rsquo;s access to their data via the <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener noreferrer">Google Security Settings Page</a>.</li>
           </ul>
         </div>
+
+        <h3>4.1 User Information &amp; API Data Collected, Accessed, and Stored (Policy III.A.2d)</h3>
+        <p>We believe in complete transparency regarding the data accessed and stored in connection with YouTube API Services:</p>
+        <ul>
+          <li><strong>Public Video Metadata Accessed:</strong> When users search or browse vocational curriculum modules, our API Client queries the YouTube Data API v3 to retrieve public, non-authenticated video metadata including: video IDs, video titles, descriptions, channel titles, published dates, durations, and video thumbnail image URLs.</li>
+          <li><strong>No Personal Google Account Data Collected:</strong> HAYAGRIVA does <strong>NOT</strong> access, collect, store, or process any private user Google/YouTube account data, viewing histories, personal profiles, Google account passwords, or OAuth tokens. We do not require users to sign in with Google to view public vocational tutorials.</li>
+          <li><strong>User Learning State:</strong> Any user progress (such as completing an NSQF skill checklist or module bookmark) is stored independently in the user&rsquo;s local account database and is never associated with or transmitted to Google/YouTube accounts.</li>
+        </ul>
+
+        <h3>4.2 How We Use, Process, and Share Information (Policy III.A.2e)</h3>
+        <p>We process API Data strictly for educational qualification delivery:</p>
+        <ul>
+          <li><strong>Processing &amp; Educational Mapping:</strong> Retrieved YouTube metadata is processed solely to categorize and display practical demonstration videos corresponding to specific National Occupational Standards (NOS) and Performance Criteria (PC) for vocational learners.</li>
+          <li><strong>Internal Parties:</strong> API Data is processed internally solely by our educational curriculum indexer and user-facing search engine to present structured learning pathways. No employee or internal party accesses private user search histories.</li>
+          <li><strong>External Parties &amp; Zero Monetization:</strong> We do <strong>NOT</strong> sell, rent, license, trade, or transfer any user data or YouTube API Data to external third parties, advertising networks, commercial brokers, or analytics syndicates.</li>
+          <li><strong>Embedded Official Player:</strong> Video playback is executed directly within the user&rsquo;s web browser via the official YouTube IFrame Embed Player connecting directly to YouTube servers. We do not download, modify, stream-rip, or alter original YouTube audio or video streams.</li>
+        </ul>
+
+        <h3>4.3 Data Retention, Refresh, and Deletion Policy (Policy III.E.4.a-g)</h3>
+        <p>In strict adherence to YouTube Developer Policy III.E.4.a-g:</p>
+        <ul>
+          <li><strong>30-Day Maximum Storage &amp; Automatic Refresh:</strong> Any cached search queries or YouTube video metadata temporarily stored on our servers for performance optimization are retained for a maximum of <strong>30 days</strong>.</li>
+          <li><strong>Automated Periodic Purging:</strong> An automated background maintenance job runs every 24 hours to delete and purge any cached YouTube API Data and metadata older than 30 days. No API statistics or metadata are displayed or retained beyond 30 days without being re-fetched from the YouTube API.</li>
+          <li><strong>User Deletion Requests:</strong> Users may request immediate deletion of their local portal account and associated learning bookmarks at any time by contacting <a href="mailto:privacy@hayagriva.app">privacy@hayagriva.app</a>.</li>
+        </ul>
       </div>
 
       <div class="policy-section">
