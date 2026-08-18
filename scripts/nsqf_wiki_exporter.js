@@ -75,7 +75,7 @@ async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopD
     const cleanQp = qpCode.replace(/\//g, '_');
     const safeQpName = (qpName || qpCode).replace(/[\\"']/g, '');
 
-    // ── A. Site Title & Subtitle ──
+    // ── A. Site Title, Subtitle & Theme Config ──
     tiddlers.push({
         title: '$:/SiteTitle',
         text: `${safeQpName}`
@@ -85,34 +85,84 @@ async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopD
         text: `NCVET NSQF Level ${nsqfLevel} • ${sector} • 100% Offline Trade Field Wiki`
     });
 
+    // Custom CSS for polished Table of Contents rendering
+    tiddlers.push({
+        title: '$:/HayaWikiStyles',
+        tags: '$:/tags/Stylesheet',
+        text: `
+/* HAYAGRIVA Field Wiki - TOC Styling */
+.tc-table-of-contents {
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 6px 0;
+}
+.tc-table-of-contents .toc-item {
+    margin: 4px 0;
+}
+.tc-table-of-contents button.tc-btn-invisible {
+    color: #0284C7;
+    font-weight: 700;
+    margin-right: 4px;
+}
+.tc-table-of-contents a.tc-tiddlylink {
+    color: #1E293B;
+    font-weight: 600;
+    text-decoration: none;
+}
+.tc-table-of-contents a.tc-tiddlylink:hover {
+    color: #0284C7;
+    text-decoration: underline;
+}
+`
+    });
+
+    // Sidebar Contents Tab
+    tiddlers.push({
+        title: '$:/core/ui/SideBar/Contents',
+        tags: '$:/tags/SideBar',
+        caption: 'Contents',
+        text: '<div class="tc-table-of-contents">\n<<toc-selective-expandable "TableOfContents">>\n</div>'
+    });
+
     // ── B. Fetch Performance Criteria from PostgreSQL ──
-    let pcList = [];
+    let pcRows = [];
     try {
         const dbRes = await db.query(`
-            SELECT pc_code, pc_description, pc_intent, pc_intent_hi, nos_code, video_id, video_id_hi,
-                   start_seconds, end_seconds, study_takeaways_json, viva_quiz_json
-            FROM nsqf_pcs
-            WHERE qp_code = $1 OR qp_code ILIKE $2
-            ORDER BY sequence_order ASC, id ASC
-        `, [qpCode, `%${cleanQp.replace(/_/g, '%')}%`]);
+            SELECT 
+                p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
+                p.video_id, p.video_title, p.video_url, p.channel_title, p.duration_seconds,
+                p.start_seconds, p.end_seconds, p.study_takeaways_json, p.viva_quiz_json,
+                COALESCE(n.nos_title, 'Occupational Standards') as nos_title,
+                COALESCE(m.module_title, 'Core Module') as module_title
+            FROM nsqf_pcs p
+            LEFT JOIN nsqf_nos n ON p.qp_code = n.qp_code AND p.nos_code = n.nos_code
+            LEFT JOIN nsqf_modules m ON p.qp_code = m.qp_code AND p.nos_code = m.nos_code
+            WHERE p.qp_code = $1 OR p.qp_code ILIKE $2 OR REPLACE(p.qp_code, '/', '_') = $3
+            ORDER BY p.id ASC
+        `, [qpCode, `%${cleanQp.replace(/_/g, '%')}%`, cleanQp]);
         if (dbRes.rows && dbRes.rows.length > 0) {
-            pcList = dbRes.rows;
+            pcRows = dbRes.rows;
         }
     } catch (e) {
         console.warn('DB PC Query failed:', e.message);
     }
 
     // Fallback to JSON Lake if DB returned empty
-    if (pcList.length === 0 && nsqfData && Array.isArray(nsqfData.nos_units)) {
+    if (pcRows.length === 0 && nsqfData && Array.isArray(nsqfData.nos_units)) {
         nsqfData.nos_units.forEach(nos => {
             const nosCode = nos.nos_code || nos.code || 'NOS';
+            const nosTitle = nos.nos_title || nos.title || 'Occupational Standards';
             (nos.modules || []).forEach(mod => {
+                const modTitle = mod.module_title || mod.title || 'Core Module';
                 (mod.pcs || []).forEach(pc => {
-                    pcList.push({
+                    pcRows.push({
                         pc_code: pc.pc_code || pc.pc_id || 'PC',
                         pc_description: pc.pc_description || pc.description || '',
                         pc_intent: pc.pc_intent || pc.intent || pc.pc_description || '',
+                        pc_intent_hi: pc.pc_intent_hi || null,
                         nos_code: nosCode,
+                        nos_title: nosTitle,
+                        module_title: modTitle,
                         video_id: pc.video_id || '8aGhZQkoFbQ',
                         start_seconds: pc.start_seconds || 45,
                         end_seconds: pc.end_seconds || 135,
@@ -124,82 +174,205 @@ async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopD
         });
     }
 
-    const defaultStory = [`Overview`];
+    // Helper to extract numbers for sorting
+    const getNum = (code, text) => {
+        const m1 = (code || '').match(/\d+/);
+        if (m1) return parseInt(m1[0], 10);
+        const m2 = (text || '').match(/(?:pc|module)\s*(\d+)/i);
+        if (m2) return parseInt(m2[1], 10);
+        return 999;
+    };
 
-    // ── C. Generate Performance Criteria Tiddlers ──
-    pcList.forEach((pc, pIdx) => {
-        const pcCode = pc.pc_code || `PC${pIdx + 1}`;
+    // Sort natural numeric order so PC1, PC2... come first
+    pcRows.sort((a, b) => getNum(a.pc_code, a.pc_intent) - getNum(b.pc_code, b.pc_intent));
+
+    // ── C. Assemble 3-Tier NSQF Hierarchy: NOS -> Module -> Disambiguated PC ──
+    const nosMap = {};
+    pcRows.forEach((pc, pIdx) => {
         const nosCode = pc.nos_code || 'NOS';
-        const pcTitle = `${pcCode}: ${(pc.pc_intent || pc.pc_description || '').substring(0, 75)}`;
-        const vidId = pc.video_id || '8aGhZQkoFbQ';
-        const startSec = pc.start_seconds || 45;
-        const endSec   = pc.end_seconds || 135;
+        const nosTitle = pc.nos_title || 'Occupational Standards';
+        const nosTiddlerTitle = `${nosCode}: ${nosTitle}`;
 
-        const takeaways = (typeof pc.study_takeaways_json === 'object') ? pc.study_takeaways_json : (pc.study_takeaways_json ? JSON.parse(pc.study_takeaways_json) : null);
-        const vivaQuiz  = (typeof pc.viva_quiz_json === 'object') ? pc.viva_quiz_json : (pc.viva_quiz_json ? JSON.parse(pc.viva_quiz_json) : null);
+        if (!nosMap[nosCode]) {
+            nosMap[nosCode] = {
+                nosCode,
+                nosTitle,
+                nosTiddlerTitle,
+                modules: {}
+            };
+        }
 
-        // Build Clean Wikitext Body
-        let textBody = `! ${pcTitle}\n\n`;
-        textBody += `* ''NOS Unit:'' [[${nosCode}]]\n`;
-        textBody += `* ''Qualification Pack:'' \`${qpCode}\`\n`;
-        textBody += `* ''Criterion Code:'' \`${pcCode}\`\n\n`;
+        const modTitle = pc.module_title || 'Core Competency Module';
+        const modKey = `${nosCode}_${modTitle}`;
+        const modTiddlerTitle = `${nosCode} • ${modTitle}`;
+
+        if (!nosMap[nosCode].modules[modKey]) {
+            nosMap[nosCode].modules[modKey] = {
+                moduleTitle: modTitle,
+                modTiddlerTitle,
+                nosTiddlerTitle,
+                minPcNum: getNum(pc.pc_code, pc.pc_intent),
+                pcs: []
+            };
+        }
+
+        const pcCode = pc.pc_code || `PC${pIdx + 1}`;
+        const rawIntent = (pc.pc_intent || pc.pc_description || 'Assessment Criterion').trim();
+        const shortIntent = rawIntent.length > 70 ? rawIntent.substring(0, 68) + '...' : rawIntent;
         
-        textBody += `!! 📋 Assessment Criterion Description\n`;
-        textBody += `${pc.pc_description || pc.pc_intent || 'Standard operational competency.'}\n\n`;
+        // Disambiguate PC Title globally to avoid collisions
+        const pcTiddlerTitle = `${nosCode} • ${pcCode}: ${shortIntent}`;
+        const pcCaption = `${pcCode}: ${shortIntent}`;
 
-        // Embedded YouTube Video Player
-        if (vidId) {
-            textBody += `!! 🎬 Micro-Reel Demonstration (${startSec}s - ${endSec}s)\n`;
-            textBody += `<iframe width="100%" height="360" src="https://www.youtube.com/embed/${vidId}?start=${startSec}&end=${endSec}&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15);"></iframe>\n\n`;
-        }
-
-        // Technical Pro-Tips & Safety
-        if (takeaways) {
-            if (Array.isArray(takeaways.pro_tips) && takeaways.pro_tips.length > 0) {
-                textBody += `!! 💡 Technical Study Pro-Tips\n`;
-                takeaways.pro_tips.forEach(pt => { textBody += `* 🛠️ ${pt}\n`; });
-                textBody += `\n`;
-            }
-            if (Array.isArray(takeaways.common_mistakes) && takeaways.common_mistakes.length > 0) {
-                textBody += `!! ⚠️ Common Mistakes to Avoid\n`;
-                takeaways.common_mistakes.forEach(cm => { textBody += `* ❌ ${cm}\n`; });
-                textBody += `\n`;
-            }
-            if (takeaways.safety_mandate) {
-                textBody += `!! 🛡️ Statutory Safety Compliance\n`;
-                textBody += `* 🔒 ''${takeaways.safety_mandate}''\n\n`;
-            }
-        }
-
-        // Interactive Viva Quiz with Reveal Buttons
-        if (Array.isArray(vivaQuiz) && vivaQuiz.length > 0) {
-            textBody += `!! 🧠 Interactive 3-Question Viva Quiz\n`;
-            vivaQuiz.forEach((q, qIdx) => {
-                textBody += `\n''Q${qIdx + 1}: ${q.question_en}''\n//${q.question_hi || ''}//\n\n`;
-                (q.options || []).forEach((opt, oIdx) => {
-                    const letter = String.fromCharCode(65 + oIdx);
-                    const mark = opt.is_correct ? '✅ \'\'Correct!\'\'' : '❌ Incorrect';
-                    textBody += `* ''${letter}.'' ${opt.text} <$reveal type="nomatch" state="$:/state/viva/${pcCode}/${qIdx}" text="show"><$button set="$:/state/viva/${pcCode}/${qIdx}" setTo="show" class="tc-btn-invisible" style="color:#0284C7; font-size:11.5px; cursor:pointer;">[Check Answer]</$button></$reveal><$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show"> ➔ ${mark}</$reveal>\n`;
-                });
-                textBody += `<$reveal type="match" state="$:/state/viva/${pcCode}/${qIdx}" text="show">\n\n> 💡 ''Answer Key:'' ${q.explanation || ''}\n</$reveal>\n`;
-            });
-        }
-
-        tiddlers.push({
-            title: pcTitle,
-            tags: `${nosCode} [[Performance Criteria]] [[${sector}]]`,
-            pc_code: pcCode,
-            nos_code: nosCode,
-            text: textBody
+        nosMap[nosCode].modules[modKey].pcs.push({
+            ...pc,
+            pcCode,
+            rawIntent,
+            shortIntent,
+            pcTiddlerTitle,
+            pcCaption,
+            modTiddlerTitle,
+            nosTiddlerTitle
         });
     });
 
-    // ── D. Generate SOP Workstation Tiddlers ──
+    // ── D. Generate PC Tiddlers (Tagged with Parent Module) ──
+    let totalPcs = 0;
+    Object.values(nosMap).forEach(nos => {
+        Object.values(nos.modules).forEach(mod => {
+            mod.pcs.forEach(pc => {
+                totalPcs++;
+                const vidId = pc.video_id || '8aGhZQkoFbQ';
+                const startSec = (pc.start_seconds !== null && pc.start_seconds !== undefined) ? pc.start_seconds : 45;
+                const endSec   = (pc.end_seconds !== null && pc.end_seconds !== undefined) ? pc.end_seconds : 135;
+
+                const takeaways = (typeof pc.study_takeaways_json === 'object') ? pc.study_takeaways_json : (pc.study_takeaways_json ? JSON.parse(pc.study_takeaways_json) : null);
+                const vivaQuiz  = (typeof pc.viva_quiz_json === 'object') ? pc.viva_quiz_json : (pc.viva_quiz_json ? JSON.parse(pc.viva_quiz_json) : null);
+
+                // Build Wikitext Body
+                let textBody = `! ${pc.pcCode}: ${pc.rawIntent}\n\n`;
+                textBody += `* ''Parent Module:'' [[${pc.modTiddlerTitle}]]\n`;
+                textBody += `* ''NOS Unit:'' [[${pc.nosTiddlerTitle}]]\n`;
+                textBody += `* ''Qualification Pack:'' \`${qpCode}\`\n`;
+                textBody += `* ''Criterion Code:'' \`${pc.pcCode}\`\n\n`;
+                
+                textBody += `!! 📋 NCVET Performance Criteria Description\n`;
+                textBody += `${pc.pc_description || pc.rawIntent}\n\n`;
+                if (pc.pc_intent_hi) {
+                    textBody += `> //🇮🇳 Hindi (व्यावहारिक उद्देश्य): ${pc.pc_intent_hi}//\n\n`;
+                }
+
+                // Embedded YouTube Video Player
+                if (vidId) {
+                    textBody += `!! 🎬 Micro-Reel Demonstration (${startSec}s - ${endSec}s)\n`;
+                    textBody += `<iframe width="100%" height="360" src="https://www.youtube.com/embed/${vidId}?start=${startSec}&end=${endSec}&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15);"></iframe>\n\n`;
+                }
+
+                // Technical Pro-Tips & Safety
+                if (takeaways) {
+                    if (Array.isArray(takeaways.pro_tips) && takeaways.pro_tips.length > 0) {
+                        textBody += `!! 💡 Technical Study Pro-Tips\n`;
+                        takeaways.pro_tips.forEach(pt => { textBody += `* 🛠️ ${pt}\n`; });
+                        textBody += `\n`;
+                    }
+                    if (Array.isArray(takeaways.common_mistakes) && takeaways.common_mistakes.length > 0) {
+                        textBody += `!! ⚠️ Common Mistakes to Avoid\n`;
+                        takeaways.common_mistakes.forEach(cm => { textBody += `* ❌ ${cm}\n`; });
+                        textBody += `\n`;
+                    }
+                    if (takeaways.safety_mandate) {
+                        textBody += `!! 🔒 Statutory Safety Compliance\n`;
+                        textBody += `* 🛡️ ''${takeaways.safety_mandate}''\n\n`;
+                    }
+                }
+
+                // Interactive Viva Quiz with Reveal Buttons
+                if (Array.isArray(vivaQuiz) && vivaQuiz.length > 0) {
+                    textBody += `!! 🧠 Interactive 3-Question Bilingual Viva Quiz\n`;
+                    vivaQuiz.forEach((q, qIdx) => {
+                        textBody += `\n''Q${qIdx + 1}: ${q.question_en}''\n//${q.question_hi || ''}//\n\n`;
+                        (q.options || []).forEach((opt, oIdx) => {
+                            const letter = String.fromCharCode(65 + oIdx);
+                            const mark = opt.is_correct ? '✅ \'\'Correct!\'\'' : '❌ Incorrect';
+                            textBody += `* ''${letter}.'' ${opt.text} <$reveal type="nomatch" state="$:/state/viva/${pc.pcCode}/${qIdx}" text="show"><$button set="$:/state/viva/${pc.pcCode}/${qIdx}" setTo="show" class="tc-btn-invisible" style="color:#0284C7; font-size:11.5px; cursor:pointer;">[Check Answer]</$button></$reveal><$reveal type="match" state="$:/state/viva/${pc.pcCode}/${qIdx}" text="show"> ➔ ${mark}</$reveal>\n`;
+                        });
+                        textBody += `<$reveal type="match" state="$:/state/viva/${pc.pcCode}/${qIdx}" text="show">\n\n> 💡 ''Answer Key:'' ${q.explanation || ''}\n</$reveal>\n`;
+                    });
+                }
+
+                tiddlers.push({
+                    title: pc.pcTiddlerTitle,
+                    caption: pc.pcCaption,
+                    tags: `[[${pc.modTiddlerTitle}]] [[${pc.nos_code}]] [[Performance Criteria]] [[${sector}]]`,
+                    pc_code: pc.pcCode,
+                    nos_code: pc.nos_code,
+                    text: textBody
+                });
+            });
+        });
+    });
+
+    // ── E. Generate Module Tiddlers (Tagged with Parent NOS) ──
+    Object.values(nosMap).forEach(nos => {
+        const sortedModules = Object.values(nos.modules).sort((a, b) => a.minPcNum - b.minPcNum);
+        
+        sortedModules.forEach(mod => {
+            const pcTiddlerTitles = mod.pcs.map(p => `[[${p.pcTiddlerTitle}]]`).join(' ');
+            
+            let modText = `! ${mod.moduleTitle}\n\n`;
+            modText += `* ''Parent Occupational Standard:'' [[${nos.nosTiddlerTitle}]]\n`;
+            modText += `* ''Total Performance Criteria:'' ${mod.pcs.length} criteria\n\n`;
+            modText += `---\n`;
+            modText += `!! 📋 Performance Criteria in this Module\n\n`;
+            modText += `<<list-links "[tag[${mod.modTiddlerTitle}]]">>\n`;
+
+            tiddlers.push({
+                title: mod.modTiddlerTitle,
+                caption: mod.moduleTitle,
+                tags: `[[${nos.nosTiddlerTitle}]] Modules`,
+                list: pcTiddlerTitles,
+                text: modText
+            });
+        });
+    });
+
+    // ── F. Generate NOS Unit Tiddlers (Tagged with TableOfContents) ──
+    const nosTiddlerTitles = [];
+    Object.values(nosMap).forEach(nos => {
+        nosTiddlerTitles.push(`[[${nos.nosTiddlerTitle}]]`);
+        const moduleTitles = Object.values(nos.modules).map(m => `[[${m.modTiddlerTitle}]]`).join(' ');
+        const totalNosPcs = Object.values(nos.modules).reduce((acc, m) => acc + m.pcs.length, 0);
+
+        let nosText = `! ${nos.nosCode}: ${nos.nosTitle}\n\n`;
+        nosText += `* ''Qualification Pack:'' \`${qpCode}\`\n`;
+        nosText += `* ''Sector:'' ${sector}\n`;
+        nosText += `* ''Modules:'' ${Object.keys(nos.modules).length} Modules\n`;
+        nosText += `* ''Assessment Criteria:'' ${totalNosPcs} Performance Criteria\n\n`;
+        nosText += `---\n`;
+        nosText += `!! 📚 Practical Modules Breakdown\n\n`;
+        nosText += `<<list-links "[tag[${nos.nosTiddlerTitle}]]">>\n`;
+
+        tiddlers.push({
+            title: nos.nosTiddlerTitle,
+            caption: `${nos.nosCode}: ${nos.nosTitle}`,
+            tags: `TableOfContents [[NOS Units]]`,
+            list: moduleTitles,
+            text: nosText
+        });
+    });
+
+    // ── G. Generate SOP Workstation Tiddlers (Tagged with TableOfContents branch) ──
+    const sopParentTitle = `🏭 Industrial Standard Operating Procedures`;
+    const sopStationTitles = [];
     if (sopData && Array.isArray(sopData.workstations)) {
         sopData.workstations.forEach((ws, wsIdx) => {
             const wsTitle = `SOP Station ${wsIdx + 1}: ${ws.sop_title || ws.module_title || 'Industrial Workstation'}`;
+            const wsCaption = `Station ${wsIdx + 1}: ${ws.sop_title || ws.module_title || 'Workstation'}`;
+            sopStationTitles.push(`[[${wsTitle}]]`);
+
             let wsText = `! ${wsTitle}\n\n`;
             wsText += `* ''Sector:'' ${sector}\n`;
+            wsText += `* ''Parent SOP Manual:'' [[${sopParentTitle}]]\n`;
             wsText += `* ''Quality Standard:'' ISO 9001:2015 / IATF 16949 Compliance\n\n`;
 
             if (ws.video?.video_id) {
@@ -221,18 +394,34 @@ async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopD
 
             tiddlers.push({
                 title: wsTitle,
-                tags: `SOP Workstation [[${sector}]]`,
+                caption: wsCaption,
+                tags: `[[${sopParentTitle}]] SOP [[${sector}]]`,
                 text: wsText
             });
         });
+
+        // SOP Category Parent Tiddler
+        tiddlers.push({
+            title: sopParentTitle,
+            caption: `🏭 Industrial SOPs (${sopStationTitles.length} Stations)`,
+            tags: `TableOfContents`,
+            list: sopStationTitles.join(' '),
+            text: `! 🏭 Industrial Standard Operating Procedures (SOP)\n\nStandardized ISO 9001:2015 / IATF 16949 compliant station-by-station workflows for ''${safeQpName}''.\n\n---\n<<list-links "[tag[${sopParentTitle}]]">>`
+        });
     }
 
-    // ── E. Generate MSME Business Blueprint Tiddlers ──
+    // ── H. Generate MSME Business Blueprint Tiddlers ──
+    const msmeParentTitle = `🚀 Turnkey MSME Business Profiles`;
+    const msmeBlueprintTitles = [];
     if (msmeData && Array.isArray(msmeData.blueprints)) {
         msmeData.blueprints.forEach((bp, bIdx) => {
             const bpTitle = `MSME Startup: ${bp.business_title || bp.nos_title || 'Turnkey Project Profile'}`;
+            const bpCaption = `${bp.business_title || bp.nos_title || 'Project Profile'}`;
+            msmeBlueprintTitles.push(`[[${bpTitle}]]`);
+
             let bpText = `! ${bpTitle}\n\n`;
             bpText += `${bp.business_pitch_summary || 'Commercial unit project profile.'}\n\n`;
+            bpText += `* ''Parent Guide:'' [[${msmeParentTitle}]]\n`;
             bpText += `* ''3-Year DSCR Bank Rating:'' 2.15x (Prime Bankable Profile)\n`;
             bpText += `* ''Govt Scheme:'' PMEGP 35% Capital Subsidy / Mudra Tarun Loan\n\n`;
 
@@ -249,32 +438,37 @@ async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopD
 
             tiddlers.push({
                 title: bpTitle,
-                tags: `MSME Startup Blueprint [[${sector}]]`,
+                caption: bpCaption,
+                tags: `[[${msmeParentTitle}]] MSME Startup [[${sector}]]`,
                 text: bpText
             });
         });
+
+        // MSME Category Parent Tiddler
+        tiddlers.push({
+            title: msmeParentTitle,
+            caption: `🚀 MSME Blueprints (${msmeBlueprintTitles.length} Blueprints)`,
+            tags: `TableOfContents`,
+            list: msmeBlueprintTitles.join(' '),
+            text: `! 🚀 Turnkey MSME Business Profiles & Machinery BOMs\n\nBankable commercial project profiles, 3-year financial DSCR ratings, and machinery tool Bills of Materials (BOM) under PMEGP & Mudra schemes.\n\n---\n<<list-links "[tag[${msmeParentTitle}]]">>`
+        });
     }
 
-    // ── F. Master Trade Overview Dashboard Tiddler ──
+    // ── I. Master Trade Overview Dashboard Tiddler with Embedded TOC ──
     let overviewText = `! 🌟 ${safeQpName} (${qpCode})\n\n`;
-    overviewText += `Welcome to the official ''100% Offline Field Wiki'' for ''${safeQpName}''.\n\n`;
+    overviewText += `Welcome to the official ''100% Offline Trade Field Wiki'' for ''${safeQpName}''.\n\n`;
     overviewText += `* ''Sector:'' ${sector}\n`;
     overviewText += `* ''NSQF Level:'' Level ${nsqfLevel}\n`;
-    overviewText += `* ''Total Practical Criteria:'' ${pcList.length} Performance Criteria\n`;
+    overviewText += `* ''Occupational Standards:'' ${Object.keys(nosMap).length} NOS Units\n`;
+    overviewText += `* ''Total Assessment Criteria:'' ${totalPcs} Performance Criteria\n`;
     overviewText += `* ''Industrial SOP Workstations:'' ${(sopData?.workstations || []).length} Stations\n`;
     overviewText += `* ''MSME Startup Blueprints:'' ${(msmeData?.blueprints || []).length} Blueprints\n\n`;
     overviewText += `---\n\n`;
 
-    overviewText += `!! 🎯 Performance Criteria Index\n`;
-    overviewText += `<<list-links "[tag[Performance Criteria]sort[title]]">>\n\n`;
+    overviewText += `!! 📑 Interactive Curriculum Table of Contents\n\n`;
+    overviewText += `<div class="tc-table-of-contents">\n<<toc-selective-expandable "TableOfContents">>\n</div>\n\n`;
 
-    overviewText += `!! 🏭 Industrial Standard Operating Procedures (SOP)\n`;
-    overviewText += `<<list-links "[tag[SOP]sort[title]]">>\n\n`;
-
-    overviewText += `!! 🚀 Turnkey MSME Business Profiles & Tool BOMs\n`;
-    overviewText += `<<list-links "[tag[MSME]sort[title]]">>\n\n`;
-
-    overviewText += `---\n//📱 Tip: Open this wiki in Tiddloid Lite on Android or Safari on iOS to read, search, and add your own shopfloor notes completely offline!//\n`;
+    overviewText += `---\n//📱 Tip: This wiki works 100% offline. Open in Tiddloid Lite on Android or Safari on iOS to read, search, and add your own shopfloor notes without internet!//\n`;
 
     tiddlers.push({
         title: 'Overview',
@@ -282,7 +476,7 @@ async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopD
         text: overviewText
     });
 
-    // ── G. Configure Default Tiddlers & StoryList ──
+    // ── J. Configure Default Tiddlers & StoryList ──
     tiddlers.push({
         title: '$:/DefaultTiddlers',
         text: '[[Overview]]'
