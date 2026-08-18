@@ -33,9 +33,20 @@
   - `study_takeaways`: Technical pro-tips, common mistakes to avoid, and statutory safety rules.
   - Database support in `server/db.js`: `nsqf_pcs` has `start_seconds`, `end_seconds`, `viva_quiz_json`, `study_takeaways_json` columns; `nsqf_modules` and `nsqf_nos` use native JSONB trees.
 
+### YouTube API Compliance Overhaul & Data Governance (August 2026)
+- **Resolved All 4 Findings from ToS Violations Report V.1**:
+  - **Policy III.D.1c (Single GCP Project)**: Confirmed single Google Cloud project usage without auxiliary projects.
+  - **Policy III.A.2d (API Data Accessed & User Info)**: Updated `privacy.html` Section 4.1 & 4.2 disclosing public video metadata access and confirming **zero collection of private Google user data/viewing histories**.
+  - **Policy III.A.2e (Processing & Zero Data Sharing)**: Updated `privacy.html` Section 4.3 disclosing educational mapping and confirming **zero commercial data sharing or selling to third parties/brokers**; added direct link to Google Security Permissions revocation.
+  - **Policy III.E.4.a-g (7-Day Rolling Ephemeral Cache & Daily Purge)**: Implemented automated 7-day TTL cache eviction in `server/db.js` (`DELETE FROM youtube_search_cache WHERE cached_at < NOW() - INTERVAL '7 days'`), running on boot and daily timer.
+- **Scraper Purge**: Uninstalled `youtube-sr`; refactored `server/utils/videoHarvester.js` to rely 100% exclusively on Official YouTube Data API v3 (`search.list`).
+- **Zero Paywalls Disclosures**: Explicitly declared HAYAGRIVA NSQF Skillpedia as a 100% free non-monetized public educational resource in `privacy.html` and `terms.html`.
+- **Evidence Bundle (`~/Desktop/YouTube_API_Evidence/`)**: Generated updated high-res PNGs (interactive player modal with 3-question bilingual viva exam) and 3-page consolidated PDF bundle (`HAYAGRIVA_Design_Documents_Complete_Bundle.pdf`).
+
 ### Next Session Resumption Plan
-1. **Video Harvester Expansion (`scripts/nsqf_video_harvester.js`)**: Extend harvesting loops to process multi-tier queries (Tier 1 Brand, Tier 2 Trade, Tier 3 Hinglish) for SOP workstations and MSME machine BOMs.
-2. **UI Interactive Viva & Micro-Reel Player Integration**: Connect `reel.html`, `employers_sop.html`, and `entrepreneurs_msme.html` to render the timestamped player, 3-question viva quiz drawer, and study takeaway cards.
+1. **YouTube Compliance Email Reply**: Send final response to YouTube API Services Compliance Team with GCP Project ID and Number.
+2. **Video Harvester Expansion (`scripts/nsqf_video_harvester.js`)**: Extend harvesting loops to process multi-tier queries (Tier 1 Brand, Tier 2 Trade, Tier 3 Hinglish) for SOP workstations and MSME machine BOMs.
+3. **UI Interactive Viva & Micro-Reel Player Integration**: Connect `reel.html`, `employers_sop.html`, and `entrepreneurs_msme.html` to render the timestamped player, 3-question viva quiz drawer, and study takeaway cards.
 
 
 
