@@ -370,6 +370,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
             SELECT 
                 p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
                 p.video_id, p.video_title, p.video_url, p.channel_title, p.duration_seconds,
+                p.start_seconds, p.end_seconds, p.study_takeaways_json, p.viva_quiz_json,
                 p.video_id_hi, p.video_title_hi, p.video_url_hi, p.channel_title_hi, p.duration_seconds_hi,
                 p.contextual_search_query_hi, p.audit_score,
                 COALESCE(n.nos_title, 'Occupational Standards') as nos_title,
@@ -404,20 +405,34 @@ router.get('/nsqf/curriculum', async (req, res) => {
                         nos_title: row.nos_title,
                         module_title: row.module_title,
                         min_pc_num: getPcNum(row.pc_code, row.pc_intent),
-                        video_id: row.video_id || 'x9PQgbB4y6M',
+                        video_id: row.video_id || '8aGhZQkoFbQ',
                         pcs: []
                     };
                 }
+
+                let takeaways = row.study_takeaways_json;
+                if (typeof takeaways === 'string') {
+                    try { takeaways = JSON.parse(takeaways); } catch (_) { takeaways = null; }
+                }
+                let vivaQuiz = row.viva_quiz_json;
+                if (typeof vivaQuiz === 'string') {
+                    try { vivaQuiz = JSON.parse(vivaQuiz); } catch (_) { vivaQuiz = null; }
+                }
+
                 moduleMap[key].pcs.push({
                     pc_id: row.pc_code,
                     pc_intent: row.pc_intent || row.pc_description,
                     pc_intent_hi: row.pc_intent_hi,
                     pc_desc: row.pc_description,
-                    video_id: row.video_id || 'x9PQgbB4y6M',
-                    video_title: row.video_title || 'NSQF Vocational Reel',
-                    video_url: row.video_url || 'https://www.youtube.com/watch?v=x9PQgbB4y6M',
+                    video_id: row.video_id || '8aGhZQkoFbQ',
+                    video_title: row.video_title || 'NSQF Vocational Demonstration',
+                    video_url: row.video_url || `https://www.youtube.com/watch?v=${row.video_id || '8aGhZQkoFbQ'}`,
                     channel_title: row.channel_title || 'Vocational Skill Studio',
                     duration_seconds: row.duration_seconds || 300,
+                    start_seconds: row.start_seconds !== null && row.start_seconds !== undefined ? row.start_seconds : 45,
+                    end_seconds: row.end_seconds !== null && row.end_seconds !== undefined ? row.end_seconds : 135,
+                    study_takeaways: takeaways,
+                    viva_quiz: vivaQuiz,
                     video_id_hi: row.video_id_hi,
                     video_title_hi: row.video_title_hi,
                     video_url_hi: row.video_url_hi,
@@ -473,17 +488,17 @@ router.get('/nsqf/curriculum', async (req, res) => {
 
         // 3. Fallback: Return 11 baseline fallback module reels for unseeded QP
         const fallbackModules = [
-            { module_title: `Introduction & Overview of ${qpName}`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} training tutorial overview`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC1', pc_intent: 'Understand Job Role & Standard Guidelines', pc_desc: `Overview of ${qpName} role` }] },
-            { module_title: `Workplace Safety & Personal Protective Equipment`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} safety PPE guidelines`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC2', pc_intent: 'Inspect & Wear Safety Gear', pc_desc: 'Wear PPE equipment' }] },
-            { module_title: `Tool Setup & Equipment Inspection`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} equipment setup tools`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC3', pc_intent: 'Pre-operational Equipment Check', pc_desc: 'Check machinery readiness' }] },
-            { module_title: `Core Operational Procedure Step 1`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} operational process step 1`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC4', pc_intent: 'Execute Primary Operation', pc_desc: 'Execute primary process' }] },
-            { module_title: `Core Operational Procedure Step 2`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} operational process step 2`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC5', pc_intent: 'Execute Secondary Assembly', pc_desc: 'Execute secondary process' }] },
-            { module_title: `Quality Inspection & Defect Control`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} quality inspection defect control`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC6', pc_intent: 'Audit Product Quality & Log Defects', pc_desc: 'Audit output quality' }] },
-            { module_title: `Measurement & Specification Verification`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} measurement specification check`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC7', pc_intent: 'Verify Dimensions against Spec Sheet', pc_desc: 'Verify dimensions' }] },
-            { module_title: `Documentation & Logbook Entry`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} documentation logbook entry`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC8', pc_intent: 'Record Shift Logs & Production Data', pc_desc: 'Record shift metrics' }] },
-            { module_title: `Maintenance & Cleaning Standards`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} machine maintenance cleaning`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC9', pc_intent: 'Perform Daily Machine Maintenance', pc_desc: 'Clean and oil equipment' }] },
-            { module_title: `Troubleshooting & Incident Reporting`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} troubleshooting error reporting`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC10', pc_intent: 'Escalate Operational Faults', pc_desc: 'Escalate equipment faults' }] },
-            { module_title: `Handover & Shift Wrap-up`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} shift handover wrapup`, video_id: 'x9PQgbB4y6M', pcs: [{ pc_id: 'PC11', pc_intent: 'Complete Shift Handover Briefing', pc_desc: 'Handover to next shift' }] }
+            { module_title: `Introduction & Overview of ${qpName}`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} training tutorial overview`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC1', pc_intent: 'Understand Job Role & Standard Guidelines', pc_desc: `Overview of ${qpName} role` }] },
+            { module_title: `Workplace Safety & Personal Protective Equipment`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0101`, intent_query: `${qpName} safety PPE guidelines`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC2', pc_intent: 'Inspect & Wear Safety Gear', pc_desc: 'Wear PPE equipment' }] },
+            { module_title: `Tool Setup & Equipment Inspection`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} equipment setup tools`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC3', pc_intent: 'Pre-operational Equipment Check', pc_desc: 'Check machinery readiness' }] },
+            { module_title: `Core Operational Procedure Step 1`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} operational process step 1`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC4', pc_intent: 'Execute Primary Operation', pc_desc: 'Execute primary process' }] },
+            { module_title: `Core Operational Procedure Step 2`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0102`, intent_query: `${qpName} operational process step 2`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC5', pc_intent: 'Execute Secondary Assembly', pc_desc: 'Execute secondary process' }] },
+            { module_title: `Quality Inspection & Defect Control`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} quality inspection defect control`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC6', pc_intent: 'Audit Product Quality & Log Defects', pc_desc: 'Audit output quality' }] },
+            { module_title: `Measurement & Specification Verification`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} measurement specification check`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC7', pc_intent: 'Verify Dimensions against Spec Sheet', pc_desc: 'Verify dimensions' }] },
+            { module_title: `Documentation & Logbook Entry`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0103`, intent_query: `${qpName} documentation logbook entry`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC8', pc_intent: 'Record Shift Logs & Production Data', pc_desc: 'Record shift metrics' }] },
+            { module_title: `Maintenance & Cleaning Standards`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} machine maintenance cleaning`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC9', pc_intent: 'Perform Daily Machine Maintenance', pc_desc: 'Clean and oil equipment' }] },
+            { module_title: `Troubleshooting & Incident Reporting`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} troubleshooting error reporting`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC10', pc_intent: 'Escalate Operational Faults', pc_desc: 'Escalate equipment faults' }] },
+            { module_title: `Handover & Shift Wrap-up`, nos_code: `${qpCode.split('/')[0] || 'NOS'}/N0104`, intent_query: `${qpName} shift handover wrapup`, video_id: '8aGhZQkoFbQ', pcs: [{ pc_id: 'PC11', pc_intent: 'Complete Shift Handover Briefing', pc_desc: 'Handover to next shift' }] }
         ];
 
         res.json({
@@ -504,22 +519,54 @@ router.get('/nsqf/curriculum', async (req, res) => {
     }
 });
 
-// POST /api/skillpedia/nsqf/swap-video — swap single PC video in nsqf_pcs table
-router.post('/nsqf/swap-video', async (req, res) => {
+// POST /api/skillpedia/nsqf/swap-video or /nsqf/update-pc — update single PC video, timestamps, and metadata
+router.post(['/nsqf/swap-video', '/nsqf/update-pc'], async (req, res) => {
     try {
-        const { qpCode, pcId, videoId, videoTitle } = req.body;
+        let { qpCode, pcId, videoId, videoTitle, startSeconds, endSeconds, studyTakeaways, vivaQuiz } = req.body;
         if (!qpCode || !pcId || !videoId) {
             return res.status(400).json({ error: 'qpCode, pcId, and videoId are required.' });
         }
+
+        // Clean videoId in case full YouTube URL was pasted
+        const ytMatch = String(videoId).match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+        if (ytMatch && ytMatch[1]) {
+            videoId = ytMatch[1];
+        } else {
+            videoId = String(videoId).trim();
+        }
+
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-        // Write to nsqf_pcs (the canonical source — NOT the deprecated nsqf_videos table)
+        const startSec = (startSeconds !== undefined && startSeconds !== null && startSeconds !== '') ? parseInt(startSeconds, 10) : 0;
+        const endSec   = (endSeconds !== undefined && endSeconds !== null && endSeconds !== '') ? parseInt(endSeconds, 10) : null;
+        
+        const takeawaysJson = studyTakeaways ? (typeof studyTakeaways === 'object' ? JSON.stringify(studyTakeaways) : studyTakeaways) : null;
+        const vivaQuizJson  = vivaQuiz ? (typeof vivaQuiz === 'object' ? JSON.stringify(vivaQuiz) : vivaQuiz) : null;
+
+        // Write to nsqf_pcs (the canonical PostgreSQL source)
         await db.prepare(`
             UPDATE nsqf_pcs 
-            SET video_id = ?, video_title = ?, video_url = ? 
+            SET video_id = ?, 
+                video_title = ?, 
+                video_url = ?,
+                start_seconds = ?,
+                end_seconds = ?,
+                study_takeaways_json = COALESCE(?, study_takeaways_json),
+                viva_quiz_json = COALESCE(?, viva_quiz_json)
             WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?) AND pc_code = ?
-        `).run(videoId, videoTitle || 'Updated Video', videoUrl, qpCode, qpCode.replace('/', '_'), pcId);
+        `).run(videoId, videoTitle || 'NSQF Demonstration', videoUrl, startSec, endSec, takeawaysJson, vivaQuizJson, qpCode, qpCode.replace('/', '_'), pcId);
 
-        res.json({ success: true, message: `Updated video for ${qpCode} ${pcId}` });
+        res.json({ 
+            success: true, 
+            message: `Successfully updated video and bounds for ${qpCode} ${pcId}`,
+            updated: {
+                qp_code: qpCode,
+                pc_code: pcId,
+                video_id: videoId,
+                video_url: videoUrl,
+                start_seconds: startSec,
+                end_seconds: endSec
+            }
+        });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }

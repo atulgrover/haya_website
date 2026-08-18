@@ -350,4 +350,56 @@ router.get('/reel/:qpCode/qr', (req, res) => {
     }
 });
 
+// POST /api/wiki/pc/update - Update PC video, timestamps, and pro-tips live in PostgreSQL
+router.post('/pc/update', async (req, res) => {
+    try {
+        const db = require('../db');
+        let { qpCode, pcId, videoId, videoTitle, startSeconds, endSeconds, studyTakeaways, vivaQuiz } = req.body;
+        if (!qpCode || !pcId || !videoId) {
+            return res.status(400).json({ error: 'qpCode, pcId, and videoId are required.' });
+        }
+
+        const ytMatch = String(videoId).match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+        if (ytMatch && ytMatch[1]) {
+            videoId = ytMatch[1];
+        } else {
+            videoId = String(videoId).trim();
+        }
+
+        const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        const startSec = (startSeconds !== undefined && startSeconds !== null && startSeconds !== '') ? parseInt(startSeconds, 10) : 0;
+        const endSec   = (endSeconds !== undefined && endSeconds !== null && endSeconds !== '') ? parseInt(endSeconds, 10) : null;
+        
+        const takeawaysJson = studyTakeaways ? (typeof studyTakeaways === 'object' ? JSON.stringify(studyTakeaways) : studyTakeaways) : null;
+        const vivaQuizJson  = vivaQuiz ? (typeof vivaQuiz === 'object' ? JSON.stringify(vivaQuiz) : vivaQuiz) : null;
+
+        await db.prepare(`
+            UPDATE nsqf_pcs 
+            SET video_id = ?, 
+                video_title = ?, 
+                video_url = ?,
+                start_seconds = ?,
+                end_seconds = ?,
+                study_takeaways_json = COALESCE(?, study_takeaways_json),
+                viva_quiz_json = COALESCE(?, viva_quiz_json)
+            WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?) AND pc_code = ?
+        `).run(videoId, videoTitle || 'NSQF Demonstration', videoUrl, startSec, endSec, takeawaysJson, vivaQuizJson, qpCode, qpCode.replace('/', '_'), pcId);
+
+        res.json({ 
+            success: true, 
+            message: `Updated video and timestamps for ${qpCode} ${pcId}`,
+            updated: {
+                qp_code: qpCode,
+                pc_code: pcId,
+                video_id: videoId,
+                video_url: videoUrl,
+                start_seconds: startSec,
+                end_seconds: endSec
+            }
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 module.exports = router;
