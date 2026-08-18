@@ -455,16 +455,16 @@ async function seedNSQFFromJSON() {
 
 /**
  * 🧹 YouTube Developer Policy III.E.4.a-g Compliance Routine:
- * Automatically purges all cached YouTube API search metadata older than 30 days.
+ * Automatically purges all cached YouTube API search metadata older than 7 days (Rolling Ephemeral Cache).
  */
 async function purgeExpiredYouTubeCache() {
     try {
         const res = await pool.query(`
             DELETE FROM youtube_search_cache 
-            WHERE cached_at < NOW() - INTERVAL '30 days'
+            WHERE cached_at < NOW() - INTERVAL '7 days'
         `);
         if (res && res.rowCount > 0) {
-            console.log(`[Haya Portal DB] 🧹 Policy III.E.4.a-g Compliance: Purged ${res.rowCount} expired YouTube cache entries (>30 days old).`);
+            console.log(`[Haya Portal DB] 🧹 Policy III.E.4.a-g Compliance: Purged ${res.rowCount} expired YouTube cache entries (>7 days old).`);
         }
     } catch (err) {
         console.warn('[Haya Portal DB] YouTube Cache Purge warning:', err.message);
@@ -472,7 +472,7 @@ async function purgeExpiredYouTubeCache() {
 }
 
 initSchema().then(() => {
-    // Run initial 30-day compliance purge on boot
+    // Run initial 7-day compliance purge on boot
     purgeExpiredYouTubeCache();
     // Schedule daily automated purge (every 24 hours)
     setInterval(purgeExpiredYouTubeCache, 24 * 60 * 60 * 1000);

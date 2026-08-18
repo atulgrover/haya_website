@@ -22,7 +22,7 @@ require('dotenv').config();
 const fs   = require('fs');
 const path = require('path');
 const { Pool } = require('pg');
-const ytsr = require('youtube-sr').default;
+const { searchYouTubeVideos } = require('../server/utils/videoHarvester');
 
 const isDev = process.env.NODE_ENV !== 'production';
 let pool;
@@ -267,10 +267,11 @@ function scoreVideoMatch(videoTitle, pcIntent) {
 
 async function searchYouTubeSafe(query) {
     try {
-        const results = await ytsr.search(query, { limit: 6, safeSearch: true });
+        const results = await searchYouTubeVideos(query, 6);
         for (const v of results) {
-            if (!v.id || v.id.length !== 11) continue;
-            const title = (v.title || '').toLowerCase();
+            const vid = v.video_id;
+            if (!vid || vid.length !== 11) continue;
+            const title = (v.video_title || '').toLowerCase();
             // Filter out music / entertainment / non-instructional
             if (
                 title.includes('song')   || title.includes('music')    ||
@@ -278,9 +279,9 @@ async function searchYouTubeSafe(query) {
                 title.includes('movie')  || title.includes('vlog')      ||
                 title.includes('comedy') || title.includes('prank')
             ) continue;
-            return { id: v.id, title: v.title, url: `https://www.youtube.com/watch?v=${v.id}` };
+            return { id: vid, title: v.video_title, url: `https://www.youtube.com/watch?v=${vid}` };
         }
-    } catch (_) { /* 429 or network error — will use fallback */ }
+    } catch (_) { /* Error — will use fallback */ }
     return null;
 }
 

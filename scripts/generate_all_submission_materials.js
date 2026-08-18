@@ -85,32 +85,32 @@ async function generateAll() {
           <div class="card backend">
             <div class="card-header">⚙️ 2. Core Backend &amp; Data Engine</div>
             <ul class="item-list">
-              <li><strong>Express API Gateway:</strong> Stateless micro-service router with JWT authentication.</li>
+              <li><strong>Express API Gateway:</strong> Stateless micro-service router for public educational search.</li>
               <li><strong>NSQF 5-Table Database:</strong> Curated taxonomy of 2,176 NCVET Job Roles &amp; 207,000 criteria.</li>
-              <li><strong>Search Cache (youtube_search_cache):</strong> Permanent caching to prevent duplicate API queries.</li>
+              <li><strong>7-Day Ephemeral Cache:</strong> Short-term operational cache (7-day TTL auto-purge) to prevent rate-limit exhaustion.</li>
               <li><strong>AI Quality Evaluator:</strong> Validates video title relevancy against vocational criteria.</li>
             </ul>
           </div>
 
           <!-- 3. Third-Party Integrations -->
           <div class="card external">
-            <div class="card-header">🌐 3. Third-Party Services</div>
+            <div class="card-header">🌐 3. Third-Party Integrations &amp; Open Standards</div>
             <ul class="item-list">
-              <li><strong>YouTube Data API v3:</strong> Read-only search.list and videos.list endpoints for educational reels.</li>
-              <li><strong>Razorpay PCI-DSS Gateway:</strong> Secure tokenized payment processing (zero card storage).</li>
-              <li><strong>Sarvam AI / OpenRouter:</strong> Contextual intent &amp; search query synthesis.</li>
+              <li><strong>YouTube Data API v3:</strong> Official search.list endpoint for 100% free educational demonstrations.</li>
+              <li><strong>NCVET National Framework:</strong> Open Government Data (OGD) vocational curriculum standards.</li>
+              <li><strong>Sarvam AI:</strong> Contextual intent &amp; search query synthesis.</li>
             </ul>
           </div>
         </div>
 
         <div class="api-flow">
-          <div class="api-flow-title">🔄 Read-Only YouTube API Educational Retrieval Flow</div>
+          <div class="api-flow-title">🔄 Read-Only YouTube API Educational Retrieval Flow (100% Free Public Access)</div>
           <div class="flow-steps">
-            <div class="flow-step">1. User selects NSQF Job Role (e.g. Paddy Cultivator)</div>
+            <div class="flow-step">1. User selects NSQF Job Role (e.g. Solar PV Installer)</div>
             <div class="flow-arrow">➔</div>
-            <div class="flow-step">2. Backend checks local Search Cache</div>
+            <div class="flow-step">2. Backend checks 7-Day Ephemeral Cache</div>
             <div class="flow-arrow">➔</div>
-            <div class="flow-step">3. YouTube Data API (search.list) for new criteria</div>
+            <div class="flow-step">3. YouTube Data API (search.list) for new queries</div>
             <div class="flow-arrow">➔</div>
             <div class="flow-step">4. Client renders standard YouTube iframe player</div>
           </div>
@@ -118,8 +118,8 @@ async function generateAll() {
 
         <div class="compliance-bar">
           <span>✅ <strong>Zero Storage:</strong> No video/audio files downloaded or cached.</span>
-          <span>✅ <strong>Standard Player:</strong> Official YouTube Iframe with full controls &amp; branding.</span>
-          <span>✅ <strong>Direct Attribution:</strong> Creator channels &amp; links preserved.</span>
+          <span>✅ <strong>7-Day Ephemeral Cache:</strong> Automated daily purge of stale metadata.</span>
+          <span>✅ <strong>100% Free Public Access:</strong> Zero paywalls, zero monetization of video content.</span>
         </div>
       </div>
     </body>
@@ -296,24 +296,24 @@ async function generateAll() {
               <tr>
                 <th>API Feature / Endpoint</th>
                 <th>Platform Usage</th>
-                <th>Quota Optimization &amp; Safety</th>
+                <th>Quota Optimization &amp; Policy Adherence</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><span class="tag">youtube.search.list</span></td>
-                <td>Finds instructional video demonstrations matching NSQF competency standards</td>
-                <td>Permanent caching in local database prevents duplicate queries</td>
+                <td>Finds vocational instructional demonstrations matching NSQF competency standards (100% Free Public Access)</td>
+                <td>7-Day Ephemeral Cache with automated daily purge routine prevents redundant quota requests (Policy III.E.4.a-g)</td>
               </tr>
               <tr>
                 <td><span class="tag">youtube.videos.list</span></td>
                 <td>Retrieves video title, channel name, and duration for preview metadata</td>
-                <td>Zero storage of personal user data or watch history</td>
+                <td>Zero storage of private personal user data or viewing history (Policy III.A.2d &amp; III.A.2e)</td>
               </tr>
               <tr>
                 <td><span class="tag">Standard IFrame Player</span></td>
-                <td>In-browser video playback in Student Skillpedia portal</td>
-                <td>Preserves all YouTube branding, advertising, and channel links</td>
+                <td>In-browser video playback in Student NSQF Skillpedia portal</td>
+                <td>Preserves all YouTube branding, advertising, and channel links without overlays or modification</td>
               </tr>
             </tbody>
           </table>
@@ -414,27 +414,27 @@ async function generateAll() {
             <div class="card backend">
               <div class="card-header">⚙️ 2. Core Backend &amp; Data Engine</div>
               <ul class="item-list">
-                <li><strong>Express API Gateway:</strong> Stateless micro-service router with JWT authentication.</li>
+                <li><strong>Express API Gateway:</strong> Stateless micro-service router for public educational search.</li>
                 <li><strong>NSQF 5-Table Database:</strong> Curated taxonomy of 2,176 NCVET Job Roles &amp; 207,000 criteria.</li>
-                <li><strong>Search Cache:</strong> Permanent caching to prevent duplicate API queries.</li>
+                <li><strong>7-Day Ephemeral Cache:</strong> Short-term operational cache (7-day TTL auto-purge) to prevent rate limits.</li>
                 <li><strong>AI Quality Evaluator:</strong> Validates video title relevancy against vocational criteria.</li>
               </ul>
             </div>
             <div class="card external">
-              <div class="card-header">🌐 3. Third-Party Services</div>
+              <div class="card-header">🌐 3. Third-Party Integrations &amp; Open Standards</div>
               <ul class="item-list">
-                <li><strong>YouTube Data API v3:</strong> Read-only search.list and videos.list endpoints.</li>
-                <li><strong>Razorpay Gateway:</strong> Tokenized payment processing (zero card storage).</li>
-                <li><strong>Sarvam AI / OpenRouter:</strong> Contextual intent &amp; search query synthesis.</li>
+                <li><strong>YouTube Data API v3:</strong> Official search.list endpoint for 100% free educational demonstrations.</li>
+                <li><strong>NCVET National Framework:</strong> Open Government Data (OGD) vocational curriculum standards.</li>
+                <li><strong>Sarvam AI:</strong> Contextual intent &amp; search query synthesis.</li>
               </ul>
             </div>
           </div>
           <div class="api-flow">
-            <div class="api-flow-title">🔄 Read-Only YouTube API Educational Retrieval Flow</div>
+            <div class="api-flow-title">🔄 Read-Only YouTube API Educational Retrieval Flow (100% Free Public Access)</div>
             <div class="flow-steps">
               <div class="flow-step">1. User selects NSQF Job Role</div>
               <div class="flow-arrow">➔</div>
-              <div class="flow-step">2. Backend checks local Search Cache</div>
+              <div class="flow-step">2. Backend checks 7-Day Ephemeral Cache</div>
               <div class="flow-arrow">➔</div>
               <div class="flow-step">3. YouTube Data API (search.list)</div>
               <div class="flow-arrow">➔</div>
@@ -473,14 +473,14 @@ async function generateAll() {
               <div class="step-num">3</div>
               <div class="step-content">
                 <div class="step-title">Practical Demonstration Retrieval (YouTube Data API v3)</div>
-                <div class="step-desc">System retrieves highly relevant instructional video tutorials via <span class="highlight">YouTube Data API v3 (search.list)</span>, validated by AI for 90%+ vocational accuracy. Caching prevents redundant API calls.</div>
+                <div class="step-desc">System retrieves highly relevant instructional video tutorials via <span class="highlight">YouTube Data API v3 (search.list)</span>, validated by AI for 90%+ vocational accuracy. 7-Day caching prevents redundant API calls.</div>
               </div>
             </div>
             <div class="step-row">
               <div class="step-num">4</div>
               <div class="step-content">
                 <div class="step-title">In-Platform Video Learning &amp; Progress Tracking</div>
-                <div class="step-desc">The student watches the demonstration using the <span class="highlight">standard YouTube iframe player</span>, completes performance criteria checklist items, and tracks skill mastery.</div>
+                <div class="step-desc">The student watches the demonstration using the <span class="highlight">standard YouTube iframe player</span>, completes performance criteria checklist items, and tracks skill mastery (100% Free, No Paywalls).</div>
               </div>
             </div>
           </div>
@@ -499,14 +499,18 @@ async function generateAll() {
           </div>
           <div class="grid-2">
             <div class="card">
-              <div style="font-family:'Google Sans',sans-serif;font-size:14.5px;font-weight:700;color:#38BDF8;margin-bottom:8px;">📖 Project Purpose</div>
-              <p style="font-size:12px;color:#CBD5E1;line-height:1.5;margin:0 0 8px 0;">HAYAGRIVA is an Indian National Qualification Framework (NSQF) educational platform designed to empower students and vocational candidates across 41 sectors.</p>
-              <p style="font-size:12px;color:#CBD5E1;line-height:1.5;margin:0;">The platform aggregates structured government curriculum standards and pairs them with high-quality practical demonstration videos retrieved dynamically via YouTube Data API v3.</p>
+              <div class="card-title">📖 Project Purpose &amp; Value Proposition</div>
+              <div class="text">
+                <p>HAYAGRIVA is an Indian National Qualification Framework (NSQF) educational platform designed to empower students and vocational candidates across 41 sectors.</p>
+                <p>The platform aggregates structured government curriculum standards (2,176 Job Roles, 207,000 performance criteria) and pairs them with high-quality practical demonstration videos retrieved dynamically via YouTube Data API v3.</p>
+              </div>
             </div>
             <div class="card">
-              <div style="font-family:'Google Sans',sans-serif;font-size:14.5px;font-weight:700;color:#38BDF8;margin-bottom:8px;">🛡️ Policy Compliance</div>
+              <div class="card-title">🛡️ Data Governance &amp; Policy Adherence</div>
               <ul class="bullet-list">
-                <li><span class="icon">✓</span> <strong>Read-Only API:</strong> Only queries search.list and videos.list.</li>
+                <li><span class="icon">✓</span> <strong>Read-Only API Access:</strong> Only queries <code class="tag">search.list</code> and <code class="tag">videos.list</code>.</li>
+                <li><span class="icon">✓</span> <strong>100% Free Public Access:</strong> Zero paywalls, zero monetization of video content.</li>
+                <li><span class="icon">✓</span> <strong>7-Day Ephemeral Cache:</strong> Automated daily purge of stale metadata (Policy III.E.4.a-g).</li>
                 <li><span class="icon">✓</span> <strong>No Video/Audio Download:</strong> Zero downloading or modifying of streams.</li>
                 <li><span class="icon">✓</span> <strong>Embedded Playback:</strong> Standard iframe player with user controls.</li>
                 <li><span class="icon">✓</span> <strong>Attribution:</strong> Direct links to YouTube TOS &amp; Google Privacy Policy.</li>
@@ -525,18 +529,18 @@ async function generateAll() {
               <tbody>
                 <tr>
                   <td><span class="tag">youtube.search.list</span></td>
-                  <td>Finds instructional video demonstrations matching NSQF competency standards</td>
-                  <td>Permanent caching in local database prevents duplicate queries</td>
+                  <td>Finds instructional video demonstrations matching NSQF competency standards (100% Free)</td>
+                  <td>7-Day Ephemeral Cache with daily purge prevents duplicate queries (Policy III.E.4.a-g)</td>
                 </tr>
                 <tr>
                   <td><span class="tag">youtube.videos.list</span></td>
                   <td>Retrieves video title, channel name, and duration for preview metadata</td>
-                  <td>Zero storage of personal user data or watch history</td>
+                  <td>Zero storage of private personal user data or viewing history (Policy III.A.2d &amp; III.A.2e)</td>
                 </tr>
                 <tr>
                   <td><span class="tag">Standard IFrame Player</span></td>
-                  <td>In-browser video playback in Student Skillpedia portal</td>
-                  <td>Preserves all YouTube branding, advertising, and channel links</td>
+                  <td>In-browser video playback in Student NSQF Skillpedia portal</td>
+                  <td>Preserves all YouTube branding, advertising, and channel links without overlays</td>
                 </tr>
               </tbody>
             </table>

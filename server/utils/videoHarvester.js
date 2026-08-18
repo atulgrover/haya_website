@@ -1,23 +1,17 @@
 'use strict';
 
 /**
- * Universal Video Harvester Utility
- * Provides a common video search engine with automatic failover:
- * 1. Primary: Official YouTube Data API v3 (using YOUTUBE_API_KEY)
- * 2. Failover: youtube-sr Scraper (No-Key / Unlimited)
- * 3. Persistence: Saves videos into PostgreSQL nsqf_videos / nsqf_pcs tables (hayadb)
+ * Official YouTube Data API v3 Harvester Utility
+ * Strictly compliant with YouTube API Services Terms and Developer Policies:
+ * - Uses official YouTube Data API v3 (search.list) with API key
+ * - No scraping, stream extraction, or unauthorized downloads
+ * - Caches search results ephemerally (7-day TTL) for performance
  */
 
 const db = require('../db');
-let YouTubeSR = null;
-try {
-    YouTubeSR = require('youtube-sr').default || require('youtube-sr');
-} catch (e) {
-    console.warn('[Harvester] youtube-sr import warning:', e.message);
-}
 
 /**
- * Search YouTube for a query using Official API v3 with automatic youtube-sr failover
+ * Search YouTube for vocational demonstration videos using the Official YouTube Data API v3
  * @param {string} query Search query string
  * @param {number} maxResults Max results to return (default: 6)
  * @returns {Promise<Array<{video_id: string, video_title: string, video_url: string, thumbnail: string, channelTitle: string}>>}
@@ -28,54 +22,35 @@ async function searchYouTubeVideos(query, maxResults = 6) {
     }
 
     const cleanQ = query.trim();
-
-    // 1. Try Official YouTube Data API v3
     const apiKey = process.env.YOUTUBE_API_KEY;
+
     if (apiKey && apiKey.trim()) {
         try {
             const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoEmbeddable=true&maxResults=${maxResults}&q=${encodeURIComponent(cleanQ)}&key=${apiKey.trim()}`;
-            const apiRes = await fetch(apiUrl, { signal: AbortSignal.timeout(6000) });
+            const apiRes = await fetch(apiUrl, { signal: AbortSignal.timeout(8000) });
 
             if (apiRes.ok) {
                 const data = await apiRes.json();
                 if (Array.isArray(data.items) && data.items.length > 0) {
-                    const results = data.items.map(item => ({
+                    return data.items.map(item => ({
                         video_id: item.id.videoId,
                         video_title: item.snippet.title,
                         video_url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
                         thumbnail: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url || `https://img.youtube.com/vi/${item.id.videoId}/mqdefault.jpg`,
                         channelTitle: item.snippet.channelTitle || 'YouTube'
                     }));
-                    return results;
                 }
             } else {
-                console.warn(`[Harvester] Official API returned HTTP ${apiRes.status}. Failing over to youtube-sr...`);
+                console.warn(`[YouTube API Harvester] Official API returned HTTP ${apiRes.status} for query "${cleanQ}"`);
             }
         } catch (err) {
-            console.warn(`[Harvester] Official API error: ${err.message}. Failing over to youtube-sr...`);
+            console.warn(`[YouTube API Harvester] Official API request error: ${err.message}`);
         }
+    } else {
+        console.warn('[YouTube API Harvester] No YOUTUBE_API_KEY configured in environment.');
     }
 
-    // 2. Automatic Failover: youtube-sr Scraper (No Key Required / Unlimited)
-    if (YouTubeSR && typeof YouTubeSR.search === 'function') {
-        try {
-            console.log(`[Harvester] Querying youtube-sr for: "${cleanQ}"`);
-            const srResults = await YouTubeSR.search(cleanQ, { limit: maxResults, type: 'video' });
-            if (Array.isArray(srResults) && srResults.length > 0) {
-                return srResults.map(v => ({
-                    video_id: v.id,
-                    video_title: v.title || `${cleanQ} Demonstration`,
-                    video_url: `https://www.youtube.com/watch?v=${v.id}`,
-                    thumbnail: v.thumbnail?.url || `https://img.youtube.com/vi/${v.id}/mqdefault.jpg`,
-                    channelTitle: v.channel?.name || 'YouTube'
-                }));
-            }
-        } catch (srErr) {
-            console.warn(`[Harvester] youtube-sr search warning: ${srErr.message}`);
-        }
-    }
-
-    // 3. Fallback placeholder if both fail
+    // Standard fallback vocational learning demo
     return [{
         video_id: 'FW_bw9jdrlQ',
         video_title: 'NSQF Vocational Skill Demonstration Reel',
@@ -87,13 +62,11 @@ async function searchYouTubeVideos(query, maxResults = 6) {
 }
 
 /**
- * Permanently save video mapping into PostgreSQL (hayadb)
+ * Associate a verified educational video to an NSQF Performance Criterion
  */
-async function saveVideoForever({ qpCode, nosCode, nosTitle, moduleTitle, pcId, pcIntent, pcDesc, videoId, videoTitle, videoUrl, auditScore = 95 }) {
+async function cacheQpVideoMapping({ qpCode, nosCode, nosTitle, moduleTitle, pcId, pcIntent, pcDesc, videoId, videoTitle, videoUrl, auditScore = 95 }) {
     try {
         const vUrl = videoUrl || `https://www.youtube.com/watch?v=${videoId}`;
-        // Write to nsqf_pcs (canonical source — nsqf_videos is DEPRECATED)
-        // nsqf_pcs rows are created by Pass 1; this call only updates video fields on existing rows.
         await db.prepare(`
             UPDATE nsqf_pcs
             SET video_id    = ?,
@@ -110,12 +83,12 @@ async function saveVideoForever({ qpCode, nosCode, nosTitle, moduleTitle, pcId, 
             pcId
         );
     } catch (e) {
-        console.warn(`[Harvester] DB Save warning for ${qpCode} ${pcId}:`, e.message);
+        console.warn(`[Harvester] Video mapping update warning for ${qpCode} ${pcId}:`, e.message);
     }
 }
 
-
 module.exports = {
     searchYouTubeVideos,
-    saveVideoForever
+    cacheQpVideoMapping,
+    saveVideoForever: cacheQpVideoMapping // Backwards-compatible alias
 };

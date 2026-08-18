@@ -6,7 +6,7 @@
  * Powered by:
  * - Primary LLM: Sarvam AI (sarvam-105b-conversations)
  * - Fallback LLM: OpenRouter (meta-llama/llama-3.3-70b-instruct)
- * - Search: YouTube Data API v3 / youtube-sr failover
+ * - Search: Official YouTube Data API v3 (search.list)
  * - Full Hierarchy: data/md/AGR_Q0101.md un-truncated criteria + tools
  */
 

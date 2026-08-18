@@ -26,9 +26,28 @@
 require('dotenv').config();
 const fs     = require('fs');
 const path   = require('path');
-const crypto = require('crypto');
-const ytsr   = require('youtube-sr').default;
 const db     = require('../server/db');
+
+async function searchYouTubeApi(query, limit = 5) {
+    const apiKey = process.env.YOUTUBE_API_KEY;
+    if (!apiKey || !apiKey.trim()) return [];
+    try {
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoEmbeddable=true&maxResults=${limit}&q=${encodeURIComponent(query)}&key=${apiKey.trim()}`;
+        const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+        if (!res.ok) return [];
+        const data = await res.json();
+        if (!Array.isArray(data.items)) return [];
+        return data.items.map(item => ({
+            id: item.id.videoId,
+            title: item.snippet.title,
+            channel: { name: item.snippet.channelTitle },
+            thumbnail: { url: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url },
+            duration: 300000
+        }));
+    } catch (_) {
+        return [];
+    }
+}
 
 const NSQF_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'nsqf');
 const SOP_JSON_DIR    = path.join(__dirname, '..', 'data', 'json', 'sop');
@@ -227,7 +246,7 @@ async function harvestVideoForGuidance(guidance, sector, lang = 'eng', pool, use
     // 2. Multi-Tier Query Loop
     for (const query of queries) {
         try {
-            const results = await ytsr.search(query, { limit: 5, safeSearch: true });
+            const results = await searchYouTubeApi(query, 5);
 
             for (const vid of results) {
                 if (!vid.id || vid.id.length !== 11) continue;

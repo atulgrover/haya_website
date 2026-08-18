@@ -4,7 +4,7 @@
  * 🌾 STAGE 3: Multi-Candidate Harvest & AI Pre-Scoring for AGR/Q0101 (Paddy Cultivator)
  *
  * 1. Takes synthesized Stage 2 queries
- * 2. Fetches 4 candidate videos per criterion via YouTube Data API / youtube-sr
+ * 2. Fetches 4 candidate videos per criterion via Official YouTube Data API v3
  * 3. Uses Sarvam AI (sarvam-105b-conversations) to score each candidate (0-100) and write a rationale
  * 4. Staged to data/stage3_agr0101_scored.json AND the staging table in DB
  * 5. DOES NOT overwrite production nsqf_pcs table.

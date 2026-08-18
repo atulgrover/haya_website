@@ -7,9 +7,9 @@ require('dotenv').config({ path: path.join(__dirname, '../../.env') });
 const db = require('../../server/db');
 const { searchYouTubeVideos, saveVideoForever } = require('../../server/utils/videoHarvester');
 
-test('Universal Video Harvester & Persistence Integration Suite', async (t) => {
+test('Official YouTube Data API v3 Harvester Integration Suite', async (t) => {
 
-    await t.test('1. Harvester executes with automatic youtube-sr failover on quota exhaustion', async () => {
+    await t.test('1. Harvester executes query using YouTube Data API v3', async () => {
         const results = await searchYouTubeVideos('garment inline checker seam inspection', 5);
         assert.ok(Array.isArray(results), 'results should be an array');
         assert.ok(results.length > 0, 'should return at least 1 video result');

@@ -18,6 +18,19 @@ async function capture() {
         puppeteer = require('puppeteer');
     }
 
+    const express = require('express');
+    const app = express();
+    app.use(express.static(path.join(__dirname, '..')));
+    app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname, '../privacy.html')));
+    app.get('/terms', (req, res) => res.sendFile(path.join(__dirname, '../terms.html')));
+    
+    let server = null;
+    try {
+        server = await new Promise(resolve => {
+            const s = app.listen(3099, () => resolve(s));
+        });
+    } catch (_) {}
+
     const browser = await puppeteer.launch({
         headless: 'new',
         args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -35,9 +48,9 @@ async function capture() {
 
     // 1. Privacy Policy Screenshot
     console.log('📸 1. Capturing Privacy Policy (YouTube & Google Policy disclosures)...');
-    await page.goto('http://localhost:3001/privacy', { waitUntil: 'networkidle0' });
+    await page.goto('http://localhost:3099/privacy', { waitUntil: 'networkidle0' });
     await page.evaluate(() => {
-        const sec = document.querySelectorAll('.policy-section')[3]; // Section 4
+        const sec = document.getElementById('youtube-compliance') || document.querySelectorAll('.policy-section')[3];
         if (sec) sec.scrollIntoView({ behavior: 'instant', block: 'center' });
     });
     await new Promise(r => setTimeout(r, 600));
@@ -47,7 +60,7 @@ async function capture() {
 
     // 2. Homepage Footer Screenshot
     console.log('📸 2. Capturing Homepage Footer (showing Privacy Policy & Terms of Service links)...');
-    await page.goto('http://localhost:3001/', { waitUntil: 'networkidle0' });
+    await page.goto('http://localhost:3099/', { waitUntil: 'networkidle0' });
     await page.evaluate(() => {
         const footer = document.querySelector('footer');
         if (footer) footer.scrollIntoView({ behavior: 'instant', block: 'center' });
@@ -59,9 +72,9 @@ async function capture() {
 
     // 3. Terms of Service Screenshot
     console.log('📸 3. Capturing Terms of Service (YouTube Content & Terms disclosures)...');
-    await page.goto('http://localhost:3001/terms', { waitUntil: 'networkidle0' });
+    await page.goto('http://localhost:3099/terms', { waitUntil: 'networkidle0' });
     await page.evaluate(() => {
-        const sec = document.querySelectorAll('.policy-section')[2]; // Section 3
+        const sec = document.getElementById('youtube-terms') || document.querySelectorAll('.policy-section')[2];
         if (sec) sec.scrollIntoView({ behavior: 'instant', block: 'center' });
     });
     await new Promise(r => setTimeout(r, 600));
@@ -71,13 +84,14 @@ async function capture() {
 
     // 4. Video Player & Learning Reel Embed Screenshot
     console.log('📸 4. Capturing YouTube Player Embed in Students NSQF Skillpedia...');
-    await page.goto('http://localhost:3001/students.html', { waitUntil: 'networkidle0' });
+    await page.goto('http://localhost:3099/reel.html', { waitUntil: 'networkidle0' });
     await new Promise(r => setTimeout(r, 1500));
     const p4 = path.join(outputDir, '4_YouTube_Player_Embed_Skillpedia.png');
     await page.screenshot({ path: p4, fullPage: false });
     console.log(`   ✅ Saved: ${p4}`);
 
     await browser.close();
+    if (server) server.close();
 
     console.log(`\n================================================================================`);
     console.log(`🎉 ALL 4 COMPLIANCE SCREENSHOTS READY ON YOUR DESKTOP!`);

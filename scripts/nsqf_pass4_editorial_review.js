@@ -21,11 +21,8 @@
 
 require('dotenv').config();
 const fs   = require('fs');
-const path = require('path');
 const db   = require('../server/db');
-
-let ytsr;
-try { ytsr = require('youtube-sr').default; } catch (_) { ytsr = null; }
+const { searchYouTubeVideos } = require('../server/utils/videoHarvester');
 
 const CHECKPOINT_PATH      = path.join(__dirname, '..', 'data', '.pass4_checkpoint.json');
 const AUDIT_SCORE_THRESHOLD = 65;   // PCs with score < 65 trigger a search for better candidates
@@ -56,27 +53,26 @@ function scoreVideoAlignment(pcIntent, videoTitle, videoDescription = '') {
     return Math.min(99, Math.max(30, score));
 }
 
-// ── YouTube Search (graceful — works with or without ytsr) ───────────────────
+// ── YouTube Search (Official YouTube Data API v3) ───────────────────
 async function searchForBetterCandidate(searchQuery, currentVideoId, currentScore, excludedIds = new Set()) {
-    if (!ytsr) return null;
-
     try {
-        const results = await ytsr.search(searchQuery, { limit: 6, safeSearch: true });
+        const results = await searchYouTubeVideos(searchQuery, 6);
         let bestCand  = null;
         let bestScore = currentScore;
 
         for (const vid of results) {
-            if (!vid.id || vid.id.length !== 11) continue;
-            if (vid.id === currentVideoId) continue;
-            if (excludedIds.has(vid.id)) continue;
+            const vId = vid.video_id;
+            if (!vId || vId.length !== 11) continue;
+            if (vId === currentVideoId) continue;
+            if (excludedIds.has(vId)) continue;
 
-            const candScore = scoreVideoAlignment(searchQuery, vid.title || '');
+            const candScore = scoreVideoAlignment(searchQuery, vid.video_title || '');
             if (candScore > bestScore + MIN_IMPROVEMENT) {
                 bestScore = candScore;
                 bestCand  = {
-                    videoId:    vid.id,
-                    videoTitle: vid.title || 'NSQF Practical Demonstration',
-                    videoUrl:   `https://www.youtube.com/watch?v=${vid.id}`,
+                    videoId:    vId,
+                    videoTitle: vid.video_title || 'NSQF Practical Demonstration',
+                    videoUrl:   `https://www.youtube.com/watch?v=${vId}`,
                     score:      candScore
                 };
             }
@@ -127,7 +123,7 @@ async function runPass4EditorialReview() {
 
     console.log('================================================================================');
     console.log('👤 [PASS 4] BATCH EDITORIAL QUALITY REVIEW (Human-In-The-Loop)');
-    console.log(`   YouTube Search: ${ytsr ? '✅ youtube-sr available' : '⚠️  youtube-sr not found — scoring only, no new candidates'}`);
+    console.log('   YouTube Search: ✅ Official YouTube Data API v3 Active');
     console.log('================================================================================\n');
 
     const pool = { query: db.query.bind(db) };

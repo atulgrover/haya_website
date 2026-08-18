@@ -199,7 +199,14 @@
           </ul>
         </div>
 
-        <h3>4.1 User Information &amp; API Data Collected, Accessed, and Stored (Policy III.A.2d)</h3>
+        <h3>4.1 Non-Commercial Public Education &amp; Zero Paywalls</h3>
+        <p>HAYAGRIVA NSQF Skillpedia is a <strong>100% free, open public education initiative</strong> designed to empower Indian vocational learners, students, and ITI candidates across 41 economic sectors:</p>
+        <ul>
+          <li><strong>Zero Paywalls on YouTube Content:</strong> Video search, curriculum discovery, and instructional video playback are completely free. We do not charge fees, require paid subscriptions, or gate YouTube video playback behind any payment mechanism.</li>
+          <li><strong>Non-Monetized API Access:</strong> We do not sell access to YouTube API Data or monetize video embeds.</li>
+        </ul>
+
+        <h3>4.2 User Information &amp; API Data Collected, Accessed, and Stored (Policy III.A.2d)</h3>
         <p>We believe in complete transparency regarding the data accessed and stored in connection with YouTube API Services:</p>
         <ul>
           <li><strong>Public Video Metadata Accessed:</strong> When users search or browse vocational curriculum modules, our API Client queries the YouTube Data API v3 to retrieve public, non-authenticated video metadata including: video IDs, video titles, descriptions, channel titles, published dates, durations, and video thumbnail image URLs.</li>
@@ -207,27 +214,27 @@
           <li><strong>User Learning State:</strong> Any user progress (such as completing an NSQF skill checklist or module bookmark) is stored independently in the user&rsquo;s local account database and is never associated with or transmitted to Google/YouTube accounts.</li>
         </ul>
 
-        <h3>4.2 How We Use, Process, and Share Information (Policy III.A.2e)</h3>
+        <h3>4.3 How We Use, Process, and Share Information (Policy III.A.2e)</h3>
         <p>We process API Data strictly for educational qualification delivery:</p>
         <ul>
           <li><strong>Processing &amp; Educational Mapping:</strong> Retrieved YouTube metadata is processed solely to categorize and display practical demonstration videos corresponding to specific National Occupational Standards (NOS) and Performance Criteria (PC) for vocational learners.</li>
           <li><strong>Internal Parties:</strong> API Data is processed internally solely by our educational curriculum indexer and user-facing search engine to present structured learning pathways. No employee or internal party accesses private user search histories.</li>
-          <li><strong>External Parties &amp; Zero Monetization:</strong> We do <strong>NOT</strong> sell, rent, license, trade, or transfer any user data or YouTube API Data to external third parties, advertising networks, commercial brokers, or analytics syndicates.</li>
+          <li><strong>External Parties &amp; Zero Data Sharing:</strong> We do <strong>NOT</strong> sell, rent, license, trade, or transfer any user data or YouTube API Data to external third parties, advertising networks, commercial brokers, or analytics syndicates.</li>
           <li><strong>Embedded Official Player:</strong> Video playback is executed directly within the user&rsquo;s web browser via the official YouTube IFrame Embed Player connecting directly to YouTube servers. We do not download, modify, stream-rip, or alter original YouTube audio or video streams.</li>
         </ul>
 
-        <h3>4.3 Data Retention, Refresh, and Deletion Policy (Policy III.E.4.a-g)</h3>
+        <h3>4.4 7-Day Rolling Ephemeral Operational Cache &amp; Purge Policy (Policy III.E.4.a-g)</h3>
         <p>In strict adherence to YouTube Developer Policy III.E.4.a-g:</p>
         <ul>
-          <li><strong>30-Day Maximum Storage &amp; Automatic Refresh:</strong> Any cached search queries or YouTube video metadata temporarily stored on our servers for performance optimization are retained for a maximum of <strong>30 days</strong>.</li>
-          <li><strong>Automated Periodic Purging:</strong> An automated background maintenance job runs every 24 hours to delete and purge any cached YouTube API Data and metadata older than 30 days. No API statistics or metadata are displayed or retained beyond 30 days without being re-fetched from the YouTube API.</li>
+          <li><strong>7-Day Ephemeral Operational Cache:</strong> Any cached search query mappings or YouTube video metadata temporarily stored on our servers for rate-limit protection and performance optimization are retained for a maximum of <strong>7 days</strong>.</li>
+          <li><strong>Automated Daily Purging:</strong> An automated background maintenance job runs every 24 hours to delete and purge any cached YouTube search metadata older than 7 days. No API statistics, metrics, or metadata are retained or displayed beyond this 7-day operational window without being re-fetched fresh from the YouTube Data API v3.</li>
           <li><strong>User Deletion Requests:</strong> Users may request immediate deletion of their local portal account and associated learning bookmarks at any time by contacting <a href="mailto:privacy@hayagriva.app">privacy@hayagriva.app</a>.</li>
         </ul>
       </div>
 
       <div class="policy-section">
-        <h2>5. Payments &amp; Financial Security</h2>
-        <p>Online transactions and subscription payments are processed through PCI-DSS Level 1 certified payment gateways (Razorpay). <strong>HAYAGRIVA does not store or process raw credit card numbers, CVVs, or banking PINs.</strong> All payment processing is securely tokenized through the payment gateway.</p>
+        <h2>5. Financial Disclosures (Desktop IPE Only)</h2>
+        <p>For independent commercial practitioners licensing the offline Desktop IPE software suite, optional transaction processing is conducted securely via tokenized payment gateways. <strong>HAYAGRIVA never charges users for YouTube video playback, NSQF Skillpedia discovery, or public vocational curriculum access.</strong></p>
       </div>
 
       <div class="policy-section">
