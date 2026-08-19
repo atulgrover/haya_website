@@ -279,6 +279,7 @@ Return strictly a valid raw JSON object matching this exact schema:
     try {
         const res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
             method: 'POST',
+            signal: AbortSignal.timeout(8000),
             headers: {
                 'Content-Type': 'application/json',
                 'api-subscription-key': SARVAM_API_KEY
@@ -410,15 +411,53 @@ async function runSopSynthesizer() {
     let totalSuccess = 0;
 
     for (const qpCode of targetQps) {
-        const qpRow = await db.prepare('SELECT * FROM nsqf_qps WHERE qp_code = ?').get(qpCode) || { qp_code: qpCode };
-        const modules = await db.prepare('SELECT * FROM nsqf_modules WHERE qp_code = ? ORDER BY sequence_order ASC').all(qpCode);
+        const cleanCode = qpCode.replace(/\//g, '_');
+        const rawQpCode = qpCode.replace(/_/g, '/');
+        const qpRow = await db.prepare('SELECT * FROM nsqf_qps WHERE qp_code = ? OR qp_code = ?').get(rawQpCode, cleanCode) || { qp_code: rawQpCode, qp_name: cleanCode };
+        let modules = await db.prepare('SELECT * FROM nsqf_modules WHERE qp_code = ? OR qp_code = ? ORDER BY sequence_order ASC').all(rawQpCode, cleanCode);
+
+        // Fallback: If nsqf_modules table is empty for this QP, read directly from data/json/nsqf/${cleanCode}.json
+        let jsonAst = null;
+        const jsonPath = path.join(JSON_DIR, `${cleanCode}.json`);
+        if (fs.existsSync(jsonPath)) {
+            try { jsonAst = JSON.parse(fs.readFileSync(jsonPath, 'utf8')); } catch {}
+        }
+
+        if (modules.length === 0 && jsonAst && jsonAst.nos_units) {
+            modules = [];
+            for (const nos of jsonAst.nos_units) {
+                for (const mod of (nos.modules || [])) {
+                    modules.push({
+                        id: `${nos.nos_code}_M${mod.sequence_order || 1}`,
+                        qp_code: rawQpCode,
+                        nos_code: nos.nos_code,
+                        module_title: mod.module_title,
+                        sequence_order: mod.sequence_order || 1,
+                        _pcs: mod.pcs || []
+                    });
+                }
+            }
+        }
 
         console.log(`\n📦 Processing QP: ${qpCode} (${modules.length} modules)`);
         const qpSopModules = [];
 
         for (const mod of modules) {
-            const nosRow = await db.prepare('SELECT * FROM nsqf_nos WHERE qp_code = ? AND nos_code = ?').get(qpCode, mod.nos_code);
-            const result = await processModule(mod, qpRow, nosRow, force);
+            const nosRow = await db.prepare('SELECT * FROM nsqf_nos WHERE qp_code = ? AND nos_code = ?').get(rawQpCode, mod.nos_code);
+            let result;
+            if (mod._pcs && mod._pcs.length > 0) {
+                const dummyPcs = mod._pcs.map((p, idx) => ({
+                    id: idx + 1,
+                    pc_code: p.pc_code,
+                    pc_description: p.pc_description,
+                    pc_intent: p.pc_description.substring(0, 45),
+                    sequence_order: p.sequence_order || idx + 1
+                }));
+                const sop = generateHeuristicSop(mod, dummyPcs, qpRow, nosRow, jsonAst);
+                result = { status: 'success', title: sop.sop_title, sop };
+            } else {
+                result = await processModule(mod, qpRow, nosRow, force);
+            }
             totalProcessed++;
 
             if (result.status === 'success') {
