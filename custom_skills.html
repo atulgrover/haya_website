@@ -602,7 +602,7 @@
             const desc     = skill.description || 'Enterprise SOP micro-learning reel and operational workflow.';
             const reelCount = (skill.lessons && skill.lessons.length) || 0;
             const slug     = skill.title ? skill.title.toLowerCase().replace(/[- ]+/g, '_') : skill.id;
-            const shareUrl = `${window.location.origin}/reel.html?skill=${slug}`;
+            const shareUrl = `${window.location.origin}/custom_skills.html?skill=${slug}`;
             return `
               <div class="skill-card">
                 <div>
@@ -1088,11 +1088,23 @@
     /* ============================================================
        FULL-SCREEN REEL PLAYER MODAL
        ============================================================ */
-    function openPlayerModal(skillId, titleEnc) {
+    async function openPlayerModal(skillId, titleEnc) {
       const title = decodeURIComponent(titleEnc);
       document.getElementById('playerModalTitle').textContent = title;
-      // Load reel.html in iframe
-      document.getElementById('playerModalFrame').src = `/reel.html?skill=${skillId}`;
+      try {
+        const res = await fetch(`/api/skillpedia/custom/all-skills?skillId=${encodeURIComponent(skillId)}`);
+        const data = await res.json();
+        let videoId = 'dQw4w9WgXcQ';
+        if (data.success && data.skills && data.skills.length > 0) {
+          const sk = data.skills[0];
+          if (sk.lessons && sk.lessons[0] && sk.lessons[0].videoId) {
+            videoId = sk.lessons[0].videoId;
+          }
+        }
+        document.getElementById('playerModalFrame').src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      } catch (e) {
+        document.getElementById('playerModalFrame').src = `https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0`;
+      }
       document.getElementById('playerModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -1103,12 +1115,9 @@
       document.body.style.overflow = '';
     }
 
-    /* ============================================================
-       SHARE — copy reel.html deep-link URL
-       ============================================================ */
     function shareSkill(skillId, titleEnc) {
       const title    = decodeURIComponent(titleEnc);
-      const shareUrl = `${window.location.origin}/reel.html?skill=${skillId}`;
+      const shareUrl = `${window.location.origin}/custom_skills.html?skill=${skillId}`;
       if (navigator.clipboard) {
         navigator.clipboard.writeText(shareUrl);
         const toast = document.getElementById('toast');

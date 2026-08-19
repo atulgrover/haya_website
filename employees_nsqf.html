@@ -211,13 +211,16 @@
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 12px 14px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 10px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      user-select: none;
+      position: relative;
     }
 
     @keyframes modalPopIn {
@@ -237,10 +240,36 @@
       }
     }
 
-    .qp-card:hover {
+    .qp-card:hover, .qp-card.active {
       border-color: var(--primary-color);
-      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.12);
-      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 108, 147, 0.16);
+      transform: translateY(-3px);
+    }
+    .qp-card.active {
+      border-left: 4px solid var(--primary-color);
+      background: #F8FAFC;
+    }
+    .qp-card:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    .qp-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 8px;
+      border-top: 1px solid #F1F5F9;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    .qp-card:hover .explore-arrow {
+      transform: translateX(4px);
+    }
+    .explore-arrow {
+      transition: transform 0.2s ease;
+      display: inline-block;
     }
 
     .qp-badge-row {
@@ -653,7 +682,12 @@
             const pdfUrl = card.curriculum_pdf_url || `https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/${(card.qp_code || '').replace(/\//g, '_')}_v${(card.version || '1.0').replace(/^v/i, '')}.pdf`;
             const cleanQp = (card.qp_code || '').replace(/\//g, '_');
             return `
-            <div class="qp-card">
+            <div class="qp-card" 
+                 onclick="openDetailInspector('${card.qp_code}', '${encodeURIComponent(card.qp_name)}', '${pdfUrl}', this)"
+                 tabindex="0" 
+                 role="button"
+                 title="Click to inspect syllabus, viva quiz &amp; download offline wiki"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){openDetailInspector('${card.qp_code}', '${encodeURIComponent(card.qp_name)}', '${pdfUrl}', this); event.preventDefault();}">
               <div>
                 <div class="qp-badge-row">
                   <span class="badge badge-code">${card.qp_code || 'QP'}</span>
@@ -666,18 +700,9 @@
                 <div class="qp-meta-line"><strong>Awarding Body:</strong> ${card.awarding_body || 'NCVET'}</div>
               </div>
 
-              <div style="display:flex; flex-direction:column; gap:6px; margin-top:8px;">
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:6px;">
-                  <button class="btn-learn" onclick="openDetailInspector('${card.qp_code}', '${encodeURIComponent(card.qp_name)}', '${pdfUrl}')">
-                    Learn Now
-                  </button>
-                  <button class="btn-learn" onclick="openWikiQrModal('${card.qp_code}', '${encodeURIComponent(card.qp_name)}')" style="background:#0284C7; color:#FFFFFF; border:1px solid #0369A1; font-size:12px; font-weight:700;">
-                    📱 Offline Wiki
-                  </button>
-                </div>
-                <a href="${pdfUrl}" target="_blank" rel="noopener" class="btn-learn" style="background:#0F172A; color:#FFFFFF; border:1px solid #1E293B; text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">
-                  📄 Skill Curriculum (PDF)
-                </a>
+              <div class="qp-card-footer">
+                <span>Explore Syllabus &amp; Viva</span>
+                <span class="explore-arrow">➔</span>
               </div>
             </div>
           `;
@@ -689,7 +714,11 @@
       } catch (err) { console.error(err); }
     }
 
-    async function openDetailInspector(qpCode, qpNameEnc, pdfUrl = '') {
+    async function openDetailInspector(qpCode, qpNameEnc, pdfUrl = '', cardEl = null) {
+      if (cardEl) {
+        document.querySelectorAll('.qp-card').forEach(c => c.classList.remove('active'));
+        cardEl.classList.add('active');
+      }
       const qpName = decodeURIComponent(qpNameEnc);
       const rightPanel = document.getElementById('panelRight');
       const title = document.getElementById('inspectorTitle');
@@ -697,17 +726,24 @@
 
       title.innerText = `${qpName} (${qpCode})`;
       content.innerHTML = `
-        <div style="background:rgba(2,132,199,0.06); border:1px solid rgba(2,132,199,0.2); border-radius:10px; padding:10px 12px; display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-          <div>
-            <div style="font-size:12px; font-weight:800; color:#0284C7;">📱 100% Offline Trade Wiki</div>
-            <div style="font-size:11px; color:#64748B;">Tiddloid Lite &amp; Safari PWA Ready</div>
+        <!-- Top Action Toolbar for Selected Role -->
+        <div style="background:#F8FAFC; border:1px solid var(--border-color); border-radius:10px; padding:12px; display:flex; flex-direction:column; gap:8px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+            <button onclick="openWikiQrModal('${qpCode}', '${encodeURIComponent(qpName)}')" 
+                    style="background:#0284C7; color:#FFFFFF; border:1px solid #0369A1; border-radius:6px; padding:8px 10px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 2px 4px rgba(2,132,199,0.2); transition:all 0.15s;">
+              <span>📱</span> Download Offline Wiki
+            </button>
+            <a href="${pdfUrl}" target="_blank" rel="noopener" 
+               style="background:#0F172A; color:#FFFFFF; border:1px solid #1E293B; border-radius:6px; padding:8px 10px; font-size:12px; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 2px 4px rgba(15,23,42,0.2); transition:all 0.15s;">
+              <span>📄</span> Skill Curriculum (PDF)
+            </a>
           </div>
-          <button onclick="openWikiQrModal('${qpCode}', '${encodeURIComponent(qpName)}')" style="background:#0284C7; color:#FFF; border:none; border-radius:6px; padding:6px 12px; font-size:11.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:4px;">
-            <span>📷</span> Scan QR / Download
-          </button>
+          <div style="font-size:11px; color:#64748B; text-align:center;">
+            ⚡ 100% Offline Tiddloid / Safari PWA Ready • Official NCVET Standards
+          </div>
         </div>
         <div id="inspectorAccordionWrap">
-          <div style="font-size:12px; color:var(--text-muted); padding:16px; text-align:center;">⏳ Loading NOS & Module Reels...</div>
+          <div style="font-size:12px; color:var(--text-muted); padding:16px; text-align:center;">⏳ Loading NOS &amp; Performance Criteria...</div>
         </div>
       `;
       if (window.HayaIdeDocking) {

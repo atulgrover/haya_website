@@ -48,6 +48,15 @@ app.get('/terms', (req, res) => {
     res.sendFile(path.join(__dirname, '../terms.html'));
 });
 
+// Legacy reel.html redirect to structured NSQF employee portal
+app.get('/reel.html', (req, res) => {
+    const qp = req.query.qp;
+    if (qp) {
+        return res.redirect(`/employees_nsqf.html?qp=${encodeURIComponent(qp)}`);
+    }
+    res.redirect('/employees_nsqf.html');
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', service: 'Haya Portal Server', timestamp: new Date().toISOString() });
