@@ -11,7 +11,7 @@
   - `employers_sop.html` (Employers - SOP): National Standard Operating Procedures (SOP) catalog across 41 sectors, station workflows, and corporate domain isolation (`@company.com`).
   - `entrepreneurs_msme.html` (Entrepreneurs - MSME): Turnkey MSME business blueprints, tool & machinery BOMs, day-1 operational playbooks, and bankable project profiles (PMEGP/Mudra).
   - `professionals_apnet.html` (Professionals - APNET): **Agentic Professionals Network** showcasing Desktop IPE binaries, local GGUF models, `.vlt` statutory data vaults, and marketplace report ordering.
-- **Interactive Collateral & Utilities**: `brochure.html` (Digital pitch deck), `workshop.html` (Masterclass registration), `handbook.html` (Operational docs viewer), `reel.html` (Video search & reel hub).
+- **Interactive Collateral & Utilities**: `brochure.html` (Digital pitch deck), `workshop.html` (Masterclass registration), `handbook.html` (Operational docs viewer).
 - **Logged-In User Portal Dashboard**: `dashboard.html` (Logged-in control panel with tabs: `🔑 License & Payments`, `🖥️ Hayagriva IPE`, `🧠 LLM Models`, `📚 Data Vaults`, `🤖 IBC Agents`, `📊 Marketplace Reports`, `👤 Profile & Settings`).
 - **Auth Flow**: `login.html` and `signup.html` backed by `server/routes/auth.js` using PostgreSQL (`server/db.js`), `bcryptjs`, and JWT tokens.
 - **Pricing & Licensing**: Ed25519 cryptographic master key generation (`server/routes/license.js`) & dynamic Razorpay checkout (`server/routes/payments.js`).
@@ -53,7 +53,7 @@
 ### Next Session Resumption Plan
 1. **YouTube Compliance Email Reply**: Send final response to YouTube API Services Compliance Team with GCP Project ID and Number.
 2. **Video Harvester Expansion (`scripts/nsqf_video_harvester.js`)**: Extend harvesting loops to process multi-tier queries (Tier 1 Brand, Tier 2 Trade, Tier 3 Hinglish) for SOP workstations and MSME machine BOMs.
-3. **UI Interactive Viva & Micro-Reel Player Integration**: Connect `reel.html`, `employers_sop.html`, and `entrepreneurs_msme.html` to render the timestamped player, 3-question viva quiz drawer, and study takeaway cards.
+3. **UI Interactive Viva & Micro-Reel Player Integration**: Connect `employees_nsqf.html`, `employers_sop.html`, and `entrepreneurs_msme.html` to render the timestamped player, 3-question viva quiz drawer, and study takeaway cards.
 
 
 
