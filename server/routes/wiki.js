@@ -306,28 +306,6 @@ router.get('/list', (req, res) => {
     }
 });
 
-// GET /api/wiki/reel/:qpCode - Download/View Single-File Offline Reel Wiki
-router.get('/reel/:qpCode', (req, res) => {
-    try {
-        const rawQp = req.params.qpCode;
-        const cleanQp = rawQp.replace(/\//g, '_');
-        const wikiPath = path.join(__dirname, '../../data/wiki', `${cleanQp}_ReelWiki.html`);
-
-        if (fs.existsSync(wikiPath)) {
-            res.setHeader('Content-Type', 'text/html; charset=utf-8');
-            res.setHeader('Content-Disposition', `inline; filename="${cleanQp}_ReelWiki.html"`);
-            return res.sendFile(wikiPath);
-        }
-
-        // If not pre-compiled, trigger live synthesis or return 404
-        return res.status(404).json({
-            error: `Offline Reel Wiki for ${rawQp} not yet compiled. Run: node scripts/nsqf_wiki_exporter.js --qp=${rawQp}`
-        });
-    } catch (e) {
-        res.status(500).json({ error: 'Failed to retrieve reel wiki: ' + e.message });
-    }
-});
-
 // GET /api/wiki/reel/:qpCode/qr - Generate Scan-to-Download URL & QR metadata
 router.get('/reel/:qpCode/qr', (req, res) => {
     try {
