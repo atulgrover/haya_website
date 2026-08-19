@@ -204,10 +204,11 @@ function generateHeuristicSop(moduleRow, pcs, qpRow, nosRow, jsonAst) {
     return sopJson;
 }
 
-// ── Sarvam AI Cloud SOP Synthesis ────────────────────────────────────────────
-async function synthesizeSopWithSarvam(moduleRow, pcs, qpRow, nosRow, jsonAst) {
-    if (!SARVAM_API_KEY) return null;
+const OPENROUTER_API_KEY = (process.env.OPENROUTER_API_KEY || '').trim();
+const GEMINI_API_KEY = (process.env.GEMINI_API_KEY || '').trim();
 
+// ── Multi-LLM Cloud SOP Synthesis (OpenRouter / Gemini / Sarvam) ───────────────
+async function synthesizeSopWithLLM(moduleRow, pcs, qpRow, nosRow, jsonAst) {
     const cleanModTitle = moduleRow.module_title.replace(/^Module\s*\d+\s*:\s*/i, '').trim();
     const pcListText = pcs.map((p, i) => `${p.pc_code}: ${p.pc_description}`).join('\n');
 
@@ -221,8 +222,8 @@ async function synthesizeSopWithSarvam(moduleRow, pcs, qpRow, nosRow, jsonAst) {
         }
     }
 
-    const systemPrompt = `You are a Senior ISO 9001:2015 Industrial Plant Process Engineer and Safety Auditor.
-Transform the provided government vocational competency module into an audit-grade, shopfloor Standard Operating Procedure (SOP).
+    const systemPrompt = `You are a Senior ISO 9001:2015 Industrial Plant Process Engineer and TWI (Training Within Industry) Master Trainer.
+Transform the provided government vocational competency module into an audit-grade, shopfloor Standard Operating Procedure (SOP) / Standard Work Instruction (SWI).
 
 Sector: "${qpRow.sector}"
 Qualification Role: "${qpRow.qp_name}" (${qpRow.qp_code})
@@ -234,63 +235,138 @@ Skills Context (GS): "${gsContext || 'Standard tooling and measurement apparatus
 Ordered Action Criteria (PCs):
 ${pcListText}
 
-Return strictly a valid raw JSON object matching this exact schema:
+Return strictly a valid raw JSON object matching this exact 10-Chapter ISO 9001 / TWI schema:
 {
   "doc_id": "SOP-${moduleRow.qp_code.replace(/\//g, '-')}-M${moduleRow.sequence_order || 1}",
-  "sop_title": "Standard Operating Procedure: [Clean Professional Title]",
+  "sop_title": "Standard Operating Procedure: ${cleanModTitle}",
+  "module_title": "${cleanModTitle}",
   "workstation_number": "WS-0${moduleRow.sequence_order || 1}",
-  "purpose_and_scope": "Brief 1-2 sentence purpose of this workstation...",
-  "safety_and_ppe": {
-    "hazard_level": "Low / Medium / High",
-    "mandatory_ppe": ["list", "of", "required", "gear"],
-    "hazard_warnings": ["Specific warning 1", "Specific warning 2"]
-  },
-  "prerequisite_equipment": [
-    { "name": "Equipment 1", "specification": "Technical spec", "calibration_requirement": "Calibration check" }
+  "takt_time_seconds": 300,
+  "cycle_time_seconds": 240,
+  "operator_skill_level_required": "NSQF Level ${qpRow.nsqf_level || '4'} Certified",
+  
+  "purpose_and_scope": "Define standard operational parameters, safety controls, and quality checklists for ${cleanModTitle} in compliance with ISO 9001:2015 Clause 8.5.1 and NCVET NSQF standards.",
+  
+  "pre_shift_5s_tpm_checklist": [
+    "Verify workstation surface is clean, de-greased, and free of foreign objects (FOD)",
+    "Perform zero-point check on all digital and analog measurement gauges",
+    "Inspect physical guards, emergency stop cords, and interlocks for positive engagement",
+    "Ensure calibrated tooling has valid calibration seal (within 90-day cycle)",
+    "Verify adequate stock of job-specific consumables and standard PPE"
   ],
+  
+  "safety_and_ppe": {
+    "hazard_level": "Medium / High",
+    "mandatory_ppe": ["Specific PPE 1", "Specific PPE 2", "Specific PPE 3"],
+    "hazard_warnings": ["Specific Hazard Warning 1", "Specific Hazard Warning 2"]
+  },
+  
+  "prerequisite_equipment": [
+    { "name": "Tool/Machine Name", "specification": "Technical specification with rating", "calibration_status": "Pre-shift calibrated / valid 90 days" }
+  ],
+  
   "sequential_execution_steps": [
     {
       "step_number": 1,
-      "step_title": "Action title",
+      "step_title": "Concise Step Title",
       "derived_from_pc": "PC1",
-      "imperative_action_directive": "Clear shopfloor directive...",
-      "parameter_tolerance": "Specific limit, temperature, pressure, measurement tolerance...",
-      "critical_safety_note": "Safety checkpoint..."
+      "imperative_action_directive": "Clear action directive...",
+      "key_point_knack": "Tactile trick of the trade / critical nuance that prevents defect...",
+      "reason_why": "Physics, engineering, or safety rationale...",
+      "parameter_tolerance": "Specific numeric tolerance (e.g., ±0.05 mm, 350°C ± 5°C, 12.5 Nm)...",
+      "critical_safety_note": "Safety note for this step..."
     }
   ],
-  "quality_acceptance_criteria": ["Acceptance rule 1", "Acceptance rule 2"],
-  "troubleshooting_and_exception_handling": ["Drift rule 1", "Escalation rule 2"],
+  
+  "visual_quality_gate": {
+    "go_criteria": ["100% adherence to nominal tolerance specs", "Zero visual surface defects or bridging"],
+    "no_go_defects": ["Cold joint / incomplete fusion", "Dimensional drift beyond upper tolerance threshold"],
+    "measurement_gauge_limit": "Inspect under 10x magnification / digital micrometric gauge"
+  },
+  
+  "non_conformance_quarantine": {
+    "quarantine_bin": "Designated Red-Box Containment Station",
+    "disposition_authority": "Quality Lead Auditor / Shopfloor Section Incharge",
+    "line_stop_trigger": "2 consecutive out-of-tolerance units triggers immediate workstation line stop"
+  },
+  
+  "preventive_maintenance_tpm": {
+    "daily_operator_care": "Clean tip/sensor, apply protective oil/flux shield, discharge residual pressure/voltage",
+    "weekly_maintenance": "Check pneumatic pressure lines, verify earth ground loop resistance (<1 Ohm), replace consumable filters"
+  },
+  
   "iso_compliance": {
-    "standard": "ISO 9001:2015 Clause 8.5.1",
+    "standard": "ISO 9001:2015 Clause 8.5.1 (Controlled Production Conditions)",
     "audit_frequency_days": 90
   },
+  
   "video_guidance": {
-    "search_query": "[Module title] [Sector] standard operating procedure workshop demonstration",
-    "search_query_hi": "[Module title] [Sector] SOP कार्यशाला प्रदर्शन हिंदी",
-    "intent": "Complete workstation SOP walkthrough for [Module Title]",
-    "tool_keywords": "key equipment names from prerequisite_equipment",
-    "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup",
+    "search_query": "${cleanModTitle} ${qpRow.sector} standard operating procedure workshop demonstration",
+    "search_query_hi": "${cleanModTitle} ${qpRow.sector} SOP कार्यशाला प्रदर्शन हिंदी",
+    "intent": "Complete workstation SOP walkthrough for ${cleanModTitle}",
+    "tool_keywords": "${cleanModTitle.toLowerCase()}",
+    "positive_signals": "SOP, procedure, walkthrough, safety, workshop, station setup, demonstration, standard",
     "negative_keywords": "-unboxing -review -shorts -gaming -reaction",
     "min_duration_seconds": 180,
     "max_duration_seconds": 1200
   }
 }`;
 
-    try {
-        const res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
-            method: 'POST',
-            signal: AbortSignal.timeout(8000),
-            headers: {
-                'Content-Type': 'application/json',
-                'api-subscription-key': SARVAM_API_KEY
-            },
-            body: JSON.stringify({
-                model: 'sarvam-105b',
-                messages: [{ role: 'system', content: systemPrompt }],
-                temperature: 0.2,
-                max_tokens: 1200
-            })
-        });
+    // 1. Try OpenRouter (DeepSeek R1 / Claude 3.5 / Llama 3.3)
+    if (OPENROUTER_API_KEY) {
+        try {
+            const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                method: 'POST',
+                signal: AbortSignal.timeout(15000),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+                    'HTTP-Referer': 'https://hayagriva.app',
+                    'X-Title': 'HAYAGRIVA SOP Synthesizer'
+                },
+                body: JSON.stringify({
+                    model: 'deepseek/deepseek-chat',
+                    messages: [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'user', content: `Synthesize the complete ISO 9001 SOP for module: ${cleanModTitle}` }
+                    ],
+                    temperature: 0.2,
+                    response_format: { type: 'json_object' }
+                })
+            });
+            if (res.ok) {
+                const data = await res.json();
+                const content = data.choices?.[0]?.message?.content?.trim() || '';
+                const cleanJson = content.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
+                const parsed = JSON.parse(cleanJson);
+                if (parsed && parsed.sop_title && parsed.sequential_execution_steps) {
+                    parsed.generated_by = 'OpenRouter DeepSeek V3';
+                    parsed.generated_at = new Date().toISOString();
+                    return parsed;
+                }
+            }
+        } catch (e) {
+            // OpenRouter fallback
+        }
+    }
+
+    // 2. Try Sarvam AI
+    if (SARVAM_API_KEY) {
+        try {
+            const res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
+                method: 'POST',
+                signal: AbortSignal.timeout(8000),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'api-subscription-key': SARVAM_API_KEY
+                },
+                body: JSON.stringify({
+                    model: 'sarvam-105b',
+                    messages: [{ role: 'system', content: systemPrompt }],
+                    temperature: 0.2,
+                    max_tokens: 1200
+                })
+            });
 
         if (res.ok) {
             const data = await res.json();
@@ -316,8 +392,9 @@ Return strictly a valid raw JSON object matching this exact schema:
                 return parsed;
             }
         }
-    } catch (e) {
-        // Fall back to heuristic
+        } catch (e) {
+            // Fall back to heuristic
+        }
     }
 
     return null;
@@ -348,8 +425,8 @@ async function processModule(moduleRow, qpRow, nosRow, force = false) {
         try { jsonAst = JSON.parse(fs.readFileSync(jsonPath, 'utf8')); } catch {}
     }
 
-    // Try Sarvam AI first, fallback to Heuristic
-    let sop = await synthesizeSopWithSarvam(moduleRow, pcs, qpRow, nosRow, jsonAst);
+    // Try LLM (OpenRouter / Sarvam) first, fallback to Heuristic
+    let sop = await synthesizeSopWithLLM(moduleRow, pcs, qpRow, nosRow, jsonAst);
     if (!sop) {
         sop = generateHeuristicSop(moduleRow, pcs, qpRow, nosRow, jsonAst);
     }
