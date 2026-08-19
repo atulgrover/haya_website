@@ -68,4 +68,4 @@ This document contains the page-by-page copywriting, layout guidelines, and stru
         `$ ./start.command`
 
 *   **Footer Block:**  
-    *HAYAGRIVA open-source core is distributed under the Apache 2.0 license. Contact legalops@hayagriva.io for enterprise license details.*
+    *HAYAGRIVA open-source core is distributed under the Apache 2.0 license. Contact hayagriva.app@gmail.com for enterprise license details. (Chandigarh, India | https://hayagriva.app)*
