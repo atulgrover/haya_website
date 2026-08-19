@@ -50,10 +50,27 @@
 - **Zero Paywalls Disclosures**: Explicitly declared HAYAGRIVA NSQF Skillpedia as a 100% free non-monetized public educational resource in `privacy.html` and `terms.html`.
 - **Evidence Bundle (`~/Desktop/YouTube_API_Evidence/`)**: Generated updated high-res PNGs (interactive player modal with 3-question bilingual viva exam) and 3-page consolidated PDF bundle (`HAYAGRIVA_Design_Documents_Complete_Bundle.pdf`).
 
-### Next Session Resumption Plan
-1. **YouTube Compliance Email Reply**: Send final response to YouTube API Services Compliance Team with GCP Project ID and Number.
-2. **Video Harvester Expansion (`scripts/nsqf_video_harvester.js`)**: Extend harvesting loops to process multi-tier queries (Tier 1 Brand, Tier 2 Trade, Tier 3 Hinglish) for SOP workstations and MSME machine BOMs.
-3. **UI Interactive Viva & Micro-Reel Player Integration**: Connect `employees_nsqf.html`, `employers_sop.html`, and `entrepreneurs_msme.html` to render the timestamped player, 3-question viva quiz drawer, and study takeaway cards.
+### UI & Architecture Milestones (August 2026)
+- **Unified 3-Perspective Modal Engine (`employees_nsqf.html`)**:
+  - Top tab switcher dynamically toggling between `🎓 1. Skill Masterclass (Interns)`, `🏭 2. Plant Workstation SOP (Employers)`, and `💼 3. Commercial Machine BOM (MSME)`.
+  - Single-PC focus modal dedicated 100% to **Deep Technical & Operational Directives**:
+    - **🔬 Technical Fundamentals & Operational Theory** (physical principles & tolerance ranges).
+    - **📋 3-Phase Standard Step-by-Step Practical Execution Sequence** (Pre-Operational Setup, In-Process Execution, Quality & Handover).
+    - **🛡️ Statutory Safety Compliance** (dielectric PPE, earthing < 2.0 Ohm, LOTO isolation).
+- **Workstation / Module Level Comprehensive Viva Voce Exam (`#moduleVivaModal`)**:
+  - Summative assessment evaluating full station competency across all PCs in the Occupational Standard.
+  - Interactive multi-question runner with real-time scoring, bilingual English/Hindi questions, and instant answer validation.
+- **On-The-Fly Just-In-Time (JIT) TiddlyWiki Compiler (`server/routes/wiki.js` & `scripts/08_export_offline_data_vaults.js`)**:
+  - Compiles standalone 3.3 MB+ single-file TiddlyWiki on cold scan in ~1.2s and serves from LRU disk cache in <2ms on subsequent requests.
+  - Endpoints: `GET /api/wiki/download/:qp_code` and `GET /api/wiki/reel/:qp_code`.
+
+### Tomorrow's Resumption Plan
+1. **Multi-Tier YouTube Video Harvester (`scripts/07_harvest_youtube_videos.js`)**:
+   - When quota activates tomorrow, execute the multi-tier harvesting loop to populate official API v3 video IDs & timestamps for Tier 1 (PC skill reels), Tier 2 (Workstation SOP walkthroughs), and Tier 3 (MSME commercial machinery demos).
+2. **YouTube Compliance Email Reply**:
+   - Send final response to YouTube API Services Compliance Team with GCP Project ID, Number, and design document evidence bundle.
+3. **Cross-Portal Symmetrical Sync**:
+   - Ensure `employers_sop.html` and `entrepreneurs_msme.html` reference the unified 3-perspective modal components and JIT offline wiki QR triggers.
 
 
 
