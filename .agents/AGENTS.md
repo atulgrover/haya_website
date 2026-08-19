@@ -29,12 +29,16 @@
   - **Stage 2: Lossless Markdown (`data/md/*.md`)**: 1:1 lossless digital mirror via `scripts/01_convert_pdfs_to_markdown.py`.
   - **Stage 3: Canonical AST Compilation (`data/json/nsqf/*.json`)**: Extract official assessment rubric AST via `scripts/02_build_canonical_json.js`.
   - **Stage 3B: Database Synchronization**: Ingest ASTs into PostgreSQL (`hayadb`) via `scripts/03_sync_json_to_database.js`.
-  - **Stage 4A: Intent & Search Query Vectors**: Extract 5-word action intents and bilingual search vectors via `scripts/04_generate_search_intents.js`.
-  - **Stage 4B: Employer SOP Synthesis**: 10-Chapter ISO 9001:2015 / TWI plant procedures via `scripts/05_generate_employer_sops.js` (`data/json/sop/`).
-  - **Stage 4C: Bankable MSME DPR Synthesis**: 9-Chapter PMEGP / Mudra project profiles via `scripts/06_generate_msme_business_reports.js` (`data/json/msme/`).
-  - **Stage 5: YouTube Multi-Tier Video Harvesting**: Official API v3 timestamped clips (60-90s) via `scripts/07_harvest_youtube_videos.js`.
-  - **Stage 6: Sovereign Offline Wiki Export**: Standalone Tiddloid / Safari PWA data vaults via `scripts/08_export_offline_data_vaults.js`.
-  - **Stage 7: Production Cloud Deployment**: Sync local PG database up to Neon cloud via `scripts/09_push_database_to_cloud.js`.
+  - **Stage 4: Unified 3-Perspective Synthesis (`scripts/04_generate_search_intents.js`)**:
+    - **MANDATORY ARCHITECTURAL INVARIANT — NO ARTIFICIAL 9/10 CHAPTER TEXTBOOKS**:
+      - We DO NOT create, synthesize, or prompt for artificial 10-Chapter SOP or 9-Chapter DPR textbooks.
+      - All data across the 3 Economic Pillars is **100% anchored to the atomic Performance Criterion (`nsqf_pcs`)**:
+        1. **🎓 1. Skill Perspective (Employees/Interns)**: `pc_intent` + Vocational Tutorial Vector + Viva Quiz.
+        2. **🏭 2. SOP Perspective (Employers/Plants)**: `sop_intent` + `sop_action_directive` + `sop_parameter_tolerance` + `sop_critical_knack` + Industrial SOP Vector.
+        3. **💼 3. DPR Perspective (Entrepreneurs/MSMEs)**: `dpr_intent` + `machine_name` + `machine_spec` + `machine_capex_cost_inr` + `machine_power_kw` + Commercial Machine Demo Vector.
+  - **Stage 5: Multi-Tier YouTube Video Harvesting (`scripts/07_harvest_youtube_videos.js`)**: Official API v3 timestamped clips for Tier 1 (PC reels), Tier 2 (Station SOP walkthroughs), and Tier 3 (Machine operation demos).
+  - **Stage 6: Sovereign Offline Wiki Export (`scripts/08_export_offline_data_vaults.js`)**: Standalone Tiddloid / Safari PWA data vaults.
+  - **Stage 7: Production Cloud Deployment (`scripts/09_push_database_to_cloud.js`)**: Sync local PG database up to Neon cloud.
 
 ### YouTube API Compliance Overhaul & Data Governance (August 2026)
 - **Resolved All 4 Findings from ToS Violations Report V.1**:
