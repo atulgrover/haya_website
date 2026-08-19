@@ -287,6 +287,113 @@ function synthesizeHindiSearchVector(englishQuery, pcIntent) {
     return fullHi;
 }
 
+// ── 10B. 3-Perspective SOP Synthesis (Employers / Plant Operations) ───────────
+function synthesizeSopPerspective(pcDesc, sector, modTitle, pcIntent, toolKeywords) {
+    const cleanMod = String(modTitle || 'Standard Workstation').replace(/^Module\s*\d+\s*:\s*/i, '').trim();
+    const cleanIntent = String(pcIntent || 'Execute Standard Operation').trim();
+    const cleanSector = String(sector || 'Manufacturing').trim();
+
+    const sopIntent = `${cleanIntent} Standard Work Procedure`;
+    const sopIntentHi = `${synthesizeHindiIntent(cleanIntent)} मानक कार्यप्रणाली`;
+
+    const sopSearchQuery = `${cleanIntent} ${cleanMod} ${cleanSector} industrial standard operating procedure plant workflow -shorts -review -reaction`;
+    const sopSearchQueryHi = `${synthesizeHindiIntent(cleanIntent)} ${cleanSector} प्लांट एसओपी कार्यप्रणाली वर्कशॉप डेमो`;
+
+    const actionDirective = pcDesc.replace(/^PC\d+[\.:-]?\s*/i, '').trim();
+    
+    let tolerance = 'Perform operation strictly within nominal engineering tolerances';
+    const sLower = cleanSector.toLowerCase();
+    if (sLower.includes('electr') || sLower.includes('telecom')) tolerance = '350°C ± 5°C reflow temp, ESD voltage < 10V, contact resistance < 0.05 Ohm';
+    else if (sLower.includes('auto') || sLower.includes('ev')) tolerance = 'Torque tolerance ±0.5 Nm, insulation resistance > 500 MOhm (1000V DC)';
+    else if (sLower.includes('solar') || sLower.includes('green')) tolerance = 'Open-circuit voltage Voc ±1.5%, earth ground loop resistance < 2.0 Ohm';
+    else if (sLower.includes('agri')) tolerance = 'Moisture content < 12%, seed treatment dosage ±0.2 g/kg, spacing ±2.0 cm';
+    else if (sLower.includes('health')) tolerance = 'Zero microbial contamination, autoclave cycle 121°C at 15 psi for 20 min';
+
+    let knack = 'Maintain steady hand motion and verify physical alignment prior to final fixation.';
+    if (sLower.includes('electr')) knack = 'Keep hot-air nozzle perpendicular at 10mm distance to avoid thermal bridging of neighboring SMD components.';
+    else if (sLower.includes('auto')) knack = 'Verify zero-energy state (LOTO) and high-voltage interlock disconnect prior to touching terminals.';
+    else if (sLower.includes('solar')) knack = 'Never disconnect DC MC4 connectors under load; switch off DC isolator first.';
+    else if (sLower.includes('agri')) knack = 'Ensure even slurry agitation in drum to prevent concentrated chemical burn on seed embryos.';
+    else if (sLower.includes('health')) knack = 'Always perform hand hygiene before and after touching clean barrier zones.';
+
+    return {
+        sop_intent: sopIntent,
+        sop_intent_hi: sopIntentHi,
+        sop_search_query: sopSearchQuery.substring(0, 95).trim(),
+        sop_search_query_hi: sopSearchQueryHi.substring(0, 95).trim(),
+        sop_action_directive: actionDirective,
+        sop_parameter_tolerance: tolerance,
+        sop_critical_knack: knack
+    };
+}
+
+// ── 10C. 3-Perspective DPR / Machine Synthesis (Entrepreneurs / MSMEs) ─────────
+const COMMERCIAL_MACHINE_CATALOG = {
+    'electronics': [
+        { name: 'Lead-Free Infrared BGA Rework Station', spec: '220V 1.2kW Digital PID Control with bottom preheater', cost: 45000, power: '1.2 kW 1-Phase' },
+        { name: 'Vacuum LCD OCA Laminator & Bubble Remover', spec: '220V 800W Integrated Air Compressor & Vacuum Chamber', cost: 58000, power: '0.8 kW 1-Phase' },
+        { name: 'Trinocular Stereo Zoom Microscope with 4K HDMI', spec: '7X-45X Continuous Zoom with LED Ring & 4K C-Mount Sensor', cost: 28500, power: '0.1 kW 1-Phase' },
+        { name: 'Universal Digital Programmer & JTAG/UFS Box', spec: 'High-speed eMMC/UFS 3.1 direct ISP flashing kit', cost: 42000, power: 'USB Powered' }
+    ],
+    'automotive': [
+        { name: 'EV Lithium Cell Pulse Spot Welder', spec: '220V 5kW Pneumatic Pure Nickel Precision Spot Welder', cost: 38000, power: '5.0 kW 1-Phase' },
+        { name: '1kHz AC Precision Internal Resistance Cell Tester', spec: 'Four-terminal Kelvin probe digital micro-ohm meter', cost: 16500, power: '0.05 kW 1-Phase' },
+        { name: 'Automotive Multi-Protocol OBD-II Diagnostic Scanner', spec: 'CAN-FD / DoIP full system ECU bidirectional scanner', cost: 48000, power: '12V DC System' }
+    ],
+    'green-jobs': [
+        { name: 'Solar PV I-V Curve Tracer & Analyzer', spec: '1000V 20A Digital Array Performance & Irradiance Analyzer', cost: 55000, power: 'Battery Operated' },
+        { name: 'MC4 Solar Cable Hydraulic Crimping Rig', spec: '6-Ton Hand Hydraulic Tool with 2.5/4/6 mm2 Dies', cost: 14500, power: 'Manual Hydraulic' },
+        { name: '1000V DC Solar True-RMS Clamp Multimeter', spec: 'CAT IV 600V / CAT III 1000V Solar Micro-Current Meter', cost: 16000, power: 'Battery Operated' }
+    ],
+    'agriculture': [
+        { name: 'Continuous Slurry Seed Coating Drum Unit', spec: '220V 0.75kW Stainless Steel Rotary Seed Treater (250 kg/hr)', cost: 42000, power: '0.75 kW 1-Phase' },
+        { name: 'Digital Grain & Seed Moisture Analyzer', spec: 'Capacitance-type multi-crop moisture meter with auto-temp comp', cost: 14500, power: 'Battery Operated' },
+        { name: 'Precision Multi-Crop Pneumatic Seed Drill Unit', spec: 'Tractor-mounted 9-row zero-till precision seed metering unit', cost: 85000, power: 'Tractor PTO Driven' }
+    ],
+    'healthcare': [
+        { name: 'Hospital Grade High-Pressure Steam Autoclave', spec: '220V 2.0kW 50-Liter Vertical Stainless Steel Sterilizer', cost: 48000, power: '2.0 kW 1-Phase' },
+        { name: 'Multi-Parameter Digital Patient Vital Signs Monitor', spec: '12.1-inch TFT NIBP, SpO2, ECG, Temp, Pulse Monitor', cost: 38000, power: '0.1 kW 1-Phase' }
+    ],
+    'default': [
+        { name: 'Commercial Precision Tooling & Diagnostic Workstation', spec: 'Industrial grade 220V calibrated workstation apparatus', cost: 35000, power: '1.0 kW 1-Phase' },
+        { name: 'Digital Multi-Sensor Calibration & Testing Kit', spec: 'Precision electronic measuring and verification apparatus', cost: 18000, power: 'Battery Operated' }
+    ]
+};
+
+function synthesizeDprPerspective(pcDesc, sector, qpName, pcIntent, toolKeywords) {
+    const sLower = String(sector || '').toLowerCase();
+    let catalog = COMMERCIAL_MACHINE_CATALOG['default'];
+    if (sLower.includes('electr') || sLower.includes('telecom')) catalog = COMMERCIAL_MACHINE_CATALOG['electronics'];
+    else if (sLower.includes('auto') || sLower.includes('ev')) catalog = COMMERCIAL_MACHINE_CATALOG['automotive'];
+    else if (sLower.includes('solar') || sLower.includes('green')) catalog = COMMERCIAL_MACHINE_CATALOG['green-jobs'];
+    else if (sLower.includes('agri')) catalog = COMMERCIAL_MACHINE_CATALOG['agriculture'];
+    else if (sLower.includes('health')) catalog = COMMERCIAL_MACHINE_CATALOG['healthcare'];
+
+    const pLower = (pcDesc + ' ' + toolKeywords).toLowerCase();
+    let matchedMachine = catalog.find(m => pLower.includes(m.name.toLowerCase().split(' ')[0]));
+    if (!matchedMachine) {
+        const hash = Math.abs(pcDesc.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0));
+        matchedMachine = catalog[hash % catalog.length];
+    }
+
+    const dprIntent = `${matchedMachine.name} Commercial Setup`;
+    const dprIntentHi = `${matchedMachine.name} कमर्शियल मशीन सेटअप`;
+
+    const dprSearchQuery = `${matchedMachine.name} commercial machine operation demonstration factory setup -unboxing -reaction -DIY`;
+    const dprSearchQueryHi = `${matchedMachine.name} मशीन कैसे काम करती है फैक्ट्री सेटअप डेमो`;
+
+    return {
+        dpr_intent: dprIntent,
+        dpr_intent_hi: dprIntentHi,
+        dpr_search_query: dprSearchQuery.substring(0, 95).trim(),
+        dpr_search_query_hi: dprSearchQueryHi.substring(0, 95).trim(),
+        machine_name: matchedMachine.name,
+        machine_spec: matchedMachine.spec,
+        machine_capex_cost_inr: matchedMachine.cost,
+        machine_power_kw: matchedMachine.power
+    };
+}
+
 // ── 11. Confidence Scoring ────────────────────────────────────────────────────
 function computeIntentConfidence(rawDesc, intent) {
     if (!intent || intent === 'Practical Execution') return 40;
@@ -437,7 +544,7 @@ async function runPass2Unified() {
     console.log('================================================================================\n');
 
     const pool = { query: db.query.bind(db) };
-    const intentFilter = doForce ? '' : 'AND (p.pc_intent IS NULL OR p.pc_intent_hi IS NULL OR p.negative_keywords IS NULL)';
+    const intentFilter = doForce ? '' : 'AND (p.pc_intent IS NULL OR p.pc_intent_hi IS NULL OR p.sop_intent IS NULL OR p.dpr_intent IS NULL)';
 
     const baseSelect = `
         SELECT p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.intent_confidence,
@@ -513,17 +620,46 @@ async function runPass2Unified() {
             const negKeywords  = getNegativeKeywords(item.sector);
             const posSignals   = getPositiveSignals();
 
+            // ── 3-Perspective SOP & DPR Synthesizers ─────────────────────────
+            const sop = synthesizeSopPerspective(item.pc_description, item.sector, item.module_title, intent, toolKeywords);
+            const dpr = synthesizeDprPerspective(item.pc_description, item.sector, item.qp_name, intent, toolKeywords);
+
             await pool.query(`
                 UPDATE nsqf_pcs
-                SET pc_intent = $1, pc_intent_hi = $2, intent_confidence = $3,
+                SET 
+                    -- 🎓 1. Skill Perspective (Employees)
+                    pc_intent = $1, pc_intent_hi = $2, intent_confidence = $3,
                     contextual_search_query = $4, query_confidence = $5,
                     contextual_search_query_hi = $6, query_confidence_hi = $7,
                     youtube_category_id = $8, youtube_category_name = $9,
                     tool_keywords = $10, negative_keywords = $11, positive_signals = $12,
-                    min_duration_seconds = 180, max_duration_seconds = 900
-                WHERE id = $13
-            `, [intent, intentHi, intentConf, queryEn, queryConf, queryHi, queryHiConf,
-                cat.id, cat.name, toolKeywords, negKeywords, posSignals, item.id]);
+                    min_duration_seconds = 180, max_duration_seconds = 900,
+
+                    -- 🏭 2. SOP Perspective (Employers)
+                    sop_intent = $13, sop_intent_hi = $14,
+                    sop_search_query = $15, sop_search_query_hi = $16,
+                    sop_action_directive = $17, sop_parameter_tolerance = $18,
+                    sop_critical_knack = $19,
+
+                    -- 💼 3. DPR / Machine Perspective (Entrepreneurs)
+                    dpr_intent = $20, dpr_intent_hi = $21,
+                    dpr_search_query = $22, dpr_search_query_hi = $23,
+                    machine_name = $24, machine_spec = $25,
+                    machine_capex_cost_inr = $26, machine_power_kw = $27
+                WHERE id = $28
+            `, [
+                // Skill ($1-$12)
+                intent, intentHi, intentConf, queryEn, queryConf, queryHi, queryHiConf,
+                cat.id, cat.name, toolKeywords, negKeywords, posSignals,
+                // SOP ($13-$19)
+                sop.sop_intent, sop.sop_intent_hi, sop.sop_search_query, sop.sop_search_query_hi,
+                sop.sop_action_directive, sop.sop_parameter_tolerance, sop.sop_critical_knack,
+                // DPR ($20-$27)
+                dpr.dpr_intent, dpr.dpr_intent_hi, dpr.dpr_search_query, dpr.dpr_search_query_hi,
+                dpr.machine_name, dpr.machine_spec, dpr.machine_capex_cost_inr, dpr.machine_power_kw,
+                // ID ($28)
+                item.id
+            ]);
 
             updatedCount++;
             totalConfidence += intentConf;
@@ -532,12 +668,10 @@ async function runPass2Unified() {
             else lowConfCount++;
 
             if (isAudit && (updatedCount <= 6 || updatedCount % 40 === 0)) {
-                console.log(`[${updatedCount}/${items.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_description.substring(0, 55)}..."`);
-                console.log(`        💡 Intent (EN): "${intent}" (${intentConf}%)`);
-                console.log(`        🇮🇳 Intent (HI): "${intentHi}"`);
-                console.log(`        🏷️  Category:    ${cat.id} (${cat.name})`);
-                console.log(`        🔧 Tools:       "${toolKeywords}"`);
-                console.log(`        🔍 Search EN:   "${queryEn}"`);
+                console.log(`[${updatedCount}/${items.length}] 📌 [${item.qp_code} ${item.pc_code}]: "${item.pc_description.substring(0, 50)}..."`);
+                console.log(`        🎓 Skill Intent: "${intent}" | Query: "${queryEn.substring(0, 45)}..."`);
+                console.log(`        🏭 SOP Intent:   "${sop.sop_intent}" | Knack: "${sop.sop_critical_knack.substring(0, 45)}..."`);
+                console.log(`        💼 DPR Machine:  "${dpr.machine_name}" (₹${dpr.machine_capex_cost_inr.toLocaleString('en-IN')}) | Query: "${dpr.dpr_search_query.substring(0, 45)}..."`);
                 console.log('--------------------------------------------------------------------------------');
             }
         }
