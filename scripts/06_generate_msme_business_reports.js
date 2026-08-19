@@ -84,152 +84,89 @@ function buildPitchVideoGuidance(businessTitle, sector) {
 const OPENROUTER_API_KEY = (process.env.OPENROUTER_API_KEY || '').trim();
 const GEMINI_API_KEY = (process.env.GEMINI_API_KEY || '').trim();
 
-// ── Multi-LLM Cloud MSME Synthesis (OpenRouter / Gemini / Sarvam) ─────────────
-async function synthesizeMsmeWithLLM(nosRow, qpRow, pcs, jsonAst) {
+// ── Stage 2: Targeted Narrative LLM Enrichment ─────────────────────────────────
+async function enrichMsmeNarrativeWithLLM(baseBlueprint, nosRow, qpRow, pcs) {
     const nosTitle = String(nosRow.nos_title || '').trim();
-    const pcListText = pcs.map((p, i) => `${p.pc_code}: ${p.pc_description}`).join('\n');
+    const sector = String(qpRow.sector || 'General Industry').trim();
 
-    let kuContext = '';
-    let gsContext = '';
-    if (jsonAst && jsonAst.nos_units) {
-        const nosUnit = jsonAst.nos_units.find(n => n.nos_code === nosRow.nos_code);
-        if (nosUnit) {
-            if (nosUnit.kus) kuContext = nosUnit.kus.slice(0, 5).join('; ');
-            if (nosUnit.gs) gsContext = nosUnit.gs.slice(0, 4).join('; ');
-        }
-    }
+    // Default High-Quality Rule-Based Narratives (Stage 1 Default)
+    let execSummary = `This Bankable Detailed Project Report (DPR) establishes a commercial turnkey enterprise for ${baseBlueprint.business_title}. Structured under the Ministry of MSME / Prime Minister Employment Generation Programme (PMEGP) and Mudra (Kishor) credit guidelines, the total capital investment is ₹${(baseBlueprint.total_project_cost_inr || 150000).toLocaleString('en-IN')}, supported by a 35% Government Margin Money Subsidy (₹${(baseBlueprint.financial_dpr?.govt_subsidy_inr || 52500).toLocaleString('en-IN')}) and a 60% Bank Term Loan. The enterprise achieves financial viability with a projected Year-1 Net EBITDA of ₹${(baseBlueprint.financial_dpr?.monthly_net_profit_ebitda * 12 || 240000).toLocaleString('en-IN')} and a robust Debt Service Coverage Ratio (DSCR) of ${baseBlueprint.financial_dpr?.dscr_ratio || '1.65x'}.`;
+    
+    let marketAnalysis = `Market demand is propelled by rapid formalization and localized industrial growth across Tier-2 and Tier-3 commercial hubs in India. The enterprise serves a diverse clientele including ${(baseBlueprint.target_clientele || ['local enterprises', 'commercial contractors']).join(', ')}. Key competitive advantages include certified NSQF technical competency, rapid turnaround times, and lower overhead costs compared to large centralized service providers.`;
+    
+    let riskAdvisory = `Key operational risks involve cash flow delays on institutional credit sales and initial equipment calibration stabilization. Mitigate by enforcing a strict 50% advance policy on customized orders, maintaining a 30-day working capital buffer (₹${(baseBlueprint.working_capital_margin_inr || 30000).toLocaleString('en-IN')}), and adhering strictly to preventive maintenance schedules on all core BOM machinery.`;
 
-    const systemPrompt = `You are a Senior Project Finance Appraiser and Chartered Industrial Engineer specializing in Ministry of MSME, PMEGP, Mudra, and SIDBI bankable Detailed Project Reports (DPRs).
-Transform the provided government NSQF National Occupational Standard into a turnkey commercial MSME startup business blueprint and bank-ready DPR.
+    // If Cloud LLM is available, enrich with deep trade-specific narrative
+    if (OPENROUTER_API_KEY || SARVAM_API_KEY) {
+        try {
+            const prompt = `You are a Senior MSME Project Appraisal Specialist and SIDBI / PMEGP Bank Loan Evaluator.
+Here is the verified financial and technical skeleton for a new Indian MSME venture:
+- Trade Title: "${baseBlueprint.business_title}"
+- Sector: "${sector}"
+- Total Project Cost: ₹${baseBlueprint.total_project_cost_inr} (Promoter: ₹${baseBlueprint.financial_dpr?.promoter_contribution_inr}, Subsidy: ₹${baseBlueprint.financial_dpr?.govt_subsidy_inr}, Bank Loan: ₹${baseBlueprint.financial_dpr?.bank_term_loan_inr})
+- 5-Year DSCR: ${baseBlueprint.financial_dpr?.dscr_ratio}
+- Core Machinery BOM: ${baseBlueprint.tool_bom?.map(t => `${t.name} (₹${t.cost})`).join(', ')}
+- Target Clientele: ${baseBlueprint.target_clientele?.join(', ')}
 
-Sector: "${qpRow.sector}"
-Qualification Pack: "${qpRow.qp_name}" (${qpRow.qp_code}, NSQF Level ${qpRow.nsqf_level || '4'})
-Occupational Standard: "${nosTitle}" (${nosRow.nos_code})
-Underlying Performance Criteria:
-${pcListText}
-
-Return strictly a valid raw JSON object matching this exact 9-Chapter Bankable DPR schema:
+Synthesize 3 rich, authoritative narrative chapters in raw JSON format:
 {
-  "nos_code": "${nosRow.nos_code}",
-  "nos_title": "${nosTitle}",
-  "business_title": "Commercial [Specific Trade/Service] Micro-Enterprise",
-  "business_model_type": "Turnkey_Service_Kiosk / Commercial_Fabrication_Unit / Tech_Service_Agency",
-  "investment_bracket": "₹1 Lakh - ₹3 Lakhs / ₹3 Lakhs - ₹10 Lakhs",
-  "space_footprint_sqft": 250,
-  "power_requirement": "3 kW Single Phase / 5 kW Three Phase",
-  "target_clientele": ["Segment 1", "Segment 2", "Segment 3"],
-  
-  "executive_summary": {
-    "project_name": "Commercial [Trade] Setup",
-    "promoter_profile": "NSQF Level ${qpRow.nsqf_level || '4'} Certified Entrepreneur",
-    "unique_value_proposition": "Turnkey local high-precision services with standard quality control",
-    "annual_service_capacity": "1,200 work orders / year"
-  },
-  
-  "tool_bom": [
-    {
-      "name": "Machine/Tool Name",
-      "spec": "Industrial specification with model/capacity rating",
-      "qty": 1,
-      "cost": 45000,
-      "video_guidance": {
-        "search_query": "Machine Name commercial operation demonstration setup",
-        "search_query_hi": "Machine Name मशीन काम करने का तरीका डेमो",
-        "intent": "Machine Name commercial operation demonstration",
-        "tool_keywords": "machine keywords",
-        "positive_signals": "machine, demo, operation, working, commercial, factory, setup",
-        "negative_keywords": "-unboxing -review -shorts -DIY -homemade",
-        "min_duration_seconds": 120,
-        "max_duration_seconds": 600
-      }
-    }
-  ],
-  
-  "total_machinery_capex_inr": 125000,
-  "electrification_fixture_cost_inr": 25000,
-  "working_capital_margin_inr": 30000,
-  "total_project_cost_inr": 180000,
-  
-  "financial_dpr": {
-    "scheme": "PMEGP (Prime Minister Employment Generation Programme) / Mudra (Kishor)",
-    "total_project_cost": 180000,
-    "promoter_contribution_pct": 5,
-    "promoter_contribution_inr": 9000,
-    "govt_subsidy_pct": 35,
-    "govt_subsidy_inr": 63000,
-    "bank_term_loan_inr": 108000,
-    "monthly_projected_revenue": 75000,
-    "monthly_operating_expenses": 42000,
-    "monthly_net_profit_ebitda": 33000,
-    "monthly_loan_emi": 2320,
-    "dscr_ratio": "1.65x (Bank Viable - Min 1.50x)",
-    "break_even_pct": "32.5%",
-    "payback_period_months": 11.2,
-    "five_year_projections": [
-      { "year": 1, "capacity_utilization": "60%", "revenue_inr": 650000, "net_profit_inr": 240000, "dscr": 1.55 },
-      { "year": 2, "capacity_utilization": "70%", "revenue_inr": 780000, "net_profit_inr": 295000, "dscr": 1.62 },
-      { "year": 3, "capacity_utilization": "80%", "revenue_inr": 910000, "net_profit_inr": 360000, "dscr": 1.70 },
-      { "year": 4, "capacity_utilization": "90%", "revenue_inr": 1050000, "net_profit_inr": 425000, "dscr": 1.78 },
-      { "year": 5, "capacity_utilization": "90%", "revenue_inr": 1050000, "net_profit_inr": 435000, "dscr": 1.82 }
-    ]
-  },
-  
-  "manpower_schedule": [
-    { "designation": "Master Lead Technician", "nsqf_level": "NSQF L4-5", "headcount": 1, "monthly_wage_inr": 22000 },
-    { "designation": "Assistant Apprentice Operator", "nsqf_level": "NSQF L2-3", "headcount": 1, "monthly_wage_inr": 14000 }
-  ],
-  
-  "statutory_compliance_checklist": [
-    "Udyam MSME Registration (Ministry of MSME - 100% Free Online)",
-    "State Pollution Control Board (SPCB) Consent / White Category Exemption",
-    "Shop & Commercial Establishment Act Registration (State Labor Dept)",
-    "GST Registration (Voluntary under ₹20/40L threshold)",
-    "Fire Safety NOC & Local Municipal Trade License"
-  ],
-  
-  "day1_playbook": [
-    { "phase": "Day 1-15: Statutory & Bank Loan Appraisal", "action": "Complete Udyam registration, file PMEGP online application with DPR, and obtain bank in-principle sanction." },
-    { "phase": "Day 16-45: Site Fit-out & Electrification", "action": "Lease space, complete 3-phase/single-phase power wiring, install ESD/safety flooring and ventilation." },
-    { "phase": "Day 46-70: Machinery Procurement & Calibration", "action": "Procure BOM equipment, verify OEM calibration certificates, and run test batches." },
-    { "phase": "Day 71-90: Marketing & Commercial Launch", "action": "Launch Google Business & WhatsApp catalog, sign initial B2B contracts, and begin commercial billing." }
-  ]
+  "executive_summary": "2 paragraphs presenting a compelling investment thesis for bank credit appraisal.",
+  "market_demand_analysis": "2 paragraphs analyzing Indian market trends, B2B demand drivers, and competitive advantage.",
+  "risk_mitigation_and_cash_flow_advisory": "1-2 paragraphs detailing practical advice on managing working capital, credit cycles, and machinery maintenance."
 }`;
 
-    if (OPENROUTER_API_KEY) {
-        try {
-            const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-                method: 'POST',
-                signal: AbortSignal.timeout(15000),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-                    'HTTP-Referer': 'https://hayagriva.app',
-                    'X-Title': 'HAYAGRIVA MSME DPR Synthesizer'
-                },
-                body: JSON.stringify({
-                    model: 'deepseek/deepseek-chat',
-                    messages: [
-                        { role: 'system', content: systemPrompt },
-                        { role: 'user', content: `Synthesize the complete Bankable MSME DPR for NOS: ${nosTitle} (${nosRow.nos_code})` }
-                    ],
-                    temperature: 0.2,
-                    response_format: { type: 'json_object' }
-                })
-            });
-            if (res.ok) {
+            let res = null;
+            if (OPENROUTER_API_KEY) {
+                res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    signal: AbortSignal.timeout(12000),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+                        'HTTP-Referer': 'https://hayagriva.app',
+                        'X-Title': 'HAYAGRIVA MSME Narrative Engine'
+                    },
+                    body: JSON.stringify({
+                        model: 'deepseek/deepseek-chat',
+                        messages: [{ role: 'user', content: prompt }],
+                        temperature: 0.2,
+                        response_format: { type: 'json_object' }
+                    })
+                });
+            } else if (SARVAM_API_KEY) {
+                res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
+                    method: 'POST',
+                    signal: AbortSignal.timeout(8000),
+                    headers: { 'Content-Type': 'application/json', 'api-subscription-key': SARVAM_API_KEY },
+                    body: JSON.stringify({
+                        model: 'sarvam-105b',
+                        messages: [{ role: 'user', content: prompt }],
+                        temperature: 0.2,
+                        max_tokens: 1000
+                    })
+                });
+            }
+
+            if (res && res.ok) {
                 const data = await res.json();
                 const content = data.choices?.[0]?.message?.content?.trim() || '';
                 const cleanJson = content.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
                 const parsed = JSON.parse(cleanJson);
-                if (parsed && parsed.business_title && parsed.tool_bom) {
-                    parsed.generated_by = 'OpenRouter DeepSeek V3';
-                    parsed.generated_at = new Date().toISOString();
-                    return parsed;
-                }
+                if (parsed.executive_summary) execSummary = parsed.executive_summary;
+                if (parsed.market_demand_analysis) marketAnalysis = parsed.market_demand_analysis;
+                if (parsed.risk_mitigation_and_cash_flow_advisory) riskAdvisory = parsed.risk_mitigation_and_cash_flow_advisory;
+                baseBlueprint.narrative_enriched_by = OPENROUTER_API_KEY ? 'DeepSeek V3 (via OpenRouter)' : 'Sarvam AI (sarvam-105b)';
             }
-        } catch (e) {}
+        } catch (_) {
+            // Graceful fallback to deterministic narrative
+        }
     }
-    return null;
+
+    baseBlueprint.executive_summary = execSummary;
+    baseBlueprint.market_demand_analysis = marketAnalysis;
+    baseBlueprint.risk_mitigation_and_cash_flow_advisory = riskAdvisory;
+
+    return baseBlueprint;
 }
 
 // ── Deterministic Heuristic Tool BOM & DPR Generator ──────────────────────────
@@ -463,17 +400,17 @@ async function processNos(nosRow, qpRow, jsonAst, force = false) {
 
     const pcs = nosRow._pcs || await db.prepare(`SELECT * FROM nsqf_pcs WHERE qp_code = ? AND nos_code = ? ORDER BY sequence_order ASC, id ASC`).all(nosRow.qp_code, nosRow.nos_code);
     
-    // Try LLM (OpenRouter / Gemini) first, fallback to Heuristic
-    let blueprint = await synthesizeMsmeWithLLM(nosRow, qpRow, pcs, jsonAst);
-    if (!blueprint) {
-        blueprint = generateHeuristicMsmeBlueprint(nosRow, qpRow, pcs);
-    }
+    // ── STAGE 1: Build Mathematical & Financial Concrete Foundation ─────────────
+    let blueprint = generateHeuristicMsmeBlueprint(nosRow, qpRow, pcs);
+
+    // ── STAGE 2: Targeted Narrative Enrichment via LLM / Rule Intelligence ───────
+    blueprint = await enrichMsmeNarrativeWithLLM(blueprint, nosRow, qpRow, pcs);
 
     if (nosRow.id) {
         try {
             await db.prepare(`
-                UPDATE nsqf_nos
-                SET business_model_type = ?, msme_blueprint_json = ?
+                UPDATE nsqf_nos 
+                SET business_model_type = ?, msme_blueprint_json = ?, updated_at = CURRENT_TIMESTAMP
                 WHERE id = ?
             `).run(blueprint.business_model_type, JSON.stringify(blueprint), nosRow.id);
         } catch {}
