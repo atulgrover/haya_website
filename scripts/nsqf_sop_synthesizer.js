@@ -127,7 +127,7 @@ function generateHeuristicSop(moduleRow, pcs, qpRow, nosRow, jsonAst) {
         return {
             step_number: idx + 1,
             step_title: pc.pc_intent || `Step ${idx + 1}: ${desc.substring(0, 45)}...`,
-            derived_from_pc: pc.pc_code,
+            derived_from_pc: String(pc.pc_code || '').replace(/\.+$/, ''),
             imperative_action_directive: desc,
             parameter_tolerance: idx === 0 
                 ? 'Verify 100% calibration / visual log adherence' 
