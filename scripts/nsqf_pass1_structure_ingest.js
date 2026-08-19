@@ -449,13 +449,13 @@ async function main() {
 
             // ── 1. Upsert nsqf_nos (preserve existing data) ──────────────────
             // First: remove any synthetic fallback NOS codes left from prior runs
-            if (nosList.length > 0 && !nosList[0].nos_code.endsWith('_N01')) {
+            if (nosList.length > 0 && !nosList[0].nos_code.match(/_N\d+$/)) {
                 await client.query(
-                    `DELETE FROM nsqf_nos WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
+                    `DELETE FROM nsqf_pcs WHERE qp_code = $1 AND (nos_code LIKE '%\\_N0%' OR nos_code LIKE '%\\_N1%')`,
                     [qp.qp_code]
                 );
                 await client.query(
-                    `DELETE FROM nsqf_pcs WHERE qp_code = $1 AND nos_code LIKE '%\\_N01'`,
+                    `DELETE FROM nsqf_nos WHERE qp_code = $1 AND (nos_code LIKE '%\\_N0%' OR nos_code LIKE '%\\_N1%')`,
                     [qp.qp_code]
                 );
             }
