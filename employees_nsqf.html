@@ -819,9 +819,14 @@
                                 <span style="font-size:11px; color:#0284C7;">▶</span> ${mod.module_title || mod.nos_title}
                               </div>
 
-                              <button onclick="openPcTiddlerModal('${encodeURIComponent(firstPcId)}')" style="background:rgba(2,132,199,0.08); color:#0284C7; border:1px solid rgba(2,132,199,0.25); border-radius:4px; font-size:11px; font-weight:700; padding:2px 8px; cursor:pointer; white-space:nowrap;">
-                                🎬 Open Card
-                              </button>
+                              <div style="display:flex; align-items:center; gap:6px;">
+                                <button onclick="openModuleVivaModal('${encodeURIComponent(grp.code)}', '${encodeURIComponent(mod.module_title || mod.nos_title)}')" style="background:#EFF6FF; color:#1D4ED8; border:1px solid #BFDBFE; border-radius:6px; font-size:11px; font-weight:700; padding:3px 8px; cursor:pointer; display:flex; align-items:center; gap:4px;">
+                                  <span>🧠</span> Viva Exam
+                                </button>
+                                <button onclick="openPcTiddlerModal('${encodeURIComponent(firstPcId)}')" style="background:rgba(2,132,199,0.08); color:#0284C7; border:1px solid rgba(2,132,199,0.25); border-radius:6px; font-size:11px; font-weight:700; padding:3px 8px; cursor:pointer; white-space:nowrap;">
+                                  <span>🎬</span> Open
+                                </button>
+                              </div>
                             </div>
 
                             <!-- Distilled PC Intent Checklist (Clickable to In-Page PC Modal) -->
@@ -1031,69 +1036,29 @@
         safetyCard.style.display = 'block';
       }
 
-      // 3-Question Viva Quiz
-      const vivaContainer = document.getElementById('pcModalVivaContainer');
-      const vivaList = (Array.isArray(pc.viva_quiz) && pc.viva_quiz.length > 0) ? pc.viva_quiz : [
-        {
-          question_en: `What is the primary statutory check required for ${pcId}?`,
-          question_hi: `${pcId} के लिए आवश्यक प्राथमिक वैधानिक जांच क्या है?`,
-          options: [
-            { text: 'Verify dielectric calibration & tool rating (<90 days)', is_correct: true },
-            { text: 'Bypass safety relays to increase line throughput', is_correct: false },
-            { text: 'Operate without insulated safety gloves', is_correct: false }
-          ],
-          explanation: 'Standard industrial compliance requires valid tool calibration (<90 days) and certified dielectric isolation.'
-        },
-        {
-          question_en: `What is the standard tolerance limit for this operational parameter?`,
-          question_hi: `इस परिचालन पैरामीटर के लिए मानक सहनशीलता सीमा क्या है?`,
-          options: [
-            { text: '± 2.5% of nominal spec sheet rating', is_correct: true },
-            { text: '± 25.0% of nominal spec sheet rating', is_correct: false },
-            { text: 'Tolerance limit is not applicable in field tests', is_correct: false }
-          ],
-          explanation: 'Standard industrial tolerance is tightly bounded within ±2.5% under standard test condition guidelines.'
-        },
-        {
-          question_en: `Which safety protocol must be executed in case of voltage/current anomaly?`,
-          question_hi: `वोल्टेज/करंट विसंगति के मामले में किस सुरक्षा प्रोटोकॉल का पालन किया जाना चाहिए?`,
-          options: [
-            { text: 'Initiate emergency stop (E-Stop) & Lockout-Tagout (LOTO)', is_correct: true },
-            { text: 'Continue running and inspect at end of shift', is_correct: false },
-            { text: 'Increase line voltage to overcome resistance', is_correct: false }
-          ],
-          explanation: 'Statutory safety mandates immediate E-Stop execution and Lockout-Tagout (LOTO) isolation.'
-        }
-      ];
+      // ── Populate Deep Technical Fundamentals & Step-by-Step Sequence ──
+      const theoryText = document.getElementById('pcModalTheoryText');
+      if (theoryText) {
+        theoryText.innerText = `Standard industrial competence for "${pcTitle}" requires strict calibration to nominal parameters, adherence to dielectric/ESD isolation standards, and systematic validation against technical blueprint tolerances.`;
+      }
+      
+      const step1Text = document.getElementById('pcModalStep1Text');
+      if (step1Text) step1Text.innerText = `Inspect workstation cleanliness, verify instrument calibration certificate (<90 days), and zero-calibrate digital measurement probes.`;
+      
+      const step2Text = document.getElementById('pcModalStep2Text');
+      if (step2Text) step2Text.innerText = pc.sop_action_directive || pc.pc_desc || `Engage tool according to manufacturer guidelines, maintaining steady posture and verified alignment.`;
+      
+      const step3Text = document.getElementById('pcModalStep3Text');
+      if (step3Text) step3Text.innerText = `Validate reading within nominal tolerance (${pc.sop_parameter_tolerance || '±2.5%'}), record observation in line logbook, and return apparatus to safe rest position.`;
 
-      vivaContainer.innerHTML = vivaList.map((q, qIdx) => {
-        return `
-          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 14px;">
-            <div style="font-size:13px; font-weight:800; color:#1E293B;">
-              Q${qIdx + 1}: ${q.question_en}
-            </div>
-            ${q.question_hi ? `<div style="font-size:12px; color:#64748B; font-style:italic; margin-top:2px;">${q.question_hi}</div>` : ''}
-
-            <div style="display:flex; flex-direction:column; gap:6px; margin-top:10px;">
-              ${(q.options || []).map((opt, oIdx) => {
-                const optLetter = String.fromCharCode(65 + oIdx);
-                const safeExpl = (q.explanation || '').replace(/[\\'"]/g, '');
-                return `
-                  <button onclick="checkVivaAnswer(this, ${opt.is_correct ? 'true' : 'false'}, '${safeExpl}', 'viva-expl-${qIdx}')" 
-                          style="text-align:left; background:#FFF; border:1px solid #CBD5E1; border-radius:6px; padding:8px 12px; font-size:12px; color:#334155; font-weight:600; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; justify-content:space-between;"
-                          onmouseover="if(!this.dataset.answered)this.style.background='#F1F5F9'"
-                          onmouseout="if(!this.dataset.answered)this.style.background='#FFF'">
-                    <span><b>${optLetter}.</b> ${opt.text}</span>
-                    <span class="viva-mark" style="font-size:12px; font-weight:800;"></span>
-                  </button>
-                `;
-              }).join('')}
-            </div>
-            <div id="viva-expl-${qIdx}" style="display:none; margin-top:8px; padding:8px 10px; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px; font-size:11.5px; color:#1E40AF; line-height:1.4;">
-            </div>
-          </div>
-        `;
-      }).join('');
+      // Save active parent module context for the workstation viva trigger
+      window.activePcParentModule = {
+        nos_code: pc.nos_code,
+        nos_title: pc.nos_title,
+        module_title: pc.module_title,
+        qp_code: pc.qp_code,
+        qp_name: pc.qp_name
+      };
 
       // Populate Admin Form Fields
       document.getElementById('adminVideoIdInput').value = videoId;
@@ -1109,7 +1074,98 @@
       document.getElementById('pcModalNextBtn').style.opacity = (idx === total - 1) ? '0.5' : '1';
     }
 
-    function checkVivaAnswer(btn, isCorrect, explanation, explContainerId) {
+    function triggerModuleVivaFromPcModal() {
+      if (window.activePcParentModule) {
+        closePcTiddlerModal();
+        openModuleVivaModal(
+          encodeURIComponent(window.activePcParentModule.nos_code || 'NOS'),
+          encodeURIComponent(window.activePcParentModule.module_title || window.activePcParentModule.nos_title || 'Workstation Module')
+        );
+      }
+    }
+
+    // ── 🧠 WORKSTATION / MODULE VIVA EXAM ENGINE ─────────────────────────────
+    let moduleVivaState = {
+      total: 0,
+      score: 0,
+      answered: 0
+    };
+
+    function openModuleVivaModal(nosCodeEnc, modTitleEnc) {
+      const nosCode = decodeURIComponent(nosCodeEnc || '');
+      const modTitle = decodeURIComponent(modTitleEnc || 'Workstation Module');
+      const allPcs = window.activeInspectorAllPcs || [];
+
+      // Filter PCs for this module
+      const modulePcs = allPcs.filter(p => (p.nos_code === nosCode || !nosCode) && (p.module_title === modTitle || !modTitle));
+      const targetPcs = modulePcs.length > 0 ? modulePcs : allPcs.slice(0, 5);
+
+      document.getElementById('moduleVivaModalTitle').innerText = `${modTitle} Comprehensive Exam`;
+      document.getElementById('moduleVivaModalSubTitle').innerText = `NOS: ${nosCode} • ${targetPcs.length} Assessment Criteria Questions`;
+
+      moduleVivaState = {
+        total: targetPcs.length,
+        score: 0,
+        answered: 0
+      };
+      document.getElementById('moduleVivaScoreBadge').innerText = `Score: 0 / ${targetPcs.length}`;
+      document.getElementById('moduleVivaFooterStatus').innerHTML = `Answer all ${targetPcs.length} questions to complete workstation competency check.`;
+
+      const container = document.getElementById('moduleVivaQuestionsContainer');
+      container.innerHTML = targetPcs.map((pc, idx) => {
+        const pcId = pc.pc_id || `PC${idx + 1}`;
+        const pcTitle = pc.pc_intent || pc.pc_desc || 'Criterion';
+        const viva = (Array.isArray(pc.viva_quiz) && pc.viva_quiz.length > 0) ? pc.viva_quiz[0] : {
+          question_en: `What is the critical statutory verification required for "${pcTitle}"?`,
+          question_hi: `"${pcTitle}" के लिए क्या महत्वपूर्ण वैधानिक सत्यापन आवश्यक है?`,
+          options: [
+            { text: `Verify certified calibration (<90 days) and standard tolerance (${pc.sop_parameter_tolerance || '±2.5%'})`, is_correct: true },
+            { text: 'Bypass safety locks to achieve faster throughput', is_correct: false },
+            { text: 'Operate without verifying PPE dielectric insulation rating', is_correct: false }
+          ],
+          explanation: `Standard industrial compliance requires valid tool calibration (<90 days) and verified adherence to tolerance limits (${pc.sop_parameter_tolerance || '±2.5%'}).`
+        };
+
+        return `
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+              <span style="background:#EFF6FF; color:#1D4ED8; font-size:11px; font-weight:800; padding:3px 8px; border-radius:6px;">QUESTION ${idx + 1} OF ${targetPcs.length} • ${pcId}</span>
+              <span style="font-size:11px; font-weight:600; color:#64748B;">1 Mark</span>
+            </div>
+            <div style="font-size:13.5px; font-weight:800; color:#0F172A; line-height:1.4;">
+              ${viva.question_en}
+            </div>
+            ${viva.question_hi ? `<div style="font-size:12px; color:#64748B; font-style:italic; margin-top:3px;">${viva.question_hi}</div>` : ''}
+
+            <div style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">
+              ${(viva.options || []).map((opt, oIdx) => {
+                const optLetter = String.fromCharCode(65 + oIdx);
+                const safeExpl = (viva.explanation || '').replace(/[\\'"]/g, '');
+                return `
+                  <button onclick="checkModuleVivaChoice(this, ${opt.is_correct ? 'true' : 'false'}, '${safeExpl}', 'mod-expl-${idx}')"
+                          style="text-align:left; background:#F8FAFC; border:1px solid #CBD5E1; border-radius:8px; padding:10px 14px; font-size:12.5px; color:#334155; font-weight:600; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; justify-content:space-between;"
+                          onmouseover="if(!this.dataset.answered)this.style.background='#F1F5F9'"
+                          onmouseout="if(!this.dataset.answered)this.style.background='#F8FAFC'">
+                    <span><b>${optLetter}.</b> ${opt.text}</span>
+                    <span class="mod-viva-mark" style="font-size:12px; font-weight:800;"></span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+            <div id="mod-expl-${idx}" style="display:none; margin-top:10px; padding:10px 12px; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:8px; font-size:12px; color:#1E40AF; line-height:1.45;">
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('moduleVivaModal').style.display = 'flex';
+    }
+
+    function closeModuleVivaModal() {
+      document.getElementById('moduleVivaModal').style.display = 'none';
+    }
+
+    function checkModuleVivaChoice(btn, isCorrect, explanation, explContainerId) {
       const parent = btn.parentElement;
       const buttons = parent.querySelectorAll('button');
       buttons.forEach(b => {
@@ -1118,12 +1174,13 @@
         b.style.cursor = 'default';
       });
 
-      const markSpan = btn.querySelector('.viva-mark');
+      const markSpan = btn.querySelector('.mod-viva-mark');
       if (isCorrect) {
         btn.style.background = '#DCFCE7';
         btn.style.borderColor = '#86EFAC';
         btn.style.color = '#15803D';
         if (markSpan) markSpan.innerText = '✅ Correct!';
+        moduleVivaState.score++;
       } else {
         btn.style.background = '#FEE2E2';
         btn.style.borderColor = '#FCA5A5';
@@ -1131,10 +1188,21 @@
         if (markSpan) markSpan.innerText = '❌ Incorrect';
       }
 
+      moduleVivaState.answered++;
+      document.getElementById('moduleVivaScoreBadge').innerText = `Score: ${moduleVivaState.score} / ${moduleVivaState.total}`;
+
       const explEl = document.getElementById(explContainerId);
       if (explEl) {
         explEl.innerHTML = `💡 <b>Answer Key:</b> ${explanation || 'Standard operational procedure verification.'}`;
         explEl.style.display = 'block';
+      }
+
+      if (moduleVivaState.answered === moduleVivaState.total) {
+        const pct = Math.round((moduleVivaState.score / moduleVivaState.total) * 100);
+        const passed = pct >= 60;
+        document.getElementById('moduleVivaFooterStatus').innerHTML = `
+          <b>Exam Complete!</b> Final Score: <span style="color:${passed ? '#16A34A' : '#DC2626'}">${moduleVivaState.score}/${moduleVivaState.total} (${pct}%)</span> — ${passed ? '🎉 Station Competency Passed!' : '⚠️ Review notes and re-attempt.'}
+        `;
       }
     }
 
@@ -1474,18 +1542,50 @@
             <div id="adminSaveToast" style="display:none; margin-top:8px; font-size:12px; color:#16A34A; font-weight:700;"></div>
           </div>
 
-          <!-- 3-Question Bilingual Viva Quiz Section -->
-          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #F1F5F9; padding-bottom:10px; margin-bottom:14px;">
-              <div style="font-size:13px; font-weight:800; color:#0F172A; display:flex; align-items:center; gap:8px;">
-                <span>🧠</span> Interactive 3-Question Bilingual Viva Exam
-              </div>
-              <span style="font-size:11px; font-weight:600; color:#64748B;">Instant Answer Verification</span>
+          <!-- Deep Technical Fundamentals & Practical Physics -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="font-size:12px; font-weight:800; color:#0284C7; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
+              <span>🔬</span> Technical Fundamentals & Operational Theory
             </div>
+            <p id="pcModalTheoryText" style="font-size:13px; color:#334155; line-height:1.6; margin:8px 0 0 0; font-weight:500;">
+              Standard industrial competence requires strict calibration to nominal parameters, adherence to dielectric/ESD isolation standards, and systematic validation against technical blueprint tolerances.
+            </p>
+          </div>
 
-            <div id="pcModalVivaContainer" style="display:flex; flex-direction:column; gap:16px;">
-              <!-- Rendered dynamically -->
+          <!-- Step-by-Step Practical Execution Sequence -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px;">
+            <div style="font-size:12px; font-weight:800; color:#0F172A; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px; margin-bottom:12px;">
+              <span>📋</span> Standard Step-by-Step Practical Execution Sequence
             </div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;" class="step-sequence-grid">
+              <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:12px;">
+                <div style="font-size:11px; font-weight:800; color:#0284C7; text-transform:uppercase;">Phase 1: Pre-Operational Setup</div>
+                <p id="pcModalStep1Text" style="font-size:12px; color:#475569; margin:6px 0 0 0; line-height:1.45;"></p>
+              </div>
+              <div style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:8px; padding:12px;">
+                <div style="font-size:11px; font-weight:800; color:#1D4ED8; text-transform:uppercase;">Phase 2: In-Process Execution</div>
+                <p id="pcModalStep2Text" style="font-size:12px; color:#1E3A8A; margin:6px 0 0 0; line-height:1.45;"></p>
+              </div>
+              <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:8px; padding:12px;">
+                <div style="font-size:11px; font-weight:800; color:#047857; text-transform:uppercase;">Phase 3: Quality & Handover</div>
+                <p id="pcModalStep3Text" style="font-size:12px; color:#064E3B; margin:6px 0 0 0; line-height:1.45;"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station Comprehensive Viva Voce Exam Launcher Banner -->
+          <div style="background:linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; color:#FFF;">
+            <div>
+              <div style="font-size:14px; font-weight:800; color:#38BDF8; display:flex; align-items:center; gap:8px;">
+                <span>🧠</span> Ready to Assess Workstation Competency?
+              </div>
+              <p style="font-size:12px; color:#94A3B8; margin:4px 0 0 0;">
+                Take the full Workstation Comprehensive Viva Voce Exam with instant scoring and station badge.
+              </p>
+            </div>
+            <button onclick="triggerModuleVivaFromPcModal()" style="background:#0284C7; border:none; color:#FFF; font-weight:800; font-size:13px; padding:10px 18px; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(2,132,199,0.35);">
+              <span>Launch Workstation Viva Exam</span> <span>➔</span>
+            </button>
           </div>
         </div>
 
@@ -1614,6 +1714,45 @@
 
         <button id="pcModalNextBtn" onclick="stepPcModal(1)" style="background:#0284C7; border:none; color:#FFF; font-size:12px; font-weight:700; padding:8px 16px; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:6px;">
           Next Criterion <span>▶</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- 🧠 WORKSTATION / MODULE COMPREHENSIVE VIVA EXAM MODAL   -->
+  <!-- ======================================================= -->
+  <div id="moduleVivaModal" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.85); backdrop-filter:blur(8px); z-index:99999; align-items:center; justify-content:center; padding:16px;" onclick="if(event.target===this)closeModuleVivaModal()">
+    <div style="background:#FFFFFF; border-radius:20px; width:100%; max-width:820px; max-height:90vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 60px -15px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2); animation:modalPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);">
+      
+      <!-- Top Exam Header Bar -->
+      <div style="padding:16px 20px; background:#0F172A; color:#FFF; display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid rgba(255,255,255,0.1);">
+        <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+          <div style="background:#2563EB; color:#FFF; font-weight:800; font-size:12px; padding:4px 10px; border-radius:6px; white-space:nowrap; letter-spacing:0.5px;">🧠 VIVA EXAM</div>
+          <div style="min-width:0;">
+            <h2 id="moduleVivaModalTitle" style="font-family:var(--font-heading); font-size:15px; font-weight:700; color:#F8FAFC; margin:0; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Workstation Assessment</h2>
+            <div id="moduleVivaModalSubTitle" style="font-size:11px; color:#94A3B8; margin-top:2px;">NOS Standard Evaluation • Instant Answer Key</div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div id="moduleVivaScoreBadge" style="background:rgba(255,255,255,0.12); color:#38BDF8; font-weight:800; font-size:12px; padding:4px 12px; border-radius:6px; border:1px solid rgba(56,189,248,0.3);">
+            Score: 0 / 0
+          </div>
+          <button onclick="closeModuleVivaModal()" style="background:rgba(255,255,255,0.12); border:none; color:#94A3B8; font-size:20px; width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.15s;" onmouseover="this.style.color='#FFF'; this.style.background='rgba(239,68,68,0.3)'" onmouseout="this.style.color='#94A3B8'; this.style.background='rgba(255,255,255,0.12)'">&times;</button>
+        </div>
+      </div>
+
+      <!-- Scrollable Exam Questions Body -->
+      <div id="moduleVivaQuestionsContainer" style="flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:16px; background:#F8FAFC;">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- Bottom Exam Footer Bar -->
+      <div style="padding:14px 20px; background:#FFF; border-top:1px solid #E2E8F0; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <div id="moduleVivaFooterStatus" style="font-size:12px; font-weight:700; color:#64748B;">Answer all questions to complete workstation competency check.</div>
+        <button onclick="closeModuleVivaModal()" style="background:#0F172A; border:none; color:#FFF; font-size:12px; font-weight:700; padding:8px 18px; border-radius:8px; cursor:pointer;">
+          Close Exam
         </button>
       </div>
 
