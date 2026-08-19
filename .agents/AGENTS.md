@@ -26,11 +26,15 @@
 - **Strict Pipeline Stage Progression**:
   - **Stage 0: Upstream Reconciliation**: Reconcile `nsqf_qps` against `https://admin.skillindiadigital.gov.in/nosListing` (detect new QPs or updated versions).
   - **Stage 1: PDF Ingestion & Completeness Audit**: Verify all `curriculum_pdf_url` files are downloaded into `data/pdfs/{cleanCode}.pdf`.
-  - **Stage 2: Lossless Markdown (`data/md/*.md`)**: 1:1 lossless digital mirror of PDFs via `nsqf_pdf_to_md.py` (preserving all narrative PCs and assessment tables).
-  - **Stage 3: Canonical AST Compilation (`data/json/nsqf/*.json`)**: Extract official assessment rubric AST via `nsqf_md_to_json.js`.
-  - **Stage 4: LLM Synthesis & Enrichment**: Bilingual viva quizzes (EN+HI), study takeaways, 10-Chapter SOPs (`data/json/sop/`), 9-Chapter MSME DPRs (`data/json/msme/`).
-  - **Stage 5: YouTube Multi-Tier Video Harvesting**: Official API v3 timestamped clips (60-90s).
-  - **Stage 6: Sovereign Offline Wiki Export (`nsqf_wiki_exporter.js`)**: 100% offline standalone Tiddloid / Safari PWA data vaults.
+  - **Stage 2: Lossless Markdown (`data/md/*.md`)**: 1:1 lossless digital mirror via `scripts/01_convert_pdfs_to_markdown.py`.
+  - **Stage 3: Canonical AST Compilation (`data/json/nsqf/*.json`)**: Extract official assessment rubric AST via `scripts/02_build_canonical_json.js`.
+  - **Stage 3B: Database Synchronization**: Ingest ASTs into PostgreSQL (`hayadb`) via `scripts/03_sync_json_to_database.js`.
+  - **Stage 4A: Intent & Search Query Vectors**: Extract 5-word action intents and bilingual search vectors via `scripts/04_generate_search_intents.js`.
+  - **Stage 4B: Employer SOP Synthesis**: 10-Chapter ISO 9001:2015 / TWI plant procedures via `scripts/05_generate_employer_sops.js` (`data/json/sop/`).
+  - **Stage 4C: Bankable MSME DPR Synthesis**: 9-Chapter PMEGP / Mudra project profiles via `scripts/06_generate_msme_business_reports.js` (`data/json/msme/`).
+  - **Stage 5: YouTube Multi-Tier Video Harvesting**: Official API v3 timestamped clips (60-90s) via `scripts/07_harvest_youtube_videos.js`.
+  - **Stage 6: Sovereign Offline Wiki Export**: Standalone Tiddloid / Safari PWA data vaults via `scripts/08_export_offline_data_vaults.js`.
+  - **Stage 7: Production Cloud Deployment**: Sync local PG database up to Neon cloud via `scripts/09_push_database_to_cloud.js`.
 
 ### YouTube API Compliance Overhaul & Data Governance (August 2026)
 - **Resolved All 4 Findings from ToS Violations Report V.1**:

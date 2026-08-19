@@ -10,9 +10,15 @@
     "test:api": "node --test tests/api/*.test.js",
     "test:db": "node --test tests/db/*.test.js",
     "test:youtube": "node --test tests/api/youtube.test.js",
-    "db:backup": "node scripts/backup_local_pg.js",
-    "db:restore": "node scripts/restore_local_pg.js",
-    "db:push-to-neon": "node scripts/push_local_pg_to_neon.js"
+    "pipeline:01-md": "python3 scripts/01_convert_pdfs_to_markdown.py",
+    "pipeline:02-json": "node scripts/02_build_canonical_json.js",
+    "pipeline:03-db": "node scripts/03_sync_json_to_database.js --all",
+    "pipeline:04-intents": "node scripts/04_generate_search_intents.js --all --mode=local",
+    "pipeline:05-sop": "node scripts/05_generate_employer_sops.js --sample",
+    "pipeline:06-msme": "node scripts/06_generate_msme_business_reports.js --sample",
+    "pipeline:07-videos": "node scripts/07_harvest_youtube_videos.js --sample",
+    "pipeline:08-wikis": "node scripts/08_export_offline_data_vaults.js --sample",
+    "db:push-to-neon": "node scripts/09_push_database_to_cloud.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1098.0",
