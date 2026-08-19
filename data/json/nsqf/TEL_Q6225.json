@@ -1,0 +1,1330 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6225",
+  "qp_name": "TEL_Q6225",
+  "clean_code": "TEL_Q6225",
+  "total_pages": 46,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.530Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 20,
+    "total_pcs": 113,
+    "total_kus": 76,
+    "total_gs": 38,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6288",
+      "nos_title": ".Plan and Coordinate",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. different types of telecom infrastructure (e.g., towers, rooftop sites, small cells) and their",
+        "KU2. telecom-specific logistics needs: tower parts, OFC cables, routers, SIMs, IoT devices.",
+        "KU3. principles of drone flight, airspace classifications, and mission planning best practices.",
+        "KU4. standard pre-flight and post-flight procedures and checklists.",
+        "KU5. national and international drone operation regulations and airspace classification.",
+        "KU6. DGCA/UTM regulatory frameworks applicable to drone delivery of telecom assets.",
+        "KU7. types of drones suitable for telecom spares, equipment, and document movement.",
+        "KU8. criticality of SLAs in telecom and how drones can support uptime commitments.",
+        "KU9. use of mapping software and GIS tools for defining and simulating flight paths.",
+        "KU10. factors affecting signal strength, latency, and interference in telecom environments.",
+        "KU11. types of drone payloads (visual, thermal, LiDAR) and their application in telecom inspections.",
+        "KU12. functionalities of LTE/5G networks, telemetry links, and GPS modules in",
+        "KU13. roles and responsibilities of ground crew, pilots, clients, and site engineers during",
+        "KU14. emergency handling protocols for lost signals, crashes, or technical failures.",
+        "KU15. documentation standards for inspection planning including risk logs, permits, and flight"
+      ],
+      "gs": [
+        "GS1. communicate effectively with clients, drone pilots, and telecom stakeholders to align on",
+        "GS2. apply critical thinking to assess environmental, technical, and regulatory factors before",
+        "GS3. make quick and informed decisions in response to flight challenges or emergencies.",
+        "GS4. adapt to changing regulatory frameworks and airspace restrictions.",
+        "GS5. resolve operational issues and conflicts with stakeholders professionally.",
+        "GS6. manage time efficiently to coordinate resources and meet inspection schedules.",
+        "GS7. organize and prioritize tasks to ensure thorough pre-flight planning and documentation.",
+        "GS8. work collaboratively with cross-functional teams to ensure mission readiness.",
+        "GS9. apply problem-solving techniques to optimise flight performance and safety."
+      ],
+      "modules": [
+        {
+          "module_title": "Assess telecom inspection requirements",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify the type, location, and inspection scope of telecom infrastructure requiring drone- based assessment.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "interpret client requirements and project specifications for the inspection task.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "review historical inspection records, maintenance logs, and asset health indicators.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "evaluate environmental and geographical constraints of the site to determine inspection feasibility.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify telecom signal availability, obstacles, and airspace restrictions near the inspection area.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Plan flight path and mission parameters",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "prepare and submit drone flight plans for transporting telecom equipment or tools as per DGCA/UTM regulations.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "conduct controlled test flights in accordance with standard operating procedures.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "obtain approvals from Digitalsky or UTM platforms when operating near telecom towers, dense urban zones, or restricted areas",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "monitor NOTAMs and real-time alerts that affect drone delivery of telecom payloads (e.g., antennas, RF kits).",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "define specific drone flight parameters including altitude, speed, overlap, and waypoints.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "select appropriate flight modes (manual, autonomous, waypoint-based) based on the mission type.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "identify and rectify anomalies encountered during test flights.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "determine payload requirements such as visual, thermal, or LiDAR sensors based on inspection objectives.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "evaluate telecom connectivity (LTE/5G) for real-time telemetry and video streaming.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "validate signal strength and latency for the mission zone using pre-flight test tools.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Allocate fleet and schedule operations",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "assign drone units based on payload compatibility, flight time, and operational readiness.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "check UAV airworthiness, battery health, and software/firmware updates before deployment.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "allocate qualified pilots and support personnel for the scheduled operations.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "coordinate with clients, site engineers, and regulatory agencies for mission clearance.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure compliance and risk preparedness",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "ensure adherence to DGCA, telecom authority, and local airspace regulations for the operation.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "prepare and validate documentation such as SOPs, risk assessments, and flight plans.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "implement Geofencing and fail-safe protocols in case of signal loss or mechanical failure.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "maintain communication logs, checklists, and mission readiness reports for accountability.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure emergency response protocols are in place for lost signal, crash, or system failure.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "maintain backup flight plans with alternative routes, landing zones, and pilot overrides to ensure mission continuity during unexpected disruptions.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6289",
+      "nos_title": ".Manage Drone-",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. DGCA/UTM regulatory frameworks applicable to drone delivery of telecom assets.",
+        "KU2. types of drones suitable for telecom spares, equipment, and document movement.",
+        "KU3. telecom-specific logistics needs: tower parts, OFC cables, routers, SIMs, IoT devices.",
+        "KU4. predictive analytics tools to forecast telecom service and maintenance needs.",
+        "KU5. emergency protocols for drone delivery in telecom outage situations.",
+        "KU6. payload handling SOPs for fragile or high-frequency telecom components.",
+        "KU7. cost-benefit frameworks specific to telecom logistics automation.",
+        "KU8. protocols for responding to delivery failure, crash events, or service disputes.",
+        "KU9. real-time tracking integration with telecom field management platforms.",
+        "KU10. environmental challenges (wind, tower interference, rooftop access) in telecom delivery",
+        "KU11. telecom-specific KPIs for delivery support efficiency.",
+        "KU12. geo-tagging and logging drone performance near telecom towers.",
+        "KU13. use of IoT sensors for smart payload management in telecom.",
+        "KU14. NOC/client communication requirements in telecom repair logistics.",
+        "KU15. data protection and anti-tamper measures for telecom payloads."
+      ],
+      "gs": [
+        "GS1. communicate clearly with ATC, UTM platforms, and telecom operations teams.",
+        "GS2. interpret GIS maps, UTM zones, and telecom tower coordinates.",
+        "GS3. respond rapidly to emergency delivery requirements from telecom NOCs.",
+        "GS4. prioritize deliveries for outage restoration, service provisioning, or SLA adherence.",
+        "GS5. record and interpret flight logs, payload data, and mission reports.",
+        "GS6. coordinate cross-functionally with telecom engineers, logistics teams, and drone pilots.",
+        "GS7. resolve conflicts, delays, or discrepancies in telecom delivery missions.",
+        "GS8. keep updated on telecom-sector trends influencing drone logistics (e.g., 5G, FWA)."
+      ],
+      "modules": [
+        {
+          "module_title": "Assess and plan feasibility of telecom-related drone deliveries",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review delivery requests for telecom components like signal boosters, batteries, IoT modules, etc., evaluating weight, fragility, and security needs.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "match appropriate drones based on distance to telecom towers, terrain (e.g., hills, remote sites), and payload specifications.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "consider RF interference zones or telecom blackspots that may affect drone GPS or connectivity during route planning.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "conduct risk assessments for high-value telecom assets and assign fail-safe protocols.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Plan and optimize delivery routes and schedules for telecom use",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "use telecom-integrated logistics software or AI routing systems to plan tower-to-tower or warehouse-to-site deliveries.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "incorporate restricted airspaces near telecom hubs or RF zones in route design.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "avoid overlaps in mission scheduling and enable multi-point deliveries to telecom field engineers.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "implement hub-and-spoke or forward stocking locations (FSL) for high-demand telecom spare parts.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "enable dynamic rescheduling to support emergency telecom restoration tasks.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Monitor drone logistics performance and address service gaps",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "track delivery success rates and fleet KPIs specific to telecom service-level timelines.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "compare planned vs. actual delivery routes, flight times, and delays in reaching telecom sites.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "diagnose issues like signal jamming, payload drop failures, or weather-triggered mission aborts.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "recommend improvements based on route heatmaps, drone reliability, and telecom urgency analysis.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "document telecom-linked delivery deviations and generate improvement reports.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Enhance field engineer coordination and customer service",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "share real-time drone tracking and ETAs with telecom field engineers or installation teams.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "verify that telecom payloads (e.g., RF tools, SIM kits, cables) are delivered securely and in working condition.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "update telecom clients or NOC teams on any expected delivery disruptions proactively.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Apply cost-effective strategies in telecom drone logistics",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "use predictive demand data (e.g., tower outages, maintenance cycles) to plan preemptive delivery missions.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "optimize route clusters for telecom projects based on geography, SLAs, and drone utilization.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "reassign or rotate drones for balanced usage across telecom regions/zones.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "evaluate cost per mission and propose savings via energy optimization and load bundling.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6290",
+      "nos_title": ".Integrate Telecom",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. features and limitations of SIM vs eSIM modules in UAV systems.",
+        "KU2. role of APN settings, IMEI numbers, and network locking/unlocking for module activation.",
+        "KU3. fundamentals of GNSS (GPS, GLONASS, Galileo) used for drone navigation.",
+        "KU4. telemetry systems and their integration with drone autopilots and ground control software.",
+        "KU5. network performance indicators such as signal strength (RSSI), jitter, latency, and packet",
+        "KU6. telecom interference sources and how to mitigate them during drone missions.",
+        "KU7. configuration of dual-channel or redundant communication links for C2 continuity.",
+        "KU8. cloud platforms and APIs used for real-time drone data streaming.",
+        "KU9. data security practices for telecom-based UAV communication.",
+        "KU10. legal and regulatory norms for telecom module usage in UAVs.",
+        "KU11. troubleshooting methods for network disconnection, module failure, or GPS signal loss.",
+        "KU12. documentation standards for connectivity settings, calibration logs, and system"
+      ],
+      "gs": [
+        "GS1. communicate technical information clearly to team members and clients.",
+        "GS2. identify and troubleshoot network connectivity issues in real time.",
+        "GS3. apply logical reasoning to optimize telecom configurations for different missions.",
+        "GS4. manage time efficiently to ensure all modules are configured and tested before missions.",
+        "GS5. work collaboratively with cross-functional teams to ensure mission readiness.",
+        "GS6. adapt to evolving telecom technologies and UAV communication systems.",
+        "GS7. think critically to assess mission risk due to connectivity limitations."
+      ],
+      "modules": [
+        {
+          "module_title": "Configure telecom modules for drone connectivity",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "install and configure SIM/eSIM modules for 4G/5G connectivity in drones.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "validate compatibility of telecom modules with the drone’s flight control and telemetry systems.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "set parameters for data throughput, signal switching, and fallback mechanisms in case of network loss.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "document IMEI, SIM ID, APN settings, and network profiles for each drone system.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Calibrate GPS and telemetry systems",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "integrate GPS units with drone autopilot and telemetry systems.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "calibrate GNSS settings based on the operating region and satellite availability.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "synchronize GPS and telemetry data with onboard and ground systems for real-time feedback.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "validate signal strength and positional accuracy using drone diagnostic tools.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "align telemetry protocols (e.g., MAVLink) with ground control software.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Map and validate telecom signal zones",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "use signal mapping tools to assess 4G/5G coverage and latency in operational areas.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify zones with potential signal drop, dead zones, and high-latency risks.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "cross-reference coverage maps with mission flight paths to avoid loss of connectivity.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "record signal strength, jitter, and latency values during test flights.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "recommend alternate telecom networks or mission parameters for low-coverage zones.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Integrate command, control, and cloud systems",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "establish secure telecom links between UAV and Ground Control Station (GCS).",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "configure cloud-based platforms for real- time data streaming and control via telecom networks.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure redundancy of communication channels using dual SIM or fallback modules.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "monitor C2 system health and signal continuity throughout flight operations.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6291",
+      "nos_title": ".Manage Telecom",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. 4G/5G network architecture and relevance to UAV operations.",
+        "KU2. telecom KPIs: RSSI, SNR, RSRP, BER, latency, jitter, throughput.",
+        "KU3. functionality and configuration of LTE/5G routers, modems, and SIM/eSIMs.",
+        "KU4. spectrum analysis and EMI/RFI interference identification.",
+        "KU5. C2 and telemetry protocols (UDP, TCP/IP, RTP, MQTT, etc.).",
+        "KU6. use and interpretation of tools like Atoll, NetMonster, SDR kits, and IPerf.",
+        "KU7. public vs private 5G use cases for logistics and inspection missions.",
+        "KU8. drone-to-cloud transmission protocols and mechanisms (e.g., RTMP, MQTT, HTTP POST).",
+        "KU9. cloud and edge data ingestion principles for real-time analytics.",
+        "KU10. redundancy strategies in communication (dual-link RF/LTE, SATCOM).",
+        "KU11. GPS-telecom integration methods and synchronization protocols (e.g., NTP).",
+        "KU12. network planning and RF propagation concepts (link budget, cell coverage).",
+        "KU13. causes of drone connectivity degradation: tower handoff, terrain, weather.",
+        "KU14. security protocols for UAV telecom systems: TLS, VPN, firewalls.",
+        "KU15. fail-safe and fallback protocol logic based on connectivity failure.",
+        "KU16. legal and regulatory telecom restrictions for drone operations.",
+        "KU17. data logging, audit trail requirements, and diagnostic reporting standards.",
+        "KU18. use of Ground Control Software for live telemetry and fail-safe management.",
+        "KU19. SOPs for pre-flight telecom assessment, fallback execution, and post-mission reviews.",
+        "KU20. techniques for collecting and processing data using drone platforms (e.g., photogrammetry,",
+        "KU21. software tools for data processing (e.g., Pix4D, DroneDeploy, QGIS).",
+        "KU22. best practices for data security, storage, and compliance with data protection norms.",
+        "KU23. safety standards, risk assessment methods, and emergency procedures in UAV deployment."
+      ],
+      "gs": [
+        "GS1. communicate technical findings with engineers, pilots, and cloud teams.",
+        "GS2. interpret graphs, logs, and dashboards for real-time analysis.",
+        "GS3. apply logical reasoning and structured troubleshooting methods.",
+        "GS4. work under time pressure and prioritize responses to critical connectivity events.",
+        "GS5. collaborate with telecom service providers and UAV hardware vendors.",
+        "GS6. maintain situational awareness during live missions to avoid signal blackouts.",
+        "GS7. continuously learn from flight data to improve performance and reliability."
+      ],
+      "modules": [
+        {
+          "module_title": "Evaluate telecom infrastructure and mission readiness",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "analyze signal coverage and cell tower distribution using RF propagation tools (e.g., Atoll, TEMS).",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "assess uplink/downlink latency, bandwidth, and network stability using performance test tools.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "conduct spectrum analysis to detect EMI/RFI sources along the drone route.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "evaluate terrain-related coverage risks in urban, rural, or industrial environments.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "review C2 link and GPS alignment feasibility prior to flight.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Configure and validate drone communication system",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "configure LTE/5G routers, modems, and eSIM/SIM modules with appropriate APN and QoS settings.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "perform pre-flight benchmarking for latency, jitter, and throughput using IPerf or similar tools.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "set up dual-redundant communication links (e.g., LTE/RF) with automatic handover logic.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "verify compatibility and synchronization protocols between IoT sensors and telecom modules (e.g., MQTT-SN, NTP).",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "conduct validation of SIM provisioning and M2M connectivity with cloud dashboards.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Monitor in-flight telecom connectivity and telemetry health",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "continuously monitor signal quality metrics (e.g., RSSI, RSRP, SINR, BER) using telemetry dashboards.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "track telemetry packet flow, jitter, video feed latency, and command delays in real time.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "validate live synchronization of drone location and sensor output with GCS/cloud servers.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "detect network congestion, frame drops, and signal loss during video or data streaming.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "assess bandwidth fluctuation and impact on drone-to-cloud data uploads.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Troubleshoot and respond to connectivity disruptions",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "use RF analyzers, LTE sniffers, SDR kits, and Wireshark to identify root causes of signal disruption.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "diagnose and resolve issues related to tower handoffs, line-of-sight, and SIM registration failures.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "reconfigure drone network parameters mid- flight for optimal connectivity or fallback operation.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "trigger fallback protocols (e.g., RTL, land, loiter) based on signal loss thresholds.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "implement adaptive bitrate streaming and data buffering in low-bandwidth conditions.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "activate redundant telemetry links (e.g., RF, LTE) upon primary failure.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "capture and analyze network performance logs post-flight to identify performance bottlenecks.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "troubleshoot connectivity errors including IP conflicts, APN failures, or SIM denial of service.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "communicate real-time alerts to operations teams via Ground Control Station or mission software.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "document anomalies such as GPS drift or data sync lags for compliance and post-mission review.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure reliable data transmission and cloud integration",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC26",
+              "pc_description": "integrate drone telemetry and payload data (video, sensor) with edge/cloud platforms via telecom backhaul.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "retrieve sensor data (images, video, LiDAR, etc.) from onboard storage or transmission systems.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "use software tools to process geospatial and image data collected during flight missions.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "monitor and validate timestamp accuracy for cloud-ingested data using NTP protocols.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "apply data filters, corrections, and coordinate mapping for accuracy.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "apply secure transmission protocols (e.g., TLS, VPN, IPsec) for data integrity and privacy.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "maintain drone-to-cloud pipeline reliability using MQTT, RTMP, FTP, or HTTP POST protocols.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "generate analytical reports and visualizations from collected drone data.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6292",
+      "nos_title": ".Implement safety",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. applicable national and regional aviation regulations relevant to drone operations.",
+        "KU2. organisational policies on health, safety, and environmental (HSE) compliance.",
+        "KU3. risk assessment methodologies in the context of drone operations.",
+        "KU4. common safety hazards in drone handling, flight, and operations.",
+        "KU5. emergency procedures for various operational incidents such as loss of control or crash.",
+        "KU6. importance of weather data and terrain information in flight safety.",
+        "KU7. documentation and reporting requirements for compliance tracking.",
+        "KU8. data protection and privacy considerations while handling sensitive information.",
+        "KU9. protocols for internal and external safety audits.",
+        "KU10. use of digital tools to log, monitor, and analyse safety and compliance data.",
+        "KU11. role of communication and training in maintaining operational safety."
+      ],
+      "gs": [
+        "GS1. communicate safety and compliance guidelines effectively to team members.",
+        "GS2. prioritise tasks during emergencies to ensure quick and safe response.",
+        "GS3. collaborate with internal teams and regulatory authorities to resolve compliance gaps.",
+        "GS4. maintain accuracy and attention to detail in documentation and recordkeeping.",
+        "GS5. apply critical thinking to identify risks and recommend proactive safety measures.",
+        "GS6. foster a positive and responsible safety culture in the workplace.",
+        "GS7. stay updated on evolving safety standards and regulations."
+      ],
+      "modules": [
+        {
+          "module_title": "Identify and monitor safety risks in drone operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify and assess potential safety risks associated with drone related activities, including take-off, landing, and payload handling.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "monitor weather conditions and environmental hazards that could impact drone operations.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure drones are deployed in accordance with safety protocols and organisational procedures.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "verify that drone operators and support staff follow personal protective and operational safety measures.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "maintain updated records of safety checks, incidents, and corrective actions taken.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "report safety breaches, near misses, and unsafe practices to designated authorities within the organisation.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "review incident reports to recommend preventive measures and reduce operational risks.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "coordinate with relevant departments to ensure emergency response plans are in place and communicated.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure regulatory and organisational compliance",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "record and report safety breaches, near misses, and accidents using organisational protocols.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure adherence to national and local airspace regulations and drone operation guidelines.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "verify that drone equipment meets licensing, certification, and airworthiness requirements.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "monitor compliance with data privacy and security standards during drone operations.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "maintain accurate records of drone usage, flight paths, and logs for regulatory audit readiness.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "update internal teams on changes in drone regulations or organisational safety policies.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "facilitate regular compliance audits and inspections of the drones.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "promote a safety and compliance culture through regular briefings and training support.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

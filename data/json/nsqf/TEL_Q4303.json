@@ -1,0 +1,2224 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q4303",
+  "qp_name": "TEL_Q4303",
+  "clean_code": "TEL_Q4303",
+  "total_pages": 62,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.454Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 16,
+    "total_pcs": 209,
+    "total_kus": 105,
+    "total_gs": 51,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N4301",
+      "nos_title": ".Install and Maintain",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. factors like the load you want to power and the duration of backup required",
+        "KU2. manufacturer's guidelines for wiring",
+        "KU3. battery bank is for backup power",
+        "KU4. battery types include alkaline, lithium-ion, lead-acid, and nickel-cadmium",
+        "KU5. store batteries in a cool, dry place away from direct sunlight and extreme temperatures",
+        "KU6. Not to damaged batteries as they are dangerous to use",
+        "KU7. manufacturer's instructions for installing batteries",
+        "KU8. baking soda and water to neutralize any acid buildup in battery terminals, then rinse with",
+        "KU9. heat or cold can degrade battery performance and lifespan",
+        "KU10. proper charging and discharging practices for the specific battery type",
+        "KU11. issues early and prevent problems",
+        "KU12. Proper disposal or recycling of old batteries is essential",
+        "KU13. safety precautions when working with batteries",
+        "KU14. maintenance activities, including inspections, charging/discharging cycles, and any issues",
+        "KU15. Risk assessment and hazard identification in the workplace",
+        "KU16. safe work practices in telecom electrical maintenance and installations",
+        "KU17. electrical isolation and LOTO"
+      ],
+      "gs": [
+        "GS1. read and understand documents and other materials",
+        "GS2. interact respectfully with end users/customers",
+        "GS3. liaise with customers/vendors",
+        "GS4. communicate in the local language (preferable)",
+        "GS5. work in coordination with team",
+        "GS6. work systematically with attention to detail and adherence to all safety requirements",
+        "GS7. maintain proper records as per given format"
+      ],
+      "modules": [
+        {
+          "module_title": "Inverter and Battery Banks",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "choose an inverter with the appropriate capacity for need",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "select compatible batteries that can handle the inverter's output capacity",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "turn off the main power supply to ensure safety while working on the installation",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "install the inverter in a well-ventilated, dry, and secure location, away from direct sunlight and extreme temperatures",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "ensure there is adequate space around the inverter for proper airflow and heat dissipation",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "connect the batteries in series or parallel, depending on your inverter's voltage requirements",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "connect the inverter to the battery bank using the provided cables, ensuring correct polarity",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "ground the inverter according to local electrical codes",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "power on the inverter and check for any warning lights or alarms",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "verify that the inverter is providing the desired output voltage and frequency",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "connect electrical loads to the inverter's output terminals",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "connect a charging source such as solar panels or a grid charger to keep the batteries charged",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "inspect the battery bank, inverter, and all connections for signs of wear, damage, or corrosion",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "tighten loose connections and replace damaged cables or connectors",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "monitor battery voltage and state of charge regularly",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "clean the battery terminals and apply anti- corrosion grease to prevent corrosion",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "check the water level in flooded lead-acid batteries and top up with distilled water as needed",
+              "sequence_order": 17,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "check the cooling fans and clean or replace them if necessary",
+              "sequence_order": 18,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "check for software updates from the manufacturer and install them as recommended",
+              "sequence_order": 19,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Battery Technology",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "make sure the correct type of battery is been used",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "insert the batteries with the correct polarity (+ and -) according to the markings",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "inspect batteries for any physical damage or leakage",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "clean battery terminals and cable connections to prevent corrosion",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "avoid deep discharges if possible, as they can shorten battery life",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "perform an equalization charge periodically",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "use a battery monitoring system to keep track of voltage, temperature, and other relevant parameters",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "plan for battery replacement based on the manufacturer's recommended service",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "avoid short circuits, overloads, and mishandling that could lead to accidents",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4302",
+      "nos_title": ".Design and Install",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. basic electrical principles, including voltage, current, resistance, and power",
+        "KU2. Ohm's law (V equal to IR) and how it applies to electrical circuits",
+        "KU3. electrical load requirements of the cell site, including the equipment, lighting, and HVAC",
+        "KU4. electrical materials, including wires, circuit breakers, panels, junction boxes, and conduit",
+        "KU5. single-phase AC power systems, including the generation, distribution, and utilization of",
+        "KU6. electrical safety procedures and guidelines to prevent electrical hazards and ensure personal",
+        "KU7. electrical circuits, including the selection of appropriate components like circuit breakers,",
+        "KU8. how to calculate voltage drop in electrical circuits to ensure that equipment receives the",
+        "KU9. grounding and bonding principles to ensure electrical safety and equipment protection",
+        "KU10. installation of protective devices such as surge protectors, circuit breakers, and ground fault",
+        "KU11. wiring techniques, cable installation, and cable management to maintain neat and organized",
+        "KU12. how to safely install cell site equipment, including power supplies, batteries, and backup",
+        "KU13. cable management"
+      ],
+      "gs": [
+        "GS1. write records as per given format",
+        "GS2. read and understand manuals, work orders, health and safety instructions, memos, reports",
+        "GS3. interact respectfully with supervisor/peers",
+        "GS4. communicate in the local language with the customers",
+        "GS5. work efficiently and effectively",
+        "GS6. work systematically with required attention to detail and adherence to all safety requirements",
+        "GS7. maintain proper etiquette in front of the customers"
+      ],
+      "modules": [
+        {
+          "module_title": "One-Phase Electrical Systems",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify the available power source and voltage level",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "calculate the total electrical load (in watts or VA) that the cell site will require",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "select the appropriate voltage level for the one-phase system, typically 120/240V in residential areas or 208/120V in commercial areas",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "design the grounding and bonding system to meet safety and code requirements",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "consult with local authorities and utility providers to obtain the necessary permits and approvals for the electrical installation",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure that all equipment is compliant with safety standards and suitable for outdoor or harsh environmental conditions",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "ensure proper grounding of the electrical system to prevent electrical hazards",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "follow best practices for cable management, routing, and labelling",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "install surge protection devices and backup power systems if needed to ensure uninterrupted service",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "connect the cell site equipment, including base stations, antennas, and power distribution units (PDUs), to the electrical system",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "verify that the connections are secure and properly grounded",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "test the equipment to ensure it functions correctly",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "conduct electrical tests to verify voltage levels, grounding, and circuit continuity",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "use appropriate testing equipment, such as multimeters and ground resistance testers",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "ensure that all wiring connections are tight and free from defects",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "implement safety measures, such as installing safety labels and signage, to protect personnel working at the cell site",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure that all electrical equipment is properly enclosed and secured to prevent unauthorized access",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Three-Phase Electrical Systems",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "total electrical load requirements of the cell site, including the power needs of the radios, antennas, HVAC",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "specify the required voltage and frequency for the three-phase system based on the equipment's specifications and regional standards",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "create a single-line diagram that outlines the electrical system's components, including transformers, switchgear, distribution panels, and loads",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "select an appropriate transformer to step up or down voltage levels as needed and to provide isolation and safety",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "choose and size circuit breakers, fuses, and protective devices to ensure safe and reliable power distribution",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "design distribution panels and subpanels to distribute power to various loads, ensuring balanced phases and redundancy if necessary",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "install transformers, switchgear, distribution panels, and other electrical components following manufacturer guidelines and local codes",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "run and terminate electrical cables and conductors according to the single-line diagram and applicable standards",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "establish grounding systems for both safety and equipment protection",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "make secure and properly torqued electrical connections, and label all cables and conductors for easy identification",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "install circuit breakers, fuses, surge protectors, and other protection devices as specified in the design",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "conduct comprehensive testing of the electrical system, including continuity checks, insulation resistance tests, and functional tests",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "verify that the three phases are balanced to ensure even power distribution and prevent voltage fluctuations",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4303",
+      "nos_title": ".Install, Maintain, and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. electrical principles, including voltage, current, resistance, and power",
+        "KU2. electrical circuits and how they work",
+        "KU3. Cisco, CompTIA, or vendors like Huawei or Ericsson",
+        "KU4. location and requirements for the cell site or BTS installation",
+        "KU5. proper grounding and cooling systems",
+        "KU6. monitoring systems and logs to pinpoint problems",
+        "KU7. factors like ambient temperature, humidity, and altitude when choosing the unit",
+        "KU8. appropriate generator size and capacity based on the telecom site's power requirements and",
+        "KU9. factors like startup surge currents and load variations",
+        "KU10. critical nature of power supply in telecom systems and the need for generator redundancy",
+        "KU11. telecom-specific protocols and procedures for generator operation and maintenance",
+        "KU12. heating, ventilation, and air conditioning (HVAC) systems, including the components,",
+        "KU13. various types of air conditioning units commonly used in telecom systems, such as split",
+        "KU14. proper installation of air conditioning units, including mounting, wiring, and ensuring",
+        "KU15. local and national electrical codes and safety regulations to ensure compliance during",
+        "KU16. refrigeration cycles, components (compressors, evaporators, condensers), and refrigerants",
+        "KU17. electrical and mechanical problems in air conditioning units, including issues with motors,",
+        "KU18. air conditioning units operate efficiently and minimize downtime",
+        "KU19. environmental regulations related to refrigerant handling and disposal",
+        "KU20. respond to emergencies, such as power failures, equipment malfunctions, or environmental"
+      ],
+      "gs": [
+        "GS1. read manuals, work orders, health and safety instructions, etc.",
+        "GS2. fill up appropriate technical forms and activity logs in required format of the organisation",
+        "GS3. maintain proper records as per prescribed format",
+        "GS4. communicate with supervisor and peers",
+        "GS5. communicate in the local language (preferably)",
+        "GS6. prioritize and execute tasks in a high-pressure environment and handle high pressure",
+        "GS7. handle multiple tasks and complete them successfully within timelines",
+        "GS8. use resources efficiently and effectively",
+        "GS9. maintain effective working relationships and team environment",
+        "GS10. share knowledge with other team members and colleagues",
+        "GS11. utilize appropriate communication channels to escalate unresolved problems to relevant"
+      ],
+      "modules": [
+        {
+          "module_title": "Electrical Components in Telecom Systems",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "gather the required tools and equipment, including multimeters, insulation resistance testers, cable testers, crimping tools, and soldering equipment",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "follow the installation guidelines provided by the telecom equipment manufacturer",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "disconnect power sources and lockout/tagout procedures before starting any work",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Install power distribution equipment, backup power systems (e.g., batteries, generators), and grounding systems",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "mount and connect antennas and radio equipment",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "install surge protectors and lightning arrestors",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "connect power supplies, HVAC systems, and data cabling",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "set up the network operations center with proper electrical wiring and network infrastructure",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "install server racks, power distribution units (PDUs), and backup power systems",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "connect network switches, routers, and servers",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "inspect electrical components for signs of wear, damage, or corrosion",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "monitor backup power systems and replace batteries as needed",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "keep electrical components clean and free of dust, which can lead to overheating and malfunctions",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "use compressed air or specialized cleaning tools to remove dust and debris",
+              "sequence_order": 14,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "schedule to replace or refurbish components before they fail",
+              "sequence_order": 15,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "test backup power systems regularly to ensure they function during power outages",
+              "sequence_order": 16,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "use diagnostic tools like multimeters, oscilloscopes, and network analyzers to identify issues",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "disconnect or isolate components to narrow down the source of the problem",
+              "sequence_order": 18,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "repair or replace faulty electrical components, such as power supplies, circuit breakers, or damaged wiring",
+              "sequence_order": 19,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "thoroughly test the system to ensure the issue is resolved",
+              "sequence_order": 20,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Generators",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "conduct a thorough site survey to determine the generator's placement, size requirements, fuel source, and environmental considerations",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "choose an appropriate generator based on power requirements, backup duration, and site- specific conditions (e.g., altitude, temperature, humidity)",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "ensure compliance with local permits, regulations, and safety standards for generator installation",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "construct a stable concrete foundation for the generator",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "securely mount the generator to prevent vibrations and reduce noise",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "establish a reliable fuel supply system, including fuel tanks, pipes, and safety mechanisms",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "connect the generator to the telecom system's electrical panel, ensuring proper grounding and wiring",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "conduct initial start-up and load testing to ensure the generator operates correctly and can handle the anticipated load",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "perform routine visual inspections of the generator, checking for leaks, loose connections, and signs of wear or damage",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "regularly change engine oil, fuel filters, and air filters according to the manufacturer's recommendations",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "monitor the cooling system, including coolant levels and radiator cleanliness",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "check and maintain the generator's batteries, including cleaning terminals and ensuring they are fully charged",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "monitor fuel levels, condition, and quality regularly",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "clean fuel tanks and replace fuel filters as needed",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "periodically test the generator under load conditions to ensure it can handle the telecom system's power demands",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC36",
+              "pc_description": "use diagnostic tools and software provided by the generator manufacturer to identify issues",
+              "sequence_order": 16,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC37",
+              "pc_description": "monitor the generator's alarm system for any alerts or warnings and address them promptly",
+              "sequence_order": 17,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "troubleshoot fuel delivery problems, such as clogs, leaks, or contaminated fuel",
+              "sequence_order": 18,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Air Conditioners",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC39",
+              "pc_description": "ensure that the installation location complies with safety and environmental regulations",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC40",
+              "pc_description": "select an air conditioner unit that meets the cooling capacity and efficiency requirements of the site",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC41",
+              "pc_description": "install the air conditioner unit securely on a level surface to prevent vibrations and damage",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC42",
+              "pc_description": "ensure proper ventilation and clearance for airflow around the unit",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC43",
+              "pc_description": "connect the air conditioner to a stable power source with the correct voltage and amperage",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC44",
+              "pc_description": "check for refrigerant leaks during installation",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC45",
+              "pc_description": "clean or replace air filters regularly to maintain airflow and efficiency",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC46",
+              "pc_description": "clean the evaporator and condenser coils to remove dirt and debris, which can reduce efficiency",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC47",
+              "pc_description": "lubricate moving parts, such as fan motors and bearings, as per the manufacturer's recommendations",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC48",
+              "pc_description": "monitor and adjust the temperature settings to maintain the desired operating conditions",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC49",
+              "pc_description": "regularly inspect electrical components for signs of overheating or damage",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC50",
+              "pc_description": "check the power supply and wiring for faults or loose connections",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC51",
+              "pc_description": "inspect and repair any mechanical components, like fans or compressors, that are not functioning correctly",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4304",
+      "nos_title": ".Upgrade electrical",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. electrical systems, including wiring, distribution panels, circuit breakers, transformers, and",
+        "KU2. power quality assessments using monitoring equipment to evaluate voltage stability,",
+        "KU3. electrical load requirements to determine the capacity needed for current and future",
+        "KU4. surge protection devices and strategies to safeguard telecom systems from voltage spikes",
+        "KU5. backup power systems, such as generators, uninterruptible power supplies (UPS), and",
+        "KU6. grounding and bonding systems to minimize electrical faults and ensure safety",
+        "KU7. energy-saving practices and technologies to reduce power consumption and operational",
+        "KU8. electrical issues, including identifying faulty components, loose connections, and voltage",
+        "KU9. telecom equipment specifications and power requirements to ensure compatibility with the",
+        "KU10. power distribution principles and practices, including load balancing and distribution panel",
+        "KU11. electrical drawings, schematics, and blueprints to plan and execute upgrades accurately",
+        "KU12. short circuits, overloads, and voltage fluctuations",
+        "KU13. electrical testing equipment such as multimeters, insulation testers, and thermal imaging",
+        "KU14. backup power systems (e.g., generators, UPS systems) and their integration into the",
+        "KU15. proper grounding and bonding techniques to ensure electrical safety and equipment",
+        "KU16. predictive maintenance practices for electrical systems, including cleaning, lubrication, and"
+      ],
+      "gs": [
+        "GS1. communicate respectfully with customer/customer facing teams",
+        "GS2. read and understand documents and reports",
+        "GS3. speak and understand English/regional language",
+        "GS4. read and write in English or any regional language",
+        "GS5. manage time efficiently",
+        "GS6. listen carefully and respond appropriately",
+        "GS7. work systematically with attention to detail"
+      ],
+      "modules": [
+        {
+          "module_title": "Electrical Distribution Systems and Power Quality",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "understand the existing electrical infrastructure, power requirements, and power quality issues",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "determine the specific power requirements of the site, considering the number of telecom equipment racks, air conditioning units, lighting, and any other electrical loads",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "conduct power quality analysis to identify and address issues such as voltage fluctuations, harmonics, voltage sags, and surges",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "use power quality monitoring equipment to collect data",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "balance the electrical loads to ensure even distribution of power among phases to prevent overloading and voltage imbalances",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "assess the capacity of the existing electrical distribution system to handle the increased load",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "upgrade the electrical distribution system",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "replacing or upgrading transformers, circuit breakers, switchgear, and distribution panels",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "adding additional electrical circuits and outlets to accommodate new equipment",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "install backup power solutions such as uninterruptible power supplies (UPS) or backup generators to ensure uninterrupted operation during power outages or fluctuations",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "install surge protection devices to safeguard sensitive telecom equipment from voltage spikes and surges",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "implement power factor correction equipment to improve power factor and reduce reactive power charges",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "ensure proper grounding and bonding of electrical equipment to mitigate the risk of electrical faults and improve safety",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "implement voltage regulation equipment to maintain stable voltage levels within the desired range, especially in areas with frequent voltage fluctuations",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "establish a regular maintenance schedule to inspect and maintain electrical distribution equipment",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "continuously monitor power quality and equipment performance to proactively address issues",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure that all electrical upgrades and installations comply with local electrical codes, industry standards, and safety regulations",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "consider redundant power sources and distribution paths to enhance system reliability and minimize downtime",
+              "sequence_order": 18,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Electrical Testing and Troubleshooting",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "develop a strong foundation in electrical principles, including voltage, current, resistance, and power calculations",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "read and interpret electrical diagrams and schematics to understand the wiring and connections in cell sites, BTS, NOS, and related equipment",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "operate a wide range of electrical testing instruments, such as multimeters, oscilloscopes, clamp meters, and power analyzers",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "accurately measure voltage and current levels to assess the health of electrical circuits and components",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "recognize common electrical faults, such as short circuits, open circuits, and ground faults, through systematic testing and analysis",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "effectively troubleshoot and isolate electrical problems in telecom systems to minimize downtime",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "assess power quality parameters, including voltage stability, harmonics, and transient voltage surges, using appropriate monitoring and testing equipment",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "implement corrective actions to address electrical issues, including repairing or replacing faulty components and conducting preventive maintenance",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "generate comprehensive power quality reports to identify areas for improvement and optimize the performance of cell site, BTS, and NOS equipment",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Electrical Maintenance and Upgrade",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC28",
+              "pc_description": "perform detailed electrical and power quality assessments for cell sites, BTS, NOS, and other sectors to identify potential issues, capacity constraints, and areas for improvement",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "analyze the current and future load requirements of the telecom systems to determine if existing electrical infrastructure is sufficient or if upgrades are needed",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "develop upgrade plans that include selecting appropriate electrical components (circuit breakers, transformers, wiring, etc.) and coordinating the installation of new equipment to meet increased power demands",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "utilize power quality monitoring tools and equipment to assess voltage levels, harmonics, frequency variations, and other electrical parameters affecting the stability of the power supply",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "identify and rectify voltage fluctuations and sags that can disrupt the operation of telecom equipment by installing voltage stabilizers or regulators",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "install surge protectors and lightning arrestors to safeguard telecom systems from transient voltage spikes and lightning strikes",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "continuously monitor and maintain proper grounding systems to minimize the risk of electrical faults and ensure personnel safety",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "assess the reliability of backup power systems (e.g., generators, uninterruptible power supplies) and make necessary upgrades to ensure seamless operation during power outages",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC36",
+              "pc_description": "identify opportunities to improve energy efficiency, such as optimizing cooling systems, and implementing energy-saving technologies like LED lighting",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC37",
+              "pc_description": "design electrical systems with scalability in mind to accommodate future growth and technology advancements",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "develop and adhere to a schedule for routine electrical maintenance tasks, including cleaning, tightening connections, and lubricating moving parts",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4305",
+      "nos_title": ".Develop and",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. electrical systems, including generators, transformers, circuit breakers, and power",
+        "KU2. local and national electrical codes, regulations, and industry standards governing electrical",
+        "KU3. electrical safety protocols, including lockout/tagout procedures, personal protective",
+        "KU4. risk assessments to identify potential electrical hazards and determine the appropriate level",
+        "KU5. protection devices, such as surge protectors, circuit breakers, relays, and fuses, and the",
+        "KU6. electrical faults, short circuits, overloads, and ground faults to design protection systems",
+        "KU7. operation of protection devices to ensure selective tripping or disconnecting of faulty circuits",
+        "KU8. surge protection measures to safeguard electrical systems from voltage spikes, surges, and",
+        "KU9. ground-fault protection systems to detect and isolate ground faults quickly, preventing",
+        "KU10. fault detection and protection methods to mitigate the risk of electrical fires",
+        "KU11. overcurrent protection, including the selection and coordination of circuit breakers and fuses",
+        "KU12. emergency shutdown procedures to safely disconnect power during critical situations",
+        "KU13. remote monitoring and alarming systems to provide real-time alerts and notifications of",
+        "KU14. electrical protection systems with control and automation systems to enable intelligent and",
+        "KU15. regular testing and maintenance of protection systems to ensure they remain operational",
+        "KU16. documentation of protection system designs, installation records, test results, and",
+        "KU17. regulatory requirements and standards specific to electrical protection systems in various"
+      ],
+      "gs": [
+        "GS1. maintain proper records as per given format",
+        "GS2. read and comprehend technical manual and literature",
+        "GS3. read and understand work orders, health and safety instructions, memos, reports etc",
+        "GS4. communicate with supervisor and fellow technicians",
+        "GS5. communicate in the local language with the customers",
+        "GS6. maintain proper etiquette in front of the customers",
+        "GS7. work with minimum disturbance"
+      ],
+      "modules": [
+        {
+          "module_title": "Electrical Protection Systems",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify potential electrical hazards and conducting thorough risk assessments to determine the level of protection required",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "stay up-to-date with relevant electrical codes and standards (e.g., NEC, IEC) to ensure compliance and safety in the design and implementation of protection systems",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "choose the right protective devices, such as circuit breakers, fuses, relays, and surge protectors, based on the specific needs of the electrical system and its components",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "configure protection settings, including current and voltage levels, time delays, and coordination with upstream and downstream devices to ensure proper fault isolation",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "establish effective grounding and bonding systems to reduce the risk of electrical faults and to protect against electrical shock hazards",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "incorporate redundancy in protection systems to enhance reliability and minimize downtime in case of a fault or failure",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "divide the electrical system into protection zones and design protective devices and schemes for each zone, considering critical equipment and personnel safety",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "perform arc flash hazard analysis to assess the potential energy release in the event of a fault and design protective measures accordingly",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "configure protective relays to detect abnormal conditions and trip circuit breakers or initiate other protective actions when necessary",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "implement various fault detection methods, including overcurrent, differential, and ground fault protection, as appropriate to the system",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "incorporate remote monitoring and control capabilities to assess system health, receive alarms, and remotely operate protective devices",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "maintain accurate documentation of protection schemes, settings, and equipment layouts, and ensure clear labeling of protective devices and zones",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "thoroughly test and commission protection systems to validate their proper operation under normal and fault conditions",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "develop and implement a regular maintenance plan, including periodic testing and inspection of protective devices to ensure ongoing reliability",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "continuously assess and improve protection systems based on evolving technology, system changes, and lessons learned from past incidents",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure that all protection systems comply with local, national, and international regulations and standards",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "establish comprehensive emergency response plans to address electrical faults and coordinate actions to minimize downtime and safety risks",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Network Infrastructure and Cable Installation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "evaluate the specific needs of the network infrastructure, including bandwidth, scalability, and connectivity requirements, to determine the scope of the installation project",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "create a detailed network topology design, including the placement of routers, switches, access points, and cable routes, to ensure optimal performance and reliability",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "choose the appropriate networking hardware, including routers, switches, access points, and cables, based on the network design and budget constraints",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "develop a cable routing plan that considers factors such as cable length, signal integrity, cable type (e.g., Ethernet, fiber optic), and cable management",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "prepare the installation site by ensuring adequate power supply, environmental controls, and physical security measures",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "install and terminate network cables, connectors, and jacks, following industry standards and best practices for cable management and labelling",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "conduct testing and certification of installed cables to verify proper functionality, signal quality, and compliance with performance standards (e.g., Ethernet cable testing)",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "configure network devices, such as routers and switches, to optimize network performance and security based on the design specifications",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "implement security measures, including firewalls, intrusion detection systems, and access controls, to protect the network infrastructure from cyber threats",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "maintain comprehensive documentation of the network installation, including cable maps, device configurations, and test results, for future reference and troubleshooting",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "ensure that the network installation complies with relevant industry standards, codes, and regulations, including data privacy and security regulations",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "develop troubleshooting skills to identify and resolve network issues promptly, minimizing downtime and disruptions",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "develop contingency plans and procedures to respond to network emergencies, such as equipment failures or security breaches",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9101",
+      "nos_title": ".Organize Work and",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. strategies pertinent to their field (such as internet searches, asking peers and managers,",
+        "KU2. key performance indicators for the new tasks",
+        "KU3. feedback processes and formats",
+        "KU4. timelines and goals as well as their relevance to work allocated",
+        "KU5. importance of quality and timely delivery of the product/service",
+        "KU6. escalation matrix and its importance, especially in case of emergencies",
+        "KU7. ways of time and cost management",
+        "KU8. rules/regulation for maintaining health and safety at workplace",
+        "KU9. meaning of hazard, different types of health and safety hazards found in the workplace, risks",
+        "KU10. relevant signage, warnings, labels or descriptions on equipment, etc. while carrying out work",
+        "KU11. procedures to report breaches in health, safety and security",
+        "KU12. organisation's procedures for different emergency situations and the importance of following",
+        "KU13. different methods of cleaning, disinfection, sterilization, and sanitization",
+        "KU14. significance of personal hygiene practice including hand hygiene",
+        "KU15. path of disease transmission",
+        "KU16. correct method of donning and doffing of PPE",
+        "KU17. ways of managing resources and material efficiently",
+        "KU18. common electrical problems and common practices of conserving electricity",
+        "KU19. categorization of waste into dry, wet, recyclable, non-recyclable and items of single-use",
+        "KU20. organisation's procedures for minimizing waste",
+        "KU21. waste management and methods of waste disposal",
+        "KU22. common sources of pollution and ways to minimize it"
+      ],
+      "gs": [
+        "GS1. improve and modify work practices",
+        "GS2. complete tasks efficiently and accurately within stipulated time",
+        "GS3. develop skills and mastery of the technologies prevalent in the industry",
+        "GS4. write in at least one language and complete written work with attention to detail",
+        "GS5. utilize time and manage workload efficiently",
+        "GS6. read and comprehend instructions and documents",
+        "GS7. accept feedback in a constructive way",
+        "GS8. seek clarifications from superior about the job requirement",
+        "GS9. read and comprehend statutory documents relevant to safety and hygiene",
+        "GS10. refer all anomalies to the concerned persons",
+        "GS11. analyze situations and make appropriate decisions",
+        "GS12. decide the most suitable course of action for completing the task within resources"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform work as per quality standards",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "keep workspace clean and tidy",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform individual role and responsibilities as per the job role while taking accountability for the work",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "record/document tasks completed as per the requirements within specific timelines",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "implement schedules to ensure timely completion of tasks",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify the cause of a problem related to own work and validate it",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "analyse problems accurately and communicate different possible solutions to the problem",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain safe, healthy and secure working environment",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "comply with organisation’s current health, safety, security policies and procedures",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "check for water spills in and around the work space and escalate these to the appropriate authority",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "report any identified breaches in health, safety, and security policies and procedures to the designated person",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use safety materials such as goggles, gloves, ear plugs, caps, ESD pins, covers, shoes, etc.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "avoid damage of components due to negligence in ESD procedures or any other loss due to safety negligence",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "identify hazards such as illness, accidents, fires or any other natural calamity safely, as per organisation's emergency procedures, within the limits of individual’s authority",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "participate regularly in fire drills or other safety related workshops organised by the company",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "report any hazard outside the individual’s authority to the relevant person in line with organisational procedures and warn others who may be affected",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "maintain appropriate posture while sitting/standing for long hours",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "handle heavy and hazardous materials with care, while maintaining appropriate posture",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "sanitize workstation and equipment regularly",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "clean hands with soap, alcohol-based sanitizer regularly",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "avoid contact with anyone suffering from communicable diseases and take necessary precautions",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "take safety precautions while travelling e.g. maintain 1m distance from others, sanitize hands regularly, wear masks, etc.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "report hygiene and sanitation issues to appropriate authority",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "follow recommended personal hygiene and sanitation practices, for example, washing/sanitizing hands, covering face with a bent elbow while coughing/sneezing, using PPE, etc.",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conserve material/energy/electricity",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "optimize usage of material including water in various tasks/activities/processes",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "use resources such as water, electricity and others responsibly",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "carry out routine cleaning of tools, machine and equipment",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "optimize use of electricity/energy in various tasks/activities/processes",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "perform periodic checks of the functioning of the equipment/machine and rectify wherever required",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "report malfunctioning and lapses in maintenance of equipment",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "use electrical equipment and appliances properly",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Use effective waste management/recycling practices",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC30",
+              "pc_description": "identify recyclable, non-recyclable and hazardous waste",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "deposit recyclable and reusable material at identified location",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "dispose non-recyclable and hazardous waste as per recommended processes",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

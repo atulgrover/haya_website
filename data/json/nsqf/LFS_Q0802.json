@@ -1,0 +1,2327 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "LFS/Q0802",
+  "qp_name": "LFS_Q0802",
+  "clean_code": "LFS_Q0802",
+  "total_pages": 89,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.149Z",
+  "stats": {
+    "total_nos": 10,
+    "total_modules": 26,
+    "total_pcs": 200,
+    "total_kus": 159,
+    "total_gs": 73,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "LFS/N0821",
+      "nos_title": ".Discuss about life",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. basics of mathematical calculations and measurement",
+        "KU2. application of cutting fluids and compounds with regard to a range of different materials, and",
+        "KU3. how to check the workpiece and the selection of the right measuring equipment",
+        "KU4. how to check that the measuring equipment is within current calibration dates and that the",
+        "KU5. various mechanical fastening devices that are used. Fastening devices: nuts; bolts; machine",
+        "KU6. basics of different types of locking devices used in machines",
+        "KU7. generic protocols to be adopted for dismantling/re-assembly of various types of equipment",
+        "KU8. methods of identification, application, fitting and removal of different types of bearings and",
+        "KU9. how to make adjustments to components/assemblies to ensure they function correctly.",
+        "KU10. how components are to be aligned, adjusted and positioned before securing them, and the",
+        "KU11. sterilization requirements for maintenance tools and guidelines to maintain the sterility",
+        "KU12. methods of visual inspection and sound observation during maintenance",
+        "KU13. common machines in life sciences facilities",
+        "KU14. equipment operation and control procedures to be applied during the maintenance activity",
+        "KU15. health and safety requirements and safe working practices and procedures required for the",
+        "KU16. hazards associated with the mechanical maintenance activities and how they can be",
+        "KU17. basics of cleaning and waste disposal guidelines",
+        "KU18. basics of Good Manufacturing practices applicable to engineering and maintenance function",
+        "KU19. basic guidelines for documentation in compliance with ALCOA principles and Data Integrity",
+        "KU20. importance of maintenance documentation following the maintenance activity, critical",
+        "KU21. environmental sustainable procedures to save water and energy",
+        "KU22. eco-friendly waste disposal procedures"
+      ],
+      "gs": [
+        "GS1. use written communication skills to fill up appropriate technical forms, process charts, activity",
+        "GS2. use reading and comprehension skills to read and interpret information correctly from various",
+        "GS3. use communication skills to convey and share technical information clearly using appropriate",
+        "GS4. apply decision making skills to take decisions with respect to his/her work without affecting",
+        "GS5. apply problem-solving skills to find solutions for workflow-related difficulties",
+        "GS6. apply planning and organizing skills to plan, prioritize and sequence work operations as per",
+        "GS7. apply critical thinking skills to analyze information relevant to work",
+        "GS8. apply time management skills to manage own time for achieving better results",
+        "GS9. apply computational skills to undertake basic numerical computations and calculations"
+      ],
+      "modules": [
+        {
+          "module_title": "Discuss about Life Sciences industry",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Discuss the key segments within the Life Sciences industry (pharma, biologics, medical devices) in both the Indian and global contexts.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Demonstrate understanding of regulatory frameworks such as WHO, FDA, and EU guidelines for GLP, cGMP, and GDP in a cleanroom setting",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Identify the essential technical and interpersonal skills required to perform maintenance in a pharmaceutical, biologics, or medical device manufacturing facility",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Demonstrate understanding of terms related to maintenance documentation, such as Work Orders, Maintenance Logs, and Standard Operating Procedures (SOPs).",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Essential concepts for manufacturing design and maintenance",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "discuss how maintenance activities contribute to product quality, equipment efficiency, and adherence to current Good Manufacturing Practices (cGMP).",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify preventive maintenance in reducing equipment downtime and minimizing unexpected breakdowns.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "analyze the impact of equipment breakdowns on production timelines, product quality, and compliance with regulatory standards",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "apply root cause analysis to identify underlying issues leading to equipment breakdown or process failure.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "assess potential process deviations and material defects that can lead to non-conforming products.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "conduct risk assessments to identify potential hazards during maintenance shutdowns, including project and annual shutdowns.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "perform statistical analysis during maintenance activities to monitor performance and identify areas for improvement.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0805",
+      "nos_title": ".Ensure smooth",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. importance of time management",
+        "KU2. concepts of project management",
+        "KU3. fundamental concepts of 5S",
+        "KU4. importance of team management",
+        "KU5. how to resolve team conflicts without affecting work",
+        "KU6. importance of manpower management and how it is forecasted",
+        "KU7. cGMP guidelines",
+        "KU8. importance of training team members on the maintenance operations in adherence to safety",
+        "KU9. common causes of variation and corrective action required",
+        "KU10. operational health and safety (OHS) hazards and controls, including limitations of protective",
+        "KU11. requirements of different shutdowns and procedures to be followed in the event of a power",
+        "KU12. environmental issues and controls relevant to the process, including waste/rework collection"
+      ],
+      "gs": [
+        "GS1. use verbal communication skills to communicate work schedules clearly and precisely",
+        "GS2. apply problem-solving skills to resolve workplace conflicts",
+        "GS3. analyze past data and apply critical thinking skills to identify resource needed for",
+        "GS4. apply planning and organizing skills to plan and organize resources to ensure that",
+        "GS5. use verbal communication skills to interact with teammates and with other production teams",
+        "GS6. apply problem-solving skills to solve conflicts within the team on work schedules and",
+        "GS7. apply critical thinking skills to identify alternate approaches/resource deployment/equipment",
+        "GS8. apply analytical skill to analyze operations data and information to identify assembly,",
+        "GS9. apply critical thinking skills to prevent faults and anomalies before the breakdown"
+      ],
+      "modules": [
+        {
+          "module_title": "Maintenance Schedules Management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "prepare a list of areas in production or manufacturing facility where maintenance is to be done",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "plan and schedule the maintenance activities (preventive/periodic shutdown maintenance)",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure zero impact or disturbance in planned production activities due to scheduled maintenance",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "update the maintenance plan as part of new equipment introduction",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify the manpower requirement based on the maintenance required and their specialized field of utility",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "plan maintenance as per the vacation schedule for all employees and ensure that work is not affected adversely",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "assign the required workmen/workforce for maintenance activities as per planned schedule",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "monitor and ensure the punctuality of workmen at the workplace as per the maintenance schedule",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintenance Operations Management",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "ensure availability and adherence of maintenance team with Material Safety Data Sheets (MSDS), maintenance and relevant production/ lab procedures, work instructions and manufacturer’s instructions for all maintenance activities at the workplace",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure the maintenance team is trained and competent to follow maintenance-related procedures",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "ensure that all the documented procedures are followed by self and team during the changeover, project shutdown and annual shut down",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "provide technical guidance to the maintenance team for any troubleshooting and severe risk/ hazard",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "deal with accidental damage, if any, caused during maintenance activity",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "report to the impacted stakeholders, production planning team and QA for any disturbances in material flow or equipment",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "GMP Related Critical Activities",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "analyze the risks for the working environment in the area where maintenance is to be performed",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "assess the impact of every new spare part/ lubricant/chemical on machine/ utility performance, clean room state, and product quality",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "approve the job analysis and risk assessment analysis for every maintenance technician",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "provide line clearance for starting of maintenance activity in consultation with the impacted area in charge and QA team",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "oversee cleaning validation and ensure maintenance work does not impact the cleanroom state of the area under maintenance or product quality",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Environmental sustainability",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "create awareness in the team about organizational environment sustainability guidelines and procedures",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "ensure energy conservation by following energy-efficient work procedures and maintenance tools and appliances",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "ensure no leakage of water at work premises",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "ensure that waste disposal is done by environment-friendly methods as per SOPs",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure that the waste garnered from the activity is disposed of with zero impact on the environment in compliance to defined procedures",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0111",
+      "nos_title": ".Ensure adherence to",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. company's procedures for the environment, health, and safety",
+        "KU2. implications that any non-compliance with health, safety and security may have on",
+        "KU3. workplace hazards in the manufacturing facility in the life sciences sector, how and when to",
+        "KU4. limits of individual responsibility for dealing with hazards",
+        "KU5. chemical substances, their characteristics, and required precaution and safety measures",
+        "KU6. gowning procedure",
+        "KU7. the organization's emergency procedures for different emergencies and the importance of",
+        "KU8. evacuation procedures for employees, contract staff and visitors",
+        "KU9. how to summon medical assistance and the emergency services, where necessary",
+        "KU10. health, safety and accident reporting procedures and the importance of reporting in GMP",
+        "KU11. different types of breaches in the environment, health, safety and security and how and",
+        "KU12. WHO guidelines for personal hygiene",
+        "KU13. type of safety gears and procedure to use them",
+        "KU14. the importance of material segregation and 5S system",
+        "KU15. WHO guidelines for handling and storing hazardous material"
+      ],
+      "gs": [
+        "GS1. use reading and comprehension skills to understand the various coding systems and to read",
+        "GS2. use listening skills to follow the instructions and procedures during emergency alarms",
+        "GS3. use written communication skills to accurately record every information required to be",
+        "GS4. apply planning and organizing skills to plan and organize tools and material required for work",
+        "GS5. use critical thinking skills to take relevant actions on the accidents and breach in compliance",
+        "GS6. apply decision-making skills to make balanced judgments within the authority while dealing",
+        "GS7. apply problem-solving skills to find solutions for workflow-related difficulties",
+        "GS8. use verbal communication skills to communicate with supervisor/ manager/ EHS Incharge or"
+      ],
+      "modules": [
+        {
+          "module_title": "Follow health and hygiene protocols",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "comply with health and personal hygiene- related protocols as per WHO standards, revised GMP and ICH GMP guidelines",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "wash hands before entering in the production area with soap/alcohol based sanitisers",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "report any allergy, sickness or any other environment-related breach before or after entering the work premises to the designated person",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "take preventive actions on the report of any allergy, sickness or any other environment-related breach reported by subordinates",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "follow gowning procedures while entering an environment controlled work area and ensure the adherence of the same by others",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Adherence to safety and security procedures",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "comply with safety and security policies and procedures",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "ensure the use of appropriate safety gears like headgear, masks, gloves and other accessories as mentioned in the guidelines, by self and subordinates while carrying out work",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "take preventive and corrective actions based on the report of any identified breaches in safety and security policies and procedures by subordinates",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "ensure that discipline for material segregation and 5S system is followed at the storage area",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "comply with material handling, segregation, and storage guidelines for hazardous material",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "take corrective actions for reported hazards in consultation with EHS personnel",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "complete the records of safety drills and trainings undertaken by self and subordinates",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Adherence to emergency procedures",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "report any hazards that he/she is not competent to deal with the relevant EHS personnel and warn other people who may be affected",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "raise the alarm and inform the concerned person immediately for action in the cases of spill, fall, injury, toxic inhale, fire or explosion",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "follow emergency protocols for any alarms and ensure the safety of subordinates in the area under supervision",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "follow emergency procedures efficiently",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure injured employees are provided appropriate first aid and medical aid",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0806",
+      "nos_title": ".Perform",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. basics of ALCOA PLUS Principles used in the Life Sciences Sector",
+        "KU2. basics of Good Documentation Practices (GDP) followed in the Life Sciences Sector",
+        "KU3. common formats and processes followed for filling machine/ equipment master, risk",
+        "KU4. management of the CMMS/Hybrid computerized system",
+        "KU5. operating procedure of computerized indent system for spare parts",
+        "KU6. maintenance-related labelling and tagging guidelines as per WHO/ GMP",
+        "KU7. steps to be taken in a change control procedure",
+        "KU8. list of GMP critical documents in a regulated facility",
+        "KU9. process of recording the outcome of Design Qualifications (DQ), Installation Qualification (IQ)"
+      ],
+      "gs": [
+        "GS1. use written communication skills to record and communicate details of work done to",
+        "GS2. use listening skills to understand the instructions and procedures to be followed",
+        "GS3. use verbal communication skills to communicate with cross-functional teams and supervisor",
+        "GS4. apply decision making skills to disclose information only to those who have the right and need",
+        "GS5. apply customer centricity to remain compliant with data integrity rules, GMP guidelines and to",
+        "GS6. apply problem-solving skills to find solutions for workflow-related difficulties",
+        "GS7. use verbal communication to respond to audit queries and participate in audit interviews as"
+      ],
+      "modules": [
+        {
+          "module_title": "Reporting of maintenance activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "follow ALCOA PLUS guidelines for documentation",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform root cause analysis based on review of every reported breakdown incident/job work action and report to production and QA for further consultation",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify and document Corrective Action and Preventive Action (CAPA) for every incident and deviations in compliance with GMP and other regulatory guidelines",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "perform risk analysis and develop a contingency plan for each reported and unprecedented cause or error or critical incident",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "maintain the equipment master and its qualification, validation, and calibration records",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "review and approve the logbook entries and trial run records",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain engineering and maintenance related document",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "maintain Operation and Maintenance (O&M) manuals, schematic drawings, procedures, protocols, reports, and log of system revisions for every equipment/ machine under the scope of work",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "maintain checklists for breakdown maintenance based on experience, maintenance manuals and manufacture’s recommendations for every equipment",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "determine the procedures for maintenance, installation, modification/repair of equipment and provide inputs to QA for drafting the SOPs",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "record the trial run readings in a logbook, before and after every activity",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "ensure the appropriate status labels are placed on the machine/ equipment/ part, post every maintenance completion",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "coordinate with QA personnel for documentation of qualification/ re-qualification records of the machine/ equipment/part",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "record risk assessment analysis for every new spare part/ lubricant/ any changes in machine parameters during maintenance and seek approval from QA team",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "review and approve the change control request in case of change of any spare part in consultation with QA, production and regulatory team and document the details of same",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "ensure all GMP critical documents and source records are maintained as per ALCOA PLUS guidelines and are made available promptly for audits",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Manage the Computerized Maintenance Management System (CMMS)/ computerized hybrid system",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure the logs and entries are made in a computerized maintenance management system (CMMS)/ a hybrid system if available in the organization",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure recording of the calibration records for equipment in the CMMS/ a hybrid system",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "maintain the master list of tools, equipment, and spare parts",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "sort tools, equipment, and spare parts into various categories like critical, general, special purpose, etc",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "maintain the status of tools and equipment in a CMMS/ hybrid system",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0807",
+      "nos_title": ".Coordinate with a",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. company's policies on preferred language of communication, reporting and escalation policy,",
+        "KU2. reporting structure",
+        "KU3. importance of team management in team building",
+        "KU4. emotions and stress management strategies",
+        "KU5. the types of possible disabilities among people with disability (PwD)",
+        "KU6. the challenges faced by PWD (Person with Disability)",
+        "KU7. importance of displaying empathy towards PwD",
+        "KU8. the right way to use the laws acts, and provisions defined for PwD by the statutory bodies",
+        "KU9. the guidelines laid on Sexual Harassment of Women at Workplace (Prevention, Prohibition",
+        "KU10. importance of respecting all genders, religion, caste, and culture",
+        "KU11. how to develop a collaborative culture for cross-culture and gender-inclusive team",
+        "KU12. various cost optimization strategies",
+        "KU13. process of developing CAPA and contingency plans",
+        "KU14. various approach to define key performance indicators and methods to evaluate",
+        "KU15. time management strategies"
+      ],
+      "gs": [
+        "GS1. use reading and comprehension skills to read job sheets and interpret technical details",
+        "GS2. how to use written communication skills to write e-mails to communicate any job-related",
+        "GS3. how to use reading skills to read notes/comments from the supervisor",
+        "GS4. apply team-building skills while interacting with teammates and while managing the",
+        "GS5. use verbal communication skills to communicate with colleagues and supervisor to maintain",
+        "GS6. apply critical thinking skills to analyze and identify when to report an issue/concern to the",
+        "GS7. apply team-building skills to improve work processes by interacting with others and adopting"
+      ],
+      "modules": [
+        {
+          "module_title": "Coordinate with manager",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "follow the regulatory guidelines received from the manager",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "plan the maintenance operations to meet the objective, timelines and cost optimization targets in coordination with manager",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure timely intimation to the manager about planned absence and the backup plan for smooth operations during the absence",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "escalate the critical issues/ alarming situations to the manager",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "inform the identified cause and effect relationships for deviations and assist management in the development of CAPA and contingency plans",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "seek work or behavioral feedback from the manager",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "coordinate with the manager on learning goals and seek guidance on team’s performance improvement",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Coordinate with cross-functional teams",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "provide inputs to cross-functional teams for estimation of time and cost for installation and maintenance",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "coordinate with warehouse and QA to replenish any necessary supplies/ consumables and spares",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "follow the protocols of cross-functional sections to ensure compliance with procedural and regulatory guidelines",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "coordinate with production, quality, and supply chain teams to derive the maintenance schedules for zero impact on productivity",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "coordinate with production, quality team for line clearance, change control approvals as well as calibration and validation activities",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "respect other’s time and ensure to meet timelines for any cross-functional deliverable",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "collaborate with the cross-function team and resolve interpersonal conflicts at work, if any",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "coordinate with QA and regulatory auditors for audit of electrical maintenance work",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "answer the queries of auditors in an appropriate way",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Manage the maintenance team",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure completion of technical and behavioral training of maintenance team members before the start of work and completion of their training records",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure communication of organizational objective and regulatory guidelines to the team and set the key performance indicator for each team member",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "evaluate the performance of team members periodically and engage them in performance assessment dialogue and provide work-related and behavioral feedback",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "guide team members on the learning goals and provide opportunities to perform, learn, and grow",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "guide team members for managing their time effectively",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Sensitivity towards all genders and people with disability",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "respect all genders, religions, and caste",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "empathize with the people with disability",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "offer support or help to a person with disability only when asked",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "ensure to adhere with the guidelines laid in Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "report any violation of prevention of sexual harassment (POSH) rules immediately to the POSH committee",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0808",
+      "nos_title": ".Monitor",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. the maintenance protocols and required chain of approval for line clearance",
+        "KU2. procedure to be followed in response to breakdown calls from the shop floor",
+        "KU3. risk and impact of not following defined procedures/work instructions",
+        "KU4. cleanroom guidelines and basics of relevant Good Manufacturing Practices(GMP) and other",
+        "KU5. various tools and related safety protocols used in electrical maintenance",
+        "KU6. electrical maintenance functions, common faults, and troubleshooting procedure",
+        "KU7. operational characteristics of the materials, equipment, and process",
+        "KU8. electrical circuit drawing, civil electrical work drawing, and high voltage line management",
+        "KU9. the procedure of job safety analysis and how to use risk assessment matrix",
+        "KU10. implications of delays in the maintenance process",
+        "KU11. process of design qualifications (DQ), installation qualification (IQ), operation qualification",
+        "KU12. process of writing SOPs as per cGMP guidelines",
+        "KU13. basic statistical tools and process of root cause analysis"
+      ],
+      "gs": [
+        "GS1. use written communication skills to record and communicate details of work done in regional",
+        "GS2. use reading and comprehension skills to read and understand instructions/manuals, SOPs,",
+        "GS3. use verbal communication skills to communicate with maintenance and cross-functional team",
+        "GS4. apply critical thinking skills to analyze the situations and the associated risk and be able to",
+        "GS5. apply critical thinking skills to use process understanding to identify causes for lack of",
+        "GS6. how to apply planning and organizing skills to plan individual work as per maintenance"
+      ],
+      "modules": [
+        {
+          "module_title": "Oversee installation activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "provide inputs to quality and production department to prepare and review design qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance qualification (PQ) protocols for electrical systems and equipment in the plant",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "secure approvals from concerned govt. departments and clearance from electricity distribution agency (external) and internal stakeholders (QA and EHS) before the start of installation activity",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure that the installation of electrical utility is done by approved vendor through a competent team as per design specification",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "oversee the installation activities for all electrical utility, equipment, and circuits to ensure any non-compliance with cleanroom state and regulatory guidelines",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "provide inputs to the installation team for troubleshooting during installation",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "support QA in applying design qualifications (DQ), installation qualification (IQ), operation qualification (OQ), performance qualification (PQ)",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise electrical system maintenance and perform troubleshooting",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "ensure the cleanroom requirements are met for the tools and tool kits",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "troubleshoot during equipment breakdown and check for the charge leakage/ short circuit, damage to wires, clamps, unusual contacts of electrical wires with moving parts, erratic/ problematic performance or any other problem mentioned in the complaint",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "check electrical supplies for appropriate working conditions",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify the root cause of the problem and follow work instructions or OEM manuals to rectify the problems",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "evaluate the solution of the problem in light of the impact on productivity/ regulatory compliance/ cleanroom state",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "assess the impact on product quality for any changes in the parameters of the equipment or the circuit and get the approval from production and quality team",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "ensure the replacement parts are compliant to and compatible with the production requirement and have zero impact on product quality",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "maintain records on electrical works and assign tasks to appropriate personnel",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "recommend troubleshooting procedure revisions based on the history of breakdown and equipment maintenance logs",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "take inputs/ assistance from other maintenance specialists like HVAC/ Water system etc./ Civil while performing the troubleshooting",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "coordinate with OEM/ empaneled specialist’s services for troubleshooting and maintenance in case of any error/ critical issue beyond the scope of written procedures",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "oversee the maintenance work being performed by personnel from OEM/ empaneled specialist’s service providers on the electrical system",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "supervise the calibration, validation, and re- qualification activities post-maintenance for electrical utility system in consultation with the quality team",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "ensure to maintain the electricity consumption records and review the trend for any fluctuations for reporting to management",
+              "sequence_order": 14,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0809",
+      "nos_title": ".Monitor",
+      "sequence_order": 7,
+      "is_generic": false,
+      "kus": [
+        "KU1. maintenance protocols and required chain of approval for line clearance",
+        "KU2. procedure to be followed in response to breakdown calls from the shop floor",
+        "KU3. risk and impact of not following defined procedures/work instructions",
+        "KU4. cleanroom guidelines and Basics of relevant current Good Manufacturing Practices(cGMP)",
+        "KU5. various tools and related safety protocols used in HVAC utility maintenance",
+        "KU6. HVAC maintenance functions, common faults, and troubleshooting procedure",
+        "KU7. operational characteristics of the materials, equipment, and process",
+        "KU8. HVAC system design and cleanroom engineering drawing, civil electrical work drawing and",
+        "KU9. procedure of job safety analysis and how to use risk assessment matrix",
+        "KU10. implications of delays in the maintenance process",
+        "KU11. process of preparing design qualifications (DQ), installation qualification (IQ), operation",
+        "KU12. process of preparation of writing SOPs as per cGMP guidelines",
+        "KU13. basic statistical tools and process of root cause analysis",
+        "KU14. different quality management systems (ISO-9000, TS16949, ISO-14001)",
+        "KU15. operational health and safety (OHS) hazards and controls, including limitations of protective",
+        "KU16. use of monitoring and measuring devices",
+        "KU17. requirements of different shutdowns as appropriate to the process and workplace production",
+        "KU18. methods, materials, and equipment used in installing, repairing and maintaining heating,"
+      ],
+      "gs": [
+        "GS1. • use written communication skills to record and communicate details of work done in regional",
+        "GS2. • use reading and comprehension skills to read and understand instructions/manuals, SOPs,",
+        "GS3. • use verbal communication skills to communicate with maintenance and cross-functional team",
+        "GS4. • apply critical thinking skills to analyze the situations and the associated risk and be able to",
+        "GS5. apply critical thinking skills to use process understanding to identify causes for lack of",
+        "GS6. • how to apply planning and organizing skills to plan individual work as per maintenance"
+      ],
+      "modules": [
+        {
+          "module_title": "Oversee installation activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "• provide inputs to quality and production department to prepare and review design • qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance • qualification (PQ) protocols for HVAC utility system",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure that the design specification of the cleanroom is followed during the installation and assembly of HVAC to meet the required cleanroom grade parameters for specified areas",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "secure approvals from concerned govt. departments and clearance from electricity distribution agency (external) and internal stakeholders (QA and EHS) before the start of installation activity",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "• ensure that the installation of electrical utility is done by approved vendor through a • competent team as per design specification",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "oversee the installation activities for HVAC utility and its components to ensure any non- compliance with cleanroom state and regulatory guidelines",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "provide inputs to the installation team for troubleshooting during installation",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "support QA in applying design qualifications (DQ), installation qualification (IQ), operation qualification (OQ), performance qualification (PQ) for installed HVAC utility system",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise HVAC system maintenance and perform troubleshooting",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure the cleanroom requirements like cleaning decontamination, etc. are met for the tools and tool kits",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "troubleshoot during equipment breakdown and check for the charge leakage/ short circuit, damage to wires, clamps, alignment of air filters, motor, chilling plant, air ventilation unit, erratic/ problematic performance or any other problem mentioned in the complaint",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "examine AHU and dust collection unit, air filters for appropriate working conditions",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify the root cause of the problem and follow work instructions or OEM manuals to rectify the problems",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "evaluate the solution of the problem in light of the impact on productivity/ regulatory compliance/ cleanroom state",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "assess the impact on product quality for any changes in the parameters of the equipment or the circuit and get the approval from production and quality team",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "ensure the replacement parts are compliant to and compatible with the production requirement and have no impact on product quality",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "maintain the records of HVAC maintenance jobs and air filter changing pattern and assign tasks to appropriate personnel",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "recommend procedure revisions based on the history of breakdown and equipment maintenance logs",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "take inputs/ assistance from other maintenance specialists of Electrical/ Water system etc. while performing the troubleshooting for any error/ critical issue beyond the scope of written procedures",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "oversee the maintenance work being performed by personnel from OEM/ empaneled specialist’s service providers on HVAC utility system",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "supervise the calibration, validation, and re- qualification activities post-maintenance for HVAC utility system in consultation with the quality team and cleanroom engineer",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "ensure to maintain the cleanroom logs and air filter changing history and review the trend for any deviations/ OOS reading for reporting to management",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0810",
+      "nos_title": ".Monitor",
+      "sequence_order": 8,
+      "is_generic": false,
+      "kus": [
+        "KU1. the maintenance protocols and required chain of approval for line clearance",
+        "KU2. procedure to be followed in response to breakdown calls from the shop floor",
+        "KU3. risk and impact of not following defined procedures/work instructions",
+        "KU4. cleanroom guidelines and basics of relevant current Good Manufacturing Practices(GMP) and",
+        "KU5. various tools and related safety protocols used in water maintenance",
+        "KU6. WPU, PW, HPW and WFI production system maintenance functions, common faults, and",
+        "KU7. operational characteristics of the materials, equipment, and process, sufficient to recognize",
+        "KU8. water system design and plant utility distribution system drawing, civil work drawing and",
+        "KU9. process of job safety analysis and how to use risk assessment matrix",
+        "KU10. importance of environmental sustainability and good practices for environmental",
+        "KU11. implications of delays in the maintenance process",
+        "KU12. process of design qualifications (DQ), installation qualification (IQ), operation qualification",
+        "KU13. process of writing SOPs as per GMP guidelines",
+        "KU14. basic statistical tools and process of root cause analysis",
+        "KU15. different quality management systems (ISO-9000, TS16949, ISO-14001)",
+        "KU16. operational health and safety (OHS) hazards and controls, including limitations of protective",
+        "KU17. use of monitoring and measuring devices",
+        "KU18. requirements of different shutdowns as appropriate to the process and workplace production",
+        "KU19. methods, materials, and equipment used in installing, repairing and maintaining water"
+      ],
+      "gs": [
+        "GS1. use written communication skills to record and communicate details of work done in regional",
+        "GS2. use reading and comprehension skills to read and understand instructions/manuals, SOPs,",
+        "GS3. use verbal communication skills to communicate with maintenance and cross-functional team",
+        "GS4. apply critical thinking skills to analyze past trends and experience for defining action and",
+        "GS5. apply critical thinking skills to analyze the situations and the associated risk and be able to",
+        "GS6. apply decision-making skills to take decisions with the help of pre-defined matrix and",
+        "GS7. apply critical skills to use process understanding to identify causes for lack of deviations",
+        "GS8. apply planning and organizing skills to plan individual work to achieve specified deadlines"
+      ],
+      "modules": [
+        {
+          "module_title": "Oversee installation activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "provide inputs to quality and production department to prepare and review design qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance qualification (PQ) protocols for Water utility system especially for Water for Pharmaceutical Use (WPU), Purified Water (PW), Highly Purified Water (HPW) and Water for Injection (WFI)",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure the design specification of water production and distribution system is followed during the installation and assembly of the water system to meet the required water quality grade parameters for specified purposes",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "secure approvals from concerned internal stakeholders (QA, production, and EHS) before the start of installation activity",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure that the installation of electrical utility is done by approved vendor through a competent team as per design specification",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "oversee the installation activities for water system utility and its components to ensure any non- compliance with cleanroom state and regulatory guidelines",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "provide inputs to the installation team for troubleshooting during installation",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "support QA in applying design qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance qualification (PQ) protocols for Water utility system especially for Water for Pharmaceutical Use (WPU) and Water for Injection (WFI)",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise water system utility maintenance and perform troubleshooting",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure the cleanroom requirements like cleaning decontamination, etc. are met for the tools and tool kits",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "troubleshoot during equipment breakdown and check for the water leakage/ loose pipes and gaskets, rusted joints, short circuit, damage to wires, clamps, alignment of the pipeline, motor pump, RO system, water filters, reagents, erratic/ problematic performance or any other problem mentioned in the complaint",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "examine Water for Pharmaceutical (WPU), Purified Water (PW), Highly Purified Water (HPW) and Water for Injection (WFI) system and water filters and storage tanks for appropriate working conditions",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify the root cause of the problem and follow work instructions or OEM manuals to rectify the problems",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "evaluate the solution of the problem in light of the impact on productivity/ regulatory compliance/ cleanroom state",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "assess the impact on product quality for any changes in the parameters of the WPU, WFI and get the approval from production and quality team",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "ensure the replacement parts are compliant to and compatible with the production requirement and have no impact on product quality",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "maintain the records of Water system maintenance jobs and water filter changing and cleaning pattern and assign tasks to appropriate personnel",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "recommend procedure revisions based on the history of breakdown and equipment maintenance logs",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "take inputs/ assistance from other maintenance specialists like Electrical/ Gases system etc./ Civil) while performing the troubleshooting",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "coordinate with OEM/ empaneled specialist’s services for troubleshooting and maintenance in case of any error/ critical issue beyond the scope of written procedures",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "oversee the maintenance work being performed by personnel from OEM/ empaneled specialist’s service providers on Water system utility",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "supervise the calibration, validation, and re- qualification activities post-maintenance for water system utility in consultation with the quality team and production team",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "ensure to maintain the water storage tank and filter change logs and history and review the trend for any deviations/ OOS reading for reporting to management",
+              "sequence_order": 14,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0811",
+      "nos_title": ".Monitor",
+      "sequence_order": 9,
+      "is_generic": false,
+      "kus": [
+        "KU1. the maintenance protocols and required chain of approval for line clearance",
+        "KU2. procedure to be followed in response to breakdown calls from the shop floor",
+        "KU3. risk and impact of not following defined procedures/work instructions",
+        "KU4. cleanroom guidelines and basics of relevant current Good Manufacturing Practices(cGMP)",
+        "KU5. various tools and related safety protocols used in gas utility maintenance",
+        "KU6. gas distribution system maintenance functions, common faults, and troubleshooting",
+        "KU7. operational characteristics of the materials, equipment, and process, sufficient to recognize",
+        "KU8. gas storage and distribution system design and plant utility distribution system drawing, civil",
+        "KU9. process of job safety analysis and how to use risk assessment matrix",
+        "KU10. implications of delays in the maintenance process",
+        "KU11. process of design qualifications (DQ), installation qualification (IQ), operation qualification",
+        "KU12. process of procedure writing SOPs as per cGMP guidelines",
+        "KU13. basic statistical tools and process of root cause analysis",
+        "KU14. different quality management systems (ISO-9000, TS16949, ISO-14001)",
+        "KU15. operational health and safety (OHS) hazards and controls, including limitations of protective",
+        "KU16. use of monitoring and measuring devices",
+        "KU17. requirements of different shutdowns as appropriate to the process and workplace production",
+        "KU18. methods, materials, and equipment used in installing, repairing and maintaining gas storage"
+      ],
+      "gs": [
+        "GS1. the use of written communication skills to record and communicate details of work done in",
+        "GS2. the use of reading and comprehension skills to read and understand instructions/manuals,",
+        "GS3. importance of verbal communication skills to communicate with maintenance and cross-",
+        "GS4. apply critical thinking skills to analyze past trends and experience for defining action and",
+        "GS5. apply critical thinking skills to use process understanding to identify causes for lack of",
+        "GS6. how to apply planning and organizing skills to plan individual work to achieve specified"
+      ],
+      "modules": [
+        {
+          "module_title": "Oversee installation activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "provide inputs to quality and production department to prepare and review design qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance qualification (PQ) protocols for Water utility system especially for gas utility system",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure the design specification of gas storage and distribution system and air compression system is followed during the installation and assembly of the gas distribution system to meet the required gases distribution in plants and lab for specified purposes",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "secure approvals from concerned internal stakeholders (QA, production, and EHS) before the start of installation activity",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure the installation is being performed by the approved vendor through a competent team as per design specification",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "oversee the installation activities for gas storage and distribution system utility and its components to ensure any non-compliance with cleanroom state and regulatory guidelines",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "provide inputs to the installation team for troubleshooting during installation",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "support QA in applying design qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance qualification (PQ) protocols for gas storage and distribution utility system",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise Gas system utility maintenance and perform troubleshooting",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure the cleanroom requirements like cleaning decontamination etc. are met for the tools and tool kits while performing maintenance in the controlled cleanroom area",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "troubleshoot during equipment breakdown and check for the gas leakage/ loose valves, pipes and gaskets, rusted joints, blocked nozzles, damage to pipe bends and clamps, alignment of the pipeline, air compression pump, air filters, reagents, erratic/ problematic performance or any other problem mentioned in the complaint",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "examine gas storage conditions, gas distribution system, air filters for air compressors, and storage cylinders for appropriate working conditions",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify the root cause of the problem and follow work instructions or OEM manuals to rectify the problems",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "evaluate the solution of the problem in light of the impact on productivity/ regulatory compliance/ cleanroom state",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "assess the impact on product quality for any changes in the parameters of the gas distribution system and get the approval from production and quality team",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "ensure the replacement parts are compliant to and compatible with the production requirement and have no impact on product quality",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "maintain the records of gas distribution system maintenance jobs and air compressor maintenance and assign tasks to appropriate personnel",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "recommend procedure revisions based on the history of breakdown and equipment maintenance logs",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "take inputs/ assistance from other maintenance specialists like Electrical/HVAC/ Gases system etc./ Civil) while performing the troubleshooting",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "coordinate with OEM/ empaneled specialist’s services for troubleshooting and maintenance in case of any error/ critical issue beyond the scope of written procedures",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "oversee the maintenance work being performed by personnel from OEM/ empaneled specialist’s service providers on gas storage and distribution system utility",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "supervise the calibration, validation, and re- qualification activities post-maintenance for gas storage and utility system utility in consultation with the quality team and production team",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "ensure to maintain the gas storage cylinders and gas distribution system maintenance logs and history and review the trend for any deviations/ OOS reading for reporting to management",
+              "sequence_order": 14,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LFS/N0812",
+      "nos_title": ".Monitor",
+      "sequence_order": 10,
+      "is_generic": false,
+      "kus": [
+        "KU1. maintenance protocols and required chain of approval for line clearance",
+        "KU2. procedures to be followed in response to breakdown calls from the shop floor",
+        "KU3. risk and impact of not following defined procedures/work instructions",
+        "KU4. cleanroom guidelines and basics of relevant current Good Manufacturing Practices(cGMP)",
+        "KU5. various tools and related safety protocols used in steam utility maintenance",
+        "KU6. boiler and steam utility system maintenance functions, common faults, and troubleshooting",
+        "KU7. operational characteristics of the materials, equipment, and process, sufficient to recognize",
+        "KU8. boiler and steam utility system design and plant utility distribution system drawing, civil",
+        "KU9. process of job safety analysis and how to use risk assessment matrix",
+        "KU10. implications of delays in the maintenance process",
+        "KU11. process of design qualifications (DQ), installation qualification (IQ), operation qualification",
+        "KU12. process of procedure writing of SOPs as per cGMP guidelines",
+        "KU13. basic statistical tools and process of root cause analysis",
+        "KU14. different quality management systems (ISO-9000, TS16949, ISO-14001)",
+        "KU15. operational health and safety (OHS) hazards and controls, including limitations of protective",
+        "KU16. use of monitoring and measuring devices",
+        "KU17. requirements of different shutdowns as appropriate to the process and workplace production",
+        "KU18. methods, materials, and equipment used in installing, repairing and maintaining boiler and"
+      ],
+      "gs": [
+        "GS1. use written communication skills to record and communicate details of work done in regional",
+        "GS2. use reading and comprehension skills to read and understand instructions/manuals, SOPs,",
+        "GS3. use verbal communication skills to communicate with maintenance and cross-functional team",
+        "GS4. apply critical thinking skills to analyze past trends and experience for defining action and",
+        "GS5. apply decision making skills to take decisions with the help of pre-defined matrix and",
+        "GS6. apply critical thinking skills to use process understanding to identify causes for lack of",
+        "GS7. apply planning and organizing skills to plan individual work to achieve specified deadlines and"
+      ],
+      "modules": [
+        {
+          "module_title": "Oversee installation activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "provide inputs to quality and production department to prepare and review design qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance qualification (PQ) protocols for boiler and steam utility system",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure the design specification of the boiler and steam utility system is followed during the installation and assembly of boiler and steam utility system to meet the required quality and quantity of steam in plants and lab for specified purposes",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "secure approvals from concerned internal stakeholders (QA, production, and EHS) before the start of installation activity",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure that the installation is being performed by the approved vendor through a competent team as per design specification",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "oversee the installation activities for boiler and steam utility system and its components to ensure any non-compliance with cleanroom state and regulatory guidelines",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "provide inputs to the installation team for troubleshooting during installation",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "support QA in applying design qualifications (DQ), installation qualification (IQ) operation qualification (OQ) performance qualification (PQ) protocols for boiler and steam utility system",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise steam system utility maintenance and perform troubleshooting",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure the cleanroom requirements like cleaning decontamination etc. are met for the tools and tool kits while performing maintenance in the controlled cleanroom area",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "troubleshoot during equipment breakdown and check for the steam leakage/ loose valves, uneven temperature, pipes and gaskets, rusted joints, blocked nozzles, damage to pipe bends and clamps, alignment of the pipeline, boiler tank, erratic/ problematic performance or any other problem mentioned in the complaint",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "examine the boiler and steam utility system for appropriate working conditions",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify the root cause of the problem and follow work instructions or OEM manuals to rectify the problems",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "evaluate the solution of the problem in light of the impact on productivity/ regulatory compliance/ cleanroom state",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "assess the impact on product quality for any changes in the parameters of the boiler and steam utility system and get the approval from production and quality team",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "ensure the replacement parts are compliant to and compatible with the production requirement and have no impact on product quality",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "maintain the records of boiler and steam utility system maintenance jobs and assign tasks to appropriate personnel",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "recommend procedure revisions based on the history of breakdown and equipment maintenance logs",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "coordinate with OEM/ empaneled specialist’s services for troubleshooting and maintenance in case of any error/ critical issue beyond the scope of written procedures",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "oversee the maintenance work being performed by personnel from OEM/ empaneled specialist’s service providers on boiler and steam utility system",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "supervise the calibration, validation, and re- qualification activities post-maintenance for boiler and steam utility system in consultation with the quality team and production team",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "ensure to maintain the boiler and steam utility system maintenance logs and history and review the trend for any deviations/ OOS reading for reporting to management",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

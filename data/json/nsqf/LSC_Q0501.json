@@ -1,0 +1,729 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "LSC/Q0501",
+  "qp_name": "LSC_Q0501",
+  "clean_code": "LSC_Q0501",
+  "total_pages": 55,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.307Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 12,
+    "total_pcs": 52,
+    "total_kus": 30,
+    "total_gs": 92,
+    "generic_nos_filtered": 4
+  },
+  "nos_units": [
+    {
+      "nos_code": "LSC/N0501",
+      "nos_title": ".Operational",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the warehouse",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. warehouse design documentation"
+      ],
+      "gs": [
+        "GS1. read existing warehouse design document",
+        "GS2. read warehouse layout guidelines",
+        "GS3. read tags and labels",
+        "GS4. write label of different workflows",
+        "GS5. write warehouse process flows",
+        "GS6. write warehouse design documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in layout and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. Speak politely with customer and take feedback constructively",
+        "GS18. Identify common trends as per analysis and implement the same in new layouts",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the processes and layouts to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the warehouse layouts and accordingly make future changes",
+        "GS23. cross check the layouts as per the inventory flow and ensure the traffic in warehouse is"
+      ],
+      "modules": [
+        {
+          "module_title": "Existing warehouse layout",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collect information on warehouse different Buildings",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Obtain information on Mezzanine floor in the Warehouse Buildings",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Obtain information on Aisles and Bays",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Obtain information on different kinds of locations",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Future warehouse layout (In case of Greenfield)",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Provide number of buildings needed based on amount of inventory to be stored",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Provide number of buildings needed based on kind (hazardous vs non-hazardous) of inventory",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Provide future number of aisles and bays",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Provide the size and number of locations needed",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Future warehouse layout (In case of Brownfield)",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Provide the re-aligned Aisles and Bays",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Provide the re-aligned locations",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Design the Software to match warehouse layout",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "Enter number of buildings as per new warehouse layout",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Define Logical areas and zones based on the new warehouse layout",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Define the replenishment locations based on new warehouse layouts",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Define Aisles, Bays and Locations naming methodology based on the Software compatibility",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0502",
+      "nos_title": ".Identify",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the warehouse",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. warehouse design documentation"
+      ],
+      "gs": [
+        "GS1. existing warehouse design document",
+        "GS2. warehouse layout guidelines",
+        "GS3. tags and labels",
+        "GS4. label of different workflows",
+        "GS5. warehouse process flows",
+        "GS6. warehouse design documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in warehousing process and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. Speak politely with customer and take feedback constructively",
+        "GS18. Identify common trends as per analysis and implement the same in new workflows",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the workflow and planning process to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the shipment planning process and accordingly make future changes",
+        "GS23. cross check the data at various master data level and ensure the sanity"
+      ],
+      "modules": [
+        {
+          "module_title": "Warehouse Operations Familiarization",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Prepare process flow chart after understanding the operations",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Prepare process flow document after understanding the operations",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Prepare user guides for warehouse operations",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Receiving methodologies against Purchase Order, Receipts and provide process improvements",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "Calculate the number of clicks required to receive against purchase orders",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Calculate the distance required to collect the receipts generated from Printer",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Design system to reduce the number of clicks by defining an optimized process flow",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Design process to reduce the travel time by receiving operator to collect the receipts",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Pick methodologies and overall, TAT to pick one Unit (Pallet/Case/Each) and provide process improvements",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Calculate the number of clicks required to pick 1 Pallet/Case/Each",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Calculate the total turnaround time to do the picking 1 Pallet/Case/Each",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Design system to reduce the number of clicks by defining an optimized process flow",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Design picking process to reduce the turnaround time while picking",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Different packing methodologies and provide process improvements",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Calculate the carbon emission in the entire packing process",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Calculate the time taken to pack each case",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Reduce carbon emission to optimize the packing process by reducing the Packing labels",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Design packing process to reduce the time taken for packing",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Proposing areas of improvement in the overall process which matches with implemented Software",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Propose area of improvement in the Inventory management",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Propose area of improvement in the Quality process",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Propose area of improvement in the Return process",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0503",
+      "nos_title": ".Lead the design and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the warehouse",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. warehouse design documentation",
+        "KU8. technical architecture of warehouse system"
+      ],
+      "gs": [
+        "GS1. read existing warehouse design document",
+        "GS2. read warehouse layout guidelines",
+        "GS3. read tags and labels",
+        "GS4. write label of different workflows",
+        "GS5. write warehouse process flows",
+        "GS6. write warehouse design documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in warehouse process and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. Speak politely with customer and take feedback constructively",
+        "GS18. Identify common trends as per analysis and implement the same in new workflows",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the workflow and planning process to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the warehouse layouts and accordingly make future changes",
+        "GS23. cross check the layouts as per the inventory flow and ensure the traffic in warehouse is"
+      ],
+      "modules": [
+        {
+          "module_title": "Designing WMS Processes in Implementation cycle",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collect the requirement from Business users after discussing the different Business processes.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Perform As-Is analysis and document the processes.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Assist Business Users in explaining the document and revise the document with Review comments.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Prepare Business Requirement Document and get a sign off from Business",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Prepare Gap analysis document after analyzing the several functionalities of WMS software being implemented.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Prepare Design document and mention the gaps identified from Software",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Work with business users to amend the warehouse processes to minimize the Gaps, that involves processes while while receiving, picking, inventory management, packing, staging",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "There can be scenarios that Warehouse processes cannot be amended and GAPs remain in the processes. In that case work with Warehouse Management System software developer to develop the feature",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Deploy the feature in WMS and proceed with rest of the design.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Configure the system as per the design document and perform Unit testing to ensure all the Business requirements are met.",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Assist business users for UAT testing",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Designing integration touchpoints with upstream and downstream systems",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Collect the integration touch points from upstream and downstream data view",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Perform the data mapping after working with technical Team.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Deliver Technical Design document and work with technical team for a sign off",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0504",
+      "nos_title": ".Prepare",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the warehouse",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. warehouse design documentation",
+        "KU8. technical architecture of warehouse system"
+      ],
+      "gs": [
+        "GS1. existing transportation design document",
+        "GS2. warehouse layout guidelines",
+        "GS3. tags and labels",
+        "GS4. label of different workflows",
+        "GS5. warehouse process flows",
+        "GS6. warehouse user guide documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in warehouse processes and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. speak politely with customer and take feedback constructively",
+        "GS18. identify common trends as per analysis and implement the same in new workflows",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the workflow and planning process to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the shipment planning process and accordingly make future changes",
+        "GS23. cross check the layouts as per the inventory flow and ensure the traffic in warehouse is"
+      ],
+      "modules": [
+        {
+          "module_title": "System user guide for Transportation End Users",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Work with Warehouse users to find the processes which need to be documented.",
+              "sequence_order": 1,
+              "theory_marks": 7,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Observe the processes and identify different screens on RDT and WMS for which screenshots to be taken.",
+              "sequence_order": 2,
+              "theory_marks": 7,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Prepare documents along with various screenshots and steps to perform various warehouse activities.",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Work with Warehouse users to validate if operations can be performed with the steps.",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Take the feedback from business users and amend the changes as necessary.",
+              "sequence_order": 5,
+              "theory_marks": 4,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Provide a pictorial view of the processes with help of Flow diagram as necessary.",
+              "sequence_order": 6,
+              "theory_marks": 4,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

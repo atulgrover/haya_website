@@ -1,0 +1,987 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q4202",
+  "qp_name": "TEL_Q4202",
+  "clean_code": "TEL_Q4202",
+  "total_pages": 41,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.439Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 9,
+    "total_pcs": 83,
+    "total_kus": 80,
+    "total_gs": 39,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N4205",
+      "nos_title": ".Set Standards for",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. principles/fundamentals of 5G technology, including beamforming, massive MIMO, and",
+        "KU2. ITU's IMT-2020 framework and the specific frequency bands designated for 5G deployment",
+        "KU3. three (3) GPP standards that define the technical specifications for 5G network elements and",
+        "KU4. detailed configuration and deployment procedures for base stations, RAN, and core network",
+        "KU5. different authentication methods like SIM-based authentication, AKA, and EAP methods for",
+        "KU6. service-based architecture (SBA) and network function virtualization (NFV) for service",
+        "KU7. techniques for planning network coverage and capacity, including cell placement and",
+        "KU8. encryption methods, secure key exchange, and authentication protocols for network security",
+        "KU9. implementation of voice over 5G (VoNR), IoT connectivity, and multimedia services in 5G",
+        "KU10. drive testing, field measurements, and KPI analysis",
+        "KU11. QoS mechanisms like bearer control, flow control, and resource reservation in 5G networks",
+        "KU12. three (3)GPP Release 15, 16, and beyond, for seamless integration",
+        "KU13. monitoring tools like SNMP, NetFlow, and Deep Packet Inspection (DPI)",
+        "KU14. techniques to analyze traffic patterns, predict user demand, and adapt the network",
+        "KU15. hardware requirements for RAN and core network elements, considering future scalability",
+        "KU16. latency targets and throughput expectations",
+        "KU17. regulatory compliance regarding telecommunications standards and spectrum allocation",
+        "KU18. emerging networking technologies and advancements in the field of 5G",
+        "KU19. network management practices and strategies for updates and optimizations",
+        "KU20. data analysis skills to interpret network performance metrics and make informed decisions"
+      ],
+      "gs": [
+        "GS1. interpret reports, readings and numerical data",
+        "GS2. fill up appropriate technical forms, and activity logs in the required format specified by the",
+        "GS3. comprehend formats and checklists for preventive maintenance and site hygiene",
+        "GS4. analyze situations and make appropriate decisions",
+        "GS5. prioritize and execute tasks in a high-pressure environment and handle high-pressure",
+        "GS6. communicate effectively with peers, supervisors and clients",
+        "GS7. utilize appropriate communication channels to escalate unresolved problems to relevant"
+      ],
+      "modules": [
+        {
+          "module_title": "Implement new networking technologies and protocols",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "define the technical specifications for 5G network elements, including base stations (gNB), core network components, and user equipment",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "determine the frequency bands to be used for the IMT-2020 deployment.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "allocate and specify the frequency bands to be used for 5G deployment, considering spectrum availability and compatibility",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "install the necessary infrastructure equipment, including base stations, Radio Access Network (RAN), and core network elements such as the serving and gateway",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "configure the RAN elements, including the base stations, eNodeB-EPC (Evolve Packet Core) and RNCs (Radio Network Controllers) or gNodeB.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "perform network planning activities to design the coverage and capacity of the network",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "implement subscriber authentication and security mechanisms.",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "enable specific services and features, such as voice calls, data services, messaging, and multimedia services",
+              "sequence_order": 8,
+              "theory_marks": 5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "perform testing and optimization activities to verify the network's performance and fine-tune the configuration parameters",
+              "sequence_order": 9,
+              "theory_marks": 5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "analyse performance requirements for 5G networks, such as data rates, latency, and reliability, to ensure high-quality service delivery",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Network performance, scalability, and reliability",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "evaluate the current capacity of your network infrastructure and identify the areas where scalability is required",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "analyze the traffic patterns and trends to understand the growth in network demand",
+              "sequence_order": 2,
+              "theory_marks": 6,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "develop interoperability standards to ensure seamless communication between different vendors' equipment and network elements",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "determine if the existing hardware and equipment can support the increased traffic demands",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "implement network monitoring and analytics tools to continuously monitor network performance",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "identify and troubleshoot network issues, such as latency, packet loss, and throughput",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "implement Quality of Service (QoS) mechanisms to prioritize critical services and applications, ensuring a consistent and reliable user experience",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "address regulatory aspects, including compliance with local and international telecommunications regulations and spectrum allocation policies",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4206",
+      "nos_title": ".Verify and Prepare",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Three (3) GPP standards and specifications relevant to 5G network deployment",
+        "KU2. principles and concepts of Multiple Input, Multiple Output (MIMO) technology",
+        "KU3. hardware components and specifications of passive equipment like antennas, feeders, and",
+        "KU4. functionality and technical requirements of active equipment such as gNodes and microwave",
+        "KU5. procedures for validating and obtaining necessary licenses and permits for hardware",
+        "KU6. weatherproofing and protective measures to safeguard equipment from environmental",
+        "KU7. specific tools and equipment used for installation and configuration tasks",
+        "KU8. types of network cables, connectors, and interconnection standards used in 5G networks",
+        "KU9. grounding and lightning protection principles for equipment safety",
+        "KU10. power supply and backup system requirements to support 5G hardware",
+        "KU11. mounting structures and hardware specifications for different installation scenarios",
+        "KU12. inventory management practices and techniques for equipment tracking",
+        "KU13. inspection techniques to identify damages or defects in hardware equipment",
+        "KU14. health and safety regulations relevant to equipment installation and operation",
+        "KU15. troubleshooting methodologies to address potential integration issues",
+        "KU16. basics of network topology and architecture in 5G deployments",
+        "KU17. quality assurance and testing processes for hardware functionality and performance"
+      ],
+      "gs": [
+        "GS1. communicate with team members accurately",
+        "GS2. analyse and interpret the messages and prompts timely and correctly",
+        "GS3. communicate with external stakeholders in their preferred language (English, Hindi or",
+        "GS4. provide advice and guidance to peers and juniors",
+        "GS5. seek experts help timely, if needed at any stage",
+        "GS6. prioritize tasks in high-pressure environment",
+        "GS7. interpret reports and numerical data",
+        "GS8. perform multiple tasks/activities at the same time",
+        "GS9. read standards documents such as provisioning guide, reports, requirement guides, user",
+        "GS10. adapt new technologies"
+      ],
+      "modules": [
+        {
+          "module_title": "Pre-installation Analysis and Preparation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "analyse 3GPP standards, budget, architectural, and other design documents as per client specifications",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify the basic parameters of Multiple Input, Multiple Output (MIMO) antenna (diversity gain, MIMO capacity, etc.) for implementation of 5G antenna",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure that all passive equipment such as antenna (single, dual, triple band, MIMO), feeder, and jumper cable, and all the other necessary equipment are available at the site",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure that all active equipment such as gNB, microwave link devices, etc. are available at the site",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "analyse solution life cycle management activities for successful deployment, such as evaluation and impact assessment of the solution and its components, and/or revisions if required",
+              "sequence_order": 5,
+              "theory_marks": 4,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "validate that the necessary licenses and permits for installing and operating the hardware equipment at the site have been obtained and are up-to-date",
+              "sequence_order": 6,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "check the availability of weatherproofing and protective enclosures to safeguard the hardware equipment from environmental factors like rain, dust, and extreme temperatures",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "verify the compatibility and interoperability of the hardware equipment from different vendors to avoid potential integration issues during installation",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "ensure that any specialized equipment, tools, and accessories required for installation and configuration are available and ready for use",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "check the availability of required network cables, connectors, and other interconnection components to establish connectivity between different equipment units",
+              "sequence_order": 10,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "confirm the availability of necessary grounding and lightning protection systems to protect the equipment from electrical surges and ensure safety",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "verify that the power supply and backup power systems (e.g., batteries, generators) are available and sufficient to support the 5G hardware equipment at the site",
+              "sequence_order": 12,
+              "theory_marks": 5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "ensure that the required mounting structures and hardware, such as towers, poles, or rooftop installations, are in place to securely and appropriately mount the antennas and other equipment",
+              "sequence_order": 13,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Check Equipment Availability",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "conduct a thorough inventory check to confirm that all the hardware equipment items mentioned in the deployment plan are present and accounted for at the site",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "coordinate with logistics and procurement teams to ensure timely delivery of any missing or additional hardware equipment needed for the installation",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "inspect the condition and quality of the hardware equipment to ensure it is free from damage or defects before installation",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4207",
+      "nos_title": ".Design Spectrum",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. fundamentals of wireless communication, including radio frequency (RF) propagation,",
+        "KU2. Three (3) GPP standards and specifications for 5G networks, including frequency bands and",
+        "KU3. regulatory guidelines and spectrum allocation policies governing the use of wireless",
+        "KU4. principles of radio wave propagation and its impact on coverage, interference, and capacity",
+        "KU5. techniques for spectrum analysis and measurement tools to assess spectrum availability and",
+        "KU6. methods for frequency planning and resource allocation to meet the diverse requirements of",
+        "KU7. network architecture and design principles for dynamic spectrum sharing and efficient",
+        "KU8. advanced spectrum management techniques, such as cognitive radio, spectrum sensing,",
+        "KU9. spectrum licensing and frequency coordination processes to comply with regulatory",
+        "KU10. network slicing concepts and how to tailor virtual network instances for different services",
+        "KU11. principles of network integration and interworking between different types of networks,",
+        "KU12. handover mechanisms and seamless mobility management across heterogeneous network",
+        "KU13. quality of service (QoS) mechanisms and traffic engineering techniques for efficient resource",
+        "KU14. the role of Fully Qualified Domain Name (FQDN) in the 5G core network",
+        "KU15. security considerations and authentication mechanisms",
+        "KU16. network performance testing and optimization methodologies",
+        "KU17. Five (5)G network equipment and hardware components, including base stations, antennas,",
+        "KU18. network design and architectural concepts",
+        "KU19. cross-functional collaboration with various stakeholders, such as network operators,",
+        "KU20. evolving trends and developments in wireless communication technologies and spectrum"
+      ],
+      "gs": [
+        "GS1. stay up-to-date with new technology",
+        "GS2. read and understand reports, readings and numerical data",
+        "GS3. fill up appropriate technical forms, and activity logs in the required format specified by the",
+        "GS4. maintain proper records as per organization standards",
+        "GS5. analyze situations and evaluate the possible solution(s) to the problem",
+        "GS6. use and maintain the available resources efficiently and effectively",
+        "GS7. take initiatives and progressively assume increased responsibilities",
+        "GS8. work under a high-pressure situation",
+        "GS9. adhere to the timelines",
+        "GS10. adopt an organized and systematic approach to arrive at an optimum solution",
+        "GS11. communicate effectively with peers, supervisors and clients, and utilize appropriate"
+      ],
+      "modules": [
+        {
+          "module_title": "Spectrum Utilization and 5G Network Design",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "analyze spectrum availability and regulations to determine suitable frequency bands for 5g deployment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "plan and allocate frequency resources to different services and applications based on their requirements and priority",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "design 5G network architecture to support dynamic spectrum sharing between different operators and technologies",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "optimize radio access network (RAN) design to ensure efficient utilization of available spectrum resources",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "evaluate the impact of interference and propagation characteristics on spectrum allocation and network coverage",
+              "sequence_order": 5,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "implement advanced spectrum management techniques, such as cognitive radio, to enhance spectrum efficiency",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "insert frequency bands for 5G",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "deploy the rectified traffic for 5G network",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify suitable sites for installing 5G network equipment, such as base stations or small cells",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Install and configure the necessary network equipment, including base stations, antennas, and routers, based on the network design and specifications",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "perform extensive testing of the network to ensure proper functionality, coverage, and capacity",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Integration of Network Types for Seamless Connectivity",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "familiarize with the capabilities, limitations, and integration requirements of each network type",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify the different network types that need to be integrated and combined, such as cellular, Wi-Fi, satellite, or other specialized networks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "evaluate the interoperability of the network types and their compatibility with each other",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "utilize integration techniques to ensure interoperability and smooth handover between Wi- Fi, and 4G/5G networks",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "design and optimize network architectures that efficiently combine and utilize different network types to provide seamless connectivity and coverage",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "implement traffic management techniques, such as Quality of Service (QoS) mechanisms, traffic shaping, and load balancing, to prioritize and allocate resources efficiently based on traffic requirements",
+              "sequence_order": 6,
+              "theory_marks": 5,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "address challenges related to network handoff, authentication, and roaming across diverse network architectures",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "use FQDN in the 5G core network to enable efficient and scalable communication between network functions, 5G numbering, addressing services, and devices",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4208",
+      "nos_title": ".Implement the 5G",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. operations of Spectrum for 5G NR",
+        "KU2. interface of Scalable OFDM",
+        "KU3. different 5G NR Numerology",
+        "KU4. frame Structure of 5G networking",
+        "KU5. TDD/FDD Duplexing schemes of 5G networking",
+        "KU6. SS Block of 5G network",
+        "KU7. Five (5G) NR Synchronization Procedure",
+        "KU8. the key aspects of scalable OFDM",
+        "KU9. aspects of 5G NR numerology",
+        "KU10. types of 5G NR Frame Structure",
+        "KU11. time Domain Structure to improve the 5G network",
+        "KU12. frequency Domain Structure",
+        "KU13. advanced Features of new 5G domain",
+        "KU14. the requirements of Time Division Duplexing (TDD) in 5G networks",
+        "KU15. the use of Frequency Division Duplexing (FDD) in 5G networks",
+        "KU16. the measures of Hybrid TDD/FDD Duplexing in 5G networks",
+        "KU17. different BWP Types",
+        "KU18. benefits of BWPs",
+        "KU19. types of MIMO",
+        "KU20. benefits of MIMO in 5G NR",
+        "KU21. fix Beamforming of in 5G leakage",
+        "KU22. the role of 5G in transportation, energy and manufacturing industry",
+        "KU23. the position of 5G in entertainment band public safety sectors"
+      ],
+      "gs": [
+        "GS1. interpret reports, readings and numerical data",
+        "GS2. fill up appropriate technical forms, and activity logs in the required format of the",
+        "GS3. Create documentation required on the job regarding the details of the alarm, server",
+        "GS4. analyze information and evaluate results to choose the best solution and solve the issue",
+        "GS5. evaluate the possible solutions to the problem",
+        "GS6. decide the most suitable course of action for completing the task within the timeline",
+        "GS7. recognize a workplace problem or a potential problem and take action",
+        "GS8. prioritize and execute tasks in a high-pressure environment and handle high-pressure",
+        "GS9. analyze, evaluate and apply the information gathered from observation, experience,",
+        "GS10. refer problems outside your area of responsibility to the appropriate person",
+        "GS11. communicate with colleagues and supervisors to handle verbal enquiries, such as clarifying"
+      ],
+      "modules": [
+        {
+          "module_title": "Regularly update database",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "implement robust network access control mechanisms to prevent unauthorized or irregular data resources from accessing the 5G system",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "deploy firewalls and intrusion detection/prevention systems (IDS/IPS) to monitor and filter incoming and outgoing traffic",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "utilize content filtering mechanisms to block access to specific websites, domains, or IP addresses associated with foreign or irregular data resources",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "employ traffic analysis tools and anomaly detection systems to monitor network traffic patterns and identify irregular or suspicious behavior",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "implement deep packet inspection (DPI) techniques to analyze packet contents and identify foreign or irregular data resources based on specific protocols, signatures, or patterns",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure that all network components, including routers, switches, firewalls, and security systems, are regularly updated with the latest security patches and firmware updates",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "continuously monitor network traffic, security logs, and system events to detect and respond to any attempts to access or distribute foreign or irregular data resources",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "monitor 5G NR Physical Channels and Signals",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "acquire specialized monitoring equipment capable of analyzing 5G NR physical channels and signals",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use the monitoring equipment to capture the 5G NR physical channels and signals",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "monitor the different 5G NR physical channels, such as the downlink and uplink channels, control channels, synchronization channels, and reference signals",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "conduct real-time monitoring of the 5G NR physical channels and signals to capture dynamic changes and fluctuations",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "analyze the resource allocation and scheduling mechanisms used for downlink transmission",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "identify and configure BWP Configuration of 5G networking",
+              "sequence_order": 14,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "work with Physical Layer Procedures of 5G networks",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "layer the data signals to Initial Access and Cell Search",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "5G radio access detection",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "operate the PSS and SSS Detection",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "capture the received signals using a suitable receiver or monitoring equipment capable of capturing the 5G signals",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "perform a frequency analysis on the captured signals to identify the frequency range where the PSS and SSS signals are expected to be present",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "synchronize the received signals with the expected timing and frame structure of the 5G system",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "implement error handling mechanisms to account for cases where the PSS or SSS signals are weak, corrupted, or not detected correctly",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "continuously validate the accuracy and reliability of the PSS and SSS detection process by monitoring the detected signals and verifying the correctness of the cell identification",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "channel Estimation and Equalization with nodes for 5G connectivity",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "demodulate and Decode the backend coding of 5G networks",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "install and rectify Analog Beamforming",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "station and reconstruct Digital Beamforming",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "inspect the Hybrid Beamforming",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "fix beamforming configuration",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Industry-specific Use Cases",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "implement 5G in industrial 4.0 such as manufacturing, production, transportation and warehousing",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "implement 5G in various sectors such as agriculture, entertainment, smart education and public safety",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

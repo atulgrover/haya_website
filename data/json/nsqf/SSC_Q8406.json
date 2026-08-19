@@ -1,0 +1,243 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q8406",
+  "qp_name": "SSC_Q8406",
+  "clean_code": "SSC_Q8406",
+  "total_pages": 24,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.233Z",
+  "stats": {
+    "total_nos": 2,
+    "total_modules": 2,
+    "total_pcs": 15,
+    "total_kus": 27,
+    "total_gs": 26,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N8435",
+      "nos_title": ".Design the software",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. The purpose and aims of the autonomous system being developed",
+        "KU2. Organizational policies, procedures and priorities for developing tests or simulations for",
+        "KU3. Organization’s knowledge base and how to access and update information on scenarios, test",
+        "KU4. Who may need to involve when developing tests or simulations for hardware and software",
+        "KU5. Organizational policies and procedures for documenting simulations",
+        "KU6. The application and use of test or simulation tools",
+        "KU7. The approval process for testing of software and hardware systems",
+        "KU8. Experience with basic command line and coding with python",
+        "KU9. MAVProxy Command Line Ground control Station knowledge and experience",
+        "KU10. Interpretation of business requirememts and translate them to technical requirements",
+        "KU11. knowledge of Dronekit library for creation of Python scripts",
+        "KU12. Knowledge of MAVLink protocol",
+        "KU13. Knowledge of LUA Programing language for on-board software development"
+      ],
+      "gs": [
+        "GS1. Complete documentation accurately and write reports when requied",
+        "GS2. read information accurately",
+        "GS3. read and interpret data sheets",
+        "GS4. Communicating with technical teams to collect requirements, describe product features and",
+        "GS5. Listen to and orally communicate information with all concerned",
+        "GS6. make appropriate decisions regarding the responsibilities of the job role",
+        "GS7. monitor efficient functioning of all activities",
+        "GS8. plan and organise work to achieve targets and deadlines",
+        "GS9. communicate with customers and other stakeholders in a courteous manner",
+        "GS10. maintain effective work relationship",
+        "GS11. identify trends/common causes for errors and suggest possible solutions to the supervisor /",
+        "GS12. analyse best possible solutions (cost, time, effort, etc.) suited for operations",
+        "GS13. apply balanced judgments to different situations"
+      ],
+      "modules": [
+        {
+          "module_title": "Design the software for the Drone system — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collaborate with stakeholders to document functional (Flight control, Navigation,Payload integration, communication, Data logging ,mission planning etc.) and non-functional requirements (performance, scalability, security etc.)",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Create architectural diagrams that outline the software components and their interactions, define the overall structure of the software, including modules for flight control, data processing, and user interface.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Design navigation algorithms (e.g., waypoints, obstacle avoidance, path planning).",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Develop flight control algorithms to manage stabilization, speed, and performance parameters.",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Write the source code for each component, focusing on flight control, navigation, and data processing, utilize relevant programming languages (e.g., C++, Python, ROS) based on project requirements.",
+              "sequence_order": 5,
+              "theory_marks": 7,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Ensure that the software is integrated with drone hardware components (e.g., sensors, GPS, motors).",
+              "sequence_order": 6,
+              "theory_marks": 7,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8436",
+      "nos_title": ".Conduct thorough",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. The purpose and aims of the autonomous system being developed",
+        "KU2. Organizational policies, procedures and priorities for developing tests or simulations for",
+        "KU3. Organization’s knowledge base and how to access and update information on scenarios, test",
+        "KU4. Who may need to involve when developing tests or simulations for hardware and software",
+        "KU5. Organizational policies and procedures for documenting simulations",
+        "KU6. The application and use of test or simulation tools",
+        "KU7. The approval process for testing of software and hardware systems",
+        "KU8. Understanding and experience with Ardupilot autopilot software system",
+        "KU9. MAVProxy Command Line Ground control Station knowledge and experience",
+        "KU10. Understanding and experience with Gazebo simulator",
+        "KU11. knowledge of Dronekit library for creation of Python scripts",
+        "KU12. Knowledge of MAVLink protocol",
+        "KU13. Knowledge of LUA Programing language for on-board software development",
+        "KU14. Understanding and modelling of Simulink"
+      ],
+      "gs": [
+        "GS1. Complete documentation accurately and write reports when required",
+        "GS2. read information accurately",
+        "GS3. read and interpret data sheets",
+        "GS4. Communicating with technical teams to collect requirements, describe product features and",
+        "GS5. Listen to and orally communicate information with all concerned",
+        "GS6. make appropriate decisions regarding the responsibilities of the job role",
+        "GS7. monitor efficient functioning of all activities",
+        "GS8. plan and organise work to achieve targets and deadlines",
+        "GS9. communicate with customers and other stakeholders in a courteous manner",
+        "GS10. maintain effective work relationship",
+        "GS11. identify trends/common causes for errors and suggest possible solutions to the supervisor /",
+        "GS12. analyse best possible solutions (cost, time, effort, etc.) suited for operations",
+        "GS13. apply balanced judgments to different situations"
+      ],
+      "modules": [
+        {
+          "module_title": "Conduct thorough testing of drone system software in both — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Employ simulation tools to test algorithms and flight control without physical hardware",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Validate the behavior and performance of the software using a controlled virtual environment",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Conduct flight tests to evaluate the software’s performance in real-world conditions",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Monitor system behavior, assess navigation accuracy, and verify data processing efficiency during flights",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Identify and resolve any issues or bugs found during testing",
+              "sequence_order": 5,
+              "theory_marks": 5,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Optimize algorithms for better performance, reliability, and responsiveness",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Document the code, including usage instructions, algorithm explanations, and system architecture",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Update and refine the software based on user inputs, testing results, and technology advancements",
+              "sequence_order": 8,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Prepare the software for deployment on the drone’s onboard systems",
+              "sequence_order": 9,
+              "theory_marks": 5,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

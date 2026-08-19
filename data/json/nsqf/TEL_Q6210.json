@@ -1,0 +1,616 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6210",
+  "qp_name": "TEL_Q6210",
+  "clean_code": "TEL_Q6210",
+  "total_pages": 30,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.482Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 11,
+    "total_pcs": 47,
+    "total_kus": 46,
+    "total_gs": 26,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6234",
+      "nos_title": ".Install and configure",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the principles of IoT architecture, including the role of microcontrollers, sensors, actuators,",
+        "KU2. IoT applications across smart cities, healthcare, industry 4.0, and agriculture",
+        "KU3. communication technologies used in IoT (5G, NB-IoT, LoRaWAN, Wi-Fi, Bluetooth, Zigbee,",
+        "KU4. IoT data transfer protocols (MQTT, CoAP, HTTP, AMQP, WebSockets, DDS, Modbus, and",
+        "KU5. Ethernet, Transmission Control Protocol/Internet Protocol (TCP/IP), and Virtual Private",
+        "KU6. cellular IoT, such as LTE-M, and 5G variants (URLLC, eMBB, mMTC)",
+        "KU7. wireless IoT , such as Wi-Fi 6, Zigbee, Bluetooth LE, RFID, and LoRaWAN technologies",
+        "KU8. how to install and configure smart meters, connected cameras, and industrial IoT devices",
+        "KU9. configuration and troubleshooting of cloud-based IoT management platforms (AWS IoT Core,",
+        "KU10. IoT cybersecurity threats and preventive measures (DDoS attacks, unauthorized access,",
+        "KU11. tools and techniques for RF signal strength measurement and spectrum analysis",
+        "KU12. the applicable security standards and compliance requirements (ISO 27001, GDPR, TRAI,",
+        "KU13. the importance of robust battery backups and energy-efficient IoT deployments",
+        "KU14. impact of signal interference, data packet loss, and power failures on IoT performance",
+        "KU15. remote diagnostics, monitoring tools, and predictive maintenance methodologies",
+        "KU16. proper handling, grounding, and safety considerations for IoT device installation",
+        "KU17. best practices for writing and debugging software code for IoT microcontrollers",
+        "KU18. edge computing and AI Integration in IoT installations and real-time IoT data processing",
+        "KU19. fiber optic safety, i.e. laser, glass, and chemical handling",
+        "KU20. RF hazards, i.e. RF radiation exposure and appropriate safety procedures",
+        "KU21. the use of appropriate PPE like, hard hat, safety glasses, gloves, high-visibility vest, safety",
+        "KU22. the basics of Cloud-based IoT Management (AWS IoT, Azure IoT), Ethical Hacking for IoT,",
+        "KU23. use of fog computing to reduce latency in telecom applications",
+        "KU24. how to set up IoT data pipelines and dashboards for network monitoring"
+      ],
+      "gs": [
+        "GS1. interpret technical documentation related to IoT installations and troubleshooting",
+        "GS2. apply problem-solving techniques to diagnose and resolve IoT device failures",
+        "GS3. communicate effectively with team members and clients to report issues and solutions",
+        "GS4. plan and prioritize work to complete IoT installations within deadlines",
+        "GS5. analyze network performance logs and diagnostic data",
+        "GS6. follow safety protocols when working with high-voltage power sources and telecom towers",
+        "GS7. follow and apply industry trends related to IoT advancements and security risks",
+        "GS8. adapt to new technologies such as AI-driven IoT analytics and edge computing",
+        "GS9. escalate critical issues to the appropriate team for resolution"
+      ],
+      "modules": [
+        {
+          "module_title": "Analyse requirements for IoT devices",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify various types of microprocessor boards (Arduino, Raspberry Pi, custom platforms) and microcontrollers used in IoT installations",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "determine the functions, characteristics, and applicability of different types of IoT sensors (temperature, humidity, pressure, motion, surveillance cameras, etc.) and actuators",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "select appropriate short-range (Bluetooth, Zigbee, Wi-Fi) and long-range (5G, NB-IoT, LoRaWAN) communication protocols for IoT applications",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "check the components, pin configurations, and interconnectivity provisions of microcontroller boards for input/output and power supply",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "differentiate between IoT nodes and gateways, assessing their roles in data transmission and network management",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Install IoT devices at suitable points/locations",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "determine optimal installation points based on environmental factors, power supply availability, and network signal strength",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "establish communication line connectivity using suitable nodes, gateways, Ethernet, 5G, NB- IoT, or Wi-Fi networks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "mount IoT devices securely at identified locations using industry-approved techniques and tools",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "connect and secure power supply sources while ensuring proper grounding and compliance with safety standards",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "implement signal strength testing and RF spectrum analysis to optimize IoT device placement",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Configure devices to ensure effective data transfer",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "set up appropriate connectivity options on microcontroller boards for seamless data transfer",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "use compatible cable connectors and microcontrollers to link IoT devices with data transfer interfaces (desktop/laptop/IoT gateway)",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "install and configure firmware/software frameworks that enable IoT device communication with cloud platforms (AWS IoT Core, Azure IoT Hub, Google Cloud IoT)",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "compile and upload software code to microcontrollers, ensuring compatibility with communication protocols",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "debug software errors and optimize system performance using emulators and network testing tools",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Test connections between nodes, gateways, and backend servers",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "verify proper execution of installed software by setting up nodes and gateways correctly",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "validate data transfer between devices using system logs, LED indicators, or real-time dashboards",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "establish effective connectivity between IoT gateways and backend cloud platforms or local networks",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "perform network performance testing to detect latency, packet loss, or interference issues",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "confirm data reception at the backend server and escalate unresolved connectivity issues",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6236",
+      "nos_title": ".Perform level 1",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. IoT cybersecurity threats and preventive measures (DDoS attacks, unauthorized access,",
+        "KU2. communication protocols and troubleshooting methodologies for IoT devices",
+        "KU3. remote monitoring tools for predictive maintenance and fault detection",
+        "KU4. tools and techniques for diagnosing network latency and interference",
+        "KU5. escalation procedures for unresolved hardware/software failures",
+        "KU6. IoT device authentication, encryption (AES-256), and secure access controls",
+        "KU7. configuration of cloud-based IoT troubleshooting tools",
+        "KU8. best practices for firmware updates and security patching",
+        "KU9. compliance with IoT security standards (ISO 27001, GDPR, ETSI, TRAI)",
+        "KU10. use of diagnostic software to interpret sensor and network performance data"
+      ],
+      "gs": [
+        "GS1. read and interpret technical manuals and troubleshooting guides",
+        "GS2. communicate effectively with the technical team for issue resolution",
+        "GS3. prioritize tasks to minimize system downtime",
+        "GS4. maintain logs and reports of troubleshooting activities",
+        "GS5. follow escalation protocols for unresolved IoT issues",
+        "GS6. adapt to evolving IoT security and troubleshooting practices",
+        "GS7. use diagnostic tools effectively for IoT network analysis",
+        "GS8. apply logical reasoning for identifying root causes of device failures",
+        "GS9. collaborate with teams for knowledge sharing and best practices"
+      ],
+      "modules": [
+        {
+          "module_title": "Troubleshoot IOT nodes/gateway",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "set up a test environment and create a structured troubleshooting plan",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "verify connectivity between sensors, microcontrollers, and other components using diagnostic tools",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "inspect all wiring, pin configurations, and power supply connections for faults",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "reload or update software/firmware on IoT nodes and gateways",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "check onboard memory storage and validate stored sensor data",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "maintain accurate logs of performance tests and corrective actions",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Troubleshoot communication devices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "inspect and verify the functionality of communication modules (Wi-Fi, 5G, NB-IoT, LoRaWAN)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "reconfigure device credentials, security settings, and network authentication",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "measure communication link performance between IoT nodes and gateways",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "perform protocol-level debugging for MQTT, CoAP, HTTP",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "reset network configurations and conduct connectivity tests",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "escalate unresolved technical issues to the engineering team",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9105",
+      "nos_title": ".Follow sustainable",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. the national and international environmental laws and regulations",
+        "KU2. e-waste management and recycling policies",
+        "KU3. occupational safety and health standards related to environmental practices",
+        "KU4. the types of recyclable and refurbishable telecom components",
+        "KU5. methods for reducing electronic waste through responsible procurement and reuse",
+        "KU6. advancements in eco-friendly telecom infrastructure",
+        "KU7. techniques for optimizing energy consumption in telecom operations",
+        "KU8. use of renewable energy sources in telecom infrastructure",
+        "KU9. best practices for reducing the carbon footprint of telecom installations",
+        "KU10. identification and proper disposal methods for hazardous and non-hazardous waste",
+        "KU11. the procedures for handling, storing, and transporting waste materials safely",
+        "KU12. how to collaborate with authorized agencies for effective waste collection and disposal"
+      ],
+      "gs": [
+        "GS1. communicate effectively with team members to ensure adherence to sustainable practices",
+        "GS2. follow written instructions for waste segregation, disposal, and energy-efficient installations",
+        "GS3. use problem-solving skills to address sustainability challenges in telecom installations",
+        "GS4. apply numerical skills to track and record environmental compliance data",
+        "GS5. organize tasks efficiently to minimize resource wastage and environmental impact",
+        "GS6. adapt to new sustainable technologies in telecom infrastructure",
+        "GS7. work collaboratively with authorized agencies to ensure proper e-waste disposal",
+        "GS8. maintain safety protocols while handling hazardous materials"
+      ],
+      "modules": [
+        {
+          "module_title": "Segregate recyclable and refurbishable components",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify telecom components suitable for recycling or refurbishment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "sort electronic and non-electronic waste based on disposal protocols",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "label and store recyclable and refurbishable components separately",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Dispose of waste",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "follow approved procedures for the safe disposal of hazardous and non-hazardous waste",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "coordinate with authorized e-waste recycling units or certified disposal agencies",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "handle batteries, cables, and electronic circuits safely to prevent environmental hazards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Use Energy-Efficient Methods",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "select and use energy-efficient tools and equipment during telecom installations",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "apply best practices to minimize energy consumption",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "position and install telecom infrastructure to optimize efficiency and sustainability",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Follow environmental standards and compliance guidelines",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "adhere to national and international environmental regulations for telecom infrastructure installation",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "maintain records of waste disposal, recycling, and sustainability measures",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "assist in periodic audits to assess compliance with green standards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "follow workplace sustainability protocols and report non-compliance",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Guide team members",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "guide team members on sustainable telecom installation guidelines and practices",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "encourage environmentally responsible work habits",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

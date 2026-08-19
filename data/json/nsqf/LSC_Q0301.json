@@ -1,0 +1,1097 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "LSC/Q0301",
+  "qp_name": "LSC_Q0301",
+  "clean_code": "LSC_Q0301",
+  "total_pages": 61,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.290Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 13,
+    "total_pcs": 81,
+    "total_kus": 95,
+    "total_gs": 116,
+    "generic_nos_filtered": 3
+  },
+  "nos_units": [
+    {
+      "nos_code": "LSC/N0130",
+      "nos_title": ".Undertake inbound",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational procedures, documentation and policy on procurement.",
+        "KU2. Company's reporting structure to support and expedite project activities.",
+        "KU3. Company's policy and work instructions on quality standards.",
+        "KU4. Policy on the return of goods and customs compliance.",
+        "KU5. Importance of the individuals role in the workflow.",
+        "KU6. Occupational health and safety standards and security procedures to be followed.",
+        "KU7. Procedures for dealing with loss or damaged goods.",
+        "KU8. Risk and impact of not following defined work, safety and security procedures.",
+        "KU9. The coding system is followed for the ordering of parts.",
+        "KU10. Enterprise Resource Planning (ERP) system and Warehouse Management System of the",
+        "KU11. Handling quality issues, rejects, and escalations with ways of resolving them.",
+        "KU12. Usage of computers, data handling devices, basic troubleshooting regarding network",
+        "KU13. Technical specification of products handled.",
+        "KU14. INCOTERMS and GST documentation.",
+        "KU15. Packaging for different types of products handled and compliance.",
+        "KU16. Root cause analysis, inventory analysis techniques (ABC analysis, FSN analysis), feasibility",
+        "KU17. Documentation compliance as per company policy",
+        "KU18. Inventory management and financials are involved in inventory.",
+        "KU19. Numerical estimation and forecasting techniques.",
+        "KU20. Analyse key performance criteria",
+        "KU21. Budgeting, Mathematical calculations, Engineering/lashing calculations",
+        "KU22. Generate daily reports from the Management Information System (MIS) and ERP."
+      ],
+      "gs": [
+        "GS1. Ability to interpret order requirements, invoices and product specifications",
+        "GS2. Ability to write reports, orders, indent.",
+        "GS3. Ability to efficiently communicate with supervisors, co-workers and suppliers.",
+        "GS4. Negotiation skills and mathematical reasoning",
+        "GS5. Inductive and deductive reasoning.",
+        "GS6. Decide if a problem can be resolved quickly internally or needs to be escalated.",
+        "GS7. Identify activities or orders that need to be prioritised as per instructions.",
+        "GS8. Decide as per the organisation's guiding policies and criteria regarding procurement.",
+        "GS9. Decide, keeping the market, economic, social and political environment in account.",
+        "GS10. Plan, estimate the time for each activity and Prioritise, execute tasks based on instructions",
+        "GS11. Develop presentations on operational trends.",
+        "GS12. Be a team player and achieve joint goals",
+        "GS13. Value the importance of customer timelines.",
+        "GS14. Suggest improvement in procurement practices to increase efficiency.",
+        "GS15. Inform the supervisor regarding delays, issues with doing an activity, etc.",
+        "GS16. Coordinate and ensure timeliness in the receipt and delivery of completed items.",
+        "GS17. Check compliance with materials received as per purchase orders.",
+        "GS18. Focus on the task at hand and complete it without errors and delays.",
+        "GS19. Identify errors in data reporting in ERP and resolve the same or escalate if required.",
+        "GS20. Maintain punctuality and respond to the supervisor in a timely manner.",
+        "GS21. Identify common trends as per the analysis and report them to management.",
+        "GS22. Suggest possible solutions for the common issues in daily operations identified based on",
+        "GS23. Verify the accuracy of the data and apply filters before updating it into the ERP.",
+        "GS24. Verify the authenticity of the data and apply filters to remove aberrations in the data.",
+        "GS25. Analyse trends to identify defaults for corrective action as needed.",
+        "GS26. Observe the data to identify any aberrations.",
+        "GS27. Cross-check data to check for data gaps and mistakes in reporting.",
+        "GS28. Provide corrective actions for escalated issues with suppliers and other departments"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform inbound/ receiving ERP operations.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Check for pre-alert or advanced shipment notice and mandatory documents before unloading.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Match incoming shipment to a valid Purchase Order and validate PO number, Item codes, Quantity, Supplier details, etc.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Search and confirm the PO in the ERP system once the preliminary QC check is completed.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Prepare an inbound report on received and damaged goods and get it signed by the shipper",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Verify GRN (goods receive note) data and put-away accuracy w.r.t to location and inventory.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Trigger the Quality Check workflow if items require inspection, and update ERP with the results, such as Accepted quantity, rejected quantity, Remarks, etc.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Update the inspection lot or status in ERP and assign storage locations (bins/racks) for putaway.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Update bin location, shelf numbers, or zones in ERP and post a transfer posting or putaway confirmation.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Perform outbound ERP operations.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Check for approved Sales Order (SO) or Delivery Order and confirm the Correct customer, Required ship date and Order quantity.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Punch orders for manual operations and generate/allocate a pick list for picking.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Use the Outbound Delivery or Pick Ticket function in ERP to Assign Items to pick, Bin/zone locations, picking sequence, etc.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Confirm in ERP once picking is completed, and record any short-picks, damages, or substitutions.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Update the Packing and Weight Entry once the preliminary QC is completed.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Check the delivery manifest with the pick list to verify that the correct products are being shipped out",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Check if the delivery data is updated in the system for proper tracking",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Check for availability and correctness of appropriate documentation, including air waybill, bill of lading, fumigation certificate, PGA (Participative Government Agencies) documentation, customs documentation, etc.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Prepare the complete outbound report and update it in ERP along with Post Goods Issue (GI) to reduce inventory.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Print labels, product tags, and other codes",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "Obtain information from the supervisor and the MIS regarding the ongoing activities for which bar codes, labels, and invoices need to be printed",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Check and verify the list in ERP for correctness",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Print the bar codes, product tags, address tags, labels, etc. and hand over to the respective supervisors",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Maintain a count and record for daily printing activities",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0144",
+      "nos_title": ".Validate Warehouse",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Basic warehouse operations such as inbound, outbound, inventory control, put-away,",
+        "KU2. Use of ERP/WMS in warehouse operations and basic flow of transactions across systems.",
+        "KU3. Common warehouse transactions including GRN, put-away, picking, dispatch, returns, and",
+        "KU4. Importance of accuracy, completeness, and timeliness of digital warehouse records.",
+        "KU5. Key ERP/WMS data fields such as item codes, quantities, batch or lot numbers, expiry dates,",
+        "KU6. Common reasons for data errors such as manual mistakes, process gaps, and system issues.",
+        "KU7. Organisational procedures for identifying, correcting, and escalating data discrepancies and",
+        "KU8. Key warehouse KPIs related to productivity, accuracy, ageing, service levels, rejections,",
+        "KU9. Standard warehouse reports such as inbound, outbound, inventory, ageing, rejection, delay,",
+        "KU10. Reporting timelines, SLA requirements, and expectations of management and stakeholders.",
+        "KU11. Use of operational data to identify gaps, issues, and improvement opportunities.",
+        "KU12. Organisational policies related to data confidentiality, system access, and ethical handling of"
+      ],
+      "gs": [
+        "GS1. Communicate data discrepancies, system issues, and corrective actions clearly to relevant",
+        "GS2. Prepare and share operational reports in a clear and structured manner.",
+        "GS3. Escalate unresolved issues through defined channels as per organisational procedures.",
+        "GS4. Review digital records to identify incorrect, incomplete, duplicate, or mismatched entries.",
+        "GS5. Analyse warehouse data to identify trends and performance gaps.",
+        "GS6. Interpret reports and convert data findings into practical improvement actions.",
+        "GS7. Plan and prioritise daily validation of ERP/WMS transactions to close pending entries on time.",
+        "GS8. Manage multiple reporting requirements within defined timelines and SLA commitments.",
+        "GS9. Use ERP/WMS screens and reporting tools accurately for data validation and extraction.",
+        "GS10. Coordinate with warehouse operations and support teams to resolve data-related issues.",
+        "GS11. Demonstrate attention to detail, integrity, and accountability while handling digital records"
+      ],
+      "modules": [
+        {
+          "module_title": "Validate Digital Warehouse Records (ERP/WMS)",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Validate the accuracy and completeness of inbound, outbound, and inventory transactions recorded in the ERP/WMS.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Verify key fields such as item codes, quantities, batch/lot numbers, expiry dates, bin locations, and material status for correctness.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Identify incorrect, incomplete, duplicate, or mismatched entries in the ERP/WMS and coordinate corrections with warehouse associates or supervisors.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Escalate unresolved discrepancies, system errors, or master-data issues to supervisors or relevant departments following organisational protocols.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Review entries made into the ERP with respect to daily warehouse operations and monitor correct flow of information across integrated systems.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Ensure closure of pending or incomplete ERP/WMS transactions by coordinating with associates, supervisors, and cross-functional teams.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Extract Data and Generate Operational Reports",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Confirm the Key Metrics and KPIs for analysis with management and extract data from the ERP/WMS according to these KPIs.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Generate various operational data such as rejection reports, delay reports, and operational complaint data.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Generate standard warehouse reports including inbound, outbound, put-away, ageing, and inventory reports.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Provide daily, weekly, and periodic reports to management and stakeholders in line with SLA and KPI requirements.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Analyse Data and Provide Insights for Improvement",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "Analyse transactional and operational data flowing through the ERP/WMS with respect to warehouse performance.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Perform analyses such as flow balancing, variance analysis, billing analysis, vendor performance, quality trends, customer fulfilment status, and transporter performance.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Interpret results, identify trends, and generate insights for optimisation and continuous improvement.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0131",
+      "nos_title": ".Perform operations",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational procedures, documentation and policy on procurement.",
+        "KU2. Company's reporting structure to support and expedite project activities.",
+        "KU3. Company's policy and work instructions on quality standards.",
+        "KU4. Policy on the return of goods and customs compliance.",
+        "KU5. Importance of the individual's role in the workflow.",
+        "KU6. Occupational health and safety standards and security procedures to be followed.",
+        "KU7. Procedures for dealing with loss or damaged goods.",
+        "KU8. Risk and impact of not following defined work, safety and security procedures.",
+        "KU9. The coding system is followed for the ordering of parts.",
+        "KU10. Enterprise Resource Planning (ERP) system and Warehouse Management System of the",
+        "KU11. Handling quality issues, rejects, and escalations with ways of resolving them.",
+        "KU12. Usage of computers, data handling devices, basic troubleshooting regarding network",
+        "KU13. Technical specification of products handled.",
+        "KU14. INCOTERMS and GST documentation.",
+        "KU15. Packaging for different types of products handled and compliance.",
+        "KU16. Root cause analysis, inventory analysis techniques (ABC analysis, FSN analysis), feasibility",
+        "KU17. Documentation compliance as per company policy",
+        "KU18. Inventory management and financials are involved in inventory",
+        "KU19. Numerical estimation and forecasting techniques.",
+        "KU20. Analyse key performance criteria",
+        "KU21. Budgeting, Mathematical calculations, Engineering/lashing calculations",
+        "KU22. Generate daily reports from the Management Information System (MIS) and ERP."
+      ],
+      "gs": [
+        "GS1. Ability to interpret order requirements, invoices and product specifications",
+        "GS2. Ability to write reports, orders, indent.",
+        "GS3. Ability to efficiently communicate with supervisors, co-workers and suppliers.",
+        "GS4. Negotiation skills and mathematical reasoning",
+        "GS5. Inductive and deductive reasoning.",
+        "GS6. Decide if a problem can be resolved quickly internally or needs to be escalated.",
+        "GS7. Identify activities or orders that need to be prioritised as per instructions.",
+        "GS8. Decide as per the organisation's guiding policies and criteria regarding procurement.",
+        "GS9. Decide, keeping the market, economic, social and political environment in account.",
+        "GS10. Plan, estimate the time for each activity and Prioritise, execute tasks based on instructions",
+        "GS11. Develop presentations on operational trends.",
+        "GS12. Be a team player and achieve joint goals",
+        "GS13. Value the importance of customer timelines.",
+        "GS14. Suggest improvement in procurement practices to increase efficiency.",
+        "GS15. Inform the supervisor regarding delays, issues with doing an activity, etc.",
+        "GS16. Coordinate and ensure timeliness in the receipt and delivery of completed items.",
+        "GS17. Check compliance with materials received as per purchase orders.",
+        "GS18. Focus on the task at hand and complete it without errors and delays.",
+        "GS19. Identify errors in data reporting in ERP and resolve the same or escalate if required.",
+        "GS20. Maintain punctuality and respond to the supervisor in a timely manner.",
+        "GS21. Identify common trends as per the analysis and report them to management.",
+        "GS22. Suggest possible solutions for the common issues in daily operations identified based on",
+        "GS23. Verify the accuracy of the data and apply filters before updating it into the ERP.",
+        "GS24. Verify the authenticity of the data and apply filters to remove aberrations in the data.",
+        "GS25. Analyse trends to identify defaults for corrective action as needed.",
+        "GS26. Observe the data to identify any aberrations.",
+        "GS27. Cross-check data to check for data gaps and mistakes in reporting.",
+        "GS28. Provide corrective actions for escalated issues with suppliers and other departments"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform basic Operations Quality Check (OQC)",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Use a checklist based on SOPs and audit guidelines for conducting checks",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify the sample for quality check from the inbound and outbound shipments, and for bulk goods, inspect a sample (AQL – Acceptable Quality Level).",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Conduct a basic product description match, brand match, logo match, manufacturing location match, check for authenticity of the product and check for damages on the packaging with respect to the information in Enterprise resource planning (ERP)",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Log any mismatch, damage, or deviation in ERP or QC log and assign a corrective action (e.g., recheck, return to vendor, hold stock).",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Prepare a quality check report and update the manager in case of any aberrations with respect to the desired quality and product configuration",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Perform inventory reconciliation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "Schedule Cycle Counting in ERP, such as daily/weekly/monthly, based on ABC classification.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Obtain a list of stored items along with location and physical quantity from the supervisor and match the same with system data with respect to the location of each item and quantity.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Count items in storage bins, pallets, and shelves manually or with scanners and verify quantity, SKU/barcode, batch/lot, expiration dates, etc.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Assess the number of items to be counted daily, considering the throughput velocity of SKUs and the number of locations touched for picking",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "In case of discrepancy found in system data versus system data, physically count the number of items and cross-check them with the system report.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Verify inventory records with the system and physical inspection, and record them.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Post Adjustments in ERP for verified discrepancies.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Prepare a reconciliation summary report (discrepancy%, value impact) and escalate recurring issues for process correction.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N1003",
+      "nos_title": ".Coordinate with",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational procedures, documentation and policy on procurement.",
+        "KU2. Company's reporting structure to support and expedite project activities.",
+        "KU3. Company's policy and work instructions on quality standards.",
+        "KU4. Policy on the return of goods and customs compliance.",
+        "KU5. Importance of the individual's role in the workflow.",
+        "KU6. Occupational health and safety standards and security procedures to be followed.",
+        "KU7. Procedures for dealing with loss or damaged goods.",
+        "KU8. Risk and impact of not following defined work, safety and security procedures.",
+        "KU9. The coding system is followed for the ordering of parts.",
+        "KU10. Enterprise Resource Planning (ERP) system and Warehouse Management System of the",
+        "KU11. Handling quality issues, rejects, and escalations with ways of resolving them.",
+        "KU12. Usage of computers, data handling devices, basic troubleshooting regarding network",
+        "KU13. Technical specification of products handled.",
+        "KU14. INCOTERMS and GST documentation.",
+        "KU15. Packaging for different types of products handled and compliance.",
+        "KU16. Root cause analysis, inventory analysis techniques (ABC analysis, FSN analysis), feasibility",
+        "KU17. Documentation compliance as per company policy",
+        "KU18. Inventory management and financials are involved in inventory.",
+        "KU19. Numerical estimation and forecasting techniques.",
+        "KU20. Analyse key performance criteria",
+        "KU21. Budgeting, Mathematical calculation, Engineering/lasing calculations",
+        "KU22. Generate daily reports from the Management Information System (MIS) and ERP."
+      ],
+      "gs": [
+        "GS1. Ability to interpret order requirements, invoices and product specifications",
+        "GS2. Ability to write reports, orders, indent.",
+        "GS3. Ability to efficiently communicate with supervisors, co-workers and suppliers.",
+        "GS4. Negotiation skills and mathematical reasoning",
+        "GS5. Inductive and deductive reasoning.",
+        "GS6. Decide if a problem can be resolved quickly internally or needs to be escalated.",
+        "GS7. Identify activities or orders that need to be prioritised as per instructions.",
+        "GS8. Decide as per the organisation's guiding policies and criteria regarding procurement.",
+        "GS9. Decide, keeping the market, economic, social and political environment in account.",
+        "GS10. Plan, estimate the time for each activity and Prioritise, execute tasks based on instructions",
+        "GS11. Develop presentations on operational trends.",
+        "GS12. Be a team player and achieve joint goals",
+        "GS13. Value the importance of customer timelines.",
+        "GS14. Suggest improvement in procurement practices to increase efficiency.",
+        "GS15. Inform the supervisor regarding delays, issues with doing an activity, etc.",
+        "GS16. Coordinate and ensure timeliness in the receipt and delivery of completed items.",
+        "GS17. Check compliance with materials received as per purchase orders.",
+        "GS18. Focus on the task at hand and complete it without errors and delays.",
+        "GS19. Identify errors in data reporting in ERP and resolve the same or escalate if required.",
+        "GS20. Maintain punctuality and respond to the supervisor in a timely manner.",
+        "GS21. Identify common trends as per the analysis and report them to management.",
+        "GS22. Suggest possible solutions for the common issues in daily operations identified based on",
+        "GS23. Verify the accuracy of the data and apply filters before updating it into the ERP.",
+        "GS24. Verify the authenticity of the data and apply filters to remove aberrations in the data.",
+        "GS25. analyse trends to identify defaults for corrective action as needed.",
+        "GS26. Observe the data to identify any aberrations.",
+        "GS27. Cross-check data to check for data gaps and mistakes in reporting.",
+        "GS28. Provide corrective actions for escalated issues with suppliers and other department",
+        "GS29. Provide corrective actions for escalated issues with suppliers and other departments"
+      ],
+      "modules": [
+        {
+          "module_title": "Coordinate vehicle planning and transport",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Pull the delivery list from the Sales Order module or the Transport Queue from ERP.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Use Shipment Creation (SAP VT01N or equivalent) in ERP to group deliveries and combine orders with the same route or customer cluster, with Compatible loading requirements.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Choose vehicle code from ERP transport master (linked to capacity specs) and Select Appropriate Vehicle Type.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Create a Shipment Document in ERP by entering Consolidated delivery numbers, Vehicle type & number, Loading time slot, Route code, Driver info (if available), etc., and assign Delivery Items to it.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Identify transporters based on the shipping requirements of clients",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Plan vehicle requirements in terms of the size of vehicles and the number of vehicles based on load movement, and analyse the cost per lane",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Finalise the transporter(s) based on lanes, prepare the necessary documentation, and seek requisite approvals",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Coordinate with transporters for pickup and Confirm Vehicle arrival time, Driver contact info, Required documentation (e.g., E-way bill, gate pass), etc.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Inform the supervisors in various departments regarding the pickup timing and the transporter schedule",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Update the transport information in ERP once pickup is done, and Post Goods Issue (PGI) to reduce inventory and trigger the invoice process.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Verify uploaded PoD and other mandatory fields in ERP once the vehicle reaches the destination and the material in handed over to the consignee",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Coordinate with internal and external stakeholders",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Coordinate with customers to understand their requirements for receiving, dispatching, tracking orders, goods in transit, SLAs, etc.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Coordinate with departments to resolve queries and provide information",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Liaise with clients, suppliers and transport companies and provide the necessary information",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Prepare periodic reports and update the management",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Resolve discrepancies/ operational claims",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Obtain the list of claims, the individual claim forms, the claims processing checklist and the inspection checklist from the manager/supervisor",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Check the reason in the claim form and perform a visual inspection of the quarantined goods along with the concerned supervisor",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Check whether the claims were filed within the authorised timelines and classify claims as outdated or timely",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Verify that all the documents required (assessment valuation, invoice/bill, claims and insurance forms, etc.) in the claims processing checklist are present and genuine",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Escalate false or outdated claims to the manager",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Process the claim documentation to the supervisor/manager for approval, and on receipt of internal approval, forward it to the concerned insurance companies along with evidence and recommendation.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Check the reason in the claim concerned insurance companies along with evidence and recommendation.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0145",
+      "nos_title": ".Perform basic trend",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. The company's reporting structure to support and expedite project activities",
+        "KU2. The company's policy and work instructions on quality standards, documentation, etc.",
+        "KU3. Importance of the individual's role in the workflow",
+        "KU4. Occupational health and safety standards and security procedures to be followed",
+        "KU5. Procedures for dealing with loss or damage to goods",
+        "KU6. Coding system followed to label items",
+        "KU7. ERP and Information Technology (IT) system of the organisation",
+        "KU8. Use a computer and associated data management devices",
+        "KU9. Different material handling equipment and their uses",
+        "KU10. Trend analysis and forecasting techniques",
+        "KU11. Quantitative tools used in trend analysis and forecasting",
+        "KU12. Different geographical locations",
+        "KU13. Information from the ERP system",
+        "KU14. Escalations regarding resolving and catering to the customer's query",
+        "KU15. Overall process in warehouse operations",
+        "KU16. Different types of goods being handled and precautions and procedures with respect to them",
+        "KU17. Various inventory counting methods and processes"
+      ],
+      "gs": [
+        "GS1. Read the written instructions",
+        "GS2. Read product instructions in ERP",
+        "GS3. Read reports and notes shared by supervisors and associates",
+        "GS4. Write damage reports and daily output reports",
+        "GS5. Generate daily reports from ERP",
+        "GS6. Print the required stationery",
+        "GS7. Communicate with supervisors and co-workers",
+        "GS8. Collect information from supervisors and external stakeholders",
+        "GS9. Identify the most appropriate transporter, considering customer requirements",
+        "GS10. Decide if there are any mistakes or issues with the transporters' documents",
+        "GS11. Maintain punctuality",
+        "GS12. Organise the data to streamline data entry processes",
+        "GS13. Be a team player and achieve joint goals",
+        "GS14. Adhere to the timelines",
+        "GS15. Factor in customer urgency while preparing forecasts",
+        "GS16. Resolve basic issues with respect to various documentation of the transporter",
+        "GS17. Verify the accuracy of the data and apply filters before analysing data",
+        "GS18. Analyse data trends to identify the most suitable options",
+        "GS19. Observe the data to identify aberrations in the data",
+        "GS20. Cross-check data to check for data gaps and mistakes in analysis"
+      ],
+      "modules": [
+        {
+          "module_title": "Conduct Trend analysis",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Set up the parameters for trend analysis to be done, such as Inventory Levels, Inbound and Outbound Shipments (volume over time), Peak Periods (seasonal trends), etc",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Collect the relevant information from ERP/documentation/ standalone computer files for the set parameters.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Apply data filters to process data before conducting analysis.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Create line charts to track monthly or weekly data over time (e.g., outbound shipments per week).",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Conduct trend analysis to identify time trends and seasonal trends of operational and business performance",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Conduct trend analysis of new business to identify seasonality and cyclical natures",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Draw inferences and develop a report based on trend analysis",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Forecast",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Identify key parameters for forecasting based on past trends, as well as the regulatory and business environment",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Prepare data for the accepted forecasting approach and project future values by averaging past data.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Develop forecasts and consider lead times and supplier reliability when forecasting stock needs.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "share the data with management and conduct review meetings to finalize on the forecast",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Develop resources, space plans, and budgets based on forecasts in consultation with the manager.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,734 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q2500",
+  "qp_name": "TEL_Q2500",
+  "clean_code": "TEL_Q2500",
+  "total_pages": 36,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.395Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 10,
+    "total_pcs": 59,
+    "total_kus": 40,
+    "total_gs": 36,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N2500",
+      "nos_title": ".High-Density Hand",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Standard Operating Procedures (SOPs) for high-density soldering in telecom applications",
+        "KU2. the risks of improper soldering, including cold joints, short circuits, and component damage",
+        "KU3. industry standards such as IPC-A-610 for soldering quality and acceptability criteria",
+        "KU4. methods for preventing contamination of PCBs, components, and soldering materials",
+        "KU5. the procedures for cleaning and maintaining soldering tools, fixtures, and workstations",
+        "KU6. the importance of controlling temperature, humidity, and electrostatic discharge (ESD) in the",
+        "KU7. techniques for handling delicate components and avoiding thermal or mechanical stress",
+        "KU8. different types of soldering defects, their causes, and corrective actions",
+        "KU9. documentation and record-keeping requirements related to soldering and board assembly",
+        "KU10. Safety, Health, and Environmental (SHE) guidelines, including the safe handling of lead-"
+      ],
+      "gs": [
+        "GS1. read and interpret CAD layouts, work instructions, and technical manuals accurately",
+        "GS2. document work completed, maintain soldering logs, and report any quality concerns",
+        "GS3. communicate effectively with supervisors, team members, and quality inspectors",
+        "GS4. identify and troubleshoot minor soldering defects before the final inspection",
+        "GS5. follow safety procedures, including ESD handling and hazardous material disposal",
+        "GS6. plan work sequences efficiently to minimize errors and improve productivity",
+        "GS7. use basic measuring tools, such as calipers and temperature sensors, to verify precision",
+        "GS8. adapt to different soldering materials and techniques as per evolving industry standards",
+        "GS9. maintain concentration and hand-eye coordination for precision soldering",
+        "GS10. collaborate with colleagues to improve workflow and ensure quality compliance"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare board and material/components",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interpret Computer-Aided Design (CAD) specifications to identify soldering requirements",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "set up the soldering jig/fixture according to work specifications",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "collect all required components, ensuring their compatibility with the board layout",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "adjust the soldering station temperature as per the component and board specifications and verify accuracy using sensors",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "select the appropriate solder bit, soldering wire, and flux based on work specifications",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "clean soldering bits, component leads, and PCB surfaces to remove oxidation, dust, or contamination",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "check and clean the solder wire to prevent impurities affecting the soldering process",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "verify and apply the correct flux to improve soldering quality and prevent defects",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Solder components on boards",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "position and align components precisely according to specifications, ensuring correct orientation",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "apply the correct amount of solder, flux, and heat, ensuring even flow without excess solder on gold-plated areas",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "control soldering temperature and nozzle vector speed to maintain uniformity and avoid thermal damage to components",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "follow proper soldering techniques to minimize solder bridges, cold joints, and dry soldering defects",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "maintain the soldering station by performing start-up, shutdown, and preventive maintenance procedures",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "check solder joints visually or using magnification tools to ensure compliance with industry standards",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "rectify minor soldering defects, such as excess solder, bridges, or cold joints, using appropriate rework techniques",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N2501",
+      "nos_title": ".Rework on Defects",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. industry standards and best practices for telecom board soldering and rework",
+        "KU2. procedures for accessing and interpreting CAD drawings and BOMs",
+        "KU3. quality control checks and defect identification techniques in PCB assembly",
+        "KU4. use and maintenance of soldering stations, desoldering tools, and rework stations",
+        "KU5. work process documentation and escalation matrix for defect reporting",
+        "KU6. ESD control measures and their importance in preventing component damage",
+        "KU7. Occupational health and safety (OHS) and environmental regulations applicable to soldering",
+        "KU8. methods for assessing solder joint quality, including visual inspection, X-ray, and automated",
+        "KU9. compatibility of solder types, flux, and component materials in rework and selective",
+        "KU10. industry protocols for handling lead-free and lead-based soldering materials"
+      ],
+      "gs": [
+        "GS1. read and interpret CAD drawings, BOMs, and work instructions accurately",
+        "GS2. follow standard operating procedures (SOPs) and safety guidelines effectively",
+        "GS3. communicate clearly with team members, supervisors, and quality inspectors",
+        "GS4. maintain detailed documentation of rework activities and defect reports",
+        "GS5. use digital tools for defect tracking, component sourcing, and reporting",
+        "GS6. identify and troubleshoot minor soldering defects independently",
+        "GS7. handle and store electronic components safely, following ESD precautions",
+        "GS8. adapt to new soldering technologies and industry advancements",
+        "GS9. collaborate with other departments to resolve quality-related issues",
+        "GS10. manage time efficiently to meet production deadlines and quality standards"
+      ],
+      "modules": [
+        {
+          "module_title": "Verification of completed board against specifications",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "retrieve and interpret the correct CAD layout and BOM from the software library/system",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "compare and verify on-board component placement and orientation with CAD specifications",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "cross-check component values and specifications against drawings/work orders",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "check the board for defects such as excess burr on component bases, visible damage, solder bridges, pinholes/blowholes, spikes, peaks, gold fingers, and dry solder joints",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "conduct and interpret functional tests of the board using appropriate tools and equipment",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Selective soldering and rework",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify and mark defective components for rework or replacement",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "determine whether components can be reused or require sourcing new replacements",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "remove faulty solder joints using appropriate desoldering techniques and tools",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "apply proper selective soldering techniques, maintaining appropriate temperature and solder flow",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure compliance with soldering specifications, avoiding overheating, cold solder joints, and improper wetting",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "reassemble and resolder components while adhering to ESD safety precautions",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "verify reworked components for correct placement, orientation, and connectivity under a microscope",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "maintain records of reworked components and report unresolved defects per escalation protocols",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N2502",
+      "nos_title": ".Cleaning and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. work/project management principles and their application in PCB inspection",
+        "KU2. risks and consequences of non-compliance with defined procedures",
+        "KU3. escalation matrix for reporting incidents such as system failures, contamination issues, and",
+        "KU4. importance of record-keeping and potential consequences of poor documentation",
+        "KU5. Safety, Health, and Environment (SHE) and Occupational Health and Safety (OHS)",
+        "KU6. properties, usage, and handling of cleaning chemicals/solvents used for PCB cleaning",
+        "KU7. principles and techniques of PCB cleaning, including solvent-based and ultrasonic methods",
+        "KU8. operation and maintenance of cleaning equipment such as vapor de-greasers and ultrasonic",
+        "KU9. quality control and quality assurance parameters related to PCB inspection",
+        "KU10. IPC and industry standards for soldering, component placement, and PCB integrity",
+        "KU11. ESD-safe handling procedures and their impact on PCB reliability"
+      ],
+      "gs": [
+        "GS1. read and interpret technical documents, including schematics, BOMs, and work instructions",
+        "GS2. comprehend and apply safety manuals, operational guidelines, and quality standards",
+        "GS3. communicate effectively with team members, supervisors, and external stakeholders",
+        "GS4. problem-solving skills to identify, analyze, and resolve quality or process-related issues",
+        "GS5. practice attention to detail to detect defects, inconsistencies, and non-conformities in PCBs",
+        "GS6. collaborate effectively in a production and quality control environment",
+        "GS7. adapt to learn and implement new inspection techniques, tools, and industry best practices",
+        "GS8. manage time effectively to meet production deadlines and quality standards",
+        "GS9. use digital tools and software for data recording, reporting, and analysis",
+        "GS10. ensure quality standards align with end-user requirements and expectations"
+      ],
+      "modules": [
+        {
+          "module_title": "Cleaning of PCBs",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "clean PCBs to remove flux residues, white patches, and other contaminants using specified solvents and cleaning agents",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "operate vapor de-greaser, ultrasonic cleaner, and other industry-recommended equipment for cleaning PCBs, ensuring effective removal of impurities",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "dry PCBs using controlled methods to prevent damage and contamination",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "package and store cleaned PCBs using electrostatic discharge (ESD)-safe materials and procedures to maintain integrity and prevent damage",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Quality checks and assurance",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "check PCBs for missing, wrongly mounted, or misaligned components as per specifications and bill of materials (BOM)",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "inspect soldering quality, including workmanship, joint integrity, and adherence to IPC standards",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "verify placement of board identifiers, conformal coatings, and compliance with customer or regulatory requirements",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify defects such as cold solder joints, bridging, and insufficient solder, and take corrective action",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify and segregate functional and defective PCBs",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "document findings and escalate non- conformities as per established reporting protocols",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "carry out routine maintenance of the SMT equipment to ensure their optimal functioning",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "conduct routine shop floor audits to ensure adherence to process parameters, including temperature and humidity control",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9107",
+      "nos_title": ".Follow sustainability",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. the organization's sustainability policies and goals",
+        "KU2. EPR guidelines, ISO 14001, and e-waste disposal laws",
+        "KU3. the methods for identifying recyclable and hazardous components",
+        "KU4. green manufacturing practices, including energy-efficient tools, lead-free soldering, and",
+        "KU5. proper handling, storage, and disposal of e-waste",
+        "KU6. the techniques for reducing material wastage without impacting production quality",
+        "KU7. safe and responsible handling of hazardous and non-hazardous materials",
+        "KU8. environmental impact assessment techniques for telecom production",
+        "KU9. the documentation requirements for sustainability audits and compliance tracking"
+      ],
+      "gs": [
+        "GS1. read and interpret technical manuals, regulatory guidelines, and environmental compliance",
+        "GS2. effectively report waste management data, sustainability initiatives, and compliance issues",
+        "GS3. identify and implement solutions to reduce material wastage and improve resource efficiency",
+        "GS4. coordinate with waste management teams, auditors, and suppliers to implement sustainable",
+        "GS5. assess and interpret sustainability data to improve environmental impact measures",
+        "GS6. evaluate options for waste management and select the most sustainable alternative"
+      ],
+      "modules": [
+        {
+          "module_title": "Identify and segregate recyclable, refurbishable, and hazardous components",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "inspect incoming and outgoing materials to identify recyclable, refurbishable, and hazardous components",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "categorize telecom components such as PCBs, cables, batteries, and plastic casings for appropriate processing",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "maintain an inventory of recyclable and hazardous materials to track waste management",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "store e-waste separately and label it in accordance with Extended Producer Responsibility (EPR) guidelines",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify and report any improper disposal practices to the designated authority",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Follow green manufacturing and sustainable assembly practices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "use energy-efficient equipment, tools, and automated systems to reduce carbon footprint",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "follow low-emission soldering and lead-free assembly processes to minimize pollution",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "optimize the use of materials, water, and electricity during production",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "conduct regular maintenance and calibration of energy-efficient machinery to ensure optimal performance",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "adopt ISO 14001 (Environmental Management System) compliance in production workflows",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Dispose of and recycle waste",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "dispose of hazardous waste (e.g., lithium batteries, chemical residues) in accordance with environmental safety protocols",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "deposit non-hazardous, recyclable materials (e.g., plastics, aluminum, copper) in designated collection areas",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "maintain documentation for waste disposal and recycling compliance audits",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "conduct periodic waste audits to identify opportunities for further waste reduction",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "coordinate with authorized e-waste recyclers to ensure proper processing and disposal",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Comply with environmental and sustainability regulations",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "follow the applicable national and international environmental laws and regulations for telecom manufacturing",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "participate in sustainability audits and assessments as per company policies",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "check for adherence to sustainability guidelines and report deviations",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "follow corrective actions based on environmental audits and assessments",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

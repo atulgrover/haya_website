@@ -1,0 +1,331 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "ELE/Q1501",
+  "qp_name": "ELE_Q1501",
+  "clean_code": "ELE_Q1501",
+  "total_pages": 28,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:26.759Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 6,
+    "total_pcs": 20,
+    "total_kus": 30,
+    "total_gs": 30,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "ELE/N1508",
+      "nos_title": ".Understanding",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Fundamentals of embedded systems and software development life cycle.",
+        "KU2. Agile methodologies (e.g., Scrum, Kanban) and workflow management tools like JIRA, Trello,",
+        "KU3. Organizational policies, coding standards, and cybersecurity frameworks such as ISO 27001",
+        "KU4. Model-Based Systems Engineering (MBSE) concepts and tools like MATLAB/Simulink and",
+        "KU5. Structure and interpretation of Business Requirement Specifications (BRS) and Software",
+        "KU6. Use of Natural Language Processing (NLP)-based tools for analyzing software requirements.",
+        "KU7. IoT-specific design platforms and cloud simulation tools like AWS IoT Core and Azure IoT Hub.",
+        "KU8. Circuit design principles and how they relate to embedded software functionality.",
+        "KU9. Project planning and scheduling techniques in embedded software projects.",
+        "KU10. Communication protocols and integration techniques for embedded system components."
+      ],
+      "gs": [
+        "GS1. Effective communication for interacting with engineering teams and interpreting",
+        "GS2. Team collaboration and coordination in Agile environments.",
+        "GS3. Analytical thinking to interpret system specifications and identify software logic.",
+        "GS4. Problem-solving skills for planning, debugging, and adapting to changing requirements.",
+        "GS5. Time management to plan tasks and meet delivery schedules.",
+        "GS6. Adaptability in working with evolving technologies, tools, and processes.",
+        "GS7. Attention to detail in interpreting requirement documents and system logic.",
+        "GS8. Initiative and innovation in using advanced tools like NLP and cloud-based simulation.",
+        "GS9. Ethical understanding to ensure compliance with cybersecurity and organizational standards.",
+        "GS10. Documentation and reporting skills for tracking development progress and compliance."
+      ],
+      "modules": [
+        {
+          "module_title": "Identifying the work requirement",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Interact with the lead engineer for understanding the work schedules, shifts, and delivery dates using collaborative tools like JIRA, Trello, or Asana.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify and plan the work activities for software development, incorporating Agile methodologies and tools such as Scrum boards and Kanban charts to optimize workflow and deliverables.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Comply with organization’s policies, procedures, and guidelines when developing embedded system software codes ensuring adherence to cybersecurity standards (e.g., ISO 27001, AUTOSAR Security)",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Identifying the system design specifications",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "Interact with the lead engineer and embedded system design engineers to understand the system and software requirements Model-Based System Engineering (MBSE) tools such as MATLAB/Simulink or Enterprise Architect.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Read and interpret the Business Requirement Specification (BRS) and Software Requirement Specification (SRS) document for interpreting the project specifications, coding, testing and debugging requirements leveraging Natural Language Processing (NLP)-based requirement analysis tools.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Identify the circuit design, functionality and logic involved in the embedded system software using IoT-specific design tools and cloud simulation platforms like AWS IoT Core or Azure IoT Hub.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ELE/N1509",
+      "nos_title": ".Embedded Software",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Principles of embedded software design and development lifecycle.",
+        "KU2. Interpretation of requirement specifications for embedded systems.",
+        "KU3. Use of reusable components, code generation tools, and open-source libraries for efficient",
+        "KU4. Fundamentals of Real-Time Operating Systems (RTOS) and their application in embedded",
+        "KU5. Microservices architecture and its role in modular embedded system software design.",
+        "KU6. Unit testing methodologies and tools used to create and validate Unit Test Cases (UTCs).",
+        "KU7. Code review processes, defect identification, and debugging techniques.",
+        "KU8. CI/CD (Continuous Integration/Continuous Deployment) pipelines and their application in",
+        "KU9. Techniques for software verification, validation, and documentation as per organizational",
+        "KU10. Digital Twin Technology for real-time simulations, testing, and system validation."
+      ],
+      "gs": [
+        "GS1. Analytical thinking to design and implement embedded software solutions.",
+        "GS2. Problem-solving skills for debugging and resolving software issues efficiently.",
+        "GS3. Collaboration and teamwork when working with engineers and cross-functional teams.",
+        "GS4. Communication skills to present code issues, solutions, and test results clearly.",
+        "GS5. Time management and task prioritization to meet project deadlines.",
+        "GS6. Adaptability to new technologies, libraries, and industry trends.",
+        "GS7. Attention to detail for writing, reviewing, and correcting code and test cases.",
+        "GS8. Initiative to access and integrate reusable software components effectively.",
+        "GS9. Ethical conduct and adherence to organizational coding and quality standards.",
+        "GS10. Documentation and reporting abilities for clear record-keeping and approvals."
+      ],
+      "modules": [
+        {
+          "module_title": "Developing software for embedded system",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Create a software design for the embedded system as per requirement specification and get approval from superior and relevant department on the same",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Access reusable components, code generation tools and unit testing tools from company’s database open-source libraries and microservices architecture for modularity.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Create software modules to meet the requirements of software adhering to Real-Time Operating System (RTOS) standards and ensuring compatibility with IoT-enabled devices.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Create Unit Test Cases (UTCs) as per the specifications and requirements",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Review the code and UTCs with the support team and lead engineer for any defects",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Rework on the code and UTCs to fix identified defects, ensuring compliance with Continuous Integration/Continuous Deployment (CI/CD) pipelines.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Carryout testing, verification and debugging of software codes for any errors and submit the tested codes and documents for approval as per organisational standards",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Support the embedded system design engineers in system testing, product verification and validation using Digital Twin Technology for real-time simulations.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ELE/N1510",
+      "nos_title": ".Structured Digital",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Principles of technical documentation, including structure, templates, and style guides.",
+        "KU2. Use of AI-based documentation tools such as Doxygen, Confluence, or similar platforms.",
+        "KU3. Document lifecycle management, including drafting, reviewing, publishing, and archiving.",
+        "KU4. File formats, naming conventions, and documentation repositories (e.g., SharePoint, Git).",
+        "KU5. Documentation quality standards, including clarity, accuracy, consistency, and",
+        "KU6. Version control systems and practices (e.g., Git, SVN) in managing documentation updates.",
+        "KU7. Compliance requirements in technical documentation for audits and certifications.",
+        "KU8. Blockchain fundamentals and how audit trails can ensure transparency and traceability.",
+        "KU9. Best practices for collaboration and approval workflows in documentation processes.",
+        "KU10. Techniques for integrating documentation into software development and engineering"
+      ],
+      "gs": [
+        "GS1. Written communication skills to create clear, concise, and accurate technical content.",
+        "GS2. Attention to detail for ensuring documentation quality and consistency.",
+        "GS3. Time management to meet submission deadlines and publishing schedules.",
+        "GS4. Digital literacy in using AI documentation tools and content management systems.",
+        "GS5. Critical thinking to determine the relevance and accuracy of information included.",
+        "GS6. Collaboration skills to work effectively with engineers, developers, and project teams.",
+        "GS7. Organizational skills for managing multiple documents, versions, and repositories.",
+        "GS8. Problem-solving to resolve inconsistencies, errors, or gaps in documentation.",
+        "GS9. Ethical responsibility to maintain data integrity and adhere to compliance requirements.",
+        "GS10. Innovation mindset for adopting emerging tools and technologies like blockchain in"
+      ],
+      "modules": [
+        {
+          "module_title": "Creating Documentation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Document design using standard templates and approved styles.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Use AI tools like Doxygen or Confluence for documentation.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Managing Documentation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Ensure documentation quality and timely submission.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Publish documents in agreed formats and repositories.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Compliance & Traceability",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Adhere to documentation standards and version control.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Integrate block chain audit trails to maintain traceability and transparency.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

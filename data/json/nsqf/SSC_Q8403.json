@@ -1,0 +1,1643 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q8403",
+  "qp_name": "SSC_Q8403",
+  "clean_code": "SSC_Q8403",
+  "total_pages": 72,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.217Z",
+  "stats": {
+    "total_nos": 9,
+    "total_modules": 36,
+    "total_pcs": 120,
+    "total_kus": 124,
+    "total_gs": 96,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N8417",
+      "nos_title": ".Implement",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. How to continuously integrate changes to application source code",
+        "KU2. the procedures and guidelines related to developing roadmaps for products/services",
+        "KU3. the policies and procedures for documenting roadmaps and collecting business requirements",
+        "KU4. the competitor product analysis techniques to inform product differentiation strategy",
+        "KU5. how to analyze and benchmark products and offerings of competitors",
+        "KU6. how to define and evaluate business requirements",
+        "KU7. how to analyze the impact of new products and features",
+        "KU8. how to develop product roadmaps.",
+        "KU9. how to identify and establish product metrics/KPIs",
+        "KU10. the best practices for managing secure repositories and handling sensitive data",
+        "KU11. the security tools for code analysis, vulnerability scanning, and encryption in the",
+        "KU12. Generative AI (Gen AI) and its applications",
+        "KU13. the use cases of Gen AI for product managers (e.g., project planning automation, user story",
+        "KU14. prompt engineering techniques in Gen AI for defining prompts to generate relevant results"
+      ],
+      "gs": [
+        "GS1. Follow instructions, guidelines, procedures, rules and service level agreements",
+        "GS2. Work independently and collaboratively",
+        "GS3. communicate effectively in writing",
+        "GS4. evaluate business impact and share relevant information",
+        "GS5. analyze data and assess its implications for the business",
+        "GS6. relay relevant information to others",
+        "GS7. maintain attention to detail",
+        "GS8. ensure work is complete and error-free",
+        "GS9. adhere to rule-based decision-making processes",
+        "GS10. plan and organize work to meet targets and deadlines",
+        "GS11. apply problem-solving approaches in various situations"
+      ],
+      "modules": [
+        {
+          "module_title": "• Secure version control and source code management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "maintain and secure the repository, ensuring appropriate access controls and backup procedures for managing application source code",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 7,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "manage changes to the application code/source code through a version control system, tracking all changes and contributions",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "implement policies for code review, tagging, and secure merging to minimize vulnerabilities in the development process",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "integrate version control systems with project management tools, streamlining workflow and collaboration across teams",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Security compliance and auditing",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "conduct security reviews of application source code, including vulnerability scanning and static code analysis",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "integrate security tools into the DevSecOps pipeline to automate security checks throughout the development lifecycle",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "document security practices and maintain compliance with industry standards (e.g., ISO/IEC 27001)",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Security in deployment pipelines",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure security measures are applied during deployment, such as encryption, access management, and firewall configuration",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "conduct penetration testing and security audits before and after deployment to identify and mitigate risks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8451",
+      "nos_title": ".Implement",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. different product development life cycles (e.g., Waterfall, Agile, Lean) and their applicability",
+        "KU2. different data sources and how to access documents and information from data sources",
+        "KU3. the techniques for identifying and evaluating product features based on market demand and",
+        "KU4. the tools for roadmap creation and prioritization techniques (e.g., MoSCoW, Kano Model) and",
+        "KU5. the use of prototyping and wireframing tools for visualizing early product features",
+        "KU6. how to analyze product metrics and trends",
+        "KU7. how to monitor product development activities",
+        "KU8. CI/CD pipeline tools and technologies (e.g., Jenkins, Travis CI)",
+        "KU9. build automation tools and scripting languages (e.g., Gradle, Maven)",
+        "KU10. best practices for automating deployment and testing processes to ensure rapid delivery"
+      ],
+      "gs": [
+        "GS1. follow instructions, guidelines, procedures, rules, and service level agreements",
+        "GS2. work independently and collaboratively",
+        "GS3. communicate effectively in writing",
+        "GS4. evaluate business impact and share relevant information",
+        "GS5. analyze data and assess its implications for the business",
+        "GS6. relay relevant information to others",
+        "GS7. maintain attention to detail",
+        "GS8. ensure work is complete and error-free",
+        "GS9. adhere to rule-based decision-making processes",
+        "GS10. plan and organize work to meet targets and deadlines",
+        "GS11. apply problem-solving approaches in various situations"
+      ],
+      "modules": [
+        {
+          "module_title": "Build and test automation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "manage application environment variables and configurations for target environments",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "automate build and testing using scripts, tools, and test frameworks to ensure consistency and efficiency",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "integrate automated tests into the CI pipeline to detect errors early in the development cycle",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "CI/CD pipeline management",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "implement and manage CI/CD pipelines, ensuring a smooth and automated process for continuous integration and delivery",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "test, identify, and fix build failures to ensure uninterrupted development and deployment cycles",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "manage deployment policies and processes, ensuring security and compliance are adhered to in the deployment pipeline",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Deployment automation",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "automate application deployment to different environments (e.g., web servers, API services, databases) using industry-standard tools (e.g., Jenkins, GitLab CI)",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure deployment processes are scalable and maintain high availability, using containerization and orchestration tools (e.g. Docker, Kubernetes)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8125",
+      "nos_title": ".Develop tests or",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. the purpose and aims of the autonomous system being developed, ensuring alignment with",
+        "KU2. organizational policies, procedures and priorities for developing tests or simulations for",
+        "KU3. how to access and update information on scenarios, test cases, scripts, and tools in the",
+        "KU4. who to involve when developing tests or simulations for hardware and software systems,",
+        "KU5. organizational policies and procedures for documenting simulations, maintaining clear",
+        "KU6. the application and use of test or simulation tools, understanding their capabilities and",
+        "KU7. the approval process for testing software and hardware systems, ensuring compliance with",
+        "KU8. different sources of information available for designing tests and how to access these",
+        "KU9. the differences between various types of testing, such as unit, sub-system, system, and",
+        "KU10. issues that may occur with testing requirements and how to address these proactively",
+        "KU11. the principles of designing tests, including best practices and methodologies",
+        "KU12. different simulation tool providers, such as Autodesk, and how to use their tools effectively",
+        "KU13. how to evaluate and select the best simulation tool for specific purposes, considering project",
+        "KU14. different test automation tools, such as Selenium, and how to use them in test scenarios",
+        "KU15. how to create suitable tests for particular applications, focusing on user needs and",
+        "KU16. how to check whether test cases are suitable for automation, ensuring efficiency",
+        "KU17. how to access, create, and modify various high-level scenarios, test cases, automated",
+        "KU18. different simulation methodologies and procedures used to ensure tests are effective and fit",
+        "KU19. how to analyze and use feedback to improve simulations, enhancing overall testing quality",
+        "KU20. scripting/programming languages to understand and implement test cases effectively",
+        "KU21. current practices in the design of tests for software and hardware systems, staying updated",
+        "KU22. how to identify and refer anomalies during testing, ensuring timely resolution",
+        "KU23. how to work on various operating systems, such as Linux, Ubuntu, or Windows, adapting to"
+      ],
+      "gs": [
+        "GS1. make informed decisions on suitable courses of action",
+        "GS2. apply effective problem-solving approaches in diverse situations",
+        "GS3. analyze data and activities to derive meaningful insights",
+        "GS4. configure data and communicate relevant information effectively to others",
+        "GS5. apply balanced judgment to evaluate different situations",
+        "GS6. ensure work is thorough and free from errors"
+      ],
+      "modules": [
+        {
+          "module_title": "Define requirements",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "define functional requirements of the autonomous system, ensuring clarity and completeness",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "define the type of testing and testing requirements, including unit, sub-system, and system testing, based on project needs",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify issues with the requirements for testing and clarify these with relevant stakeholders",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "access reusable scenarios, test cases, scripts, and tools from the organization’s knowledge base",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "integrate test cases into the CI/CD pipeline, ensuring smooth transitions from development to testing",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Create test cases",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "create or modify test scenarios relevant to the requirements, ensuring alignment with project goals",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "create or modify software test cases relevant to the requirements, focusing on functionality and performance",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "create or modify hardware test cases relevant to the requirements, covering all necessary specifications",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify test cases that can be automated feasibly, optimizing the testing process",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "create or modify automated scripts relevant to the requirements, improving efficiency in testing",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "access or create test data relevant to the requirements, ensuring comprehensive coverage",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "create a test plan to cover all requirements, detailing scope, objectives, and resources needed",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "deploy code to lower environments for testing, leading up to the production environment, ensuring proper validation at each stage",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Run test cases",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "run the simulated test cases and evaluate the outcomes, providing accurate assessments of functionality",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "communicate the outcomes of the tests or simulations with relevant stakeholders and iterate based on feedback",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "create documentation on the tests or simulations for stakeholders, maintaining transparency and traceability",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "validate the test plan, test cases, and/or automated scripts with relevant stakeholders, ensuring all criteria are met",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Conduct performance and load testing",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "conduct performance and load testing, including advanced load, stress, and performance testing, aligning with industry practices",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "analyze test results to identify performance bottlenecks and areas for improvement",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8418",
+      "nos_title": ".Fix application bugs",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. the procedures and guidelines for analyzing functional and non-functional requirements for",
+        "KU2. the procedures and guidelines related to logging and log analysis",
+        "KU3. the policies and procedures for sharing data",
+        "KU4. the policies and procedures for documenting results of application tests and log analysis",
+        "KU5. the relevant stakeholders to be involved for identifying bugs in the application code",
+        "KU6. the effective use of standard templates and tools",
+        "KU7. how to address the common issues that may occur during testing",
+        "KU8. how to analyze application log files",
+        "KU9. different test automation tools and how to use them",
+        "KU10. how to create suitable tests for particular applications",
+        "KU11. how to access, create, and modify different types of - high-level scenarios, test cases,",
+        "KU12. the scripting/ programming of languages to understand test cases",
+        "KU13. how to identify and record bugs in the application code",
+        "KU14. how to analyze and use feedback to fix application bugs",
+        "KU15. how to document error reports and solutions applied, ensuring future reference for similar",
+        "KU16. the best practices for maintaining error records and communicating them to team members"
+      ],
+      "gs": [
+        "GS1. adhere to given protocols and standards to ensure accurate task completion",
+        "GS2. ask relevant individuals for guidance when unclear, ensuring correct understanding",
+        "GS3. actively listen and provide clear, accurate information to ensure mutual understanding",
+        "GS4. apply established rules and procedures to make consistent, informed decisions",
+        "GS5. prioritize tasks effectively to meet deadlines while maintaining quality",
+        "GS6. select the best course of action based on available information and analysis",
+        "GS7. quickly escalate discrepancies to the appropriate authority for resolution",
+        "GS8. consult others for advice or solutions when encountering challenges",
+        "GS9. evaluate data and activities logically to identify trends and resolve issues",
+        "GS10. communicate necessary details promptly to keep stakeholders informed",
+        "GS11. make fair, well-considered decisions by weighing all relevant factors",
+        "GS12. ensure accuracy by focusing on critical details to prevent errors",
+        "GS13. review work thoroughly to verify completeness and correctness",
+        "GS14. manage tasks independently while contributing effectively in team settings"
+      ],
+      "modules": [
+        {
+          "module_title": "Record and document bugs",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Record the bug or enter it in the case tracking system",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify what the user was doing, what they were expecting, and what happened",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "search for relevant solutions for the error on developer forums",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "document the bug's impact, steps to reproduce it, and any attempted solutions",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "maintain detailed records of error messages, their respective solutions, and changes made during the debugging process",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Identify the bug",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "determine the immediate line of code where the bug occurs",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "specify the bug type (e.g., unexpected null, bad input, off-by-one, buffer overflow, index out-of-range, etc.)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "document where the error occurs and note any relevant patterns in the code that might suggest a recurring issue",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Isolate the bug",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "use the process of elimination to isolate the bug to a particular line of code",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "disable blocks of code (comment them out) until the crash stops happening",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "use a unit-testing framework to isolate methods",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "continue to disable code and reduce the application to minimal functionality until it begins working again",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "eliminate the hardware or platform as a cause",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "log which parts of the code were disabled, tested, and how the behaviour changed",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Analyze the logs",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "log all activities and analyze the logs",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "continue the isolation and logging processes until the immediate line of code where the bug occurs is identified",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "document log analysis results, noting which logs helped pinpoint the issue and which didn’t",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8323",
+      "nos_title": ".Monitor and",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies, procedures, and guidelines that relate to the monitoring of",
+        "KU2. organizational policies and procedures for sharing data",
+        "KU3. organizational policies and procedures for documenting performance insights of applications",
+        "KU4. who to involve in sharing reports on the performance of applications and deployed systems",
+        "KU5. the range of standard templates and tools available and how to use them",
+        "KU6. different ways to monitor and optimize utilization of resources",
+        "KU7. how to define metrics to monitor applications and deployed systems",
+        "KU8. different types of application monitoring tools",
+        "KU9. how to interpret application performance reports"
+      ],
+      "gs": [
+        "GS1. ask for clarification and advice from appropriate people",
+        "GS2. listen effectively and communicate information accurately",
+        "GS3. work independently and collaboratively",
+        "GS4. analyze the impact of architectural and design decisions on business and organization",
+        "GS5. pass on relevant information to others",
+        "GS6. apply good attention to detail",
+        "GS7. work effectively in a customer-facing environment",
+        "GS8. plan and organize your work to achieve targets and meet deadlines"
+      ],
+      "modules": [
+        {
+          "module_title": "Gather requirements",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify the factors which impact the performance of the cloud application",
+              "sequence_order": 1,
+              "theory_marks": 3.5,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "analyze ways to optimize applications in terms of cost and resource utilization",
+              "sequence_order": 2,
+              "theory_marks": 3.5,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2.5
+            }
+          ]
+        },
+        {
+          "module_title": "Monitor system performance",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "define metrics to monitor application performance and the health of deployed systems",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 6.5,
+              "project_marks": null,
+              "viva_marks": 2.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "monitor application log reports for errors and clues about problems with the application and the deployed systems on the cloud",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": 6.5,
+              "project_marks": null,
+              "viva_marks": 2.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "assess and deploy appropriate application monitoring tools to track cloud application performance",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 6.5,
+              "project_marks": null,
+              "viva_marks": 2.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "perform analysis to generate consumable reports about cloud application performance",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 6.5,
+              "project_marks": null,
+              "viva_marks": 2.5
+            }
+          ]
+        },
+        {
+          "module_title": "Report application performance",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "share application performance reports with relevant stakeholders",
+              "sequence_order": 1,
+              "theory_marks": 3.5,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "provide actionable insights for re- engineering the application",
+              "sequence_order": 2,
+              "theory_marks": 3.5,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8452",
+      "nos_title": ".Optimize Revenue,",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. the various monetization models (e.g., subscription-based, freemium, ad-supported) and",
+        "KU2. the product lifecycle management and prioritization frameworks (e.g., MoSCoW, RICE) to",
+        "KU3. the methods for collecting and analyzing customer insights (e.g., surveys, interviews) and",
+        "KU4. the common security threats (e.g., phishing, SQL injection) and the application of secure",
+        "KU5. the global data privacy laws (e.g., GDPR, CCPA) and principles of data anonymization,",
+        "KU6. the principles of accessibility guidelines (e.g., WCAG, ADA) and inclusive design practices,",
+        "KU7. the digital marketing strategies and emerging trends in web and mobile technologies (e.g.,",
+        "KU8. the integration of analytics tools and dashboards to monitor KPIs related to revenue,",
+        "KU9. the project management methodologies (e.g., Agile, Scrum) and effective communication",
+        "KU10. the customer-centric approaches and problem-solving techniques to address complex"
+      ],
+      "gs": [
+        "GS1. seek clarification and advice from relevant individuals when needed",
+        "GS2. listen actively and communicate information clearly and accurately",
+        "GS3. adhere to structured decision-making frameworks and guidelines",
+        "GS4. make well-informed decisions based on available data and context",
+        "GS5. plan tasks effectively to meet targets and deadlines",
+        "GS6. apply problem-solving techniques to address various situations",
+        "GS7. organize and share relevant information clearly with others",
+        "GS8. use balanced judgment to evaluate situations and make decisions"
+      ],
+      "modules": [
+        {
+          "module_title": "Revenue Strategy",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "develop and implement monetization models (e.g., subscriptions, ads, freemium models) based on market analysis and revenue opportunities",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "conduct A/B testing and use analytics tools to evaluate product performance and optimize revenue potential",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Product Solution Strategy",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "design and prioritize product features aligned with business goals, ROI, and customer needs",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "coordinate with cross-functional teams to ensure timely and efficient delivery of product solutions",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Customer Requirement Analysis",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "conduct surveys, interviews, and usability testing to gather customer insights and establish continuous feedback loops for iterative improvements",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "translate customer requirements into actionable product specifications",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Product Security",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "identify and address potential security threats and vulnerabilities through regular audits, penetration testing, and security protocols (e.g., encryption, secure authentication, API security)",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 3
+            }
+          ]
+        },
+        {
+          "module_title": "Data Privacy and Security",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "adhere to global data privacy regulations (e.g., GDPR, CCPA) by establishing clear policies for data collection, storage, and usage",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "ensure compliance with data anonymization and encryption standards",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Accessibility in Web and Mobile Products",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "implement and audit accessibility guidelines (e.g., WCAG, ADA) to ensure compliance across web and mobile platforms",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "develop inclusive solutions, such as screen reader compatibility, voice commands, and alternative input methods",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8414",
+      "nos_title": ".Develop a",
+      "sequence_order": 7,
+      "is_generic": false,
+      "kus": [
+        "KU1. the procedures and guidelines for building and maintaining applications",
+        "KU2. the procedures and guidelines for sharing data and managing security configurations",
+        "KU3. the stakeholders to be involved when defining continuous integration and continuous",
+        "KU4. the effective use of standard templates and tools",
+        "KU5. how to deploy application dependencies and manage data storage",
+        "KU6. how to create serverless applications and microservices",
+        "KU7. how to develop service-oriented architecture-based applications and secure APIs",
+        "KU8. how to scale applications horizontally and build resilient applications",
+        "KU9. different container technologies and how to build applications from source code",
+        "KU10. how to test applications for build failures and automate the build and testing process",
+        "KU11. different tools for automating application build and testing",
+        "KU12. the use of Git/GitHub for version control in a collaborative team environment",
+        "KU13. the principles of data storage and management, including backup and retrieval processes",
+        "KU14. different security standards, authentication measures, and compliance/regulatory standards",
+        "KU15. how to conduct accessibility testing to ensure web applications meet accessibility standards",
+        "KU16. the basics of agile methodologies, including Scrum and Kanban, and their role in the",
+        "KU17. how to encrypt data to maintain confidentiality and security"
+      ],
+      "gs": [
+        "GS1. follow established protocols to ensure tasks are completed accurately and in compliance",
+        "GS2. manage tasks autonomously while effectively collaborating with team members when",
+        "GS3. convey information clearly and concisely in written form, ensuring proper understanding by",
+        "GS4. comprehend how architectural decisions affect the business and organizational structure to",
+        "GS5. analyze how decisions or changes impact the business and ensure that key information is",
+        "GS6. provide timely and necessary information to colleagues or stakeholders to support decision-",
+        "GS7. review and verify that tasks are finished thoroughly and meet quality standards without",
+        "GS8. use a balanced and thoughtful approach to make fair decisions, considering all relevant",
+        "GS9. select appropriate actions based on available data, options, and situational analysis",
+        "GS10. efficiently schedule tasks and manage resources to ensure objectives are achieved within",
+        "GS11. employ logical and creative thinking to identify solutions and resolve issues in different",
+        "GS12. proactively seek advice or clarification from others when confronted with challenges or"
+      ],
+      "modules": [
+        {
+          "module_title": "Understanding the scope",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collaborate with cross functional teams to understand the scope",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Understand and analysed the functional, non-functional and user experience requirements with which the interface must be developed",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Create list of tasks that the user can execute within the interface based on the requirements identified",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Organise the list of tasks and interfaces needed for the overall application",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Create a pre-list of possible re-usable components before starting the development",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "use Git/GitHub for version control to manage code changes and collaboration in a team environment",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Design and development",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "define the structure of the pages, including headers, sections, articles, main, and footer",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "develop codes for the various components such as headers, sections, articles, main, and footer",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "write application code that meets security requirements",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "design and develop unit tests for the application code",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "build, test, and run the application before deployment",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "manage data storage and retrieval mechanisms, ensuring efficiency and security",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "conduct accessibility testing to ensure the web application is usable by all individuals, including those with disabilities",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "apply agile methodologies like Scrum or Kanban to manage the development cycle and ensure continuous feedback and iteration",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8415",
+      "nos_title": ".Develop",
+      "sequence_order": 8,
+      "is_generic": false,
+      "kus": [
+        "KU1. the procedures for building, maintaining, and securing applications",
+        "KU2. how to develop native, hybrid, and cross-platform mobile applications",
+        "KU3. the impact of emerging technologies like AI, AR, and ML in mobile app development",
+        "KU4. the principles of designing user-friendly and visually appealing UX/UI interfaces",
+        "KU5. how to encrypt and obfuscate data on mobile devices to maintain data security",
+        "KU6. different types of security standards, protocols, and authentication measures",
+        "KU7. the processes for automating the build, testing, and deployment of mobile applications",
+        "KU8. how to navigate app-store regulations, publish apps, and maintain updates",
+        "KU9. tools and techniques for scaling mobile applications horizontally and ensuring resilience",
+        "KU10. best practices for independent app development, including managing multiple roles"
+      ],
+      "gs": [
+        "GS1. adhere to given protocols and standards to ensure accurate task completion",
+        "GS2. ask relevant individuals for guidance when unclear, ensuring correct understanding",
+        "GS3. actively listen and provide clear, accurate information to ensure mutual understanding",
+        "GS4. apply established rules and procedures to make consistent, informed decisions",
+        "GS5. prioritize tasks effectively to meet deadlines while maintaining quality",
+        "GS6. select the best course of action based on available information and analysis",
+        "GS7. quickly escalate discrepancies to the appropriate authority for resolution",
+        "GS8. consult others for advice or solutions when encountering challenges",
+        "GS9. evaluate data and activities logically to identify trends and resolve issues",
+        "GS10. communicate necessary details promptly to keep stakeholders informed",
+        "GS11. make fair, well-considered decisions by weighing all relevant factors",
+        "GS12. ensure accuracy by focusing on critical details to prevent errors",
+        "GS13. review work thoroughly to verify completeness and correctness",
+        "GS14. manage tasks independently while contributing effectively in team settings"
+      ],
+      "modules": [
+        {
+          "module_title": "Requirements mapping",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "obtain information about the mobile solution, user needs, and market trends",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify the functional, non-functional, and user experience (UX) requirements of the mobile application",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify dependencies related to development, including device hardware functionalities, third-party integrations, and time- to-market",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "follow emerging technologies in mobile app development, such as AI integration, augmented reality (AR), and machine learning (ML) to incorporate them into planning",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Application development",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "develop application code according to security and compliance requirements",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "encrypt data to safeguard user information where applicable",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "manage security configurations to meet regulatory standards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "design and develop unit tests to ensure code reliability",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "build, run, and test the application before deployment",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "develop platform capabilities for A/B testing of features",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "integrate AI, AR, or ML technologies to enhance app functionality and user engagement",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "design user-friendly interfaces that enhance the overall user experience (UX/UI)",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Publishing to app-stores",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "create and maintain service configurations for code deployment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "automate the deployment process using scripts and tools for efficiency",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "publish the mobile application to the relevant app stores or platforms, ensuring adherence to their guidelines",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "manage updates and continuous delivery using best practices in app-store deployment",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Independent application development",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "develop and manage mobile applications independently, from concept to deployment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "handle all aspects of the app development lifecycle, including requirement gathering, coding, testing, and app store publishing",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "follow market trends and new technologies to continuously improve application features and performance",
+              "sequence_order": 3,
+              "theory_marks": 1.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8416",
+      "nos_title": ".Develop",
+      "sequence_order": 9,
+      "is_generic": false,
+      "kus": [
+        "KU1. the procedures and guidelines for building and maintaining applications",
+        "KU2. the best practices for sharing data and managing security configurations within an",
+        "KU3. the stakeholders to be involved while defining continuous integration and delivery (CI/CD)",
+        "KU4. various templates, tools, and resources available for backend development",
+        "KU5. different models of SDLC, such as Agile, Waterfall, and DevOps, and their impact on backend",
+        "KU6. the benefits and structure of microservices architecture for scalability and maintainability",
+        "KU7. the various types of backend software architectures and frameworks",
+        "KU8. how to develop secure backend APIs and services that comply with industry standards",
+        "KU9. strategies for handling failures in backend systems, including retry logic, circuit breakers,",
+        "KU10. how to horizontally scale applications to meet growing user demands",
+        "KU11. how to automate backend tasks using scripts and tools",
+        "KU12. automation of the application build and testing process using available tools",
+        "KU13. different security standards, protocols, and authentication measures",
+        "KU14. how to encrypt and obfuscate data on mobile devices for security purposes",
+        "KU15. how to monitor server performance and resource usage for optimal operation"
+      ],
+      "gs": [
+        "GS1. Follow instructions, guidelines, procedures, rules and service level agreements",
+        "GS2. Work independently and collaboratively",
+        "GS3. Communicate with others in writing",
+        "GS4. evaluate the business impact of architecture decisions",
+        "GS5. share relevant business impact information with others",
+        "GS6. communicate the necessary information clearly",
+        "GS7. ensure work is accurate and complete",
+        "GS8. apply sound judgment in different scenarios",
+        "GS9. make informed decisions on suitable actions",
+        "GS10. plan and organize tasks to meet deadlines",
+        "GS11. use problem-solving approaches as needed",
+        "GS12. seek clarification on issues when necessary"
+      ],
+      "modules": [
+        {
+          "module_title": "Identification of scope",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "demarcate backend and frontend responsibilities before starting application development",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify the scope of backend operations and functionalities, ensuring alignment with project requirements",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "consider the implications of different Software Development Life Cycle (SDLC) models, such as Agile, Waterfall, and DevOps, on backend development planning and execution",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        },
+        {
+          "module_title": "Design back-end",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "design server endpoints to connect with the client efficiently",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "create stubs for upstream and downstream components to facilitate backend functionality",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Design back-end APIs and services",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "document what each backend API endpoint must accomplish and its purpose",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "specify the required and optional values expected from the client and those returned by the backend",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure the documentation is accurate and consistently updated",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "implement retry logic and circuit breakers to handle failures in backend systems and ensure smooth operation",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Design database",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "design and document the database schema, considering scalability and performance needs",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        },
+        {
+          "module_title": "Reliability and scalability",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "ensure all processes align with reliability and scalability requirements",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "apply micro services architecture to enhance scalability, fault isolation, and ease of maintenance",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        },
+        {
+          "module_title": "Write test scripts",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "write test scripts to verify the functionality and reliability of all backend endpoints",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        },
+        {
+          "module_title": "Back-end development",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Build the API using a selected programming language",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Deploy backend using a cloud service or a dedicated host",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -372,7 +372,11 @@ router.get('/nsqf/curriculum', async (req, res) => {
                 p.video_id, p.video_title, p.video_url, p.channel_title, p.duration_seconds,
                 p.start_seconds, p.end_seconds, p.study_takeaways_json, p.viva_quiz_json,
                 p.video_id_hi, p.video_title_hi, p.video_url_hi, p.channel_title_hi, p.duration_seconds_hi,
-                p.contextual_search_query_hi, p.audit_score,
+                p.contextual_search_query, p.contextual_search_query_hi, p.audit_score,
+                p.sop_intent, p.sop_intent_hi, p.sop_search_query, p.sop_action_directive,
+                p.sop_parameter_tolerance, p.sop_critical_knack, p.sop_video_url,
+                p.dpr_intent, p.dpr_intent_hi, p.dpr_search_query, p.machine_name,
+                p.machine_spec, p.machine_capex_cost_inr, p.machine_power_kw, p.dpr_video_url,
                 COALESCE(n.nos_title, 'Occupational Standards') as nos_title,
                 COALESCE(m.module_title, 'Module') as module_title
             FROM nsqf_pcs p
@@ -438,7 +442,26 @@ router.get('/nsqf/curriculum', async (req, res) => {
                     video_url_hi: row.video_url_hi,
                     channel_title_hi: row.channel_title_hi || 'Vocational Skill Studio',
                     duration_seconds_hi: row.duration_seconds_hi || 300,
-                    audit_score: row.audit_score || 90
+                    audit_score: row.audit_score || 90,
+
+                    // 🏭 2. SOP Perspective
+                    sop_intent: row.sop_intent || `${row.pc_intent || row.pc_description} Standard Work Instruction`,
+                    sop_intent_hi: row.sop_intent_hi,
+                    sop_search_query: row.sop_search_query,
+                    sop_action_directive: row.sop_action_directive || row.pc_description,
+                    sop_parameter_tolerance: row.sop_parameter_tolerance || 'Strict conformance to nominal engineering tolerance bounds',
+                    sop_critical_knack: row.sop_critical_knack || 'Maintain steady hand motion, verified alignment, and clean contact surfaces.',
+                    sop_video_url: row.sop_video_url,
+
+                    // 💼 3. DPR / Machine Perspective
+                    dpr_intent: row.dpr_intent || `${row.machine_name || 'Commercial Diagnostic Station'} Commercial Setup`,
+                    dpr_intent_hi: row.dpr_intent_hi,
+                    dpr_search_query: row.dpr_search_query,
+                    machine_name: row.machine_name || 'Commercial Precision Apparatus & Tooling Kit',
+                    machine_spec: row.machine_spec || '220V 1-Phase Industrial Calibrated Apparatus',
+                    machine_capex_cost_inr: Number(row.machine_capex_cost_inr) || 35000,
+                    machine_power_kw: row.machine_power_kw || '1.0 kW 1-Phase',
+                    dpr_video_url: row.dpr_video_url
                 });
             });
 

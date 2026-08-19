@@ -1,0 +1,650 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "BSC/Q4101",
+  "qp_name": "BSC_Q4101",
+  "clean_code": "BSC_Q4101",
+  "total_pages": 33,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:25.622Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 9,
+    "total_pcs": 56,
+    "total_kus": 22,
+    "total_gs": 15,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "BSC/N4107",
+      "nos_title": ".Collect and manage",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. structure, functionality, and integration of financial databases, ERP systems, and financial",
+        "KU2. methods of extracting data using SQL queries, APIs, and manual processes from internal and",
+        "KU3. techniques for cross-checking financial data with reports, statements, and system logs to",
+        "KU4. principles of data governance, including regulatory requirements such as GDPR, financial",
+        "KU5. methods to classify financial data, implement access control measures, and maintain",
+        "KU6. best practices for financial data security, including encryption methods, secure storage, and",
+        "KU7. documentation practices for recording data collection activities, governance policies, and data",
+        "KU8. techniques for performing financial data audits, detecting inconsistencies, and implementing",
+        "KU9. industry best practices for monitoring automated data imports/exports and ensuring accurate"
+      ],
+      "gs": [
+        "GS1. read and interpret organizational and regulatory guidelines, and legitimacy of documents",
+        "GS2. communicate effectively with supervisors and the customers using language understandable",
+        "GS3. organize work and time in order to maximize productivity",
+        "GS4. build customer relationships and use customer-centric approach",
+        "GS5. address operational problems effectively and escalate unresolved concerns"
+      ],
+      "modules": [
+        {
+          "module_title": "Collect data from financial systems and databases",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify relevant financial data sources, including internal databases, financial software, enterprise resource planning (ERP) systems, and external market data platforms",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "extract financial data using SQL queries, API integrations, or manual downloads as per organizational data management policies",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure timely collection of transactional data, revenue reports, cost statements, and other key financial metrics for accurate analysis",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "validate data accuracy by cross-checking with financial statements, system logs, and historical records",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "standardize collected data by formatting and structuring it according to predefined templates and reporting standards",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "store the extracted financial data securely in designated data warehouses, ensuring adherence to data security and governance protocols",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "maintain logs of data collection activities, noting discrepancies, missing records, and data quality issues for resolution",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "collaborate with finance, accounting, and IT teams to resolve data inconsistencies and optimize data collection workflows",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure data integrity and consistency",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "verify the accuracy and completeness of financial data before storing or processing it",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "cross-check financial records from multiple sources to identify and rectify discrepancies",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "implement data validation techniques to ensure consistency in financial reporting",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "follow standard data governance policies and regulatory guidelines for handling financial data",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "maintain structured and well-documented data storage systems for easy access and retrieval",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "regularly audit financial databases and systems to detect and correct inconsistencies",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "collaborate with relevant departments to ensure synchronized data entry and updates across all systems",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "monitor automated data imports and exports to prevent errors and duplication",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "establish quality control measures to minimize errors in financial data management",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "document data integrity issues and take corrective actions to maintain accurate and reliable records",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Implement data governance policies",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "ensure all financial data collection, storage, and processing adhere to internal data governance policies and regulatory standards",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "maintain data accuracy, consistency, and integrity by following standardized procedures for data entry and validation",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "classify financial data based on confidentiality levels and implement appropriate access controls",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "establish data quality checks to identify and correct discrepancies, missing values, and formatting errors",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "monitor compliance with data privacy laws, including GDPR and financial regulations, to prevent unauthorized access or data breaches",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "collaborate with IT and compliance teams to implement secure data management practices and encryption measures",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "regularly audit financial data records to ensure compliance with industry best practices and regulatory requirements",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "document data governance procedures and update policies as per changes in financial regulations and business requirements",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "BSC/N4108",
+      "nos_title": ".Analyze financial",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. fundamentals of financial analysis, including financial modeling techniques, sensitivity",
+        "KU2. structure and components of financial statements, such as balance sheets, income",
+        "KU3. methods for identifying financial anomalies, including variance analysis, trend analysis, and",
+        "KU4. principles of data visualization and reporting, including the use of dashboards, charts, and",
+        "KU5. advanced tools and software for data analysis and visualization, such as Microsoft Excel,",
+        "KU6. impact of economic and market trends on financial performance, including interest rates,",
+        "KU7. compliance requirements and best practices for financial reporting, ensuring adherence to"
+      ],
+      "gs": [
+        "GS1. read and interpret organizational and regulatory guidelines, and legitimacy of documents",
+        "GS2. communicate effectively with supervisors and the customers using language understandable",
+        "GS3. organize work and time in order to maximize productivity",
+        "GS4. build customer relationships and use customer-centric approach",
+        "GS5. address operational problems effectively and escalate unresolved concerns"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform data analysis and financial modeling",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "extract relevant financial data from databases, spreadsheets, and reporting tools for analysis",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform financial modeling using historical data to project revenue, expenses, profitability, and risk factors",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "develop sensitivity analysis to assess the impact of market fluctuations, economic trends, and business decisions on financial performance",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "create valuation models for assets, investment portfolios, and business units using appropriate financial methodologies",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "analyze key performance indicators (KPIs) such as return on investment (ROI), debt-to-equity ratios, and cash flow projections",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "utilize data visualization tools like Power BI, Tableau, or Excel to represent financial insights through charts, graphs, and dashboards",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "document analytical processes, assumptions, and methodologies used in financial modeling for transparency and audit purposes",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Develop dashboards and reports",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "gather financial data from multiple sources, including ERP systems, databases, and financial statements, to ensure comprehensive reporting",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "ensure that dashboards provide clear visual representation of financial trends, comparisons, and historical performance data",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "implement data visualization techniques such as charts, graphs, heat maps, and trend lines to enhance report readability and user engagement",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Identify trends, patterns, and financial anomalies",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "extract and consolidate financial data from multiple sources, including internal databases, financial statements, and external market reports, ensuring comprehensive analysis",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "detect financial anomalies, inconsistencies, or irregularities in transactional data by applying data validation techniques and cross-checking with historical records",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify key performance indicators (KPIs) related to financial health, operational efficiency, and risk exposure, and generate insights for management decision-making",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "monitor fluctuations in financial data, including sudden changes in revenue, expenses, or cash flow, and assess their impact on overall financial stability",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "document findings from financial analysis, providing clear explanations and justifications for identified patterns, trends, and anomalies in reports",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "BSC/N4109",
+      "nos_title": ".Monitor financial",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. key financial performance indicators (KPIs) such as revenue growth, net profit margin, liquidity",
+        "KU2. methods for collecting and consolidating financial data from various sources, including ERP",
+        "KU3. financial modeling approaches used to simulate different business scenarios, assess financial",
+        "KU4. strategies for optimizing financial performance, including cost reduction techniques,",
+        "KU5. importance of maintaining data accuracy, consistency, and security while handling financial",
+        "KU6. best practices in preparing financial reports, dashboards, and presentations for senior"
+      ],
+      "gs": [
+        "GS1. read and interpret organizational and regulatory guidelines, and legitimacy of documents",
+        "GS2. communicate effectively with supervisors and the customers using language understandable",
+        "GS3. organize work and time in order to maximize productivity",
+        "GS4. build customer relationships and use customer-centric approach",
+        "GS5. address operational problems effectively and escalate unresolved concerns"
+      ],
+      "modules": [
+        {
+          "module_title": "Monitor key financial performance indicators (KPIs)",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify and define key financial performance indicators (KPIs) relevant to business objectives, such as revenue growth, profit margins, liquidity ratios, and operational efficiency metrics",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "extract and compile financial data from multiple sources, including ERP systems, financial statements, and transactional databases, to calculate and track KPI performance",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "monitor financial KPIs periodically, analyzing deviations from budgeted or forecasted values and identifying underlying causes for variations",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "generate and distribute periodic KPI reports to senior management, providing insights and recommendations for improving financial performance",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify early warning signs of financial distress, operational inefficiencies, or liquidity risks through ongoing KPI trend analysis",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Analyze profitability, risk, and other financial metrics",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "extract and consolidate financial data from income statements, balance sheets, and cash flow reports to assess profitability and financial stability",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "identify and calculate key financial metrics such as gross profit margin, net profit margin, return on investment (ROI), and earnings before interest, taxes, depreciation, and amortization (EBITDA)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "perform risk assessments by analyzing credit risk, market risk, liquidity risk, and operational risk factors affecting financial performance",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "collaborate with finance, risk management, and business teams to interpret financial data and optimize decision-making processes",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Develop solutions for financial improvement",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "conduct variance analysis to compare actual financial results against forecasts, budgets, and industry benchmarks, identifying discrepancies and inefficiencies",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "utilize financial modeling techniques to simulate different business scenarios and assess their impact on profitability and financial health",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "identify underperforming business segments, investment portfolios, or cost centers and recommend corrective measures to improve financial outcomes",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "monitor external market trends, competitor financial performance, and regulatory changes to provide strategic recommendations for financial growth",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "document financial improvement strategies, including implementation plans, expected outcomes, and key monitoring metrics for tracking progress over time",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "present financial improvement solutions to senior management and stakeholders through reports, dashboards, and data-driven insights for informed decision-making",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

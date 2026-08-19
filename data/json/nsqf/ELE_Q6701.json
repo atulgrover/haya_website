@@ -1,0 +1,779 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "ELE/Q6701",
+  "qp_name": "ELE_Q6701",
+  "clean_code": "ELE_Q6701",
+  "total_pages": 44,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:26.894Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 10,
+    "total_pcs": 62,
+    "total_kus": 67,
+    "total_gs": 39,
+    "generic_nos_filtered": 2
+  },
+  "nos_units": [
+    {
+      "nos_code": "ELE/N6701",
+      "nos_title": ".Design the Battery",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. types of documentation and their relevance in the organization.",
+        "KU2. basic electrical and electronics system knowledge, concepts of AC & DC, function of positive",
+        "KU3. principles, categories, types and applications of a battery",
+        "KU4. relevant National / International Standards, including safety standards such as IEEE1725,",
+        "KU5. basic knowledge of Quality Management System (ISO 9001), Environmental Management",
+        "KU6. importance of various design parameters such as cost, space, technology, safety, functional",
+        "KU7. basic designing methods, technologies available and materials used",
+        "KU8. safe and hazardous voltage practices",
+        "KU9. various types of battery system architectures",
+        "KU10. battery protection ICs, fuel gauge and chargers",
+        "KU11. electrode design optimizations",
+        "KU12. new technologies, materials, and processes in R&D, existing or potential suppliers, etc.",
+        "KU13. failure modes to analyse test cells and products",
+        "KU14. test set ups and jigs for data collection",
+        "KU15. systems of High voltage (800 V DC)"
+      ],
+      "gs": [
+        "GS1. read and interpret engineering and tool drawings",
+        "GS2. prepare summary report with all relevant information",
+        "GS3. gather customer requirements and feedback",
+        "GS4. translate feedbacks into product requirement document",
+        "GS5. share technical information clearly using appropriate language",
+        "GS6. evaluate various options, their pros and cons, short term and long-term implications, cost",
+        "GS7. analyze risks to minimize losses or damages",
+        "GS8. build and mentor a team",
+        "GS9. refer manuals, health and safety instructions, memos, reports, job cards, etc.",
+        "GS10. envisage design goals, develop strategies and take action to achieve them",
+        "GS11. communicate effectively orally and in writing"
+      ],
+      "modules": [
+        {
+          "module_title": "Determining specifications of the Battery system",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interpret Electric Vehicle level specifications set out by the Customer / Management",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "translate EV specifications into Battery System level specifications",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "estimate Battery potential and load requirement based on Electric Vehicle specification",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "list various design options / specifications available at each component level of the Battery system",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "evaluate each design option based on parameters such as safety, performance and cost",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "select battery system specifications to suit specifications of cells and modules",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "decide levels at which these features can be implemented (cell, battery assembly or system)",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "select Battery system circuit based on Battery application",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "select electrical, mechanical or thermal interface requirements",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "perform statistical modeling and state diagrams for the battery operations",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "administer that the project is within the stipulated time and budget",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Designing the Battery system",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "employ cross-functional partners to integrate the battery into the final system",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "develop designing, building, and testing code to satisfy design requirements",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "design hardware and software systems for battery protection, charging and gauging",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "design connections between anode / cathode terminals through use of suitable busbars",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "collaborate with firmware/software teams to program chargers and battery fuel gauges",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "collaborate with vendors to develop custom and semi-custom ICs for battery system",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "collaborate with mechanical engineering team to develop battery modules and protection control systems",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "construct the circuit by soldering the components",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "perform simulations of the designed circuit",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "perform charging and discharging of the battery in a controlled manner",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "aonclude design of the circuit, carry out simulations, and build the circuit by soldering the components",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "assess that the energy of the battery is optimized to power the product",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "assess that the risk of damaging the battery is minimal",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ELE/N6702",
+      "nos_title": ".Inspect, test and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. relevant legislation, standards, policies, and procedures followed in the company",
+        "KU2. reporting structure, inter-department functions, lines and procedures in the work area",
+        "KU3. basic principle and working of electronics",
+        "KU4. protocols & standards of Automotive industry (e.g. CAN, UDS, ISO 26262)",
+        "KU5. different types of batteries based on voltage and power generation capacities",
+        "KU6. functionalities of various testing equipment such as hydrometer, multimeter etc.",
+        "KU7. the working of software of embedded devices and systems",
+        "KU8. specific gravity measurement techniques that provides information about the SoC (State of",
+        "KU9. procedures to be followed for troubleshooting and standards to follow",
+        "KU10. techniques to carry out safety test, cycle test and load test",
+        "KU11. testing facilities available in the country for the evaluation of constituents, and Battery",
+        "KU12. importance of engaging with specialists for support in resolving change requests or fixing",
+        "KU13. relevant health and safety requirements applicable in the work place"
+      ],
+      "gs": [
+        "GS1. fill forms, activity logs, attendance sheets appropriately as per organizational format",
+        "GS2. communicate technical information clearly using appropriate language",
+        "GS3. use simple language to be understood by fellow workers, supervisors and clients while",
+        "GS4. check and clarify task-related information",
+        "GS5. seek clarification from immediate supervisor or responsible authority to rectify problems at",
+        "GS6. review the documentation to identify the faults faced in previous designs",
+        "GS7. communicate with cross functional teams on issues",
+        "GS8. plan, prioritize and sequence work operations as per job requirements",
+        "GS9. organize and analyze information relevant to design and testing",
+        "GS10. use basic concepts of work productivity including efficient resource usage and time",
+        "GS11. seek assistance and support from other workers, supervisors and clients to solve problems"
+      ],
+      "modules": [
+        {
+          "module_title": "Testing and validation of the design",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify design areas where checking and testing is essential",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify requirements for continuous automation test case",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "use simple instructions which can be understood by the stakeholders",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "test the entire design as per design specifications",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "perform routine evaluation of the design for different parameters",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "create prototype design of the activation, which can be validated, if necessary",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "perform correct application for activation, using technologies of traction battery and battery charger",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "comply with globally accepted regulatory standards for technical specifications while testing",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "create logbook to maintain test records",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Performing safety test",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "develop test plans for batteries at the component and system level",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "perform safety test to minimize overcharging and overheating",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Performing cycle test",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "perform failure mode and effect analysis (FMEA) of the battery system",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "measure SoC for determining electrolyte’s specific gravity in each cell by using hydrometer",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "measure voltage by using multimeter",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Performing load test",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "perform load testing to remove AMPS from a battery",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "assess electrical worst-case (circuit performance)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "assess rigorous failure /root cause on battery related problems",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ELE/N1002",
+      "nos_title": ".Apply health and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. importance of working in clean and safe work environment following safety practices and",
+        "KU2. health and safety roles and responsibilities of relevant personnel within and outside the",
+        "KU3. key internal and external sources of health and safety information",
+        "KU4. basic knowledge of electronic devices and related health risks",
+        "KU5. meaning of hazards and risks",
+        "KU6. various types of health and safety hazards commonly present in the work environment such",
+        "KU7. methods of accident prevention",
+        "KU8. importance of using protective clothing/equipment while working",
+        "KU9. general principles for identifying and controlling health and safety risks",
+        "KU10. main hazards and preventive as well as control measures while working with different types",
+        "KU11. importance of carrying out electrical and non-electrical isolation to prevent hazards from loss",
+        "KU12. main hazards and preventive as well as control measures when working with electrical",
+        "KU13. forms and classifications of hazardous substances",
+        "KU14. safe working practices while working at various hazardous sites",
+        "KU15. prevention and control measures to reduce risks from exposure to hazardous substances",
+        "KU16. health effects associated with exposure to noise and vibration and the appropriate control",
+        "KU17. precautionary activities to prevent the fire accident",
+        "KU18. various causes of fire such as heating of metal, spontaneous ignition, sparking, electrical",
+        "KU19. techniques of using the different fire extinguishers",
+        "KU20. different methods and material to extinguish fires",
+        "KU21. different materials used for extinguishing fire such as sand, water, foam, CO2, dry powder",
+        "KU22. rescue techniques used during a fire hazard",
+        "KU23. various types of safety signs and their meaning",
+        "KU24. basic first aid treatment relevant to the common work place injuries e.g. shock, electrical",
+        "KU25. contents of written accident report",
+        "KU26. potential injuries and ill health associated with incorrect handing of tools and equipment",
+        "KU27. safe lifting and carrying practices",
+        "KU28. potential impact to a person who is moved incorrectly",
+        "KU29. personal safety, health and dignity issues relating to the movement of a person by others",
+        "KU30. ESD measures and 5S",
+        "KU31. efficient utilization and management of material and water",
+        "KU32. ways to recognize common electrical problems and practices of conserving electricity",
+        "KU33. usage of different colours of dustbins, categorization of waste into dry, wet, recyclable,",
+        "KU34. organization's procedure for minimizing waste",
+        "KU35. waste management and methods of waste disposal",
+        "KU36. common sources of pollution and ways to minimize it",
+        "KU37. names, contact information and location of people responsible for health and safety in the",
+        "KU38. location of documents and equipment for health and safety compliance/practices in the",
+        "KU39. safety notices, signs and instructions at workplace"
+      ],
+      "gs": [
+        "GS1. interpret general health and safety guidelines labels, charts, signages",
+        "GS2. read operation manuals",
+        "GS3. write health and safety compliance report",
+        "GS4. write an accident/incident report in local language or English",
+        "GS5. provide an emergency or safety incident brief to seniors or relevant authorities in a calm,",
+        "GS6. communicate general health and safety guidelines to colleagues/co-workers",
+        "GS7. communicate appropriately with co-workers in order to clarify instructions and other issues",
+        "GS8. act in case of any potential hazards observed in the work place",
+        "GS9. plan and organize their own work schedule, work area, tools, equipment in compliance with",
+        "GS10. take adequate measures to ensure the safety of clients and visitors at the workplace",
+        "GS11. identify immediate or temporary solutions to resolve delays",
+        "GS12. evaluate the work area for health and safety risks or hazards",
+        "GS13. use cause and effect relations to anticipate potential issues, problems and their solution in",
+        "GS14. recognise emergency and potential emergency situations",
+        "GS15. protect self and others from a health and safety risk or hazard",
+        "GS16. communicate and collaborate to incorporate sustainable practices (greening) in workplace",
+        "GS17. record data on waste disposal at workplace"
+      ],
+      "modules": [
+        {
+          "module_title": "Deal with workplace hazards",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify job-site hazards and possible causes of accident in the workplace",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform work complying to organizational safe working practices and observing hazard signs displayed on containers, equipment and in various work areas such as inside buildings, in open areas and public spaces, etc.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "use appropriate personal protective equipment (PPE) for specific tasks and work conditions, contaminant (concentration w.r.t air) requirements and severity of hazard while conforming to the Indian/International standards",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "follow standard safety procedures while handling tool/ ,equipment, hazardous substances and while working in hazardous environments",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "dispose electronic waste (such as toxins; metals such as lead, cadmium, barium; flame retardant plastics, welding slag etc.) as per industry approved techniques",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "avoid damage of components due to negligence in electrostatic discharge (ESD) procedures",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "locate general health and safety equipment in the workplace such as fire extinguishers; first aid equipment; safety instruments, clothing and installations (fire exits, exhaust fans)",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "maintain appropriate posture while handling heavy objects",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "apply good housekeeping practices at all times",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Apply fire safety practices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "take preventive measures to prevent fire hazards",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "• use appropriate fire extinguishers for different types of fires • Types of fires: Class A: e.g. ordinary solid combustibles, such as wood, paper, cloth, plastic, charcoal, etc.; Class B: flammable liquids and gases, such as gasoline, propane, diesel fuel, tar, cooking oil, and similar substances; Class C: e.g. electrical equipment such as appliances, wiring, breaker panels, etc. (These categories of fires become Class A, B, and D fires when the electrical equipment that initiated the fire is no l",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "exhibit rescue and first-aid techniques in case of fire or electrocution",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Follow emergencies, rescue and first-aid procedures",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "administer appropriate first aid to victims in case of bleeding, burns, choking, electric shock, poisoning etc.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "administer first aid to victims in case of a heart attack or cardiac arrest due to electric shock,",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "participate regularly in emergency procedures such as raising alarm, safe/efficient, evacuation, correct means of taking shelter and escaping, correct assembly point, roll call, correct return to work",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use correct method to move injured people and others during an emergency",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Effective waste management/recycling practices",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "identify recyclable and non-recyclable, and hazardous waste generated",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "segregate waste into different categories",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "ensure disposal of non-recyclable waste appropriately",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "deposit non-recyclable and reusable material at identified location",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "follow processes specified for disposal of hazardous waste",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1004 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6603",
+  "qp_name": "TEL_Q6603",
+  "clean_code": "TEL_Q6603",
+  "total_pages": 39,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.558Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 15,
+    "total_pcs": 84,
+    "total_kus": 55,
+    "total_gs": 36,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6610",
+      "nos_title": ".Prepare for",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. types, formats, and sources of telecom data used for ML applications.",
+        "KU2. types, sources, and structure of telecom data, including CDRs, signal strength logs, and",
+        "KU3. criteria for selecting and evaluating datasets in ML projects.",
+        "KU4. role and steps of Exploratory Data Analysis (EDA) in understanding telecom datasets.",
+        "KU5. common issues in telecom datasets and how they impact ML outcomes.",
+        "KU6. key differences between traditional software engineering and ML-based systems.",
+        "KU7. structure and phases of a typical ML project lifecycle.",
+        "KU8. how to assess business and technical feasibility for ML deployment in telecom.",
+        "KU9. telecom-specific use cases suited for machine learning and AI.",
+        "KU10. techniques for data validation and ensuring data quality.",
+        "KU11. data pre-processing methods and their impact on model performance.",
+        "KU12. feature selection and dimensionality reduction techniques.",
+        "KU13. data augmentation approaches and their relevance in telecom.",
+        "KU14. telecom model evaluation metrics like precision, recall, F1-score, and ROC-AUC.",
+        "KU15. factors affecting model drift and performance degradation.",
+        "KU16. tools and frameworks commonly used in ML pipelines (e.g., Scikit-learn, TensorFlow,",
+        "KU17. methods for ensuring reproducibility, modularity, and scalability in ML pipelines."
+      ],
+      "gs": [
+        "GS1. communicate effectively with team members and stakeholders regarding data and ML",
+        "GS2. apply logical reasoning to evaluate data quality and identify issues.",
+        "GS3. demonstrate time management while planning and preparing ML systems.",
+        "GS4. work collaboratively with cross-functional telecom and data science teams.",
+        "GS5. practice self-learning to stay updated with evolving ML tools and telecom use cases.",
+        "GS6. maintain attention to detail in data pre-processing and pipeline planning.",
+        "GS7. follow structured problem-solving approaches to design ML solutions.",
+        "GS8. prioritise tasks based on business impact and feasibility assessments.",
+        "GS9. ensure ethical decision-making when handling sensitive telecom datasets."
+      ],
+      "modules": [
+        {
+          "module_title": "Analyse and handle telecom data for ML",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify various sources of telecom data, including OSS/BSS, sensors, and usage logs.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "extract and interpret telecom data in common formats such as CSV, JSON, and Parquet.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "evaluate datasets for completeness, accuracy, and relevance to the ML problem.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "conduct exploratory data analysis (EDA) to identify patterns, trends, and outliers.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "detect issues in data distribution, imbalance, or missing values affecting model accuracy.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "apply data validation techniques to ensure consistency and integrity in telecom datasets.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "pre-process data by handling missing values, outliers, and encoding categorical features.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "analyse feature correlations and remove multicollinearity using the variance inflation factor or domain knowledge.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "address class imbalance through data augmentation techniques like SMOTE or GANs.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "create synthetic datasets using augmentation to simulate rare or imbalanced telecom events.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Plan and map ML solutions to telecom problems",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "assess the business and technical feasibility of telecom problems for ML implementation.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "identify and align telecom use cases (e.g., churn prediction, fraud detection) with suitable ML problem types (e.g., classification, regression).",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "map problems to appropriate ML techniques or algorithms based on data characteristics and objectives.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "evaluate existing ML systems or solutions for performance, drift, and limitations.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "select appropriate metrics and benchmarks to evaluate model effectiveness in telecom.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use dimensionality reduction techniques such as PCA or autoencoders for feature selection.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "apply advanced feature engineering techniques based on domain knowledge and data types.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "design success criteria and outcome indicators for telecom ML applications.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Plan ML system architecture and pipeline",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "define the lifecycle of an ML system in a telecom environment.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "design a modular and scalable pipeline that includes data pre-processing, modelling, and evaluation.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "select appropriate industry-standard ML tools and libraries suited for telecom use cases.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "use version control (e.g., Git, DVC) to manage datasets and experiment iterations.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "implement experiment tracking using tools like MLflow or TensorBoard.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "consider data privacy and telecom regulatory compliance while designing ML workflows.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "estimate timelines, resource requirements, and risks for implementing telecom ML solutions.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "define monitoring strategies for post- deployment model performance in telecom networks.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6611",
+      "nos_title": ".Develop and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. algorithmic techniques suited for telecom challenges: classification, regression, clustering,",
+        "KU2. evaluation metrics applicable to telecom (e.g., precision-recall tradeoffs in fraud detection).",
+        "KU3. telecom infrastructure constraints (e.g., low-latency, edge deployment, bandwidth",
+        "KU4. frameworks and libraries for ML development (e.g., scikit-learn, TensorFlow, PyTorch,",
+        "KU5. rest API development principles and common libraries (Flask, FastAPI).",
+        "KU6. benefits of containerisation and orchestration using Docker and Kubernetes.",
+        "KU7. CI/CD principles and tools applicable to ML lifecycle management.",
+        "KU8. strategies for model retraining, drift detection, and feedback loop automation.",
+        "KU9. tools for model versioning, experiment tracking, and auditability (e.g., DVC, MLflow).",
+        "KU10. visualisation tools and methods for reporting ML performance to non-technical stakeholders.",
+        "KU11. business impact mapping of ML systems in telecom: cost savings, customer experience, and",
+        "KU12. ethical ML practices, data privacy, and telecom regulatory compliance (e.g., GDPR, NDCP).",
+        "KU13. cost-performance balancing in large-scale ML model deployments.",
+        "KU14. importance of project documentation, SOPs, and cross-functional collaboration in telecom.",
+        "KU15. automation tools for orchestrating ML pipelines (e.g., Kubeflow, Airflow)."
+      ],
+      "gs": [
+        "GS1. communicate technical findings effectively with both technical and non-technical",
+        "GS2. collaborate with interdisciplinary teams for ML system development and deployment.",
+        "GS3. plan and manage time to meet development milestones and deployment schedules.",
+        "GS4. adapt to changing telecom data trends, tools, and regulatory requirements.",
+        "GS5. think critically to troubleshoot ML system performance issues.",
+        "GS6. apply numeracy skills for interpreting model metrics and optimisation trade-offs.",
+        "GS7. prioritise tasks under constraints of time, data, or resource availability.",
+        "GS8. interpret business needs and translate them into actionable ML features or metrics.",
+        "GS9. document procedures clearly for reproducibility and audit trails.",
+        "GS10. maintain a customer-centric mindset while implementing predictive solutions."
+      ],
+      "modules": [
+        {
+          "module_title": "Develop and fine-tune ML models for telecom applications",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify and analyze telecom fraud patterns such as SIM box usage, call spoofing, phishing links, and SMS fraud from historical data logs and call detail records (CDRs).",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "train and optimise ML models using hyperparameter tuning (GridSearchCV, Optuna).",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "evaluate model performance using precision, recall, false positive rates, and update detection rules based on emerging fraud trends and feedback from fraud investigation teams.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "implement time series forecasting for telecom traffic load using Prophet or LSTM models.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "develop and train machine learning models (e.g., anomaly detection, classification) to flag suspicious call behavior and link-based fraud in real time or batch mode.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "perform model compression or pruning to optimise inference latency for edge devices.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Deploy ML models using industry-standard frameworks",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "integrate fraud detection algorithms with telecom monitoring systems (e.g., OSS/BSS platforms) to enable automated alerts, call blocking, or traffic throttling.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "containerise ML models using Docker and test deployment readiness for cloud (AWS, GCP, Azure) or edge environments.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "build CI/CD pipelines using Jenkins, GitHub Actions, or GitLab CI for automated deployment and rollback.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Integrate and monitor deployed ML systems in telecom environment",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "implement model versioning and metadata tracking using MLflow or DVC.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "create and configure monitoring dashboards (e.g., Grafana, Prometheus) for model performance metrics.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "automate ML workflows (e.g., training, retraining, deployment) using Apache Airflow or Kubeflow.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "simulate retraining workflows based on model drift or significant data shifts.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "track latency, throughput, memory usage, and system bottlenecks in production environments.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Support lifecycle management and continuous improvement of ML systems",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "collaborate with data scientists, telecom engineers, and business analysts to translate model output into business actions.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "document system architecture, deployment steps, SOPs, and model governance protocols.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "interpret ML model output and visualise insights using dashboards (e.g., Tableau, Power BI).",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "evaluate cost-performance trade-offs of deployed models and recommend optimisation strategies.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "support post-deployment lifecycle, including bug tracking, incident response, and customer feedback integration.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "ensure models comply with telecom regulatory standards (e.g., TRAI, DoT).",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "report any unforeseen disruptions or delays to superiors and/or the concerned person.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9103",
+      "nos_title": ".Implement Effective",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. importance of effective communication and team collaboration in achieving workplace goals",
+        "KU2. modes and tools of communication for various scenarios (in-person, virtual, asynchronous)",
+        "KU3. organisational processes for task assignment, reporting, and escalation",
+        "KU4. impact of one’s work on the team’s workflow and deliverables",
+        "KU5. strategies to handle team dynamics and conflict resolution",
+        "KU6. principles of inclusive behaviour and workplace diversity",
+        "KU7. basic concepts of gender sensitivity, unconscious bias, and respectful workplace behaviour",
+        "KU8. categories of disabilities and associated workplace considerations",
+        "KU9. rights, entitlements, and accommodations applicable to PwDs under national and",
+        "KU10. health, safety, and digital accessibility requirements for inclusive workplaces",
+        "KU11. government and private schemes supporting employment and inclusion of PwDs",
+        "KU12. practices to encourage inclusive recruitment and professional growth"
+      ],
+      "gs": [
+        "GS1. communicate clearly and respectfully using verbal, non-verbal, and written modes.",
+        "GS2. maintain professionalism in customer and colleague interactions",
+        "GS3. identify, address, or escalate interpersonal challenges constructively",
+        "GS4. impact of reflect on one’s biases, assumptions, and inclusive practices",
+        "GS5. empathise with and advocate for individuals from underrepresented groups",
+        "GS6. promote collaboration and resolve conflicts through dialogue and consensus",
+        "GS7. engage in continuous improvement of interpersonal and team dynamics",
+        "GS8. use digital communication tools responsibly and inclusively in a hybrid work setting."
+      ],
+      "modules": [
+        {
+          "module_title": "Interact effectively with supervisors and stakeholders",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interpret and clarify work requirements and expectations from supervisors or stakeholders",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "report any delays, risks, or unforeseen disruptions to the appropriate authority promptly",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "deliver work outputs as per quality, productivity, and timeline standards defined by the organisation.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Collaborate efficiently with colleagues and customers",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "share work requirements and expectations clearly with team members",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "communicate using appropriate channels (e.g., face-to-face, phone, e-mail, video conferencing, chat) based on context",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "coordinate effectively with others to integrate efforts and achieve collective goals",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "respect colleagues’ and customers’ personal and professional boundaries",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "collaboratively solve work-related issues or bottlenecks with mutual consent",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "resolve interpersonal or operational conflicts within the team professionally and constructively",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "motivate team members to align with organisational objectives over individual interests",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "encourage two-way feedback and constructive dialogue within the team.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Practice inclusive communication at workplace",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "ensure own and team’s conduct reflects respect for gender, disability, and diversity in all interactions",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "communicate with sensitivity toward the needs of persons with disabilities (PwD) and across gender identities",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "demonstrate awareness of different types of disabilities and their implications in workplace communication",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "assist team members with disabilities in overcoming barriers to work",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use inclusive and respectful language in all verbal and written communication",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "treat all individuals with dignity and fairness, avoiding bias or discrimination",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "respect others’ personal space, cultural preferences, and accessibility needs.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9104",
+      "nos_title": ".Manage Work,",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. principles of continuous learning and knowledge management",
+        "KU2. strategies pertinent to the field that can be used to pursue an advancement of skills",
+        "KU3. organisational policies on performance standards and task completion",
+        "KU4. methods for identifying training and development needs",
+        "KU5. problem-solving frameworks and techniques",
+        "KU6. quality assurance systems and key performance indicators (KPIs)",
+        "KU7. health, safety, and cybersecurity practices applicable to the work environment",
+        "KU8. types of workplace hazards (physical, electrical, digital, etc.) and emergency response",
+        "KU9. ways to conserve energy, water, and materials during operations",
+        "KU10. routine maintenance procedures for tools, equipment, or digital infrastructure",
+        "KU11. environmental, social, and governance (ESG) principles relevant to workplace operations."
+      ],
+      "gs": [
+        "GS1. apply strategies for continuous improvement in personal and team performance.",
+        "GS2. think critically and adapt to changing work scenarios",
+        "GS3. interpret feedback from superiors in a constructive way",
+        "GS4. communicate effectively with team members, supervisors, and stakeholders",
+        "GS5. organise and manage work plans, schedules, and deliverables",
+        "GS6. interpret and act on feedback for professional growth",
+        "GS7. escalate safety, operational, or ethical issues to the appropriate authority",
+        "GS8. promote inclusive and respectful team dynamics",
+        "GS9. take ownership of work outcomes and support team accountability"
+      ],
+      "modules": [
+        {
+          "module_title": "Manage learning and self-direction",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify individual and team training needs relevant to current and emerging job roles",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "participate in learning activities and skill development programs",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "encourage team participation in professional development, cross-functional knowledge sharing, and upskilling initiatives.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Foster critical thinking and problem-solving",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "guide team members to analyse problems logically and identify root causes",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "suggest appropriate and timely solutions to operational challenges",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "enable the team to evaluate outcomes of decisions and refine processes accordingly.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Perform work as per quality and performance standards",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "organise individual and team work based on task priorities and deadlines",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "monitor performance to ensure quality, accuracy, and timely completion of tasks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "allocate responsibilities and establish work schedules to optimise team productivity",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "implement systems to track adherence to standard operating procedures (SOPs)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain a safe, secure, and healthy workplace",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "communicate safety policies and procedures clearly to all team members",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "address risks such as accidents, electrical hazards, cyber risks, or health incidents as per emergency protocols",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "report hazards, breaches, or incidents promptly to the designated authority",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "promote practices that support mental well- being and respectful workplace behaviour.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Implement sustainable and efficient resource usage practices",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "implement ways to optimise the usage of material, energy and water, in various tasks/activities/processes",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "encourage regular upkeep of tools, machinery, and digital assets to extend usability",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure team compliance with environmentally responsible work practices",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "promote the use of energy-efficient systems and paperless documentation where feasible.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "report and resolve malfunctions or wastage through preventive or corrective actions",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

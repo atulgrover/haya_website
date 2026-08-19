@@ -1,0 +1,3008 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "MEP/Q1503",
+  "qp_name": "MEP_Q1503",
+  "clean_code": "MEP_Q1503",
+  "total_pages": 85,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.812Z",
+  "stats": {
+    "total_nos": 11,
+    "total_modules": 52,
+    "total_pcs": 273,
+    "total_kus": 44,
+    "total_gs": 44,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "MEP/N1515",
+      "nos_title": ".Basics of R",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the basic syntax, data structures, and functions in R programming.",
+        "KU2. Recognize the role of R in statistical analysis, data visualization, and machine learning",
+        "KU3. Explain data manipulation techniques using R packages such as dplyr and tidyr.",
+        "KU4. Identify best practices for writing efficient R scripts and debugging errors."
+      ],
+      "gs": [
+        "GS1. Communicate analytical findings effectively using R-generated reports and visualizations.",
+        "GS2. Apply problem-solving skills to clean, process, and analyze data using R.",
+        "GS3. Use critical thinking to select appropriate statistical techniques for business insights.",
+        "GS4. Demonstrate proficiency in RStudio and relevant R libraries for data analysis."
+      ],
+      "modules": [
+        {
+          "module_title": "R Programming Fundamentals",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Install and configure the R programming environment on various operating systems.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify and explain the features of R, including how to execute R scripts and manage projects within R.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Utilize comments, reserved words, and identifiers effectively in R scripts.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Declare and use constants and variables in R, applying appropriate operators (arithmetic, relational, logical, assignment, and miscellaneous) in expressions.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Understand and apply operator precedence rules in complex expressions and work with strings effectively in R.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Basic Data Types, Vectors, Lists, and Matrices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "Define and utilize basic data types in R, including numeric, integer, complex, logical, and character types.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Create, combine, and modify vectors, including accessing, deleting, and sorting vector elements.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Perform vector arithmetic, recycling, and element sorting, demonstrating the ability to read and manipulate vector data.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Create and manipulate lists in R, including accessing, updating, and merging list elements.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Convert lists to vectors and demonstrate list operations effectively.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Create matrices, access matrix elements, and perform matrix arithmetic and operations, including manipulation and sorting of matrix data.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Arrays, Factors, and Data Frames",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Create and manipulate arrays in R, including accessing, modifying, and performing arithmetic operations on array elements.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Define and manipulate factors, including creating factors, accessing components, and modifying factor levels.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Create and manage data frames in R, including accessing and modifying components, aggregating data, and sorting data within data frames.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Perform operations such as merging, reshaping, sub-setting, and converting data types within data frames.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Flow Control & Functions",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Implement decision-making structures in R, including if statements, nested if-else statements, if-else function, and switch statements.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Use loops effectively, including for loops, while loops, and repeat loops, with appropriate loop control statements like break and next.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Define and call functions in R, including functions without arguments and recursive functions.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Utilize built-in R functions for various operations, including mathematical, character, statistical, and date-time functions, ensuring correct application in different scenarios.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Charts & Graphs",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "Create bar charts in R, including plotting bars vertically and horizontally, working with categorical data, and generating grouped and stacked bar charts.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Develop histograms, including simple histograms and those with labels, breaks, and density lines.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Plot line graphs, including simple line graphs and graphs with multiple lines.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Generate pie charts in R, including simple pie charts, pie charts with slice percentages, and 3D pie charts.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1516",
+      "nos_title": ".Database",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the key concepts of database management systems, including relational and non-",
+        "KU2. Recognize the role of SQL and NoSQL databases in storing and managing structured and",
+        "KU3. Explain data modeling, normalization, and indexing techniques for optimizing database",
+        "KU4. Identify best practices for database security, backup, and recovery management."
+      ],
+      "gs": [
+        "GS1. Communicate database structures and queries effectively to technical and non-technical",
+        "GS2. Apply analytical skills to design, manage, and optimize databases for business applications.",
+        "GS3. Use problem-solving techniques to troubleshoot database performance and integrity issues.",
+        "GS4. Demonstrate proficiency in SQL, database management tools, and cloud-based database"
+      ],
+      "modules": [
+        {
+          "module_title": "Database Approach",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Explain the features, advantages, and disadvantages of the database approach compared to traditional data management methods.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify and describe the components of a Database Management System (DBMS), including hardware, software, data, procedures, and database access language.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Differentiate between various data models, including hierarchical, network, relational, and Entity-Relationship (ER) models.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Perform ER analysis, defining attributes and domains, and apply integrity constraints such as primary keys, foreign keys, and unique constraints.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Explain the concepts of normalization and apply normalization techniques to design databases in INF, 2NF, and 3NF to eliminate redundancy and ensure data integrity.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Maintain data security, confidentiality and follow ethical conduct always while handling different data",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Working with MS Access",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Create tables in MS Access, defining data types and field properties according to the requirements of the database.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Establish and manage relationships between tables in MS Access to maintain referential integrity.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Design and create forms in MS Access for efficient data entry and retrieval.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Construct and execute queries in MS Access, including simple queries, cross-tab queries, and queries designed for specific data retrieval needs.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Generate reports in MS Access using report wizard and query design, creating simple reports and cross-tab reports that summarize and present data effectively.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Working with Structured Query Language (SQL)",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Write and execute Data Definition Language (DDL) statements in SQL to create, drop, and alter database structures.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Perform data manipulation using Data Manipulation Language (DML) statements such as insert, select, delete, and update.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Utilize Oracle functions, apply join conditions, and set operators to retrieve and manipulate data from multiple tables.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Implement the Order By clause in SQL queries to sort data according to specific criteria.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Working with PL/SQL",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Apply control structures in PL/SQL, including loops, conditional statements, and exception handling to develop robust database programs.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Define and use functions and triggers in PL/SQL to automate database operations and maintain data integrity.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Query Processing and Optimization",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "Explain the ACID properties of transactions and their importance in ensuring data consistency and reliability.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Manage transaction processing and apply concurrency control techniques to prevent data conflicts in multi-user environments.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Describe the principles of database recovery and apply appropriate techniques to restore databases following a failure, ensuring minimal data loss.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1517",
+      "nos_title": ".Data Visualization",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the fundamentals of data visualization and its significance in business analytics.",
+        "KU2. Recognize the key features and functionalities of Tableau, including dashboards, charts, and",
+        "KU3. Explain techniques to transform raw data into meaningful insights using Tableau's",
+        "KU4. Identify best practices for designing interactive and user-friendly reports to improve decision-"
+      ],
+      "gs": [
+        "GS1. Communicate insights effectively using Tableau dashboards and reports.",
+        "GS2. Apply analytical skills to interpret data trends and patterns for business strategy.",
+        "GS3. Use problem-solving techniques to optimize data representation and enhance report accuracy.",
+        "GS4. Demonstrate proficiency in Tableau tools, including calculated fields, parameters, and data"
+      ],
+      "modules": [
+        {
+          "module_title": "Tableau Basic Reports",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Connect to Excel files within Tableau, importing data for analysis.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Connect to text files and import data efficiently into Tableau for report generation.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Integrate data from Microsoft Analysis Services with Tableau, ensuring correct data interpretation.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Create and remove hierarchies in Tableau to organize data and enable drill-down analysis.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Define and implement parameters in Tableau to control data visualizations dynamically.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Utilize grouping techniques to categorize data, applying examples to create meaningful data segments.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Design your first report in Tableau, applying data labels for clarity.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Organize data using folders and apply sorting techniques to enhance data visualization.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Combine data sets in Tableau, creating comprehensive reports that provide a holistic view of the data.",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Tableau Charts",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "Create various chart types in Tableau, including area, bar, box, bubble, and bump charts, to represent data visually.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Develop more complex visualizations such as bullet, circle, Gantt, line, and lollipop charts.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Utilize advanced chart types like Pareto, pie, scatter, stacked, tree, world cloud, and waterfall charts to provide in-depth data analysis.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Create filled maps, crosstab, combined, motion, and heatmap visualizations to represent geographical and temporal data.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "HR analytics tools and techniques",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Discuss the importance of data in HR analytics.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Identify the types of data and data capturing methods.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Explain the techniques for data examination and purification.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Describe various data analyzing techniques used in HR analytics.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Tableau Advanced Reports",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "Create dual-axis reports in Tableau, effectively visualizing multiple data sets on a single chart.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Implement blended and individual axis reports to compare data across different measures.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Add reference lines and reference distributions to reports, providing additional context and insights.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Create and customize basic map visualizations, integrating Mapbox maps as background maps for enhanced geographical analysis.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Tableau Calculations & Filters",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "Create calculated fields in Tableau to perform custom calculations and derive new metrics.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Apply basic approaches to calculate ranks within data sets, enabling comparative analysis.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Utilize top and bottom filters to focus on key data points.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Implement context and slicing filters to refine data visualizations.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Apply data source filters, extract filters, and other filtering techniques to manage large data sets and enhance report performance.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N0259",
+      "nos_title": ".Excel for Business",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the fundamental and advanced functions of Excel for business applications.",
+        "KU2. Recognize the use of formulas, functions, and data validation techniques for accurate",
+        "KU3. Explain data visualization techniques, including charts, PivotTables, and dashboards, for",
+        "KU4. Identify automation tools such as Macros and VBA to streamline business processes."
+      ],
+      "gs": [
+        "GS1. Communicate business insights effectively using Excel-based reports and presentations.",
+        "GS2. Apply analytical skills to interpret and manipulate business data for decision-making.",
+        "GS3. Use problem-solving techniques to optimize data management and workflow automation.",
+        "GS4. Demonstrate proficiency in Excel tools to improve efficiency in business operations."
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to Excel",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Enter and edit data in Excel, applying basic formulae and functions to perform calculations.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Insert and delete rows/columns, and adjust cell formatting, including fonts, colours, and borders.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Merge and align cells, ensuring data is presented clearly and accurately.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Use page break preview and page layout view to prepare worksheets for printing, including setting headers and footers.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Create and format charts quickly by selecting data and applying basic chart types.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Create and format basic tables, using table styles, calculated columns, and applying sorting and filtering.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data Management and Complex Functions in Excel",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Create, sort, and filter lists/tables of data using range names for efficient data management.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Apply custom number formats, including scaling numbers and formatting dates and times, to improve data readability.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Use mathematical, text, logical, and reference functions to perform advanced data analysis in Excel.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conditional Formatting, Data Validation, and Advanced Referencing",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "Create and apply cell rules for conditional formatting, using data bars and colour sets to highlight key data points.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Implement styles and themes, creating custom styles to maintain consistency in worksheet formatting.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Set cell validation and protection, including grouping and outlining data, and adding cell comments for clarity.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Utilize absolute references and range names to fix row/column references in formulas and label ranges automatically.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Advanced Data Analysis, PivotTables, and Macros",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Define alternative data sets and use Goal Seek and Solver to find optimal solutions for business scenarios.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Analyse data dynamically using PivotTables, including filtering, editing, and formatting PivotTable data, and creating PivotTables from external data sources.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Create and modify macros to automate repetitive tasks in Excel, and run macros using buttons.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Create shapes and mathematical equations to enhance the visual presentation of data in Excel.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Collaboration, Security, and Workbook Management in Excel",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "Create hyperlinks and paste charts into other documents to integrate Excel data with other applications.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Share workbooks, manage comments, track changes, and protect workbooks/worksheets to facilitate collaboration with colleagues.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Authenticate workbooks to ensure data integrity and save workbooks for the web for broader accessibility.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N0256",
+      "nos_title": ".Personality",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the key elements of personality development, including self-awareness,",
+        "KU2. Recognize the importance of effective communication, interpersonal skills, and professional",
+        "KU3. Explain strategies for personal grooming, time management, and stress management in a",
+        "KU4. Identify techniques for developing leadership qualities and a positive mindset."
+      ],
+      "gs": [
+        "GS1. Communicate effectively in professional and social environments.",
+        "GS2. Apply critical thinking to enhance problem-solving and decision-making skills.",
+        "GS3. Demonstrate adaptability and resilience in handling workplace challenges.",
+        "GS4. Use self-management techniques to improve confidence, productivity, and personal growth."
+      ],
+      "modules": [
+        {
+          "module_title": "Interview skills and techniques",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Explain the purpose of interviews in the context of recruitment and selection.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify the basic components and structure of an effective interview.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Describe various types of interviews (e.g., structured, unstructured, behavioral).",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Compare and contrast the different interview types and their applications.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Demonstrate an effective self-introduction in an interview setting.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Provide constructive feedback to peers on their interview introductions.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Outline the key steps in preparing for an interview.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Create a checklist of essential preparations for an interview.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Explain the guidelines for conducting successful telephonic interviews.",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Discuss the best practices for personal interviews.",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Introduce the concept and purpose of group interviews.",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Participate in a mock group interview and provide feedback on the experience.",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Group Discussion",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "List key points to remember for effective participation in group discussions.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Identify steps to succeed in group discussions and common do’s and don’ts.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Engage in practice group discussions on current topics and provide constructive feedback.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Presentation skills",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Explain the importance of planning and preparation for a successful presentation.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Develop a comprehensive presentation plan.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Describe key tips for creating effective PowerPoint presentations, including structure and content.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Create and deliver a PowerPoint presentation, focusing on introduction, middle, and closing.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conversational Skills",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "Define the purpose and importance of effective conversations in personal and professional contexts.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Identify different types of conversations and their objectives.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "List practical tips for improving conversational skills.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Practice implementing these tips in various conversational scenarios.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Demonstrate the ability to ask appropriate questions in a conversation.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Exhibit care, courtesy, and consideration in conversational interactions.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Explain guidelines for effective telephonic conversations, both personal and professional.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "Practice conversational skills with strangers in simulated scenarios.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Team Building",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC28",
+              "pc_description": "Describe the stages of team development and effective team management strategies.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "Identify the roles and responsibilities of team members in achieving team goals.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "List the characteristics of a successful team.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "Analyze the dynamics of a high-performing team.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "Participate in team-building activities to enhance team cohesion and collaboration.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "Reflect on the outcomes of team-building exercises and their impact on team performance.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "Explain the importance of team building in achieving organizational objectives.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "Develop strategies to foster team spirit and unity.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Writing Skills for Managers",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC36",
+              "pc_description": "Demonstrate effective email writing skills for personal and professional communication.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC37",
+              "pc_description": "Identify the key components of a well- structured email.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "Explain the benefits of diary writing for personal and professional development.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC39",
+              "pc_description": "Develop a habit of regular diary writing.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC40",
+              "pc_description": "Implement strategies to enhance vocabulary.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC41",
+              "pc_description": "Apply newly learned vocabulary in written and spoken communication.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC42",
+              "pc_description": "Write clear and concise objectives for resumes.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC43",
+              "pc_description": "Tailor resume objectives to align with specific job roles.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC44",
+              "pc_description": "Explain the key elements of effective report writing.",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC45",
+              "pc_description": "Write comprehensive and well-structured reports.",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1520",
+      "nos_title": ".Basics of Python 90 10 - - 100 10",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the basic syntax, variables, and data types in Python programming.",
+        "KU2. Recognize the use of Python for data manipulation, automation, and business analytics.",
+        "KU3. Explain key programming concepts such as loops, functions, and conditional statements.",
+        "KU4. Identify common Python libraries used for data analysis, including Pandas, NumPy, and"
+      ],
+      "gs": [
+        "GS1. Communicate programming concepts and logic effectively in business contexts.",
+        "GS2. Apply problem-solving skills to write and debug Python scripts for data processing.",
+        "GS3. Use critical thinking to select appropriate Python functions for specific tasks.",
+        "GS4. Demonstrate proficiency in Python coding and the use of Jupyter Notebook or other Python"
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to Python",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Install Python on various operating systems and set up the programming environment.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Explain how a program works and describe the program development cycle.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Demonstrate basic input, processing, and output operations using Python, including the use of the print function and reading input from the keyboard.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Implement basic calculations and expressions, utilizing operators and type conversions effectively.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Apply decision structures using if, if-else, and nested decision-making in Python.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Use logical operators and Boolean variables to perform conditional checks.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Implement repetition structures using while and for loops, and demonstrate the use of loops for running totals and input validation.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Work with strings, numeric data types, and character sets, utilizing functions and modules to manipulate and process data.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Control Statements",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Implement definite and conditional iteration in Python programs, formatting text for output appropriately.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Handle file input and output operations, including processing records and managing exceptions during file handling.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Define and call functions, including value- returning functions, and demonstrate the use of local and global variables.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Utilize Python’s math module and random number generation within custom functions.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Organize code by storing functions in modules, ensuring modular design and reusability.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Strings and Text Files",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Access and manipulate strings using methods like slicing, testing, searching, and basic string operations.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Implement string methods to process and manipulate text efficiently.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Perform file operations, including reading from and writing to text files, and apply basic data encryption techniques.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Work with lists, including slicing, finding items, and processing two-dimensional lists.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Use dictionaries and sets for data organization and demonstrate the serialization of objects.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Explain the concept of recursion and solve problems using recursive algorithms.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Design with Classes",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "Define and create classes and objects, applying object-oriented principles such as inheritance and polymorphism.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Implement methods within classes and demonstrate the interaction between classes and functions.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Utilize techniques for designing classes, ensuring proper encapsulation and modularity in code design.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Manage instances of classes, applying object-oriented techniques to solve complex problems.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Graphical User Interfaces (GUI)",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC24",
+              "pc_description": "Differentiate between terminal-based and GUI-based programs, and code simple GUI-based applications using Python.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Utilize the TKinter interface to create graphical user interfaces, including widgets like labels, buttons, and entry fields.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Implement simple graphics using Turtle Graphics, managing two-dimensional shapes and colours.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "Perform basic image processing tasks, utilizing the RGB color system to manipulate images.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1521",
+      "nos_title": ".Data Warehousing",
+      "sequence_order": 7,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the fundamentals of data warehousing, including ETL (Extract, Transform, Load)",
+        "KU2. Recognize the role of OLAP in multidimensional data analysis and reporting.",
+        "KU3. Explain data modeling techniques, including star and snowflake schemas, for structuring a",
+        "KU4. Identify best practices for optimizing data storage, retrieval, and query performance in OLAP"
+      ],
+      "gs": [
+        "GS1. Communicate data warehousing concepts and analytical insights effectively to stakeholders.",
+        "GS2. Apply analytical skills to design and manage OLAP cubes for business intelligence.",
+        "GS3. Use problem-solving techniques to optimize data processing and warehouse performance.",
+        "GS4. Demonstrate proficiency in data warehousing tools and OLAP solutions such as SQL, Power BI,"
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to Data Warehousing",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Define data warehousing and explain its benefits in managing and analyzing large datasets.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify and describe the key features of a data warehouse, including data granularity and the information flow mechanism.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Explain the importance of metadata in a data warehouse and describe its role in data management and retrieval.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Outline the architecture of a data warehouse and explain the concept of data marts, including the process of building data marts and addressing related issues.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Planning a Data Warehouse",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Determine the end-user requirements for a data warehouse using various requirement- gathering methods.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Conduct requirement analysis and dimensional analysis to structure the data warehouse effectively.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Develop Information Package Diagrams (IPD) to visualize data flow and relationships within the warehouse.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Create a comprehensive data warehouse project plan, including an economic feasibility analysis to assess the project's viability.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data Warehouse Schema and Modelling",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Apply dimensional modelling techniques to design data warehouse schemas, including star schema and snowflake schema.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Create and manage aggregate tables and fact constellation tables to optimize query performance.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Differentiate between dimensional tables and fact tables and explain the role of keys in maintaining data integrity within the warehouse.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "ETL Process and Maintenance of Data Warehouse",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Perform data extraction, transformation, and loading (ETL) processes to populate the data warehouse with accurate and relevant data.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Ensure data quality through rigorous design reviews, testing, and monitoring of the data warehouse.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Implement strategies for ongoing maintenance of the data warehouse to ensure optimal performance and data accuracy.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "OLAP in Data Warehouse",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Explain the concept of OLAP (Online Analytical Processing) and its role in enabling multidimensional analysis within a data warehouse.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Apply OLAP functions and models (MOLAP, ROLAP, HOLAP, DOLAP) to perform complex data analysis and support decision-making processes.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Design OLAP solutions, considering key factors such as data structure, query performance, and user requirements.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1522",
+      "nos_title": ".Big Data Analytics 80 20 - - 100 10",
+      "sequence_order": 8,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the fundamentals of big data, including volume, velocity, variety, and veracity",
+        "KU2. Recognize the role of big data technologies such as Hadoop, Spark, and cloud-based analytics",
+        "KU3. Explain data processing techniques, including data ingestion, storage, and real-time analytics.",
+        "KU4. Identify best practices for big data security, privacy, and compliance."
+      ],
+      "gs": [
+        "GS1. Communicate big data insights effectively using visualizations and reports.",
+        "GS2. Apply analytical skills to process and interpret large datasets for business intelligence.",
+        "GS3. Use problem-solving techniques to optimize data workflows and enhance performance.",
+        "GS4. Demonstrate proficiency in big data tools such as Python, R, SQL, and cloud-based analytics"
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to Big Data",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Define the concept of big data and explain its key features, including volume, velocity, variety, and veracity.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify and describe the challenges associated with managing and analysing big data in modern enterprises.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Explain the features of Hadoop and its role in big data processing.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Describe the components and architecture of the Hadoop ecosystem, including Hadoop Distributed File System (HDFS) and Hadoop clusters.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Demonstrate understanding of Hadoop architecture, including HDFS for distributed storage and data management within a Hadoop cluster.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Hadoop MapReduce",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "Explain the concept of MapReduce and its importance in processing large datasets within the Hadoop framework.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Describe the YARN components and architecture, explaining how YARN manages resources in a Hadoop cluster.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Outline the execution flow of a YARN MapReduce application, detailing the stages of the YARN workflow.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Develop and analyze a basic MapReduce program, including the use of distributed cache, MRUnit for testing, Reduce Join, and custom input formats.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Introduction to Apache PIG",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "Explain the components of Apache PIG and describe its execution environment within the Hadoop ecosystem.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Identify and work with various PIG data types and data models to process and analyze large datasets.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Develop PIG scripts for data processing, utilizing PIG's data flow language to transform and analyze data efficiently.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Apache Hive",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Describe the architecture and components of Apache HIVE, explaining its role in data warehousing within Hadoop.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Identify HIVE data types and models and demonstrate how to use HIVE partitioning and bucketing for optimized data management.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Create and manage HIVE tables, using HIVE QL to join tables and perform dynamic partitioning.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Apache HBase",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Introduce the architecture and components of Apache HBase, including its run modes and configuration options.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Explain the data models used in HBase and demonstrate HBase data loading techniques.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Provide an overview of Apache Spark, describing its integration with Hadoop and its capabilities for fast, in-memory data processing.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1523",
+      "nos_title": ".OJT Mandatory -",
+      "sequence_order": 9,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the practical applications of business analytics in various industries, including",
+        "KU2. Recognize key data analysis techniques, visualization tools, and predictive modeling methods",
+        "KU3. Explain the importance of data-driven decision-making and its impact on business",
+        "KU4. Identify best practices for handling real-world data, ensuring accuracy, compliance, and"
+      ],
+      "gs": [
+        "GS1. Communicate analytical insights effectively through reports, dashboards, and presentations.",
+        "GS2. Apply problem-solving skills to analyze business challenges using data-driven approaches.",
+        "GS3. Use critical thinking to interpret data trends and recommend actionable strategies.",
+        "GS4. Demonstrate proficiency in business analytics tools such as Excel, Power BI, SQL, and Python."
+      ],
+      "modules": [
+        {
+          "module_title": "OJT Mandatory - Business Analytics",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Assess data quality of datasets and apply data-cleaning techniques to handle missing or incomplete data.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Perform data mining techniques (e.g., association rules, clustering) using business datasets.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Conduct regression analysis using relevant software (e.g., Excel, R) to establish relationships between variables and predict outcomes.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Solve probability problems using addition and multiplication theorems relevant to the business scenario of the organisation",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Perform a workshop on setting business goals and selecting KPIs for a a social media campaign.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Use Google Analytics to track and analyse web pages of the organisation and present the results.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Calculate and interpret consumer surplus across different market scenarios.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Demonstrate the use of Big Data for a project",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Deliver a presentation on a selected business topic to the team",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Draft a social blog on a business topic, considering audience and platform appropriateness.",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Research and prepare a note on a relevant business topic for the organisation",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Use the Power BI Report Designer to organize report visuals, pages, and multiple data sources.",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Design Power BI visualizations, utilizing the canvas, visualizations pane, and fields pane.",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Create charts in Power BI (e.g., bar, line, scatter) and apply customization options like axis settings and tooltips.",
+              "sequence_order": 14,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Support the management in a corporate decision-making in respect to the current macro- economic plans in India",
+              "sequence_order": 15,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Demonstrate the use of Excel for creating graphs, tables, and spreadsheets to interpret HR data.",
+              "sequence_order": 16,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Apply auto-regression techniques to time series data in R to enhance forecasting accuracy.",
+              "sequence_order": 17,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Create a spreadsheet using various formulas and functions to analyse financial or statistical data.",
+              "sequence_order": 18,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Send a report to different teams in the organisation using the feature mail merge",
+              "sequence_order": 19,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Demonstrate appropriate professional etiquettes such as respectful conduct, proper attire, and professional communication.",
+              "sequence_order": 20,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Participate in group discussions on various topics, practicing respectful interaction, clear articulation, and constructive dialogue.",
+              "sequence_order": 21,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Utilize virtual collaboration tools to work effectively",
+              "sequence_order": 22,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Create arrays and perform element-wise arithmetic operations.",
+              "sequence_order": 23,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Create data frames, manipulate components, aggregate and sort data, and demonstrate merging, reshaping, and sub-setting data frames.",
+              "sequence_order": 24,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Generate reports in MS Access, including summary reports and crosstab reports, to present data effectively.",
+              "sequence_order": 25,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Perform ER analysis, defining attributes and domains in SQL, and apply primary keys, foreign keys, and unique constraints to ensure data integrity.",
+              "sequence_order": 26,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "Connect to Excel, text files, and Microsoft Analysis Services within Tableau, importing data for report generation.",
+              "sequence_order": 27,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "Create hierarchies and parameters in Tableau to enable drill-down analysis and dynamic control of visualizations.",
+              "sequence_order": 28,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "Apply forecasting techniques to predict supply chain requirements using real data.",
+              "sequence_order": 29,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "Develop and implement models for Supplier Relationship Management (SRM) using data provided by the organisation",
+              "sequence_order": 30,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "Use provided data to develop a marketing strategy targeting a specific audience to maximize marketing ROI.",
+              "sequence_order": 31,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "Calculate demand curves and maximum WTP using data provided by the organisation and develop pricing strategies based on value pricing principles.",
+              "sequence_order": 32,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "Use advanced functions (e.g., IF, VLOOKUP, INDEX-MATCH) for specific data analysis tasks.",
+              "sequence_order": 33,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "Apply conditional formatting rules to emphasize key data points, using colour scales and data bars.",
+              "sequence_order": 34,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "Practice conversations in various scenarios, using practical tips to improve conversational effectiveness, tone, and body language.",
+              "sequence_order": 35,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC36",
+              "pc_description": "Develop small programs to process data using loops and conditional statements in Python.",
+              "sequence_order": 36,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC37",
+              "pc_description": "Create classes with attributes and methods and demonstrate inheritance and polymorphism.",
+              "sequence_order": 37,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "Build GUI-based applications using TKinter to build basic interactive design.",
+              "sequence_order": 38,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC39",
+              "pc_description": "Design a basic blueprint of a data warehouse, labelling the components and explaining data flow.",
+              "sequence_order": 39,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC40",
+              "pc_description": "Develop a simplified Information Package Diagram (IPD) to represent data relationships for a warehouse.",
+              "sequence_order": 40,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC41",
+              "pc_description": "Design basic OLAP queries, using models like MOLAP and ROLAP, to analyse class data.",
+              "sequence_order": 41,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC42",
+              "pc_description": "Evaluate query performance using different OLAP models and optimize based on data structure.",
+              "sequence_order": 42,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC43",
+              "pc_description": "Outline the execution flow of a YARN MapReduce application, detailing each stage.",
+              "sequence_order": 43,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC44",
+              "pc_description": "Process large datasets using different PIG data types and data models",
+              "sequence_order": 44,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC45",
+              "pc_description": "Install and configure Hadoop to set up HDFS and a functioning Hadoop cluster.",
+              "sequence_order": 45,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC46",
+              "pc_description": "Execute a MapReduce program on a sample dataset to demonstrate its functionality in large- scale data processing.",
+              "sequence_order": 46,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC47",
+              "pc_description": "Design an Apache Spark application to process data in-memory and evaluate its performance impact.",
+              "sequence_order": 47,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1518",
+      "nos_title": ".Logistics and",
+      "sequence_order": 10,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the key concepts of logistics and supply chain management, including",
+        "KU2. Recognize the role of data analytics in forecasting demand, optimizing routes, and improving",
+        "KU3. Explain key performance indicators (KPIs) used in logistics and supply chain analytics.",
+        "KU4. Identify best practices for supply chain risk management and cost optimization using"
+      ],
+      "gs": [
+        "GS1. Communicate supply chain insights effectively using reports and dashboards.",
+        "GS2. Apply analytical skills to interpret supply chain data and enhance operational efficiency.",
+        "GS3. Use problem-solving techniques to address supply chain bottlenecks and optimize logistics",
+        "GS4. Demonstrate proficiency in supply chain analytics tools such as Excel, Power BI, and"
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to Supply Chain Analytics",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Define supply chain analytics and explain its relevance, significance, and scope in modern supply chain management.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify and describe the various models and techniques used in supply chain analytics, highlighting their applications in optimizing supply chain processes.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Overview of Supply Chain Models and Modeling Systems",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Explain the concept of linear programming and its application in supply chain management.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Analyze the advantages and disadvantages of using linear programming models in optimizing supply chain operations.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Logistics Models",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Apply forecasting techniques and demand management strategies to predict and manage supply chain requirements.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Implement capacity planning techniques to ensure optimal resource allocation in supply chain operations.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Utilize inventory management techniques, including MRP I & II, to maintain optimal inventory levels.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Apply procurement and sourcing techniques to streamline the acquisition of goods and services within the supply chain.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Scheduling",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Describe various supply chain operations and apply scheduling techniques to optimize the flow of goods and services.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Implement models for Supplier Relationship Management (SRM) to enhance collaboration and efficiency in the supply chain.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Apply queuing theory to supply chain processes, analyzing its advantages and disadvantages in managing wait times and optimizing service levels.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Collaboration",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Implement Collaborative Planning, Forecasting, and Replenishment (CPFR) models to improve coordination across the supply chain.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Develop strategies for effective customer service by aligning supply chain operations with customer expectations.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Apply logistics models, including transportation and assignment models, to optimize the movement of goods and reduce operational costs.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "MEP/N1519",
+      "nos_title": ".Marketing and",
+      "sequence_order": 11,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the key concepts of marketing and retail analytics, including customer",
+        "KU2. Recognize the role of data analytics in consumer behavior analysis and targeted marketing",
+        "KU3. Explain the use of key performance indicators (KPIs) such as customer lifetime value (CLV),",
+        "KU4. Identify best practices for using analytics tools to optimize marketing ROI and retail"
+      ],
+      "gs": [
+        "GS1. Communicate marketing and retail insights effectively through reports and data visualizations.",
+        "GS2. Apply analytical skills to interpret consumer data and develop data-driven marketing",
+        "GS3. Use problem-solving techniques to optimize pricing, promotions, and customer engagement",
+        "GS4. Demonstrate proficiency in analytics tools such as Google Analytics, Power BI, and CRM"
+      ],
+      "modules": [
+        {
+          "module_title": "Marketing Process",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Explain the importance of marketing analytics and its role in enhancing marketing strategies and decision-making.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Describe the fundamental steps in the marketing process and how data can be utilized to optimize each step.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Develop a marketing strategy using data- driven insights to target the right audience and maximize marketing ROI.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Implement analytics to continuously improve the marketing process, making data-informed adjustments to strategies and campaigns.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Overview of Retailing",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Analyse the modern retailing marketplace, focusing on technological advancements and their impact on retail strategies.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Utilize data visualization techniques to represent retail data effectively, aiding in the interpretation of trends and patterns.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Apply descriptive analysis methods to retail data, providing insights into customer behaviour, sales trends, and inventory management.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Pricing tactics",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Explain the principles of value pricing, including the net-benefit principle, and apply these concepts to real-world pricing strategies.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Analyse demand curves to determine maximum Willingness to Pay (WTP) and develop pricing strategies that maximize customer value.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Identify competitive advantages in pricing strategies and apply linear models, such as simple regressions, to analyse pricing data.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Measuring Price and Promotion Response",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "Apply price theory concepts, including elasticities, to analyse the impact of pricing decisions on profit and revenue maximization.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Use log-log models and multivariate regressions to measure the response of sales to price changes and promotional activities.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Develop effective promotion strategies using game theory principles, analysing simultaneous and sequential-move games to anticipate competitor behaviour.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Retailers’ Location Decision",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Apply machine learning techniques, such as decision tree or random forest, to decide on a retail location.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Utilize the Huff model and regression models to determine optimal retail locations, considering factors like economies of scale and scope.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Analyse repeated games and tactical collusion in retail location decisions to maximize competitive advantage.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

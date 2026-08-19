@@ -1,0 +1,552 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "NIE/ELE/Q0201",
+  "qp_name": "NIE_ELE_Q0201",
+  "clean_code": "NIE_ELE_Q0201",
+  "total_pages": 37,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:30.896Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 18,
+    "total_pcs": 38,
+    "total_kus": 11,
+    "total_gs": 12,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "NIE/ELE/N0201",
+      "nos_title": ".Embedded",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Construct Embedded C programming logic",
+        "KU2. Analyze and optimize the performance of ARM Controller"
+      ],
+      "gs": [
+        "GS1. Maintain work-related notes and records",
+        "GS2. Read the relevant literature to get the latest updates about the field of work"
+      ],
+      "modules": [
+        {
+          "module_title": "‘C’ and Embedded C",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Understand the fundamentals of C programming",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Programming with embedded C in contrast with C language",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Develop applications using Embedded C Programming",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Embedded Concepts",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "Understand the various hardware and software architecture of embedded systems",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Hands-on exercises on development and debugging tools",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Introduction to ARM Cortex Architecture",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "Understand The ARM Architecture, Overview of Cortex Architecture, Register Set and Modes",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Hands-on exposure to ARM Cortex M4 Development Environment, Assembler and Compiler, Linkers and Debuggers, ARM, Thumb & Thumb2 instructions.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Cortex M4 Microcontrollers & Peripherals",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Understand the Cortex M4-based controller architecture, Memory mapping and Cortex M4 Peripherals.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Understand the Cortex M4 interrupt handling –NVIC",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Application development with Cortex M4 controllers using standard peripheral libraries.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0202",
+      "nos_title": ".Implementation",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the Linux OS fundamental",
+        "KU2. Able to deploy the tool chain in the ARM controller"
+      ],
+      "gs": [
+        "GS1. Maintain work-related notes and records",
+        "GS2. Read the relevant literature to get the latest updates about the field of work"
+      ],
+      "modules": [
+        {
+          "module_title": "Basic Operating System Concepts",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Understand the Fundamentals of Embedded Linux OS,Applications and Products.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Configure Linux environment for ARM based Target Boards.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Tool-chain: Configuration and Cross-Compilation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Understand the Embedded Environment Tools, GNU Tool-chain Cross Compilers.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Configure Tool-Chain for ARM Platforms.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Embedded Linux Kernel",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Embedded Environment Tools, GNU Tool- chain Cross Compilers.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Demonstrate Linux Booting Process and to configure Linux Kernels on ARM based Embedded Boards.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Embedded Linux Application Programming",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Understanding the Kernel Compilation, Booting the kernel using u-boot, Porting Linux in ARM Boar",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Develop ARM based Embedded Applications with Linux OS.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0203",
+      "nos_title": ".Real-Time",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Able to demonstrate an understanding of RTOS fundamentals",
+        "KU2. Able to perform the hands-on using free RTOS tool"
+      ],
+      "gs": [
+        "GS1. Maintain work-related notes and records",
+        "GS2. Read the relevant literature to get the latest updates about the field of work"
+      ],
+      "modules": [
+        {
+          "module_title": "Understanding of RTOS concepts",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Understanding of RTOS concepts",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "List Step by step method to run RTOS on STM32 MCUs",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "RTOS internals",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Use cases for tasks, semaphores, queues, event flags and timers",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Demonstrate RTOS Scheduler with memory Management.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Embedded system using RTOS",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Design concepts needed to build an embedded system using RTOS",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Understand complete ARM Cortex M and FreeRTOS Priority model and its configuration related information’s.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0204",
+      "nos_title": ".IoT Application",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Gain the expertise in Python script",
+        "KU2. Able to analyze the data from the sensor fleet network",
+        "KU3. expertise in prediction at the cloud and edge devices"
+      ],
+      "gs": [
+        "GS1. Maintain work-related notes and records",
+        "GS2. Read the relevant literature to get the latest updates about the field of work",
+        "GS3. Communicate politely and professionally"
+      ],
+      "modules": [
+        {
+          "module_title": "Python Programming",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Understand the concept of object oriented programming and its applications",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Develop problem solving capability using python scripts",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "IoT Concepts",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Understand the evolution of IoT, reference architecture, building block and challenges",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Implement an IoT application using Development Boards",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data Science and Analytics",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Choose right Data Analytic/ Machine learning tool for various IoT application",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Able to use Data Visualization tools for interactive dynamic visualizations",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Statistical and Machine Learning",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Able to Understand the mathematical principles required for Data Analytics and Machine Learning.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Able to implement Various ML algorithms using Python.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0205",
+      "nos_title": ".Complex",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Practical understanding of the various serial protocols",
+        "KU2. Able to create linux device drivers for system peripherals"
+      ],
+      "gs": [
+        "GS1. Maintain work-related notes and records",
+        "GS2. Read the relevant literature to get the latest updates about the field of work",
+        "GS3. Communicate politely and professionally"
+      ],
+      "modules": [
+        {
+          "module_title": "Embedded Protocols",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Demonstrate Different embedded protocols like SPI, I2C, USB and CAN.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Able to choose right protocol for the different embedded applications.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Linux Device drivers",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Build driver program for various devices in Linux kernel.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Hands-on expertise in File Operations in Char Device",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Kernel driver for external peripherals",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Able to develop Kernal driver for Keyboard, Speaker, and RTC",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Understand the Communication between Hardware Memory Space and IO",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

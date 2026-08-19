@@ -1,0 +1,521 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "NIE/ELE/Q0101",
+  "qp_name": "NIE_ELE_Q0101",
+  "clean_code": "NIE_ELE_Q0101",
+  "total_pages": 38,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:30.886Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 16,
+    "total_pcs": 35,
+    "total_kus": 15,
+    "total_gs": 16,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "NIE/ELE/N0101",
+      "nos_title": ".VLSI",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understanding the significance of VLSI technology and its role in modern electronics.",
+        "KU2. Analyzing noise margin and power consumption considerations in CMOS circuits.",
+        "KU3. Understanding schematic design, layout considerations, and design rules for integrated"
+      ],
+      "gs": [
+        "GS1. Participants will hone their ability to analyze complex problems and devise solutions in VLSI",
+        "GS2. Learners will gain proficiency in using design tools and techniques essential for VLSI design,",
+        "GS3. Participants will enhance their communication and collaboration skills. They will learn to"
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to VLSI Design & CMOS Transistor Theory",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Describe the evolution and significance of VLSI technology, highlighting its impact on modern electronics and computing",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Outline and differentiate between front-end and back-end VLSI design processes, and define MOSFET, explaining its operation principles and modes (cut-off, triode, saturation) along with their significance.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "CMOS Inverter Characteristics and Logic Design",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Describe the functionality and design of CMOS implementations for basic logic gates (AND, OR, NAND, NOR), and design and analyze combinational logic circuits using CMOS gates, focusing on performance metrics.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Explain factors influencing inverter sizing and apply optimization techniques for performance and power consumption improvements, and combine basic CMOS gates to implement and optimize complex logic functions for speed or area efficiency.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Transistor Schematic, Layouts & On-chip wire modeling",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Develop transistor-level schematics for basic circuits and apply layout techniques to ensure manufacturability and performance, evaluating the impact of layout on circuit performance.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Explain design rules for different process nodes, optimize metal layer usage and interconnect routing for performance, and apply design rules and guidelines for efficient layout.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Gate Delay, Logical Effort, Critical Path Optimization and Timing analysis for Sequential circuits",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Calculate gate delays based on MOSFET parameters, predict gate delays at different process nodes and operating conditions, and optimize logic gate designs for a balance between delay and power consumption using P/N ratio analysis.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Define logical effort and its relevance in circuit design, apply logical effort principles to estimate delay and power consumption, identify critical paths in combinational logic circuits, and apply gate sizing and logic restructuring techniques to optimize critical paths.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0102",
+      "nos_title": ".Verilog RTL",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Grasping the essence of VLSI technology and its versatile applications across industries.",
+        "KU2. Developing a solid understanding of digital logic principles, including combinational and",
+        "KU3. Acquiring skills in functional verification techniques, test bench development, and timing"
+      ],
+      "gs": [
+        "GS1. Developing problem-solving skills and analytical thinking to tackle complex RTL design",
+        "GS2. Enhancing communication skills for effectively conveying design ideas and collaborating with",
+        "GS3. Cultivating attention to detail to ensure accuracy in RTL design, simulation, and verification,"
+      ],
+      "modules": [
+        {
+          "module_title": "RTL Design Methodology",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Understand the basics of Register Transfer Level (RTL) design.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Demonstrate proficiency in the RTL design process and methodology",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Digital Logic Design Principles",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Apply combinational and sequential logic design concepts effectively.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Utilize Boolean algebra and logic gates to design digital circuits.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "RTL Design Using HDL",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Demonstrate proficiency in Verilog syntax and constructs.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Design combinational and sequential logic circuits using HDL.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "RTL Simulation and Verification",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Develop and utilize test benches for comprehensive testing.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Perform simulation and debugging of RTL designs to ensure functionality and correctness.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0103",
+      "nos_title": ".Static Timing",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Develop a comprehensive understanding of timing analysis principles, encompassing races,",
+        "KU2. Recognize the importance of timing constraints in the synthesis process, gaining insight into"
+      ],
+      "gs": [
+        "GS1. Ability to analyze complex timing issues in VLSI design, such as races, hazards, and setup/hold",
+        "GS2. Proficiency in using Electronic Design Automation (EDA) tools for Static Timing Analysis (STA),",
+        "GS3. Competence in executing Engineering Change Order (ECO) flows, conducting timing closure,"
+      ],
+      "modules": [
+        {
+          "module_title": "Overview of VLSI STA",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Gain proficiency in Static Timing Analysis (STA) for VLSI design, encompassing analysis of timing in combinational and sequential circuits, resolution of timing issues like races and setup/hold violations through practical examples, and the establishment of synthesis-compatible timing constraints during circuit synthesis.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Timing performance",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC2",
+              "pc_description": "Apply advanced techniques in timing performance enhancement, such as pipelining, retiming, and mitigation of clock skew issues, while conducting comprehensive timing analysis at block and chip levels to optimize design integrity and operational frequency across open and closed loop timing scenarios.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "STA using EDA tools",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Utilize Electronic Design Automation (EDA) tools to apply Static Timing Analysis (STA), ensuring thorough timing analysis post synthesis and place-and-route stages to validate design timing constraints. Evaluate timing reports, manage Engineering Change Orders (ECO) flows, and conduct sign-off checks to achieve timing closure.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0104",
+      "nos_title": ".FPGA",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Develop a comprehensive understanding of FPGAs, including their applications and",
+        "KU2. Master the use of Hardware Description Languages (HDLs), particularly Verilog, for writing RTL",
+        "KU3. Grasp the importance of FPGA simulation and verification by learning to write effective test"
+      ],
+      "gs": [
+        "GS1. Gain comprehensive expertise in FPGA architecture, Verilog proficiency, and the complete",
+        "GS2. Develop proficiency in FPGA design validation through simulation, leveraging effective test",
+        "GS3. Develop proficiency in managing FPGA projects from inception to implementation by applying"
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to FPGAs",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Explain the fundamental concepts of FPGAs and their role in digital design.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Describe various applications of FPGAs in modern electronics",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Hardware Description Languages for FPGAs",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Demonstrate knowledge of Verilog syntax and data types",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Write effective RTL (Register Transfer Level) code for FPGA implementations.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "FPGA Design Flow and Optimization Technique",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Implement design constraints effectively to meet specified requirements.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Apply optimization techniques such as timing analysis, pipelining, and retiming to improve FPGA performance",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "FPGA Verification and Debugging",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Apply debugging techniques to identify and resolve issues in FPGA designs",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Utilize simulation tools to ensure designs meet required specifications and performance criteria.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "NIE/ELE/N0112",
+      "nos_title": ".Design and",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand the principles and significance of VLSI technology and its applications in modern",
+        "KU2. Familiarity with writing and optimizing RTL code, as well as developing effective test benches",
+        "KU3. Knowledge of optimization techniques specific to FPGA design, including timing constraints,",
+        "KU4. Comprehend timing constraints and their effects on the synthesis and performance of digital"
+      ],
+      "gs": [
+        "GS1. Apply critical thinking to optimize performance, power, and area in FPGA-based designs.",
+        "GS2. Work effectively in teams to handle collaborative VLSI design projects, fostering cooperation",
+        "GS3. Communicate effectively with peers and mentors, using appropriate technical terminology",
+        "GS4. Adapt to new design tools and methodologies in VLSI and FPGA development environments."
+      ],
+      "modules": [
+        {
+          "module_title": "Design and Implementation of VLSI Circuits Using Verilog and FPGA Technologies",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Participants will gain proficiency in writing RTL code using Verilog, learning the syntax, constructs, and design principles necessary for creating combinational and sequential logic circuits, as well as developing test benches for simulation and verification.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Demonstrate a clear understanding of the VLSI design flow by successfully outlining and explaining each stage, including front-end and back-end processes.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Develop and execute test benches to simulate RTL designs, successfully identifying and correcting errors or issues through debugging techniques.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Write clear, efficient, and syntactically correct RTL code for a variety of digital circuits, including both combinational and sequential logic components.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Integrate design principles such as modularity and reusability in Verilog code, demonstrating the ability to create scalable and maintainable digital systems.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Implement VLSI circuits on an FPGA, successfully configuring the design flow from synthesis to bitstream generation while adhering to design constraints.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Define and apply appropriate timing constraints during the FPGA design process, ensuring that the implemented circuit meets specified performance requirements.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Evaluate the performance of the implemented FPGA design, analyzing metrics such as power consumption, area, and timing to make informed optimization decisions.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

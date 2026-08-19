@@ -1,0 +1,1526 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "IAS/Q5604",
+  "qp_name": "IAS_Q5604",
+  "clean_code": "IAS_Q5604",
+  "total_pages": 55,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:28.549Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 23,
+    "total_pcs": 112,
+    "total_kus": 110,
+    "total_gs": 179,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "IAS/N5610",
+      "nos_title": ".Develop PLC",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. company’s code of conduct and organisation’s culture and reporting structure",
+        "KU2. company’s documentation policy",
+        "KU3. company’s line of business and production policy",
+        "KU4. departments involved with installation and commissioning",
+        "KU5. system of quality and standards followed by the company",
+        "KU6. standard operating procedures (SOP) of the organisation for process automation logic",
+        "KU7. basics of computer and operating systems",
+        "KU8. basics of machine safety and normal safety processes",
+        "KU9. standards and guidelines to be followed during program development",
+        "KU10. control system module and technologies used in the automation process",
+        "KU11. PLC programming software",
+        "KU12. application software, installation and debugging",
+        "KU13. piping and instrumentation diagram (P and ID)",
+        "KU14. basics on infrastructure process involved in the industry such as water treatment plant,",
+        "KU15. safety aspects to be inbuilt in the PLC programming as per the process requirement",
+        "KU16. sources and methods for obtaining required technical information for the PLC program to be",
+        "KU17. IEC standards in PLC programming language",
+        "KU18. relevant documents to be referred for optimised PLC programming"
+      ],
+      "gs": [
+        "GS1. compose e-mails, letters and other official documents clearly",
+        "GS2. write user requirements",
+        "GS3. write test reports",
+        "GS4. write technical documentation",
+        "GS5. write schedules and timelines",
+        "GS6. read user requirements",
+        "GS7. read technical specifications",
+        "GS8. read standards and regulatory compliance documents",
+        "GS9. read schedules and timelines",
+        "GS10. read drawings",
+        "GS11. question customers appropriately in order to understand the application and the",
+        "GS12. discuss task lists, schedules and work-loads with customers",
+        "GS13. keep customers informed about the progress of logic development",
+        "GS14. use simple and clear language when communicating with a customer",
+        "GS15. choose appropriate PLC programming software",
+        "GS16. identify the desired number of input-output in the panel",
+        "GS17. choose the appropriate programming language to optimise logic development",
+        "GS18. plan and organise project related to requirements, design and integration, testing,",
+        "GS19. anticipate issues and have alternate strategy",
+        "GS20. identify needs of the customer and suggest most appropriate solution",
+        "GS21. manage relationships and maintain good rapport with customers to get detailed inputs on",
+        "GS22. think through the problem, evaluate the possible solution(s) and suggest an optimum /best",
+        "GS23. solve issues of co-workers lacking technical know-how",
+        "GS24. identify immediate or temporary solutions to resolve delays",
+        "GS25. use the existing information for improving the PLC program",
+        "GS26. use the existing information to optimise the logic",
+        "GS27. analyse problems and identify causes and possible solutions",
+        "GS28. analyse and evaluate the information gathered from observation, experience, reasoning or",
+        "GS29. anticipate problems, risks and opportunities and utilise these for optimisation of PLC"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform preparatory work",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify the customer requirement for the PLC control panel including the field equipment and size of control panel",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "examine the onsite location where control panel will be placed",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "prepare the dimension of the control panel based on requirement",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "identify the required layout for mounting of components on the mounting plate inside the control panel",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "examine the panel fabrication drawing and internal mounting layout drawings to ensure these are as per requirement and standards",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify PLC modules used in the control panel",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "provide instructions to the fabrication team to give cut-outs on the panel door for mounting of panel HMI and fitting of panel switches",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Gather and implement necessary instruction set",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "verify that the printer prints the specified material(s) in the format as per acceptable standards including resolution, and there are no discontinuities, jagged edges or undesirable marks or protrusions on the surface",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "collect information related to pre-requisites for software installation on PC/laptops for programming",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "check the availability of the communication protocol, to be used for communication between programming software and PLC",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "get detailed information on communication program blocks used especially for communication between different components in the panel",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "acquire and collect information of normally open (NO) and normally closed (NC) contacts in field",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "gather detailed information about bit instructions, mathematical instructions and conversion instructions and compare instructions to be used in the program",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "identify the timer and counter logics blocks, along with move data blocks, as required in process logics",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "identify the requirement of special blocks like PID, high speed counters etc.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Design and develop the program / logic / code for the PLC",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "discuss and collect information from customer regarding the equipment and instruments used in the plant",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "prepare input-output (IO) list and other PLC module from the inputs given by customer and provide instructions to the control panel makers to incorporate accordingly in the panel",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "communicate problem effectively in order to secure customer’s confidence",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "ensure customer satisfaction and positive feedback",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "record minimum customer complaints post service",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "avoid occurrence of repetitive problems post service",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "prepare optimum route plan to complete daily target visits",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N5611",
+      "nos_title": ".Test the PLC",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisation’s policies on customer care",
+        "KU2. organisation’s departments involved with engineering",
+        "KU3. organisation’s code of conduct",
+        "KU4. organisation’s culture and typical customer profile",
+        "KU5. organisation’s reporting structure",
+        "KU6. organisation’s documentation policy and policies on quality and standards",
+        "KU7. organisation’s escalation matrix and procedures for reporting work and employment related",
+        "KU8. basics of computer and operating systems",
+        "KU9. standard operating procedure (SOP) of the organisation for process automation logic testing",
+        "KU10. safety aspects to be inbuilt in the PLC program testing as per the process requirement",
+        "KU11. testing process and parameters involved in the testing",
+        "KU12. sources and methods for obtaining required technical information for the PLC program to be",
+        "KU13. IEC standards in PLC programming language",
+        "KU14. relevant documents to be referred for testing PLC program"
+      ],
+      "gs": [
+        "GS1. complete forms such as work orders, invoices and maintenance records",
+        "GS2. note problems on job sheet and details of work done",
+        "GS3. create test reports and other technical documentation",
+        "GS4. maintain schedules and time charts",
+        "GS5. read warnings, instructions and other text material on product labels, components, etc.",
+        "GS6. read work orders/ schedules",
+        "GS7. read user requirements",
+        "GS8. read technical specifications",
+        "GS9. read standards and regulatory compliance documents",
+        "GS10. convey and share technical information clearly using appropriate language and terminology",
+        "GS11. check and clarify task-related information",
+        "GS12. discuss task lists, schedules and workloads with colleagues",
+        "GS13. keep colleagues /superiors informed about progress of logic testing",
+        "GS14. ask questions and discuss problems with colleagues/superiors appropriately to understand",
+        "GS15. report issues and problems to superiors in clear terms",
+        "GS16. select appropriate solution for the faults in hardware",
+        "GS17. choose appropriate solution for the faults in programming",
+        "GS18. select appropriate error handling program",
+        "GS19. plan, prioritise and organise work related to requirements, design and integration, testing,",
+        "GS20. organise and collate customer acceptance reports and feedback",
+        "GS21. maintain productivity by applying time management and efficient resource utilisation",
+        "GS22. maintain personal hygiene and be well groomed",
+        "GS23. be polite, patient and courteous under all circumstances and with all types of customers",
+        "GS24. decide on the spot on whether interaction of customer with superior is necessary or not",
+        "GS25. maintain proper etiquette such as keeping appropriate physical distance from the customer",
+        "GS26. identify needs of the customer and explain the most appropriate solution",
+        "GS27. build good relationships and rapport with customers to facilitate getting inputs related to",
+        "GS28. work on problems to be able to suggest the best solution",
+        "GS29. solve issues of co-workers lacking technical know-how",
+        "GS30. identify immediate or temporary solutions to resolve issues causing delays",
+        "GS31. use existing information for improving the testing of the program",
+        "GS32. use existing information to optimise the test cases",
+        "GS33. analyse issues, identify causes and suggest possible resolutions",
+        "GS34. analyse and evaluate the information gathered from observation, experience, reasoning or",
+        "GS35. anticipate problems, risks and opportunities and utilise these for optimisation of PLC"
+      ],
+      "modules": [
+        {
+          "module_title": "Download / transfer the PLC program in PC-based software simulators",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "download the compilation error-free program and transfer it to the computer based internal software simulator for further checks",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "activate the respective inputs in software simulator to check the automation logic and thereby identify any error",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "modify and edit the logical error, data address overlap and wrong IO address access to maximise program stability",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Test the program using hardware simulators",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "download the modified software simulated logic into the PLC hardware available in office test bench",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "connect actual DI, DO, AI and AO modules to check the hardware loading on PLC",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "connect hardware toggle switches to test program reaction via virtual field inputs",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "connect hardware LED/lLamps to check output generated from PLC program",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "connect hardware analog simulators to check analog behaviour of PLC program",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Develop the error handling program for the PLC and test it",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "ensure use of appropriate programming logics to avoid non functionality of CPU due to hardware errors",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify and examine hardware related error which may occur during testing of PLC program",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "execute these error handling programs by physically creating faults like supply failure, communication break, IO channel error, module failure etc.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "generate outputs from error handling PLC program for error monitoring on HMI devices like display panels or SCADA systems",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "ensure completion of factory acceptance test (FAT) and send report to customer",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N5612",
+      "nos_title": ".Commission and test",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisation’s policies on customer care",
+        "KU2. organisation’s departments involved with installation and commissioning",
+        "KU3. organisation’s code of conduct",
+        "KU4. organisation’s culture and typical customer profile",
+        "KU5. organisation’s reporting structure",
+        "KU6. organisation’s documentation policy and policies on quality and standards",
+        "KU7. standard operating procedures (SOP) of the organisation for commissioning of process plant",
+        "KU8. electrical concepts, electronics and instrumentation",
+        "KU9. basics of machine safety and normal safety processes",
+        "KU10. quality, standards and guidelines to be followed during installation and commissioning",
+        "KU11. PLC module and technologies used in the automation process",
+        "KU12. instrumentation used in the factory and its wiring concept",
+        "KU13. testing process and parameters involved in the testing",
+        "KU14. how to communicate with shop floor technicians in order to resolve any discrepancies during",
+        "KU15. basic power systems, motor fundamentals, drive systems fundamentals",
+        "KU16. relevant documents and documentation procedures used in the process"
+      ],
+      "gs": [
+        "GS1. fill appropriate forms, activity logs, attendance sheets as per the organisation’s format in",
+        "GS2. write email to communicate within and outside the organisation as per the organisation’s",
+        "GS3. create test reports and other documentation",
+        "GS4. read work orders / schedules",
+        "GS5. read user requirements",
+        "GS6. read technical specifications",
+        "GS7. read standards and regulatory compliance documents",
+        "GS8. read schedules, time charts and drawings",
+        "GS9. convey and share technical information clearly, using appropriate language and terminology",
+        "GS10. check and clarify task-related information",
+        "GS11. discuss task lists, schedules and workloads with colleagues",
+        "GS12. keep colleagues / superiors informed about progress of logic testing",
+        "GS13. ask questions and discuss problems with colleagues / superiors appropriately to understand",
+        "GS14. report issues and problems to superiors in clear terms",
+        "GS15. work in teams to devise creative solutions",
+        "GS16. plan and organise own tasks",
+        "GS17. multi-task, handle additional responsibility and adapt quickly to changing priorities",
+        "GS18. select appropriate solution for faults in the hardware",
+        "GS19. decide whether the customer site is ready for commissioning and testing",
+        "GS20. plan, prioritise and organise work related to requirements, design and integration, testing,",
+        "GS21. organise and collate customer acceptance reports and feedback",
+        "GS22. maintain productivity by applying time management and efficient resource utilisation",
+        "GS23. identify customer needs and suggest the best solution",
+        "GS24. support customer when they need help",
+        "GS25. ensure customer satisfaction after job completion",
+        "GS26. build customer relationships and rapport to ensure smooth commissioning",
+        "GS27. identify the problem, evaluate the possible solution(s) and suggest an optimum/best possible",
+        "GS28. solve problems of co-workers during commissioning",
+        "GS29. identify immediate or temporary solutions to resolve issues causing delays and implement",
+        "GS30. analyse and evaluate the information gathered from observation, experience, reasoning, or",
+        "GS31. anticipate problems, risks and opportunities and utilise these for optimising the"
+      ],
+      "modules": [
+        {
+          "module_title": "Test the functionality of physical inputs and outputs",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "collect information from customer about the availability of resources, tools for installation of PLC control panel and time period for completion of the task",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "check if the wiring between the terminal base of PLC panel and the field devices is completed",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "check the cable numbering and continuity test report",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "examine the power supply input to PLC panel and turn it on",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "activate the field sensors and limit switches, etc. to verify them on input module",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "activate the PLC outputs to check working of field outputs like actuators, contactors, relays etc.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "identify if there are any issues in physical IO check and inform customer",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Download / transfer the tested program to the PLC",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "discuss and get permission from customer for downloading the program into the PLC",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "transfer the PLC program into the CPU at the customer’s site",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "check the PLC program by activating sensors, switches or push buttons and examine the function of outputs",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Commission the program using trial runs",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "get permissions from customer for execution of process through PLC program and execute the same",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "identify errors in program and redo the logic after customer’s feedback and maintain the standards",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "check if the trial runs’ error handling program works correctly in order to avoid sudden loss of productivity and attain smooth shutdown",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Achieve productivity and quality",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "ensure damage free handling of the equipment",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "diagnose the problem accurately and within assigned time",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure 100% customer satisfaction",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N5613",
+      "nos_title": ".Troubleshoot faults",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisation’s policies on customer care",
+        "KU2. organisation’s departments involved with troubleshooting",
+        "KU3. organisation’s code of conduct",
+        "KU4. organisation’s culture and typical customer profile",
+        "KU5. organisation’s reporting structure",
+        "KU6. organisation’s documentation policy and policies on quality and standards",
+        "KU7. standard operating procedures (SOP) of the organisation for commissioning of process plant",
+        "KU8. electrical concepts, electronics and instrumentation",
+        "KU9. basics of machine safety and normal safety processes",
+        "KU10. basics of computer and operating systems",
+        "KU11. quality, standards and guidelines to be followed during troubleshooting",
+        "KU12. PLC module and equipment used in the automation process",
+        "KU13. PLC programming software",
+        "KU14. application software, installation and debugging",
+        "KU15. general arrangement drawing",
+        "KU16. piping and instrumentation diagram (P and ID)",
+        "KU17. instrumentation used in the factory and its wiring concept",
+        "KU18. electrical panel and wiring",
+        "KU19. testing process and parameters involved in the testing",
+        "KU20. electronics indicators, switchgear and panel accessories",
+        "KU21. relevant regulations, standards and codes of practice and their implications on the",
+        "KU22. how to communicate with shop floor technicians in order to resolve any discrepancies during",
+        "KU23. basic power systems, motor fundamentals and drive system fundamentals"
+      ],
+      "gs": [
+        "GS1. fill appropriate forms, activity logs, attendance sheets as per the organisation’s format in",
+        "GS2. write email to communicate within and outside the organisation as per the organisation’s",
+        "GS3. create test reports and other documentation",
+        "GS4. read work orders / schedules",
+        "GS5. read user requirements",
+        "GS6. read technical specifications",
+        "GS7. read standards and regulatory compliance documents",
+        "GS8. read schedules, time charts and drawings",
+        "GS9. convey and share technical information clearly, using appropriate language and terminology",
+        "GS10. check and clarify task-related information",
+        "GS11. discuss task lists, schedules and workloads with colleagues",
+        "GS12. keep colleagues / superiors informed about progress of logic testing",
+        "GS13. ask questions and discuss problems with colleagues / superiors appropriately to understand",
+        "GS14. report issues and problems to superiors in clear terms",
+        "GS15. decide whether the customer’s site is ready for troubleshooting",
+        "GS16. plan, prioritise and organise work related to requirements, design and integration, testing,",
+        "GS17. organise and collate customer acceptance reports and feedback",
+        "GS18. maintain productivity by applying time management and efficient resource utilisation",
+        "GS19. identify customer needs and suggest the best solution",
+        "GS20. support customer when they need help",
+        "GS21. ensure customer satisfaction after job completion",
+        "GS22. build customer relationships and rapport to help the customer in self-troubleshooting the",
+        "GS23. identify the problem, evaluate the possible solution(s) and suggest an optimum/best possible",
+        "GS24. solve problems of co-workers during commissioning",
+        "GS25. identify immediate or temporary solutions to resolve issues causing delays and implement",
+        "GS26. use existing information to arrive at course of actions",
+        "GS27. use existing information for improving the customer satisfaction",
+        "GS28. use existing information to optimise solution and bring machine/plant in running state",
+        "GS29. analyse problems and identify causes and possible solutions",
+        "GS30. analyse and evaluate the information gathered from observation, experience, reasoning, or",
+        "GS31. anticipate problems, risks and opportunities and utilise these for optimising the"
+      ],
+      "modules": [
+        {
+          "module_title": "Gather information about products, hardware and software support",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "collect information from customer about the availability of resources, tools for installation of PLC control panel and time period for completion of the task",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify problem in the machine/plant by asking the supervisor/engineer",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "obtain the control drawing of the machine/plant connected with the PLC and the different modules",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "check if the modules, equipment and electrical components are available onsite",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "check if the installation has been done as per installation guidelines",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure that the software and program backup are available in the plant",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Test working of machine and the process plant",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "prepare a flow chart for troubleshooting any machine/plant",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "test the panel and modules for proper functioning as recommended",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "check earthing and power supply for proper functioning before troubleshooting",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "cross-check whether the PLC and its module is attached at right place",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "verify whether the communication cable is supporting the protocol or not",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "make changes in running project if it is required to rectify the faults",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "check if the connected devices are in operation or have stopped at the time of troubleshooting",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "enter parameter of the connected load accurately in PLC",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "get the parameter reading according to schedule",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "prepare a site report after troubleshooting and mention the remedy",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Install replaced products and schedule tasks",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "match the product according to the catalogue number with the drawing and material list",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "take a program backup before and after troubleshooting",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "replace the module/equipment if it is found faulty and provide the module replacement to the customer according to PLC",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N9001",
+      "nos_title": ".Work effectively with",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisation's policies on dress code , workplace behaviour , performance",
+        "KU2. Organisation's hierarchy and escalation matrix",
+        "KU3. importance of the individual's role in the workflow",
+        "KU4. work area inspection procedures and practices",
+        "KU5. different types of information that colleagues might need and the importance of providing",
+        "KU6. deeper understanding of actions and consequences of gender based behaviour",
+        "KU7. knowledge of gender based concepts, issues and legislation",
+        "KU8. organisation standards and guidelines to be followed for PwD and knowledge about laws,",
+        "KU9. health and safety requirements at workplace for PwD and information about various",
+        "KU10. rights and duties at workplace with respect to PwD and various government / private",
+        "KU11. process of recruiting people for a particular job profile w.r.t PwD and gender including rights"
+      ],
+      "gs": [
+        "GS1. complete forms such as work orders, invoices and maintenance records",
+        "GS2. fill up appropriate forms,activity logs and attendance sheets as per the organisation's format",
+        "GS3. write basic accident or incident report as witnessed in an appropriate format to the relevant",
+        "GS4. read warnings, instructions and other text material on product labels, components, etc.",
+        "GS5. read relevant signage, warnings, labels or descriptions on equipment, etc. while carrying out",
+        "GS6. listen effectively and orally communicate information",
+        "GS7. ask for clarification and advice from the concerned person",
+        "GS8. make decisions on a suitable course of action or response keeping in view resource",
+        "GS9. plan and organise work to achieve targets and deadlines",
+        "GS10. understand needs of the customer, suggest most appropriate solution and support them",
+        "GS11. match symptoms of the fault noticed to the cause of the problem",
+        "GS12. anticipate and avoid hazards that may occur during repairs because of tools, materials used",
+        "GS13. spot process disruptions and delays",
+        "GS14. practice and acceptance of gender and its concepts",
+        "GS15. develop empathy across genders and towards PwD",
+        "GS16. reflect on own gender identity, gender roles and PwD issues",
+        "GS17. engage and participate in discussions to end gender and disability discrimination",
+        "GS18. improve and modify work practices",
+        "GS19. maintain positive and effective relationships with colleagues and customers"
+      ],
+      "modules": [
+        {
+          "module_title": "Work as per the organisational team environment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify team objectives and goals, team members by name, their role and responsibilities, greet them appropriately and respond to their greetings",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "comply with organisation’s policies and procedures for working with team members within and outside the organisation—especially related to privacy, confidentiality and security",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "work as per the environment to build trust and mutual respect",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "participate in decision making by providing facts and figures, give / accept constructive suggestions, take initiatives to help team members arrive at workable decisions and meet the goals",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "accept decisions professionally and support even if they do not match suggestions and personal views",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Communicate effectively",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "communicate professionally as per organisation's protocols, using appropriate mode of communication—verbal, written, mail, phone or text—and clearly articulate the message to ensure that the receiver understands the message",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "listen to team members attentively, respond promptly, seek / provide clarifications if required",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "share important information with the team timely and refrain from overloading them with unnecessary and unsolicited information",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Co-operate with team members and superiors",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "perform own role, receive inputs from others and make adjustments within permissible rules as per requirement, to produce output in time for other team members to follow",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "help team members to perform their role effectively and provide any clarifications/support they need, including tools /equipment / common resources as well as resolve any contentious issues amicably, involving the team lead or the supervisor if needed",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "let team members know in good time if commitments cannot be carried out, explaining the reasons, and provide alternate solutions, if any; let the team lead know about this",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "act in the interest of the team and the organisation, take initiative to correct the wrong, seek help or escalate if needed to ensure that things do not ‘fall through the gap’ and team goals are achieved",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Respect customs / preferences and gender / ability differences",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "follow organisation’s policies and statutory guidelines w.r.t seeking information about others' customs / preferences, making references or comments on social customs / preferences, and refrain from hurting sentiments",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "accommodate team members’ preferences to the extent feasible, and in case they come in the way of fulfilling team goals, discuss with the supervisor/ team leader",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "ensure personal behaviour, conduct and communication styles, taking gender and disability of the person into consideration",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "list the different types of disabilities with their respective issues and ways to help them overcome challenges",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "use inclusive language, verbal as well as non- verbal, irrespective of the disability and the gender of the person",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure equal treatment for all clients, colleagues and co-workers while respecting their personal space",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N9002",
+      "nos_title": ".Health and safety in",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. company's policies on incentives,delivery standards, and personnel management",
+        "KU2. company occupational safety and health policy",
+        "KU3. company emergency evacuation procedure",
+        "KU4. Company's medical policy",
+        "KU5. how to maintain the work area safe and secure",
+        "KU6. how to handle hazardous materials, tools and equipment",
+        "KU7. procedures to be followed during emergencies such as fire accidents, electrocution, etc.",
+        "KU8. long term value of good posture and use of appropriate handling equipment",
+        "KU9. electrical grounding practices",
+        "KU10. safety regulations and standards and how to apply these",
+        "KU11. common sources of pollution and ways to minimize it",
+        "KU12. categorisation of waste into dry, wet, recyclable, non-recyclable and items of single-use",
+        "KU13. usage of different colours of dustbins",
+        "KU14. waste management and methods of waste disposal",
+        "KU15. organisation's procedures for minimizing mistakes",
+        "KU16. strategies pertinent to their field (such as internet searches, asking peers and managers,",
+        "KU17. one should be able to identify the key performance indicators for the new tasks",
+        "KU18. seek feedback from supervisor and deal in constructive manner",
+        "KU19. understand that emotions are accompained by a physical state, thought and feeling",
+        "KU20. one should be able to interpret timelines and goals set by the manager and break them into",
+        "KU21. importance of quality and timely delivery of the product/service",
+        "KU22. potential hazards, risks and threats based on the nature of work",
+        "KU23. ways of efficiently managing material and water in the process",
+        "KU24. layout of the workstation and electrical and thermal equipment used",
+        "KU25. efficient and inefficient utilization of material and water",
+        "KU26. basics of electricity and prevalent energy efficient devices",
+        "KU27. ways to recognize common electrical problems",
+        "KU28. common practices of conserving electricity"
+      ],
+      "gs": [
+        "GS1. fill up appropriate forms, activity logs and attendance sheets as per organisation's format in",
+        "GS2. write basic accident or incident report as witnessed in appropriate format to relevant",
+        "GS3. read/listen and interpret information correctly from relevant instruction documents, manuals,",
+        "GS4. read relevant signage, warnings, labels or descriptions on equipment, etc. while carrying out",
+        "GS5. question co-workers in order to understand the safety and health issues",
+        "GS6. inform co-workers about safety and health issues",
+        "GS7. report issues and problems relating to safety and health to managers in clear terms",
+        "GS8. make decisions pertaining to safety and health issues at workplace",
+        "GS9. plan and organise work conforming to the safety and health norms of the company",
+        "GS10. make decisions about escalating safety and health issues at workplace to managers",
+        "GS11. discuss problems related to safety and health, evaluate the possible solution(s) and arrive at",
+        "GS12. use the existing information to arrive at actionable decision points",
+        "GS13. use the existing information for improving customer satisfaction",
+        "GS14. use the existing information to optimise solution and company business",
+        "GS15. analyse problems and identify causes and possible solutions",
+        "GS16. apply, analyse and evaluate the information gathered from observation, experience,",
+        "GS17. anticipate problems, risks and opportunities and utilise these for mitigation and business",
+        "GS18. communicate with colleagues on the significance of greening of jobs",
+        "GS19. identify cause and effect of greening of jobs",
+        "GS20. record data on waste disposal at workplace",
+        "GS21. demonstrate commitment towards self, and initiative to advance skills levels by exploring",
+        "GS22. incorporate feedback into one's mental model of task, and bring it into practice",
+        "GS23. be punctual, utilize time and manage workload efficiently",
+        "GS24. evaluate strategies to maintain, enhance or reduce the intensity of heightened emotional",
+        "GS25. test a hypothesis about the cause of the problem",
+        "GS26. identify and ask significant questions to clarify the various points of view on the problem to",
+        "GS27. record data on waste disposal at workplace",
+        "GS28. make timely decisions for efficient utilization of resources",
+        "GS29. complete statutory documents relevant to safety and hygiene",
+        "GS30. read Standard Operating Practices (SOP) documents",
+        "GS31. communicate with colleagues on the significance of greening of jobs",
+        "GS32. complete tasks efficiently and accurately within stipulated time",
+        "GS33. work with supervisors/team members to carry out work related tasks",
+        "GS34. identify cause and effect of greening of jobs"
+      ],
+      "modules": [
+        {
+          "module_title": "Adhere to standard safety procedures of the company",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "comply with general safety procedures and those for handling an equipment, hazardous material or tool, followed in the company",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "remove finger rings or any other metal objects likely to interfere with the work before working on the unit",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "use of safety materials such as goggles, gloves, ear plugs, caps, ESD pins, covers, shoes, etc.",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "escalate the issue about hazardous materials or things found in the premises or any breach of safety procedure in the company",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "ensure zero accidents at work",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "avoid damage of components due to negligence in ESD procedures or any other loss due to safety negligence",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "participate regularly in fire drills or other safety related workshops organised by the company",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain good health and posture",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "maintain appropriate posture, especially in long hours of sitting or standing position and in handling heavy materials",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "participate in company organised health sessions such as yoga, physiotherapy or games",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "handle heavy and hazardous materials with care, while maintaining appropriate posture, using suitable tools and handling equipment such as trolleys, jacks and ladders",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Effective waste management/recycling practices",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify recyclable and non-recyclable, and hazardous waste generated to be segregated accordingly",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "dispose non-recyclable waste and hazardous waste as per recommended processes",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "deposit recyclable and reusable material at identified location",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Adopt learning and self-direction",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "understand importance of skill advancement and develop mastery",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "adapt product / service to meet success criteria",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "understand accountability for timely completion of tasks",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "manage to express emotions in appropriate ways at workplace and understand the cause for the emotions",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Develop system thinking in problem solving",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "analyse the problem accurately and communicate different possible solutions to the problem",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "manage to estimate the cause of the problem and validate",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Material/Resources conservation practices",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "identify ways to optimize usage of material including water and electricity / energy in various tasks/activities/processes",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "check for spills/leakages in various tasks/activities/processes and plug them or escalate to appropriate authority",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "carry out routine cleaning of tools, machines and equipment",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "check if the equipment/machine is functioning normally before commencing work and rectify wherever required and report malfunctioning (fumes/sparks/emission/vibration/noise) or any lapse in maintenance of equipment",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure electrical equipment and appliances are properly connected and turned off when not in use",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,896 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q2300",
+  "qp_name": "TEL_Q2300",
+  "clean_code": "TEL_Q2300",
+  "total_pages": 37,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.389Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 15,
+    "total_pcs": 72,
+    "total_kus": 57,
+    "total_gs": 34,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N2300",
+      "nos_title": ".Assist in Configuring",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. commonly used mobile operating systems and Android architecture",
+        "KU2. basic setup process for JDK, Android Studio, and SDK Manager",
+        "KU3. Android project structure and the purpose of key files like AndroidManifest.xml and Gradle",
+        "KU4. types of UI layouts (ConstraintLayout, LinearLayout, RelativeLayout) and when to use them",
+        "KU5. basic application components such as Activities and Intents",
+        "KU6. fundamentals of UI navigation and state management",
+        "KU7. how to apply themes and styles using standard tools",
+        "KU8. fundamentals of Object-Oriented Programming (OOP) in Java/Kotlin, including threading and",
+        "KU9. how to handle user input through built-in event listeners",
+        "KU10. the basics of performance optimization techniques such as lazy loading, efficient memory",
+        "KU11. the purpose of real-device testing and use of AVDs",
+        "KU12. basic principles of debugging and error logging in Android"
+      ],
+      "gs": [
+        "GS1. read and follow setup guides, manuals, and checklists",
+        "GS2. follow instructions and document configuration steps accurately",
+        "GS3. communicate effectively with senior developers and team members to clarify tasks",
+        "GS4. follow structured workflows for project setup and UI configuration",
+        "GS5. use problem-solving techniques to identify configuration or layout issues",
+        "GS6. adapt to new versions of IDEs, SDK tools, and layout systems",
+        "GS7. use version control systems such as Git for syncing project files",
+        "GS8. support team members during testing and review activities"
+      ],
+      "modules": [
+        {
+          "module_title": "Assist in setting up Android application development environment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify commonly used tools, SDKs, and software required for Android setup",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "assist in installing and configuring the Java Development Kit (JDK), Integrated Development Environment (IDE), and Android SDK under supervision",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "set up Android Virtual Devices (AVDs) and real-device debugging for basic application testing",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "install required plugins, libraries, and dependencies with guidance from the supervisor",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Assist in creating and configuring an Android project",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "interpret project requirements including Android OS version, minimum SDK level, and package structure",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "assist in creating new Android projects in the IDE using predefined project templates",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "configure basic project files including source directories, manifests, Gradle scripts, and resource folders",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "apply basic logging and debugging mechanisms with assistance from senior team members",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Assist in configuring the Android application user interface",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "assist in configuring user interface components using XML and built-in layout editors",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "add predefined UI elements like buttons, text fields, lists, and images",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "implement basic navigation, e.g. menus, toolbars, using predefined intents between activities",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "apply standard UI themes and styles provided by the Android SDK",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "assist in incorporating media elements such as images, audio, video, and enable camera functionality in the app",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "assist in implementing location services, maps, and GPS-based functionalities as per application needs",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "support event-handling for common interactions such as clicks or gestures",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "assist in testing the interface on emulators and real devices for responsiveness and usability",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "report any identified issues related to the interface or layout for resolution by senior developers",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N2301",
+      "nos_title": ".Assist in Configuring",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Android application lifecycle, including Activity, Fragment, and Service lifecycle",
+        "KU2. common data storage options in Android (SharedPreferences, Room, SQLite)",
+        "KU3. best practices for Android local data storage and cloud-based storage solutions",
+        "KU4. database management and indexing for performance optimization",
+        "KU5. basic structure and use of SQL commands",
+        "KU6. the purpose and functioning of content providers",
+        "KU7. messaging protocols and technologies, including SMS, MMS, and push notifications",
+        "KU8. fundamentals of Google Maps integration and location-based services",
+        "KU9. simple RESTful API request structure and network protocols",
+        "KU10. the principles of geocoding and reverse geocoding",
+        "KU11. fundamentals of background processing, including multi-threading, WorkManager, and",
+        "KU12. efficient resource management for network, storage, and memory optimization",
+        "KU13. security considerations in Android applications, including data encryption, authentication,"
+      ],
+      "gs": [
+        "GS1. read and understand setup instructions and developer documentation",
+        "GS2. follow structured instructions from developers for integration tasks",
+        "GS3. communicate clearly with team members regarding technical tasks",
+        "GS4. log integration results and share observations with the supervisor",
+        "GS5. use tools like Android Studio, Logcat, and AVD for testing and debugging",
+        "GS6. apply basic problem-solving methods to resolve configuration errors",
+        "GS7. adapt to updated Android SDK tools, APIs, and documentation",
+        "GS8. follow guidelines related to secure application and data practices"
+      ],
+      "modules": [
+        {
+          "module_title": "Assist in managing data within Android applications",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "assist in applying basic data storage methods such as SharedPreferences and Room Database",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "assist in updating user preferences and retrieving stored data under supervision",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "support storing and accessing data using internal storage, external storage (SD Card), cloud-based solutions (Firebase, AWS, or Azure), and encrypted storage mechanisms",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "assist in using Structured Query Language (SQL) commands to create, read, update, and delete (CRUD) database records",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "configure predefined databases (e.g., SQLite) following provided guidelines",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "assist in implementing content providers to enable data sharing between apps",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Assist in messaging and networking service integration",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "assist in configuring messaging functionalities using tools like Firebase Cloud Messaging (FCM)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "assist in implementing SMS-based tasks using system tools such as BroadcastReceivers and Intents",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "configure sample email and HTTP connections under supervision using Retrofit or similar libraries",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "assist in integrating application functionalities with Bluetooth for file sharing, device pairing, and data sharing",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "assist in configuring RESTful APIs using standard methods and sample code",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "follow guidance to implement efficient data requests using synchronous and asynchronous calls, and apply basic caching techniques to support optimal resource usage",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Assist in configuring location-based services",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "assist in setting up Google Maps API and configure location settings",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "assist in setting up Google Maps API and configure location settings",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "assist in geocoding activities using pre-built tools or utilities",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "configure GPS settings and Fused Location Provider integration as per given instructions",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "test and report location-based service functionality across sample conditions",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Assist in setup and monitoring of background Android services",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "identify basic service types and when to use them (foreground, background, bound)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "assist in implementing background tasks using WorkManager or JobScheduler under supervision",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "follow set procedures for recurring tasks and monitor performance impact",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "assist in simple data sharing between activities and services",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "assist in applying memory management practices to reduce leaks or slowdowns",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "assist in updating UI from background services using standard tools such as ViewModel or LiveData",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N2302",
+      "nos_title": ".Assist in Testing and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. different types of mobile application testing (functional, compatibility, usability,",
+        "KU2. basic use of Android testing tools such as Android Emulator, Logcat, and ADB",
+        "KU3. the importance of UI consistency and responsiveness across devices",
+        "KU4. performance metrics and benchmarks for application optimization",
+        "KU5. Android security policies, OWASP Mobile Security best practices, and GDPR compliance",
+        "KU6. the basics of debugging techniques, crash analytics, and log analysis for troubleshooting",
+        "KU7. Google Play Store licensing policies, and guidelines for application approval",
+        "KU8. fundamentals of Android services, background processing, and API integrations",
+        "KU9. network protocols, data handling, and optimization for mobile applications",
+        "KU10. continuous Integration (CI) and Continuous Deployment (CD) practices in application release",
+        "KU11. best practices for user experience (UX) design and accessibility compliance",
+        "KU12. how to use dashboards for post-release monitoring and reporting",
+        "KU13. role of version control and CI/CD tools in team-based deployment workflows"
+      ],
+      "gs": [
+        "GS1. read and follow test cases, QA documentation, and release notes",
+        "GS2. communicate observations and testing issues clearly to the team",
+        "GS3. use basic problem-solving skills to troubleshoot issues in a structured manner",
+        "GS4. manage time and tasks effectively when supporting multiple testing cycles",
+        "GS5. adapt to different Android versions and testing tools as instructed",
+        "GS6. use tools like spreadsheets or issue trackers (e.g., JIRA, Trello) to log results",
+        "GS7. maintain clarity and completeness in documenting results and feedback",
+        "GS8. maintain confidentiality of application features and user data",
+        "GS9. collaborate with cross-functional teams (developers, QA, release managers)",
+        "GS10. follow standard operating procedures and security practices consistently"
+      ],
+      "modules": [
+        {
+          "module_title": "Assist in testing and validating Android applications",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "select appropriate testing types (e.g., functional, UI, compatibility) for different application features under guidance",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "assist in executing predefined test cases and test scripts, like functional, usability, and regression testing",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "assist in conducting compatibility testing across Android versions, screen sizes, and devices",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "conduct basic network-related testing using guided tools or checklists",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "assist in UI/UX testing based on standard layout and accessibility guidelines",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "follow predefined checklists to verify app behavior and security settings",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "document observed defects and coordinate with the development team for resolution",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "assist in running static/dynamic security tests using basic tools and share findings",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "assist in collecting testing data and logs for further analysis by senior QA team",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Assist in publishing of Android applications",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "assist in verifying that the application meets the basic criteria for Google Play Store release",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "assist in tasks related to versioning, signing, and packaging applications under supervision",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "fill in Play Store or internal app store metadata forms as per provided guidelines",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "upload application builds to distribution platforms following supervisor’s instructions",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "monitor crash reports and user feedback using dashboard tools and report issues for iterative improvements",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9110",
+      "nos_title": ".Follow sustainability",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. the importance of sustainable practices in mobile application development",
+        "KU2. the impact of digital applications on energy consumption and carbon footprint",
+        "KU3. environmental benefits of optimized and efficient mobile apps",
+        "KU4. the principles of green coding and sustainable software engineering",
+        "KU5. techniques for optimizing code and reducing computational overhead",
+        "KU6. best practices for power-efficient application development",
+        "KU7. the applicable environmental regulations for software development",
+        "KU8. industry best practices for eco-friendly mobile applications",
+        "KU9. role of organizations like the Green Software Foundation in sustainable app development",
+        "KU10. sustainable UI/UX design principles that reduce energy consumption",
+        "KU11. user experience optimization to enhance app efficiency",
+        "KU12. implementation of dark mode and power-saving features",
+        "KU13. the importance of green cloud computing solutions",
+        "KU14. methods for optimizing server-side performance",
+        "KU15. the impact of data storage and retrieval on environmental sustainability",
+        "KU16. use of energy profiling tools (e.g., Android Profiler, Apple Energy Log)",
+        "KU17. use of code optimization tools (e.g., Lint, SonarQube)",
+        "KU18. use of cloud platforms with sustainability features (e.g., AWS Green Cloud, Google Carbon-",
+        "KU19. use of UI/UX design software supporting dark mode and adaptive themes (e.g., Figma, Adobe"
+      ],
+      "gs": [
+        "GS1. identify inefficiencies in mobile applications and resolve them sustainably",
+        "GS2. optimize application components for minimal energy usage",
+        "GS3. analyze energy consumption patterns in mobile applications",
+        "GS4. implement performance monitoring tools to track sustainability improvements",
+        "GS5. communicate sustainability goals to development teams",
+        "GS6. work collaboratively to ensure adherence to eco-friendly development practices",
+        "GS7. follow the latest sustainable development practices",
+        "GS8. implement new strategies for minimizing the environmental impact of applications"
+      ],
+      "modules": [
+        {
+          "module_title": "Adopt sustainable coding practices",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "write optimized and efficient code to reduce processing power and memory usage",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "use energy-efficient algorithms and data structures",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "minimize redundant code and remove unnecessary computations",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Optimize application performance",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "implement efficient resource management to reduce battery consumption",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "optimize background processes and data retrieval mechanisms",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "reduce application size by eliminating redundant assets and compressing files",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Reduce network and data usage",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "optimize API calls and minimize data transfers",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "implement caching mechanisms to reduce redundant network requests",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "use efficient data formats (e.g. JSON over XML) for minimal processing load",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Comply with environmental standards",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "follow relevant environmental regulations and guidelines related to digital sustainability",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "use software development frameworks and tools that support sustainability",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "implement best practices recommended by green software engineering standards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Promote sustainable UI/UX design",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "implement dark mode and adaptive themes to reduce screen energy consumption",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "optimize animations and visual effects to minimize processing load",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "provide users with settings to customize app performance for energy efficiency",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Follow sustainable development practices",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "use cloud computing solutions that operate on renewable energy sources",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "adopt remote work and digital collaboration tools to reduce carbon footprint",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "reuse existing components and libraries to minimize waste",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

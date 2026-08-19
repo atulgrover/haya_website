@@ -1,0 +1,732 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q8703",
+  "qp_name": "SSC_Q8703",
+  "clean_code": "SSC_Q8703",
+  "total_pages": 41,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.252Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 5,
+    "total_pcs": 58,
+    "total_kus": 62,
+    "total_gs": 39,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N8738",
+      "nos_title": ".Set up development",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Familiarity with the core principles of blockchain, including decentralization, immutability,",
+        "KU2. Knowledge of different types of blockchains (public, private, consortium, hybrid) and their use",
+        "KU3. Knowledge of programing languages like solidity for example ethereum smart contract",
+        "KU4. Knowledge of development frameworks like truffle/Hardhat",
+        "KU5. Familiarity with tools like Mocha and Chai for contract testing",
+        "KU6. Knowledge of tools for running a local blockchain for development and testing",
+        "KU7. Knowledge of wallets to interacts with the blockchain networks",
+        "KU8. Familiarity with Proof of Work, Proof of Stake, etc.",
+        "KU9. Knowledge of version control system like githib"
+      ],
+      "gs": [
+        "GS1. The ability to explain complex technical concepts to non-technical stakeholders is critical.",
+        "GS2. Effective communication fosters teamwork, enabling developers to work closely with",
+        "GS3. Blockchain developers often face complex challenges that require strong analytical skills to",
+        "GS4. The ability to assess the efficiency of different blockchain architectures and smart contract",
+        "GS5. The ability to work collaboratively with various experts (e.g., engineers, business analysts)",
+        "GS6. Strong interpersonal skills help in mediating disagreements within the team, fostering a",
+        "GS7. Managing multiple tasks and deadlines is essential in a project-driven environment.",
+        "GS8. Solid grasp of business objectives helps align blockchain solutions with organizational goals,",
+        "GS9. The ability to manage time effectively ensures that projects stay on track and deadlines are"
+      ],
+      "modules": [
+        {
+          "module_title": "Set up development environment for blockchain solution — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Install Node.js and npm (Node Package Manager),these are essential for most blockchain development tools.",
+              "sequence_order": 1,
+              "theory_marks": 8,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Choose an Integrated Development Environment (IDE) for example Visual Studio Code with Solidity extensions",
+              "sequence_order": 2,
+              "theory_marks": 6,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Install Framework (for example truffle framework for ethereum)",
+              "sequence_order": 3,
+              "theory_marks": 7,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Set up a local blockchain for development and testing",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Install browser extension for wallets (eg metamask) to interact with the blockchain networks",
+              "sequence_order": 5,
+              "theory_marks": 4,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8739",
+      "nos_title": ".Develop backend",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Proficiency in HTML, CSS, and JavaScript for building web interfaces.",
+        "KU2. Expertise in React.js or other modern front-end frameworks like Angular or Vue.js.",
+        "KU3. Familiarity with Web3 libraries such as Web3.js or Ethers.js for blockchain interactions.",
+        "KU4. Knowledge of UI component libraries like Material-UI or Semantic UI for efficient interface",
+        "KU5. Understanding of state management solutions like Redux or MobX for complex application",
+        "KU6. Experience with wallet integration and blockchain transaction handling.",
+        "KU7. Proficiency in asynchronous programming and handling Promises in JavaScript.",
+        "KU8. Ability to integrate and work with RESTful APIs and potentially GraphQL.",
+        "KU9. Skills in unit testing and end-to-end testing for dApp front-ends.",
+        "KU10. Proficiency with version control systems, particularly Git and GitHub.",
+        "KU11. Familiarity with build tools and module bundlers like Webpack or Create React App.",
+        "KU12. Knowledge of front-end performance optimization techniques.",
+        "KU13. Understanding of web security best practices and blockchain-specific security",
+        "KU14. Basic comprehension of blockchain technology and the specific platform being used (e.g.,",
+        "KU15. Grasp of UI/UX design principles for creating user-friendly interfaces.",
+        "KU16. Ability to implement responsive and mobile-first design for cross-device compatibility.",
+        "KU17. Knowledge of web accessibility standards and their implementation in dApps"
+      ],
+      "gs": [
+        "GS1. Ability to design innovative and engaging user interfaces for blockchain applications.",
+        "GS2. Skill to tackle complex design and technical challenges in dApp development.",
+        "GS3. Flexibility to keep up with rapidly evolving blockchain technologies and design trends.",
+        "GS4. Capacity to clearly explain technical concepts to both technical and non-technical",
+        "GS5. Ability to work effectively with cross-functional teams, including backend developers and",
+        "GS6. Meticulousness in creating pixel-perfect designs and spotting UI inconsistencies.",
+        "GS7. Skill to prioritize tasks and meet project deadlines in fast-paced development environments."
+      ],
+      "modules": [
+        {
+          "module_title": "Develop backend services and frontend interfaces for the — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Define the dApp's requirements and features",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Choose the blockchain platform (e.g., Ethereum, Binance Smart Chain)",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Design the system architecture",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Plan the data flow between components",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Develop Smart contracts",
+              "sequence_order": 5,
+              "theory_marks": 6,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Set up a Node.js server (e.g., Express.js, Nest.js) for back end development",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Implement RESTful API endpoints",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Integrate Web3.js or Ethers.js for blockchain interactions",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Set up a database (e.g., MongoDB, PostgreSQL)",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Implement data synchronization between blockchain and database",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Develop authentication and authorization mechanisms",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Set up a React.js project (e.g., Create React App, Next.js) for frontend development",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Design and implement UI components",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Integrate Web3.js or Ethers.js for client- side blockchain interactions",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Implement state management (e.g., Redux, Context API)",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Create forms for user input and transaction submission",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Develop pages for displaying blockchain data and transaction history",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Develop comprehensive unit tests for smart contracts",
+              "sequence_order": 18,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Implement end-to-end testing strategies for dApps",
+              "sequence_order": 19,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Inegrate smart contracts, backend services, and frontend interfaces",
+              "sequence_order": 20,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Deploy dApps to test networks and prepare for deployment",
+              "sequence_order": 21,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8740",
+      "nos_title": ".Conduct",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Knowledge of how blockchain works, including its architecture, components (blocks, nodes,",
+        "KU2. Knowledge of functional testing to verify features of the blockchain application work as",
+        "KU3. Knowledge of integration testing to test interactions between different components of the",
+        "KU4. Knowledge of performance testing to assess the speed and efficiency of the blockchain",
+        "KU5. Knowledge of security testing to identify vulnerabilities within the blockchain application,",
+        "KU6. Understanding how to validate smart contracts to ensure they execute correctly according to",
+        "KU7. Familiarity with Testing Tools and frameworks like truffle,gnache,populus etc.",
+        "KU8. Proficiency in languages like JavaScript or Python for writing test scripts and automating test",
+        "KU9. Familiarity with Solidity (for Ethereum) or other relevant languages used in smart contract",
+        "KU10. Understanding how to test APIs that interact with blockchain applications, ensuring that they",
+        "KU11. Understanding cryptographic principles that secure transactions on the blockchain, including",
+        "KU12. Familiarity with best practices for securing blockchain applications against common",
+        "KU13. Ability to use performance monitoring tools to evaluate system performance under various",
+        "KU14. Knowledge of how to create detailed test cases that cover all aspects of the application"
+      ],
+      "gs": [
+        "GS1. The ability to analyze complex issues and identify the root causes of problems is crucial in",
+        "GS2. Effectively communicating technical concepts to non-technical stakeholders ensures that",
+        "GS3. Testing blockchain applications requires meticulous attention to detail to ensure that every",
+        "GS4. Blockchain projects often involve cross-functional teams. The ability to work collaboratively",
+        "GS5. Building relationships with stakeholders allows testers to gather requirements effectively and",
+        "GS6. Testers must manage multiple tasks and deadlines effectively. The ability to prioritize tasks"
+      ],
+      "modules": [
+        {
+          "module_title": "Conduct comprehensive testing of the blockchain solution — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Establish clear objectives for testing, such as verifying functionality, ensuring security, and assessing performance under various conditions.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Gather requirements from stakeholders to understand what needs to be tested, including specific functionalities and performance metrics.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Create detailed test cases covering all aspects of the application based on functional requirements.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Prepare a suitable testing environment that mimics production conditions as closely as possible",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Check if the tests can be automated to improve efficiency and coverage.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Conduct functional testing to check transaction processing, smart contract execution, and adherence to consensus mechanisms.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Conduct integretion testing to ensure that different components of the blockchain application (e.g., smart contracts, APIs) interact correctly.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Conduct performance testing to Assess the speed and efficiency of the blockchain network",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Conduct security testing to identify vulnerabilities within the blockchain application.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Conduct Smart contracts testing to look for logical errors, proper execution paths, and potential security issues like reentrancy attacks or overflow errors",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Conduct API testing to ensure that the APIs used for integrating with other software function correctly and securely",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Record outcomes of each test case, including any failures or issues encountered.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Review results to identify patterns or recurring issues that need addressing.",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8741",
+      "nos_title": ".Monitor the",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Knowledge of how blockchain systems are structured, including the roles of nodes,",
+        "KU2. Familiarity with various consensus algorithms (e.g., Proof of Work, Proof of Stake, Delegated",
+        "KU3. Knowledge of implementing Layer 2 solutions (e.g., state channels, sidechains) that allow",
+        "KU4. Knowledge of sharding techniques to partition the blockchain into smaller segments for",
+        "KU5. Knowledge of programming languages commonly used in blockchain development (e.g.,",
+        "KU6. Familiarity with libraries like Web3.js or Ethers.js for integrating front-end applications with",
+        "KU7. Knowledge of peer-to-peer network optimization techniques, such as gossip protocols and",
+        "KU8. Knowledge of selective verification strategies to reduce communication overhead during",
+        "KU9. Awareness of hardware requirements for optimal node performance, including the use of",
+        "KU10. Familiarity with tools like Hyperledger Caliper or custom scripts for benchmarking",
+        "KU11. Ability to simulate different network configurations to assess their impact on performance",
+        "KU12. Knowledge of implementing monitoring solutions that track performance metrics"
+      ],
+      "gs": [
+        "GS1. The ability to critically analyze performance issues and devise effective solutions is crucial",
+        "GS2. Analyzing metrics and performance data to make informed decisions about optimization",
+        "GS3. Effectively conveying complex technical concepts to non-technical stakeholders ensures that",
+        "GS4. Working closely with cross-functional teams (e.g., developers, project managers, and UX",
+        "GS5. Commitment to staying updated on the latest trends, techniques, and best practices in",
+        "GS6. Managing multiple tasks and deadlines is crucial in a project-driven environment",
+        "GS7. Performance optimizations often require meticulous attention to detail to avoid introducing"
+      ],
+      "modules": [
+        {
+          "module_title": "Monitor the performance of blockchain applications and — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Select appropriate consensus mechanism for optimizing transaction speed and energy consumption",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Alleviate congestion on the main blockchain,by applying layer 2 solutions such as the Lightning Network etc. to be processed off- chain",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Partition the blockchain into smaller segments (shards), enabling parallel processing of transactions",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Ensure that nodes use solid-state drives (SSDs) for faster data access compared to traditional hard disk drives (HDDs)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Use CPUs with high clock speeds for better single-threaded performance, as blockchain nodes often benefit from fast processing capabilities rather than a high number of core",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Optimize peer-to-peer (P2P) network topology to enhance communication between nodes",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Implement selective verification strategies in consensus protocols to reduce communication overhead and improve transaction validation efficiency",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Conduct performance testing using tools like Hyperledger Caliper to measure key metrics such as throughput and latency under various conditions",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Use simulations to evaluate how changes in network configuration affect performance metrics, allowing for informed decisions regarding optimization strategies",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Assess the resource utilization (CPU, memory, disk I/O) of blockchain nodes",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Configure node exporters for collecting performance metrics & develop node performance dashboards",
+              "sequence_order": 11,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Optimize smart contracts for gas efficiency",
+              "sequence_order": 12,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Implement monitoring tools to continuously track performance metrics, enabling proactive adjustments based on real-time data.",
+              "sequence_order": 13,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8728",
+      "nos_title": ".Provide support in",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. types of blockchain",
+        "KU2. blockchain concepts such as nodes, consensus mechanism, smart contracts, forks, etc",
+        "KU3. concepts of hardware, networking, and data storage, especially those related to various",
+        "KU4. ways to customize the network and apps in the current blockchain solution",
+        "KU5. concepts of blockchain security and cryptographic primitives such as keys, hash functions,",
+        "KU6. processes related to node operations",
+        "KU7. processes related to chain management",
+        "KU8. on-chain governance rules",
+        "KU9. ways to implement enhancements/ upgrades in the blockchain network and apps",
+        "KU10. best pratices and standard operating procedure associated with configuring/ customizing"
+      ],
+      "gs": [
+        "GS1. ask for clarification and advice from appropriate people",
+        "GS2. conduct business contextual discussions",
+        "GS3. listen effectively and orally communicate information accurately",
+        "GS4. follow rule-based decision-making processes",
+        "GS5. make decisions on suitable courses",
+        "GS6. plan and organize the work to achieve targets and deadlines",
+        "GS7. work effectively in a customer facing environment",
+        "GS8. apply problem-solving approaches in different situations",
+        "GS9. apply balanced judgments to different situations",
+        "GS10. create accurate and well written documents/reports"
+      ],
+      "modules": [
+        {
+          "module_title": "Provide support in resolving issues related to blockchain — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Define a plan for providing support, including third party services and internal resource allocation",
+              "sequence_order": 1,
+              "theory_marks": 8,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify, analyze, and resolve complex technical issues within the blockchain ecosystem, providing timely support to maintain the stability and functionality",
+              "sequence_order": 2,
+              "theory_marks": 6,
+              "practical_marks": 12,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Determine the type of support required based on the application (Debugging, Scalability,Security enhancement, interoperability,CI/CD etc.)",
+              "sequence_order": 3,
+              "theory_marks": 6,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Define the incident Management and Support Processes",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 7,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Develop Continuous improvement and maintenance processes (analyzing user feedback,updated documentation, app optimization ec.)",
+              "sequence_order": 5,
+              "theory_marks": 4,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Handle active support for blockchain end- users",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 4
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

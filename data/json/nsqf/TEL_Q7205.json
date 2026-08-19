@@ -1,0 +1,764 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q7205",
+  "qp_name": "TEL_Q7205",
+  "clean_code": "TEL_Q7205",
+  "total_pages": 33,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.588Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 7,
+    "total_pcs": 67,
+    "total_kus": 42,
+    "total_gs": 22,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N7216",
+      "nos_title": ".Substrate Design",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. functionality and parameters of telecom integrated circuits (ICs)",
+        "KU2. substrate requirements based on IC features (pin count, power needs)",
+        "KU3. critical dimensions, tolerances, and material properties for substrates",
+        "KU4. design documents like layer stack-up, routing guidelines, and placement constraints",
+        "KU5. how to summarize and communicate key design considerations",
+        "KU6. design concepts and collaboration in design meetings",
+        "KU7. performance targets like signal integrity and thermal dissipation",
+        "KU8. manufacturability limitations of fabrication processes",
+        "KU9. cost factors associated with different layout choices",
+        "KU10. material properties and their impact on performance and cost",
+        "KU11. functionalities of CAD software and design rule sets",
+        "KU12. component placement and signal routing principles",
+        "KU13. importance of Design Rule Checks (DRC)",
+        "KU14. how to modify layouts based on feedback and manufacturability concerns",
+        "KU15. design documentation procedures and version control systems",
+        "KU16. manufacturability limitations (minimum feature size, via density)",
+        "KU17. equipment capabilities and potential processing challenges",
+        "KU18. proposing solutions for manufacturability issues",
+        "KU19. collaborating with engineers for design optimization",
+        "KU20. documenting DFM issues and proposed solutions"
+      ],
+      "gs": [
+        "GS1. maintain work-related notes and records",
+        "GS2. read the relevant literature to get the latest updates about the field of work",
+        "GS3. listen attentively to understand the information/ instructions being shared",
+        "GS4. communicate politely and professionally",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. coordinate with the co-workers to achieve the work objectives",
+        "GS7. evaluate all possible solutions to a problem to select the best one",
+        "GS8. take quick decisions to deal with workplace emergencies/ accidents"
+      ],
+      "modules": [
+        {
+          "module_title": "Interpret and Analyze Technical Specifications",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review and analyze IC datasheets and application notes for features, pin count, and power needs",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "analyze signal integrity requirements for telecom applications",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify critical substrate dimensions based on IC features and functionality",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "identify critical tolerances for substrate dimensions",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "research and select appropriate material properties for the substrate",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "extract layer stack-up information from design documents",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "analyze routing guidelines from design documents",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify placement constraints from design documents",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "analyze power dissipation of the integrated circuit (IC)",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "evaluate thermal management requirements for the substrate",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "prepare a summary of key design considerations for internal discussions",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Develop Substrate Layouts",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "participate in design meetings with senior engineers to discuss substrate layout concepts",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify potential layout options that meet performance targets like signal integrity and thermal dissipation",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "analyze manufacturability limitations of available fabrication processes",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "modify layout concepts to address manufacturability limitations",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "analyze potential cost implications of different layout choices (e.g., layer count, routing complexity)",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "research material properties based on cost and performance needs",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "identify materials compatible with processing requirements",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "collaborate with engineers to select the most suitable material",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Utilize CAD Software for Layout Creation/Modification",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "use CAD software to create basic layouts for telecom substrates",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "following established design rules and layer definitions",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "place and route components and signals according to design specifications and performance requirements",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "perform basic design rule checks (DRC) to ensure the layout adheres to manufacturing guidelines",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "route signals according to design specifications and performance requirements",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "analyze the feedback from senior engineers on layout design",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "identify and address manufacturability concerns in the layout",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "modify existing layouts based on feedback or identified manufacturability concerns",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "document key decisions and steps taken during the design process",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "maintain version control of layout files for future reference",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Perform Basic Design for Manufacturability (DFM) Analysis",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC30",
+              "pc_description": "analyze the layout for potential manufacturability issues such as minimum feature size limitations, via density, and manufacturability of complex routing patterns",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "identify areas where the design might exceed equipment capabilities",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "identify potential processing challenges based on the layout",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "collaborate with design and manufacturing engineers to find solutions that optimize both performance and manufacturability",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "document identified DFM issues and proposed solutions for further review",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "propose solutions for DFM issues with supporting rationale for review and approval",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7217",
+      "nos_title": ".Process Integration",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. telecom substrate functionalities and specifications",
+        "KU2. design for manufacturability (DFM) principles",
+        "KU3. production capabilities and limitations in substrate assembly",
+        "KU4. quality control procedures for telecom substrates",
+        "KU5. effective communication and interpersonal skills",
+        "KU6. existing production workflow for telecom substrates",
+        "KU7. potential integration challenges between design and production",
+        "KU8. effective communication channels and documentation practices",
+        "KU9. data analysis techniques for identifying process improvement opportunities",
+        "KU10. various process improvement methodologies (e.g., Six Sigma, Lean Manufacturing)",
+        "KU11. quality control principles and defect prevention strategies",
+        "KU12. collaborative problem-solving techniques",
+        "KU13. how to monitor and evaluate the effectiveness of implemented improvements"
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Facilitate Technical Communication",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "attend design meetings to focused on telecom substrate specifications",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ask clarifying questions and contribute to discussions on technical details",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "collaborate with design engineers to clarify technical requirements for the substrate",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "discuss and clarify performance targets for signal integrity, thermal dissipation, etc",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify and raise potential manufacturability concerns based on design choices",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "participate in meetings with production and quality control teams to understand capabilities, limitations",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "identify potential bottlenecks and quality risks in the current production process for telecom substrates",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "collaborate with QC to establish clear inspection procedures for completed substrates.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "develop and document clear communication channels between design, production, and quality control teams",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify and implement communication channels (e.g., meetings, shared platforms) to facilitate smooth information exchange",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Streamline Integration & Improvement",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "analyze potential integration challenges between substrate design and existing production workflow",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "propose solutions to streamline the integration of substrate design processes",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "participate in test runs and pilot productions of new substrate designs",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "monitor the integration process and identify any arising issues or areas for improvement",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "utilize data analysis techniques to pinpoint areas for efficiency gains or quality enhancement",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "identify trends and patterns in data that suggest potential improvement areas",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "collaborate with engineers and technicians to develop and implement process improvement solutions",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "identify solutions that address identified inefficiencies or quality concerns",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "monitor the effectiveness of implemented improvements through data analysis and feedback",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "suggest further refinements or adjustments to the improvement solutions",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7218",
+      "nos_title": ".Quality Assurance",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. functionality of basic inspection tools and equipment (e.g., microscopes, calipers)",
+        "KU2. importance of accurate and complete documentation in substrate design",
+        "KU3. established procedures for maintaining design files and revisions",
+        "KU4. how to prepare clear and concise technical documentation",
+        "KU5. quality control principles and procedures for substrate design",
+        "KU6. data analysis techniques to identify areas for improvement in QC practices",
+        "KU7. design specifications and process standards for telecom substrates",
+        "KU8. non-conformance documentation procedures, including identifying root causes",
+        "KU9. effective communication protocols for escalating quality issues"
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform Quality Control Inspections & Quality Improvement",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "visually inspect completed substrates to identify potential defects (e.g., dimensional errors, surface imperfections)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "utilize basic inspection tools and equipment as needed (e.g., microscopes, calipers)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "accurately record inspection results and document all substrate design activities",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "document all substrate design activities, including inspection results",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "maintain design files and revisions according to established procedures",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "prepare clear and concise technical documentation for completed substrate designs",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "participate in the development and implementation of quality control procedures for substrate design",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "analyze observations and inspection data to identify areas for improvement in existing QC practices",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "suggest improvements to existing QC practices based on observations and data analysis.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify any deviations from design specifications or process standards during inspections or review processes",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "document non-conformances with clear descriptions and potential root causes",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "escalate identified issues to the appropriate personnel for timely resolution",
+              "sequence_order": 12,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

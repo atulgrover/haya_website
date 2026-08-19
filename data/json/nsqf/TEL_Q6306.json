@@ -1,0 +1,1443 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6306",
+  "qp_name": "TEL_Q6306",
+  "clean_code": "TEL_Q6306",
+  "total_pages": 55,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.543Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 21,
+    "total_pcs": 123,
+    "total_kus": 58,
+    "total_gs": 61,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6319",
+      "nos_title": ".Check Availability of",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the principles of radio access technology (4G/5G) and their deployment frameworks",
+        "KU2. fifth-generation (5G) access domain, 3GPP specifications, and standards across L1, L2, and L3",
+        "KU3. key concepts in VoLTE, VoWiFi, Virtualized RAN (vRAN), O-RAN, and Management and",
+        "KU4. message flows, parameters, and signaling procedures used in 5G networking",
+        "KU5. cloud technologies, Open Edge Servers, and xHaul deployments within cloud environments",
+        "KU6. equipment safety procedures, compliance guidelines, and industry best practices for hardware",
+        "KU7. troubleshooting methodologies for common hardware failures, network configuration issues,",
+        "KU8. system integration principles, including API management, virtualized network function (VNF)",
+        "KU9. escalation processes and incident management frameworks for reporting system failures,"
+      ],
+      "gs": [
+        "GS1. communicate effectively with internal teams and external stakeholders to coordinate site",
+        "GS2. analyze and interpret reports, logs, and real-time network data to ensure seamless",
+        "GS3. prioritize tasks and manage time effectively in high-pressure deployment scenarios",
+        "GS4. read and comprehend technical standards, provisioning guides, and user manuals",
+        "GS5. adapt to evolving technologies and integrate new tools for deployment and testing",
+        "GS6. provide clear instructions and technical guidance to junior engineers and site personnel",
+        "GS7. identify and mitigate risks proactively to avoid delays or operational disruptions",
+        "GS8. utilize diagnostic tools to troubleshoot and resolve hardware or network-related issues",
+        "GS9. maintain organized documentation for compliance tracking and knowledge sharing",
+        "GS10. seek expert consultation and collaborate with cross-functional teams to ensure project"
+      ],
+      "modules": [
+        {
+          "module_title": "Pre-requisites for 5G mobile/radio networking",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review and interpret 3GPP standards, project budget, architectural blueprints, and client-specific design documents",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "coordinate with cross-functional teams to translate high-level architecture into actionable deployment deliverables",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "assess and validate Multiple Input, Multiple Output (MIMO) antenna parameters such as diversity gain, MIMO capacity, and beamforming requirements",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "evaluate the radiation pattern of MIMO antenna and implement network slicing and Network Function Virtualization (NFV) strategies",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "conduct pre-deployment software testing using automated scripts and verify backhaul network integration with planned 5G site programs",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Carry out 5G NR site hardware/equipment installation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "verify the availability of passive equipment like battery bank, power plant, air conditioning etc, in case of a shelter site, single/dual/triple-band MIMO antennas, feeder and jumper cables, and mounting accessories",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "ensure active equipment, such as gNodeB, fibre based transmission networks of SDH or ethernet hierarchy, microwave link devices, and edge computing units, are ready for deployment at the site",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "validate the functionality and compatibility of utilities, including command centers, alarm managers, historical alarm reports, PM reports, and alarm correlation tools",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "implement orchestration among teams, Network Function Virtualization Infrastructure (NFVI), and cloud-native network functions to optimize site deployment",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "conduct impact assessment and risk analysis of solution lifecycle activities, including revisions and system upgrades as required",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "execute Proof of Concepts (PoC) and present findings to stakeholders to confirm deployment feasibility and alignment with requirements",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "install, configure, and commission the equipment at designated locations, ensuring compliance with safety and operational standards",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare site for 5G implementation",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "conduct signal strength analysis using antenna parameters to ensure compliance with customer specifications",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "adjust antenna tilt, zenith, and azimuth angles to optimize coverage and minimize interference",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "perform pre-activation checks to validate equipment readiness and network synchronization",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "document site conditions, equipment inventory, and test results for quality assurance and compliance tracking",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6320",
+      "nos_title": ".Perform Installation",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. radio network design principles, Key Performance Indicator (KPI) analysis, parameter tuning,",
+        "KU2. application traffic generators and analyzers, including tools like iPerf and IxLoad, for assessing",
+        "KU3. containerization technologies such as Kubernetes and Docker, and Continuous",
+        "KU4. Layer 2 and Layer 3 protocols relevant to 4G/LTE, and 5G networks, including Radio Resource",
+        "KU5. performance parameters critical for daily network operations, particularly those pertinent to",
+        "KU6. documentation practices for maintaining network logs and compliance reports"
+      ],
+      "gs": [
+        "GS1. read and interpret installation manuals, work instructions, and technical drawings",
+        "GS2. prepare installation reports, cable routing plans, and test result documentation",
+        "GS3. communicate effectively with the planning, network operations, and field engineering teams",
+        "GS4. work collaboratively with installation teams and technicians to ensure smooth execution",
+        "GS5. use analytical and problem-solving skills to identify and rectify installation issues",
+        "GS6. use hand tools, power tools, and electronic test equipment safely and efficiently",
+        "GS7. apply logical thinking to troubleshoot connectivity, power, and performance issues",
+        "GS8. comply with health, safety, and environmental regulations",
+        "GS9. manage time effectively and prioritize tasks to meet project deadlines",
+        "GS10. adapt to changing technologies and new network configurations"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform pre-installation activities and checks",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "ensure the availability and integrity of all gNodeB and transmission units required for installation, ensuring they match the Bill of Materials (BoM)",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "verify the availability and suitability of transmission racks for installation purposes",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "interpret and assess the installation plan from the planning team, recommending modifications if necessary to meet site-specific requirements",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "identify and procure any additional equipment or accessories needed for a complete installation",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "measure the current capacity of cables and equipment using appropriate tools to ensure they meet the total load requirements",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure the selection and installation of appropriate Miniature Circuit Breakers (MCBs) at the rack, corresponding to the equipment's power consumption",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "confirm that MCBs have –48 V DC and proper grounding connectivity with the equipment",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "execute the correct procedures for mounting antennas on various structures (e.g., Ground- Based Towers, Roof-Top Towers, pole mounts) as per design specifications",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Inspect routing of power cables, IF, and RF Cables",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "ensure the proper arrangement and sequencing of equipment within the rack to facilitate optimal performance and maintenance",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "mount antennas securely on designated structures, ensuring alignment with network design parameters",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "connect various cables from the antenna to the tower shelter, transitioning appropriately between feeder cables and jumper/fiber cables",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "inspect and verify the interconnection of jumper, Common Public Radio Interface (CPRI), RF, and other cables at the site, ensuring proper functionality",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "route power and data cables according to the specified architecture and design, adhering to industry standards",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "label all cables accurately with appropriate markers to facilitate easy identification and maintenance",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "ensure that feeder and jumper cables are adequately supported and grounded to prevent signal loss and enhance safety",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "confirm the completion and secure termination of all electrical wiring, adhering to safety protocols",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "handle all cables and connectors with care during connection and disconnection to prevent damage and ensure longevity",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Carry out installation and commissioning of gNodeB",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "install the gNodeB unit in designated indoor or outdoor locations as per planning guidelines, ensuring structural stability and accessibility",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "install and interconnect gNodeB and microwave equipment, ensuring seamless integration with existing network components",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "establish reliable power connections, verifying voltage levels and grounding to prevent electrical issues",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "identify and configure all equipment and network elements required for optimal operation",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "install 5G equipment in Non-Standalone (NSA) mode as per the installation design, facilitating coexistence with existing networks",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "configure network equipment to ensure proper data flow and connectivity as per technical specifications",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "measure and analyze Quality of Service (QoS) parameters, ensuring they meet the standards for Operations, Administration, and Maintenance (OAM)",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "execute network rollout activities and perform software upgrades on network nodes post- installation to enhance functionality",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "onboard and validate enterprise Virtual Network Functions (VNFs) to support diverse service requirements",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "integrate new sites and expand existing ones to alleviate network congestion and improve coverage",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "utilize scientific computation, data acquisition, and processing techniques to ensure successful site installation and commissioning in line with planning guidelines",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6321",
+      "nos_title": ".Perform Compliance",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. the applicable documentation requirements and the significance of maintaining accurate",
+        "KU2. the consequences of non-compliance with network installation and quality assurance",
+        "KU3. the functionality, configuration, and testing of 5G gNodeB, microwave equipment, and NSA",
+        "KU4. industry-standard test tools such as IXIA, Spirent, and their role in network traffic generation",
+        "KU5. use of UE simulators like Aeroflex TM500, Keysight for device testing and validation",
+        "KU6. debugging tools including QXDM, XCAL, and TEMS, and their role in network troubleshooting",
+        "KU7. network emulation technologies and their applications in simulating real-world network",
+        "KU8. reporting standards, formats, and regulatory requirements for compliance documentation",
+        "KU9. site-specific safety and operational guidelines for 5G network infrastructure",
+        "KU10. coordination protocols for inter-team communication during commissioning and compliance"
+      ],
+      "gs": [
+        "GS1. interpret technical notifications, alerts, and system logs to identify issues in network",
+        "GS2. read, analyze, and summarize network test reports to ensure compliance with service",
+        "GS3. troubleshoot network issues by applying analytical and problem-solving skills in real-time",
+        "GS4. communicate effectively with team members, engineers, and stakeholders regarding",
+        "GS5. maintain detailed documentation and compliance logs for audit and operational tracking",
+        "GS6. use network diagnostic tools to assess system performance and detect anomalies",
+        "GS7. plan and organize work schedules to meet compliance deadlines and project timelines",
+        "GS8. adapt to new tools, software, and testing methodologies as per industry advancements",
+        "GS9. ensure all compliance procedures align with industry best practices and regulatory",
+        "GS10. apply attention to detail in preparing reports, ensuring accuracy and completeness in"
+      ],
+      "modules": [
+        {
+          "module_title": "Conduct installation and commissioning checks",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "verify site commissioning requirements as per network planning guidelines and technical specifications",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "conduct power-on tests and validate equipment configurations (e.g., gNodeB, microwave equipment, NSA 5G mode, software upgrades)",
+              "sequence_order": 2,
+              "theory_marks": 2.5,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "perform functional tests using industry- standard tools like IXIA, Spirent, and user equipment (UE) simulators",
+              "sequence_order": 3,
+              "theory_marks": 2.5,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "log and analyze test results in predefined report formats to ensure compliance with performance benchmarks",
+              "sequence_order": 4,
+              "theory_marks": 2.5,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify and document any technical issues, software bugs, or misconfigurations encountered during the test run",
+              "sequence_order": 5,
+              "theory_marks": 2.5,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "coordinate with the technical team to troubleshoot and resolve installation or commissioning issues",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "conduct a retest after issue resolution to validate corrective measures and confirm site stability",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure all processes are executed in line with service provider guidelines, and confirm site readiness",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "document and report the final status of installation and commissioning activities to relevant stakeholders",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare compliance reports",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify and maintain required installation, commissioning, and test documentation, ensuring accuracy and completeness",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "prepare detailed compliance reports covering functional tests, site-specific deviations, and corrective actions taken",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "ensure all reports and logs are stored in appropriate formats (PDF, XML, HTML, DOC) for regulatory and operational use",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "submit compliance reports for review and approval by authorized personnel before site handover",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "obtain official sign-off from stakeholders confirming compliance, operational readiness, and closure of site installation",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6322",
+      "nos_title": ".Carry out",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. the applicable documentation standards and their significance in quality assurance",
+        "KU2. the regulatory and industry standards applicable to 5G network site testing and monitoring",
+        "KU3. the principles of 5G gNodeB architecture, including SA and NSA configurations",
+        "KU4. test strategies and methodologies used for network acceptance and validation",
+        "KU5. common network performance indicators and troubleshooting techniques",
+        "KU6. site infrastructure requirements, including power supply, environmental protection, and",
+        "KU7. role of passive and active infrastructure elements in network performance",
+        "KU8. data logging, storage, and retrieval methods for test results and network monitoring",
+        "KU9. safety protocols and risk mitigation strategies in telecom site testing",
+        "KU10. communication protocols and procedures for coordinating with cross-functional teams"
+      ],
+      "gs": [
+        "GS1. read and interpret technical documents, reports, and notifications accurately",
+        "GS2. write clear and concise test reports and updates for stakeholders",
+        "GS3. communicate effectively with internal teams, clients, and regulatory bodies",
+        "GS4. use analytical reasoning to diagnose and resolve network issues",
+        "GS5. operate and interpret data from industry-standard test tools and simulators",
+        "GS6. manage time effectively to perform acceptance testing and monitoring within deadlines",
+        "GS7. work collaboratively with engineers, technicians, and project managers",
+        "GS8. adapt to evolving testing methodologies and emerging 5G technologies",
+        "GS9. identify and implement process improvements to enhance test efficiency",
+        "GS10. maintain focus and attention to detail when executing tests and analyzing results"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare for Acceptance Testing (AT) and monitoring",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "develop a test strategy using available resources, test tools, and simulators based on project requirements",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "design comprehensive test cases for 5G Standalone (SA) and Non-Standalone (NSA) features, ensuring alignment with 3GPP standards and client specifications",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "analyze and document standard operating procedures for acceptance testing, ensuring clarity for all stakeholders",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "review and optimize test scripts using automation tools and devise practical approaches to simulate real-world scenarios",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "set up test environments, including hardware and software configurations, as per finalized test strategy",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "obtain site-specific documentation, including checklists, site specifications, and safety guidelines, from relevant teams",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Perform Acceptance Testing of new sites",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "execute test cases and validate expected results against actual outcomes",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure the availability and proper functionality of all test equipment required for acceptance testing",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "verify the installation of correct software versions on test devices (laptop, tablet, etc.) before testing",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "inspect the site for physical compliance, including structural integrity, weatherproofing, equipment placement, grounding, and cabling",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify and debug field data anomalies, replicating issues in lab environments for further analysis",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "perform logical tests, including VSWR levels, alarm connectivity, and end-to-end equipment connectivity",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "coordinate with infrastructure engineers and riggers to validate passive infrastructure elements such as antenna alignment, power backup systems, and connectivity",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "validate functional configurations and network parameters against project specifications",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "analyze and interpret test results, recommending corrective actions for any deviations",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "collaborate with development and infrastructure teams to resolve site issues effectively",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Monitor site performance and traffic",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "conduct real-time performance monitoring of radio networks using authorized test instruments",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "perform network health checks, including radio node status, card functionalities, call performance, and sector-wise traffic analysis",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "diagnose and rectify network issues to optimize site performance and ensure service stability",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "take system backups before performing operations such as OMC stop/start, shutdowns, or database re-syncs",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "perform scheduled backups (daily, weekly, monthly) as per maintenance protocols",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "maintain system logs and test tool logs for future debugging and root cause analysis",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "analyze performance trends and identify recurring issues to implement proactive monitoring strategies",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "conduct logical fault analysis and ensure timely rectification to minimize downtime",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Communicate test results and record findings",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "share test results with relevant stakeholders, including the NOC team, supervisors, and project teams",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "communicate pending site issues (punch points) that need resolution before handover",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "update site test records and maintain documentation as per organizational standards",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "ensure test reports and related documentation are accessible to authorized personnel for audits and inspections",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "maintain historical records of test results to support future troubleshooting and network optimization efforts",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "provide structured technical feedback to development teams regarding system performance and optimization opportunities",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "collect and analyze customer-reported issues to improve site reliability and service quality",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9109",
+      "nos_title": ".Follow sustainable",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. e-waste management rules (2022) applicable the telecom sector",
+        "KU2. Central Pollution Control Board (CPCB) hazardous waste disposal regulations",
+        "KU3. safety standards for battery handling and disposal (lead-acid, lithium-ion",
+        "KU4. the importance of structured cabling and cable reuse to minimize telecom waste",
+        "KU5. the techniques for energy optimization in telecom infrastructure (e.g., smart cooling, LED",
+        "KU6. the role of solar energy and other renewable sources in reducing telecom carbon footprint",
+        "KU7. green telecom practices like fuel efficiency in DG sets and power-saving measures",
+        "KU8. best practices in telecom tower site waste management",
+        "KU9. the principles of water conservation and sustainable telecom site design",
+        "KU10. the importance of training telecom employees on environmental awareness and compliance"
+      ],
+      "gs": [
+        "GS1. explain sustainability practices to team members",
+        "GS2. identify and address issues in waste management and energy efficiency",
+        "GS3. maintain logs on waste disposal, recycling, and energy savings",
+        "GS4. analyze power consumption and propose efficiency improvements",
+        "GS5. select between disposal, recycling, or repurposing of telecom waste",
+        "GS6. adhere to the applicable environmental laws and guidelines",
+        "GS7. work with vendors and waste management partners for sustainable practices",
+        "GS8. adapt to new green technologies and sustainability policies",
+        "GS9. ensure prompt and efficient waste disposal and as per applicable schedules"
+      ],
+      "modules": [
+        {
+          "module_title": "Manage hazardous and e-waste at telecom sites",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify, segregate, and categorize e-waste (batteries, cables, outdated equipment) and hazardous waste (lead-acid batteries, diesel residues, etc.)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "dispose of or recycle waste following the applicable e-waste management guidelines",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "follow safe handling procedures for hazardous materials, including protective gear usage",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "maintain logs and records of disposed, recycled, or repurposed telecom waste",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Adopt green energy and resource efficiency practices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "optimize power usage through energy- efficient telecom equipment (e.g., LED lighting, smart cooling systems",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "assist in adopting solar-powered telecom towers and integration of hybrid energy systems (e.g. solar power and battery backup)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "monitor and minimize fuel consumption in Diesel Generators (DG) sets through load balancing and regular maintenance",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Follow waste reduction strategies",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "reduce packaging waste by promoting the reuse of telecom materials and accessories",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "follow rainwater harvesting and wastewater reuse practices in telecom cooling systems",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "promote structured cabling to reduce cable waste and optimize resource utilization",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure compliance with environmental regulations",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "follow Central Pollution Control Board (CPCB) guidelines for telecom site waste disposal",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "assist in conducting periodic environmental audits to ensure sustainability compliance",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "guide co-workers on eco-friendly practices and waste management policies at telecom sites",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9104",
+      "nos_title": ".Manage Work,",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. strategies pertinent to the field that can be used to pursue an advancement of skills",
+        "KU2. key performance indicators for the new tasks",
+        "KU3. feedback processes and formats",
+        "KU4. timelines and goals as well as their relevance to work allocated",
+        "KU5. importance of quality and timely delivery of the product/service",
+        "KU6. layout of the workstation and equipment used",
+        "KU7. escalation matrix and its importance, especially in case of emergencies",
+        "KU8. ways of time and cost management",
+        "KU9. rules/regulation for maintaining health and safety at workplace",
+        "KU10. meaning of hazard, different types of health and safety hazards found in the workplace, risks",
+        "KU11. procedures to report breaches in health, safety and security",
+        "KU12. ways of managing resources and material efficiently",
+        "KU13. ways to recognize common electrical problems and common practices of conserving"
+      ],
+      "gs": [
+        "GS1. explore various pathways to expand one's own learning skills and abilities",
+        "GS2. analyse feedback for improving one's way of working",
+        "GS3. interpret feedback from superiors in a constructive way",
+        "GS4. identify the root cause of problems",
+        "GS5. understand the problem by asking significant questions to clarify the various points of view",
+        "GS6. seek clarifications from superior about the job requirement",
+        "GS7. work in a team with full coordination of team members",
+        "GS8. read instructions/guidelines and Standard Operating Practices (SOP) documents",
+        "GS9. complete tasks efficiently and accurately within stipulated time",
+        "GS10. record data in statutory documents relevant to safety and hygiene",
+        "GS11. escalate/refer all anomalies to the concerned persons",
+        "GS12. identify the most suitable course of action for completing the task using provided resources"
+      ],
+      "modules": [
+        {
+          "module_title": "Manage learning and self-direction",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "develop technical and personal skills to be updated with new technologies prevalent in the industry",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "train the team such that they are able to adapt latest products/services in their working environment",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify opportunities for team building workshops and motivational trainings",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Develop critical thinking and problem solving",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "guide the team to be accountable for timely completion of tasks",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "analyse problems accurately to be able to correctly suggest suitable solutions to the concerned persons",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "train the team to estimate the cause of the problem and validate",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Perform work as per quality standards",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "implement ways to keep immediate as well as team's work area clean and tidy",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "maintain efficiency and productivity while performing role/responsibility",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "supervise the team to ensure that the work is done as per the assigned and agreed requirements",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "create schedules and rosters for the team to ensure they understand individual work requirements",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain safe and secure working environment",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify organisation’s health, safety, security policies and procedures",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "instruct team to report any identified breaches in health, safety, and security policies and procedures to the designated person",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "manage hazards such as illness, accidents, fires or any other natural calamity safely, as per organisation's emergency procedures, within the limits of individual’s authority",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "report any hazard outside the individual’s authority to the relevant person in line with organisational procedures and warn others who may be affected",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Material / energy / electricity conservation practices",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "implement ways to optimize usage of material including water in various tasks/activities/processes",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "supervise the team to ensure responsible use of resources",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "motivate the team to carry out routine cleaning of tools, machine and equipment",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "guide the team to optimize use of electricity/energy in various tasks/activities/processes",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "implement periodic checks of the functioning of the equipment/machine and rectify wherever required",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "guide the team to report malfunctioning and lapses in maintenance of equipment",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "implement ways to use electrical equipment and appliances properly",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

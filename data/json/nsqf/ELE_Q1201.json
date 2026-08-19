@@ -1,0 +1,305 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "ELE/Q1201",
+  "qp_name": "ELE_Q1201",
+  "clean_code": "ELE_Q1201",
+  "total_pages": 25,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:26.740Z",
+  "stats": {
+    "total_nos": 2,
+    "total_modules": 4,
+    "total_pcs": 22,
+    "total_kus": 20,
+    "total_gs": 20,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "ELE/N1427",
+      "nos_title": ".Developing",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understanding of work schedules, shifts, and project timelines in chip design workflows",
+        "KU2. Knowledge of workflow planning and task prioritization for design deliverables.",
+        "KU3. Familiarity with SOC and IC design requirements, including client and project specifications.",
+        "KU4. Differentiation between digital and analog design types and their methodologies.",
+        "KU5. Understanding of ASIC vs. FPGA, including trade-offs related to cost, time, and",
+        "KU6. Detailed knowledge of system architecture elements like memory, processors, interfaces,",
+        "KU7. Techniques for partitioning SOC design and assigning functionality to design blocks.",
+        "KU8. Proficiency in using industry-recommended EDA tools and design software.",
+        "KU9. Understanding of design flow optimization for verification, synthesis, and testing.",
+        "KU10. Concepts of hierarchy, regularity, and reusability in system design to improve performance"
+      ],
+      "gs": [
+        "GS1. Communication skills for effective coordination with engineers and design leads.",
+        "GS2. Critical thinking to choose appropriate design approaches based on project needs.",
+        "GS3. Analytical skills to assess and interpret complex system architectures.",
+        "GS4. Time management for aligning work with shifts, deadlines, and delivery schedules.",
+        "GS5. Collaboration and teamwork with cross-functional design and verification teams.",
+        "GS6. Problem-solving skills for resolving design integration and functionality issues.",
+        "GS7. Attention to detail for accurate system block specification and interface definition.",
+        "GS8. Adaptability to use different design tools and workflows as required.",
+        "GS9. Documentation skills to define system specifications, design flows, and interfaces.",
+        "GS10. Initiative to design reusable modules and contribute to design efficiency."
+      ],
+      "modules": [
+        {
+          "module_title": "Identifying Work Requirements",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Interact with the lead engineer to understand work schedules, shifts, and delivery dates.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify and plan work activities based on workflow and deliverables.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Interpreting the Design Mandate",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Interact with project leads and design leads to understand project-specific design requirements for SOC or integrated circuit chips.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Identify the type of design required, such as digital or analog, and their respective design flows.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Select the design type, such as ASIC or FPGA, based on factors like design cycle time, expense, and custom design requirements.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Review the complete system architecture, including memory, microcontroller, microprocessor, memory blocks, timers and oscillators, interfaces, and power management.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Segregate the design into partitions, assess block placement, and define the functions of each SOC block.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Designing for Specifications",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Use organization-recommended tools, software, and applications to perform designing.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Coordinate with different design teams to finalize the design flow for suitability in verification and testing.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Specify blocks in the system design using concepts of hierarchy and regularity to enable faster synthesis and lower process times.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Demonstrate designing reusable blocks.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Define external interfaces to the design system.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ELE/N1428",
+      "nos_title": ".Coordinating and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Knowledge of hardware description languages like Verilog and VHDL and high-level",
+        "KU2. Understanding how to collaborate with architects to define coding strategies for hardware",
+        "KU3. Familiarity with IP core blocks and their integration into SOC and IC designs.",
+        "KU4. Proficiency in writing HDL code to describe hardware components and system behavior.",
+        "KU5. Knowledge of simulation techniques for ASIC design using models like VHDL.",
+        "KU6. Ability to distinguish between design types such as high-level, control, operative, and",
+        "KU7. Understanding of digital logic design including data paths, control logic, and interconnects.",
+        "KU8. Awareness of verification methodologies and interpreting verification results.",
+        "KU9. Knowledge of backend design processes and testability considerations (DFT).",
+        "KU10. Understanding behavioral modeling and architectural input integration in system design."
+      ],
+      "gs": [
+        "GS1. Technical communication to effectively collaborate with architects and design teams.",
+        "GS2. Analytical thinking to interpret complex design specifications and translate them into code.",
+        "GS3. Problem-solving skills for debugging and improving hardware functionality based on",
+        "GS4. Teamwork for efficient coordination with verification, testing, and backend teams.",
+        "GS5. Planning and organizing skills to manage coding tasks and simulation milestones.",
+        "GS6. Attention to detail in writing precise and optimized HDL code.",
+        "GS7. Adaptability to incorporate verification feedback and make iterative design changes.",
+        "GS8. Documentation skills for recording design logic, test results, and revisions.",
+        "GS9. Initiative to explore and integrate reusable IPs and efficient coding practices.",
+        "GS10. Time management for aligning design tasks with verification and architecture inputs."
+      ],
+      "modules": [
+        {
+          "module_title": "Coding and Synthesis",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Select languages for designing, such as HDL (Verilog, VHDL) and high-level languages (C, C++).",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Select and specify the coding required for designing in coordination with the architect.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Identify IP core blocks and their use in the system design.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Write hardware descriptions of the IC using HDL.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Build simulated models (e.g., VHDL models) for ASIC designs as per system specifications.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Interpret and specify different design types, such as high-level design, operative part design, control part design, and memory design.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Design the logic for the system, including structuring blocks, interconnection patterns, data path structure, and control sequences.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Coordinate with verification engineers after coding the design system and analyze verification results.",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Collaborate with the backend department of physical design and design-for-test engineers to make design changes based on verification results and system requirements",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Take inputs from the architecture team to specify behavioral requirements for the design and tasks performed by the chip module.",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

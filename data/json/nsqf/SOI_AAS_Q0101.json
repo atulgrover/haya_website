@@ -1,0 +1,1506 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SOI/AAS/Q0101",
+  "qp_name": "SOI_AAS_Q0101",
+  "clean_code": "SOI_AAS_Q0101",
+  "total_pages": 57,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:31.892Z",
+  "stats": {
+    "total_nos": 7,
+    "total_modules": 40,
+    "total_pcs": 122,
+    "total_kus": 37,
+    "total_gs": 28,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SOI/AAS/N0101",
+      "nos_title": ".Supervise",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Satellite Geodesy Keplers laws of satellite motion, Keplerian orbit in space, Perturbed satellite",
+        "KU2. Basics of GNSS, Various GNSS systems such as GPS, GLONASS, GALELIO, Beidou",
+        "KU3. Differencing of GNSS data and parameters estimation, Single differences, Double differences",
+        "KU4. Plan and execute the horizontal control survey by Various positioning techniques in GNSS",
+        "KU5. GNSS signal propagation and error budget, Satellite Geometry and Accuracy measures."
+      ],
+      "gs": [
+        "GS1. Plan horizontal control with GNSS for required accuracy.",
+        "GS2. Execution of the GNSS data observation and processing of the data.",
+        "GS3. Optimum utilization of time and resources within the estimated budget.",
+        "GS4. Troubleshooting in case the required accuracy could not be achieved in the first attempt and"
+      ],
+      "modules": [
+        {
+          "module_title": "Plan for GPS data collection.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Choose the type of GNSS survey (Static or Kinematic) required based on project requirement.",
+              "sequence_order": 1,
+              "theory_marks": 10,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Plan for observation of GNSS data and parameters (i.e. Network mode, Radial method, observation duration, observation time, elevation mask, etc.) to achieve the required accuracy.",
+              "sequence_order": 2,
+              "theory_marks": 10,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Plan no. of resources required for the task i.e. instrument, software, manpower, vehicle etc.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Plan QA/QC planning for final horizontal control points.",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Perform GNSS data collection.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Collect master station data (previously established GPS points, Survey of India GPS library, CORS station data or other) to be used as control points as per plan.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Locate master station on ground and create marking (permanent or temporary as per requirement) for unknown points.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Setup GNSS instrument and measure height of the instrument and observe GNSS data as per plan.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Download observed data and save in the required format (native or RINEX) as per plan.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Process observed GNSS data.",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Setup software and input the observed GNSS data for processing",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Carryout baseline measurement",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Adjust baseline for co-ordinates",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Generate final report of horizontal control of all points in the project.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Check accuracy requirement",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SOI/AAS/N0102",
+      "nos_title": ".Oversee Total",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Working principle of Electronic Total Station, Basic measurement involved i.e. angular and",
+        "KU2. Basics of control survey using Electronic Total Station. Its planning, execution and final report",
+        "KU3. Basics of detail survey using Electronic Total Station. Its planning, execution and final report",
+        "KU4. The basics of curve design and its elements for stake out of curve at field",
+        "KU5. Types of error, their adjustment and precaution during data collection involved in traversing"
+      ],
+      "gs": [
+        "GS1. Plan horizontal control using total station of required accuracy.",
+        "GS2. Execution of the control work using total station, data processing and final report generation",
+        "GS3. Plan detail survey of required accuracy.",
+        "GS4. Execution of detail survey using total station, data processing and final map generation of the",
+        "GS5. Application of surveying and mapping principle for setting out of curve and tunnel alignment.",
+        "GS6. Optimum utilization of time and resources within the estimated budget.",
+        "GS7. Troubleshooting in case the required accuracy could not be achieved in the first attempt and"
+      ],
+      "modules": [
+        {
+          "module_title": "Plan for Traverse using Total Station.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Plan traverse to provide or extend the control point at a specified location.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Plan number of resources required for the task i.e. instrument, software, manpower, vehicle, etc.",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Do QA/QC planning for final horizontal control points.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data collection using Total Station.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "Identify two control stations whose co- ordinates are known for setup of Total Station or create two using GNSS survey method.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Setup Total Station using known control points.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Start traversing and create temporary points in between and close the traverse at the same point or some known point.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Traverse adjustment.",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Perform traverse adjustment and generate report for final control value of unknown point within the permissible closing error limit.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Submit a report with new control point coordinates, proper sketch of traverse, error report etc",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Plan for Detail Survey using Total Station.",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Plan for detail survey i.e. list out the details which need to be picked. Plan for nearby provisioning of control points.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Plan number of resources required for the task i.e. instrument, software, manpower, vehicle, etc.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Plan QA/QC procedure.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data collection using Total Station.",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Identify two intervisible control stations whose co-ordinates are known for setup of Total Station or create two using GNSS survey method.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Setup Total Station using known control points.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Start survey to pick up the details of the features, collect and store the data as per plan.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Download and data representation.",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Download data and save.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Prepare a map with necessary map template and legends.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Design and calculate the various elements of curves.",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "Calculate the various elements of horizontal and vertical curves.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Calculate the required elements for setting out of curve.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Select the proper method to stake out the curve / tunnel alignment as per design.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SOI/AAS/N0103",
+      "nos_title": ".Monitor vertical",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. The Earth and its gravity field, gravity, Curvature of Level surfaces and Plumb line",
+        "KU2. Principle of levelling, classification accuracy standard, various methods for providing vertical",
+        "KU3. Vertical Datum: Mean Sea Level, Brief history of Indian Levelling network, Different height",
+        "KU4. Working principle of Digital level instrument, sources of error, testing, adjustment and",
+        "KU5. Working principle of Gravimeter, sources of error, testing, adjustment and handling.",
+        "KU6. Final computation and Adjustment of levelling and Gravity network."
+      ],
+      "gs": [
+        "GS1. Vertical control using digital level of required accuracy.",
+        "GS2. Execution of the control work for height using digital level, data processing and final report",
+        "GS3. Optimum utilization of time and resources within the estimated budged.",
+        "GS4. Troubleshooting in case the required accuracy could not be achieved in the first attempt and"
+      ],
+      "modules": [
+        {
+          "module_title": "Plan for vertical control using digital level.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Plan vertical control survey route to connect the unknown height point from known point.",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Plan for gravity data observation.",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Plan no. of resources required for the task i.e. instrument, software, manpower, vehicle etc.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Plan QA/QC planning for final horizontal control points.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data collection using Digital Level.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Check digital level calibration and collimation error and check the suitability of the instrument to start the work.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Start levelling from known/unknown points along the route, record data digitally or physically, create temporary bench mark and reach to the final bench mark as per planning.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Enter permanent and temporary benchmark details (i.e. written description, sketches, co- ordinates) used/created during levelling in a register as per provide format.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data collection using gravimeter.",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Check calibration and other parameters for suitability of instrument to observe gravity observation.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Collect, record and store gravity data on the levelling bench marks.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data download",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "Download levelling data and save in required format.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Download gravity data and save it in required format.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data checking and adjustment.",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Check levelling data to meet the specified criteria and provide a decision for acceptance or re-levelling",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Check gravity data as per standard procedure and perform necessary correction.",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Perform adjustment operation using accepted levelling and gravity data to obtain the final value of control points i.e. height.",
+              "sequence_order": 3,
+              "theory_marks": 10,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Create final report for vertical control survey with final height of unknown stations with details of raw data collected, corrections and adjustments performed and details of temporary station with sketches as per standard practice.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SOI/AAS/N0104",
+      "nos_title": ".Coordinate and",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Workflow for Collection of data using Field Data Collection (FDC) devices.",
+        "KU2. Basics of base map service (i.e. WFS, WMS, WCS, WMTS) and its uses and limitations",
+        "KU3. Basic understanding of feature and attribute fields as per project requirement",
+        "KU4. Data acceptance policy in case where previous data is also available and reporting of the"
+      ],
+      "gs": [
+        "GS1. Plan and execution of feature and attribute collection for client requirement.",
+        "GS2. Optimum utilization of time and resources within the estimated budged.",
+        "GS3. Troubleshooting in case the required accuracy could not be achieved in the first attempt and"
+      ],
+      "modules": [
+        {
+          "module_title": "Plan for feature and attribute collection.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Plan for data collection (i.e. design of forms, fields and other necessary data required), store, and representation as per the user requirement.",
+              "sequence_order": 1,
+              "theory_marks": 10,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Plan for base map, WFS or vector data for feature or attribute data collection.",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Plan number of resources required for the task i.e. instrument, software, manpower, vehicle etc",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Plan QA/QC procedure.",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Data collection using FDC.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Prepare base map, WFS or vector data for feature or attribute data collection.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Setup FDC with all basic data stored or through web services.",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Connect external GNSS for better accuracy if provisioned during planning",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Start survey to pick up the details of the features and fill their attribute in the designed fields. In case feature is already there fill up the attribute details in the respective fields.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Download and data representation.",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Check the feature and attribute data for its consistency with earlier data available and proceed as per the policy of data acceptance.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Download data and save.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Prepare a map with necessary map template and legends as per plan.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SOI/AAS/N0105",
+      "nos_title": ".Supervise",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Basics of Cadastral survey, mapping and its record.",
+        "KU2. Read and interpret the details from cadastral record for relaying, updating, etc.",
+        "KU3. Use of latest technology to create, update/modify the cadastral records.",
+        "KU4. Common Terminology Used in Cadastral Survey in India"
+      ],
+      "gs": [
+        "GS1. Read and understand the cadastral record.",
+        "GS2. Basic workflow adopted in creation of cadastral record. Various basic administrative and legal",
+        "GS3. Optimum utilization of time and resources within the estimated budged.",
+        "GS4. Troubleshooting in case the required accuracy could not be achieved in the first attempt and"
+      ],
+      "modules": [
+        {
+          "module_title": "Read, Create & modify cadastral maps and cadastral record.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Read the cadastral maps and other record.",
+              "sequence_order": 1,
+              "theory_marks": 10,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Measure distance using cadastral maps.",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Relaying the missing pillar based on survey data.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Transform/convert cadastral map into GIS ready map.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "Scan the existing cadastral map.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Georeference the scanned cadastral map using ortho rectified image (ORI) from drone/UAV, Satellite etc. or ground control points.",
+              "sequence_order": 2,
+              "theory_marks": 10,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Digitize the georeferenced map and prepare a GIS ready map with attribute field as per project requirement.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Entry of attribute data into existing field.",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Use of UAV for Cadastral survey.",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Plan for Cadastral survey using UAV to generate ORI.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SOI/AAS/N0106",
+      "nos_title": ".Manage 3D data",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. Principles of photogrammetry, aerial photography and its components, data processing of",
+        "KU2. Project planning for aerial data capturing. Ground control requirement for georeferencing",
+        "KU3. Data processing steps like Aerial triangulation, bundle block adjustment. Generation and",
+        "KU4. Setup requirement for 3D feature extraction and its components.",
+        "KU5. Principles of Drone photogrammetry. Types of Drones, its components and data processing",
+        "KU6. Project planning for drone data capturing. Ground control requirement for georeferencing",
+        "KU7. Data processing steps like tie point generation, spares point cloud, dense point cloud Aerial",
+        "KU8. Generation and quality control of DSM, DEM, Contour, ORI & 3D model.",
+        "KU9. Basic Measurement Principles & Basic Physics of Laser Ranging, Basic Components of ALS",
+        "KU10. Flight Planning & Ground Controls, Guidelines, Best Practices, Standards for LiDAR Data"
+      ],
+      "gs": [
+        "GS1. Plan for aerial data capture and processing of the data to generate the final deliverables.",
+        "GS2. Control provision for positional accuracy and quality control plan to meet the project",
+        "GS3. Optimum utilization of time and resources within the estimated budged.",
+        "GS4. Troubleshooting in case the required accuracy could not be achieved in the first attempt and"
+      ],
+      "modules": [
+        {
+          "module_title": "Plan for capture of data (flight planning).",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Plan for data capture element like front overlap, side overlap, flight height, GSD based on project requirement.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Plan for no. of ground control points and check points required for the georeferencing and QA/QC",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Plan QA/QC planning for final horizontal control points.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Plan no. of resources required for the task i.e. instrument, software, manpower, vehicle etc.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Perform Aerial triangulation.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Geo-indexing of photos: Creation of photo ties, examination of overlaps, flight direction control planning on index",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Create Block file for the captured data.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Generate manual & automatic tie-points, measure GCP",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Perform Bundle Block adjustment",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Create DSM, DEM, Contour and ORI.",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Generate DSM as per project requirement.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Generate DEM as per project requirement.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Generate Contour as per project requirement.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Generate ORI as per project requirement.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Extract 3D feature.",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Set up of system for 3D feature extraction like setup of topo mouse, software etc",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Extract 3D feature as per project requirement and save the data in required format.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Mission Planning for Drone/UAV.",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Plan mission to capture the data.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Plan for no. of ground control points and check points required for the georeferencing and QA/QC",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Plan QA/QC method for horizontal control points.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Plan no. of resources required for the task i.e. instrument, software, manpower, vehicle etc.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Execute flight for data acquisition.",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "Perform preflight checks including regulatory permission.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Execute flight as per flight plan",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Download flight data along with other necessary files i.e. flight logs, base station data.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Fill up all required/mandatory formats.",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Process acquired data.",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "Geotag the drone data.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Generate DSM and export as per project requirement.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Generate DEM and export as per project requirement.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Generate ORI and export as per project requirement.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "Generate Contour and export as per project requirement.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "Generate 3D model and export as per project requirement.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Mission Planning (LiDAR)",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "Plan mission to capture the data.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "Plan for no. of ground control points and check points required for the georeferencing and QA/QC",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "Plan QA/QC method for horizontal control points.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "Plan no. of resources required for the task i.e. instrument, software, manpower, vehicle etc.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Open Lidar data in software.",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC33",
+              "pc_description": "Open LAS data in software",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "Measure height from LAS data.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SOI/AAS/N0107",
+      "nos_title": ".Ensure GIS",
+      "sequence_order": 7,
+      "is_generic": false,
+      "kus": [
+        "KU1. Fundamentals of Cartography for map design. Basics of GIS and various open-source software",
+        "KU2. Various map element like Datum, projection, symbology, topology, map layout and printing.",
+        "KU3. GIS software tools and functioning to implement the theoretical concepts."
+      ],
+      "gs": [
+        "GS1. Plan for various resources like base image, control point for referencing, software to be used,",
+        "GS2. Execute, supervise and manage the map creation related projects."
+      ],
+      "modules": [
+        {
+          "module_title": "Download and use open-source software and data.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Search download, install, open & utilize the open-source GIS software",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Download open-source and freely available raster and vector data from various sources like Survey of India, Bhuvan, USGS, Google earth, Street map etc",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Geo-reference the raster data.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Open software and load the raster image/satellite image/ORI.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Identify and mark the control point on input dataset and enter the known co-ordinate value.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Geo-reference the input dataset using a proper georeferencing method.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Calculate the RMSE value of final geo- referencing process and check it against the permissible value.",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Create GIS file and spatial database.",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Create a file geodatabse/geopackage/shapefile and save it.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Install database software for geospatial data, create tables, connect it with GIS software.",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Create Schema including Domains & Sub-types to implement Spatial Data Model Structure (SDMS) as per project requirement.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Create new stylesheet and Customized symbols in a style-sheet using font symbols in third- party s/w, Configuring the Colour Table as per SOI/project required symbology",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Install SOI/project required, font-files and Attach SOI/project required Style-sheet.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Extract feature from geo-referenced raster dataset as per SDMS with proper symbology.",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Interpret feature, choose right feature class/category.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Digitize and attach proper symbology.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "QA/QC of digitized data before map finalization.",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Create rule-based topology.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Run topological validation.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Correct error after topological validation, if any",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare map layout as per template if any and print the map.",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "Create map layout in software as per project map template.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Create pdf file for printing in large format printers.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "QA/QC of printed map",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "Examine the hard copy of map for omissions and mistakes. Check cartographic details and overlapping symbols, text placement and spelling correction etc.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Create thematic map",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "Create a large-scale thematic map as per project requirement.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Transform Datum from one datum to another datum.",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "Perform datum transformation using 7 parameters.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Convert co-ordinate from one system to another.",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "Perform co-ordinate transformation from one system to another.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

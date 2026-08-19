@@ -1,0 +1,1192 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6102",
+  "qp_name": "TEL_Q6102",
+  "clean_code": "TEL_Q6102",
+  "total_pages": 46,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.469Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 19,
+    "total_pcs": 100,
+    "total_kus": 63,
+    "total_gs": 36,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6615",
+      "nos_title": ".Prepare for",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. common types of smart devices used in telecom and smart environments (e.g., smart",
+        "KU2. functional architecture and technical capabilities of smart edge and IoT devices (e.g., smart",
+        "KU3. parameters for evaluating site readiness, such as signal strength (RSSI), data packet loss,",
+        "KU4. company formats and checklists used for pre-installation assessment.",
+        "KU5. basics of smart device integration in real-world applications such as smart home control,",
+        "KU6. protocols and standards used in device-to-device and device-to-cloud communication (e.g.,",
+        "KU7. methods for analyzing structured and unstructured data from customer environments (e.g.,",
+        "KU8. techniques for identifying optimization needs based on customer KPIs such as downtime",
+        "KU9. importance of data security, encryption, and privacy compliance (e.g., data residency,",
+        "KU10. process for mapping user requirements to smart device capabilities using use-case",
+        "KU11. application of basic networking concepts such as IP addressing, subnetting, and DHCP in",
+        "KU12. standard tools and diagnostic utilities used for signal testing, protocol sniffing, and network",
+        "KU13. techniques for creating basic solution design documents, block diagrams, and configuration",
+        "KU14. process for logging customer preferences, device compatibility, and installation feedback.",
+        "KU15. awareness of confidentiality and data privacy while handling customer environments."
+      ],
+      "gs": [
+        "GS1. communicate clearly and professionally with customers, supervisor and team members.",
+        "GS2. apply basic numerical skills for measuring, comparing, and evaluating data.",
+        "GS3. interpret technical instructions and customer specifications.",
+        "GS4. organize tasks and manage time effectively to meet installation schedules.",
+        "GS5. work collaboratively with team members during site assessments.",
+        "GS6. maintain accuracy and attention to detail while documenting information.",
+        "GS7. adapt to changing customer requirements and evolving technologies."
+      ],
+      "modules": [
+        {
+          "module_title": "Analyse customer requirements and environment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interpret customer-provided technical specifications, including device type, data throughput, power requirements, and connectivity standards.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify and document smart device functionalities requested by the customer, such as predictive alerts, voice command responsiveness, or real-time monitoring.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "conduct site feasibility assessments including structural compatibility, network availability (LAN/WAN/IoT protocols), and power sources.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "verify location-specific environmental constraints such as interference sources, ambient temperature, and physical obstructions.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "assess customer’s existing hardware ecosystem (e.g., routers, sensors, hubs) for compatibility with proposed smart devices.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "report any site-level technical issues or constraints to the supervisor.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Collect and review data for smart device installation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "collect operational datasets such as workflow patterns, device usage statistics, sensor inputs, and legacy system logs.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "validate collected data against technical benchmarks to determine latency tolerance, bandwidth needs, and device capacity limits.",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "collect performance data and reports of existing devices (e.g., sensors, biometrics, etc.) if any, installed at the premises.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify anomalies or inconsistencies in historical performance or failure logs that impact device integration.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "record data formats, transmission protocols (e.g., MQTT, Zigbee, Bluetooth Mesh), and existing communication layers.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "collate and structure data to support smart device configuration and parameter tuning.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Suggest solution options to the customer",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "analyse customer’s business processes and automation requirements to recommend suitable smart device applications (e.g., facial recognition for access control, sensor-based automation).",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "map customer KPIs (e.g., energy savings, surveillance coverage, asset uptime) with smart device capabilities and integration endpoints.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "explain standard smart device features and use-cases (e.g., motion detection, voice activation) to the customer.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "suggest appropriate placement or usage scenarios for smart devices, based on customer environment and supervisor direction.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "recommend devices that address common customer needs like remote monitoring, home automation, or energy management.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "communicate predefined smart device use- case benefits (e.g., safety alerts, appliance control) to customers in simple terms.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "respond to basic customer queries about smart device functionality using product manuals or FAQs.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "assist customers in visualizing and explaining the recommended device layout using printed diagrams or app-based interfaces.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "document final solution architecture with detailed block diagrams, device lists, and logical data workflows for customer validation.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6616",
+      "nos_title": ".Install Smart",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. principles of smart predictive maintenance including statistical anomaly detection, trend",
+        "KU2. types of data collected by sensors (e.g., temperature, vibration, acoustic, motion) and how",
+        "KU3. embedded hardware platforms commonly used in smart platform installations (e.g.,",
+        "KU4. basic communication protocols such as MQTT, CoAP, LoRa, and Zigbee and their role in real-",
+        "KU5. importance and methods of real-time data validation using device log analyzers, buffer",
+        "KU6. calibration techniques for smart sensors (e.g., gyroscopes, humidity sensors, proximity",
+        "KU7. common smart dashboard features such as fault prediction graphs, CPU/GPU load metrics,",
+        "KU8. typical failure modes in smart platforms, such as thermal throttling, memory leaks, inference",
+        "KU9. diagnostic software and command-line tools (e.g., dmesg, i2cdetect, journalctl, syslog) used",
+        "KU10. use of CMMS tools and ticketing platforms to log incidents, schedule maintenance, and track",
+        "KU11. standard escalation protocols and severity classification for maintenance issues in smart",
+        "KU12. structured cabling standards (e.g., TIA-568, IS/IEC 60364-5-52), cable types, segregation",
+        "KU13. tools and digital platforms used for documenting installations, including geotagging, layout"
+      ],
+      "gs": [
+        "GS1. communicate clearly with customers to explain device function, status of installation, and",
+        "GS2. interpret structured instructions and layout diagrams provided by supervisors or manuals.",
+        "GS3. solve basic installation issues like device non-responsiveness or cable misrouting using",
+        "GS4. use basic arithmetic and measurements for determining distances, mounting angles, or cable",
+        "GS5. manage time effectively to complete installation within the allocated visit schedule.",
+        "GS6. adapt to minor contextual changes such as different wall surfaces or alternate device",
+        "GS7. maintain a positive, helpful attitude during customer interaction and feedback handling."
+      ],
+      "modules": [
+        {
+          "module_title": "Perform pre-installation checks and preparation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "inspect and verify the hardware against the Bill of Materials (BoM), including smart sensors, controllers, adaptors, mounting kits, and user manuals.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "validate device model, firmware version, and compatibility with customer infrastructure and integration requirements.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Install smart devices as per business model requirements",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify mounting zones based on coverage needs, field-of-view angles, lighting conditions, and device range requirements (e.g., motion sensors, smart cameras).",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "recognize the components used in smart devices such as embedded processors, microcontrollers, and wireless communication modules.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify microprocessor boards (e.g., Raspberry Pi, Arduino, ESP32) used at the site and validate their suitability for deployment.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "assess the appropriate placement of environmental or occupancy sensors to meet business objectives like energy optimization or automated lighting.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "use hand and power tools such as rotary drill, stud finder, and fish tape to mount devices on walls, ceilings, or partitions.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "route and connect communication cables (e.g., Cat6, coaxial) into appropriate ports ensuring secure termination and minimal signal interference.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "establish and verify power supply using adaptors or PoE switches, and test voltage output and grounding with a multimeter.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "perform firmware updates via local interface or cloud console and verify checksums to ensure secure installation.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "initiate device provisioning through mobile apps or web portals, configuring parameters like MAC address, IP settings, and firmware sync.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "connect devices to cloud platforms (e.g., AWS IoT, Azure IoT, or proprietary systems) using valid SSID and credentials.",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "run diagnostics to verify smart features such as gesture recognition, environmental sensing, or command execution.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "test responsiveness of actuators and sensors using loopback commands, ping tests, and API calls.",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "align visual devices like IP cameras or smart displays ensuring coverage for surveillance or facial/gesture control use cases.",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "check wireless signal strength using tools (e.g., NetSpot, WiFi Analyzer) and ensure optimal connectivity with minimal loss.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "install add-ons like weatherproof covers, filters, or enclosures based on the deployment environment.",
+              "sequence_order": 15,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "verify performance of smart modules like temperature, humidity, accelerometer, gyroscope, and ensure data accuracy.",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "conduct field tests for real-time functionality like motion-triggered alerts, voice control, or remote switching operations.",
+              "sequence_order": 17,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Perform routing and document smart device installation",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "lay structured cabling for power and data as per standards, ensuring segregation, safe routing, secure fastening, proper labeling, and inspection for damage, grounding issues, or missing surge protection.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "capture geotagged photos of installed devices, annotate them on digital layouts, and conduct a final walkthrough with the customer and supervisor to verify installation quality and compliance with the design plan.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6612",
+      "nos_title": ".Perform Cloud",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. cloud platforms and services (AWS, Azure, GCP) and their role in testing and deployment.",
+        "KU2. cloud testing models (IaaS, PaaS, SaaS) and their application in different environments.",
+        "KU3. cloud application architecture and deployment patterns (e.g., microservices, containerization).",
+        "KU4. security practices for cloud environments, including data encryption, access controls, and",
+        "KU5. automation tools (Katalon Studio, Rest Assured, Telerik Test Studio) and their integration into",
+        "KU6. cloud-specific testing strategies (functional, load, stress, scalability) and tools used to execute",
+        "KU7. best practices in bug tracking and defect management, including using tools like Bugsee,",
+        "KU8. techniques for regression testing and ensuring that fixes do not affect the overall system",
+        "KU9. cloud application monitoring and diagnostic tools to detect and resolve issues during and after"
+      ],
+      "gs": [
+        "GS1. read and write to follow work instructions and maintain records.",
+        "GS2. communicate effectively with team members and supervisors.",
+        "GS3. stay updated on gemstone processing techniques and industry trends.",
+        "GS4. manage time efficiently to meet production deadlines.",
+        "GS5. identify and solve problems related to gemstone defects and processing.",
+        "GS6. apply critical thinking to improve processing methods and quality."
+      ],
+      "modules": [
+        {
+          "module_title": "Requirement understanding and planning",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interpret telecom software or application testing requirements and select appropriate cloud platforms and test environments in coordination with development and operations teams.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "configure cloud-native testing tools and validate connectivity with virtualized infrastructure and telecom-grade services such as OSS/BSS and SD-WAN platforms.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "define the suitable testing approach and methodology based on the cloud service model (IaaS, PaaS, SaaS).",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "work with development and DevOps teams to clarify system architecture and identify potential cloud deployment challenges.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Cloud environment setup and configuration",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "provision and configure the cloud platforms (e.g., AWS, Azure, Google Cloud) necessary for testing, ensuring resource availability and test coverage.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "configure essential system components (e.g., OS, middleware, databases, application dependencies) based on defined specifications.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "set up and integrate test automation tools such as Selenium, JMeter, and Postman into the CI/CD pipelines.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "validate network connectivity and synchronization of data between the cloud testing environment and production-like systems.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Security and compliance",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "implement security measures such as access control, data encryption, and compliance with data privacy regulations in the cloud testing environment.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure that testing data is anonymized and complies with organizational and legal standards regarding data protection.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Cloud testing execution and bug identification",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "design test cases that address critical functional, performance, scalability, and security scenarios tailored to cloud environments.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "execute smoke tests or sanity checks to validate environment readiness before comprehensive testing.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "execute automated and manual test cases in the cloud environment to validate performance and functionality of telecom applications like VoLTE and 5G network functions.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "identify, log, and coordinate resolution of bugs or issues, ensuring seamless integration of continuous testing in telecom DevOps workflows.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Bug fixing and defect resolution",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "work with developers and DevOps teams to resolve identified defects and bugs quickly while ensuring code integrity.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "verify fixes by conducting re-testing to confirm defect resolution without introducing new issues.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "perform regression testing to ensure that the application remains stable after bug fixes.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Post-testing validation and reporting",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "validate that cloud-based applications meet performance benchmarks and function correctly after the defect fixes are applied.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "prepare detailed test reports including testing outcomes, bug fixes, and lessons learned, ensuring that results are communicated clearly to stakeholders.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "provide feedback and recommendations for improving the cloud application's architecture and testing processes.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9101",
+      "nos_title": ".Organise Work and",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational procedures for workplace management, task allocation, and quality assurance",
+        "KU2. applicable health, safety, and environmental policies as per national/international standards",
+        "KU3. importance and application of the 5S methodology (Sort, Set in Order, Shine, Standardise,",
+        "KU4. methods for digital documentation of work records, task sheets, and material movement logs",
+        "KU5. common workplace hazards (e.g., ESD, fire, electrical faults, trip hazards) and mitigation",
+        "KU6. types and correct usage of PPE (e.g., gloves, goggles, ESD wrist straps, masks, safety shoes)",
+        "KU7. safe practices for lifting, bending, standing, and workstation ergonomics",
+        "KU8. first aid procedures for minor cuts, electric shocks, or workplace injuries",
+        "KU9. importance of maintaining hygiene and cleanliness in workstations, tools, and devices",
+        "KU10. indicators of equipment or machinery malfunction and escalation protocols",
+        "KU11. energy-saving practices applicable to lights, equipment, and HVAC systems",
+        "KU12. sustainable practices in material usage, including waste minimisation and recycling",
+        "KU13. types of waste: recyclable, non-recyclable, hazardous (e.g., batteries, solvents, e-waste)",
+        "KU14. correct procedures for the disposal of different types of waste in accordance with",
+        "KU15. usage of digital tools (e.g., mobile apps, web portals, task boards) for productivity tracking"
+      ],
+      "gs": [
+        "GS1. read and interpret organisational procedures, safety protocols, labels, and warning signage",
+        "GS2. write clear and accurate reports/logs in paper or digital format regarding tasks performed,",
+        "GS3. communicate effectively with peers and supervisors regarding workload, delays, hazards, or",
+        "GS4. listen attentively and follow safety instructions, tool handling techniques, or ergonomic",
+        "GS5. plan daily tasks by prioritising safety and quality over speed",
+        "GS6. identify and resolve minor operational problems independently, escalating only where",
+        "GS7. work as part of a team to maintain cleanliness, safety, and quality standards in a shared",
+        "GS8. apply critical thinking to identify risks and recommend proactive safety measures.",
+        "GS9. foster a positive and responsible safety culture in the workplace.",
+        "GS10. stay updated on evolving safety standards and regulations."
+      ],
+      "modules": [
+        {
+          "module_title": "Maintain an organised, productive, and digitally compliant workspace",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "maintain a clean, clutter-free, and ergonomically safe workspace aligned with 5S principles",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "follow designated workflow as per the organisational Standard Operating Procedures (SOPs)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "digitally log work completed, including time stamps, material usage, and issues faced",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "track and update digital task checklists, inventories, or handovers through mobile/desktop apps",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify delays, workflow inefficiencies, or material constraints and escalate appropriately.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Adhere to health, safety, and environmental guidelines",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "comply with organisational health, safety, and environment (HSE) policies at all times",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "use personal protective equipment (PPE) such as ESD wrist straps, gloves, masks, and safety footwear",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "report any breaches in safety protocols, near misses, or unsafe practices immediately to supervisor/concerned authorities",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "detect hazards, including spillage, loose wiring, excessive noise, or EMI sources and respond as per SOP",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "follow lockout/tagout procedures when working around electrical or moving parts",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "adhere to safe lifting techniques, workstation posture norms, and equipment handling procedures",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "handle tools and heavy components using trolleys or assistive equipment when needed",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify early signs of physical or mental fatigue and report for preventive action",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "inform supervisor of symptoms related to communicable diseases or unsafe coworker behaviour.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conserve energy and manage resources efficiently",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "minimise wastage of consumables, components, and materials by adhering to industry best practices",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use electricity, lighting, and climate-control systems responsibly",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "power off equipment, tools, and terminals when not in use",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure routine maintenance, cleaning, and calibration of machines/tools to improve performance",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "report leakages, overheating, or malfunctions immediately for rectification",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "use digital tools to monitor and reduce environmental footprint, where applicable.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Implement safe and sustainable waste disposal practices",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "segregate and dispose of hazardous, recyclable, and general waste as per guidelines",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "deposit e-waste or used batteries at designated collection points following e-waste protocols",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "follow ESD-safe disposal procedures for sensitive electronic components",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9102",
+      "nos_title": ".Interact Effectively",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational structure, hierarchy, and roles of team members, supervisors, and",
+        "KU2. professional etiquette and expected behaviour in face-to-face, virtual, and telephonic",
+        "KU3. importance of clear communication and active listening to ensure mutual understanding",
+        "KU4. common digital communication tools (e.g., email, chat apps, video conferencing platforms)",
+        "KU5. feedback mechanisms within the organisation and how to respond constructively to criticism",
+        "KU6. cultural sensitivities, unconscious biases, and the importance of inclusion and diversity in the",
+        "KU7. principles of emotional intelligence and how they help in team coordination and customer",
+        "KU8. challenges faced by Persons with Disabilities (PwDs) and inclusive practices for working with",
+        "KU9. legal and organisational frameworks supporting equality, diversity, and anti-discrimination",
+        "KU10. methods for conflict prevention and resolution, including mediation and escalation",
+        "KU11. role of respect, trust, and open communication in team effectiveness and customer"
+      ],
+      "gs": [
+        "GS1. read and interpret work instructions, emails, and policy documents related to workplace",
+        "GS2. write clear, concise emails, reports, or messages to team members, supervisors, or customers",
+        "GS3. communicate clearly and confidently in person, over the phone, and using digital",
+        "GS4. adapt communication style based on the needs of the audience (e.g., customer, peer,",
+        "GS5. listen attentively to gather information, understand perspectives, and clarify doubts.",
+        "GS6. prioritise tasks and allocate time effectively in coordination with team members"
+      ],
+      "modules": [
+        {
+          "module_title": "Interact effectively with supervisors and stakeholders",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "receive and clarify work instructions, technical requirements, and priorities from supervisors or clients using appropriate communication tools (e.g., messaging apps, emails, virtual meetings)",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "inform supervisors or relevant stakeholders in a timely manner about any issues, risks, or deviations from planned tasks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "contribute to team decisions by providing relevant data, suggestions, and professional feedback during team discussions",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "act promptly on constructive feedback and incorporate learnings to improve future work outcomes",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Collaborate effectively with team members and customers",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "follow organisational norms and digital etiquette when working in hybrid or remote teams",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "communicate respectfully and effectively using face-to-face, phone, email, or collaboration platforms (e.g., MS Teams, Zoom)",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "seek clarification and respond to queries from customers and team members accurately and promptly",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify and de-escalate conflicts tactfully to maintain a productive and harmonious work environment",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "demonstrate emotional intelligence in team settings by recognising and responding to others’ perspectives and emotional states",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "align personal efforts with team and organisational goals to ensure shared success.",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Promote inclusivity, respect, and accessibility in the workplace",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "foster an inclusive workplace culture that respects gender, cultural, and socio-economic diversity",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "demonstrate respectful language and conduct toward colleagues and customers of all genders and backgrounds",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "support team members with disabilities by helping remove work-related barriers or by assisting them as needed",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "practice appropriate verbal and non-verbal communication while engaging with persons with disabilities (PwDs)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "promote equal opportunity and participation for all in meetings, decision-making, and teamwork.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

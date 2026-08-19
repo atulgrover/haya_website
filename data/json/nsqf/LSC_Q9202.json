@@ -1,0 +1,1035 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "LSC/Q9202",
+  "qp_name": "LSC_Q9202",
+  "clean_code": "LSC_Q9202",
+  "total_pages": 51,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.584Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 12,
+    "total_pcs": 77,
+    "total_kus": 120,
+    "total_gs": 83,
+    "generic_nos_filtered": 2
+  },
+  "nos_units": [
+    {
+      "nos_code": "LSC/N9201",
+      "nos_title": ".Implement energy",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. minimum acceptable standards for energy efficiency required by the company",
+        "KU2. corporate policy regarding methods of calculating contribution to global warming",
+        "KU3. how to undertake yearly energy audits on the plant",
+        "KU4. organizational policies and guidelines",
+        "KU5. reporting structure",
+        "KU6. communication with relevant people in the organization to take their buy-in for energy",
+        "KU7. refrigerant usage with its relevant safety and security procedures",
+        "KU8. procedures to follow during system emergency issues",
+        "KU9. roles and responsibilities of labourers in the cold storage area",
+        "KU10. how to measure electrical energy consumed, temperature, relative humidity and air pressure",
+        "KU11. how to regularly collect data regarding temperature set point, discharge and suction",
+        "KU12. relation between carbon emissions and refrigerant leaks",
+        "KU13. how to analyse what proportion of energy is used for each of the following -",
+        "KU14. application of refrigeration for different types of products",
+        "KU15. characteristics of the products dealt with",
+        "KU16. cold storage and transport requirement conditions for products dealt with",
+        "KU17. various data acquisition systems available for plant refrigeration",
+        "KU18. the principles of cooling system design, carbon dioxide cascading, defrost system and",
+        "KU19. the harmful effects of frost and ways to keep it out of the refrigerated spaces",
+        "KU20. types of refrigeration compressors available",
+        "KU21. how to perform thermal profile by collection of data from temperature sensors",
+        "KU22. how to record ambient conditions",
+        "KU23. how to alert in case of critical deviations in energy usage",
+        "KU24. chiller operations, compressor sequencing, and capacity regulation",
+        "KU25. how precooling of condenser air in air cooled system increases energy efficiency",
+        "KU26. collecting operational parameters for refrigeration equipment and/or chiller used",
+        "KU27. under-floor heating system to know how pump and heating is controlled",
+        "KU28. usage of occupancy sensor and daylight sensor",
+        "KU29. different techniques to control defrosting",
+        "KU30. selection of accessories and tools required for various activities",
+        "KU31. parameters of global sustainability",
+        "KU32. significance of CO2 emissions and its impact on global warming",
+        "KU33. knowledge about material footprint per capita and material footprint per GDP",
+        "KU34. keep updated about the initiatives taken by the government and various organisations for",
+        "KU35. legislative requirements and organisational procedures for waste management and disposal",
+        "KU36. parameters and data required for material and energy audit"
+      ],
+      "gs": [
+        "GS1. read about energy consumption patterns by different processes in cold chain",
+        "GS2. read about energy efficiency improvement techniques",
+        "GS3. read safety instructions",
+        "GS4. note down energy consumption",
+        "GS5. prepare report on the efficacy of energy efficiency techniques employed",
+        "GS6. communicate to the workers, on the precautions to be taken regarding energy inefficiencies",
+        "GS7. interact with other employees to work efficiently",
+        "GS8. choose from multiple energy saving alternatives in the plant functioning",
+        "GS9. decide on the priority of tasks planned",
+        "GS10. plan and organize incremental targets towards achieving energy efficiency",
+        "GS11. plan resources by selecting, training, and ensuring discipline amongst them",
+        "GS12. spot origins of process disruptions",
+        "GS13. re-schedule tasks in case of delays or requirements by other departments in the organization",
+        "GS14. interpret equipment and process diagrams to identity which components can work more",
+        "GS15. analyze relation between energy consumed and plant parameters",
+        "GS16. analyze time series data, regarding temperature, humidity or air pressure",
+        "GS17. analyze critical recurring issues and identify measures to solve the same",
+        "GS18. use acquired knowledge to trace inefficiencies in the process",
+        "GS19. plan and prioritize tasks based on the implications of the energy inefficiencies"
+      ],
+      "modules": [
+        {
+          "module_title": "Analyse data related to energy usage",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify parameters impacting energy usage",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform correlation between energy consumption and the parameters identified to impact energy usage",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "monitor electrical energy consumption, temperature, Relative Humidity (RH) and air pressure",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "define threshold for parameters in energy consumption",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "check all thermostat set points",
+              "sequence_order": 5,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "evaluate costs and benefits of re-piping the facilities",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "perform thermographic inspection to analyse cold areas where there is poor insulation",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Identify inefficiencies in energy consumption and ways to fix them",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "separate energy consumption of refrigeration system from the energy used by the whole plant",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify the quantum of undercooling and overcooling during the analysis period",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify the impact of weather conditions on the energy consumed",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "explore ways to control lighting by daylight sensors and occupancy sensors",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "identify ways to adjust chiller or refrigeration equipment to achieve better performance",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "look for ways to promote renewable energy by utilizing bio-waste to generate biogas, wherever possible",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "improve evaporator performance by looking for ways to reduce fan motor horsepower",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Implement ways to minimize energy inefficiencies",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "use eco-friendly refrigerants with minimal global warming potential of ozone depleting substances",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure to pick air cooled condenser or evaporative condenser based on the refrigerant used, size of the system and availability of water",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "achieve optimal energy usage conditions for the chiller",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "improve part-load performance for evaporators, condensers and compressors",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "reduce refrigeration load by checking under- floor heating, insulation levels, warehouse doors usage",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "reduce load in lighting of the warehouse, by using high efficiency lighting (sodium lights or high frequency fluorescents)",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "choose energy-efficient lighting and recommend installing skylights, LEDs with sensors (intelligent occupancy sensors, motion sensors, heat maps), etc.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "ensure that Lighting Power Density (LPD) does not exceed the required",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "recommend replacing smart appliances instead of traditional high power consuming standard devices, e.g., HVAC",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "use machinery and equipment like MHE that runs on electric or alternative clean energy",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "employ automatic refrigerant leak detection systems",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "reduce heat load by improving insulation and reducing air leakage",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "select low power consumed per ton of refrigeration, while upgrading evaporator units",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "upgrade to high efficiency condenser units, sensor-controlled ventilation systems etc.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "use sliding doors instead of traditional freezer doors, which are better insulated, require low maintenance, reduce frost build up, thereby reducing overall energy consumption",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "use energy efficient PVC strip curtains for the cold storage doors or air curtains, to reduce air exchange during door openings",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "ensure that the floor heaters are working properly and well protected for the deep freezers",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N9202",
+      "nos_title": ".Oversee modified",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies and guidelines",
+        "KU2. reporting structure",
+        "KU3. refrigerant usage with its relevant safety and security procedures",
+        "KU4. procedures to follow during emergency issues",
+        "KU5. roles and responsibilities of labourers in the cold storage area",
+        "KU6. accessories and tools required for maintaining modified atmosphere",
+        "KU7. typical ratios of different gases used in modified atmosphere requirements for different",
+        "KU8. importance of having modified atmosphere to control shelf life of various products",
+        "KU9. different types of processes used to attain modified atmosphere requirements",
+        "KU10. different types of equipments required in modified atmosphere storage and packing",
+        "KU11. methods to alter atmosphere, like, controlled atmosphere, modified atmosphere, fresh air",
+        "KU12. benefits and detrimental effects of modified atmosphere on products",
+        "KU13. storage requirements of various types of products",
+        "KU14. common commodities which require modified atmosphere",
+        "KU15. key physical and chemical stages in natural ripening of perishable products",
+        "KU16. how environmental conditions like cold room temperature and humidity affect life cycle of",
+        "KU17. timescales of ripening and how to control them, in case of fresh produce ripening",
+        "KU18. how the condition of one product is affected by the presence of other products handled",
+        "KU19. exposure of products to ethylene with regards to its respiration rate and ripening",
+        "KU20. methods for assessing product quality stored in modified atmosphere conditions",
+        "KU21. relation between product respiration rate and atmospheric composition",
+        "KU22. effects of modified atmospheric conditions on the skin colour, firmness, texture of the",
+        "KU23. relation between metabolism rate and variations in temperature, relative humidity and",
+        "KU24. parameters of global sustainability",
+        "KU25. significance of CO2 emissions and its impact on global warming",
+        "KU26. knowledge about material footprint per capita and material footprint per GDP",
+        "KU27. the initiatives taken by the government and various organisations for sustainability",
+        "KU28. legislative requirements and organisational procedures for waste management and disposal",
+        "KU29. parameters and data required for material and energy audit"
+      ],
+      "gs": [
+        "GS1. process required for different types of products",
+        "GS2. read equipment manual to handle its operation",
+        "GS3. read documents regarding modified atmosphere concepts",
+        "GS4. read safety instructions",
+        "GS5. write down process parameters in modified atmospheric conditions",
+        "GS6. write observations related to the process",
+        "GS7. communicate all the activities required to be done to the subordinates",
+        "GS8. listen to the queries and clarify doubts",
+        "GS9. communicate any issue that may arise in the modified atmosphere process to the concerned",
+        "GS10. interact frequently with other employees to work efficiently",
+        "GS11. decide on the priority of tasks",
+        "GS12. plan routine checks to ensure modified atmosphere conditions are maintained",
+        "GS13. organize tasks and allocate labour resources for the process to maintain modified",
+        "GS14. organize activities based on budgeting constraints",
+        "GS15. enforce exact modified atmosphere storage and hygiene conditions as per the products",
+        "GS16. solve any work related problems that workers may face",
+        "GS17. handle allotment of tasks to workers in case of staff shortage or delays in activities",
+        "GS18. interpret process flowcharts for modified atmosphere required for different products",
+        "GS19. analyze critical recurring issues and identify measures to solve the same",
+        "GS20. identify ways to minimize chilling symptoms seen on the products",
+        "GS21. use acquired knowledge to trace issues in the process",
+        "GS22. understand mathematical models relating respiration of various commodities and"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare and monitor cold room or container for modified atmosphere storage",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "maintain temperature ranges ideal for the products stored or transported",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "maintain concentration of oxygen, carbon dioxide, nitrogen and ethylene as per the commodities stored",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "consider product heat and set ventilation to control cooling and carbon dioxide level",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "monitor composition of gases regularly and accurately",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "monitor for chilling injury symptoms on the products",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure to keep the room or container sealed",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "ensure proper sanitation to avoid conditions which favours thriving of pathogenic microorganisms",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare and maintain equipment for modified atmosphere conditions",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "assign a resource to maintain records of refrigeration equipment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "operate nitrogen generator with its controls and fan blowers",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "regularly sample air parameters in the cold chamber to check the conditions",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "monitor when to stop the system and replenish the cold chamber with fresh air when required",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "ensure to retrofit container with purge port assembly, when they contain perishable products and transported, to make it suitable for modified atmosphere use",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "prepare absorbers and adsorbers of oxygen, carbon dioxide, ethylene and water",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Monitor and report modified atmosphere conditions",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "ensure that legal requirements are followed while collecting, moving or",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "prepare documentation regarding modified atmospheric conditions maintained for different products",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure that maintenance records of relevant equipment and cleaning records in the modified atmosphere storage area are made",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "report any faults in the readings of required modified atmosphere requirements",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "quantify extended storability of the products dealt with",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N9203",
+      "nos_title": ".Undertake water",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. importance of having water and effluent treatment programme in accordance with the",
+        "KU2. compliance and site specific requirements of the water and effluent treatment programme",
+        "KU3. how to wear protective gear while handling or overseeing water and effluent treatment",
+        "KU4. corrective actions that can be taken in accordance with company procedures",
+        "KU5. organizational policies and guidelines",
+        "KU6. reporting structure",
+        "KU7. refrigerant usage with its relevant safety and security procedures",
+        "KU8. safety procedures in using chemicals for the treatment",
+        "KU9. procedures to follow during emergency maintenance and repair issues",
+        "KU10. procedures for safe transport and disposal of waste materials",
+        "KU11. importance of effective water treatment for efficient and reliable refrigeration system",
+        "KU12. water related problems that can happen in the cold store plant, like corrosion and",
+        "KU13. how to make a risk assessment for work tasks in the cold chain where water or effluent is",
+        "KU14. different types of treatment systems available for water waste and effluent",
+        "KU15. concepts of microbiology and water chemistry which applies to effluent treatment",
+        "KU16. how to do legionella (bacteria) risk assessment",
+        "KU17. how to take measures to prevent cross contamination of various products dealt with in the",
+        "KU18. how to plan and record performance monitoring for the programme",
+        "KU19. how to determine feasible recovery rate for recycling of water",
+        "KU20. primary and secondary treatment methods of effluent waters",
+        "KU21. application of refrigeration for different types of products",
+        "KU22. usage of ozone in tertiary treatment to remove odour, colour and micro organisms in sewage",
+        "KU23. harmful effects of overfeeding and underfeeding water treatment chemicals",
+        "KU24. methods of treating wastewater and recycling of water",
+        "KU25. parameters of global sustainability",
+        "KU26. significance of CO2 emissions and its impact on global warming",
+        "KU27. knowledge about material footprint per capita and material footprint per GDP",
+        "KU28. the initiatives taken by the government and various organisations for sustainability",
+        "KU29. legislative requirements and organisational procedures for waste management and disposal",
+        "KU30. parameters and data required for material and energy audit"
+      ],
+      "gs": [
+        "GS1. read water and effluent treatment standards and procedures",
+        "GS2. read safety instructions",
+        "GS3. how to make documentation regarding water and effluent treatment activities",
+        "GS4. communicate to workers clearly about the requirements in water and effluent treatment",
+        "GS5. interact frequently with other employees to work efficiently",
+        "GS6. mentor all the workers under supervision to increase operational effectiveness",
+        "GS7. decide on the extent of water and effluent treatment done, based on the hygiene",
+        "GS8. plan maintenance activities as per standard requirements and manufacturer's instructions",
+        "GS9. plan equipment service based on its working condition",
+        "GS10. enforce storage and hygiene conditions as per the products handled for the organization or",
+        "GS11. ensure to solve operating problems as per best practices",
+        "GS12. re-schedule tasks in case of delays or requirements by other departments in the organization",
+        "GS13. interpret schematic diagrams of the treatment procedures",
+        "GS14. analyze efficacy of the treatment programme employed",
+        "GS15. find ways to reduce sewer costs",
+        "GS16. analyze critical recurring issues and identify measures to solve the same",
+        "GS17. interpret outputs from the water and effluent treatment programs applied",
+        "GS18. use acquired knowledge to trace faults in the process"
+      ],
+      "modules": [
+        {
+          "module_title": "Undertake water and effluent treatment program in the plant",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "ensure that the water treatment programme consists of controlling water circulation, chemical feed and routine monitoring",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure that treated water is used on the product, to avoid the threat of external pathogens spoiling them",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "verify water treatment system compatibility with the plant operations",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "explore options to collect water from evaporator units, if they have defrost unit, and provide them to condenser or cooling tower",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "ensure to maintain condenser tubes clean after water treatment",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify treated effluent and tweak its treatment, if it is not as per the specification",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Monitor performance of the water and effluent treatment",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "record information and document necessary details for generating programme efficacy report",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "monitor remedial engineering works",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "confirm that the treatment areas are hygienic and safe",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "investigate faults and errors and take corrective actions",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "train operators for water and effluent treatment procedures employed",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "monitor overfeed or underfeed of water treatment chemicals",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "inspect chemical feed system to check for leaks",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Implement water conservation",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "find cost effective ways for treatment and recycle of COD (Chemical Oxygen Demand) wastewater",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "explore possibility of rainwater harvesting in case there is large roof surfaces for the cold storage plant",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "develop processes to maintain and have zero wastage/ emission or net-positive water footprint by implementing ways to conserve and reuse water, e.g., installing automated/sensor-enabled water faucets, integrating sensors with IoT for transmission, installing low-flow faucets and toilets, fixing leaks promptly, optimising water-intensive processes, installing sewage water treatment plants etc.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N9204",
+      "nos_title": ".Manage the",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies and guidelines",
+        "KU2. reporting structure",
+        "KU3. refrigerant usage with its relevant safety and security procedures",
+        "KU4. procedures to follow during emergency system issues",
+        "KU5. roles and responsibilities of labourers in the cold storage area",
+        "KU6. control system handling procedures for refrigeration equipment",
+        "KU7. procedures for safe transport and disposal of waste materials",
+        "KU8. cost and energy consumption of various equipment used in the organization",
+        "KU9. importance of control method for refrigeration system",
+        "KU10. mechanism of simple vapour compression refrigeration system and air refrigeration system",
+        "KU11. types of evaporators and factors affecting its heat transfer capacity",
+        "KU12. types of compressors, and the parameters for its working, like discharge pressure, suction",
+        "KU13. types and working of condensers, and factors affecting its capacity",
+        "KU14. application of refrigeration for different types of products",
+        "KU15. working of hand operated expansion valve",
+        "KU16. different process freezing techniques like contact freezing and air blast freezing",
+        "KU17. that a facility needs a re-piping if pressure drop between condenser and evaporator crosses",
+        "KU18. how to check pressure drop by using pressure gauges",
+        "KU19. types, properties and thickness of insulation requirements",
+        "KU20. parameters of global sustainability",
+        "KU21. significance of CO2 emissions and its impact on global warming",
+        "KU22. knowledge about material footprint per capita and material footprint per GDP",
+        "KU23. the initiatives taken by the government and various organisations for sustainability",
+        "KU24. legislative requirements and organisational procedures for waste management and disposal",
+        "KU25. parameters and data required for material and energy audit"
+      ],
+      "gs": [
+        "GS1. read about equipment engineering and understand its working",
+        "GS2. read and comprehend technical documents regarding mechanics and hydraulic aspects of",
+        "GS3. read safety instructions",
+        "GS4. note down problems in the system",
+        "GS5. write down process notes regarding observations in mechanics and hydraulics of all",
+        "GS6. make analytical document or report regarding existing engineering systems",
+        "GS7. communicate and seek inputs from workers regarding working of various components",
+        "GS8. communicate to workers clearly about the requirements in managing control systems",
+        "GS9. communicate technical knowledge regarding equipment functioning",
+        "GS10. listen and understand all queries or doubts the workers have in mechanics or hydraulic",
+        "GS11. resolve emergency situations in system functioning",
+        "GS12. plan training activities",
+        "GS13. organize practical learning techniques",
+        "GS14. plan maintenance activities as per standard requirements and manufacturer's instructions",
+        "GS15. plan equipment service based on its working condition",
+        "GS16. help solve all queries or difficulties faced by trainees",
+        "GS17. re-schedule tasks in case of delays or requirements by other departments in the organization",
+        "GS18. handle allotment of tasks to workers in case of staff shortage or delays in activities",
+        "GS19. interpret equipment diagram and information to identity how each component is engineered",
+        "GS20. analyze critical recurring issues and identify measures to solve the same",
+        "GS21. assess working condition of various equipments",
+        "GS22. plan activities to minimize effects on normal working of the organization",
+        "GS23. optimize working of control systems in refrigeration equipment",
+        "GS24. use acquired knowledge to trace technical errors in the plant"
+      ],
+      "modules": [
+        {
+          "module_title": "Manage control system for the main components of refrigeration system",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "automate the operation of evaporators, condensers and compressors as much as possible",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "minimize the power consumption for evaporators, condensers and compressors combined",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "control evaporators when the cold room has attained desired temperature",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure that hydraulic oil is adapted to the temperatures operated at the cold store",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Identify the need for revamping existing facilities for energy saving",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify different components of engineering system employed which needs to be checked at regular intervals",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "plan and schedule the frequency with which each component in the facility needs to be examined",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "analyse pressure drop between condenser and evaporator, to check if it crosses two pounds",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "examine insulated pipes which show signs of corrosion or frost appearances",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "examine corroded parts to analyse and decide regarding the need for re-insulation or maintenance",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare documentation regarding management of engineering system",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "record information and document regarding operations of evaporators, condensers and compressors",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "document power consumption of refrigeration system at regular intervals",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "record observations made in the analysis of existing facilities and the needs identified for its revamp",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,364 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q8106",
+  "qp_name": "SSC_Q8106",
+  "clean_code": "SSC_Q8106",
+  "total_pages": 29,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.137Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 3,
+    "total_pcs": 30,
+    "total_kus": 15,
+    "total_gs": 6,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N8154",
+      "nos_title": ".Understand",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understanding data governance policies procedures and guidelines and knowing how to",
+        "KU2. Familiarity with organizational policies for sharing and documenting data governance",
+        "KU3. Knowledge of different database types data modeling SQL skills and database management",
+        "KU4. Skills in ETL processes performance tuning access control backup and recovery and database",
+        "KU5. Insights into scalability practices data integrity documentation collaboration and continuous"
+      ],
+      "gs": [
+        "GS1. make decisions on suitable course of action",
+        "GS2. apply balanced judgments to different situations"
+      ],
+      "modules": [
+        {
+          "module_title": "Understand Database Management and Architecture — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collaborate with stakeholders such as data analysts developers and business units to understand data needs usage patterns and performance expectations",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify specific use cases that the database must support such as reporting analytics or real time data processing and design a logical data model including entities relationships and attributes",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Determine the appropriate type of database based on data nature and transform the logical model into physical schema",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Install and configure the database management system as per organizational requirements and implement the physical schema",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Develop ETL processes to migrate existing data maintaining data integrity and populate the database",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Optimize query performance using indexing and query refinement and adjust database settings based on workload needs",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Establish role based access controls to secure sensitive data and develop recovery strategies to ensure business continuity",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Conduct routine maintenance plan for horizontal or vertical scaling strategies to accommodate future needs",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Implement data integrity constraints to ensure data accuracy and perform periodic audits to detect anomalies maintaining data quality and consistency",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Document the database architecture including schema diagrams data models and configurations for future reference",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8112",
+      "nos_title": ".Collect data and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand organizational policies for designing data integrations sharing and documenting",
+        "KU2. Familiarity with tools and techniques for developing data integrations using platforms like",
+        "KU3. Learn different methods for testing troubleshooting and populating data warehouses and",
+        "KU4. Know management approaches for data lakes including error handling system availability",
+        "KU5. Gain skills in querying data writing scripts across various operating systems and"
+      ],
+      "gs": [
+        "GS1. apply problem-solving approaches in different situations",
+        "GS2. apply balanced judgments to different situations"
+      ],
+      "modules": [
+        {
+          "module_title": "Collect data and conduct data integration to develop a data — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Identify relevant data sources such as databases APIs and files and assess their quality and format",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Create a plan for collecting transforming and loading data into the target platform choosing methods like batch or real-time processing",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Use scripts or tools to extract data from sources ensuring efficiency and compliance with source restrictions",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Clean and preprocess data to ensure consistency remove duplicates handle missing values and perform necessary transformations",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Load data into the target platform while maintaining system performance and validating data accuracy and completeness",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Set up monitoring to detect data issues and document workflows for future reference and collaboration",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Continuously monitor and improve the data pipeline based on performance and stakeholder feedback",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Work with stakeholders to understand data needs and design the pipeline architecture using appropriate tools and technologies",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Develop extraction and transformation modules with error handling and optimize load strategies for downstream processes",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Automate workflows with orchestration tools and implement monitoring for reliable and scalable data pipeline operations",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8119",
+      "nos_title": ".Ensure data quality",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understand organizational policies for defining data governance processes sharing and",
+        "KU2. Learn how to identify and access internal and external data assets to meet business",
+        "KU3. Recognize different data assets and establish standards to ensure data quality and integrity",
+        "KU4. Understand data governance structures and processes and develop standards for effective",
+        "KU5. Gain skills in working across various operating systems such as Linux Ubuntu and Windows for"
+      ],
+      "gs": [
+        "GS1. apply problem-solving approaches in different situations",
+        "GS2. apply balanced judgments to different situations"
+      ],
+      "modules": [
+        {
+          "module_title": "Ensure data quality and data governance processes and — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Work with stakeholders to identify data quality criteria like accuracy and completeness and document benchmarks to measure quality",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Analyze data to understand its characteristics and create processes to clean duplicates and fix formatting errors",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Standardize data formats such as dates and text and set validation rules to ensure data is correct and consistent",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Use scripts to automatically check data during ETL processes detect errors and set up alerts for issues",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Improve data quality by adding external data sources while ensuring accuracy and standard practices are followed",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Investigate the causes of data issues and set up ongoing monitoring with reports and dashboards to track quality trends",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Collect feedback from data users about quality issues and update processes and documentation regularly",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Create regular data quality reports for stakeholders and stay current with best practices and tools in data quality management",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Establish a data governance framework with roles and policies to manage data classification access and responsibilities",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Implement security measures like encryption and access controls and review logs to ensure compliance and respond to incidents",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

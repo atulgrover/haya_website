@@ -1,0 +1,1775 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "LSC/Q1002",
+  "qp_name": "LSC_Q1002",
+  "clean_code": "LSC_Q1002",
+  "total_pages": 71,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.334Z",
+  "stats": {
+    "total_nos": 7,
+    "total_modules": 15,
+    "total_pcs": 141,
+    "total_kus": 148,
+    "total_gs": 165,
+    "generic_nos_filtered": 2
+  },
+  "nos_units": [
+    {
+      "nos_code": "LSC/N1002",
+      "nos_title": ".Analyse transport",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational procedures: fee, charges structure and types of documentation.",
+        "KU2. Company customer accounts, suppliers and their requirements.",
+        "KU3. Organisation policy of data maintenance, recording and handling",
+        "KU4. Reporting structure and escalation matrix for reporting identified problems",
+        "KU5. Types of goods being handled and the company's material movement policy",
+        "KU6. Relevant data safety and security procedures",
+        "KU7. Different transport companies the organisation works with and their processes",
+        "KU8. The procedure followed while booking trucks to pick up and transport consignments.",
+        "KU9. The geographical spread of states and cities, details of different routes, and estimated travel",
+        "KU10. Federal and state laws pertaining to transportation",
+        "KU11. Route optimisation software",
+        "KU12. Loading/unloading and transports that can be used for different types of shipments",
+        "KU13. Usage of Enterprise Resource Planning (ERP), Global Positioning System (GPS), tracking",
+        "KU14. Different cargo arrangements to maximise space utilisation",
+        "KU15. Procedures for dealing with loss or damage to goods",
+        "KU16. Details of transport companies the organisation works with and their processes",
+        "KU17. The procedure followed while booking trucks and processes involved in inbound and",
+        "KU18. Legal requirements, rules and regulations to be followed while preparing forms and",
+        "KU19. Records and logbooks to be maintained and the importance of the same",
+        "KU20. Different types of truckloads",
+        "KU21. Details required while consolidating orders",
+        "KU22. How to maintain communication and control through all phases of the cargo transit",
+        "KU23. Dangerous goods and their handling and movement procedures",
+        "KU24. Methods for consolidating orders based on type, size, destination, etc. and possible common",
+        "KU25. Prepare the necessary documentation for processing damage claims"
+      ],
+      "gs": [
+        "GS1. Planning w.r.t routes and network",
+        "GS2. Identify if there is an aberration in the data and decide on possible reasons",
+        "GS3. Prepare written delivery schedule, chart, fill out forms, and inspection checklists pertaining",
+        "GS4. Damage reports and daily status reports",
+        "GS5. Communicate clearly in local language or English with supervisors, co-workers, vendors,",
+        "GS6. Identify activities or orders that need to be prioritised as per instructions",
+        "GS7. Plan and estimate the time for each activity",
+        "GS8. Maintain punctuality and avoid absenteeism",
+        "GS9. Identify trends/common causes for delays and resolve the same with the supervisor and",
+        "GS10. Review analysis and data processes to minimise errors and enhance accuracy",
+        "GS11. Write e-mails, notes and letters as a follow-up to the trucking supervisor and consignor/",
+        "GS12. Decide if a certain document would suffice the requirement of permits, agreements, or any",
+        "GS13. Decide on alternate routes and transports in case a shipment is stuck",
+        "GS14. Identify and correct errors in consignment documents and resolve any documentation issues",
+        "GS15. Suggest methods to streamline the documentation process",
+        "GS16. Make a judgment as to how to utilise the space while consolidating",
+        "GS17. Decide the estimated time required for consolidation and making schedules",
+        "GS18. Make a judgment as to whether a route change is required or not",
+        "GS19. Prioritise and execute tasks within the scheduled time limits",
+        "GS20. Adjust resources according to volume and capacity needs during peak and non-peak hours",
+        "GS21. Maintain schedules, punctuality and re-assess schedules in case of delays/additional orders",
+        "GS22. Prepare schedules and consolidation plans, keeping in mind customer timelines and any",
+        "GS23. Handle day-to-day problems like delays, staffing shortages, etc.",
+        "GS24. Analyse costs to determine optimum costing for final deliveries",
+        "GS25. Assess the type of truck required and whether FTL or LTL is to be used",
+        "GS26. Keep track of the progress of each truck in real time",
+        "GS27. Suggest methods to streamline the consolidation of orders",
+        "GS28. Identify strengths and weaknesses of alternative routes for transportation"
+      ],
+      "modules": [
+        {
+          "module_title": "Analyse transport data and generate reports",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collect all the necessary information from sources such as ERP, fleet management software, GPS trackers, order management systems, and driver logs.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Organise the collected data by type e.g. Operational data, financial data, customer data, and traffic-related data. Check for data accuracy and consistency.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Analyse the transportation performance based on delivery times, routes, the use of vehicles, consignment type, geography of movement, in- house or outsourced vehicle, client-wise performance, etc.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Identify patterns, such as frequent delays on certain routes, underutilized trucks, or high costs associated with specific trips.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Prepare vehicle capacity utilisation rates for different types of vehicles and geographies and identify the root cause of under-utilisation, if any",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Compute workforce capacity utilisation and productivity rates and identify reasons for under- utilisation, if any",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Check route variations during trips and report the impact on cost, delivery timeline and reasons",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Review the financial data—fuel consumption, tolls, maintenance costs, and driver wages to calculate cost-per-mile or cost-per-delivery.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Check the repair and maintenance of vehicles and report vehicles which are incurring maintenance costs beyond acceptable limits",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Identify trends and insights from the data, such as consistent delays during peak hours, recurring maintenance issues with certain vehicles, or negative customer feedback.",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Prepare the report structure and include key findings and recommendations, along with a data overview, analysis, costs, trends, recommendations and suggestions for improvements, such as route optimisation, cost-cutting measures, or technological investments.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Generate the report using clear tables, charts, or graphs to present the data findings visually and share them with management.",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conduct trend analysis",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Define the Objective of Trend Analysis e.g. delivery times over the past six months to identify peak delays.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Identify which metrics or variables to track for trends such as delivery timelines, dispatch delays, product damages, insurance claims, vehicle utilisation, workforce utilisation, fuel consumption, vehicle maintenance, etc.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Visualise data trends by using time series graphs, moving averages, and bar/line charts to illustrate changes over time and highlight long-term patterns, such as delivery times or fuel costs across months or routes.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Review the visualisations to identify trends, patterns, or anomalies and Compare trends across different segments.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Apply statistical methods to quantify trends and Interpret the Results.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Summarise the findings in a report, highlighting key insights, areas of concern, non- compliance and submit to management.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N1003",
+      "nos_title": ".Coordinate with",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational procedures",
+        "KU2. companys customers, suppliers and their requirements",
+        "KU3. organization fee and charges structure",
+        "KU4. reporting structure",
+        "KU5. escalation matrix for reporting identified problems",
+        "KU6. how to maintain communication and control through all phases of the cargo transit",
+        "KU7. usage of computer for electronic documentation of information",
+        "KU8. usage of Enterprise Resource Planning (ERP), Global Positioning System (GPS) and tracking",
+        "KU9. details of different routes and estimate travel time required",
+        "KU10. types of goods being handled",
+        "KU11. federal and state laws pertaining to transportation",
+        "KU12. route optimization software",
+        "KU13. loading/unloading and transports that can be used for different types of shipments",
+        "KU14. different cargo arrangements to maximize space utilization"
+      ],
+      "gs": [
+        "GS1. instructions and customer requirement",
+        "GS2. regulatory requirement associated with land transport",
+        "GS3. text contained in notes, letters, memos, e-mails, specifications, books, reports, charts, tables",
+        "GS4. prepare daily status report",
+        "GS5. write e-mail, notes and letters as follow-up to trucking supervisor and consignor/ consignee",
+        "GS6. maintain records as per companys policies",
+        "GS7. listen to the requirements of the consignee",
+        "GS8. communicate effectively with the drivers to ensure smooth shipment",
+        "GS9. decide on actions to be taken on escalation raised by the shipper",
+        "GS10. liaison with trucking agents to ensure smooth clearance process",
+        "GS11. monitor smooth functioning of all transportation activities",
+        "GS12. escalate client concerns that are beyond the scope of handling",
+        "GS13. communicate with customers and share all relevant information",
+        "GS14. respond to customer and subordinates complaints",
+        "GS15. address the queries of the driver in a calm and collected manner",
+        "GS16. provide the best possible solution to client queries",
+        "GS17. analyse communication patterns with colleagues and customers to improve outcomes and",
+        "GS18. follow-up with external stakeholders to avoid delays or any breach in agreement",
+        "GS19. act upon constructively on any problems as pointed by customers or superiors",
+        "GS20. improve work processes by interacting with others and adopting best practices"
+      ],
+      "modules": [
+        {
+          "module_title": "Follow-up with internal team and external stakeholders",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Provide internal teams (e.g., warehouse, customer service) with timely, accurate shipment details, including delivery schedules, special handling requirements, and tracking information.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Communicate precise instructions to external vendors (e.g., drivers or third-party logistics providers) about delivery locations, timelines, and any specific client needs.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Stay in close contact with internal teams to monitor daily operations, resolve any issues, and ensure everyone is aligned with the transportation plan.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Track vendor performance in real-time to ensure deliveries are on schedule. If there are delays or issues, communicate with the vendors quickly to find solutions.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Share performance reports, delivery statistics, and any updates regarding transportation challenges or improvements with relevant stakeholders.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Build strong, professional relationships with vendors by offering regular feedback, discussing expectations, and negotiating terms to ensure a long-term, mutually beneficial partnership.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Liaise with external vendors to address any delivery problems, such as missed pickups, route issues, or damaged goods, and work together to resolve these challenges efficiently.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Ensure external vendors are compliant with any legal or regulatory requirements (e.g., delivery hours, vehicle maintenance), and follow up to ensure these standards are met.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Provide stakeholders with timely updates on any shifts in delivery schedules, changes in customer requirements, or other logistical changes.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Coordinate with the client",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "Coordinate with the customer right from the pickup, transit and till delivery of consignment as per plan",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Keep clients informed of delivery timelines, any potential delays, or changes to the agreed schedule.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Communicate to the point of contact from the customer side in case of any mismatch/ deficiency in documentation & any other update regarding shipments",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Liaise with customers for damaged goods during handling/ transit for claims processing and replacement",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Escalate to the customer in case the transporter is nominated from the customer side for delayed pickups, lack of coordination, etc.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Resolve client complaints or issues promptly and implement improvements to ensure higher satisfaction in future deliveries.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Make a note of any special cargo movement/packaging requirement",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Provide delivery status notification to consignor/ consignee and submit the invoice",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Foster strong relationships with clients by providing exceptional service, handling complaints efficiently, and always following up to ensure satisfaction.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0302",
+      "nos_title": ".Perform inbound",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedures",
+        "KU2. companys customers, suppliers and their requirements",
+        "KU3. types of documentation in organization",
+        "KU4. organization policy of data maintenance, recording and handling",
+        "KU5. relevant safety and security procedures",
+        "KU6. procedures for dealing with loss or damage to goods",
+        "KU7. details of transport companies the organization works with and their processes",
+        "KU8. procedure followed while booking trucks",
+        "KU9. reporting structure",
+        "KU10. escalation matrix for reporting identified problems",
+        "KU11. processes involved in inbound and outbound transport",
+        "KU12. use of computer for electronic documentation of information",
+        "KU13. use of GPS and tracking software",
+        "KU14. geographical destinations and transport routes",
+        "KU15. ERP system and its functioning",
+        "KU16. legal requirements, rules and regulations to be followed while preparing forms and",
+        "KU17. forms required for inbound/outbound transport",
+        "KU18. possible difficulties and errors in documentation"
+      ],
+      "gs": [
+        "GS1. instructions in the checklists",
+        "GS2. inbound agreements, client queries, documents",
+        "GS3. details required in the forms",
+        "GS4. write details regarding inspection of each inbound consignment",
+        "GS5. prepare invoices and agreements",
+        "GS6. maintain the record as per companys policies",
+        "GS7. fill out forms and inspection checklist",
+        "GS8. communicate with all employees to ensure activities are running smoothly",
+        "GS9. communicate clearly with customers",
+        "GS10. communicate with drivers, trucking agents, other stakeholders as and when required",
+        "GS11. decide if a certain document would suffice the requirement of permits, agreements or any",
+        "GS12. decide on alternate routes and transports in case a shipment is stuck",
+        "GS13. prioritize and execute tasks within the scheduled time limits",
+        "GS14. adhere to the customer requirements",
+        "GS15. identify and correct errors in consignment documents",
+        "GS16. resolve any documentation issues faced by the truck drivers en-route",
+        "GS17. check that all the forms required in the checklist have been filled out and are ready",
+        "GS18. suggest methods to streamline the documentation process"
+      ],
+      "modules": [
+        {
+          "module_title": "Receive and verify documents for inbound consignments",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Receive the signed agreement sheet for the inbound consignment and prepare an arrival report based on it.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Receive accounts of the journey from the driver and prepare the cost sheets",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Review and verify all the documents such as insurance forms, Goods and Services Tax (GST) forms from the inbound trucks",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Verify that all the required forms have been received/filled out and documents checked as per the inbound documentation checklist",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Work with external carriers, freight forwarders, and vendors to prepare accurate freight invoices, as well as other shipping documents.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Prepare the goods received document and hand it over to the driver",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Receive damage claim forms, forms for replacement of goods, etc., from the receiving assistant, verify and send them to the concerned person/company for processing",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Prepare the invoices and send them to the accounts payable section based on the information entered in the system",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare documents for outbound consignments",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Check and approve the Lorry Receipt (LR) or Goods Consignment Note prepared by the associate",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Update details regarding the load and the destination into the computer based on the information contained in the LR",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Prepare an agreement sheet to be given at the destination along with the consignment",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Check and verify that all the transit insurance forms, road permits and tax permits for each truck are filled correctly and are valid for the identified route of the truck",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Verify that all the required forms have been filled out and approve the documents as per the outbound documentation checklist",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Confirm with the dispatcher that the truck's destination and goods loaded have been verified",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Brief the truck driver on the end customer, destination, proposed route, transport regulations, and formalities at check posts and hand over the cash and required documents",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Get the truck driver's signature on a form (and all other forms as required), confirming that the goods, cash for the journey and all the documents needed for the journey have been received",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Ensure that Proof of Delivery (POD) is completed and signed for each consignment and that any discrepancies or damages are reported immediately.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N1006",
+      "nos_title": ".Conduct",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational procedures: fee, charges structure and types of documentation.",
+        "KU2. Company customer accounts, suppliers and their requirements.",
+        "KU3. Organisation policy of data maintenance, recording and handling",
+        "KU4. Reporting structure and escalation matrix for reporting identified problems",
+        "KU5. Types of goods being handled and the company's material movement policy",
+        "KU6. Relevant data safety and security procedures",
+        "KU7. Different transport companies the organisation works with and their processes",
+        "KU8. The procedure followed while booking trucks to pick up and transport consignments.",
+        "KU9. The geographical spread of states and cities, details of different routes, and estimated travel",
+        "KU10. Federal and state laws pertaining to transportation",
+        "KU11. Route optimisation software",
+        "KU12. Loading/unloading and transports that can be used for different types of shipments",
+        "KU13. Usage of Enterprise Resource Planning (ERP), Global Positioning System (GPS), tracking",
+        "KU14. Different cargo arrangements to maximise space utilisation",
+        "KU15. Procedures for dealing with loss or damage to goods",
+        "KU16. Details of transport companies the organisation works with and their processes",
+        "KU17. The procedure followed while booking trucks and processes involved in inbound and",
+        "KU18. Legal requirements, rules and regulations to be followed while preparing forms and",
+        "KU19. Records and log books to be maintained and the importance of the same",
+        "KU20. Different types of truckloads",
+        "KU21. Details required while consolidating orders",
+        "KU22. How to maintain communication and control through all phases of the cargo transit",
+        "KU23. Dangerous goods and their handling and movement procedures",
+        "KU24. Methods for consolidating orders based on type, size, destination, etc. and possible common"
+      ],
+      "gs": [
+        "GS1. Planning w.r.t routes and network",
+        "GS2. Identify if there is an aberration in the data and decide on possible reasons",
+        "GS3. Prepare written delivery schedule, charts, fill out forms, and inspection checklists pertaining",
+        "GS4. Damage reports and daily status reports",
+        "GS5. Communicate clearly in local language or English with supervisors, co-workers, vendors,",
+        "GS6. Identify activities or orders that need to be prioritised as per instructions",
+        "GS7. Plan and estimate the time for each activity",
+        "GS8. Maintain punctuality and avoid absenteeism",
+        "GS9. Identify trends/common causes for delays and resolve the same with the supervisor and",
+        "GS10. Identify trends/common causes for delays and resolve the same with the supervisor and",
+        "GS11. Write e-mails, notes and letters as a follow-up to the trucking supervisor and consignor/",
+        "GS12. Decide if a certain document would suffice the requirement of permits, agreements, or any",
+        "GS13. Decide on alternate routes and transports in case a shipment is stuck",
+        "GS14. Identify and correct errors in consignment documents and resolve any documentation issues",
+        "GS15. Suggest methods to streamline the documentation process",
+        "GS16. Make a judgment as to how to utilise the space while consolidating",
+        "GS17. Decide the estimated time required for consolidation and making schedules",
+        "GS18. Decide the estimated time required for consolidation and making schedules",
+        "GS19. Prioritise and execute tasks within the scheduled time limits",
+        "GS20. Adjust resources according to volume and capacity needs during peak and non-peak hours",
+        "GS21. Maintain schedules, punctuality and re-assess schedules in case of delays/additional orders",
+        "GS22. Prepare schedules and consolidation plans, keeping in mind customer timelines and any",
+        "GS23. Handle day-to-day problems like delays, staffing shortages, etc.",
+        "GS24. Analyse costs to determine optimum costing for final deliveries",
+        "GS25. Assess the type of truck required and whether FTL or LTL is to be used",
+        "GS26. Keep track of the progress of each truck in real time",
+        "GS27. Suggest methods to streamline the consolidation of orders",
+        "GS28. Identify strengths and weaknesses of alternative routes for transportation"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform route optimisation and feasibility assessment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Define the specific goals and constraints that need to be considered when planning the route, such as Delivery time, Cost optimisation, Cargo type, Vehicle limitations, Safety considerations, etc.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Collect data about the potential routes that can be used, which may include Road types, Traffic patterns, Road conditions, Weather conditions, Legal or regulatory restrictions, etc.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Review the data collected on point of origin, point of destination, type of goods, pickup date and time, delivery date and time, volume of goods, vehicle capacity, vehicle traffic constraint and transporter details",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Assess the costs associated with each route by considering factors such as fuel costs, tolls and fees, vehicle wear and tear, etc.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Evaluate how long each route will take and if the proposed routes can meet the required delivery time.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Ensure the routes comply with local regulations, like Weight limits, Size limits, Permits, Environmental restrictions, etc.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Use Route Optimization tools or software such as Google Maps, API or OptimoRoute to automatically calculate the best routes based on objectives (cost, time, fuel efficiency).",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Input all the gathered data (traffic, weather, road conditions) into the software for real-time route adjustments.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Review multiple route options and analyse the pickup and delivery sequence for the optimal time, allocation of loads, Safety, Risk Factors, and vehicle capacity collected from the route planning software",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Plan optimised routes for multiple depots, ensuring cost efficiency across the whole operation and Evaluating the Impact of Alternative Routes (if needed).",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Perform lane analysis to identify the efficient routing option and to understand the feasibility of the Over Dimensional Cargo (ODC) vehicle to transport the cargo through the identified route",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Finalise the transportation plan, considering all assessments and various factors such as tolls, rest stops, driver shift changes, vehicle relays, vehicle refuelling, etc.",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Approve the plan for daily truck coverage, driver and trip assignment",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Make sequential plans for alternate routes based on the routing analysis for contingency requirements like inclement weather, natural calamities, etc.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Implementation and Continuous improvement.",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Communicate with the internal team to finalise the route plan and get it approved by the manager",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Inform all stakeholders (drivers, logistics teams, customers) of the chosen route and any contingencies.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Brief the transporter on the key areas of concern and the preparedness required during transit",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Implement the route plan and monitor the shipment in real time for any required adjustments.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Track the actual performance of the route against expectations after the delivery.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Review actual delivery times versus estimated times and the overall cost of the route and compare it with budgeted costs.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Gather feedback from drivers about road conditions, delays, and overall route efficiency.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Regularly identify and analyse bottlenecks or inefficiencies in the route optimisation process.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Re-evaluate routes periodically based on updated data and conditions",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Conduct a review of the route’s performance to determine if there were any deviations from the plan (e.g., delays, unexpected road closures) after each delivery or at regular intervals for continuous improvement.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N1138",
+      "nos_title": ".Use",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational procedures: fee, charges structure and types of documentation.",
+        "KU2. Company customer accounts, suppliers and their requirements.",
+        "KU3. Organisation policy of data maintenance, recording and handling",
+        "KU4. Reporting structure and escalation matrix for reporting identified problems",
+        "KU5. Types of goods being handled and the company's material movement policy",
+        "KU6. Relevant data safety and security procedures",
+        "KU7. Different transport companies the organisation works with and their processes",
+        "KU8. The procedure followed while booking trucks to pick up and transport consignments.",
+        "KU9. The geographical spread of states and cities, details of different routes, and estimated travel",
+        "KU10. Federal and state laws pertaining to transportation",
+        "KU11. Route optimisation software",
+        "KU12. Loading/unloading and transport that can be used for different types of shipments",
+        "KU13. Usage of Enterprise Resource Planning (ERP), Global Positioning System (GPS), tracking",
+        "KU14. Different cargo arrangements to maximise space utilisation",
+        "KU15. Procedures for dealing with loss or damage to goods",
+        "KU16. Details of transport companies the organisation works with and their processes",
+        "KU17. The procedure followed while booking trucks and processes involved in inbound and",
+        "KU18. Legal requirements, rules and regulations to be followed while preparing forms and",
+        "KU19. Records and log books to be maintained and the importance of the same",
+        "KU20. Different types of truckloads",
+        "KU21. Details required while consolidating orders",
+        "KU22. How to maintain communication and control through all phases of the cargo transit",
+        "KU23. Dangerous goods and their handling and movement procedures",
+        "KU24. Methods for consolidating orders based on type, size, destination, etc. and possible common"
+      ],
+      "gs": [
+        "GS1. Planning w.r.t routes and network",
+        "GS2. Identify if there is an aberration in the data and decide on possible reasons",
+        "GS3. Prepare written delivery schedule, chart, fill out forms, and inspection checklists pertaining",
+        "GS4. Damage reports and daily status reports",
+        "GS5. Communicate clearly in local language or English with supervisors, co-workers, vendors,",
+        "GS6. Identify activities or orders that need to be prioritised as per instructions",
+        "GS7. Plan and estimate the time for each activity",
+        "GS8. Maintain punctuality and avoid absenteeism",
+        "GS9. Identify trends/common causes for delays and resolve the same with the supervisor and",
+        "GS10. Review analysis and data processes to minimise errors and enhance accuracy",
+        "GS11. Write e-mails, notes and letters as a follow-up to the trucking supervisor and consignor/",
+        "GS12. Decide if a certain document would suffice the requirement of permits, agreements, or any",
+        "GS13. Decide on alternate routes and transports in case a shipment is stuck",
+        "GS14. Identify and correct errors in consignment documents and resolve any documentation issues",
+        "GS15. Suggest methods to streamline the documentation process",
+        "GS16. Make a judgment as to how to utilise the space while consolidating",
+        "GS17. Decide the estimated time required for consolidation and making schedules",
+        "GS18. Make a judgment as to whether a route change is required or not",
+        "GS19. Prioritise and execute tasks within the scheduled time limits",
+        "GS20. Adjust resources according to volume and capacity needs during peak and non-peak hours",
+        "GS21. Maintain schedules, punctuality and re-assess schedules in case of delays/additional orders",
+        "GS22. Prepare schedules and consolidation plans, keeping in mind customer timelines and any",
+        "GS23. Handle day-to-day problems like delays, staffing shortages, etc.",
+        "GS24. Analyse cost to determine optimum costing for final deliveries",
+        "GS25. Assess the type of truck required and whether FTL or LTL is to be used",
+        "GS26. Keep track of the progress of each truck in real time",
+        "GS27. Suggest methods to streamline the consolidation of orders",
+        "GS28. Identify strengths and weaknesses of alternative routes for transportation"
+      ],
+      "modules": [
+        {
+          "module_title": "Track and report progress in real time",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Use GPS and telematics systems to track the location, movement and status of each vehicle in real-time.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Send alerts about potential hazards on the road, weather conditions, and real-time traffic patterns to prevent theft, avoid shipment delays, and minimise revenue loss for drivers.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Render relevant, comprehensive, accurate, and real-time information to the stakeholders and drivers using the Telematics Control Unit (TCU), including vehicle routes, performance data, speed limits, engine idle time, and any customer requests.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Monitor driving behaviours such as overspeeding, excessive braking, fuel efficiency, rapid acceleration and excessive idling.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Track and report key metrics for drivers, such as speed, braking patterns, acceleration, and cornering.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Take note of the temperature in the reefer vehicle, trigger the alarm and alert the driver in case the temperature falls below the required level",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Check on the weather and traffic of the area next to be crossed and Re-plan the route or reschedule the delivery in case of any anomalies",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Monitor where each vehicle is and make route adjustments to avoid delays or traffic congestion.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Assign deliveries to the closest available vehicle, improving response time.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Use telematics data to monitor and mitigate risks associated with fleet operations, including accidents, theft, and unsafe driving.",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Use telematics to support fleet operations",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "Collect real-time data from vehicle fleets using a cloud-based server connected to installed telematics systems and generate daily reports on vehicle and cargo information.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Collect and analyse performance data from Telematics systems to identify trends and areas for improvement.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Populate reports with details of the vehicle carrying the cargo, such as vehicle type, vehicle number, driver name and contact details, license and permit details, details of the cleaner, etc.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Track the health of vehicles, identify potential issues, and schedule preventive maintenance through a service reminder forecasting dashboard.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Monitor fuel consumption through telematics systems to identify fuel usage inefficiencies.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Use telematics to monitor compliance with driving hours regulations, speed limits, and other legal requirements.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N6506",
+      "nos_title": ".Risk",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. Tracking technology and methods used by the carriers.",
+        "KU2. Real-time tracking devices and methods used.",
+        "KU3. The importance of tracing in increasing efficiency.",
+        "KU4. Knowledge of Intermodal and Combined Transport, Split bulk cargo and general cargo",
+        "KU5. Unaccompanied combined transport (UCT).",
+        "KU6. Transshipment process and regulations.",
+        "KU7. Various equipment/ MHE used for loading/ unloading.",
+        "KU8. Advantages and Disadvantages of using Multimodal Transport.",
+        "KU9. Challenges and factors that affect the flow of shipment.",
+        "KU10. Rules and regulations involved in all types of transport.",
+        "KU11. Documentation for types of goods and transportation method.",
+        "KU12. Geographical knowledge and usage of maps and route plotting.",
+        "KU13. Records to be maintained and the importance of the same.",
+        "KU14. Security procedures to be followed and escalation matrix for reporting identified problems.",
+        "KU15. Chain of command for reporting problems.",
+        "KU16. Knowledge of how the company deals with issues while transporting consignments.",
+        "KU17. Knowledge of transit rules and regulations.",
+        "KU18. Implications of poor performance such as delayed pick-up, improper documentation and high",
+        "KU19. End-to-end understanding of all activities that will be done.",
+        "KU20. Nature of the products transported and the variances in their characteristics.",
+        "KU21. Detailed understanding of the tracking systems.",
+        "KU22. Ability to accurately estimate travel time required.",
+        "KU23. Understanding of common problems and solutions for the same."
+      ],
+      "gs": [
+        "GS1. How to register in transporter portals.",
+        "GS2. Create contracts with service providers.",
+        "GS3. Negotiating for cost and time optimisation.",
+        "GS4. Vendor coordination and follow-up.",
+        "GS5. Restrictions for transporting dangerous goods.",
+        "GS6. Customs regulations for import and export.",
+        "GS7. Cross-check the data at various master data levels and ensure sanity.",
+        "GS8. Draw inferences and conclusions based on the analysis.",
+        "GS9. Identify common trends as per analysis and implement the same.",
+        "GS10. Perform work-related calculations.",
+        "GS11. Plan and prioritise tasks to ensure timely completion."
+      ],
+      "modules": [
+        {
+          "module_title": "Perform freight spend & risk analysis",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Perform spending analysis with all forward and reverse costs considered.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Populate data from different software like TMS, fuel purchasing systems, truckload carrier accounting systems, customs, bill of lading data, and any others.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Collect trucking spot freight rates, contracted freight trends, current truck equipment orders, and outbound and inbound data.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Compare findings to industry trends.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Prepare a scorecard and use the same for easy comparison of carrier performances based on different factors.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Substantiate findings using facts-based analysis and quantification of exposures.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Assess the effectiveness of business monitoring procedures and processes.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Shift from stagnant or point-in-time reviews to focused implementation of ongoing monitoring.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Analyse company stock and location data for optimal routing.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Identify ways to optimise \"less than truckload\" shipments. Inefficient truck utilisation leads to revenue leaks.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "The capacity of freight vessels and trains should be utilised at least at a rate of over 70% per trip in order to maintain profitability.",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Identify high-risk business areas, products, freight carriers, business lines, and geographies to focus efforts.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Analyse overall freight expenses to identify anomalies.",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Utilise available infrastructure to the maximum.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Collate data from tracing and analyse the same for patterns on transit time, delays and service failures.",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Risk Management",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Allocate full capacities to orders, and plan transportation itineraries and frequency.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Provide insights to the management by developing a deeper understanding of freight expenses to identify opportunities for improvement with (efficiency and control environment).",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Use a route optimisation solution to optimise delivery routes around changing traffic conditions.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Use a transportation planning solution that integrates supply chain planning and shipping execution to assess real-time risk across the supply chain.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Integrate a shipment planning window with TMS that covers projection for several days forward and order management, procurement, and supply chain optimisation solutions.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Use technologies like weatheroptics to forecast and enhance the solutions for risks related to weather conditions. This allows rerouting of vehicles to minimize the impact of weather hazards.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Choose carriers with better vehicle maintenance and safety records, which reduces the risk of transit delays due to vehicle breakdowns.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Integrate digital freight markets and brokerages into TMS, which will help optimise cost and analyse the quotes.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Choose vendors with APIs for posting loads, booking, tendering, and tracking. Carriers using digital fleet management and TMS solutions with highly automated material handling reduce the risk of lost shipments.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Identify alternate ports and CFS/ ICDs, which decrease the risk of delay. Build agility into processes so that switch ports are available if needed.",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N1110",
+      "nos_title": ".Supervise",
+      "sequence_order": 7,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedures",
+        "KU2. companys customer accounts",
+        "KU3. organization fee and charges structure",
+        "KU4. types of documentation in organization",
+        "KU5. organization policy of data maintenance, recording and handling",
+        "KU6. relevant safety and security procedures",
+        "KU7. different transport companies the organization works with and their processes",
+        "KU8. procedure followed while booking trucks to pick up and transport consignments",
+        "KU9. use of a computer and associated equipment",
+        "KU10. basic trouble shooting regarding material handling equipment",
+        "KU11. scheduling, planning, etc.",
+        "KU12. geographical locations and route maps",
+        "KU13. transit rules and regulations",
+        "KU14. types of goods being handled",
+        "KU15. federal and state laws pertaining to transportation",
+        "KU16. route optimization software",
+        "KU17. loading/unloading and transports that can be used for different types of shipments",
+        "KU18. Global Positioning System (GPS) and tracking devices",
+        "KU19. different cargo arrangements to maximize space utilization",
+        "KU20. special characteristics and handling requirements of goods, if any"
+      ],
+      "gs": [
+        "GS1. work instructions and customer requirement",
+        "GS2. schedule and plan for shipment",
+        "GS3. information from ERP reports and computer generated reports",
+        "GS4. legal documents of the shipment/ goods",
+        "GS5. checklists and daily reports",
+        "GS6. write work-orders and instructions for resources",
+        "GS7. prepare list of activities, delays, etc",
+        "GS8. write end of the day reports",
+        "GS9. maintain records as per companys policy",
+        "GS10. listen and understand the requirements of the client or the manager",
+        "GS11. communicate clearly in local language to transporter",
+        "GS12. communicate effectively with operational staff at all levels",
+        "GS13. when to escalate an issue",
+        "GS14. which shipments to prioritse",
+        "GS15. whether alternate route is to be planned or alternate transport to be sent in case a delivery/",
+        "GS16. plan and estimate the co-ordination required considering customer requirement",
+        "GS17. develop plan based on customer specification",
+        "GS18. plan for transportation and packaging of cargo",
+        "GS19. plan for resource requirement and utilization during peak and non-peak hours",
+        "GS20. importance of customer and internal timelines",
+        "GS21. the urgency of certain tasks as escalated by different department",
+        "GS22. how to take prompt action on queries raised by the customer",
+        "GS23. identify trends/common causes for delays, issue in tracking, etc. and resolve the same over",
+        "GS24. identify small bottlenecks and operational problems and provide alternate solutions for the",
+        "GS25. keep contingent plan ready in case of delays or any issue",
+        "GS26. assess the resource requirement for a particular task at hand",
+        "GS27. assess and prepare for backup transport in case of continous delays",
+        "GS28. discover more efficient and productive ways to streamline the process",
+        "GS29. identify possible obstacles in the vehicle route",
+        "GS30. interpret and act upon complex situation in transit issues",
+        "GS31. priortise the work flow based on urgent requirements",
+        "GS32. think tactically to handle adverse situations, with attention to details"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise fleet service",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Assist in the acquisition of new vehicles and registration",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Coordinate emission testing inspection for trucks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Organise ordering/ purchasing of fuel, parts and supplies and maintain accurate inventory of equipment and spares",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Track fleet usage and maintain an accurate inventory of equipment and spares",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Create a comprehensive preventive maintenance plan for all vehicles based on manufacturer recommendations, vehicle age, usage, and operating conditions.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Ensure all vehicles undergo regular inspections and maintenance to avoid unexpected breakdowns.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Check past maintenance, repairs, and inspections for each vehicle in the fleet and maintenance records are up-to-date.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Monitor vehicle performance data such as engine diagnostics, fuel efficiency, and brake condition in real-time.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Ensure all vehicles are compliant with service requirements and can be assessed for any recurring issues.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Negotiate service agreements with vendors to ensure cost efficiency and Ensure that maintenance and repairs are done using quality materials",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Evaluate vehicle inspection reports by Conducting routine checks on vehicles, including visual inspections and functional tests, to catch potential issues.",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain documentation of fleet service",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Document details of vehicle repair performed in the vehicle maintenance software program",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Maintain daily purchase log and oil analysis book",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Conduct price comparison research and maintain historical comparisons",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Maintain record of fleet repairs, repair costs, parts procurement and vehicle warranties",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Monitor maintenance expenses and track costs associated with repairs, parts, and labour.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Maintain trucks' out-of-service reports and inform operations staff and administration department of the status",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Verify that all maintenance activities align with safety standards and legal requirements, such as emissions tests and vehicle inspections.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "MIS reporting",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "Prepare various reports (trucks out of service, fuel use, parts inventory, etc.) according to organisation guidelines and procedure",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Analyse maintenance costs and provide recommendations on fleet utilisation and replacement",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Regularly review fleet performance data to identify trends, such as higher-than-average maintenance costs or recurring mechanical problems.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Assist in the development of the fleet services budgets",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Communicate maintenance requirements to the manager for budgetary approvals",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

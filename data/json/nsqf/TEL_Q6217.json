@@ -1,0 +1,999 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6217",
+  "qp_name": "TEL_Q6217",
+  "clean_code": "TEL_Q6217",
+  "total_pages": 39,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.508Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 13,
+    "total_pcs": 85,
+    "total_kus": 56,
+    "total_gs": 33,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6258",
+      "nos_title": ".Manage and",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. types of drones and their usages.",
+        "KU2. types and functionalities of drone-mounted sensors such as RGB camera, thermal imager,",
+        "KU3. principles of 5G communication technology relevant to drone connectivity, including latency,",
+        "KU4. configuration steps for drone-mounted 5G modules or external communication devices (e.g.,",
+        "KU5. real-time telemetry parameters (e.g., altitude, battery level, signal strength, frame rate) and",
+        "KU6. file types used in drone operations (e.g., .MP4, .SRT, .CSV, .DAT, .TLOG, .TIFF) and their",
+        "KU7. importance of onboard data storage (e.g., SD card, internal SSD) as a redundancy",
+        "KU8. use of ground control software (e.g., QGroundControl, DJI GS Pro, Pix4Dcapture, Autel",
+        "KU9. signal degradation risks during 5G drone operations (e.g., interference, obstruction,",
+        "KU10. procedures for downloading, verifying, and archiving mission data from drones post-flight.",
+        "KU11. basic use of data visualisation tools or viewers (e.g., Google Earth, Open Drone Map,",
+        "KU12. techniques to identify anomalies in drone data such as corrupted video, time sync errors, or",
+        "KU13. cybersecurity, privacy, and compliance considerations when dealing with surveillance or"
+      ],
+      "gs": [
+        "GS1. communicate clearly with supervisors and team members during drone data operations.",
+        "GS2. read and interpret basic data logs, labels, mission briefs and error messages.",
+        "GS3. follow written instructions and digital workflows for data handling.",
+        "GS4. apply basic numeracy skills to analyse flight data and time-stamps.",
+        "GS5. use critical thinking to identify abnormal patterns in drone data.",
+        "GS6. manage time efficiently to meet data processing and reporting timelines.",
+        "GS7. adapt to updated tools or platforms used for drone data monitoring."
+      ],
+      "modules": [
+        {
+          "module_title": "Set up and operate 5G-enabled drone data collection tools",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify the appropriate payload sensors (e.g., camera, thermal, LiDAR) based on the mission objective and ensure proper physical and digital integration with the drone.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "mount and calibrate data collection sensors according to standard manufacturer and organisational procedures.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "connect and configure the 5G communication module (e.g., CPE, 5G modem) for real-time transmission from the drone to the ground station.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "verify SIM credentials, network permissions, and 5G signal strength before take-off using diagnostic apps or interfaces.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "perform a pre-flight test to confirm stable real- time data streaming and GPS synchronisation between drone and remote controller/monitoring device.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure storage redundancy by enabling onboard SD card or SSD backups in parallel with 5G streaming.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Transmit and verify drone data integrity",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "activate data recording and 5G transmission through ground control software or flight app interface.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "monitor key telemetry indicators (e.g., signal strength, frame drop rate, latency) on the Ground Control Station (GCS) during data collection.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "detect and respond to signs of data transmission loss, interference, or compression errors in real time.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "validate that transmitted data (e.g., video feeds, sensor readings) is being received in the correct format (e.g., MP4, CSV, GeoTIFF) at the server or base station.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "take corrective action such as repositioning the drone, adjusting antenna orientation, or switching to fallback communication modes when transmission degrades.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "log data transmission status and any incidents of data corruption or signal loss in flight records or mission reports.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Retrieve and interpret drone-generated data",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "download and extract flight logs, imagery, and telemetry data from the drone’s onboard storage (e.g., SD card, SSD) after landing.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "use basic analysis tools (e.g., QGIS, Mission Planner, Pix4Dcapture, or drone OEM software) to open and inspect the quality and completeness of captured data.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "identify relevant features or anomalies in data, such as signal drop areas, object detection, vegetation health variation, or asset damage indicators.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "perform time-stamp matching between video, GPS, and telemetry layers to validate consistency and flight integrity.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "tag data files using mission ID, location, and sensor type for traceability and structured archiving.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "prepare a brief summary report containing observations, flight metadata, data issues, and suggested follow-ups.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "share findings and highlight abnormal patterns or errors with the technical supervisor or analysis team, following standard data handover protocols.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6259",
+      "nos_title": ".Operate and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. basic drone components, including frame, ESCs, motors, propellers, IMU, GPS, and payload",
+        "KU2. common mechanical and electrical issues observed in drones and their early indicators.",
+        "KU3. battery management principles, including safe charging, storage, disposal, and fire risk",
+        "KU4. standard tools and cleaning materials used for drone maintenance, and their proper use.",
+        "KU5. use of ground control software interfaces for sensor calibration and system diagnostics.",
+        "KU6. process of updating drone firmware, syncing with controllers, and resolving compatibility",
+        "KU7. importance of pre-flight and post-flight checklists and how to document them properly.",
+        "KU8. safety procedures for drone operation, including RTH activation, emergency shutdown, and",
+        "KU9. airspace regulations and compliance protocols applicable to drone operation in urban and",
+        "KU10. operational limits of drones, including maximum wind speed tolerance, altitude, and payload",
+        "KU11. use of GPS and compass calibration tools for enhancing flight stability.",
+        "KU12. impact of electromagnetic interference (EMI) on drone navigation and ways to mitigate it.",
+        "KU13. consequences of software errors, such as motor desync, unstable hovering, or flight drift,",
+        "KU14. principles of 5G connectivity and how it supports drone telemetry and video feed.",
+        "KU15. common drone error codes and messages, and standard responses to them.",
+        "KU16. responsibilities of the drone crew regarding safe operation, reporting, and compliance.",
+        "KU17. importance of logbook keeping and audit trail creation for drone flights."
+      ],
+      "gs": [
+        "GS1. read and understand drone manuals, firmware update guides, and technical notices.",
+        "GS2. communicate maintenance issues, calibration anomalies, or safety observations clearly to",
+        "GS3. follow written SOPs, checklists, and maintenance schedules independently.",
+        "GS4. use numeracy skills to interpret battery voltage, firmware versions, and GPS signal metrics.",
+        "GS5. apply basic troubleshooting to diagnose and address visible or recurring drone faults.",
+        "GS6. use mobile apps or diagnostic software to support drone health checks and maintenance",
+        "GS7. maintain a calm and safety-focused attitude when encountering operational disruptions or",
+        "GS8. organise tools, replacement parts, and documentation systematically for an efficient",
+        "GS9. work collaboratively with drone operators, technicians, and supervisors to ensure mission",
+        "GS10. show responsibility in maintaining compliance logs, hardware condition records, and flight"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform visual inspection and preventive maintenance",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "inspect the drone frame for visible cracks, structural deformation, or corrosion.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "check motor mounts and arms for secure attachment and signs of wear.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "examine propellers for nicks, warping, and proper alignment.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "clean dust and debris from vents, propellers, and sensor housings using lint-free cloth and compressed air.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "inspect wiring for fraying, loose connections, and damage.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "test motors using onboard diagnostic tools to detect abnormal vibrations or RPM mismatch.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "verify sensor alignment and perform basic calibration of IMU, compass, and gimbal.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "replace worn-out or damaged components (e.g., propellers, landing gear, vibration dampeners) using standard tools.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "check drone battery for swelling, leakage, or charging irregularities.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "apply firmware updates for both drone and payload modules using approved OTA or USB interfaces.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Assist in the deployment and calibration of 5G- Enabled drones",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "connect and configure the 5G communication module prior to take-off.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "validate GPS lock, compass health, and satellite count before mission launch.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "conduct health diagnostics of flight controllers, sensors, and communication modules through ground control software.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "monitor real-time system readiness indicators, including RC signal strength, video feed status, and battery voltage.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "ensure compatible payloads are mounted and properly powered before launch.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "report recurring calibration errors, firmware glitches, or initialisation failures to the supervisor.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "assist in setting up virtual Geofencing and flight boundary restrictions based on operational requirements.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "prepare drones for launch by verifying take- off zone is clear of obstructions and EMI sources.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "perform a return-to-home (RTH) test and validate the emergency stop function pre-flight.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure safe operations and compliance protocols",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "check daily weather reports and wind speed limits for safe drone operation.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "validate drone airframe and batteries meet required safety thresholds as per SOP.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "ensure drone is flown only within permitted airspace zones and geo-fence boundaries.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "record pre-flight and post-flight checks in drone logbook accurately.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "store batteries in fireproof containers and charge them only using certified charging stations.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "ensure drone takes off and lands only from designated take-off and landing pads.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "wear appropriate PPE (e.g., gloves, goggles) while handling drone hardware and batteries.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "report safety non-compliance, incidents, or near-misses to the designated authority.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "follow all organisational SOPs related to take-off, landing, emergency procedures, and no- fly conditions.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9101",
+      "nos_title": ".Organise Work and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational procedures for workplace management, task allocation, and quality assurance",
+        "KU2. applicable health, safety, and environmental policies as per national/international standards",
+        "KU3. importance and application of the 5S methodology (Sort, Set in Order, Shine, Standardise,",
+        "KU4. methods for digital documentation of work records, task sheets, and material movement logs",
+        "KU5. common workplace hazards (e.g., ESD, fire, electrical faults, trip hazards) and mitigation",
+        "KU6. types and correct usage of PPE (e.g., gloves, goggles, ESD wrist straps, masks, safety shoes)",
+        "KU7. safe practices for lifting, bending, standing, and workstation ergonomics",
+        "KU8. first aid procedures for minor cuts, electric shocks, or workplace injuries",
+        "KU9. importance of maintaining hygiene and cleanliness in workstations, tools, and devices",
+        "KU10. indicators of equipment or machinery malfunction and escalation protocols",
+        "KU11. energy-saving practices applicable to lights, equipment, and HVAC systems",
+        "KU12. sustainable practices in material usage, including waste minimisation and recycling",
+        "KU13. types of waste: recyclable, non-recyclable, hazardous (e.g., batteries, solvents, e-waste)",
+        "KU14. correct procedures for the disposal of different types of waste in accordance with",
+        "KU15. usage of digital tools (e.g., mobile apps, web portals, task boards) for productivity tracking"
+      ],
+      "gs": [
+        "GS1. read and interpret organisational procedures, safety protocols, labels, and warning signage",
+        "GS2. write clear and accurate reports/logs in paper or digital format regarding tasks performed,",
+        "GS3. communicate effectively with peers and supervisors regarding workload, delays, hazards, or",
+        "GS4. listen attentively and follow safety instructions, tool handling techniques, or ergonomic",
+        "GS5. plan daily tasks by prioritising safety and quality over speed",
+        "GS6. identify and resolve minor operational problems independently, escalating only where",
+        "GS7. work as part of a team to maintain cleanliness, safety, and quality standards in a shared",
+        "GS8. apply critical thinking to identify risks and recommend proactive safety measures.",
+        "GS9. foster a positive and responsible safety culture in the workplace.",
+        "GS10. stay updated on evolving safety standards and regulations."
+      ],
+      "modules": [
+        {
+          "module_title": "Maintain an organised, productive, and digitally compliant workspace",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "maintain a clean, clutter-free, and ergonomically safe workspace aligned with 5S principles",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "follow designated workflow as per the organisational Standard Operating Procedures (SOPs)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "digitally log work completed, including time stamps, material usage, and issues faced",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "track and update digital task checklists, inventories, or handovers through mobile/desktop apps",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify delays, workflow inefficiencies, or material constraints and escalate appropriately.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Adhere to health, safety, and environmental guidelines",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "comply with organisational health, safety, and environment (HSE) policies at all times",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "use personal protective equipment (PPE) such as ESD wrist straps, gloves, masks, and safety footwear",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "report any breaches in safety protocols, near misses, or unsafe practices immediately to supervisor/concerned authorities",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "detect hazards, including spillage, loose wiring, excessive noise, or EMI sources and respond as per SOP",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "follow lockout/tagout procedures when working around electrical or moving parts",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "adhere to safe lifting techniques, workstation posture norms, and equipment handling procedures",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "handle tools and heavy components using trolleys or assistive equipment when needed",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify early signs of physical or mental fatigue and report for preventive action",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "inform supervisor of symptoms related to communicable diseases or unsafe coworker behaviour.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conserve energy and manage resources efficiently",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "minimise wastage of consumables, components, and materials by adhering to industry best practices",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use electricity, lighting, and climate-control systems responsibly",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "power off equipment, tools, and terminals when not in use",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure routine maintenance, cleaning, and calibration of machines/tools to improve performance",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "report leakages, overheating, or malfunctions immediately for rectification",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "use digital tools to monitor and reduce environmental footprint, where applicable.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Implement safe and sustainable waste disposal practices",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "segregate and dispose of hazardous, recyclable, and general waste as per guidelines",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "deposit e-waste or used batteries at designated collection points following e-waste protocols",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "follow ESD-safe disposal procedures for sensitive electronic components",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9102",
+      "nos_title": ".Interact Effectively",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational structure, hierarchy, and roles of team members, supervisors, and",
+        "KU2. professional etiquette and expected behaviour in face-to-face, virtual, and telephonic",
+        "KU3. importance of clear communication and active listening to ensure mutual understanding",
+        "KU4. common digital communication tools (e.g., email, chat apps, video conferencing platforms)",
+        "KU5. feedback mechanisms within the organisation and how to respond constructively to criticism",
+        "KU6. cultural sensitivities, unconscious biases, and the importance of inclusion and diversity in the",
+        "KU7. principles of emotional intelligence and how they help in team coordination and customer",
+        "KU8. challenges faced by Persons with Disabilities (PwDs) and inclusive practices for working with",
+        "KU9. legal and organisational frameworks supporting equality, diversity, and anti-discrimination",
+        "KU10. methods for conflict prevention and resolution, including mediation and escalation",
+        "KU11. role of respect, trust, and open communication in team effectiveness and customer"
+      ],
+      "gs": [
+        "GS1. read and interpret work instructions, emails, and policy documents related to workplace",
+        "GS2. write clear, concise emails, reports, or messages to team members, supervisors, or customers",
+        "GS3. communicate clearly and confidently in person, over the phone, and using digital",
+        "GS4. adapt communication style based on the needs of the audience (e.g., customer, peer,",
+        "GS5. listen attentively to gather information, understand perspectives, and clarify doubts.",
+        "GS6. prioritise tasks and allocate time effectively in coordination with team members"
+      ],
+      "modules": [
+        {
+          "module_title": "Interact effectively with supervisors and stakeholders",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "receive and clarify work instructions, technical requirements, and priorities from supervisors or clients using appropriate communication tools (e.g., messaging apps, emails, virtual meetings)",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "inform supervisors or relevant stakeholders in a timely manner about any issues, risks, or deviations from planned tasks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "contribute to team decisions by providing relevant data, suggestions, and professional feedback during team discussions",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "act promptly on constructive feedback and incorporate learnings to improve future work outcomes",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Collaborate effectively with team members and customers",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "follow organisational norms and digital etiquette when working in hybrid or remote teams",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "communicate respectfully and effectively using face-to-face, phone, email, or collaboration platforms (e.g., MS Teams, Zoom)",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "seek clarification and respond to queries from customers and team members accurately and promptly",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify and de-escalate conflicts tactfully to maintain a productive and harmonious work environment",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "demonstrate emotional intelligence in team settings by recognising and responding to others’ perspectives and emotional states",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "align personal efforts with team and organisational goals to ensure shared success.",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Promote inclusivity, respect, and accessibility in the workplace",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "foster an inclusive workplace culture that respects gender, cultural, and socio-economic diversity",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "demonstrate respectful language and conduct toward colleagues and customers of all genders and backgrounds",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "support team members with disabilities by helping remove work-related barriers or by assisting them as needed",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "practice appropriate verbal and non-verbal communication while engaging with persons with disabilities (PwDs)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "promote equal opportunity and participation for all in meetings, decision-making, and teamwork.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

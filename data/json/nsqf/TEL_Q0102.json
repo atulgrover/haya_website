@@ -1,0 +1,914 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q0102",
+  "qp_name": "TEL_Q0102",
+  "clean_code": "TEL_Q0102",
+  "total_pages": 38,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.365Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 15,
+    "total_pcs": 74,
+    "total_kus": 53,
+    "total_gs": 38,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N0111",
+      "nos_title": ".Lay cable/system",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. specification of network cables, PoE devices, and network equipment",
+        "KU2. different sizes, colours, and categories of wires, including CAT5e, CAT6, CAT6A, and fiber",
+        "KU3. different types of cables (OFC, UTP, STP, Twisted Pair, etc.) and connectors (RJ-45, RJ-11, SC,",
+        "KU4. structured cabling standards for conventional and PoE-supported installations",
+        "KU5. crimping, splicing, and termination techniques for different cable types, ensuring proper",
+        "KU6. measuring distances accurately to maintain permissible limits for network performance and",
+        "KU7. selection of suitable installation locations while adhering to cabling norms and ensuring",
+        "KU8. functions, configurations and troubleshooting of customer premise equipment, including",
+        "KU9. safe handling and use of diagnostic tools such as LAN testers, PoE testers, and network",
+        "KU10. usage of hand and power tools for installation, cable routing, and device mounting",
+        "KU11. immediate troubleshooting techniques during installation, including resolving PoE power",
+        "KU12. risks and impacts of not following structured wiring guidelines, safety procedures, and PoE",
+        "KU13. documentation and record-keeping requirements for network infrastructure and PoE",
+        "KU14. payment processing procedures and customer communication best practices"
+      ],
+      "gs": [
+        "GS1. read and interpret installation diagrams, device manuals, and network layouts",
+        "GS2. communicate effectively with customers and team members regarding installation progress",
+        "GS3. liaise with vendors, suppliers, and customers to coordinate material procurement and service",
+        "GS4. follow safety guidelines and regulatory compliance while working with electrical components",
+        "GS5. apply problem-solving skills to resolve immediate installation issues related to cabling,",
+        "GS6. work efficiently under time constraints while maintaining quality standards",
+        "GS7. maintain proper documentation of network configurations, equipment specifications, and",
+        "GS8. adapt to emerging industry trends, such as higher-power PoE standards (IEEE 802.3bt)",
+        "GS9. use digital tools and applications to log service records and update customer details",
+        "GS10. maintain a customer-centric approach, ensuring clarity in explaining installed equipment"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare for wiring and equipment installation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "collect work requirements, tools, equipment, and materials required for installation, ensuring availability of PoE-compatible components",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "visit site/customer premises for installation, assessing feasibility for PoE-supported devices",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "analyze the installation environment and customer requirements to select the correct type of cables, connectors, and PoE injectors/switches",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "inspect indoor and outdoor cable routes to ensure they are free of electrical hazards and interference sources",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "verify that the cable running length is within permissible limits to maintain signal continuity and throughput, considering power transmission for PoE devices",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure the equipment installation location is near a power point, has proper signal coverage, and supports PoE power budgets",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Undertake wiring and install system hardware",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "install structured wiring (interior and exterior) from PoP to customer premises, integrating PoE network elements as required",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "perform cable splicing and crimping, ensuring proper termination for both standard and PoE-enabled cables",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "perform neat wiring and clipping within customer premises, adhering to structured cabling norms",
+              "sequence_order": 3,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use appropriate connectors and terminate cables securely, ensuring PoE-supported devices receive stable power and data signals",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "perform immediate fault clearance if connectivity or power issues arise during installation",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "test cables and joints for transmission loss and signal strength, re-terminating if loss exceeds prescribed limits",
+              "sequence_order": 6,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "install equipment such as modems, routers, PoE switches, IP cameras, and VoIP phones, ensuring proper connectivity",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "configure and verify the functionality of PoE-supported devices to ensure seamless integration",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "explain the use of installed equipment to customers, including PoE-enabled devices",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Install/replace UPS and check domestic power supply",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "perform voltage, current, and earthing checks to ensure a stable power supply",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "inspect and replace UPS batteries in case of failure, ensuring uninterrupted power for network equipment",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "install/replace UPS as per manufacturer’s instructions",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "route the power supply through UPS to protect network infrastructure",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "calculate equipment load and compare it with UPS capacity to prevent overloading",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Clean up worksite and complete documentation",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "dispose of installation waste properly and restore the worksite",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "record installation details, test results, and update network plans, including PoE device configurations",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "complete installation documents and obtain customer sign-off",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N0112",
+      "nos_title": ".Configure customer",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. risk and impact of not following defined procedures/work instructions issued as per SHE &",
+        "KU2. command-line access and command prompts to execute basic networking commands",
+        "KU3. configuration settings of CPE (wired and wireless), including VLAN, NAT, and QoS settings",
+        "KU4. the basics of VPNs, Internet Lease Lines (ILL), and their role in secure network",
+        "KU5. advanced networking concepts including IPv6 addressing, subnetting, Network Address",
+        "KU6. cybersecurity fundamentals, including securing home networks, firewall configurations, and",
+        "KU7. connectivity options and methods for CPE and end-user devices, including advanced Wi-Fi",
+        "KU8. Customer Premises Equipment (CPE) types, features, and integration with smart home",
+        "KU9. the features and operating requirements of test equipment for network diagnostics and",
+        "KU10. speed test methodologies, acceptable latency, jitter values, and how to demonstrate",
+        "KU11. Level 1 and 2 diagnostics for resolving common network issues efficiently",
+        "KU12. how to Interpret in-built diagnostic results for remedial action and escalating as required",
+        "KU13. escalation matrix for reporting incidents, troubleshooting major network failures, and"
+      ],
+      "gs": [
+        "GS1. interact courteously with customers while troubleshooting and providing solutions",
+        "GS2. liaise with customers and vendors to address service requests and technical issues",
+        "GS3. work in coordination with the team to resolve complex network issues efficiently",
+        "GS4. communicate effectively in the local language to guide customers on self-help and",
+        "GS5. work systematically with attention to detail while configuring network settings and",
+        "GS6. maintain accurate records of configuration settings, test results, and troubleshooting steps",
+        "GS7. adapt to emerging networking technologies, including smart home integrations and security",
+        "GS8. provide clear and concise guidance to customers on best practices for network security and",
+        "GS9. analyze connectivity trends and identify potential network improvements to enhance",
+        "GS10. follow all safety protocols and ensure compliance with regulatory guidelines for network"
+      ],
+      "modules": [
+        {
+          "module_title": "Configure CPE",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "connect a laptop/PC, smart/IP TV, IoT devices, and other customer devices to the CPE and establish connectivity",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "access Customer Premises Equipment (CPE) settings using default login credentials and update them for security",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "configure CPE as per base settings (IP, gateway, mask, NAT, QoS, etc.) and enable IPv6 support",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "set up VPN or Internet Lease Line (ILL) configurations as per customer requirements",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "follow basic cybersecurity settings such as strong password policies, firewalls, and MAC filtering",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Connect CPE to the service provider gateway and end-user devices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "verify that all cables and connectors are properly plugged in and functional",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "ping the service provider gateway and analyze response time for troubleshooting",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "analyze connectivity test results for latency, throughput, and packet loss parameters",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "configure end-user devices to establish LAN/Wi-Fi connectivity with CPE, including SSID and security settings",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ping CPE from the end-user device, analyze the response, and optimize network settings for stability",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "enable Quality of Service (QoS) settings to prioritize network traffic based on user needs",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "integrate broadband with smart home systems like Amazon Alexa, Google Home, or Apple HomeKit",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Record configuration settings and testing steps for the customer",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "record CPE configuration settings, including network security configurations and VPN/ILL setups",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "record end-user device configuration settings, including IP allocation and firewall settings",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "document the pinging procedure and expected result parameters for troubleshooting reference",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "perform a speed test, record throughput data, and demonstrate performance as per the subscribed plan",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "brief the customer on basic troubleshooting steps/self-help techniques, including cybersecurity best practices",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "provide guidance on monitoring network activity and updating firmware for security and performance improvements",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N0113",
+      "nos_title": ".Troubleshoot and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. basic principles of transmission, switching, and broadband communication systems",
+        "KU2. circuit board components, processors, and their role in telecommunication devices",
+        "KU3. various types of cables, cable pairs, and their signal transmission properties",
+        "KU4. cable connectors, their classifications, and the impact of improper connections",
+        "KU5. tools and equipment required for troubleshooting cable and connector faults",
+        "KU6. crimping, soldering techniques, and their application in network repairs",
+        "KU7. EMI/EMC interference and mitigation strategies specific to modems and broadband devices",
+        "KU8. use of signal level meters, OTDR, and AI-assisted fault detection tools for diagnostics",
+        "KU9. use of AI-based troubleshooting software for predictive maintenance and fault identification",
+        "KU10. remote diagnostic techniques and applications for CPE and broadband services",
+        "KU11. command-line configurations and software-based rectification methods for CPE",
+        "KU12. interpretation of signal attenuation, tiling, and interference patterns",
+        "KU13. risk factors and consequences of incorrect troubleshooting procedures",
+        "KU14. escalation matrix for reporting unresolved faults and system failures"
+      ],
+      "gs": [
+        "GS1. communicate effectively with customers and team members to understand service issues",
+        "GS2. maintain systematic and accurate records of troubleshooting activities and resolutions",
+        "GS3. operate troubleshooting tools, test meters, and remote diagnostic software efficiently",
+        "GS4. adapt to evolving AI-based troubleshooting and remote configuration technologies",
+        "GS5. provide clear technical instructions to non-technical users/customers",
+        "GS6. follow safety protocols while handling cables, connectors, and electrical equipment",
+        "GS7. work collaboratively in a team setting, ensuring smooth resolution of service faults",
+        "GS8. apply critical thinking to diagnose faults and determine the best corrective measures",
+        "GS9. manage time effectively to handle multiple service requests promptly",
+        "GS10. uphold customer satisfaction by ensuring service restoration with minimal downtime"
+      ],
+      "modules": [
+        {
+          "module_title": "Troubleshoot and repair cable, connector, and CPE faults",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify the root cause of faults, including No Service, service degradation, and intermittent connectivity issues",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "use signal level meters, OTDR, or AI-based diagnostic tools to test cabling and identify faults",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "repair or replace faulty connectors and damaged cables using industry-standard tools and techniques",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "perform re-connectorization/crimping of cable pairs or replace cables to restore connectivity",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "connect CPE to a laptop, CPU, or portable device for diagnostics and troubleshooting",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "access the CPE through an appropriate browser/software application, run diagnostic tests, and analyze logs",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "install or update CPE access software if required for troubleshooting or configuration",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "reset, reconfigure, or update firmware/software settings on CPE to resolve faults",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "utilize remote configuration and diagnostic tools to identify and troubleshoot faults without an on-site visit",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Troubleshoot and restore broadband service",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "diagnose and repair faults between customer equipment and the optical node using AI-assisted analysis",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify and rectify signal loss, interference, or line attenuation using advanced measurement tools",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "take readings at splitter points and terminated ends to determine signal integrity and continuity",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "conduct network troubleshooting, including ping tests, trace routes, and speed tests, using remote diagnostic tools",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "detect and document system, drop, and in- house signal leakage for resolution",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "assist customers in resolving issues using remote configuration tools and AI-driven troubleshooting guidance",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Document work and clean the site",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "log troubleshooting steps, fault isolation procedures, and test results in the system database",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "record all repairs, replacements, and software updates performed on CPE or network components",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "restore any modifications made to the worksite and ensure customer satisfaction",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9105",
+      "nos_title": ".Follow sustainable",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. the national and international environmental laws and regulations",
+        "KU2. e-waste management and recycling policies",
+        "KU3. occupational safety and health standards related to environmental practices",
+        "KU4. the types of recyclable and refurbishable telecom components",
+        "KU5. methods for reducing electronic waste through responsible procurement and reuse",
+        "KU6. advancements in eco-friendly telecom infrastructure",
+        "KU7. techniques for optimizing energy consumption in telecom operations",
+        "KU8. use of renewable energy sources in telecom infrastructure",
+        "KU9. best practices for reducing the carbon footprint of telecom installations",
+        "KU10. identification and proper disposal methods for hazardous and non-hazardous waste",
+        "KU11. the procedures for handling, storing, and transporting waste materials safely",
+        "KU12. how to collaborate with authorized agencies for effective waste collection and disposal"
+      ],
+      "gs": [
+        "GS1. communicate effectively with team members to ensure adherence to sustainable practices",
+        "GS2. follow written instructions for waste segregation, disposal, and energy-efficient installations",
+        "GS3. use problem-solving skills to address sustainability challenges in telecom installations",
+        "GS4. apply numerical skills to track and record environmental compliance data",
+        "GS5. organize tasks efficiently to minimize resource wastage and environmental impact",
+        "GS6. adapt to new sustainable technologies in telecom infrastructure",
+        "GS7. work collaboratively with authorized agencies to ensure proper e-waste disposal",
+        "GS8. maintain safety protocols while handling hazardous materials"
+      ],
+      "modules": [
+        {
+          "module_title": "Segregate recyclable and refurbishable components",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify telecom components suitable for recycling or refurbishment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "sort electronic and non-electronic waste based on disposal protocols",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "label and store recyclable and refurbishable components separately",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Dispose of waste",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "follow approved procedures for the safe disposal of hazardous and non-hazardous waste",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "coordinate with authorized e-waste recycling units or certified disposal agencies",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "handle batteries, cables, and electronic circuits safely to prevent environmental hazards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Use Energy-Efficient Methods",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "select and use energy-efficient tools and equipment during telecom installations",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "apply best practices to minimize energy consumption",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "position and install telecom infrastructure to optimize efficiency and sustainability",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Follow environmental standards and compliance guidelines",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "adhere to national and international environmental regulations for telecom infrastructure installation",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "maintain records of waste disposal, recycling, and sustainability measures",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "assist in periodic audits to assess compliance with green standards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "follow workplace sustainability protocols and report non-compliance",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Guide team members",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "guide team members on sustainable telecom installation guidelines and practices",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "encourage environmentally responsible work habits",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

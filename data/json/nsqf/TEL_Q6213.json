@@ -1,0 +1,1016 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6213",
+  "qp_name": "TEL_Q6213",
+  "clean_code": "TEL_Q6213",
+  "total_pages": 40,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.490Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 13,
+    "total_pcs": 86,
+    "total_kus": 59,
+    "total_gs": 38,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6104",
+      "nos_title": ".Carry out Rack",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the types, dimensions, and load ratings of racks used for IT and 5G network equipment",
+        "KU2. the standard dimensions and specifications of 5G network components, including gNodeB,",
+        "KU3. key rack components such as mounting rails, doors, ventilation panels, and cable",
+        "KU4. the criteria for selecting an optimal installation space, including environmental, structural,",
+        "KU5. the methods for evaluating power circuit capabilities, including voltage, amperage,",
+        "KU6. the importance of effective cooling solutions, including hot-aisle/cold-aisle design, airflow",
+        "KU7. procedures for arranging and securing network equipment for stability, maintenance, and",
+        "KU8. common causes of thermal issues and techniques to prevent overheating of 5G network",
+        "KU9. best practices for power and network cable management to ensure safety and ease of",
+        "KU10. techniques for inspecting and identifying faults in gNodeB and other 5G hardware",
+        "KU11. installation and safety procedures for high-power and high-density server equipment",
+        "KU12. industry best practices for structured cabling, grounding, and earthing in",
+        "KU13. basic principles of networking, including IP addressing, TCP/IP, VLANs, and remote access",
+        "KU14. common troubleshooting techniques for hardware faults, connectivity failures, and power",
+        "KU15. steps to configure virtualization environments (e.g., VMware) for network deployment and",
+        "KU16. documentation standards for recording installation layouts, cable routing, and equipment"
+      ],
+      "gs": [
+        "GS1. maintain clear and accurate documentation of installation, configuration, and",
+        "GS2. read and interpret technical manuals, schematics, and vendor guidelines related to 5G",
+        "GS3. communicate professionally and effectively with team members, vendors, and technical",
+        "GS4. plan and prioritize tasks to ensure efficient completion of installation activities within",
+        "GS5. work collaboratively with coworkers to ensure seamless coordination during large-scale",
+        "GS6. apply critical thinking to evaluate installation challenges and implement the most effective",
+        "GS7. follow safety protocols and emergency procedures to prevent workplace accidents during",
+        "GS8. adapt to new technologies and industry standards by keeping up to date with evolving",
+        "GS9. use digital tools and software applications for installation planning, troubleshooting, and",
+        "GS10. analyze system performance metrics to identify inefficiencies and recommend improvements"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare for the installation of racks and equipment for 5G networks",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "assess the designated installation area to verify space availability, load-bearing capacity, and future expansion feasibility",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "check facility entry points, door heights, and floor strength to facilitate safe movement and installation of racks and equipment",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify and select appropriate rack types (open frame, enclosed, wall-mount) based on the equipment to be installed and ease of cable and device management",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure power supply circuits provide the required voltage, amperage, and redundancy for uninterrupted operation of 5G network equipment",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "verify the absence of heat sources in and around the installation area to prevent thermal risks",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "assess the adequacy of active or passive cooling systems, including ducts, dropped ceilings, or Computer Room Air Conditioners (CRACs), to manage heat dissipation",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "develop a layout plan for rack placement, considering power distribution, ventilation pathways, and future equipment scalability",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "confirm the availability of proper grounding and earthing systems to prevent electrical hazards",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Install and secure racks and equipment for 5G networks",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "arrange racks in a hot-aisle/cold-aisle configuration to enhance cooling efficiency and reduce energy consumption",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "position and secure equipment inside racks, ensuring optimal space utilization, accessibility for maintenance, and future expansion",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "inspect received gNodeB and other 5G network components for physical damage or defects before installation",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "report and coordinate with vendors or support teams for the replacement or repair of damaged/faulty gNodeB and other components",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "mount and secure gNodeB and associated 5G equipment using appropriate fasteners while adhering to rack load ratings",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "position heavier equipment at the lower sections of racks to maintain stability and prevent top-heavy tipping hazards",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "distribute high-density and high-wattage equipment across multiple racks to minimize thermal hotspots",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "follow manufacturer guidelines and safety protocols for assembling and installing blade servers and power distribution units (PDUs)",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "connect power, network, and grounding cables following structured cabling best practices to ensure safety and organization",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Conduct post-installation verification and troubleshooting",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "perform post-installation inspection to confirm proper mounting, cabling, and power connectivity of installed equipment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "identify and rectify common installation errors, such as improper cable routing, loose connections, or incorrect equipment placement",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "run initial power-on and basic operational tests for installed 5G network equipment",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "troubleshoot hardware and connectivity issues following manufacturer guidelines and escalate unresolved problems to relevant teams",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "configure operating system and virtual machine (VM) settings as per standard deployment procedures",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "document installation details, including rack layout, power consumption, and network configurations, for future reference",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6105",
+      "nos_title": ".Carry out 5G active",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. industry standards, such as 3rd Generation Partnership Project (3GPP) releases relevant to",
+        "KU2. components of 5G gNodeB, their functions, and interoperability requirements",
+        "KU3. power and grounding principles, including best practices for electrical safety and surge",
+        "KU4. types, specifications, and applications of power, earthing, and RF cables used in 5G",
+        "KU5. procedures for installing and securing power, earthing, and RF cables in compliance with",
+        "KU6. best practices for routing and terminating cables between various types of antennas to",
+        "KU7. tools and techniques for conducting cable transmission tests and identifying common faults",
+        "KU8. methods for establishing high-capacity Ethernet and fiber-based backhaul connectivity",
+        "KU9. backhaul network architecture, including CU-DU split, and its impact on network",
+        "KU10. configuration and commissioning processes for gNodeB integration with the central unit",
+        "KU11. network synchronization techniques, including Precision Time Protocol (PTP) and Global",
+        "KU12. security considerations for network elements, including data encryption, firewall settings,",
+        "KU13. methods for configuring and integrating environmental alarm systems for real-time network",
+        "KU14. installation and optimization of OS and VM environments for supporting 5G network",
+        "KU15. testing methodologies to evaluate network performance, including latency, packet loss, and"
+      ],
+      "gs": [
+        "GS1. document work activities, configurations, and testing results accurately for future reference",
+        "GS2. read and interpret technical manuals, installation guides, and schematic diagrams",
+        "GS3. communicate effectively with team members, supervisors, and external stakeholders",
+        "GS4. listen actively and follow instructions precisely to ensure accurate installation and",
+        "GS5. organize and prioritize tasks efficiently to meet project deadlines and avoid operational",
+        "GS6. identify and troubleshoot common network installation issues using logical problem-solving",
+        "GS7. make informed decisions under time constraints, especially during on-site troubleshooting",
+        "GS8. follow safety procedures, industry standards, and best practices to minimize risks in network",
+        "GS9. adapt to new tools, technologies, and evolving industry trends in 5G network deployment",
+        "GS10. collaborate effectively with cross-functional teams, including network engineers, technicians,"
+      ],
+      "modules": [
+        {
+          "module_title": "Carry out power, earthing and RF cabling",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "ensure the availability of required installation materials as per the installation document, including terminal connectors, thimbles, surge protectors, and cable ties",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "assess the power requirements of the gNodeB and associated equipment, ensuring compatibility with the available power supply",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "select appropriate power, earthing, and RF cables based on specifications, load requirements, and environmental conditions",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "inspect all cables for any physical damage or manufacturing defects and coordinate replacements, if necessary",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "install and secure power cables from the power source to the equipment, ensuring compliance with safety and regulatory standards",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "establish proper earthing connections, measuring and maintaining earth resistance values within permissible limits",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "install RF cables between the gNodeB, other radio equipment, and antennas, ensuring minimal signal loss",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "route and terminate cables correctly to omnidirectional and sector antennas while allowing flexibility for maintenance and upgrades",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "conduct continuity and performance tests on installed cables using industry-standard tools and rectify issues if detected",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "implement shielding and grounding techniques to mitigate electromagnetic interference (EMI) and ensure optimal signal transmission",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Install, configure, and commission backhaul connectivity",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "coordinate with relevant personnel to establish high-throughput Ethernet or fiber-optic backhaul connectivity",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "deploy fiber optic solutions for backhaul connectivity, ensuring proper termination and splicing techniques",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "validate and configure backhaul connectivity, ensuring seamless communication between gNodeB and the central office",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "implement Centralised Unit–Distributed Unit (CU-DU) split architecture for optimized network functionality",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "configure gNodeB settings to enable integration with the Centralised Unit (CU) and core network",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure gNodeB visibility in the central unit for remote commissioning, monitoring, and control",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "install and integrate environmental alarm systems with the central monitoring unit to enable proactive site management",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "deploy and configure the required Operating System (OS) and Virtual Machine (VM) environments for network operations",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "verify network synchronization and timing configurations to align with industry standards and optimize performance",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "conduct functional tests, including throughput and latency checks, to validate end-to- end connectivity and network performance",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6246",
+      "nos_title": ".Follow the",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. industry best practices for safe tower climbing and fall protection techniques",
+        "KU2. the importance of maintaining well-serviced and certified safety equipment before tower",
+        "KU3. essential PPE requirements, including harness types, lanyards, helmets, gloves, and anti-slip",
+        "KU4. procedures for checking and maintaining first aid kits at work sites",
+        "KU5. effective communication protocols using two-way radios during tower climbing activities",
+        "KU6. basic first aid techniques applicable to tower climbing incidents",
+        "KU7. methods for identifying, documenting, and reporting unsafe worksite conditions",
+        "KU8. pre-use inspections of PPE, tools, hoisting, and rigging equipment to ensure compliance with",
+        "KU9. steps for conducting a Job Hazard Analysis (JHA) and developing an Emergency Action Plan",
+        "KU10. methods for assessing weather conditions and determining when to halt tower climbing",
+        "KU11. risks associated with impaired physical health while working at heights and the impact of",
+        "KU12. the significance of ongoing safety training and competency enhancement for tower climbers",
+        "KU13. electrical hazard mitigation strategies and adherence to workplace electrical safety",
+        "KU14. recommended climbing techniques for different types of telecom towers and related steel",
+        "KU15. industry-specific safety regulations, such as OSHA and local occupational health standards",
+        "KU16. procedures for preparing and reviewing incident reports to mitigate future risks"
+      ],
+      "gs": [
+        "GS1. maintain accurate records of safety inspections, incidents, and maintenance logs",
+        "GS2. read and interpret safety manuals, regulatory updates, and standard operating procedures",
+        "GS3. communicate effectively with team members and supervisors regarding safety concerns and",
+        "GS4. listen attentively to instructions to ensure compliance with safety guidelines",
+        "GS5. organize and prioritize tasks to complete tower climbing activities safely and efficiently",
+        "GS6. identify and implement appropriate solutions to safety-related worksite challenges",
+        "GS7. make quick and informed decisions during emergencies, such as extreme weather or",
+        "GS8. adapt to evolving safety protocols and technology advancements in tower climbing",
+        "GS9. demonstrate situational awareness to recognize potential hazards and prevent accidents",
+        "GS10. collaborate with coworkers and safety personnel to maintain a risk-free work environment"
+      ],
+      "modules": [
+        {
+          "module_title": "Conduct pre-climb tower inspection",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "conduct a visual assessment of the tower using binoculars to check for loose or missing hardware, rust, or structural damage, and ensure necessary repairs are completed before climbing",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify and mitigate climbing obstructions and hazards, such as bird nests, insect infestations, or external attachments",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "inspect turnbuckles for proper installation and ensure guy wires are tensioned within recommended limits for guyed towers",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "examine guy preforms, thimbles, and anchor points for signs of corrosion, fraying, or mechanical damage",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "verify the tower’s verticality using a plumb line or inclinometer to detect structural misalignment due to environmental or load stress",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "report identified tower defects to the relevant authority and confirm corrective actions are implemented before proceeding with climbing tasks",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Check safety equipment and assess work site conditions",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "inspect ladders, hoisting and rigging equipment, and essential tools to confirm operational readiness and compliance with safety standards",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "check the condition and availability of Personal Protective Equipment (PPE), including a full-body harness, lanyards, climbing helmets, gloves, and anti-slip boots",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "verify that a fully stocked first aid kit is accessible at the work site",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "measure radio frequency (RF) exposure levels using an RF detector to ensure compliance with regulatory limits",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify potential electrical hazards, including proximity to high-voltage power lines, and coordinate necessary precautions",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "collaborate with relevant personnel to conduct a Job Hazard Analysis (JHA) and formulate an Emergency Action Plan (EAP)",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify and report unsafe conditions at the work site to the appropriate authority and document corrective actions taken",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "assess weather conditions using meteorological data and avoid work during thunderstorms, high winds, or adverse environmental conditions",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "measure wind velocity using an anemometer and ensure work is conducted within permissible wind speed limits",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure vehicles, machinery, and equipment are positioned at a safe distance from tower structures and live power lines",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Execute tower operations following health and safety protocols",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "register at the work site and adhere to safety guidelines before commencing tower climbing",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "secure a full-body harness to designated anchor points and maintain 100% tie-off at all times",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "utilize a safety cable climb system or double lanyards while ascending, descending, and moving on the tower",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "use appropriate PPE as per manufacturer guidelines to ensure maximum protection",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "follow standard tower climbing procedures to prevent falls, slips, or unexpected incidents",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "maintain continuous communication with the ground crew using a two-way radio",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "report any health impairments, such as dizziness or fatigue, and cease tower work if under the influence of medication that may affect concentration",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "work at a safe distance from live power lines or coordinate with authorities to de-energize electrical lines when necessary",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "place appropriate warning signs near live electrical zones to alert coworkers and prevent accidents",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "ensure compliance with industry safety regulations and worksite protocols throughout the climbing operation",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "administer basic first aid for injuries and medical emergencies at the worksite",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "assist in preparing incident reports by providing accurate details about workplace hazards, injuries, or accidents",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9105",
+      "nos_title": ".Follow sustainable",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. the national and international environmental laws and regulations",
+        "KU2. e-waste management and recycling policies",
+        "KU3. occupational safety and health standards related to environmental practices",
+        "KU4. the types of recyclable and refurbishable telecom components",
+        "KU5. methods for reducing electronic waste through responsible procurement and reuse",
+        "KU6. advancements in eco-friendly telecom infrastructure",
+        "KU7. techniques for optimizing energy consumption in telecom operations",
+        "KU8. use of renewable energy sources in telecom infrastructure",
+        "KU9. best practices for reducing the carbon footprint of telecom installations",
+        "KU10. identification and proper disposal methods for hazardous and non-hazardous waste",
+        "KU11. the procedures for handling, storing, and transporting waste materials safely",
+        "KU12. how to collaborate with authorized agencies for effective waste collection and disposal"
+      ],
+      "gs": [
+        "GS1. communicate effectively with team members to ensure adherence to sustainable practices",
+        "GS2. follow written instructions for waste segregation, disposal, and energy-efficient installations",
+        "GS3. use problem-solving skills to address sustainability challenges in telecom installations",
+        "GS4. apply numerical skills to track and record environmental compliance data",
+        "GS5. organize tasks efficiently to minimize resource wastage and environmental impact",
+        "GS6. adapt to new sustainable technologies in telecom infrastructure",
+        "GS7. work collaboratively with authorized agencies to ensure proper e-waste disposal",
+        "GS8. maintain safety protocols while handling hazardous materials"
+      ],
+      "modules": [
+        {
+          "module_title": "Segregate recyclable and refurbishable components",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify telecom components suitable for recycling or refurbishment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "sort electronic and non-electronic waste based on disposal protocols",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "label and store recyclable and refurbishable components separately",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Dispose of waste",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "follow approved procedures for the safe disposal of hazardous and non-hazardous waste",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "coordinate with authorized e-waste recycling units or certified disposal agencies",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "handle batteries, cables, and electronic circuits safely to prevent environmental hazards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Use Energy-Efficient Methods",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "select and use energy-efficient tools and equipment during telecom installations",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "apply best practices to minimize energy consumption",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "position and install telecom infrastructure to optimize efficiency and sustainability",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Follow environmental standards and compliance guidelines",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "adhere to national and international environmental regulations for telecom infrastructure installation",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "maintain records of waste disposal, recycling, and sustainability measures",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "assist in periodic audits to assess compliance with green standards",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "follow workplace sustainability protocols and report non-compliance",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Guide team members",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "guide team members on sustainable telecom installation guidelines and practices",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "encourage environmentally responsible work habits",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1133 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6101",
+  "qp_name": "TEL_Q6101",
+  "clean_code": "TEL_Q6101",
+  "total_pages": 43,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.464Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 19,
+    "total_pcs": 93,
+    "total_kus": 64,
+    "total_gs": 39,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6109",
+      "nos_title": ".Install the Local",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. basics of computer networks, including types and functions of LAN and WAN.",
+        "KU2. difference between various network devices such as modems, routers, access points, and",
+        "KU3. structured cabling standards, colour codes, and pin configurations.",
+        "KU4. networking protocols (e.g., TCP/IP, DHCP, NAT, DNS) and their purpose.",
+        "KU5. common wireless technologies (e.g., Wi-Fi, LTE) and their integration with wired networks.",
+        "KU6. standard installation and safety procedures for mounting network equipment.",
+        "KU7. diagnostic commands and tools used for testing network functionality (e.g., ping, ipconfig,",
+        "KU8. documentation procedures including recording MAC/IP addresses, network maps, and",
+        "KU9. basic cybersecurity principles like device password protection, encryption, and secure",
+        "KU10. handling and disposal of damaged cables or electronic components as per e-waste norms."
+      ],
+      "gs": [
+        "GS1. communicate effectively with customers, supervisors, and technical teams.",
+        "GS2. read and interpret installation manuals, device datasheets, and wiring diagrams.",
+        "GS3. write brief installation notes and reports in prescribed formats.",
+        "GS4. apply basic math for measuring cable lengths, calculating IP ranges, or estimating signal loss.",
+        "GS5. use problem-solving and logical thinking to troubleshoot connectivity issues.",
+        "GS6. manage time effectively to complete installations within service windows.",
+        "GS7. adapt quickly to different network equipment brands and evolving standards.",
+        "GS8. work safely using ladders, tools, and equipment in compliance with field protocols."
+      ],
+      "modules": [
+        {
+          "module_title": "Pre-set up activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "receive work instructions and technical drawings from the supervisor or network engineers to plan for LAN/WAN installation.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify and select appropriate network devices (such as, routers, modems, switches, patch panels) based on network layout and capacity requirements.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "interpret circuit diagrams, IP schemas, and cable routing plans before setting up the hardware.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "unbox and inspect network hardware for physical damages or missing components as per BOM (Bill of Material).",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Set up LAN and WAN hardware components",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "connect routers, switches, and wireless access points as per standard layer 2 and layer 3 network architecture.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "assign correct ports and label all connections (e.g., uplink/downlink, VLAN ID, WAN/LAN) for traceability.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "configure basic network parameters such as ip address, subnet mask, default gateway, and dns settings on routers and switches.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "install and configure access points (APS) with ssid, channel, and security settings in compliance with organisational standards.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "establish uplinks to the Internet Service Provider (ISP) gateway and verify link synchronisation.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure proper network cabling and configuration",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "identify suitable cable types (cat5e, cat6, fibre optic) based on network bandwidth and distance requirements.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "measure, cut, and crimp ethernet cables using appropriate tools (e.g., cable stripper, crimping tool, rj45 connectors).",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "install network cables in ducts, raceways, or conduits ensuring minimal bending and no physical strain on connectors.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "label both ends of each cable using cable tags or colour codes for easy fault diagnosis.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "check grounding and bonding of racks and metal equipment to avoid electrical hazards.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Test and verify network connectivity",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "power up the devices and verify boot status through indicator leds or diagnostic ports.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use basic network testing tools (e.g., lan tester, cable certifier, TDR meter) to ensure cable integrity and proper connectivity.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "perform ping test , speed test, and bandwidth tests to confirm desired connectivity and speed.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "take photograph and record test results in the job sheet or digital installation report.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6110",
+      "nos_title": ".Set up and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. basic networking concepts including IP addressing, subnetting, DNS, and DHCP.",
+        "KU2. differences between managed and unmanaged switches, and their use cases in last-mile",
+        "KU3. types of routers (wired, wireless, edge) and their functional roles in LAN/WAN environments.",
+        "KU4. physical components of a switch/router including ports, console interfaces, and power units.",
+        "KU5. standard switch configurations including VLAN tagging, trunk ports, spanning tree protocol",
+        "KU6. router configuration commands for static routing, dynamic routing protocols (RIP, OSPF), and",
+        "KU7. console access techniques including serial/USB console, SSH, and browser-based GUI",
+        "KU8. use of terminal emulation software (e.g., PuTTY, Tera Term) and secure login practices.",
+        "KU9. troubleshooting tools such as ping, tracert, ipconfig, and their applications in resolving",
+        "KU10. methods for backing up and restoring configuration files from routers and switches.",
+        "KU11. safety practices for handling electrical devices and securing equipment in network racks.",
+        "KU12. importance of documenting IP plans, switch/router settings, and port allocations for future",
+        "KU13. impact of misconfigured VLANs, duplicate IPs, or incorrect routing on service delivery.",
+        "KU14. common cybersecurity vulnerabilities in network devices and basic countermeasures such as",
+        "KU15. firmware upgrade procedures and the role of patch updates in ensuring device security."
+      ],
+      "gs": [
+        "GS1. communicate clearly with network supervisors and team members regarding setup progress",
+        "GS2. read and interpret network schematics, port maps, IP tables, and configuration guides.",
+        "GS3. use critical thinking to isolate and resolve network connectivity or configuration issues.",
+        "GS4. apply basic mathematical skills for subnetting, IP calculations, and bandwidth estimation.",
+        "GS5. adapt quickly to new firmware interfaces or updated configuration tools.",
+        "GS6. manage time effectively to ensure scheduled network activation and minimal downtime."
+      ],
+      "modules": [
+        {
+          "module_title": "Take instructions and prepare for installation tasks",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "verify availability of hardware such as managed/unmanaged switches, layer 2 or layer 3 routers, cables, connectors, and power supply.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure all tools required for the setup (such as, crimping tool, cable tester, punch-down tool, screwdrivers) are ready and functional.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "assess network design documents or topology diagrams to understand IP allocation, switch roles, and VLAN structure.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Install and physically set up network devices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "mount the switch or router securely in racks or wall enclosures as per standard procedures.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "verify cable continuity using LAN cable testers and ensure colour coding or labelling of ports for traceability.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "connect network cables (Cat5e/Cat6 or fibre) to appropriate switch/router ports following the assigned port plan.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "connect power cables, backup power sources (e.g., UPS), and confirm device boot-up through LED indicators or diagnostics.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Configure network switches and routers",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "access the switch/router console via serial/USB port or IP-based terminal software (e.g., PuTTY, Tera Term).",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "assign static or dynamic IP addresses to devices based on DHCP settings or static routing plans.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "configure basic settings such as hostname, domain name, password protection, and NTP synchronisation.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "create and assign VLANs, configure trunk and access ports, and verify inter-VLAN routing if applicable.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "enable port security features, MAC address filtering, and spanning tree protocol (STP) to avoid network loops.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "configure routers with gateway IP, NAT/PAT settings, routing protocols (e.g., RIP, OSPF), and route summarisation.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "set up access control lists (ACLs) to manage data flow and apply firewall rules to restrict unauthorised traffic.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Test and validate device configuration",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "verify connectivity through ping and traceroute commands.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "run interface status and routing table commands (e.g., show ip int brief, show vlan, show run) to confirm operational parameters.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "troubleshoot configuration issues by checking log files, LED indicators, and loopback test results.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "back up device configurations to external storage or network drive using TFTP/FTP or USB.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6111",
+      "nos_title": ".Carry out",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. different types of network devices such as ONT/ONU, routers, switches, access points, and",
+        "KU2. basic principles of LAN and fibre-based last-mile connectivity, including GPON, Ethernet, and",
+        "KU3. layout and structure of residential, commercial, and enterprise network setups.",
+        "KU4. maintenance protocols for active network devices, including visual checks, cleaning, and",
+        "KU5. significance of indicators like link status LEDs, power status, fault lights, and fan noise in",
+        "KU6. causes and effects of packet loss, high latency, and poor signal strength on network",
+        "KU7. use of diagnostic tools such as LAN testers, VFLs, OTDRs, and network sniffers in",
+        "KU8. • fibre and copper cable handling techniques, including cleaning, labelling, bend radius limits,",
+        "KU9. firmware flashing procedures and safe upgrade methods for CPEs and networking hardware.",
+        "KU10. basic ESD safety precautions and use of protective gear while handling active devices.",
+        "KU11. standard field splicing procedures and when to use mechanical or fusion splicing methods.",
+        "KU12. organisational documentation procedures including logbook entry, digital app updates, and",
+        "KU13. escalation matrix for unresolved technical faults or non-standard issues."
+      ],
+      "gs": [
+        "GS1. communicate clearly with supervisors, team members, and occasionally customers during on-",
+        "GS2. read and interpret device manuals, wiring diagrams, and maintenance checklists.",
+        "GS3. understand error codes, signal indicators, and data logs from diagnostic tools.",
+        "GS4. follow written standard operating procedures (SOPs) for device inspection and replacement.",
+        "GS5. apply basic numeracy for interpreting voltage readings, network statistics, and signal strength",
+        "GS6. use logical reasoning to detect probable faults and select the right troubleshooting method.",
+        "GS7. plan and prioritise work efficiently to complete maintenance tasks within time-bound",
+        "GS8. adapt to new networking equipment models, tools, or updated maintenance software",
+        "GS9. maintain composure and professionalism in challenging field environments or customer"
+      ],
+      "modules": [
+        {
+          "module_title": "Receive Work Instructions and Prepare for Maintenance",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review the network layout diagram, device inventory, and location plan to identify devices due for inspection or servicing.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure possession of all required tools and diagnostic equipment such as multimeters, LAN testers, OTDRs, crimping tools, and splicing kits.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "verify stock availability of spare parts like SFP modules, connectors, patch cords, power supplies, and batteries required for field replacement.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "perform a visual inspection of the assigned site for safety hazards and access points before starting work.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Inspect, Diagnose and Troubleshoot Network Devices",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "inspect active network devices (e.g., routers, switches, access points, ONU/ONT) for signs of wear, physical damage, loose connections, or overheating.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "run diagnostic tests to check device health indicators such as port activity, LED status, temperature logs, and fan operations.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "identify connectivity issues, signal degradation, or packet loss using ping tests, cable continuity checks, and loopback tests.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "assess power supply units and backup systems (e.g., UPS, PoE injectors) for consistent voltage output and battery health.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "check fibre patch panels and copper patch cords for proper insertion, labelling, and potential microbends or cable stress.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Carry Out Maintenance Tasks and Replace Faulty Components",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "clean optical ports, connectors, and device enclosures using standard cleaning kits and ESD- safe materials.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "tighten loose terminations, replace damaged connectors, and realign misconfigured port connections as per standard guidelines.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "update or reconfigure firmware/software settings on CPEs and switches, if required, using vendor-specific CLI/GUI interfaces.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "replace non-functional components such as power adaptors, SFP modules, fan units, or fuses with compatible spare parts.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "perform minor field-level splicing of fibre drop cables using hand tools or portable fusion splicers to restore link continuity.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Test and Validate Network Performance Post- Maintenance",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "test the link throughput, signal strength, latency, and packet loss after repair using handheld testers or mobile apps.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "confirm network stability by checking interface up/down status, IP assignment, and device reachability via ping or traceroute.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure customer or user devices (e.g., routers, STBs, IP phones) are synchronised with the network and receiving consistent bandwidth.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "record the maintenance activities, replaced items, and device health metrics in physical or digital logs as per organisational format.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "report completion status and any unresolved issues to the supervisor or escalate if specialised support is needed.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9101",
+      "nos_title": ".Organise Work and",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational procedures for workplace management, task allocation, and quality assurance",
+        "KU2. applicable health, safety, and environmental policies as per national/international standards",
+        "KU3. importance and application of the 5S methodology (Sort, Set in Order, Shine, Standardise,",
+        "KU4. methods for digital documentation of work records, task sheets, and material movement logs",
+        "KU5. common workplace hazards (e.g., ESD, fire, electrical faults, trip hazards) and mitigation",
+        "KU6. types and correct usage of PPE (e.g., gloves, goggles, ESD wrist straps, masks, safety shoes)",
+        "KU7. safe practices for lifting, bending, standing, and workstation ergonomics",
+        "KU8. first aid procedures for minor cuts, electric shocks, or workplace injuries",
+        "KU9. importance of maintaining hygiene and cleanliness in workstations, tools, and devices",
+        "KU10. indicators of equipment or machinery malfunction and escalation protocols",
+        "KU11. energy-saving practices applicable to lights, equipment, and HVAC systems",
+        "KU12. sustainable practices in material usage, including waste minimisation and recycling",
+        "KU13. types of waste: recyclable, non-recyclable, hazardous (e.g., batteries, solvents, e-waste)",
+        "KU14. correct procedures for the disposal of different types of waste in accordance with",
+        "KU15. usage of digital tools (e.g., mobile apps, web portals, task boards) for productivity tracking"
+      ],
+      "gs": [
+        "GS1. read and interpret organisational procedures, safety protocols, labels, and warning signage",
+        "GS2. write clear and accurate reports/logs in paper or digital format regarding tasks performed,",
+        "GS3. communicate effectively with peers and supervisors regarding workload, delays, hazards, or",
+        "GS4. listen attentively and follow safety instructions, tool handling techniques, or ergonomic",
+        "GS5. plan daily tasks by prioritising safety and quality over speed",
+        "GS6. identify and resolve minor operational problems independently, escalating only where",
+        "GS7. work as part of a team to maintain cleanliness, safety, and quality standards in a shared",
+        "GS8. apply critical thinking to identify risks and recommend proactive safety measures.",
+        "GS9. foster a positive and responsible safety culture in the workplace.",
+        "GS10. stay updated on evolving safety standards and regulations."
+      ],
+      "modules": [
+        {
+          "module_title": "Maintain an organised, productive, and digitally compliant workspace",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "maintain a clean, clutter-free, and ergonomically safe workspace aligned with 5S principles",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "follow designated workflow as per the organisational Standard Operating Procedures (SOPs)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "digitally log work completed, including time stamps, material usage, and issues faced",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "track and update digital task checklists, inventories, or handovers through mobile/desktop apps",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify delays, workflow inefficiencies, or material constraints and escalate appropriately.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Adhere to health, safety, and environmental guidelines",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "comply with organisational health, safety, and environment (HSE) policies at all times",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "use personal protective equipment (PPE) such as ESD wrist straps, gloves, masks, and safety footwear",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "report any breaches in safety protocols, near misses, or unsafe practices immediately to supervisor/concerned authorities",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "detect hazards, including spillage, loose wiring, excessive noise, or EMI sources and respond as per SOP",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "follow lockout/tagout procedures when working around electrical or moving parts",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "adhere to safe lifting techniques, workstation posture norms, and equipment handling procedures",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "handle tools and heavy components using trolleys or assistive equipment when needed",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify early signs of physical or mental fatigue and report for preventive action",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "inform supervisor of symptoms related to communicable diseases or unsafe coworker behaviour.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conserve energy and manage resources efficiently",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "minimise wastage of consumables, components, and materials by adhering to industry best practices",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use electricity, lighting, and climate-control systems responsibly",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "power off equipment, tools, and terminals when not in use",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure routine maintenance, cleaning, and calibration of machines/tools to improve performance",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "report leakages, overheating, or malfunctions immediately for rectification",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "use digital tools to monitor and reduce environmental footprint, where applicable.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Implement safe and sustainable waste disposal practices",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "segregate and dispose of hazardous, recyclable, and general waste as per guidelines",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "deposit e-waste or used batteries at designated collection points following e-waste protocols",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "follow ESD-safe disposal procedures for sensitive electronic components",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9102",
+      "nos_title": ".Interact Effectively",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational structure, hierarchy, and roles of team members, supervisors, and",
+        "KU2. professional etiquette and expected behaviour in face-to-face, virtual, and telephonic",
+        "KU3. importance of clear communication and active listening to ensure mutual understanding",
+        "KU4. common digital communication tools (e.g., email, chat apps, video conferencing platforms)",
+        "KU5. feedback mechanisms within the organisation and how to respond constructively to criticism",
+        "KU6. cultural sensitivities, unconscious biases, and the importance of inclusion and diversity in the",
+        "KU7. principles of emotional intelligence and how they help in team coordination and customer",
+        "KU8. challenges faced by Persons with Disabilities (PwDs) and inclusive practices for working with",
+        "KU9. legal and organisational frameworks supporting equality, diversity, and anti-discrimination",
+        "KU10. methods for conflict prevention and resolution, including mediation and escalation",
+        "KU11. role of respect, trust, and open communication in team effectiveness and customer"
+      ],
+      "gs": [
+        "GS1. read and interpret work instructions, emails, and policy documents related to workplace",
+        "GS2. write clear, concise emails, reports, or messages to team members, supervisors, or customers",
+        "GS3. communicate clearly and confidently in person, over the phone, and using digital",
+        "GS4. adapt communication style based on the needs of the audience (e.g., customer, peer,",
+        "GS5. listen attentively to gather information, understand perspectives, and clarify doubts.",
+        "GS6. prioritise tasks and allocate time effectively in coordination with team members"
+      ],
+      "modules": [
+        {
+          "module_title": "Interact effectively with supervisors and stakeholders",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "receive and clarify work instructions, technical requirements, and priorities from supervisors or clients using appropriate communication tools (e.g., messaging apps, emails, virtual meetings)",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "inform supervisors or relevant stakeholders in a timely manner about any issues, risks, or deviations from planned tasks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "contribute to team decisions by providing relevant data, suggestions, and professional feedback during team discussions",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "act promptly on constructive feedback and incorporate learnings to improve future work outcomes",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Collaborate effectively with team members and customers",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "follow organisational norms and digital etiquette when working in hybrid or remote teams",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "communicate respectfully and effectively using face-to-face, phone, email, or collaboration platforms (e.g., MS Teams, Zoom)",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "seek clarification and respond to queries from customers and team members accurately and promptly",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify and de-escalate conflicts tactfully to maintain a productive and harmonious work environment",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "demonstrate emotional intelligence in team settings by recognising and responding to others’ perspectives and emotional states",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "align personal efforts with team and organisational goals to ensure shared success.",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Promote inclusivity, respect, and accessibility in the workplace",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "foster an inclusive workplace culture that respects gender, cultural, and socio-economic diversity",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "demonstrate respectful language and conduct toward colleagues and customers of all genders and backgrounds",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "support team members with disabilities by helping remove work-related barriers or by assisting them as needed",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "practice appropriate verbal and non-verbal communication while engaging with persons with disabilities (PwDs)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "promote equal opportunity and participation for all in meetings, decision-making, and teamwork.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

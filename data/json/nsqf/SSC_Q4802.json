@@ -1,0 +1,886 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q4802",
+  "qp_name": "SSC_Q4802",
+  "clean_code": "SSC_Q4802",
+  "total_pages": 37,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.121Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 26,
+    "total_pcs": 67,
+    "total_kus": 45,
+    "total_gs": 27,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N4801",
+      "nos_title": ".Develop Test Plans",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the organization's policies, procedures, and processes for designing tests for software",
+        "KU2. the application and use of software testing tools, both manual and automated, including",
+        "KU3. the different sources of information available for designing tests and how to access these,",
+        "KU4. the approval process for software products/applications/modules/tests, including who needs",
+        "KU5. how to identify issues that may occur with the testing requirements and how to address",
+        "KU6. the concept and principles of designing tests and ensuring adequate code coverage through",
+        "KU7. how to create suitable tests for applications and how to assess their suitability for",
+        "KU8. how to access, create, and modify different types of test materials, including high-level",
+        "KU9. the scripting/programming languages to understand test cases and current practices in the",
+        "KU10. the industry-standard test case design practices and test automation frameworks.",
+        "KU11. how to track and manage defects through defect tracking tools (e.g., Jira, Bugzilla, Azure",
+        "KU12. the importance of effective defect lifecycle management.",
+        "KU13. the need for regular maintenance of test scripts, especially in automated testing, to keep",
+        "KU14. how to report and document the results of tests, including creating detailed test execution",
+        "KU15. how to summarize test results and communicate findings with stakeholders.",
+        "KU16. the best practices for testing in different environments, including compatibility testing across",
+        "KU17. the testing strategies for both functional and non-functional requirements, ensuring that",
+        "KU18. the various test methodologies, such as Agile, Waterfall, and DevOps"
+      ],
+      "gs": [
+        "GS1. maintain work-related notes and records",
+        "GS2. read the relevant literature to stay informed about the most recent advancements in the field",
+        "GS3. listen attentively to understand the information/ instructions being shared by the speaker",
+        "GS4. communicate clearly and politely with co-workers and clients",
+        "GS5. coordinate with co-workers to achieve work objectives",
+        "GS6. plan and prioritize tasks to ensure timely completion",
+        "GS7. identify possible disruptions to work and take appropriate preventive measures",
+        "GS8. take quick decisions to deal with workplace emergencies/ accidents",
+        "GS9. evaluate all possible solutions to a problem to select the best one"
+      ],
+      "modules": [
+        {
+          "module_title": "Analyze Requirements",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review and understand software product/application/module specifications and requirements documents.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify critical functionalities and performance criteria based on client and project needs.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "assess technical feasibility and potential challenges for the testing process.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Define Test Objectives",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "establish clear testing objectives, including functional, non-functional, and performance testing requirements.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "prioritize test scenarios based on their impact, complexity, and risk assessment.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify compatibility and compliance standards to be addressed during testing.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Design Test Cases",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "create and modify high-level scenarios and detailed test cases, ensuring coverage of positive, negative, and boundary scenarios, and including input conditions, execution steps, and expected outcomes.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "utilize reusable and modular testing techniques for scalability and efficiency, accessing test cases, scripts, and tools from the organization's knowledge base.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Testing Frameworks and Tools",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "select and implement appropriate manual and automated testing tools (e.g., Selenium, Appium, JUnit) based on project requirements.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "design tests using modern frameworks such as TestNG, Cucumber, or PyTest to ensure scalability and efficiency in testing.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Develop the Test Plan Document",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "prepare a comprehensive test plan document detailing scope, objectives, timelines, and resources required.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "specify testing tools, environments, and data sets to be used.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "outline roles and responsibilities of team members involved in the testing process.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Review and Validate the Test Plan",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "review and rework the test plan, test cases, and/or automated scripts with consultation from the supervisor or industry experts.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "submit the test plan, test cases, and/or automated scripts for approval by experts.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "validate the test plan for completeness, feasibility, and adherence to quality standards.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Documentation and Reporting",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "create detailed reports for test execution, results, and defect tracking, providing clear and actionable insights.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "use defect tracking tools like Jira, Bugzilla, or Azure DevOps to report and monitor software defects, ensuring timely resolution.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Manage Test Plan Updates",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "monitor changes in product/application requirements and update the test plan accordingly.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "update the organization’s knowledge base with inputs for designing tests and ensure consistency in implementation.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "communicate updates to stakeholders and maintain version control for test plan documentation.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Generative AI in Software Testing",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "understand the basic concepts and principles of Generative AI, including its potential applications in software testing and quality assurance",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "identify and explore use cases where Generative AI can enhance software testing, such as test case generation, automated bug detection, and test script optimization",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "design and optimize effective prompts for Generative AI tools used in test automation, ensuring the accuracy and relevance of generated test cases and scripts.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Adhere to Organizational Standards",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "comply with the organization's testing standards, procedures, and guidelines while designing, executing, and reporting on tests for software products/applications/modules to ensure consistency, quality, and adherence to best practices.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N4802",
+      "nos_title": ".Perform Automated",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. the various test management tools and their application in automated testing",
+        "KU2. the different types of automated testing tools (e.g., Selenium, Appium, JUnit, TestNG, etc.).",
+        "KU3. the test script writing, debugging, and maintenance techniques.",
+        "KU4. the software requirements and test plan creation.",
+        "KU5. the Continuous Integration/Continuous Deployment (CI/CD) pipelines and integrating",
+        "KU6. the defect tracking and test result reporting tools (e.g., Jira, Bugzilla, Azure DevOps).",
+        "KU7. the best practices for creating reusable test scripts.",
+        "KU8. the cloud-based testing tools and platforms",
+        "KU9. the API and microservices testing, including the design and execution of automated tests.",
+        "KU10. the basic security testing concepts and vulnerability assessment techniques.",
+        "KU11. the exploratory and ad hoc testing methodologies.",
+        "KU12. the version control systems, particularly Git, and their use in managing test scripts.",
+        "KU13. the awareness of the latest trends and tools in automated testing for modern software",
+        "KU14. the specific requirements for maintaining the testing environment and ensuring compatibility"
+      ],
+      "gs": [
+        "GS1. maintain work-related notes and records",
+        "GS2. read the relevant literature to stay informed about the most recent advancements in the field.",
+        "GS3. listen attentively to understand the information/ instructions being shared by the speaker",
+        "GS4. communicate clearly and politely with co-workers and clients",
+        "GS5. coordinate with co-workers to achieve work objectives",
+        "GS6. plan and prioritize tasks to ensure timely completion",
+        "GS7. identify possible disruptions to work and take appropriate preventive measures",
+        "GS8. take quick decisions to deal with workplace emergencies/ accidents",
+        "GS9. evaluate all possible solutions to a problem to select the best one"
+      ],
+      "modules": [
+        {
+          "module_title": "Set Up and Manage Automated Testing Environment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "set up the test environment, install necessary tools, and verify compatibility with the software under test",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "ensure that the environment is optimized and maintained for effective automated testing.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Develop and Maintain Automated Test Scripts",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "write, maintain, and update automated test scripts based on the test plan, ensuring they are reusable and compatible with version control systems",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "keep test scripts in sync with software updates and ensure they remain effective for future testing.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Test Preparation and Planning",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "collaborate with superiors to establish the nature of the testing and identify the appropriate test management tool to be used.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "plan test cases and execution strategies according to project requirements.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Execute and Monitor Automated Tests",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "run automated test scripts in the defined environment and monitor their execution.",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "report any issues or discrepancies and ensure the tests are executed as planned.",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Analyze Test Results",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "analyze test results to identify discrepancies, log defects, and contribute to defect management discussions.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure test results are documented and follow up on defect resolution.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Integrate Automated Testing into CI/CD Pipeline",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "integrate automated test scripts into the CI/CD pipeline and monitor their execution within the workflow.",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "troubleshoot and resolve issues related to automated tests within the CI/CD environment",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Exploratory and Ad Hoc Testing",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "perform exploratory testing to identify defects beyond predefined scripts and test cases.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "adapt testing approaches based on unexpected scenarios and findings.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "API, Microservices, and Security Testing",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "design automated test cases for APIs and microservices, validating their functionality and integration.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "design basic security test cases, identify vulnerabilities, and contribute to penetration testing efforts for the application.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Cloud-Based and Scalable Testing",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "utilize cloud-based platforms for testing applications and perform scalability and performance testing in cloud environments.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Version Control and Collaboration",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "manage automated test scripts using version control systems and collaborate with team members on script updates.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "ensure proper version control practices are followed to maintain script integrity.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Reporting, Documentation, and Compliance",
+          "sequence_order": 11,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "document test execution results, defects, and generate clear, concise test reports for stakeholders.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "adhere to testing standards, best practices, and comply with organizational testing procedures",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N4803",
+      "nos_title": ".Perform Manual",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. the organization's policies, procedures, and guidelines for manual testing and the role in",
+        "KU2. the latest and correct versions of test cases and test scripts used for manual testing.",
+        "KU3. how to execute manual test scripts correctly and take necessary actions in case of failures",
+        "KU4. the awareness of usability and accessibility standards, such as WCAG, and how to verify",
+        "KU5. the cross-browser and cross-platform testing principles and techniques to ensure",
+        "KU6. how to log test progress, results, and defects using the agreed test management tool",
+        "KU7. how to analyze test results to identify defects and understand their root causes",
+        "KU8. the dynamic testing methods to identify defects in unscripted scenarios.",
+        "KU9. how to collaborate with automation testers to identify scenarios where automation can",
+        "KU10. how to provide feedback and suggestions for improving manual testing processes",
+        "KU11. the awareness of the tools, techniques, and best practices used in manual testing to ensure",
+        "KU12. how to communicate defects, issues, and risks to relevant stakeholders effectively",
+        "KU13. how to stay updated on the latest trends and developments in manual testing and"
+      ],
+      "gs": [
+        "GS1. maintain work-related notes and records",
+        "GS2. read the relevant literature to stay informed about the most recent advancements in the field.",
+        "GS3. listen attentively to understand the information/ instructions being shared by the speaker",
+        "GS4. communicate clearly and politely with co-workers and clients",
+        "GS5. coordinate with co-workers to achieve work objectives",
+        "GS6. plan and prioritize tasks to ensure timely completion",
+        "GS7. identify possible disruptions to work and take appropriate preventive measures",
+        "GS8. take quick decisions to deal with workplace emergencies/ accidents",
+        "GS9. evaluate all possible solutions to a problem to select the best one"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare for Manual Testing",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify testing requirements, including functionality, compatibility, and accessibility standards.",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "verify that the latest and correct versions of test cases and related documents are available for execution.",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure the availability and readiness of test environments, data, and tools.",
+              "sequence_order": 3,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "identify the range of browsers, operating systems, and devices for cross-browser and cross-platform testing.",
+              "sequence_order": 4,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Execute Manual Test Cases",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "execute predefined test cases accurately and within the required timelines.",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "validate software conformance to usability and accessibility guidelines (e.g., WCAG).",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "perform exploratory and dynamic testing to identify defects in unscripted scenarios.",
+              "sequence_order": 3,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "execute manual test scripts and take corrective action in case of failures or deviations.",
+              "sequence_order": 4,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "conduct cross-browser testing to verify compatibility with different browsers and versions.",
+              "sequence_order": 5,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "carry out cross-platform testing to validate functionality across operating systems and devices",
+              "sequence_order": 6,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Report Test Results and Defects",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "log detailed test progress, results, and defects in the agreed format and test management tool",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "communicate critical defects and risks to supervisors and stakeholders promptly",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "document issues with supporting evidence (e.g., screenshots, logs) for efficient resolution.",
+              "sequence_order": 3,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "analyze defects to determine their root causes and provide detailed feedback to developers",
+              "sequence_order": 4,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Collaborate with Automation Teams",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "identify scenarios where automation testing might improve efficiency and reduce errors.",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "work closely with automation testers to ensure the seamless integration of manual and automated testing processes.",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "provide inputs for designing test scripts that cover edge cases or complex workflows identified during manual testing.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure Continuous Improvement of Manual Testing Processes",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "obtain guidance from supervisors or experts for complex or unclear scenarios.",
+              "sequence_order": 1,
+              "theory_marks": 1.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "update and improve test cases based on testing outcomes and feedback",
+              "sequence_order": 2,
+              "theory_marks": 1.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "stay updated on the latest manual testing techniques, tools, and best practices.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "ensure adherence to the organization's policies, procedures, and quality standards",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

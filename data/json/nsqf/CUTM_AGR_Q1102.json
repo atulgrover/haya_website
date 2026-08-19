@@ -1,0 +1,704 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "CUTM/AGR/Q1102",
+  "qp_name": "CUTM_AGR_Q1102",
+  "clean_code": "CUTM_AGR_Q1102",
+  "total_pages": 46,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:26.499Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 5,
+    "total_pcs": 54,
+    "total_kus": 60,
+    "total_gs": 49,
+    "generic_nos_filtered": 2
+  },
+  "nos_units": [
+    {
+      "nos_code": "CUTM/AGR/N1105",
+      "nos_title": ".Preparation",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the role of land preparation in crop productivity.",
+        "KU2. ploughing methods, types of tillage implements, and achieving the ideal soil tilth for seedbed",
+        "KU3. how to operate drones equipped with multispectral cameras.",
+        "KU4. how to capture aerial images, stitching them, and applying image processing techniques for",
+        "KU5. image processing software and steps involved in analyzing stitched aerial images.",
+        "KU6. how to interpret results to identify soil variability and suitability for cultivation.",
+        "KU7. how to use image-derived data to recommend appropriate tillage equipment and the",
+        "KU8. how to fix appropriate gradients in the field to prevent water stagnation.",
+        "KU9. how to divide the farmland into grids for systematic monitoring.",
+        "KU10. how to install soil moisture sensors at grid points for precise soil-water management.",
+        "KU11. the circuit and functioning of IoT panels.",
+        "KU12. how to connect soil moisture sensors to IoT panels and calibrating them to fix irrigation",
+        "KU13. how to fix micro-irrigation systems along gradients.",
+        "KU14. how to link irrigation motors and pumps with IoT panels for automated and efficient irrigation",
+        "KU15. cloud platforms (Amazon, Google, etc.) for storing sensor and image data.",
+        "KU16. how to ensure accessibility and secure data management for real-time decision-making.",
+        "KU17. the uniform application of recommended basal fertilizers.",
+        "KU18. how to ensure integration of nutrient application with sensor-based and IoT-monitored",
+        "KU19. how to follow safety guidelines while handling drones, sensors, and farm equipment.",
+        "KU20. how to maintain proper calibration, troubleshooting, and ensuring compliance with"
+      ],
+      "gs": [
+        "GS1. operate drones with multispectral cameras, IoT panels, soil moisture sensors, and image",
+        "GS2. process aerial images, stitching datasets, and interpreting results to recommend suitable",
+        "GS3. divide land into grids, calibrate soil moisture sensors, and set irrigation thresholds based on",
+        "GS4. collect, analyze, and store field data in cloud-based systems, enabling real-time monitoring,",
+        "GS5. set up micro-irrigation systems, connecting IoT outputs to pumps/motors, and ensuring",
+        "GS6. adhere to health, safety, and environmental regulations while handling drones, fertilizers,",
+        "GS7. maintain detailed work-related records, reports of soil/land data, calibration logs, and",
+        "GS8. coordinate with agronomists, technicians, and farmers for synchronized land preparation,",
+        "GS9. adopt new farming technologies, software upgrades, and updated smart farming practices",
+        "GS10. evaluate field conditions, troubleshooting equipment/software issues, and selecting optimal"
+      ],
+      "modules": [
+        {
+          "module_title": "Preparation of land using Smart Tools and Equipment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Fly the drone equipped with multi spectral camera and capture images.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Collect the captured images and perform image stitching.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Process those stitched images in an image processing software.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Based on the results obtained from image processing determine the right tillage equipment and number of tillages required to obtain optimum tilth.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Fix the appropriate gradient in the fields to avoid water stagnation.",
+              "sequence_order": 5,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Divide the site into grids based on its variability for installation of soil moisture sensors.",
+              "sequence_order": 6,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Calibrate the soil moisture sensors and fix a threshold for scheduling irrigation based on crop.",
+              "sequence_order": 7,
+              "theory_marks": 5,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Understand circuit of IoT panel to which soil moisture sensors were connected.",
+              "sequence_order": 8,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Fix the micro-irrigation set up along the gradient based on the crop.",
+              "sequence_order": 9,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Connect the output points in the IoT panel to the motor connected to micro-irrigation set up.",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Assure uniform application of recommended fertilizers as basal dose.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Check the sensor data is stored in cloud.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "CUTM/AGR/N1106",
+      "nos_title": ".Knowledge of",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. how to install and operate DSS software for crop modelling to select suitable high-value",
+        "KU2. how to identify and choosing appropriate high-value crops through scientific modelling and",
+        "KU3. Seed Procurement Standards - Awareness of reliable sources for procuring seed material,",
+        "KU4. testing methods such as purity testing, germination percentage, and 1000-grain weight",
+        "KU5. how to determine and fix optimum spacing between seeds to enhance plant growth, reduce",
+        "KU6. Calibration of Smart Sowing Equipment - Knowledge of calibration techniques for seed drills",
+        "KU7. the importance of correct sowing/planting depth for different crops, ensuring proper",
+        "KU8. Application of Smart Tools in Sowing - Familiarity with precision sowing technologies,",
+        "KU9. how seed and sowing operations are linked with soil analysis, nutrient management, and",
+        "KU10. how smart sowing techniques contribute to sustainable agriculture by optimizing seed use,"
+      ],
+      "gs": [
+        "GS1. to install, configure, and operate crop modeling software to analyze climatic, soil, and",
+        "GS2. evaluate multiple crop options through smart tools, assessing profitability, and",
+        "GS3. identify reliable seed sources, testing seed purity, and evaluating germination percentage",
+        "GS4. use seed counters and other devices to measure parameters like 1000-grain weight, which is",
+        "GS5. the optimum depth and spacing requirements for different crops, ensuring proper plant",
+        "GS6. calibrate and operate smart sowing equipment like seed drills and robotic planters for",
+        "GS7. work with IoT-linked sowing equipment that adjusts sowing parameters (depth, spacing, seed",
+        "GS8. perform sowing/transplanting operations accurately, aligning manual expertise with smart",
+        "GS9. Maintain systematic records of seed quality tests, sowing parameters, and field performance",
+        "GS10. Develop troubleshooting skills to handle sowing equipment malfunctions, variability in seed"
+      ],
+      "modules": [
+        {
+          "module_title": "Knowledge of Smart Seed and Sowing",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Install decision support software for crop modelling.",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Perform crop modeling and select suitable high value crop.",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Procure the seed material from a reliable source.",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Test the purity and germination percentage.",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Measure the 1000 grain weight using seed counter.",
+              "sequence_order": 5,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Fix the optimum spacing for sowing.",
+              "sequence_order": 6,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Calibrate the seed drill/ robotic planter.",
+              "sequence_order": 7,
+              "theory_marks": 5,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Sow the seed at optimum soil depth.",
+              "sequence_order": 8,
+              "theory_marks": 5,
+              "practical_marks": 10,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "CUTM/AGR/N1107",
+      "nos_title": ".Understand",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. macro and micro-nutrients, their role in plant growth, and crop-specific nutrient needs.",
+        "KU2. the use of nutrient-specific sensors - knowledge of advanced tools and IoT-enabled devices",
+        "KU3. Soil fertility mapping - ability to generate and interpret soil fertility maps using GIS software",
+        "KU4. Smart nutrient application methods - awareness of precision farming techniques for site-",
+        "KU5. Integration with IoT and cloud-based platforms - understanding how to access, analyze, and",
+        "KU6. Fertilizer scheduling and optimization - knowledge of appropriate timing, dosage, and",
+        "KU7. Sustainable nutrient management practices - understanding of balanced fertilization, organic",
+        "KU8. Image processing and remote sensing in nutrient analysis - awareness of digital tools for",
+        "KU9. Data interpretation and decision support systems (DSS) - skills to analyze sensor-based and",
+        "KU10. Compliance with smart farming standards - knowledge of modern agricultural practices, eco-"
+      ],
+      "gs": [
+        "GS1. install, operate, and calibrate nutrient-specific sensors and connect them with IoT systems for",
+        "GS2. use GIS software to develop detailed soil fertility maps for precision nutrient planning.",
+        "GS3. calibrate and operate VRT devices for site-specific nutrient application, reducing wastage and",
+        "GS4. collect, analyze, and interpret field and sensor data to train Decision Support Systems (DSS)",
+        "GS5. devise nutrient application maps and integrate them with precision agriculture tools for",
+        "GS6. select the right nutrient sources, determining the appropriate dosage, and scheduling",
+        "GS7. do eco-friendly nutrient application practices that enhance productivity while minimizing",
+        "GS8. coordinate with farm staff, share nutrient management plans clearly, and document outcomes",
+        "GS9. troubleshoot issues related to sensor failures, data inconsistencies, or unexpected soil nutrient"
+      ],
+      "modules": [
+        {
+          "module_title": "Understand Smart Nutrient Management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Install nutrient specific sensors.",
+              "sequence_order": 1,
+              "theory_marks": 7,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Connect the sensor data to IoT.",
+              "sequence_order": 2,
+              "theory_marks": 7,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Develop soil fertility maps using GIS software.",
+              "sequence_order": 3,
+              "theory_marks": 8,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Calibrate the Variable Rate Technology (VRT).",
+              "sequence_order": 4,
+              "theory_marks": 8,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Devise nutrient application map and feed it to VRT.",
+              "sequence_order": 5,
+              "theory_marks": 4,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Collect the data to train the decision support system.",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Use Decision Support Systems to identify the right source and dose of application of nutrients.",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "CUTM/AGR/N1108",
+      "nos_title": ".Study of",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. IoT-based Soil Moisture Monitoring - Knowledge of installing, coding, and calibrating IoT soil",
+        "KU2. Smart Irrigation Systems - Understanding of micro-irrigation techniques (drip, sprinkler, etc.),",
+        "KU3. Irrigation Scheduling with Technology - Ability to use Variable Rate Technology (VRT) and",
+        "KU4. Calibration and Maintenance - Knowledge of calibrating irrigation systems before installation",
+        "KU5. Crop Water Requirement - Understanding crop-specific water demand and how different",
+        "KU6. Weed Identification Techniques - Ability to distinguish weeds from crops using multispectral",
+        "KU7. Types and Characteristics of Weeds - Familiarity with common weed species, their growth",
+        "KU8. Weed Management Approaches - Knowledge of integrated weed management practices",
+        "KU9. Herbicide Use and Safety - Understanding the types of herbicides, correct dosage,",
+        "KU10. Decision-making through Smart Tools - Ability to interpret IoT and imaging data for making"
+      ],
+      "gs": [
+        "GS1. to install, calibrate, and manage IoT-based soil moisture sensors and micro-irrigation",
+        "GS2. use image processing software and spectral analysis to distinguish crops from weeds for",
+        "GS3. do water resource management - Understanding of crop-specific water requirements and the",
+        "GS4. identify weed species, evaluate their impact, and apply herbicides or eco-friendly weed",
+        "GS5. analyze soil moisture and crop data to make timely decisions on irrigation, detect anomalies,",
+        "GS6. Prepare field records, irrigation schedules, and weed management reports following industry",
+        "GS7. Ensure safe handling of herbicides, use of personal protective equipment (PPE), and adoption",
+        "GS8. communicate with farm teams, suppliers, and supervisors effective teamwork for",
+        "GS9. Use IoT dashboards, GIS-based tools, and cloud platforms for real-time monitoring, analysis,",
+        "GS10. Stay updated with advancements in smart farming technologies, irrigation automation, and"
+      ],
+      "modules": [
+        {
+          "module_title": "Study of Smart Irrigation Water and Weed Management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Install IoT based soil moisture sensors across the farm.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Adopt the right method of micro- irrigation.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Code the IoT based sensors for threshold and duration of irrigation schedule.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Calibrate the system before installation.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Install the calibrated irrigation system in the field.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Schedule the application using variable rate technology.",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Distinguish weed species from crop by their differences in wavelength.",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Use image processing soft wares to differentiate weeds from crop.",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Ascertain the type of weeds that will affect the crop.",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Use appropriate herbicides in the appropriate time.",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "CUTM/AGR/N1109",
+      "nos_title": ".Monitoring",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Remote Sensing for Pest/Disease Monitoring - Understanding the use of drones and",
+        "KU2. Image Processing and Data Interpretation - Knowledge of image stitching, processing",
+        "KU3. Pest Identification & Incidence Analysis - Familiarity with major crop pests, their life cycles,",
+        "KU4. Disease Recognition - Understanding the symptoms of major crop diseases, their stages of",
+        "KU5. Pest & Disease Calendars - Ability to document pest and disease behavior, prepare calendars",
+        "KU6. Preventive Measures & Trapping Techniques - Knowledge of eco-friendly preventive",
+        "KU7. Integrated Pest & Disease Management (IPDM) - Awareness of integrated approaches",
+        "KU8. UAV-based Control Measures - Understanding how to apply pesticides, fungicides, and",
+        "KU9. Use of Resistant Varieties & Agrochemicals - Familiarity with resistant crop varieties, and",
+        "KU10. Smart Decision-Support Systems - Ability to integrate IoT, GIS, and DSS (Decision Support"
+      ],
+      "gs": [
+        "GS1. use UAVs, multispectral scanners, IoT-enabled devices, and image-processing software for",
+        "GS2. analyze remote-sensed images, identifying pests/diseases, assessing incidence levels, and",
+        "GS3. implement applications of Integrated Pest Management (IPM) techniques, including resistant",
+        "GS4. develop pest calendars, document preventive strategies, and apply chemical/organic",
+        "GS5. evaluate incidence thresholds (ETL) and decide when to adopt UAV-based pest control",
+        "GS6. Prepare accurate records on pest behavior, preventive measures, and disease transmission,",
+        "GS7. Work effectively with farmers, agronomists, and technical teams, communicating findings",
+        "GS8. Apply eco-friendly pest and disease management practices that reduce chemical",
+        "GS9. Troubleshoot field-level challenges such as sensor malfunctions, unexpected pest outbreaks,",
+        "GS10. Ensure safe handling of chemicals, UAV operations, and digital tools while following"
+      ],
+      "modules": [
+        {
+          "module_title": "Monitoring and Management of Insects and Diseases Management using Smart Technology",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Remote sense the farm using multispectral scanners.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Analyze the images in an image processing software.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Identify the pest.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Find out the level of incidence.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Identify the stage of crop growth when the pests attack.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Identify the part of the crop where the specific pests will attack.",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Identify and document the pest behavior.",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Prepare a pest calendar with all pest characteristics.",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Document the preventive measures for the pests.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Adopt UAV based pest control when the incidence level is above ETL.",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Identify the stage of crop when it is vulnerable to disease.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Identify the symptoms for the diseases.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Identify the mode of disease transfer.",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Ascertain the appropriate integrated pest management techniques.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Use appropriate pest and disease management chemicals in right quantities.",
+              "sequence_order": 15,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Use pest and disease resistant varieties.",
+              "sequence_order": 16,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Practice preventive techniques like pheromone traps, light traps, bird perches, sticky traps, etc. according to the cultivar.",
+              "sequence_order": 17,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

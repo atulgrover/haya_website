@@ -1,0 +1,1441 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q4304",
+  "qp_name": "TEL_Q4304",
+  "clean_code": "TEL_Q4304",
+  "total_pages": 49,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.460Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 13,
+    "total_pcs": 128,
+    "total_kus": 69,
+    "total_gs": 51,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N4306",
+      "nos_title": ".Optimize DC and AC",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the relationship between voltage, current, and resistance in a circuit",
+        "KU2. the behavior of resistors in series and parallel configurations",
+        "KU3. apply Kirchhoff's laws to accurately calculate currents and voltages, helping in optimizing the",
+        "KU4. opt for higher efficiency components to minimize energy wastage and heat generation",
+        "KU5. visualize the relationship between voltages and currents in different components of AC",
+        "KU6. current flow in an AC circuit, combining resistance (R) and reactance (X)",
+        "KU7. capacitive reactance (Xc)",
+        "KU8. inductive reactance (Xl)",
+        "KU9. power factor (PF) measures the phase relationship between voltage and current; optimizing",
+        "KU10. power factor correction improves the efficiency of power transmission and reduces losses,",
+        "KU11. bandwidth of a resonant circuit is the range of frequencies around resonance where the"
+      ],
+      "gs": [
+        "GS1. read and understand documents and other materials",
+        "GS2. interact respectfully with end users/customers",
+        "GS3. liaise with customers/vendors",
+        "GS4. communicate in the local language (preferable)",
+        "GS5. work in coordination with team",
+        "GS6. work systematically with attention to detail and adherence to all safety requirements",
+        "GS7. maintain proper records as per given format"
+      ],
+      "modules": [
+        {
+          "module_title": "DC Circuits",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify simple components such as resistors, voltage sources, and current sources",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "solve Ohm's Law (V = IR) to relate voltage, current, and resistance",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "calculate power dissipation using P = IV or P = I²R",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "apply KCL and KVL to solve complex circuits with multiple elements and loops",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "resolve and repair any issues related to series and parallel connection for voltage, current and resistance",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "choose components with appropriate specifications to match the design requirements",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Minimize power losses by selecting resistors with lower values and efficient components",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "use voltage dividers or current dividers to achieve desired voltage or current levels",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "balance series and parallel connections to distribute loads and minimize stress on components",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use circuit simulation software to model and analyze circuits before implementing them physically",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "AC Circuits",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "simulate AC waveforms with characteristics such as amplitude, frequency, and phase",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "analyse AC by converting sinusoidal waveforms into complex numbers, considering magnitude and phase angle",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "relate uniform load distribution system to develop electrical circuits for whole beam or slab",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "work with Phasor Diagrams",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "distribute loads uniformly to avoid overloading specific parts of the circuit",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "add capacitors to offset inductive loads and improve the power factor",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "use thicker conductors with lower resistance to decrease energy loss as heat",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "employ voltage regulators to maintain a stable output voltage despite varying loads",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "install filters to reduce harmonics, which can distort waveforms and cause inefficiencies",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "choose transformers with high efficiency and appropriate turns ratios for voltage transformation",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "ensure proper grounding to improve safety and signal integrity",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "select components with lower ESR (Equivalent Series Resistance) and higher Q factors for better performance",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "avoid operating at resonant frequencies that can lead to excessive currents and voltage magnification",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "prevent overheating by designing circuits that efficiently dissipate heat",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "RLC Circuits and Resonance",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "analyze the circuit using Kirchhoff's laws and impedance/admittance relationships to determine current, voltage, and resonance conditions",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "choose appropriate component values (R, L, C) based on desired frequency response and application requirements",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "design for resonance frequency if you need a specific peak response",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "consider the trade-offs between bandwidth and Q-factor for your application",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "implement power factor correction to improve system efficiency and reduce costs",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "simulate and analyze the circuit using software tools like SPICE to predict its behavior accurately",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "regularly monitor and maintain the circuit's performance, especially in power factor correction setups",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "analyze the circuit's behavior across a range of frequencies. At resonance, the current is maximized, and voltage across the components can be significantly affected",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4307",
+      "nos_title": ".Operate series and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. total current entering the circuit",
+        "KU2. voltage drops across each resistor",
+        "KU3. voltage across all parallel branches",
+        "KU4. different resistor values",
+        "KU5. number & types of components",
+        "KU6. circuit configurations to understand how series and parallel circuits behave under different"
+      ],
+      "gs": [
+        "GS1. write records as per given format",
+        "GS2. read and understand manuals, work orders, health and safety instructions, memos, reports",
+        "GS3. interact respectfully with supervisor/peers",
+        "GS4. communicate in the local language with the customers",
+        "GS5. work efficiently and effectively",
+        "GS6. work systematically with required attention to detail and adherence to all safety requirements",
+        "GS7. maintain proper etiquette in front of the customers"
+      ],
+      "modules": [
+        {
+          "module_title": "Practical Electrical Exercises",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "choose Circuit Simulation Software like LTSpice, CircuitLab, Tinkercad, and Multisim",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "open the simulation software and create a new project or circuit design",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "connect the components as per the circuit design",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "set the resistance values for the resistors and the voltage values for the voltage sources",
+              "sequence_order": 4,
+              "theory_marks": 7,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "insert an ammeter (current measurement tool) in series with the circuit to measure the current",
+              "sequence_order": 5,
+              "theory_marks": 6,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "insert a voltmeter (voltage measurement tool) across each resistor to measure the voltage drops",
+              "sequence_order": 6,
+              "theory_marks": 6,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "run the simulation and observe the results",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 7,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "observe how changing values affect current distribution, voltage drops, and overall circuit behaviour",
+              "sequence_order": 8,
+              "theory_marks": 7,
+              "practical_marks": 7,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4308",
+      "nos_title": ".Work with DC power",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. linear regulators and switching regulators are common methods for voltage regulation",
+        "KU2. transformer's turns ratio determines the output voltage",
+        "KU3. transformer's secondary winding connects to the rectifier, followed by the filter capacitor and",
+        "KU4. DC-DC converters, such as buck, boost, and buck-boost converters, are used to step down or",
+        "KU5. DC voltage outputs even when the input voltage changes",
+        "KU6. voltage regulator (such as a linear regulator or switching regulator) to ensure a constant",
+        "KU7. smoothing capacitors to further reduce the ripple in the output DC voltage"
+      ],
+      "gs": [
+        "GS1. read manuals, work orders, health and safety instructions, etc.",
+        "GS2. fill up appropriate technical forms and activity logs in required format of the organisation",
+        "GS3. maintain proper records as per prescribed format",
+        "GS4. communicate with supervisor and peers",
+        "GS5. communicate in the local language (preferably)",
+        "GS6. prioritize and execute tasks in a high-pressure environment and handle high pressure",
+        "GS7. handle multiple tasks and complete them successfully within timelines",
+        "GS8. use resources efficiently and effectively",
+        "GS9. maintain effective working relationships and team environment",
+        "GS10. share knowledge with other team members and colleagues",
+        "GS11. utilize appropriate communication channels to escalate unresolved problems to relevant"
+      ],
+      "modules": [
+        {
+          "module_title": "Introduction to DC Power Systems",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify the voltage (V) and current (I) requirements for different electrical devices like batteries, inverters, UPS, circuit boards and others electrical devices",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "choose the type DC power supplies",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensures that the output voltage remains constant even if the input voltage or load changes",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "choose a transformer that converts your input AC voltage to the desired output AC voltage",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "place a capacitor across the rectified output to smoothen the pulsating DC voltage",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensures a steady output voltage",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "to limit the maximum current, especially for protection purposes",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "calculate the required transformer turns ratio",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "connect the components as per design",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "power up the circuit and measure the output voltage and current using a multimeter",
+              "sequence_order": 10,
+              "theory_marks": 4,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "adjust the voltage regulator if necessary to achieve the desired output voltage",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Rectifiers and Power Conversion",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "work with AC waveform which is allowed to pass through, while the other half is blocked",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "utilizes both halves of the AC input waveform",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "reduce the ripple (fluctuations) in the pulsating DC waveform, a filter capacitor is added to the circuit",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "convert voltage regulation and can provide galvanic isolation between input and output circuits",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4309",
+      "nos_title": ".Test the power",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. output voltage should remain relatively stable within the converter's specified voltage",
+        "KU2. output voltage should remain within acceptable limits as the load changes",
+        "KU3. controller supports communication interfaces (RS-232, RS-485, etc.), connect it to a",
+        "KU4. temporary power during blackouts or voltage fluctuations",
+        "KU5. UPS should be able to handle the load",
+        "KU6. UPS offers the highest level of protection but can be more expensive",
+        "KU7. critical devices or equipment that require uninterrupted power",
+        "KU8. power consumption (in watts or VA) of each device",
+        "KU9. total power requirements to choose an appropriately sized UPS",
+        "KU10. factors like runtime, input/output voltage compatibility, and type (online, line-interactive, or",
+        "KU11. safety precautions provided in the UPS manual",
+        "KU12. UPS software",
+        "KU13. UPS setup, maintenance, and troubleshooting",
+        "KU14. input voltage to a lower output voltage",
+        "KU15. heat sinks and thermal management",
+        "KU16. PID controllers",
+        "KU17. DC-DC converters with effective voltage regulation"
+      ],
+      "gs": [
+        "GS1. communicate respectfully with customer/customer facing teams",
+        "GS2. read and understand documents and reports",
+        "GS3. speak and understand English/regional language",
+        "GS4. read and write in English or any regional language",
+        "GS5. manage time efficiently",
+        "GS6. listen carefully and respond appropriately",
+        "GS7. work systematically with attention to detail"
+      ],
+      "modules": [
+        {
+          "module_title": "DC-DC Converters and Voltage Regulation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "ensure that the power backup system is properly assembled and connected, including the DC-DC converter, battery, controller, and any associated components",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "check for any loose connections or damaged components before starting the testing process",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "work in a well-ventilated area to prevent exposure to fumes or gases",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "connect a variable DC power supply to the input of the DC-DC converter",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "set the input voltage to the typical operating range of the DC-DC converter",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "measure the output voltage of the DC-DC converter using a multimeter or an oscilloscope",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "gradually change the input voltage while monitoring the output voltage",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "connect a stable load (resistor, electronic load, or equivalent) to the output of the DC-DC converter",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "measure the output voltage of the converter with the load connected and varying load conditions",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "connect the DC-DC converter to a stable input voltage",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "measure the input and output power using appropriate instruments",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "calculate the efficiency of the DC-DC converter using the formula: Efficiency (%) = (Output Power / Input Power) *",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "connect the battery to the DC-DC converter's output and the controller",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "monitor the charging process to ensure that the battery voltage rises steadily and does not exceed the safe charging voltage limit",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "monitor the discharging process to ensure that the battery voltage remains within the safe discharge voltage range",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "connect a known resistive load to the battery output and start discharging",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "measure the discharge time until the battery voltage reaches its lower safe limit. Calculate the battery capacity using the formula: Capacity (Ah) = (Current × Discharge Time) / 3600",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "test the various functions of the controller, such as input/output voltage regulation, overvoltage/undervoltage protection, and temperature monitoring",
+              "sequence_order": 18,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "simulate fault conditions to ensure that the controller responds appropriately",
+              "sequence_order": 19,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "verify that the controller can communicate data accurately and respond to commands",
+              "sequence_order": 20,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "integrate the DC-DC converter, battery, and controller into the full power backup system",
+              "sequence_order": 21,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "simulate power outage or disruption scenarios to ensure the system switches to battery power seamlessly",
+              "sequence_order": 22,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "monitor the system's behavior during transitions and ensure that the voltage regulation, battery charging, and protection mechanisms function as intended",
+              "sequence_order": 23,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Power Backup Systems and UPS",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC24",
+              "pc_description": "determine the power capacity (measured in volt-amperes or watts) required for the devices you want to protect",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "choose between online, offline, and line- interactive UPS systems based on your needs",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "plug the UPS into a power outlet",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "connect the devices you want to protect to the UPS's output sockets",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "connect the UPS to your computer if you want to monitor its status and configure settings",
+              "sequence_order": 5,
+              "theory_marks": 4,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4310",
+      "nos_title": ".Install the surge",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. computers, communication systems, appliances, and sensitive industrial machinery",
+        "KU2. surge protection levels for equipment based on industry standards and the equipment's",
+        "KU3. service entrance, distribution panels, and close to sensitive equipment",
+        "KU4. proper grounding techniques for effective surge protection",
+        "KU5. documentation of surge protection system",
+        "KU6. surge protection strategy should adapt accordingly to provide reliable and effective protection"
+      ],
+      "gs": [
+        "GS1. maintain proper records as per given format",
+        "GS2. read and comprehend technical manual and literature",
+        "GS3. read and understand work orders, health and safety instructions, memos, reports etc",
+        "GS4. communicate with supervisor and fellow technicians",
+        "GS5. communicate in the local language with the customers",
+        "GS6. maintain proper etiquette in front of the customers",
+        "GS7. work with minimum disturbance"
+      ],
+      "modules": [
+        {
+          "module_title": "Practical DC Power Systems Exercises",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "determine the critical electrical and electronic equipment that need protection",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "assess the potential sources of surges, such as lightning strikes, power grid fluctuations, and electromagnetic interference",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "select the appropriate types of surge protection devices based on your assessment: Type 1 for service entrance, Type 2 for distribution boards, and Type 3 for individual devices.",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure that the chosen SPDs have voltage ratings suitable for system's operating voltage",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "install SPDs at strategic points where electrical surges are likely to enter your system",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "follow grounding standards and guidelines to create a low-resistance path for surge currents to dissipate",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "use appropriate wiring and cables to connect the SPDs to the system. Keep wire lengths short and avoid sharp bends to minimize impedance",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "ensure coordination between different types of SPDs to prevent unwanted interaction and improve overall protection",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "install a Type 1 SPD at the main electrical service entrance to divert high-energy surges",
+              "sequence_order": 9,
+              "theory_marks": 4,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "connect it to the main grounding system and the supply lines",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "test the SPDs to ensure they're working as intended. Some SPDs come with built-in indicators or monitoring systems",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "inspect and maintain the surge protection system",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "replace SPDs if they've been subjected to a significant surge event or if their performance is compromised",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9101",
+      "nos_title": ".Organize Work and",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. strategies pertinent to their field (such as internet searches, asking peers and managers,",
+        "KU2. key performance indicators for the new tasks",
+        "KU3. feedback processes and formats",
+        "KU4. timelines and goals as well as their relevance to work allocated",
+        "KU5. importance of quality and timely delivery of the product/service",
+        "KU6. escalation matrix and its importance, especially in case of emergencies",
+        "KU7. ways of time and cost management",
+        "KU8. rules/regulation for maintaining health and safety at workplace",
+        "KU9. meaning of hazard, different types of health and safety hazards found in the workplace, risks",
+        "KU10. relevant signage, warnings, labels or descriptions on equipment, etc. while carrying out work",
+        "KU11. procedures to report breaches in health, safety and security",
+        "KU12. organisation's procedures for different emergency situations and the importance of following",
+        "KU13. different methods of cleaning, disinfection, sterilization, and sanitization",
+        "KU14. significance of personal hygiene practice including hand hygiene",
+        "KU15. path of disease transmission",
+        "KU16. correct method of donning and doffing of PPE",
+        "KU17. ways of managing resources and material efficiently",
+        "KU18. common electrical problems and common practices of conserving electricity",
+        "KU19. categorization of waste into dry, wet, recyclable, non-recyclable and items of single-use",
+        "KU20. organisation's procedures for minimizing waste",
+        "KU21. waste management and methods of waste disposal",
+        "KU22. common sources of pollution and ways to minimize it"
+      ],
+      "gs": [
+        "GS1. improve and modify work practices",
+        "GS2. complete tasks efficiently and accurately within stipulated time",
+        "GS3. develop skills and mastery of the technologies prevalent in the industry",
+        "GS4. write in at least one language and complete written work with attention to detail",
+        "GS5. utilize time and manage workload efficiently",
+        "GS6. read and comprehend instructions and documents",
+        "GS7. accept feedback in a constructive way",
+        "GS8. seek clarifications from superior about the job requirement",
+        "GS9. read and comprehend statutory documents relevant to safety and hygiene",
+        "GS10. refer all anomalies to the concerned persons",
+        "GS11. analyze situations and make appropriate decisions",
+        "GS12. decide the most suitable course of action for completing the task within resources"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform work as per quality standards",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "keep workspace clean and tidy",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform individual role and responsibilities as per the job role while taking accountability for the work",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "record/document tasks completed as per the requirements within specific timelines",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "implement schedules to ensure timely completion of tasks",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify the cause of a problem related to own work and validate it",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "analyse problems accurately and communicate different possible solutions to the problem",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain safe, healthy and secure working environment",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "comply with organisation’s current health, safety, security policies and procedures",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "check for water spills in and around the work space and escalate these to the appropriate authority",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "report any identified breaches in health, safety, and security policies and procedures to the designated person",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use safety materials such as goggles, gloves, ear plugs, caps, ESD pins, covers, shoes, etc.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "avoid damage of components due to negligence in ESD procedures or any other loss due to safety negligence",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "identify hazards such as illness, accidents, fires or any other natural calamity safely, as per organisation's emergency procedures, within the limits of individual’s authority",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "participate regularly in fire drills or other safety related workshops organised by the company",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "report any hazard outside the individual’s authority to the relevant person in line with organisational procedures and warn others who may be affected",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "maintain appropriate posture while sitting/standing for long hours",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "handle heavy and hazardous materials with care, while maintaining appropriate posture",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "sanitize workstation and equipment regularly",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "clean hands with soap, alcohol-based sanitizer regularly",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "avoid contact with anyone suffering from communicable diseases and take necessary precautions",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "take safety precautions while travelling e.g. maintain 1m distance from others, sanitize hands regularly, wear masks, etc.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "report hygiene and sanitation issues to appropriate authority",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "follow recommended personal hygiene and sanitation practices, for example, washing/sanitizing hands, covering face with a bent elbow while coughing/sneezing, using PPE, etc.",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conserve material/energy/electricity",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "optimize usage of material including water in various tasks/activities/processes",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "use resources such as water, electricity and others responsibly",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "carry out routine cleaning of tools, machine and equipment",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "optimize use of electricity/energy in various tasks/activities/processes",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "perform periodic checks of the functioning of the equipment/machine and rectify wherever required",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "report malfunctioning and lapses in maintenance of equipment",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "use electrical equipment and appliances properly",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Use effective waste management/recycling practices",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC30",
+              "pc_description": "identify recyclable, non-recyclable and hazardous waste",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "deposit recyclable and reusable material at identified location",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "dispose non-recyclable and hazardous waste as per recommended processes",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

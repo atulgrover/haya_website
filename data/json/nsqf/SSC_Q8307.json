@@ -1,0 +1,424 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q8307",
+  "qp_name": "SSC_Q8307",
+  "clean_code": "SSC_Q8307",
+  "total_pages": 27,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.189Z",
+  "stats": {
+    "total_nos": 2,
+    "total_modules": 2,
+    "total_pcs": 36,
+    "total_kus": 25,
+    "total_gs": 20,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N8331",
+      "nos_title": ".Manage and",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the organizational policies for incident, change, and problem management (e.g., ITIL/DevOps",
+        "KU2. the communication protocols and escalation matrix for incident response",
+        "KU3. the documentation standards for incident logs, RCA, and operational runbooks",
+        "KU4. common monitoring, logging, and observability tools and platforms (e.g., ELK stack, Fluentd,",
+        "KU5. concepts of availability, latency, performance, and SLO/SLIs",
+        "KU6. the techniques for alert tuning, anomaly detection, and fault tolerance",
+        "KU7. the fundamentals of cloud security IAM, encryption, audit trails",
+        "KU8. the basics of CI/CD pipelines and deployment automation",
+        "KU9. the use of version control (e.g., Git) for runbook and config documentation",
+        "KU10. the basics of using containers (like Docker)",
+        "KU11. how the tools like Kubernetes help manage and run these containers efficiently"
+      ],
+      "gs": [
+        "GS1. how the tools like Kubernetes help manage and run these containers efficiently",
+        "GS2. interpret and follow documentation, code comments, and deployment guidelines",
+        "GS3. work independently and manage tasks within collaborative teams",
+        "GS4. analyze situations and make informed decisions under tight timelines",
+        "GS5. identify and solve technical issues quickly and efficiently",
+        "GS6. coordinate with cross-functional teams to ensure a smooth deployment process",
+        "GS7. plan and prioritize work effectively to meet release deadlines",
+        "GS8. document deployment processes and maintain logs for future reference",
+        "GS9. evaluate risks and follow contingency plans where needed",
+        "GS10. adapt to new technologies and tools relevant to system reliability"
+      ],
+      "modules": [
+        {
+          "module_title": "Manage and Maintain Critical Customer-Facing Cloud Services — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "continuously monitor infrastructure, applications, and cloud-native services using observability tools (e.g., Prometheus, Grafana, Datadog, Cloud Watch)",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "monitor and analyze logs, events, and metrics to proactively detect performance bottlenecks and anomalies",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify and report unauthorized access attempts and potential security breaches",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "manage authentication, authorization, and role-based access control (RBAC) across systems",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "escalate critical alerts, incidents, and service degradation issues to relevant stakeholders as per SLAs",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "define meaningful SLIs and SLOs based on product and service expectations",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "track error budgets and report on reliability trends",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "conduct root cause analysis (RCA) of system failures using log analysis, monitoring dashboards, and post-mortems",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "participate in on-call rotations and assist with service recovery during outages",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "document incident handling using standard templates and knowledge base",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "contribute to the improvement of runbooks, SOPs, and incident response procedures",
+              "sequence_order": 11,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "coordinate with development, QA, and infrastructure teams to ensure resolution and prevention of recurring issues",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "integrate observability tools (e.g., ELK stack, Datadog, Prometheus) into cloud infrastructure",
+              "sequence_order": 13,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "use telemetry data (logs, metrics, traces) to support diagnostics and performance improvement",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "develop automated scripts and workflows for alerting, remediation, and escalation",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "conduct root cause analysis and create post-incident review reports",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "facilitate blameless retrospectives and recommend system reliability enhancements",
+              "sequence_order": 17,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "draft and publish incident communications and status updates using incident communication tools (e.g., StatusPage)",
+              "sequence_order": 18,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "provide reliability insights to engineering/product teams for continuous improvement",
+              "sequence_order": 19,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8330",
+      "nos_title": ".Automate Cloud",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. policies and procedures for change, incident, and disaster recovery management",
+        "KU2. how to collaborate with teams to document and maintain operational runbooks",
+        "KU3. the tools and templates used for infrastructure automation and monitoring",
+        "KU4. how to use Infrastructure as Code (IaC) tools (e.g., Terraform, Ansible, CloudFormation)",
+        "KU5. the best practices for ensuring high availability, fault tolerance, and performance",
+        "KU6. how to define system metrics, SLOs/SLIs, and alerts for proactive system monitoring",
+        "KU7. how to use log analysis tools (e.g., ELK Stack, Cloud Logging) for performance and issue",
+        "KU8. automation of operational procedures using scripting languages (e.g., Python, Bash,",
+        "KU9. automation of operational procedures using scripting languages (e.g., Python, Bash,",
+        "KU10. automation of operational procedures using scripting languages (e.g., Python, Bash,",
+        "KU11. how to define thresholds for different systems parameters to trigger automated system",
+        "KU12. automation of operational procedures using scripting languages (e.g., Python, Bash,",
+        "KU13. automation of operational procedures using scripting languages (e.g., Python, Bash,",
+        "KU14. automation of operational procedures using scripting languages (e.g., Python, Bash,"
+      ],
+      "gs": [
+        "GS1. communicate technical information clearly and accurately to team members and",
+        "GS2. interpret and follow documentation, code comments, and deployment guidelines",
+        "GS3. work independently and manage tasks within collaborative teams",
+        "GS4. analyze situations and make informed decisions under tight timelines",
+        "GS5. identify and solve technical issues quickly and efficiently",
+        "GS6. coordinate with cross-functional teams to ensure a smooth deployment process",
+        "GS7. plan and prioritize work effectively to meet release deadlines",
+        "GS8. document deployment processes and maintain logs for future reference",
+        "GS9. evaluate risks and follow contingency plans where needed",
+        "GS10. adapt to new technologies and tools relevant to cloud deployment and automation"
+      ],
+      "modules": [
+        {
+          "module_title": "Automate Cloud Operations and Optimize System — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "evaluate the health of deployed cloud services to ensure availability and reliability",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "automate provisioning and scaling of compute, storage, and networking resources using infrastructure-as-code (IaC) tools (e.g., Terraform, CloudFormation)",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "participate in the change management process to ensure minimal disruption to services",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "coordinate and validate software, hardware, and network upgrades or patches to avoid downtime",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "recommend and implement performance tuning and resource rightsizing based on usage patterns",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "design and implement a monitoring strategy for system performance and availability",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "define and track key performance indicators (KPIs) and system metrics using monitoring tools (e.g., Prometheus, CloudWatch, Datadog)",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "analyze and interpret logs and metrics to assess system performance and usage trends",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "create and update operational runbooks to document standard procedures",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "develop scripts and automation workflows to implement runbook steps programmatically",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "evaluate and integrate appropriate tools for automation and monitoring from a cost and functionality perspective",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "configure safeguards and automation rules to detect anomalies and trigger alerts",
+              "sequence_order": 12,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "execute disaster recovery protocols to restore services after system failures",
+              "sequence_order": 13,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "recommend and implement corrective and preventive actions based on incident trends and root cause analysis",
+              "sequence_order": 14,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Preventive Measures Based on Incident Analysis",
+              "sequence_order": 15,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "monitor resource usage and identify opportunities for cost reduction (e.g., reserved instances, autoscaling)",
+              "sequence_order": 16,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "analyze cloud billing reports and recommend cost optimization strategies",
+              "sequence_order": 17,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

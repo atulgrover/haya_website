@@ -1,0 +1,736 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "LSC/Q0502",
+  "qp_name": "LSC_Q0502",
+  "clean_code": "LSC_Q0502",
+  "total_pages": 55,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.312Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 12,
+    "total_pcs": 53,
+    "total_kus": 28,
+    "total_gs": 92,
+    "generic_nos_filtered": 4
+  },
+  "nos_units": [
+    {
+      "nos_code": "LSC/N0505",
+      "nos_title": ".Operational",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the transportation",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. transportation design documentation"
+      ],
+      "gs": [
+        "GS1. existing transportation design document",
+        "GS2. transportation route and its cost impact",
+        "GS3. invoice raised by carriers",
+        "GS4. label of different workflows",
+        "GS5. transportation process flows",
+        "GS6. transportation design documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in transportation zones and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. Speak politely with customer and take feedback constructively",
+        "GS18. Identify common trends as per analysis and implement the same in new workflows",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the workflow and planning process to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the shipment planning process and accordingly make future changes",
+        "GS23. cross check the data at various master data level and ensure the sanity"
+      ],
+      "modules": [
+        {
+          "module_title": "Existing Master Data Collection",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collect Master data such as Division and Logistics Group.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Obtain information on various Commodities and Freight Class.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Obtain information on Shipment Types and Equipment Types.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Obtain information on different Shipping Locations",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Carrier discussions on the tariff and model the rates",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "Collect information on various Routes and zones of transportation",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Collect information on Carriers and the Zones they cater",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Obtain information on Carrier tariff",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Obtain information on Lane Constraints",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Future Transportation Routes",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Provide the data analysis for available Carriers and their feasibility to serve the routes respecting Lane Constraints",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Compare the Tariffs of several Carriers and rank them based on the Cost",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Collect data such as traffic information to decide the future routes",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Provide the re-aligned routes",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Design the Software to match transportation requirement",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Enter different divisions as per new Organization structures",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Define Shipment Types, Shipment Versions, Item commodities.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Define Shipment/Load Planning and Shipment/Load Execution",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Define Financial Process such as invoice generation from Carrier, Invoice matching against the data in TMS, GL Posting and final payment methodologies to Carrier",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0506",
+      "nos_title": ".Identify optimization",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the transportation",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. transportation design documentation"
+      ],
+      "gs": [
+        "GS1. existing transportation design document",
+        "GS2. transportation route and its cost impact",
+        "GS3. invoice raised by carriers",
+        "GS4. label of different workflows",
+        "GS5. transportation process flows",
+        "GS6. transportation design documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in transportation zones and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. Speak politely with customer and take feedback constructively",
+        "GS18. Identify common trends as per analysis and implement the same in new workflows",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the workflow and planning process to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the shipment planning process and accordingly make future changes",
+        "GS23. cross check the data at various master data level and ensure the sanity"
+      ],
+      "modules": [
+        {
+          "module_title": "Transportation Operations Familiarization",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Prepare process flow chart after understanding the operations",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Prepare process flow document after understanding the operations",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Prepare user guides for transport operations.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Order planning and processing against Shipments",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "Observe the different fields required to visualize in Shipments and design/propose the missing fields",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Define different Plan IDs against which Transportation Planners will be assigned the Shipments",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Design Shipments date, commodity field to ensure shipments routing is possible within that window",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Design process to reduce the time taken to plan the shipment.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Load Execution for Shipments including Tendering process",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Calculate the time required in Shipment Planning and Shipment Optimization, find the process to reduce the time taken.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Design the process for Load Rating to find the cost required to transport the Load.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Design the process to define Load tendering to Carriers",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Design Report/Email/Notification sent to Carriers for Tender notification",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Carrier Sequential Tendering and Dock Scheduling",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Observe the sequence in which Carriers will be tendered and which Carriers are eligible for Auto Tender accept, depending on Carrier performance and agreement",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Calculate the time taken by each carrier to respond to Load Tender request.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Calculate Trailer waiting time by checking if Dock Schedules are available at Loading and Unloading points",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Design the system to ensure trailer waiting time is reduced provided Warehouse/Stores have Docks",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Proposing areas of improvement in the overall process which matches with implemented Software",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Propose area of improvement in Tariff modelling process",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Propose area of improvement in defining Fuel Surcharge",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Propose area of improvement in use of Distance Time Override (DTTO) to simplify the Load Optimization Process",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0507",
+      "nos_title": ".Lead the design and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the transportation",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. transportation design documentation"
+      ],
+      "gs": [
+        "GS1. read existing transportation design document",
+        "GS2. read transportation route and its cost impact",
+        "GS3. read invoice raised by carriers",
+        "GS4. write label of different workflows",
+        "GS5. write transportation process flows",
+        "GS6. write transportation design documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in transportation zones and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. Speak politely with customer and take feedback constructively",
+        "GS18. Identify common trends as per analysis and implement the same in new workflows",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the workflow and planning process to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the shipment planning process and accordingly make future changes",
+        "GS23. cross check the data at various master data level and ensure the sanity"
+      ],
+      "modules": [
+        {
+          "module_title": "Designing TMS Processes in Implementation cycle.",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Collect the requirement from Business users after discussing the different Business processes.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Perform As-Is analysis and document the processes.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Assist Business Users in explaining the document and revise the document with Review comments.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Prepare Business Requirement Document and get a sign off from Business",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Prepare Gap analysis document after analyzing the several functionalities of TMS software being implemented.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Prepare Functional Design document and mention the gaps identified from Software",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Work with business users to amend the transportation processes to minimize the Gaps, that involves processes while shipment planning, plan ID authorization, load execution, financial process and several report requirements.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "There can be scenarios that Transportation processes cannot be amended, and GAPs remain in the processes. In that case work with Transportation Management System software developer to develop the feature.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Deploy the feature in TMS and proceed with rest of the design.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Configure the system as per the design document and perform Unit testing to ensure all the Business requirements are met.",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Assist business users for UAT testing",
+              "sequence_order": 11,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Designing integration touchpoints with upstream and downstream systems",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Collect the integration touch points from upstream and downstream data view",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Perform the data mapping after working with technical Team.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Deliver Technical Design document and work with technical team for a sign off",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0508",
+      "nos_title": ".Prepare",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedure",
+        "KU2. different regions of the transportation",
+        "KU3. demography of the local workforce",
+        "KU4. advanced computer knowledge",
+        "KU5. data analysis",
+        "KU6. flow chart preparation",
+        "KU7. transportation design documentation"
+      ],
+      "gs": [
+        "GS1. existing transportation design document",
+        "GS2. transportation route and its cost impact",
+        "GS3. invoice raised by carriers",
+        "GS4. label of different workflows",
+        "GS5. transportation process flows",
+        "GS6. transportation design documentations in a structured format",
+        "GS7. communicate with co-workers and supervisors",
+        "GS8. collect information from supervisors, associates, and peers",
+        "GS9. conduct advanced checks and verify the accuracy of the data provided",
+        "GS10. identify errors in transportation zones and make correction and document the changes",
+        "GS11. draw inferences and conclusions based on trend analysis",
+        "GS12. maintain punctuality",
+        "GS13. plan for timely collection of data from warehouse users",
+        "GS14. be a team player and achieve joint goals",
+        "GS15. adhere to customer timelines",
+        "GS16. address urgency of customers",
+        "GS17. Speak politely with customer and take feedback constructively",
+        "GS18. Identify common trends as per analysis and implement the same in new workflows",
+        "GS19. implement possible solutions for the common issues in daily operations based on information",
+        "GS20. identify the workflow and planning process to mitigate possible future failures",
+        "GS21. analyse trends to identify defaults for corrective action as needed",
+        "GS22. observe the shipment planning process and accordingly make future changes",
+        "GS23. cross check the data at various master data level and ensure the sanity"
+      ],
+      "modules": [
+        {
+          "module_title": "System user guide for Transportation End Users",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Work with Transportation Planners users to find the processes which need to be documented.",
+              "sequence_order": 1,
+              "theory_marks": 6,
+              "practical_marks": 12,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Observe the processes and identify different screens on TMS Software any other relevant User Interface for which screenshots to be taken.",
+              "sequence_order": 2,
+              "theory_marks": 6,
+              "practical_marks": 12,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Prepare documents along with various screenshots and steps to perform various activities.",
+              "sequence_order": 3,
+              "theory_marks": 6,
+              "practical_marks": 12,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Take the feedback from business users and amend the changes as necessary",
+              "sequence_order": 4,
+              "theory_marks": 6,
+              "practical_marks": 12,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Provide a pictorial view of the processes as necessary.",
+              "sequence_order": 5,
+              "theory_marks": 6,
+              "practical_marks": 12,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

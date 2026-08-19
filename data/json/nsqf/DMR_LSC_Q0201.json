@@ -1,0 +1,1050 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "DMR/LSC/Q0201",
+  "qp_name": "DMR_LSC_Q0201",
+  "clean_code": "DMR_LSC_Q0201",
+  "total_pages": 47,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:26.565Z",
+  "stats": {
+    "total_nos": 2,
+    "total_modules": 30,
+    "total_pcs": 81,
+    "total_kus": 78,
+    "total_gs": 20,
+    "generic_nos_filtered": 2
+  },
+  "nos_units": [
+    {
+      "nos_code": "DMR/LSC/N0201",
+      "nos_title": ".Oversee the",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the hierarchy structure of (S&T) O&M and project wing",
+        "KU2. the primary functions of the S&T department in metro operations to ensure safe, efficient,",
+        "KU3. the duties of S&TC junior engineers",
+        "KU4. the role of signalling systems in metro operations, and safety standards they support",
+        "KU5. the key signalling terms/definitions (e.g. interlocking, track circuits, axle counters) and",
+        "KU6. different S&T systems used in DMRC",
+        "KU7. the basic concepts of the CBTC system",
+        "KU8. the operational role of CBTC moving block concept, and troubleshooting of common CBTC",
+        "KU9. the design, alignment, functionality of PSDs, and emergency protocols for passenger safety",
+        "KU10. the systems of working adopted in metro railway",
+        "KU11. various modes of train operations",
+        "KU12. the movement protocols within the depot to ensure safe and efficient transit",
+        "KU13. the signaling procedures for directing rakes to maintenance areas and across interlocked",
+        "KU14. the use of the test track for evaluating the performance of the Train Borne ATC System",
+        "KU15. the applications of specific operational modes within the depot",
+        "KU16. the roles of various marker boards and indicators in metro signalling, including start, stop,",
+        "KU17. the function of overlap, isolation and sighting distance in signalling",
+        "KU18. SoD standards and their significance in ensuring safe train operation and signalling",
+        "KU19. the function and application of control tables in safe, efficient train movements",
+        "KU20. different types of locking arrangements, i.e. approach locking, signal locking, track locking",
+        "KU21. the working principles and operational differences in different interlocking systems (i.e.",
+        "KU22. the definitions and working principles point machines",
+        "KU23. the application of trailable and non-trailable point machines in route setting and switch",
+        "KU24. the structure and function of points and crossings in managing train routing and track",
+        "KU25. the evolution of signalling systems from Semaphore to CLS, and the benefits of CLS in",
+        "KU26. the basic function of various train detection arrangements used in Delhi Metro, i.e. AC Track",
+        "KU27. the operational basics of track circuits versus axle counters, including detection, reliability,",
+        "KU28. the basic functions of local and central ATS system",
+        "KU29. ATS functionality, Non-CBTC and CBTC ATS simulators, and commands/ response protocols",
+        "KU30. different grades of operations in the ATP",
+        "KU31. key relay functions, types, and their role in ensuring safe train movements",
+        "KU32. the preventive and corrective maintenance practices and documentation requirements for",
+        "KU33. telecom systems, emergency communication, and network troubleshooting",
+        "KU34. basic concept, principle, structure, advantages, disadvantages and applications of Fiber",
+        "KU35. the modes of transmission and troubleshooting of FOTS",
+        "KU36. the basic concepts of networking, including hardware, software, protocols and connection",
+        "KU37. basic networking terminology, computer networks, types of Computer Network Architecture,",
+        "KU38. the networking troubleshooting procedures",
+        "KU39. the basic concepts of P-Way and its components including speed restriction, rail fracture,",
+        "KU40. P-Way and OHE interfacing with signalling, alignment and track checks, and safety standards",
+        "KU41. the purpose of RSS, TSS, ASS, and AMS",
+        "KU42. the components of OHE",
+        "KU43. OHE with respect to signalling and its interfacing with signalling system",
+        "KU44. the do s and don'ts of OHE",
+        "KU45. SCADA and TVS coordination with train control and signalling",
+        "KU46. lift and escalator functionality, emergency protocols, and response procedures for station",
+        "KU47. the features and systems of rolling stock",
+        "KU48. the types of rolling stock used in metros",
+        "KU49. the advantages of CBTC over Non-CBTC system along with its interfacing with train CCTV",
+        "KU50. continuous data exchange between signalling and rolling stock, with CCTV monitoring",
+        "KU51. the layout, standards for maintenance, and roles of Depot Control Centers, central ATS, and",
+        "KU52. interfacing of rolling stock with respect to Non-CBTC and CBTC system along with interfacing",
+        "KU53. key operational protocols and maintenance practices for equipment within signalling rooms,",
+        "KU54. the importance of practical exposure at facilities like the Depot Control Centre, FMC, and"
+      ],
+      "gs": [
+        "GS1. make quick, safe, and informed decisions in dynamic situations, such as signalling faults and",
+        "GS2. promptly identify issues in signalling systems, markers, and telecommunications,",
+        "GS3. troubleshoot equipment and systems, including CBTC, ATS, and PSD, and determining",
+        "GS4. document maintenance activities, incident reports, and technical logs with clear and",
+        "GS5. explain technical issues, signalling terms, and system operations clearly to team members",
+        "GS6. prioritize tasks, manage maintenance schedules, and respond to system issues efficiently to",
+        "GS7. practice attention to detail in monitoring signalling systems, ensuring accurate calibration,",
+        "GS8. collaborate smoothly with multi-disciplinary teams, including telecom, traction, and P-Way",
+        "GS9. interpret control tables, interlocking configurations, and train detection data to maintain safe",
+        "GS10. adjust quickly to operational demands, respond to emergencies, and shift focus based on"
+      ],
+      "modules": [
+        {
+          "module_title": "Metro signalling",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "define key signalling terms and use them accurately in communication with team members",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify the functioning of S&T systems like signal, point, track circuit, axle counter, interlocking, ESP, EKT, ATP, and ATS",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Communication-Based Train Control (CBTC) System",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "operate CBTC systems to control train movement, ensuring adherence to safety protocols",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "use CBTC to monitor train location, position, and movement through communication channels",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "demonstrate the working of the CBTC moving block concept and how it manages train spacing to the relevant personnel",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "troubleshoot basic issues in the CBTC system and escalate unresolved issues to relevant technical support",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Platform Screen Doors (PSD) and depot operations",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "inspect platform screen doors to ensure proper alignment and functionality",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "respond to any PSD malfunctions and initiate emergency protocols, as required",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "facilitate depot signalling operations, managing train movements for maintenance activities",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "execute test track signalling operations, testing dynamic train functions such as ATC and braking",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Markers, indicators, overlap, isolation, and sighting distance",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify and interpret different types of marker boards and indicators used in metro signalling to control and monitor train movements",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "demonstrate the function of markers and indicators to the relevant personnel for guiding train operations, including start, stop, and caution signals",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "implement procedures for overlap and isolation to ensure safe distance and section control",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "measure sighting distances to ensure train operators have adequate visibility in all operating conditions",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Schedule of Dimension (SoD)",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "refer to the SoD to ensure signalling installations comply with safety and clearance requirements",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "apply SoD standards in practical scenarios, adjusting installation procedures to maintain regulatory compliance",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Control table and locking arrangements",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "use control tables to monitor and configure signal and track locking arrangements",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "identify different types of locking arrangements using the control table",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Overview of interlocking (IXL) systems",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "differentiate between various interlocking systems, e.g. mechanical, Route Relay Interlocking (RRI), Solid State Interlocking (SSI), and Computer- Based Interlocking (CBI)",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "explain the basic working principles, operational differences, advantages and limitations of different IXL systems",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Point machine working, importance and general definition",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "explain the working principles of trailable and non-trailable point machines",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "conduct checks on point machines to ensure correct alignment and smooth switching",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Signal Overview (Semaphore to CLS)",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "differentiate between Semaphore and Colour Light Signals (CLS) signalling based on the type and purpose",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "operate and interpret various types of signals used in metro operations, ensuring compliance with modern CLS protocols",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Track detection devices",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "operate track circuits and axle counters, monitoring for accurate train detection and section occupancy",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "differentiate between track circuit and axle counter functionalities, explaining their operational advantages",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "conduct routine maintenance, calibration and troubleshooting on track circuits and axle counters to ensure reliability",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Automatic Train Supervision (ATS)",
+          "sequence_order": 11,
+          "pcs": [
+            {
+              "pc_code": "PC28",
+              "pc_description": "operate ATS commands to control train movements, respond to alarms, and manage schedules",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "monitor ATS status, ensuring all local and central ATS protocols are active and accurate",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Automatic Train Protection (ATP)",
+          "sequence_order": 12,
+          "pcs": [
+            {
+              "pc_code": "PC30",
+              "pc_description": "ensure correct activation of ATP operations during train movements",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "monitor ATP status and report any deviations from safety standards immediately",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Working of relays",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC32",
+              "pc_description": "inspect relay connections and settings to verify they meet operational standards for controlling signal and track circuit functions",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "perform basic troubleshooting on relays to diagnose common issues, such as contact wear or coil failure, and report findings",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintenance precautions",
+          "sequence_order": 14,
+          "pcs": [
+            {
+              "pc_code": "PC34",
+              "pc_description": "conduct general maintenance checks on signalling equipment following safety protocols",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "document all maintenance activities, including preventive and corrective tasks, in the logbook",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC36",
+              "pc_description": "coordinate with other departments and report on the status of signalling maintenance",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Telecom and signalling interfacing",
+          "sequence_order": 15,
+          "pcs": [
+            {
+              "pc_code": "PC37",
+              "pc_description": "ensure telecom systems are functioning correctly and troubleshoot connectivity with signalling systems",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "conduct tests on the fiber optic transmission system to ensure robust network communication",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC39",
+              "pc_description": "maintain and troubleshoot networking connections between telecom and signalling systems",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC40",
+              "pc_description": "utilize systems available for emergency communication effectively",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "P-Way, traction, and E&M integration",
+          "sequence_order": 16,
+          "pcs": [
+            {
+              "pc_code": "PC41",
+              "pc_description": "inspect P-Way interfaces with signalling systems to ensure accurate alignment and track quality",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC42",
+              "pc_description": "verify traction system components (OHE, RSS, TSS) and manage safety requirements during power transitions",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC43",
+              "pc_description": "oversee traction power requirements and interfaces, ensuring coordinated responses with signalling operations",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC44",
+              "pc_description": "carry out OHE operation during maintenance and failures",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC45",
+              "pc_description": "carry out lift rescue operation for passengers trapped in lift",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC46",
+              "pc_description": "start and stop escalators during following operational procedures during Standard scenarios/ emergencies",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Rolling stock and signalling system interface",
+          "sequence_order": 17,
+          "pcs": [
+            {
+              "pc_code": "PC47",
+              "pc_description": "check the signalling and rolling stock interfaces for continuous data exchange",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC48",
+              "pc_description": "monitor CCTV integration with signalling for safe train operations and incident management",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Visits and practical exposure",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC49",
+              "pc_description": "participate in hands-on training by visiting signalling equipment rooms, gaining practical exposure to equipment functions and maintenance protocols",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC50",
+              "pc_description": "conduct supervised visits to the Depot Control Centre and Central ATS to observe train control operations in a real-time environment",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC51",
+              "pc_description": "visit the Fault Management Controller (FMC) and central ATS for a comprehensive understanding of signalling operations and incident management",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "DMR/LSC/N0202",
+      "nos_title": ".Oversee the",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. the signalling system's structure, components, and its subsystems critical to train operations",
+        "KU2. how to read and interpret circuit diagrams, including symbols, layouts, and circuit",
+        "KU3. the use of measuring tools, such as multimeters, for testing signalling equipment parameters",
+        "KU4. PSD functions, alignment, and integration with signalling controls to ensure safe passenger",
+        "KU5. maintenance tasks for PSDs, including regular checks, troubleshooting, alignment",
+        "KU6. the interlocking system's purpose, features, hardware and software configurations, and",
+        "KU7. the operational outline of interlocking",
+        "KU8. interlocking maintenance activities, such as checks on locking components, circuits, and",
+        "KU9. the signal visibility, lighting, and positioning standards",
+        "KU10. signal maintenance, including regular inspections, cleaning, adjustment, and prompt",
+        "KU11. the working principles of axle counters and track circuits, their role in train detection, and",
+        "KU12. the maintenance activities for axle counters and track circuits, including calibration,",
+        "KU13. the general definitions, working principles and importance of trailable and non-trailable point",
+        "KU14. the indoor/outdoor functionality, and maintenance schedules for trailable and non-trailable",
+        "KU15. the basic functions, principles, and operations of EKT, ESP, and SPK for controlling train",
+        "KU16. the procedure for resetting EKT, ESP, and SPK during emergencies and the applicable safety",
+        "KU17. the ATS systems, including functions with/without UTO/DTO functionality at central and local",
+        "KU18. track access procedures, including block granting and FMC coordination for safe access",
+        "KU19. the ATP systems, including the role of onboard and wayside equipment",
+        "KU20. the diagnostic and monitoring tools for ATP troubleshooting, including log downloads, fault",
+        "KU21. the power supply setups, including continuity and earthing requirements for signalling",
+        "KU22. the CCTV systems, including video quality checks, alignment, and maintenance activities to",
+        "KU23. the importance, operational requirements, and maintenance of radio communication",
+        "KU24. route table alignment with track configurations to support effective train routing and"
+      ],
+      "gs": [
+        "GS1. make timely and informed decisions regarding fault identification, maintenance actions, and",
+        "GS2. identify technical issues across signalling, interlocking, and ATP systems, analyzing root",
+        "GS3. document fault findings, maintenance activities, and corrective measures accurately,",
+        "GS4. coordinate with team members and communicate track access status with control centers",
+        "GS5. write clear, concise reports, maintenance logs, and status updates on equipment conditions,",
+        "GS6. prioritize and complete tasks within scheduled timeframes, especially during time-sensitive",
+        "GS7. analyze circuit diagrams, assess equipment parameters, and evaluate system responses,",
+        "GS8. conduct equipment checks, align components, and perform calibrations, ensuring system",
+        "GS9. adapt to evolving rail technology to enhance operational efficiency, learning new technical",
+        "GS10. implement safety protocols, emergency response procedures, and safe work practices,"
+      ],
+      "modules": [
+        {
+          "module_title": "Signalling system and circuit drawing",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "explain the overall signalling system and identify subsystems relevant to the train operations",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "read and interpret circuit diagrams to trace faults and conduct root-cause analyses",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "document and report findings from circuit analyses and recommend corrective actions",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Measuring tools and PSD",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "identify and use measuring tools to confirm signalling equipment parameters, such as voltage and resistance",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "perform operational checks on PSDs, confirming alignment with signalling control",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "execute scheduled maintenance on PSDs, documenting any deviations and corrective actions",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Interlocking (IXL) systems",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "operate interlocking systems, ensuring that all safety interlocks are engaged correctly",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "maintain interlocking equipment by performing regular checks on locking components and circuits",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "troubleshoot and resolve basic interlocking faults, escalating complex issues to senior technicians",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Signals and signal maintenance",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "inspect signal visibility, lighting, and positioning, ensuring compliance with visibility standards",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "conduct routine signal maintenance to ensure each signal is fully operational",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "respond promptly to signal failures and coordinate with control centers to rectify issues",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Axle counter and track circuit",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "test axle counter systems for accuracy, ensuring they correctly detect and register train movements",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "calibrate and maintain track circuits, checking for consistency in section occupancy detection",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "log and report any anomalies in track detection for further investigation",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Point machines",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "inspect and test trailable and non-trailable point machines for alignment and proper locking",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "oversee maintenance of point machines, including scheduled checks and fault rectifications",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "operate Electric Key Transmission (EKT) and Emergency Stop Plunger (ESP) for safe train movement control",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "reset EKT, ESP, and SPK (Personnel Protection Key) during emergencies following safety protocols",
+              "sequence_order": 4,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "ATS and track access",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "manage ATS commands for normal and critical scenarios, including track access and block granting",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "coordinate with the Fault Management Controller (FMC) for track access permissions and communicate block statuses",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "ATP equipment",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "monitor onboard & wayside ATP equipment, verifying that it consistently safeguards train operations",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "use diagnostic and monitoring tools for ATP systems, identifying and resolving basic faults",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "download and analyze logs from ATP system for preventive maintenance and troubleshooting",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Power supply",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "test power supply continuity and ensure all electrical safety standards are met, including earthing arrangement",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "oversee power supply maintenance activities",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "CCTV system",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC27",
+              "pc_description": "check and ensure proper maintenance of CCTV systems, ensuring camera angles and video quality are optimal",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "identify and ensure prompt replacement of faulty CCTV components to maintain system integrity",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Radio communication",
+          "sequence_order": 11,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "operate and ensure proper maintenance of radio communication systems for their effective function for operational needs",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Route Table",
+          "sequence_order": 12,
+          "pcs": [
+            {
+              "pc_code": "PC30",
+              "pc_description": "check the alignment of route tables with current track configurations, confirming proper signalling setup",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

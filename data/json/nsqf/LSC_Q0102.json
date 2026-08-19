@@ -1,0 +1,2990 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "LSC/Q0102",
+  "qp_name": "LSC_Q0102",
+  "clean_code": "LSC_Q0102",
+  "total_pages": 104,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:29.257Z",
+  "stats": {
+    "total_nos": 11,
+    "total_modules": 29,
+    "total_pcs": 246,
+    "total_kus": 222,
+    "total_gs": 229,
+    "generic_nos_filtered": 3
+  },
+  "nos_units": [
+    {
+      "nos_code": "LSC/N0127",
+      "nos_title": ".Plan and Allocate",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational Procedures",
+        "KU2. Different hubs and service stations of the organization",
+        "KU3. Documentation and reporting as per the organisation's mandate",
+        "KU4. Security procedures to be followed",
+        "KU5. Escalation matrix for reporting identified problems",
+        "KU6. Risk and impact of not following defined procedures/work instructions",
+        "KU7. Coding system followed to label mail",
+        "KU8. The IT system and the ERP system of the organization",
+        "KU9. Use of computers and associated data management devices",
+        "KU10. Basic troubleshooting regarding data management devices",
+        "KU11. Scheduling and planning of different activities",
+        "KU12. Different inventory models and types of warehouses",
+        "KU13. Information from the ERP system",
+        "KU14. Geographical spread of areas and cities within the geographical reach of the warehouse",
+        "KU15. Labels and instructions regarding shipments, MHEs, equipment and workplace",
+        "KU16. Overall supply chain and warehousing value chain",
+        "KU17. Types of goods being handled",
+        "KU18. Special characteristics and handling requirements of shipments, if any"
+      ],
+      "gs": [
+        "GS1. Read the written instructions, invoicing label and shipment labels.",
+        "GS2. Read ERP and computer-generated reports",
+        "GS3. Write work orders and instructions",
+        "GS4. Write daily reports, a checklist of activities, delays, undelivered items, contacts, etc.",
+        "GS5. Communicate with customers, workers and collect information from different departments",
+        "GS6. Identify and allocate alternate resources in case a job is stuck or becomes a high priority",
+        "GS7. Plan and estimate the coordination required to resolve a query.",
+        "GS8. Maintain punctuality",
+        "GS9. Respond to the client in a timely manner",
+        "GS10. Prioritise shipments and execute tasks based on client requirements",
+        "GS11. Make work plans and resource allocation plans",
+        "GS12. Make checks on the execution of work plans",
+        "GS13. Be a team player and achieve joint goals",
+        "GS14. Adhere to the customer timelines and address the urgency regarding shipments and",
+        "GS15. Identify trends/common causes for delays, issues in tracking, etc.",
+        "GS16. Coordinate and handle major issues with different departments",
+        "GS17. Identify bottlenecks and operational problems and suggest remedial action",
+        "GS18. Assess the resource requirement for a particular task at hand",
+        "GS19. Assess and prepare for backup transport in case of continuous delays",
+        "GS20. Plan for shipment movement so that the resources are optimally utilised",
+        "GS21. Resolve issues in a quick and cost-effective manner",
+        "GS22. Develop work plans factoring in external factors"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare daily work plans",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Ensure that the objectives and KPIs are defined in the decision tool, such as Order fulfilment rate, Inventory accuracy, Labour productivity (picks per hour), Dock-to-stock time, Cost per order, etc.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Obtain the daily work order, Manual logs (e.g., shift reports, loading times) and enter the respective details in the decision tool.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Ensure that the data from other applicable tools, such as WMS, ERP, and IoT devices, is integrated and available in the decision tool.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Use Linear Programming (LP) or Integer Programming (IP) in the decision tool to allocate manpower, storage space, and equipment.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Read the output of the decision tool (which is based on decision science) and generate values in a work plan format.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Get the work plan approved by the manager and allocate tasks to workers and associates as per the decision tool output approved",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Allocate resources using decision science-based tools",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Assign tasks (e.g., picking and packing) based on worker skill sets and workload, and use the Task Manager, which will automatically allocate tasks to the respective users.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Create shift schedules that minimise idle time, overtime costs and Budget and allocate the requisite MHE for tasks at hand.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Use simulation modelling, if available in the decision tool, to test how the resource allocation affects operations.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Apply control charts or real-time dashboards to detect deviations from expected performance.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Apply descriptive analytics to the decision tool, such as current resource usage (staff, space, equipment), peak operational hours, bottlenecks in the workflow, etc.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Use predictive analytics in the decision tool to forecast Inbound and outbound volumes, Staffing needs based on historical data and Inventory turnover trends.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise AI vision tunnel-based automated QC activities",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Analyse how the AI vision tunnel works, such as camera types, lighting setup, conveyor speed, and inspection logic and identify what the system is trained to detect (e.g., cracks, dents, mislabels, colour variance).",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Verify system calibration and readiness before starting operations, such as checking camera lens cleanliness and lighting.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Ensure conveyor belt speed matches AI frame processing speed and confirm the system calibration with a known good sample.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Ensure that acceptance/rejection thresholds are clearly set in the system (e.g., ±2 mmsize variance, 99% barcode readability) and the AI system is aligned with product specifications and quality tolerances.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Pass QC items through the AI vision tunnel and monitor the Live Inspection Dashboard.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Check computer results on QC defects and manage the Rejected Items Process.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Quarantine goods failed in AI QC, and conduct spot checks on them to confirm system accuracy.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Communicate with the client about the details of damaged goods and receive instructions on what action to take.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Undertake safe disposal of damaged goods and their documentation based on inputs from the client and directions from the manager.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0146",
+      "nos_title": ".Warehouse",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Components of warehouse infrastructure including MHE, storage systems, safety systems,",
+        "KU2. Importance of safety, security, cleanliness and 5S in warehouse operations",
+        "KU3. Procedures for inspection, preventive maintenance and escalation of infrastructure and",
+        "KU4. Common operational exceptions such as delays, damage, leakage, accidents and equipment",
+        "KU5. Procedures for handling damaged or contaminated stock as per SOP",
+        "KU6. Concepts of corrective and preventive actions (CAPA) and root cause analysis",
+        "KU7. Roles of internal and external stakeholders involved in issue resolution",
+        "KU8. Process of new equipment purchase, installation, commissioning and associated training"
+      ],
+      "gs": [
+        "GS1. Monitor warehouse conditions and identify deviations from safety and operational standards",
+        "GS2. Coordinate manpower, equipment and activities to ensure continuity of operations",
+        "GS3. Communicate clearly with team members, managers and external stakeholders",
+        "GS4. Supervise task execution and ensure compliance with SOPs",
+        "GS5. Document inspections, incidents, escalations and corrective actions accurately",
+        "GS6. Analyse problems logically and apply corrective measures",
+        "GS7. Demonstrate accountability and adherence to organisational policies"
+      ],
+      "modules": [
+        {
+          "module_title": "Upkeep of warehouse infrastructure",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Inspect warehouse operational area for compliance with safety, security and cleanliness norms and 5S",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Review and monitor the work of the assistants, executives and contractual workforce, and check for accuracy of documentation and task performance",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Engage resources in alternate operations when there is a delay in planned operations",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Allocate additional and ad-hoc manpower and equipment during exigencies",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Act as a liaison between different warehousing activities to ensure continuity of operations",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Check for the correct segregation and contamination, damage or leakage of items",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Check and facilitate the disposal of contaminated, damaged or leaking items as per policy",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Resolve escalated issues",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "Escalate issues regarding MHE operations, transporter delays, accidents, damage, etc., to the manager",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Provide corrective and preventive action plans based on accident and damage reports",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Review escalated issues and identify the root cause to provide corrective action",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Provide technical guidance to the team for execution",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Escalate the issues to the manager when external or additional help is required",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Coordinate with other departments, contractors, transporters, freight operators, clients, shipping companies, customs, regulatory bodies and others to resolve escalations if required",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Prepare claims reports for damaged goods and coordinate with the insurance agency and the client for processing",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Upkeep of warehouse equipment",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Ensure all Material Handling Equipment (MHE), storage racks, and PPE are in working condition",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Escalate non-operational equipment and ensure the maintenance department corrects them",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Support in planning and executing preventive maintenance",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Assist the manager in planning for new equipment purchase, installation and commissioning",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0128",
+      "nos_title": ".Supervise receiving",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational Procedures",
+        "KU2. Different hubs and service stations of the organization",
+        "KU3. Documentation and reporting as per the organisations mandate",
+        "KU4. Security procedures to be followed",
+        "KU5. Escalation matrix for reporting identified problems",
+        "KU6. Risk and impact of not following defined procedures/work instructions",
+        "KU7. Coding system followed to label mail",
+        "KU8. The IT system and the ERP system of the organization",
+        "KU9. Use of computers and associated data management devices",
+        "KU10. Basic troubleshooting regarding data management devices",
+        "KU11. Scheduling and planning of different activities",
+        "KU12. Different inventory models and types of warehouses",
+        "KU13. Information from the ERP system",
+        "KU14. Geographical spread of areas and cities within the geographical reach of the warehouse",
+        "KU15. Labels and instructions regarding shipments, MHEs, equipment and workplace",
+        "KU16. Overall supply chain and warehousing value chain",
+        "KU17. Types of goods being handled",
+        "KU18. Special characteristics and handling requirements of shipments, if any"
+      ],
+      "gs": [
+        "GS1. Read the written instructions, invoicing label and shipment labels.",
+        "GS2. Read ERP and computer-generated reports",
+        "GS3. Write work orders and instructions",
+        "GS4. Write daily reports, a checklist of activities, delays, undelivered items, contacts, etc.",
+        "GS5. Communicate with customers, workers and collect information from different departments",
+        "GS6. Identify and allocate alternate resources in case a job is stuck or becomes a high priority",
+        "GS7. Plan and estimate the coordination required to resolve a query.",
+        "GS8. Maintain punctuality",
+        "GS9. Respond to the client in a timely manner",
+        "GS10. Prioritise shipments and execute tasks based on client requirements",
+        "GS11. Make work plans and resource allocation plans",
+        "GS12. Make checks on the execution of work plans",
+        "GS13. Be a team player and achieve joint goals",
+        "GS14. Adhere to the customer timelines and address the urgency regarding shipments and",
+        "GS15. Identify trends/common causes for delays, issues in tracking, etc.",
+        "GS16. Coordinate and handle major issues with different departments",
+        "GS17. Identify bottlenecks and operational problems and suggest remedial action",
+        "GS18. Assess the resource requirement for a particular task at hand",
+        "GS19. Assess and prepare for backup transport in case of continuous delays",
+        "GS20. Plan for shipment movement so that the resources are optimally utilised",
+        "GS21. Resolve issues in a quick and cost-effective manner",
+        "GS22. Develop work plans factoring in external factors"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise loading and unloading activities",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Inform dispatcher/security guard regarding in-time, out-time and parking bay allocated for each truck and check if the trucks are docked at their assigned bays",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Assign spaces in the staging area for loader/ unloader for loading and unloading goods along with loading/unloading docks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Ensure safety precautions are complied with and the requisite Personal Protective Equipment (PPE) are used while loading and unloading",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Check the mandatory documents on receipt of stock and before unloading, and ensure the right quantity is received as per the documents.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Inform the executive if there is a difference in quantity received and review entries made in the system",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Inspect the safe movement of goods to the put-away area",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Monitor and report productivity and adherence to timelines during loading and unloading",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Inspect manual loading/unloading of goods and record spillages, breakages, etc.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Inspect and record damage to goods while handling them using MHE",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Constantly monitor ‘shape of the day’ based on workload of different tasks and redeploy resources as per demand",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Perform visual inspection of inbound and outbound goods and verify quantity with respect to the order",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise picking activities",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Allocate pick requests to pickers per the picking strategy from the storage area and plan for ruck/urgent order picking",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Monitor replenishment SKUs in the pick face area and provide instructions for timely actions",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Monitor bin utilisation in the storage area and perform cycle count for bin accuracy",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise order verification & dispatch operations",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Allocate storage space in the dispatch area and monitor picked goods from the storage area",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Check the delivery manifest with the pick list to ensure the correct products and quantity are being dispatched",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Receive the stowage plan from the transport coordinator and ensure stacking as per the stowage plan",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Monitor loading and dispatch of goods in accordance to the run sheet",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Inspect the safe loading of goods and record any damages",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Quarantine damaged goods and act based on inputs from the manager and the client",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare and submit reports",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "Update information on stock receipts and dispatches",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Prepare and submit daily/weekly/monthly reports on receipt and dispatch performance, pending activities, worker productivity and others as per SOP",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "State reasons for non-dispatch, product damage, inventory discrepancies etc.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0201",
+      "nos_title": ".Supervise VAS",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational Procedures",
+        "KU2. Different hubs and service stations of the organization",
+        "KU3. Documentation and reporting as per the organisation's mandate",
+        "KU4. Security procedures to be followed",
+        "KU5. Escalation matrix for reporting identified problems",
+        "KU6. Risk and impact of not following defined procedures/work instructions",
+        "KU7. Coding system followed to label mail",
+        "KU8. The IT system and the ERP system of the organization",
+        "KU9. Use of computers and associated data management devices",
+        "KU10. Basic troubleshooting regarding data management devices",
+        "KU11. Scheduling and planning of different activities",
+        "KU12. Different inventory models and types of warehouses",
+        "KU13. Information from the ERP system",
+        "KU14. Geographical spread of areas and cities within the geographical reach of the warehouse",
+        "KU15. Labels and instructions regarding shipments, MHEs, equipment and workplace",
+        "KU16. Overall supply chain and warehousing value chain",
+        "KU17. Types of goods being handled",
+        "KU18. Special characteristics and handling requirements of shipments, if any"
+      ],
+      "gs": [
+        "GS1. Read the written instructions, invoicing label and shipment labels.",
+        "GS2. Read ERP and computer-generated reports",
+        "GS3. Write work orders and instructions",
+        "GS4. Write daily reports, a checklist of activities, delays, undelivered items, contacts, etc.",
+        "GS5. Communicate with customers, workers and collect information from different departments",
+        "GS6. Identify and allocate alternate resources in case a job is stuck or becomes a high priority",
+        "GS7. Plan and estimate the coordination required to resolve a query.",
+        "GS8. Maintain punctuality",
+        "GS9. Respond to the client in a timely manner",
+        "GS10. Prioritise shipments and execute tasks based on client requirements",
+        "GS11. Make work plans and resource allocation plans",
+        "GS12. Make checks on the execution of work plans",
+        "GS13. Be a team player and achieve joint goals",
+        "GS14. Adhere to the customer timelines and address the urgency regarding shipments and",
+        "GS15. Identify trends/common causes for delays, issues in tracking, etc.",
+        "GS16. Coordinate and handle major issues with different departments",
+        "GS17. Identify bottlenecks and operational problems and suggest remedial action",
+        "GS18. Assess the resource requirement for a particular task at hand",
+        "GS19. Assess and prepare for backup transport in case of continuous delays",
+        "GS20. Plan for shipment movement so that the resources are optimally utilised",
+        "GS21. Resolve issues in a quick and cost-effective manner",
+        "GS22. Develop work plans factoring in external factors"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise the packaging process",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Check and confirm the client’s VAS/packaging and labeling requirement",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Ensure all Non-Production Material (NPM) and packaging equipment are available as per the packaging requirement",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Monitor safe unloading of the products from the stacks and movement of product to packaging",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Supervise that items are packed as per instructions, labelled with bar codes and product tags and sealed as per Standard Operating Procedures (SOP)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Ensure compliance to packaging and labeling requirements as per the customs requirement of different countries",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Verify the product details and labels with products and rectify errors if any",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Conduct random check for authenticity of the product by verifying manufacturing address, the logo of the product, shape, size and specification of the product",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Cross check list of products to be packaged and the products that are being packed",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Inspect binning, crating and palletization process to ensure safe handling of goods and adherence to process",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Check for goods damaged during packaging and quarantine them separately",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Check for optimal utilization of NPM and man hours without any damage to the products",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Make sure the area is cleaned after packing operations",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Ensure that the packed goods are moved to staging/storage/dispatch area and their corresponding documentation are updated in ERP",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Train subordinates on packaging and labeling process for different product, client, and country requirements",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise overall VAS (Value-Added Services) Activities",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Plan and Schedule VAS Activities based on demand and customer requirements.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Monitor VAS work progress throughout the shift and ensure that proper execution (correct labels, accurate kit components), Clean, damage- free packaging and rejected or damaged items are logged and reported.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Perform Quality Checks and process checks on VAS-processed items.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Report and Analyse VAS Performance by tracking daily metrics such as Units processed, Rework percentage, On-time completion, Labour hours per job, Error or return rate (if customer reports issues), etc.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0121",
+      "nos_title": ".Supervise",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational Procedures, different hubs and service stations of the organisation",
+        "KU2. Customs Act, 1962, especially Sections 57-73 related to bonded warehousing.",
+        "KU3. Documentation and reporting as per the organization's mandate",
+        "KU4. Security procedures to be followed and the escalation matrix for reporting identified",
+        "KU5. Warehousing Regulations, 2019, and CBIC Circulars (especially Circular No. 38/2016-Cus for",
+        "KU6. Risk and impact of not following defined procedures/work instructions",
+        "KU7. The coding system used to label goods.",
+        "KU8. Notifications and circulars from the CBIC (https://cbic-gst.gov.in/).",
+        "KU9. Use of computers, IT, ERP system and associated data management devices",
+        "KU10. Basic troubleshooting regarding computers and software",
+        "KU11. Bonded Warehouse license and regulations, Section 58 (Private Bonded Warehouse) and",
+        "KU12. Vehicle planning and route planning process",
+        "KU13. Various HSN code classifications",
+        "KU14. Demarcation of bonded warehouse area",
+        "KU15. Basic understanding of bills of entry, bills of entry for warehousing (BEW), shipping bills,",
+        "KU16. Exports and import classifications and customs procedures, documentation for different",
+        "KU17. SEZS, custom valuations and custom duties, etc.",
+        "KU18. Insurance claims processing documentation and procedure",
+        "KU19. Labels and instructions in the customer query resolution logbook and shipment package",
+        "KU20. Types of shipments being handled, Special characteristics and handling requirements of"
+      ],
+      "gs": [
+        "GS1. Read the written instructions",
+        "GS2. Read the invoicing label and the shipment labels",
+        "GS3. Read cargo documentation, customs documentation and insurance documentation",
+        "GS4. Reproduce customer/customs/transporter/ regulator queries when required",
+        "GS5. Generate reports in ERP and CRM",
+        "GS6. Prepare statutory documentation for customs and insurance",
+        "GS7. With customers and other internal and external departments",
+        "GS8. Collect information from different departments",
+        "GS9. Make a judgment as to what additional documents are required",
+        "GS10. Decide which cases are to be escalated to a higher level",
+        "GS11. Plan and estimate the coordination required for resolving a query",
+        "GS12. Maintain punctuality",
+        "GS13. Should respond to the client in a timely manner",
+        "GS14. Prioritise and execute tasks based on client requirements",
+        "GS15. Be a team player and achieve joint goals",
+        "GS16. Converse with the customer in a suitable manner",
+        "GS17. Adhere to the customer timelines",
+        "GS18. Identify trends/common causes for shipment hold-ups for want of documentation,",
+        "GS19. Identify the type of shipment and the customs regulations pertaining to it",
+        "GS20. Assess additional documents required for shipment clearance",
+        "GS21. Keep track of the progress of each shipment in real time until clearance",
+        "GS22. Focus on the task at hand and complete it without errors and delays while maintaining high"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise bonded warehouse operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Interact with clients and get updated on the inward and outward goods.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Verify that all bills of entry for warehousing (BEW) and documents are filed in ICEGATE.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Ensure goods are brought in only after clearance under Section 60 by the customs officer.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Oversee inspection, weighing, and labelling of goods.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Ensure that stock is updated in the Warehouse Register (Form A) and the digital inventory system.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Check goods movement status on ERP, discuss with the client and clarify any doubts",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Demarcate bonded areas within the warehouse for different customers and Store goods in demarcated, lockable sections to ensure segregation and to prevent pilferage.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Maintain strict access control (CCTV, biometric logs, visitor entry records) for entry and the right of operations in bonded areas",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Arrange for customs inspection, sealing, or sampling when required and keep all correspondence and approvals well-documented and accessible.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Supervise operations within bonded areas and ensure timelines are met for export",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Arrange the export material with the necessary packaging and documentation ready for customs inspection",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Record inward and outward movements with date, Bill of Entry, invoice, item description, quantity, and balance.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Coordinate with customs officials, customs brokers, transport brokers, IATA agents, etc., to assist in customs clearance",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Interact with customs and take necessary action to release goods seized by customs by providing the required documentation and other inputs",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Coordinate with insurance agents for inspection of goods and provide the necessary support for valuation",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Prepare claims reports for damaged goods and coordinate with insurance agents for preventive action",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Maintain Form A register and other prescribed formats (can be digital but must be accessible and printable).",
+              "sequence_order": 17,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Ensure sensitive items' conditions, like temperature and humidity, are maintained.",
+              "sequence_order": 18,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Inform the client of the goods damage in the warehouse and arrange the necessary documentation, replacement, etc., to resolve the issue",
+              "sequence_order": 19,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Ensure a valid Bill of Entry for Home Consumption (BEHC) or Ex-Bond Bill of Entry is filed before dispatch.",
+              "sequence_order": 20,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Coordinate with clients in cases of delays, product issues, and custom-related documentation issues.",
+              "sequence_order": 21,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Maintain up-to-date knowledge of legal obligations, import/export restrictions, and tax/duty deferrals and ensure all staff are trained in compliance requirements.",
+              "sequence_order": 22,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Comply with the conditions of the Bonded Warehouse license (e.g., security arrangements, record-keeping, etc.).",
+              "sequence_order": 23,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Conduct regular security checks and fire safety drills.",
+              "sequence_order": 24,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0147",
+      "nos_title": ".Supervise",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational policies on quality, hygiene, safety and compliance",
+        "KU2. FMCG and perishable product handling standards",
+        "KU3. Cold chain management systems and temperature control mechanisms",
+        "KU4. HACCP, FSSAI, HAZMAT and regulatory compliance frameworks",
+        "KU5. FIFO, FEFO, LIFO and inventory management systems",
+        "KU6. Warehouse zoning and layout principles",
+        "KU7. ERP, WMS and digital warehouse technologies",
+        "KU8. PPE and MHE usage and safety protocols",
+        "KU9. Pest control, contamination prevention and sanitation standards",
+        "KU10. Documentation, reporting systems and MIS",
+        "KU11. Quality management systems (ISO, BRC, FSSC)",
+        "KU12. Supply chain value chain and warehouse process flows",
+        "KU13. Temperature, humidity and microbiological risk management",
+        "KU14. Productivity metrics and KPI frameworks",
+        "KU15. Regulatory documentation and inspection processes"
+      ],
+      "gs": [
+        "GS1. Interpret SOPs, work instructions and regulatory requirements",
+        "GS2. Communicate clearly with associates, managers and stakeholders",
+        "GS3. Delegate work and monitor execution",
+        "GS4. Analyse reports and dashboards",
+        "GS5. Handle escalations and operational disruptions",
+        "GS6. Maintain documentation and reporting accuracy",
+        "GS7. Plan manpower and resource allocation",
+        "GS8. Monitor hygiene, safety and compliance practices",
+        "GS9. Identify risks and inefficiencies",
+        "GS10. Implement process improvements",
+        "GS11. Train and mentor warehouse associates",
+        "GS12. Coordinate with internal and external stakeholders",
+        "GS13. Ensure service level adherence",
+        "GS14. Use digital tools for supervision and monitoring",
+        "GS15. Drive operational discipline and performance culture"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise Safety, Hygiene and Cold Chain Operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Ensure appropriate PPE usage for FMCG and perishable handling operations",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Monitor sanitation of work areas, tools, equipment, MHE and handling zones",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Supervise hygiene practices including hand sanitation, work discipline and contamination control",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Ensure cold storage PPE (insulated gloves, jackets, boots) is used as per SOP",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Monitor temperature and humidity levels of cold storage and perishable zones",
+              "sequence_order": 5,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Validate temperature and humidity logs and take corrective action for deviations",
+              "sequence_order": 6,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Inspect storage infrastructure for mould, fungus, pests and contamination risks",
+              "sequence_order": 7,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Enforce hygiene zoning to prevent cross- contamination between FMCG and perishables",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Ensure sanitation of employees and handling equipment is conducted periodically",
+              "sequence_order": 9,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Enforce HACCP, FSSAI, HAZMAT and other regulatory safety requirements",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise Storage and Inventory Management",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "Generate picklists and distribute them to warehouse associates",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Supervise different picking methods such as single order, batch, zone, wave, pick-and-pass and multi-batch picking",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Ensure FIFO/FEFO/LIFO practices are followed as per product and SOP requirements",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Organise segregation of goods based on expiry, shelf life, category and storage conditions",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Plan and arrange storage areas for peak season surge and high-volume operations",
+              "sequence_order": 5,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Ensure appropriate signage and zoning for permanent and temporary storage locations",
+              "sequence_order": 6,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Supervise binning, kitting, labelling and packing operations",
+              "sequence_order": 7,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Ensure correct zoning for receiving, quarantine, storage, picking and dispatch",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Inspect loading and unloading operations for correctness and safety compliance",
+              "sequence_order": 9,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Ensure FMCG and perishable goods are stored as per predetermined storage sequence and coding systems",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Supervise use of appropriate MHE and storage equipment for all product types",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Monitor storage hygiene and pest control measures",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Inspect handling and packaging damages and initiate corrective and preventive actions",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Organise inventory cycle counting and verify accuracy of records",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise Documentation, Reporting and Compliance",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "Inspect goods documentation for correctness and regulatory compliance",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Ensure dispatch documentation matches labeling and physical goods",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "Validate temperature logs, inventory records and movement registers",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "Monitor microbiological and quality non- conformance reports",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "Ensure compliance with regulatory frameworks such as FSSAI, HACCP, ISO, BRC, FSSC",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "Prepare periodic operational reports including manpower metrics, utilisation, downtime and productivity",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "Use KPI dashboards to track OTIF, order accuracy, shrinkage, spoilage and losses",
+              "sequence_order": 7,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "Leverage WMS, ERP, scanners, automation tools and digital dashboards for operational control",
+              "sequence_order": 8,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise Workforce Performance and Operational Efficiency",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC33",
+              "pc_description": "Train warehouse associates on hygiene, safety, picking, packing and documentation processes",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "Monitor adherence to SOPs and work instructions",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "Allocate manpower and resources based on workload and priority",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC36",
+              "pc_description": "Manage escalations related to delays, damages, contamination and non-compliance",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC37",
+              "pc_description": "Coordinate with QC, transport, vendors and regulatory authorities",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "Implement corrective actions for process deviations and operational risks",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC39",
+              "pc_description": "Monitor productivity, accuracy and service levels",
+              "sequence_order": 7,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC40",
+              "pc_description": "Drive continuous improvement initiatives for efficiency and quality enhancement",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0124",
+      "nos_title": ".Supervise",
+      "sequence_order": 7,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational procedures and policy on quality, use of PPEs, use of equipment, MHEs,",
+        "KU2. companys reporting structure to support and expedite project acivities",
+        "KU3. companys policy and work instructions on quality standards",
+        "KU4. importance of the individuals role in the workflow",
+        "KU5. occupational health and safety standards and security procedures to be followed",
+        "KU6. procedures for dealing with loss or damage to goods",
+        "KU7. risk and impact of not following defined work, safety and security procedures",
+        "KU8. coding system followed to label items",
+        "KU9. the basic of ERP system of the organization",
+        "KU10. using a computer and data handling devices",
+        "KU11. use tools for documentation: MS excel and MS Word, etc.",
+        "KU12. different types of order picking such as single order picking, batch picking, zone picking, pick",
+        "KU13. use of different material handling equipment and their uses",
+        "KU14. state/country taxes and routing",
+        "KU15. basic understanding of statistical and quantitative analysis tools",
+        "KU16. use of spreadsheets to tabulate and analyze the data",
+        "KU17. structure and implications of fees and charges involved in transportation, warehousing,",
+        "KU18. procurement related concepts like Purchase order (PO), Invoices, procedures etc.Identify and",
+        "KU19. types of workplace hazards that one can encounter on the job and safe operating practices",
+        "KU20. use of different material handling equipment and their uses",
+        "KU21. different geographical locations",
+        "KU22. racking and storage systems in automobile warehousing",
+        "KU23. Kanban inventory management",
+        "KU24. 5S, JIT, FMEA, kaizen, poka-yoke etc.",
+        "KU25. how to read information from the Enterprise Resource Planning (ERP)/ Management",
+        "KU26. various escalations regarding resolving and catering to the customer query",
+        "KU27. overall process in operations",
+        "KU28. different types of goods being handled",
+        "KU29. handle requirements for dangerous and special goods, if any",
+        "KU30. various types of PPEs and their usage"
+      ],
+      "gs": [
+        "GS1. Work instructions, customer requirements and quality policy",
+        "GS2. Legal policies, regulations and legal documentation which are part of the shipment/ goods",
+        "GS3. Internal communications memoranda",
+        "GS4. Delegate work appropriately",
+        "GS5. Checklists and daily reports regarding updates and reviews",
+        "GS6. Forms pertaining to inventory received or dispatched, and notes about accidents, damage to",
+        "GS7. Handle day-to-day escalated problems like delays, staffing shortage, external factors, etc.",
+        "GS8. Think through different queries and escalations, and quickly identify possible solutions and",
+        "GS9. Assess delays or non-performance in daily reporting or closures",
+        "GS10. Communicate clearly with the manager and subordinates",
+        "GS11. Provide advice and guidance to peers and juniors",
+        "GS12. Communicate with workers about delays and updates in schedules",
+        "GS13. Judge the quality of goods received",
+        "GS14. Identify the components required to make a product based on requests",
+        "GS15. Liaise with customers, government officials, vendors and staff",
+        "GS16. Plan and organise review meetings with vendors, contractors and take prompt action on",
+        "GS17. Organise projects/ training plans for performance improvement",
+        "GS18. Think tactically, with attention to detail and improve work processes by adopting best",
+        "GS19. Comply with timelines and service levels committed to the customer",
+        "GS20. Resolve system and operational issues either internally or by escalating to the relevant",
+        "GS21. Identify trends/common causes for errors and suggest possible solutions",
+        "GS22. Identify areas of inefficiencies and plan to curb the inefficiencies",
+        "GS23. Identify key areas that are crucial for performance improvement",
+        "GS24. Analyse reports and propose necessary actions",
+        "GS25. Identify and resolve issues due to technical or human error",
+        "GS26. Analyse the resource requirement in terms of manpower, delivery vehicles, software,",
+        "GS27. Provide suggestions and methodologies, and implement them for operational activities in"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise automotive warehouse operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Coordinate with OEM/3PL/4PL for storage and dispatch of goods",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Check if the goods are sorted and placed on racks, shelves, or in bins according to the Kanban list",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Ensure the right serial number of goods being loaded/unloaded, and ensure traceability in warehouse inventory and operations",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Check for adherence to different certifications for automotive goods",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Ensure that parts are checked thoroughly before packing, such as matching part numbers, quantities, and destinations.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Plan the palletisation process and ensure it is executed as per the design/process agreed with the client",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Ensure finished pallets of product are stored in the assigned locations and onto trailers safely and accurately",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Supervise the preparation of goods for customs clearance with appropriate packaging, palletisation, segregation and documentation",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Inspect handling/packaging damages, take corrective and preventive actions and report the same",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Inspect goods documentation for correctness, accuracy and take necessary action to rectify any deviations",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Organise inventory cycle counting as per Standard Operating Procedures (SOP) and report the status",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Deploy process improvement tools such as 5S, JIT, FMEA, kaizen, poka-yoke etc. to improve process metrics continuously",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Prepare periodic reports on operations such as employee operational metrics, work completion status, resource utilisation, downtime, etc.",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Monitor the process for returns (RMA) from workshops, dealers, or lineside and ensure that Returns, Rejections, Scrap, damaged, expired, or recalled parts are segregated and handled as per SOP",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0125",
+      "nos_title": ".Supervise dry",
+      "sequence_order": 8,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisational procedures and policy on quality, use of PPEs, use of equipment, MHEs,",
+        "KU2. The company's reporting structure supports and expedites project activities",
+        "KU3. The company's policy and work instructions on quality standards",
+        "KU4. Importance of the individual's role in the workflow",
+        "KU5. Occupational health and safety standards and security procedures to be followed",
+        "KU6. Procedures for dealing with loss or damage to goods",
+        "KU7. Risk and impact of not following defined work, safety and security procedures",
+        "KU8. Coding system followed to label items",
+        "KU9. The basics of the ERP system of the organisation",
+        "KU10. Using a computer and data handling devices",
+        "KU11. Use tools for documentation: MS Excel and MS Word, etc.",
+        "KU12. Different types of order picking, such as single order picking, batch picking, zone picking,",
+        "KU13. Use of different material handling equipment and their uses",
+        "KU14. Process flow of service operation and understanding of basic supply chain value chain",
+        "KU15. State/country taxes and routing",
+        "KU16. Basic understanding of statistical and quantitative analysis tools",
+        "KU17. Use of spreadsheets to tabulate and analyse the data",
+        "KU18. Structure and implications of fees involved in transportation, warehousing, processing",
+        "KU19. Procurement-related concepts like Purchase order (PO), Invoices, procedures, etc.",
+        "KU20. Usage of different information processing devices like barcode scanners, RFID scanners, etc",
+        "KU21. Types of workplace hazards that one can encounter on the job and safe operating practices",
+        "KU22. Shop floor operations, material planning and the capacity, usage of different MHEs",
+        "KU23. An automated warehouse and its operations",
+        "KU24. Different inventory management systems as well as counting methods",
+        "KU25. Technical specifications of goods in the warehouse",
+        "KU26. How to read information from the Enterprise Resource Planning (ERP)/Management",
+        "KU27. Various escalations regarding resolving and catering to the customer's query",
+        "KU28. Overall process in operations",
+        "KU29. Different types of goods being handled and compliance regarding filling capacities of storage"
+      ],
+      "gs": [
+        "GS1. Work instructions, customer requirements and quality policy",
+        "GS2. Legal policies, regulations and legal documentation which are part of the shipment/ goods",
+        "GS3. Internal communications memoranda",
+        "GS4. Delegate work appropriately",
+        "GS5. Checklists and daily reports regarding updates and reviews",
+        "GS6. Forms pertaining to inventory received or dispatched, and notes about accidents, damage to",
+        "GS7. Handle day-to-day escalated problems like delays, staffing shortage, external factors, etc.",
+        "GS8. Think through different queries and escalations, and quickly identify possible solutions and",
+        "GS9. Assess delays or non-performance in daily reporting or closures",
+        "GS10. Communicate clearly with the manager and subordinates",
+        "GS11. Provide advice and guidance to peers and juniors",
+        "GS12. Communicate with workers about delays and updates in schedules",
+        "GS13. Judge the quality of goods received",
+        "GS14. Identify the components required to make a product based on requests",
+        "GS15. Liaise with customers, government officials, vendors and staff",
+        "GS16. Plan and organise review meetings with vendors, contractors and take prompt action on",
+        "GS17. Organise projects/ training plans for performance improvement",
+        "GS18. Think tactically, with attention to detail and improve work processes by adopting best",
+        "GS19. Comply with timelines and service levels committed to the customer",
+        "GS20. Resolve system and operational issues either internally or by escalating to the relevant",
+        "GS21. Identify trends/common causes for errors and suggest possible solutions",
+        "GS22. Identify areas of inefficiencies and plan to curb the inefficiencies",
+        "GS23. Identify key areas that are crucial for performance improvement",
+        "GS24. Analyse reports and propose necessary actions",
+        "GS25. Identify and resolve issues due to technical or human error",
+        "GS26. Analyse the resource requirement in terms of manpower, delivery vehicles, software,",
+        "GS27. Provide suggestions and methodologies, and implement them for operational activities in"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise dry bulk cargo warehouse operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Compute space and weight requirements, and allocate space for storage according to the nature of the bulk cargo.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Ensure the right usage of bulk-handling equipment like conveyors, hoppers, front-end loaders, or pneumatic systems (Grab Ship Unloader) GSU, dumpers, etc., as per cargo requirements.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Monitor temperature, humidity, and ventilation (especially for grains or moisture- sensitive materials).",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Continuously monitor weight and volume metrics to ensure adequate storage in different locations",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Conduct daily measurements of stockpiles (using laser or drone surveys for large yards) and use bin cards, tally sheets, or digital warehouse systems to log movements.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Monitor pest control activities and supervise periodic checks for the presence of rodents, birds, insects and other pests which affect the cargo",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Ensure the right PPE, safety and security measures are being carried out",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Inspect for quality, moisture content, contamination, or damage and take corrective and preventive actions and report the same",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Inspect documentation for correctness, accuracy and take necessary action to rectify any deviations",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Organise inventory measurement as per Standard Operating Procedures (SOP) and report the status",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Prepare periodic reports on operations such as employee operational metrics, work completion status, resource utilisation, downtime, etc.",
+              "sequence_order": 11,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Monitor Dispatch Operations and ensure proper tarping or sealing of trucks for materials prone to leakage or contamination.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Issue and validate weighbridge slips, gate passes, and shipping documents.",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N0148",
+      "nos_title": ".Supervise E-",
+      "sequence_order": 9,
+      "is_generic": false,
+      "kus": [
+        "KU1. E-commerce fulfilment workflows and warehouse process flows",
+        "KU2. Order picking, packing and sorting methodologies in e-commerce",
+        "KU3. Use of WMS, ERP, handheld scanners and automation systems",
+        "KU4. Courier operations, cut-off timings, routing and RTO management",
+        "KU5. Handling norms for high-value, fragile and sensitive items",
+        "KU6. Packaging, labelling and documentation standards",
+        "KU7. Inventory accuracy, SKU mapping and cycle counting practices",
+        "KU8. Quality control parameters and customer satisfaction drivers",
+        "KU9. Safety, security and loss prevention practices",
+        "KU10. Productivity metrics, SLAs and performance dashboards"
+      ],
+      "gs": [
+        "GS1. Interpret SOPs, work instructions and SLA requirements",
+        "GS2. Communicate clearly with associates, supervisors and transport partners",
+        "GS3. Delegate tasks and monitor execution under time pressure",
+        "GS4. Analyse operational and exception reports",
+        "GS5. Manage escalations and resolve fulfilment issues",
+        "GS6. Plan manpower and resource utilisation during peak periods",
+        "GS7. Monitor quality, accuracy and compliance",
+        "GS8. Use digital systems for supervision and reporting",
+        "GS9. Identify bottlenecks and inefficiencies",
+        "GS10. Implement process improvements for operational excellence"
+      ],
+      "modules": [
+        {
+          "module_title": "Supervise Inbound and Storage Operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Monitor verification of received goods against inbound orders from sellers or fulfilment centres",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Ensure inspection of goods for damage, missing items or incorrect SKUs",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Ensure inbound inventory is accurately scanned and recorded in WMS/ERP systems",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Supervise storage of goods in designated bins, shelves or zones as per SKU mapping",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Ensure bin labelling and digital location mapping are maintained for fast retrieval",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Monitor secure storage of high-value and sensitive e-commerce items",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise Picking, Packing and Labelling Operations",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Generate and distribute picklists based on order priority, SLA and courier cut-offs",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Supervise zone, batch and wave picking processes for order accuracy and speed",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Ensure scanning and verification of items before packing",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Ensure appropriate packaging materials are used based on product category",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Supervise multi-order and single-order packing as per WMS instructions",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Ensure shipping labels, invoices and inserts are correctly attached",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Enforce enhanced handling and security protocols for high-value items",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise Sorting, Dispatch and Returns Operations",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Supervise operation of conveyors, sorters, scanners and weighing systems",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Ensure parcels are sorted, scanned and routed as per courier and pincode logic",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Monitor staging of parcels based on dispatch priority and cut-off times",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Ensure segregation and tagging of RTO and NDR parcels",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Coordinate dispatch readiness with transporters and last-mile partners",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise Quality Control, Security and Exception Handling",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "Monitor quality checks for damages, mismatches, leakage or incorrect specifications",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Ensure escalation of quality issues before order confirmation or dispatch",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Enforce cleanliness, pest control and safe storage conditions",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Ensure compliance with safety norms while handling fragile or hazardous items",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Monitor exception handling for mismatches, missing barcodes, system errors or damages",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Supervise System Compliance, Reporting and Workforce Performance",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC24",
+              "pc_description": "Ensure all inventory movements are accurately recorded in ERP/WMS systems",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Review daily fulfilment, backlog, RTO and cancellation reports",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Track key KPIs such as order accuracy, TAT, SLA adherence and productivity",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "Allocate manpower and resources based on order volume and peak loads",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "Train associates on e-commerce fulfilment processes and system usage",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "Handle escalations related to delays, errors and customer impact",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "Drive continuous improvement initiatives to enhance speed, accuracy and cost efficiency",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N9603",
+      "nos_title": ".Profit and",
+      "sequence_order": 10,
+      "is_generic": false,
+      "kus": [
+        "KU1. Vision, mission and values of the company.",
+        "KU2. Company reporting structure to support and expedite project activities.",
+        "KU3. Company policy and work instructions on quality standards, as well as documentation policy.",
+        "KU4. Importance of the individual's role in the workflow.",
+        "KU5. company's policy on business ethics and code of conduct.",
+        "KU6. Business and performance of the company.",
+        "KU7. Knowledge repository and various projects done by the company.",
+        "KU8. Occupational health and safety standards, special and dangerous goods handling, etc.",
+        "KU9. Procedures for dealing with loss or damage to goods.",
+        "KU10. Value of items handled and implications of damage/loss of the same.",
+        "KU11. Risk and impact of not following defined work, safety and security procedures.",
+        "KU12. Company policy defined TATs and output metrics for daily operations.",
+        "KU13. Knowledge of using Excel for cost tracking.",
+        "KU14. IT system and ERP system of the organisation.",
+        "KU15. Organisational goal for the year, as well as branch/ territory targets.",
+        "KU16. Process flow of service operation and understanding of basic supply chain value chain.",
+        "KU17. State/country taxes and routing.",
+        "KU18. Local and global geographies.",
+        "KU19. Use of enterprise resource planning software (ERP) and the MIS.",
+        "KU20. Use of tools for documentation: MS Excel and MS Word, etc.",
+        "KU21. Basics of statistical and quantitative analysis tools.",
+        "KU22. Use of spreadsheets to tabulate and analyse the data.",
+        "KU23. Structure and implications of fees and charges involved in transportation, warehousing,",
+        "KU24. Transit rules and regulations.",
+        "KU25. Budgeting exercises and Legal policies and regulations.",
+        "KU26. Procurement-related concepts like Purchase order (PO), Invoices, procedures etc.",
+        "KU27. Significance of team coordination to achieve revenue and productivity targets of the",
+        "KU28. Various techniques for performance improvement and cost accounting Knowledge of SOPs"
+      ],
+      "gs": [
+        "GS1. Ability to interpret the company's work instructions, Internal communications",
+        "GS2. Sensitise employees towards customer requirements.",
+        "GS3. Ability to Develop operating procedures and update them.",
+        "GS4. Ability to write instructions, documents and standard operating procedures.",
+        "GS5. Focus on customer satisfaction as a key part of the performance review.",
+        "GS6. Ability to Draw Inferences from the system reports and financial statements.",
+        "GS7. Identify reasons for variances and resolve them in discussion with the team and",
+        "GS8. Ability to Maintain records as per company policy.",
+        "GS9. Compare with past trends to see if it is seasonal or cyclical.",
+        "GS10. Identify areas that are crucial for improvement and accordingly revisit budgets.",
+        "GS11. Write communications, letters, etc.",
+        "GS12. Prepare daily reports, checklists and presentations based on data analytics and ERP reports.",
+        "GS13. Communicate with clients, external coordinators, and internal staff effectively.",
+        "GS14. Ability to motivate employees.",
+        "GS15. Share experiences and guide juniors and peers.",
+        "GS16. Assess business performance to identify the need for interventions.",
+        "GS17. Identify areas for improvement and accordingly suggest remedial action",
+        "GS18. Identify areas for budget modifications and budget cuts.",
+        "GS19. Decide on ways to improve performance.",
+        "GS20. Plan and organise performance review sessions.",
+        "GS21. Make an action plan for performance improvement.",
+        "GS22. Organise projects/ training plans for performance improvement.",
+        "GS23. Suggest new technologies, capital purchases, and operational strategies to enhance",
+        "GS24. Analyse reasons for variances across departments.",
+        "GS25. Assess the financial performance and make strategic decisions regarding budgets, focus",
+        "GS26. Motivate and ensure output to achieve financial goals."
+      ],
+      "modules": [
+        {
+          "module_title": "Profit and Loss account management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Review department-wise budgets and make amendments if required.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Regularly track actual performance against budgeted figures to forecast future financial trends.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Collate and prepare annual budgets along with sales and profit targets.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Manage expenses carefully to ensure profitability by identifying and minimising waste.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Assess different revenue streams and find growth opportunities, such as pricing strategies or exploring new markets.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Review direct and indirect costs regularly to identify areas for cost reduction without impacting product quality or customer satisfaction.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Use ratios such as gross profit margin, operating margin, and net profit margin to evaluate financial performance and guide decision-making.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Schedule both capital and operational expenses following the budget.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Analyse and review the unit's overall P&L performance.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Analyse profitability and business performance trends department-wise.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Periodically analyse expenditure variances concerning the budget and the budget's physical output and performance.",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Identify improvement areas and accordingly take corrective actions.",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Undertake adequate risk management to meet Key Performance targets.",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Manage and control budgets of different departments periodically to optimise financial performance.",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Use Software like QuickBooks, Xero, or SAP to automate P&L generation and track real-time data.",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Analyse and minimise activity-based costs",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Periodically review activity and department financial performance.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Ensure Proper allocation of overhead costs to various products or services to comprehend their true cost and profitability.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Regularly track variances from standard or budgeted costs to identify inefficiencies and implement corrective actions.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Perform Break-Even Analysis to calculate the point at which total revenues equal total costs (no profit or loss).",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Perform a Cost-Volume-Profit (CVP) Analysis to examine the relationships between cost, volume, and profit to analyse how changes in sales and costs affect profitability.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "Use cost data to establish pricing strategies that ensure profitability while remaining competitive.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "Efficiently manage inventory to minimise carrying costs, avoid stockouts, and prevent overproduction.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "Analyse the actual cost w.r.t physical output to draw inferences.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "Identify reasons in discussion with the department and take remedial and corrective actions wherever required.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "Work towards rationalising the cost of the activity-wise operations to achieve higher financial goals.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "Use Tools like Sage, Oracle NetSuite, and Microsoft Dynamics NAV to track and allocate costs.",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "LSC/N9701",
+      "nos_title": ".Business",
+      "sequence_order": 11,
+      "is_generic": false,
+      "kus": [
+        "KU1. vision, mission and values of the company",
+        "KU2. company's reporting structure to support and expedite project activities",
+        "KU3. company's policy and work instructions on quality standards and documentation policy",
+        "KU4. importance of the individual's role in the workflow",
+        "KU5. company's policy on business ethics and code of conduct",
+        "KU6. business and performance of the company",
+        "KU7. knowledge repository and various projects done by the company",
+        "KU8. occupational health and safety standards and handling of dangerous and special goods",
+        "KU9. procedures for dealing with loss or damage to goods",
+        "KU10. value of items handled and implications of damage/loss of the same",
+        "KU11. risk and impact of not following defined work, safety and security procedures",
+        "KU12. company policy defined Turn Around Time (TATs) and output metrics for daily operations",
+        "KU13. just in time (JIT) mode of inventory management",
+        "KU14. the coding system followed to label items",
+        "KU15. The organization's Information Technology (IT) and Enterprise resource planning (ERP)",
+        "KU16. process flow of service operation, value chain and basic supply chain value map within the",
+        "KU17. state/country taxes and routing",
+        "KU18. local and global geographical knowledge",
+        "KU19. use of ERP software including Warehouse Management System (WMS), Material Management",
+        "KU20. use of tools for documentation: MS excel and MS Word, etc.",
+        "KU21. basics of statistical and quantitative analysis tools",
+        "KU22. use of spreadsheets to tabulate and analyze the data",
+        "KU23. structure and implications of fees and charges involved in transportation, warehousing, etc.",
+        "KU24. transit rules and regulations",
+        "KU25. significance of team coordination to achieve revenue and productivity targets of the",
+        "KU26. customer relationship management",
+        "KU27. about contract management and SLA",
+        "KU28. factors for evaluation of performance of vendors"
+      ],
+      "gs": [
+        "GS1. read company quality policy, work instructions and customer requirement",
+        "GS2. read transit rules and trade policies",
+        "GS3. read regulatory requirement associated with custom clearance",
+        "GS4. read e-mails, invoices, letters, notes, memos, agreement reports, etc.",
+        "GS5. write e-mails and letters to government officials, customers, vendors, etc.",
+        "GS6. note information about vendors on factors like quality of service,on-time order completion,",
+        "GS7. listen to the requirements of the client",
+        "GS8. communicate with clients, government officials and other external stakeholders by using",
+        "GS9. exchange information with other managers, supervisory and operational staff at all levels",
+        "GS10. carefully listen to vendor concerns and issues",
+        "GS11. decide on corrective measures to improve customer ratings",
+        "GS12. decide on actions to be taken on escalations raised by the customer",
+        "GS13. decide appropriate action for poor performance and lack of cooperation by vendor/ Third-",
+        "GS14. identify and prioritise, select clients and prospects for generating business",
+        "GS15. liaison with customers, government officials, vendors and staff to ensure that smooth",
+        "GS16. plan and organise review meetings with vendors and contractors",
+        "GS17. organise projects/ training plans for performance improvement",
+        "GS18. take prompt action on queries raised by the customer",
+        "GS19. understand customer requirement and offer customised or bundled solutions",
+        "GS20. suggest ideas and solutions to increase customer loyalty and satisfaction",
+        "GS21. resolve the queries raised by customers as well as goverment officals",
+        "GS22. address the queries raised by vendors, contractors and other external stakeholders that are",
+        "GS23. identify the factors which improved the customer satisfaction as well as ratings of the",
+        "GS24. identify bundles and customisations that cater to the requirement of majority of customers",
+        "GS25. analyse key reasons for non-performance and customer dissatisfaction",
+        "GS26. identify key areas that are crucial for performance improvement",
+        "GS27. improve work processes by adopting best practices concerning quality of service to the",
+        "GS28. act constructively on any problems identified by customers, vendors or government officials",
+        "GS29. handle personality clashes effectively"
+      ],
+      "modules": [
+        {
+          "module_title": "Generate new business prospects",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "update information into ERP, inform the relevant departments on sale closure",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "obtain the list of existing clients and new prospects from the company's sales database.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "prepare sales targets and relationship strategies",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Prioritize the clients for contact based on the previous relationship building calls made to each of them",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "call clients and prospects to seek a meeting",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "meet clients to offer new services and take feedback for current services",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "identify client's business needs and offer customized and bundled solutions",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "negotiate costs, close the deal and collect organizational and payment details of the client",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "take the client's feedback",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain customer relations",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "regularly interact with the client over the phone, emails or personal visits and quickly respond to their queries",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "address the queries raised by the customers effectively and on time",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "take appropriate actions on escalations raised by customers",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "handle customer grievances such as damage or tampering with shipment, extra charges levied, failure to deliver as per commitment, delays, etc.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Provide regular information to clients regarding new offerings, discounts, customised solutions, etc.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Coordinate with government officials, vendors and contractors",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "liaise with customs, Partner Government Agencies (PGAs), other Govt. departments, etc. and build professional relations with them",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "analyse and manage insurance claim requests",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "coordinate with marketing agencies for publicity of company services",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "negotiate with carriers, warehouse and transport operators, custom brokers, insurance company representatives, vendors, etc. for services, preferential rates, service level agreements (SLA), payment periods, etc.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Coordinate with labour contractors and local vendors for sufficient workforce carrier vehicle availability per work demand",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,790 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "CUTM/CSC/Q0201",
+  "qp_name": "CUTM_CSC_Q0201",
+  "clean_code": "CUTM_CSC_Q0201",
+  "total_pages": 40,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:26.520Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 4,
+    "total_pcs": 69,
+    "total_kus": 38,
+    "total_gs": 40,
+    "generic_nos_filtered": 2
+  },
+  "nos_units": [
+    {
+      "nos_code": "CUTM/CSC/N0201",
+      "nos_title": ".Interpretation",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. Common engineering drawing symbols, notations, and GD&T (Geometric Dimensioning and",
+        "KU2. Interpretation of 2D and 3D CAD models for CNC turning operations.",
+        "KU3. Material properties and their impact on machining processes.",
+        "KU4. Selection and application of cutting tools, inserts, and tool holders.",
+        "KU5. CNC programming fundamentals, including G-codes, M-codes, and cycles.",
+        "KU6. Process planning for CNC turning, including work holding and machining sequences.",
+        "KU7. Calculation of cutting parameters such as feed rate, spindle speed, and depth of cut.",
+        "KU8. Tolerances and surface finish requirements for precision machining.",
+        "KU9. Machine capabilities, limitations, and setup procedures for CNC lathes.",
+        "KU10. Safety protocols and best practices in CNC machining and process planning."
+      ],
+      "gs": [
+        "GS1. Interpret engineering drawings and technical specifications accurately.",
+        "GS2. Analyze and plan machining sequences based on design requirements.",
+        "GS3. Use CAD/CAM software to visualize and modify part designs for CNC turning.",
+        "GS4. Calculate machining parameters such as spindle speed, feed rate, and depth of cut.",
+        "GS5. Identify suitable tools, inserts, and work-holding methods for efficient machining.",
+        "GS6. Communicate machining plans, tolerances, and process requirements with team members.",
+        "GS7. Troubleshoot design-related issues and suggest modifications for manufacturability.",
+        "GS8. Maintain accurate documentation of process plans, tool selections, and setup sheets.",
+        "GS9. Adapt to new CNC programming methods and emerging machining technologies.",
+        "GS10. Follow workplace safety standards and quality control procedures in process planning."
+      ],
+      "modules": [
+        {
+          "module_title": "Interpretation of designs, drawings and process — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Interpret technical drawings and specifications of the product.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify critical features of the product, surface finish and geometric requirements.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Analyze manufacturability with the available resources.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Identify and prepare for 3D mental representation of parts.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Identify the materials for turning and their availability.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Identify critical sequences (with a high possibility of damage or unsafe practice)",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Prepare for production of parts according to specifications.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Imagine solutions with reference to the capacities of the workshop environment and the required work (size of batch, complexity)",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Identify the features of work pieces and the appropriate machining and measuring processes.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Identify and prepare the best work holding methods.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Identify, prepare, and calibrate the correct measuring tools.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Identify and prepare the correct cutting tools.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Identify critical sections (with a high possibility of damage or unsafe practice) and consider alternatives.",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "choose innovative ways of using the environment to solve technical issues.",
+              "sequence_order": 14,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Check if the potential solutions will be reliable until the end of the process.",
+              "sequence_order": 15,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Weigh each solution and choose the best based on the various parameters: speed, safety, price",
+              "sequence_order": 16,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Plan the sequence of operations and machining strategy.",
+              "sequence_order": 17,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Create awareness actions for critical operations where no alternative is available.",
+              "sequence_order": 18,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "CUTM/CSC/N0202",
+      "nos_title": ".Design CAM",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Common principles of Computer-Aided Manufacturing (CAM) and its application in CNC",
+        "KU2. Selection and configuration of CAM software for generating CNC programs.",
+        "KU3. Toolpath generation techniques for roughing, finishing, and threading operations.",
+        "KU4. Methods of workpiece setup, tool offset, and fixture selection in CNC turning.",
+        "KU5. Fundamentals of metrology, including the use of micrometers, calipers, dial indicators, and",
+        "KU6. Interpretation of inspection reports, tolerance analysis, and quality control standards.",
+        "KU7. Preventive and corrective maintenance of CNC machines, including lubrication, alignment,",
+        "KU8. Optimization of cutting parameters to improve tool life and machining efficiency.",
+        "KU9. Troubleshooting common errors in CAM programming and CNC operations.",
+        "KU10. Safety standards and best practices in CNC machining, tool handling, and machine"
+      ],
+      "gs": [
+        "GS1. Apply logical thinking and problem-solving skills to design efficient CAM programs.",
+        "GS2. Interpret engineering drawings and CAD models for accurate tool path generation.",
+        "GS3. Use CAM software to create, modify, and simulate CNC turning programs.",
+        "GS4. Select appropriate cutting tools, speeds, and feeds based on material properties.",
+        "GS5. Utilize precision measuring instruments for dimensional accuracy and quality control.",
+        "GS6. Identify machine maintenance requirements and perform preventive maintenance tasks.",
+        "GS7. Troubleshoot errors in machining programs and adjust parameters accordingly.",
+        "GS8. Ensure compliance with safety protocols and industry standards during operations.",
+        "GS9. Document programming details, inspection reports, and maintenance logs.",
+        "GS10. Communicate effectively with team members, supervisors, and quality inspectors."
+      ],
+      "modules": [
+        {
+          "module_title": "Design CAM Programs, metrology, maintenance of — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "select the best sequence for machining according to the production type and part specification.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "use skill specific software and related hardware.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "generate programs using CAD/CAM systems.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "create CNC programs using the provided drawings and software.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "transfer programs to machines.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "create or edit programs directly on the control (without CAD/CAM)",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "set work pieces and tools.",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "select appropriate measuring- or gauging instruments.",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "calibrate measuring tools.",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use selected tools to make measurements on all components on drawings.",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "understand properties, uses, and handling of ferrous and non-ferrous materials.",
+              "sequence_order": 11,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "do preventative maintenance to avoid issues arising.",
+              "sequence_order": 12,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "troubleshoot minor repairs in the machinery.",
+              "sequence_order": 13,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "escalate to the appropriate team if there is a major problem.",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "CUTM/CSC/N0203",
+      "nos_title": ".Operate CNC",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Fundamentals of CNC turning operations, including coordinate systems, tool paths, and",
+        "KU2. Understanding of engineering drawings, GD&T (Geometric Dimensioning and Tolerancing),",
+        "KU3. Knowledge of different types of cutting tools, tool holders, inserts, and their selection based",
+        "KU4. Awareness of cutting parameters such as speed, feed, depth of cut, and their impact on",
+        "KU5. Knowledge of common CNC codes (G-codes, M-codes) and their functions in CNC turning",
+        "KU6. Understanding CNC machine components, including spindle, turret, chuck, tailstock, and",
+        "KU7. Ability to set up workpieces, tool offsets, and zero references to ensure accurate machining",
+        "KU8. Knowledge of troubleshooting techniques for CNC machine errors, alarms, and tool wear",
+        "KU9. Awareness of standard operating procedures (SOPs), safety guidelines, and workplace best",
+        "KU10. Understanding quality control measures, inspection tools (calipers, micrometers, gauges),"
+      ],
+      "gs": [
+        "GS1. read and interpret engineering drawings, work instructions, and CNC programs accurately.",
+        "GS2. coordinate with supervisors, engineers, and team members for smooth workflow.",
+        "GS3. keep documentation and report-writing skills for recording machining parameters, tool life,",
+        "GS4. make informed decisions regarding tool selection, machining parameters, and",
+        "GS5. plan machining operations, managing tool inventory, and scheduling tasks efficiently.",
+        "GS6. Understand customer requirements, quality standards, and delivery expectations for",
+        "GS7. identify and resolve machining defects, tool wear issues, and CNC programming errors.",
+        "GS8. analyze machining data, optimize cutting parameters, and improve productivity.",
+        "GS9. Evaluate process efficiency, identify areas for improvement, and implementing corrective",
+        "GS10. Work effectively in a manufacturing environment, coordinating with quality inspectors,"
+      ],
+      "modules": [
+        {
+          "module_title": "Operate CNC Turning machine — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Follow their selected process strategy.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Follow a given process- strategy (external CNC program)",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Upload generated CNC programs to CNC lathes and perform test runs.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Mount and align selected tools.",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Mount and align selected work holding devices.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Mount and align selected accessories (Tailstock, Parts catcher, etc.)",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Avoid vibration in the machining sequences.",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Apply burr-removal techniques on work pieces.",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Optimize machining strategies.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Quickly react if anything goes wrong (making emergency stops)",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "obtain dimensions, geometries, surface roughness by interacting with CNC lathes.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Make the final parts conform to blueprints.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Report health, safety, and environmental issues to the appropriate personnel.",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Report equipment failure to the appropriate personnel.",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Note all the production related information on the respective register, log, work sheet.",
+              "sequence_order": 15,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Update all production information on the MIS system.",
+              "sequence_order": 16,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Store the CNC program against the batch number for future reference.",
+              "sequence_order": 17,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "CUTM/CSC/N0204",
+      "nos_title": ".Inspect,",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. engineering drawings.",
+        "KU2. surface finish requirements, material properties, and post-machining treatments such as",
+        "KU3. quality control standards and statistical process control (SPC) techniques.",
+        "KU4. set up and use inspection tools such as height gauges, bore gauges, and profile projectors for",
+        "KU5. common machining defects (e.g., tool marks, burrs, out-of-tolerance dimensions) and",
+        "KU6. documentation and reporting, including preparing inspection reports, rejection reports, and",
+        "KU7. standard operating procedures (SOPs) for inspection, packaging, and delivery of finished",
+        "KU8. customer specifications, order requirements, and delivery schedules to ensure timely dispatch"
+      ],
+      "gs": [
+        "GS1. read and interpret engineering drawings and inspection reports accurately.",
+        "GS2. discuss inspection results, deviations, and corrective actions with supervisors and team",
+        "GS3. maintain quality records, rejection reports, and final delivery checklists.",
+        "GS4. decide whether a part meets quality standards or requires rework based on inspection data.",
+        "GS5. schedule inspections, maintain inspection tools, and coordinate delivery timelines.",
+        "GS6. Understand customer quality expectations and ensuring defect-free parts are delivered.",
+        "GS7. Identify machining defects, analyzing root causes, and suggesting corrective actions.",
+        "GS8. evaluate inspection data, detect trends in defects, and suggest process improvements.",
+        "GS9. Assess part quality against standards and taking proactive measures to prevent quality",
+        "GS10. Work effectively with CNC operators, quality inspectors, and logistics teams to ensure"
+      ],
+      "modules": [
+        {
+          "module_title": "Inspect, Finalize and deliver the parts — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "check visual inspection on completion of all the process as per drawing.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "check the calibration status of various measuring instrument.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify parameter wise measuring instruments for measurement.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "inspect the machined product with various measurement tools like Vernier caliper and micrometer.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "use coordinate Measuring Machine to inspect the profile measurements.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "use height gauge for appropriate measurements.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "check the surface finish as per requirements.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "check the fitness of the product using go or no-go devices.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "check visual inspection on the damage, burr, excess materials.",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "document all the measured data for various parameters.",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify the out of dimension parts.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "check for rework possibilities and complete the rework.",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "reject the parts not able to rework.",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Complete the documentation as per ISO Standards.",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "pack the parts in proper way to avoid any damages during transport.",
+              "sequence_order": 15,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "complete the delivery documents.",
+              "sequence_order": 16,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "deliver the parts, drawings and digital memory devices to the appropriate location and/or personnel as required by the organization",
+              "sequence_order": 17,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "dismount tools, clamping, accessories.",
+              "sequence_order": 18,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Use Statistical Process Control tools to monitor the process.",
+              "sequence_order": 19,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "set the environment to its initial state, ready for the next job.",
+              "sequence_order": 20,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

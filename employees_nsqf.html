@@ -875,8 +875,43 @@
 
     // ── IN-PAGE PC TIDDLER CARD & VIDEO MODAL ENGINE ─────────────────────────
     let currentModalPcIndex = 0;
+    window.currentPerspectiveTab = 'skill';
 
-    function openPcTiddlerModal(pcIdEnc) {
+    function switchPerspectiveTab(tab) {
+      window.currentPerspectiveTab = tab;
+      const btnSkill = document.getElementById('tabBtnSkill');
+      const btnSop   = document.getElementById('tabBtnSop');
+      const btnDpr   = document.getElementById('tabBtnDpr');
+      
+      const panelSkill = document.getElementById('panelSkill');
+      const panelSop   = document.getElementById('panelSop');
+      const panelDpr   = document.getElementById('panelDpr');
+
+      if (tab === 'skill') {
+        if (btnSkill) { btnSkill.style.color = '#38BDF8'; btnSkill.style.borderBottom = '3px solid #38BDF8'; }
+        if (btnSop)   { btnSop.style.color = '#94A3B8';   btnSop.style.borderBottom = '3px solid transparent'; }
+        if (btnDpr)   { btnDpr.style.color = '#94A3B8';   btnDpr.style.borderBottom = '3px solid transparent'; }
+        if (panelSkill) panelSkill.style.display = 'flex';
+        if (panelSop)   panelSop.style.display = 'none';
+        if (panelDpr)   panelDpr.style.display = 'none';
+      } else if (tab === 'sop') {
+        if (btnSkill) { btnSkill.style.color = '#94A3B8'; btnSkill.style.borderBottom = '3px solid transparent'; }
+        if (btnSop)   { btnSop.style.color = '#F59E0B';   btnSop.style.borderBottom = '3px solid #F59E0B'; }
+        if (btnDpr)   { btnDpr.style.color = '#94A3B8';   btnDpr.style.borderBottom = '3px solid transparent'; }
+        if (panelSkill) panelSkill.style.display = 'none';
+        if (panelSop)   panelSop.style.display = 'flex';
+        if (panelDpr)   panelDpr.style.display = 'none';
+      } else if (tab === 'dpr') {
+        if (btnSkill) { btnSkill.style.color = '#94A3B8'; btnSkill.style.borderBottom = '3px solid transparent'; }
+        if (btnSop)   { btnSop.style.color = '#94A3B8';   btnSop.style.borderBottom = '3px solid transparent'; }
+        if (btnDpr)   { btnDpr.style.color = '#10B981';   btnDpr.style.borderBottom = '3px solid #10B981'; }
+        if (panelSkill) panelSkill.style.display = 'none';
+        if (panelSop)   panelSop.style.display = 'none';
+        if (panelDpr)   panelDpr.style.display = 'flex';
+      }
+    }
+
+    function openPcTiddlerModal(pcIdEnc, defaultTab = 'skill') {
       const pcId = decodeURIComponent(pcIdEnc);
       const allPcs = window.activeInspectorAllPcs || [];
       if (allPcs.length === 0) return;
@@ -886,6 +921,7 @@
 
       currentModalPcIndex = targetIdx;
       renderPcModalContent(allPcs[targetIdx], targetIdx, allPcs.length);
+      switchPerspectiveTab(defaultTab);
 
       const modal = document.getElementById('pcTiddlerModal');
       if (modal) modal.style.display = 'flex';
@@ -928,6 +964,40 @@
       } else {
         hiBox.style.display = 'none';
       }
+
+      // ── Populate 🏭 SOP Perspective Tab ──
+      const sopDirective = document.getElementById('sopDirectiveText');
+      if (sopDirective) sopDirective.innerText = pc.sop_action_directive || pc.pc_desc || 'Execute standard operation sequence.';
+      const sopTolerance = document.getElementById('sopToleranceText');
+      if (sopTolerance) sopTolerance.innerText = pc.sop_parameter_tolerance || 'Perform strictly within nominal engineering bounds.';
+      const sopKnack = document.getElementById('sopKnackText');
+      if (sopKnack) sopKnack.innerText = pc.sop_critical_knack || 'Maintain steady posture and verified alignment before fixing.';
+      const sopQuery = document.getElementById('sopQueryText');
+      if (sopQuery) sopQuery.innerText = pc.sop_search_query || `${pcTitle} Standard Operating Procedure Plant Workflow`;
+
+      // ── Populate 💼 DPR Perspective Tab ──
+      const machineCost = Number(pc.machine_capex_cost_inr) || 35000;
+      const dprMachineName = document.getElementById('dprMachineName');
+      if (dprMachineName) dprMachineName.innerText = pc.machine_name || 'Commercial Precision Apparatus';
+      const dprMachineSpec = document.getElementById('dprMachineSpec');
+      if (dprMachineSpec) dprMachineSpec.innerText = pc.machine_spec || '220V Industrial Calibrated Apparatus';
+      const dprMachineCost = document.getElementById('dprMachineCost');
+      if (dprMachineCost) dprMachineCost.innerText = `₹${machineCost.toLocaleString('en-IN')}`;
+      const dprMachinePower = document.getElementById('dprMachinePower');
+      if (dprMachinePower) dprMachinePower.innerText = pc.machine_power_kw || '1.0 kW Single Phase';
+
+      // PMEGP 3-Way Means of Finance Math
+      const promoterEq = Math.round(machineCost * 0.05);
+      const govtSubsidy = Math.round(machineCost * 0.35);
+      const bankLoan = Math.round(machineCost * 0.60);
+      const dprPromoter = document.getElementById('dprPromoterEquity');
+      if (dprPromoter) dprPromoter.innerText = `₹${promoterEq.toLocaleString('en-IN')} (5%)`;
+      const dprSubsidy = document.getElementById('dprGovtSubsidy');
+      if (dprSubsidy) dprSubsidy.innerText = `₹${govtSubsidy.toLocaleString('en-IN')} (35%)`;
+      const dprLoan = document.getElementById('dprBankLoan');
+      if (dprLoan) dprLoan.innerText = `₹${bankLoan.toLocaleString('en-IN')} (60%)`;
+      const dprQuery = document.getElementById('dprQueryText');
+      if (dprQuery) dprQuery.innerText = pc.dpr_search_query || `${pc.machine_name || 'Commercial Tool'} commercial operation setup`;
 
       // Pro-Tips & Common Mistakes
       const takeaways = pc.study_takeaways || {};
@@ -1285,122 +1355,249 @@
         </div>
       </div>
 
+      <!-- 🌟 3-PERSPECTIVE UNIFIED PILLAR TABS BAR -->
+      <div style="background:#0F172A; padding:0 20px; display:flex; gap:10px; border-bottom:1px solid rgba(255,255,255,0.1); overflow-x:auto;">
+        <button id="tabBtnSkill" onclick="switchPerspectiveTab('skill')" style="background:transparent; color:#38BDF8; border:none; border-bottom:3px solid #38BDF8; font-size:13px; font-weight:700; padding:10px 14px; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; transition:all 0.15s;">
+          <span>🎓</span> 1. Skill Masterclass (Interns)
+        </button>
+        <button id="tabBtnSop" onclick="switchPerspectiveTab('sop')" style="background:transparent; color:#94A3B8; border:none; border-bottom:3px solid transparent; font-size:13px; font-weight:700; padding:10px 14px; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; transition:all 0.15s;">
+          <span>🏭</span> 2. Plant Workstation SOP (Employers)
+        </button>
+        <button id="tabBtnDpr" onclick="switchPerspectiveTab('dpr')" style="background:transparent; color:#94A3B8; border:none; border-bottom:3px solid transparent; font-size:13px; font-weight:700; padding:10px 14px; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; transition:all 0.15s;">
+          <span>💼</span> 3. Commercial Machine BOM (MSME)
+        </button>
+      </div>
+
       <!-- Scrollable Main Content Body -->
       <div style="flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:20px; background:#F8FAFC;">
         
-        <!-- Two Column Grid for Video + Description / Takeaways -->
-        <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:20px;" class="pc-modal-grid">
-          
-          <!-- Left Column: Video Player & Official Description -->
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="position:relative; width:100%; padding-bottom:56.25%; background:#000; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.15);">
-              <iframe id="pcModalIframe" src="" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-
-            <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 12px; background:#FFF; border:1px solid #E2E8F0; border-radius:8px;">
-              <div style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#0284C7;">
-                <span>🎬</span> <span id="pcModalPlaybackBounds">Playback: 00:45 ➔ 02:15</span>
-              </div>
-              <button onclick="toggleAdminCurationDrawer()" style="background:rgba(2,132,199,0.08); border:1px solid rgba(2,132,199,0.2); color:#0284C7; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px; cursor:pointer;">
-                🛠️ Curate / Replace Video
-              </button>
-            </div>
-
-            <!-- NCVET Assessment Description Card -->
-            <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:10px; padding:14px;">
-              <div style="font-size:11px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:0.5px;">📋 NCVET Performance Criteria Description</div>
-              <p id="pcModalDescription" style="font-size:13px; color:#1E293B; line-height:1.5; margin:6px 0 0 0; font-weight:500;">
-                Measure electrical parameters under standard test conditions.
-              </p>
-              <div id="pcModalHindiIntentBox" style="margin-top:8px; padding-top:8px; border-top:1px dashed #E2E8F0; display:none;">
-                <span style="font-size:10px; font-weight:800; color:#0284C7; text-transform:uppercase;">🇮🇳 Hindi (व्यावहारिक उद्देश्य):</span>
-                <p id="pcModalHindiIntent" style="font-size:12px; color:#475569; line-height:1.4; margin:2px 0 0 0; font-style:italic;"></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: Study Takeaways & Pro-Tips -->
-          <div style="display:flex; flex-direction:column; gap:12px;">
+        <!-- 🎓 TAB 1 PANEL: Skill Masterclass Perspective (Interns) -->
+        <div id="panelSkill" style="display:flex; flex-direction:column; gap:20px;">
+          <!-- Two Column Grid for Video + Description / Takeaways -->
+          <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:20px;" class="pc-modal-grid">
             
-            <!-- Pro-Tips Card -->
-            <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:10px; padding:14px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
-              <div style="font-size:11px; font-weight:800; color:#0284C7; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
-                <span>💡</span> Technical Study Pro-Tips
+            <!-- Left Column: Video Player & Official Description -->
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div style="position:relative; width:100%; padding-bottom:56.25%; background:#000; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.15);">
+                <iframe id="pcModalIframe" src="" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-              <ul id="pcModalProTipsList" style="margin:8px 0 0 0; padding-left:18px; font-size:12px; color:#334155; line-height:1.5; display:flex; flex-direction:column; gap:6px;">
-                <li>Verify open-circuit voltage calibration before connecting leads.</li>
-              </ul>
+
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 12px; background:#FFF; border:1px solid #E2E8F0; border-radius:8px;">
+                <div style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#0284C7;">
+                  <span>🎬</span> <span id="pcModalPlaybackBounds">Playback: 00:45 ➔ 02:15</span>
+                </div>
+                <button onclick="toggleAdminCurationDrawer()" style="background:rgba(2,132,199,0.08); border:1px solid rgba(2,132,199,0.2); color:#0284C7; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                  🛠️ Curate / Replace Video
+                </button>
+              </div>
+
+              <!-- NCVET Assessment Description Card -->
+              <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:10px; padding:14px;">
+                <div style="font-size:11px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:0.5px;">📋 NCVET Performance Criteria Description</div>
+                <p id="pcModalDescription" style="font-size:13px; color:#1E293B; line-height:1.5; margin:6px 0 0 0; font-weight:500;">
+                  Measure electrical parameters under standard test conditions.
+                </p>
+                <div id="pcModalHindiIntentBox" style="margin-top:8px; padding-top:8px; border-top:1px dashed #E2E8F0; display:none;">
+                  <span style="font-size:10px; font-weight:800; color:#0284C7; text-transform:uppercase;">🇮🇳 Hindi (व्यावहारिक उद्देश्य):</span>
+                  <p id="pcModalHindiIntent" style="font-size:12px; color:#475569; line-height:1.4; margin:2px 0 0 0; font-style:italic;"></p>
+                </div>
+              </div>
             </div>
 
-            <!-- Common Mistakes Card -->
-            <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:10px; padding:14px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <!-- Right Column: Study Takeaways & Pro-Tips -->
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              
+              <!-- Pro-Tips Card -->
+              <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:10px; padding:14px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                <div style="font-size:11px; font-weight:800; color:#0284C7; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
+                  <span>💡</span> Technical Study Pro-Tips
+                </div>
+                <ul id="pcModalProTipsList" style="margin:8px 0 0 0; padding-left:18px; font-size:12px; color:#334155; line-height:1.5; display:flex; flex-direction:column; gap:6px;">
+                  <li>Verify open-circuit voltage calibration before connecting leads.</li>
+                </ul>
+              </div>
+
+              <!-- Common Mistakes Card -->
+              <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:10px; padding:14px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                <div style="font-size:11px; font-weight:800; color:#D97706; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
+                  <span>⚠️</span> Common Mistakes to Avoid
+                </div>
+                <ul id="pcModalMistakesList" style="margin:8px 0 0 0; padding-left:18px; font-size:12px; color:#334155; line-height:1.5; display:flex; flex-direction:column; gap:6px;">
+                  <li>Never touch uninsulated terminal lugs under high ambient sunlight.</li>
+                </ul>
+              </div>
+
+              <!-- Safety Mandate Card -->
+              <div id="pcModalSafetyCard" style="background:#FEF2F2; border:1px solid #FCA5A5; border-radius:10px; padding:12px;">
+                <div style="font-size:11px; font-weight:800; color:#DC2626; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
+                  <span>🔒</span> Statutory Safety Compliance
+                </div>
+                <p id="pcModalSafetyText" style="font-size:12px; color:#991B1B; margin:4px 0 0 0; font-weight:600; line-height:1.4;">
+                  Wear Class-0 1000V rated dielectric safety gloves and eye protection.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Collapsible Admin Video Curation Drawer -->
+          <div id="pcModalAdminDrawer" style="display:none; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:12px; padding:16px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <div style="font-size:13px; font-weight:800; color:#1E40AF; display:flex; align-items:center; gap:6px;">
+                <span>🛠️</span> Live Video Curation & Timestamp Editor (PostgreSQL Sync)
+              </div>
+              <span style="font-size:11px; color:#60A5FA;">Edits save instantly to database</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:2fr 1fr 1fr auto; gap:10px; align-items:end;" class="admin-curation-grid">
+              <div>
+                <label style="font-size:11px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">YouTube Video ID or Full URL</label>
+                <input id="adminVideoIdInput" type="text" placeholder="e.g. 8aGhZQkoFbQ or https://youtu.be/..." style="width:100%; padding:8px 10px; border:1px solid #CBD5E1; border-radius:6px; font-size:12px; font-family:monospace;">
+              </div>
+              <div>
+                <label style="font-size:11px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">Start (Seconds)</label>
+                <input id="adminStartInput" type="number" min="0" placeholder="0" style="width:100%; padding:8px 10px; border:1px solid #CBD5E1; border-radius:6px; font-size:12px;">
+              </div>
+              <div>
+                <label style="font-size:11px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">End (Seconds)</label>
+                <input id="adminEndInput" type="number" min="1" placeholder="120" style="width:100%; padding:8px 10px; border:1px solid #CBD5E1; border-radius:6px; font-size:12px;">
+              </div>
+              <div style="display:flex; gap:6px;">
+                <button onclick="previewAdminVideo()" style="background:#FFF; border:1px solid #93C5FD; color:#1D4ED8; font-weight:700; font-size:12px; padding:8px 12px; border-radius:6px; cursor:pointer;">
+                  🔍 Test
+                </button>
+                <button id="adminSaveBtn" onclick="saveAdminVideoCuration()" style="background:#2563EB; border:none; color:#FFF; font-weight:700; font-size:12px; padding:8px 16px; border-radius:6px; cursor:pointer;">
+                  💾 Save Live
+                </button>
+              </div>
+            </div>
+            <div id="adminSaveToast" style="display:none; margin-top:8px; font-size:12px; color:#16A34A; font-weight:700;"></div>
+          </div>
+
+          <!-- 3-Question Bilingual Viva Quiz Section -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #F1F5F9; padding-bottom:10px; margin-bottom:14px;">
+              <div style="font-size:13px; font-weight:800; color:#0F172A; display:flex; align-items:center; gap:8px;">
+                <span>🧠</span> Interactive 3-Question Bilingual Viva Exam
+              </div>
+              <span style="font-size:11px; font-weight:600; color:#64748B;">Instant Answer Verification</span>
+            </div>
+
+            <div id="pcModalVivaContainer" style="display:flex; flex-direction:column; gap:16px;">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 🏭 TAB 2 PANEL: Plant Workstation SOP Perspective (Employers) -->
+        <div id="panelSop" style="display:none; flex-direction:column; gap:16px;">
+          
+          <!-- SOP Work Directive & Header -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+              <span style="background:#FEF3C7; color:#92400E; font-size:11px; font-weight:800; padding:4px 8px; border-radius:6px; text-transform:uppercase;">🏭 Shopfloor Work Order</span>
+              <span style="font-size:11px; font-weight:700; color:#64748B;">ISO 9001:2015 Standard Work</span>
+            </div>
+            <h3 style="font-size:15px; font-weight:700; color:#0F172A; margin:0 0 8px 0;">Imperative Operator Directive</h3>
+            <p id="sopDirectiveText" style="font-size:13px; color:#334155; line-height:1.6; margin:0; font-weight:500;"></p>
+          </div>
+
+          <!-- Parameter Tolerance & Critical Knack Grid -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;" class="sop-modal-grid">
+            
+            <!-- Quantitative Parameter Tolerance -->
+            <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px;">
               <div style="font-size:11px; font-weight:800; color:#D97706; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
-                <span>⚠️</span> Common Mistakes to Avoid
+                <span>🎯</span> Quantitative Parameter Tolerance
               </div>
-              <ul id="pcModalMistakesList" style="margin:8px 0 0 0; padding-left:18px; font-size:12px; color:#334155; line-height:1.5; display:flex; flex-direction:column; gap:6px;">
-                <li>Never touch uninsulated terminal lugs under high ambient sunlight.</li>
-              </ul>
+              <p id="sopToleranceText" style="font-size:13px; color:#1E293B; font-weight:600; line-height:1.5; margin:8px 0 0 0;"></p>
+              <div style="margin-top:10px; font-size:11px; color:#64748B; background:#F8FAFC; padding:6px 10px; border-radius:6px;">
+                ⚙️ Deviation triggers automatic calibration review
+              </div>
             </div>
 
-            <!-- Safety Mandate Card -->
-            <div id="pcModalSafetyCard" style="background:#FEF2F2; border:1px solid #FCA5A5; border-radius:10px; padding:12px;">
-              <div style="font-size:11px; font-weight:800; color:#DC2626; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
-                <span>🔒</span> Statutory Safety Compliance
+            <!-- Defect-Prevention Critical Knack -->
+            <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px;">
+              <div style="font-size:11px; font-weight:800; color:#059669; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:6px;">
+                <span>💡</span> Defect-Prevention Critical Knack
               </div>
-              <p id="pcModalSafetyText" style="font-size:12px; color:#991B1B; margin:4px 0 0 0; font-weight:600; line-height:1.4;">
-                Wear Class-0 1000V rated dielectric safety gloves and eye protection.
-              </p>
+              <p id="sopKnackText" style="font-size:13px; color:#1E293B; font-weight:600; line-height:1.5; margin:8px 0 0 0;"></p>
+              <div style="margin-top:10px; font-size:11px; color:#64748B; background:#F8FAFC; padding:6px 10px; border-radius:6px;">
+                🛡️ Prevents line stoppage & warranty rework
+              </div>
             </div>
-
           </div>
+
+          <!-- Go/No-Go Inspection Gate & Red-Box Quarantine -->
+          <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:12px; padding:16px; display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; font-weight:800; color:#B91C1C; display:flex; align-items:center; gap:6px;">
+              <span>🛑</span> Go/No-Go Inspection Gate & Red-Box Quarantine Protocol
+            </div>
+            <p style="font-size:12px; color:#7F1D1D; margin:0; line-height:1.5;">
+              If reading or measurement drifts beyond tolerance: <b>Stop work immediately</b>, tag part with Red Quarantine Tag, place in Red Scrappage Bin, and summon Quality Line Inspector. Do NOT pass non-conforming parts downstream.
+            </p>
+          </div>
+
+          <!-- Industrial SOP Video Guidance Query -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <div style="font-size:11px; font-weight:800; color:#64748B; text-transform:uppercase;">🔍 Verified SOP Search Vector</div>
+              <div id="sopQueryText" style="font-size:12px; color:#0F172A; font-family:monospace; margin-top:2px;"></div>
+            </div>
+            <span style="font-size:11px; font-weight:700; color:#D97706; background:#FEF3C7; padding:4px 10px; border-radius:6px; white-space:nowrap;">Plant Standard</span>
+          </div>
+
         </div>
 
-        <!-- Collapsible Admin Video Curation Drawer -->
-        <div id="pcModalAdminDrawer" style="display:none; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:12px; padding:16px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-            <div style="font-size:13px; font-weight:800; color:#1E40AF; display:flex; align-items:center; gap:6px;">
-              <span>🛠️</span> Live Video Curation & Timestamp Editor (PostgreSQL Sync)
+        <!-- 💼 TAB 3 PANEL: Commercial Machine BOM Perspective (MSME / Startups) -->
+        <div id="panelDpr" style="display:none; flex-direction:column; gap:16px;">
+          
+          <!-- Machine Model & Cost Card -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+              <span style="background:#D1FAE5; color:#065F46; font-size:11px; font-weight:800; padding:4px 8px; border-radius:6px; text-transform:uppercase;">💼 Commercial Equipment BOM</span>
+              <span style="font-size:11px; font-weight:700; color:#64748B;">PMEGP / Mudra Bankable</span>
             </div>
-            <span style="font-size:11px; color:#60A5FA;">Edits save instantly to database</span>
+            <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+              <h3 id="dprMachineName" style="font-size:16px; font-weight:800; color:#0F172A; margin:0;">Lead-Free Infrared BGA Rework Station</h3>
+              <div id="dprMachineCost" style="font-size:20px; font-weight:900; color:#059669;">₹45,000</div>
+            </div>
+            <p id="dprMachineSpec" style="font-size:13px; color:#475569; margin:6px 0 0 0; font-weight:500;"></p>
+            <div style="margin-top:10px; display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; color:#0284C7; background:#EFF6FF; padding:4px 10px; border-radius:6px;">
+              <span>⚡ Power Load:</span> <span id="dprMachinePower">1.2 kW Single Phase</span>
+            </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:2fr 1fr 1fr auto; gap:10px; align-items:end;" class="admin-curation-grid">
-            <div>
-              <label style="font-size:11px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">YouTube Video ID or Full URL</label>
-              <input id="adminVideoIdInput" type="text" placeholder="e.g. 8aGhZQkoFbQ or https://youtu.be/..." style="width:100%; padding:8px 10px; border:1px solid #CBD5E1; border-radius:6px; font-size:12px; font-family:monospace;">
+          <!-- PMEGP 3-Way Financial Subsidy Breakdown -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px;">
+            <div style="font-size:11px; font-weight:800; color:#059669; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px;">
+              🏦 PMEGP / Mudra 3-Way Means of Finance Scheme
             </div>
-            <div>
-              <label style="font-size:11px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">Start (Seconds)</label>
-              <input id="adminStartInput" type="number" min="0" placeholder="0" style="width:100%; padding:8px 10px; border:1px solid #CBD5E1; border-radius:6px; font-size:12px;">
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; text-align:center;">
+              <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px;">
+                <div style="font-size:11px; color:#64748B; font-weight:600;">Promoter Equity (5%)</div>
+                <div id="dprPromoterEquity" style="font-size:14px; font-weight:800; color:#0F172A; margin-top:2px;">₹2,250</div>
+              </div>
+              <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:8px; padding:10px;">
+                <div style="font-size:11px; color:#065F46; font-weight:600;">Govt Subsidy (35%)</div>
+                <div id="dprGovtSubsidy" style="font-size:14px; font-weight:800; color:#059669; margin-top:2px;">₹15,750</div>
+              </div>
+              <div style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:8px; padding:10px;">
+                <div style="font-size:11px; color:#1E40AF; font-weight:600;">Bank Term Loan (60%)</div>
+                <div id="dprBankLoan" style="font-size:14px; font-weight:800; color:#2563EB; margin-top:2px;">₹27,000</div>
+              </div>
             </div>
-            <div>
-              <label style="font-size:11px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">End (Seconds)</label>
-              <input id="adminEndInput" type="number" min="1" placeholder="120" style="width:100%; padding:8px 10px; border:1px solid #CBD5E1; border-radius:6px; font-size:12px;">
-            </div>
-            <div style="display:flex; gap:6px;">
-              <button onclick="previewAdminVideo()" style="background:#FFF; border:1px solid #93C5FD; color:#1D4ED8; font-weight:700; font-size:12px; padding:8px 12px; border-radius:6px; cursor:pointer;">
-                🔍 Test
-              </button>
-              <button id="adminSaveBtn" onclick="saveAdminVideoCuration()" style="background:#2563EB; border:none; color:#FFF; font-weight:700; font-size:12px; padding:8px 16px; border-radius:6px; cursor:pointer;">
-                💾 Save Live
-              </button>
-            </div>
-          </div>
-          <div id="adminSaveToast" style="display:none; margin-top:8px; font-size:12px; color:#16A34A; font-weight:700;"></div>
-        </div>
-
-        <!-- 3-Question Bilingual Viva Quiz Section -->
-        <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:16px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #F1F5F9; padding-bottom:10px; margin-bottom:14px;">
-            <div style="font-size:13px; font-weight:800; color:#0F172A; display:flex; align-items:center; gap:8px;">
-              <span>🧠</span> Interactive 3-Question Bilingual Viva Exam
-            </div>
-            <span style="font-size:11px; font-weight:600; color:#64748B;">Instant Answer Verification</span>
           </div>
 
-          <div id="pcModalVivaContainer" style="display:flex; flex-direction:column; gap:16px;">
-            <!-- Rendered dynamically -->
+          <!-- Commercial Machinery Search Vector -->
+          <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <div style="font-size:11px; font-weight:800; color:#64748B; text-transform:uppercase;">🔍 Verified Commercial Demo Vector</div>
+              <div id="dprQueryText" style="font-size:12px; color:#0F172A; font-family:monospace; margin-top:2px;"></div>
+            </div>
+            <span style="font-size:11px; font-weight:700; color:#059669; background:#D1FAE5; padding:4px 10px; border-radius:6px; white-space:nowrap;">Turnkey BOM</span>
           </div>
+
         </div>
 
       </div>

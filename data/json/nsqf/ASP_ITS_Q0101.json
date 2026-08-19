@@ -1,0 +1,463 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "ASP/ITS/Q0101",
+  "qp_name": "ASP_ITS_Q0101",
+  "clean_code": "ASP_ITS_Q0101",
+  "total_pages": 42,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:25.569Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 7,
+    "total_pcs": 34,
+    "total_kus": 15,
+    "total_gs": 15,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "ASP/ITS/N0107",
+      "nos_title": ".Python",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [],
+      "gs": [],
+      "modules": [
+        {
+          "module_title": "Python Programming with Scientific and Mathematical — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Write and debug Python programs using correct syntax, data types, control structures, and file operations.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Use NumPy and SciPy libraries to perform array manipulations and scientific computations.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Create and interpret visualizations using Matplotlib for scientific data.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Connect to databases using Python and perform data insertion, retrieval, and updates.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Solve linear algebra problems using Python for scientific and engineering applications.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Simulate and analyze random processes using appropriate Python libraries and techniques.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Formulate and solve basic optimization problems using tools like SciPy and PuLP.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ASP/ITS/N0105",
+      "nos_title": ".Core Concepts",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Core concepts of supervised unsupervised and non parametric learning methods",
+        "KU2. Functioning and applications of algorithms like linear polynomial regression logistic regression",
+        "KU3. Principles of overfitting underfitting and bias variance tradeoff",
+        "KU4. Model evaluation techniques including confusion matrix precision recall ROC curves and cross",
+        "KU5. Importance of feature selection dimensionality reduction and data distribution in ML workflows"
+      ],
+      "gs": [
+        "GS1. Analyze and preprocess real world datasets for regression classification and clustering tasks",
+        "GS2. Select appropriate ML algorithms based on problem type and data characteristics",
+        "GS3. Build train and fine tune models to optimize accuracy and generalization",
+        "GS4. Evaluate models using relevant performance metrics and validation techniques",
+        "GS5. Interpret results and present actionable insights from model outputs"
+      ],
+      "modules": [
+        {
+          "module_title": "Core Concepts in Machine Learning — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Explain key machine learning concepts, types of learning, and common algorithms.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Build and evaluate regression models using techniques like linear and polynomial regression on real-world data.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Apply classification algorithms such as logistic regression, decision trees, and SVM to labeled datasets.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Use non-parametric techniques like K- Nearest Neighbors for classification tasks with unknown data distributions.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Perform clustering and dimensionality reduction using unsupervised learning methods like k-means and PCA.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Evaluate model performance using metrics such as confusion matrix, cross-validation, precision-recall, and ROC curves.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ASP/ITS/N0103",
+      "nos_title": ".Bayesian",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Understanding of Python syntax data types and control structures",
+        "KU2. Familiarity with NumPy and SciPy libraries for array manipulations and scientific computations",
+        "KU3. Knowledge of Matplotlib for creating and interpreting visualizations",
+        "KU4. Understanding of database connectivity using Python",
+        "KU5. Familiarity with linear algebra concepts and their application in Python"
+      ],
+      "gs": [
+        "GS1. Problem solving skills",
+        "GS2. Data analysis and interpretation skills",
+        "GS3. Programming skills in Python",
+        "GS4. Data visualization skills",
+        "GS5. Critical thinking and analytical skills"
+      ],
+      "modules": [
+        {
+          "module_title": "Bayesian methods And Text Mining — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Apply Bayesian inference concepts including prior, likelihood, and posterior in probabilistic models.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Implement Gaussian Mixture Models using Python to represent and analyze complex data distributions.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Use MCMC, Gibbs sampling, or variational inference to approximate posterior distributions in Bayesian models.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Preprocess textual data through tokenization, stop-word removal, and normalization techniques.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Extract features from text using TF-IDF, word embeddings, or other vectorization techniques.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Perform sentiment or topic analysis on unstructured text using appropriate Python libraries.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Python Programming With Scientific And Mathematical — Core Assessment Criteria",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Formulate and solve basic optimization problems using tools like SciPy and PuLP",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ASP/ITS/N0106",
+      "nos_title": ".Deep Learning",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. understand the core principles of deep learning neural networks and their role in artificial",
+        "KU2. know the structure and function of neurons layers activation functions and model",
+        "KU3. understand training processes including backpropagation optimization algorithms and",
+        "KU4. know the applications and working of convolutional recurrent and transformer based models",
+        "KU5. understand prompt engineering methods and their importance in guiding large language"
+      ],
+      "gs": [
+        "GS1. communicate technical concepts and model outcomes clearly in both written and verbal form",
+        "GS2. work collaboratively in a team to design build and evaluate AI models",
+        "GS3. perform data analysis and calculations accurately when preparing datasets and evaluating",
+        "GS4. use programming tools and deep learning frameworks effectively for model development",
+        "GS5. apply problem solving skills to debug model issues and refine prompts for improved AI"
+      ],
+      "modules": [
+        {
+          "module_title": "Deep Learning Foundations to Prompt Engineering — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Explain the basic concepts and significance of deep learning and neural networks in modern AI",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Describe the components and flow of a neural network including neurons layers and activation functions",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Implement backpropagation algorithms for training neural networks on structured datasets",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Apply regularization methods and dropout to prevent overfitting in deep learning models",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Build and evaluate convolutional and recurrent neural networks for tasks such as image recognition and sequence prediction",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Explain the principles and applications of generative models including VAEs GANs and GPTs",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ASP/ITS/N0108",
+      "nos_title": ".AI in the Cloud:",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [],
+      "gs": [],
+      "modules": [
+        {
+          "module_title": "AI in the Cloud: Deployment, Ethics & Intelligent Agents. — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Explain core cloud computing concepts and their application in deploying AI/ML models at scale.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Utilize AI/ML services on AWS, Azure, or Google Cloud to train and deploy machine learning workflows.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Identify ethical risks in AI systems and apply practices to ensure fairness, transparency, and data privacy.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Use Hugging Face tools to fine-tune, deploy, and serve pre-trained NLP or generative models on the cloud.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Plan and execute an end-to-end capstone project using unsupervised or combined techniques.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Demonstrate the deployment of AI models using inference APIs and managed environments.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Implement basic autonomous agent systems that perform planning, tool usage, and task execution.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "ASP/ITS/N0109",
+      "nos_title": ".On the Job",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [],
+      "gs": [],
+      "modules": [
+        {
+          "module_title": "On the Job Training for AI ML Developer. — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Internship",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": 170,
+              "viva_marks": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

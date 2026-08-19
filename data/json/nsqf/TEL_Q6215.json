@@ -1,0 +1,1340 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6215",
+  "qp_name": "TEL_Q6215",
+  "clean_code": "TEL_Q6215",
+  "total_pages": 50,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.499Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 28,
+    "total_pcs": 109,
+    "total_kus": 60,
+    "total_gs": 40,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6279",
+      "nos_title": ".Prepare for Cloud-",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. basic concepts of cloud computing including deployment and service models (IaaS, PaaS,",
+        "KU2. common cloud platforms (AWS, Azure, GCP) and their configurations for test environments.",
+        "KU3. tools and techniques for functional, performance, and security testing in a cloud setup.",
+        "KU4. importance of environment replication, data privacy, and compliance in cloud-based testing.",
+        "KU5. typical challenges in cloud testing such as latency, cost management, and test data control.",
+        "KU6. version control and CI/CD tools used in integrating automated cloud tests.",
+        "KU7. principles of safe handling of sensitive data during testing and role-based access control.",
+        "KU8. documentation standards, logs, and reporting practices for test readiness."
+      ],
+      "gs": [
+        "GS1. read and write to follow work instructions and maintain records.",
+        "GS2. communicate effectively with team members and supervisors.",
+        "GS3. stay updated on gemstone processing techniques and industry trends.",
+        "GS4. manage time efficiently to meet production deadlines.",
+        "GS5. identify and solve problems related to gemstone defects and processing.",
+        "GS6. apply critical thinking to improve processing methods and quality."
+      ],
+      "modules": [
+        {
+          "module_title": "Requirement Understanding and Planning",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interpret telecom software or application testing requirements and select appropriate cloud platforms and test environments in coordination with development and operations teams.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "configure cloud-native testing tools and validate connectivity with virtualized infrastructure and telecom-grade services such as OSS/BSS and SD-WAN platforms.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "consult with developers and DevOps teams to clarify application architecture and deployment parameters relevant to cloud testing.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "determine suitable cloud testing models (IaaS, PaaS, SaaS) based on application type and objectives.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Environment Setup and Configuration",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "select and provision appropriate cloud platforms (e.g., AWS, Azure, GCP) for test execution, ensuring they meet the test coverage and budget requirements.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "configure the testing environment including OS, middleware, databases, and application dependencies based on defined specifications.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "install and configure required test automation tools (e.g., Katalon Studio, Rest Assured, Telerik Test Studio) and integrate them with CI/CD pipelines.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "validate network connectivity, data synchronization, and service availability between test environment and production-like systems.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Security and Compliance",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "implement access control policies, encryption, and data privacy configurations for test environments as per organizational and regulatory standards.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure testing data complies with data protection guidelines and anonymize sensitive information before test execution.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Testing Preparation and Documentation",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "design cloud-specific test cases and scripts addressing functionality, load, stress, and scalability scenarios.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "verify environment readiness by executing smoke or sanity tests and fixing issues identified during test dry runs.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "document cloud test setup, tool configurations, scripts, and user access for traceability and knowledge sharing.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Coordination and Communication",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "coordinate with cross-functional teams to align test environment configurations and schedules with development milestones.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "communicate environment readiness, constraints, and requirements clearly to project stakeholders and update them on progress.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6612",
+      "nos_title": ".Perform Cloud",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. cloud platforms and services (AWS, Azure, GCP) and their role in testing and deployment.",
+        "KU2. cloud testing models (IaaS, PaaS, SaaS) and their application in different environments.",
+        "KU3. cloud application architecture and deployment patterns (e.g., microservices, containerization).",
+        "KU4. security practices for cloud environments, including data encryption, access controls, and",
+        "KU5. automation tools (Katalon Studio, Rest Assured, Telerik Test Studio) and their integration into",
+        "KU6. cloud-specific testing strategies (functional, load, stress, scalability) and tools used to execute",
+        "KU7. best practices in bug tracking and defect management, including using tools like Bugsee,",
+        "KU8. techniques for regression testing and ensuring that fixes do not affect the overall system",
+        "KU9. cloud application monitoring and diagnostic tools to detect and resolve issues during and after"
+      ],
+      "gs": [
+        "GS1. read and write to follow work instructions and maintain records.",
+        "GS2. communicate effectively with team members and supervisors.",
+        "GS3. stay updated on gemstone processing techniques and industry trends.",
+        "GS4. manage time efficiently to meet production deadlines.",
+        "GS5. identify and solve problems related to gemstone defects and processing.",
+        "GS6. apply critical thinking to improve processing methods and quality."
+      ],
+      "modules": [
+        {
+          "module_title": "Requirement understanding and planning",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interpret telecom software or application testing requirements and select appropriate cloud platforms and test environments in coordination with development and operations teams.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "configure cloud-native testing tools and validate connectivity with virtualized infrastructure and telecom-grade services such as OSS/BSS and SD-WAN platforms.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "define the suitable testing approach and methodology based on the cloud service model (IaaS, PaaS, SaaS).",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "work with development and DevOps teams to clarify system architecture and identify potential cloud deployment challenges.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Cloud environment setup and configuration",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "provision and configure the cloud platforms (e.g., AWS, Azure, Google Cloud) necessary for testing, ensuring resource availability and test coverage.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "configure essential system components (e.g., OS, middleware, databases, application dependencies) based on defined specifications.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "set up and integrate test automation tools such as Selenium, JMeter, and Postman into the CI/CD pipelines.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "validate network connectivity and synchronization of data between the cloud testing environment and production-like systems.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Security and compliance",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "implement security measures such as access control, data encryption, and compliance with data privacy regulations in the cloud testing environment.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure that testing data is anonymized and complies with organizational and legal standards regarding data protection.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Cloud testing execution and bug identification",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "design test cases that address critical functional, performance, scalability, and security scenarios tailored to cloud environments.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "execute smoke tests or sanity checks to validate environment readiness before comprehensive testing.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "execute automated and manual test cases in the cloud environment to validate performance and functionality of telecom applications like VoLTE and 5G network functions.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "identify, log, and coordinate resolution of bugs or issues, ensuring seamless integration of continuous testing in telecom DevOps workflows.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Bug fixing and defect resolution",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "work with developers and DevOps teams to resolve identified defects and bugs quickly while ensuring code integrity.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "verify fixes by conducting re-testing to confirm defect resolution without introducing new issues.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "perform regression testing to ensure that the application remains stable after bug fixes.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Post-testing validation and reporting",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "validate that cloud-based applications meet performance benchmarks and function correctly after the defect fixes are applied.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "prepare detailed test reports including testing outcomes, bug fixes, and lessons learned, ensuring that results are communicated clearly to stakeholders.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "provide feedback and recommendations for improving the cloud application's architecture and testing processes.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6613",
+      "nos_title": ".Maintain Cloud",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. cloud infrastructure components such as virtual machines, storage, networking, and",
+        "KU2. free cloud services and their limitations in India (e.g., AWS Free Tier, Azure Free Account,",
+        "KU3. monitoring tools like Prometheus and Grafana, along with cloud-native monitoring solutions",
+        "KU4. security measures, including access control, data encryption, and firewall configurations,",
+        "KU5. cost management tools and strategies to optimize the usage of cloud resources efficiently.",
+        "KU6. open-source tools such as Terraform for infrastructure as code (IaC) and automating cloud",
+        "KU7. cloud data storage options and strategies for securing sensitive data within cloud services.",
+        "KU8. vulnerability scanning tools like OpenVAS and Nessus Essentials to assess and mitigate",
+        "KU9. best practices for documentation and incident reporting in cloud environments to ensure"
+      ],
+      "gs": [
+        "GS1. read and write to follow work instructions and maintain records.",
+        "GS2. communicate effectively with team members and supervisors.",
+        "GS3. stay updated on gemstone processing techniques and industry trends.",
+        "GS4. manage time efficiently to meet production deadlines.",
+        "GS5. identify and solve problems related to gemstone defects and processing.",
+        "GS6. apply critical thinking to improve processing methods and quality."
+      ],
+      "modules": [
+        {
+          "module_title": "Cloud infrastructure setup and configuration",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "select and provision cloud resources (virtual machines, storage, databases) using free cloud services available in India (e.g., AWS Free Tier, Google Cloud Free Tier, Azure Free Account).",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "configure network components such as VPCs, subnets, and firewalls using free cloud tools and resources.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "set up cloud databases (e.g., MySQL, PostgreSQL) and storage services (e.g., AWS S3, Google Cloud Storage) for optimal application performance.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure the installation and configuration of necessary tools such as Kubernetes for container orchestration using free open-source tools.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Monitoring cloud infrastructure",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "implement cloud monitoring using free services like Prometheus (for metrics collection) and Grafana (for visualization).",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "monitor and maintain cloud-based virtual machines, containers, and orchestration systems supporting telecom workloads, ensuring high availability and performance.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "perform routine updates, patches, and resource optimization to sustain services such as OSS/BSS, virtualized core network elements, and telco-grade applications.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Optimizing cloud resources",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "implement cost management strategies by monitoring and optimizing the utilization of cloud resources using AWS Cost Explorer (Free Tier) or Google Cloud Pricing Calculator.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "perform regular resource optimization by analyzing underutilized resources and scaling cloud services up or down as necessary to ensure cost- efficiency.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use Terraform (open-source) to automate infrastructure provisioning, scaling, and maintenance tasks to improve efficiency and reduce manual intervention.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Ensuring security and compliance in cloud infrastructure",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "implement basic security controls, such as encryption, firewall configurations, and access management using AWS IAM or Google Cloud IAM.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "ensure compliance with data protection standards by implementing data encryption and anonymization in cloud storage using free tools.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "use free vulnerability scanning tools, such as OpenVAS (open-source) or Nessus Essentials (free version), to identify security issues within the infrastructure.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Documentation and reporting",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "document infrastructure components, configurations, and changes made to the cloud environment for traceability and auditing purposes.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "prepare and present reports on cloud resource usage, performance metrics, and optimization efforts to stakeholders using free tools like Google Docs or Markdown.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "create troubleshooting logs and incident response documentation to ensure quick recovery in case of cloud infrastructure failures.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6614",
+      "nos_title": ".Manage IT",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. types and components of IT infrastructure: hardware, software, network devices, and",
+        "KU2. open-source and free tools for IT asset management, configuration, and monitoring (e.g.,",
+        "KU3. procedures for secure installation, configuration, and updates of IT systems.",
+        "KU4. standards and best practices for inventory tracking, license management, and IT governance.",
+        "KU5. security protocols for asset protection, including antivirus, firewall, encryption, and access",
+        "KU6. incident reporting processes and response protocols for theft, data loss, or policy violations.",
+        "KU7. maintenance schedules and asset lifecycle management strategies.",
+        "KU8. legal and environmental regulations regarding IT asset disposal and data protection."
+      ],
+      "gs": [
+        "GS1. read and write to follow work instructions and maintain records.",
+        "GS2. communicate effectively with team members and supervisors.",
+        "GS3. stay updated on gemstone processing techniques and industry trends.",
+        "GS4. manage time efficiently to meet production deadlines.",
+        "GS5. identify and solve problems related to gemstone defects and processing.",
+        "GS6. apply critical thinking to improve processing methods and quality."
+      ],
+      "modules": [
+        {
+          "module_title": "IT Asset Inventory Management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify and categorize IT assets including hardware, software, licenses, and network components.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "maintain inventory of telecom cloud and IT assets including hardware, virtualized infrastructure, licenses, and network services used in cloud-hosted environments.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "assign and track asset allocation to employees or departments with appropriate access and usage records.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "regularly audit and reconcile asset inventory records with actual asset conditions and update discrepancies.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Hardware and Software Installation and Configuration",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "install and configure computing devices including desktops, laptops, and network peripherals as per organizational needs.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "deploy and configure software applications using organization-approved licensing models.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "implement operating system setup, network configurations, and security patches using free tools such as PDQ Deploy Free, Clonezilla, or WSUS (for Windows updates).",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "perform hardware diagnostics and resolve issues related to devices like printers, routers, and projectors.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Infrastructure Monitoring and Maintenance",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "support field-level deployments and configuration updates for telecom cloud components, ensuring compliance with security and operational protocols.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "apply preventive maintenance schedules to IT assets to reduce downtime and extend asset lifespan.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "coordinate firmware and driver updates for hardware components to maintain compatibility and security.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "troubleshoot basic connectivity, OS, and hardware-related issues and escalate unresolved problems per SOPs.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Asset Security and Compliance",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "implement user access controls, endpoint protection, and device encryption using free tools like BitLocker, ClamAV, or Windows Defender.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "maintain logs of asset access and ensure compliance with internal IT policies and data protection guidelines.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "enforce software license compliance and ensure no unauthorized applications are installed.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "isolate and report incidents related to asset theft, loss, or misuse.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Asset Lifecycle and Documentation",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "maintain records for asset procurement, assignment, return, repair, and disposal.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "evaluate and recommend asset upgrades, replacements, or decommissioning based on usage and lifecycle stages.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "generate reports on IT asset status, utilization, and performance for audits and management reviews.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "ensure proper disposal of retired assets following environmental and e-waste regulations.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9101",
+      "nos_title": ".Organise Work and",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational procedures for workplace management, task allocation, and quality assurance",
+        "KU2. applicable health, safety, and environmental policies as per national/international standards",
+        "KU3. importance and application of the 5S methodology (Sort, Set in Order, Shine, Standardise,",
+        "KU4. methods for digital documentation of work records, task sheets, and material movement logs",
+        "KU5. common workplace hazards (e.g., ESD, fire, electrical faults, trip hazards) and mitigation",
+        "KU6. types and correct usage of PPE (e.g., gloves, goggles, ESD wrist straps, masks, safety shoes)",
+        "KU7. safe practices for lifting, bending, standing, and workstation ergonomics",
+        "KU8. first aid procedures for minor cuts, electric shocks, or workplace injuries",
+        "KU9. importance of maintaining hygiene and cleanliness in workstations, tools, and devices",
+        "KU10. indicators of equipment or machinery malfunction and escalation protocols",
+        "KU11. energy-saving practices applicable to lights, equipment, and HVAC systems",
+        "KU12. sustainable practices in material usage, including waste minimisation and recycling",
+        "KU13. types of waste: recyclable, non-recyclable, hazardous (e.g., batteries, solvents, e-waste)",
+        "KU14. correct procedures for the disposal of different types of waste in accordance with",
+        "KU15. usage of digital tools (e.g., mobile apps, web portals, task boards) for productivity tracking"
+      ],
+      "gs": [
+        "GS1. read and interpret organisational procedures, safety protocols, labels, and warning signage",
+        "GS2. write clear and accurate reports/logs in paper or digital format regarding tasks performed,",
+        "GS3. communicate effectively with peers and supervisors regarding workload, delays, hazards, or",
+        "GS4. listen attentively and follow safety instructions, tool handling techniques, or ergonomic",
+        "GS5. plan daily tasks by prioritising safety and quality over speed",
+        "GS6. identify and resolve minor operational problems independently, escalating only where",
+        "GS7. work as part of a team to maintain cleanliness, safety, and quality standards in a shared",
+        "GS8. apply critical thinking to identify risks and recommend proactive safety measures.",
+        "GS9. foster a positive and responsible safety culture in the workplace.",
+        "GS10. stay updated on evolving safety standards and regulations."
+      ],
+      "modules": [
+        {
+          "module_title": "Maintain an organised, productive, and digitally compliant workspace",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "maintain a clean, clutter-free, and ergonomically safe workspace aligned with 5S principles",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "follow designated workflow as per the organisational Standard Operating Procedures (SOPs)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "digitally log work completed, including time stamps, material usage, and issues faced",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "track and update digital task checklists, inventories, or handovers through mobile/desktop apps",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify delays, workflow inefficiencies, or material constraints and escalate appropriately.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Adhere to health, safety, and environmental guidelines",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "comply with organisational health, safety, and environment (HSE) policies at all times",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "use personal protective equipment (PPE) such as ESD wrist straps, gloves, masks, and safety footwear",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "report any breaches in safety protocols, near misses, or unsafe practices immediately to supervisor/concerned authorities",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "detect hazards, including spillage, loose wiring, excessive noise, or EMI sources and respond as per SOP",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "follow lockout/tagout procedures when working around electrical or moving parts",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "adhere to safe lifting techniques, workstation posture norms, and equipment handling procedures",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "handle tools and heavy components using trolleys or assistive equipment when needed",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify early signs of physical or mental fatigue and report for preventive action",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "inform supervisor of symptoms related to communicable diseases or unsafe coworker behaviour.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Conserve energy and manage resources efficiently",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "minimise wastage of consumables, components, and materials by adhering to industry best practices",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use electricity, lighting, and climate-control systems responsibly",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "power off equipment, tools, and terminals when not in use",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure routine maintenance, cleaning, and calibration of machines/tools to improve performance",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "report leakages, overheating, or malfunctions immediately for rectification",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "use digital tools to monitor and reduce environmental footprint, where applicable.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Implement safe and sustainable waste disposal practices",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "segregate and dispose of hazardous, recyclable, and general waste as per guidelines",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "deposit e-waste or used batteries at designated collection points following e-waste protocols",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "follow ESD-safe disposal procedures for sensitive electronic components",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9102",
+      "nos_title": ".Interact Effectively",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. organisational structure, hierarchy, and roles of team members, supervisors, and",
+        "KU2. professional etiquette and expected behaviour in face-to-face, virtual, and telephonic",
+        "KU3. importance of clear communication and active listening to ensure mutual understanding",
+        "KU4. common digital communication tools (e.g., email, chat apps, video conferencing platforms)",
+        "KU5. feedback mechanisms within the organisation and how to respond constructively to criticism",
+        "KU6. cultural sensitivities, unconscious biases, and the importance of inclusion and diversity in the",
+        "KU7. principles of emotional intelligence and how they help in team coordination and customer",
+        "KU8. challenges faced by Persons with Disabilities (PwDs) and inclusive practices for working with",
+        "KU9. legal and organisational frameworks supporting equality, diversity, and anti-discrimination",
+        "KU10. methods for conflict prevention and resolution, including mediation and escalation",
+        "KU11. role of respect, trust, and open communication in team effectiveness and customer"
+      ],
+      "gs": [
+        "GS1. read and interpret work instructions, emails, and policy documents related to workplace",
+        "GS2. write clear, concise emails, reports, or messages to team members, supervisors, or customers",
+        "GS3. communicate clearly and confidently in person, over the phone, and using digital",
+        "GS4. adapt communication style based on the needs of the audience (e.g., customer, peer,",
+        "GS5. listen attentively to gather information, understand perspectives, and clarify doubts.",
+        "GS6. prioritise tasks and allocate time effectively in coordination with team members"
+      ],
+      "modules": [
+        {
+          "module_title": "Interact effectively with supervisors and stakeholders",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "receive and clarify work instructions, technical requirements, and priorities from supervisors or clients using appropriate communication tools (e.g., messaging apps, emails, virtual meetings)",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "inform supervisors or relevant stakeholders in a timely manner about any issues, risks, or deviations from planned tasks",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "contribute to team decisions by providing relevant data, suggestions, and professional feedback during team discussions",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "act promptly on constructive feedback and incorporate learnings to improve future work outcomes",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Collaborate effectively with team members and customers",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "follow organisational norms and digital etiquette when working in hybrid or remote teams",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "communicate respectfully and effectively using face-to-face, phone, email, or collaboration platforms (e.g., MS Teams, Zoom)",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "seek clarification and respond to queries from customers and team members accurately and promptly",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify and de-escalate conflicts tactfully to maintain a productive and harmonious work environment",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "demonstrate emotional intelligence in team settings by recognising and responding to others’ perspectives and emotional states",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "align personal efforts with team and organisational goals to ensure shared success.",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Promote inclusivity, respect, and accessibility in the workplace",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "foster an inclusive workplace culture that respects gender, cultural, and socio-economic diversity",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "demonstrate respectful language and conduct toward colleagues and customers of all genders and backgrounds",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "support team members with disabilities by helping remove work-related barriers or by assisting them as needed",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "practice appropriate verbal and non-verbal communication while engaging with persons with disabilities (PwDs)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "promote equal opportunity and participation for all in meetings, decision-making, and teamwork.",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

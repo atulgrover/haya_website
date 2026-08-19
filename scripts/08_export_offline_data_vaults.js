@@ -489,6 +489,29 @@ async function buildQpTiddlers(qpCode, qpName, sector, nsqfLevel, nsqfData, sopD
     return tiddlers;
 }
 
+async function compileQpTiddlyWikiHtml(qpCode) {
+    const cleanQp = qpCode.replace(/\//g, '_');
+    const { preStoreHtml, postStoreHtml, essentialTiddlers } = loadBaseTiddlyWikiTemplate();
+
+    const nsqfPath = path.join(NSQF_JSON_DIR, `${cleanQp}.json`);
+    const sopPath  = path.join(SOP_JSON_DIR, `${cleanQp}.json`);
+    const msmePath = path.join(MSME_JSON_DIR, `${cleanQp}.json`);
+
+    const nsqfData = fs.existsSync(nsqfPath) ? JSON.parse(fs.readFileSync(nsqfPath, 'utf-8')) : null;
+    const sopData  = fs.existsSync(sopPath)  ? JSON.parse(fs.readFileSync(sopPath, 'utf-8'))  : null;
+    const msmeData = fs.existsSync(msmePath) ? JSON.parse(fs.readFileSync(msmePath, 'utf-8')) : null;
+
+    const qpName = sopData?.qp_name || nsqfData?.qp_name || qpCode;
+    const sector = sopData?.sector  || nsqfData?.sector  || 'General Industry';
+    const level  = sopData?.nsqf_level || '4';
+
+    const qpTiddlers = await buildQpTiddlers(qpCode, qpName, sector, level, nsqfData, sopData, msmeData);
+    const fullStore = [...essentialTiddlers, ...qpTiddlers];
+    const storeJson = JSON.stringify(fullStore, null, 1).replace(/<\/script>/gi, '<\\/script>');
+
+    return preStoreHtml + storeJson + postStoreHtml;
+}
+
 // ── 3. Main Exporter Execution ───────────────────────────────────────────────
 async function runTiddlyWikiCompiler() {
     const args     = process.argv.slice(2);
@@ -499,10 +522,6 @@ async function runTiddlyWikiCompiler() {
     console.log('║  HAYAGRIVA STANDARD TIDDLYWIKI 5 OFFLINE FIELD WIKI COMPILER             ║');
     console.log('║  (Official empty.html Engine • Video Players • Viva Quizzes • Auto-Save) ║');
     console.log('╚══════════════════════════════════════════════════════════════════════════╝\n');
-
-    // 1. Load Base Official empty.html Template
-    const { preStoreHtml, postStoreHtml, essentialTiddlers } = loadBaseTiddlyWikiTemplate();
-    console.log(`📦 Loaded Official TiddlyWiki 5 Engine from empty.html (${essentialTiddlers.length} system plugins preserved).\n`);
 
     let targetQps = [];
     if (qpArg) {
@@ -517,40 +536,14 @@ async function runTiddlyWikiCompiler() {
     }
 
     let compiledCount = 0;
-
     for (const qpCode of targetQps) {
         const cleanQp = qpCode.replace(/\//g, '_');
-
-        // 2. Read Master JSON Lake files
-        const nsqfPath = path.join(NSQF_JSON_DIR, `${cleanQp}.json`);
-        const sopPath  = path.join(SOP_JSON_DIR, `${cleanQp}.json`);
-        const msmePath = path.join(MSME_JSON_DIR, `${cleanQp}.json`);
-
-        const nsqfData = fs.existsSync(nsqfPath) ? JSON.parse(fs.readFileSync(nsqfPath, 'utf-8')) : null;
-        const sopData  = fs.existsSync(sopPath)  ? JSON.parse(fs.readFileSync(sopPath, 'utf-8'))  : null;
-        const msmeData = fs.existsSync(msmePath) ? JSON.parse(fs.readFileSync(msmePath, 'utf-8')) : null;
-
-        const qpName = sopData?.qp_name || nsqfData?.qp_name || qpCode;
-        const sector = sopData?.sector  || nsqfData?.sector  || 'General Industry';
-        const level  = sopData?.nsqf_level || '4';
-
-        // 3. Compile Domain Tiddlers
-        const qpTiddlers = await buildQpTiddlers(qpCode, qpName, sector, level, nsqfData, sopData, msmeData);
-
-        // Combine Essential Core Tiddlers + QP Tiddlers
-        const fullStore = [...essentialTiddlers, ...qpTiddlers];
-        const storeJson = JSON.stringify(fullStore, null, 1).replace(/<\/script>/gi, '<\\/script>');
-
-        // 4. Assemble Single-File HTML
-        const fullHtml = preStoreHtml + storeJson + postStoreHtml;
-
-        // 5. Write to disk
+        const fullHtml = await compileQpTiddlyWikiHtml(qpCode);
         const outFilePath = path.join(WIKI_OUT_DIR, `${cleanQp}_ReelWiki.html`);
         fs.writeFileSync(outFilePath, fullHtml, 'utf-8');
 
         const fileSizeMb = (Buffer.byteLength(fullHtml, 'utf8') / (1024 * 1024)).toFixed(2);
-        console.log(`✅ [Compiled TiddlyWiki 5] ${cleanQp}_ReelWiki.html (${fileSizeMb} MB • ${qpTiddlers.length} tiddlers)`);
-        console.log(`   📍 Path: ${outFilePath}`);
+        console.log(`✅ [Compiled TiddlyWiki 5] ${cleanQp}_ReelWiki.html (${fileSizeMb} MB)`);
         compiledCount++;
     }
 
@@ -558,7 +551,15 @@ async function runTiddlyWikiCompiler() {
     process.exit(0);
 }
 
-runTiddlyWikiCompiler().catch(err => {
-    console.error('❌ Fatal error in TiddlyWiki compiler:', err);
-    process.exit(1);
-});
+module.exports = {
+    compileQpTiddlyWikiHtml,
+    buildQpTiddlers,
+    loadBaseTiddlyWikiTemplate
+};
+
+if (require.main === module) {
+    runTiddlyWikiCompiler().catch(err => {
+        console.error('❌ Fatal error in TiddlyWiki compiler:', err);
+        process.exit(1);
+    });
+}

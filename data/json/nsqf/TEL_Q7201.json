@@ -1,0 +1,1205 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q7201",
+  "qp_name": "TEL_Q7201",
+  "clean_code": "TEL_Q7201",
+  "total_pages": 45,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.573Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 9,
+    "total_pcs": 110,
+    "total_kus": 65,
+    "total_gs": 29,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N7201",
+      "nos_title": ".Assemble Wafer",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. importance of maintaining a clean and controlled environment for wafer testing",
+        "KU2. principles of contamination control in a semiconductor cleanroom environment",
+        "KU3. proper handling and storage procedures for test materials and tools",
+        "KU4. environmental factors (e.g., temperature, humidity) affecting test equipment performance",
+        "KU5. principles of operation for different types of wafer test equipment",
+        "KU6. functions and proper use of various test equipment accessories (e.g., test heads, probes)",
+        "KU7. interpretation of test program specifications and configuration parameters",
+        "KU8. importance of proper alignment and calibration of test heads and probes for accurate testing",
+        "KU9. significance of regular calibration for maintaining test equipment accuracy",
+        "KU10. different types of calibration procedures for various test parameters",
+        "KU11. use of calibration standards and traceability requirements",
+        "KU12. documentation procedures for calibration results and maintenance records",
+        "KU13. safe handling techniques to prevent damage to delicate wafers (e.g., electrostatic discharge",
+        "KU14. importance of proper labeling and identification of wafers for traceability",
+        "KU15. designated loading patterns and procedures for specific test equipment models",
+        "KU16. visual inspection techniques to identify potential defects on wafers before testing"
+      ],
+      "gs": [
+        "GS1. maintain work-related notes and records",
+        "GS2. read the relevant literature to get the latest updates about the field of work",
+        "GS3. listen attentively to understand the information/ instructions being shared",
+        "GS4. communicate politely and professionally",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. coordinate with the co-workers to achieve the work objectives",
+        "GS7. evaluate all possible solutions to a problem to select the best one",
+        "GS8. take quick decisions to deal with workplace emergencies/ accidents"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare Test Environment according to SOPs",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review SOPs (Standard Operating Procedures) for specific test requirements.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify and gather all necessary materials and tools listed in the SOPs for wafer testing",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "verify the functionality and proper calibration of any required measuring tools.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "consult equipment recommendations or SOPs for the ideal temperature and humidity range for optimal test performance",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "utilize thermometers and hygrometers to monitor the test environment conditions",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "adjust environmental controls (e.g., air conditioning, dehumidifiers) as needed to maintain the specified temperature and humidity levels.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "verify that essential utilities like compressed air and power supply are available and functioning properly",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "conduct a visual inspection of utility lines and connections for any signs of damage or leaks",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "test the functionality of compressed air pressure and power supply voltage according to established procedures",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "document the test environment conditions (temperature, humidity, etc.) and any adjustments made according to SOPs",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Set up & Calibrate Wafer Test Equipment",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "analyze the type of telecom wafers to be tested",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "review test program requirements for specific functionalities to be evaluated",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify the appropriate test equipment model from available options based on wafer type & test needs and consult SOPs for the selected test equipment model",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "identify and gather required test accessories like test heads and probes suitable for wafer testing",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "install the accessories onto the designated ports or fixtures on the test equipment, following established procedures, ensuring proper connection and secure positioning of the test heads and probes for optimal test performance",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "configure relevant equipment parameters (e.g., voltage levels, signal frequencies), based on the specific test program",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure parameter settings align with the requirements outlined in the test program for accurate testing of functionalities (e.g., communication channel bandwidth, data integrity)",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "conduct a visual inspection of the test heads and probes to ensure proper alignment and positioning for contacting the designated test points on the wafers",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "utilize calibration tools or procedures outlined in SOPs to verify the calibration of test heads and probes",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "perform necessary adjustments or report the issue for maintenance personnel to address the issue, if calibration is out of specification",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "initiate a system check function on the test equipment as per SOPs",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "verify that all components of the test equipment, including accessories, are functioning properly as a system before proceeding with actual testing",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "identify the relevant test parameters requiring calibration for the wafer test",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "perform calibration routines for each identified parameter according to established procedures",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "document calibration results, including dates, performed adjustments, and reference standards used, for traceability purposes",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Load Wafers into the Test Equipment Following Handling Protocols",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC26",
+              "pc_description": "review SOPs for specific handling procedures for the type of wafer being tested",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "visually inspect the wafers for any physical damage or defects that might affect testing",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "clearly label the wafers with identification information according to established protocols for traceability throughout the testing process",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "select and utilize appropriate handling tools (e.g., vacuum tweezers, transport carriers) designed for safe handling of delicate wafers",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "refer to SOPs or the test equipment manual for the designated loading pattern specific to the type of wafer being tested",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "verify that all wafers are loaded according to the pattern to optimize testing efficiency and avoid potential issues during the testing process",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "double-check the orientation of each loaded wafer to ensure it aligns with the test head and probe configuration for proper contact with the test points",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "verify that all wafers are securely positioned within the carrier or fixture to prevent any movement or misalignment during testing",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "secure the wafer carrier or fixture within the test equipment using the designated locking mechanisms",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "implement established electrostatic discharge (ESD) control procedures throughout the wafer handling process",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC36",
+              "pc_description": "utilize ESD-safe tools (e.g, grounded tweezers), wear ESD wrist straps grounded to the equipment, and maintain a clean and ESD-safe work environment",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7202",
+      "nos_title": ".Perform Wafer Test",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. different types of wafer tests conducted in semiconductor manufacturing (e.g., functional",
+        "KU2. purpose and scope of various test programs used for different wafer types",
+        "KU3. interpretation of basic test data parameters (e.g., voltage, current, timing) and their",
+        "KU4. correlation between test results and potential wafer defects",
+        "KU5. selection criteria for choosing appropriate test programs based on wafer specifications",
+        "KU6. test program structure and configuration parameters",
+        "KU7. procedures for loading, initiating, and monitoring test program execution",
+        "KU8. troubleshooting techniques for common issues encountered during test execution",
+        "KU9. Statistical process control (SPC) techniques for analyzing test data trends",
+        "KU10. ability to identify outliers and anomalies in test data that may indicate potential problems",
+        "KU11. B defect analysis methodologies for interpreting test results",
+        "KU12. procedures for escalating critical issues or anomalies requiring further investigation",
+        "KU13. data collection procedures and tools used to capture test results and parameters",
+        "KU14. standard operating procedures (SOPs) for documenting test data in designated forms or",
+        "KU15. criteria for classifying wafers as pass or fail based on predefined test limits",
+        "KU16. archiving procedures for storing test data electronically or in paper format as per company",
+        "KU17. familiarity with the user interface of the wafer test equipment",
+        "KU18. functionalities and features available for test program execution",
+        "KU19. interpretation of real-time test data displayed on the equipment interface",
+        "KU20. procedures for responding to prompts, alarms, or error messages during testing"
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Select & Execute Appropriate Test Program",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "analyze the traveler sheets or batch records to determine the type of wafers being tested",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "review the specifications of the wafers, considering factors like their intended functionalities within a telecom system",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "consult the traveler sheets or batch records to understand the specific test requirements for the wafers",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "access the library of available test programs for the test equipment being used",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "select the appropriate test program that aligns with the specified test requirements, based on the identified wafer type and functionalities",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "review the documentation associated with the selected test program to understand its objectives",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "identify the scope of the test program, considering the specific functionalities it will assess within the wafer",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "initiate the process of loading the selected test program by following the SOPs (Standard Operating Procedures) for the test equipment",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "access the program settings within the loaded test program",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "configure relevant program parameters based on the specific test requirements, to ensure the test aligns with the intended evaluation",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "initiate the test program execution on the test equipment",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "monitor the test progress through the equipment interface, observing any real-time data displays or progress indicators",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "prepare to respond to prompts or error messages that might appear on the equipment interface during test execution",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "follow established procedures for handling prompts (e.g., user confirmation for specific test steps) and troubleshooting error messages (e.g., consulting troubleshooting guides or notifying maintenance personnel)",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Monitor Test Progress & Document Test Results",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "analyze the real-time test data displayed on the equipment interface during test execution",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "interpret the meaning of the displayed data based on your understanding of the test program and the functionalities under evaluation",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "identify any trends, outliers, or irregularities that deviate from expected values or established pass/fail criteria, while monitoring the test data",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "configure suitable alarms and notifications within the test program or on the equipment itself to alert you of critical events during testing",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "analyze the test logs generated by the test program - detailed information about the test execution, including data points, measurements, and any error messages encountered",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "identify the potential root cause of any anomalies or failures observed during testing based on the analysis of real-time data and test logs",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "review the overall test outcomes, including pass/fail status for the wafers based on the defined criteria after test completion",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "utilize appropriate forms or electronic documentation tools as per company policy to document the test results",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "verify the accuracy and completeness of all documented test data, including parameters, measurements, and observations",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "identify passing and failing wafers, based on the defined pass/fail criteria established for the specific test program and wafer functionalities",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "document the concerns in the test records for any wafers exhibiting anomalies or borderline results that don't meet a clear pass/fail criterion",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "include details about the observed irregularities and any potential root causes identified during analysis",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "store the test data in a secure and accessible manner by following established company policies",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "ensure proper archiving procedures are followed to maintain the data for future reference and traceability purposes",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7203",
+      "nos_title": ".Analyze Wafer Test",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. principles and techniques of SPC for analyzing wafer test data.",
+        "KU2. identifying trends, patterns, and outliers in test data using SPC charts.",
+        "KU3. interpreting process capability based on statistical analysis.",
+        "KU4. correlation between test data parameters and potential wafer defects.",
+        "KU5. techniques for analyzing and interpreting complex test data sets.",
+        "KU6. identifying failing device locations on the wafer based on test data",
+        "KU7. basic concepts of semiconductor device failure mechanisms.",
+        "KU8. techniques for root cause analysis of failing devices based on test data.",
+        "KU9. differentiating between random defects and systematic issues.",
+        "KU10. defined criteria and test limits for classifying wafers as pass or fail.",
+        "KU11. impact of failing devices on overall wafer yield and functionality.",
+        "KU12. procedures for marking and flagging failing wafers for further investigation.",
+        "KU13. techniques for preparing clear and concise reports summarizing test data.",
+        "KU14. importance of highlighting critical anomalies and failing devices."
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Analyze & Evaluate Test Results",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "utilize statistical process control (SPC) techniques to analyze the collected test data for wafers",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "select appropriate SPC charts based on the specific test parameters and wafer functionalities",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "interpret control chart data to identify trends, shifts, or outliers that might indicate potential process issues",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "calculate statistical metrics to assess process capability and identify opportunities for improvement",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "compare the test data for each wafer against established criteria or historical data, considering tolerances and expected variations",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify any outliers, unexpected dips or spikes in parameters, or deviations from normal test results, categorizing them by severity (critical, minor)",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "utilize wafer maps or reference markers to correlate specific test data points with their corresponding locations on the wafer",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "analyze spatial patterns of defects to identify potential causes related to specific locations within the wafer fabrication process",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "apply knowledge of circuit design principles and Semiconductor Manufacturing Processes to understand the potential causes of the identified defects based on the type of test performed",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "consult with design engineers or process specialists to gain further insights into potential root causes based on their expertise",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "classify failing devices based on the type of defect (e.g., electrical, physical) and its severity level (critical, moderate, marginal)",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "evaluate the impact of failing devices on overall wafer functionality, considering redundancy or isolation mechanisms within the circuit design",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "recommend appropriate next steps for failing devices, including retesting, scrapping, or further investigation using specialized equipment",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "analyze data from multiple wafers and test runs to distinguish between random defects (isolated incidents) and systematic problems (affecting multiple devices or wafers)",
+              "sequence_order": 14,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "utilize statistical analysis tools to identify patterns or trends that suggest systematic issues within the manufacturing process",
+              "sequence_order": 15,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "recommend corrective actions or process improvements to address identified systematic problems and prevent future occurrences",
+              "sequence_order": 16,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Document, Report & Communicate Results",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "apply the pre-defined pass/fail criteria established for the specific wafer test program to categorize each wafer",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "document the classification (pass/fail) of each wafer and any associated defect information in the designated test record or electronic documentation system",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "utilize data visualization tools to represent test results and highlight key findings for improved clarity in reports",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "archive test data and associated documentation securely and electronically as per company policy for future reference and traceability purposes",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "compile well-structured and concise test reports summarizing the findings from the wafer testing process",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "include key information like overall pass/fail rates, defect classifications with severity levels, and any identified trends or anomalies",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "tailor test reports to the audience (e.g., engineers, quality control) by emphasizing relevant details and technical aspects",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "disseminate the test data and findings to designated personnel through meetings, emails, or a centralized information sharing platform, following established communication protocols",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7204",
+      "nos_title": ".Maintain Wafer Test",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. importance of preventive maintenance for maintaining optimal equipment performance",
+        "KU2. basic principles of cleaning procedures to prevent contamination within the equipment",
+        "KU3. procedures for performing routine maintenance tasks as outlined in SOPs (Standard",
+        "KU4. safe handling and storage procedures for cleaning materials and tools",
+        "KU5. common malfunctions encountered during wafer test equipment operation",
+        "KU6. techniques for identifying the root cause of equipment issues using troubleshooting",
+        "KU7. limitations of their own troubleshooting abilities and when to escalate issues to qualified",
+        "KU8. importance of clear and concise communication when reporting equipment malfunctions",
+        "KU9. procedures for documenting cleaning, maintenance, and repair activities in designated logs",
+        "KU10. the importance of maintaining accurate and complete maintenance records for future",
+        "KU11. company policies for organizing and storing maintenance logs and records for traceability",
+        "KU12. utilizing preventive maintenance schedules to identify upcoming maintenance tasks based",
+        "KU13. established procedures for reporting equipment malfunctions to designated personnel (e.g.,",
+        "KU14. importance of clear and concise communication when reporting issues, including error",
+        "KU15. the role of maintenance logs and records in facilitating communication with maintenance"
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform Routine Cleaning and Preventive Maintenance of Equipment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "follow established SOPs (Standard Operating Procedures) for cleaning various components of the wafer test equipment",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify and utilize appropriate cleaning materials and equipment for specific components",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "perform cleaning tasks to ensure a dust-free and contamination-free environment within the test equipment, minimizing potential issues like test signal degradation or device damage",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure cleaning of areas crucial for proper test execution (e.g., test fixtures, probe tips, wafer contact surfaces)",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify and perform routine maintenance activities on the test equipment according to established schedules (eg. lubricating moving parts, replacing air filters, and calibrating specific test instruments to ensure optimal performance)",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "maintain a log of completed preventive maintenance activities for each piece of equipment, including dates and details of actions performed",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "visually inspect the equipment for any signs of wear or damage during cleaning and maintenance procedures, reporting any concerns to appropriate personnel",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "organize and maintain a clean and clutter-free workspace around the test equipment to prevent accidental damage or contamination of wafers and test components",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "properly dispose of used cleaning materials and waste generated during maintenance activities in designated bins or containers",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "keep tools and equipment used for cleaning and maintenance organized and readily accessible for efficient use",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "report any spills or contamination incidents within the work area promptly for proper cleaning and containment",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Identify, Troubleshoot & Report Equipment Malfunctions",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "recognize potential dangers and indications of equipment failure during operation, such as unusual noises, error messages, or unexpected behavior in test results",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "utilize equipment manuals, troubleshooting guides, and diagnostic tools (e.g., built-in self-test functions) to identify the source of potential failures",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "observe and document specific details about the malfunction, including error messages displayed, test interruptions, or abnormal equipment behavior",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "consult with experienced personnel (e.g., engineers, maintenance technicians) for further diagnosis and guidance, when encountering unfamiliar issues",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "perform basic troubleshooting steps as per established procedures or manufacturer recommendations, such as restarting the equipment, checking cable connections, or resetting specific settings",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "document the troubleshooting steps taken and their outcomes for future reference and to inform further repair efforts",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "clearly identify the problem and its impact on test operations (e.g., complete test stoppage, partial functionality loss), if basic troubleshooting fails to resolve the issue",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "report equipment malfunctions requiring repair work beyond basic troubleshooting capabilities to designated personnel (e.g., maintenance technicians) following established company protocols",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "record all maintenance activities performed on the test equipment in a detailed and comprehensive manner, including cleaning, preventive maintenance, and repairs",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "utilize designated logbooks or a computerized maintenance management system to document maintenance activities, including the date, type of maintenance performed, specific actions taken, replacement parts used (if applicable), and any observations made",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "adhere to company policies for organizing and storing maintenance logs and records electronically or in designated physical binders for future reference and traceability purposes",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

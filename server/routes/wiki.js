@@ -402,4 +402,32 @@ router.post('/pc/update', async (req, res) => {
     }
 });
 
+// GET /api/wiki/download/:qp_code or /api/wiki/reel/:qp_code - Stream or compile on the fly single-file TiddlyWiki HTML
+router.get(['/download/:qp_code', '/reel/:qp_code'], async (req, res) => {
+    try {
+        let rawCode = req.params.qp_code || '';
+        if (rawCode.endsWith('.html')) rawCode = rawCode.replace(/\.html$/i, '');
+        const qpCode = decodeURIComponent(rawCode).trim().replace(/_/g, '/');
+        const cleanQp = qpCode.replace(/\//g, '_');
+        
+        const wikiDir = path.join(__dirname, '../../data/wiki');
+        if (!fs.existsSync(wikiDir)) fs.mkdirSync(wikiDir, { recursive: true });
+        
+        const cachedPath = path.join(wikiDir, `${cleanQp}_ReelWiki.html`);
+        if (fs.existsSync(cachedPath)) {
+            return res.download(cachedPath, `${cleanQp}_Field_Wiki.html`);
+        }
+
+        // On-the-fly compilation via 08_export_offline_data_vaults.js
+        const { compileQpTiddlyWikiHtml } = require('../../scripts/08_export_offline_data_vaults');
+        const wikiHtml = await compileQpTiddlyWikiHtml(qpCode);
+        fs.writeFileSync(cachedPath, wikiHtml, 'utf8');
+
+        return res.download(cachedPath, `${cleanQp}_Field_Wiki.html`);
+    } catch (e) {
+        console.error('[Wiki Download Error]:', e);
+        return res.status(500).json({ error: 'Failed to generate offline wiki: ' + e.message });
+    }
+});
+
 module.exports = router;

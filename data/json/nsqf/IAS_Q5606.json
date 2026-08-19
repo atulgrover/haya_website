@@ -1,0 +1,890 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "IAS/Q5606",
+  "qp_name": "IAS_Q5606",
+  "clean_code": "IAS_Q5606",
+  "total_pages": 41,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:28.557Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 15,
+    "total_pcs": 66,
+    "total_kus": 59,
+    "total_gs": 80,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "IAS/N5616",
+      "nos_title": ".Develop HMI/SCADA",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. company's code of conduct, culture, line of business, documentation policy, production",
+        "KU2. departments involved with installation and commissioning",
+        "KU3. quality and standards system followed in the company during project development",
+        "KU4. basics of computer and operating systems",
+        "KU5. standard operating procedure (SOP) of the organisation for HMI/SCADA pictures and layout",
+        "KU6. detailed information about panels and equipment used in the HMI/SCADA project",
+        "KU7. HMI/SCADA programming software and other software for installation and debugging",
+        "KU8. piping and instrumentation diagram (P&ID)",
+        "KU9. basics of industrial process involved and their stages (example: oil and gas, refinery, etc.) as",
+        "KU10. sources and methods for obtaining required technical information for the HMI/SCADA project",
+        "KU11. relevant documents to be referred for optimised project development"
+      ],
+      "gs": [
+        "GS1. write and read emails, letters, technical documentation, user requirements, test reports,",
+        "GS2. be proactive to make decisions pertaining to the scope of work",
+        "GS3. analyse the relevant factors to optimise project development",
+        "GS4. plan and organise project related to requirements, design and integration, testing,",
+        "GS5. anticipate issues and have alternate strategy",
+        "GS6. identify needs of the customer, ask questions for clarity, and suggest most appropriate",
+        "GS7. discuss task lists, schedules and work-loads with customers in a simple and clear language",
+        "GS8. manage relationships and maintain good rapport with customers to get detailed inputs on",
+        "GS9. keep customers informed about progress of project development, achieve customer",
+        "GS10. think through the problem, evaluate the possible solution(s) and suggest an optimum /best",
+        "GS11. solve issues of co-workers who are lacking the technical know how",
+        "GS12. use the existing information for improving/optimising the project and arrive at actionable",
+        "GS13. apply, analyse and evaluate the information gathered from observation, experience,",
+        "GS14. anticipate problems, risks and opportunities and utilise these for optimising PLC Program and"
+      ],
+      "modules": [
+        {
+          "module_title": "Identify prerequisites for the HMI/SCADA project",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "collect detailed information about the plant and the customer’s requirements regarding the type of Human Machine Interface (HMI) panel/Supervisory Control and Data Acquisition (SCADA) system needed",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify the plant layout, the plant architecture and its complexity",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify the type and make of the Programmable Logic Controller (PLC) used in the control panel",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "examine the cut-out for HMI panel on the door of the control panel",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify the company/organisation approved software for to design HMI/SCADA system",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "test the communication protocol compatibility between PLC and HMI/SCADA and use protocol compatible cable for communication between PLC and HMI/SCADA or protocol convertor in case of non-compatibility",
+              "sequence_order": 6,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Develop the HMI/SCADA program",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "create HMI/SCADA project and establish a connection with the PLC",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "develop the I/O tag list in the HMI/SCADA project as well as the pictures on HMI/SCADA software as per the approved distribution",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "create objects on the pictures as per the final P&ID and connect them with tags",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "formulate value and alarm storage system in the software and create backup for the same",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "provide security level for different users of the project",
+              "sequence_order": 5,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "create report templates for timely report generation",
+              "sequence_order": 6,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N9001",
+      "nos_title": ".Work effectively",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. Organisation's policies on dress code , workplace behaviour , performance",
+        "KU2. Organisation's hierarchy and escalation matrix",
+        "KU3. importance of the individual's role in the workflow",
+        "KU4. work area inspection procedures and practices",
+        "KU5. different types of information that colleagues might need and the importance of providing",
+        "KU6. deeper understanding of actions and consequences of gender based behaviour",
+        "KU7. knowledge of gender based concepts, issues and legislation",
+        "KU8. organisation standards and guidelines to be followed for PwD and knowledge about laws,",
+        "KU9. health and safety requirements at workplace for PwD and information about various",
+        "KU10. rights and duties at workplace with respect to PwD and various government / private",
+        "KU11. process of recruiting people for a particular job profile w.r.t PwD and gender including rights"
+      ],
+      "gs": [
+        "GS1. complete forms such as work orders, invoices and maintenance records",
+        "GS2. fill up appropriate forms,activity logs and attendance sheets as per the organisation's format",
+        "GS3. write basic accident or incident report as witnessed in an appropriate format to the relevant",
+        "GS4. read warnings, instructions and other text material on product labels, components, etc.",
+        "GS5. read relevant signage, warnings, labels or descriptions on equipment, etc. while carrying out",
+        "GS6. listen effectively and orally communicate information",
+        "GS7. ask for clarification and advice from the concerned person",
+        "GS8. make decisions on a suitable course of action or response keeping in view resource",
+        "GS9. plan and organise work to achieve targets and deadlines",
+        "GS10. understand needs of the customer, suggest most appropriate solution and support them",
+        "GS11. match symptoms of the fault noticed to the cause of the problem",
+        "GS12. anticipate and avoid hazards that may occur during repairs because of tools, materials used",
+        "GS13. spot process disruptions and delays",
+        "GS14. practice and acceptance of gender and its concepts",
+        "GS15. develop empathy across genders and towards PwD",
+        "GS16. reflect on own gender identity, gender roles and PwD issues",
+        "GS17. engage and participate in discussions to end gender and disability discrimination",
+        "GS18. improve and modify work practices",
+        "GS19. maintain positive and effective relationships with colleagues and customers"
+      ],
+      "modules": [
+        {
+          "module_title": "Work as per the organisational team environment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify team objectives and goals, team members by name, their role and responsibilities, greet them appropriately and respond to their greetings",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "comply with organisation’s policies and procedures for working with team members within and outside the organisation—especially related to privacy, confidentiality and security",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "work as per the environment to build trust and mutual respect",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "participate in decision making by providing facts and figures, give / accept constructive suggestions, take initiatives to help team members arrive at workable decisions and meet the goals",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "accept decisions professionally and support even if they do not match suggestions and personal views",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Communicate effectively",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "communicate professionally as per organisation's protocols, using appropriate mode of communication—verbal, written, mail, phone or text—and clearly articulate the message to ensure that the receiver understands the message",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "listen to team members attentively, respond promptly, seek / provide clarifications if required",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "share important information with the team timely and refrain from overloading them with unnecessary and unsolicited information",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Co-operate with team members and superiors",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "perform own role, receive inputs from others and make adjustments within permissible rules as per requirement, to produce output in time for other team members to follow",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "help team members to perform their role effectively and provide any clarifications/support they need, including tools /equipment / common resources as well as resolve any contentious issues amicably, involving the team lead or the supervisor if needed",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "let team members know in good time if commitments cannot be carried out, explaining the reasons, and provide alternate solutions, if any; let the team lead know about this",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "act in the interest of the team and the organisation, take initiative to correct the wrong, seek help or escalate if needed to ensure that things do not ‘fall through the gap’ and team goals are achieved",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Respect customs / preferences and gender / ability differences",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "follow organisation’s policies and statutory guidelines w.r.t seeking information about others' customs / preferences, making references or comments on social customs / preferences, and refrain from hurting sentiments",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "accommodate team members’ preferences to the extent feasible, and in case they come in the way of fulfilling team goals, discuss with the supervisor/ team leader",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "ensure personal behaviour, conduct and communication styles, taking gender and disability of the person into consideration",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "list the different types of disabilities with their respective issues and ways to help them overcome challenges",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "use inclusive language, verbal as well as non- verbal, irrespective of the disability and the gender of the person",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure equal treatment for all clients, colleagues and co-workers while respecting their personal space",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N9002",
+      "nos_title": ".Health and safety in",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. company's policies on incentives,delivery standards, and personnel management",
+        "KU2. company occupational safety and health policy",
+        "KU3. company emergency evacuation procedure",
+        "KU4. Company's medical policy",
+        "KU5. how to maintain the work area safe and secure",
+        "KU6. how to handle hazardous materials, tools and equipment",
+        "KU7. procedures to be followed during emergencies such as fire accidents, electrocution, etc.",
+        "KU8. long term value of good posture and use of appropriate handling equipment",
+        "KU9. electrical grounding practices",
+        "KU10. safety regulations and standards and how to apply these",
+        "KU11. common sources of pollution and ways to minimize it",
+        "KU12. categorisation of waste into dry, wet, recyclable, non-recyclable and items of single-use",
+        "KU13. usage of different colours of dustbins",
+        "KU14. waste management and methods of waste disposal",
+        "KU15. organisation's procedures for minimizing mistakes",
+        "KU16. strategies pertinent to their field (such as internet searches, asking peers and managers,",
+        "KU17. one should be able to identify the key performance indicators for the new tasks",
+        "KU18. seek feedback from supervisor and deal in constructive manner",
+        "KU19. understand that emotions are accompained by a physical state, thought and feeling",
+        "KU20. one should be able to interpret timelines and goals set by the manager and break them into",
+        "KU21. importance of quality and timely delivery of the product/service",
+        "KU22. potential hazards, risks and threats based on the nature of work",
+        "KU23. ways of efficiently managing material and water in the process",
+        "KU24. layout of the workstation and electrical and thermal equipment used",
+        "KU25. efficient and inefficient utilization of material and water",
+        "KU26. basics of electricity and prevalent energy efficient devices",
+        "KU27. ways to recognize common electrical problems",
+        "KU28. common practices of conserving electricity"
+      ],
+      "gs": [
+        "GS1. fill up appropriate forms, activity logs and attendance sheets as per organisation's format in",
+        "GS2. write basic accident or incident report as witnessed in appropriate format to relevant",
+        "GS3. read/listen and interpret information correctly from relevant instruction documents, manuals,",
+        "GS4. read relevant signage, warnings, labels or descriptions on equipment, etc. while carrying out",
+        "GS5. question co-workers in order to understand the safety and health issues",
+        "GS6. inform co-workers about safety and health issues",
+        "GS7. report issues and problems relating to safety and health to managers in clear terms",
+        "GS8. make decisions pertaining to safety and health issues at workplace",
+        "GS9. plan and organise work conforming to the safety and health norms of the company",
+        "GS10. make decisions about escalating safety and health issues at workplace to managers",
+        "GS11. discuss problems related to safety and health, evaluate the possible solution(s) and arrive at",
+        "GS12. use the existing information to arrive at actionable decision points",
+        "GS13. use the existing information for improving customer satisfaction",
+        "GS14. use the existing information to optimise solution and company business",
+        "GS15. analyse problems and identify causes and possible solutions",
+        "GS16. apply, analyse and evaluate the information gathered from observation, experience,",
+        "GS17. anticipate problems, risks and opportunities and utilise these for mitigation and business",
+        "GS18. communicate with colleagues on the significance of greening of jobs",
+        "GS19. identify cause and effect of greening of jobs",
+        "GS20. record data on waste disposal at workplace",
+        "GS21. demonstrate commitment towards self, and initiative to advance skills levels by exploring",
+        "GS22. incorporate feedback into one's mental model of task, and bring it into practice",
+        "GS23. be punctual, utilize time and manage workload efficiently",
+        "GS24. evaluate strategies to maintain, enhance or reduce the intensity of heightened emotional",
+        "GS25. test a hypothesis about the cause of the problem",
+        "GS26. identify and ask significant questions to clarify the various points of view on the problem to",
+        "GS27. record data on waste disposal at workplace",
+        "GS28. make timely decisions for efficient utilization of resources",
+        "GS29. complete statutory documents relevant to safety and hygiene",
+        "GS30. read Standard Operating Practices (SOP) documents",
+        "GS31. communicate with colleagues on the significance of greening of jobs",
+        "GS32. complete tasks efficiently and accurately within stipulated time",
+        "GS33. work with supervisors/team members to carry out work related tasks",
+        "GS34. identify cause and effect of greening of jobs"
+      ],
+      "modules": [
+        {
+          "module_title": "Adhere to standard safety procedures of the company",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "comply with general safety procedures and those for handling an equipment, hazardous material or tool, followed in the company",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "remove finger rings or any other metal objects likely to interfere with the work before working on the unit",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "use of safety materials such as goggles, gloves, ear plugs, caps, ESD pins, covers, shoes, etc.",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "escalate the issue about hazardous materials or things found in the premises or any breach of safety procedure in the company",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "ensure zero accidents at work",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "avoid damage of components due to negligence in ESD procedures or any other loss due to safety negligence",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "participate regularly in fire drills or other safety related workshops organised by the company",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain good health and posture",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "maintain appropriate posture, especially in long hours of sitting or standing position and in handling heavy materials",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "participate in company organised health sessions such as yoga, physiotherapy or games",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "handle heavy and hazardous materials with care, while maintaining appropriate posture, using suitable tools and handling equipment such as trolleys, jacks and ladders",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Effective waste management/recycling practices",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "identify recyclable and non-recyclable, and hazardous waste generated to be segregated accordingly",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "dispose non-recyclable waste and hazardous waste as per recommended processes",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "deposit recyclable and reusable material at identified location",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Adopt learning and self-direction",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "understand importance of skill advancement and develop mastery",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "adapt product / service to meet success criteria",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "understand accountability for timely completion of tasks",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "manage to express emotions in appropriate ways at workplace and understand the cause for the emotions",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Develop system thinking in problem solving",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "analyse the problem accurately and communicate different possible solutions to the problem",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "manage to estimate the cause of the problem and validate",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Material/Resources conservation practices",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "identify ways to optimize usage of material including water and electricity / energy in various tasks/activities/processes",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "check for spills/leakages in various tasks/activities/processes and plug them or escalate to appropriate authority",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "carry out routine cleaning of tools, machines and equipment",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "check if the equipment/machine is functioning normally before commencing work and rectify wherever required and report malfunctioning (fumes/sparks/emission/vibration/noise) or any lapse in maintenance of equipment",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure electrical equipment and appliances are properly connected and turned off when not in use",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "IAS/N5617",
+      "nos_title": ".Commission, test",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. company's reporting structure, departments involved with engineering, documentation policy,",
+        "KU2. basics of electricity, electronics, instrumentation, computer and operating systems",
+        "KU3. standard operating procedure (SOP) of the organisation for process automation HMI/SCADA",
+        "KU4. HMI/SCADA system and technologies used in the automation process",
+        "KU5. application software, installation, testing and debugging",
+        "KU6. general arrangement drawing and piping and instrumentation diagram (P&ID)",
+        "KU7. testing process and parameters involved in the testing",
+        "KU8. sources and methods for obtaining required technical information for the HMI/SCADA project",
+        "KU9. relevant documents to be referred for testing PLC program and SCADA project"
+      ],
+      "gs": [
+        "GS1. write and read emails, letters, technical documentation, user requirements, test reports,",
+        "GS2. keep colleagues informed about progress of logic testing",
+        "GS3. discuss with colleagues appropriately in order to understand the nature of the problem and",
+        "GS4. report issues and problems to managers in clear terms",
+        "GS5. make decisions pertaining to the scope of work and appropriate solution to faults in",
+        "GS6. evaluate the readiness of HMI/SCADA project for installation",
+        "GS7. plan and organise project related to requirements, design and integration, testing,",
+        "GS8. think through the problem, evaluate the possible solution(s) and suggest an optimum /best",
+        "GS9. solve issues of co-workers who are lacking the technical knowledge",
+        "GS10. identify immediate or temporary solutions to resolve faults",
+        "GS11. use the existing information to optimise the project and arrive at actionable decision points",
+        "GS12. apply, analyse and evaluate the information gathered from observation, experience,",
+        "GS13. anticipate problems, risks and opportunities and utilise these for optimisation of HMI/SCADA"
+      ],
+      "modules": [
+        {
+          "module_title": "Upload the HMI/SCADA project to panel and test its operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "upload the HMI/SCADA project from laptop to the HMI panel and PC at appropriate location",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "verify installation and operation of approved software and licenses on plant’s operator PC",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "initiate the HMI/SCADA project in run mode and perform PLC connection, input output, and picture navigation check on HMI/SCADA system",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "test the animation on the pictures, values/alarms storage, security level and the report printout",
+              "sequence_order": 4,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Develop the fault monitoring program",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "create objects on the HMI/SCADA project to monitor failure of PLC connection with HMI panel or PC system",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "develop pictures in software to monitor the performance of the PC system in SCADA project",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "create fault monitoring program in HMI/SCADA project for diagnosing faults in components",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "install recommended antivirus software to protect PC",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Troubleshoot HMI/SCADA project on-site",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "verify power supply and test the communication between PLC, HMI panel and PC system",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "perform preliminary test on the HMI panel and its connection",
+              "sequence_order": 2,
+              "theory_marks": 4,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "transfer the latest backup to the PC system to start the project",
+              "sequence_order": 3,
+              "theory_marks": 4,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "check PLC connection and various activities in the project",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

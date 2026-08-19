@@ -1,0 +1,1875 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6223",
+  "qp_name": "TEL_Q6223",
+  "clean_code": "TEL_Q6223",
+  "total_pages": 61,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.525Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 21,
+    "total_pcs": 169,
+    "total_kus": 64,
+    "total_gs": 73,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6273",
+      "nos_title": ".Data",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. principles of survey planning, including optimal drone flight patterns to achieve sufficient",
+        "KU2. area to be surveyed",
+        "KU3. various data types such as images, videos, thermal, infrared, LiDAR, and radar data.",
+        "KU4. downstream processing tools like ArcGIS, QGIS, MapInfo.",
+        "KU5. weather conditions and metrological forecast.",
+        "KU6. 3D Point Cloud data formats (xyz,las)",
+        "KU7. importance of calibrating sensors to minimize distortions and ensure accurate data",
+        "KU8. altitude, speed, and overlap, to optimize data acquisition and enhance the quality of 3D",
+        "KU9. 3D textured mesh with real-world coordinates.",
+        "KU10. drone software like DroneDeploy, DJI Terra, Pix4D, and DroneMapper to input parameters",
+        "KU11. image geotagging, camera calibration, and image sharpness assessment to enhance the",
+        "KU12. efficiently processing raw drone imagery and converting it into a format suitable for 3D",
+        "KU13. principles of photogrammetry and image acquisition for effective 2D orthomosaic creation",
+        "KU14. algorithms for noise reduction and data interpolation to create a more accurate"
+      ],
+      "gs": [
+        "GS1. understanding of project need",
+        "GS2. communicate with client for specific need",
+        "GS3. listen and coordination with others",
+        "GS4. probe customers using appropriate open and close ended questions to understand the nature",
+        "GS5. plan the development activities",
+        "GS6. organize all hardware/software components required for setup",
+        "GS7. manage time and work",
+        "GS8. read and comprehend/understand equipment installation manual"
+      ],
+      "modules": [
+        {
+          "module_title": "Generating, processing, and analyzing 3D Point Cloud spatial data",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "calibrate drones and associated sensors (Accelerometers, Tilt Sensors, Current Sensors, Magnetic Sensors, etc.) to guarantee accurate data measurements",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "plan drone flights ensuring optimal overlap between images for accurate data extraction.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "interpret and collect drone data (images, videos, thermal, infrared, RF, lidar, and radar data)",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "adjust sensor settings like Magnetic Sensors and Accelerometers based on environmental conditions and data collection requirements",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "ensure compatibility of 3D Point Cloud data formats (.xyz, .las) with downstream processing tools like ArcGIS, QGIS, MapInfo",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "verify that the selected formats meet project specifications and industry standards",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Meshing 3D Textures",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "predict accurate GCPs to enhance the precision of the calibration, ensuring that spatial relationships in the 3D textured mesh are aligned with real-world coordinates.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "navigate through the software interface like DroneDeploy, DJI Terra, Pix4D, DroneMapper and others to input necessary parameters, and execute the calibration process effectively.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "process raw drone imagery efficiently, converting it into a format suitable for 3D reconstruction.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "execute visual information from the original images onto the 3D mesh, ensuring realistic and detailed textures.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Creating 2D orthomosaics by processing and stitching aerial imagery",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "capture data, including the principles of photogrammetry and image acquisition.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "solve 2D orthomosaics from individual images",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "implement georeferencing techniques to ensure spatial accuracy in the orthomosaic.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "perform accuracy assessments by comparing the generated orthomosaic with ground truth data.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "categorize artifacts, outliers, or irrelevant data from the orthomosaic.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Generating 2D Digital Elevation Models (DEMs) through data processing and analysis",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "extract data from Geographic Information System (GIS) software",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "utilise various GIS platforms such as ArcGIS, QGIS, or other specialized software for processing elevation data.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "integrate data acquired from drone sensors (such as LiDAR or photogrammetry) with existing 2D DEMs",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "carry out the process of aligning and merging drone-generated elevation data into the broader terrain model",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "examine any anomalies or discrepancies in the elevation values derived from both drone data and the existing DEM",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "judge filtering and smoothing techniques to enhance the quality of the 2D DEM.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "extract 2D DEM data (contour lines, slope information, or drainage patterns) file from external memory",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "generate comprehensive reports detailing the findings and insights derived from the 2D DEM processing for effective communication with stakeholders.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6274",
+      "nos_title": ".Processing of",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. LiDAR point clouds, thermal data, and other sensor outputs, to comprehend the diverse",
+        "KU2. Precision Hawk, Amazon S3, Microsoft Azure Blob Storage and others data management",
+        "KU3. different data storage solutions, including databases and file systems, and know how to",
+        "KU4. geospatial reference information into the dataset, enabling accurate georeferencing and",
+        "KU5. sensor calibration techniques.",
+        "KU6. Ground Control Points (GCPs) to anchor and align drone-collected data with real-world",
+        "KU7. Global Navigation Satellite System (GNSS) technology.",
+        "KU8. methods to verify the accuracy of georeferencing by comparing processed data against",
+        "KU9. integration of LiDAR point clouds with imagery data to enhance the richness of information,",
+        "KU10. optical sensors with thermal data, enabling a more comprehensive analysis of land cover,"
+      ],
+      "gs": [
+        "GS1. understanding of project need",
+        "GS2. assignment of band width",
+        "GS3. in the text, voice and video",
+        "GS4. communicate with client for specific need",
+        "GS5. either need of intranet or internet",
+        "GS6. sound knowledge of LAN and wireless devices",
+        "GS7. liaising and coordination skills",
+        "GS8. probe customers using appropriate open and close ended questions to understand the",
+        "GS9. plan the development activities",
+        "GS10. organize all hardware/software components required for setup",
+        "GS11. plan testing and deployment activities",
+        "GS12. time and work management",
+        "GS13. read and comprehend/understand equipment installation manual"
+      ],
+      "modules": [
+        {
+          "module_title": "Import and Pre-process Drone Data",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "state various data sources collected by drones, such as images, videos, RF data, LiDAR point clouds, thermal data, or other relevant sensor outputs.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "utilize appropriate data storage solutions, including databases or file systems, to efficiently manage and store large volumes of collected data.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "employ data management tools and software like PrecisionHawk, Amazon S3, Microsoft Azure Blob Storage and others to efficiently handle and organize the incoming data, facilitating a streamlined import process.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "conduct checks to verify the integrity of the collected data, identifying and addressing any issues such as missing files, corrupted data, or incomplete datasets.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "integrate geospatial reference information into the dataset, enabling accurate georeferencing and spatial alignment during subsequent processing stages.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "perform initial data cleaning tasks, including the removal of outliers, sensor artifacts, or noise that may affect the quality of the dataset.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "handle varying data volumes efficiently, scaling the import process to accommodate large datasets without sacrificing processing speed or accuracy.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "integrate metadata associated with the collected data, such as GPS information, timestamps, or sensor specifications, to enhance the overall contextual understanding of the dataset.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Extract Georeferenced Data",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "utilize Ground Control Points to anchor and align drone-collected data with real-world coordinates, ensuring spatial accuracy.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "employ Global Navigation Satellite System (GNSS) technology to enhance georeferencing precision, considering factors such as GPS and RTK capabilities.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "integrate georeferencing seamlessly into the overall data processing workflow, ensuring that spatial accuracy is maintained throughout the various stages.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "develop the capability to verify the accuracy of georeferencing by comparing the processed data against established reference datasets or surveyed ground truth points.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "adapt georeferencing techniques to different terrains and environmental conditions, considering challenges such as elevation variations and complex topography.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "validate the accuracy of processed data through statistical analysis, cross-referencing with ground truth information, and employing error- checking methods.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "detect anomalies and inconsistencies in the collected data, including outliers, sensor errors, or artifacts that may impact data quality.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "conduct quality checks of the gathered data, using software tools to identify issues and rectify it.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Integrate and Synthesis Fused Data",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "assess the compatibility of different data types, considering their formats, resolutions, and coordinate systems to ensure seamless integration.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "choose appropriate data fusion techniques based on the nature of the collected data. This may involve image fusion, feature-level fusion, or decision-level fusion methods.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "manage differences in sensor calibration parameters between datasets, ensuring consistency in the interpretation of measurements across fused data.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "integrate LiDAR point clouds with imagery data to enhance the richness of information, allowing for detailed analysis of both surface characteristics and visual features.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "combine spectral information from optical sensors with thermal data, enabling a more comprehensive analysis of land cover, temperature variations, RF level variations and environmental conditions.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "conduct quality control checks post-fusion to identify and rectify any artifacts, misalignments, or inconsistencies in the fused dataset.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "optimize fusion parameters such as weighting factors, fusion algorithms, or resolution adjustments to achieve the best balance between data sources and enhance overall data quality.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "document the entire data fusion process, including the methods used, parameters adjusted, and decisions made, for transparency and reproducibility.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6275",
+      "nos_title": ".Analise and Project",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. the fundamental principles of spatial data, GIS concepts, and coordinate systems to ensure",
+        "KU2. remote sensing technologies, including LiDAR, photogrammetry, and multispectral sensors,",
+        "KU3. image processing algorithms like Contrast Enhancement, Dithering and Half-Toning, Elser",
+        "KU4. various GIS analysis methods, including spatial queries, overlay analysis, buffer analysis,",
+        "KU5. quality control checks, preprocessing steps, and data organization techniques to ensure the",
+        "KU6. 3D modeling techniques, including point cloud generation, surface reconstruction, mesh",
+        "KU7. steps involved in creating orthomosaics, including image registration, adjustment of image",
+        "KU8. TIR sensors, applying temperature calibration techniques, analyzing thermal and infrared"
+      ],
+      "gs": [
+        "GS1. understanding of project need",
+        "GS2. assignment of band width",
+        "GS3. in the text, voice and video",
+        "GS4. communicate with client for specific need",
+        "GS5. either need of intranet or internet",
+        "GS6. sound knowledge of LAN and wireless devices",
+        "GS7. liaising and coordination skills",
+        "GS8. probe customers using appropriate open and close ended questions to understand the",
+        "GS9. plan the development activities",
+        "GS10. organize all hardware/software components required for setup",
+        "GS11. plan testing and deployment activities",
+        "GS12. time and work management",
+        "GS13. read and comprehend/understand equipment installation manual"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform Analysis of GIS Data",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "extract spatial data from drone sensors, ensuring that the collected information is georeferenced and aligns with the desired coordinate system.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "integrate diverse datasets into the GIS environment, combining drone-collected data with existing spatial datasets for a comprehensive analysis.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "incorporate data accurately and apply appropriate coordinate projections to ensure spatial consistency and alignment with standard mapping systems.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "manage attribute data associated with spatial features, organizing and maintaining relevant information for effective GIS analysis.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "perform spatial queries and analyses to extract specific information from the data, identifying spatial patterns, relationships, or trends.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "conduct overlay analysis by superimposing different layers of spatial data to identify areas of intersection, union, or other spatial relationships.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "utilize buffer analysis to assess the proximity of features, creating buffer zones around specific geographic elements for further investigation.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "conduct network analysis to evaluate connectivity and accessibility, especially relevant for applications such as transportation planning or utility network management.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "analyze terrain data to derive information about elevation, slope, aspect, and other terrain characteristics that influence the landscape.",
+              "sequence_order": 9,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "integrate remote sensing data (e.g., satellite imagery) into the GIS for a more comprehensive understanding of the geographic area.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "generate comprehensive metadata for spatial datasets, documenting key information such as data source, date of collection, and any preprocessing steps applied.",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Identify and Extract Featured Data",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "clarify the specific features or objects of interest within the collected drone data, such as buildings, roads, vegetation, or other relevant elements.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "use remote sensing techniques to extract information from drone-collected data, leveraging technologies such as LiDAR, photogrammetry, or multispectral sensors.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "implement image processing algorithms to enhance and manipulate raw drone imagery for improved feature extraction results.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "perform image segmentation to separate the collected data into meaningful segments, aiding in the isolation and extraction of individual features.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "adjust parameters such as resolution, contrast, and colour settings to optimize feature extraction performance based on the characteristics of the target features.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "align geospatial accuracy in feature extraction by aligning extracted features with real- world coordinates using georeferencing techniques.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "work with specific characteristics of the extracted features, such as size, shape, or spectral attributes, providing detailed information for analysis.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Generate 3D Models",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "organize the data in a structured manner to facilitate the 3D modelling process.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "conduct quality control checks to identify and rectify any errors or inconsistencies in the collected data.",
+              "sequence_order": 2,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "implement preprocessing steps to clean and prepare the data for 3D modelling.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "verify that the data is in the appropriate coordinate system for consistent and accurate 3D modelling.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "generate a high-quality point cloud from the collected data, using techniques such as photogrammetry or LiDAR processing.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "reconstruct surfaces from the point cloud to create a 3D representation of the terrain or structures in the surveyed area.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "convert the point cloud or surface data into a mesh model, representing the surveyed area with a network of interconnected polygons.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "apply visual information from the original images onto the 3D mesh to enhance realism and detail in the generated model.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "perform a thorough quality assessment of the generated 3D model, checking for completeness, accuracy, and overall fidelity to the real-world environment.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "document the entire 3D modeling process, including parameters used, methodologies applied, and any adjustments made during the generation process.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Create Orthomosaics",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "import raw drone data, ensuring proper organization and categorization of the images or datasets to be used in orthomosaic creation.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "register or align individual images, compensating for variations in perspective and orientation, to ensure seamless integration into the orthomosaic.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "adjust the level of overlap between images to optimize the blending of adjacent images, reducing artifacts and enhancing overall quality.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "balance colour across the orthomosaic to ensure uniformity and accurate representation of the surveyed area.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "utilize image stitching algorithms to seamlessly merge individual images into a coherent orthomosaic, considering features like seamless transitions and minimal distortions.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "remove any artifacts or distortions that may have occurred during the orthomosaic creation process, ensuring a clean and accurate final product.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "apply orthorectification techniques to correct for terrain variations and camera tilt, producing an orthomosaic with consistent scale and minimal geometric distortions.",
+              "sequence_order": 7,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6276",
+      "nos_title": ".Analise Remote",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. fundamentals of TIR and how it applies to sensor calibration for accurate thermal imagery.",
+        "KU2. various methods to calibrate raw thermal data into temperature values, ensuring precise",
+        "KU3. techniques for identifying anomalies, patterns, and trends in thermal and infrared data that",
+        "KU4. methods to quantify and interpret thermal variations across landscapes, including",
+        "KU5. thermal maps and visualizations to represent temperature distributions spatially for",
+        "KU6. techniques to conduct frequency analysis on collected RF data to identify signal presence",
+        "KU7. pattern recognition algorithms to identify trends or anomalies in the collected RF signals.",
+        "KU8. methods to analyze data and identify potential sources of interference or degradation in RF",
+        "KU9. Thermal, Infrared, and RF data systematically based on parameters such as location, time,",
+        "KU10. the importance of incorporating relevant metadata, including sensor specifications,"
+      ],
+      "gs": [
+        "GS1. understanding of project need",
+        "GS2. assignment of band width",
+        "GS3. in the text, voice and video",
+        "GS4. communicate with client for specific need",
+        "GS5. either need of intranet or internet",
+        "GS6. sound knowledge of LAN and wireless devices",
+        "GS7. liaising and coordination skills",
+        "GS8. probe customers using appropriate open and close ended questions to understand the",
+        "GS9. plan the development activities",
+        "GS10. organize all hardware/software components required for setup",
+        "GS11. plan testing and deployment activities",
+        "GS12. time and work management",
+        "GS13. read and comprehend/understand equipment installation manual"
+      ],
+      "modules": [
+        {
+          "module_title": "Acquire and Analize Thermal, Infrared and RF Data",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "calibrate TIR (Total Internal Reflection) sensors before data collection to guarantee accurate and reliable measurements, minimizing distortions and inaccuracies in the thermal imagery.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "apply temperature calibration techniques to convert raw thermal data into meaningful temperature values, allowing for accurate thermal mapping and analysis.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "analyse thermal and infrared data to detect anomalies, patterns, or trends that may indicate specific conditions or issues within the surveyed area.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "quantify thermal variations across the landscape, providing insights into temperature gradients, heat distribution, and potential environmental changes.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "generate thermal maps and visualizations to represent temperature distributions spatially, aiding in the interpretation and communication of thermal information.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "integrate thermal and infrared data with Geographic Information System (GIS) platforms for spatial analysis and mapping.",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "retrieve the collected RF data from the drone's storage system after the flight.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "conduct frequency analysis to identify the presence and strength of signals within the collected RF data.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "map the identified RF signals spatially to understand their distribution across the surveyed area.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "apply pattern recognition algorithms to identify trends or anomalies in the RF signals.",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "analyse the data to identify any interference or potential sources of RF signal degradation.",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "compare the acquired RF data with baseline data or industry standards to assess the performance or compliance of the RF environment.",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Organize the data for quality checks",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "develop a systematic approach to categorize Thermal, Infrared, and RF data based on parameters such as location, time of acquisition, and sensor type.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "implement consistent naming conventions and metadata tagging to facilitate easy retrieval and reference during quality checks.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "utilize database management systems to efficiently store and organize large volumes of Thermal, Infrared, and RF data.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "establish a hierarchical structure within the database, ensuring logical organization and easy navigation for subsequent analyses.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "incorporate relevant metadata, including sensor specifications, environmental conditions, and flight details, to enhance the contextual understanding of the acquired data.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "ensure metadata consistency across all datasets to streamline the quality checking process.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "arrange the acquired data using appropriate coordinate systems and projections, ensuring spatial consistency and alignment with standard mapping systems.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "verify the accuracy of spatial referencing through cross-referencing with ground control points or other reliable geospatial data sources.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "align temporal aspects of the data, ensuring synchronization across multiple datasets acquired at different times.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "account for temporal variations, such as changes in environmental conditions or the dynamic nature of RF signals.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Perform Automated Analysis of the accurate data",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "demonstrate proficiency in using industry- standard software tools designed for automated analysis of Thermal, Infrared, and RF data.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "navigate and manipulate datasets within the software environment to prepare for automated processing.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "apply knowledge of algorithms tailored to Thermal, Infrared, and RF data analysis, ensuring the extraction of meaningful insights.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "customize or develop algorithms as needed to address specific requirements or challenges posed by the dataset.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "incorporate machine learning models and techniques to automate the identification of patterns, anomalies, or relevant features within the data.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "define appropriate thresholds and criteria for automated analysis, considering the unique characteristics of Thermal, Infrared, and RF datasets.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "set parameters to identify and flag outliers, potential issues, or significant changes in the data.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "develop and implement streamlined processing workflows to handle large volumes of Thermal, Infrared, and RF data efficiently.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "incorporate parallel processing or distributed computing solutions to expedite the analysis process.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "implement validation procedures to assess the accuracy and reliability of automated analysis results.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "compare automated findings with manual or ground truth assessments to ensure consistency and identify potential discrepancies.",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "design automated reporting mechanisms to present analysis results in a clear and understandable format.",
+              "sequence_order": 12,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "include key metrics, visualizations, and insights derived from the automated analysis process.",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6277",
+      "nos_title": ".Identify Equipment",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. principles of planning drone flight paths to ensure comprehensive coverage of the target",
+        "KU2. use of software tools like Pix4D, Metashape, DroneDeploy, WebODM, etc., for the analysis of",
+        "KU3. normal operating temperatures for various telecom equipment types.",
+        "KU4. correlation between abnormal heat signatures in thermal images and potential equipment",
+        "KU5. specific faults, such as overheating amplifiers, can manifest as abnormal heat patterns.",
+        "KU6. temperature calibration techniques to convert raw thermal data into meaningful",
+        "KU7. impact of calibration on the accuracy of fault detection in thermal imaging analysis.",
+        "KU8. geospatial data with existing maps or infrastructure layouts of telecom equipment.",
+        "KU9. spatial distribution of telecom equipment to identify irregularities or misalignments.",
+        "KU10. machine learning models for automated fault detection."
+      ],
+      "gs": [
+        "GS1. understanding of project need",
+        "GS2. assignment of band width",
+        "GS3. in the text, voice and video",
+        "GS4. communicate with client for specific need",
+        "GS5. either need of intranet or internet",
+        "GS6. sound knowledge of LAN and wireless devices",
+        "GS7. liaising and coordination skills",
+        "GS8. probe customers using appropriate open and close ended questions to understand the",
+        "GS9. plan the development activities",
+        "GS10. organize all hardware/software components required for setup",
+        "GS11. plan testing and deployment activities",
+        "GS12. time and work management",
+        "GS13. read and comprehend/understand equipment installation manual"
+      ],
+      "modules": [
+        {
+          "module_title": "Analysing Thermal Image",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "plan drone flight paths to ensure complete coverage of the target area for telecom equipment inspection.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "effectively use software tools like (Pix4D, Metashape, DroneDeploy, WebODM, etc.) to analyse thermal images.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "recognise normal operating temperatures for various telecom equipment and identifying areas with abnormal heat patterns.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": 1,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "correlate abnormal heat signatures with potential equipment malfunctions like, a hot spot on a transmitter could indicate an overheating amplifier.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "apply temperature calibration techniques to convert raw thermal data into meaningful temperature values, enhancing the accuracy of fault detection.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "correlate thermal anomalies with visible signs of damage or wear observed in high-resolution images.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "apply machine learning models for the automated detection of thermal anomalies associated with equipment faults.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "generate thermal maps representing temperature distributions across the telecom equipment.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Analysing RF Signal Strength",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "interpret visualizations of RF signal strength data collected by the drone.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "collect data on the Radio Frequency (RF) signals emitted by telecom equipment (cell towers, base stations etc.).",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "compare the collected RF signal strength data to established baselines or reference points for healthy equipment operation.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "correlate signal strength variations with specific types of equipment issues.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "effectively communicate identified faults and potential causes in reports.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "translate technical findings into actionable recommendations for field technicians.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Geospatial Mapping",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "collect data during optimal weather conditions (e.g., clear skies, moderate wind) to minimize image distortion and ensure data accuracy of the telecom site.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "analyse the captured data (images and orthomosaics) to identify potential faults in telecom equipment, such as loose connections, antenna damage, or corrosion.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "integrate acquired geospatial data with existing maps or infrastructure layouts of telecom equipment.",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "correlate spatial information to accurately locate and identify the position of telecom assets.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "ensure precision in aligning geospatial information with real-world coordinates for reliable fault identification.",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "analyse the spatial distribution of telecom equipment, such as towers, antennas, and supporting infrastructure, to identify irregularities or misalignments.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "use geospatial mapping to identify discrepancies in the physical alignment or placement of telecom equipment components.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "detect deviations from expected spatial configurations that may indicate faults or structural issues.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "utilize automated spatial analysis tools and algorithms to systematically process and interpret geospatial data.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "apply machine learning models for automated fault detection based on spatial patterns and anomalies.",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "generate three-dimensional (3D) models of telecom infrastructure using geospatial data.",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "use 3D models to visualize the spatial relationships between equipment components and identify potential faults in the third dimension.",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "analyse geospatial data collected at different times to map temporal changes in the positioning or alignment of telecom equipment.",
+              "sequence_order": 13,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "identify shifts or movements that may indicate developing faults or structural issues.",
+              "sequence_order": 14,
+              "theory_marks": null,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "document the location, severity, and nature of identified faults based on geospatial mapping.",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6278",
+      "nos_title": ".RF Mapping and",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. principles of planning drone flight paths to ensure comprehensive coverage for RF signal",
+        "KU2. frequency allocations for different communication systems and services.",
+        "KU3. Strategies for capturing RF signal data across various frequency bands used by telecom",
+        "KU4. Software-Defined Radio (SDR) or other suitable RF signal collection equipment.",
+        "KU5. RF signal strength data from different points within the telecom site using deployed drones.",
+        "KU6. the importance of strategic data collection to represent the site comprehensively.",
+        "KU7. variations in RF signal strength across different areas of the site.",
+        "KU8. signal strength data.",
+        "KU9. potential causes and assessing the severity of signal loss.",
+        "KU10. RF signal strength data to identify sources of interference within the constructed or pre-",
+        "KU11. software tools (Pix4D, Metashape, DroneDeploy, etc.) designed for RF mapping and",
+        "KU12. external interference and signals emitted by the telecom equipment."
+      ],
+      "gs": [
+        "GS1. understanding of project need",
+        "GS2. assignment of band width",
+        "GS3. in the text, voice and video",
+        "GS4. communicate with client for specific need",
+        "GS5. either need of intranet or internet",
+        "GS6. sound knowledge of LAN and wireless devices",
+        "GS7. liaising and coordination skills",
+        "GS8. probe customers using appropriate open and close ended questions to understand the",
+        "GS9. plan the development activities",
+        "GS10. organize all hardware/software components required for setup",
+        "GS11. plan testing and deployment activities",
+        "GS12. time and work management",
+        "GS13. read and comprehend/understand equipment installation manual"
+      ],
+      "modules": [
+        {
+          "module_title": "RF Signal Data Collection",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "plan drone flight paths to ensure comprehensive coverage of the target area for RF signal data collection.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "predetermine factors such as building structures, vegetation, and environmental conditions that may impact RF signal propagation.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "capture RF signal data across various frequency bands used by telecom equipment in the specified site.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure a comprehensive dataset that covers the entire RF spectrum relevant to the site.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "operate drone equipped with a Software- Defined Radio (SDR) or other suitable RF signal collection equipment.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Analyse RF Signal Strength",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "collect RF signal strength data from different points within the telecom site using the deployed drones.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "analyse variations in RF signal strength across different areas of the site.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify regions with strong signals, weak signals, or unexpected signal patterns that may indicate interference or optimization opportunities.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify areas with potential coverage gaps or signal irregularities that could impact overall network performance.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "detect and analyse instances of signal drop- offs or attenuation within the site.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "investigate the causes of signal loss, considering obstacles, interference sources, or equipment malfunctions.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "utilize RF signal strength data to identify sources of interference within the constructed or pre-constructed telecom site.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "investigate potential sources such as neighbouring electronic devices, competing signals, or environmental factors.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Interference Detection",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "effectively use specialized software tools (Pix4D, Metashape, DroneDeploy, ctc.,) designed for RF mapping and optimization, enabling accurate analysis of collected data.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "analyse RF signal strength data to assess the overall health of the telecom site.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "identify areas with weak or strong signal strength and determine signal distribution patterns.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "distinguish between external interference and signals emitted by the telecom equipment.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Frequency Analysis",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "execute drone flights to collect RF data, capturing information on signal strength, frequencies, and variations across the entire telecom site.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "analyse RF data to identify specific frequency bands used by the telecom equipment on the site.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "utilize frequency analysis to detect variations in RF signal strength across different frequency bands.",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "identify potential sources of interference, such as neighbouring equipment, electronic devices, or environmental factors.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "identify potential correlations between RF signal variations and the placement of equipment or structural elements.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "document the results of frequency analysis and optimization efforts in comprehensive reports.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

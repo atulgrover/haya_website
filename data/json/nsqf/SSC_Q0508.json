@@ -1,0 +1,492 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q0508",
+  "qp_name": "SSC_Q0508",
+  "clean_code": "SSC_Q0508",
+  "total_pages": 24,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.053Z",
+  "stats": {
+    "total_nos": 1,
+    "total_modules": 14,
+    "total_pcs": 38,
+    "total_kus": 26,
+    "total_gs": 9,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N0506",
+      "nos_title": ".Assist with basic",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the fundamental principles of designing algorithms and applying programming constructs to",
+        "KU2. the Object-Oriented Programming (OOP) concepts, including inheritance, encapsulation, and",
+        "KU3. the best practices for writing clean, efficient, and optimized code",
+        "KU4. how to use the debugging techniques and tools to identify and resolve code issues",
+        "KU5. the API integration and web service utilization to enable external functionalities within",
+        "KU6. the advanced programming concepts, such as error handling and asynchronous",
+        "KU7. the database fundamentals, including schema design, writing efficient SQL queries, and",
+        "KU8. how to use the ORM frameworks like Hibernate or Entity Framework for managing database",
+        "KU9. the importance and functionality of version control systems like Git and platforms like GitHub",
+        "KU10. the agile methodologies, including ceremonies like standups, sprint planning, retrospectives,",
+        "KU11. how to use the test case writing and execution to validate software functionality against",
+        "KU12. the techniques for documenting test outcomes and collaborating with QA teams to enhance",
+        "KU13. how to use the tools and techniques for ensuring code quality, such as static analysis,",
+        "KU14. how to use the AI-driven tools like GitHub Copilot and ChatGPT for assisting with code",
+        "KU15. the integration testing concepts and strategies to ensure components function cohesively",
+        "KU16. the deployment strategies, including rolling, blue-green, and canary deployments, and tools",
+        "KU17. the stages of the Software Development Lifecycle (SDLC) and how they apply to different",
+        "KU18. how to apply the continuous integration and continuous deployment (CI/CD) concepts to",
+        "KU19. the security best practices, including data encryption, authentication mechanisms, and",
+        "KU20. the front-end development basics using technologies like HTML, CSS, and JavaScript, and",
+        "KU21. the UI/UX principles for designing intuitive and visually appealing applications",
+        "KU22. the cloud computing fundamentals and the basics of deploying and managing applications",
+        "KU23. the software metrics, such as latency, throughput, and error rates, to monitor application",
+        "KU24. the foundational concepts of Generative AI, including its capabilities, limitations, and ethical",
+        "KU25. the common use cases of Generative AI in software development, such as code generation,",
+        "KU26. the principles of prompt engineering to effectively interact with AI tools like GitHub Copilot,"
+      ],
+      "gs": [
+        "GS1. maintain work-related notes and records",
+        "GS2. read the relevant literature to learn about the latest developments in the field of works",
+        "GS3. listen attentively to understand the information/ instructions being shared by the speaker",
+        "GS4. communicate clearly and politely with co-workers and clients",
+        "GS5. coordinate with co-workers to achieve work objectives",
+        "GS6. plan and prioritize tasks to ensure timely completion",
+        "GS7. identify possible disruptions to work and take appropriate preventive measures",
+        "GS8. take quick decisions to deal with workplace emergencies/ accidents",
+        "GS9. evaluate all possible solutions to a problem to select the best one"
+      ],
+      "modules": [
+        {
+          "module_title": "Designing Algorithms and Coding",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "design and implement algorithms to solve problems using appropriate programming constructs",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "apply Object-Oriented Programming (OOP) principles to create scalable and maintainable code",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "optimize code for performance and ensure it adheres to best practices",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Logical Problem-Solving",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "analyze information to draw logical conclusions and solve problems effectively",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "use debugging techniques to identify and fix code issues",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify bottlenecks and implement performance improvements for enhancing existing solutions",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Advanced Programming Techniques",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "integrate external functionalities by utilizing APIs and web services",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "implement error-handling mechanisms to improve software stability",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "apply asynchronous programming to enhance application performance",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Database Management",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "develop efficient SQL queries and enhance the performance of database interactions",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "utilize ORM frameworks such as Hibernate to streamline database management",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "create and manage database schemas to ensure efficient and reliable data storage",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Version Control and Collaboration",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "use Git or GitHub for version control and manage code changes effectively",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "contribute to code reviews and work collaboratively to enhance code quality",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "follow best practices for commit messages and branch management",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Agile Development Practices",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "engage in Agile ceremonies such as daily standups, sprint planning, and retrospectives to ensure team alignment and progress",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "collaborate with team members to break down user stories into smaller, actionable tasks for effective sprint execution and delivery",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Test Case Execution and Documentation",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "draft and execute test cases to ensure software functionality meets requirements",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "document test outcomes and report discrepancies clearly",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "collaborate with the QA team to improve test case coverage",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Ensuring Code Quality and Debugging",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "perform code reviews and utilize static analysis tools to ensure the code maintains high standards of quality",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "employ effective debugging methods to swiftly identify and resolve issues within the codebase",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "refactor code for readability, performance, and maintainability",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Integration Testing and Deployment",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC24",
+              "pc_description": "utilize automated integration testing tools to verify the seamless interaction of all system components",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "implement deployment strategies such as rolling, blue-green, and canary deployments for efficient release management",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "document and execute deployment processes across environments (development, testing, production)",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Software Development Lifecycle (SDLC)",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC27",
+              "pc_description": "comprehend the stages of SDLC, including requirements gathering, design, development, testing, deployment, and maintenance",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "collaborate in various SDLC models, such as Waterfall, Agile, or DevOps, depending on project needs",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "DevOps Basics",
+          "sequence_order": 11,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "apply continuous integration and continuous deployment (CI/CD) pipelines to automate code integration, testing, and deployment for efficient software delivery",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "utilize tools such as Jenkins, Docker, or Kubernetes to understand and manage automated build and deployment processes",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Security Best Practices",
+          "sequence_order": 12,
+          "pcs": [
+            {
+              "pc_code": "PC31",
+              "pc_description": "apply fundamental security measures, including data encryption and authentication protocols",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "identify common vulnerabilities such as SQL injection and cross-site scripting (XSS) and implement strategies to mitigate them",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "UI/UX Fundamentals",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC33",
+              "pc_description": "apply the basics of user interface (UI) design and user experience (UX) principles",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "utilize front-end technologies like HTML, CSS, and JavaScript to create intuitive and responsive interfaces",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1.5,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "use design tools or libraries to improve the visual appeal of applications",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Generative AI Integration",
+          "sequence_order": 14,
+          "pcs": [
+            {
+              "pc_code": "PC36",
+              "pc_description": "understand the core concepts of Generative AI, including its objectives, capabilities, and constraints",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC37",
+              "pc_description": "utilize Generative AI tools like GitHub Copilot and ChatGPT to assist with coding, debugging, and code optimization",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "create precise prompts to enhance the accuracy and relevance of AI-generated outputs",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

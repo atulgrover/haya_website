@@ -1,0 +1,523 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q8112",
+  "qp_name": "SSC_Q8112",
+  "clean_code": "SSC_Q8112",
+  "total_pages": 32,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.148Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 3,
+    "total_pcs": 45,
+    "total_kus": 35,
+    "total_gs": 10,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N8120",
+      "nos_title": ".Develop tools,",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies, procedures and guidelines which relate to devops",
+        "KU2. organizational policies and procedures for sharing data",
+        "KU3. who to involve when managing administration of production systems and operations",
+        "KU4. Project Management Principles: Understanding high-level goals, customer needs, and",
+        "KU5. Stakeholder Engagement: Familiarity with stakeholder identification methods and techniques",
+        "KU6. Software Development Methodologies: Knowledge of various methodologies (e.g., Agile,",
+        "KU7. Version Control Systems: Proficiency in tools like Git for source code management, including",
+        "KU8. CI/CD Pipeline Fundamentals: In-depth knowledge of how to set up and maintain CI/CD",
+        "KU9. Testing Strategies: Understanding different types of testing (unit tests, integration tests,",
+        "KU10. Infrastructure Assessment: Familiarity with infrastructure requirements, including scaling",
+        "KU11. Infrastructure Consistency: Knowledge of tools and practices for maintaining infrastructure",
+        "KU12. Performance Metrics: Ability to identify and define relevant metrics to monitor application",
+        "KU13. Logging and Monitoring: Understanding of logging practices and tools (e.g., ELK Stack,",
+        "KU14. Security in CI/CD: Awareness of integrating security measures (DevSecOps principles) into",
+        "KU15. Regulatory Compliance: Knowledge of relevant regulatory or compliance requirements (e.g.,",
+        "KU16. User Feedback Mechanisms: Familiarity with approaches for gathering user feedback,",
+        "KU17. Incident Management: Understanding of incident management protocols, including issue",
+        "KU18. Disaster Recovery: Knowledge of disaster recovery planning and strategies to ensure"
+      ],
+      "gs": [
+        "GS1. make decisions on suitable courses",
+        "GS2. plan and organize your own work to achieve targets and deadlines",
+        "GS3. refer anomalies to the supervisor",
+        "GS4. check your work is complete and free from errors"
+      ],
+      "modules": [
+        {
+          "module_title": "Develop tools, processes and mechanisms for continuous — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Grasp the high-level goals of the project, including desired outcomes, customer needs, and success criteria",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Identify key stakeholders and their expectations to ensure the project aligns with business objectives and customer requirements",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Understand the software development methodology being used and how it impacts collaborative practices and project timelines",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Familiarize with version control systems and the established workflow for code collaboration",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Comprehend the pipeline setup for continuous integration and continuous delivery",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Understand the testing strategies that are integrated into the CI/CD pipeline to ensure quality.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Assess the infrastructure requirements for the application, including scaling considerations, cloud services, and resource allocation.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Familiarity with tools and practices that ensure the infrastructure is maintained consistently across different environments",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Identify the metrics that will be monitored to measure application performance, system health, and user experience in production",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Understand how logging will be implemented for troubleshooting and performance analysis, including the tools used for log aggregation and analysis",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Recognize the importance of integrating security measures within the development and deployment processes to mitigate risks",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Be aware of any regulatory or compliance requirements that the software must adhere to, which may influence design and operational practices",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Understand how user feedback will be collected and used to inform development, identify issues, and enhance product features",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "A clear understanding of how incidents will be handled, including procedures for diagnosing issues, communication protocols, and recovery strategies",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Knowledge of disaster recovery strategies to ensure business continuity in case of critical system failures.",
+              "sequence_order": 15,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8155",
+      "nos_title": ".Develop and",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies, procedures and guidelines which relate to devops",
+        "KU2. organizational policies and procedures for sharing data",
+        "KU3. who to involve when managing administration of production systems and operations",
+        "KU4. Understanding high level project goals customer needs and success criteria to align outputs",
+        "KU5. Familiarity with stakeholder identification techniques managing expectations and",
+        "KU6. Knowledge of software development methodologies version control systems and CICD pipeline",
+        "KU7. Awareness of infrastructure assessment infrastructure consistency performance metrics",
+        "KU8. Understanding user feedback incident management and disaster recovery strategies to",
+        "KU9. Establish notifications for team alerts and collect metrics such as build success rates"
+      ],
+      "gs": [
+        "GS1. plan and organize your own work to achieve targets and deadlines",
+        "GS2. refer anomalies to the supervisor",
+        "GS3. check your work is complete and free from errors"
+      ],
+      "modules": [
+        {
+          "module_title": "Develop and maintain CI/CD Pipelines — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Define continuous delivery and integration strategies and participate in Agile ceremonies to align team efforts and adjust workflows accordingly",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Outline key stages of the pipeline such as build test deploy and release and select appropriate tools to support each stage based on project needs",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Configure triggers webhooks and repository structures to automate pipeline execution upon code changes and facilitate collaboration using branching strategies",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Write build scripts and set up artifact repositories to compile source code generate build artifacts and store them for future use",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Automate testing at various levels including unit integration and end-to-end functional tests and integrate them into the pipeline",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Manage environment configurations and scripts for automated deployment",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Integrate monitoring tools and logging frameworks to track application performance and enable troubleshooting",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Keep CICD tools dependencies and security scanning up to date and employ secret management solutions to handle sensitive data securely",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "establish notifications for team alerts and collect metrics such as build success rates deployment frequency and test coverage for ongoing process improvement",
+              "sequence_order": 9,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Document pipeline workflows configurations and troubleshooting procedures to ensure maintainability and facilitate knowledge sharing",
+              "sequence_order": 10,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8156",
+      "nos_title": ".Infrastructure",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies, procedures and guidelines which relate to devops",
+        "KU2. organizational policies and procedures for sharing data",
+        "KU3. who to involve when managing administration of production systems and operations",
+        "KU4. Understanding various continuous delivery and deployment models and designing staging",
+        "KU5. Familiarity with infrastructure as code processes and configuration management techniques",
+        "KU6. Knowledge of continuous integration and build automation methods and application release",
+        "KU7. Awareness of application lifecycle management practices and testing methodologies such as",
+        "KU8. Experience working across different operating systems and utilizing test automation tools"
+      ],
+      "gs": [
+        "GS1. plan and organize your own work to achieve targets and deadlines",
+        "GS2. refer anomalies to the supervisor",
+        "GS3. check your work is complete and free from errors"
+      ],
+      "modules": [
+        {
+          "module_title": "Infrastructure management for training & deploying AI — Core Assessment Criteria",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Use tools to automate the provisioning of infrastructure components enabling consistent environments across development.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Store infrastructure code in version control systems to track changes over time and enable collaboration among teams",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "Utilize configuration management tools to automatically configure servers and applications to maintain consistent states",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Ensure that all environments are configured according to the same standards to minimize discrepancies",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Implement monitoring tools to collect metrics on infrastructure performance and resource utilization",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Monitor application performance to identify bottlenecks or issues related to infrastructure",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Implement auto scaling solutions to automatically adjust resources based on traffic or workload demands",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Use load balancers to distribute incoming traffic across multiple servers",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "Set up automated backup solutions for critical data and applications to ensure recovery options are readily available.",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Develop and test disaster recovery plans including failover strategies to ensure business continuity",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Implement security practices by incorporating security scans and compliance checks into CICD pipelines.",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "apply role-based access controls and regularly audit permissions to maintain a secure infrastructure",
+              "sequence_order": 12,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Create and implement plans for responding to infrastructure incidents for diagnosis and resolution",
+              "sequence_order": 13,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Conduct thorough analyses of incidents to identify and address underlying issues preventing future occurrences",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "Schedule and automate updates to keep the infrastructure secure and upto date",
+              "sequence_order": 15,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "Before deploying updates, test them in staging environments to mitigate risks associated with changes",
+              "sequence_order": 16,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "Maintain comprehensive and up-to-date documentation",
+              "sequence_order": 17,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "Encourage collaboration and knowledge sharing within teams to foster a culture of learning and adaptability",
+              "sequence_order": 18,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "Establish mechanisms for collecting feedback on infrastructure performance and areas for improvement using insights to refine processes",
+              "sequence_order": 19,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "Regularly evaluate and adopt new technologies and tools that can enhance infrastructure efficiency and support evolving business needs",
+              "sequence_order": 20,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

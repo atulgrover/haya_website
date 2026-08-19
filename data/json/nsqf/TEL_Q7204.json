@@ -1,0 +1,941 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q7204",
+  "qp_name": "TEL_Q7204",
+  "clean_code": "TEL_Q7204",
+  "total_pages": 41,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.584Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 9,
+    "total_pcs": 81,
+    "total_kus": 62,
+    "total_gs": 29,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N7212",
+      "nos_title": ".Optimize Dicing",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. different types of serials (e.g., silicon, silicon carbide) and their properties (hardness,",
+        "KU2. impact of wafer thickness on dicing parameters and chip quality",
+        "KU3. interpretation of wafer design layout for chip dimensions and spacing requirements",
+        "KU4. principles of dicing blade selection based on wafer material and desired chip edge quality",
+        "KU5. different types of dicing blades (e.g., diamond, abrasive) and their characteristics",
+        "KU6. factors influencing blade selection, such as cost-effectiveness and compatibility with dicing",
+        "KU7. safe handling procedures for dicing blades",
+        "KU8. proper use of dicing equipment controls for stage movement, blade tension, and vibration",
+        "KU9. standard operating procedures (SOPs) for dicing equipment setup and calibration",
+        "KU10. functionality and purpose of dicing equipment components (stage, blade holder, vibration",
+        "KU11. calibration procedures for dicing equipment components using reference standards (e.g.,",
+        "KU12. importance of accurate record keeping during dicing equipment setup and calibration.",
+        "KU13. definition and influence of key dicing parameters (speed, force, blade selection) on",
+        "KU14. techniques for visual inspection of diced wafers to identify chip damage (cracking, chipping)",
+        "KU15. interpretation of process data (throughput, cycle time) to assess dicing efficiency",
+        "KU16. use of data analysis to identify areas for improvement in the dicing process",
+        "KU17. principles of iterative optimization for balancing high throughput with minimal chip damage",
+        "KU18. techniques for adjusting dicing parameters based on analysis of process data and wafer",
+        "KU19. importance of continuous monitoring of dicing process parameters and equipment",
+        "KU20. selection of appropriate data points to record during the dicing process (parameters used,",
+        "KU21. use of designated formats (logs, electronic records) for accurate and consistent data",
+        "KU22. correlation between blade wear data and potential equipment maintenance needs"
+      ],
+      "gs": [
+        "GS1. maintain work-related notes and records",
+        "GS2. read the relevant literature to get the latest updates about the field of work",
+        "GS3. listen attentively to understand the information/ instructions being shared",
+        "GS4. communicate politely and professionally",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. coordinate with the co-workers to achieve the work objectives",
+        "GS7. evaluate all possible solutions to a problem to select the best one",
+        "GS8. take quick decisions to deal with workplace emergencies/ accidents"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare Dicing Equipment and Set Up Process",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review wafer specification documents (material datasheet, chip design layout) to gather relevant information",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify relevant wafer parameters (material composition, thickness, desired chip dimensions) for dicing",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "select appropriate dicing blade type (e.g., diamond, abrasive) based on wafer material and desired chip edge quality (smoothness, minimal chipping)",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "consult reference tables or software to determine initial dicing parameter settings (speed, force, etc.) considering wafer properties and blade selection",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "prepare the dicing equipment work area according to SOPs (cleanliness, organization)",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "mount the wafer securely onto the dicing stage using appropriate holding fixtures as per SOPs",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "install the selected dicing blade following safe handling procedures to avoid injury",
+              "sequence_order": 7,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "perform calibration procedures for dicing equipment components (stage movement accuracy, blade tension, vibration control) as per manufacturer's instructions",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "verify calibration accuracy using reference standards (e.g., gauge blocks)",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Execute and Optimize Dicing Process",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "run initial test dicing cycles with pre- determined parameters",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "inspect diced wafers for chip damage (cracking, chipping) and edge quality",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "analyze process data (throughput, cycle time) collected during test runs",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "• adjust dicing parameters (speed, force, blade selection if necessary), based on analysis, to achieve: • a. high throughput (maximize wafer processing rate) • b. minimal chip damage (maintain chip quality)",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "repeat test dicing cycles with adjusted parameters and continue iteratively optimizing for best results",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "monitor dicing process parameters and equipment performance during operation continuously",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "record dicing process data (parameters used, yield results, cycle time, blade wear indicators) in designated formats (e.g., logs, electronic records)",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "analyze recorded data to identify trends, potential areas for further optimization, and opportunities for preventive maintenance (based on blade wear data)",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7213",
+      "nos_title": ".Selecting &",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. different types of semiconductor wafer materials (e.g., silicon, silicon carbide) and their",
+        "KU2. impact of wafer thickness on blade selection and potential chip edge quality issues",
+        "KU3. interpretation of wafer design layout for chip dimensions and desired edge quality",
+        "KU4. principles of dicing blade selection based on wafer material and desired chip edge quality",
+        "KU5. different types of dicing blades (e.g., diamond, abrasive) and their cutting characteristics",
+        "KU6. factors influencing blade selection, such as compatibility with dicing equipment and cost-",
+        "KU7. ability to utilize blade selection guides and manufacturer recommendations for blade",
+        "KU8. signs of wear and tear on dicing blades (chipped segments, reduced diameter, blade glazing)",
+        "KU9. proper use of inspection tools (magnifying glass, blade wear gauge) for detailed blade",
+        "KU10. importance of documenting inspection findings and blade condition (usable, requires",
+        "KU11. principles of inventory management, including establishing minimum and maximum",
+        "KU12. techniques for monitoring current blade inventory levels (quantity, type) through designated",
+        "KU13. procedures for initiating blade procurement processes (purchase orders) to maintain",
+        "KU14. proper storage conditions for dicing blades (humidity control, dust-free environment) to",
+        "KU15. safe and environmentally responsible disposal procedures for used or worn-out dicing blades"
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Select Appropriate Dicing Blades",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review wafer specification documents (material datasheet, chip design layout) to obtain key information",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "determine the wafer material composition (e.g., silicon, sapphire) and thickness from the specifications",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify the desired chip size (dimensions) from the chip design layout",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "determine the required edge quality for the diced chips (e.g., smoothness, minimal chipping) based on application needs",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "consult blade selection guide or manufacturer recommendations based on identified wafer material and desired chip characteristics",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "select appropriate dicing blade type (e.g., diamond, abrasive) considering compatibility, cost- effectiveness, and desired cutting performance",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Dicing Blade Maintenance and Inventory Management",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "establish a routine inspection schedule for dicing blades as per manufacturer's recommendations or company SOPs",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "visually inspect blades for any signs of wear and tear that may affect cutting performance",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "utilize appropriate inspection tools (e.g., magnifying glass, blade wear gauge) for detailed examination",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "document inspection findings and blade condition (usable, requires replacement)",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "establish minimum and maximum inventory levels for different types of dicing blades based on usage patterns and lead times for procurement",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "monitor current blade inventory levels (quantity, type) through a designated tracking system (e.g., inventory management software, physical inventory checks)",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "initiate blade procurement processes (purchase orders) when inventory levels fall below the minimum threshold to ensure sufficient stock before depletion",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "maintain proper storage conditions for dicing blades according to manufacturer's recommendations (e.g., humidity control, dust-free environment)",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "properly dispose of used or worn-out blades following established safety and environmental regulations",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7214",
+      "nos_title": ".Yield Analysis and",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. dicing process steps and how they can impact wafer yield",
+        "KU2. how to interpret process data and equipment logs to identify potential causes of yield issues",
+        "KU3. techniques for analyzing diced wafer yield data to identify trends and patterns in defect",
+        "KU4. statistical methods for prioritizing yield issues based on their severity and impact on overall",
+        "KU5. recognition of common dicing defects (chipping, cracking, surface contamination) from",
+        "KU6. correlation between defect types and potential causes in the dicing process",
+        "KU7. importance of clear communication and collaboration with different teams (process",
+        "KU8. how to participate in brainstorming sessions to develop solutions for yield improvement",
+        "KU9. strategies for improving dicing yield, such as adjusting process parameters, modifying",
+        "KU10. how to interpret post-implementation yield data to assess the effectiveness of corrective",
+        "KU11. importance of documenting and sharing improvement results with relevant teams to"
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Dicing Yield Analysis & Strategy Development",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "collect diced wafer yield data from various sources (e.g., process monitoring systems, inspection reports)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify patterns and trends in defect types observed in the yield data (e.g., chipping, cracking, contamination)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "analyze the frequency and distribution of each defect type across different batches or wafers",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "compare yield data with process parameters and equipment logs from corresponding dicing jobs",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify potential correlations between specific process settings (speed, force, blade type) and observed defect types",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "prioritize yield issues based on their severity and impact on overall yield.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "initiate discussions with cross-functional teams (process engineers, quality control) to share yield data and defect analysis",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "brainstorm and propose potential solutions for identified yield issues based on expertise of each team",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "evaluate proposed solutions considering factors like feasibility, cost-effectiveness, and potential impact on other process parameters",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "develop and document a collaborative action plan for yield improvement",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "define clear tasks, responsibilities, and timelines for implementing the chosen strategies",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Implementation & Monitoring of Corrective Actions",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "implement the agreed-upon corrective actions for yield improvement (e.g., adjust process parameters, modify equipment settings, implement new cleaning procedures)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "ensure clear communication and coordination with personnel responsible for implementation",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "collect new yield data after implementing the corrective actions",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "monitor the impact of implemented changes on defect occurrence and overall yield percentage",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "assess the effectiveness of the corrective actions based on the collected data",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "identify if further adjustments or modifications are necessary to achieve optimal yield",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "document the results of the implemented actions and their impact on yield improvement",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "share the information with relevant teams to facilitate continuous yield improvement and knowledge sharing",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N7215",
+      "nos_title": ".Maintain",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. manufacturer's recommended maintenance schedules for dicing equipment",
+        "KU2. basic cleaning and lubrication procedures for dicing equipment components",
+        "KU3. importance of calibration for maintaining consistent dicing performance",
+        "KU4. how to identify unusual observations during maintenance (e.g., wear, noise)",
+        "KU5. assisting qualified personnel with calibration procedures",
+        "KU6. recording calibration data on designated forms",
+        "KU7. dicing process parameters affecting results (speed, force, blade type)",
+        "KU8. methods for collecting and documenting yield data (good/defect counts)",
+        "KU9. analyzing yield data to identify trends and potential issues",
+        "KU10. company procedures for recording data, generating reports, and storing records",
+        "KU11. safe operating procedures for dicing equipment (lockout/tagout, blade handling)",
+        "KU12. regulations for handling hazardous materials used during dicing (coolants, cleaning",
+        "KU13. how to identify potential safety hazards in the dicing workplace (electrical, slipping)",
+        "KU14. proper use and maintenance of personal protective equipment (PPE)"
+      ],
+      "gs": [
+        "GS1. maintain work related records",
+        "GS2. read the relevant guides and literature to get the latest information about the field of work",
+        "GS3. communicate clearly and politely",
+        "GS4. listen attentively to understand the information/instructions being shared",
+        "GS5. plan and prioritize tasks to ensure timely completion",
+        "GS6. identify appropriate solutions to work related issues",
+        "GS7. take quick decisions in case of an emergency/accident"
+      ],
+      "modules": [
+        {
+          "module_title": "Perform Preventive Maintenance & Calibration",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review manufacturer’s recommended maintenance schedule for dicing equipment",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify and locate specific components requiring maintenance (e.g., bearings, filters, blades)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "perform basic cleaning tasks on the dicing equipment as per guidelines (e.g., dust removal, debris cleaning)",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "replenish or replace consumables according to the schedule (e.g., lubricants, coolants).",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "utilize knowledge of typical dicing equipment operation sounds and vibration levels to differentiate between normal operation and potential issues",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "report any unusual observations during maintenance activities, such as excessive wear, loose components, or strange noises",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "assist qualified personnel during scheduled calibration procedures for dicing equipment components",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "identify the purpose and function of each calibration step being performed (e.g., stage movement calibration ensures precise blade positioning)",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "record calibration data (measurements, adjustments made) on designated forms or electronic systems",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "report any discrepancies or unexpected results observed during calibration to the qualified personnel",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "maintain records of calibration activities, including the date, equipment components calibrated, and any relevant observations",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain Up-to-Date Records & Reports",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "record dicing process parameters (speed, force, blade type) in designated formats (e.g., logs, electronic data entry) during dicing operation",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "collect and document yield data (good/defect counts) after dicing process completion",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "maintain accurate records of equipment maintenance activities (date, tasks) performed",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "regularly review recorded data for accuracy and completeness",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "update records promptly to reflect any changes or corrections identified",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "prepare reports summarizing dicing process performance metrics (throughput, yield percentage)",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "analyze yield data to identify trends and potential areas for improvement",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "generate reports on equipment maintenance and any corrective actions",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "submit reports on dicing process performance following established channels",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "review and thoroughly understand company policies and procedures related to documentation and record-keeping for dicing operations",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "follow company-defined formats and procedures for recording dicing process data and generating reports",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "ensure data entries are clear, concise, and verifiable by others",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "properly store and archive dicing process records according to company guidelines",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Comply with Safety Protocols",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "follow established safety protocols for operating dicing equipment (e.g., lockout/tagout procedures, proper blade handling)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "identify and adhere to safety regulations for handling hazardous materials potentially used during dicing (e.g., coolants, cleaning solutions)",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "identify potential safety hazards (e.g., electrical risks, slipping hazards) and be observant of the dicing work environment",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "report identified safety hazards to supervisors or designated personnel for corrective action",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "wear appropriate PPE (e.g., safety glasses, gloves, ear protection) as mandated by company safety regulations for dicing operations",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "ensure PPE is properly fitted, maintained, and in good working condition",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

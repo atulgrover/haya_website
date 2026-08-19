@@ -1,0 +1,835 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q0903",
+  "qp_name": "SSC_Q0903",
+  "clean_code": "SSC_Q0903",
+  "total_pages": 37,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.068Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 8,
+    "total_pcs": 76,
+    "total_kus": 24,
+    "total_gs": 24,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N0958",
+      "nos_title": ".Access API and",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. fundamentals of application security, including secure coding practices, authentication",
+        "KU2. various application penetration testing methodologies, including static application security",
+        "KU3. API security principles, including authentication, authorization, rate limiting, data validation,",
+        "KU4. industry-standard vulnerability assessment tools such as Checkmarx, Veracode, and Snyk,",
+        "KU5. Secure infrastructure as code (IaC) principles, ensuring security compliance for Terraform,",
+        "KU6. malware sandboxing techniques for detecting and isolating threats in applications and",
+        "KU7. threat modeling methodologies to identify potential vulnerabilities and implement security",
+        "KU8. best practices for maintaining and documenting security requirements, vulnerability reports,"
+      ],
+      "gs": [
+        "GS1. Analyze and interpret complex security data from vulnerability scanning tools to prioritize",
+        "GS2. Apply critical thinking and problem-solving techniques to isolate root causes of vulnerabilities",
+        "GS3. Utilize scripting languages such as PowerShell to automate security assessments and enhance",
+        "GS4. Communicate effectively with stakeholders, including developers, security teams, and",
+        "GS5. Maintain meticulous records of application assessments, penetration test results, and security",
+        "GS6. Adapt to emerging security threats, continuously updating knowledge on the latest attack",
+        "GS7. Implement risk-based decision-making strategies, balancing security needs with business",
+        "GS8. Work efficiently in cross-functional teams, collaborating with developers, IT administrators,"
+      ],
+      "modules": [
+        {
+          "module_title": "Application Security Assessment and Data Validation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "review and collect initial information about the application from available data",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "assess the importance of information by considering multiple influencing factors like nature of the data, source of the data, size of the data and others",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify the application type/category by considering various factors like Programming languages, React, Angular, Spring frameworks and others",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "demonstrate the ability to assess and implement API authentication, authorization, rate limiting, and data validation to ensure secure and efficient API operations",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "conduct targeted assessments to validate and ensure the security of API operations, addressing vulnerabilities related to authentication, authorization, and data integrity",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "implement API gateway security measures, including rate limiting and authentication, to ensure secure and efficient API operations",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "assess applications to identify and address misconfigurations and supply chain vulnerabilities, ensuring alignment with security standards and best practices",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "collect data on application patching and its interdependencies with IT infrastructure needs",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "prioritize vulnerabilities based on business objectives, potential impact, and exploitability",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Application Security Assessment and Vulnerability Management",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "secure infrastructure as code (IaC) templates (e.g., Terraform, CloudFormation) by identifying vulnerabilities, applying security best practices, and ensuring compliance with organizational security policies",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "utilize advanced vulnerability scanning tools such as Checkmarx, Veracode, or Snyk to identify security vulnerabilities in applications, analyze the results and mitigate risk",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "evaluate the security of containerized environments (e.g., Docker, Kubernetes) and implement measures to secure serverless functions (e.g., AWS Lambda, Azure Functions) to protect against vulnerabilities and threats",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "utilize PowerShell scripting to enhance application security",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "isolate root causes of vulnerabilities and identify fixes, by including contextual information like architectural composition, exploitation methods, and probabilities of exposure",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "verify data to detect false positives and isolate individual vulnerabilities",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "perform threat modeling to uncover potential vulnerabilities and implement security measures from the outset of software design and architecture",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "create an application tracking system to capture and record essential information",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Comprehensive Application Security and Penetration Testing",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "develop a plan for application penetration testing that addresses multiple parameters",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "test applications using various testing methods",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "utilize malware sandboxing techniques to analyze and isolate potential threats",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "execute penetration testing by employing automated scanning technologies, black box testing, and manual tests that leverage human insight to inform the process",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "document the security requirements for applications specified by clients and external stakeholders in the designated format throughout the application life cycle",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "record information and activities at each stage to create a comprehensive audit trail",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure the secure storage of data gathered during the assessment, including details on vulnerabilities, analysis findings, and mitigation recommendations",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "automate the integration of results from static, dynamic, and interactive application security testing",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N0959",
+      "nos_title": ".Manage application",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. The fundamentals of web server security, including hardening techniques, patch",
+        "KU2. The structure and functioning of Active Directory, including security risks and mitigation",
+        "KU3. Threat intelligence methodologies to monitor, detect, and respond to emerging security",
+        "KU4. Cloud security principles and compliance best practices for platforms like AWS, Azure, and",
+        "KU5. The role of firewalls, intrusion detection/prevention systems (IDS/IPS), and database security",
+        "KU6. IoT security challenges, including encryption, authentication mechanisms, and software",
+        "KU7. Secure Software Development Life Cycle (SDLC) and the importance of integrating security",
+        "KU8. Security risks associated with AI/ML models, including bias, adversarial attacks, and ways to"
+      ],
+      "gs": [
+        "GS1. Conduct security assessments of web applications, databases, and cloud infrastructure to",
+        "GS2. Implement security configurations, patch management policies, and monitoring tools to",
+        "GS3. Analyze threat intelligence reports and customize security assessments based on current",
+        "GS4. Conduct fuzz testing and penetration testing on APIs and applications to identify and mitigate",
+        "GS5. Collaborate with cross-functional teams, including development and IT operations, to integrate",
+        "GS6. Educate business users and stakeholders on security best practices, vulnerability risks, and",
+        "GS7. Investigate and document security incidents, vulnerabilities, and remediation steps, ensuring",
+        "GS8. Utilize automation tools to streamline security assessments, vulnerability scanning, and"
+      ],
+      "modules": [
+        {
+          "module_title": "Web and Cloud Security Assessment and Hardening",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "locate all web servers and web applications on the network and secure their administrative interfaces",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "confirm that all web servers, web applications, and databases are updated with the latest patches and adhere to Security Technical Implementation Guides (STIGs) to ensure compliance with best practices",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "evaluate the list of systems and applications to identify and remove unauthorized instances and unnecessary functionalities to minimize the risk of exploitation",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "illustrate how Active Directory operates",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "detect and address attacks such as Kerberos ticket forging (Kerberos roasting)",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "apply hardening measures to strengthen domain controllers",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "review logs for web attacks and identify signs of compromise",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "implement application and database defenses such as firewalls",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "assess cloud platforms (AWS, Azure, GCP) along with their security features to protect internal servers of the organization",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "evaluate cloud infrastructure for potential vulnerabilities and verify that cloud environments comply with security best practices",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Threat Intelligence and Security Assessment for Emerging Technologies",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "utilize threat intelligence to identify and respond to emerging threats",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "customize assessments according to current threat data",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "stay informed about the latest threat indicators",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "assess IoT devices and their applications for potential security vulnerabilities like lack of encryption, insecure software updates, lack of authentication and others",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "establish safeguards to protect communications between devices",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "evaluate the security of AI/ML models for vulnerabilities, biases, and potential adversarial attacks",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "ensure that cloud environments comply with security best practices and regularly evaluate and enhance the security posture using Cloud Security Posture Management (CSPM) tools",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Implement and Maintain Application Security Measures",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "conduct fuzz testing to identify vulnerabilities in APIs and maintain ongoing monitoring for security breaches",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "work alongside development and operations teams to integrate security practices throughout the Software Development Life Cycle (SDLC) and automate security testing within Continuous Integration/Continuous Deployment (CI/CD) pipelines",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "review both frontend and backend platforms for identified vulnerabilities and assess available patches or updates",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "establish a security baseline for malware protection across servers, endpoints, and applications, ensuring regular signature updates and timely application of patch and security updates",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "collaborate with the application development team to identify, analyze, and mitigate security vulnerabilities, ensuring secure deployment and resolution of issues across the organization",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "educate business users on application vulnerabilities and the need for timely patching",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure that IT infrastructure processes are redesigned to align with patch management requirements",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "investigate industry best practices for hardening applications to enhance security",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "record and document the outcomes generated by the tools and solutions implemented",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N0960",
+      "nos_title": ".Oversee the Cloud",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. The fundamental concepts of cybersecurity, including threat analysis, malware detection,",
+        "KU2. The principles of log management, event correlation, and telemetry monitoring to identify",
+        "KU3. The process of PowerShell scripting and automation techniques to streamline security",
+        "KU4. Industry security standards, regulatory requirements, and organizational security policies,",
+        "KU5. The functionalities and application of sandbox environments to isolate and analyze malware,",
+        "KU6. The different types of cyber threats such as phishing, hacking attempts, ransomware, and",
+        "KU7. The incident response lifecycle, including threat detection, classification, escalation",
+        "KU8. The use of external cybersecurity data sources such as CND vendor websites, Computer"
+      ],
+      "gs": [
+        "GS1. Execute PowerShell commands effectively to automate security tasks and enhance system",
+        "GS2. Implement security assessments for applications and IT infrastructure, identifying",
+        "GS3. Perform real-time monitoring, analyze security logs, and correlate events to detect potential",
+        "GS4. Develop and maintain operational processes for logging key security events using appropriate",
+        "GS5. Use sandboxing techniques to safely analyze malware behavior and evaluate potential",
+        "GS6. Log incidents accurately in ticketing systems, classify risks based on organizational policies,",
+        "GS7. Collaborate with cybersecurity and IT teams to implement and enforce security measures",
+        "GS8. Document findings, generate security reports, and maintain compliance records to ensure"
+      ],
+      "modules": [
+        {
+          "module_title": "Application Security Monitoring and Threat Mitigation",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "confirm the scope of application assets and system components to be monitored with relevant authorized personnel",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "execute PowerShell syntax and basic commands effectively to automate tasks and enhance system administration",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "automate routine tasks and perform system administration efficiently by developing and executing security scripts using PowerShell",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "define and establish operational processes for log management",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify and capture all the key events and activity logs as per established format using appropriate tools and infrastructure",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Conduct comprehensive security assessments of applications to identify vulnerabilities, assess potential risks, and ensure protection against threats such as hacking attempts, phishing, malware, and ransomware.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Implement and oversee security controls within software development to mitigate risks, ensuring that all applications adhere to industry security standards and protect against potential cyberattacks.",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Perform real-time monitoring and threat analysis to detect and respond to security breaches, employing techniques to safeguard the organization from malware, ransomware, and other forms of cyber threats.",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "create secure sandbox environments to isolate threats",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "use sandbox environments to analyze malware behavior, detect malicious files, and assess associated risks",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Threat Analysis, Incident Management, and Risk Mitigation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "perform comprehensive analysis to uncover underlying security issues and implement long- term fixes and mitigation strategies to address identified vulnerabilities",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "collaborate with the organization’s computer network defense (CND) team to confirm network alerts",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "analyze the information collected to achieve situational awareness and assess the level of threat potential through event correlation",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "classify the urgency of recognized risks by assessing their likelihood of happening and potential consequences according to organizational procedures and policies",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "identify the necessary steps to assess and address recognized risks",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "log incidents in ticketing systems if any suspicious findings arise during the analysis",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "classify the service request according to the organization's processes and policies",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "allocate the ticket to the appropriate individuals based on the type of risk, in accordance with organizational procedures",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "arrange the service requests based on the organization's guidelines",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "coordinate with the appropriate personnel to ensure actions are taken on the tickets raised within the specified timelines",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "seek assistance or guidance from a specialist if the issue falls outside their knowledge or expertise",
+              "sequence_order": 11,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "document the outcomes of monitoring, ticket creation, and ticket resolution activities using standardized forms in accordance with organizational protocols",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "adhere to applicable laws, regulations, policies, and guidelines",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "keep track of external data sources, such as CND vendor websites, Computer Emergency Response Teams, SANS, and Security Focus, to identify security issues that could affect the organization",
+              "sequence_order": 14,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "conduct telemetry monitoring to detect issues with the security platform",
+              "sequence_order": 15,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

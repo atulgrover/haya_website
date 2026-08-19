@@ -1,0 +1,771 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q0901",
+  "qp_name": "SSC_Q0901",
+  "clean_code": "SSC_Q0901",
+  "total_pages": 38,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.064Z",
+  "stats": {
+    "total_nos": 4,
+    "total_modules": 9,
+    "total_pcs": 66,
+    "total_kus": 32,
+    "total_gs": 24,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N0954",
+      "nos_title": ".Monitor and",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. The principles of cybersecurity, including network security, endpoint security, and cloud",
+        "KU2. Various types of cyber threats, attack vectors, and vulnerabilities, including malware,",
+        "KU3. The role and functionalities of security tools such as SIEM (Security Information and Event",
+        "KU4. Cyber threat intelligence frameworks, such as MITRE ATT&CK, to classify attack tactics,",
+        "KU5. Incident response methodologies and digital forensic techniques for analyzing security",
+        "KU6. Network protocols, system logs, and traffic patterns to identify anomalies and indicators of",
+        "KU7. Risk assessment methodologies and prioritization techniques based on business impact and",
+        "KU8. Regulatory compliance requirements, such as GDPR, ISO 27001, and NIST frameworks, for"
+      ],
+      "gs": [
+        "GS1. Monitor and analyze real-time security alerts from multiple sources, including SIEM, IDS/IPS,",
+        "GS2. Apply forensic analysis techniques to reconstruct the sequence of events in a security breach",
+        "GS3. Communicate technical findings and security incidents clearly to both technical teams and",
+        "GS4. Implement security measures, such as system hardening, patch management, and",
+        "GS5. Adapt threat detection and response strategies based on evolving cybersecurity trends, attack",
+        "GS6. Maintain detailed documentation of threat analysis, incident response activities, and"
+      ],
+      "modules": [
+        {
+          "module_title": "Threat Monitoring and Analysis",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "monitor security alerts from firewalls, IDS, SIEM, and other security platforms continuously, ensuring immediate identification of potential threats",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform real-time analysis of security alerts, correlating them with system data to detect suspicious activities",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure alerts are cross-verified with other logs (e.g., network, application) to confirm the legitimacy of the threat",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "categorize identified threats based on severity, impact on critical business operations, and sensitivity of data potentially compromised",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "utilize frameworks like MITRE ATT&CK to classify and understand the tactics, techniques, and procedures (TTPs) used in attacks",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "apply a risk-based approach to determine the urgency and priority of threat response",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Digital Forensics and Incident Investigation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "initiate incident investigations by collecting and preserving digital evidence from compromised systems, network devices, and endpoints following best practices",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "perform forensic analysis to reconstruct the sequence of events leading to a security breach or attempted attack",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "analyze collected data to pinpoint the root cause and identify attack vectors, aiding in understanding how the system was compromised",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "collaborate with the incident response team to isolate affected systems and mitigate ongoing threats",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "recommend remediation steps based on the investigation, including patching vulnerabilities, hardening systems, or improving security controls",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "use appropriate security tools (e.g., IDS, firewalls, SIEM) proficiently to detect, analyze, and respond to cyber threats",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Threat Analysis, Incident Investigation, and Reporting",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "demonstrate knowledge of network protocols, system vulnerabilities, and attack vectors in the analysis and categorization of threats",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "analyze complex and voluminous data sets to identify patterns or anomalies indicative of potential security incidents",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "troubleshoot and resolve issues arising during the detection, analysis, and response phases of incident management",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "effectively communicate findings and analysis results to both technical and non-technical stakeholders",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "stay updated on emerging cyber threats, vulnerabilities, and security best practices, and apply this knowledge to improve monitoring and defense strategies",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "regularly update incident response and analysis techniques based on lessons learned from past incidents and evolving threat landscapes",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "document the analysis and findings in a detailed incident report for further action and knowledge sharing",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N0955",
+      "nos_title": ".Coordinate with",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. The principles of incident response, including escalation procedures, threat classification, and",
+        "KU2. The configuration, implementation, and use of Security Orchestration, Automation, and",
+        "KU3. Methods for evaluating the severity and potential impact of cybersecurity threats, prioritizing",
+        "KU4. The role of Incident Response Teams (IRT) and Threat Hunting Teams in managing security",
+        "KU5. Techniques for conducting root cause analysis post-incident to determine security",
+        "KU6. Best practices for conducting regular vulnerability assessments, identifying weaknesses in",
+        "KU7. Organizational policies, service level agreements (SLAs), and compliance requirements that",
+        "KU8. The fundamentals of data analysis in cybersecurity, including how to interpret complex"
+      ],
+      "gs": [
+        "GS1. Effectively communicate security incidents, their urgency, and required actions to technical",
+        "GS2. Monitor the progress of ongoing security investigations and escalate unresolved issues to",
+        "GS3. Apply data analysis techniques to detect suspicious activity, analyze attack patterns, and",
+        "GS4. Coordinate with IT teams to prioritize and apply security patches, ensuring a timely response",
+        "GS5. Document security incidents, including findings from post-incident investigations, in a",
+        "GS6. Adhere to cybersecurity policies, procedures, and SLAs while managing information security"
+      ],
+      "modules": [
+        {
+          "module_title": "Incident Escalation and Threat Response Management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "establish and document clear escalation procedures for major security incidents, ensuring timely notification of Incident Response Team (IRT) and Threat Hunting Team",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "effectively communicate threat status, urgency, and required actions to relevant teams and management during an incident",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "isolate the compromised system",
+              "sequence_order": 3,
+              "theory_marks": null,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "implement and configure SOAR tools to automate threat detection, investigation, and containment processes",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "refer to the organization's knowledge base to review past information security incidents and the methods used to handle them",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "allocate information security incidents to the relevant personnel for investigation and response",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "evaluate the severity and potential impact of identified threats, prioritizing them based on organizational risk and criticality",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "monitor the progress of investigations into information security incidents and escalate to the relevant personnel if the progress fails to meet established standards or service level agreements (SLAs)",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Post-Incident Analysis and Vulnerability Management",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "conduct thorough post-incident investigations to determine the root cause of the security breach or attempted intrusion",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "provide input based on security trends and incident analysis to strengthen policy development and enforcement mechanisms",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "conduct regular vulnerability assessments to identify potential weaknesses in the organization’s systems, networks, and applications",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "coordinate with IT teams to prioritize and apply security patches to address known vulnerabilities in a timely manner",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "effectively analyze complex data sets to detect patterns of suspicious activity or potential security breaches",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "adhere to the organization's policies, standards, procedures, guidelines, and service level agreements (SLAs) while coordinating responses to information security incidents",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N0956",
+      "nos_title": ".Manage and Secure",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. The principles of threat protection, information security, and identity management within the",
+        "KU2. The configuration, deployment, and management of Azure Security Center, Azure Firewall,",
+        "KU3. The methodologies for continuously monitoring security configurations and updating them to",
+        "KU4. Strategies for implementing multi-cloud security measures, ensuring robust security controls",
+        "KU5. The functions and capabilities of Security Information and Event Management (SIEM) tools and",
+        "KU6. Incident response processes, including identifying, documenting, and investigating suspicious",
+        "KU7. Identity and access management principles, including user provisioning, de-provisioning,",
+        "KU8. The classification of sensitive data, including Personally Identifiable Information (PII) and"
+      ],
+      "gs": [
+        "GS1. Effectively communicate security incidents, response actions, and remediation plans to",
+        "GS2. Analyze and interpret security logs, identify attack patterns, and use threat intelligence",
+        "GS3. Coordinate with IT teams and compliance officers to ensure adherence to security standards,",
+        "GS4. Perform root cause analysis on security incidents to determine vulnerabilities, document",
+        "GS5. Develop and conduct security awareness training programs for employees to enhance their",
+        "GS6. Organize and participate in disaster recovery drills, ensuring that backup procedures are"
+      ],
+      "modules": [
+        {
+          "module_title": "Cloud Security Management and Threat Protection",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "configure and manage threat protection, information protection, and identity protection features within the Microsoft 365 Defender Suite",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "deploy and manage Azure Security Center, Azure Firewall, and Azure Key Vault effectively",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "regularly review and update security configurations to address emerging threats and vulnerabilities",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "implement security measures across multiple cloud providers and servers",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "utilize SIEM tools and threat intelligence feeds to monitor cloud environments continuously",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify and report suspicious activities or anomalies within specified response times",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "investigate security incidents promptly and efficiently, documenting findings and remediation steps",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "implement corrective actions to mitigate the impact of incidents and prevent recurrence",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "manage user accounts, ensuring appropriate access based on roles and responsibilities",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "maintain records of user access changes and ensure timely de-provisioning of inactive accounts",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Implement and Manage Identity, Access, and Data Protection Policies",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "implement and manage Multi-Factor Authentication (MFA) for all relevant user accounts, achieving a specified compliance rate",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "conduct regular access reviews, identifying and revoking unnecessary user permissions",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify and classify sensitive data types (e.g., PII, PHI) effectively within cloud environments",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "categorize data according to sensitivity levels and ensure appropriate protection measures are in place",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "implement and monitor DLP policies to prevent unauthorized data access and transmission",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "ensure adherence to industry regulations (e.g., GDPR, HIPAA, PCI DSS) by conducting regular audits and assessments",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "develop and deliver security awareness training programs for employees, achieving a specified participation rate",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Cloud Security Management and Disaster Recovery",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "conduct regular vulnerability assessments on cloud environments, documenting findings and remediation efforts",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "ensure timely application of security patches and updates across all cloud services and applications",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "develop and implement backup procedures to ensure data integrity and availability",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "participate in disaster recovery drills, documenting lessons learned and updating recovery plans accordingly",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N0957",
+      "nos_title": ".Execute Phishing",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. The principles of phishing threat management, including common attack techniques,",
+        "KU2. The configuration, implementation, and use of phishing detection tools (e.g., PhishMe) for",
+        "KU3. Techniques for conducting phishing risk assessments by evaluating data sensitivity, employee",
+        "KU4. Best practices for designing and executing phishing simulation exercises to test employee",
+        "KU5. Digital forensics techniques for investigating phishing incidents, including analyzing email",
+        "KU6. Incident response strategies for handling phishing attacks, including response planning,",
+        "KU7. The regulatory and compliance requirements related to data privacy and security, including",
+        "KU8. Methods for preparing, analyzing, and presenting phishing threat intelligence reports,"
+      ],
+      "gs": [
+        "GS1. Effectively analyze emails for phishing indicators such as suspicious sender addresses, urgent",
+        "GS2. Implement and manage phishing prevention policies, ensuring compliance with industry",
+        "GS3. Conduct phishing awareness training sessions and simulations, assessing employee responses",
+        "GS4. Investigate phishing incidents, document findings, and recommend corrective actions to",
+        "GS5. Communicate phishing threats, response strategies, and security recommendations to",
+        "GS6. Collaborate with security teams to ensure compliance with data privacy regulations,"
+      ],
+      "modules": [
+        {
+          "module_title": "Phishing Threat Analysis and Response Management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "employ advanced tools (e.g., Phishme) to analyze and assess the risk level of incoming emails",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "identify phishing attempts by examining emails for red flags such as suspicious sender addresses, urgent requests, and grammatical errors",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "conduct thorough risk assessments for potential phishing threats, factoring in data sensitivity and employee vulnerability",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "design and implement phishing simulation exercises to educate employees about phishing tactics",
+              "sequence_order": 4,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "analyze employee responses to phishing simulations to identify knowledge gaps and areas needing improvement",
+              "sequence_order": 5,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "employ digital forensics techniques to trace the origin of suspicious emails, utilizing IP addresses, DNS records, and metadata",
+              "sequence_order": 6,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "investigate incidents of successful phishing attacks to assess damage and identify corrective actions to prevent recurrence",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "develop, implement, and update phishing prevention policies, ensuring compliance with industry standards and regulations",
+              "sequence_order": 8,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "actively contribute to the development and maintenance of incident response plans related to phishing and social engineering attacks",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure readiness for a coordinated response to phishing incidents, involving relevant stakeholders and utilizing established protocols",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "ensure compliance with data privacy and security regulations, conducting regular audits and assessments as necessary",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "prepare and present reports on phishing threat trends, employee training effectiveness, and incident response outcomes to management",
+              "sequence_order": 12,
+              "theory_marks": 3,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

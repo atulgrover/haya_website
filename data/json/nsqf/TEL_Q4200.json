@@ -1,0 +1,1801 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q4200",
+  "qp_name": "TEL_Q4200",
+  "clean_code": "TEL_Q4200",
+  "total_pages": 60,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.431Z",
+  "stats": {
+    "total_nos": 6,
+    "total_modules": 30,
+    "total_pcs": 153,
+    "total_kus": 99,
+    "total_gs": 54,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N4143",
+      "nos_title": ".Install Fiber-to-the-",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. the basics regarding the modern applications of fiber optics like - smart cities, 5G,",
+        "KU2. the advances in high-capacity networks, AI-driven optimization, sustainable deployment, and",
+        "KU3. the principles of FTTx architectures, including FTTN, FTTC, FTTB and FTTD, and their impact",
+        "KU4. network planning and design principles, including selection of architecture (PON, GPON),",
+        "KU5. use of GIS tools for mapping fiber infrastructure, route planning, and network asset tracking",
+        "KU6. the key characteristics of fiber cables like bend-insensitive, ribbon fibers, and high-fiber-",
+        "KU7. the regulatory and compliance considerations for optical fiber installations, including",
+        "KU8. different splicing methods like fusion splicing, mass splicing, mechanical splicing, etc.",
+        "KU9. termination techniques for connectors and pigtails",
+        "KU10. cable pulling, blowing, and routing methods",
+        "KU11. the tools and technologies for testing cables, real-time fault detection and predictive",
+        "KU12. advanced installation techniques, such as micro-trenching, air-blown fibers, and robotic",
+        "KU13. the role of automation and smart tools in testing and diagnostics",
+        "KU14. the methods for integrating ONTs, OLTs, and IoT devices into FTTx networks",
+        "KU15. the principles of wind-loading analysis and mitigation techniques for aerial installations",
+        "KU16. the applicable sustainability practices, including eco-friendly, installations, reinstatements",
+        "KU17. the applicable Industry standards and guidelines issued by TRAI, Broadband Forum, etc.",
+        "KU18. the escalation protocols for incidents and challenges during installations",
+        "KU19. the concepts and applications of micro-trenching and air-blown fiber techniques in high-"
+      ],
+      "gs": [
+        "GS1. read and interpret advanced technical documents, drawings, and regulatory guidelines",
+        "GS2. communicate effectively with stakeholders, supervisors, and clients about installation",
+        "GS3. analyze and resolve installation issues using critical thinking and troubleshooting skills",
+        "GS4. apply data analytics tools to monitor and improve installation efficiency and network",
+        "GS5. train and mentor junior technicians on advanced FTTx practices and emerging technologies",
+        "GS6. adapt to new technologies, tools, and methodologies in fiber installation",
+        "GS7. ensure compliance with safety, health, and environmental regulations during installations",
+        "GS8. coordinate with vendors and third-party contractors to procure and maintain equipment",
+        "GS9. manage time and resources effectively using advanced planning tools"
+      ],
+      "modules": [
+        {
+          "module_title": "Pre-installation checks and processes",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "conduct pre-deployment surveys, including advanced route mapping using Geographic Information Systems (GIS) tools and FTTx architecture requirements",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform pre-tests of optical cables using OTDR and AI-enabled diagnostic tools to ensure network readiness",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure cable compliance with advanced standards, including bend-insensitive and high- density cables suitable for FTTx variations",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Verify critical parameters such as maximum pulling tension, bend radius, and cable diameter to ensure installation adherence to design specifications",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Use duct preparation tools, including duct integrity testing and cleaning with compressed air or vacuum systems, ensuring readiness for cable installation",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Ensure necessary permissions and compliance with regulatory requirements, including local laws and environmental guidelines",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Direct buried installation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "select appropriate cable types (e.g., armored, non-armored, water-blocking cables) based on site-specific requirements and environmental factors",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "perform trenching using precision-guided trenching tools, ensuring minimal environmental impact",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "follow advanced practices for armor bonding and grounding to maintain signal integrity",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure proper cable laying, covering, and placement of physical markers, adhering to environmental and safety standards",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "perform trench reinstatements using eco- friendly materials to meet sustainability guidelines",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Underground (duct) installation",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "use automated duct cable pulling tools and accessories like motorized winches and smart pulling grips for efficient installations",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "execute cable blowing using advanced machines equipped with AI monitoring for friction and duct-fill optimization",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "test duct suitability, coefficient of friction, and other factors affecting cable longevity using specialized tools",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "perform figure-8 cable coiling techniques to prevent damage during long-haul installations",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "integrate multiple ducts with proper sealing and alignment, ensuring scalability and durability",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Aerial installation",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "handle aerial-specific cables like ADSS cables with tension control tools to ensure stability and longevity",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "survey poles, messenger strands, and aerial infrastructure for damage or potential challenges using drones and smart tools",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "install messenger strands and aerial cables safely using lift buckets or similar equipment",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "conduct wind-loading analysis and implement mitigation techniques to enhance network reliability",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "FTTx solutions",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "install fiber for FTTx variations, including Fiber to the Node (FTTN), Fiber to the Curb (FTTC), Fiber to the Building (FTTB) and Fiber-to-the-Desk (FTTD)",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "deploy and configure pre-connectorized optical cables, micro-trenching, and micro-ducts for high-density urban applications",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "integrate network components like ONTs, OLTs, splitters, and IoT devices to create efficient smart home and enterprise networks",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure seamless splicing and terminations for FTTx networks using precision splicing tools",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Network planning and design considerations",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "apply network planning and design principles, including selection of the right architecture (PON, GPON) for deployment based on site needs",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "determine infrastructure requirements, such as conduit paths, fiber type, and distribution points, ensuring optimal resource use",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "ensure alignment with the applicable regulatory and compliance requirements for FTTH network design",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "select appropriate equipment and materials for scalability and future upgrades",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6400",
+      "nos_title": ".Splice Optical Fiber 30 50 - 20 100 15",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. the structure, types, and materials of optical fibers, including core, cladding, and jacket",
+        "KU2. the types of splicing techniques such as mechanical, fusion, twist (for copper or hybrid",
+        "KU3. use of tools and equipment for splicing including splice trays, fusion splicers, hand tools",
+        "KU4. advanced characteristics of optical fibers such as dispersion, refraction, attenuation, and",
+        "KU5. features and functions of advanced splicing machines, robotic arms, smart cleavers, and",
+        "KU6. best practices for minimizing splice loss and ensuring long-term durability of joints",
+        "KU7. the techniques for splicing in challenging environments such as outdoor, submarine, or",
+        "KU8. fiber pigtails, connectorized fiber, routing of fiber inside the junction box",
+        "KU9. different fiber jointing techniques",
+        "KU10. environmental effects on fiber and splice joints and methods for mitigating degradation",
+        "KU11. the applications of AI-powered tools for fault detection, predictive maintenance, and process",
+        "KU12. the principles of cloud-based systems for remote monitoring, reporting, and troubleshooting",
+        "KU13. the integration of splicing tasks with IoT-enabled smart network management systems",
+        "KU14. the regulatory compliance and sustainability practices for optical fiber installation and",
+        "KU15. fiber optic cable construction, including the structure of optical fibers (core, cladding, jacket),",
+        "KU16. the advanced fusion splicing process, including an introduction to fusion splicing, fiber",
+        "KU17. advanced fiber optic splicing - ribbon fiber splicing techniques, splicing in high-density and",
+        "KU18. splice closure and protection including the proper use of splice closures, heat shrink vs. cold",
+        "KU19. the best practices for splicing including minimizing splice loss, accounting for environmental",
+        "KU20. the techniques for crimp splicing and its applications in hybrid networks",
+        "KU21. cold shrink closures and their advantages in specific environments"
+      ],
+      "gs": [
+        "GS1. record and report all splicing and testing activities using digital tools",
+        "GS2. work collaboratively with team members, supervisors, and NOC teams for efficient network",
+        "GS3. prioritize tasks to meet deadlines during installation, maintenance, and splicing activities",
+        "GS4. troubleshoot fiber faults and tool malfunctions effectively to minimize downtime",
+        "GS5. ensure compliance with safety protocols and environmental standards during splicing and",
+        "GS6. adapt to emerging tools and technologies to enhance splicing precision and efficiency",
+        "GS7. communicate clearly and foster positive working relationships with stakeholders",
+        "GS8. implement sustainability practices, including recycling fiber waste and optimizing resource"
+      ],
+      "modules": [
+        {
+          "module_title": "Check the availability of tools, spares, and advanced equipment",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "check the availability and functionality of advanced optical testing tools such as AI-enabled Optical Time-Domain Reflectometer (OTDR), power meter, Optical Spectrum Analyzer (OSA), Chromatic Dispersion (CD) Analyzer, and Polarization Mode Dispersion (PMD) Analyzer",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "check for the availability of tools for advanced splicing including automated splicers, robotic arms, precision cleavers, smart cleavers, splice trays, and inspection tools",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "check for adequate stock of splicing consumables including joint kits, connectors, patch cords, heat shrink sleeves, and environmental sealing materials along with RCC joint chambers, fiber optic enclosures, and other site-specific materials",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "ensure splicing machines and testing equipment are calibrated, updated with the latest firmware, and meet precision standards",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "handle inventory and coordinate repair or replacement of faulty tools through defined channels",
+              "sequence_order": 5,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Prepare cables for splicing for new installations",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "locate and identify fibers for splicing as per network designs, connectivity plans and colour- coded sequences using automated mapping tools",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "check cables for physical and sheath damage using visual and advanced inspection tools",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "prepare optical fibers by removing jackets and cleaning cores using automated cleaning systems",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "secure cables and ensure compliance with bend radius and stress limits specified by manufacturers",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "install and ground joint closures, splitters, and pigtails with weatherproofing measures to minimize environmental effects",
+              "sequence_order": 5,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "manage routing of connectorized fibers inside junction boxes and document compliance with network plans",
+              "sequence_order": 6,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "perform twist splicing for copper or hybrid cables where applicable",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain and troubleshoot laid Optical Fiber Cables (OFCs)",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "identify fiber faults using advanced tools such as AI-enabled OTDR and real-time monitoring systems",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "use robotic arms, Optical Fiber Identifiers (OFIs), and smart cleavers for precise maintenance in challenging environments",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "coordinate with the Network Operations Center (NOC) for outage windows and route updates",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "access fault points safely and inspect for microbends, sheath damage, or environmental wear using advanced inspection tools",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "clean and prepare all fibers for splicing as per applicable specifications",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "replace damaged sections, re-splice fibers, and ensure all connections meet loss and reflection standards",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "secure and weatherproof cables following the applicable standards",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "document maintenance and troubleshooting activities digitally for analysis and reporting",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Perform advanced splicing operations with automation and precision",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "operate advanced fusion splicing machines with automation features to minimize human error",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "perform mechanical, fusion, ribbon, crimp, mass and nano fiber splicing for various network applications, including harsh environments",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "ensure splice quality using real-time diagnostics integrated into automated splicing machines",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "minimize splice loss and optimize alignment using precision cleavers and advanced imaging tools",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "test splice quality using real-time monitoring systems integrated into splicers",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "seal splices with heat-shrink or cold-shrink closures, ensuring protection against environmental factors",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "conduct micro and nano fiber splicing using specialized tools for high-performance, low-loss connections in specialized industries such as medical and military communications",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "document splicing details and results digitally for future reference",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Utilize advanced fiber testing tools and document results",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "use AI-enabled OTDR for real-time fault detection, predictive maintenance, and accurate loss measurement",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "test signal quality and propagation characteristics using advanced tools such as OSAs, CD analyzers, and PMD analyzers",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "verify performance KPIs, including attenuation, reflection, and chromatic dispersion, for spliced fibers",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "generate automated reports using cloud- based platforms for remote monitoring and compliance tracking",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC33",
+              "pc_description": "maintain proper documentation of test results for quality assurance and network optimization",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4200",
+      "nos_title": ".Installation of",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. Passive Optical Networks (PONs) like GPON, EPON, and Next-Gen PON",
+        "KU2. GPON technology fundamentals, including its architecture, components, and benefits",
+        "KU3. key components of GPON systems, such as ONTs, OLTs, and splitters, and their roles in",
+        "KU4. Outside Plant (OSP) considerations, including routing, environmental factors, and secure",
+        "KU5. advanced transmission mechanisms like WDM and TDMA, their roles, and deployment",
+        "KU6. loss budget concepts, calculation methods, the impact of components on loss budget and",
+        "KU7. power testing techniques, including insertion loss, reflection testing, and network",
+        "KU8. fiber management practices, such as slack management, connector polishing techniques,",
+        "KU9. emerging tools and equipment for installation and diagnostics, including AI-enabled OTDRs",
+        "KU10. the safety protocols for handling optical fibers, tools, and testing equipment, including the",
+        "KU11. the documentation practices for installation processes, loss budgets, tests, and",
+        "KU12. basics of Wavelength Division Multiplexing (WDM) and its role in fiber networks, including"
+      ],
+      "gs": [
+        "GS1. document and maintain accurate records of installations, test results, and loss budgets",
+        "GS2. read and interpret network layouts, technical manuals, and fiber specifications",
+        "GS3. communicate effectively with customers, colleagues, and stakeholders to ensure smooth",
+        "GS4. use diagnostic tools to identify and resolve network issues effectively",
+        "GS5. plan and prioritize installation tasks to meet deadlines while ensuring compliance with",
+        "GS6. coordinate with external vendors for sourcing and maintaining tools, components, and",
+        "GS7. adapt to new technologies like AI-enabled diagnostics and advanced PON techniques",
+        "GS8. troubleshoot network issues systematically to minimize downtime and maximize efficiency",
+        "GS9. monitor safety compliance during all stages of the installation process"
+      ],
+      "modules": [
+        {
+          "module_title": "Install passive FTTH/X components (Splitters)",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify and assess passive components, including PLC and FBT splitters, and their deployment environments",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "install wall-mount and rack-mount splitters (e.g., 1x8, 1x16, 1x32) using precision tools and advanced equipment",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure compatibility of splitters with GPON and emerging PON technologies like XG-PON and NG-PON2",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "check installation sites for optimal placement to minimize signal loss, comply with building standards, and address environmental impacts",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "identify and configure splitters for advanced transmission technologies, including Wavelength Division Multiplexing (WDM) and Time Division Multiple Access (TDMA)",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Perform terminal connections (single incoming/multiple outgoing)",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify and organize feeder and distribution cables/pigtails for efficient routing and minimal signal interference",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "use advanced connectors (e.g., SC, LC, APC) to establish secure and loss-free connections",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "apply fiber management techniques to ensure organized, secure, and scalable installations",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "perform final connector polishing to maximize optical clarity and reduce insertion loss",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Conduct power and insertion loss tests",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "conduct insertion loss and reflection testing using advanced OLTS and OTDR equipment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "measure power output at distribution ports using precision power meters",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "validate network performance parameters for compliance with GPON and NG-PON2 standards",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "analyze and calculate loss budgets, considering WDM and TDMA technologies, to ensure network design compliance",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Work with GPON technologies, loss budgets, and advanced transmission mechanisms",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "install and configure passive components compatible with advanced GPON, XG-PON, and NG-PON2 networks",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "identify the role of broadcast technologies in GPON deployments and configure splitters accordingly",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "use AI-enabled diagnostic tools for real-time fault detection, insertion loss tracking, and troubleshooting",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "analyze the impact of components (e.g., splitters, connectors) on loss budgets and optimize designs using best practices",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "validate the configuration and deployment of advanced transmission mechanisms like WDM and TDMA for optimized bandwidth utilization",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4201",
+      "nos_title": ".In-building FTTH/X",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. types and characteristics of fiber optic cables, including bend radius and tensile strength",
+        "KU2. the role of fiber networks in supporting cloud gaming platforms and ultra-low latency",
+        "KU3. how fiber-optic connectivity supports Industry 4.0 applications, including automation,",
+        "KU4. fusion splicing, termination techniques, and proper handling practices for fiber cables",
+        "KU5. IoT and IoE device types, their connectivity requirements, and network configurations",
+        "KU6. the role of FTTH in IoE",
+        "KU7. the key FTTH GPON components and their functions",
+        "KU8. the basics of network security, including encryption protocols, firewalls, and access control",
+        "KU9. tools for fiber installation (e.g., fish tape, splicing machines, OTDR, VFL) and their proper",
+        "KU10. the techniques to measure signal loss and maintain network performance",
+        "KU11. Triple-Play service requirements (internet, voice, video) and their impact on network",
+        "KU12. GPON technology, including splitters, ONT configuration, and VLAN management",
+        "KU13. Quality of Service (QoS) parameters, such as latency, jitter, and throughput, and how to",
+        "KU14. cybersecurity considerations in FTTH networks, and appropriate and mitigation measures",
+        "KU15. future trends in IoE and innovations in smart home and triple-play technologies",
+        "KU16. Safety, Health, and Environmental (SHE) and occupational health and safety (OHS)",
+        "KU17. the documentation requirements for installation, testing, and cybersecurity compliance",
+        "KU18. AI-driven network management and automation tools for monitoring fiber performance and"
+      ],
+      "gs": [
+        "GS1. read and interpret building layouts, network diagrams, and IoT/IoE device manuals",
+        "GS2. communicate effectively with customers, colleagues, and supervisors for smooth",
+        "GS3. maintain accurate documentation of installations, testing, and cybersecurity measures",
+        "GS4. identify and mitigate risks related to fiber installation, Triple-Play services, and network",
+        "GS5. use digital tools for configuring ONTs, testing networks, and troubleshooting",
+        "GS6. coordinate with third-party vendors for equipment, repairs, and cybersecurity audits",
+        "GS7. analyze test results to identify and resolve network issues efficiently",
+        "GS8. adapt to new technologies such as AI-enabled diagnostics and IoE applications",
+        "GS9. prioritize tasks to meet deadlines and maintain customer satisfaction",
+        "GS10. follow ethical practices while handling customer data and maintaining network security"
+      ],
+      "modules": [
+        {
+          "module_title": "Cable installation through cable trays (horizontal/vertical)",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "check the site as per the building layout plan and identify the cabling path from the outdoor fiber landing point to the ONT installation point",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "determine horizontal and vertical cable lengths, considering slack for maintenance and future upgrades",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "check load compliance of cable trays and ensure compatibility with existing services like power and data cables",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "lay fiber along tray tracks using proper pulling techniques, ensuring no damage to the cable jacket or core",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "secure fibers in the trays, maintaining proper slack and tension to avoid over-tensioning in vertical runs",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "ensure proper grounding of metallic trays in line with safety standards",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Cable installation through conduits",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "pull fiber through conduits using appropriate tools (e.g., fish tape, pullers) to avoid damage",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "secure excess fiber (minimum of 3 meters) at termination points for maintenance purposes",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "inspect conduit integrity to prevent electromagnetic interference or mechanical damage",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure proper sealing of conduits to avoid dust, moisture, or pest intrusion",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Cable installation through false ceilings",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "install cables through false ceilings using the figure-8 method to prevent tangling or cable stress",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "secure cables in conduits above false ceilings to prevent dislodgement and ensure slack management",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "ensure accessibility for future maintenance by marking cable routes clearly",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Termination at ONT and TO",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "terminate and connectorize fiber at the ONT, ensuring signal integrity and minimal loss",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "power up and configure the ONT for operational readiness, including VLAN and IP address settings",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "conduct live fiber testing using tools like Visual Fault Locator (VFL) and power meters to confirm signal integrity",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "validate ONT connectivity to IoT devices and smart home systems, ensuring proper data throughput",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "IoT and Smart Home Network Readiness",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "determine IoT device connectivity requirements such as bandwidth and latency, and verify network configuration",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "installation network elements or CPEs for IoT devices",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "configure ONTs to support IoT devices like smart thermostats, cameras, and voice assistants",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "test IoT device compatibility with installed FTTH networks to ensure seamless integration",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "coordinate with customers for specific IoT device setups and provide technical guidance",
+              "sequence_order": 5,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "FTTH GPON Customer Installation",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "check and prepare customer premises for installing Customer Premises Equipment (CPE), including ONTs and Wi-Fi routers",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "follow GPON installation procedures, ensuring correct splitter connections and fiber termination",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "conduct comprehensive tests for connectivity and data speeds at the customer’s end using tools like OTDR and fiber testers",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "troubleshoot network issues related to CPE and ensure customer satisfaction by addressing concerns promptly",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "identify and resolve common complaints related to fiber connectivity, signal loss, and ONT/router configurations",
+              "sequence_order": 5,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "use installed equipment and provide basic troubleshooting training to customers, explaining technical details in easy terms and addressing their concerns",
+              "sequence_order": 6,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Triple-Play Services (High Speed Internet, VoIP, IPTV)",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "determine the infrastructure requirements for Triple-Play services, including separate VLANs for data, voice, and video",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "configure ONT settings to enable Triple-Play services, ensuring optimal bandwidth allocation for each",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "test High-Speed Internet, VoIP, and IPTV services for Quality of Service (QoS) parameters like latency, jitter, and packet loss",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC32",
+              "pc_description": "coordinate with service providers to address issues with VoIP call quality, IPTV buffering, or internet speeds",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Cybersecurity Considerations in FTTH/X Installations",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC33",
+              "pc_description": "identify potential cybersecurity vulnerabilities in FTTH installations and mitigate risks using secure installation practices",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC34",
+              "pc_description": "configure ONTs with secure settings, including password protection, encryption protocols, and firewalls",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC35",
+              "pc_description": "conduct penetration tests to identify potential security risks and validate network integrity",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC36",
+              "pc_description": "provide customers with guidelines for maintaining network security, including password updates and device firmware updates",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        },
+        {
+          "module_title": "Internet of Everything (IoE)",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC37",
+              "pc_description": "identify the scope of IoE and its impact on FTTH network design and installation",
+              "sequence_order": 1,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC38",
+              "pc_description": "integrate IoE-compatible devices into the FTTH network, ensuring seamless communication between devices",
+              "sequence_order": 2,
+              "theory_marks": 0.5,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC39",
+              "pc_description": "follow future trends in IoE and identify scalable network solutions for customers",
+              "sequence_order": 3,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            },
+            {
+              "pc_code": "PC40",
+              "pc_description": "optimize FTTH installations for emerging IoE applications, ensuring minimal latency and maximum reliability",
+              "sequence_order": 4,
+              "theory_marks": 0.5,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N4131",
+      "nos_title": ".Work Safety",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. construction of fiber optics and methods for protecting fibers from environmental damage",
+        "KU2. the latest PPE required for fiber optic installations such as safety glasses, cut-resistant",
+        "KU3. the benefits of using PPE such as ensuring safety, preventing injuries, reducing workplace",
+        "KU4. the safety features, limitations, and maintenance protocols for protective equipment and",
+        "KU5. laser safety guidelines, including risk levels of various laser classes used in fiber optics",
+        "KU6. the hazards associated with optical fibers, such as microshards and laser exposure, and safe",
+        "KU7. layout of associated services in the work area (gas pipelines, electrical cables, sewage lines,",
+        "KU8. key industry standards and guidelines for fiber optic installations (e.g., ANSI/TIA, ITU-T, ISO)",
+        "KU9. compliance requirements for environmental regulations and e-waste management in FTTH",
+        "KU10. contact details of government agencies and regulatory bodies responsible for safety, health,",
+        "KU11. importance of maintaining accurate and timely documentation to ensure compliance with",
+        "KU12. procedures for conducting periodic audits to ensure adherence to safety standards",
+        "KU13. manufacturer-supplied MSDS for safe handling of fiber optic materials and chemicals",
+        "KU14. legislative requirements and organizational procedures for health, safety, and security, and",
+        "KU15. different types of health and safety hazards in FTTH/X installation sites",
+        "KU16. limits of personal responsibility for dealing with hazards and escalating critical issues",
+        "KU17. different emergency situations, including handling accidental fiber cuts, exposure to high",
+        "KU18. the importance of maintaining high standards of health, safety, and security",
+        "KU19. the implications of non-compliance with health, safety, and security protocols on individuals"
+      ],
+      "gs": [
+        "GS1. read and interpret necessary documents, including safety manuals, standards, and",
+        "GS2. understand and follow operational health and safety instructions, memos, and reports",
+        "GS3. read and comprehend technical specifications related to FTTH/X installations",
+        "GS4. communicate effectively with colleagues, supervisors, and stakeholders to report hazards,",
+        "GS5. liaise and coordinate with third-party vendors and contractors to ensure adherence to safety",
+        "GS6. document safety incidents, near misses, and compliance checklists clearly and accurately",
+        "GS7. adapt to new technologies and safety equipment introduced in FTTH/X installations",
+        "GS8. manage time effectively to prioritize safety-related tasks without compromising installation",
+        "GS9. identify and report unsafe conditions or practices to the appropriate authority",
+        "GS10. use digital tools and software for safety monitoring, documentation, and compliance tracking"
+      ],
+      "modules": [
+        {
+          "module_title": "Safety practices for working with fiber optics during FTTH/X installations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "follow appropriate eye-safety measures whilst working with laser-emitting devices, including Optical Network Terminals (ONTs) and splicing equipment",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "safely handle bare fiber, broken ends, and scraps, ensuring proper disposal to prevent accidental injury",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "follow the recommended fire safety practices, especially when using high-voltage arc fusion splicers and other heating tools",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "adhere to electrical safety norms when working with fiber cables installed alongside electrical cables and active power sources",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "follow laser safety rules, including proper handling of class 1m and higher laser devices used in FTTH networks",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "use and maintain appropriate safety gear, such as gloves, boots, and protective eyewear, in accordance with worksite requirements",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "follow industry standards and guidelines (e.g., ANSI Z136.2 for laser safety, ISO standards for fiber optic installations)",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "maintain health and safety records accurately, including incident reports and compliance checklists",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify and mitigate hazards associated with installation sites, such as confined spaces, sharp edges, and high temperatures",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "examine and safely handle pre-terminated fiber assemblies and connectors to prevent contamination or damage",
+              "sequence_order": 10,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "apply safe cable routing techniques to avoid damage to existing infrastructure, such as gas pipelines, electrical cables, and water pipelines",
+              "sequence_order": 11,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Industry standards and guidelines",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "follow national and international guidelines for fiber optic installations, such as TIA/EIA-568, ITU-T standards, and BICSI guidelines",
+              "sequence_order": 1,
+              "theory_marks": 4,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "comply with regulatory and environmental norms related to FTTH/X deployment, including e- waste management and proper waste disposal practices",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "identify and report non-compliance issues or deviations from industry standards to the supervisor",
+              "sequence_order": 3,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N9111",
+      "nos_title": ".Follow sustainability",
+      "sequence_order": 6,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies on sustainability, waste reduction, and material reuse in telecom",
+        "KU2. the procedures for recycling, hazardous waste handling, and safe disposal of telecom-related",
+        "KU3. the importance of sustainability in long-term infrastructure planning, including the impact of",
+        "KU4. the classification of materials used in optical fiber cabling, including recyclable, reusable,",
+        "KU5. standard waste management procedures for telecom operations, including segregation,",
+        "KU6. the methods to reduce material wastage, such as accurate measurements, careful handling",
+        "KU7. the environmental hazards associated with improper disposal of optical fibers, batteries, and",
+        "KU8. the regulations and compliance requirements for hazardous material disposal under national",
+        "KU9. energy-efficient work practices, including low-power tools, optimized route planning, and",
+        "KU10. the importance of proper record-keeping for disposal and recycling to ensure compliance"
+      ],
+      "gs": [
+        "GS1. communicate effectively sustainability practices and compliance requirements to team",
+        "GS2. identify and implement solutions for reducing material wastage and improving recycling",
+        "GS3. select the best disposal or recycling methods based on regulatory compliance and workplace",
+        "GS4. determine the environmental impact of cabling operations and suggest improvements",
+        "GS5. work effectively with waste management teams, regulatory bodies, and supervisors to ensure",
+        "GS6. accurately document materials used, disposed of, or recycled for audit and compliance",
+        "GS7. prioritize sustainability initiatives while meeting project deadlines",
+        "GS8. incorporate new sustainable materials and methods into existing work processes"
+      ],
+      "modules": [
+        {
+          "module_title": "Identify recyclable, reusable, and hazardous materials",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify different types of materials used in cabling operations, such as optical fiber, connectors, protective ducts, and joint enclosures",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "segregate materials into recyclable (e.g., plastic ducts, fiber offcuts, packaging), reusable (e.g., spare connectors, splitters), and hazardous (e.g., lead-based cables, old batteries, chemical adhesives) categories",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "follow workplace procedures for storing recyclable materials separately from hazardous and general waste",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "label and store hazardous waste safely to prevent contamination or accidents during handling and disposal",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "ensure all recyclable and hazardous waste is recorded in logs for traceability and compliance",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Follow waste management, recycling, and disposal protocols",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "adhere to applicable SOPs for safe handling and disposal of non-recyclable and hazardous materials, such as fiber shards, cable sheaths, and chemical adhesives",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "coordinate safe disposal of waste materials at designated collection points or through approved vendors, as per organizational policies and environmental guidelines",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "reduce waste by minimizing excess material use and reusing components wherever possible",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "maintain clean and organized work sites to prevent environmental contamination and promote workplace safety",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "check for and report any issues related to improper waste disposal, unauthorized dumping, or environmental hazards to the relevant authority",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Optimize material and energy usage in cabling work",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "plan cabling work to minimize material wastage by accurately measuring fiber optic lengths, ducts, and accessories before cutting or installing",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "use energy-efficient tools and machinery where possible, ensuring minimal power consumption without compromising work efficiency",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "ensure proper maintenance of cabling tools and equipment to reduce unnecessary repairs and replacements that contribute to waste",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "optimize the use of trenching and ducting by following efficient layout designs to minimize excavation and reduce material consumption",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "use and promote eco-friendly materials (such as low-impact protective coatings and biodegradable packaging) wherever feasible",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Comply with environmental and regulatory standards",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "follow national and local environmental laws, regulations, and workplace policies related to telecom cabling operations",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "maintain proper documentation of sustainability-related activities, including logs of disposed and recycled materials, to meet regulatory and audit requirements",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "conduct periodic self-audits to verify compliance with environmental policies",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "educate team members on best practices for sustainability, including waste segregation, material reuse, and responsible energy consumption",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "report any violations of environmental policies, hazardous material spills, or unsafe disposal practices to the designated supervisor or regulatory body",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1268 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "TEL/Q6801",
+  "qp_name": "TEL_Q6801",
+  "clean_code": "TEL_Q6801",
+  "total_pages": 45,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.568Z",
+  "stats": {
+    "total_nos": 5,
+    "total_modules": 15,
+    "total_pcs": 110,
+    "total_kus": 68,
+    "total_gs": 41,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "TEL/N6803",
+      "nos_title": ".Plan Drone-Based",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. basic design principles of drones, including quadcopter frame types, balance, and center of",
+        "KU2. functions of major drone components and their interconnections (flight controller, motors,",
+        "KU3. tools and techniques for safe removal, replacement, and testing of modular drone parts.",
+        "KU4. common issues and wear-and-tear areas in drone systems encountered during field",
+        "KU5. purpose, objectives, and critical components of the infrastructure inspection being",
+        "KU6. standard pre-inspection planning process, including how to assess environmental and safety",
+        "KU7. geospatial considerations in flight planning including terrain, obstacles, and electromagnetic",
+        "KU8. regulatory frameworks applicable to drone operations (e.g., DGCA guidelines).",
+        "KU9. airspace classifications (controlled, restricted, and uncontrolled zones) and how to verify GPS",
+        "KU10. ground-level safety hazards, including potential slip, trip, and fall risks for personnel and",
+        "KU11. common sources of electromagnetic interference and radio frequency disturbances that",
+        "KU12. importance of sensor calibration and protocols for performing calibration checks.",
+        "KU13. battery management principles, including pre-flight charging protocols and safe battery",
+        "KU14. types of permissions and documentation required for legal flight execution",
+        "KU15. roles and responsibilities of various stakeholders (site engineers, safety officers, clients,"
+      ],
+      "gs": [
+        "GS1. communicate effectively with clients, pilots, and regulatory authorities",
+        "GS2. make quick and informed decisions in response to flight challenges or emergencies",
+        "GS3. manage project timelines and inspection schedules effectively",
+        "GS4. apply critical thinking and decision-making for planning and prioritising tasks",
+        "GS5. resolve operational issues and conflicts with stakeholders professionally",
+        "GS6. plan and prioritise multiple flight operations to ensure timely execution",
+        "GS7. maintain attention to detail while documenting flight operations and safety protocols",
+        "GS8. work collaboratively with team members to ensure smooth coordination of drone operation",
+        "GS9. apply problem-solving techniques to optimise flight performance and safety"
+      ],
+      "modules": [
+        {
+          "module_title": "Understand drone design and support minor customization",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify key components of a drone including airframe, motors, ESCs, flight controller, battery, and payload mounts.",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "interpret drone design specifications such as payload capacity, motor rating, and frame dimensions.",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "perform minor physical repairs or part replacements (e.g., arms, propellers, mounts) using standard tools.",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "support basic customization of payload integration (e.g., attaching a different sensor or camera) as per inspection needs.",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "collaborate with drone engineers or OEMs to suggest design modifications based on field performance issues.",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "document component-level issues, repairs performed, and custom modifications for maintenance logs.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Assess inspection requirements and site parameters",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "obtain and interpret telecom tower layout drawings, site maps, and antenna configurations",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "assess tower height, tilt angle, structure type, and mounted equipment to determine inspection zones",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify access constraints, electromagnetic interference zones, and no-fly zones around the site",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "evaluate historical inspection data or maintenance logs to refine inspection focus",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "analyse client's scope of work, deliverables, and expected data output formats",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "determine drone take-off and landing points based on site terrain and environmental constraints",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Develop inspection plans and flight strategies",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "define drone flight paths to ensure optimal camera angles, overlap percentages, and line of sight",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "choose suitable drones and sensor payloads (e.g., RGB, thermal, LiDAR) based on structural inspection needs",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "determine ground control point (GCP) requirements or GPS calibration needs based on data precision goals",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "plan for signal handoff protocols in case of tall structures or urban interference",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "calculate estimated flight time, battery swaps, storage requirements, and mission sequencing",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "integrate weather forecasts (wind speed, visibility, precipitation) into flight planning and schedule buffer time",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "assign responsibilities to the flight crew, including visual observers, payload operators, and data handlers",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure compliance and calibration coordination",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "verify UAV registration, pilot credentials, and equipment airworthiness in line with DGCA or local authority norms",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "coordinate with airspace regulators to obtain flight clearance (e.g., NPNT approval, UTM permissions)",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "conduct pre-flight calibration of gimbals, cameras, IMUs, and GNSS receivers",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC23",
+              "pc_description": "cross-check compass interference zones and set correct return-to-home (RTH) protocols",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "ensure mission-specific checklists, risk mitigation plans, and SOPs are documented and acknowledged by the team",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "maintain a centralised record of all flight plans, permission documents, calibration logs, and stakeholder approvals",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6299",
+      "nos_title": ".Conduct Aerial",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. aerodynamics and flight principles related to UAV stability and control.",
+        "KU2. camera and sensor specifications (e.g., megapixel count, thermal range, LiDAR resolution).",
+        "KU3. types of telecom infrastructure and typical inspection points (e.g., guy wires, connectors,",
+        "KU4. signal interference risks from electromagnetic fields and tower equipment.",
+        "KU5. GNSS accuracy levels and use of RTK/PPK techniques for enhanced geolocation.",
+        "KU6. pre-flight and post-flight drone checklist protocols.",
+        "KU7. role of UTM systems and communication protocols in aerial traffic management.",
+        "KU8. emergency landing procedures and return-to-home triggers.",
+        "KU9. local legal limits for height, proximity to infrastructure, and operational hours for drones.",
+        "KU10. battery management strategies and fail-safe settings for long-duration flights.",
+        "KU11. safety procedures for urban and remote inspection sites."
+      ],
+      "gs": [
+        "GS1. communicate inspection needs and flight updates clearly with team members and",
+        "GS2. analyse flight telemetry data to make informed mid-flight decisions.",
+        "GS3. apply situational judgment to handle mid-air obstacles or technical disruptions.",
+        "GS4. manage time effectively to execute multiple inspections within a scheduled time block.",
+        "GS5. maintain composure and awareness during extended or high-stress inspection operations.",
+        "GS6. document technical details and anomalies with precision and clarity.",
+        "GS7. adapt camera angles and sensor modes dynamically based on on-site lighting and equipment",
+        "GS8. follow safety, ethical, and regulatory norms while operating drones in sensitive telecom"
+      ],
+      "modules": [
+        {
+          "module_title": "Prepare for drone-based inspection at the site",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "verify weather conditions, GNSS signal strength, and magnetic interference before initiating flight",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "perform pre-flight checks of drone hardware, sensors, firmware, and battery health",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "calibrate the compass, IMU, gimbal, and payload sensors as per the mission requirements",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "set appropriate flight parameters, including altitude, speed, geofencing, and return-to-home settings",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "establish a visual line of sight (VLOS) or BVLOS protocol based on mission type and legal permissions",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "brief the ground crew and visual observers on their roles and emergency procedures",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Execute aerial inspection operations",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "launch and operate the drone to follow the predefined flight path over telecom infrastructure",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "hover and perform slow fly-bys around critical telecom components, including antennas, RRUs, feeders, masts, cables, mounts, cable trays, and tower junctions",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "capture high-resolution stills and 4K/8K videos with 70–90% image overlap to enable accurate photogrammetry or 3D modelling",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "operate and calibrate advanced payloads such as thermal sensors (e.g., for hotspot detection) and LiDAR (e.g., for tower lean analysis)",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "adjust camera tilt, zoom, and frame rate based on inspection targets and lighting conditions",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "annotate captured visuals in real-time using onboard mapping or inspection software to flag defects or inspection markers.",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "maintain consistent flight telemetry tracking, including altitude, GPS coordinates, IMU status, and battery discharge rate",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure safety, signal integrity, and quality data capture",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "avoid signal disruption to operational telecom networks during drone operation",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "implement failsafe protocols such as pause, return-to-home, or emergency landing in response to system alerts or environmental hazards",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "follow collision avoidance protocols when flying in proximity to tower components or cables",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "perform controlled landing at the designated take-off point after completing data collection",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "back up flight data immediately post- mission and label data with metadata (site, time, GPS, sensor type)",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6801",
+      "nos_title": ".Collect and Analyse",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. data classification protocols for organising captured content by component or inspection",
+        "KU2. basics of structural and RF component layouts of telecom towers.",
+        "KU3. common defects in telecom infrastructure and their visual indicators",
+        "KU4. basics of photogrammetry, orthomosaic creation, and 3D reconstruction",
+        "KU5. use of thermal imagery and interpretation of thermal gradients",
+        "KU6. image processing tools used for file conversion, enhancement, and analysis",
+        "KU7. principles of LiDAR scanning and digital surface modeling",
+        "KU8. file storage protocols, data integrity checks, and version control practices",
+        "KU9. metadata relevance including geolocation, timestamps, and flight altitude.",
+        "KU10. standards and tolerances in telecom structural inspection (as per OEM or IS codes)",
+        "KU11. tools for visual annotation, geotagging, and anomaly marking",
+        "KU12. regulatory norms around inspection documentation and evidence capture",
+        "KU13. comparative analysis techniques against historical records",
+        "KU14. image overlap, resolution, and clarity parameters for precise interpretation",
+        "KU15. integration of flight telemetry data into inspection mapping",
+        "KU16. use of automation or AI-driven inspection analytics",
+        "KU17. impact of structural anomalies on telecom signal strength or tower stability",
+        "KU18. data privacy and cyber security protocols for sensitive infrastructure visuals"
+      ],
+      "gs": [
+        "GS1. apply analytical thinking to interpret inspection visuals accurately",
+        "GS2. communicate findings clearly with engineers and project stakeholders",
+        "GS3. manage digital records systematically and maintain data confidentiality",
+        "GS4. prioritise defects based on severity and telecom safety impact",
+        "GS5. collaborate with drone pilots, ai tool operators, and inspection reviewers.",
+        "GS6. solve problems related to data corruption, unreadable files, or low-quality imager",
+        "GS7. adapt to new inspection software or analytical tools",
+        "GS8. maintain attention to detail while reviewing large volumes of image/sensor data",
+        "GS9. manage time efficiently during post-inspection analysis and reporting"
+      ],
+      "modules": [
+        {
+          "module_title": "Retrieve and organise inspection data",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "retrive captured data from drone storage or cloud-based sync tools, including images, videos, thermal data or lidar files",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "verify file integrity and naming conventions based on inspection logs or site IDs",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "categorise visual and sensor data according to tower sections (e.g., base, mid, apex) and asset types",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "use inspection software or GIS tools to geotag images and synchronise with flight telemetry",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "convert raw drone footage into usable formats using image processing or media conversion software",
+              "sequence_order": 5,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "compress high-resolution data without compromising critical inspection visibility",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "store raw data in a secure, access-controlled repository as per organisational protocols",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "backup original data and create a working copy for processing and review",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "apply metadata tagging for easy indexing, version control, and retrieval of inspection files",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Analyse visual and sensor data",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "zoom in on high-resolution images to identify anomalies such as rust, tilt, cracks, or missing components.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "detect alignment issues or component dislocation using visual triangulation or 3D overlay tools",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "analyse thermal images to detect overheating cables, modules, or potential fire hazards",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "interpret LiDAR point clouds for assessing tower verticality, lean, or vegetation encroachment",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "detect signs of bird nesting, obstruction, cable sagging, or antenna misalignment",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "assess the condition of bolts, ladders, grounding systems, clamps, and other accessories",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "flag images or frames with anomalies for further technical review",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC17",
+              "pc_description": "compile deviation data and classify issues by severity and potential operational impact",
+              "sequence_order": 8,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "validate GPS coordinates of anomalies against telecom asset location databases",
+              "sequence_order": 9,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "use AI/ML-based anomaly detection tools where available to cross-verify manual findings",
+              "sequence_order": 10,
+              "theory_marks": null,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "document unresolved or unclear defects for on-site validation if required",
+              "sequence_order": 11,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC21",
+              "pc_description": "identify patterns across inspections that may indicate recurring issues or environmental damage",
+              "sequence_order": 12,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC22",
+              "pc_description": "summarise analytical findings in alignment with project scope, client requirements, and telecom standards",
+              "sequence_order": 13,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Compare and interpret data for infrastructure assessment",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "match captured data with tower schematics, RF layout drawings, and mounting plans",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC24",
+              "pc_description": "validate component positioning and angular orientations against engineering design",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC25",
+              "pc_description": "interpret deviation trends in comparison to previous inspection cycles",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC26",
+              "pc_description": "use GIS or CAD software to map infrastructure conditions geographically",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC27",
+              "pc_description": "assess if detected defects impact RF coverage, mechanical stability, or safety compliance",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC28",
+              "pc_description": "determine the urgency of repair or replacement based on the severity of the findings",
+              "sequence_order": 6,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC29",
+              "pc_description": "flag high-risk anomalies for immediate escalation",
+              "sequence_order": 7,
+              "theory_marks": 1,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC30",
+              "pc_description": "collaborate with structural or RF engineers to interpret complex or ambiguous findings",
+              "sequence_order": 8,
+              "theory_marks": null,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC31",
+              "pc_description": "generate condition indexes or grading scores based on standard inspection frameworks",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6802",
+      "nos_title": ".Generate Inspection",
+      "sequence_order": 4,
+      "is_generic": false,
+      "kus": [
+        "KU1. components and structure of a standard telecom infrastructure inspection report",
+        "KU2. organisational formats and templates for reporting and documentation",
+        "KU3. use of visual annotation tools to highlight issues or observations in imagery",
+        "KU4. data mapping tools and modelling software used for generating 2D and 3D outputs",
+        "KU5. basics of photogrammetry, LiDAR, and GIS-based modelling techniques",
+        "KU6. formats and interoperability requirements for sharing reports and models",
+        "KU7. quality assurance parameters for technical reports",
+        "KU8. metadata elements, including timestamps, coordinates, and sensor data",
+        "KU9. confidentiality and compliance norms in the documentation",
+        "KU10. best practices for version control and data archiving",
+        "KU11. communication protocols with internal and external stakeholders",
+        "KU12. inspection-specific terminology and technical nomenclature",
+        "KU13. risk classification standards used in telecom inspections"
+      ],
+      "gs": [
+        "GS1. communicate inspection outcomes clearly in written and visual formats.",
+        "GS2. use digital tools to compile, format, and edit reports or models.",
+        "GS3. organise data and content systematically for quick access and clarity.",
+        "GS4. apply critical thinking to classify and prioritise defects or anomalies.",
+        "GS5. manage time efficiently to complete and submit reports within timelines.",
+        "GS6. collaborate with engineers, clients, and vendors during report generation.",
+        "GS7. maintain attention to detail while editing, annotating, or validating content.",
+        "GS8. adapt report content and visual outputs based on client or project needs."
+      ],
+      "modules": [
+        {
+          "module_title": "Compile and structure inspection reports",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "compile inspection findings with corresponding visuals and metadata into a structured reporting format",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "incorporate annotated images or video snapshots to highlight identified defects or anomalies",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "include geo-coordinates, timestamps, and environmental conditions relevant to the inspection",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "summarise infrastructure health condition and highlight deviations from design specifications",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "classify and prioritise issues based on severity and potential risk to telecom operations",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "recommend corrective actions based on defect types and organisational protocols",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "include comparative references with past inspections or standard benchmarks",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "use standardised reporting formats approved by the organisation or client",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 1,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "proofread reports for accuracy, consistency, and clarity before submission",
+              "sequence_order": 9,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "customise reports based on client requirements, scope, or inspection type",
+              "sequence_order": 10,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Generate and integrate visual models",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "convert captured data into 2D maps, orthophotos, or visual overlays",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "generate 3D models or digital twins of telecom towers using photogrammetry or LiDAR data",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "stitch images using mapping software to create continuous panoramic views or site overviews",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "overlay RF layout diagrams or structural blueprints onto drone visuals for better analysis",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "annotate models with defect locations and corrective action markers",
+              "sequence_order": 5,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "integrate thermal or multispectral data into visual models when applicable",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "Maintain documentation and communication records",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "maintain inspection records, flight logs, and checklists in both digital and physical formats",
+              "sequence_order": 1,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC18",
+              "pc_description": "log communication with clients, stakeholders, or third-party evaluators",
+              "sequence_order": 2,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC19",
+              "pc_description": "ensure all documentation meets organisational, regulatory, and audit standards",
+              "sequence_order": 3,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC20",
+              "pc_description": "archive reports and models in secured repositories for future reference or analysis",
+              "sequence_order": 4,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "TEL/N6292",
+      "nos_title": ".Implement safety",
+      "sequence_order": 5,
+      "is_generic": false,
+      "kus": [
+        "KU1. applicable national and regional aviation regulations relevant to drone operations.",
+        "KU2. organisational policies on health, safety, and environmental (HSE) compliance.",
+        "KU3. risk assessment methodologies in the context of drone operations.",
+        "KU4. common safety hazards in drone handling, flight, and operations.",
+        "KU5. emergency procedures for various operational incidents such as loss of control or crash.",
+        "KU6. importance of weather data and terrain information in flight safety.",
+        "KU7. documentation and reporting requirements for compliance tracking.",
+        "KU8. data protection and privacy considerations while handling sensitive information.",
+        "KU9. protocols for internal and external safety audits.",
+        "KU10. use of digital tools to log, monitor, and analyse safety and compliance data.",
+        "KU11. role of communication and training in maintaining operational safety."
+      ],
+      "gs": [
+        "GS1. communicate safety and compliance guidelines effectively to team members.",
+        "GS2. prioritise tasks during emergencies to ensure quick and safe response.",
+        "GS3. collaborate with internal teams and regulatory authorities to resolve compliance gaps.",
+        "GS4. maintain accuracy and attention to detail in documentation and recordkeeping.",
+        "GS5. apply critical thinking to identify risks and recommend proactive safety measures.",
+        "GS6. foster a positive and responsible safety culture in the workplace.",
+        "GS7. stay updated on evolving safety standards and regulations."
+      ],
+      "modules": [
+        {
+          "module_title": "Identify and monitor safety risks in drone operations",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "identify and assess potential safety risks associated with drone related activities, including take-off, landing, and payload handling.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "monitor weather conditions and environmental hazards that could impact drone operations.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure drones are deployed in accordance with safety protocols and organisational procedures.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 2,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "verify that drone operators and support staff follow personal protective and operational safety measures.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "maintain updated records of safety checks, incidents, and corrective actions taken.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "report safety breaches, near misses, and unsafe practices to designated authorities within the organisation.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "review incident reports to recommend preventive measures and reduce operational risks.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "coordinate with relevant departments to ensure emergency response plans are in place and communicated.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Ensure regulatory and organisational compliance",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "record and report safety breaches, near misses, and accidents using organisational protocols.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "ensure adherence to national and local airspace regulations and drone operation guidelines.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "verify that drone equipment meets licensing, certification, and airworthiness requirements.",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "monitor compliance with data privacy and security standards during drone operations.",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "maintain accurate records of drone usage, flight paths, and logs for regulatory audit readiness.",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "update internal teams on changes in drone regulations or organisational safety policies.",
+              "sequence_order": 6,
+              "theory_marks": 1,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC15",
+              "pc_description": "facilitate regular compliance audits and inspections of the drones.",
+              "sequence_order": 7,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC16",
+              "pc_description": "promote a safety and compliance culture through regular briefings and training support.",
+              "sequence_order": 8,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

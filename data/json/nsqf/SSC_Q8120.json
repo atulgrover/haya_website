@@ -1,0 +1,520 @@
+{
+  "schema_version": "nsqf-curriculum-v1",
+  "qp_code": "SSC/Q8120",
+  "qp_name": "SSC_Q8120",
+  "clean_code": "SSC_Q8120",
+  "total_pages": 32,
+  "source_target": "Assessment Criteria Tables",
+  "compiled_at": "2026-08-19T10:03:32.156Z",
+  "stats": {
+    "total_nos": 3,
+    "total_modules": 12,
+    "total_pcs": 34,
+    "total_kus": 51,
+    "total_gs": 36,
+    "generic_nos_filtered": 1
+  },
+  "nos_units": [
+    {
+      "nos_code": "SSC/N8135",
+      "nos_title": ".Identify, tag, and",
+      "sequence_order": 1,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies, procedures, and guidelines that relate to labeling and sharing",
+        "KU2. organizational policies, procedures, and guidelines for documentation and cross-functional",
+        "KU3. data governance policies and operations which help maintain the data quality and",
+        "KU4. different data sources, formats, and how to access documents and information from data",
+        "KU5. which stakeholders to involve when defining the data ontologies and metadata",
+        "KU6. the range of standard tools and templates available and how to use them",
+        "KU7. basic familiarity with Machine Learning and AI paradigms such as text classification, entity",
+        "KU8. knowledge of business contexts and use case outcomes to characterize and define the",
+        "KU9. decent computer literacy and experience",
+        "KU10. basic knowledge on running SQL and R queries",
+        "KU11. knowledge of different types of data annotations and labeling techniques/models",
+        "KU12. knowledge of dialog models/conversational analysis",
+        "KU13. familiarity with analyzing and organizing different data types with annotations",
+        "KU14. saving, exporting, and keeping track of annotations in a data repository",
+        "KU15. knowledge of common output label formats",
+        "KU16. knowledge of different software tools and platforms used in the annotation",
+        "KU17. proficiency in creating spreadsheets"
+      ],
+      "gs": [
+        "GS1. ask for clarification and advice from appropriate people",
+        "GS2. listen effectively and orally communicate information accurately",
+        "GS3. create accurate and well-written documents/reports",
+        "GS4. plan and organize the work to achieve targets and deadlines",
+        "GS5. analyze data and understand its implications on business",
+        "GS6. adapt and react to changing priorities quickly and efficiently",
+        "GS7. apply balanced judgments and intuition to different situations",
+        "GS8. high attention to detail coupled with the ability to see the big picture",
+        "GS9. check your work is complete and free from errors",
+        "GS10. contribute to the quality of teamwork",
+        "GS11. work independently and collaboratively",
+        "GS12. understand and implement feedback effectively"
+      ],
+      "modules": [
+        {
+          "module_title": "Requirements Gathering",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "interact with data science and engineering teams to contribute to overall project development",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "evaluate business contexts and identify the true definition of the data being annotated for specific use cases",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 6,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Data Curation",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "identify the primary types of already determined data, relevant to the project (text, audio, image, and video)",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "search for data sources and data sets according to a defined keyword",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 4,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "garner the pre-processed data after data cleaning and profiling from the data science team",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Analysis & Categorization",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "identify data sensitivities (PHI, PII, etc.) for masked and encrypted data",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "classify the different data elements as sentiments, semantics, intent, and named entities",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Data tagging and labelling",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "recognize relevant annotation methods based on the data types, elements, ML algorithms being used, the business case and its expected outcomes",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC9",
+              "pc_description": "identify and analyze the domain vocabulary, language, format, and category of data intended to be used",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "label the data accordingly as per the type of annotation and output required",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "ensure proper organization and formatting of the training data",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Handling ambiguties",
+          "sequence_order": 5,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Address uncertain cases where it may be unclear how to annotate certain elements, often requiring consultation with supervisors or reference to more comprehensive guidelines.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Software utilization",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Use specialized annotation tools and software to perform tagging and labeling efficiently",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Quality Control",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Ensure accuracy in labeling by reviewing annotations and performing checks to ensure consistency",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8136",
+      "nos_title": ".Carry-out effective",
+      "sequence_order": 2,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies, procedures, and guidelines that relate to labeling and sharing",
+        "KU2. organizational policies, procedures, and guidelines for documentation and cross-functional",
+        "KU3. data governance policies and operations which help maintain the data quality and",
+        "KU4. different data sources, formats, and how to access documents and information from data",
+        "KU5. which stakeholders to involve when defining the data ontologies and metadata",
+        "KU6. the range of standard tools and templates available and how to use them",
+        "KU7. basic familiarity with Machine Learning and AI paradigms such as text classification, entity",
+        "KU8. knowledge of business contexts and use case outcomes to characterize and define the",
+        "KU9. decent computer literacy and experience",
+        "KU10. basic knowledge on running SQL and R queries",
+        "KU11. knowledge of different types of data annotations and labeling techniques/models",
+        "KU12. knowledge of dialog models/conversational analysis",
+        "KU13. familiarity with analyzing and organizing different data types with annotations",
+        "KU14. saving, exporting, and keeping track of annotations in a data repository",
+        "KU15. knowledge of common output label formats",
+        "KU16. knowledge of different software tools and platforms used in the annotation",
+        "KU17. proficiency in creating spreadsheets"
+      ],
+      "gs": [
+        "GS1. ask for clarification and advice from appropriate people",
+        "GS2. listen effectively and orally communicate information accurately",
+        "GS3. create accurate and well-written documents/reports",
+        "GS4. plan and organize the work to achieve targets and deadlines",
+        "GS5. analyze data and understand its implications on business",
+        "GS6. adapt and react to changing priorities quickly and efficiently",
+        "GS7. apply balanced judgments and intuition to different situations",
+        "GS8. high attention to detail coupled with the ability to see the big picture",
+        "GS9. check your work is complete and free from errors",
+        "GS10. contribute to the quality of teamwork",
+        "GS11. work independently and collaboratively",
+        "GS12. understand and implement feedback effectively"
+      ],
+      "modules": [
+        {
+          "module_title": "Corrective Actions & Feedback",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "Develop detailed documentation that outlines how to annotate various elements, including examples and edge cases.",
+              "sequence_order": 1,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "Define the metrics such as precision, recall, and F1-score that help evaluate the quality of the annotations.",
+              "sequence_order": 2,
+              "theory_marks": 3,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            }
+          ]
+        },
+        {
+          "module_title": "Review Annotation quality",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "Randomly selecting samples of annotated data and reviewing them against the established guidelines to check for accuracy.",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "Ensure that annotations are consistent across similar instances. For example, if two annotators label similar images differently, this inconsistency needs to be addressed.",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 5,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC5",
+              "pc_description": "Employ and follow pre-defined methods to ensure accuracy of annotation models and techniques",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "Review the annotated data and conduct periodic validations adhering to all the required standards",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 2
+            },
+            {
+              "pc_code": "PC7",
+              "pc_description": "Apply or execute cross-checking mechanisms to ensure wrongful labelling is not performed",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC8",
+              "pc_description": "Adhere to the defined data quality standards to secure the ground data and annotated data from corruption and leakage",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        },
+        {
+          "module_title": "Corrective Actions & Feedback",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Provide inputs to data engineers on tooling and processes for more efficient labeling, and to improve data quality",
+              "sequence_order": 1,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC10",
+              "pc_description": "Execute methods to identify misclassified content",
+              "sequence_order": 2,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC11",
+              "pc_description": "Suggest changes in annotation schemes if and when required",
+              "sequence_order": 3,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC12",
+              "pc_description": "Help create open-source datasets with the right annotation for an unbiased evaluation of annotation models",
+              "sequence_order": 4,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC13",
+              "pc_description": "Recommend improvements to annotation tools or workflows to enhance efficiency and accuracy",
+              "sequence_order": 5,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            },
+            {
+              "pc_code": "PC14",
+              "pc_description": "Assist in evaluating new data annotation platforms or toolkits, ensuring they align with the project’s technical requirements and annotation standards",
+              "sequence_order": 6,
+              "theory_marks": 2,
+              "practical_marks": 3,
+              "project_marks": null,
+              "viva_marks": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nos_code": "SSC/N8137",
+      "nos_title": ".Review, document",
+      "sequence_order": 3,
+      "is_generic": false,
+      "kus": [
+        "KU1. organizational policies, procedures, and guidelines that relate to labeling and sharing",
+        "KU2. organizational policies, procedures, and guidelines for documentation and cross-functional",
+        "KU3. data governance policies and operations which help maintain the data quality and",
+        "KU4. different data sources, formats, and how to access documents and information from data",
+        "KU5. which stakeholders to involve when defining the data ontologies and metadata",
+        "KU6. the range of standard tools and templates available and how to use them",
+        "KU7. basic familiarity with Machine Learning and AI paradigms such as text classification, entity",
+        "KU8. knowledge of business contexts and use case outcomes to characterize and define the",
+        "KU9. decent computer literacy and experience",
+        "KU10. basic knowledge on running SQL and R queries",
+        "KU11. knowledge of different types of data annotations and labeling techniques/models",
+        "KU12. knowledge of dialog models/conversational analysis",
+        "KU13. familiarity with analyzing and organizing different data types with annotations",
+        "KU14. saving, exporting, and keeping track of annotations in a data repository",
+        "KU15. knowledge of common output label formats",
+        "KU16. knowledge of different software tools and platforms used in the annotation",
+        "KU17. proficiency in creating spreadsheets"
+      ],
+      "gs": [
+        "GS1. ask for clarification and advice from appropriate people",
+        "GS2. listen effectively and orally communicate information accurately",
+        "GS3. create accurate and well-written documents/reports",
+        "GS4. plan and organize the work to achieve targets and deadlines",
+        "GS5. analyze data and understand its implications on business",
+        "GS6. adapt and react to changing priorities quickly and efficiently",
+        "GS7. apply balanced judgments and intuition to different situations",
+        "GS8. high attention to detail coupled with the ability to see the big picture",
+        "GS9. check your work is complete and free from errors",
+        "GS10. contribute to the quality of teamwork",
+        "GS11. work independently and collaboratively",
+        "GS12. understand and implement feedback effectively"
+      ],
+      "modules": [
+        {
+          "module_title": "Data Management",
+          "sequence_order": 1,
+          "pcs": [
+            {
+              "pc_code": "PC1",
+              "pc_description": "maintain documentation of all solved/unsolved issues and errors",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC2",
+              "pc_description": "help build data ontology to provide the model with as accurate annotated data as possible",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC3",
+              "pc_description": "ensure the existence and maintenance of a balanced dataset to keep track and logs of data sets",
+              "sequence_order": 3,
+              "theory_marks": 5,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 4
+            },
+            {
+              "pc_code": "PC4",
+              "pc_description": "provide the linkage between the metadata and the annotations to depict the data association",
+              "sequence_order": 4,
+              "theory_marks": 5,
+              "practical_marks": 9,
+              "project_marks": null,
+              "viva_marks": 4
+            }
+          ]
+        },
+        {
+          "module_title": "Issue Tracking & Reporting",
+          "sequence_order": 2,
+          "pcs": [
+            {
+              "pc_code": "PC5",
+              "pc_description": "obtain real-time feedback and issue tracking during annotation process",
+              "sequence_order": 1,
+              "theory_marks": 5,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 3
+            },
+            {
+              "pc_code": "PC6",
+              "pc_description": "provide timely summarization and reporting, as per the defined templates on annotated data",
+              "sequence_order": 2,
+              "theory_marks": 5,
+              "practical_marks": 8,
+              "project_marks": null,
+              "viva_marks": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
