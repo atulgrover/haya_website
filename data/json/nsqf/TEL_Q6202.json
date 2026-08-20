@@ -5,7 +5,7 @@
   "clean_code": "TEL_Q6202",
   "total_pages": 59,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.801Z",
+  "compiled_at": "2026-08-20T13:20:53.410Z",
   "stats": {
     "total_nos": 7,
     "total_modules": 27,
@@ -17,32 +17,32 @@
   "nos_units": [
     {
       "nos_code": "TEL/N6208",
-      "nos_title": ".Undertake Site",
+      "nos_title": "Undertake Site Acceptance Testing",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
         "KU1. standardized Site Acceptance Testing (SAT) checklists and critical punch points for assessing",
         "KU2. the functionality and usage of testing equipment such as E1 tester, Ethernet tester, VSWR",
         "KU3. the types of login cables (RJ45, RS232, Hi-Speed USB) and their applications in site testing",
-        "KU4. software types and versions for BTS and related network equipment, including necessary",
+        "KU4. software types and versions for BTS and related network equipment, including necessary configuration tools",
         "KU5. the operational characteristics of active network equipment such as Microwave, BTS (indoor",
         "KU6. passive infrastructure components, including DG sets, PIU panels, transformers, SMPS, air",
         "KU7. environmental and safety compliance factors affecting site functionality, such as grounding,",
-        "KU8. network performance parameters, including signal strength, interference levels, and",
-        "KU9. the applicable documentation and reporting standards to ensure alignment with regulatory",
+        "KU8. network performance parameters, including signal strength, interference levels, and equipment latency",
+        "KU9. the applicable documentation and reporting standards to ensure alignment with regulatory and operational requirements",
         "KU10. industry best practices and emerging trends in network deployment, testing methodologies,"
       ],
       "gs": [
         "GS1. interpret technical documents such as checklists, site layouts, and testing procedures to",
         "GS2. utilize digital tools and software efficiently for testing, data logging, and result analysis",
-        "GS3. optimize resource utilization by managing test equipment, scheduling inspections, and",
+        "GS3. optimize resource utilization by managing test equipment, scheduling inspections, and reducing redundant efforts",
         "GS4. work effectively under pressure, managing multiple tasks while maintaining testing accuracy",
         "GS5. collaborate with cross-functional teams, including project engineers, field technicians, and",
         "GS6. take initiative in troubleshooting unexpected site issues and proposing alternative solutions",
         "GS7. maintain structured records of test results, non-compliance issues, and corrective actions for",
-        "GS8. follow updates in technology advancements in network infrastructure, testing",
-        "GS9. ensure compliance with safety regulations while performing site acceptance testing to",
-        "GS10. adapt to evolving testing standards and network protocols, applying new methodologies to"
+        "GS8. follow updates in technology advancements in network infrastructure, testing methodologies, and automation tools",
+        "GS9. ensure compliance with safety regulations while performing site acceptance testing to prevent hazards and system failures",
+        "GS10. adapt to evolving testing standards and network protocols, applying new methodologies to enhance efficiency and accuracy"
       ],
       "modules": [
         {
@@ -178,7 +178,7 @@
     },
     {
       "nos_code": "TEL/N6209",
-      "nos_title": ".Perform Preventive",
+      "nos_title": "Perform Preventive and Corrective Maintenance at Radio",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
@@ -187,24 +187,24 @@
         "KU3. common network alarms, alarm categories, and predefined SLAs for fault resolution",
         "KU4. the proper handling and connectivity of login cables (RJ45, RS232, Hi-Speed USB) for site",
         "KU5. spare management, repair tracking, and return processes for faulty telecom equipment",
-        "KU6. the risks associated with non-compliance to maintenance schedules and operational",
-        "KU7. the functionality of passive infrastructure components, including DG sets, PIU panels,",
-        "KU8. the importance of site earthing, grounding pit maintenance, and mitigation of electrical",
+        "KU6. the risks associated with non-compliance to maintenance schedules and operational procedures",
+        "KU7. the functionality of passive infrastructure components, including DG sets, PIU panels, transformers, SMPS, HVAC, and battery banks",
+        "KU8. the importance of site earthing, grounding pit maintenance, and mitigation of electrical hazards",
         "KU9. the working principles and usage of test equipment, including E1 testers, ethernet testers,",
         "KU10. escalation protocols and incident reporting procedures for unresolved maintenance issues",
-        "KU11. the applicable documentation requirements, including regulatory compliance records and"
+        "KU11. the applicable documentation requirements, including regulatory compliance records and operational logs"
       ],
       "gs": [
-        "GS1. interpret and analyze technical documents, network logs, and manufacturer manuals for",
+        "GS1. interpret and analyze technical documents, network logs, and manufacturer manuals for troubleshooting",
         "GS2. monitor and assess network performance through alarm reports and real-time data analytics",
         "GS3. organize and prioritize maintenance tasks effectively in high-pressure scenarios",
-        "GS4. communicate maintenance plans, issues, and resolutions effectively with cross-functional",
+        "GS4. communicate maintenance plans, issues, and resolutions effectively with cross-functional teams",
         "GS5. utilize digital tools and telecom software for site diagnostics and performance tracking",
         "GS6. adapt to new technologies and evolving maintenance methodologies in telecom operations",
-        "GS7. work collaboratively with vendors, infrastructure teams, and remote NOC support for",
-        "GS8. implement best practices for spare management and inventory control to minimize",
+        "GS7. work collaboratively with vendors, infrastructure teams, and remote NOC support for seamless operations",
+        "GS8. implement best practices for spare management and inventory control to minimize downtime",
         "GS9. escalate critical issues promptly and follow structured problem-resolution frameworks",
-        "GS10. maintain detailed records and documentation in accordance with organizational and"
+        "GS10. maintain detailed records and documentation in accordance with organizational and regulatory standards"
       ],
       "modules": [
         {
@@ -490,7 +490,7 @@
     },
     {
       "nos_code": "TEL/N6210",
-      "nos_title": ".Perform Change",
+      "nos_title": "Perform Change Management at Radio Locations",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
@@ -500,10 +500,10 @@
         "KU4. spare management procedures, including handling, tracking, and returning defective parts",
         "KU5. potential risks, vulnerabilities, and security concerns associated with system changes",
         "KU6. escalation matrix and communication protocols for reporting change-related issues",
-        "KU7. the applicable documentation standards and regulatory requirements for maintaining",
+        "KU7. the applicable documentation standards and regulatory requirements for maintaining change logs and inventory records",
         "KU8. compliance requirements related to safety standards, radio frequency exposure limits, and",
         "KU9. advanced troubleshooting techniques, including log analysis and diagnostic testing for post-",
-        "KU10. impact assessment methodologies for evaluating the effect of infrastructure upgrades on"
+        "KU10. impact assessment methodologies for evaluating the effect of infrastructure upgrades on network performance and capacity"
       ],
       "gs": [
         "GS1. analyze network data, logs, and performance metrics to assess the impact of changes",
@@ -511,11 +511,11 @@
         "GS3. communicate technical details clearly with internal teams, vendors, and stakeholders",
         "GS4. interpret service level agreements (SLAs) and ensure adherence to defined response times",
         "GS5. document processes, issues, and resolutions accurately for future reference and audits",
-        "GS6. adapt to evolving technologies and implement best practices in radio infrastructure",
+        "GS6. adapt to evolving technologies and implement best practices in radio infrastructure management",
         "GS7. apply critical thinking to identify potential risks and develop mitigation strategies",
         "GS8. collaborate efficiently with cross-functional teams to execute and validate changes",
         "GS9. troubleshoot issues systematically using diagnostic tools and historical data",
-        "GS10. maintain a proactive approach to continuous learning and upskilling in emerging telecom"
+        "GS10. maintain a proactive approach to continuous learning and upskilling in emerging telecom technologies"
       ],
       "modules": [
         {
@@ -735,7 +735,7 @@
     },
     {
       "nos_code": "TEL/N6500",
-      "nos_title": ".Undertake Fault",
+      "nos_title": "Undertake Fault Rectification",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
@@ -743,10 +743,10 @@
         "KU2. end-to-end ticketing process, including lifecycle tracking and resolution workflows",
         "KU3. various types of alarms, their impact, and corresponding troubleshooting methodologies",
         "KU4. advanced fault diagnosis techniques, including data analysis and predictive maintenance",
-        "KU5. key functionalities of passive infrastructure elements such as DG sets, PIU panels,",
+        "KU5. key functionalities of passive infrastructure elements such as DG sets, PIU panels, transformers, SMPS, air conditioners, and battery banks",
         "KU6. network topology structures (ring, daisy chain) and their impact on fault localization and",
         "KU7. the importance of Maintenance Operation Protocols (MOPs) for reducing repeat faults",
-        "KU8. the characteristics and performance parameters of service networks such as GSM, WCDMA,",
+        "KU8. the characteristics and performance parameters of service networks such as GSM, WCDMA, and LTE",
         "KU9. interpretation and application of VSWR and E1 test results for fault localization",
         "KU10. industry best practices in documentation, regulatory compliance, and data security",
         "KU11. record-keeping standards and consequences of poor documentation management"
@@ -948,29 +948,29 @@
     },
     {
       "nos_code": "TEL/N6501",
-      "nos_title": ".Undertake",
+      "nos_title": "Undertake Configuration Changes, Upgrades and Node Back-",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [
-        "KU1. the Standard operating procedures (SOPs) for change management, upgrade, and backup",
-        "KU2. incident escalation protocols for system failures, security breaches, and environmental",
-        "KU3. the functionalities of key network elements, including BSC, BTS, transmission links, and",
-        "KU4. operational aspects of passive infrastructure components such as DG sets, power systems,",
-        "KU5. Network Monitoring System (NMS) functions for real-time fault detection and performance",
-        "KU6. risks associated with unplanned changes, non-compliance with standard procedures, and",
-        "KU7. industry best practices and technological advancements in BSS network upgrades and",
+        "KU1. the Standard operating procedures (SOPs) for change management, upgrade, and backup activities",
+        "KU2. incident escalation protocols for system failures, security breaches, and environmental hazards",
+        "KU3. the functionalities of key network elements, including BSC, BTS, transmission links, and related infrastructure",
+        "KU4. operational aspects of passive infrastructure components such as DG sets, power systems, air conditioning, and battery backup systems",
+        "KU5. Network Monitoring System (NMS) functions for real-time fault detection and performance tracking",
+        "KU6. risks associated with unplanned changes, non-compliance with standard procedures, and improper backup management",
+        "KU7. industry best practices and technological advancements in BSS network upgrades and configuration management",
         "KU8. cybersecurity measures to ensure network integrity during configuration changes",
         "KU9. compliance requirements, including data privacy and telecommunications regulations",
         "KU10. root cause analysis techniques for identifying and mitigating network failures"
       ],
       "gs": [
-        "GS1. interpret and analyze reports, system logs, and performance metrics to make informed",
+        "GS1. interpret and analyze reports, system logs, and performance metrics to make informed decisions",
         "GS2. manage and prioritize tasks effectively in high-pressure environments to meet deadlines",
         "GS3. communicate technical details clearly with internal and external stakeholders in English and",
         "GS4. collaborate with cross-functional teams, including NOC, field engineers, and vendor support",
         "GS5. use diagnostic tools and software applications to troubleshoot and resolve configuration-",
-        "GS6. adapt to evolving technologies, protocols, and industry trends to enhance system",
-        "GS7. maintain meticulous documentation of changes, backups, and system performance for audit",
+        "GS6. adapt to evolving technologies, protocols, and industry trends to enhance system performance",
+        "GS7. maintain meticulous documentation of changes, backups, and system performance for audit and compliance purposes",
         "GS8. identify potential risks and develop proactive solutions to minimize service disruptions",
         "GS9. follow cybersecurity best practices while handling network configurations and data backups",
         "GS10. train junior team members on change management processes and industry best practices"
@@ -1124,7 +1124,7 @@
     },
     {
       "nos_code": "TEL/N9109",
-      "nos_title": ".Follow sustainable",
+      "nos_title": "Follow sustainable practices in telecom infrastructure",
       "sequence_order": 6,
       "is_generic": false,
       "kus": [
@@ -1296,7 +1296,7 @@
     },
     {
       "nos_code": "TEL/N9104",
-      "nos_title": ".Manage Work,",
+      "nos_title": "Manage Work, Resources and Safety at workplace",
       "sequence_order": 7,
       "is_generic": false,
       "kus": [
@@ -1312,7 +1312,7 @@
         "KU10. meaning of hazard, different types of health and safety hazards found in the workplace, risks",
         "KU11. procedures to report breaches in health, safety and security",
         "KU12. ways of managing resources and material efficiently",
-        "KU13. ways to recognize common electrical problems and common practices of conserving"
+        "KU13. ways to recognize common electrical problems and common practices of conserving electricity"
       ],
       "gs": [
         "GS1. explore various pathways to expand one's own learning skills and abilities",

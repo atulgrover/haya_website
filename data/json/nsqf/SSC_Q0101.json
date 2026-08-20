@@ -5,10 +5,10 @@
   "clean_code": "SSC_Q0101",
   "total_pages": 20,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.026Z",
+  "compiled_at": "2026-08-20T13:20:52.736Z",
   "stats": {
     "total_nos": 2,
-    "total_modules": 21,
+    "total_modules": 26,
     "total_pcs": 35,
     "total_kus": 10,
     "total_gs": 9,
@@ -17,17 +17,17 @@
   "nos_units": [
     {
       "nos_code": "SSC/N0108",
-      "nos_title": ".Manage IT Service",
+      "nos_title": "Manage IT Service Requests and Incident Resolution",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
         "KU1. the organizational procedures and service workflows related to handling IT support requests",
-        "KU2. the categories of commonly encountered IT issues such as hardware malfunctions, software",
+        "KU2. the categories of commonly encountered IT issues such as hardware malfunctions, software errors, login problems, and mobile device troubleshooting",
         "KU3. how to interpret system alerts and service tickets to assess the urgency and scope of the",
-        "KU4. how to use IT helpdesk tools, ticketing systems, and knowledge repositories for logging,",
+        "KU4. how to use IT helpdesk tools, ticketing systems, and knowledge repositories for logging, tracking, and resolving incidents",
         "KU5. the communication strategies for engaging with users, including ways to simplify technical",
         "KU6. how to perform basic system checks, configure device settings, support application updates,",
-        "KU7. the standard operating procedures for escalating unresolved or complex incidents to",
+        "KU7. the standard operating procedures for escalating unresolved or complex incidents to relevant technical or managerial teams",
         "KU8. how to record, update, and maintain accurate documentation of incidents and resolutions in",
         "KU9. the role of generative AI tools in support environments for automating response drafting,",
         "KU10. how to ensure secure and responsible use of AI tools, including attention to data privacy,"
@@ -204,14 +204,14 @@
     },
     {
       "nos_code": "SSC/N0101",
-      "nos_title": ".Deal remotely with",
+      "nos_title": "SSC/N0101",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Receive and Validate Support Requests",
+          "module_title": "- PC1. monitor and interpret incoming alerts or support requests using designated systems to",
           "sequence_order": 1,
           "pcs": [
             {
@@ -226,7 +226,7 @@
           ]
         },
         {
-          "module_title": "identify potential issues",
+          "module_title": "- PC2. validate the authenticity and urgency of reported issues by cross-verifying alerts and user",
           "sequence_order": 2,
           "pcs": [
             {
@@ -241,7 +241,7 @@
           ]
         },
         {
-          "module_title": "inputs",
+          "module_title": "- PC3. document and log support requests systematically using the organization's tools and",
           "sequence_order": 3,
           "pcs": [
             {
@@ -256,7 +256,7 @@
           ]
         },
         {
-          "module_title": "Diagnose and Resolve Basic Issues",
+          "module_title": "- PC4. gather relevant information from users by employing effective questioning techniques to",
           "sequence_order": 4,
           "pcs": [
             {
@@ -271,7 +271,7 @@
           ]
         },
         {
-          "module_title": "understand the scope of the issue",
+          "module_title": "- PC5. analyze the reported issue and apply appropriate troubleshooting steps based on predefined",
           "sequence_order": 5,
           "pcs": [
             {
@@ -286,7 +286,7 @@
           ]
         },
         {
-          "module_title": "checklists or knowledge bases",
+          "module_title": "- PC6. adjust settings and configure devices (e.g., mobile, OS) to support application use, updates,",
           "sequence_order": 6,
           "pcs": [
             {
@@ -301,7 +301,7 @@
           ]
         },
         {
-          "module_title": "and basic connectivity",
+          "module_title": "- PC7. identify signs of potential security threats (e.g., phishing, malware) and execute basic",
           "sequence_order": 7,
           "pcs": [
             {
@@ -316,7 +316,7 @@
           ]
         },
         {
-          "module_title": "Communication and Escalation",
+          "module_title": "- PC8. communicate technical information clearly and concisely to non-technical users using",
           "sequence_order": 8,
           "pcs": [
             {
@@ -331,7 +331,7 @@
           ]
         },
         {
-          "module_title": "layman-friendly language",
+          "module_title": "- PC9. demonstrate active listening, empathy, and professionalism during user interactions",
           "sequence_order": 9,
           "pcs": [
             {
@@ -342,11 +342,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC10. determine when an issue is beyond scope and initiate escalation by following predefined",
+          "sequence_order": 10,
+          "pcs": [
             {
               "pc_code": "PC10",
               "pc_description": "determine when an issue is beyond scope and initiate escalation by following predefined",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -355,8 +361,8 @@
           ]
         },
         {
-          "module_title": "Documentation and Compliance",
-          "sequence_order": 10,
+          "module_title": "- PC11. record resolution steps, observations, and outcomes using standard templates for future",
+          "sequence_order": 11,
           "pcs": [
             {
               "pc_code": "PC11",
@@ -370,8 +376,8 @@
           ]
         },
         {
-          "module_title": "reference and audits",
-          "sequence_order": 11,
+          "module_title": "- PC12. ensure compliance with internal standards, SLAs, and quality protocols while addressing",
+          "sequence_order": 12,
           "pcs": [
             {
               "pc_code": "PC12",
@@ -385,8 +391,8 @@
           ]
         },
         {
-          "module_title": "Use of Support Tools including AI",
-          "sequence_order": 12,
+          "module_title": "- PC13. leverage IT support platforms and AI-enabled tools to retrieve information, suggest solutions,",
+          "sequence_order": 13,
           "pcs": [
             {
               "pc_code": "PC13",
@@ -400,8 +406,8 @@
           ]
         },
         {
-          "module_title": "and execute resolutions effectively",
-          "sequence_order": 13,
+          "module_title": "- PC14. utilize generative AI tools to generate prompt responses, categorize tickets, and improve",
+          "sequence_order": 14,
           "pcs": [
             {
               "pc_code": "PC14",
@@ -415,8 +421,8 @@
           ]
         },
         {
-          "module_title": "Entrepreneurship",
-          "sequence_order": 14,
+          "module_title": "- PC15. identify sources for arranging money and associated financial and legal challenges",
+          "sequence_order": 15,
           "pcs": [
             {
               "pc_code": "PC15",
@@ -430,8 +436,8 @@
           ]
         },
         {
-          "module_title": "Customer Service",
-          "sequence_order": 15,
+          "module_title": "- PC16. identify different types of customers",
+          "sequence_order": 16,
           "pcs": [
             {
               "pc_code": "PC16",
@@ -441,20 +447,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. identify customer needs and address them appropriately",
+          "sequence_order": 17,
+          "pcs": [
             {
               "pc_code": "PC17",
               "pc_description": "identify customer needs and address them appropriately",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC18",
-              "pc_description": "follow appropriate hygiene and grooming standards",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -463,8 +466,23 @@
           ]
         },
         {
-          "module_title": "Getting ready for apprenticeship & Jobs",
-          "sequence_order": 16,
+          "module_title": "- PC18. follow appropriate hygiene and grooming standards",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "follow appropriate hygiene and grooming standards",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. create a basic biodata",
+          "sequence_order": 19,
           "pcs": [
             {
               "pc_code": "PC19",
@@ -474,20 +492,32 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. search for suitable jobs and apply",
+          "sequence_order": 20,
+          "pcs": [
             {
               "pc_code": "PC20",
               "pc_description": "search for suitable jobs and apply",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. identify and register apprenticeship opportunities as per requirement",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "identify and register apprenticeship opportunities as per requirement",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,

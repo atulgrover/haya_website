@@ -5,7 +5,7 @@
   "clean_code": "ELE_Q7104",
   "total_pages": 46,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:50.058Z",
+  "compiled_at": "2026-08-20T13:20:44.888Z",
   "stats": {
     "total_nos": 4,
     "total_modules": 23,
@@ -17,21 +17,21 @@
   "nos_units": [
     {
       "nos_code": "ELE/N7205",
-      "nos_title": ".Prepare for",
+      "nos_title": "Prepare for installing the BMS",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
         "KU1. the apparatus required for the installation of BMS such as Direct Digital Controller (DDC),",
-        "KU2. the necessary tools, equipment, and Personal Protective Equipment (PPE) required for BMS",
+        "KU2. the necessary tools, equipment, and Personal Protective Equipment (PPE) required for BMS installation",
         "KU3. the importance of ensuring that trained personnel assist with the BMS installation process",
-        "KU4. the process of examining the BMS apparatus before installation to ensure no physical",
+        "KU4. the process of examining the BMS apparatus before installation to ensure no physical damage or malfunctions",
         "KU5. applicable documentation requirements",
         "KU6. the importance of ensuring all the civil works are completed in the building and necessary",
         "KU7. how to prepare the circuit diagram/ shop drawing/ as-built drawings for the installation of",
         "KU8. the importance of ensuring all the outlets related to BMS are accessible and not covered by",
         "KU9. the importance of ensuring the work area is ready and safe to start the installation of BMS",
         "KU10. the process of installation of HVAC equipment as per the BMS installation plan",
-        "KU11. the process of assembling various BMS equipment such as access control, video"
+        "KU11. the process of assembling various BMS equipment such as access control, video surveillance, fire alarms, HVAC control, programmable lighting and electric power"
       ],
       "gs": [
         "GS1. write work-related notes and maintain records",
@@ -220,14 +220,14 @@
     },
     {
       "nos_code": "ELE/N7206",
-      "nos_title": ".Carry out the",
+      "nos_title": "Carry out the installation of BMS",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
         "KU1. the process of installing (PVC)/ (GI) conduits and carry out cabling to connect all the BMS",
-        "KU2. how to install and terminate the temperature sensor, humidity sensor, motorized damper",
+        "KU2. how to install and terminate the temperature sensor, humidity sensor, motorized damper actuators for HVAC equipment",
         "KU3. how to install and terminate the CHW temperature sensor, pressure sensor and flow sensors",
-        "KU4. the process of connecting all the field devices as per the approved BMS point schedule,",
+        "KU4. the process of connecting all the field devices as per the approved BMS point schedule, wiring schedule and schematic diagrams",
         "KU5. how to install the field devices such as outside air humidity sensor, water level sensor,",
         "KU6. the process of installing the VFDs inside AHU control panels as per the approved schematic",
         "KU7. the process of installing conduits and carrying out the wiring for plumbing systems such as",
@@ -747,25 +747,25 @@
     },
     {
       "nos_code": "ELE/N7208",
-      "nos_title": ".Carry out",
+      "nos_title": "Carry out commissioning and testing of BMS",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
         "KU1. the process of pre-commissioning a BMS",
         "KU2. the importance of ensuring that all peripheral devices are mounted and connected",
-        "KU3. the importance of checking the mechanical installations for the correct location and",
-        "KU4. how to check if all the cables are connected correctly inside the control panels/ DDC",
+        "KU3. the importance of checking the mechanical installations for the correct location and application",
+        "KU4. how to check if all the cables are connected correctly inside the control panels/ DDC controllers and to the peripheral devices",
         "KU5. the process of checking the control panel input terminals for interference voltages with the",
-        "KU6. how to check if the Fan Coil Unit (FCU) controllers are installed and connected via",
-        "KU7. the importance of ensuring the installation of all the sensors, DP switches, valves is",
+        "KU6. how to check if the Fan Coil Unit (FCU) controllers are installed and connected via communication bus",
+        "KU7. the importance of ensuring the installation of all the sensors, DP switches, valves is completed both mechanically and electrically",
         "KU8. use of a multimeter to test all control cables",
-        "KU9. the process of commissioning DDC panels including the installation of relevant DDC",
+        "KU9. the process of commissioning DDC panels including the installation of relevant DDC controller application software",
         "KU10. the process of testing the digital input/ output and analogue input/ output",
         "KU11. the process of commissioning the Fan Coil Unit (FCU)",
-        "KU12. the importance of checking the network communication between the BMS servers,",
+        "KU12. the importance of checking the network communication between the BMS servers, workstations, DDC Panels, LON to IP converters (LIP) and Building Automation and Control",
         "KU13. the process of testing the sequence of operation according to changes in the field devices",
         "KU14. the process of checking the printer and alarms for correct functioning",
-        "KU15. how to check that the communication link is up between the servers/ workstations and",
+        "KU15. how to check that the communication link is up between the servers/ workstations and printers",
         "KU16. how to check the third-party system interface connectivity"
       ],
       "gs": [
@@ -1106,7 +1106,7 @@
     },
     {
       "nos_code": "ELE/N7207",
-      "nos_title": ".Carry out repair and",
+      "nos_title": "Carry out repair and maintenance of BMS",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
@@ -1118,8 +1118,8 @@
         "KU6. the process of cleaning the valve actuators, damper actuators and sensors",
         "KU7. the process of re-calibrating all sensors, transducers, valve start points and actuator travel",
         "KU8. the process of replacing the worn out or damaged field devices",
-        "KU9. how to check settings, ratings and operation of protective devices such as overloads,",
-        "KU10. signs of overheating of components such as contactors, cables, connectors and internal",
+        "KU9. how to check settings, ratings and operation of protective devices such as overloads, residual current devices, circuit breakers and fuses",
+        "KU10. signs of overheating of components such as contactors, cables, connectors and internal temperature within the electrical panels",
         "KU11. the process of re-torqueing the busbar nuts and bolts",
         "KU12. how to check if the electrical panel is earth-bonded correctly",
         "KU13. how to check if the main door electrical isolator is engaged and operational",
@@ -1127,7 +1127,7 @@
         "KU15. the importance of ensuring isolators, relays, contactors and starters are functioning correctly",
         "KU16. the importance of ensuring incoming power supply voltages are within the prescribed limits",
         "KU17. the importance of ensuring status indicators on all panels are functional",
-        "KU18. the importance of ensuring the closure of BMS-related requests/ complaints with timely",
+        "KU18. the importance of ensuring the closure of BMS-related requests/ complaints with timely resolution",
         "KU19. the importance of directing the BMS complaints requiring vendor attention to the concerned",
         "KU20. various records to be maintained regarding the BMS operations"
       ],

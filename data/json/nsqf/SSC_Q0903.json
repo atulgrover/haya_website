@@ -5,7 +5,7 @@
   "clean_code": "SSC_Q0903",
   "total_pages": 37,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.074Z",
+  "compiled_at": "2026-08-20T13:20:52.779Z",
   "stats": {
     "total_nos": 3,
     "total_modules": 8,
@@ -17,16 +17,16 @@
   "nos_units": [
     {
       "nos_code": "SSC/N0958",
-      "nos_title": ".Access API and",
+      "nos_title": "Access API and application for security",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
-        "KU1. fundamentals of application security, including secure coding practices, authentication",
+        "KU1. fundamentals of application security, including secure coding practices, authentication mechanisms, encryption techniques, and security frameworks.",
         "KU2. various application penetration testing methodologies, including static application security",
         "KU3. API security principles, including authentication, authorization, rate limiting, data validation,",
-        "KU4. industry-standard vulnerability assessment tools such as Checkmarx, Veracode, and Snyk,",
+        "KU4. industry-standard vulnerability assessment tools such as Checkmarx, Veracode, and Snyk, and their application in identifying, analyzing, and mitigating security risks.",
         "KU5. Secure infrastructure as code (IaC) principles, ensuring security compliance for Terraform,",
-        "KU6. malware sandboxing techniques for detecting and isolating threats in applications and",
+        "KU6. malware sandboxing techniques for detecting and isolating threats in applications and executing penetration testing using automated scanning technologies.",
         "KU7. threat modeling methodologies to identify potential vulnerabilities and implement security",
         "KU8. best practices for maintaining and documenting security requirements, vulnerability reports,"
       ],
@@ -34,10 +34,10 @@
         "GS1. Analyze and interpret complex security data from vulnerability scanning tools to prioritize",
         "GS2. Apply critical thinking and problem-solving techniques to isolate root causes of vulnerabilities",
         "GS3. Utilize scripting languages such as PowerShell to automate security assessments and enhance",
-        "GS4. Communicate effectively with stakeholders, including developers, security teams, and",
+        "GS4. Communicate effectively with stakeholders, including developers, security teams, and management, to ensure alignment on security requirements and mitigation strategies.",
         "GS5. Maintain meticulous records of application assessments, penetration test results, and security",
-        "GS6. Adapt to emerging security threats, continuously updating knowledge on the latest attack",
-        "GS7. Implement risk-based decision-making strategies, balancing security needs with business",
+        "GS6. Adapt to emerging security threats, continuously updating knowledge on the latest attack vectors, security frameworks, and compliance standards.",
+        "GS7. Implement risk-based decision-making strategies, balancing security needs with business objectives to ensure optimal security measures.",
         "GS8. Work efficiently in cross-functional teams, collaborating with developers, IT administrators,"
       ],
       "modules": [
@@ -288,28 +288,28 @@
     },
     {
       "nos_code": "SSC/N0959",
-      "nos_title": ".Manage application",
+      "nos_title": "Manage application security, hardening and vulnerability",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
-        "KU1. The fundamentals of web server security, including hardening techniques, patch",
+        "KU1. The fundamentals of web server security, including hardening techniques, patch management, and Security Technical Implementation Guides (STIGs).",
         "KU2. The structure and functioning of Active Directory, including security risks and mitigation",
-        "KU3. Threat intelligence methodologies to monitor, detect, and respond to emerging security",
+        "KU3. Threat intelligence methodologies to monitor, detect, and respond to emerging security threats effectively.",
         "KU4. Cloud security principles and compliance best practices for platforms like AWS, Azure, and",
         "KU5. The role of firewalls, intrusion detection/prevention systems (IDS/IPS), and database security",
-        "KU6. IoT security challenges, including encryption, authentication mechanisms, and software",
-        "KU7. Secure Software Development Life Cycle (SDLC) and the importance of integrating security",
+        "KU6. IoT security challenges, including encryption, authentication mechanisms, and software update best practices to mitigate potential vulnerabilities.",
+        "KU7. Secure Software Development Life Cycle (SDLC) and the importance of integrating security testing within Continuous Integration/Continuous Deployment (CI/CD) pipelines.",
         "KU8. Security risks associated with AI/ML models, including bias, adversarial attacks, and ways to"
       ],
       "gs": [
-        "GS1. Conduct security assessments of web applications, databases, and cloud infrastructure to",
-        "GS2. Implement security configurations, patch management policies, and monitoring tools to",
-        "GS3. Analyze threat intelligence reports and customize security assessments based on current",
+        "GS1. Conduct security assessments of web applications, databases, and cloud infrastructure to identify vulnerabilities and compliance gaps.",
+        "GS2. Implement security configurations, patch management policies, and monitoring tools to maintain a strong security baseline across IT infrastructure.",
+        "GS3. Analyze threat intelligence reports and customize security assessments based on current threat landscapes.",
         "GS4. Conduct fuzz testing and penetration testing on APIs and applications to identify and mitigate",
         "GS5. Collaborate with cross-functional teams, including development and IT operations, to integrate",
         "GS6. Educate business users and stakeholders on security best practices, vulnerability risks, and",
         "GS7. Investigate and document security incidents, vulnerabilities, and remediation steps, ensuring",
-        "GS8. Utilize automation tools to streamline security assessments, vulnerability scanning, and"
+        "GS8. Utilize automation tools to streamline security assessments, vulnerability scanning, and remediation processes for improved efficiency."
       ],
       "modules": [
         {
@@ -568,28 +568,28 @@
     },
     {
       "nos_code": "SSC/N0960",
-      "nos_title": ".Oversee the Cloud",
+      "nos_title": "Oversee the Cloud security of deployed applications and",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
-        "KU1. The fundamental concepts of cybersecurity, including threat analysis, malware detection,",
-        "KU2. The principles of log management, event correlation, and telemetry monitoring to identify",
-        "KU3. The process of PowerShell scripting and automation techniques to streamline security",
+        "KU1. The fundamental concepts of cybersecurity, including threat analysis, malware detection, incident management, and risk mitigation strategies.",
+        "KU2. The principles of log management, event correlation, and telemetry monitoring to identify security threats and anomalies in applications and systems.",
+        "KU3. The process of PowerShell scripting and automation techniques to streamline security operations, perform system administration, and manage cybersecurity tasks efficiently.",
         "KU4. Industry security standards, regulatory requirements, and organizational security policies,",
         "KU5. The functionalities and application of sandbox environments to isolate and analyze malware,",
-        "KU6. The different types of cyber threats such as phishing, hacking attempts, ransomware, and",
-        "KU7. The incident response lifecycle, including threat detection, classification, escalation",
+        "KU6. The different types of cyber threats such as phishing, hacking attempts, ransomware, and malware, along with appropriate preventive and response strategies.",
+        "KU7. The incident response lifecycle, including threat detection, classification, escalation procedures, ticketing systems, and risk assessment protocols.",
         "KU8. The use of external cybersecurity data sources such as CND vendor websites, Computer"
       ],
       "gs": [
-        "GS1. Execute PowerShell commands effectively to automate security tasks and enhance system",
-        "GS2. Implement security assessments for applications and IT infrastructure, identifying",
+        "GS1. Execute PowerShell commands effectively to automate security tasks and enhance system administration.",
+        "GS2. Implement security assessments for applications and IT infrastructure, identifying vulnerabilities and ensuring compliance with security standards.",
         "GS3. Perform real-time monitoring, analyze security logs, and correlate events to detect potential",
         "GS4. Develop and maintain operational processes for logging key security events using appropriate",
-        "GS5. Use sandboxing techniques to safely analyze malware behavior and evaluate potential",
+        "GS5. Use sandboxing techniques to safely analyze malware behavior and evaluate potential security threats before they impact the system.",
         "GS6. Log incidents accurately in ticketing systems, classify risks based on organizational policies,",
-        "GS7. Collaborate with cybersecurity and IT teams to implement and enforce security measures",
-        "GS8. Document findings, generate security reports, and maintain compliance records to ensure"
+        "GS7. Collaborate with cybersecurity and IT teams to implement and enforce security measures across software development and operational environments.",
+        "GS8. Document findings, generate security reports, and maintain compliance records to ensure transparency and alignment with cybersecurity regulations."
       ],
       "modules": [
         {

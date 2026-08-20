@@ -5,7 +5,7 @@
   "clean_code": "SSC_Q8101",
   "total_pages": 39,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.181Z",
+  "compiled_at": "2026-08-20T13:20:52.869Z",
   "stats": {
     "total_nos": 5,
     "total_modules": 5,
@@ -17,13 +17,13 @@
   "nos_units": [
     {
       "nos_code": "SSC/N8101",
-      "nos_title": ".Extract or Import",
+      "nos_title": "Extract or Import data as per requirement",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
-        "KU1. Understanding data governance policies procedures and guidelines and knowing how to",
-        "KU2. Familiarity with organizational policies for sharing and documenting data governance",
-        "KU3. Knowledge of different database types data modeling SQL skills and database management",
+        "KU1. Understanding data governance policies procedures and guidelines and knowing how to access information from data sources",
+        "KU2. Familiarity with organizational policies for sharing and documenting data governance processes and involving the right stakeholders",
+        "KU3. Knowledge of different database types data modeling SQL skills and database management system platforms",
         "KU4. Skills in ETL processes performance tuning access control backup and recovery and database",
         "KU5. Insights into scalability practices data integrity documentation collaboration and continuous"
       ],
@@ -114,24 +114,24 @@
     },
     {
       "nos_code": "SSC/N8102",
-      "nos_title": ".Process the data 30 50 - 20 100 17",
+      "nos_title": "Process the data",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
-        "KU1. Understanding of organizational guidelines for data accuracy, consistency, security, and",
-        "KU2. Knowledge of internal data warehouses, databases, and storage systems where processed",
+        "KU1. Understanding of organizational guidelines for data accuracy, consistency, security, and compliance when processing and importing data.",
+        "KU2. Knowledge of internal data warehouses, databases, and storage systems where processed data must be integrated or loaded.",
         "KU3. Familiarity with business-defined schemas, master data definitions, and data relationships to",
         "KU4. Awareness of how data engineers, analysts, IT teams, and data stewards collaborate in data",
-        "KU5. Understanding organizational procedures for updating import workflows, handling data",
+        "KU5. Understanding organizational procedures for updating import workflows, handling data pipeline failures, version control, and documentation standards.",
         "KU6. Knowledge of methods like normalization, standardization, deduplication, handling missing",
-        "KU7. Understanding relational schemas, star/snowflake models, primary/foreign keys, and",
-        "KU8. Knowledge of automated validation techniques such as format checks, range checks,",
+        "KU7. Understanding relational schemas, star/snowflake models, primary/foreign keys, and structural rules required for aligning data with organizational databases.",
+        "KU8. Knowledge of automated validation techniques such as format checks, range checks, schema validation, and error-handling mechanisms during import.",
         "KU9. Familiarity with tools such as Airflow, Talend, Informatica, AWS Glue, Azure Data Factory,",
-        "KU10. Understanding logging systems, alerting tools, process monitoring dashboards,"
+        "KU10. Understanding logging systems, alerting tools, process monitoring dashboards, troubleshooting methods, and optimization techniques for efficient data imports."
       ],
       "gs": [
         "GS1. Ability to identify data issues, bottlenecks, inconsistencies, and devise efficient solutions",
-        "GS2. Skill in ensuring that transformations, schema mappings, validations, and merges are",
+        "GS2. Skill in ensuring that transformations, schema mappings, validations, and merges are performed precisely to maintain data integrity.",
         "GS3. Ability to clearly document workflows, configurations, changes, and coordinate with teams to"
       ],
       "modules": [
@@ -226,25 +226,25 @@
     },
     {
       "nos_code": "SSC/N8163",
-      "nos_title": ".Ensure",
+      "nos_title": "Ensure organizational quality standards are achieved",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
-        "KU1. Understanding of organizational rules, regulatory requirements, and governance policies",
+        "KU1. Understanding of organizational rules, regulatory requirements, and governance policies related to data accuracy, privacy, integrity, and audit readiness.",
         "KU2. Awareness of the organizations strategic goals, KPIs, and how data quality impacts decision-",
-        "KU3. Knowledge of designated data owners, stewards, cross-functional teams, and escalation",
+        "KU3. Knowledge of designated data owners, stewards, cross-functional teams, and escalation paths responsible for maintaining and enforcing data quality standards.",
         "KU4. Familiarity with the databases, data pipelines, applications, data warehouses, and analytics",
-        "KU5. Understanding of internal procedures for documenting standards, updating business rules,",
+        "KU5. Understanding of internal procedures for documenting standards, updating business rules, implementing corrective measures, and conducting periodic reviews.",
         "KU6. Knowledge of accuracy, completeness, consistency, timeliness, validity, and relevancy, and",
-        "KU7. Understanding how to design, encode, and apply validation rules, business logic, cross-",
+        "KU7. Understanding how to design, encode, and apply validation rules, business logic, cross- verification checks, and data profiling methods.",
         "KU8. Familiarity with tools such as Talend DQ, Informatica DQ, Ataccama, Great Expectations, and",
         "KU9. Knowledge of BI tools (Power BI, Tableau, Looker) used to build visual indicators for real-time",
-        "KU10. Understanding of how to perform data audits, conduct gap analyses, monitor pipelines,"
+        "KU10. Understanding of how to perform data audits, conduct gap analyses, monitor pipelines, review logs, track incidents, and refine quality processes."
       ],
       "gs": [
         "GS1. Ability to assess data discrepancies, identify root causes, evaluate quality gaps, and apply",
         "GS2. Capability to work with IT, business users, data science teams, and stakeholders, while clearly",
-        "GS3. Skill in creating detailed records of standards, checks, processes, and incidents while"
+        "GS3. Skill in creating detailed records of standards, checks, processes, and incidents while maintaining accuracy and precision across all quality activities."
       ],
       "modules": [
         {
@@ -374,23 +374,23 @@
     },
     {
       "nos_code": "SSC/N8164",
-      "nos_title": ".Application of new",
+      "nos_title": "Application of new and emrging tools",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
-        "KU1. Understanding the organizations long-term data strategy, governance models, security",
-        "KU2. Awareness of business goals, operational needs, and data-driven initiatives so that tool",
+        "KU1. Understanding the organizations long-term data strategy, governance models, security standards, and approved technology stack to ensure new tools align with enterprise policies.",
+        "KU2. Awareness of business goals, operational needs, and data-driven initiatives so that tool selection and implementation support measurable improvements in data quality.",
         "KU3. Knowledge of how data teams, IT, data scientists, and business stakeholders collaborate for",
-        "KU4. Familiarity with internal approval workflows, cost-benefit assessment procedures, vendor",
-        "KU5. Understanding of current data architectures, data pipelines, metadata systems, and",
+        "KU4. Familiarity with internal approval workflows, cost-benefit assessment procedures, vendor management, and procurement policies for acquiring or upgrading tools.",
+        "KU5. Understanding of current data architectures, data pipelines, metadata systems, and platforms to ensure smooth integration and compatibility during tool deployment.",
         "KU6. Knowledge of industry-leading platforms (e.g., Informatica DQ, Talend DQ, Ataccama, Great",
-        "KU7. Understanding how to assess tools for scalability, performance, usability, integration",
+        "KU7. Understanding how to assess tools for scalability, performance, usability, integration capability, cost efficiency, and ability to meet organizational quality requirements.",
         "KU8. Ability to create custom scripts (Python, SQL, shell) and configure workflows, rules engines,",
-        "KU9. Knowledge of ML techniques used in automated data quality tasks pattern recognition,",
-        "KU10. Familiarity with KPIs, dashboards, tool performance metrics, logging systems,"
+        "KU9. Knowledge of ML techniques used in automated data quality tasks pattern recognition, anomaly detection, classification, entity matching, and intelligent data cleansing.",
+        "KU10. Familiarity with KPIs, dashboards, tool performance metrics, logging systems, troubleshooting, and continuous improvement frameworks for evaluating tool effectiveness."
       ],
       "gs": [
-        "GS1. Ability to evaluate new technologies, identify improvement opportunities, conduct pilot",
+        "GS1. Ability to evaluate new technologies, identify improvement opportunities, conduct pilot assessments, and innovate with AI/ML-driven quality solutions.",
         "GS2. Skill in working with IT teams, business users, data scientists, and vendors, while providing",
         "GS3. Ability to troubleshoot issues, optimize configurations, adjust processes based on feedback,"
       ],
@@ -567,24 +567,24 @@
     },
     {
       "nos_code": "SSC/N8165",
-      "nos_title": ".Implement and",
+      "nos_title": "Implement and Enforce Data Governance Policies",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [
-        "KU1. Understanding the legal and regulatory environment (e.g., GDPR, HIPAA, industry-specific",
-        "KU2. Awareness of roles such as data owners, stewards, custodians, and governance committees,",
-        "KU3. Understanding how governance supports business goals, analytical functions, digital",
-        "KU4. Familiarity with the organizations databases, data cataloging systems, metadata",
-        "KU5. Knowledge of organizational processes for introducing new policies, communicating",
-        "KU6. Knowledge of frameworks like DAMA-DMBOK, ISO 8000, DCAM, and best-practice principles",
-        "KU7. Understanding of tools such as Collibra, Alation, Informatica EDC, Apache Atlas, and",
-        "KU8. Knowledge of encryption, anonymization, masking, RBAC, IAM systems, and security",
+        "KU1. Understanding the legal and regulatory environment (e.g., GDPR, HIPAA, industry-specific standards) that shapes organizational data governance policies and risk mitigation",
+        "KU2. Awareness of roles such as data owners, stewards, custodians, and governance committees, including escalation pathways for policy breaches, data quality issues, and compliance",
+        "KU3. Understanding how governance supports business goals, analytical functions, digital transformation, and data-driven decision-making across departments.",
+        "KU4. Familiarity with the organizations databases, data cataloging systems, metadata repositories, access control mechanisms, and security frameworks used to implement",
+        "KU5. Knowledge of organizational processes for introducing new policies, communicating governance updates, onboarding teams, and maintaining documentation.",
+        "KU6. Knowledge of frameworks like DAMA-DMBOK, ISO 8000, DCAM, and best-practice principles for defining data policies, classifications, data quality rules, and stewardship models.",
+        "KU7. Understanding of tools such as Collibra, Alation, Informatica EDC, Apache Atlas, and methodologies for capturing lineage, sources, transformations, and usage patterns.",
+        "KU8. Knowledge of encryption, anonymization, masking, RBAC, IAM systems, and security protocols required for safeguarding sensitive and critical data.",
         "KU9. Familiarity with tools that support policy enforcement, cataloging, audit logging, automated",
         "KU10. Technical understanding of how to conduct audits, manage policy violations, perform root-"
       ],
       "gs": [
         "GS1. Ability to advocate governance principles, educate stakeholders, lead corrective initiatives,",
-        "GS2. Skill in identifying governance gaps, assessing risks, performing audits, and evaluating",
+        "GS2. Skill in identifying governance gaps, assessing risks, performing audits, and evaluating compliance with policies and data standards.",
         "GS3. Ability to maintain accurate records, policy documents, lineage reports, and audit findings"
       ],
       "modules": [

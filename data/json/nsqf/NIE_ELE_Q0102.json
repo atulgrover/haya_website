@@ -5,7 +5,7 @@
   "clean_code": "NIE_ELE_Q0102",
   "total_pages": 65,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:57.008Z",
+  "compiled_at": "2026-08-20T13:20:50.938Z",
   "stats": {
     "total_nos": 11,
     "total_modules": 34,
@@ -17,13 +17,13 @@
   "nos_units": [
     {
       "nos_code": "NIE/ELE/N0101",
-      "nos_title": ".VLSI",
+      "nos_title": "VLSI Fundamentals",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
         "KU1. Understanding the significance of VLSI technology and its role in modern electronics.",
         "KU2. Analyzing noise margin and power consumption considerations in CMOS circuits.",
-        "KU3. Understanding schematic design, layout considerations, and design rules for integrated"
+        "KU3. Understanding schematic design, layout considerations, and design rules for integrated circuits."
       ],
       "gs": [
         "GS1. Participants will hone their ability to analyze complex problems and devise solutions in VLSI",
@@ -131,16 +131,16 @@
     },
     {
       "nos_code": "NIE/ELE/N0102",
-      "nos_title": ".Verilog RTL",
+      "nos_title": "Verilog RTL coding for Synthesis",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
         "KU1. Grasping the essence of VLSI technology and its versatile applications across industries.",
-        "KU2. Developing a solid understanding of digital logic principles, including combinational and",
+        "KU2. Developing a solid understanding of digital logic principles, including combinational and sequential logic.",
         "KU3. Acquiring skills in functional verification techniques, test bench development, and timing"
       ],
       "gs": [
-        "GS1. Developing problem-solving skills and analytical thinking to tackle complex RTL design",
+        "GS1. Developing problem-solving skills and analytical thinking to tackle complex RTL design challenges effectively",
         "GS2. Enhancing communication skills for effectively conveying design ideas and collaborating with",
         "GS3. Cultivating attention to detail to ensure accuracy in RTL design, simulation, and verification,"
       ],
@@ -245,17 +245,17 @@
     },
     {
       "nos_code": "NIE/ELE/N0103",
-      "nos_title": ".Static Timing",
+      "nos_title": "Static Timing Analysis of VLSI Circuits",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
-        "KU1. Develop a comprehensive understanding of timing analysis principles, encompassing races,",
+        "KU1. Develop a comprehensive understanding of timing analysis principles, encompassing races, hazards, setup and hold timing, and maximum frequency of operation for both combinational",
         "KU2. Recognize the importance of timing constraints in the synthesis process, gaining insight into"
       ],
       "gs": [
         "GS1. Ability to analyze complex timing issues in VLSI design, such as races, hazards, and setup/hold",
         "GS2. Proficiency in using Electronic Design Automation (EDA) tools for Static Timing Analysis (STA),",
-        "GS3. Competence in executing Engineering Change Order (ECO) flows, conducting timing closure,"
+        "GS3. Competence in executing Engineering Change Order (ECO) flows, conducting timing closure, and performing sign-off checks, demonstrating technical proficiency in utilizing EDA tools for"
       ],
       "modules": [
         {
@@ -307,11 +307,11 @@
     },
     {
       "nos_code": "NIE/ELE/N0104",
-      "nos_title": ".FPGA",
+      "nos_title": "FPGA Architecture and Programming",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
-        "KU1. Develop a comprehensive understanding of FPGAs, including their applications and",
+        "KU1. Develop a comprehensive understanding of FPGAs, including their applications and advantages in digital design, the internal architecture featuring components like Look-Up",
         "KU2. Master the use of Hardware Description Languages (HDLs), particularly Verilog, for writing RTL",
         "KU3. Grasp the importance of FPGA simulation and verification by learning to write effective test"
       ],
@@ -421,18 +421,18 @@
     },
     {
       "nos_code": "NIE/ELE/N0105",
-      "nos_title": ".VLSI Verification",
+      "nos_title": "VLSI Verification fundamentals",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [
-        "KU1. Comprehensive understanding of Verilog HDL basics, encompassing lexical conventions,",
+        "KU1. Comprehensive understanding of Verilog HDL basics, encompassing lexical conventions, design abstractions, and modeling techniques like gate-level and behavioral modeling",
         "KU2. Proficiency in hierarchical modeling methodologies, including module instantiation rules and",
-        "KU3. Knowledge and application of advanced verification techniques, encompassing verification"
+        "KU3. Knowledge and application of advanced verification techniques, encompassing verification architecture, test automation scripting, and coverage-driven verification to ensure robust"
       ],
       "gs": [
-        "GS1. Ability to write and understand Verilog HDL code, including lexical conventions, design",
+        "GS1. Ability to write and understand Verilog HDL code, including lexical conventions, design abstractions, and behavioral modeling techniques",
         "GS2. Capability to apply hierarchical modeling methodologies for structured design, manage port",
-        "GS3. Skills in verification architecture, flow management, and employing various verification"
+        "GS3. Skills in verification architecture, flow management, and employing various verification techniques such as test automation, assertions, and coverage-driven verification"
       ],
       "modules": [
         {
@@ -535,17 +535,17 @@
     },
     {
       "nos_code": "NIE/ELE/N0106",
-      "nos_title": ".ASIC Verification",
+      "nos_title": "ASIC Verification using System Verilog and UVM",
       "sequence_order": 6,
       "is_generic": false,
       "kus": [
         "KU1. Proficiency in Verilog HDL for RTL verification, encompassing test bench creation, test case",
-        "KU2. Expertise in processor architecture, including ISA fundamentals, memory hierarchy, DIR-V",
-        "KU3. Comprehensive understanding and practical application of SoC verification methodologies,"
+        "KU2. Expertise in processor architecture, including ISA fundamentals, memory hierarchy, DIR-V microprocessor features like address mapping and arbitration, and simulation for verification,",
+        "KU3. Comprehensive understanding and practical application of SoC verification methodologies, including UVM-based environments, IP verification, test case automation, and validation using"
       ],
       "gs": [
         "GS1. Proficient in Verilog HDL and System Verilog, mastering RTL verification through test bench",
-        "GS2. Proficient application of Universal Verification Methodology (UVM) to build robust SoC",
+        "GS2. Proficient application of Universal Verification Methodology (UVM) to build robust SoC verification environments, incorporating assertion-based verification (ABV), coverage-driven",
         "GS3. Comprehensive expertise in processor architecture, encompassing instruction set architecture"
       ],
       "modules": [
@@ -652,16 +652,16 @@
     },
     {
       "nos_code": "NIE/ELE/N0107",
-      "nos_title": ".VLSI Circuits",
+      "nos_title": "VLSI Circuits Design for testability",
       "sequence_order": 7,
       "is_generic": false,
       "kus": [
         "KU1. Gain expertise in Design for Test (DFT), essential for identifying manufacturing faults and",
-        "KU2. Develop comprehensive skills in Built-In Self-Test (BIST), covering MBIST and LBIST",
+        "KU2. Develop comprehensive skills in Built-In Self-Test (BIST), covering MBIST and LBIST methodologies for efficient memory and logic testing. Additionally, master Boundary Scan",
         "KU3. Become proficient in JTAG fundamentals, emphasizing Registers and the Test Access Port"
       ],
       "gs": [
-        "GS1. Understanding fundamental principles of Design for Test (DFT), including identifying",
+        "GS1. Understanding fundamental principles of Design for Test (DFT), including identifying manufacturing faults, design defects, and the necessity of testing for ensuring VLSI circuit",
         "GS2. Proficiency in Scan-based Automatic Test Pattern Generation (ATPG) and Built-In Self-Test",
         "GS3. Ability to integrate Boundary Scan techniques into DFT workflows using DFT compilers, along"
       ],
@@ -769,17 +769,17 @@
     },
     {
       "nos_code": "NIE/ELE/N0108",
-      "nos_title": ".VLSI Physical",
+      "nos_title": "VLSI Physical Design and Verification",
       "sequence_order": 8,
       "is_generic": false,
       "kus": [
-        "KU1. Gain a foundational understanding of VLSI physical design, encompassing the industry-",
+        "KU1. Gain a foundational understanding of VLSI physical design, encompassing the industry- standard flow from RTL to GDSII. Explore RTL design and synthesis techniques using",
         "KU2. Gain expertise in essential verification methodologies crucial for VLSI design, encompassing",
         "KU3. Acquire proficiency in Electronic Design Automation (EDA) tools used in VLSI design, covering"
       ],
       "gs": [
         "GS1. Proficiency in utilizing Electronic Design Automation (EDA) tools for layout editing, including",
-        "GS2. Competence in employing simulation tools such as Verilog/VHDL simulators and waveform",
+        "GS2. Competence in employing simulation tools such as Verilog/VHDL simulators and waveform viewers to validate functional correctness and performance metrics",
         "GS3. Ability to conduct various verification techniques, including Static Timing Analysis (STA) and"
       ],
       "modules": [
@@ -859,18 +859,18 @@
     },
     {
       "nos_code": "NIE/ELE/N0109",
-      "nos_title": ".Accelerator",
+      "nos_title": "Accelerator design using HLS programming",
       "sequence_order": 9,
       "is_generic": false,
       "kus": [
-        "KU1. Expertise in developing combination circuits using C/C++, including creating robust test",
+        "KU1. Expertise in developing combination circuits using C/C++, including creating robust test benches for functional validation, managing data types and conditional statements, utilizing",
         "KU2. Proficiency in HLS for sequential circuit design, covering single-cycle methodologies and IP-",
         "KU3. Proficiency in OpenCL concepts for FPGA acceleration, emphasizing kernel execution models,"
       ],
       "gs": [
-        "GS1. Proficiency in programming combination circuits and developing robust test benches using",
+        "GS1. Proficiency in programming combination circuits and developing robust test benches using C/C++ for functional verification.",
         "GS2. Ability to utilize HLS for sequential circuit design, including single-cycle methodologies and IP-",
-        "GS3. Competence in optimizing designs through techniques such as combinatorial loop unrolling,"
+        "GS3. Competence in optimizing designs through techniques such as combinatorial loop unrolling, managing overloading, and addressing resource constraints"
       ],
       "modules": [
         {
@@ -976,18 +976,18 @@
     },
     {
       "nos_code": "NIE/ELE/N0110",
-      "nos_title": ".SOC Design and",
+      "nos_title": "SOC Design and Verification",
       "sequence_order": 10,
       "is_generic": false,
       "kus": [
         "KU1. Gain in-depth knowledge of Multi-Core SoCs, encompassing their architectures and effective",
-        "KU2. Gain mastery in UVM components and methodologies to construct robust test benches,",
+        "KU2. Gain mastery in UVM components and methodologies to construct robust test benches, perform IP verification, and create comprehensive SoC verification environments.",
         "KU3. Gain mastery in popular AMD/Xilinx FPGA architectures and their design flow to proficiently",
         "KU4. Develop proficiency in porting and emulating DIR-V processor-based SoCs on FPGA platforms,"
       ],
       "gs": [
-        "GS1. Gain expertise in Universal Verification Methodology (UVM) components for building robust",
-        "GS2. Understand the architecture and integration of Multi-Core SoCs with hardware accelerators",
+        "GS1. Gain expertise in Universal Verification Methodology (UVM) components for building robust test benches, conducting IP verification, and automating test cases in SoC environments",
+        "GS2. Understand the architecture and integration of Multi-Core SoCs with hardware accelerators and peripheral interfaces",
         "GS3. Gain mastery in FPGA design flow, logic synthesis, and timing optimization tailored for SoC"
       ],
       "modules": [
@@ -1079,18 +1079,18 @@
     },
     {
       "nos_code": "NIE/ELE/N0111",
-      "nos_title": ".Implementation",
+      "nos_title": "Implementation of Advanced VLSI Circuit Design and",
       "sequence_order": 11,
       "is_generic": false,
       "kus": [
-        "KU1. Understand the basic syntax, data types, and operators in Verilog, enabling them to write",
-        "KU2. Comprehend the simulation process, including waveform analysis and debugging, to ensure",
-        "KU3. Familiar with the architecture of FPGAs, including the roles of CLBs, I/O blocks, and",
-        "KU4. Understand the various components of an SoC, including processors, memory, and"
+        "KU1. Understand the basic syntax, data types, and operators in Verilog, enabling them to write effective code for digital circuit design.",
+        "KU2. Comprehend the simulation process, including waveform analysis and debugging, to ensure their designs function correctly under different conditions.",
+        "KU3. Familiar with the architecture of FPGAs, including the roles of CLBs, I/O blocks, and interconnects, which are crucial for effective design implementation.",
+        "KU4. Understand the various components of an SoC, including processors, memory, and peripherals, and how they interact within a system."
       ],
       "gs": [
-        "GS1. Students should develop the ability to identify design challenges and implement effective",
-        "GS2. Students should engage in collaborative work, fostering communication and teamwork skills",
+        "GS1. Students should develop the ability to identify design challenges and implement effective solutions when coding in Verilog and debugging simulations.",
+        "GS2. Students should engage in collaborative work, fostering communication and teamwork skills while working on FPGA design projects, simulating real-world engineering environments.",
         "GS3. Students should develop critical evaluation skills to assess the effectiveness and reliability of"
       ],
       "modules": [

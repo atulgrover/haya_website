@@ -5,10 +5,10 @@
   "clean_code": "RAS_Q0102",
   "total_pages": 41,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:57.921Z",
+  "compiled_at": "2026-08-20T13:20:51.658Z",
   "stats": {
     "total_nos": 7,
-    "total_modules": 37,
+    "total_modules": 77,
     "total_pcs": 134,
     "total_kus": 71,
     "total_gs": 87,
@@ -17,13 +17,13 @@
   "nos_units": [
     {
       "nos_code": "RAS/N0111",
-      "nos_title": ".Follow point-of-sale",
+      "nos_title": "Follow point-of-sale procedures for age-restricted products",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
         "KU1. age-restricted products he/she is authorised to sell.",
         "KU2. age restrictions on the products he/she is authorised to sell, and what can happen to him/her",
-        "KU3. company policies and procedures for asking for proof of age, including the types of",
+        "KU3. company policies and procedures for asking for proof of age, including the types of acceptable proof.",
         "KU4. company policies and procedures for refusing sales of age-restricted products.",
         "KU5. how to keep cash and other payments secure.",
         "KU6. the types of payment that he/she is authorised to receive.",
@@ -207,7 +207,7 @@
     },
     {
       "nos_code": "RAS/N0112",
-      "nos_title": ".Process customer",
+      "nos_title": "Process customer orders for goods",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
@@ -215,7 +215,7 @@
         "KU2. the items in stock.",
         "KU3. how to check whether there is enough stock to meet the order.",
         "KU4. which items are available by order and which suppliers and manufacturers can provide them.",
-        "KU5. how to check whether external suppliers and manufacturers can provide items, and on what",
+        "KU5. how to check whether external suppliers and manufacturers can provide items, and on what terms.",
         "KU6. how to keep customers informed of progress in finding the goods they need.",
         "KU7. how to give customers clear, accurate and complete information about the terms of supply.",
         "KU8. legal and company procedures for checking the customers identify and credit status.",
@@ -370,7 +370,7 @@
     },
     {
       "nos_code": "RAS/N0113",
-      "nos_title": ".Process part",
+      "nos_title": "Process part exchange sale transactions",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
@@ -551,7 +551,7 @@
     },
     {
       "nos_code": "RAS/N0116",
-      "nos_title": ".Process cash and",
+      "nos_title": "Process cash and credit transactions",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
@@ -759,14 +759,14 @@
     },
     {
       "nos_code": "RAS/N0117",
-      "nos_title": ".Process returned",
+      "nos_title": "Process returned goods",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [
         "KU1. the reasons customers might have for returning goods.",
         "KU2. customers legal rights to replacements and refunds.",
         "KU3. company policies and procedures for replacements and refunds, including proof of purchase.",
-        "KU4. the authority he/she has to agree to replacements and refunds, and who to ask for help",
+        "KU4. the authority he/she has to agree to replacements and refunds, and who to ask for help when he/she needs authorisation.",
         "KU5. how to find replacement goods.",
         "KU6. the charges that apply when the company is not at fault.",
         "KU7. company procedures for preparing replacement goods for sending out.",
@@ -913,14 +913,14 @@
     },
     {
       "nos_code": "RAS/N0110",
-      "nos_title": ".Service cash point /",
+      "nos_title": "RAS/N0110",
       "sequence_order": 6,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Follow procedures for sales of age-restricted products",
+          "module_title": "- PC1. follow legal requirements and company policies and procedures for asking for proof of age.",
           "sequence_order": 1,
           "pcs": [
             {
@@ -931,11 +931,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. make the sale only if customers provide age proof and it meets legal and company",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "make the sale only if customers provide age proof and it meets legal and company",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -944,8 +950,8 @@
           ]
         },
         {
-          "module_title": "conditions, while selling age-restricted products.",
-          "sequence_order": 2,
+          "module_title": "- PC3. follow legal requirements and company policies and procedures for refusing sales.",
+          "sequence_order": 3,
           "pcs": [
             {
               "pc_code": "PC3",
@@ -955,11 +961,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. refuse politely and firmly to make sales that are against the law or any procedures and",
+          "sequence_order": 4,
+          "pcs": [
             {
               "pc_code": "PC4",
               "pc_description": "refuse politely and firmly to make sales that are against the law or any procedures and",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -968,8 +980,8 @@
           ]
         },
         {
-          "module_title": "policies he/she must follow.",
-          "sequence_order": 3,
+          "module_title": "- PC5. explain clearly and accurately to customers what proof of age is acceptable.",
+          "sequence_order": 5,
           "pcs": [
             {
               "pc_code": "PC5",
@@ -979,11 +991,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC6. follow company procedures for telling customers how to get proof of age.",
+          "sequence_order": 6,
+          "pcs": [
             {
               "pc_code": "PC6",
               "pc_description": "follow company procedures for telling customers how to get proof of age.",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -992,8 +1010,8 @@
           ]
         },
         {
-          "module_title": "Provide service at point of sale",
-          "sequence_order": 4,
+          "module_title": "- PC7. tell customers the correct amount to be paid.",
+          "sequence_order": 7,
           "pcs": [
             {
               "pc_code": "PC7",
@@ -1003,74 +1021,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC8. check accurately the amount and means of payment offered by the customer.",
+          "sequence_order": 8,
+          "pcs": [
             {
               "pc_code": "PC8",
               "pc_description": "check accurately the amount and means of payment offered by the customer.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC9",
-              "pc_description": "process the payment in line with company procedures, where the payment is acceptable.",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC10",
-              "pc_description": "tell the customer tactfully when payment cannot be approved.",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC11",
-              "pc_description": "record payments accurately.",
-              "sequence_order": 5,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC12",
-              "pc_description": "store payments securely and protect them from theft.",
-              "sequence_order": 6,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC13",
-              "pc_description": "offer additional services to the customer where these are available.",
-              "sequence_order": 7,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC14",
-              "pc_description": "treat customers politely throughout the payment process.",
-              "sequence_order": 8,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC15",
-              "pc_description": "balance the need to give attention to individual customers with the need to acknowledge",
-              "sequence_order": 9,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1079,8 +1040,113 @@
           ]
         },
         {
-          "module_title": "Reconcile customer accounts",
-          "sequence_order": 5,
+          "module_title": "- PC9. process the payment in line with company procedures, where the payment is acceptable.",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "process the payment in line with company procedures, where the payment is acceptable.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC10. tell the customer tactfully when payment cannot be approved.",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "tell the customer tactfully when payment cannot be approved.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC11. record payments accurately.",
+          "sequence_order": 11,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "record payments accurately.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC12. store payments securely and protect them from theft.",
+          "sequence_order": 12,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "store payments securely and protect them from theft.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC13. offer additional services to the customer where these are available.",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "offer additional services to the customer where these are available.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC14. treat customers politely throughout the payment process.",
+          "sequence_order": 14,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "treat customers politely throughout the payment process.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC15. balance the need to give attention to individual customers with the need to acknowledge",
+          "sequence_order": 15,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "balance the need to give attention to individual customers with the need to acknowledge",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC16. tell the right person about problems with customer accounts that he/she cannot sort out or",
+          "sequence_order": 16,
           "pcs": [
             {
               "pc_code": "PC16",
@@ -1094,8 +1160,8 @@
           ]
         },
         {
-          "module_title": "Financial and Legal Literacy",
-          "sequence_order": 6,
+          "module_title": "- PC17. carry out offline and online financial transactions, safely and securely",
+          "sequence_order": 17,
           "pcs": [
             {
               "pc_code": "PC17",
@@ -1105,20 +1171,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC18. identify common components of salary and compute income, expenses, taxes, investments",
+          "sequence_order": 18,
+          "pcs": [
             {
               "pc_code": "PC18",
               "pc_description": "identify common components of salary and compute income, expenses, taxes, investments",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC19",
-              "pc_description": "identify relevant rights and laws and use legal aids to fight against legal exploitation",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1127,8 +1190,23 @@
           ]
         },
         {
-          "module_title": "Essential Digital Skills",
-          "sequence_order": 7,
+          "module_title": "- PC19. identify relevant rights and laws and use legal aids to fight against legal exploitation",
+          "sequence_order": 19,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "identify relevant rights and laws and use legal aids to fight against legal exploitation",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. operate digital devices and carry out basic internet operations securely and safely",
+          "sequence_order": 20,
           "pcs": [
             {
               "pc_code": "PC20",
@@ -1138,20 +1216,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. use e- mail and social media platforms and virtual collaboration tools to work effectively",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "use e- mail and social media platforms and virtual collaboration tools to work effectively",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC22",
-              "pc_description": "use basic features of word processor, spreadsheets, and presentations",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1160,8 +1235,23 @@
           ]
         },
         {
-          "module_title": "Entrepreneurship",
-          "sequence_order": 8,
+          "module_title": "- PC22. use basic features of word processor, spreadsheets, and presentations",
+          "sequence_order": 22,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "use basic features of word processor, spreadsheets, and presentations",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC23. identify different types of Entrepreneurship and Enterprises and assess opportunities for",
+          "sequence_order": 23,
           "pcs": [
             {
               "pc_code": "PC23",
@@ -1175,8 +1265,8 @@
           ]
         },
         {
-          "module_title": "potential business through research",
-          "sequence_order": 9,
+          "module_title": "- PC24. develop a business plan and a work model, considering the 4Ps of Marketing Product, Price,",
+          "sequence_order": 24,
           "pcs": [
             {
               "pc_code": "PC24",
@@ -1190,8 +1280,8 @@
           ]
         },
         {
-          "module_title": "Place and Promotion",
-          "sequence_order": 10,
+          "module_title": "- PC25. identify sources of funding, anticipate, and mitigate any financial/ legal hurdles for the",
+          "sequence_order": 25,
           "pcs": [
             {
               "pc_code": "PC25",
@@ -1205,8 +1295,8 @@
           ]
         },
         {
-          "module_title": "Customer Service",
-          "sequence_order": 11,
+          "module_title": "- PC26. identify different types of customers",
+          "sequence_order": 26,
           "pcs": [
             {
               "pc_code": "PC26",
@@ -1216,20 +1306,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC27. identify and respond to customer requests and needs in a professional manner.",
+          "sequence_order": 27,
+          "pcs": [
             {
               "pc_code": "PC27",
               "pc_description": "identify and respond to customer requests and needs in a professional manner.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC28",
-              "pc_description": "follow appropriate hygiene and grooming standards",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1238,8 +1325,23 @@
           ]
         },
         {
-          "module_title": "Getting ready for apprenticeship & Jobs",
-          "sequence_order": 12,
+          "module_title": "- PC28. follow appropriate hygiene and grooming standards",
+          "sequence_order": 28,
+          "pcs": [
+            {
+              "pc_code": "PC28",
+              "pc_description": "follow appropriate hygiene and grooming standards",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC29. create a professional Curriculum vitae (Résumé)",
+          "sequence_order": 29,
           "pcs": [
             {
               "pc_code": "PC29",
@@ -1249,11 +1351,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC30. search for suitable jobs using reliable offline and online sources such as Employment",
+          "sequence_order": 30,
+          "pcs": [
             {
               "pc_code": "PC30",
               "pc_description": "search for suitable jobs using reliable offline and online sources such as Employment",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1262,8 +1370,8 @@
           ]
         },
         {
-          "module_title": "exchange, recruitment agencies, newspapers etc. and job portals, respectively",
-          "sequence_order": 13,
+          "module_title": "- PC31. apply to identified job openings using offline /online methods as per requirement",
+          "sequence_order": 31,
           "pcs": [
             {
               "pc_code": "PC31",
@@ -1273,20 +1381,32 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC32. answer questions politely, with clarity and confidence, during recruitment and selection",
+          "sequence_order": 32,
+          "pcs": [
             {
               "pc_code": "PC32",
               "pc_description": "answer questions politely, with clarity and confidence, during recruitment and selection",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC33. identify apprenticeship opportunities and register for it as per guidelines and requirements",
+          "sequence_order": 33,
+          "pcs": [
             {
               "pc_code": "PC33",
               "pc_description": "identify apprenticeship opportunities and register for it as per guidelines and requirements",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1298,14 +1418,14 @@
     },
     {
       "nos_code": "RAS/N0115",
-      "nos_title": ".Process payments 50 50 0 0 100 11",
+      "nos_title": "RAS/N0115",
       "sequence_order": 7,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Follow procedures for sales of age-restricted products",
+          "module_title": "- PC1. follow legal requirements and company policies and procedures for asking for proof of age.",
           "sequence_order": 1,
           "pcs": [
             {
@@ -1316,11 +1436,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. make the sale only if customers provide age proof and it meets legal and company",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "make the sale only if customers provide age proof and it meets legal and company",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1329,8 +1455,8 @@
           ]
         },
         {
-          "module_title": "conditions, while selling age-restricted products.",
-          "sequence_order": 2,
+          "module_title": "- PC3. follow legal requirements and company policies and procedures for refusing sales.",
+          "sequence_order": 3,
           "pcs": [
             {
               "pc_code": "PC3",
@@ -1340,11 +1466,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. refuse politely and firmly to make sales that are against the law or any procedures and",
+          "sequence_order": 4,
+          "pcs": [
             {
               "pc_code": "PC4",
               "pc_description": "refuse politely and firmly to make sales that are against the law or any procedures and",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1353,8 +1485,8 @@
           ]
         },
         {
-          "module_title": "policies he/she must follow.",
-          "sequence_order": 3,
+          "module_title": "- PC5. explain clearly and accurately to customers what proof of age is acceptable.",
+          "sequence_order": 5,
           "pcs": [
             {
               "pc_code": "PC5",
@@ -1364,11 +1496,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC6. follow company procedures for telling customers how to get proof of age.",
+          "sequence_order": 6,
+          "pcs": [
             {
               "pc_code": "PC6",
               "pc_description": "follow company procedures for telling customers how to get proof of age.",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1377,8 +1515,8 @@
           ]
         },
         {
-          "module_title": "Provide service at point of sale",
-          "sequence_order": 4,
+          "module_title": "- PC7. tell customers the correct amount to be paid.",
+          "sequence_order": 7,
           "pcs": [
             {
               "pc_code": "PC7",
@@ -1388,74 +1526,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC8. check accurately the amount and means of payment offered by the customer.",
+          "sequence_order": 8,
+          "pcs": [
             {
               "pc_code": "PC8",
               "pc_description": "check accurately the amount and means of payment offered by the customer.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC9",
-              "pc_description": "process the payment in line with company procedures, where the payment is acceptable.",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC10",
-              "pc_description": "tell the customer tactfully when payment cannot be approved.",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC11",
-              "pc_description": "record payments accurately.",
-              "sequence_order": 5,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC12",
-              "pc_description": "store payments securely and protect them from theft.",
-              "sequence_order": 6,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC13",
-              "pc_description": "offer additional services to the customer where these are available.",
-              "sequence_order": 7,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC14",
-              "pc_description": "treat customers politely throughout the payment process.",
-              "sequence_order": 8,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC15",
-              "pc_description": "balance the need to give attention to individual customers with the need to acknowledge",
-              "sequence_order": 9,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1464,8 +1545,113 @@
           ]
         },
         {
-          "module_title": "Reconcile customer accounts",
-          "sequence_order": 5,
+          "module_title": "- PC9. process the payment in line with company procedures, where the payment is acceptable.",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "process the payment in line with company procedures, where the payment is acceptable.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC10. tell the customer tactfully when payment cannot be approved.",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "tell the customer tactfully when payment cannot be approved.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC11. record payments accurately.",
+          "sequence_order": 11,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "record payments accurately.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC12. store payments securely and protect them from theft.",
+          "sequence_order": 12,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "store payments securely and protect them from theft.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC13. offer additional services to the customer where these are available.",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "offer additional services to the customer where these are available.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC14. treat customers politely throughout the payment process.",
+          "sequence_order": 14,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "treat customers politely throughout the payment process.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC15. balance the need to give attention to individual customers with the need to acknowledge",
+          "sequence_order": 15,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "balance the need to give attention to individual customers with the need to acknowledge",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC16. tell the right person about problems with customer accounts that he/she cannot sort out or",
+          "sequence_order": 16,
           "pcs": [
             {
               "pc_code": "PC16",
@@ -1479,8 +1665,8 @@
           ]
         },
         {
-          "module_title": "Financial and Legal Literacy",
-          "sequence_order": 6,
+          "module_title": "- PC17. carry out offline and online financial transactions, safely and securely",
+          "sequence_order": 17,
           "pcs": [
             {
               "pc_code": "PC17",
@@ -1490,20 +1676,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC18. identify common components of salary and compute income, expenses, taxes, investments",
+          "sequence_order": 18,
+          "pcs": [
             {
               "pc_code": "PC18",
               "pc_description": "identify common components of salary and compute income, expenses, taxes, investments",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC19",
-              "pc_description": "identify relevant rights and laws and use legal aids to fight against legal exploitation",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1512,8 +1695,23 @@
           ]
         },
         {
-          "module_title": "Essential Digital Skills",
-          "sequence_order": 7,
+          "module_title": "- PC19. identify relevant rights and laws and use legal aids to fight against legal exploitation",
+          "sequence_order": 19,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "identify relevant rights and laws and use legal aids to fight against legal exploitation",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. operate digital devices and carry out basic internet operations securely and safely",
+          "sequence_order": 20,
           "pcs": [
             {
               "pc_code": "PC20",
@@ -1523,20 +1721,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. use e- mail and social media platforms and virtual collaboration tools to work effectively",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "use e- mail and social media platforms and virtual collaboration tools to work effectively",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC22",
-              "pc_description": "use basic features of word processor, spreadsheets, and presentations",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1545,8 +1740,23 @@
           ]
         },
         {
-          "module_title": "Entrepreneurship",
-          "sequence_order": 8,
+          "module_title": "- PC22. use basic features of word processor, spreadsheets, and presentations",
+          "sequence_order": 22,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "use basic features of word processor, spreadsheets, and presentations",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC23. identify different types of Entrepreneurship and Enterprises and assess opportunities for",
+          "sequence_order": 23,
           "pcs": [
             {
               "pc_code": "PC23",
@@ -1560,8 +1770,8 @@
           ]
         },
         {
-          "module_title": "potential business through research",
-          "sequence_order": 9,
+          "module_title": "- PC24. develop a business plan and a work model, considering the 4Ps of Marketing Product, Price,",
+          "sequence_order": 24,
           "pcs": [
             {
               "pc_code": "PC24",
@@ -1575,8 +1785,8 @@
           ]
         },
         {
-          "module_title": "Place and Promotion",
-          "sequence_order": 10,
+          "module_title": "- PC25. identify sources of funding, anticipate, and mitigate any financial/ legal hurdles for the",
+          "sequence_order": 25,
           "pcs": [
             {
               "pc_code": "PC25",
@@ -1590,8 +1800,8 @@
           ]
         },
         {
-          "module_title": "Customer Service",
-          "sequence_order": 11,
+          "module_title": "- PC26. identify different types of customers",
+          "sequence_order": 26,
           "pcs": [
             {
               "pc_code": "PC26",
@@ -1601,20 +1811,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC27. identify and respond to customer requests and needs in a professional manner.",
+          "sequence_order": 27,
+          "pcs": [
             {
               "pc_code": "PC27",
               "pc_description": "identify and respond to customer requests and needs in a professional manner.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC28",
-              "pc_description": "follow appropriate hygiene and grooming standards",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1623,8 +1830,23 @@
           ]
         },
         {
-          "module_title": "Getting ready for apprenticeship & Jobs",
-          "sequence_order": 12,
+          "module_title": "- PC28. follow appropriate hygiene and grooming standards",
+          "sequence_order": 28,
+          "pcs": [
+            {
+              "pc_code": "PC28",
+              "pc_description": "follow appropriate hygiene and grooming standards",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC29. create a professional Curriculum vitae (Résumé)",
+          "sequence_order": 29,
           "pcs": [
             {
               "pc_code": "PC29",
@@ -1634,11 +1856,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC30. search for suitable jobs using reliable offline and online sources such as Employment",
+          "sequence_order": 30,
+          "pcs": [
             {
               "pc_code": "PC30",
               "pc_description": "search for suitable jobs using reliable offline and online sources such as Employment",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1647,8 +1875,8 @@
           ]
         },
         {
-          "module_title": "exchange, recruitment agencies, newspapers etc. and job portals, respectively",
-          "sequence_order": 13,
+          "module_title": "- PC31. apply to identified job openings using offline /online methods as per requirement",
+          "sequence_order": 31,
           "pcs": [
             {
               "pc_code": "PC31",
@@ -1658,20 +1886,32 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC32. answer questions politely, with clarity and confidence, during recruitment and selection",
+          "sequence_order": 32,
+          "pcs": [
             {
               "pc_code": "PC32",
               "pc_description": "answer questions politely, with clarity and confidence, during recruitment and selection",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC33. identify apprenticeship opportunities and register for it as per guidelines and requirements",
+          "sequence_order": 33,
+          "pcs": [
             {
               "pc_code": "PC33",
               "pc_description": "identify apprenticeship opportunities and register for it as per guidelines and requirements",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,

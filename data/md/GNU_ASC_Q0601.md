@@ -7,7 +7,7 @@
 
 | Lead Technician - Mechatronics QP Code: GNU/ASC/Q0601 Version: 1.0 NSQF Level: 4.5 |
 | --- |
-| Ganpat University || 0, GANPAT UNIVERSITY, KHERVA, MAHESANA, Mehsana, Gujarat 382711 || email:head.sdp@ganpatuniversity.ac.in |
+| Ganpat University \|\| 0, GANPAT UNIVERSITY, KHERVA, MAHESANA, Mehsana, Gujarat 382711 \|\| email:head.sdp@ganpatuniversity.ac.in |
 
 
 Qualification Pack
@@ -32,11 +32,11 @@ Qualification Pack (QP) Parameters .............................................
 #### GNU/ASC/N0608: MACHINING SKILLS- CNC MILLING .......................................................................... 26
 #### GNU/ASC/N0609: MACHINING SKILLS - CNC TURNING ....................................................................... 29
 #### GNU/ASC/N0610: CAD (3D) ................................................................................................................ 32
-Assessment Guidelines and Weightage ............................................................................................. 34
-Assessment Guidelines ............................................................................................................... 34
+#### Assessment Guidelines and Weightage ............................................................................................. 34
+#### Assessment Guidelines ............................................................................................................... 34
 Assessment Weightage ............................................................................................................... 36
-Acronyms ........................................................................................................................................... 38
-Glossary ............................................................................................................................................. 39
+#### Acronyms ........................................................................................................................................... 38
+#### Glossary ............................................................................................................................................. 39
 NSQC Approved || Ganpat University                                   2
 
 ### Page 3
@@ -48,7 +48,7 @@ NSQC Approved || Ganpat University                                   2
 
 
 Qualification Pack
-#### GNU/ASC/Q0601:  Lead Technician - Mechatronics
+#### GNU/ASC/Q0601: Lead Technician - Mechatronics
 Brief Job Description
 A Diploma in Mechatronics Engineering is a specialized educational program that focuses on providing
 students with practical skills and theoretical knowledge related to various aspects of industrial automation
@@ -95,7 +95,7 @@ NSQC Approved || Ganpat University                                   4
 ### Page 5
 
 Qualification Pack
-#### GNU/ASC/N0601:  HYDRAULIC   & PNEUMATIC  DEVICES
+#### GNU/ASC/N0601: HYDRAULIC   & PNEUMATIC  DEVICES
 Description
 Develop a comprehensive understanding of fluid power systems and their applications. Distinguish
 between hydraulic and pneumatic systems, and their uses in different contexts. Gain knowledge of the
@@ -153,7 +153,7 @@ NSQC Approved || Ganpat University                                   7
 ### Page 8
 
 Qualification Pack
-#### GNU/ASC/N0602:  PROGRAMMABLE     LOGIC CONTROLLER
+#### GNU/ASC/N0602: PROGRAMMABLE     LOGIC CONTROLLER
 Description
 Understand the fundamentals and history of Programmable Logic Controllers (PLCs). Gain knowledge of
 the various parts and types of PLCs and their applications. Learn about different types of PLC memory and
@@ -210,10 +210,9 @@ NSQC Approved || Ganpat University                                  10
 ### Page 11
 
 Qualification Pack
-#### GNU/ASC/N0603:  QUALITY  MANAGEMENT
+#### GNU/ASC/N0603: QUALITY  MANAGEMENT
 Description
-Quality management is a systematic approach to ensuring that products, services, and processes
-consistently meet or exceed customer expectations and organizational standards. The terminal outcomes
+Quality management is a systematic approach to ensuring that products, services, and processes consistently meet or exceed customer expectations and organizational standards. The terminal outcomes
 of quality management reflect the goals and objectives of implementing effective quality control and
 assurance practices within an organization. Consistent Product Quality: Achieving a high level of
 consistency in product quality, where products meet defined specifications and standards in every
@@ -272,7 +271,7 @@ NSQC Approved || Ganpat University                                  13
 ### Page 14
 
 Qualification Pack
-#### GNU/ASC/N0604:  EMPLOYABILITY   SKILLS-3
+#### GNU/ASC/N0604: EMPLOYABILITY   SKILLS-3
 Description
 Develop essential skills for workplace communication and collaboration. Gain knowledge and proficiency in
 digital literacy and the use of modern workplace tools. Understand the principles of time management and
@@ -329,10 +328,9 @@ NSQC Approved || Ganpat University                                  16
 ### Page 17
 
 Qualification Pack
-#### GNU/ASC/N0605:  ARDUINO   PROGRAMING
+#### GNU/ASC/N0605: ARDUINO   PROGRAMING
 Description
-Gain a comprehensive understanding of Arduino hardware and software. Learn to program Arduino
-microcontrollers to control various electronic components. Develop skills to design and implement basic to
+Gain a comprehensive understanding of Arduino hardware and software. Learn to program Arduino microcontrollers to control various electronic components. Develop skills to design and implement basic to
 intermediate level Arduino projects. Understand the principles of interfacing sensors and actuators with
 Arduino. Enhance problem-solving and debugging skills in embedded systems programming.
 Scope
@@ -386,7 +384,7 @@ NSQC Approved || Ganpat University                                  19
 ### Page 20
 
 Qualification Pack
-#### GNU/ASC/N0606:  MICROCONTROLLER     PROGRAMMING
+#### GNU/ASC/N0606: MICROCONTROLLER     PROGRAMMING
 Description
 Gain a comprehensive understanding of the architecture and functioning of the 8051 microcontrollers.
 Develop skills in programming the 8051-microcontroller using assembly language and C. Learn to interface
@@ -444,7 +442,7 @@ NSQC Approved || Ganpat University                                  22
 ### Page 23
 
 Qualification Pack
-#### GNU/ASC/N0607:  ROBOTICS
+#### GNU/ASC/N0607: ROBOTICS
 Description
 Develop a thorough understanding of the fundamental concepts and elements of robotics. Gain knowledge
 about various sensors, drives, and control systems used in robots. Learn different levels of control and
@@ -501,7 +499,7 @@ NSQC Approved || Ganpat University                                  25
 ### Page 26
 
 Qualification Pack
-#### GNU/ASC/N0608:  MACHINING   SKILLS- CNC MILLING
+#### GNU/ASC/N0608: MACHINING   SKILLS- CNC MILLING
 Description
 Terminal outcomes of Machining Skills - CNC Milling encompass the overall knowledge, skills, and
 competencies that students are expected to achieve by the end of the course. These outcomes reflect a
@@ -561,7 +559,7 @@ NSQC Approved || Ganpat University                                  28
 ### Page 29
 
 Qualification Pack
-#### GNU/ASC/N0609:  MACHINING   SKILLS - CNC TURNING
+#### GNU/ASC/N0609: MACHINING   SKILLS - CNC TURNING
 Description
 Terminal outcomes of "Machining Skills - CNC Turning" encompass the overall knowledge, skills, and
 competencies that students are expected to achieve by the end of the course. These outcomes reflect a
@@ -621,10 +619,9 @@ NSQC Approved || Ganpat University                                  31
 ### Page 32
 
 Qualification Pack
-#### GNU/ASC/N0610:  CAD  (3D)
+#### GNU/ASC/N0610: CAD  (3D)
 Description
-Enhanced design process efficiency and accuracy using SolidWorks for 3D modeling. Streamlined
-collaboration through easy sharing and reviewing features. Reduced time-to-market, boosting
+Enhanced design process efficiency and accuracy using SolidWorks for 3D modeling. Streamlined collaboration through easy sharing and reviewing features. Reduced time-to-market, boosting
 competitiveness in the market. Improved productivity through precise modeling and analysis capabilities.
 Empowered teams to create intricate designs with ease.
 Scope
@@ -673,8 +670,8 @@ NSQC Approved || Ganpat University                                  33
 
 Qualification Pack
 #### National Occupational Standards (NOS) Parameters
-Assessment Guidelines and Assessment Weightage
-Assessment Guidelines
+#### Assessment Guidelines and Assessment Weightage
+#### Assessment Guidelines
 1. Assessment System Overview:
 • Batches assigned to the assessment agencies for conducting the assessment on SDMS/SIP or email
 • Assessment agencies send the assessment confirmation to VTP/TC looping SSC
@@ -762,7 +759,7 @@ NSQC Approved || Ganpat University                                  37
 
 
 Qualification Pack
-Acronyms
+#### Acronyms
 NSQC Approved || Ganpat University                                  38
 
 ### Page 39
@@ -783,7 +780,7 @@ NSQC Approved || Ganpat University                                  38
 
 
 Qualification Pack
-Glossary
+#### Glossary
 NSQC Approved || Ganpat University                                  39
 
 ### Page 40

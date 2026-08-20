@@ -5,10 +5,10 @@
   "clean_code": "RAS_Q0303",
   "total_pages": 60,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:58.039Z",
+  "compiled_at": "2026-08-20T13:20:51.768Z",
   "stats": {
     "total_nos": 9,
-    "total_modules": 36,
+    "total_modules": 55,
     "total_pcs": 149,
     "total_kus": 116,
     "total_gs": 120,
@@ -17,7 +17,7 @@
   "nos_units": [
     {
       "nos_code": "RAS/N0101",
-      "nos_title": ".To receive and",
+      "nos_title": "To receive and store goods in retail operations",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
@@ -195,14 +195,14 @@
     },
     {
       "nos_code": "RAS/N0102",
-      "nos_title": ".To deliver products",
+      "nos_title": "To deliver products to customers",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
         "KU1. how to check that he/she has all the products that are due to deliver.",
-        "KU2. how to check that he/she has enough fuel for the delivery schedule, and company",
+        "KU2. how to check that he/she has enough fuel for the delivery schedule, and company procedures for getting more fuel if needed.",
         "KU3. why it is important to deliver products at the times agreed with customers.",
-        "KU4. the company procedures to follow if he/she expects to arrive at the customers premises",
+        "KU4. the company procedures to follow if he/she expects to arrive at the customers premises early or late.",
         "KU5. relevant legal restrictions on who can receive delivery.",
         "KU6. the company procedures to follow when no one is available who can receive the delivery and",
         "KU7. why it is important to treat customers courteously, and how to do this.",
@@ -355,7 +355,7 @@
     },
     {
       "nos_code": "RAS/N0112",
-      "nos_title": ".To process",
+      "nos_title": "To process customer orders for goods",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
@@ -363,7 +363,7 @@
         "KU2. the items in stock.",
         "KU3. how to check whether there is enough stock to meet the order.",
         "KU4. which items are available by order and which suppliers and manufacturers can provide them.",
-        "KU5. how to check whether external suppliers and manufacturers can provide items, and on what",
+        "KU5. how to check whether external suppliers and manufacturers can provide items, and on what terms.",
         "KU6. how to keep customers informed of progress in finding the goods they need.",
         "KU7. how to give customers clear, accurate and complete information about the terms of supply.",
         "KU8. legal and company procedures for checking the customers identify and credit status.",
@@ -518,7 +518,7 @@
     },
     {
       "nos_code": "RAS/N0116",
-      "nos_title": ".To process cash",
+      "nos_title": "To process cash and credit transactions",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
@@ -726,14 +726,14 @@
     },
     {
       "nos_code": "RAS/N0117",
-      "nos_title": ".To process returned",
+      "nos_title": "To process returned goods",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [
         "KU1. the reasons customers might have for returning goods.",
         "KU2. customers legal rights to replacements and refunds.",
         "KU3. company policies and procedures for replacements and refunds, including proof of purchase.",
-        "KU4. the authority he/she has to agree to replacements and refunds, and who to ask for help",
+        "KU4. the authority he/she has to agree to replacements and refunds, and who to ask for help when he/she needs authorisation.",
         "KU5. how to find replacement goods.",
         "KU6. the charges that apply when the company is not at fault.",
         "KU7. company procedures for preparing replacement goods for sending out.",
@@ -880,7 +880,7 @@
     },
     {
       "nos_code": "RAS/N0124",
-      "nos_title": ".To Provide",
+      "nos_title": "To Provide Information and Advice to Customers",
       "sequence_order": 6,
       "is_generic": false,
       "kus": [
@@ -1092,7 +1092,7 @@
     },
     {
       "nos_code": "RAS/N0121",
-      "nos_title": ".To Maintain Health",
+      "nos_title": "To Maintain Health and Safety",
       "sequence_order": 7,
       "is_generic": false,
       "kus": [
@@ -1100,7 +1100,7 @@
         "KU2. getting help in the event of an accident or emergency.",
         "KU3. action he/she can safely and usefully take while waiting for help to arrive.",
         "KU4. health and safety risk that can arise in a store environment.",
-        "KU5. company procedures and legal requirements for reducing health and safety risks as far as",
+        "KU5. company procedures and legal requirements for reducing health and safety risks as far as possible while working.",
         "KU6. following health and safety procedures.",
         "KU7. safety equipment to be used and why it is required.",
         "KU8. what he/she can lift safely.",
@@ -1112,7 +1112,7 @@
         "KU14. approved procedures for using safety equipment.",
         "KU15. why waste must be handled and disposed of correctly",
         "KU16. company procedures for recycling packaging waste",
-        "KU17. legal requirements and the company's procedures for disposing of waste products and",
+        "KU17. legal requirements and the company's procedures for disposing of waste products and recording food disposals",
         "KU18. company procedures for recycling packaging waste"
       ],
       "gs": [
@@ -1331,7 +1331,7 @@
     },
     {
       "nos_code": "RAS/N0137",
-      "nos_title": ".To work effectively",
+      "nos_title": "To work effectively in a retail team",
       "sequence_order": 8,
       "is_generic": false,
       "kus": [
@@ -1525,14 +1525,14 @@
     },
     {
       "nos_code": "RAS/N0138",
-      "nos_title": ".To work effectively",
+      "nos_title": "RAS/N0138",
       "sequence_order": 9,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Prepare to receive goods",
+          "module_title": "- PC1. Identify quantity and nature of goods to be received.",
           "sequence_order": 1,
           "pcs": [
             {
@@ -1543,20 +1543,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. confirm appropriate storage space availability.",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "confirm appropriate storage space availability.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC3",
-              "pc_description": "check and confirm that all equipment required for receipt and movement of goods is",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1565,8 +1562,23 @@
           ]
         },
         {
-          "module_title": "available and in good working order.",
-          "sequence_order": 2,
+          "module_title": "- PC3. check and confirm that all equipment required for receipt and movement of goods is",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "check and confirm that all equipment required for receipt and movement of goods is",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. complete required paperwork , checking for accuracy and completeness.",
+          "sequence_order": 4,
           "pcs": [
             {
               "pc_code": "PC4",
@@ -1576,20 +1588,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC5. ensure that the area for receiving goods is clean, tidy and free from obstruction and perils.",
+          "sequence_order": 5,
+          "pcs": [
             {
               "pc_code": "PC5",
               "pc_description": "ensure that the area for receiving goods is clean, tidy and free from obstruction and perils.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC6",
-              "pc_description": "report any shortfall in space or malfunction with equipment to supervisor",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1598,8 +1607,23 @@
           ]
         },
         {
-          "module_title": "Receive Goods",
-          "sequence_order": 3,
+          "module_title": "- PC6. report any shortfall in space or malfunction with equipment to supervisor",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "report any shortfall in space or malfunction with equipment to supervisor",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC7. check that all goods as detailed in the delivery note have been received.",
+          "sequence_order": 7,
           "pcs": [
             {
               "pc_code": "PC7",
@@ -1609,20 +1633,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC8. record refusals accurately following organisational standard operating procedures.",
+          "sequence_order": 8,
+          "pcs": [
             {
               "pc_code": "PC8",
               "pc_description": "record refusals accurately following organisational standard operating procedures.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC9",
-              "pc_description": "accurately update stock control systems to reflect receipt of goods.",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1631,8 +1652,23 @@
           ]
         },
         {
-          "module_title": "Store goods",
-          "sequence_order": 4,
+          "module_title": "- PC9. accurately update stock control systems to reflect receipt of goods.",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "accurately update stock control systems to reflect receipt of goods.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC10. confirm storage requirements and conditions for the incoming goods.",
+          "sequence_order": 10,
           "pcs": [
             {
               "pc_code": "PC10",
@@ -1642,29 +1678,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC11. ensure appropriate handling procedures for perishable and non-perishable goods is in place.",
+          "sequence_order": 11,
+          "pcs": [
             {
               "pc_code": "PC11",
               "pc_description": "ensure appropriate handling procedures for perishable and non-perishable goods is in place.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC12",
-              "pc_description": "follow all relevant legislation and organisation policies and procedures.",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC13",
-              "pc_description": "complete all administrative procedures to ensure appropriate rotation of goods.",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1673,8 +1697,38 @@
           ]
         },
         {
-          "module_title": "Reconcile customer accounts",
-          "sequence_order": 5,
+          "module_title": "- PC12. follow all relevant legislation and organisation policies and procedures.",
+          "sequence_order": 12,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "follow all relevant legislation and organisation policies and procedures.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC13. complete all administrative procedures to ensure appropriate rotation of goods.",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "complete all administrative procedures to ensure appropriate rotation of goods.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC14. check that credits made to customer accounts are correct.",
+          "sequence_order": 14,
           "pcs": [
             {
               "pc_code": "PC14",
@@ -1684,20 +1738,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC15. identify and sort out problems with customer accounts.",
+          "sequence_order": 15,
+          "pcs": [
             {
               "pc_code": "PC15",
               "pc_description": "identify and sort out problems with customer accounts.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC16",
-              "pc_description": "tell the right person about problems with customer accounts that he/she cannot sort out or",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1706,8 +1757,23 @@
           ]
         },
         {
-          "module_title": "problem are kept.",
-          "sequence_order": 6,
+          "module_title": "- PC16. tell the right person about problems with customer accounts that he/she cannot sort out or",
+          "sequence_order": 16,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "tell the right person about problems with customer accounts that he/she cannot sort out or",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. give clear reasons to your customer when the problem has not been resolved to their",
+          "sequence_order": 17,
           "pcs": [
             {
               "pc_code": "PC17",
@@ -1721,8 +1787,8 @@
           ]
         },
         {
-          "module_title": "requirements for recycling",
-          "sequence_order": 7,
+          "module_title": "- PC18. follow company procedures to recycle unwanted packaging materials",
+          "sequence_order": 18,
           "pcs": [
             {
               "pc_code": "PC18",
@@ -1732,11 +1798,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. dispose of food waste in line with company and legal food safety requirements",
+          "sequence_order": 19,
+          "pcs": [
             {
               "pc_code": "PC19",
               "pc_description": "dispose of food waste in line with company and legal food safety requirements",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1745,8 +1817,8 @@
           ]
         },
         {
-          "module_title": "Essential Digital Skills",
-          "sequence_order": 8,
+          "module_title": "- PC20. operate digital devices and carry out basic internet operations securely and safely",
+          "sequence_order": 20,
           "pcs": [
             {
               "pc_code": "PC20",
@@ -1756,20 +1828,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. use e- mail and social media platforms and virtual collaboration tools to work effectively",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "use e- mail and social media platforms and virtual collaboration tools to work effectively",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC22",
-              "pc_description": "use basic features of word processor, spreadsheets, and presentations",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1778,8 +1847,23 @@
           ]
         },
         {
-          "module_title": "Entrepreneurship",
-          "sequence_order": 9,
+          "module_title": "- PC22. use basic features of word processor, spreadsheets, and presentations",
+          "sequence_order": 22,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "use basic features of word processor, spreadsheets, and presentations",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC23. identify different types of Entrepreneurship and Enterprises and assess opportunities for",
+          "sequence_order": 23,
           "pcs": [
             {
               "pc_code": "PC23",
@@ -1793,8 +1877,8 @@
           ]
         },
         {
-          "module_title": "potential business through research",
-          "sequence_order": 10,
+          "module_title": "- PC24. develop a business plan and a work model, considering the 4Ps of Marketing Product, Price,",
+          "sequence_order": 24,
           "pcs": [
             {
               "pc_code": "PC24",
@@ -1808,8 +1892,8 @@
           ]
         },
         {
-          "module_title": "Place and Promotion",
-          "sequence_order": 11,
+          "module_title": "- PC25. identify sources of funding, anticipate, and mitigate any financial/ legal hurdles for the",
+          "sequence_order": 25,
           "pcs": [
             {
               "pc_code": "PC25",
@@ -1823,8 +1907,8 @@
           ]
         },
         {
-          "module_title": "Customer Service",
-          "sequence_order": 12,
+          "module_title": "- PC26. identify different types of customers",
+          "sequence_order": 26,
           "pcs": [
             {
               "pc_code": "PC26",
@@ -1834,20 +1918,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC27. identify and respond to customer requests and needs in a professional manner.",
+          "sequence_order": 27,
+          "pcs": [
             {
               "pc_code": "PC27",
               "pc_description": "identify and respond to customer requests and needs in a professional manner.",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC28",
-              "pc_description": "follow appropriate hygiene and grooming standards",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1856,8 +1937,23 @@
           ]
         },
         {
-          "module_title": "Getting ready for apprenticeship & Jobs",
-          "sequence_order": 13,
+          "module_title": "- PC28. follow appropriate hygiene and grooming standards",
+          "sequence_order": 28,
+          "pcs": [
+            {
+              "pc_code": "PC28",
+              "pc_description": "follow appropriate hygiene and grooming standards",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC29. create a professional Curriculum vitae (Résumé)",
+          "sequence_order": 29,
           "pcs": [
             {
               "pc_code": "PC29",
@@ -1867,11 +1963,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC30. search for suitable jobs using reliable offline and online sources such as Employment",
+          "sequence_order": 30,
+          "pcs": [
             {
               "pc_code": "PC30",
               "pc_description": "search for suitable jobs using reliable offline and online sources such as Employment",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1880,8 +1982,8 @@
           ]
         },
         {
-          "module_title": "exchange, recruitment agencies, newspapers etc. and job portals, respectively",
-          "sequence_order": 14,
+          "module_title": "- PC31. apply to identified job openings using offline /online methods as per requirement",
+          "sequence_order": 31,
           "pcs": [
             {
               "pc_code": "PC31",
@@ -1891,20 +1993,32 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC32. answer questions politely, with clarity and confidence, during recruitment and selection",
+          "sequence_order": 32,
+          "pcs": [
             {
               "pc_code": "PC32",
               "pc_description": "answer questions politely, with clarity and confidence, during recruitment and selection",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC33. identify apprenticeship opportunities and register for it as per guidelines and requirements",
+          "sequence_order": 33,
+          "pcs": [
             {
               "pc_code": "PC33",
               "pc_description": "identify apprenticeship opportunities and register for it as per guidelines and requirements",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,

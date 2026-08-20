@@ -5,7 +5,7 @@
   "clean_code": "SSC_Q0901",
   "total_pages": 38,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.067Z",
+  "compiled_at": "2026-08-20T13:20:52.774Z",
   "stats": {
     "total_nos": 4,
     "total_modules": 9,
@@ -17,26 +17,26 @@
   "nos_units": [
     {
       "nos_code": "SSC/N0954",
-      "nos_title": ".Monitor and",
+      "nos_title": "Monitor and Analyze Threats",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
-        "KU1. The principles of cybersecurity, including network security, endpoint security, and cloud",
-        "KU2. Various types of cyber threats, attack vectors, and vulnerabilities, including malware,",
+        "KU1. The principles of cybersecurity, including network security, endpoint security, and cloud security, to detect and mitigate threats effectively.",
+        "KU2. Various types of cyber threats, attack vectors, and vulnerabilities, including malware, phishing, ransomware, and denial-of-service (DoS) attacks.",
         "KU3. The role and functionalities of security tools such as SIEM (Security Information and Event",
-        "KU4. Cyber threat intelligence frameworks, such as MITRE ATT&CK, to classify attack tactics,",
-        "KU5. Incident response methodologies and digital forensic techniques for analyzing security",
+        "KU4. Cyber threat intelligence frameworks, such as MITRE ATT&CK, to classify attack tactics, techniques, and procedures (TTPs).",
+        "KU5. Incident response methodologies and digital forensic techniques for analyzing security breaches and determining root causes.",
         "KU6. Network protocols, system logs, and traffic patterns to identify anomalies and indicators of",
-        "KU7. Risk assessment methodologies and prioritization techniques based on business impact and",
-        "KU8. Regulatory compliance requirements, such as GDPR, ISO 27001, and NIST frameworks, for"
+        "KU7. Risk assessment methodologies and prioritization techniques based on business impact and sensitivity of compromised data.",
+        "KU8. Regulatory compliance requirements, such as GDPR, ISO 27001, and NIST frameworks, for secure data handling and threat mitigation."
       ],
       "gs": [
         "GS1. Monitor and analyze real-time security alerts from multiple sources, including SIEM, IDS/IPS,",
         "GS2. Apply forensic analysis techniques to reconstruct the sequence of events in a security breach",
-        "GS3. Communicate technical findings and security incidents clearly to both technical teams and",
-        "GS4. Implement security measures, such as system hardening, patch management, and",
+        "GS3. Communicate technical findings and security incidents clearly to both technical teams and non-technical stakeholders.",
+        "GS4. Implement security measures, such as system hardening, patch management, and configuration changes, based on investigation findings.",
         "GS5. Adapt threat detection and response strategies based on evolving cybersecurity trends, attack",
-        "GS6. Maintain detailed documentation of threat analysis, incident response activities, and"
+        "GS6. Maintain detailed documentation of threat analysis, incident response activities, and remediation measures for compliance and future reference."
       ],
       "modules": [
         {
@@ -232,25 +232,25 @@
     },
     {
       "nos_code": "SSC/N0955",
-      "nos_title": ".Coordinate with",
+      "nos_title": "Coordinate with team and respond to Incidents",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
         "KU1. The principles of incident response, including escalation procedures, threat classification, and",
-        "KU2. The configuration, implementation, and use of Security Orchestration, Automation, and",
+        "KU2. The configuration, implementation, and use of Security Orchestration, Automation, and Response (SOAR) tools for threat detection and containment.",
         "KU3. Methods for evaluating the severity and potential impact of cybersecurity threats, prioritizing",
-        "KU4. The role of Incident Response Teams (IRT) and Threat Hunting Teams in managing security",
-        "KU5. Techniques for conducting root cause analysis post-incident to determine security",
+        "KU4. The role of Incident Response Teams (IRT) and Threat Hunting Teams in managing security breaches and coordinating responses.",
+        "KU5. Techniques for conducting root cause analysis post-incident to determine security vulnerabilities, attack vectors, and defensive improvements.",
         "KU6. Best practices for conducting regular vulnerability assessments, identifying weaknesses in",
         "KU7. Organizational policies, service level agreements (SLAs), and compliance requirements that",
-        "KU8. The fundamentals of data analysis in cybersecurity, including how to interpret complex"
+        "KU8. The fundamentals of data analysis in cybersecurity, including how to interpret complex security logs, detect anomalies, and analyze trends in security events."
       ],
       "gs": [
         "GS1. Effectively communicate security incidents, their urgency, and required actions to technical",
-        "GS2. Monitor the progress of ongoing security investigations and escalate unresolved issues to",
+        "GS2. Monitor the progress of ongoing security investigations and escalate unresolved issues to appropriate personnel per organizational standards.",
         "GS3. Apply data analysis techniques to detect suspicious activity, analyze attack patterns, and",
         "GS4. Coordinate with IT teams to prioritize and apply security patches, ensuring a timely response",
-        "GS5. Document security incidents, including findings from post-incident investigations, in a",
+        "GS5. Document security incidents, including findings from post-incident investigations, in a structured format for reporting and policy development.",
         "GS6. Adhere to cybersecurity policies, procedures, and SLAs while managing information security"
       ],
       "modules": [
@@ -396,26 +396,26 @@
     },
     {
       "nos_code": "SSC/N0956",
-      "nos_title": ".Manage and Secure",
+      "nos_title": "Manage and Secure Cloud Data",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
         "KU1. The principles of threat protection, information security, and identity management within the",
-        "KU2. The configuration, deployment, and management of Azure Security Center, Azure Firewall,",
+        "KU2. The configuration, deployment, and management of Azure Security Center, Azure Firewall, and Azure Key Vault to ensure secure cloud infrastructure and compliance with security best",
         "KU3. The methodologies for continuously monitoring security configurations and updating them to",
         "KU4. Strategies for implementing multi-cloud security measures, ensuring robust security controls",
         "KU5. The functions and capabilities of Security Information and Event Management (SIEM) tools and",
         "KU6. Incident response processes, including identifying, documenting, and investigating suspicious",
-        "KU7. Identity and access management principles, including user provisioning, de-provisioning,",
+        "KU7. Identity and access management principles, including user provisioning, de-provisioning, access reviews, and the implementation of Multi-Factor Authentication (MFA) to maintain",
         "KU8. The classification of sensitive data, including Personally Identifiable Information (PII) and"
       ],
       "gs": [
-        "GS1. Effectively communicate security incidents, response actions, and remediation plans to",
+        "GS1. Effectively communicate security incidents, response actions, and remediation plans to technical teams, management, and other stakeholders.",
         "GS2. Analyze and interpret security logs, identify attack patterns, and use threat intelligence",
         "GS3. Coordinate with IT teams and compliance officers to ensure adherence to security standards,",
-        "GS4. Perform root cause analysis on security incidents to determine vulnerabilities, document",
-        "GS5. Develop and conduct security awareness training programs for employees to enhance their",
-        "GS6. Organize and participate in disaster recovery drills, ensuring that backup procedures are"
+        "GS4. Perform root cause analysis on security incidents to determine vulnerabilities, document findings, and implement corrective actions to prevent recurrence.",
+        "GS5. Develop and conduct security awareness training programs for employees to enhance their understanding of cybersecurity risks, policies, and best practices.",
+        "GS6. Organize and participate in disaster recovery drills, ensuring that backup procedures are tested, recovery plans are updated, and lessons learned are documented."
       ],
       "modules": [
         {
@@ -629,26 +629,26 @@
     },
     {
       "nos_code": "SSC/N0957",
-      "nos_title": ".Execute Phishing",
+      "nos_title": "Execute Phishing and Social Engineering Defense",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
-        "KU1. The principles of phishing threat management, including common attack techniques,",
+        "KU1. The principles of phishing threat management, including common attack techniques, indicators of phishing attempts, and methods to identify suspicious emails.",
         "KU2. The configuration, implementation, and use of phishing detection tools (e.g., PhishMe) for",
         "KU3. Techniques for conducting phishing risk assessments by evaluating data sensitivity, employee",
-        "KU4. Best practices for designing and executing phishing simulation exercises to test employee",
+        "KU4. Best practices for designing and executing phishing simulation exercises to test employee awareness and improve security training programs.",
         "KU5. Digital forensics techniques for investigating phishing incidents, including analyzing email",
-        "KU6. Incident response strategies for handling phishing attacks, including response planning,",
+        "KU6. Incident response strategies for handling phishing attacks, including response planning, stakeholder coordination, and mitigation procedures.",
         "KU7. The regulatory and compliance requirements related to data privacy and security, including",
-        "KU8. Methods for preparing, analyzing, and presenting phishing threat intelligence reports,"
+        "KU8. Methods for preparing, analyzing, and presenting phishing threat intelligence reports, including tracking trends, evaluating training effectiveness, and recommending security"
       ],
       "gs": [
         "GS1. Effectively analyze emails for phishing indicators such as suspicious sender addresses, urgent",
-        "GS2. Implement and manage phishing prevention policies, ensuring compliance with industry",
+        "GS2. Implement and manage phishing prevention policies, ensuring compliance with industry standards and organizational security frameworks.",
         "GS3. Conduct phishing awareness training sessions and simulations, assessing employee responses",
-        "GS4. Investigate phishing incidents, document findings, and recommend corrective actions to",
-        "GS5. Communicate phishing threats, response strategies, and security recommendations to",
-        "GS6. Collaborate with security teams to ensure compliance with data privacy regulations,"
+        "GS4. Investigate phishing incidents, document findings, and recommend corrective actions to prevent future attacks.",
+        "GS5. Communicate phishing threats, response strategies, and security recommendations to technical teams, management, and employees.",
+        "GS6. Collaborate with security teams to ensure compliance with data privacy regulations, conducting regular audits and assessments to maintain security integrity."
       ],
       "modules": [
         {

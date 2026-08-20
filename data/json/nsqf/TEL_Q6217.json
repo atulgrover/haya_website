@@ -5,7 +5,7 @@
   "clean_code": "TEL_Q6217",
   "total_pages": 39,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.861Z",
+  "compiled_at": "2026-08-20T13:20:53.464Z",
   "stats": {
     "total_nos": 4,
     "total_modules": 13,
@@ -17,7 +17,7 @@
   "nos_units": [
     {
       "nos_code": "TEL/N6258",
-      "nos_title": ".Manage and",
+      "nos_title": "Manage and Analyse Drone Data",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
@@ -27,13 +27,13 @@
         "KU4. configuration steps for drone-mounted 5G modules or external communication devices (e.g.,",
         "KU5. real-time telemetry parameters (e.g., altitude, battery level, signal strength, frame rate) and",
         "KU6. file types used in drone operations (e.g., .MP4, .SRT, .CSV, .DAT, .TLOG, .TIFF) and their",
-        "KU7. importance of onboard data storage (e.g., SD card, internal SSD) as a redundancy",
+        "KU7. importance of onboard data storage (e.g., SD card, internal SSD) as a redundancy mechanism during real-time data streaming.",
         "KU8. use of ground control software (e.g., QGroundControl, DJI GS Pro, Pix4Dcapture, Autel",
-        "KU9. signal degradation risks during 5G drone operations (e.g., interference, obstruction,",
+        "KU9. signal degradation risks during 5G drone operations (e.g., interference, obstruction, multipath effect) and mitigation strategies.",
         "KU10. procedures for downloading, verifying, and archiving mission data from drones post-flight.",
-        "KU11. basic use of data visualisation tools or viewers (e.g., Google Earth, Open Drone Map,",
+        "KU11. basic use of data visualisation tools or viewers (e.g., Google Earth, Open Drone Map, proprietary vendor software) for interpreting images, maps, or telemetry.",
         "KU12. techniques to identify anomalies in drone data such as corrupted video, time sync errors, or",
-        "KU13. cybersecurity, privacy, and compliance considerations when dealing with surveillance or"
+        "KU13. cybersecurity, privacy, and compliance considerations when dealing with surveillance or sensitive imagery."
       ],
       "gs": [
         "GS1. communicate clearly with supervisors and team members during drone data operations.",
@@ -238,19 +238,19 @@
     },
     {
       "nos_code": "TEL/N6259",
-      "nos_title": ".Operate and",
+      "nos_title": "Operate and Maintain the Drone System",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
-        "KU1. basic drone components, including frame, ESCs, motors, propellers, IMU, GPS, and payload",
+        "KU1. basic drone components, including frame, ESCs, motors, propellers, IMU, GPS, and payload interfaces.",
         "KU2. common mechanical and electrical issues observed in drones and their early indicators.",
-        "KU3. battery management principles, including safe charging, storage, disposal, and fire risk",
+        "KU3. battery management principles, including safe charging, storage, disposal, and fire risk mitigation.",
         "KU4. standard tools and cleaning materials used for drone maintenance, and their proper use.",
         "KU5. use of ground control software interfaces for sensor calibration and system diagnostics.",
         "KU6. process of updating drone firmware, syncing with controllers, and resolving compatibility",
         "KU7. importance of pre-flight and post-flight checklists and how to document them properly.",
-        "KU8. safety procedures for drone operation, including RTH activation, emergency shutdown, and",
-        "KU9. airspace regulations and compliance protocols applicable to drone operation in urban and",
+        "KU8. safety procedures for drone operation, including RTH activation, emergency shutdown, and Geofencing.",
+        "KU9. airspace regulations and compliance protocols applicable to drone operation in urban and rural zones.",
         "KU10. operational limits of drones, including maximum wind speed tolerance, altitude, and payload",
         "KU11. use of GPS and compass calibration tools for enhancing flight stability.",
         "KU12. impact of electromagnetic interference (EMI) on drone navigation and ways to mitigate it.",
@@ -262,13 +262,13 @@
       ],
       "gs": [
         "GS1. read and understand drone manuals, firmware update guides, and technical notices.",
-        "GS2. communicate maintenance issues, calibration anomalies, or safety observations clearly to",
+        "GS2. communicate maintenance issues, calibration anomalies, or safety observations clearly to the supervisor.",
         "GS3. follow written SOPs, checklists, and maintenance schedules independently.",
         "GS4. use numeracy skills to interpret battery voltage, firmware versions, and GPS signal metrics.",
         "GS5. apply basic troubleshooting to diagnose and address visible or recurring drone faults.",
-        "GS6. use mobile apps or diagnostic software to support drone health checks and maintenance",
-        "GS7. maintain a calm and safety-focused attitude when encountering operational disruptions or",
-        "GS8. organise tools, replacement parts, and documentation systematically for an efficient",
+        "GS6. use mobile apps or diagnostic software to support drone health checks and maintenance activities.",
+        "GS7. maintain a calm and safety-focused attitude when encountering operational disruptions or emergencies.",
+        "GS8. organise tools, replacement parts, and documentation systematically for an efficient workflow.",
         "GS9. work collaboratively with drone operators, technicians, and supervisors to ensure mission",
         "GS10. show responsibility in maintaining compliance logs, hardware condition records, and flight"
       ],
@@ -547,7 +547,7 @@
     },
     {
       "nos_code": "TEL/N9101",
-      "nos_title": ".Organise Work and",
+      "nos_title": "Organise Work and Resources as per Health and Safety",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
@@ -564,7 +564,7 @@
         "KU11. energy-saving practices applicable to lights, equipment, and HVAC systems",
         "KU12. sustainable practices in material usage, including waste minimisation and recycling",
         "KU13. types of waste: recyclable, non-recyclable, hazardous (e.g., batteries, solvents, e-waste)",
-        "KU14. correct procedures for the disposal of different types of waste in accordance with",
+        "KU14. correct procedures for the disposal of different types of waste in accordance with government and industry regulations (e.g., E-Waste Management Rules)",
         "KU15. usage of digital tools (e.g., mobile apps, web portals, task boards) for productivity tracking"
       ],
       "gs": [
@@ -573,7 +573,7 @@
         "GS3. communicate effectively with peers and supervisors regarding workload, delays, hazards, or",
         "GS4. listen attentively and follow safety instructions, tool handling techniques, or ergonomic",
         "GS5. plan daily tasks by prioritising safety and quality over speed",
-        "GS6. identify and resolve minor operational problems independently, escalating only where",
+        "GS6. identify and resolve minor operational problems independently, escalating only where necessary",
         "GS7. work as part of a team to maintain cleanliness, safety, and quality standards in a shared",
         "GS8. apply critical thinking to identify risks and recommend proactive safety measures.",
         "GS9. foster a positive and responsible safety culture in the workplace.",
@@ -815,27 +815,27 @@
     },
     {
       "nos_code": "TEL/N9102",
-      "nos_title": ".Interact Effectively",
+      "nos_title": "Interact Effectively with Team Members and Customers",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
-        "KU1. organisational structure, hierarchy, and roles of team members, supervisors, and",
-        "KU2. professional etiquette and expected behaviour in face-to-face, virtual, and telephonic",
+        "KU1. organisational structure, hierarchy, and roles of team members, supervisors, and stakeholders",
+        "KU2. professional etiquette and expected behaviour in face-to-face, virtual, and telephonic interactions",
         "KU3. importance of clear communication and active listening to ensure mutual understanding",
         "KU4. common digital communication tools (e.g., email, chat apps, video conferencing platforms)",
         "KU5. feedback mechanisms within the organisation and how to respond constructively to criticism",
         "KU6. cultural sensitivities, unconscious biases, and the importance of inclusion and diversity in the",
-        "KU7. principles of emotional intelligence and how they help in team coordination and customer",
+        "KU7. principles of emotional intelligence and how they help in team coordination and customer service",
         "KU8. challenges faced by Persons with Disabilities (PwDs) and inclusive practices for working with",
         "KU9. legal and organisational frameworks supporting equality, diversity, and anti-discrimination",
         "KU10. methods for conflict prevention and resolution, including mediation and escalation",
-        "KU11. role of respect, trust, and open communication in team effectiveness and customer"
+        "KU11. role of respect, trust, and open communication in team effectiveness and customer satisfaction"
       ],
       "gs": [
-        "GS1. read and interpret work instructions, emails, and policy documents related to workplace",
+        "GS1. read and interpret work instructions, emails, and policy documents related to workplace behaviour and communication.",
         "GS2. write clear, concise emails, reports, or messages to team members, supervisors, or customers",
-        "GS3. communicate clearly and confidently in person, over the phone, and using digital",
-        "GS4. adapt communication style based on the needs of the audience (e.g., customer, peer,",
+        "GS3. communicate clearly and confidently in person, over the phone, and using digital communication platforms",
+        "GS4. adapt communication style based on the needs of the audience (e.g., customer, peer, supervisor, PwD)",
         "GS5. listen attentively to gather information, understand perspectives, and clarify doubts.",
         "GS6. prioritise tasks and allocate time effectively in coordination with team members"
       ],

@@ -5,7 +5,7 @@
   "clean_code": "ELE_Q1407",
   "total_pages": 32,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:49.720Z",
+  "compiled_at": "2026-08-20T13:20:44.588Z",
   "stats": {
     "total_nos": 4,
     "total_modules": 18,
@@ -17,7 +17,7 @@
   "nos_units": [
     {
       "nos_code": "ELE/N1420",
-      "nos_title": ".Introduction to",
+      "nos_title": "Introduction to Artificial Intelligence",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
@@ -173,18 +173,18 @@
     },
     {
       "nos_code": "ELE/N1421",
-      "nos_title": ".Advanced",
+      "nos_title": "Advanced Mathematics and Exploratory Data Analysis for",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
-        "KU1. Understand the role of algebra in solving equations and inequalities within data science",
-        "KU2. Comprehend the use of functions and graphs in analyzing trends and making predictive",
-        "KU3. Grasp probability principles, such as random variables, probability distributions, and",
-        "KU4. Understand the application of probability distributions (e.g., normal, binomial) to model",
-        "KU5. Familiarize with key linear algebra concepts like vector spaces and matrix operations for",
+        "KU1. Understand the role of algebra in solving equations and inequalities within data science applications, including real-world problems.",
+        "KU2. Comprehend the use of functions and graphs in analyzing trends and making predictive models.",
+        "KU3. Grasp probability principles, such as random variables, probability distributions, and cumulative distribution functions, and their relevance in data science.",
+        "KU4. Understand the application of probability distributions (e.g., normal, binomial) to model uncertainty in data science and AI.",
+        "KU5. Familiarize with key linear algebra concepts like vector spaces and matrix operations for manipulating and transforming data.",
         "KU6. Understand the significance of confidence intervals in statistical analysis and their role in",
         "KU7. Grasp the concepts of Bayesian probability, conditional probability and especially in making",
-        "KU8. Develop knowledge of using Pandas for data preprocessing tasks such as loading, cleaning,",
+        "KU8. Develop knowledge of using Pandas for data preprocessing tasks such as loading, cleaning, and merging datasets.",
         "KU9. Understand how to visualize data distributions and correlations using Seaborn's pair grid and"
       ],
       "gs": [
@@ -503,29 +503,29 @@
     },
     {
       "nos_code": "ELE/N1422",
-      "nos_title": ".Machine",
+      "nos_title": "Machine Learning",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
-        "KU1. Understand the distinctions between supervised, unsupervised, and reinforcement learning,",
-        "KU2. Comprehend the stages of the machine learning pipeline, including data preprocessing,",
-        "KU3. Grasp the key machine learning evaluation metrics such as accuracy, precision, recall, F1",
+        "KU1. Understand the distinctions between supervised, unsupervised, and reinforcement learning, and their specific applications in artificial intelligence (AI).",
+        "KU2. Comprehend the stages of the machine learning pipeline, including data preprocessing, feature selection, model training, and model evaluation.",
+        "KU3. Grasp the key machine learning evaluation metrics such as accuracy, precision, recall, F1 score, confusion matrix, ROC curve, and AUC, and their use in assessing model performance.",
         "KU4. Understand how regression models (e.g., linear regression, polynomial regression) are used",
         "KU5. Comprehend the principles of classification models (e.g., logistic regression, decision trees)",
-        "KU6. Grasp the benefits of ensemble methods (e.g., Random Forest, Gradient Boosting) and their",
-        "KU7. Understand the principles of Support Vector Machines (SVM), including the concepts of",
+        "KU6. Grasp the benefits of ensemble methods (e.g., Random Forest, Gradient Boosting) and their advantages over using individual models.",
+        "KU7. Understand the principles of Support Vector Machines (SVM), including the concepts of hyperplanes, margins, and the kernel trick for handling non-linear data.",
         "KU8. Understand the concept of decision trees, tree-building algorithms (e.g., CART, ID3), and the",
-        "KU9. Grasp the key concepts of reinforcement learning, including agents, environments, states,"
+        "KU9. Grasp the key concepts of reinforcement learning, including agents, environments, states, actions, rewards, and policies."
       ],
       "gs": [
-        "GS1. Understanding of supervised, unsupervised, and reinforcement learning and their AI",
+        "GS1. Understanding of supervised, unsupervised, and reinforcement learning and their AI applications.",
         "GS2. Knowledge of the machine learning pipeline, including data preprocessing, feature selection,",
-        "GS3. Familiarity with common evaluation metrics such as accuracy, precision, recall, F1 score,",
-        "GS4. Ability to apply regression models (e.g., linear regression, polynomial regression) for",
+        "GS3. Familiarity with common evaluation metrics such as accuracy, precision, recall, F1 score, confusion matrix, ROC curve, and AUC.",
+        "GS4. Ability to apply regression models (e.g., linear regression, polynomial regression) for numerical predictions.",
         "GS5. Proficiency in implementing classification models (e.g., logistic regression, decision trees) for",
         "GS6. Understanding decision trees, tree-building algorithms (e.g., CART, ID3), and techniques for",
-        "GS7. Knowledge of ensemble methods (e.g., Random Forest, Gradient Boosting) and their",
-        "GS8. Ability to implement and tune Support Vector Machines (SVM), including concepts like"
+        "GS7. Knowledge of ensemble methods (e.g., Random Forest, Gradient Boosting) and their advantages over individual models.",
+        "GS8. Ability to implement and tune Support Vector Machines (SVM), including concepts like hyperplanes."
       ],
       "modules": [
         {
@@ -751,26 +751,26 @@
     },
     {
       "nos_code": "ELE/N1423",
-      "nos_title": ".NLP, Neural",
+      "nos_title": "NLP, Neural Networks, Deep Learning, and AI Capstone",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
-        "KU1. Understand the fundamentals of Text Mining and its role in extracting insights from",
-        "KU2. Comprehend text preprocessing techniques such as tokenization, stemming, and",
+        "KU1. Understand the fundamentals of Text Mining and its role in extracting insights from unstructured text data.",
+        "KU2. Comprehend text preprocessing techniques such as tokenization, stemming, and lemmatization, and their importance in preparing text data for analysis.",
         "KU3. Grasp the different types of Language Models (e.g., statistical, neural-based) and their use in",
-        "KU4. Understand how to use NLP frameworks like Keras for tasks such as sentiment analysis and",
+        "KU4. Understand how to use NLP frameworks like Keras for tasks such as sentiment analysis and entity recognition.",
         "KU5. Grasp the structure of Neural Networks, including neurons, layers, and activation functions,",
-        "KU6. Comprehend the role of the Backpropagation Algorithm in training neural networks by",
+        "KU6. Comprehend the role of the Backpropagation Algorithm in training neural networks by adjusting weights to minimize errors.",
         "KU7. Understand advanced deep learning architectures, such as Convolutional Neural Networks",
         "KU8. Understand how to implement and train basic Neural Network models using frameworks like",
-        "KU9. Grasp the purpose and implementation of specialized models like GANs for synthetic data"
+        "KU9. Grasp the purpose and implementation of specialized models like GANs for synthetic data generation and Autoencoders for tasks like anomaly detection."
       ],
       "gs": [
         "GS1. Understanding the fundamentals of text mining.",
-        "GS2. Proficiency in text preprocessing techniques such as tokenization, stemming, and",
-        "GS3. Practice with NLP tasks using frameworks like Keras for sentiment analysis and entity",
+        "GS2. Proficiency in text preprocessing techniques such as tokenization, stemming, and lemmatization.",
+        "GS3. Practice with NLP tasks using frameworks like Keras for sentiment analysis and entity recognition.",
         "GS4. Exploration of various types of language models (e.g., statistical, neural-based).",
-        "GS5. Understanding the structure of neural networks, including neurons, layers, and activation",
+        "GS5. Understanding the structure of neural networks, including neurons, layers, and activation functions.",
         "GS6. Knowledge of the backpropagation algorithm and its role in training neural networks.",
         "GS7. Ability to implement basic neural network models using TensorFlow/Keras.",
         "GS8. Exploration of advanced neural network architectures like Convolutional Neural Networks",

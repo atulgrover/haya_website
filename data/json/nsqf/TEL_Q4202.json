@@ -5,7 +5,7 @@
   "clean_code": "TEL_Q4202",
   "total_pages": 41,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.738Z",
+  "compiled_at": "2026-08-20T13:20:53.355Z",
   "stats": {
     "total_nos": 4,
     "total_modules": 9,
@@ -17,27 +17,27 @@
   "nos_units": [
     {
       "nos_code": "TEL/N4205",
-      "nos_title": ".Set Standards for",
+      "nos_title": "Set Standards for 5G Network Architecture",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
-        "KU1. principles/fundamentals of 5G technology, including beamforming, massive MIMO, and",
+        "KU1. principles/fundamentals of 5G technology, including beamforming, massive MIMO, and network slicing",
         "KU2. ITU's IMT-2020 framework and the specific frequency bands designated for 5G deployment",
         "KU3. three (3) GPP standards that define the technical specifications for 5G network elements and",
         "KU4. detailed configuration and deployment procedures for base stations, RAN, and core network",
-        "KU5. different authentication methods like SIM-based authentication, AKA, and EAP methods for",
-        "KU6. service-based architecture (SBA) and network function virtualization (NFV) for service",
-        "KU7. techniques for planning network coverage and capacity, including cell placement and",
+        "KU5. different authentication methods like SIM-based authentication, AKA, and EAP methods for securing subscribers",
+        "KU6. service-based architecture (SBA) and network function virtualization (NFV) for service delivery in 5G networks",
+        "KU7. techniques for planning network coverage and capacity, including cell placement and interference management",
         "KU8. encryption methods, secure key exchange, and authentication protocols for network security",
-        "KU9. implementation of voice over 5G (VoNR), IoT connectivity, and multimedia services in 5G",
+        "KU9. implementation of voice over 5G (VoNR), IoT connectivity, and multimedia services in 5G networks",
         "KU10. drive testing, field measurements, and KPI analysis",
         "KU11. QoS mechanisms like bearer control, flow control, and resource reservation in 5G networks",
         "KU12. three (3)GPP Release 15, 16, and beyond, for seamless integration",
         "KU13. monitoring tools like SNMP, NetFlow, and Deep Packet Inspection (DPI)",
-        "KU14. techniques to analyze traffic patterns, predict user demand, and adapt the network",
+        "KU14. techniques to analyze traffic patterns, predict user demand, and adapt the network accordingly",
         "KU15. hardware requirements for RAN and core network elements, considering future scalability",
         "KU16. latency targets and throughput expectations",
-        "KU17. regulatory compliance regarding telecommunications standards and spectrum allocation",
+        "KU17. regulatory compliance regarding telecommunications standards and spectrum allocation policies",
         "KU18. emerging networking technologies and advancements in the field of 5G",
         "KU19. network management practices and strategies for updates and optimizations",
         "KU20. data analysis skills to interpret network performance metrics and make informed decisions"
@@ -47,9 +47,9 @@
         "GS2. fill up appropriate technical forms, and activity logs in the required format specified by the",
         "GS3. comprehend formats and checklists for preventive maintenance and site hygiene",
         "GS4. analyze situations and make appropriate decisions",
-        "GS5. prioritize and execute tasks in a high-pressure environment and handle high-pressure",
+        "GS5. prioritize and execute tasks in a high-pressure environment and handle high-pressure situations",
         "GS6. communicate effectively with peers, supervisors and clients",
-        "GS7. utilize appropriate communication channels to escalate unresolved problems to relevant"
+        "GS7. utilize appropriate communication channels to escalate unresolved problems to relevant stakeholders"
       ],
       "modules": [
         {
@@ -230,16 +230,16 @@
     },
     {
       "nos_code": "TEL/N4206",
-      "nos_title": ".Verify and Prepare",
+      "nos_title": "Verify and Prepare Hardware Equipment for 5G Installation",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
         "KU1. Three (3) GPP standards and specifications relevant to 5G network deployment",
         "KU2. principles and concepts of Multiple Input, Multiple Output (MIMO) technology",
-        "KU3. hardware components and specifications of passive equipment like antennas, feeders, and",
+        "KU3. hardware components and specifications of passive equipment like antennas, feeders, and cables",
         "KU4. functionality and technical requirements of active equipment such as gNodes and microwave",
-        "KU5. procedures for validating and obtaining necessary licenses and permits for hardware",
-        "KU6. weatherproofing and protective measures to safeguard equipment from environmental",
+        "KU5. procedures for validating and obtaining necessary licenses and permits for hardware installation",
+        "KU6. weatherproofing and protective measures to safeguard equipment from environmental elements",
         "KU7. specific tools and equipment used for installation and configuration tasks",
         "KU8. types of network cables, connectors, and interconnection standards used in 5G networks",
         "KU9. grounding and lightning protection principles for equipment safety",
@@ -255,13 +255,13 @@
       "gs": [
         "GS1. communicate with team members accurately",
         "GS2. analyse and interpret the messages and prompts timely and correctly",
-        "GS3. communicate with external stakeholders in their preferred language (English, Hindi or",
+        "GS3. communicate with external stakeholders in their preferred language (English, Hindi or regional)",
         "GS4. provide advice and guidance to peers and juniors",
         "GS5. seek experts help timely, if needed at any stage",
         "GS6. prioritize tasks in high-pressure environment",
         "GS7. interpret reports and numerical data",
         "GS8. perform multiple tasks/activities at the same time",
-        "GS9. read standards documents such as provisioning guide, reports, requirement guides, user",
+        "GS9. read standards documents such as provisioning guide, reports, requirement guides, user manuals",
         "GS10. adapt new technologies"
       ],
       "modules": [
@@ -425,30 +425,30 @@
     },
     {
       "nos_code": "TEL/N4207",
-      "nos_title": ".Design Spectrum",
+      "nos_title": "Design Spectrum and 5G Network Architecture",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
-        "KU1. fundamentals of wireless communication, including radio frequency (RF) propagation,",
+        "KU1. fundamentals of wireless communication, including radio frequency (RF) propagation, modulation techniques, and spectral efficiency",
         "KU2. Three (3) GPP standards and specifications for 5G networks, including frequency bands and",
-        "KU3. regulatory guidelines and spectrum allocation policies governing the use of wireless",
+        "KU3. regulatory guidelines and spectrum allocation policies governing the use of wireless frequency bands for telecommunications",
         "KU4. principles of radio wave propagation and its impact on coverage, interference, and capacity",
         "KU5. techniques for spectrum analysis and measurement tools to assess spectrum availability and",
         "KU6. methods for frequency planning and resource allocation to meet the diverse requirements of",
-        "KU7. network architecture and design principles for dynamic spectrum sharing and efficient",
-        "KU8. advanced spectrum management techniques, such as cognitive radio, spectrum sensing,",
-        "KU9. spectrum licensing and frequency coordination processes to comply with regulatory",
+        "KU7. network architecture and design principles for dynamic spectrum sharing and efficient coexistence of different operators and technologies",
+        "KU8. advanced spectrum management techniques, such as cognitive radio, spectrum sensing, and dynamic spectrum access",
+        "KU9. spectrum licensing and frequency coordination processes to comply with regulatory requirements and avoid interference",
         "KU10. network slicing concepts and how to tailor virtual network instances for different services",
-        "KU11. principles of network integration and interworking between different types of networks,",
-        "KU12. handover mechanisms and seamless mobility management across heterogeneous network",
+        "KU11. principles of network integration and interworking between different types of networks, including cellular, Wi-Fi, and satellite",
+        "KU12. handover mechanisms and seamless mobility management across heterogeneous network environments",
         "KU13. quality of service (QoS) mechanisms and traffic engineering techniques for efficient resource",
         "KU14. the role of Fully Qualified Domain Name (FQDN) in the 5G core network",
         "KU15. security considerations and authentication mechanisms",
         "KU16. network performance testing and optimization methodologies",
-        "KU17. Five (5)G network equipment and hardware components, including base stations, antennas,",
+        "KU17. Five (5)G network equipment and hardware components, including base stations, antennas, routers, and their configurations",
         "KU18. network design and architectural concepts",
-        "KU19. cross-functional collaboration with various stakeholders, such as network operators,",
-        "KU20. evolving trends and developments in wireless communication technologies and spectrum"
+        "KU19. cross-functional collaboration with various stakeholders, such as network operators, regulators, and equipment vendors, to facilitate seamless integration of network types and",
+        "KU20. evolving trends and developments in wireless communication technologies and spectrum management practices"
       ],
       "gs": [
         "GS1. stay up-to-date with new technology",
@@ -461,7 +461,7 @@
         "GS8. work under a high-pressure situation",
         "GS9. adhere to the timelines",
         "GS10. adopt an organized and systematic approach to arrive at an optimum solution",
-        "GS11. communicate effectively with peers, supervisors and clients, and utilize appropriate"
+        "GS11. communicate effectively with peers, supervisors and clients, and utilize appropriate communication channels to escalate unresolved problems"
       ],
       "modules": [
         {
@@ -651,7 +651,7 @@
     },
     {
       "nos_code": "TEL/N4208",
-      "nos_title": ".Implement the 5G",
+      "nos_title": "Implement the 5G New Radio (NR) and Radio Access",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
@@ -681,14 +681,14 @@
       ],
       "gs": [
         "GS1. interpret reports, readings and numerical data",
-        "GS2. fill up appropriate technical forms, and activity logs in the required format of the",
-        "GS3. Create documentation required on the job regarding the details of the alarm, server",
+        "GS2. fill up appropriate technical forms, and activity logs in the required format of the organization",
+        "GS3. Create documentation required on the job regarding the details of the alarm, server maintenance, up time and down time, etc",
         "GS4. analyze information and evaluate results to choose the best solution and solve the issue",
         "GS5. evaluate the possible solutions to the problem",
         "GS6. decide the most suitable course of action for completing the task within the timeline",
         "GS7. recognize a workplace problem or a potential problem and take action",
-        "GS8. prioritize and execute tasks in a high-pressure environment and handle high-pressure",
-        "GS9. analyze, evaluate and apply the information gathered from observation, experience,",
+        "GS8. prioritize and execute tasks in a high-pressure environment and handle high-pressure situations",
+        "GS9. analyze, evaluate and apply the information gathered from observation, experience, reasoning, or communication to act efficiently",
         "GS10. refer problems outside your area of responsibility to the appropriate person",
         "GS11. communicate with colleagues and supervisors to handle verbal enquiries, such as clarifying"
       ],

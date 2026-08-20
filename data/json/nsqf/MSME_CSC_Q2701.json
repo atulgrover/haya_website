@@ -5,10 +5,10 @@
   "clean_code": "MSME_CSC_Q2701",
   "total_pages": 36,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:56.450Z",
+  "compiled_at": "2026-08-20T13:20:50.457Z",
   "stats": {
     "total_nos": 5,
-    "total_modules": 33,
+    "total_modules": 101,
     "total_pcs": 206,
     "total_kus": 0,
     "total_gs": 0,
@@ -17,7 +17,7 @@
   "nos_units": [
     {
       "nos_code": "MSME/CSC/N2705",
-      "nos_title": ".Carry out",
+      "nos_title": "Carry out Welding Operations (Arc and Gas Welding)",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [],
@@ -474,7 +474,7 @@
     },
     {
       "nos_code": "MSME/CSC/N2704",
-      "nos_title": ".Carry out",
+      "nos_title": "Carry out Welding Operations (Arc and Gas Welding)",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [],
@@ -931,14 +931,14 @@
     },
     {
       "nos_code": "MSME/CSC/N2702",
-      "nos_title": ".Perform",
+      "nos_title": "Perform Machining Operation on Conventional",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Carry out Welding Operations (Arc and Gas Welding) MSME/CCWT/03",
+          "module_title": "- PC1. Describe Arc & Gas welding equipment",
           "sequence_order": 1,
           "pcs": [
             {
@@ -949,20 +949,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. Describe various welding process & their application",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "Describe various welding process & their application",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC3",
-              "pc_description": "• Describe use of electricity & various electric terms, application &",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -971,8 +968,23 @@
           ]
         },
         {
-          "module_title": "• importance of heat & temperature in welding 31.3",
-          "sequence_order": 2,
+          "module_title": "- PC3. • Describe use of electricity & various electric terms, application &",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "• Describe use of electricity & various electric terms, application &",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. Perform arc welding operation using various welding instrument",
+          "sequence_order": 4,
           "pcs": [
             {
               "pc_code": "PC4",
@@ -982,38 +994,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC5. Differentiate AC & DC welding machines",
+          "sequence_order": 5,
+          "pcs": [
             {
               "pc_code": "PC5",
               "pc_description": "Differentiate AC & DC welding machines",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC6",
-              "pc_description": "Describe arc length & its effects",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC7",
-              "pc_description": "Describe importance of electrode, fluxes, coating, size & its coding",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC8",
-              "pc_description": "• Use the properties of calcium carbide, acetylene gas its purifier &",
-              "sequence_order": 5,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1022,8 +1013,53 @@
           ]
         },
         {
-          "module_title": "• related terms.",
-          "sequence_order": 3,
+          "module_title": "- PC6. Describe arc length & its effects",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "Describe arc length & its effects",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC7. Describe importance of electrode, fluxes, coating, size & its coding",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Describe importance of electrode, fluxes, coating, size & its coding",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC8. • Use the properties of calcium carbide, acetylene gas its purifier &",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "• Use the properties of calcium carbide, acetylene gas its purifier &",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC9. • Use properties of oxygen its charging process & equipment use in with",
+          "sequence_order": 9,
           "pcs": [
             {
               "pc_code": "PC9",
@@ -1037,8 +1073,8 @@
           ]
         },
         {
-          "module_title": "• oxygen gas.",
-          "sequence_order": 4,
+          "module_title": "- PC10. • Describe and demonstrate working of oxy-acetylene low presser & high",
+          "sequence_order": 10,
           "pcs": [
             {
               "pc_code": "PC10",
@@ -1052,8 +1088,8 @@
           ]
         },
         {
-          "module_title": "• presser in welding system",
-          "sequence_order": 5,
+          "module_title": "- PC11. Demonstrate right & left ward welding technique",
+          "sequence_order": 11,
           "pcs": [
             {
               "pc_code": "PC11",
@@ -1063,146 +1099,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC12. Identify defects, cause, remedies & controlling during Arc welding",
+          "sequence_order": 12,
+          "pcs": [
             {
               "pc_code": "PC12",
               "pc_description": "Identify defects, cause, remedies & controlling during Arc welding",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC13",
-              "pc_description": "Describe about filler rod, specification & size fluxes, types & its functions",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC14",
-              "pc_description": "Know about welds slop & rotation",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC15",
-              "pc_description": "Identify welding symbols",
-              "sequence_order": 5,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC16",
-              "pc_description": "Apply safety in gas metal Arc welding & gas tungsten arc welding 36.2",
-              "sequence_order": 6,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC17",
-              "pc_description": "Demonstrate use of equipment in GMAW/GTAW",
-              "sequence_order": 7,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC18",
-              "pc_description": "Describe the difference between GMAW over SMAW",
-              "sequence_order": 8,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC19",
-              "pc_description": "Describe wire feed system its type & maintenance",
-              "sequence_order": 9,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC20",
-              "pc_description": "Identify various wire used in GMAW as per standard",
-              "sequence_order": 10,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC21",
-              "pc_description": "Perform edge preparation for various metals",
-              "sequence_order": 11,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC22",
-              "pc_description": "Perform pre heating & post weld treatment",
-              "sequence_order": 12,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC23",
-              "pc_description": "Describe sub merged Arc welding process its principle, equipment, advantage & limitation.",
-              "sequence_order": 13,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC24",
-              "pc_description": "Describe about GTAW process 36.15",
-              "sequence_order": 14,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC25",
-              "pc_description": "Describe tungsten electrode type & its use",
-              "sequence_order": 15,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC26",
-              "pc_description": "Identify various filler rod & its selection",
-              "sequence_order": 16,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC27",
-              "pc_description": "• Identify various parameter of welding in GTAW and pulsed TIG welding",
-              "sequence_order": 17,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1211,8 +1118,233 @@
           ]
         },
         {
-          "module_title": "• Gas welding",
-          "sequence_order": 6,
+          "module_title": "- PC13. Describe about filler rod, specification & size fluxes, types & its functions",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Describe about filler rod, specification & size fluxes, types & its functions",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC14. Know about welds slop & rotation",
+          "sequence_order": 14,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Know about welds slop & rotation",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC15. Identify welding symbols",
+          "sequence_order": 15,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Identify welding symbols",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC16. Apply safety in gas metal Arc welding & gas tungsten arc welding 36.2",
+          "sequence_order": 16,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Apply safety in gas metal Arc welding & gas tungsten arc welding 36.2",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. Demonstrate use of equipment in GMAW/GTAW",
+          "sequence_order": 17,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "Demonstrate use of equipment in GMAW/GTAW",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC18. Describe the difference between GMAW over SMAW",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "Describe the difference between GMAW over SMAW",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. Describe wire feed system its type & maintenance",
+          "sequence_order": 19,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "Describe wire feed system its type & maintenance",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. Identify various wire used in GMAW as per standard",
+          "sequence_order": 20,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "Identify various wire used in GMAW as per standard",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. Perform edge preparation for various metals",
+          "sequence_order": 21,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "Perform edge preparation for various metals",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC22. Perform pre heating & post weld treatment",
+          "sequence_order": 22,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "Perform pre heating & post weld treatment",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC23. Describe sub merged Arc welding process its principle, equipment, advantage & limitation.",
+          "sequence_order": 23,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "Describe sub merged Arc welding process its principle, equipment, advantage & limitation.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC24. Describe about GTAW process 36.15",
+          "sequence_order": 24,
+          "pcs": [
+            {
+              "pc_code": "PC24",
+              "pc_description": "Describe about GTAW process 36.15",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC25. Describe tungsten electrode type & its use",
+          "sequence_order": 25,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "Describe tungsten electrode type & its use",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC26. Identify various filler rod & its selection",
+          "sequence_order": 26,
+          "pcs": [
+            {
+              "pc_code": "PC26",
+              "pc_description": "Identify various filler rod & its selection",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC27. • Identify various parameter of welding in GTAW and pulsed TIG welding",
+          "sequence_order": 27,
+          "pcs": [
+            {
+              "pc_code": "PC27",
+              "pc_description": "• Identify various parameter of welding in GTAW and pulsed TIG welding",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC28. Perform Weld of MS sheet with filler rod & without filler rod",
+          "sequence_order": 28,
           "pcs": [
             {
               "pc_code": "PC28",
@@ -1222,11 +1354,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC29. • Demonstrate joining of MS sheet (3.15 mm) of filet position in butt",
+          "sequence_order": 29,
+          "pcs": [
             {
               "pc_code": "PC29",
               "pc_description": "• Demonstrate joining of MS sheet (3.15 mm) of filet position in butt",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1235,8 +1373,8 @@
           ]
         },
         {
-          "module_title": "• square welding",
-          "sequence_order": 7,
+          "module_title": "- PC30. • Demonstrate joining of MS sheet (3.15 mm) of filet position in Lap joint",
+          "sequence_order": 30,
           "pcs": [
             {
               "pc_code": "PC30",
@@ -1250,8 +1388,8 @@
           ]
         },
         {
-          "module_title": "• fillet weld",
-          "sequence_order": 8,
+          "module_title": "- PC31. • Perform To Joint butt weld single ‘V’ butt right welding technique with",
+          "sequence_order": 31,
           "pcs": [
             {
               "pc_code": "PC31",
@@ -1265,8 +1403,8 @@
           ]
         },
         {
-          "module_title": "• fillet position on MS sheet 8 mm",
-          "sequence_order": 9,
+          "module_title": "- PC32. Perform weld of vertical position with filler road on MS sheet 3.15 mm",
+          "sequence_order": 32,
           "pcs": [
             {
               "pc_code": "PC32",
@@ -1276,11 +1414,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC33. • Perform Welding on cast iron, copper sheet, brass sheet, stainless steel",
+          "sequence_order": 33,
+          "pcs": [
             {
               "pc_code": "PC33",
               "pc_description": "• Perform Welding on cast iron, copper sheet, brass sheet, stainless steel",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1289,8 +1433,8 @@
           ]
         },
         {
-          "module_title": "• sheet, aluminum sheet, brazing of MS sheet",
-          "sequence_order": 10,
+          "module_title": "- PC34. • Perform straight bead, bevel bead, open corner, ‘T’, Lap, Open square,",
+          "sequence_order": 34,
           "pcs": [
             {
               "pc_code": "PC34",
@@ -1304,8 +1448,8 @@
           ]
         },
         {
-          "module_title": "• Single ‘V’ butt on 10 mm plate",
-          "sequence_order": 11,
+          "module_title": "- PC35. • Perform horizontal straight bead & ‘T’ fillet joint on 10 mm MS plate,",
+          "sequence_order": 35,
           "pcs": [
             {
               "pc_code": "PC35",
@@ -1319,8 +1463,8 @@
           ]
         },
         {
-          "module_title": "• mm MS plate",
-          "sequence_order": 12,
+          "module_title": "- PC36. Perform joining of MS plate with MS pipe Perform hard facing",
+          "sequence_order": 36,
           "pcs": [
             {
               "pc_code": "PC36",
@@ -1330,38 +1474,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC37. Perform square butt, arc glazing & arc cutting on MS/SS sheet",
+          "sequence_order": 37,
+          "pcs": [
             {
               "pc_code": "PC37",
               "pc_description": "Perform square butt, arc glazing & arc cutting on MS/SS sheet",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC38",
-              "pc_description": "Perform fusion run with or without filler rod on MS sheet",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC39",
-              "pc_description": "Perform ‘T’ fillet butt joint on 3.15 mm MS sheet",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC40",
-              "pc_description": "• Perform fusion run ‘T’ fillet, but square & outside corner joint on 3 mm",
-              "sequence_order": 5,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1370,8 +1493,53 @@
           ]
         },
         {
-          "module_title": "• aluminum sheet",
-          "sequence_order": 13,
+          "module_title": "- PC38. Perform fusion run with or without filler rod on MS sheet",
+          "sequence_order": 38,
+          "pcs": [
+            {
+              "pc_code": "PC38",
+              "pc_description": "Perform fusion run with or without filler rod on MS sheet",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC39. Perform ‘T’ fillet butt joint on 3.15 mm MS sheet",
+          "sequence_order": 39,
+          "pcs": [
+            {
+              "pc_code": "PC39",
+              "pc_description": "Perform ‘T’ fillet butt joint on 3.15 mm MS sheet",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC40. • Perform fusion run ‘T’ fillet, but square & outside corner joint on 3 mm",
+          "sequence_order": 40,
+          "pcs": [
+            {
+              "pc_code": "PC40",
+              "pc_description": "• Perform fusion run ‘T’ fillet, but square & outside corner joint on 3 mm",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC41. Perform Butt weld square joint on aluminum pipe",
+          "sequence_order": 41,
           "pcs": [
             {
               "pc_code": "PC41",
@@ -1381,20 +1549,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC42. Perform fusion run with or without filler wire on SS sheet",
+          "sequence_order": 42,
+          "pcs": [
             {
               "pc_code": "PC42",
               "pc_description": "Perform fusion run with or without filler wire on SS sheet",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC43",
-              "pc_description": "• Perform fillet lap, Fillet ‘T’, fillet outside corner joint, butt square weld",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1403,8 +1568,23 @@
           ]
         },
         {
-          "module_title": "• on 3.15 mm SS sheet",
-          "sequence_order": 14,
+          "module_title": "- PC43. • Perform fillet lap, Fillet ‘T’, fillet outside corner joint, butt square weld",
+          "sequence_order": 43,
+          "pcs": [
+            {
+              "pc_code": "PC43",
+              "pc_description": "• Perform fillet lap, Fillet ‘T’, fillet outside corner joint, butt square weld",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC44. Perform straight bead on 10 mm MS plate",
+          "sequence_order": 44,
           "pcs": [
             {
               "pc_code": "PC44",
@@ -1414,29 +1594,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC45. Perform ‘T’ fillet, Lap, single ‘V’ butt joint on 10 mm MS plate",
+          "sequence_order": 45,
+          "pcs": [
             {
               "pc_code": "PC45",
               "pc_description": "Perform ‘T’ fillet, Lap, single ‘V’ butt joint on 10 mm MS plate",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC46",
-              "pc_description": "Perform straight bead & ‘T’ weld on fillet position on 10 mm MS plate",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC47",
-              "pc_description": "• Perform straight bead, ‘T’ fillet, single butt & square butt joint in",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1445,8 +1613,38 @@
           ]
         },
         {
-          "module_title": "• horizontal position on MS plate",
-          "sequence_order": 15,
+          "module_title": "- PC46. Perform straight bead & ‘T’ weld on fillet position on 10 mm MS plate",
+          "sequence_order": 46,
+          "pcs": [
+            {
+              "pc_code": "PC46",
+              "pc_description": "Perform straight bead & ‘T’ weld on fillet position on 10 mm MS plate",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC47. • Perform straight bead, ‘T’ fillet, single butt & square butt joint in",
+          "sequence_order": 47,
+          "pcs": [
+            {
+              "pc_code": "PC47",
+              "pc_description": "• Perform straight bead, ‘T’ fillet, single butt & square butt joint in",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC48. Perform straight bead in overhead position",
+          "sequence_order": 48,
           "pcs": [
             {
               "pc_code": "PC48",
@@ -1456,11 +1654,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC49. Perform ‘T’ joint in overhead condition on MS plate",
+          "sequence_order": 49,
+          "pcs": [
             {
               "pc_code": "PC49",
               "pc_description": "Perform ‘T’ joint in overhead condition on MS plate",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1472,7 +1676,7 @@
     },
     {
       "nos_code": "MSME/CSC/N2701",
-      "nos_title": ".Interpret",
+      "nos_title": "Interpret Engineering Drawing",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [],
@@ -1578,14 +1782,14 @@
     },
     {
       "nos_code": "MSME/CSC/N2707",
-      "nos_title": ".Perform",
+      "nos_title": "Perform Machining Operation on Conventional Machine",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Carry out Welding Operations (Arc and Gas Welding) MSME/CCWT/03",
+          "module_title": "- PC1. Describe Arc & Gas welding equipment",
           "sequence_order": 1,
           "pcs": [
             {
@@ -1596,20 +1800,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. Describe various welding process & their application",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "Describe various welding process & their application",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC3",
-              "pc_description": "• Describe use of electricity & various electric terms, application &",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1618,8 +1819,23 @@
           ]
         },
         {
-          "module_title": "• importance of heat & temperature in welding 31.3",
-          "sequence_order": 2,
+          "module_title": "- PC3. • Describe use of electricity & various electric terms, application &",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "• Describe use of electricity & various electric terms, application &",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. Perform arc welding operation using various welding instrument",
+          "sequence_order": 4,
           "pcs": [
             {
               "pc_code": "PC4",
@@ -1629,38 +1845,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC5. Differentiate AC & DC welding machines",
+          "sequence_order": 5,
+          "pcs": [
             {
               "pc_code": "PC5",
               "pc_description": "Differentiate AC & DC welding machines",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC6",
-              "pc_description": "Describe arc length & its effects",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC7",
-              "pc_description": "Describe importance of electrode, fluxes, coating, size & its coding",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC8",
-              "pc_description": "• Use the properties of calcium carbide, acetylene gas its purifier &",
-              "sequence_order": 5,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1669,8 +1864,53 @@
           ]
         },
         {
-          "module_title": "• related terms.",
-          "sequence_order": 3,
+          "module_title": "- PC6. Describe arc length & its effects",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "Describe arc length & its effects",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC7. Describe importance of electrode, fluxes, coating, size & its coding",
+          "sequence_order": 7,
+          "pcs": [
+            {
+              "pc_code": "PC7",
+              "pc_description": "Describe importance of electrode, fluxes, coating, size & its coding",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC8. • Use the properties of calcium carbide, acetylene gas its purifier &",
+          "sequence_order": 8,
+          "pcs": [
+            {
+              "pc_code": "PC8",
+              "pc_description": "• Use the properties of calcium carbide, acetylene gas its purifier &",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC9. • Use properties of oxygen its charging process & equipment use in with",
+          "sequence_order": 9,
           "pcs": [
             {
               "pc_code": "PC9",
@@ -1684,8 +1924,8 @@
           ]
         },
         {
-          "module_title": "• oxygen gas.",
-          "sequence_order": 4,
+          "module_title": "- PC10. • Describe and demonstrate working of oxy-acetylene low presser & high",
+          "sequence_order": 10,
           "pcs": [
             {
               "pc_code": "PC10",
@@ -1699,8 +1939,8 @@
           ]
         },
         {
-          "module_title": "• presser in welding system",
-          "sequence_order": 5,
+          "module_title": "- PC11. Demonstrate right & left ward welding technique",
+          "sequence_order": 11,
           "pcs": [
             {
               "pc_code": "PC11",
@@ -1710,146 +1950,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC12. Identify defects, cause, remedies & controlling during Arc welding",
+          "sequence_order": 12,
+          "pcs": [
             {
               "pc_code": "PC12",
               "pc_description": "Identify defects, cause, remedies & controlling during Arc welding",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC13",
-              "pc_description": "Describe about filler rod, specification & size fluxes, types & its functions",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC14",
-              "pc_description": "Know about welds slop & rotation",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC15",
-              "pc_description": "Identify welding symbols",
-              "sequence_order": 5,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC16",
-              "pc_description": "Apply safety in gas metal Arc welding & gas tungsten arc welding 36.2",
-              "sequence_order": 6,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC17",
-              "pc_description": "Demonstrate use of equipment in GMAW/GTAW",
-              "sequence_order": 7,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC18",
-              "pc_description": "Describe the difference between GMAW over SMAW",
-              "sequence_order": 8,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC19",
-              "pc_description": "Describe wire feed system its type & maintenance",
-              "sequence_order": 9,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC20",
-              "pc_description": "Identify various wire used in GMAW as per standard",
-              "sequence_order": 10,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC21",
-              "pc_description": "Perform edge preparation for various metals",
-              "sequence_order": 11,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC22",
-              "pc_description": "Perform pre heating & post weld treatment",
-              "sequence_order": 12,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC23",
-              "pc_description": "Describe sub merged Arc welding process its principle, equipment, advantage & limitation.",
-              "sequence_order": 13,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC24",
-              "pc_description": "Describe about GTAW process 36.15",
-              "sequence_order": 14,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC25",
-              "pc_description": "Describe tungsten electrode type & its use",
-              "sequence_order": 15,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC26",
-              "pc_description": "Identify various filler rod & its selection",
-              "sequence_order": 16,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC27",
-              "pc_description": "• Identify various parameter of welding in GTAW and pulsed TIG welding",
-              "sequence_order": 17,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1858,8 +1969,233 @@
           ]
         },
         {
-          "module_title": "• Gas welding",
-          "sequence_order": 6,
+          "module_title": "- PC13. Describe about filler rod, specification & size fluxes, types & its functions",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Describe about filler rod, specification & size fluxes, types & its functions",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC14. Know about welds slop & rotation",
+          "sequence_order": 14,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Know about welds slop & rotation",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC15. Identify welding symbols",
+          "sequence_order": 15,
+          "pcs": [
+            {
+              "pc_code": "PC15",
+              "pc_description": "Identify welding symbols",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC16. Apply safety in gas metal Arc welding & gas tungsten arc welding 36.2",
+          "sequence_order": 16,
+          "pcs": [
+            {
+              "pc_code": "PC16",
+              "pc_description": "Apply safety in gas metal Arc welding & gas tungsten arc welding 36.2",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. Demonstrate use of equipment in GMAW/GTAW",
+          "sequence_order": 17,
+          "pcs": [
+            {
+              "pc_code": "PC17",
+              "pc_description": "Demonstrate use of equipment in GMAW/GTAW",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC18. Describe the difference between GMAW over SMAW",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "Describe the difference between GMAW over SMAW",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. Describe wire feed system its type & maintenance",
+          "sequence_order": 19,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "Describe wire feed system its type & maintenance",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. Identify various wire used in GMAW as per standard",
+          "sequence_order": 20,
+          "pcs": [
+            {
+              "pc_code": "PC20",
+              "pc_description": "Identify various wire used in GMAW as per standard",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. Perform edge preparation for various metals",
+          "sequence_order": 21,
+          "pcs": [
+            {
+              "pc_code": "PC21",
+              "pc_description": "Perform edge preparation for various metals",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC22. Perform pre heating & post weld treatment",
+          "sequence_order": 22,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "Perform pre heating & post weld treatment",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC23. Describe sub merged Arc welding process its principle, equipment, advantage & limitation.",
+          "sequence_order": 23,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "Describe sub merged Arc welding process its principle, equipment, advantage & limitation.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC24. Describe about GTAW process 36.15",
+          "sequence_order": 24,
+          "pcs": [
+            {
+              "pc_code": "PC24",
+              "pc_description": "Describe about GTAW process 36.15",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC25. Describe tungsten electrode type & its use",
+          "sequence_order": 25,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "Describe tungsten electrode type & its use",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC26. Identify various filler rod & its selection",
+          "sequence_order": 26,
+          "pcs": [
+            {
+              "pc_code": "PC26",
+              "pc_description": "Identify various filler rod & its selection",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC27. • Identify various parameter of welding in GTAW and pulsed TIG welding",
+          "sequence_order": 27,
+          "pcs": [
+            {
+              "pc_code": "PC27",
+              "pc_description": "• Identify various parameter of welding in GTAW and pulsed TIG welding",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC28. Perform Weld of MS sheet with filler rod & without filler rod",
+          "sequence_order": 28,
           "pcs": [
             {
               "pc_code": "PC28",
@@ -1869,11 +2205,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC29. • Demonstrate joining of MS sheet (3.15 mm) of filet position in butt",
+          "sequence_order": 29,
+          "pcs": [
             {
               "pc_code": "PC29",
               "pc_description": "• Demonstrate joining of MS sheet (3.15 mm) of filet position in butt",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1882,8 +2224,8 @@
           ]
         },
         {
-          "module_title": "• square welding",
-          "sequence_order": 7,
+          "module_title": "- PC30. • Demonstrate joining of MS sheet (3.15 mm) of filet position in Lap joint",
+          "sequence_order": 30,
           "pcs": [
             {
               "pc_code": "PC30",
@@ -1897,8 +2239,8 @@
           ]
         },
         {
-          "module_title": "• fillet weld",
-          "sequence_order": 8,
+          "module_title": "- PC31. • Perform To Joint butt weld single ‘V’ butt right welding technique with",
+          "sequence_order": 31,
           "pcs": [
             {
               "pc_code": "PC31",
@@ -1912,8 +2254,8 @@
           ]
         },
         {
-          "module_title": "• fillet position on MS sheet 8 mm",
-          "sequence_order": 9,
+          "module_title": "- PC32. Perform weld of vertical position with filler road on MS sheet 3.15 mm",
+          "sequence_order": 32,
           "pcs": [
             {
               "pc_code": "PC32",
@@ -1923,11 +2265,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC33. • Perform Welding on cast iron, copper sheet, brass sheet, stainless steel",
+          "sequence_order": 33,
+          "pcs": [
             {
               "pc_code": "PC33",
               "pc_description": "• Perform Welding on cast iron, copper sheet, brass sheet, stainless steel",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1936,8 +2284,8 @@
           ]
         },
         {
-          "module_title": "• sheet, aluminum sheet, brazing of MS sheet",
-          "sequence_order": 10,
+          "module_title": "- PC34. • Perform straight bead, bevel bead, open corner, ‘T’, Lap, Open square,",
+          "sequence_order": 34,
           "pcs": [
             {
               "pc_code": "PC34",
@@ -1951,8 +2299,8 @@
           ]
         },
         {
-          "module_title": "• Single ‘V’ butt on 10 mm plate",
-          "sequence_order": 11,
+          "module_title": "- PC35. • Perform horizontal straight bead & ‘T’ fillet joint on 10 mm MS plate,",
+          "sequence_order": 35,
           "pcs": [
             {
               "pc_code": "PC35",
@@ -1966,8 +2314,8 @@
           ]
         },
         {
-          "module_title": "• mm MS plate",
-          "sequence_order": 12,
+          "module_title": "- PC36. Perform joining of MS plate with MS pipe Perform hard facing",
+          "sequence_order": 36,
           "pcs": [
             {
               "pc_code": "PC36",
@@ -1977,38 +2325,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC37. Perform square butt, arc glazing & arc cutting on MS/SS sheet",
+          "sequence_order": 37,
+          "pcs": [
             {
               "pc_code": "PC37",
               "pc_description": "Perform square butt, arc glazing & arc cutting on MS/SS sheet",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC38",
-              "pc_description": "Perform fusion run with or without filler rod on MS sheet",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC39",
-              "pc_description": "Perform ‘T’ fillet butt joint on 3.15 mm MS sheet",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC40",
-              "pc_description": "• Perform fusion run ‘T’ fillet, but square & outside corner joint on 3 mm",
-              "sequence_order": 5,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2017,8 +2344,53 @@
           ]
         },
         {
-          "module_title": "• aluminum sheet",
-          "sequence_order": 13,
+          "module_title": "- PC38. Perform fusion run with or without filler rod on MS sheet",
+          "sequence_order": 38,
+          "pcs": [
+            {
+              "pc_code": "PC38",
+              "pc_description": "Perform fusion run with or without filler rod on MS sheet",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC39. Perform ‘T’ fillet butt joint on 3.15 mm MS sheet",
+          "sequence_order": 39,
+          "pcs": [
+            {
+              "pc_code": "PC39",
+              "pc_description": "Perform ‘T’ fillet butt joint on 3.15 mm MS sheet",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC40. • Perform fusion run ‘T’ fillet, but square & outside corner joint on 3 mm",
+          "sequence_order": 40,
+          "pcs": [
+            {
+              "pc_code": "PC40",
+              "pc_description": "• Perform fusion run ‘T’ fillet, but square & outside corner joint on 3 mm",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC41. Perform Butt weld square joint on aluminum pipe",
+          "sequence_order": 41,
           "pcs": [
             {
               "pc_code": "PC41",
@@ -2028,20 +2400,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC42. Perform fusion run with or without filler wire on SS sheet",
+          "sequence_order": 42,
+          "pcs": [
             {
               "pc_code": "PC42",
               "pc_description": "Perform fusion run with or without filler wire on SS sheet",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC43",
-              "pc_description": "• Perform fillet lap, Fillet ‘T’, fillet outside corner joint, butt square weld",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2050,8 +2419,23 @@
           ]
         },
         {
-          "module_title": "• on 3.15 mm SS sheet",
-          "sequence_order": 14,
+          "module_title": "- PC43. • Perform fillet lap, Fillet ‘T’, fillet outside corner joint, butt square weld",
+          "sequence_order": 43,
+          "pcs": [
+            {
+              "pc_code": "PC43",
+              "pc_description": "• Perform fillet lap, Fillet ‘T’, fillet outside corner joint, butt square weld",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC44. Perform straight bead on 10 mm MS plate",
+          "sequence_order": 44,
           "pcs": [
             {
               "pc_code": "PC44",
@@ -2061,29 +2445,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC45. Perform ‘T’ fillet, Lap, single ‘V’ butt joint on 10 mm MS plate",
+          "sequence_order": 45,
+          "pcs": [
             {
               "pc_code": "PC45",
               "pc_description": "Perform ‘T’ fillet, Lap, single ‘V’ butt joint on 10 mm MS plate",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC46",
-              "pc_description": "Perform straight bead & ‘T’ weld on fillet position on 10 mm MS plate",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC47",
-              "pc_description": "• Perform straight bead, ‘T’ fillet, single butt & square butt joint in",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2092,8 +2464,38 @@
           ]
         },
         {
-          "module_title": "• horizontal position on MS plate",
-          "sequence_order": 15,
+          "module_title": "- PC46. Perform straight bead & ‘T’ weld on fillet position on 10 mm MS plate",
+          "sequence_order": 46,
+          "pcs": [
+            {
+              "pc_code": "PC46",
+              "pc_description": "Perform straight bead & ‘T’ weld on fillet position on 10 mm MS plate",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC47. • Perform straight bead, ‘T’ fillet, single butt & square butt joint in",
+          "sequence_order": 47,
+          "pcs": [
+            {
+              "pc_code": "PC47",
+              "pc_description": "• Perform straight bead, ‘T’ fillet, single butt & square butt joint in",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC48. Perform straight bead in overhead position",
+          "sequence_order": 48,
           "pcs": [
             {
               "pc_code": "PC48",
@@ -2103,11 +2505,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC49. Perform ‘T’ joint in overhead condition on MS plate",
+          "sequence_order": 49,
+          "pcs": [
             {
               "pc_code": "PC49",
               "pc_description": "Perform ‘T’ joint in overhead condition on MS plate",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,

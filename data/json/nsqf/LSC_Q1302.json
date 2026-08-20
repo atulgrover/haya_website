@@ -5,10 +5,10 @@
   "clean_code": "LSC_Q1302",
   "total_pages": 52,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:54.249Z",
+  "compiled_at": "2026-08-20T13:20:48.552Z",
   "stats": {
     "total_nos": 7,
-    "total_modules": 32,
+    "total_modules": 59,
     "total_pcs": 205,
     "total_kus": 137,
     "total_gs": 80,
@@ -17,7 +17,7 @@
   "nos_units": [
     {
       "nos_code": "LSC/N8901",
-      "nos_title": ".Conduct pre-",
+      "nos_title": "Conduct pre-operative checks of the reefer unit",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
@@ -50,11 +50,11 @@
       ],
       "gs": [
         "GS1. Read job sheet to understand the delivery orders and the work plan",
-        "GS2. Read the manuals and other documents for inspection and usage of lubricants and cleaning",
+        "GS2. Read the manuals and other documents for inspection and usage of lubricants and cleaning liquids",
         "GS3. Read instructions on workplace hazards",
         "GS4. Maintain quantity details of inspection observations",
         "GS5. Coordinate with the concerned persons to know the delivery orders",
-        "GS6. Communicate types of workplace hazards, safety precautions and remedial measures to be",
+        "GS6. Communicate types of workplace hazards, safety precautions and remedial measures to be taken by loaders and unloaders",
         "GS7. Decide on the various tests and inspections to be carried out in the reefer unit",
         "GS8. Decide on the environment conditions to be maintained at the reefer unit",
         "GS9. Prioritize and execute inspection tasks in an efficient manner",
@@ -379,7 +379,7 @@
     },
     {
       "nos_code": "LSC/N8902",
-      "nos_title": ".Monitor the product",
+      "nos_title": "Monitor the product loading and unloading operations",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
@@ -809,7 +809,7 @@
     },
     {
       "nos_code": "LSC/N8903",
-      "nos_title": ".Operate and drive",
+      "nos_title": "Operate and drive the reefer vehicle safely",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
@@ -1112,7 +1112,7 @@
     },
     {
       "nos_code": "LSC/N1310",
-      "nos_title": ".Ensure load safety",
+      "nos_title": "Ensure load safety in transit",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [
@@ -1478,17 +1478,17 @@
     },
     {
       "nos_code": "LSC/N1303",
-      "nos_title": ".Guide and control",
+      "nos_title": "Guide and control the vehicle",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [
         "KU1. guidelines for using and controlling the vehicle",
         "KU2. how to read and respond correctly to instruments such as gauges, indicators, warning lights",
         "KU3. how to start the engine when it is cold",
-        "KU4. the importance of using a safe, systematic routine to support moving off steadily and",
+        "KU4. the importance of using a safe, systematic routine to support moving off steadily and efficiently",
         "KU5. how to check controls, such as steering and brakes, are operating properly",
         "KU6. how to apply a cautious, systematic approach when stopping",
-        "KU7. the distance a vehicle requires to stop from different speeds and in different road and",
+        "KU7. the distance a vehicle requires to stop from different speeds and in different road and weather conditions",
         "KU8. what factors to take into consideration when identifying a safe, secure, legal and convenient",
         "KU9. that correct use of the accelerator will have positive effects on, vehicle performance, safety",
         "KU10. the effect that unsuitable gear selection can have on the performance of the vehicle, the",
@@ -1497,13 +1497,13 @@
         "KU13. organization's instructions or guidelines relating to dealing with and reporting of safety and",
         "KU14. methods of effective communication to let others know about the emergency situations",
         "KU15. where and how to get help in dealing with crisis situations",
-        "KU16. company's policies on: road worthiness requirement, basic compliance to technical",
+        "KU16. company's policies on: road worthiness requirement, basic compliance to technical requirements and standards, safety and hazards",
         "KU17. CMVR guidelines and other specific local regulations",
         "KU18. organization structure",
         "KU19. escalation procedure"
       ],
       "gs": [
-        "GS1. read and understand technical standards of vehicle operation regarding fuel systems and",
+        "GS1. read and understand technical standards of vehicle operation regarding fuel systems and other control systems in the vehicle",
         "GS2. document technical issues pertaining to vehicle",
         "GS3. effectively communicate during emergency issues",
         "GS4. keep all the safety equipment in an organized manner so that there is no difficulty in finding",
@@ -1685,14 +1685,14 @@
     },
     {
       "nos_code": "LSC/N1304",
-      "nos_title": ".Health, safety and",
+      "nos_title": "Health, safety and security procedures for drivers",
       "sequence_order": 6,
       "is_generic": false,
       "kus": [
         "KU1. health, safety and security policies and procedures",
         "KU2. special instructions for hazardous cargo handling",
         "KU3. defined standard operating procedures",
-        "KU4. risk and impact of not following defined procedures/work instructions with reference to",
+        "KU4. risk and impact of not following defined procedures/work instructions with reference to health, safety and security operations",
         "KU5. escalation matrix for reporting identified problem",
         "KU6. basics of Occupational Safety and Health Administration (OSHA)",
         "KU7. implementation and practice of 5S",
@@ -1920,14 +1920,14 @@
     },
     {
       "nos_code": "LSC/N8905",
-      "nos_title": ".Maintain the reefer",
+      "nos_title": "LSC/N8905",
       "sequence_order": 7,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Collect details of the products and its requirements",
+          "module_title": "- PC1. Gather details of the nature of product, type of packaging used, place of origin and final",
           "sequence_order": 1,
           "pcs": [
             {
@@ -1942,7 +1942,7 @@
           ]
         },
         {
-          "module_title": "destination",
+          "module_title": "- PC2. Collect information on the quantity, weight and dimension of product like fruits, vegetables,",
           "sequence_order": 2,
           "pcs": [
             {
@@ -1957,7 +1957,7 @@
           ]
         },
         {
-          "module_title": "meat, pharma and other perishable products",
+          "module_title": "- PC3. Analyse the temperature required and other conditions of the reefer transport",
           "sequence_order": 3,
           "pcs": [
             {
@@ -1972,7 +1972,7 @@
           ]
         },
         {
-          "module_title": "Conduct an inspection on the empty reefer before power on",
+          "module_title": "- PC4. Ensure the correct functioning of the cooling unit",
           "sequence_order": 4,
           "pcs": [
             {
@@ -1983,20 +1983,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC5. Check the unit for physical damages",
+          "sequence_order": 5,
+          "pcs": [
             {
               "pc_code": "PC5",
               "pc_description": "Check the unit for physical damages",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC6",
-              "pc_description": "Check the technical unit functions of the reefer unit and the generator set according to the",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2005,8 +2002,23 @@
           ]
         },
         {
-          "module_title": "manufacturer and shipping specifications",
-          "sequence_order": 5,
+          "module_title": "- PC6. Check the technical unit functions of the reefer unit and the generator set according to the",
+          "sequence_order": 6,
+          "pcs": [
+            {
+              "pc_code": "PC6",
+              "pc_description": "Check the technical unit functions of the reefer unit and the generator set according to the",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC7. Ensure the inside of unit is clean",
+          "sequence_order": 7,
           "pcs": [
             {
               "pc_code": "PC7",
@@ -2016,65 +2028,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC8. Ensure the reefer machinery is running properly at correct settings",
+          "sequence_order": 8,
+          "pcs": [
             {
               "pc_code": "PC8",
               "pc_description": "Ensure the reefer machinery is running properly at correct settings",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC9",
-              "pc_description": "Check the refrigerant and lubricant level",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC10",
-              "pc_description": "Ensure the battery level is in range",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC11",
-              "pc_description": "Check the electric insulation value for compressor, motor and heaters",
-              "sequence_order": 5,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC12",
-              "pc_description": "Supervise the cleaning of any spills or breakage in the reefer unit",
-              "sequence_order": 6,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC13",
-              "pc_description": "Inspect the reefer for any leakage from roof, open spaces, etc.",
-              "sequence_order": 7,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC14",
-              "pc_description": "Inspect effectively the different parameters such as cleaning, disinfection and temperature",
-              "sequence_order": 8,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2083,8 +2047,98 @@
           ]
         },
         {
-          "module_title": "and the pallets.",
-          "sequence_order": 6,
+          "module_title": "- PC9. Check the refrigerant and lubricant level",
+          "sequence_order": 9,
+          "pcs": [
+            {
+              "pc_code": "PC9",
+              "pc_description": "Check the refrigerant and lubricant level",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC10. Ensure the battery level is in range",
+          "sequence_order": 10,
+          "pcs": [
+            {
+              "pc_code": "PC10",
+              "pc_description": "Ensure the battery level is in range",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC11. Check the electric insulation value for compressor, motor and heaters",
+          "sequence_order": 11,
+          "pcs": [
+            {
+              "pc_code": "PC11",
+              "pc_description": "Check the electric insulation value for compressor, motor and heaters",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC12. Supervise the cleaning of any spills or breakage in the reefer unit",
+          "sequence_order": 12,
+          "pcs": [
+            {
+              "pc_code": "PC12",
+              "pc_description": "Supervise the cleaning of any spills or breakage in the reefer unit",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC13. Inspect the reefer for any leakage from roof, open spaces, etc.",
+          "sequence_order": 13,
+          "pcs": [
+            {
+              "pc_code": "PC13",
+              "pc_description": "Inspect the reefer for any leakage from roof, open spaces, etc.",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC14. Inspect effectively the different parameters such as cleaning, disinfection and temperature",
+          "sequence_order": 14,
+          "pcs": [
+            {
+              "pc_code": "PC14",
+              "pc_description": "Inspect effectively the different parameters such as cleaning, disinfection and temperature",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC15. Ensure the interior surfaces of the vehicle are made of suitable materials based on the type",
+          "sequence_order": 15,
           "pcs": [
             {
               "pc_code": "PC15",
@@ -2098,8 +2152,8 @@
           ]
         },
         {
-          "module_title": "Inspect the reefer after power on",
-          "sequence_order": 7,
+          "module_title": "- PC16. Ensure no abnormal noises from the components",
+          "sequence_order": 16,
           "pcs": [
             {
               "pc_code": "PC16",
@@ -2109,29 +2163,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. Preset the temperature setting",
+          "sequence_order": 17,
+          "pcs": [
             {
               "pc_code": "PC17",
               "pc_description": "Preset the temperature setting",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC18",
-              "pc_description": "Ensure the cooling effects are in proper direction",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC19",
-              "pc_description": "Calibrate the sensors and detect proper working of the unit",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2140,8 +2182,38 @@
           ]
         },
         {
-          "module_title": "Perform the pre cool operations of the unit",
-          "sequence_order": 8,
+          "module_title": "- PC18. Ensure the cooling effects are in proper direction",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "Ensure the cooling effects are in proper direction",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. Calibrate the sensors and detect proper working of the unit",
+          "sequence_order": 19,
+          "pcs": [
+            {
+              "pc_code": "PC19",
+              "pc_description": "Calibrate the sensors and detect proper working of the unit",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. Keep the doors closed at all times except while performing the storage operations",
+          "sequence_order": 20,
           "pcs": [
             {
               "pc_code": "PC20",
@@ -2151,47 +2223,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. Maintain the temperatures at pre cooled or pre set temperature level",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "Maintain the temperatures at pre cooled or pre set temperature level",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC22",
-              "pc_description": "Set the reefer vehicle with the correct temperature for the respective products",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC23",
-              "pc_description": "Pre cool the reefers for the required amount of time before loading",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC24",
-              "pc_description": "Ensure the environment conditions in the cold store and the reefer vehicle are the same",
-              "sequence_order": 5,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC25",
-              "pc_description": "Avoid pre cooling in open environment resulting in condensation on the reefer interior",
-              "sequence_order": 6,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2200,8 +2242,68 @@
           ]
         },
         {
-          "module_title": "surfaces once the doors are opened",
-          "sequence_order": 9,
+          "module_title": "- PC22. Set the reefer vehicle with the correct temperature for the respective products",
+          "sequence_order": 22,
+          "pcs": [
+            {
+              "pc_code": "PC22",
+              "pc_description": "Set the reefer vehicle with the correct temperature for the respective products",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC23. Pre cool the reefers for the required amount of time before loading",
+          "sequence_order": 23,
+          "pcs": [
+            {
+              "pc_code": "PC23",
+              "pc_description": "Pre cool the reefers for the required amount of time before loading",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC24. Ensure the environment conditions in the cold store and the reefer vehicle are the same",
+          "sequence_order": 24,
+          "pcs": [
+            {
+              "pc_code": "PC24",
+              "pc_description": "Ensure the environment conditions in the cold store and the reefer vehicle are the same",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC25. Avoid pre cooling in open environment resulting in condensation on the reefer interior",
+          "sequence_order": 25,
+          "pcs": [
+            {
+              "pc_code": "PC25",
+              "pc_description": "Avoid pre cooling in open environment resulting in condensation on the reefer interior",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC26. Ensure the interior surface of the reefer container is cool to the desired carrying temperature",
+          "sequence_order": 26,
           "pcs": [
             {
               "pc_code": "PC26",
@@ -2215,8 +2317,8 @@
           ]
         },
         {
-          "module_title": "Perform a final check of the reefer unit",
-          "sequence_order": 10,
+          "module_title": "- PC27. Check the conditions of the material handling equipment storage racks",
+          "sequence_order": 27,
           "pcs": [
             {
               "pc_code": "PC27",
@@ -2226,38 +2328,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC28. Ensure unit is odor free",
+          "sequence_order": 28,
+          "pcs": [
             {
               "pc_code": "PC28",
               "pc_description": "Ensure unit is odor free",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC29",
-              "pc_description": "Ensure the system is in perfect condition",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC30",
-              "pc_description": "Test the thermometer and cooling equipment before starting",
-              "sequence_order": 4,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC31",
-              "pc_description": "Ensure the reefer unit is ready to load products",
-              "sequence_order": 5,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2266,8 +2347,53 @@
           ]
         },
         {
-          "module_title": "Take account of load characteristics and cold storage facilities",
-          "sequence_order": 11,
+          "module_title": "- PC29. Ensure the system is in perfect condition",
+          "sequence_order": 29,
+          "pcs": [
+            {
+              "pc_code": "PC29",
+              "pc_description": "Ensure the system is in perfect condition",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC30. Test the thermometer and cooling equipment before starting",
+          "sequence_order": 30,
+          "pcs": [
+            {
+              "pc_code": "PC30",
+              "pc_description": "Test the thermometer and cooling equipment before starting",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC31. Ensure the reefer unit is ready to load products",
+          "sequence_order": 31,
+          "pcs": [
+            {
+              "pc_code": "PC31",
+              "pc_description": "Ensure the reefer unit is ready to load products",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC32. Be aware of the size and stability of the loads",
+          "sequence_order": 32,
           "pcs": [
             {
               "pc_code": "PC32",
@@ -2277,29 +2403,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC33. Ensure the products are maintained at appropriate temperature at the time of unloading",
+          "sequence_order": 33,
+          "pcs": [
             {
               "pc_code": "PC33",
               "pc_description": "Ensure the products are maintained at appropriate temperature at the time of unloading",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC34",
-              "pc_description": "Ensure to keep aside the extra goods that do not meet the requirement",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC35",
-              "pc_description": "Replace the items from warehouse in case of any damaged or missing item",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -2308,8 +2422,38 @@
           ]
         },
         {
-          "module_title": "Document the operation",
-          "sequence_order": 12,
+          "module_title": "- PC34. Ensure to keep aside the extra goods that do not meet the requirement",
+          "sequence_order": 34,
+          "pcs": [
+            {
+              "pc_code": "PC34",
+              "pc_description": "Ensure to keep aside the extra goods that do not meet the requirement",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC35. Replace the items from warehouse in case of any damaged or missing item",
+          "sequence_order": 35,
+          "pcs": [
+            {
+              "pc_code": "PC35",
+              "pc_description": "Replace the items from warehouse in case of any damaged or missing item",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC36. Record the temperature readings and product condition while unloading",
+          "sequence_order": 36,
           "pcs": [
             {
               "pc_code": "PC36",
@@ -2319,29 +2463,47 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC37. Communicate any deviations to the concerned person",
+          "sequence_order": 37,
+          "pcs": [
             {
               "pc_code": "PC37",
               "pc_description": "Communicate any deviations to the concerned person",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC38. Record the signs of spillage or damage also if any",
+          "sequence_order": 38,
+          "pcs": [
             {
               "pc_code": "PC38",
               "pc_description": "Record the signs of spillage or damage also if any",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC39. Prepare documentation with respect to bill of lading, order and delivery, inspection report on",
+          "sequence_order": 39,
+          "pcs": [
             {
               "pc_code": "PC39",
               "pc_description": "Prepare documentation with respect to bill of lading, order and delivery, inspection report on",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,

@@ -5,7 +5,7 @@
   "clean_code": "ELE_Q1405",
   "total_pages": 35,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:49.711Z",
+  "compiled_at": "2026-08-20T13:20:44.579Z",
   "stats": {
     "total_nos": 3,
     "total_modules": 8,
@@ -17,20 +17,20 @@
   "nos_units": [
     {
       "nos_code": "ELE/N1424",
-      "nos_title": ".Prepare detailed",
+      "nos_title": "Prepare detailed requirements and design specification",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
         "KU1. Understanding of IoT system architecture, including hardware, software, and communication",
         "KU2. Knowledge of modern IoT frameworks and simulation tools (e.g., MATLAB, Cadence, Cisco",
         "KU3. Awareness of interoperability standards and connectivity protocols like MQTT, CoAP, HTTP,",
-        "KU4. Familiarity with regulatory standards (e.g., ISO/IEC, IEEE, ETSI) and industry-specific",
-        "KU5. Concepts of machine-to-machine (M2M) communication and data flow visualization using",
+        "KU4. Familiarity with regulatory standards (e.g., ISO/IEC, IEEE, ETSI) and industry-specific compliance requirements.",
+        "KU5. Concepts of machine-to-machine (M2M) communication and data flow visualization using tools like Lucidchart and Visio.",
         "KU6. Principles of cybersecurity, including data encryption, secure protocols, and threat mitigation",
-        "KU7. Knowledge of manufacturing and integration processes for electronic and embedded",
+        "KU7. Knowledge of manufacturing and integration processes for electronic and embedded systems.",
         "KU8. Proficiency in component-level circuit design, synthesis, and validation using advanced tools.",
         "KU9. Understanding of energy efficiency, EMI/EMC standards, and environmental considerations in",
-        "KU10. Project planning and dependency management techniques including critical path"
+        "KU10. Project planning and dependency management techniques including critical path identification and resource estimation."
       ],
       "gs": [
         "GS1. Ability to analyze requirements and create clear, well-structured technical documentation.",
@@ -38,11 +38,11 @@
         "GS3. Effective verbal and written communication for stakeholder engagement and cross-functional",
         "GS4. Critical thinking and problem-solving skills for evaluating alternative design options.",
         "GS5. Project management and planning skills for coordinating tasks across teams and domains.",
-        "GS6. Attention to detail in verifying compliance with technical specifications and regulatory",
-        "GS7. Ability to interpret and create detailed flowcharts and system diagrams for complex",
+        "GS6. Attention to detail in verifying compliance with technical specifications and regulatory guidelines.",
+        "GS7. Ability to interpret and create detailed flowcharts and system diagrams for complex processes.",
         "GS8. Capability to manage and estimate hardware/software resource requirements.",
         "GS9. Skill in identifying automation opportunities and implementing trigger mechanisms through",
-        "GS10. Leadership and decision-making skills to guide the initial system assessment and secure"
+        "GS10. Leadership and decision-making skills to guide the initial system assessment and secure client approvals."
       ],
       "modules": [
         {
@@ -250,30 +250,30 @@
     },
     {
       "nos_code": "ELE/N1425",
-      "nos_title": ".Develop the circuit",
+      "nos_title": "Develop the circuit schematic and PCB layout for the IoT",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
         "KU1. Knowledge of microcontrollers/microprocessors and their specifications (ROM, clock speed,",
         "KU2. Understanding of pin configuration, I/O mapping, and interfacing techniques for electronic",
         "KU3. Familiarity with connectivity modules (e.g., Wi-Fi, Bluetooth, Zigbee, LoRa) and selection",
-        "KU4. Principles of power management, including voltage regulation, power ICs, and energy-",
-        "KU5. Understanding of wired and wireless communication protocols and their integration in",
+        "KU4. Principles of power management, including voltage regulation, power ICs, and energy- efficient design practices.",
+        "KU5. Understanding of wired and wireless communication protocols and their integration in hardware systems.",
         "KU6. Knowledge of agile project management tools (e.g., Jira, Trello) for resource allocation and",
         "KU7. Proficiency in simulation tools for thermal analysis, EMI/EMC, and signal integrity (e.g.,",
-        "KU8. Basics of IoT analytics platforms for monitoring system performance and real-time event",
-        "KU9. Programming skills in embedded systems languages (e.g., Embedded C, Python) for",
-        "KU10. Regulatory knowledge related to hardware design, such as PCB manufacturing standards,"
+        "KU8. Basics of IoT analytics platforms for monitoring system performance and real-time event triggering.",
+        "KU9. Programming skills in embedded systems languages (e.g., Embedded C, Python) for hardware-software integration.",
+        "KU10. Regulatory knowledge related to hardware design, such as PCB manufacturing standards, environmental and safety compliance (RoHS, ISO, IEC)."
       ],
       "gs": [
         "GS1. Ability to interpret technical documentation and convert specifications into hardware design.",
-        "GS2. Analytical skills to select and balance cost-effective components without compromising",
+        "GS2. Analytical skills to select and balance cost-effective components without compromising performance.",
         "GS3. Problem-solving skills to revise designs using what-if scenarios and document trade-off.",
         "GS4. Proficiency in using PCB design tools (e.g., Altium Designer, Eagle, KiCad) for layout, routing,",
         "GS5. Project management and team coordination using agile methods and collaboration tools.",
         "GS6. Communication skills to document and present detailed prototype specifications and Bill of",
         "GS7. Critical thinking to validate firmware, software compatibility, and overall device functionality.",
-        "GS8. Ability to monitor and optimize system interactions through analytics and event-driven",
+        "GS8. Ability to monitor and optimize system interactions through analytics and event-driven platforms.",
         "GS9. Attention to detail to ensure all hardware components function as per design in test and real-",
         "GS10. Capability to ensure compliance with safety, environmental, and technical standards during"
       ],
@@ -453,31 +453,31 @@
     },
     {
       "nos_code": "ELE/N1426",
-      "nos_title": ".Assemble and",
+      "nos_title": "Assemble and perform testing of the complete IoT solution",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
         "KU1. Understanding of manufacturing technologies used in PCB and IC fabrication relevant to IoT",
-        "KU2. Knowledge of design tools for documenting probing points and ensuring traceability in",
+        "KU2. Knowledge of design tools for documenting probing points and ensuring traceability in complex hardware systems.",
         "KU3. Familiarity with modern electronic test equipment such as logic analyzers, oscilloscopes, and",
-        "KU4. Knowledge of IoT testing frameworks and techniques for validating I/O points and event",
-        "KU5. Awareness of DevOps practices and tools used in automating system testing and continuous",
-        "KU6. Understanding of AI-powered diagnostic tools and techniques for system-level",
-        "KU7. Knowledge of cloud-based IoT platforms (e.g., AWS IoT, Azure IoT, Google Cloud IoT) for",
-        "KU8. Competency in RF tuning and analysis for optimizing performance in IoT devices with",
+        "KU4. Knowledge of IoT testing frameworks and techniques for validating I/O points and event triggering.",
+        "KU5. Awareness of DevOps practices and tools used in automating system testing and continuous integration pipelines.",
+        "KU6. Understanding of AI-powered diagnostic tools and techniques for system-level troubleshooting and fault resolution.",
+        "KU7. Knowledge of cloud-based IoT platforms (e.g., AWS IoT, Azure IoT, Google Cloud IoT) for application testing and scalability analysis.",
+        "KU8. Competency in RF tuning and analysis for optimizing performance in IoT devices with wireless communication interfaces.",
         "KU9. Knowledge of root cause analysis and predictive analytics tools for identifying and resolving",
         "KU10. Awareness of updated quality assurance processes and regulatory standards for finalizing"
       ],
       "gs": [
-        "GS1. Analytical skills to interpret system test results and assess compliance with design",
-        "GS2. Attention to detail in documenting probing points, test outcomes, and changes in",
+        "GS1. Analytical skills to interpret system test results and assess compliance with design specifications.",
+        "GS2. Attention to detail in documenting probing points, test outcomes, and changes in design/specifications.",
         "GS3. Proficiency in using diagnostic and debugging tools to identify faults and system anomalies.",
-        "GS4. Technical writing skills to prepare thorough reports, test documentation, and system",
+        "GS4. Technical writing skills to prepare thorough reports, test documentation, and system validation records.",
         "GS5. Problem-solving abilities to resolve functional and performance issues through structured",
-        "GS6. Ability to manage testing environments and simulate real-world applications using IoT",
+        "GS6. Ability to manage testing environments and simulate real-world applications using IoT platforms.",
         "GS7. Adaptability to integrate automated testing workflows using DevOps and CI/CD pipelines.",
-        "GS8. Communication skills for collaboration with cross-functional teams during testing and",
-        "GS9. Critical thinking for performing RF optimization and analyzing the impact of wireless",
+        "GS8. Communication skills for collaboration with cross-functional teams during testing and validation stages.",
+        "GS9. Critical thinking for performing RF optimization and analyzing the impact of wireless performance issues.",
         "GS10. Time and resource management skills to efficiently execute and finalize the build-validation"
       ],
       "modules": [

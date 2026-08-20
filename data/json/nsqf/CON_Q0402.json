@@ -5,10 +5,10 @@
   "clean_code": "CON_Q0402",
   "total_pages": 33,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:48.324Z",
+  "compiled_at": "2026-08-20T13:20:43.359Z",
   "stats": {
     "total_nos": 6,
-    "total_modules": 47,
+    "total_modules": 71,
     "total_pcs": 110,
     "total_kus": 46,
     "total_gs": 30,
@@ -17,7 +17,7 @@
   "nos_units": [
     {
       "nos_code": "CON/N0404",
-      "nos_title": ".Operate and",
+      "nos_title": "Operate and maintain test instruments and equipment for",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
@@ -25,12 +25,12 @@
         "KU2. safety rules and regulation for handling and storing of construction laboratory and field",
         "KU3. importance of personal protection including the use of related safety gears & equipment in",
         "KU4. service request procedures for tools, materials and equipment as per organizational norms",
-        "KU5. how to identify different types of tools, instruments and equipment used for testing of",
+        "KU5. how to identify different types of tools, instruments and equipment used for testing of cement, concrete, bricks, aggregate, soil and bitumen",
         "KU6. importance of periodical calibration of testing tools, apparatus, instruments and equipment",
-        "KU7. how to check working condition of testing instruments and equipment used for testing of",
+        "KU7. how to check working condition of testing instruments and equipment used for testing of cement, concrete, bricks, aggregate, soil and bitumen",
         "KU8. how to operate instruments and equipment as per manufacturer's specification",
         "KU9. upkeep, repair and maintenance of tools and equipment",
-        "KU10. how to operate compression testing machine for testing of cement, concrete, bricks and"
+        "KU10. how to operate compression testing machine for testing of cement, concrete, bricks and aggregate"
       ],
       "gs": [
         "GS1. write in one or more language, preferably in the local language of the site",
@@ -199,7 +199,7 @@
     },
     {
       "nos_code": "CON/N0405",
-      "nos_title": ".Carry out testing of",
+      "nos_title": "Carry out testing of cement, concrete, bricks and aggregates",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
@@ -207,13 +207,13 @@
         "KU2. safety rules and regulation for handling and storing of construction laboratory and field",
         "KU3. importance of personal protection including the use of related safety gears & equipment in",
         "KU4. service request procedures for tools, materials and equipment as per organizational norms",
-        "KU5. how to provide tag/number/label to collected test sample from field or test sample in",
-        "KU6. acceptance and rejection criteria of cement, concrete, brick, block and aggregate test",
+        "KU5. how to provide tag/number/label to collected test sample from field or test sample in laboratory",
+        "KU6. acceptance and rejection criteria of cement, concrete, brick, block and aggregate test sample",
         "KU7. visual/physical checking of cement, concrete, brick, aggregate in field",
         "KU8. use of tools and equipment for testing of cement, concrete, brick, aggregate in field and in",
         "KU9. standard procedure for preparing test specimen for various types of cement, concrete, brick,",
         "KU10. standard test procedure for various types of cement, concrete, brick, aggregate test",
-        "KU11. safe operation of compression testing machine for testing of cement, concrete, brick and",
+        "KU11. safe operation of compression testing machine for testing of cement, concrete, brick and aggregate",
         "KU12. upkeep, repair and maintenance of tools and equipment relevant to cement, concrete, brick,",
         "KU13. importance of periodical calibration of testing tools, apparatus, instruments and equipment",
         "KU14. how to read and record reading of gauges and meters along with the least count",
@@ -412,12 +412,12 @@
     },
     {
       "nos_code": "CON/N0406",
-      "nos_title": ".Carry out testing of",
+      "nos_title": "Carry out testing of soil and bitumen in field and site",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
         "KU1. standard procedure for testing of the material sample in laboratory and field relevant to",
-        "KU2. safety rules and regulation related to instruments handling and equipment operation for",
+        "KU2. safety rules and regulation related to instruments handling and equipment operation for testing of test material sample",
         "KU3. importance of personal protection including the use of related safety gears & equipment in",
         "KU4. service request procedures for tools, materials and equipment as per organizational norms",
         "KU5. how to provide tag/number/label to collected test sample from field or laboratory",
@@ -600,14 +600,14 @@
     },
     {
       "nos_code": "CON/N8001",
-      "nos_title": ".Work effectively in",
+      "nos_title": "CON/N8001",
       "sequence_order": 4,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Check the functioning of instruments prior to testing and maintain them",
+          "module_title": "- PC1. check the working condition of instruments and accessories prior to testing",
           "sequence_order": 1,
           "pcs": [
             {
@@ -618,29 +618,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. clean and lubricate the instruments as per applicability",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "clean and lubricate the instruments as per applicability",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC3",
-              "pc_description": "check the calibration of instruments prior to testing as per applicability",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC4",
-              "pc_description": "upkeep all relevant tools, instruments, apparatus and equipment",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -649,8 +637,38 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for cement, concrete, and brick samples testing",
-          "sequence_order": 2,
+          "module_title": "- PC3. check the calibration of instruments prior to testing as per applicability",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "check the calibration of instruments prior to testing as per applicability",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. upkeep all relevant tools, instruments, apparatus and equipment",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "upkeep all relevant tools, instruments, apparatus and equipment",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC5. use IS sieves, Vicat apparatus, Le-Chatelier apparatus, Le-Chatelier flask and cube moulds",
+          "sequence_order": 5,
           "pcs": [
             {
               "pc_code": "PC5",
@@ -664,8 +682,8 @@
           ]
         },
         {
-          "module_title": "for cement testing as per standard operating procedure",
-          "sequence_order": 3,
+          "module_title": "- PC6. use concrete cube moulds/ cylindrical moulds, slump cone apparatus, compacting factor test",
+          "sequence_order": 6,
           "pcs": [
             {
               "pc_code": "PC6",
@@ -679,8 +697,8 @@
           ]
         },
         {
-          "module_title": "standard operating procedure",
-          "sequence_order": 4,
+          "module_title": "- PC7. operate compressing testing machine as per standard operating procedure for cement,",
+          "sequence_order": 7,
           "pcs": [
             {
               "pc_code": "PC7",
@@ -694,8 +712,8 @@
           ]
         },
         {
-          "module_title": "concrete cubes and brick samples",
-          "sequence_order": 5,
+          "module_title": "- PC8. monitor and record temperature of curing tank in standard performa",
+          "sequence_order": 8,
           "pcs": [
             {
               "pc_code": "PC8",
@@ -705,11 +723,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC9. use weighing balance and heating oven for cement, concrete, brick testing as per",
+          "sequence_order": 9,
+          "pcs": [
             {
               "pc_code": "PC9",
               "pc_description": "use weighing balance and heating oven for cement, concrete, brick testing as per",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -718,8 +742,8 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for aggregate testing",
-          "sequence_order": 6,
+          "module_title": "- PC10. use pycnometer, cylindrical metal container, oven, weighing balance for testing of fine",
+          "sequence_order": 10,
           "pcs": [
             {
               "pc_code": "PC10",
@@ -733,8 +757,8 @@
           ]
         },
         {
-          "module_title": "aggregate as per standard operating procedure",
-          "sequence_order": 7,
+          "module_title": "- PC11. use IS sieve, flakiness gauge, elongation gauge, crushing value apparatus, impact value",
+          "sequence_order": 11,
           "pcs": [
             {
               "pc_code": "PC11",
@@ -748,8 +772,8 @@
           ]
         },
         {
-          "module_title": "operating procedure",
-          "sequence_order": 8,
+          "module_title": "- PC12. operate compression testing machine to determine crushing value of coarse aggregate as",
+          "sequence_order": 12,
           "pcs": [
             {
               "pc_code": "PC12",
@@ -763,8 +787,8 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for soil and bitumen testing",
-          "sequence_order": 9,
+          "module_title": "- PC13. use IS sieves, compaction test apparatus, rapid moisture content meter apparatus,",
+          "sequence_order": 13,
           "pcs": [
             {
               "pc_code": "PC13",
@@ -778,8 +802,8 @@
           ]
         },
         {
-          "module_title": "field testing of soil as per standard operating procedure",
-          "sequence_order": 10,
+          "module_title": "- PC14. use centrifuge extractor, thermometer, specific gravity bottle, penetrometer, bitumen",
+          "sequence_order": 14,
           "pcs": [
             {
               "pc_code": "PC14",
@@ -793,8 +817,8 @@
           ]
         },
         {
-          "module_title": "content and bulking as per standard test procedure",
-          "sequence_order": 11,
+          "module_title": "- PC15. perform tests on coarse aggregate to determine specific gravity, bulk density, gradation,",
+          "sequence_order": 15,
           "pcs": [
             {
               "pc_code": "PC15",
@@ -808,8 +832,8 @@
           ]
         },
         {
-          "module_title": "standard test procedure",
-          "sequence_order": 12,
+          "module_title": "- PC16. record readings relevant to aggregate test in standard performa as per applicability",
+          "sequence_order": 16,
           "pcs": [
             {
               "pc_code": "PC16",
@@ -819,20 +843,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. ensure tested aggregate sample are reused or safely disposed",
+          "sequence_order": 17,
+          "pcs": [
             {
               "pc_code": "PC17",
               "pc_description": "ensure tested aggregate sample are reused or safely disposed",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC18",
-              "pc_description": "store tested aggregate samples safely in laboratory for specified duration",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -841,8 +862,23 @@
           ]
         },
         {
-          "module_title": "Getting ready for apprenticeship & Jobs",
-          "sequence_order": 13,
+          "module_title": "- PC18. store tested aggregate samples safely in laboratory for specified duration",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "store tested aggregate samples safely in laboratory for specified duration",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. create a basic biodata",
+          "sequence_order": 19,
           "pcs": [
             {
               "pc_code": "PC19",
@@ -852,20 +888,32 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. search for suitable jobs and apply",
+          "sequence_order": 20,
+          "pcs": [
             {
               "pc_code": "PC20",
               "pc_description": "search for suitable jobs and apply",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. identify and register apprenticeship opportunities as per requirement",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "identify and register apprenticeship opportunities as per requirement",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -877,14 +925,14 @@
     },
     {
       "nos_code": "CON/N8002",
-      "nos_title": ".Plan and organize",
+      "nos_title": "CON/N8002",
       "sequence_order": 5,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Check the functioning of instruments prior to testing and maintain them",
+          "module_title": "- PC1. check the working condition of instruments and accessories prior to testing",
           "sequence_order": 1,
           "pcs": [
             {
@@ -895,29 +943,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. clean and lubricate the instruments as per applicability",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "clean and lubricate the instruments as per applicability",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC3",
-              "pc_description": "check the calibration of instruments prior to testing as per applicability",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC4",
-              "pc_description": "upkeep all relevant tools, instruments, apparatus and equipment",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -926,8 +962,38 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for cement, concrete, and brick samples testing",
-          "sequence_order": 2,
+          "module_title": "- PC3. check the calibration of instruments prior to testing as per applicability",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "check the calibration of instruments prior to testing as per applicability",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. upkeep all relevant tools, instruments, apparatus and equipment",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "upkeep all relevant tools, instruments, apparatus and equipment",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC5. use IS sieves, Vicat apparatus, Le-Chatelier apparatus, Le-Chatelier flask and cube moulds",
+          "sequence_order": 5,
           "pcs": [
             {
               "pc_code": "PC5",
@@ -941,8 +1007,8 @@
           ]
         },
         {
-          "module_title": "for cement testing as per standard operating procedure",
-          "sequence_order": 3,
+          "module_title": "- PC6. use concrete cube moulds/ cylindrical moulds, slump cone apparatus, compacting factor test",
+          "sequence_order": 6,
           "pcs": [
             {
               "pc_code": "PC6",
@@ -956,8 +1022,8 @@
           ]
         },
         {
-          "module_title": "standard operating procedure",
-          "sequence_order": 4,
+          "module_title": "- PC7. operate compressing testing machine as per standard operating procedure for cement,",
+          "sequence_order": 7,
           "pcs": [
             {
               "pc_code": "PC7",
@@ -971,8 +1037,8 @@
           ]
         },
         {
-          "module_title": "concrete cubes and brick samples",
-          "sequence_order": 5,
+          "module_title": "- PC8. monitor and record temperature of curing tank in standard performa",
+          "sequence_order": 8,
           "pcs": [
             {
               "pc_code": "PC8",
@@ -982,11 +1048,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC9. use weighing balance and heating oven for cement, concrete, brick testing as per",
+          "sequence_order": 9,
+          "pcs": [
             {
               "pc_code": "PC9",
               "pc_description": "use weighing balance and heating oven for cement, concrete, brick testing as per",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -995,8 +1067,8 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for aggregate testing",
-          "sequence_order": 6,
+          "module_title": "- PC10. use pycnometer, cylindrical metal container, oven, weighing balance for testing of fine",
+          "sequence_order": 10,
           "pcs": [
             {
               "pc_code": "PC10",
@@ -1010,8 +1082,8 @@
           ]
         },
         {
-          "module_title": "aggregate as per standard operating procedure",
-          "sequence_order": 7,
+          "module_title": "- PC11. use IS sieve, flakiness gauge, elongation gauge, crushing value apparatus, impact value",
+          "sequence_order": 11,
           "pcs": [
             {
               "pc_code": "PC11",
@@ -1025,8 +1097,8 @@
           ]
         },
         {
-          "module_title": "operating procedure",
-          "sequence_order": 8,
+          "module_title": "- PC12. operate compression testing machine to determine crushing value of coarse aggregate as",
+          "sequence_order": 12,
           "pcs": [
             {
               "pc_code": "PC12",
@@ -1040,8 +1112,8 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for soil and bitumen testing",
-          "sequence_order": 9,
+          "module_title": "- PC13. use IS sieves, compaction test apparatus, rapid moisture content meter apparatus,",
+          "sequence_order": 13,
           "pcs": [
             {
               "pc_code": "PC13",
@@ -1055,8 +1127,8 @@
           ]
         },
         {
-          "module_title": "field testing of soil as per standard operating procedure",
-          "sequence_order": 10,
+          "module_title": "- PC14. use centrifuge extractor, thermometer, specific gravity bottle, penetrometer, bitumen",
+          "sequence_order": 14,
           "pcs": [
             {
               "pc_code": "PC14",
@@ -1070,8 +1142,8 @@
           ]
         },
         {
-          "module_title": "content and bulking as per standard test procedure",
-          "sequence_order": 11,
+          "module_title": "- PC15. perform tests on coarse aggregate to determine specific gravity, bulk density, gradation,",
+          "sequence_order": 15,
           "pcs": [
             {
               "pc_code": "PC15",
@@ -1085,8 +1157,8 @@
           ]
         },
         {
-          "module_title": "standard test procedure",
-          "sequence_order": 12,
+          "module_title": "- PC16. record readings relevant to aggregate test in standard performa as per applicability",
+          "sequence_order": 16,
           "pcs": [
             {
               "pc_code": "PC16",
@@ -1096,20 +1168,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. ensure tested aggregate sample are reused or safely disposed",
+          "sequence_order": 17,
+          "pcs": [
             {
               "pc_code": "PC17",
               "pc_description": "ensure tested aggregate sample are reused or safely disposed",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC18",
-              "pc_description": "store tested aggregate samples safely in laboratory for specified duration",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1118,8 +1187,23 @@
           ]
         },
         {
-          "module_title": "Getting ready for apprenticeship & Jobs",
-          "sequence_order": 13,
+          "module_title": "- PC18. store tested aggregate samples safely in laboratory for specified duration",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "store tested aggregate samples safely in laboratory for specified duration",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. create a basic biodata",
+          "sequence_order": 19,
           "pcs": [
             {
               "pc_code": "PC19",
@@ -1129,20 +1213,32 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. search for suitable jobs and apply",
+          "sequence_order": 20,
+          "pcs": [
             {
               "pc_code": "PC20",
               "pc_description": "search for suitable jobs and apply",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. identify and register apprenticeship opportunities as per requirement",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "identify and register apprenticeship opportunities as per requirement",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1154,14 +1250,14 @@
     },
     {
       "nos_code": "CON/N9001",
-      "nos_title": ".Work according to",
+      "nos_title": "CON/N9001",
       "sequence_order": 6,
       "is_generic": false,
       "kus": [],
       "gs": [],
       "modules": [
         {
-          "module_title": "Check the functioning of instruments prior to testing and maintain them",
+          "module_title": "- PC1. check the working condition of instruments and accessories prior to testing",
           "sequence_order": 1,
           "pcs": [
             {
@@ -1172,29 +1268,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC2. clean and lubricate the instruments as per applicability",
+          "sequence_order": 2,
+          "pcs": [
             {
               "pc_code": "PC2",
               "pc_description": "clean and lubricate the instruments as per applicability",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC3",
-              "pc_description": "check the calibration of instruments prior to testing as per applicability",
-              "sequence_order": 3,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC4",
-              "pc_description": "upkeep all relevant tools, instruments, apparatus and equipment",
-              "sequence_order": 4,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1203,8 +1287,38 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for cement, concrete, and brick samples testing",
-          "sequence_order": 2,
+          "module_title": "- PC3. check the calibration of instruments prior to testing as per applicability",
+          "sequence_order": 3,
+          "pcs": [
+            {
+              "pc_code": "PC3",
+              "pc_description": "check the calibration of instruments prior to testing as per applicability",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC4. upkeep all relevant tools, instruments, apparatus and equipment",
+          "sequence_order": 4,
+          "pcs": [
+            {
+              "pc_code": "PC4",
+              "pc_description": "upkeep all relevant tools, instruments, apparatus and equipment",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC5. use IS sieves, Vicat apparatus, Le-Chatelier apparatus, Le-Chatelier flask and cube moulds",
+          "sequence_order": 5,
           "pcs": [
             {
               "pc_code": "PC5",
@@ -1218,8 +1332,8 @@
           ]
         },
         {
-          "module_title": "for cement testing as per standard operating procedure",
-          "sequence_order": 3,
+          "module_title": "- PC6. use concrete cube moulds/ cylindrical moulds, slump cone apparatus, compacting factor test",
+          "sequence_order": 6,
           "pcs": [
             {
               "pc_code": "PC6",
@@ -1233,8 +1347,8 @@
           ]
         },
         {
-          "module_title": "standard operating procedure",
-          "sequence_order": 4,
+          "module_title": "- PC7. operate compressing testing machine as per standard operating procedure for cement,",
+          "sequence_order": 7,
           "pcs": [
             {
               "pc_code": "PC7",
@@ -1248,8 +1362,8 @@
           ]
         },
         {
-          "module_title": "concrete cubes and brick samples",
-          "sequence_order": 5,
+          "module_title": "- PC8. monitor and record temperature of curing tank in standard performa",
+          "sequence_order": 8,
           "pcs": [
             {
               "pc_code": "PC8",
@@ -1259,11 +1373,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC9. use weighing balance and heating oven for cement, concrete, brick testing as per",
+          "sequence_order": 9,
+          "pcs": [
             {
               "pc_code": "PC9",
               "pc_description": "use weighing balance and heating oven for cement, concrete, brick testing as per",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1272,8 +1392,8 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for aggregate testing",
-          "sequence_order": 6,
+          "module_title": "- PC10. use pycnometer, cylindrical metal container, oven, weighing balance for testing of fine",
+          "sequence_order": 10,
           "pcs": [
             {
               "pc_code": "PC10",
@@ -1287,8 +1407,8 @@
           ]
         },
         {
-          "module_title": "aggregate as per standard operating procedure",
-          "sequence_order": 7,
+          "module_title": "- PC11. use IS sieve, flakiness gauge, elongation gauge, crushing value apparatus, impact value",
+          "sequence_order": 11,
           "pcs": [
             {
               "pc_code": "PC11",
@@ -1302,8 +1422,8 @@
           ]
         },
         {
-          "module_title": "operating procedure",
-          "sequence_order": 8,
+          "module_title": "- PC12. operate compression testing machine to determine crushing value of coarse aggregate as",
+          "sequence_order": 12,
           "pcs": [
             {
               "pc_code": "PC12",
@@ -1317,8 +1437,8 @@
           ]
         },
         {
-          "module_title": "Use test instruments, apparatus, and equipment for soil and bitumen testing",
-          "sequence_order": 9,
+          "module_title": "- PC13. use IS sieves, compaction test apparatus, rapid moisture content meter apparatus,",
+          "sequence_order": 13,
           "pcs": [
             {
               "pc_code": "PC13",
@@ -1332,8 +1452,8 @@
           ]
         },
         {
-          "module_title": "field testing of soil as per standard operating procedure",
-          "sequence_order": 10,
+          "module_title": "- PC14. use centrifuge extractor, thermometer, specific gravity bottle, penetrometer, bitumen",
+          "sequence_order": 14,
           "pcs": [
             {
               "pc_code": "PC14",
@@ -1347,8 +1467,8 @@
           ]
         },
         {
-          "module_title": "content and bulking as per standard test procedure",
-          "sequence_order": 11,
+          "module_title": "- PC15. perform tests on coarse aggregate to determine specific gravity, bulk density, gradation,",
+          "sequence_order": 15,
           "pcs": [
             {
               "pc_code": "PC15",
@@ -1362,8 +1482,8 @@
           ]
         },
         {
-          "module_title": "standard test procedure",
-          "sequence_order": 12,
+          "module_title": "- PC16. record readings relevant to aggregate test in standard performa as per applicability",
+          "sequence_order": 16,
           "pcs": [
             {
               "pc_code": "PC16",
@@ -1373,20 +1493,17 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC17. ensure tested aggregate sample are reused or safely disposed",
+          "sequence_order": 17,
+          "pcs": [
             {
               "pc_code": "PC17",
               "pc_description": "ensure tested aggregate sample are reused or safely disposed",
-              "sequence_order": 2,
-              "theory_marks": null,
-              "practical_marks": null,
-              "project_marks": null,
-              "viva_marks": null
-            },
-            {
-              "pc_code": "PC18",
-              "pc_description": "store tested aggregate samples safely in laboratory for specified duration",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
@@ -1395,8 +1512,23 @@
           ]
         },
         {
-          "module_title": "Getting ready for apprenticeship & Jobs",
-          "sequence_order": 13,
+          "module_title": "- PC18. store tested aggregate samples safely in laboratory for specified duration",
+          "sequence_order": 18,
+          "pcs": [
+            {
+              "pc_code": "PC18",
+              "pc_description": "store tested aggregate samples safely in laboratory for specified duration",
+              "sequence_order": 1,
+              "theory_marks": null,
+              "practical_marks": null,
+              "project_marks": null,
+              "viva_marks": null
+            }
+          ]
+        },
+        {
+          "module_title": "- PC19. create a basic biodata",
+          "sequence_order": 19,
           "pcs": [
             {
               "pc_code": "PC19",
@@ -1406,20 +1538,32 @@
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC20. search for suitable jobs and apply",
+          "sequence_order": 20,
+          "pcs": [
             {
               "pc_code": "PC20",
               "pc_description": "search for suitable jobs and apply",
-              "sequence_order": 2,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,
               "viva_marks": null
-            },
+            }
+          ]
+        },
+        {
+          "module_title": "- PC21. identify and register apprenticeship opportunities as per requirement",
+          "sequence_order": 21,
+          "pcs": [
             {
               "pc_code": "PC21",
               "pc_description": "identify and register apprenticeship opportunities as per requirement",
-              "sequence_order": 3,
+              "sequence_order": 1,
               "theory_marks": null,
               "practical_marks": null,
               "project_marks": null,

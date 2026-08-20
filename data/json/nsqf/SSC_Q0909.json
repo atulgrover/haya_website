@@ -5,7 +5,7 @@
   "clean_code": "SSC_Q0909",
   "total_pages": 35,
   "source_target": "Assessment Criteria Tables",
-  "compiled_at": "2026-08-20T10:00:59.085Z",
+  "compiled_at": "2026-08-20T13:20:52.789Z",
   "stats": {
     "total_nos": 3,
     "total_modules": 9,
@@ -17,25 +17,25 @@
   "nos_units": [
     {
       "nos_code": "SSC/N0961",
-      "nos_title": ".Detect threats and",
+      "nos_title": "Detect threats and monitor events using Sysinternal Tools",
       "sequence_order": 1,
       "is_generic": false,
       "kus": [
-        "KU1. The principles of Security Information and Event Management (SIEM) and Extended Detection",
+        "KU1. The principles of Security Information and Event Management (SIEM) and Extended Detection and Response (XDR) tools, including their role in consolidating alerts and identifying threats in",
         "KU2. Various cyber threats, including phishing, malware, ransomware, and insider threats, and the",
         "KU3. Log analysis techniques and how to gather, interpret, and correlate logs from different ICT",
-        "KU4. The fundamentals of Computer Network Defense (CND), including the importance of external",
-        "KU5. The importance of AI-powered security tools in enhancing the accuracy of threat detection",
+        "KU4. The fundamentals of Computer Network Defense (CND), including the importance of external threat intelligence sources such as CERT, SANS, and Security Focus.",
+        "KU5. The importance of AI-powered security tools in enhancing the accuracy of threat detection and how they improve over time through continuous learning.",
         "KU6. The organizational policies, regulations, and compliance frameworks (such as GDPR, NIST, and",
         "KU7. The processes and best practices for conducting email security analysis, including identifying",
-        "KU8. The procedures for security operations center (SOC) shift management, including shift"
+        "KU8. The procedures for security operations center (SOC) shift management, including shift handover protocols, documentation standards, and escalation matrix guidelines."
       ],
       "gs": [
         "GS1. Utilize SIEM, XDR, and threat intelligence platforms to conduct real-time monitoring and threat",
         "GS2. Analyze logs and telemetry data to detect abnormal patterns, correlate security events, and",
-        "GS3. Investigate phishing emails by analyzing links, domain names, and attachments, verifying",
-        "GS4. Use Sysinternals tools (such as Process Explorer, Autoruns, and TCPView) to identify",
-        "GS5. Prioritize and classify cybersecurity incidents based on severity, urgency, and business",
+        "GS3. Investigate phishing emails by analyzing links, domain names, and attachments, verifying sender authenticity, and implementing measures to prevent fraudulent email attacks.",
+        "GS4. Use Sysinternals tools (such as Process Explorer, Autoruns, and TCPView) to identify suspicious processes, unauthorized applications, and security vulnerabilities in ICT systems.",
+        "GS5. Prioritize and classify cybersecurity incidents based on severity, urgency, and business impact, ensuring timely response and mitigation actions.",
         "GS6. Follow established escalation protocols to report security incidents, raise service requests, and",
         "GS7. Maintain detailed documentation of security monitoring activities, including incident reports,",
         "GS8. Collaborate effectively with enterprise-wide CND teams, IT personnel, and security specialists"
@@ -321,7 +321,7 @@
     },
     {
       "nos_code": "SSC/N0962",
-      "nos_title": ".Analize security",
+      "nos_title": "Analize security events and response to detected threats",
       "sequence_order": 2,
       "is_generic": false,
       "kus": [
@@ -329,15 +329,15 @@
         "KU2. Various asset discovery tools such as Cacti and IP Scanning, and how they help in identifying",
         "KU3. The process of penetration testing, vulnerability assessments, and different techniques used",
         "KU4. The methodologies for analyzing security alerts, logs, and malicious activities to determine",
-        "KU5. Organizational incident management protocols, including classification, prioritization,",
-        "KU6. Techniques for collecting, preserving, and securing digital evidence related to security"
+        "KU5. Organizational incident management protocols, including classification, prioritization, escalation, and closure of security incidents in compliance with standard operating procedures",
+        "KU6. Techniques for collecting, preserving, and securing digital evidence related to security incidents, ensuring compliance with organizational and legal requirements."
       ],
       "gs": [
-        "GS1. Use SIEM tools effectively to correlate and analyze security events, detect IT security",
+        "GS1. Use SIEM tools effectively to correlate and analyze security events, detect IT security incidents, and generate reports for further action.",
         "GS2. Conduct triage for security incidents, assessing the severity, scope, and urgency of threats to",
         "GS3. Analyze log files from various sources and identify malicious activities, suspicious patterns,",
-        "GS4. Implement mitigation strategies for different types of vulnerabilities and cyberattacks,",
-        "GS5. Document, report, and communicate findings from vulnerability assessments, penetration"
+        "GS4. Implement mitigation strategies for different types of vulnerabilities and cyberattacks, ensuring quick and effective threat resolution.",
+        "GS5. Document, report, and communicate findings from vulnerability assessments, penetration testing, and incident response activities in a structured and compliant manner."
       ],
       "modules": [
         {
@@ -578,13 +578,13 @@
     },
     {
       "nos_code": "SSC/N0963",
-      "nos_title": ".Identify and",
+      "nos_title": "Identify and response to cyber attack",
       "sequence_order": 3,
       "is_generic": false,
       "kus": [
         "KU1. The functionality and application of advanced security tools such as Wireshark, KisMAC, and",
         "KU2. The role of threat intelligence feeds in identifying emerging threats, attack patterns, and",
-        "KU3. The working principles of Security Information and Event Management (SIEM) solutions,",
+        "KU3. The working principles of Security Information and Event Management (SIEM) solutions, including how to aggregate, correlate, and analyze security events from multiple sources.",
         "KU4. Various incident categorization techniques, including how to assess security incidents based",
         "KU5. Different methods of containment and mitigation, such as isolating affected systems, disabling",
         "KU6. Root cause analysis (RCA) methodologies to investigate security incidents, reconstruct attack",
