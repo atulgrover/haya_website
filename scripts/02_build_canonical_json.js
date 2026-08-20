@@ -51,7 +51,7 @@ function isGenericNos(code, title) {
     const c = String(code || '').toUpperCase().trim();
     const t = String(title || '');
     if (GENERIC_NOS_CODES.has(c)) return true;
-    if (c.startsWith('VSQ/') || c.startsWith('DGT/VSQ/') || c.includes('/VSQ/')) return true;
+    if (c.startsWith('VSQ/') || c.startsWith('DGT/VSQ/')) return true;
     const nosNum = parseInt((c.match(/\/N(\d{4})$/) || [])[1] || '0');
     if (nosNum >= 9901 && nosNum <= 9999) return true;
     if (GENERIC_NOS_TITLE_PATTERNS.some(p => p.test(t))) return true;
@@ -59,9 +59,9 @@ function isGenericNos(code, title) {
 }
 
 // ── Regex Patterns ────────────────────────────────────────────────────────────
-const NOS_CODE_RE    = /([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){0,2}\/N\d{3,4})/gi;
-const NOS_HEADING_RE = /^(?:####\s*)?([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){0,2}\/N\d{3,4})\s*[:\-]?\s*(.*)/i;
-const QP_HEADING_RE  = /^(?:####\s*)?([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){0,2}\/Q\d{3,4})/i;
+const NOS_CODE_RE    = /([A-Z&]{2,8}(?:\/[A-Z0-9&]{2,10}){0,2}\/N\d{3,4})/gi;
+const NOS_HEADING_RE = /^(?:####\s*)?([A-Z&]{2,8}(?:\/[A-Z0-9&]{2,10}){0,2}\/N\d{3,4})\s*[:\-]?\s*(.*)/i;
+const QP_HEADING_RE  = /^(?:####\s*)?([A-Z&]{2,8}(?:\/[A-Z0-9&]{2,10}){0,2}\/Q\d{3,4})/i;
 
 const KU_RE       = /^[-*|]?\s*KU\s*(\d+(?:\.\d+)?)[.:\s-]+(.+)/i;
 const GS_RE       = /^[-*|]?\s*GS\s*(\d+(?:\.\d+)?)[.:\s-]+(.+)/i;
@@ -86,6 +86,8 @@ function cleanText(txt) {
 function cleanDescription(txt) {
     return String(txt || '')
         .replace(/\\\|/g, '|')
+        .replace(/\s*\|\s*[-–—\d.]*\s*\|\s*[-–—\d.]*\s*\|\s*[-–—\d.]*\s*\|\s*[-–—\d.]*\s*$/g, '')  // trailing assessment marks: | - | - | - | - |
+        .replace(/\s+\|\s*[-–—]\s*$/g, '')  // single trailing mark column
         .replace(/\s+/g, ' ')
         .replace(/\.{3,}/g, '')
         .replace(/\s+\d{1,3}\s*$/, '')  // trailing page numbers

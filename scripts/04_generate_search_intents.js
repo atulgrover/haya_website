@@ -36,7 +36,7 @@ const SARVAM_API_KEY  = process.env.SARVAM_API_KEY || '';
 
 // ── 1. Boilerplate Patterns to Strip ──────────────────────────────────────────
 const BOILERPLATE_PATTERNS = [
-    /^(to be competent,\s*)?(the\s*)?(user\/individual|individual|candidate|operator|practitioner|technician|worker|tenter)\s*(on the job\s*)?(must|needs to|should)\s*(be able to|know how to|know and understand)\s*:?/i,
+    /^(to be competent,\s*)?(the\s*)?(user\/individual|individual|candidate|operator|practitioner|technician|worker|tenter|farmer|cultivator|student|trainee|apprentice|artisan|jeweller)\s*(on the job\s*)?(must|needs to|should)\s*(be able to|know how to|know and understand)\s*:?/i,
     /^check that (the )?/i,
     /^ensure that (the )?/i,
     /^ensure (the )?/i,
@@ -49,6 +49,19 @@ const BOILERPLATE_PATTERNS = [
     /^ability to /i,
     /^understand (and apply )?/i,
     /^demonstrate (the )?/i,
+    // Sector-specific preambles (Fix 5)
+    /^the student shall (be able to |demonstrate (the )?(ability to )?)?/i,
+    /^the tenter should (be able to |carry out )?/i,
+    /^the farmer\/cultivator (must|should) (be able to |practice )?/i,
+    /^the (technician|operator|worker|weaver|fitter|mason|plumber) (must|should|shall) (be able to )?/i,
+    /^(he|she|they) (must|should|shall) (be able to )?/i,
+    /^(it is expected that |this (unit|nos|module) (covers|deals with|is about) )/i,
+    /^(upon completion,? |after (this|the) (training|module|unit),? )(the )?(candidate|student|trainee|individual) (will|shall|should) (be able to )?/i,
+    /^(carry out|perform) (the )?(following |necessary |required )?(tasks?|activities?|operations?|duties?)( to| for| as per)?:?\s*/i,
+    /^(the scope of this NOS is to |this NOS (unit )?describes |this (unit|module) covers )/i,
+    /^(apply|use) (the )?(knowledge|skills|understanding) (of|to|for|in) /i,
+    /^participate in /i,
+    /^learn (to|how to) /i,
 ];
 
 // ── 2. Action Verb Standardization Map ───────────────────────────────────────
@@ -68,6 +81,39 @@ const ACTION_VERB_MAP = {
     'flash': 'Flash', 'unlock': 'Unlock', 'cultivate': 'Cultivate',
     'transplant': 'Transplant', 'irrigate': 'Irrigate', 'harvest': 'Harvest',
     'treat': 'Treat', 'piece': 'Piece', 'creel': 'Creel', 'carryout': 'Carryout',
+    // Fix 6: Expanded domain verbs
+    // Textiles
+    'doff': 'Doff', 'doffing': 'Doff', 'splice': 'Splice', 'splicing': 'Splice',
+    'knot': 'Knot', 'knotting': 'Knot', 'weave': 'Weave', 'weaving': 'Weave',
+    'spin': 'Spin', 'spinning': 'Spin', 'warp': 'Warp', 'warping': 'Warp',
+    'size': 'Size', 'sizing': 'Size', 'bleach': 'Bleach', 'dye': 'Dye', 'dyeing': 'Dye',
+    'loom': 'Operate Loom', 'stitch': 'Stitch', 'stitching': 'Stitch',
+    // Healthcare
+    'auscultate': 'Auscultate', 'palpate': 'Palpate', 'triage': 'Triage',
+    'cannulate': 'Cannulate', 'catheterize': 'Catheterize', 'sterilize': 'Sterilize',
+    'bandage': 'Bandage', 'suture': 'Suture', 'immobilize': 'Immobilize',
+    'administer': 'Administer', 'monitor': 'Monitor', 'sanitize': 'Sanitize',
+    // Construction
+    'plumb': 'Plumb', 'level': 'Level', 'trowel': 'Trowel', 'screed': 'Screed',
+    'plaster': 'Plaster', 'plastering': 'Plaster', 'mortar': 'Mortar',
+    'scaffold': 'Scaffold', 'excavate': 'Excavate', 'compact': 'Compact',
+    'shuttering': 'Shutter', 'reinforce': 'Reinforce',
+    // Agriculture
+    'thresh': 'Thresh', 'threshing': 'Thresh', 'winnow': 'Winnow',
+    'dehusk': 'Dehusk', 'dehusking': 'Dehusk', 'sow': 'Sow', 'sowing': 'Sow',
+    'prune': 'Prune', 'pruning': 'Prune', 'graft': 'Graft', 'grafting': 'Graft',
+    'mulch': 'Mulch', 'mulching': 'Mulch', 'compost': 'Compost',
+    // General manufacturing
+    'grind': 'Grind', 'grinding': 'Grind', 'mill': 'Mill', 'milling': 'Mill',
+    'drill': 'Drill', 'drilling': 'Drill', 'turn': 'Turn', 'turning': 'Turn',
+    'forge': 'Forge', 'forging': 'Forge', 'cast': 'Cast', 'casting': 'Cast',
+    'bend': 'Bend', 'bending': 'Bend', 'rivet': 'Rivet', 'riveting': 'Rivet',
+    'polish': 'Polish', 'polishing': 'Polish', 'etch': 'Etch', 'etching': 'Etch',
+    'anneal': 'Anneal', 'annealing': 'Anneal', 'temper': 'Temper', 'quench': 'Quench',
+    // Gems & Jewellery
+    'facet': 'Facet', 'faceting': 'Facet', 'engrave': 'Engrave', 'engraving': 'Engrave',
+    'set': 'Set', 'setting': 'Set', 'file': 'File', 'filing': 'File',
+    'pierce': 'Pierce', 'piercing': 'Pierce', 'emboss': 'Emboss',
 };
 
 // ── 3. Vocational English → Hindi Dictionary ──────────────────────────────────
@@ -93,6 +139,21 @@ const VOCATIONAL_HINDI_DICT = {
     'automotive': 'ऑटोमोबाइल', 'engine': 'इंजन', 'brake': 'ब्रेक',
     'equipment': 'उपकरण', 'tools': 'औजार और टूल्स', 'quality': 'गुणवत्ता',
     'safety': 'सुरक्षा सावधानियां', 'procedure': 'प्रक्रिया',
+    // Fix 6: Expanded Hindi translations
+    'weave': 'बुनाई करें', 'spin': 'कताई करें', 'dye': 'रंगाई करें',
+    'stitch': 'सिलाई करें', 'knot': 'गांठ लगाएं', 'splice': 'जोड़ना',
+    'loom': 'करघा', 'bobbin': 'बॉबिन', 'warp': 'ताना बुनना',
+    'plaster': 'प्लास्टर करें', 'scaffold': 'मचान लगाएं', 'excavate': 'खुदाई करें',
+    'cement': 'सीमेंट', 'brick': 'ईंट', 'concrete': 'कंक्रीट',
+    'thresh': 'मड़ाई करें', 'winnow': 'ओसाई करें', 'sow': 'बुवाई करें',
+    'prune': 'छंटाई करें', 'graft': 'कलम बांधें', 'compost': 'खाद बनाएं',
+    'grind': 'पीसना', 'drill': 'ड्रिलिंग करें', 'forge': 'फोर्जिंग करें',
+    'polish': 'पॉलिश करें', 'engrave': 'नक्काशी करें', 'facet': 'पहलू काटें',
+    'sterilize': 'विसंक्रमित करें', 'bandage': 'पट्टी बांधें', 'monitor': 'निगरानी करें',
+    'triage': 'ट्राएज करें', 'sanitize': 'स्वच्छ करें',
+    'jewellery': 'आभूषण', 'gold': 'सोना', 'silver': 'चांदी', 'gem': 'रत्न',
+    'plumbing': 'प्लंबिंग', 'pipe': 'पाइप', 'fitting': 'फिटिंग',
+    'wiring': 'वायरिंग', 'transformer': 'ट्रांसफार्मर', 'switchgear': 'स्विचगियर',
 };
 
 // ── 4. Sector → YouTube Category Mapping ─────────────────────────────────────
@@ -158,6 +219,22 @@ const KNOWN_TOOLS = [
     'dial indicator', 'vernier caliper', 'micrometer', 'bearing puller', 'welding torch',
     'sphygmomanometer', 'stethoscope', 'pulse oximeter', 'thermometer', 'glucometer',
     'ppe kit', 'autoclave', 'disinfectant',
+    // Fix 6: Expanded tool lists
+    // Construction
+    'trowel', 'spirit level', 'plumb bob', 'mason line', 'concrete mixer', 'vibrator',
+    'shuttering plate', 'bar bending machine', 'theodolite', 'total station',
+    // Textiles
+    'handloom', 'power loom', 'jacquard machine', 'carding machine', 'draw frame',
+    'speed frame', 'cone winder', 'warping machine', 'sizing machine',
+    // Gems & Jewellery
+    'jeweller saw', 'mandrel', 'burnisher', 'draw plate', 'rolling mill',
+    'polishing machine', 'rhodium plating unit', 'ultrasonic cleaner', 'gemological loupe',
+    // Plumbing & Electrical
+    'pipe wrench', 'pipe cutter', 'threading die', 'flux paste', 'megger',
+    'earth tester', 'tong tester', 'cable stripper', 'crimping tool',
+    // Agriculture expanded
+    'thresher', 'winnower', 'transplanter', 'power tiller', 'drip irrigation kit',
+    'pruning shear', 'grafting knife', 'moisture meter',
 ];
 
 function extractToolKeywords(text, sector) {
@@ -170,6 +247,9 @@ function extractToolKeywords(text, sector) {
     if (s.includes('auto')) return 'torque wrench, diagnostic scanner, multimeter';
     if (s.includes('textile')) return 'ring frame, roving bobbin, spindle';
     if (s.includes('health')) return 'stethoscope, thermometer, ppe kit';
+    if (s.includes('gem') || s.includes('jewel')) return 'rolling mill, draw plate, jeweller saw, polishing machine';
+    if (s.includes('construct') || s.includes('plumb')) return 'spirit level, trowel, plumb bob, concrete mixer';
+    if (s.includes('power') || s.includes('electric')) return 'megger, earth tester, cable stripper, crimping tool';
     return 'measuring instruments, standard tools, safety gear';
 }
 
@@ -186,6 +266,50 @@ function getNegativeKeywords(sector) {
 
 function getPositiveSignals() {
     return 'step by step, how to, practical demonstration, live repair, proper method, hands on tutorial, स्टेप बाय स्टेप, प्रैक्टिकल डेमो, सही तरीका';
+}
+
+// ── 6B. KU/GS Context Loader (Fix 7) ─────────────────────────────────────────
+const _kuGsCache = new Map(); // qp_clean_code → parsed JSON
+
+function loadKuGsContext(qpCode, nosCode) {
+    const cleanCode = qpCode.replace(/\//g, '_');
+    let data = _kuGsCache.get(cleanCode);
+    if (data === undefined) {
+        const jsonPath = path.join(JSON_DIR, `${cleanCode}.json`);
+        try {
+            if (fs.existsSync(jsonPath)) {
+                data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+            } else {
+                data = null;
+            }
+        } catch (_) {
+            data = null;
+        }
+        _kuGsCache.set(cleanCode, data);
+    }
+    if (!data) return { kuKeywords: '', gsKeywords: '' };
+
+    const nosUnit = (data.nos_units || []).find(n => n.nos_code === nosCode);
+    if (!nosUnit) return { kuKeywords: '', gsKeywords: '' };
+
+    // Extract top domain-specific keywords from KU descriptions
+    const kuTexts = (nosUnit.kus || []).slice(0, 5)
+        .map(ku => ku.replace(/^KU\d+[\.:\s-]*/i, '').trim())
+        .filter(t => t.length >= 10);
+    const kuKeywords = kuTexts
+        .flatMap(t => t.split(/\s+/).filter(w => w.length > 4 && !/^(about|their|which|these|those|shall|should|would|could|understand|knowledge|various|different|relevant|appropriate|according|following|related|including|required)$/i.test(w)))
+        .slice(0, 8)
+        .join(' ');
+
+    const gsTexts = (nosUnit.gs || []).slice(0, 3)
+        .map(gs => gs.replace(/^GS\d+[\.:\s-]*/i, '').trim())
+        .filter(t => t.length >= 10);
+    const gsKeywords = gsTexts
+        .flatMap(t => t.split(/\s+/).filter(w => w.length > 4 && !/^(about|their|which|these|those|shall|should|would|could|skills|ability|various|different|relevant|appropriate)$/i.test(w)))
+        .slice(0, 5)
+        .join(' ');
+
+    return { kuKeywords, gsKeywords };
 }
 
 // ── 7. Local NLP Intent Synthesizer ──────────────────────────────────────────
@@ -238,12 +362,13 @@ function synthesizeHindiIntent(pcIntent) {
 }
 
 // ── 9. English Search Vector (≤ 95 chars) ────────────────────────────────────
-function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent) {
+function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent, kuContext) {
     const clean = s => String(s || '').replace(/[\\\"()\[\]]/g, '').trim();
     const cleanSector = clean(sector).replace(/sector|council|skill|india/gi, '');
     const cleanQp     = clean(qpName);
     const cleanNos    = clean(nosTitle).replace(/^[A-Z0-9_\/]+:\s*/i, '').replace(/\s+\d{1,3}$/, '').replace(/\.\.\.*/g, '');
     const cleanIntent = clean(pcIntent);
+    const cleanKu     = clean(kuContext || '');
 
     const seenWords  = new Set();
     const queryParts = [];
@@ -258,9 +383,9 @@ function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent
         }
     };
 
-    addTokens(cleanSector); addTokens(cleanQp); addTokens(cleanNos); addTokens(cleanIntent);
+    addTokens(cleanIntent); addTokens(cleanSector); addTokens(cleanNos); addTokens(cleanKu); addTokens(cleanQp);
 
-    let full = `${queryParts.slice(0, 8).join(' ')} practical tutorial`.trim();
+    let full = `${queryParts.slice(0, 10).join(' ')} practical tutorial`.trim();
     if (full.length > 95) full = full.substring(0, 95).trim();
     return full;
 }
@@ -596,6 +721,9 @@ async function runPass2Unified() {
         const chunk = items.slice(i, i + 100);
 
         for (const item of chunk) {
+            // Step 0: Load KU/GS context from canonical JSON (Fix 7)
+            const { kuKeywords, gsKeywords } = loadKuGsContext(item.qp_code, item.nos_code);
+
             // Step 1: Local NLP (always)
             let intent     = synthesizeLocalIntent(item.pc_description);
             let intentConf = computeIntentConfidence(item.pc_description, intent);
@@ -611,7 +739,8 @@ async function runPass2Unified() {
             }
 
             const intentHi    = synthesizeHindiIntent(intent);
-            const queryEn     = buildContextualSearchQuery(item.sector, item.qp_name, item.nos_title, item.module_title, intent);
+            const kuGsContext = [kuKeywords, gsKeywords].filter(Boolean).join(' ');
+            const queryEn     = buildContextualSearchQuery(item.sector, item.qp_name, item.nos_title, item.module_title, intent, kuGsContext);
             const queryConf   = computeQueryConfidence(queryEn);
             const queryHi     = synthesizeHindiSearchVector(queryEn, intent);
             const queryHiConf = computeHindiConfidence(queryHi);

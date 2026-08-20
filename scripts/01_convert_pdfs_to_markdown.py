@@ -61,7 +61,7 @@ os.makedirs(MD_DIR, exist_ok=True)
 # Matches NSQF NOS/QP codes with optional prefixes ("NOS Code:", "Unit:", "- ")
 NOS_RE = re.compile(
     r'^(?:(?:NOS|Unit|Standard|Module)\s*(?:Code)?[:\s\-]*)?[-*]?\s*'
-    r'([A-Z]{2,10}(?:/[A-Z0-9]{2,10}){0,2}/[NQ]\d{3,4}(?:[_\-vV\d.]+)?)\b',
+    r'([A-Z&]{2,10}(?:/[A-Z0-9&]{2,10}){0,2}/[NQ]\d{3,4}(?:[_\-vV\d.]+)?)\b',
     re.IGNORECASE
 )
 
@@ -249,9 +249,18 @@ def join_continuations(raw_lines):
         is_lower_start = bool(line) and line[0].islower() and not LOWER_BULLET_GUARDS.match(line)
         is_hanging_word = bool(prev) and bool(ENDS_CONTINUATION_WORD.search(prev))
 
+        # Widened heuristic: also merge when previous line is short and
+        # next line starts lowercase (likely a broken mid-sentence wrap)
+        is_short_prev_continuation = (
+            bool(line)
+            and is_lower_start
+            and not ENDS_SENT.search(prev)
+            and len(prev) < 60
+        )
+
         is_continuation = (
             bool(line)
-            and (is_lower_start or is_hanging_word)
+            and (is_lower_start or is_hanging_word or is_short_prev_continuation)
             and not ENDS_SENT.search(prev)
             and len(prev) < 95
         )
