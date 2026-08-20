@@ -158,6 +158,85 @@ While the current platform reliably delivers desktop binaries, quantized GGUF LL
 
 ---
 
+## 🚀 Next-Gen OOB Strategic Horizons: National Industrial & Sovereign Intelligence Super-Platform (2026–2027)
+
+Following the 100% database normalization and 3-perspective vector synthesis across 2,002 NSQF QPs and 176,727 Criteria, these 6 frontier horizons elevate HAYAGRIVA into an unrivaled, sovereign industrial intelligence ecosystem:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│                             HAYAGRIVA NEXT-GEN OOB HORIZONS                                 │
+├──────────────────────────┬──────────────────────────┬───────────────────────────────────────┤
+│ 🎙️ 1. Shop-Floor Whisperer│ 📄 2. 1-Click Bankable DPR│ 🛡️ 3. Ed25519 Verifiable Skill Badges │
+│ - Hands-free Indic voice │ - PMEGP/Mudra 12-page PDF│ - W3C DID signed cryptocredentials    │
+│ - Real-time SOP tolerance│ - Automated DSCR & Cash  │ - Offline mathematical verification   │
+├──────────────────────────┼──────────────────────────┼───────────────────────────────────────┤
+│ 🏭 4. Plant Compliance Radar│ 📡 5. P2P Mesh Vault Sync │ 👓 6. 3D WebGL Exploded Machinery BOM │
+│ - Corporate skill heatmap│ - Zero-data ITI broadcast│ - Interactive 3D assembly models      │
+│ - ISO 9001 / OSHA audit  │ - Local Bluetooth/WiFi P2P│ - Component-to-PC spatial alignment  │
+└──────────────────────────┴──────────────────────────┴───────────────────────────────────────┘
+```
+
+### Horizon 1: 🎙️ The "Shop-Floor Whisperer" (Hands-Free Voice-First Indic Co-Pilot)
+- **The Core Problem**: Electricians, CNC lathe machinists, automotive mechanics, and farmers have grease, oil, or high-voltage dielectric PPE gloves on their hands. They cannot type on a keyboard or tap phone screens on the shop floor.
+- **The OOB Architecture**:
+  - WebRTC / Web Audio low-latency stream connected to Sarvam Voice AI.
+  - The technician taps their Bluetooth earpiece/headset and speaks in conversational Hindi, Marathi, or Tamil (*"Bhaiya, CCTV camera ka IR-cut filter install karte waqt kya voltage check karna hai?"*).
+  - The voice assistant matches against `nsqf_pcs`, pulls the pre-synthesized `sop_parameter_tolerance` and `sop_critical_knack`, and **speaks back via natural Indic voice in 1.2 seconds**:
+    > *"ESD-safe wrist strap pehno. Power supply ko 12V DC aur contact resistance ko 0.05 Ohm ke andar verify karo."*
+- **Impact**: Zero touch, 100% hands-free safety compliance on real plant floors.
+
+---
+
+### Horizon 2: 📄 1-Click "Bankable MSME DPR (Detailed Project Report) PDF Generator"
+- **The Core Problem**: Indian entrepreneurs wanting to start a small workshop spend **₹15,000 to ₹50,000** hiring accountants to write 30-page project reports for bank loans (PMEGP, Mudra, CGTMSE).
+- **The OOB Architecture**:
+  - Because `nsqf_pcs` holds complete commercial machine names, specifications, electrical KW loads, and calibrated CAPEX estimates, the server compiles:
+    1. **Executive Summary & Market Demand**
+    2. **Itemized Machinery Bill of Materials (BOM)** with calibrated electrical KW loads
+    3. **PMEGP 3-Way Means of Finance** (5% Promoter Equity + 35% Govt Subsidy + 60% Bank Loan)
+    4. **5-Year Projected Cash Flow, DSCR (Debt Service Coverage Ratio), and Break-Even Point**
+  - Downloadable as a certified, bank-ready PDF in **1.5 seconds**.
+
+---
+
+### Horizon 3: 🛡️ Sovereign Ed25519 Cryptographic Verifiable Skill Badges (W3C DID)
+- **The Core Problem**: Paper training certificates in India are easily forged, and employers cannot easily verify if a candidate actually passed workstation assessments.
+- **The OOB Architecture**:
+  - When an intern scores $\ge 80\%$ on the Workstation Viva Voce Exam, HAYAGRIVA signs a **W3C Verifiable Credential (`.json-ld`)** using the root Ed25519 private key (`server/utils/license-signer.js`).
+  - Embeds a tamper-proof QR code directly into their digital profile or field wiki.
+  - Any plant manager on `employers_sop.html` can scan the applicant's badge to verify the cryptographic signature **offline with 100% mathematical certainty**.
+
+---
+
+### Horizon 4: 🏭 Corporate "Skill Gap Radar & Plant Compliance Heatmap"
+- **The Core Problem**: Plant HR and HSE safety officers with 500 factory operators struggle to track who is certified on which machine station for ISO 9001 and OSHA safety audits.
+- **The OOB Architecture**:
+  - Corporate domain multi-tenancy (`@company.com`).
+  - Real-time **Plant Workstation Matrix**:
+    - 🟢 **Green**: Certified & active on Workstation SOP.
+    - 🟡 **Amber**: 90-day refresher quiz due.
+    - 🔴 **Red**: Uncertified operator assigned to high-voltage/hazardous station (Critical Safety Flag).
+  - 1-Click Export of official **Statutory Safety & SOP Compliance Audit Reports**.
+
+---
+
+### Horizon 5: 📡 Peer-to-Peer (P2P) Offline Mesh Sharing for Rural ITIs
+- **The Core Problem**: Rural Industrial Training Institutes (ITIs) in remote areas have erratic broadband or zero cellular coverage.
+- **The OOB Architecture**:
+  - One instructor downloads a 2.8 MB Trade Field Wiki (`.vlt`) on their phone in the city.
+  - In the rural classroom, other students connect via local Wi-Fi Hotspot or Bluetooth WebRTC.
+  - The teacher's phone acts as a **local micro-server**, broadcasting the full trade wiki, video notes, and interactive quizzes to all 40 student devices **without using a single byte of mobile data**.
+
+---
+
+### Horizon 6: 👓 Interactive 3D / WebGL "Exploded Machinery BOM & AR Overlay"
+- **The Core Problem**: Understanding how complex commercial machines (e.g. BGA Rework Station, CNC EDM, EV Spot Welder) assemble can be hard from pure 2D text.
+- **The OOB Architecture**:
+  - In the MSME tab, add an interactive **3D WebGL / Three.js wireframe model**.
+  - Clicking any machine component highlights its corresponding NCVET Performance Criterion, physical tolerance, and operating knack.
+
+---
+
 ## 🎬 NSQF Pipeline — Deferred Roadmap Items
 
 ### 📅 Video Staleness Detection (Future: Phase 4C)
