@@ -8,10 +8,16 @@
  * - Caches search results ephemerally (7-day TTL) for performance
  */
 
+const crypto = require('crypto');
 const db = require('../db');
+
+function hashQuery(query) {
+    return crypto.createHash('md5').update(String(query || '').toLowerCase().trim()).digest('hex');
+}
 
 /**
  * Search YouTube for vocational demonstration videos using the Official YouTube Data API v3
+ * with a strict 7-day ephemeral cache layer (Policy III.E.4.a-g).
  * @param {string} query Search query string
  * @param {number} maxResults Max results to return (default: 6)
  * @returns {Promise<Array<{video_id: string, video_title: string, video_url: string, thumbnail: string, channelTitle: string}>>}
@@ -22,6 +28,29 @@ async function searchYouTubeVideos(query, maxResults = 6) {
     }
 
     const cleanQ = query.trim();
+    const qHash = hashQuery(cleanQ);
+
+    // 1. Check 7-day Ephemeral Cache first (0 Quota Units used)
+    try {
+        const cacheRes = await db.query(
+            `SELECT * FROM youtube_search_cache 
+             WHERE query_hash = $1 AND cached_at >= NOW() - INTERVAL '7 days'`,
+            [qHash]
+        );
+        if (cacheRes && cacheRes.rows && cacheRes.rows.length > 0) {
+            const row = cacheRes.rows[0];
+            return [{
+                video_id: row.video_id,
+                video_title: row.video_title,
+                video_url: row.video_url || `https://www.youtube.com/watch?v=${row.video_id}`,
+                thumbnail: row.thumbnail_url || `https://img.youtube.com/vi/${row.video_id}/mqdefault.jpg`,
+                channelTitle: row.channel_title || 'Vocational Skills Studio',
+                isCached: true
+            }];
+        }
+    } catch (_) {}
+
+    // 2. Call Official YouTube Data API v3 if uncached
     const apiKey = process.env.YOUTUBE_API_KEY;
 
     if (apiKey && apiKey.trim()) {
@@ -32,13 +61,29 @@ async function searchYouTubeVideos(query, maxResults = 6) {
             if (apiRes.ok) {
                 const data = await apiRes.json();
                 if (Array.isArray(data.items) && data.items.length > 0) {
-                    return data.items.map(item => ({
+                    const items = data.items.map(item => ({
                         video_id: item.id.videoId,
                         video_title: item.snippet.title,
                         video_url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
                         thumbnail: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url || `https://img.youtube.com/vi/${item.id.videoId}/mqdefault.jpg`,
                         channelTitle: item.snippet.channelTitle || 'YouTube'
                     }));
+
+                    // 3. Save top candidate to 7-day ephemeral cache
+                    const top = items[0];
+                    try {
+                        await db.query(`
+                            INSERT INTO youtube_search_cache
+                                (query_hash, search_query, lang, video_id, video_title, video_url, channel_title, thumbnail_url, cached_at)
+                            VALUES ($1, $2, 'eng', $3, $4, $5, $6, $7, CURRENT_TIMESTAMP)
+                            ON CONFLICT (query_hash) DO UPDATE SET
+                                video_id = EXCLUDED.video_id,
+                                video_title = EXCLUDED.video_title,
+                                cached_at = CURRENT_TIMESTAMP
+                        `, [qHash, cleanQ, top.video_id, top.video_title, top.video_url, top.channelTitle, top.thumbnail]);
+                    } catch (_) {}
+
+                    return items;
                 }
             } else {
                 console.warn(`[YouTube API Harvester] Official API returned HTTP ${apiRes.status} for query "${cleanQ}"`);
