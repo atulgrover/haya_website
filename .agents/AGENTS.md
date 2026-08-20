@@ -16,6 +16,8 @@
 - **Auth Flow**: `login.html` and `signup.html` backed by `server/routes/auth.js` using PostgreSQL (`server/db.js`), `bcryptjs`, and JWT tokens.
 - **Pricing & Licensing**: Ed25519 cryptographic master key generation (`server/routes/license.js`) & dynamic Razorpay checkout (`server/routes/payments.js`).
 - **Data Engine**: Local PostgreSQL (`hayadb`) with 2,002 NSQF Job Roles, 10,588 NOS units, 29,378 Modules, 176,727 Performance Criteria, 135,923 Knowledge Units, and 110,101 Generic Skills.
+- **Multilingual Indic AI Explainer Engine**: `server/routes/aiExplainer.js` backed by Sarvam AI (`sarvam-105b`) & PostgreSQL write-through cache (`pc_explanations_cache`) supporting 10 Indic languages (`en`, `hi`, `ta`, `te`, `mr`, `bn`, `gu`, `kn`, `ml`, `pa`).
+- **Dual-Platform Offline Vaults**: JIT TiddlyWiki `.vlt` compiler (`server/routes/wiki.js`) with phone QR scan + direct laptop/desktop 1-click download.
 - **Marketplace Reports**: Custom report ordering system backed by `server/routes/reports.js` and `report_orders` PostgreSQL table.
 - **Strategic Roadmap**: `roadmap/HAYAGRIVA_PORTAL_ROADMAP.md`.
 
@@ -44,6 +46,7 @@
 - **`nsqf_pcs`**: **176,727** Atomic Performance Criteria (with `NUMERIC(6,2)` fractional rubric marks)
 - **`nsqf_kus`**: **135,923** Dedicated Knowledge Units Table (`id`, `qp_code`, `nos_code`, `ku_code`, `ku_description`)
 - **`nsqf_gs`**: **110,101** Dedicated Generic Skills Table (`id`, `qp_code`, `nos_code`, `gs_code`, `gs_description`)
+- **`pc_explanations_cache`**: Write-through cache for 250-word multilingual masterclass explanations across 10 Indic languages and 3 perspectives.
 
 ---
 
@@ -71,3 +74,23 @@
 2. **YOUTUBE POLICY III.E.4 (EPHEMERAL CACHE - ZERO PERMANENT STORAGE)**:
    - Video IDs are **never** stored permanently in `nsqf_pcs`.
    - On-the-fly streaming searches via `youtube_search_cache` table with automated 7-day TTL purge (`DELETE FROM youtube_search_cache WHERE cached_at < NOW() - INTERVAL '7 days'`).
+
+---
+
+### 🌅 Tomorrow's Implementation Queue:
+
+1. **⚡ Gzip Compression & PostgreSQL GIN Full-Text Search**:
+   - Add Express `compression` middleware (reduces JSON payload from 180 KB to ~25 KB, 85% mobile speedup).
+   - Add PostgreSQL `tsvector` generated column + GIN index on `nsqf_pcs` for sub-millisecond full-text queries.
+2. **🔊 Native Indic Audio Text-to-Speech (TTS)**:
+   - Add zero-cost browser `window.speechSynthesis` audio button in the AI Explainer card for hands-free listening across Indic languages (`hi-IN`, `ta-IN`, etc.).
+3. **🖨️ One-Click Printable Shop-Floor SOP Workstation Card**:
+   - Add `@media print` clean layout to export a pocket-sized laminated card with QR code, tolerances, and steps.
+4. **⭐ LocalStorage Star / Bookmark Deck**:
+   - Allow students and operators to star criteria into a personal revision deck.
+5. **🔄 Symmetrical Modal Sync**:
+   - Sync the 10-language selector and AI Explainer card into `employers_sop.html` and `entrepreneurs_msme.html`.
+6. **🧠 Dynamic Viva MCQs from Knowledge Units**:
+   - Auto-generate viva quiz questions directly from the 135,923 Knowledge Units in `nsqf_kus`.
+7. **🚀 Top-50 QP Pre-Warming Batch Script**:
+   - `scripts/10_prewarm_ai_explanations.js` to pre-cache the most popular trades in English and Hindi for instant 0ms responses.
