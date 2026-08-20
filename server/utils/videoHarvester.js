@@ -85,6 +85,21 @@ async function searchYouTubeVideos(query, maxResults = 6) {
 
                     return items;
                 }
+            } else if (apiRes.status === 429) {
+                // Quota exhausted — YouTube Data API v3 resets at midnight Pacific Time
+                console.error(`[YouTube API Harvester] ⚠️  QUOTA EXCEEDED (HTTP 429) — Daily search quota of 10,000 units exhausted. Resets at midnight Pacific Time. Query: "${cleanQ}"`);
+                return [{
+                    video_id: 'FW_bw9jdrlQ',
+                    video_title: 'HAYAGRIVA Skillpedia — YouTube Quota Reset Pending',
+                    video_url: 'https://www.youtube.com/watch?v=FW_bw9jdrlQ',
+                    thumbnail: 'https://img.youtube.com/vi/FW_bw9jdrlQ/mqdefault.jpg',
+                    channelTitle: 'HAYAGRIVA Skillpedia',
+                    isFallback: true,
+                    quotaExceeded: true
+                }];
+            } else if (apiRes.status === 403) {
+                const errData = await apiRes.json().catch(() => ({}));
+                console.error(`[YouTube API Harvester] ❌ API KEY FORBIDDEN (HTTP 403) — Check API key restrictions in Google Cloud Console. Error: ${errData?.error?.message || 'unknown'}`);
             } else {
                 console.warn(`[YouTube API Harvester] Official API returned HTTP ${apiRes.status} for query "${cleanQ}"`);
             }

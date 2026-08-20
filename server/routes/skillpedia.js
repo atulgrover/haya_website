@@ -409,7 +409,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
                         nos_title: row.nos_title,
                         module_title: row.module_title,
                         min_pc_num: getPcNum(row.pc_code, row.pc_intent),
-                        video_id: row.video_id || '8aGhZQkoFbQ',
+                        video_id: row.video_id || null,
                         pcs: []
                     };
                 }
@@ -429,20 +429,24 @@ router.get('/nsqf/curriculum', async (req, res) => {
                     pc_intent: row.pc_intent || row.pc_description,
                     pc_intent_hi: row.pc_intent_hi,
                     pc_desc: row.pc_description,
-                    video_id: row.video_id || '8aGhZQkoFbQ',
-                    video_title: row.video_title || 'NSQF Vocational Demonstration',
-                    video_url: row.video_url || `https://www.youtube.com/watch?v=${row.video_id || '8aGhZQkoFbQ'}`,
-                    channel_title: row.channel_title || 'Vocational Skill Studio',
-                    duration_seconds: row.duration_seconds || 300,
-                    start_seconds: row.start_seconds !== null && row.start_seconds !== undefined ? row.start_seconds : 45,
-                    end_seconds: row.end_seconds !== null && row.end_seconds !== undefined ? row.end_seconds : 135,
+                    // 🎬 Video — null means front-end should on-demand harvest from YouTube
+                    video_id: row.video_id || null,
+                    video_title: row.video_title || null,
+                    video_url: row.video_url || null,
+                    channel_title: row.channel_title || null,
+                    duration_seconds: row.duration_seconds || null,
+                    start_seconds: (row.start_seconds !== null && row.start_seconds !== undefined) ? row.start_seconds : null,
+                    end_seconds: (row.end_seconds !== null && row.end_seconds !== undefined) ? row.end_seconds : null,
                     study_takeaways: takeaways,
                     viva_quiz: vivaQuiz,
-                    video_id_hi: row.video_id_hi,
-                    video_title_hi: row.video_title_hi,
-                    video_url_hi: row.video_url_hi,
-                    channel_title_hi: row.channel_title_hi || 'Vocational Skill Studio',
-                    duration_seconds_hi: row.duration_seconds_hi || 300,
+                    // 🔍 Search vectors for on-demand YouTube harvesting
+                    contextual_search_query: row.contextual_search_query || null,
+                    contextual_search_query_hi: row.contextual_search_query_hi || null,
+                    video_id_hi: row.video_id_hi || null,
+                    video_title_hi: row.video_title_hi || null,
+                    video_url_hi: row.video_url_hi || null,
+                    channel_title_hi: row.channel_title_hi || null,
+                    duration_seconds_hi: row.duration_seconds_hi || null,
                     audit_score: row.audit_score || 90,
 
                     // 🏭 2. SOP Perspective

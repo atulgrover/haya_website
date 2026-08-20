@@ -1069,14 +1069,61 @@
       if (modal) modal.style.display = 'flex';
     }
 
+    // ── On-Demand YouTube Harvester ──────────────────────────────────────────────
+    // Searches /api/search-video for a relevant video and updates the iframe live.
+    // Results are also cached in the server's youtube_search_cache (7-day TTL).
+    const FALLBACK_VIDEO_ID = '8aGhZQkoFbQ';
+    async function harvestVideoForPc(pc, startSec, endSec) {
+      const iframe = document.getElementById('pcModalIframe');
+      const boundsEl = document.getElementById('pcModalPlaybackBounds');
+      if (!iframe) return;
+
+      const query = pc.contextual_search_query || pc.pc_intent || pc.pc_desc || '';
+      if (!query.trim()) return;
+
+      // Show shimmer loading state
+      iframe.style.opacity = '0.35';
+      iframe.style.filter = 'grayscale(1)';
+      if (boundsEl) boundsEl.innerText = '🔍 Searching YouTube for the best vocational match...';
+
+      try {
+        const resp = await fetch(`/api/search-video?q=${encodeURIComponent(query)}`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        if (data.success && Array.isArray(data.results) && data.results.length > 0) {
+          const top = data.results[0];
+
+          // Handle quota exceeded — show informational message, keep placeholder
+          if (top.quotaExceeded) {
+            if (boundsEl) boundsEl.innerText = '⏰ YouTube search quota temporarily exhausted — resets at midnight PT. Showing preview reel.';
+            iframe.src = `https://www.youtube.com/embed/${top.video_id}?autoplay=0&rel=0&modestbranding=1&mute=1`;
+            return;
+          }
+
+          const newVideoId = top.video_id;
+          // Patch PC in-memory so prev/next navigation remembers
+          pc.video_id = newVideoId;
+          pc.video_title = top.video_title;
+          // Reload iframe with discovered video (start from 0, let it play freely)
+          iframe.src = `https://www.youtube.com/embed/${newVideoId}?autoplay=1&rel=0&modestbranding=1`;
+          const formatTime2 = (s) => { const m = Math.floor(s/60); const sec = s%60; return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`; };
+          if (boundsEl) boundsEl.innerText = `▶ ${top.video_title || 'YouTube Match'} · via HAYAGRIVA Harvester${top.isCached ? ' (cached)' : ''}`;
+        }
+      } catch (e) {
+        if (boundsEl) boundsEl.innerText = '⚠️ Could not fetch video — showing preview reel';
+      } finally {
+        iframe.style.opacity = '1';
+        iframe.style.filter = '';
+      }
+    }
+
     function renderPcModalContent(pc, idx, total) {
       if (!pc) return;
 
       const pcId = pc.pc_id || `PC${idx + 1}`;
       const pcTitle = pc.pc_intent || pc.pc_desc || 'Performance Criterion';
-      const videoId = pc.video_id || '8aGhZQkoFbQ';
-      const startSec = (pc.start_seconds !== undefined && pc.start_seconds !== null) ? pc.start_seconds : 45;
-      const endSec   = (pc.end_seconds !== undefined && pc.end_seconds !== null) ? pc.end_seconds : 135;
+      const startSec = (pc.start_seconds !== undefined && pc.start_seconds !== null) ? pc.start_seconds : 0;
+      const endSec   = (pc.end_seconds !== undefined && pc.end_seconds !== null) ? pc.end_seconds : 0;
       const duration = (endSec > startSec) ? (endSec - startSec) : 90;
 
       // Update Header
@@ -1085,16 +1132,33 @@
       document.getElementById('pcModalNosBadge').innerText = `${pc.nos_code}: ${pc.nos_title || 'Occupational Standards'}`;
       document.getElementById('pcModalQpBadge').innerText = `${pc.qp_name || pc.qp_code}`;
 
-      // Update Auto-Bounded Iframe Player
+      // ── Update Video Player ──────────────────────────────────────────────────
       const iframe = document.getElementById('pcModalIframe');
-      iframe.src = `https://www.youtube.com/embed/${videoId}?start=${startSec}&end=${endSec}&autoplay=1&rel=0&modestbranding=1`;
-      
+      const isNullOrFallback = !pc.video_id || pc.video_id === FALLBACK_VIDEO_ID;
+
       const formatTime = (s) => {
         const m = Math.floor(s / 60);
         const sec = s % 60;
         return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
       };
-      document.getElementById('pcModalPlaybackBounds').innerText = `Auto-Bounded: ${formatTime(startSec)} ➔ ${formatTime(endSec)} (${duration}s duration)`;
+
+      if (isNullOrFallback) {
+        // No real video assigned — load placeholder immediately, then harvest async
+        iframe.src = `https://www.youtube.com/embed/${FALLBACK_VIDEO_ID}?autoplay=0&rel=0&modestbranding=1&mute=1`;
+        document.getElementById('pcModalPlaybackBounds').innerText = '🔍 Searching YouTube for the best vocational match...';
+        // Kick off async on-demand harvest (non-blocking)
+        harvestVideoForPc(pc, startSec, endSec);
+      } else {
+        // Real video_id exists — load it directly with bounds
+        const startQ = startSec > 0 ? `&start=${startSec}` : '';
+        const endQ   = endSec > 0 ? `&end=${endSec}` : '';
+        iframe.src = `https://www.youtube.com/embed/${pc.video_id}?autoplay=1&rel=0&modestbranding=1${startQ}${endQ}`;
+        if (endSec > startSec) {
+          document.getElementById('pcModalPlaybackBounds').innerText = `Auto-Bounded: ${formatTime(startSec)} ➔ ${formatTime(endSec)} (${duration}s)`;
+        } else {
+          document.getElementById('pcModalPlaybackBounds').innerText = `▶ ${pc.video_title || 'Vocational Demonstration'}`;
+        }
+      }
 
       // Description & Hindi Intent
       document.getElementById('pcModalDescription').innerText = pc.pc_desc || pc.pc_intent || 'Standard operational competency requirement.';
