@@ -81,6 +81,11 @@ const ACTION_VERB_MAP = {
     'flash': 'Flash', 'unlock': 'Unlock', 'cultivate': 'Cultivate',
     'transplant': 'Transplant', 'irrigate': 'Irrigate', 'harvest': 'Harvest',
     'treat': 'Treat', 'piece': 'Piece', 'creel': 'Creel', 'carryout': 'Carryout',
+    // Common verb forms and gerunds
+    'define': 'Define', 'defining': 'Define', 'explain': 'Explain', 'explaining': 'Explain',
+    'lay': 'Lay', 'laying': 'Lay', 'handle': 'Handle', 'handling': 'Handle',
+    'perform': 'Perform', 'performing': 'Perform', 'conduct': 'Conduct', 'conducting': 'Conduct',
+    'apply': 'Apply', 'applying': 'Apply', 'demonstrate': 'Demonstrate',
     // Fix 6: Expanded domain verbs
     // Textiles
     'doff': 'Doff', 'doffing': 'Doff', 'splice': 'Splice', 'splicing': 'Splice',
@@ -130,6 +135,8 @@ const VOCATIONAL_HINDI_DICT = {
     'weld': 'वेल्डिंग करें', 'flash': 'सॉफ्टवेयर फ्लैश करें', 'unlock': 'अनलॉक करें',
     'cultivate': 'खेती करें', 'transplant': 'रोपाई करें', 'irrigate': 'सिंचाई करें',
     'harvest': 'कटाई करें', 'piecing': 'धागा जोड़ना', 'creeling': 'क्रीलिंग करना',
+    'define': 'परिभाषित करें', 'explain': 'व्याख्या करें', 'lay': 'बिछाएं', 'laying': 'बिछाएं',
+    'handle': 'संभालें', 'perform': 'करें', 'conduct': 'आयोजित करें', 'apply': 'लागू करें',
     'mobile': 'मोबाइल', 'phone': 'फोन', 'smartphone': 'स्मार्टफोन',
     'screen': 'स्क्रीन', 'battery': 'बैटरी', 'multimeter': 'मल्टीमीटर',
     'circuit': 'सर्किट', 'pcb': 'पीसीबी', 'voltage': 'वोल्टेज', 'motor': 'मोटर',
@@ -269,7 +276,7 @@ function getPositiveSignals() {
 }
 
 // ── 6B. KU/GS Context Loader (Fix 7) ─────────────────────────────────────────
-const _kuGsCache = new Map(); // qp_clean_code → parsed JSON
+const _kuGsCache = new Map();
 
 function loadKuGsContext(qpCode, nosCode) {
     const cleanCode = qpCode.replace(/\//g, '_');
@@ -312,6 +319,90 @@ function loadKuGsContext(qpCode, nosCode) {
     return { kuKeywords, gsKeywords };
 }
 
+// ── 9. Sector-Specific Natural-Language Query Templates ──────────────────────
+const SECTOR_QUERY_TEMPLATES = {
+    'electronics':  (intent, nos, ku) => `how to ${intent} ${nos} ${ku} electronics repair tutorial step by step`,
+    'telecom':      (intent, nos, ku) => `how to ${intent} ${nos} ${ku} telecom equipment practical demo`,
+    'it':           (intent, nos, ku) => `how to ${intent} ${nos} ${ku} IT practical training tutorial`,
+    'automotive':   (intent, nos, ku) => `how to ${intent} ${nos} ${ku} automotive workshop practical`,
+    'textile':      (intent, nos, ku) => `how to ${intent} ${nos} ${ku} textile mill practical demonstration`,
+    'agriculture':  (intent, nos, ku) => `how to ${intent} ${nos} ${ku} farming field practical technique`,
+    'healthcare':   (intent, nos, ku) => `how to ${intent} ${nos} ${ku} clinical practical training`,
+    'construction': (intent, nos, ku) => `how to ${intent} ${nos} ${ku} construction site practical method`,
+    'beauty':       (intent, nos, ku) => `how to ${intent} ${nos} ${ku} beauty salon professional tutorial`,
+    'food':         (intent, nos, ku) => `how to ${intent} ${nos} ${ku} food processing practical demo`,
+    'hospitality':  (intent, nos, ku) => `how to ${intent} ${nos} ${ku} hotel management training tutorial`,
+    'plumbing':     (intent, nos, ku) => `how to ${intent} ${nos} ${ku} plumbing fitting installation demo`,
+    'power':        (intent, nos, ku) => `how to ${intent} ${nos} ${ku} electrical wiring practical tutorial`,
+    'gem':          (intent, nos, ku) => `how to ${intent} ${nos} ${ku} jewellery making goldsmith practical`,
+    'jewel':        (intent, nos, ku) => `how to ${intent} ${nos} ${ku} jewellery making goldsmith practical`,
+    'security':     (intent, nos, ku) => `how to ${intent} ${nos} ${ku} security safety training practical`,
+    'logistics':    (intent, nos, ku) => `how to ${intent} ${nos} ${ku} warehouse logistics training demo`,
+    'mining':       (intent, nos, ku) => `how to ${intent} ${nos} ${ku} mining operations safety practical`,
+    'media':        (intent, nos, ku) => `how to ${intent} ${nos} ${ku} media production tutorial`,
+    'green':        (intent, nos, ku) => `how to ${intent} ${nos} ${ku} solar renewable energy practical`,
+    'default':      (intent, nos, ku) => `how to ${intent} ${nos} ${ku} practical training demonstration`,
+};
+
+// ── 9B. Hindi Query Sentence Templates ───────────────────────────────────────
+const SECTOR_HINDI_TEMPLATES = {
+    'electronics':  (verb, topic) => `${verb} ${topic} इलेक्ट्रॉनिक्स रिपेयर प्रैक्टिकल स्टेप बाय स्टेप`,
+    'telecom':      (verb, topic) => `${verb} ${topic} टेलीकॉम उपकरण प्रैक्टिकल ट्रेनिंग`,
+    'automotive':   (verb, topic) => `${verb} ${topic} ऑटोमोबाइल वर्कशॉप प्रैक्टिकल डेमो`,
+    'textile':      (verb, topic) => `${verb} ${topic} कपड़ा मिल प्रैक्टिकल ट्रेनिंग`,
+    'agriculture':  (verb, topic) => `${verb} ${topic} खेती प्रैक्टिकल तरीका सीखें`,
+    'healthcare':   (verb, topic) => `${verb} ${topic} हेल्थकेयर क्लिनिकल प्रैक्टिकल`,
+    'construction': (verb, topic) => `${verb} ${topic} निर्माण कार्य प्रैक्टिकल डेमो`,
+    'gem':          (verb, topic) => `${verb} ${topic} आभूषण बनाना सुनार प्रैक्टिकल`,
+    'jewel':        (verb, topic) => `${verb} ${topic} आभूषण बनाना सुनार प्रैक्टिकल`,
+    'plumbing':     (verb, topic) => `${verb} ${topic} प्लंबिंग फिटिंग प्रैक्टिकल`,
+    'power':        (verb, topic) => `${verb} ${topic} इलेक्ट्रिकल वायरिंग प्रैक्टिकल`,
+    'green':        (verb, topic) => `${verb} ${topic} सोलर ऊर्जा प्रैक्टिकल ट्रेनिंग`,
+    'default':      (verb, topic) => `${verb} ${topic} प्रैक्टिकल ट्रेनिंग कैसे करें वीडियो`,
+};
+
+function _selectTemplate(templates, sector) {
+    const sLower = String(sector || '').toLowerCase();
+    for (const [key, fn] of Object.entries(templates)) {
+        if (key !== 'default' && sLower.includes(key)) return fn;
+    }
+    return templates['default'];
+}
+
+function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent, kuContext) {
+    const clean = s => String(s || '').replace(/[\\\"()\[\]]/g, '').replace(/\.{2,}/g, '').trim();
+    const cleanNos    = clean(nosTitle).replace(/^[A-Z0-9_&\/]+:\s*/i, '').replace(/\s+\d{1,3}\s*$/, '');
+    const cleanIntent = clean(pcIntent).toLowerCase();
+
+    // Extract top 2-3 distinctive KU keywords (avoid duplicating intent words)
+    const intentWords = new Set(cleanIntent.split(/\s+/));
+    const kuTokens = String(kuContext || '').split(/\s+/)
+        .filter(w => w.length > 3 && !intentWords.has(w.toLowerCase()))
+        .slice(0, 3)
+        .join(' ');
+
+    // Select sector-specific template
+    const sLower = String(sector || '').toLowerCase();
+    let templateFn = SECTOR_QUERY_TEMPLATES['default'];
+    for (const [key, fn] of Object.entries(SECTOR_QUERY_TEMPLATES)) {
+        if (key !== 'default' && sLower.includes(key)) { templateFn = fn; break; }
+    }
+
+    let query = templateFn(cleanIntent, cleanNos, kuTokens);
+
+    // Deduplicate consecutive repeated words
+    query = query.split(/\s+/).reduce((acc, w) => {
+        if (acc.length === 0 || acc[acc.length - 1].toLowerCase() !== w.toLowerCase()) acc.push(w);
+        return acc;
+    }, []).join(' ');
+
+    // Trim to 95 chars
+    if (query.length > 95) {
+        query = query.substring(0, 95).replace(/\s+\S*$/, '').trim();
+    }
+    return query;
+}
+
 // ── 7. Local NLP Intent Synthesizer ──────────────────────────────────────────
 function synthesizeLocalIntent(pcDesc) {
     let text = String(pcDesc || '')
@@ -326,7 +417,8 @@ function synthesizeLocalIntent(pcDesc) {
     }
 
     text = text.charAt(0).toUpperCase() + text.slice(1);
-    const words = text.split(' ');
+    const words = text.split(' ').map(w => w.replace(/[;,.:()]+$/g, '')).filter(Boolean);
+    if (words.length === 0) return 'Practical Execution';
 
     let leadingVerb = words[0].toLowerCase().replace(/[^a-z]/g, '');
     if (ACTION_VERB_MAP[leadingVerb]) {
@@ -335,20 +427,22 @@ function synthesizeLocalIntent(pcDesc) {
         words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
     }
 
+    let result = '';
     if (words.length >= 5 && words.length <= 8) {
-        return words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        result = words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    } else {
+        const importantWords = [];
+        for (let i = 0; i < words.length; i++) {
+            const w = words[i].replace(/[;,.:()]/g, '');
+            if (!w) continue;
+            if (i > 0 && /^(the|a|an|and|or|in|on|at|to|for|of|with|by|as|is|are|be|must|per|etc|such|all|any|their|its)$/i.test(w)) continue;
+            importantWords.push(w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+            if (importantWords.length >= 8) break;
+        }
+        result = importantWords.join(' ') || text.substring(0, 55);
     }
 
-    const importantWords = [];
-    for (let i = 0; i < words.length; i++) {
-        const w = words[i].replace(/[;,.:()]/g, '');
-        if (!w) continue;
-        if (i > 0 && /^(the|a|an|and|or|in|on|at|to|for|of|with|by|as|is|are|be|must|per|etc|such|all|any|their|its)$/i.test(w)) continue;
-        importantWords.push(w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-        if (importantWords.length >= 8) break;
-    }
-
-    return importantWords.join(' ') || text.substring(0, 55);
+    return result.replace(/[.,;:!\-]+$/g, '').trim();
 }
 
 // ── 8. Hindi Intent Headline ──────────────────────────────────────────────────
@@ -361,52 +455,30 @@ function synthesizeHindiIntent(pcIntent) {
     return translated.join(' ').trim();
 }
 
-// ── 9. English Search Vector (≤ 95 chars) ────────────────────────────────────
-function buildContextualSearchQuery(sector, qpName, nosTitle, modTitle, pcIntent, kuContext) {
-    const clean = s => String(s || '').replace(/[\\\"()\[\]]/g, '').trim();
-    const cleanSector = clean(sector).replace(/sector|council|skill|india/gi, '');
-    const cleanQp     = clean(qpName);
-    const cleanNos    = clean(nosTitle).replace(/^[A-Z0-9_\/]+:\s*/i, '').replace(/\s+\d{1,3}$/, '').replace(/\.\.\.*/g, '');
-    const cleanIntent = clean(pcIntent);
-    const cleanKu     = clean(kuContext || '');
+// ── 10. Hindi Search Vector (≤ 95 chars) — Template-Based Sentences ──────────
+function synthesizeHindiSearchVector(englishQuery, pcIntent, sector) {
+    const sLower = String(sector || '').toLowerCase();
 
-    const seenWords  = new Set();
-    const queryParts = [];
+    // Translate the leading verb
+    const firstWord = pcIntent.split(' ')[0].toLowerCase().replace(/[^a-z]/g, '');
+    const hindiVerb = VOCATIONAL_HINDI_DICT[firstWord] || pcIntent.split(' ')[0];
 
-    const addTokens = (str) => {
-        for (const t of str.split(/\s+/).filter(t => t.length > 1)) {
-            const lower = t.toLowerCase();
-            if (!seenWords.has(lower) && !/^(and|or|of|in|on|to|for|the|a|an|is|are|with|by|as)$/i.test(lower)) {
-                seenWords.add(lower);
-                queryParts.push(t);
-            }
-        }
-    };
+    // Translate key topic nouns from the intent (skip the verb)
+    const topicWords = pcIntent.split(' ').slice(1, 5);
+    const topicHindi = topicWords.map(w => {
+        const lower = w.toLowerCase().replace(/[^a-z]/g, '');
+        return VOCATIONAL_HINDI_DICT[lower] || w;
+    }).join(' ');
 
-    addTokens(cleanIntent); addTokens(cleanSector); addTokens(cleanNos); addTokens(cleanKu); addTokens(cleanQp);
+    // Select Hindi template by sector
+    const hindiTemplateFn = _selectTemplate(SECTOR_HINDI_TEMPLATES, sector);
+    let fullHi = hindiTemplateFn(hindiVerb, topicHindi);
 
-    let full = `${queryParts.slice(0, 10).join(' ')} practical tutorial`.trim();
-    if (full.length > 95) full = full.substring(0, 95).trim();
-    return full;
-}
-
-// ── 10. Hindi Search Vector (≤ 95 chars) ─────────────────────────────────────
-function synthesizeHindiSearchVector(englishQuery, pcIntent) {
-    const textToTranslate = `${pcIntent} ${englishQuery}`.toLowerCase().replace(/[\\\"()\[\]]/g, '');
-    const words = textToTranslate.split(/[\s,.:()/-]+/).filter(w => w.length > 2);
-
-    const seenHindi = new Set();
-    const translatedParts = [];
-    for (const w of words) {
-        if (VOCATIONAL_HINDI_DICT[w] && !seenHindi.has(VOCATIONAL_HINDI_DICT[w])) {
-            seenHindi.add(VOCATIONAL_HINDI_DICT[w]);
-            translatedParts.push(VOCATIONAL_HINDI_DICT[w]);
-        }
-    }
-
-    let fullHi = translatedParts.length >= 2
-        ? `${translatedParts.slice(0, 7).join(' ')} प्रैक्टिकल वीडियो कैसे करें`
-        : `${pcIntent.split(' ').slice(0, 6).map(w => VOCATIONAL_HINDI_DICT[w.toLowerCase().replace(/[^a-z]/g, '')] || w).join(' ')} प्रैक्टिकल सीखें वीडियो`;
+    // Deduplicate repeated Hindi tokens
+    fullHi = fullHi.split(/\s+/).reduce((acc, w) => {
+        if (acc.length === 0 || acc[acc.length - 1] !== w) acc.push(w);
+        return acc;
+    }, []).join(' ');
 
     if (fullHi.length > 95) fullHi = fullHi.substring(0, 95).trim();
     return fullHi;
@@ -556,23 +628,53 @@ function computeIntentConfidence(rawDesc, intent) {
 
 function computeQueryConfidence(query) {
     if (!query) return 0;
+    let score = 0;
     const len = query.length;
-    if (len >= 30 && len <= 110) return 95;
-    if (len > 110 && len <= 140) return 80;
-    return 60;
+
+    // Length scoring (natural-language queries are 40-90 chars)
+    if (len >= 40 && len <= 90) score += 30;
+    else if (len >= 30 && len <= 110) score += 20;
+    else score += 10;
+
+    // Natural language signals ("how to", complete phrases)
+    if (/^how to /i.test(query)) score += 20;
+    if (/practical|tutorial|demonstration|step by step|training/i.test(query)) score += 15;
+
+    // Domain specificity (contains sector/tool words, not just generic)
+    const domainWords = query.match(/\b(repair|install|calibrate|assemble|soldering|welding|irrigation|harvest|stitch|plaster|wiring|autoclave|diagnostic|hydraulic|pneumatic|textile|circuit|pcb|loom|spindle|trowel|mortar)\b/gi);
+    if (domainWords && domainWords.length >= 1) score += 20;
+    else score += 5;
+
+    // Word count (8-15 words is ideal for YouTube)
+    const wordCount = query.split(/\s+/).length;
+    if (wordCount >= 8 && wordCount <= 15) score += 15;
+    else if (wordCount >= 5) score += 10;
+    else score += 5;
+
+    return Math.min(100, Math.max(0, score));
 }
 
 function computeHindiConfidence(queryHi) {
     if (!queryHi) return 0;
     let score = 0;
-    if (/[\u0900-\u097F]/.test(queryHi)) score += 40;
-    if (/प्रैक्टिकल|कैसे|सीखें|करें|वीडियो/.test(queryHi)) score += 30;
+    // Devanagari character density
+    const devanagariChars = (queryHi.match(/[\u0900-\u097F]/g) || []).length;
+    const totalChars = queryHi.replace(/\s/g, '').length;
+    const devanagariRatio = totalChars > 0 ? devanagariChars / totalChars : 0;
+    if (devanagariRatio >= 0.5) score += 40;
+    else if (devanagariRatio >= 0.3) score += 25;
+    else score += 10;
+
+    // Hindi search signal words
+    if (/प्रैक्टिकल|कैसे|सीखें|करें|वीडियो|ट्रेनिंग|डेमो|तरीका/.test(queryHi)) score += 30;
+
+    // Word count
     const wordCount = queryHi.split(' ').length;
-    score += (wordCount >= 4 && wordCount <= 12) ? 30 : 15;
+    score += (wordCount >= 5 && wordCount <= 12) ? 30 : 15;
     return Math.min(100, score);
 }
 
-// ── 12. Sarvam AI Cloud Refinement ───────────────────────────────────────────
+// ── 12. Sarvam AI Cloud Refinement (Enhanced: intent + search query + Hindi) ─
 async function refineIntentWithSarvam(item) {
     if (!SARVAM_API_KEY) return null;
 
@@ -582,47 +684,33 @@ async function refineIntentWithSarvam(item) {
     const nosTitle = item.nos_title    || item.nos_code;
     const modTitle = item.module_title || 'Core Operational Module';
 
-    // Retrieve Knowledge & Skills context from canonical JSON AST if available
-    let kuContext = '';
-    let gsContext = '';
-    const cleanCode = item.qp_code.replace(/\//g, '_');
-    const jsonPath  = path.join(JSON_DIR, `${cleanCode}.json`);
-    if (fs.existsSync(jsonPath)) {
-        try {
-            const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
-            const nosUnit = (data.nos_units || []).find(n => n.nos_code === item.nos_code);
-            if (nosUnit) {
-                if (nosUnit.kus && nosUnit.kus.length > 0) {
-                    kuContext = nosUnit.kus.slice(0, 4).join('; ');
-                }
-                if (nosUnit.gs && nosUnit.gs.length > 0) {
-                    gsContext = nosUnit.gs.slice(0, 3).join('; ');
-                }
-            }
-        } catch (_) {}
-    }
+    // Retrieve Knowledge & Skills context from canonical JSON AST (use cache)
+    const { kuKeywords, gsKeywords } = loadKuGsContext(item.qp_code, item.nos_code);
 
-    let prompt = `You are an expert Vocational Curriculum Specialist.
-Refine the following practical training task into an action-oriented 5 to 8 word title:
+    let prompt = `You are an expert Vocational Curriculum Specialist and YouTube Search Optimizer.
+Given the following practical training task, generate THREE outputs:
+
 - Sector: "${sector}"
 - Qualification Role: "${qpName}"
 - Occupational Unit: "${nosTitle}"
-- Module Reel: "${modTitle}"
-- Training Task Description: "${pcDesc}"`;
+- Module: "${modTitle}"
+- Training Task: "${pcDesc}"`;
 
-    if (kuContext) prompt += `\n- Associated Knowledge Topics: "${kuContext}"`;
-    if (gsContext) prompt += `\n- Applicable Vocational Skills: "${gsContext}"`;
+    if (kuKeywords) prompt += `\n- Knowledge Context: "${kuKeywords}"`;
+    if (gsKeywords) prompt += `\n- Skills Context: "${gsKeywords}"`;
 
-    prompt += `\n\nRequirements:
-1. Begin with an action verb (e.g. Inspect, Verify, Assemble, Calibrate, Execute, Repair).
-2. Do NOT include bullet points, raw codes, or filler words like "check that" or "ensure that".
-3. Return strictly raw JSON: { "pc_intent": "Exact 5-8 Word Refined Action" }`;
+    prompt += `\n\nGenerate:
+1. "pc_intent": A 5-8 word action-oriented title starting with a verb (Inspect, Verify, Assemble, etc.). No filler words.
+2. "search_query": A natural-language YouTube search query (12-18 words) starting with "how to" that would find a practical training video. Include sector-specific terminology.
+3. "search_query_hi": The same search query translated into natural Hindi (Devanagari script), suitable for searching Hindi YouTube tutorials.
+
+Return strictly raw JSON: { "pc_intent": "...", "search_query": "...", "search_query_hi": "..." }`;
 
     try {
         const res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'api-subscription-key': SARVAM_API_KEY },
-            body: JSON.stringify({ model: 'sarvam-105b', messages: [{ role: 'system', content: prompt }], temperature: 0.2, max_tokens: 80 })
+            body: JSON.stringify({ model: 'sarvam-105b', messages: [{ role: 'system', content: prompt }], temperature: 0.2, max_tokens: 200 })
         });
 
         if (res.ok) {
@@ -630,7 +718,13 @@ Refine the following practical training task into an action-oriented 5 to 8 word
             const rawText   = data.choices?.[0]?.message?.content?.trim() || '';
             const cleanJson = rawText.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '');
             const parsed    = JSON.parse(cleanJson);
-            if (parsed && parsed.pc_intent) return parsed.pc_intent.trim();
+            if (parsed && parsed.pc_intent) {
+                return {
+                    pc_intent:       parsed.pc_intent.trim(),
+                    search_query:    (parsed.search_query || '').trim().substring(0, 95),
+                    search_query_hi: (parsed.search_query_hi || '').trim().substring(0, 95),
+                };
+            }
         }
     } catch (_) {}
 
@@ -725,24 +819,35 @@ async function runPass2Unified() {
             const { kuKeywords, gsKeywords } = loadKuGsContext(item.qp_code, item.nos_code);
 
             // Step 1: Local NLP (always)
-            let intent     = synthesizeLocalIntent(item.pc_description);
-            let intentConf = computeIntentConfidence(item.pc_description, intent);
+            let intent       = synthesizeLocalIntent(item.pc_description);
+            let intentConf   = computeIntentConfidence(item.pc_description, intent);
+            let sarvamResult = null;
 
             // Step 2: Cloud refinement (mode-dependent)
             const needsCloud = (mode === 'cloud') || (mode === 'hybrid' && intentConf < 70);
             if (needsCloud && SARVAM_API_KEY) {
-                const refined = await refineIntentWithSarvam(item);
-                if (refined) {
-                    const refinedConf = computeIntentConfidence(item.pc_description, refined);
-                    if (refinedConf >= intentConf) { intent = refined; intentConf = refinedConf; sarvamCallCount++; }
+                sarvamResult = await refineIntentWithSarvam(item);
+                if (sarvamResult && sarvamResult.pc_intent) {
+                    const refinedConf = computeIntentConfidence(item.pc_description, sarvamResult.pc_intent);
+                    if (refinedConf >= intentConf) { 
+                        intent = sarvamResult.pc_intent; 
+                        intentConf = refinedConf; 
+                        sarvamCallCount++; 
+                    }
                 }
             }
 
             const intentHi    = synthesizeHindiIntent(intent);
             const kuGsContext = [kuKeywords, gsKeywords].filter(Boolean).join(' ');
-            const queryEn     = buildContextualSearchQuery(item.sector, item.qp_name, item.nos_title, item.module_title, intent, kuGsContext);
+            
+            const queryEn     = (sarvamResult && sarvamResult.search_query)
+                                ? sarvamResult.search_query
+                                : buildContextualSearchQuery(item.sector, item.qp_name, item.nos_title, item.module_title, intent, kuGsContext);
             const queryConf   = computeQueryConfidence(queryEn);
-            const queryHi     = synthesizeHindiSearchVector(queryEn, intent);
+            
+            const queryHi     = (sarvamResult && sarvamResult.search_query_hi)
+                                ? sarvamResult.search_query_hi
+                                : synthesizeHindiSearchVector(queryEn, intent, item.sector);
             const queryHiConf = computeHindiConfidence(queryHi);
             const cat         = mapSectorToCategory(item.sector);
             const toolKeywords = extractToolKeywords(item.pc_description, item.sector);
