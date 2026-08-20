@@ -1113,8 +1113,9 @@
         if (data.success && Array.isArray(data.results) && data.results.length > 0) {
           const top = data.results[0];
 
-          // Handle quota exceeded — blank screen with clear message, no wrong video
-          if (top.quotaExceeded) {
+          // Handle quota exceeded OR isFallback — blank screen, no wrong video
+          const KNOWN_FALLBACKS = new Set(['FW_bw9jdrlQ', '8aGhZQkoFbQ']);
+          if (top.quotaExceeded || top.isFallback || KNOWN_FALLBACKS.has(top.video_id)) {
             showVideoOverlay('⏰', 'YouTube Quota Exhausted', 'Daily search quota of 10,000 units is used up. Videos will load automatically after 12:30 PM IST.');
             if (boundsEl) boundsEl.innerText = '⏰ Quota resets at 12:30 PM IST — videos will load automatically';
             return;
