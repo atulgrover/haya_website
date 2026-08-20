@@ -40,11 +40,11 @@ const GENERIC_NOS_CODES = new Set([
 ]);
 
 const GENERIC_NOS_TITLE_PATTERNS = [
-    /employability/i, /entrepreneurship/i, /english\s*communication/i,
-    /it\s*literacy/i, /digital\s*literacy/i, /basic\s*discipline/i,
-    /soft\s*skills/i, /gender\s*sensitivity/i, /environmental\s*health/i,
-    /health\s*and\s*sanitation/i, /personal\s*hygiene/i, /life\s*skills/i,
-    /communication\s*skills/i, /vocational\s*skills/i,
+    /employability/i, /^entrepreneurship(\s*skills)?$/i, /employability\s*(&|and)\s*entrepreneurship/i,
+    /english\s*communication/i, /it\s*literacy/i, /digital\s*literacy/i,
+    /basic\s*discipline/i, /soft\s*skills/i, /gender\s*sensitivity/i,
+    /environmental\s*health/i, /health\s*and\s*sanitation/i, /personal\s*hygiene/i,
+    /life\s*skills/i, /communication\s*skills/i,
 ];
 
 function isGenericNos(code, title) {
@@ -337,30 +337,51 @@ function compileMdToJson(mdPath, qpCode, qpName) {
         }
     }
 
+    // Safety check: If ALL detected NOS units in a QP were marked generic (e.g. PWD qualifications),
+    // unmark them so the qualification preserves its core curriculum.
+    const allGeneric = nosMap.size > 0 && Array.from(nosMap.values()).every(n => n.is_generic);
+    if (allGeneric) {
+        for (const nos of nosMap.values()) {
+            nos.is_generic = false;
+        }
+    }
+
     // ── PHASE 3: Fallback Handling for Rare PDFs without Markdown Tables ────
     // If no table PCs were found (rare legacy formats), extract from narrative
     for (const [code, nos] of nosMap) {
         if (nos.tablePcs.length === 0 && !nos.is_generic) {
-            // Scan narrative lines for fallback
-            let fallbackMod = null;
+            let currentCategoryTitle = null;
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i].trim();
+                if (!line) continue;
+
+                // Track category / module headers in narrative sections
+                if (line.length >= 5 && line.length <= 120 && !line.startsWith('|') && !line.startsWith('#') && !line.startsWith('PC') && !line.startsWith('KU') && !line.startsWith('GS')) {
+                    if (!/^(?:To be competent|Assessment|Qualification Pack|NSQC|Samadhan|Page|\*\*)/i.test(line)) {
+                        currentCategoryTitle = cleanText(line);
+                    }
+                }
+
                 const m = line.match(/^[-*]?\s*PC\s*(\d+)[.:\s-]+(.+)/i);
                 if (m) {
                     const pcCode = `PC${m[1]}`;
-                    const pcDesc = cleanText(m[2]);
+                    const pcDesc = cleanDescription(m[2]);
                     if (pcDesc.length >= 5) {
                         const dedupKey = `${nos.nos_code}:${pcCode}`;
                         if (!seenTablePcs.has(dedupKey)) {
                             seenTablePcs.add(dedupKey);
-                            if (!fallbackMod) {
-                                fallbackMod = {
-                                    module_title: `${nos.nos_title} — Core Practical Operations`,
-                                    sequence_order: 1,
+
+                            const modTitle = currentCategoryTitle || `${nos.nos_title} — Core Practical Operations`;
+                            let targetMod = nos.modules.find(m => m.module_title === modTitle);
+                            if (!targetMod) {
+                                targetMod = {
+                                    module_title: modTitle,
+                                    sequence_order: nos.modules.length + 1,
                                     pcs: [],
                                 };
-                                nos.modules.push(fallbackMod);
+                                nos.modules.push(targetMod);
                             }
+
                             const pcItem = {
                                 pc_code:         pcCode,
                                 pc_description:  pcDesc,
@@ -371,7 +392,7 @@ function compileMdToJson(mdPath, qpCode, qpName) {
                                 viva_marks:      null,
                             };
                             nos.tablePcs.push(pcItem);
-                            fallbackMod.pcs.push(pcItem);
+                            targetMod.pcs.push(pcItem);
                         }
                     }
                 }
