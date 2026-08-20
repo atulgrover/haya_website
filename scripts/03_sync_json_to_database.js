@@ -36,21 +36,65 @@ const NSQF_JSON_DIR   = path.join(__dirname, '..', 'data', 'json', 'nsqf');
 const JSON_DIR        = fs.existsSync(NSQF_JSON_DIR) ? NSQF_JSON_DIR : path.join(__dirname, '..', 'data', 'json');
 const CHECKPOINT_PATH = path.join(__dirname, '..', 'data', '.pass1_checkpoint.json');
 
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function parseMark(val) {
+    if (val === null || val === undefined || val === '') return null;
+    const n = parseFloat(String(val).replace(/[^0-9.]/g, ''));
+    return isNaN(n) ? null : n;
+}
+
 // ── JSON AST Parser (Preferred Canonical Input) ──────────────────────────────
 function parseJsonToStructure(jsonPath, qpCode) {
     const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
     const nosList     = [];
     const modulesList = [];
     const pcsList     = [];
+    const kusList     = [];
+    const gsList      = [];
 
     // The canonical JSON AST in data/json/nsqf/ is already pre-filtered and validated
     for (const nos of data.nos_units || []) {
         if (nos.is_generic) continue;
 
+        const kusArray = nos.kus || [];
+        const gsArray  = nos.gs  || [];
+
         nosList.push({
             nos_code:       nos.nos_code,
             nos_title:      nos.nos_title,
             sequence_order: nosList.length + 1,
+            kus:            kusArray,
+            gs:             gsArray,
+        });
+
+        // Parse individual KUs for nsqf_kus table
+        kusArray.forEach((kuStr, idx) => {
+            const m = String(kuStr).match(/^(KU\s*[\d.]+)[.:\s-]*(.+)/i);
+            const code = m ? m[1].toUpperCase().replace(/\s+/g, '') : `KU${idx + 1}`;
+            const desc = m ? m[2].trim() : kuStr.trim();
+            if (desc.length >= 3) {
+                kusList.push({
+                    nos_code:       nos.nos_code,
+                    ku_code:        code,
+                    ku_description: desc,
+                    sequence_order: idx + 1,
+                });
+            }
+        });
+
+        // Parse individual GS for nsqf_gs table
+        gsArray.forEach((gsStr, idx) => {
+            const m = String(gsStr).match(/^(GS\s*[\d.]+)[.:\s-]*(.+)/i);
+            const code = m ? m[1].toUpperCase().replace(/\s+/g, '') : `GS${idx + 1}`;
+            const desc = m ? m[2].trim() : gsStr.trim();
+            if (desc.length >= 3) {
+                gsList.push({
+                    nos_code:       nos.nos_code,
+                    gs_code:        code,
+                    gs_description: desc,
+                    sequence_order: idx + 1,
+                });
+            }
         });
 
         for (const mod of nos.modules || []) {
@@ -68,14 +112,16 @@ function parseJsonToStructure(jsonPath, qpCode) {
                     module_title:    mod.module_title,
                     pc_code:         pc.pc_code,
                     pc_description:  pc.pc_description,
-                    theory_marks:    pc.theory_marks || null,
-                    practical_marks: pc.practical_marks || null,
+                    theory_marks:    parseMark(pc.theory_marks),
+                    practical_marks: parseMark(pc.practical_marks),
+                    project_marks:   parseMark(pc.project_marks),
+                    viva_marks:      parseMark(pc.viva_marks),
                 });
             }
         }
     }
 
-    return { nosList, modulesList, pcsList };
+    return { nosList, modulesList, pcsList, kusList, gsList };
 }
 
 // ── Generic soft-skill NOS blocklist (used for MD fallback) ─────────────────
@@ -399,7 +445,7 @@ async function main() {
     // ── Get raw pg.Pool for transaction-aware per-QP client acquisition ────────
     const pgPool = db.pool;  // Exposed by db.js: module.exports.pool = pool
 
-    let totalNos = 0, totalMods = 0, totalPcs = 0, successCount = 0, skipCount = 0;
+    let totalNos = 0, totalMods = 0, totalPcs = 0, totalKus = 0, totalGs = 0, successCount = 0, skipCount = 0;
 
     for (let i = startIdx; i < rows.length; i++) {
         const qp        = rows[i];
@@ -429,7 +475,7 @@ async function main() {
             continue;
         }
 
-        const { nosList, modulesList, pcsList } = parsed;
+        const { nosList, modulesList, pcsList, kusList, gsList } = parsed;
 
         if (nosList.length === 0 && pcsList.length === 0) {
             skipCount++;
@@ -441,30 +487,45 @@ async function main() {
         try {
             await client.query('BEGIN');
 
-            // ── 1. Upsert nsqf_nos (preserve existing data) ──────────────────
-            // First: remove any synthetic fallback NOS codes left from prior runs
-            if (nosList.length > 0 && !nosList[0].nos_code.match(/_N\d+$/)) {
-                await client.query(
-                    `DELETE FROM nsqf_pcs WHERE qp_code = $1 AND (nos_code LIKE '%\\_N0%' OR nos_code LIKE '%\\_N1%')`,
-                    [qp.qp_code]
-                );
-                await client.query(
-                    `DELETE FROM nsqf_nos WHERE qp_code = $1 AND (nos_code LIKE '%\\_N0%' OR nos_code LIKE '%\\_N1%')`,
-                    [qp.qp_code]
-                );
-            }
+            // ── 1. Upsert nsqf_nos (with kus & gs JSONB arrays) ─────────────
             for (const n of nosList) {
                 await client.query(`
-                    INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
-                    VALUES ($1, $2, $3, $4)
+                    INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order, kus, gs)
+                    VALUES ($1, $2, $3, $4, $5, $6)
                     ON CONFLICT (qp_code, nos_code) DO UPDATE SET
                         nos_title      = EXCLUDED.nos_title,
-                        sequence_order = EXCLUDED.sequence_order
-                `, [qp.qp_code, n.nos_code, n.nos_title, n.sequence_order]);
+                        sequence_order = EXCLUDED.sequence_order,
+                        kus            = EXCLUDED.kus,
+                        gs             = EXCLUDED.gs
+                `, [qp.qp_code, n.nos_code, n.nos_title, n.sequence_order, JSON.stringify(n.kus || []), JSON.stringify(n.gs || [])]);
             }
             totalNos += nosList.length;
 
-            // ── 2. Modules: delete old, insert fresh ─────────────────────────
+            // ── 2. Upsert nsqf_kus (Dedicated Knowledge Units Table) ─────────
+            for (const ku of kusList || []) {
+                await client.query(`
+                    INSERT INTO nsqf_kus (qp_code, nos_code, ku_code, ku_description, sequence_order)
+                    VALUES ($1, $2, $3, $4, $5)
+                    ON CONFLICT (qp_code, nos_code, ku_code) DO UPDATE SET
+                        ku_description = EXCLUDED.ku_description,
+                        sequence_order = EXCLUDED.sequence_order
+                `, [qp.qp_code, ku.nos_code, ku.ku_code, ku.ku_description, ku.sequence_order]);
+            }
+            totalKus += (kusList || []).length;
+
+            // ── 3. Upsert nsqf_gs (Dedicated Generic Skills Table) ──────────
+            for (const gs of gsList || []) {
+                await client.query(`
+                    INSERT INTO nsqf_gs (qp_code, nos_code, gs_code, gs_description, sequence_order)
+                    VALUES ($1, $2, $3, $4, $5)
+                    ON CONFLICT (qp_code, nos_code, gs_code) DO UPDATE SET
+                        gs_description = EXCLUDED.gs_description,
+                        sequence_order = EXCLUDED.sequence_order
+                `, [qp.qp_code, gs.nos_code, gs.gs_code, gs.gs_description, gs.sequence_order]);
+            }
+            totalGs += (gsList || []).length;
+
+            // ── 4. Modules: delete old for QP, insert fresh ─────────────────
             await client.query(`DELETE FROM nsqf_modules WHERE qp_code = $1`, [qp.qp_code]);
             const moduleMap = new Map();  // "nos_code:module_title" → new id
             for (const m of modulesList) {
@@ -479,64 +540,31 @@ async function main() {
             }
             totalMods += modulesList.length;
 
-            // ── 3. Upsert nsqf_pcs — NEVER overwrite video_id on conflict ────
+            // ── 5. Upsert nsqf_pcs with rubric marks ────────────────────────
             for (const p of pcsList) {
                 const key   = `${p.nos_code}:${p.module_title}`;
                 const modId = moduleMap.get(key) || null;
                 await client.query(`
                     INSERT INTO nsqf_pcs
-                        (qp_code, nos_code, module_id, pc_code, pc_description, sequence_order)
-                    VALUES ($1, $2, $3, $4, $5, $6)
+                        (qp_code, nos_code, module_id, pc_code, pc_description, sequence_order,
+                         theory_marks, practical_marks, project_marks, viva_marks)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
                     ON CONFLICT (qp_code, nos_code, pc_code) DO UPDATE SET
-                        pc_description = EXCLUDED.pc_description,
-                        module_id      = EXCLUDED.module_id,
-                        sequence_order = EXCLUDED.sequence_order
-                `, [qp.qp_code, p.nos_code, modId, p.pc_code, p.pc_description, 0]);
+                        pc_description  = EXCLUDED.pc_description,
+                        module_id       = EXCLUDED.module_id,
+                        sequence_order  = EXCLUDED.sequence_order,
+                        theory_marks    = EXCLUDED.theory_marks,
+                        practical_marks = EXCLUDED.practical_marks,
+                        project_marks   = EXCLUDED.project_marks,
+                        viva_marks      = EXCLUDED.viva_marks
+                `, [
+                    qp.qp_code, p.nos_code, modId, p.pc_code, p.pc_description, 0,
+                    p.theory_marks, p.practical_marks, p.project_marks, p.viva_marks
+                ]);
             }
             totalPcs += pcsList.length;
 
-            // ── 4. Delete PCs + NOS for ANY generic NOS — unconditionally ────
-            const GENERIC_NOS_TITLE_SQL = `(
-                nos_title ILIKE '%employability%'
-                OR nos_title ILIKE '%entrepreneurship%'
-                OR nos_title ILIKE '%english communication%'
-                OR nos_title ILIKE '%it literacy%'
-                OR nos_title ILIKE '%digital literacy%'
-                OR nos_title ILIKE '%soft skills%'
-                OR nos_title ILIKE '%gender sensitivity%'
-                OR nos_title ILIKE '%life skills%'
-                OR nos_title ILIKE '%communication skills%'
-                OR nos_title ILIKE '%vocational skills%'
-            )`;
-
-            await client.query(`
-                DELETE FROM nsqf_pcs
-                WHERE qp_code = $1
-                  AND (
-                    nos_code LIKE 'DGT/VSQ/%'
-                    OR nos_code LIKE 'VSQ/%'
-                    OR nos_code ~ '\\/N99[0-9][0-9]$'
-                    OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
-                    OR nos_code IN (
-                        SELECT nos_code FROM nsqf_nos
-                        WHERE qp_code = $1 AND ${GENERIC_NOS_TITLE_SQL}
-                    )
-                  )
-            `, [qp.qp_code]);
-
-            await client.query(`
-                DELETE FROM nsqf_nos
-                WHERE qp_code = $1
-                  AND (
-                    nos_code LIKE 'DGT/VSQ/%'
-                    OR nos_code LIKE 'VSQ/%'
-                    OR nos_code ~ '\\/N99[0-9][0-9]$'
-                    OR nos_code IN ('N0101', 'VSQ/N0101', 'DGT/VSQ/N0101')
-                    OR ${GENERIC_NOS_TITLE_SQL}
-                  )
-            `, [qp.qp_code]);
-
-            // ── 5. Fix sequence_order via SQL window function ─────────────────
+            // ── 6. Fix sequence_order via SQL window function ─────────────────
             try {
                 await client.query(`
                     UPDATE nsqf_pcs AS p
@@ -547,30 +575,16 @@ async function main() {
                     ) AS sub
                     WHERE p.id = sub.id
                 `, [qp.qp_code]);
-            } catch (_) { /* Non-fatal — ordering can be fixed later */ }
-
-            // ── 6. Detect abbreviated-format PDFs ────────────────────────────
-            let isAbbreviated = false;
-            if (pcsList.length > 0) {
-                const uniqueDescs = new Set(
-                    pcsList.map(p => p.pc_description.trim().toLowerCase().substring(0, 60))
-                );
-                if (uniqueDescs.size === 1) {
-                    isAbbreviated = true;
-                    console.log(`  ⚠️  Abbreviated PDF detected for ${qp.qp_code} — all ${pcsList.length} PCs identical: "${[...uniqueDescs][0].substring(0, 50)}"`);
-                    await client.query(`DELETE FROM nsqf_pcs WHERE qp_code = $1`, [qp.qp_code]);
-                }
-            }
+            } catch (_) { /* Non-fatal */ }
 
             // ── 7. Update master QP status ───────────────────────────────────
-            const finalStatus = isAbbreviated ? 'abbreviated_pdf_no_pcs' : 'structure_ingested';
             await client.query(`
                 UPDATE nsqf_qps
                 SET total_nos       = $1,
                     total_pcs       = $2,
-                    pipeline_status = $3
-                WHERE id = $4
-            `, [nosList.length, isAbbreviated ? 0 : pcsList.length, finalStatus, qp.id]);
+                    pipeline_status = 'structure_ingested'
+                WHERE id = $3
+            `, [nosList.length, pcsList.length, qp.id]);
 
             await client.query('COMMIT');
 
@@ -602,12 +616,14 @@ async function main() {
 
     console.log('================================================================================');
     console.log('📊 PASS 1 SUMMARY');
-    console.log(`   QPs Processed:     ${successCount}`);
-    console.log(`   QPs Skipped:       ${skipCount}`);
-    console.log(`   NOS Records:       ${totalNos}`);
-    console.log(`   Module Reels:      ${totalMods}`);
+    console.log(`   QPs Processed:        ${successCount}`);
+    console.log(`   QPs Skipped:          ${skipCount}`);
+    console.log(`   NOS Records:          ${totalNos}`);
+    console.log(`   Module Reels:         ${totalMods}`);
     console.log(`   Performance Criteria: ${totalPcs}`);
-    console.log(`   DB Status:         pipeline_status = 'structure_ingested'`);
+    console.log(`   Knowledge Units (KU): ${totalKus}`);
+    console.log(`   Generic Skills (GS):  ${totalGs}`);
+    console.log(`   DB Status:            pipeline_status = 'structure_ingested'`);
     console.log('================================================================================\n');
 
     process.exit(0);

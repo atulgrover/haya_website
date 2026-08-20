@@ -375,6 +375,31 @@ async function initSchema() {
                 UNIQUE(user_id, qp_code, pc_code)
             );
 
+            CREATE TABLE IF NOT EXISTS nsqf_kus (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                ku_code TEXT NOT NULL,
+                ku_description TEXT NOT NULL,
+                sequence_order INT DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(qp_code, nos_code, ku_code)
+            );
+
+            CREATE TABLE IF NOT EXISTS nsqf_gs (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                gs_code TEXT NOT NULL,
+                gs_description TEXT NOT NULL,
+                sequence_order INT DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(qp_code, nos_code, gs_code)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_kus_nos ON nsqf_kus(qp_code, nos_code);
+            CREATE INDEX IF NOT EXISTS idx_gs_nos  ON nsqf_gs(qp_code, nos_code);
+
             CREATE TABLE IF NOT EXISTS youtube_search_cache (
                 id SERIAL PRIMARY KEY,
                 query_hash TEXT UNIQUE NOT NULL,
@@ -395,11 +420,37 @@ async function initSchema() {
 
         // ── Idempotent column migrations (safe on existing hayadb) ───────────
         const migrations = [
+            `ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS kus JSONB`,
+            `ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS gs JSONB`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS theory_marks NUMERIC(6,2)`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS practical_marks NUMERIC(6,2)`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS project_marks NUMERIC(6,2)`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS viva_marks NUMERIC(6,2)`,
+            `ALTER TABLE nsqf_pcs ALTER COLUMN theory_marks TYPE NUMERIC(6,2) USING theory_marks::numeric`,
+            `ALTER TABLE nsqf_pcs ALTER COLUMN practical_marks TYPE NUMERIC(6,2) USING practical_marks::numeric`,
+            `ALTER TABLE nsqf_pcs ALTER COLUMN project_marks TYPE NUMERIC(6,2) USING project_marks::numeric`,
+            `ALTER TABLE nsqf_pcs ALTER COLUMN viva_marks TYPE NUMERIC(6,2) USING viva_marks::numeric`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS thumbnail_url_hi TEXT`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS start_seconds INT DEFAULT 0`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS end_seconds INT`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS viva_quiz_json JSONB`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS study_takeaways_json JSONB`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS sop_intent TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS sop_intent_hi TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS sop_search_query TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS sop_search_query_hi TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS sop_action_directive TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS sop_parameter_tolerance TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS sop_critical_knack TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS dpr_intent TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS dpr_intent_hi TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS dpr_search_query TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS dpr_search_query_hi TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS machine_name TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS machine_spec TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS machine_capex_cost_inr INT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS machine_power_kw NUMERIC(10,2)`,
+            `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS perspective VARCHAR(20) DEFAULT 'skill'`,
             `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS cached_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`,
             `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`,
         ];
@@ -480,6 +531,7 @@ initSchema().then(() => {
 
 module.exports = db;
 module.exports.pool = pool;                    // Raw pg.Pool — for transaction-aware scripts
+module.exports.initSchema = initSchema;
 module.exports.PIPELINE_STATUSES = PIPELINE_STATUSES;  // FSM — canonical pass order
 module.exports.purgeExpiredYouTubeCache = purgeExpiredYouTubeCache;
 
