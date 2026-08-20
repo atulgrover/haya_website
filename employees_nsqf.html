@@ -1262,9 +1262,9 @@
       };
 
       // Populate Admin Form Fields
-      document.getElementById('adminVideoIdInput').value = videoId;
-      document.getElementById('adminStartInput').value = startSec;
-      document.getElementById('adminEndInput').value = endSec;
+      document.getElementById('adminVideoIdInput').value = pc.video_id || '';
+      document.getElementById('adminStartInput').value = startSec || 0;
+      document.getElementById('adminEndInput').value = endSec || 0;
       document.getElementById('adminSaveToast').style.display = 'none';
 
       // Update Footer Step Indicators
