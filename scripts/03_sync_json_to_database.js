@@ -43,8 +43,9 @@ function parseJsonToStructure(jsonPath, qpCode) {
     const modulesList = [];
     const pcsList     = [];
 
+    // The canonical JSON AST in data/json/nsqf/ is already pre-filtered and validated
     for (const nos of data.nos_units || []) {
-        if (nos.is_generic || isGenericNos(nos.nos_code, nos.nos_title)) continue;
+        if (nos.is_generic) continue;
 
         nosList.push({
             nos_code:       nos.nos_code,
@@ -77,16 +78,16 @@ function parseJsonToStructure(jsonPath, qpCode) {
     return { nosList, modulesList, pcsList };
 }
 
-// ── Generic soft-skill NOS blocklist ─────────────────────────────────────────
-// These NOS units are curriculum boilerplate — not vocational skill content.
+// ── Generic soft-skill NOS blocklist (used for MD fallback) ─────────────────
 const GENERIC_NOS_CODES = new Set([
     'DGT/VSQ/N0101', 'VSQ/N0101', 'N0101',   // Employability Skills (universal)
     'N9901', 'N9902', 'N9903',                 // Generic NSQF life-skills
 ]);
 
 const GENERIC_NOS_TITLE_PATTERNS = [
-    /employability/i,                  // catches: Employability Skills, Employability Skills-3, etc.
-    /entrepreneurship/i,
+    /employability/i,
+    /^entrepreneurship(\s*skills)?$/i,
+    /employability\s*(&|and)\s*entrepreneurship/i,
     /english\s*communication/i,
     /it\s*literacy/i,
     /digital\s*literacy/i,
@@ -105,33 +106,26 @@ function isGenericNos(code, title) {
     const c = String(code || '').toUpperCase().trim();
     const t = String(title || '');
 
-    // Exact code blocklist
     if (GENERIC_NOS_CODES.has(c)) return true;
+    if (c.startsWith('VSQ/') || c.startsWith('DGT/VSQ/')) return true;
 
-    // Prefix blocklist
-    if (c.startsWith('VSQ/') || c.startsWith('DGT/VSQ/') || c.includes('/VSQ/')) return true;
-
-    // N9901-N9999 range = generic cross-sector NOS
     const nosNum = parseInt((c.match(/\/N(\d{4})$/) || [])[1] || '0');
     if (nosNum >= 9901 && nosNum <= 9999) return true;
 
-    // Title keyword blocklist
     if (GENERIC_NOS_TITLE_PATTERNS.some(p => p.test(t))) return true;
 
     return false;
 }
 
 // ── Regex patterns ────────────────────────────────────────────────────────────
-// Matches 2-part (AGR/N0101) and 3-part (NIE/ELE/N0810, DGT/VSQ/N0101) NSQF codes.
-// {0,2} makes the middle segment(s) optional — handles both forms.
-const NOS_CODE_RE = /([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){0,2}\/N\d{3,4})/gi;
+const NOS_CODE_RE = /([A-Z&]{2,8}(?:\/[A-Z0-9&]{2,10}){0,2}\/N\d{3,4})/gi;
 
 // Matches PC lines in v2 MD format: "- PC1. text" or "PC1. text" or "| PC1. | text |"
 const PC_LINE_RE   = /^[-*]?\s*PC\s*(\d+)[.:]\s*(.+)/i;
 const PC_TABLE_RE  = /^\|\s*PC\s*(\d+)[.:]\s*\|\s*([^|]+)/i;
 
 // NOS heading line in v2 MD: "#### AGR/N0101: Seed Prep" or "#### NIE/ELE/N0812: Software Repair"
-const NOS_HEADING_RE = /^####\s*([A-Z]{2,8}(?:\/[A-Z0-9]{2,10}){0,2}\/N\d{3,4})\s*[:\-]?\s*(.*)/i;
+const NOS_HEADING_RE = /^####\s*([A-Z&]{2,8}(?:\/[A-Z0-9&]{2,10}){0,2}\/N\d{3,4})\s*[:\-]?\s*(.*)/i;
 
 // Module heading: "#### Module 1: ..." or "#### Section 1" or "#### Unit 1"
 const MOD_HEADING_RE = /^####\s*(Module|Section|Unit|Element)\s*\d*/i;
