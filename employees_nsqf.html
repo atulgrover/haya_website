@@ -1073,17 +1073,37 @@
     // Searches /api/search-video for a relevant video and updates the iframe live.
     // Results are also cached in the server's youtube_search_cache (7-day TTL).
     const FALLBACK_VIDEO_ID = '8aGhZQkoFbQ';
+
+    function showVideoOverlay(icon, title, msg) {
+      const overlay = document.getElementById('pcVideoOverlay');
+      const iframe  = document.getElementById('pcModalIframe');
+      if (!overlay) return;
+      document.getElementById('pcVideoOverlayIcon').innerText  = icon;
+      document.getElementById('pcVideoOverlayTitle').innerText = title;
+      document.getElementById('pcVideoOverlayMsg').innerText   = msg;
+      overlay.style.display = 'flex';
+      if (iframe) iframe.style.visibility = 'hidden';
+    }
+
+    function hideVideoOverlay(videoId) {
+      const overlay = document.getElementById('pcVideoOverlay');
+      const iframe  = document.getElementById('pcModalIframe');
+      if (!overlay) return;
+      overlay.style.display = 'none';
+      if (iframe) iframe.style.visibility = 'visible';
+    }
+
     async function harvestVideoForPc(pc, startSec, endSec) {
-      const iframe = document.getElementById('pcModalIframe');
       const boundsEl = document.getElementById('pcModalPlaybackBounds');
-      if (!iframe) return;
 
       const query = pc.contextual_search_query || pc.pc_intent || pc.pc_desc || '';
-      if (!query.trim()) return;
+      if (!query.trim()) {
+        showVideoOverlay('📺', 'No Search Query', 'No contextual search query available for this criterion.');
+        return;
+      }
 
-      // Show shimmer loading state
-      iframe.style.opacity = '0.35';
-      iframe.style.filter = 'grayscale(1)';
+      // Show searching state — blank screen + message
+      showVideoOverlay('🔍', 'Searching YouTube...', 'Finding the best vocational demonstration reel for this criterion.');
       if (boundsEl) boundsEl.innerText = '🔍 Searching YouTube for the best vocational match...';
 
       try {
@@ -1093,10 +1113,10 @@
         if (data.success && Array.isArray(data.results) && data.results.length > 0) {
           const top = data.results[0];
 
-          // Handle quota exceeded — show informational message, keep placeholder
+          // Handle quota exceeded — blank screen with clear message, no wrong video
           if (top.quotaExceeded) {
-            if (boundsEl) boundsEl.innerText = '⏰ YouTube search quota temporarily exhausted — resets at midnight PT. Showing preview reel.';
-            iframe.src = `https://www.youtube.com/embed/${top.video_id}?autoplay=0&rel=0&modestbranding=1&mute=1`;
+            showVideoOverlay('⏰', 'YouTube Quota Exhausted', 'Daily search quota of 10,000 units is used up. Videos will load automatically after 12:30 PM IST.');
+            if (boundsEl) boundsEl.innerText = '⏰ Quota resets at 12:30 PM IST — videos will load automatically';
             return;
           }
 
@@ -1104,16 +1124,15 @@
           // Patch PC in-memory so prev/next navigation remembers
           pc.video_id = newVideoId;
           pc.video_title = top.video_title;
-          // Reload iframe with discovered video (start from 0, let it play freely)
-          iframe.src = `https://www.youtube.com/embed/${newVideoId}?autoplay=1&rel=0&modestbranding=1`;
-          const formatTime2 = (s) => { const m = Math.floor(s/60); const sec = s%60; return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`; };
+          // Hide overlay and load the real video
+          hideVideoOverlay();
+          const iframe = document.getElementById('pcModalIframe');
+          if (iframe) iframe.src = `https://www.youtube.com/embed/${newVideoId}?autoplay=1&rel=0&modestbranding=1`;
           if (boundsEl) boundsEl.innerText = `▶ ${top.video_title || 'YouTube Match'} · via HAYAGRIVA Harvester${top.isCached ? ' (cached)' : ''}`;
         }
       } catch (e) {
-        if (boundsEl) boundsEl.innerText = '⚠️ Could not fetch video — showing preview reel';
-      } finally {
-        iframe.style.opacity = '1';
-        iframe.style.filter = '';
+        showVideoOverlay('⚠️', 'Search Unavailable', 'Could not reach the YouTube API. Please check your connection.');
+        if (boundsEl) boundsEl.innerText = '⚠️ Could not reach YouTube API';
       }
     }
 
@@ -1143,10 +1162,9 @@
       };
 
       if (isNullOrFallback) {
-        // No real video assigned — load placeholder immediately, then harvest async
-        iframe.src = `https://www.youtube.com/embed/${FALLBACK_VIDEO_ID}?autoplay=0&rel=0&modestbranding=1&mute=1`;
+        // No real video assigned — show blank overlay, then harvest async (non-blocking)
+        iframe.src = '';
         document.getElementById('pcModalPlaybackBounds').innerText = '🔍 Searching YouTube for the best vocational match...';
-        // Kick off async on-demand harvest (non-blocking)
         harvestVideoForPc(pc, startSec, endSec);
       } else {
         // Real video_id exists — load it directly with bounds
@@ -1671,8 +1689,14 @@
             
             <!-- Left Column: Video Player & Official Description -->
             <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="position:relative; width:100%; padding-bottom:56.25%; background:#000; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.15);">
+              <div style="position:relative; width:100%; padding-bottom:56.25%; background:#0F172A; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.15);">
                 <iframe id="pcModalIframe" src="" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- Video status overlay: shown when searching or quota exceeded -->
+                <div id="pcVideoOverlay" style="display:none; position:absolute; inset:0; background:#0F172A; border-radius:12px; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding:24px; z-index:10;">
+                  <div id="pcVideoOverlayIcon" style="font-size:40px;">🔍</div>
+                  <div id="pcVideoOverlayTitle" style="font-size:14px; font-weight:700; color:#F1F5F9;">Searching YouTube...</div>
+                  <div id="pcVideoOverlayMsg" style="font-size:12px; color:#94A3B8; max-width:280px; line-height:1.6;">Finding the most relevant vocational demonstration reel for this criterion.</div>
+                </div>
               </div>
 
               <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 12px; background:#FFF; border:1px solid #E2E8F0; border-radius:8px;">
