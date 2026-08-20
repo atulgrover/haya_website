@@ -424,6 +424,7 @@ router.get('/nsqf/curriculum', async (req, res) => {
                 }
 
                 moduleMap[key].pcs.push({
+                    id: row.id,
                     pc_id: row.pc_code,
                     pc_intent: row.pc_intent || row.pc_description,
                     pc_intent_hi: row.pc_intent_hi,

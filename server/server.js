@@ -13,6 +13,7 @@ const reportsRouter = require('./routes/reports');
 const ipieRouter = require('./routes/ipie');
 const skillpediaRouter  = require('./routes/skillpedia');
 const searchVideoRouter = require('./routes/searchVideo');
+const aiExplainerRouter = require('./routes/aiExplainer');
 const { ensureKeyPair } = require('./utils/license-signer');
 
 const app = express();
@@ -38,6 +39,7 @@ app.use('/api/reports', reportsRouter);
 app.use('/api/ipie', ipieRouter);
 app.use('/api/skillpedia',    skillpediaRouter);
 app.use('/api/search-video', searchVideoRouter);
+app.use('/api/ai', aiExplainerRouter);
 
 // Legal & Policy Direct Route Endpoints (https://hayagriva.app/privacy & https://hayagriva.app/terms)
 app.get('/privacy', (req, res) => {

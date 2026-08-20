@@ -414,6 +414,22 @@ async function initSchema() {
                 audit_score INT DEFAULT 90,
                 cached_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
+
+            CREATE TABLE IF NOT EXISTS pc_explanations_cache (
+                id SERIAL PRIMARY KEY,
+                pc_id INT NOT NULL REFERENCES nsqf_pcs(id) ON DELETE CASCADE,
+                perspective VARCHAR(20) NOT NULL DEFAULT 'skill',
+                lang VARCHAR(10) NOT NULL DEFAULT 'en',
+                explanation_markdown TEXT NOT NULL,
+                key_takeaways JSONB,
+                safety_knacks JSONB,
+                perspective_metadata JSONB,
+                model_used VARCHAR(50) DEFAULT 'sarvam-105b',
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+                CONSTRAINT uq_pc_perspective_lang UNIQUE(pc_id, perspective, lang)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_pc_explain_lookup ON pc_explanations_cache(pc_id, perspective, lang);
         `);
 
         console.log('[Haya Portal DB] ✅ Local PostgreSQL schema verified & connected.');
