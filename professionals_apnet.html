@@ -132,21 +132,27 @@
     /* 6 Standalone Segment Engine Cards Grid */
     .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .segment-card {
-      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 10px;
-      padding: 16px; box-shadow: var(--card-shadow); transition: all 0.2s ease;
-      display: flex; flex-direction: column; justify-content: space-between;
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 18px 20px; box-shadow: var(--card-shadow); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column; justify-content: flex-start;
+      cursor: pointer; position: relative; user-select: none;
     }
-    .segment-card:hover { transform: translateY(-2px); box-shadow: var(--hover-shadow); border-color: var(--primary-color); }
-    .segment-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-    .segment-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 2px 8px; border-radius: 4px; }
-    .segment-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
-    .segment-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 12px; }
-    .segment-btn {
-      background: #F8FAFC; border: 1px solid var(--border-color); color: var(--text-main);
-      padding: 8px 12px; border-radius: 6px; font-size: 12.5px; font-weight: 600;
-      cursor: pointer; transition: all 0.2s ease; text-align: center; text-decoration: none;
+    .segment-card:hover {
+      transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: var(--primary-color);
+      background-color: #FAFCFE;
     }
-    .segment-btn:hover { background: var(--primary-light); color: var(--primary-color); border-color: var(--primary-color); }
+    .segment-card:active {
+      transform: translateY(-1px);
+    }
+    .segment-card:focus-visible {
+      outline: 2px solid var(--primary-color); outline-offset: 2px;
+    }
+    .segment-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .segment-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--primary-color); background: var(--primary-light); padding: 3px 8px; border-radius: 4px; }
+    .segment-arrow { font-size: 13px; font-weight: 700; color: var(--text-muted); transition: transform 0.2s ease, color 0.2s ease; }
+    .segment-card:hover .segment-arrow { transform: translateX(3px); color: var(--primary-color); }
+    .segment-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+    .segment-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 0; }
 
     /* RIGHT PANEL: Gateway & Marketplace Inspector */
     .panel-right {
@@ -375,92 +381,80 @@
       // Render 6 Standalone Cards Grid
       const grid = document.getElementById('segmentsGrid');
       grid.innerHTML = `
-        <!-- Card 1: Embedding Models (Standalone) -->
-        <div class="segment-card">
-          <div>
+        <!-- Card 1: Embedding Models -->
+        <div class="segment-card" onclick="openInspector('embeddings')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openInspector('embeddings')" title="Click to view Embedding Model specs">
+          <div class="segment-header">
             <span class="segment-badge">BRAIN / VECTORS</span>
-            <h3 class="segment-title">🧠 Embedding Models</h3>
-            <p class="segment-desc">
-              <strong>Model:</strong> <code>${activeRole.embeddings.model_name}</code> (${activeRole.embeddings.dimensions}-dim)<br/>
-              <strong>Scope:</strong> ${activeRole.embeddings.scope}
-            </p>
+            <span class="segment-arrow">➔</span>
           </div>
-          <button class="btn-more-details" onclick="openInspector('embeddings')">
-            🔍 More Details (Embedding Specs)
-          </button>
+          <h3 class="segment-title">🧠 Embedding Models</h3>
+          <p class="segment-desc">
+            <strong>Model:</strong> <code>${activeRole.embeddings.model_name}</code> (${activeRole.embeddings.dimensions}-dim)<br/>
+            <strong>Scope:</strong> ${activeRole.embeddings.scope}
+          </p>
         </div>
 
         <!-- Card 2: LLM Engines -->
-        <div class="segment-card">
-          <div>
+        <div class="segment-card" onclick="openInspector('llm')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openInspector('llm')" title="Click to view LLM Reasoning Engine specs">
+          <div class="segment-header">
             <span class="segment-badge">REASONING ENGINE</span>
-            <h3 class="segment-title">⚡ LLM Reasoning Engines</h3>
-            <p class="segment-desc">
-              <strong>Primary LLM:</strong> <code>${activeRole.llm.model_name}</code><br/>
-              <strong>Air-Gapped:</strong> ${activeRole.llm.local_gguf}
-            </p>
+            <span class="segment-arrow">➔</span>
           </div>
-          <button class="btn-more-details" onclick="openInspector('llm')">
-            🔍 More Details (Model Specs)
-          </button>
+          <h3 class="segment-title">⚡ LLM Reasoning Engines</h3>
+          <p class="segment-desc">
+            <strong>Primary LLM:</strong> <code>${activeRole.llm.model_name}</code><br/>
+            <strong>Air-Gapped:</strong> ${activeRole.llm.local_gguf}
+          </p>
         </div>
 
-        <!-- Card 3: Domain Vault Assets (Standalone Downloads) -->
-        <div class="segment-card">
-          <div>
+        <!-- Card 3: Domain Vault Assets -->
+        <div class="segment-card" onclick="openInspector('vaults')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openInspector('vaults')" title="Click to view Domain Vault Downloads">
+          <div class="segment-header">
             <span class="segment-badge">SOVEREIGN VAULTS</span>
-            <h3 class="segment-title">📦 Domain Vault Assets</h3>
-            <p class="segment-desc">
-              <strong>Vault:</strong> ${activeRole.vaults.vault_name}<br/>
-              <strong>Size:</strong> <code>${activeRole.vaults.size}</code>
-            </p>
+            <span class="segment-arrow">➔</span>
           </div>
-          <button class="btn-more-details" onclick="openInspector('vaults')">
-            🔍 More Details (Vault Downloads)
-          </button>
+          <h3 class="segment-title">📦 Domain Vault Assets</h3>
+          <p class="segment-desc">
+            <strong>Vault:</strong> ${activeRole.vaults.vault_name}<br/>
+            <strong>Size:</strong> <code>${activeRole.vaults.size}</code>
+          </p>
         </div>
 
         <!-- Card 4: Specialist AI Agents -->
-        <div class="segment-card">
-          <div>
+        <div class="segment-card" onclick="openInspector('agents')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openInspector('agents')" title="Click to view Specialist AI Agents">
+          <div class="segment-header">
             <span class="segment-badge">SUBAGENT ROSTER</span>
-            <h3 class="segment-title">🤖 Specialist AI Agents</h3>
-            <p class="segment-desc">
-              Contains <strong>${activeRole.agents.length} Specialized Subagents</strong> tuned specifically for ${activeRole.category}.
-            </p>
+            <span class="segment-arrow">➔</span>
           </div>
-          <button class="btn-more-details" onclick="openInspector('agents')">
-            🔍 More Details (Agent Personas)
-          </button>
+          <h3 class="segment-title">🤖 Specialist AI Agents</h3>
+          <p class="segment-desc">
+            Contains <strong>${activeRole.agents.length} Specialized Subagents</strong> tuned specifically for ${activeRole.category}.
+          </p>
         </div>
 
-        <!-- Card 5: Gateway Audit (Standalone NEW) -->
-        <div class="segment-card">
-          <div>
+        <!-- Card 5: Gateway Audit -->
+        <div class="segment-card" onclick="openInspector('gateway')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openInspector('gateway')" title="Click to view Gateway Audit & Compliance">
+          <div class="segment-header">
             <span class="segment-badge">REGULATORY GATEWAY</span>
-            <h3 class="segment-title">🏛️ Gateway Audit</h3>
-            <p class="segment-desc">
-              <strong>Body:</strong> ${activeRole.gateway ? activeRole.gateway.statutory_body : 'Statutory Regulatory Body'}<br/>
-              <strong>Sovereignty:</strong> ${activeRole.gateway ? activeRole.gateway.sovereignty : 'Air-Gapped Local Audit'}
-            </p>
+            <span class="segment-arrow">➔</span>
           </div>
-          <button class="btn-more-details" onclick="openInspector('gateway')">
-            🔍 More Details (Gateway Audit)
-          </button>
+          <h3 class="segment-title">🏛️ Gateway Audit</h3>
+          <p class="segment-desc">
+            <strong>Body:</strong> ${activeRole.gateway ? activeRole.gateway.statutory_body : 'Statutory Regulatory Body'}<br/>
+            <strong>Sovereignty:</strong> ${activeRole.gateway ? activeRole.gateway.sovereignty : 'Air-Gapped Local Audit'}
+          </p>
         </div>
 
-        <!-- Card 6: Professional Services Marketplace (Standalone NEW) -->
-        <div class="segment-card">
-          <div>
+        <!-- Card 6: Services Marketplace -->
+        <div class="segment-card" onclick="openInspector('marketplace')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openInspector('marketplace')" title="Click to order Custom Marketplace Reports">
+          <div class="segment-header">
             <span class="segment-badge">COMPANY SERVICES</span>
-            <h3 class="segment-title">🛒 Services Marketplace</h3>
-            <p class="segment-desc">
-              Specialized professional audit reports, precedent summaries, and forensic analysis offered for <strong>${activeRole.role_title}</strong>.
-            </p>
+            <span class="segment-arrow">➔</span>
           </div>
-          <button class="btn-more-details" onclick="openInspector('marketplace')">
-            🔍 More Details (Company Services)
-          </button>
+          <h3 class="segment-title">🛒 Services Marketplace</h3>
+          <p class="segment-desc">
+            Specialized expert audit reports, precedent summaries, and forensic analysis offered for <strong>${activeRole.role_title}</strong>.
+          </p>
         </div>
       `;
     }
