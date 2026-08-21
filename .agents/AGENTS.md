@@ -40,7 +40,8 @@
 
 ### PostgreSQL Database Metrics (Verified 100% Normalized)
 
-- **`nsqf_qps`**: **2,002** Master Qualifications (Upstream Ground Truth)
+- **`nsqf_qps`**: **2,002** Master Qualifications with dedicated `business_title` (strict 2–4 words) & `founder_pitch` (structured 50-word 3.5-line founder opportunity copy).
+- **`msme_business_blueprints`**: Permanent write-through cache for synthesized 9-chapter bankable MSME dossiers.
 - **`nsqf_nos`**: **10,588** National Occupational Standards (`kus` & `gs` JSONB cached)
 - **`nsqf_modules`**: **29,378** Workstation Modules
 - **`nsqf_pcs`**: **176,727** Atomic Performance Criteria (with `NUMERIC(6,2)` fractional rubric marks)
@@ -71,7 +72,14 @@
      2. **🏭 2. SOP Perspective (Employers/Plants)**: `sop_intent` + `sop_action_directive` + `sop_parameter_tolerance` + `sop_critical_knack` + `sop_search_query`.
      3. **💼 3. DPR Perspective (Entrepreneurs/MSMEs)**: `dpr_intent` + `machine_name` + `machine_spec` + `machine_capex_cost_inr` + `machine_power_kw` + `dpr_search_query`.
 
-2. **YOUTUBE POLICY III.E.4 (EPHEMERAL CACHE - ZERO PERMANENT STORAGE)**:
+2. **MSME VENTURE DECK CARD ARCHITECTURE**:
+   - Clean top header: Monogram Icon (`✈️`, `🌱`, `🏎️`) + 2-to-4 word commercial business title + `[ ★ ]` bookmark button.
+   - 3.5-to-4 line rich founder pitch (50 words across 3 structured sentences: market demand, commercial equipment setup, and PMEGP/Mudra subsidy).
+   - Bottom CTA: `Claim [QP-Code] Business ➔` (e.g. `Claim AAS-Q0103 Business ➔`).
+   - Saved Ventures Deck: Quick filtering of starred ventures stored in client `localStorage`.
+   - Live AI Compiler HUD: 4-step real-time progress ticker with `AbortController` preventing stale LLM response spam.
+
+3. **YOUTUBE POLICY III.E.4 (EPHEMERAL CACHE - ZERO PERMANENT STORAGE)**:
    - Video IDs are **never** stored permanently in `nsqf_pcs`.
    - On-the-fly streaming searches via `youtube_search_cache` table with automated 7-day TTL purge (`DELETE FROM youtube_search_cache WHERE cached_at < NOW() - INTERVAL '7 days'`).
 
@@ -79,15 +87,15 @@
 
 ### 🌅 Tomorrow's Implementation Queue:
 
-1. **⚡ Gzip Compression & PostgreSQL GIN Full-Text Search**:
+1. **⭐ Universal Bookmark Deck Across All Pillars**:
+   - Expand the `localStorage` Star / Bookmark Deck to `employees_nsqf.html` (for revision checklists) and `employers_sop.html` (for shop-floor workstation SOPs).
+2. **⚡ Gzip Compression & PostgreSQL GIN Full-Text Search**:
    - Add Express `compression` middleware (reduces JSON payload from 180 KB to ~25 KB, 85% mobile speedup).
    - Add PostgreSQL `tsvector` generated column + GIN index on `nsqf_pcs` for sub-millisecond full-text queries.
-2. **🔊 Native Indic Audio Text-to-Speech (TTS)**:
+3. **🔊 Native Indic Audio Text-to-Speech (TTS)**:
    - Add zero-cost browser `window.speechSynthesis` audio button in the AI Explainer card for hands-free listening across Indic languages (`hi-IN`, `ta-IN`, etc.).
-3. **🖨️ One-Click Printable Shop-Floor SOP Workstation Card**:
+4. **🖨️ One-Click Printable Shop-Floor SOP Workstation Card**:
    - Add `@media print` clean layout to export a pocket-sized laminated card with QR code, tolerances, and steps.
-4. **⭐ LocalStorage Star / Bookmark Deck**:
-   - Allow students and operators to star criteria into a personal revision deck.
 5. **🔄 Symmetrical Modal Sync**:
    - Sync the 10-language selector and AI Explainer card into `employers_sop.html` and `entrepreneurs_msme.html`.
 6. **🧠 Dynamic Viva MCQs from Knowledge Units**:
