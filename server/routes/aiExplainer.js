@@ -55,59 +55,46 @@ function buildExplanationPrompt(pc, perspective, langConfig) {
     const sanitizedQp = cleanText(pc.qp_name || pc.qp_code);
     const sanitizedModule = cleanText(pc.module_title);
 
-    let perspectiveDirectives = '';
+    let perspectiveContext = '';
     if (perspective === 'sop') {
-        perspectiveDirectives = `
-Perspective: INDUSTRIAL PLANT WORKSTATION STANDARD OPERATING PROCEDURE (SOP)
-- Context: Factory shop-floor standard work instruction for plant technicians.
-- Action Directive: "${cleanText(pc.sop_action_directive) || sanitizedDesc}"
-- Engineering Tolerance: "${cleanText(pc.sop_parameter_tolerance) || 'Strict nominal tolerances'}"
-- Critical Safety Knack: "${cleanText(pc.sop_critical_knack) || 'Zero-energy state & PPE adherence'}"
-- Tone: Crisp, compliant, safety-first, procedural.
-`;
+        perspectiveContext = `Factory SOP Mode: Focus on shop-floor execution, tolerances (${cleanText(pc.sop_parameter_tolerance) || 'nominal'}), and safety (${cleanText(pc.sop_critical_knack) || 'zero-energy state'}).`;
     } else if (perspective === 'msme') {
-        perspectiveDirectives = `
-Perspective: MSME TURNKEY COMMERCIAL SETUP & MACHINERY BOM
-- Context: Small enterprise owner / commercial workshop operator setting up operations.
-- Commercial Machine: "${cleanText(pc.machine_name) || 'Industrial Calibrated Workstation'}"
-- Equipment Spec: "${cleanText(pc.machine_spec) || 'Commercial grade 220V/440V unit'}"
-- Estimated CAPEX: "₹${pc.machine_capex_cost_inr || '35,000'}"
-- Tone: Business-oriented, equipment operation, maintenance, batch throughput.
-`;
+        perspectiveContext = `MSME Equipment Mode: Focus on ${cleanText(pc.machine_name) || 'commercial machine'}, setup, operational maintenance, and batch throughput.`;
     } else {
-        perspectiveDirectives = `
-Perspective: VOCATIONAL SKILL MASTERCLASS (INTERN / APPRENTICE)
-- Context: Practical training demonstration for vocational students and apprentices.
-- Task Description: "${sanitizedDesc}"
-- Standard Action Intent: "${sanitizedIntent}"
-- Tone: Pedagogical, encouraging, hands-on, step-by-step.
-`;
+        perspectiveContext = `Vocational Masterclass Mode: Focus on apprentice skill building, tactile knacks, and practical steps.`;
     }
 
-    return `You are a Senior Vocational Master Craftsman and Technical Curriculum Specialist in India.
+    return `You are a Senior Technical Curriculum Specialist in India.
 
-Explain the following practical vocational task in 200 to 280 words in ${langName} language (${scriptName} script):
+Explain the practical task: "${sanitizedIntent || sanitizedDesc}"
+Trade: "${sanitizedQp}" | NOS: "${sanitizedNos}"
+Context: ${perspectiveContext}
 
-- Sector: "${pc.sector || 'Technical Vocational'}"
-- Qualification Pack: "${sanitizedQp}"
-- Occupational Standard (NOS): "${sanitizedNos || 'Core Occupational Task'}"
-- Workstation Module: "${sanitizedModule || 'Workstation Execution'}"
-${perspectiveDirectives}
+Respond ONLY with valid JSON in ${langName} (${scriptName} script) matching this exact schema:
+{
+  "overview": "1-2 sentences explaining the technical importance in ${langName}",
+  "steps": ["step 1 in ${langName}", "step 2 in ${langName}", "step 3 in ${langName}"],
+  "safety": ["safety rule 1 in ${langName}", "safety rule 2 in ${langName}"],
+  "pro_tip": "1 expert craftsman insider tip in ${langName}"
+}
 
-Structure your response clearly with clean Markdown (DO NOT use emojis or icons):
-### 1. Technical Overview
-(1-2 paragraphs explaining why this task is crucial and the core mechanism)
+Output raw valid JSON only. Do not use emojis or icon characters.`;
+}
 
-### 2. Practical Execution Sequence
-(3-4 concise numbered bullet steps)
+/**
+ * Format JSON payload into clean markdown for backwards compatibility & offline vaults
+ */
+function jsonToMarkdown(data, lang) {
+    const isIndic = lang !== 'en';
+    const hOverview = isIndic ? '### 1. प्रक्रिया व तांत्रिक महत्त्व' : '### 1. Technical Overview & Purpose';
+    const hSteps    = isIndic ? '### 2. चरण-दर-चरण कार्य पद्धती' : '### 2. Practical Execution Sequence';
+    const hSafety   = isIndic ? '### 3. सुरक्षितता व गुणवत्ता नियम' : '### 3. Safety & Quality Rules';
+    const hTip      = isIndic ? '### 4. उस्ताद की सीख' : '### 4. Master Craftsman Pro Tip';
 
-### 3. Critical Safety & Quality Rules
-(2 bullet points on common mistakes & tolerances)
+    const stepsList = (data.steps || []).map((s, i) => `${i + 1}. ${s}`).join('\n');
+    const safetyList = (data.safety || []).map(s => `- ${s}`).join('\n');
 
-### 4. Master Craftsman Pro Tip
-(1 insider tip for flawless execution)
-
-IMPORTANT: Write naturally and fluently in ${langName} (${scriptName} script). Do NOT include any emojis or icon characters in the output. Output raw markdown only.`;
+    return `${hOverview}\n${data.overview || ''}\n\n${hSteps}\n${stepsList}\n\n${hSafety}\n${safetyList}\n\n${hTip}\n${data.pro_tip || ''}`;
 }
 
 /**
@@ -120,55 +107,87 @@ function buildDeterministicFallback(pc, perspective, lang) {
     const sector = pc.sector || 'Technical Vocational';
     
     if (perspective === 'sop') {
-        return {
-            explanation_markdown: isIndic
-                ? `### मानक संचालन प्रक्रिया (SOP): ${title}\n\n### 1. प्रक्रिया का उद्देश्य\nयह कार्य इकाई ${sector} क्षेत्र के सुरक्षा मानकों और गुणवत्ता दिशानिर्देशों के तहत निष्पादित की जाती है। ${nosTitle} के तहत सभी ऑपरेटरों को कार्य शुरू करने से पहले उपकरण और वर्कपीस की जांच करनी चाहिए।\n\n### 2. चरण-दर-चरण कार्य विधि\n1. कार्यस्थल पर आवश्यक टूल्स, वर्कपीस और सुरक्षा उपकरणों (PPE) को व्यवस्थित करें।\n2. ${cleanText(pc.sop_action_directive) || cleanText(pc.pc_description)} के अनुसार प्रारंभिक सेटिंग्स की पुष्टि करें।\n3. टॉलरेंस सीमा: **${cleanText(pc.sop_parameter_tolerance) || 'निर्दिष्ट इंजीनियरिंग मानकों के भीतर'}** का कड़ाई से पालन करें।\n4. कार्य पूरा होने पर गुणवत्ता चेकलिस्ट सत्यापित कर लॉग बुक में दर्ज करें।\n\n### 3. सुरक्षा एवं गुणवत्ता नियंत्रण\n- ${cleanText(pc.sop_critical_knack) || 'कार्य के दौरान उचित सुरक्षात्मक गियर पहनें और शून्य-ऊर्जा स्थिति बनाए रखें।'}\n- गैर-अनुरूपता पाए जाने पर कार्य तुरंत रोकें और लाइन सुपरवाइजर को सूचित करें।\n\n### 4. उस्ताद की सीख\nसटीक माप और नियमित कैलिब्रेशन से मशीन डाउनटाइम और स्क्रैप दर में उल्लेखनीय कमी आती है।`
-                : `### Standard Operating Procedure (SOP): ${title}\n\n### 1. Procedural Objective\nThis workstation task is executed strictly in compliance with ${sector} industrial safety codes and quality rubrics under ${nosTitle}. Prior to execution, verify all safety interlocks and calibration parameters.\n\n### 2. Step-by-Step Execution Sequence\n1. Stage the workstation with certified tooling, clean workpieces, and dielectric PPE.\n2. Execute action sequence: "${cleanText(pc.sop_action_directive) || cleanText(pc.pc_description)}".\n3. Maintain nominal operating tolerance: **${cleanText(pc.sop_parameter_tolerance) || 'Standard nominal limits'}**.\n4. Complete final dimensional/functional verification and update plant log.\n\n### 3. Safety & Quality Controls\n- ${cleanText(pc.sop_critical_knack) || 'Maintain zero-energy state verification prior to terminal contact.'}\n- Quarantine non-conforming items immediately to prevent downstream defects.\n\n### 4. Master Pro-Tip\nVerifying mechanical alignment and tool calibration before engagement prevents thermal stress and micro-fractures.`,
-            key_takeaways: [
-                `Tolerance: ${pc.sop_parameter_tolerance || 'Standard nominal limits'}`,
-                `Action: ${pc.sop_action_directive || pc.pc_description}`,
-                `Safety: ${pc.sop_critical_knack || 'Adhere to statutory plant safety codes'}`
+        const json = {
+            overview: isIndic
+                ? `हे कार्य ${sector} क्षेत्रातील मानकांनुसार आणि ${nosTitle} अंतर्गत सुरक्षिततेने पूर्ण केले जाते.`
+                : `This task is executed in strict compliance with ${sector} safety standards under ${nosTitle}.`,
+            steps: [
+                isIndic ? 'कार्यस्थळावर आवश्यक टूल्स आणि PPE व्यवस्थित तपासा.' : 'Stage the workstation with verified tooling and dielectric PPE.',
+                isIndic ? `${cleanText(pc.sop_action_directive) || cleanText(pc.pc_description)} नुसार अचूक कृती सुरू करा.` : `Execute action sequence: "${cleanText(pc.sop_action_directive) || cleanText(pc.pc_description)}".`,
+                isIndic ? `टॉलरेंस मर्यादा (${cleanText(pc.sop_parameter_tolerance) || 'मानक मर्यादा'}) चे काटेकोर पालन करा.` : `Maintain nominal operating tolerance: ${cleanText(pc.sop_parameter_tolerance) || 'Standard nominal limits'}.`,
+                isIndic ? 'अंतिम तपासणी पूर्ण करून लॉग बुकमध्ये नोंद करा.' : 'Complete final quality verification and record in plant logbook.'
             ],
-            safety_knacks: [pc.sop_critical_knack || 'Zero-energy lock-out tag-out (LOTO) mandatory']
+            safety: [
+                cleanText(pc.sop_critical_knack) || (isIndic ? 'शून्य-ऊर्जा स्थिती आणि योग्य PPE चे पालन करा.' : 'Maintain zero-energy state verification prior to terminal contact.'),
+                isIndic ? 'कोणतीही त्रुटी आढळल्यास काम त्वरित थांबवून सुपरवायझरला कळवा.' : 'Quarantine non-conforming parts immediately to prevent line defects.'
+            ],
+            pro_tip: isIndic ? 'सटीक मापन आणि नियमित कॅलिब्रेशनमुळे मशीन डाउनटाइम ४०% पर्यंत कमी होतो.' : 'Verifying mechanical alignment and tool calibration before engagement prevents thermal stress.'
+        };
+        return {
+            explanation_json: json,
+            explanation_markdown: jsonToMarkdown(json, lang),
+            key_takeaways: json.steps.slice(0, 3),
+            safety_knacks: json.safety
         };
     }
 
     if (perspective === 'msme') {
-        return {
-            explanation_markdown: isIndic
-                ? `### MSME मशीनरी एवं व्यवसाय गाइड: ${cleanText(pc.machine_name) || 'व्यावसायिक उपकरण'}\n\n### 1. उपकरण का विवरण एवं लागत\n- **मशीन का नाम:** ${cleanText(pc.machine_name) || 'औद्योगिक वर्कस्टेशन'}\n- **विनिर्देश (Spec):** ${cleanText(pc.machine_spec) || 'कमर्शियल 220V/440V सेटअप'}\n- **अनुमानित पूंजी निवेश (CAPEX):** ₹${pc.machine_capex_cost_inr || '35,000'}\n\n### 2. दैनिक उत्पादन चक्र\n1. सुबह की शिफ्ट में ऑपरेटर मशीन का प्री-चेक और लुब्रिकेशन पूरा करें।\n2. कच्चा माल लोड करें और स्पेसिफिकेशन के अनुसार बैच रन शुरू करें।\n3. प्रति घंटे आउटपुट और पावर खपत की निगरानी रखें।\n4. शिफ्ट समाप्त होने पर टूल्स को साफ कर सुरक्षा लॉक लगाएं।\n\n### 3. बैंक एवं मुद्रा लोन योजना\nयह उपकरण PMEGP और Mudra लोन सब्सिडी के अंतर्गत 100% बैंक योग्य प्रोजेक्ट प्रोफाइल के अनुकूल है।\n\n### 4. उस्ताद की सीख\nनियमित निवारक रखरखाव से उपकरण की आयु दोगुनी हो जाती है।`
-                : `### MSME Machine & Commercial Blueprint: ${cleanText(pc.machine_name) || 'Commercial Apparatus'}\n\n### 1. Equipment & CAPEX Profile\n- **Machinery Name:** ${cleanText(pc.machine_name) || 'Commercial Precision Workstation'}\n- **Specification:** ${cleanText(pc.machine_spec) || 'Industrial 220V/440V Calibrated Apparatus'}\n- **Estimated Capital Outlay (CAPEX):** ₹${pc.machine_capex_cost_inr || '35,000'}\n\n### 2. Daily Production Workflow\n1. Complete pre-operational visual inspection and fluid lubrication.\n2. Calibrate tooling and execute primary batch processing.\n3. Verify unit throughput and record cycle-time metrics.\n4. Clean and secure equipment at shift completion.\n\n### 3. Bankable Feasibility\nThis capital equipment is fully eligible for PMEGP and Mudra MSME credit guarantee support.\n\n### 4. Master Pro-Tip\nPreventive maintenance schedules protect machine uptime and guarantee continuous batch quality.`,
-            key_takeaways: [
-                `Machine: ${pc.machine_name || 'Commercial Precision Workstation'}`,
-                `CAPEX: ₹${pc.machine_capex_cost_inr || '35,000'}`,
-                `Spec: ${pc.machine_spec || 'Industrial Calibrated Apparatus'}`
+        const json = {
+            overview: isIndic
+                ? `${cleanText(pc.machine_name) || 'व्यावसायिक उपकरण'} द्वारे उत्पादकता आणि बॅच गुणवत्ता वाढवली जाते.`
+                : `${cleanText(pc.machine_name) || 'Commercial Precision Workstation'} optimizes batch throughput and shopfloor quality.`,
+            steps: [
+                isIndic ? 'सकाळच्या शिफ्टमध्ये उपकरणाचे व्हिज्युअल प्री-चेक आणि लुब्रिकेशन करा.' : 'Complete pre-operational visual inspection and fluid lubrication.',
+                isIndic ? 'कच्चा माल लोड करून अचूक बॅच सायकल चालवा.' : 'Load certified input stock and run calibrated batch cycle.',
+                isIndic ? 'दर तासाला आउटपुट आणि पॉवर वापरावर लक्ष ठेवा.' : 'Monitor hourly unit throughput and verify cycle-time metrics.',
+                isIndic ? 'शिफ्ट संपल्यावर टूल्स स्वच्छ करून सुरक्षित ठेवा.' : 'Clean and lock out apparatus at shift completion.'
             ],
-            safety_knacks: ['Ensure dedicated earth pit (< 2.0 Ohm) and voltage stabilizer']
+            safety: [
+                isIndic ? 'समर्पित अर्थिंग (< २.० ओहम) आणि व्होल्टेज स्टॅबिलायझर सुनिश्चित करा.' : 'Ensure dedicated equipment earth pit (< 2.0 Ohm) and stabilizer.',
+                isIndic ? 'चालू मशीनमध्ये कधीही अंतर्गत भाग बदलू नका.' : 'Never attempt internal part adjustments while drive motor is active.'
+            ],
+            pro_tip: isIndic ? 'नियमित प्रतिबंधात्मक देखभालीमुळे उपकरणाचे आयुष्य दुप्पट होते.' : 'Preventive maintenance schedules protect machine uptime and guarantee continuous batch quality.'
+        };
+        return {
+            explanation_json: json,
+            explanation_markdown: jsonToMarkdown(json, lang),
+            key_takeaways: json.steps.slice(0, 3),
+            safety_knacks: json.safety
         };
     }
 
     // Default 'skill'
-    return {
-        explanation_markdown: isIndic
-            ? `### वोकेशनल मास्टरक्लास: ${title}\n\n### 1. व्यावहारिक सिद्धांत\n${sector} उद्योग में "${cleanText(pc.pc_description)}" एक महत्वपूर्ण बुनियादी कौशल है। ${nosTitle} के अंतर्गत सही तकनीक से कार्य करने पर उत्पादकता और सटीकता दोनों में सुधार होता है।\n\n### 2. चरण-दर-चरण कार्य विधि\n1. कार्य की योजना बनाएं और आवश्यक टूल्स एवं सामग्री एकत्रित करें।\n2. मानक कार्यविधि (SOP) का पालन करते हुए कार्य को सावधानीपूर्वक शुरू करें।\n3. हर चरण पर सटीकता और भौतिक माप की जांच करें।\n4. अंतिम परिणाम का निरीक्षण करें और अपने वर्कस्टेशन को स्वच्छ रखें।\n\n### 3. गुणवत्ता एवं सावधानियां\n- काम करते समय सुरक्षा नियमों का पालन करें और निर्धारित PPE पहनें।\n- किसी भी उपकरण या पार्ट में विचलन दिखने पर तुरंत सुधार करें।\n\n### 4. उस्ताद की सीख\nनियमित अभ्यास और बुनियादी टूल्स की सही समझ ही एक कुशल कारीगर की पहचान है।`
-            : `### Vocational Skill Masterclass: ${title}\n\n### 1. Technical Overview & Core Principle\nIn the ${sector} sector, mastering "${cleanText(pc.pc_description)}" is fundamental to becoming an industry-ready technician. Adhering to ${nosTitle} standards ensures operational safety and tactile proficiency.\n\n### 2. Step-by-Step Practical Sequence\n1. Prepare the workstation and inspect all required tooling and instruments.\n2. Execute the primary sequence systematically following occupational guidelines.\n3. Validate physical tolerances at intermediate stages to eliminate rework.\n4. Complete the final quality audit and clean the work zone.\n\n### 3. Quality Rules & Common Pitfalls\n- Avoid skipping calibration checks prior to live operations.\n- Maintain personal protective equipment (PPE) compliance at all times.\n\n### 4. Master Craftsman Pro-Tip\nProper hand posture and steady tool grip reduce operator fatigue and increase accuracy by over 30%.`,
-        key_takeaways: [
-            `Core Focus: ${pc.pc_intent || pc.pc_description}`,
-            `Sector: ${pc.sector || 'Vocational Training'}`,
-            `Role: ${pc.qp_name || 'Certified Specialist'}`
+    const json = {
+        overview: isIndic
+            ? `${sector} उद्योगात "${cleanText(pc.pc_description)}" हे एक अत्यंत महत्त्वाचे मूलभूत प्रात्यक्षिक कौशल्य आहे.`
+            : `In the ${sector} sector, mastering "${cleanText(pc.pc_description)}" is fundamental to becoming an industry-ready technician.`,
+        steps: [
+            isIndic ? 'कामाची योजना करा आणि आवश्यक टूल्स व साधने गोळा करा.' : 'Prepare the workstation and inspect all required tooling and instruments.',
+            isIndic ? 'मानक SOP चे पालन करून काळजीपूर्वक प्रात्यक्षिक सुरू करा.' : 'Execute the primary sequence systematically following occupational guidelines.',
+            isIndic ? 'प्रत्येक टप्प्यावर अचूकता आणि भौतिक मापांची तपासणी करा.' : 'Validate physical tolerances at intermediate stages to eliminate rework.',
+            isIndic ? 'अंतिम तपासणी पूर्ण करून वर्कस्टेशन स्वच्छ ठेवा.' : 'Complete the final quality audit and clean the work zone.'
         ],
-        safety_knacks: ['Always follow safety protocols and wear prescribed PPE']
+        safety: [
+            isIndic ? 'काम करताना सुरक्षा नियमांचे पालन करा आणि निर्धारित PPE वापरा.' : 'Avoid skipping calibration checks prior to live operations.',
+            isIndic ? 'उपकरणात थोडाही बिघाड दिसल्यास तातडीने सुधारणा करा.' : 'Maintain personal protective equipment (PPE) compliance at all times.'
+        ],
+        pro_tip: isIndic ? 'योग्य ग्रिप आणि नियमित सरावामुळे कामाचा वेग व अचूकता ३०% ने वाढते.' : 'Proper hand posture and steady tool grip reduce operator fatigue and increase accuracy by over 30%.'
+    };
+    return {
+        explanation_json: json,
+        explanation_markdown: jsonToMarkdown(json, lang),
+        key_takeaways: json.steps.slice(0, 3),
+        safety_knacks: json.safety
     };
 }
 
 /**
- * Call Sarvam AI API
+ * Call Sarvam AI API with fast JSON response parsing
  */
-async function callSarvamExplainer(prompt) {
+async function callSarvamExplainer(prompt, lang) {
     const apiKey = process.env.SARVAM_API_KEY;
     if (!apiKey) return null;
 
-    // Try fast conversational model first, fallback to base 105b
     const models = ['sarvam-105b-conversations', 'sarvam-105b'];
 
     for (const model of models) {
@@ -183,24 +202,40 @@ async function callSarvamExplainer(prompt) {
                     model: model,
                     messages: [{ role: 'user', content: prompt }],
                     temperature: 0.2,
-                    max_tokens: 1500
+                    max_tokens: 500
                 }),
-                signal: AbortSignal.timeout(25000)
+                signal: AbortSignal.timeout(18000)
             });
 
             if (res.ok) {
                 const data = await res.json();
                 const choice = data.choices?.[0];
-                let text = choice?.message?.content;
+                let raw = choice?.message?.content;
                 
-                if (!text && choice?.message?.reasoning_content) {
+                if (!raw && choice?.message?.reasoning_content) {
                     const reasoning = choice.message.reasoning_content;
-                    const match = reasoning.match(/###[\s\S]+/);
-                    if (match) text = match[0];
+                    const match = reasoning.match(/\{[\s\S]+\}/);
+                    if (match) raw = match[0];
                 }
 
-                if (text && text.trim().length > 50) {
-                    return text.trim();
+                if (raw && raw.trim().length > 30) {
+                    // Strip markdown wrapping ```json ... ``` if present
+                    const cleanJsonStr = raw.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
+                    try {
+                        const parsed = JSON.parse(cleanJsonStr);
+                        if (parsed && (parsed.overview || parsed.steps)) {
+                            return {
+                                json: parsed,
+                                markdown: jsonToMarkdown(parsed, lang)
+                            };
+                        }
+                    } catch (pErr) {
+                        // If JSON parse failed, return raw markdown
+                        return {
+                            json: null,
+                            markdown: raw.trim()
+                        };
+                    }
                 }
             }
         } catch (err) {
@@ -271,27 +306,30 @@ async function handleExplainRequest(req, res) {
 
         const pc = pcRes.rows[0];
 
-        // 3. Generate explanation (Sarvam AI with deterministic fallback)
+        // 3. Generate explanation (Sarvam AI JSON Mode with deterministic fallback)
         const prompt = buildExplanationPrompt(pc, validPerspective, langConfig);
-        let explanationMarkdown = await callSarvamExplainer(prompt);
-        let modelUsed = 'sarvam-105b';
+        const sarvamResult = await callSarvamExplainer(prompt, lang);
+        let explanationMarkdown = '';
+        let explanationJson = null;
+        let modelUsed = 'sarvam-105b-conversations';
 
         let takeaways = [];
         let safetyKnacks = [];
 
-        if (!explanationMarkdown) {
+        if (sarvamResult && sarvamResult.markdown) {
+            explanationMarkdown = sarvamResult.markdown;
+            explanationJson = sarvamResult.json;
+            if (sarvamResult.json) {
+                takeaways = sarvamResult.json.steps || [];
+                safetyKnacks = sarvamResult.json.safety || [];
+            }
+        } else {
             const fallback = buildDeterministicFallback(pc, validPerspective, lang);
             explanationMarkdown = fallback.explanation_markdown;
+            explanationJson = fallback.explanation_json;
             takeaways = fallback.key_takeaways;
             safetyKnacks = fallback.safety_knacks;
             modelUsed = 'haya-deterministic-v2';
-        } else {
-            // Extract bullets from markdown if present
-            const bullets = explanationMarkdown.match(/[-*]\s+([^\n]+)/g);
-            if (bullets) {
-                takeaways = bullets.slice(0, 3).map(b => b.replace(/^[-*]\s+/, '').trim());
-            }
-            safetyKnacks = [pc.sop_critical_knack || 'Follow statutory plant safety codes'];
         }
 
         // 4. Save to PostgreSQL Cache (Write-Through)
@@ -319,6 +357,7 @@ async function handleExplainRequest(req, res) {
             perspective: validPerspective,
             lang: lang,
             lang_name: langConfig.name,
+            explanation_json: explanationJson,
             explanation_markdown: explanationMarkdown,
             key_takeaways: takeaways,
             safety_knacks: safetyKnacks,

@@ -1040,6 +1040,8 @@
             content.innerHTML = renderMarkdownToHtml(data.explanation_markdown);
             content.style.display = 'block';
           }
+          // ── Silent Lookahead: Pre-fetch next criterion in background for 0ms transitions ──
+          prefetchLookaheadPcs(currentModalPcIndex);
         } else {
           if (content) {
             content.innerHTML = `<div style="color:#EF4444; font-size:12px;">Explanation unavailable: ${data.error}</div>`;
@@ -1056,6 +1058,16 @@
       }
     }
 
+    function prefetchLookaheadPcs(currentIndex) {
+      const allPcs = window.activeInspectorAllPcs || [];
+      if (!allPcs || allPcs.length === 0) return;
+      const nextPc = allPcs[currentIndex + 1];
+      if (nextPc && nextPc.id) {
+        // Non-blocking silent background pre-fetch
+        fetch(`/api/ai/explain?pc_id=${nextPc.id}&perspective=skill&lang=${currentModalLang}`).catch(() => {});
+      }
+    }
+
     function setModalExplanationLanguage(lang) {
       currentModalLang = lang;
       document.querySelectorAll('.modal-lang-btn').forEach(btn => {
@@ -1065,7 +1077,7 @@
       const allPcs = window.activeInspectorAllPcs || [];
       const currentPc = allPcs[currentModalPcIndex];
       if (currentPc && currentPc.id) {
-        loadModalAiExplanation(currentPc.id, window.currentPerspectiveTab || 'skill', currentModalLang);
+        loadModalAiExplanation(currentPc.id, 'skill', currentModalLang);
       }
     }
 
