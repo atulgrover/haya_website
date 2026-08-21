@@ -953,6 +953,14 @@
       if (card) card.classList.toggle('open');
     }
 
+    function expandAllChapters() {
+      document.querySelectorAll('.chapter-card').forEach(c => c.classList.add('open'));
+    }
+
+    function collapseAllChapters() {
+      document.querySelectorAll('.chapter-card').forEach(c => c.classList.remove('open'));
+    }
+
     function handleCombinedFilter() {
       const q = document.getElementById('searchTrade').value.toLowerCase().trim();
       const sector = document.getElementById('selectSector').value;
