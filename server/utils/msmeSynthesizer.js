@@ -160,11 +160,21 @@ JSON Schema:
 
     let parsed;
     try {
-        const cleaned = rawContent
+        let cleaned = rawContent
             .replace(/^```json\s*/i, '')
             .replace(/^```\s*/i, '')
             .replace(/\s*```$/i, '')
             .trim();
+
+        // If string ends with an unclosed outer quote or wrapper, fix it
+        if (cleaned.endsWith('"}') && !cleaned.startsWith('{"')) {
+            cleaned = cleaned.substring(cleaned.indexOf('{'));
+        }
+        const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+            cleaned = jsonMatch[0];
+        }
+
         parsed = JSON.parse(cleaned);
     } catch (e) {
         console.error('[MSME Synthesizer] JSON parse error:', e.message, 'Raw:', rawContent);
