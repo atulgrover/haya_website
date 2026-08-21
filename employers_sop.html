@@ -601,8 +601,36 @@
         return;
       }
 
+      function isValidTolerance(text) {
+        if (!text) return false;
+        const clean = String(text).toLowerCase().trim();
+        if (clean.includes('nominal engineering tolerances') || 
+            clean.includes('nominal tolerances') || 
+            clean.includes('standard factory tolerance') ||
+            clean.includes('strict nominal tolerances') ||
+            clean.length < 4) {
+          return false;
+        }
+        return true;
+      }
+
+      function isValidKnack(text) {
+        if (!text) return false;
+        const clean = String(text).toLowerCase().trim();
+        if (clean.includes('steady hand motion') || 
+            clean.includes('physical alignment prior to final fixation') || 
+            clean.includes('statutory plant safety codes') ||
+            clean.length < 4) {
+          return false;
+        }
+        return true;
+      }
+
       listEl.innerHTML = cps.map((cp, cpIdx) => {
         const pcIdEnc = encodeURIComponent(cp.id || cp.pc_code);
+        const hasTol = isValidTolerance(cp.parameter_tolerance);
+        const hasKnk = isValidKnack(cp.critical_safety_knack);
+
         return `
           <div class="sop-step-card">
             <div class="step-top-row">
@@ -610,8 +638,8 @@
               <span class="step-pc-tag">${cp.pc_code || `PC${cpIdx + 1}`}</span>
             </div>
             <div class="step-directive">${escapeHtmlText(cp.action_directive || cp.pc_description)}</div>
-            ${cp.parameter_tolerance ? `<div class="step-tolerance"><strong>Limit / Tolerance:</strong> ${escapeHtmlText(cp.parameter_tolerance)}</div>` : ''}
-            ${cp.critical_safety_knack ? `<div class="step-knack"><strong>Safety Knack:</strong> ${escapeHtmlText(cp.critical_safety_knack)}</div>` : ''}
+            ${hasTol ? `<div class="step-tolerance"><strong>Limit / Tolerance:</strong> ${escapeHtmlText(cp.parameter_tolerance)}</div>` : ''}
+            ${hasKnk ? `<div class="step-knack"><strong>Safety Knack:</strong> ${escapeHtmlText(cp.critical_safety_knack)}</div>` : ''}
             <button class="btn-step-modal" onclick="openPcTiddlerModal('${cp.id}')">
               <span>View SOP Reel &amp; AI Masterclass</span>
             </button>

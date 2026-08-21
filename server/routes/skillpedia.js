@@ -641,6 +641,18 @@ router.get(['/sop/details', '/sop/details/*'], async (req, res) => {
         const pcsList = pcsRes.rows || [];
 
         // Group into real industrial workstations
+        const isGenericTol = (val) => {
+            if (!val) return true;
+            const v = String(val).toLowerCase().trim();
+            return v.includes('nominal engineering tolerances') || v.includes('strict nominal tolerances') || v.includes('nominal tolerances');
+        };
+
+        const isGenericKnk = (val) => {
+            if (!val) return true;
+            const v = String(val).toLowerCase().trim();
+            return v.includes('steady hand motion') || v.includes('physical alignment prior to final fixation') || v.includes('statutory plant safety codes');
+        };
+
         const workstations = nosList.map((n, idx) => {
             const nosPcs = pcsList.filter(p => p.nos_code === n.nos_code);
             return {
@@ -654,8 +666,8 @@ router.get(['/sop/details', '/sop/details/*'], async (req, res) => {
                     pc_code: p.pc_code,
                     pc_description: p.pc_description,
                     action_directive: p.sop_action_directive || p.pc_description,
-                    parameter_tolerance: p.sop_parameter_tolerance || 'Strict nominal tolerances',
-                    critical_safety_knack: p.sop_critical_knack || 'Adhere to statutory plant safety codes',
+                    parameter_tolerance: isGenericTol(p.sop_parameter_tolerance) ? null : p.sop_parameter_tolerance,
+                    critical_safety_knack: isGenericKnk(p.sop_critical_knack) ? null : p.sop_critical_knack,
                     video_id: p.video_id,
                     video_title: p.video_title,
                     start_seconds: p.start_seconds || 0,
