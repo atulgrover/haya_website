@@ -347,16 +347,6 @@
   <script src="js/responsive.js"></script>
   <script src="js/components.js"></script>
   <script>
-
-    async function inspectCard(qpCode, qpName, sector, level) {
-      currentQpCode = qpCode;
-      activeWsIdx = 0;
-
-      try {
-        const res = await fetch(`/api/skillpedia/sop/details?qp=${encodeURIComponent(qpCode)}`);
-        const data = await res.json();
-
-        if (data.success && data.sops && data.sops.length > 0) {
     // State variables
     let allCards = [];
     let currentQpCode = null;
