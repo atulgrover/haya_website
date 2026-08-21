@@ -295,7 +295,7 @@
     </main>
 
     <!-- RIGHT PANEL: Workstation SOP Inspector -->
-    <aside class="panel-right collapsed" id="sopInspector">
+    <aside class="panel-right" id="panelRight">
       <div class="inspector-header">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
           <div>
@@ -344,6 +344,7 @@
     </aside>
   </div>
 
+  <script src="js/ide-docking.js"></script>
   <script src="js/responsive.js"></script>
   <script src="js/components.js"></script>
   <script>
@@ -358,6 +359,11 @@
     let currentModalLang = 'en';
 
     document.addEventListener('DOMContentLoaded', async () => {
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.init({ storagePrefix: 'haya_employers_ide_' });
+        HayaIdeDocking.toggleLeftPanel(true);
+      }
+
       await loadSopSectors();
       await loadSopCards('all');
 
@@ -479,6 +485,11 @@
       if (cardEl) cardEl.classList.add('active');
       if (window.HayaIdeDocking) {
         HayaIdeDocking.openRightPanel();
+      }
+      const pr = document.getElementById('panelRight');
+      if (pr) {
+        pr.classList.remove('collapsed');
+        pr.classList.add('active');
       }
       inspectCard(qpCode, qpName, sector, level);
     }
