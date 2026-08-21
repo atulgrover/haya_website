@@ -166,10 +166,9 @@ JSON Schema:
             .replace(/\s*```$/i, '')
             .trim();
 
-        // If string ends with an unclosed outer quote or wrapper, fix it
-        if (cleaned.endsWith('"}') && !cleaned.startsWith('{"')) {
-            cleaned = cleaned.substring(cleaned.indexOf('{'));
-        }
+        // Strip trailing anomalies like ]"} or "}\n
+        cleaned = cleaned.replace(/\]\s*"\s*\}/g, ']}').replace(/\}\s*"\s*$/g, '}');
+
         const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
         if (jsonMatch) {
             cleaned = jsonMatch[0];
