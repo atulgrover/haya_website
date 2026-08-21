@@ -111,6 +111,25 @@
     }
     .blueprint-card.active { border-left: 4px solid var(--primary-color); }
 
+    /* Card Active Compiling Pulse */
+    .blueprint-card.compiling {
+      border-color: #0284C7 !important;
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25), 0 8px 20px rgba(2, 132, 199, 0.15) !important;
+      animation: cardPulse 1.8s infinite ease-in-out;
+    }
+    @keyframes cardPulse {
+      0%, 100% { transform: translateY(-2px); }
+      50% { transform: translateY(-3px); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.4), 0 10px 24px rgba(2, 132, 199, 0.25); }
+    }
+    .compiling-badge {
+      background: #E0F2FE; color: #0284C7; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 4px;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .compiling-spinner {
+      width: 10px; height: 10px; border: 2px solid #BAE6FD; border-top-color: #0284C7; border-radius: 50%;
+      animation: spin 0.8s infinite linear;
+    }
+
     .card-top-bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
     .capex-badge { background: #ECFDF5; color: #047857; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 4px; }
     .qp-badge { background: var(--primary-light); color: var(--primary-color); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
@@ -151,6 +170,60 @@
     }
 
     #site-footer { display: none !important; }
+
+    /* Shimmer & Skeleton Loaders */
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton-shimmer {
+      background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite linear;
+      border-radius: 6px;
+    }
+    .skeleton-bar { height: 14px; margin-bottom: 8px; }
+
+    /* AI Compiler Live HUD */
+    .ai-compiler-hud {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      animation: modalPopIn 0.25s ease-out;
+    }
+    @keyframes modalPopIn {
+      from { opacity: 0; transform: scale(0.97) translateY(4px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .hud-title-bar {
+      display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 10px;
+    }
+    .hud-main-title { font-size: 12.5px; font-weight: 800; color: #38BDF8; letter-spacing: 0.5px; text-transform: uppercase; }
+    .hud-status-chip {
+      font-size: 10.5px; font-weight: 700; background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 2px 8px; border-radius: 12px; display: inline-flex; align-items: center; gap: 5px;
+    }
+    .hud-steps-list { display: flex; flex-direction: column; gap: 8px; }
+    .hud-step-item {
+      display: flex; align-items: center; gap: 10px; font-size: 11.5px; color: #94A3B8; transition: all 0.2s;
+    }
+    .hud-step-item.completed { color: #4ADE80; font-weight: 600; }
+    .hud-step-item.active { color: #FFFFFF; font-weight: 700; }
+    .hud-step-icon {
+      width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 10px; flex-shrink: 0;
+    }
+    .hud-step-item.completed .hud-step-icon { background: #166534; color: #86EFAC; }
+    .hud-step-item.active .hud-step-icon { background: #0284C7; color: #FFFFFF; }
+    .hud-step-item.pending .hud-step-icon { background: rgba(255, 255, 255, 0.08); color: #64748B; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
 
     /* Executive Snapshot Cards */
     .dpr-snapshot-container {
@@ -766,6 +839,11 @@
     let currentBlueprint = null;
     let selectedSector = 'all';
 
+    // Layer 1: Client Request Deduplication & In-Flight Control
+    const clientBlueprintCache = new Map();
+    let activeAbortController = null;
+    let compilerStepInterval = null;
+
     document.addEventListener('DOMContentLoaded', async () => {
       if (window.HayaIdeDocking) {
         HayaIdeDocking.init({ 
@@ -785,7 +863,10 @@
         if (data.success && data.sectors) {
           const select = document.getElementById('selectSector');
           select.innerHTML = '<option value="all">All 41 Industries</option>' + 
-            data.sectors.map(sec => `<option value="${sec}">${sec}</option>`).join('');
+            data.sectors.map(sec => {
+              const sName = typeof sec === 'object' ? (sec.sector || sec.name) : String(sec);
+              return `<option value="${sName}">${sName}</option>`;
+            }).join('');
         }
       } catch (err) {
         console.error('Error loading sectors:', err);
@@ -852,7 +933,10 @@
         const profitStr = `₹ ${profit.toLocaleString('en-IN')}/mo`;
 
         return `
-          <div class="blueprint-card ${c.qp_code === currentQpCode ? 'active' : ''}" onclick="selectCard('${c.qp_code}', this)">
+          <div class="blueprint-card ${c.qp_code === currentQpCode ? 'active' : ''}" 
+               id="card-${c.qp_code.replace(/[\/:]/g, '_')}" 
+               data-qp="${c.qp_code}"
+               onclick="selectCard('${c.qp_code}', this)">
             <div class="card-top-bar">
               <span class="capex-badge">${costStr} Capex</span>
               <span class="qp-badge">${c.sector || 'General'}</span>
@@ -870,126 +954,406 @@
 
     function selectCard(qpCode, cardEl) {
       currentQpCode = qpCode;
-      document.querySelectorAll('.blueprint-card').forEach(c => c.classList.remove('active'));
-      if (cardEl) cardEl.classList.add('active');
+
+      // Reset all cards' compiling states
+      document.querySelectorAll('.blueprint-card').forEach(c => {
+        c.classList.remove('active');
+        c.classList.remove('compiling');
+      });
+
+      const activeEl = cardEl || document.getElementById(`card-${qpCode.replace(/[\/:]/g, '_')}`);
+      if (activeEl) activeEl.classList.add('active');
+
       if (window.HayaIdeDocking) {
         HayaIdeDocking.openRightPanel();
       }
-      inspectCard(qpCode);
+
+      // Check client-side memory cache first for 0ms instantaneous display
+      if (clientBlueprintCache.has(qpCode)) {
+        if (activeAbortController) {
+          activeAbortController.abort();
+          activeAbortController = null;
+        }
+        if (compilerStepInterval) {
+          clearInterval(compilerStepInterval);
+          compilerStepInterval = null;
+        }
+        const cachedData = clientBlueprintCache.get(qpCode);
+        renderFullBlueprint(cachedData);
+        return;
+      }
+
+      // If not in cache, start active compiling state
+      if (activeEl) activeEl.classList.add('compiling');
+      inspectCard(qpCode, activeEl);
     }
 
-    async function inspectCard(qpCode) {
-      currentQpCode = qpCode;
-      const loaderTitle = document.getElementById('inspTitle');
-      if (loaderTitle) loaderTitle.innerText = 'Synthesizing MSME Business Blueprint...';
+    async function inspectCard(qpCode, activeCardEl) {
+      // 1. Instantly abort any previous in-flight LLM synthesis request
+      if (activeAbortController) {
+        activeAbortController.abort();
+      }
+      activeAbortController = new AbortController();
+
+      if (compilerStepInterval) {
+        clearInterval(compilerStepInterval);
+        compilerStepInterval = null;
+      }
+
+      // 2. Find card metadata for instant header display
+      const cardMeta = allCards.find(c => c.qp_code === qpCode) || { qp_name: qpCode, sector: 'Commercial', qp_code: qpCode };
+
+      // 3. Immediately wipe all previous stale data & render Live AI Compiler HUD + Shimmer Skeleton
+      showCompilerHUD(cardMeta);
 
       try {
-        const res = await fetch(`/api/skillpedia/msme/details?qp=${encodeURIComponent(qpCode)}`);
+        const res = await fetch(`/api/skillpedia/msme/details?qp=${encodeURIComponent(qpCode)}`, {
+          signal: activeAbortController.signal
+        });
         const data = await res.json();
 
         if (data.success && data.blueprint) {
-          currentBlueprint = data.blueprint;
-          const bp = data.blueprint;
-          const fm = bp.financial_model || {};
+          // Cache permanently in client memory
+          clientBlueprintCache.set(qpCode, data);
 
-          const cost = fm.total_project_cost_inr || 350000;
-          const margin = fm.promoter_equity_10_pct_inr || Math.round(cost * 0.10);
-          const loan = fm.bank_loan_90_pct_inr || Math.round(cost * 0.90);
-          const subsidy = fm.pmegp_subsidy_amount_inr || Math.round(cost * 0.35);
-          const subsidyPct = fm.pmegp_subsidy_pct || 35;
-          const rev = fm.estimated_monthly_revenue_inr || 120000;
-          const profit = fm.net_monthly_profit_inr || 65000;
-          const payback = fm.roi_payback_months || 6;
+          if (activeCardEl) activeCardEl.classList.remove('compiling');
+          if (compilerStepInterval) clearInterval(compilerStepInterval);
 
-          // Top Inspector Header
-          document.getElementById('inspTitle').innerText = bp.business_title || `Turnkey ${data.qp_name} Enterprise`;
-          document.getElementById('inspSub').innerText = `${data.qp_code} • Sector: ${data.sector} • NSQF Level ${data.nsqf_level || '4'}`;
-
-          // Snapshot Bar
-          document.getElementById('snapScheme').innerText = `PMEGP / Mudra (${subsidyPct}% Subsidy)`;
-          document.getElementById('snapCapex').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
-          document.getElementById('snapMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (10%)`;
-          document.getElementById('snapLoan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
-          document.getElementById('snapSubsidy').innerText = `₹ ${subsidy.toLocaleString('en-IN')}`;
-          document.getElementById('snapDscr').innerText = `2.85x (Bank Sound)`;
-          document.getElementById('snapProfit').innerText = `₹ ${profit.toLocaleString('en-IN')} / mo`;
-
-          // Chapter 1: Executive Summary
-          document.getElementById('sec11-text').innerText = bp.executive_summary || `Commercial setup for ${bp.business_title} in ${data.sector} sector.`;
-          document.getElementById('sec12-text').innerText = `Provides precision, NCVET-compliant technical services and commercial operations mapped to ${data.qp_code}.`;
-          document.getElementById('sec13-text').innerText = (bp.target_customers && bp.target_customers.length > 0)
-            ? bp.target_customers.join(' • ')
-            : 'Local consumers, SME workshops, institutional accounts, and commercial clients';
-          document.getElementById('ch1-cost').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
-          document.getElementById('ch1-loan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
-          document.getElementById('ch1-dscr').innerText = `2.85x DSCR`;
-
-          // Chapter 2: Business & Industry Overview
-          document.getElementById('sec21-text').innerText = bp.tagline || `To deliver dependable, precision solutions with high operational safety and customer satisfaction.`;
-          document.getElementById('sec22-text').innerText = (bp.revenue_streams && bp.revenue_streams.length > 0)
-            ? bp.revenue_streams.map(s => `${s.stream_name}: ${s.unit_economics}`).join('; ')
-            : `Turnkey commercial delivery with projected monthly turnover of ₹ ${rev.toLocaleString('en-IN')}.`;
-          document.getElementById('sec23-text').innerText = `High-growth enterprise supported by Ministry of MSME, Make-in-India mandates, and PMEGP subsidy schemes.`;
-
-          // Chapter 3: Products & Services
-          document.getElementById('sec31-text').innerText = (bp.revenue_streams && bp.revenue_streams.length > 0)
-            ? bp.revenue_streams.map(s => `• ${s.stream_name}: ${s.description}`).join('\n')
-            : `Commercial products and services conforming to national quality benchmarks.`;
-          document.getElementById('sec32-text').innerText = `Standardized quality verification logs, OEM spare sourcing, and prompt client delivery.`;
-          document.getElementById('sec33-text').innerText = `Fully mapped to NCVET NSQF Level ${data.nsqf_level || '4'} Qualification Pack standards (${data.qp_code}).`;
-
-          // Chapter 4: Market Analysis
-          document.getElementById('sec41-text').innerText = `Target customer profile: ${(bp.target_customers || []).join(', ')}`;
-          document.getElementById('sec44-text').innerText = `Direct B2B institutional outreach, verified Google Business Profile local search presence, and partnership tie-ups with regional distributors.`;
-
-          // Chapter 5: Operations & Machinery Plan
-          document.getElementById('ch5-space').innerText = `250–400 Sq Ft`;
-          document.getElementById('ch5-power').innerText = `2 to 5 kW Commercial`;
-
-          // BOM Table
-          const bomTbody = document.getElementById('bomTableBody');
-          const bomList = bp.machinery_bom || [];
-          let bomTotal = 0;
-          bomTbody.innerHTML = bomList.map(m => {
-            bomTotal += (m.estimated_cost_inr || 0);
-            return `
-              <tr>
-                <td>
-                  <div style="font-weight:700; color:#0F172A;">${escapeHtmlText(m.machine_name)}</div>
-                  <div style="font-size:11px; color:#64748B;">${escapeHtmlText(m.specification || '')} • ${m.power_kw || 0.5} kW</div>
-                </td>
-                <td style="text-align:center;">1</td>
-                <td style="font-weight:700; color:#0284C7;">₹ ${(m.estimated_cost_inr || 0).toLocaleString('en-IN')}</td>
-              </tr>
-            `;
-          }).join('');
-          document.getElementById('ch5-bom-total').innerText = `Total: ₹ ${bomTotal.toLocaleString('en-IN')}`;
-
-          // Playbook
-          const playbookEl = document.getElementById('playbookList');
-          const pbList = bp.launch_playbook || [];
-          playbookEl.innerHTML = pbList.map(p => `
-            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px;">
-              <div style="font-weight:700; font-size:11.5px; color:#0284C7; margin-bottom:3px;">${escapeHtmlText(p.phase)}</div>
-              <ul style="margin:0; padding-left:16px; font-size:11.5px; color:#334155;">
-                ${(p.actions || []).map(act => `<li style="margin-bottom:2px;">${escapeHtmlText(act)}</li>`).join('')}
-              </ul>
-            </div>
-          `).join('');
-
-          // Chapter 7: Financial Projections
-          document.getElementById('finStatCost').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
-          document.getElementById('finStatMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (10%)`;
-          document.getElementById('finStatLoan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
-          document.getElementById('finStatSubsidy').innerText = `₹ ${subsidy.toLocaleString('en-IN')} (${subsidyPct}%)`;
-          document.getElementById('finStatRev').innerText = `₹ ${rev.toLocaleString('en-IN')}`;
-          document.getElementById('finStatProfit').innerText = `₹ ${profit.toLocaleString('en-IN')}`;
-          document.getElementById('finStatDscr').innerText = `2.85x (High)`;
-          document.getElementById('finStatPayback').innerText = `${payback} Months`;
+          renderFullBlueprint(data);
+        } else {
+          showErrorState(data.error || 'Failed to synthesize MSME blueprint.');
         }
       } catch (err) {
-        console.error('Error inspecting MSME card:', err);
+        if (err.name === 'AbortError') {
+          // Cleanly aborted due to user clicking another card — do nothing
+          return;
+        }
+        console.error('Error synthesizing MSME blueprint:', err);
+        if (activeCardEl) activeCardEl.classList.remove('compiling');
+        showErrorState('Network connection error while compiling business blueprint.');
       }
+    }
+
+    // Layer 2 & 3: AI Compiler Live HUD & Shimmer Skeleton
+    function showCompilerHUD(card) {
+      document.getElementById('inspTitle').innerText = `Synthesizing ${card.qp_name || card.qp_code}...`;
+      document.getElementById('inspSub').innerText = `${card.qp_code} • Sector: ${card.sector} • Compiling 9-Chapter Bankable Dossier`;
+
+      const content = document.getElementById('inspContent');
+      content.innerHTML = `
+        <!-- Live AI Synthesis HUD -->
+        <div class="ai-compiler-hud">
+          <div class="hud-title-bar">
+            <span class="hud-main-title">🤖 AI Project Finance Compiler</span>
+            <span class="hud-status-chip">
+              <span class="compiling-spinner"></span>
+              Live Synthesis
+            </span>
+          </div>
+          <div class="hud-steps-list">
+            <div class="hud-step-item completed" id="hudStep1">
+              <span class="hud-step-icon">✓</span>
+              <span>1. Ingested NCVET Occupational Standard (${card.qp_code})</span>
+            </div>
+            <div class="hud-step-item active" id="hudStep2">
+              <span class="hud-step-icon">⚙</span>
+              <span>2. Calibrating Commercial Machinery BOM &amp; CAPEX...</span>
+            </div>
+            <div class="hud-step-item pending" id="hudStep3">
+              <span class="hud-step-icon">○</span>
+              <span>3. Formulating PMEGP 35% Subsidy &amp; DSCR Bank Ratios...</span>
+            </div>
+            <div class="hud-step-item pending" id="hudStep4">
+              <span class="hud-step-icon">○</span>
+              <span>4. Assembling 4-Week Turnkey Launch Playbook...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton Snapshot -->
+        <div class="dpr-snapshot-container">
+          <div class="dpr-snapshot-header">
+            <div class="skeleton-shimmer" style="width: 140px; height: 14px;"></div>
+            <div class="skeleton-shimmer" style="width: 80px; height: 14px; border-radius: 12px;"></div>
+          </div>
+          <div class="dpr-snapshot-grid">
+            <div class="dpr-snap-card">
+              <div class="skeleton-shimmer" style="width: 60px; height: 10px; margin-bottom: 6px;"></div>
+              <div class="skeleton-shimmer" style="width: 90px; height: 18px;"></div>
+            </div>
+            <div class="dpr-snap-card">
+              <div class="skeleton-shimmer" style="width: 60px; height: 10px; margin-bottom: 6px;"></div>
+              <div class="skeleton-shimmer" style="width: 90px; height: 18px;"></div>
+            </div>
+            <div class="dpr-snap-card">
+              <div class="skeleton-shimmer" style="width: 60px; height: 10px; margin-bottom: 6px;"></div>
+              <div class="skeleton-shimmer" style="width: 90px; height: 18px;"></div>
+            </div>
+            <div class="dpr-snap-card">
+              <div class="skeleton-shimmer" style="width: 60px; height: 10px; margin-bottom: 6px;"></div>
+              <div class="skeleton-shimmer" style="width: 90px; height: 18px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton Accordion Chapters -->
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+          <div class="skeleton-shimmer" style="width: 100%; height: 42px;"></div>
+          <div class="skeleton-shimmer" style="width: 100%; height: 42px;"></div>
+          <div class="skeleton-shimmer" style="width: 100%; height: 42px;"></div>
+          <div class="skeleton-shimmer" style="width: 100%; height: 42px;"></div>
+        </div>
+      `;
+
+      // Animate progress steps across a 4-second compilation window
+      let step = 2;
+      compilerStepInterval = setInterval(() => {
+        if (step === 2) {
+          const s2 = document.getElementById('hudStep2');
+          const s3 = document.getElementById('hudStep3');
+          if (s2 && s3) {
+            s2.className = 'hud-step-item completed';
+            s2.querySelector('.hud-step-icon').innerText = '✓';
+            s3.className = 'hud-step-item active';
+            s3.querySelector('.hud-step-icon').innerText = '⚙';
+          }
+          step = 3;
+        } else if (step === 3) {
+          const s3 = document.getElementById('hudStep3');
+          const s4 = document.getElementById('hudStep4');
+          if (s3 && s4) {
+            s3.className = 'hud-step-item completed';
+            s3.querySelector('.hud-step-icon').innerText = '✓';
+            s4.className = 'hud-step-item active';
+            s4.querySelector('.hud-step-icon').innerText = '⚙';
+          }
+          step = 4;
+        }
+      }, 900);
+    }
+
+    function renderFullBlueprint(data) {
+      currentBlueprint = data.blueprint;
+      const bp = data.blueprint;
+      const fm = bp.financial_model || {};
+
+      const cost = fm.total_project_cost_inr || 350000;
+      const margin = fm.promoter_equity_10_pct_inr || Math.round(cost * 0.10);
+      const loan = fm.bank_loan_90_pct_inr || Math.round(cost * 0.90);
+      const subsidy = fm.pmegp_subsidy_amount_inr || Math.round(cost * 0.35);
+      const subsidyPct = fm.pmegp_subsidy_pct || 35;
+      const rev = fm.estimated_monthly_revenue_inr || 120000;
+      const profit = fm.net_monthly_profit_inr || 65000;
+      const payback = fm.roi_payback_months || 6;
+
+      document.getElementById('inspTitle').innerText = bp.business_title || `Turnkey ${data.qp_name} Enterprise`;
+      document.getElementById('inspSub').innerText = `${data.qp_code} • Sector: ${data.sector} • NSQF Level ${data.nsqf_level || '4'}`;
+
+      const bomList = bp.machinery_bom || [];
+      let bomTotal = 0;
+      const bomRows = bomList.map(m => {
+        bomTotal += (m.estimated_cost_inr || 0);
+        return `
+          <tr>
+            <td>
+              <div style="font-weight:700; color:#0F172A;">${escapeHtmlText(m.machine_name)}</div>
+              <div style="font-size:11px; color:#64748B;">${escapeHtmlText(m.specification || '')} • ${m.power_kw || 0.5} kW</div>
+            </td>
+            <td style="text-align:center;">1</td>
+            <td style="font-weight:700; color:#0284C7;">₹ ${(m.estimated_cost_inr || 0).toLocaleString('en-IN')}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const pbList = bp.launch_playbook || [];
+      const playbookCards = pbList.map(p => `
+        <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px;">
+          <div style="font-weight:700; font-size:11.5px; color:#0284C7; margin-bottom:3px;">${escapeHtmlText(p.phase)}</div>
+          <ul style="margin:0; padding-left:16px; font-size:11.5px; color:#334155;">
+            ${(p.actions || []).map(act => `<li style="margin-bottom:2px;">${escapeHtmlText(act)}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+
+      const content = document.getElementById('inspContent');
+      content.innerHTML = `
+        <!-- Executive Snapshot Bar -->
+        <div class="dpr-snapshot-container">
+          <div class="dpr-snapshot-header">
+            <span class="dpr-snapshot-title">📊 Executive Financial Snapshot</span>
+            <span class="dpr-snapshot-scheme">PMEGP / Mudra (${subsidyPct}% Subsidy)</span>
+          </div>
+          <div class="dpr-snapshot-grid">
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Total Setup Outlay</span>
+              <span class="dpr-snap-val" style="color:var(--primary-color);">₹ ${cost.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Promoter Equity (10%)</span>
+              <span class="dpr-snap-val">₹ ${margin.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Bank Term Loan (90%)</span>
+              <span class="dpr-snap-val">₹ ${loan.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Govt PMEGP Subsidy</span>
+              <span class="dpr-snap-val" style="color:#047857;">₹ ${subsidy.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Est. Debt Coverage</span>
+              <span class="dpr-snap-val" style="color:#047857;">2.85x DSCR</span>
+            </div>
+            <div class="dpr-snap-card">
+              <span class="dpr-snap-label">Net Monthly Profit</span>
+              <span class="dpr-snap-val" style="color:#0284C7;">₹ ${profit.toLocaleString('en-IN')} / mo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table of Contents Control Bar -->
+        <div class="dpr-toc-bar">
+          <div class="dpr-toc-title">📑 Bankable Dossier (9 Chapters)</div>
+          <div class="dpr-toc-actions">
+            <button class="btn-toc-action" onclick="expandAllChapters()">Expand All</button>
+            <button class="btn-toc-action" onclick="collapseAllChapters()">Collapse All</button>
+          </div>
+        </div>
+
+        <!-- 9-Chapter Accordion -->
+        <div class="dpr-chapters-list">
+          <div class="chapter-card open" id="ch-1">
+            <div class="chapter-header" onclick="toggleChapter('ch-1')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">01</span>
+                <span class="chapter-title-text">Executive Summary</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.1</span> Market Opportunity &amp; Value Proposition</div>
+                <div class="sec-text">${escapeHtmlText(bp.executive_summary || 'Turnkey commercial setup in the priority sector.')}</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">1.2</span> Target Customer Segments</div>
+                <div class="sec-text">${escapeHtmlText((bp.target_customers || []).join(' • ') || 'Commercial and retail clients.')}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chapter-card" id="ch-2">
+            <div class="chapter-header" onclick="toggleChapter('ch-2')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">02</span>
+                <span class="chapter-title-text">Business &amp; Revenue Model</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body">
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.1</span> Core Value Proposition</div>
+                <div class="sec-text">${escapeHtmlText(bp.tagline || 'Commercial MSME business blueprint.')}</div>
+              </div>
+              <div class="sec-block">
+                <div class="sec-header"><span class="sec-num">2.2</span> Revenue Streams &amp; Pricing</div>
+                <div class="sec-text">${(bp.revenue_streams || []).map(s => `• <strong>${escapeHtmlText(s.stream_name)}</strong>: ${escapeHtmlText(s.description)} <em>(${escapeHtmlText(s.unit_economics)})</em>`).join('<br><br>')}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chapter-card open" id="ch-5">
+            <div class="chapter-header" onclick="toggleChapter('ch-5')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">05</span>
+                <span class="chapter-title-text">Operations &amp; Machinery BOM</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body">
+              <div class="sec-block">
+                <div class="sec-header" style="justify-content:space-between;">
+                  <div><span class="sec-num">5.1</span> Commercial Machinery BOM</div>
+                  <span style="font-size:11px; font-weight:800; color:var(--primary-color);">Total: ₹ ${bomTotal.toLocaleString('en-IN')}</span>
+                </div>
+                <table class="bom-table">
+                  <thead>
+                    <tr><th>Machine / Apparatus</th><th>Qty</th><th>Est. Price</th></tr>
+                  </thead>
+                  <tbody>${bomRows}</tbody>
+                </table>
+              </div>
+
+              <div class="sec-block" style="margin-top:6px;">
+                <div class="sec-header"><span class="sec-num">5.2</span> 4-Week Turnkey Launch Playbook</div>
+                <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
+                  ${playbookCards}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chapter-card open" id="ch-7">
+            <div class="chapter-header" onclick="toggleChapter('ch-7')">
+              <div class="chapter-header-left">
+                <span class="chapter-num-badge">07</span>
+                <span class="chapter-title-text">Financial Projections &amp; Bank Ratios</span>
+              </div>
+              <span class="chapter-chevron">▼</span>
+            </div>
+            <div class="chapter-body">
+              <div class="fin-table-grid">
+                <div class="fin-stat-card">
+                  <span class="fin-stat-label">Total Outlay</span>
+                  <span class="fin-stat-val">₹ ${cost.toLocaleString('en-IN')}</span>
+                </div>
+                <div class="fin-stat-card">
+                  <span class="fin-stat-label">Promoter Equity</span>
+                  <span class="fin-stat-val">₹ ${margin.toLocaleString('en-IN')} (10%)</span>
+                </div>
+                <div class="fin-stat-card">
+                  <span class="fin-stat-label">Bank Term Loan</span>
+                  <span class="fin-stat-val">₹ ${loan.toLocaleString('en-IN')} (90%)</span>
+                </div>
+                <div class="fin-stat-card">
+                  <span class="fin-stat-label">PMEGP Subsidy</span>
+                  <span class="fin-stat-val" style="color:#047857;">₹ ${subsidy.toLocaleString('en-IN')} (${subsidyPct}%)</span>
+                </div>
+                <div class="fin-stat-card">
+                  <span class="fin-stat-label">Monthly Revenue</span>
+                  <span class="fin-stat-val" style="color:#0284C7;">₹ ${rev.toLocaleString('en-IN')}</span>
+                </div>
+                <div class="fin-stat-card">
+                  <span class="fin-stat-label">Monthly Net Profit</span>
+                  <span class="fin-stat-val" style="color:#047857;">₹ ${profit.toLocaleString('en-IN')}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+          <button class="btn-download-kit" onclick="downloadBankReport()">
+            📥 Download Bank Loan Project Report (.PDF)
+          </button>
+          <button class="btn-print-secondary" onclick="window.print()">
+            🖨️ Print Full 9-Chapter Dossier
+          </button>
+        </div>
+      `;
+    }
+
+    function showErrorState(msg) {
+      const content = document.getElementById('inspContent');
+      content.innerHTML = `
+        <div style="padding: 30px; text-align: center; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; margin-top: 10px;">
+          <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+          <div style="font-weight: 700; color: #991B1B; font-size: 13px; margin-bottom: 4px;">Synthesis Notice</div>
+          <div style="font-size: 12px; color: #7F1D1D; margin-bottom: 12px;">${escapeHtmlText(msg)}</div>
+          <button class="btn-reset" onclick="selectCard('${currentQpCode}')">Retry Synthesis</button>
+        </div>
+      `;
     }
 
     function toggleChapter(chId) {
