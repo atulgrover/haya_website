@@ -387,12 +387,11 @@
         const data = await res.json();
         const select = document.getElementById('selectSector');
         if (data.success && data.sectors) {
-          data.sectors.forEach(s => {
-            const opt = document.createElement('option');
-            opt.value = s.sector;
-            opt.innerText = `${s.sector} (${s.count})`;
-            select.appendChild(opt);
-          });
+          select.innerHTML = '<option value="all">All 41 Industries</option>' + 
+            data.sectors.map(sec => {
+              const sName = typeof sec === 'object' ? (sec.sector || sec.name) : String(sec);
+              return `<option value="${sName}">${sName}</option>`;
+            }).join('');
         }
       } catch (err) {
         console.warn('Sectors load fallback:', err);
