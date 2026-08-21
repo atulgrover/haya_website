@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAYAGRIVA — Human-in-the-Loop Video Curation Studio</title>
+  <meta name="description" content="Official Human-in-the-Loop Video Curation Desk and Audit System for NSQF Vocational Qualifications.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+
+  <style>
+    :root {
+      --bg-curator: #0B132B;
+      --card-bg: #FFFFFF;
+      --card-border: #E2E8F0;
+      --primary: #0284C7;
+      --primary-hover: #0369A1;
+      --success: #10B981;
+      --success-light: #ECFDF5;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+    }
+
+    body {
+      background-color: #F8FAFC;
+      color: var(--text-dark);
+      font-family: 'Inter', -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Curator Top Bar */
+    .curator-header {
+      background: #0F172A;
+      color: #FFF;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .curator-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .curator-badge {
+      background: #0284C7;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .curator-stats {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-chip strong {
+      color: #38BDF8;
+    }
+
+    /* Workspace Layout */
+    .curator-workspace {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      flex: 1;
+      height: calc(100vh - 60px);
+      overflow: hidden;
+    }
+
+    /* Left Sidebar: Trade Directory */
+    .trade-sidebar {
+      background: #FFFFFF;
+      border-right: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .trade-filter-bar {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #FAFAFA;
+    }
+
+    .trade-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      font-size: 12.5px;
+      outline: none;
+    }
+
+    .trade-input:focus {
+      border-color: var(--primary);
+    }
+
+    .trade-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .trade-item {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: #FFF;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .trade-item:hover {
+      border-color: #94A3B8;
+      background: #F8FAFC;
+    }
+
+    .trade-item.active {
+      border-color: var(--primary);
+      background: #F0F9FF;
+    }
+
+    .trade-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .trade-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #0284C7;
+    }
+
+    .trade-level {
+      font-size: 10.5px;
+      color: #64748B;
+    }
+
+    .trade-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #0F172A;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .progress-bar-bg {
+      height: 5px;
+      background: #E2E8F0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--success);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    /* Right Main Curation Studio */
+    .curation-studio {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+      background: #F8FAFC;
+    }
+
+    .studio-header {
+      padding: 16px 24px;
+      background: #FFF;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .studio-qp-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0F172A;
+      margin: 0 0 4px 0;
+    }
+
+    .studio-qp-meta {
+      font-size: 12px;
+      color: #64748B;
+    }
+
+    /* PC Selection Pills Strip */
+    .pc-strip {
+      padding: 10px 24px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .pc-pill {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      background: #F8FAFC;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .pc-pill.verified {
+      background: var(--success-light);
+      border-color: #A7F3D0;
+      color: #065F46;
+    }
+
+    .pc-pill.active {
+      border-color: var(--primary);
+      background: #0284C7;
+      color: #FFF;
+    }
+
+    /* Active Criterion Curation Deck */
+    .curation-deck {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card-box {
+      background: #FFF;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .deck-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748B;
+      margin-bottom: 8px;
+    }
+
+    .pc-directive-text {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #0F172A;
+      margin-bottom: 14px;
+    }
+
+    .pc-spec-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #334155;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 9px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-verify {
+      background: var(--primary);
+      color: #FFF;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.15s;
+    }
+
+    .btn-verify:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-skip {
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 11px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .video-preview-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #0F172A;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .video-preview-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Modal for Audit Logs */
+    .audit-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(6px);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .audit-box {
+      background: #FFF;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 900px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .audit-table th {
+      background: #F8FAFC;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid #E2E8F0;
+      color: #64748B;
+      font-weight: 700;
+    }
+
+    .audit-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #F1F5F9;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal Header Mount Point -->
+  <div class="curator-header">
+    <div class="curator-brand">
+      <a href="index.html" style="color:#FFF; font-weight:700; font-size:16px; text-decoration:none; letter-spacing:1px;">HAYAGRIVA</a>
+      <span class="curator-badge">HIL Video Curator Studio</span>
+    </div>
+    <div class="curator-stats">
+      <div class="stat-chip">Total Verified: <strong id="statTotalVerified">0</strong> / <span id="statTotalPcs">176,727</span></div>
+      <div class="stat-chip">Today's Curations: <strong id="statTodayCount">0</strong></div>
+      <button onclick="openAuditModal()" style="background:rgba(255,255,255,0.12); color:#FFF; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer;">View Audit Log</button>
+    </div>
+  </div>
+
+  <!-- Main Workspace -->
+  <div class="curator-workspace">
+
+    <!-- LEFT: Qualification Packs List -->
+    <aside class="trade-sidebar">
+      <div class="trade-filter-bar">
+        <select id="selectSectorFilter" class="trade-input" onchange="loadQps()">
+          <option value="all">All Sectors</option>
+        </select>
+        <input type="text" id="searchQpInput" class="trade-input" placeholder="Search QP Code or Title..." oninput="filterQpsList()">
+      </div>
+      <div class="trade-list" id="qpListContainer">
+        <div style="padding:20px; text-align:center; color:var(--text-muted); font-size:12px;">Loading trade directory...</div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: Active Curation Studio -->
+    <main class="curation-studio">
+      <div class="studio-header">
+        <div>
+          <h2 class="studio-qp-title" id="curatorQpTitle">Select a Qualification Pack</h2>
+          <div class="studio-qp-meta" id="curatorQpMeta">NCVET Certified National Occupational Standards</div>
+        </div>
+        <div id="qpProgressBadge" style="font-size:12px; font-weight:700; background:#E2E8F0; color:#334155; padding:6px 12px; border-radius:20px;">
+          0 / 0 Verified
+        </div>
+      </div>
+
+      <!-- PC Navigator Strip -->
+      <div class="pc-strip" id="pcStripContainer"></div>
+
+      <!-- Active Criterion Form & Video Bounded Player -->
+      <div class="curation-deck" id="curationDeck" style="display:none;">
+
+        <!-- LEFT COLUMN: Performance Criterion Details & Recommendations -->
+        <div class="card-box">
+          <div class="deck-section-title">Standard Lineage</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:#0284C7; margin-bottom:8px;" id="deckPcCode">PC1.1</div>
+          <div class="pc-directive-text" id="deckDirective">Action Directive Statement</div>
+
+          <div class="deck-section-title">Official Description</div>
+          <div class="pc-spec-box" id="deckFullDesc">Description details</div>
+
+          <div class="deck-section-title">Industrial Parameter &amp; Tolerance</div>
+          <div class="pc-spec-box" id="deckTolerance">Physical limits</div>
+
+          <div class="deck-section-title">Recommended YouTube Search Vector</div>
+          <div style="display:flex; gap:8px; align-items:center; background:#EFF6FF; border:1px solid #BFDBFE; padding:10px; border-radius:8px; font-size:12.5px; color:#1E40AF;">
+            <span id="deckSearchQuery" style="flex:1;">Search query</span>
+            <button onclick="copySearchQuery()" style="background:#0284C7; color:#FFF; border:none; padding:4px 8px; border-radius:4px; font-size:11px; font-weight:700; cursor:pointer;">Copy</button>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: YouTube Mapping & Interactive Clip Trimmer -->
+        <div class="card-box">
+          <div class="deck-section-title">Demonstration Video Preview</div>
+          <div class="video-preview-wrapper">
+            <iframe id="curatorPreviewIframe" src="" allowfullscreen></iframe>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputVideoUrl">YouTube Video URL or 11-Character ID</label>
+            <input type="text" id="inputVideoUrl" class="form-input" placeholder="e.g. https://www.youtube.com/watch?v=k9X8j2L0aBc" oninput="handleVideoInput(this.value)">
+          </div>
+
+          <div class="time-grid">
+            <div class="form-group">
+              <label class="form-label" for="inputStartSec">Start Time (seconds or MM:SS)</label>
+              <input type="text" id="inputStartSec" class="form-input" placeholder="0 or 01:15" onchange="updatePreviewPlayback()">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputEndSec">End Time (seconds or MM:SS)</label>
+              <input type="text" id="inputEndSec" class="form-input" placeholder="e.g. 180 or 03:00" onchange="updatePreviewPlayback()">
+            </div>
+          </div>
+
+          <div class="time-grid">
+            <div class="form-group">
+              <label class="form-label" for="inputCuratorEmail">Curator Email</label>
+              <input type="email" id="inputCuratorEmail" class="form-input" placeholder="intern@hayagriva.app" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputCuratorName">Curator Name</label>
+              <input type="text" id="inputCuratorName" class="form-input" placeholder="Rahul Sharma">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputNotes">Observation / Quality Notes</label>
+            <input type="text" id="inputNotes" class="form-input" placeholder="e.g. Clear Hindi demonstration of calibration procedure">
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:20px;">
+            <button class="btn-verify" onclick="submitCuration()">Save &amp; Verify Criterion (Enter)</button>
+            <button class="btn-skip" onclick="skipToNextPc()">Skip (Next)</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="deckEmptyState" style="padding:60px 20px; text-align:center; color:var(--text-muted);">
+        <h3>Select a Qualification Pack from the left directory to begin video curation.</h3>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Audit Modal -->
+  <div id="auditModal" class="audit-modal" onclick="if(event.target===this)closeAuditModal()">
+    <div class="audit-box">
+      <div style="padding:16px 20px; background:#0F172A; color:#FFF; display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="margin:0; font-size:15px; font-weight:700;">Human-in-the-Loop Curation Audit Log</h3>
+        <button onclick="closeAuditModal()" style="background:none; border:none; color:#FFF; font-size:20px; cursor:pointer;">&times;</button>
+      </div>
+      <div style="flex:1; overflow-y:auto; padding:16px;">
+        <table class="audit-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Trade / QP</th>
+              <th>Criterion</th>
+              <th>Video ID</th>
+              <th>Bounds</th>
+              <th>Curator</th>
+            </tr>
+          </thead>
+          <tbody id="auditTableBody">
+            <tr><td colspan="6" style="text-align:center; padding:20px;">Loading audit ledger...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allQps = [];
+    let activeQp = null;
+    let activePcs = [];
+    let currentPcIdx = 0;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Restore saved curator credentials
+      const savedEmail = localStorage.getItem('haya_curator_email');
+      const savedName = localStorage.getItem('haya_curator_name');
+      if (savedEmail) document.getElementById('inputCuratorEmail').value = savedEmail;
+      if (savedName) document.getElementById('inputCuratorName').value = savedName;
+
+      await loadSectors();
+      await loadQps();
+      await loadStats();
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && e.ctrlKey) {
+          submitCuration();
+        }
+      });
+    });
+
+    async function loadStats() {
+      try {
+        const res = await fetch('/api/curator/stats');
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('statTotalVerified').innerText = (data.total_verified || 0).toLocaleString();
+          document.getElementById('statTotalPcs').innerText = (data.total_pcs || 176727).toLocaleString();
+          document.getElementById('statTodayCount').innerText = (data.today_curations || 0).toLocaleString();
+        }
+      } catch (_) {}
+    }
+
+    async function loadSectors() {
+      try {
+        const res = await fetch('/api/skillpedia/qps/sectors');
+        const data = await res.json();
+        if (data.success && data.sectors) {
+          const sel = document.getElementById('selectSectorFilter');
+          sel.innerHTML = '<option value="all">All Sectors</option>' +
+            data.sectors.map(s => `<option value="${s}">${s}</option>`).join('');
+        }
+      } catch (_) {}
+    }
+
+    async function loadQps() {
+      const sector = document.getElementById('selectSectorFilter').value;
+      const container = document.getElementById('qpListContainer');
+      container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted); font-size:12px;">Loading trades...</div>';
+
+      try {
+        const res = await fetch(`/api/curator/qps?sector=${encodeURIComponent(sector)}`);
+        const data = await res.json();
+        if (data.success) {
+          allQps = data.qps;
+          renderQpList(allQps);
+        }
+      } catch (err) {
+        container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted); font-size:12px;">Failed to load trade list.</div>';
+      }
+    }
+
+    function filterQpsList() {
+      const q = document.getElementById('searchQpInput').value.toLowerCase().trim();
+      const filtered = allQps.filter(qp => 
+        qp.qp_code.toLowerCase().includes(q) || 
+        qp.qp_name.toLowerCase().includes(q) ||
+        (qp.sector && qp.sector.toLowerCase().includes(q))
+      );
+      renderQpList(filtered);
+    }
+
+    function renderQpList(qps) {
+      const container = document.getElementById('qpListContainer');
+      if (qps.length === 0) {
+        container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted); font-size:12px;">No matching job roles.</div>';
+        return;
+      }
+
+      container.innerHTML = qps.map(qp => {
+        const total = qp.total_pcs || 1;
+        const verified = qp.verified_pcs || 0;
+        const pct = Math.round((verified / total) * 100);
+        const isActive = activeQp && activeQp.qp_code === qp.qp_code;
+
+        return `
+          <div class="trade-item ${isActive ? 'active' : ''}" onclick="selectQp('${qp.qp_code}')">
+            <div class="trade-item-top">
+              <span class="trade-code">${qp.qp_code}</span>
+              <span class="trade-level">${verified}/${total} Verified (${pct}%)</span>
+            </div>
+            <div class="trade-title">${escapeHtml(qp.qp_name)}</div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width:${pct}%;"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function selectQp(qpCode) {
+      document.getElementById('deckEmptyState').style.display = 'none';
+      document.getElementById('curationDeck').style.display = 'grid';
+
+      try {
+        const res = await fetch(`/api/curator/pcs?qp=${encodeURIComponent(qpCode)}`);
+        const data = await res.json();
+        if (data.success) {
+          activeQp = data.qp;
+          activePcs = data.pcs;
+
+          document.getElementById('curatorQpTitle').innerText = `${activeQp.qp_code}: ${activeQp.qp_name}`;
+          document.getElementById('curatorQpMeta').innerText = `${activeQp.sector} • Level ${activeQp.nsqf_level}`;
+
+          renderPcStrip();
+          selectPc(0);
+          renderQpList(allQps);
+        }
+      } catch (err) {
+        alert('Error loading criteria for QP: ' + err.message);
+      }
+    }
+
+    function renderPcStrip() {
+      const strip = document.getElementById('pcStripContainer');
+      let verifiedCount = 0;
+
+      strip.innerHTML = activePcs.map((pc, idx) => {
+        const isVer = pc.is_human_verified || !!pc.video_id;
+        if (isVer) verifiedCount++;
+        return `
+          <div class="pc-pill ${isVer ? 'verified' : ''} ${idx === currentPcIdx ? 'active' : ''}" onclick="selectPc(${idx})">
+            <span>${pc.pc_code}</span>
+            ${isVer ? '<span>✓</span>' : ''}
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('qpProgressBadge').innerText = `${verifiedCount} / ${activePcs.length} Verified (${Math.round((verifiedCount/activePcs.length)*100)}%)`;
+    }
+
+    function selectPc(idx) {
+      currentPcIdx = idx;
+      renderPcStrip();
+
+      const pc = activePcs[idx];
+      if (!pc) return;
+
+      document.getElementById('deckPcCode').innerText = `${pc.nos_code} • ${pc.pc_code}`;
+      document.getElementById('deckDirective').innerText = pc.action_directive || pc.pc_description;
+      document.getElementById('deckFullDesc').innerText = pc.pc_description;
+      document.getElementById('deckTolerance').innerText = pc.sop_parameter_tolerance || 'Standard factory physical tolerance.';
+      document.getElementById('deckSearchQuery').innerText = pc.sop_search_query || pc.action_directive || pc.pc_description;
+
+      // Populate Inputs
+      document.getElementById('inputVideoUrl').value = pc.video_id ? `https://www.youtube.com/watch?v=${pc.video_id}` : '';
+      document.getElementById('inputStartSec').value = pc.start_seconds || 0;
+      document.getElementById('inputEndSec').value = pc.end_seconds || '';
+      document.getElementById('inputNotes').value = '';
+
+      updatePreviewPlayback();
+    }
+
+    function parseTimeInput(val) {
+      if (!val) return 0;
+      const str = String(val).trim();
+      if (str.includes(':')) {
+        const parts = str.split(':');
+        const min = parseInt(parts[0], 10) || 0;
+        const sec = parseInt(parts[1], 10) || 0;
+        return (min * 60) + sec;
+      }
+      return parseInt(str, 10) || 0;
+    }
+
+    function extractId(input) {
+      if (!input) return '';
+      const clean = input.trim();
+      if (/^[a-zA-Z0-9_-]{11}$/.test(clean)) return clean;
+      const match = clean.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i);
+      return match ? match[1] : '';
+    }
+
+    function handleVideoInput(val) {
+      const vid = extractId(val);
+      if (vid) {
+        updatePreviewPlayback();
+      }
+    }
+
+    function updatePreviewPlayback() {
+      const rawUrl = document.getElementById('inputVideoUrl').value;
+      const vid = extractId(rawUrl);
+      const start = parseTimeInput(document.getElementById('inputStartSec').value);
+      const endVal = document.getElementById('inputEndSec').value;
+      const end = endVal ? parseTimeInput(endVal) : null;
+
+      const iframe = document.getElementById('curatorPreviewIframe');
+      if (vid) {
+        const endParam = end ? `&end=${end}` : '';
+        iframe.src = `https://www.youtube.com/embed/${vid}?autoplay=1&start=${start}${endParam}&rel=0`;
+      } else {
+        iframe.src = '';
+      }
+    }
+
+    async function submitCuration() {
+      const pc = activePcs[currentPcIdx];
+      if (!pc) return;
+
+      const videoUrl = document.getElementById('inputVideoUrl').value.trim();
+      const startSec = parseTimeInput(document.getElementById('inputStartSec').value);
+      const endVal = document.getElementById('inputEndSec').value;
+      const endSec = endVal ? parseTimeInput(endVal) : null;
+      const email = document.getElementById('inputCuratorEmail').value.trim();
+      const name = document.getElementById('inputCuratorName').value.trim();
+      const notes = document.getElementById('inputNotes').value.trim();
+
+      if (!videoUrl) {
+        alert('Please enter a valid YouTube Video URL or Video ID.');
+        return;
+      }
+
+      if (!email || !email.includes('@')) {
+        alert('Please provide a valid curator email for the audit ledger.');
+        return;
+      }
+
+      // Save credentials for next time
+      localStorage.setItem('haya_curator_email', email);
+      localStorage.setItem('haya_curator_name', name);
+
+      try {
+        const res = await fetch('/api/curator/verify-pc', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            pc_id: pc.id,
+            video_url_or_id: videoUrl,
+            start_seconds: startSec,
+            end_seconds: endSec,
+            curator_email: email,
+            curator_name: name,
+            curator_notes: notes
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          // Update local state
+          pc.is_human_verified = true;
+          pc.video_id = data.pc.video_id;
+          pc.start_seconds = data.pc.start_seconds;
+          pc.end_seconds = data.pc.end_seconds;
+
+          renderPcStrip();
+          loadStats();
+
+          // Auto-advance to next criterion
+          if (currentPcIdx < activePcs.length - 1) {
+            selectPc(currentPcIdx + 1);
+          } else {
+            alert('All criteria for this qualification pack are complete!');
+          }
+        } else {
+          alert('Error: ' + data.error);
+        }
+      } catch (err) {
+        alert('Submission failed: ' + err.message);
+      }
+    }
+
+    function skipToNextPc() {
+      if (currentPcIdx < activePcs.length - 1) {
+        selectPc(currentPcIdx + 1);
+      }
+    }
+
+    function copySearchQuery() {
+      const q = document.getElementById('deckSearchQuery').innerText;
+      navigator.clipboard.writeText(q);
+      alert('Search vector copied to clipboard! Paste in YouTube to find relevant footage.');
+    }
+
+    async function openAuditModal() {
+      document.getElementById('auditModal').style.display = 'flex';
+      const body = document.getElementById('auditTableBody');
+      body.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">Loading audit logs...</td></tr>';
+
+      try {
+        const res = await fetch('/api/curator/audit-log?limit=50');
+        const data = await res.json();
+        if (data.success && data.logs) {
+          body.innerHTML = data.logs.map(log => `
+            <tr>
+              <td style="font-family:monospace; font-size:11px;">${new Date(log.created_at).toLocaleString()}</td>
+              <td><strong>${log.qp_code}</strong></td>
+              <td><code>${log.pc_code}</code></td>
+              <td><a href="${log.video_url}" target="_blank" style="color:#0284C7; font-family:monospace;">${log.video_id}</a></td>
+              <td>${log.start_seconds}s – ${log.end_seconds ? log.end_seconds + 's' : 'end'}</td>
+              <td>${escapeHtml(log.curator_name || log.curator_email)}</td>
+            </tr>
+          `).join('');
+        }
+      } catch (_) {}
+    }
+
+    function closeAuditModal() {
+      document.getElementById('auditModal').style.display = 'none';
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>
