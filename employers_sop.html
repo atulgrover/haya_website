@@ -86,14 +86,19 @@
     .sop-card.active { border-left: 4px solid var(--primary-color); }
 
     .sop-top-bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-    .sop-sector-badge { background: var(--primary-light); color: var(--primary-color); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-    .sop-station-badge { background: #F1F5F9; color: #334155; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .sop-sector-badge { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.2px; }
+    .sop-code-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #475569; background: #F1F5F9; border: 1px solid #E2E8F0; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.3px; }
 
-    .sop-title { font-family: var(--font-heading); font-size: 15.5px; font-weight: 700; color: var(--text-main); line-height: 1.35; }
-    .sop-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.45; }
+    .sop-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .sop-title { font-family: var(--font-heading); font-size: 15px; font-weight: 800; color: var(--text-main); line-height: 1.35; flex: 1; }
+    .sop-level-badge { font-size: 10.5px; font-weight: 700; color: #0284C7; background: #F0F9FF; border: 1px solid #BAE6FD; padding: 2px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
 
-    .sop-meta-row { display: flex; gap: 6px; margin-top: auto; padding-top: 10px; border-top: 1px solid #F1F5F9; flex-wrap: wrap; }
-    .sop-meta-chip { font-size: 11px; color: var(--text-muted); background: #F8FAFC; padding: 3px 8px; border-radius: 4px; font-weight: 700; }
+    .sop-desc { font-size: 12px; color: #64748B; line-height: 1.5; margin: 0; }
+
+    .sop-meta-row { display: flex; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid #F1F5F9; flex-wrap: wrap; align-items: center; }
+    .sop-meta-chip { font-size: 11px; color: #475569; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 3px 8px; border-radius: 4px; font-weight: 500; }
+    .sop-meta-chip strong { color: #0F172A; font-weight: 700; }
+    .sop-meta-chip.status-ready { color: #047857; background: #ECFDF5; border-color: #A7F3D0; font-weight: 700; }
 
     /* RIGHT PANEL: SOP Detail Inspector */
     .panel-right {
@@ -767,20 +772,33 @@
           .replace(/^SOP\s*:\s*/i, '')
           .trim();
         const stationCount = c.total_nos || 3;
-        const checkpointCount = stationCount * 5;
+        const checkpointCount = c.total_pcs || (stationCount * 12);
+        const levelClean = (c.nsqf_level || '4').replace(/[^0-9.]/g, '') || '4';
+
+        let subText = '';
+        if (c.sub_sector && c.occupation) {
+          subText = `${c.sub_sector} &bull; ${c.occupation} standard operating procedures and station checklists.`;
+        } else if (c.sub_sector) {
+          subText = `${c.sub_sector} standard operating procedures, quality checkpoints, and tolerances.`;
+        } else {
+          subText = `${c.sector || 'Industrial'} standard operating procedures, quality rubrics, and safety knacks.`;
+        }
 
         return `
           <div class="sop-card ${c.qp_code === currentQpCode ? 'active' : ''}" onclick="selectSopCard('${c.qp_code}', '${escapeHtml(cleanTitle)}', '${escapeHtml(c.sector)}', '${c.nsqf_level}', this)">
             <div class="sop-top-bar">
               <span class="sop-sector-badge">${c.sector || 'General'}</span>
-              <span class="sop-station-badge">🏭 ${stationCount} Workstation${stationCount === 1 ? '' : 's'}</span>
+              <span class="sop-code-badge">${c.qp_code || 'NCVET'}</span>
             </div>
-            <h3 class="sop-title">${cleanTitle}</h3>
-            <p class="sop-desc">Standard operating procedure covering inward setup, machine operation checkpoints, and quality sign-off for ${cleanTitle}.</p>
+            <div class="sop-title-row">
+              <h3 class="sop-title">${cleanTitle}</h3>
+              <span class="sop-level-badge">Level ${levelClean}</span>
+            </div>
+            <p class="sop-desc">${subText}</p>
             <div class="sop-meta-row">
-              <span class="sop-meta-chip">📑 ${checkpointCount} Checkpoints</span>
-              <span class="sop-meta-chip" style="color:#B45309; background:#FEF3C7;">🦺 Safety Rules</span>
-              <span class="sop-meta-chip" style="color:#047857; background:#ECFDF5;">✓ ISO 9001 Ready</span>
+              <span class="sop-meta-chip"><strong>${stationCount}</strong> Workstations</span>
+              <span class="sop-meta-chip"><strong>${checkpointCount}</strong> Checkpoints</span>
+              <span class="sop-meta-chip status-ready">ISO 9001 Compliant</span>
             </div>
           </div>
         `;
