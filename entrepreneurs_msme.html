@@ -1193,6 +1193,48 @@
       return { market, moat, setup };
     }
 
+    function cleanCommercialTitle(rawTitle, qpName, sector) {
+      let title = (rawTitle || '').replace(/^Turnkey\s+/i, '').replace(/\s+Enterprise$/i, '').trim();
+
+      const employeeRegex = /\b(executive|assistant|agent|operator|technician|handler|helper|worker|attendant|mechanic|officer|specialist|planner|inspector|supervisor|auditor|coordinator|controller|setter|fitter|welder|electrician|driver|stitcher|finisher|cutter|packer|loader)\b/gi;
+
+      // If already a synthesized brand name and doesn't contain employee tokens, use it
+      if (title && !employeeRegex.test(title) && title.length > 5 && !title.startsWith('Turnkey')) {
+        return title;
+      }
+
+      // Strip employee words
+      let base = (qpName || title || 'Commercial').replace(employeeRegex, '').replace(/\s+/g, ' ').trim();
+      const s = (sector || '').toLowerCase();
+      const b = base.toLowerCase();
+
+      if (b.includes('baggage') || b.includes('cargo') || b.includes('logistic')) {
+        return base.toLowerCase().includes('logistic') ? `${base} & Handling Services` : `${base} Logistics & Express Hub`;
+      }
+      if (b.includes('customer service') || b.includes('hospitality') || b.includes('concierge')) {
+        return `${base} Concierge & Client Agency`;
+      }
+      if (b.includes('reservation') || b.includes('ticketing') || b.includes('travel')) {
+        return `${base} Flight Ticketing & Travel Desk`;
+      }
+      if (b.includes('security') || b.includes('screening')) {
+        return `${base} & Airside Screening Services`;
+      }
+      if (s.includes('auto') || b.includes('auto') || b.includes('engine') || b.includes('vehicle')) {
+        return `${base} Automotive Works & Care Studio`;
+      }
+      if (s.includes('agri') || b.includes('crop') || b.includes('farm') || b.includes('solar')) {
+        return `${base} AgriTech Solutions & Systems`;
+      }
+      if (s.includes('apparel') || s.includes('textile') || b.includes('sewing') || b.includes('garment')) {
+        return `${base} Apparel & Garment Studio`;
+      }
+      if (s.includes('capital') || b.includes('cnc') || b.includes('machin') || b.includes('tool')) {
+        return `${base} Precision Tooling Works`;
+      }
+      return `${base} Commercial Solutions`;
+    }
+
     function renderCards(cards) {
       const grid = document.getElementById('blueprintGrid');
       const countSpan = document.getElementById('resultsCount');
@@ -1227,19 +1269,12 @@
       grid.innerHTML = cards.map(c => {
         const isSaved = isVentureSaved(c.qp_code);
         const monogram = getSectorMonogram(c.sector);
-        const serialTag = `SERIAL: ${c.qp_code.replace(/[\/:]/g, '-')}`;
-        const traits = getVentureTraits(c);
+        const displayTitle = cleanCommercialTitle(c.business_title, c.qp_name, c.sector);
 
-        // Generate exciting title if generic
-        let displayTitle = c.business_title;
-        if (!displayTitle || displayTitle.startsWith('Turnkey')) {
-          displayTitle = `${c.qp_name} Solutions`;
-        }
-
-        // Generate exciting 2-line founder hook pitch
-        let pitch = c.tagline || c.executive_summary;
-        if (!pitch || pitch.length < 20) {
-          pitch = `Commercial enterprise in ${c.sector || 'Industry'}. High-demand, NCVET-certified turnkey operational setup with bank financing.`;
+        // Generate exciting 3-4 line founder hook pitch
+        let pitch = c.executive_summary || c.tagline;
+        if (!pitch || pitch.length < 40) {
+          pitch = `High-growth commercial enterprise in ${c.sector || 'Industry'}. Delivers certified, standardized NCVET-compliant operations with turnkey machinery procurement and up to 35% PMEGP/Mudra bank loan subsidies.`;
         }
 
         return `

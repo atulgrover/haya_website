@@ -77,7 +77,8 @@ Convert the following Government NSQF Vocational Qualification into a viable, ba
 ${nosList}
 
 ### Requirements:
-1. Business Venture Name: A professional, realistic commercial enterprise title (NOT a job role).
+1. Business Venture Name: A high-status, prestigious commercial company/brand name (e.g. 'AeroLink Ground Logistics Pvt. Ltd.', 'AgriSun SolarTech Solutions', 'PrecisionSpark CNC Machining Works').
+   CRITICAL MANDATE: NEVER include employee job-role words like Executive, Agent, Assistant, Operator, Technician, Handler, Helper, Worker, Attendant, or Mechanic in the company name.
 2. Executive Summary: 100-150 words on market opportunity, customer demand in tier-2/3 Indian cities, and value proposition.
 3. Target Customers: Specific customer segments (B2C, B2B, Commercial).
 4. Revenue Streams: 3 to 4 specific, practical revenue models with realistic pricing/margins in Indian Rupees (INR).
@@ -175,6 +176,9 @@ JSON Schema:
         }
 
         parsed = JSON.parse(cleaned);
+        if (parsed.business_title) {
+            parsed.business_title = cleanCommercialTitle(parsed.business_title, qp.qp_name, qp.sector);
+        }
     } catch (e) {
         console.error('[MSME Synthesizer] JSON parse error:', e.message, 'Raw:', rawContent);
         throw new Error('Failed to parse structured JSON blueprint from AI');
@@ -182,6 +186,7 @@ JSON Schema:
 
     // 4. Save to PostgreSQL msme_business_blueprints table (Permanent Write-Through Cache)
     try {
+        const finalTitle = parsed.business_title || cleanCommercialTitle('', qp.qp_name, qp.sector);
         await db.query(`
             INSERT INTO msme_business_blueprints
                 (qp_code, business_title, tagline, executive_summary, target_customers, revenue_streams,
@@ -199,7 +204,7 @@ JSON Schema:
                 updated_at = CURRENT_TIMESTAMP
         `, [
             qp.qp_code,
-            parsed.business_title || `Turnkey ${qp.qp_name} Enterprise`,
+            finalTitle,
             parsed.tagline || 'Commercial MSME Business Blueprint',
             parsed.executive_summary || '',
             JSON.stringify(parsed.target_customers || []),
@@ -216,6 +221,52 @@ JSON Schema:
     return parsed;
 }
 
+/**
+ * Strips employee job-role suffixes and creates a prestigious commercial brand title
+ */
+function cleanCommercialTitle(rawTitle, qpName, sector) {
+    let title = (rawTitle || '').replace(/^Turnkey\s+/i, '').replace(/\s+Enterprise$/i, '').trim();
+
+    const employeeRegex = /\b(executive|assistant|agent|operator|technician|handler|helper|worker|attendant|mechanic|officer|specialist|planner|inspector|supervisor|auditor|coordinator|controller|setter|fitter|welder|electrician|driver|stitcher|finisher|cutter|packer|loader)\b/gi;
+
+    // If already a synthesized brand name and doesn't contain employee tokens, use it
+    if (title && !employeeRegex.test(title) && title.length > 5 && !title.startsWith('Turnkey')) {
+        return title;
+    }
+
+    // Strip employee words
+    let base = (qpName || title || 'Commercial').replace(employeeRegex, '').replace(/\s+/g, ' ').trim();
+    const s = (sector || '').toLowerCase();
+    const b = base.toLowerCase();
+
+    if (b.includes('baggage') || b.includes('cargo') || b.includes('logistic')) {
+        return base.toLowerCase().includes('logistic') ? `${base} & Handling Services` : `${base} Logistics & Express Hub`;
+    }
+    if (b.includes('customer service') || b.includes('hospitality') || b.includes('concierge')) {
+        return `${base} Concierge & Client Agency`;
+    }
+    if (b.includes('reservation') || b.includes('ticketing') || b.includes('travel')) {
+        return `${base} Flight Ticketing & Travel Desk`;
+    }
+    if (b.includes('security') || b.includes('screening')) {
+        return `${base} & Airside Screening Services`;
+    }
+    if (s.includes('auto') || b.includes('auto') || b.includes('engine') || b.includes('vehicle')) {
+        return `${base} Automotive Works & Care Studio`;
+    }
+    if (s.includes('agri') || b.includes('crop') || b.includes('farm') || b.includes('solar')) {
+        return `${base} AgriTech Solutions & Systems`;
+    }
+    if (s.includes('apparel') || s.includes('textile') || b.includes('sewing') || b.includes('garment')) {
+        return `${base} Apparel & Garment Studio`;
+    }
+    if (s.includes('capital') || b.includes('cnc') || b.includes('machin') || b.includes('tool')) {
+        return `${base} Precision Tooling Works`;
+    }
+    return `${base} Commercial Solutions`;
+}
+
 module.exports = {
-    generateMsmeBlueprint
+    generateMsmeBlueprint,
+    cleanCommercialTitle
 };

@@ -694,7 +694,7 @@ router.get(['/sop/details', '/sop/details/*'], async (req, res) => {
     }
 });
 
-const { generateMsmeBlueprint } = require('../utils/msmeSynthesizer');
+const { generateMsmeBlueprint, cleanCommercialTitle } = require('../utils/msmeSynthesizer');
 
 // GET /api/skillpedia/msme/cards — fetch MSME Business Opportunity Cards
 router.get('/msme/cards', async (req, res) => {
@@ -725,11 +725,7 @@ router.get('/msme/cards', async (req, res) => {
 
         const cards = rows.rows.map(r => {
             const fm = r.financial_model || {};
-            const cleanTitle = (r.qp_name || 'Commercial Trade')
-                .replace(/^Standard Operating Procedure:\s*/i, '')
-                .replace(/^SOP\s*:\s*/i, '')
-                .trim();
-            const busTitle = r.business_title || `Turnkey ${cleanTitle} Enterprise`;
+            const busTitle = cleanCommercialTitle(r.business_title, r.qp_name, r.sector);
             const totalCost = fm.total_project_cost_inr || 350000;
             const netProfit = fm.net_monthly_profit_inr || 65000;
             const subsidyPct = fm.pmegp_subsidy_pct || 35;
@@ -741,7 +737,7 @@ router.get('/msme/cards', async (req, res) => {
                 sub_sector: r.sub_sector || '',
                 nsqf_level: r.nsqf_level || '4',
                 business_title: busTitle,
-                tagline: r.tagline || `${r.sector || 'Commercial'} MSME Business Blueprint`,
+                tagline: r.tagline || `Commercial ${r.sector || 'Industry'} MSME enterprise setup with turnkey operational playbooks and PMEGP/Mudra bank financing.`,
                 executive_summary: r.executive_summary || '',
                 total_project_cost_inr: totalCost,
                 net_monthly_profit_inr: netProfit,
