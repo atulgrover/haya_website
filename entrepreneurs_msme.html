@@ -1342,11 +1342,11 @@
       grid.innerHTML = cards.map(c => {
         const isSaved = isVentureSaved(c.qp_code);
         const monogram = getSectorMonogram(c.sector);
-        const displayTitle = cleanCommercialTitle(c.business_title, c.qp_name, c.sector);
+        const displayTitle = c.business_title || cleanCommercialTitle(c.business_title, c.qp_name, c.sector);
 
-        // Generate exciting 3-4 line founder hook pitch
-        let pitch = c.executive_summary || c.tagline;
-        if (!pitch || pitch.length < 40) {
+        // Prioritize database founder pitch
+        let pitch = c.founder_pitch || c.executive_summary || c.tagline;
+        if (!pitch || pitch.length < 30) {
           pitch = `High-growth commercial enterprise in ${c.sector || 'Industry'}. Delivers certified, standardized NCVET-compliant operations with turnkey machinery procurement and up to 35% PMEGP/Mudra bank loan subsidies.`;
         }
 

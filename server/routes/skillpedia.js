@@ -705,8 +705,9 @@ router.get('/msme/cards', async (req, res) => {
 
         let query = `
             SELECT 
-                q.qp_code, q.qp_name, q.sector, q.sub_sector, q.nsqf_level,
-                b.business_title, b.tagline, b.executive_summary, b.financial_model
+                q.qp_code, q.qp_name, q.sector, q.sub_sector, q.nsqf_level, 
+                q.business_title AS qp_bus_title, q.founder_pitch AS qp_pitch,
+                b.business_title AS bp_bus_title, b.tagline, b.executive_summary AS bp_pitch, b.financial_model
             FROM nsqf_qps q
             LEFT JOIN msme_business_blueprints b ON q.qp_code = b.qp_code
             WHERE 1=1
@@ -725,7 +726,8 @@ router.get('/msme/cards', async (req, res) => {
 
         const cards = rows.rows.map(r => {
             const fm = r.financial_model || {};
-            const busTitle = cleanCommercialTitle(r.business_title, r.qp_name, r.sector);
+            const busTitle = r.bp_bus_title || r.qp_bus_title || cleanCommercialTitle(r.bp_bus_title, r.qp_name, r.sector);
+            const pitch = r.bp_pitch || r.qp_pitch || r.tagline || `High-growth commercial opportunity in ${r.sector || 'Industry'} with standardized NCVET workflows and up to 35% PMEGP/Mudra bank financing.`;
             const totalCost = fm.total_project_cost_inr || 350000;
             const netProfit = fm.net_monthly_profit_inr || 65000;
             const subsidyPct = fm.pmegp_subsidy_pct || 35;
@@ -737,12 +739,13 @@ router.get('/msme/cards', async (req, res) => {
                 sub_sector: r.sub_sector || '',
                 nsqf_level: r.nsqf_level || '4',
                 business_title: busTitle,
-                tagline: r.tagline || `Commercial ${r.sector || 'Industry'} MSME enterprise setup with turnkey operational playbooks and PMEGP/Mudra bank financing.`,
-                executive_summary: r.executive_summary || '',
+                tagline: r.tagline || `${r.sector || 'Commercial'} MSME Venture Blueprint`,
+                executive_summary: pitch,
+                founder_pitch: pitch,
                 total_project_cost_inr: totalCost,
                 net_monthly_profit_inr: netProfit,
                 subsidy_pct: subsidyPct,
-                is_synthesized: !!r.business_title
+                is_synthesized: !!r.bp_bus_title
             };
         });
 
