@@ -939,16 +939,78 @@
 
     function renderMarkdownToHtml(md) {
       if (!md) return '';
-      let html = md
-        .replace(/^### (.*$)/gim, '<h4 style="font-size:13.5px; font-weight:800; color:#0F172A; margin:12px 0 6px 0; display:flex; align-items:center; gap:6px;">$1</h4>')
-        .replace(/^## (.*$)/gim, '<h3 style="font-size:14.5px; font-weight:800; color:#0284C7; margin:14px 0 8px 0;">$1</h3>')
-        .replace(/\*\*(.*?)\*\*/gim, '<strong style="color:#0F172A; font-weight:700;">$1</strong>')
-        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-        .replace(/^\s*[\-\*]\s+(.*$)/gim, '<li style="margin-bottom:4px; padding-left:2px;">$1</li>')
-        .replace(/^\s*(\d+)\.\s+(.*$)/gim, '<li style="margin-bottom:4px; padding-left:2px;"><strong>$1.</strong> $2</li>')
-        .replace(/\n\n/gim, '</p><p style="margin:8px 0;">')
-        .replace(/\n/gim, '<br>');
-      return `<p style="margin:6px 0;">${html}</p>`;
+      
+      // Clean emojis/icons
+      let clean = md.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}]/gu, '').trim();
+
+      // Normalize newlines
+      const lines = clean.split('\n');
+      const blocks = [];
+      let currentList = null; // 'ol' or 'ul'
+      let listItems = [];
+
+      function flushList() {
+        if (!currentList) return;
+        const tag = currentList;
+        const itemsHtml = listItems.map(item => `<li style="margin-bottom:5px; line-height:1.55;">${formatInline(item)}</li>`).join('');
+        const listStyle = tag === 'ol' ? 'margin:6px 0 12px 0; padding-left:20px;' : 'margin:6px 0 12px 0; padding-left:18px;';
+        blocks.push(`<${tag} style="${listStyle}">${itemsHtml}</${tag}>`);
+        currentList = null;
+        listItems = [];
+      }
+
+      function formatInline(text) {
+        return text
+          .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#0F172A; font-weight:700;">$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>');
+      }
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) {
+          flushList();
+          continue;
+        }
+
+        // Headings
+        if (line.startsWith('### ')) {
+          flushList();
+          const headingText = formatInline(line.replace(/^###\s*/, ''));
+          blocks.push(`<h4 style="font-size:13px; font-weight:800; color:#0F172A; margin:14px 0 6px 0; letter-spacing:0.2px;">${headingText}</h4>`);
+          continue;
+        }
+        if (line.startsWith('## ')) {
+          flushList();
+          const headingText = formatInline(line.replace(/^##\s*/, ''));
+          blocks.push(`<h3 style="font-size:14px; font-weight:800; color:#0284C7; margin:16px 0 8px 0;">${headingText}</h3>`);
+          continue;
+        }
+
+        // Numbered list item: "1. Item" or "1) Item"
+        const numMatch = line.match(/^(\d+)[\.\)]\s+(.*)/);
+        if (numMatch) {
+          if (currentList && currentList !== 'ol') flushList();
+          currentList = 'ol';
+          listItems.push(numMatch[2]);
+          continue;
+        }
+
+        // Bullet list item: "- Item" or "* Item"
+        const bulletMatch = line.match(/^[\-\*]\s+(.*)/);
+        if (bulletMatch) {
+          if (currentList && currentList !== 'ul') flushList();
+          currentList = 'ul';
+          listItems.push(bulletMatch[1]);
+          continue;
+        }
+
+        // Regular paragraph text
+        flushList();
+        blocks.push(`<p style="margin:6px 0 8px 0; line-height:1.65; color:#334155;">${formatInline(line)}</p>`);
+      }
+
+      flushList();
+      return blocks.join('');
     }
 
     async function loadModalAiExplanation(pcDbId, perspective, lang) {

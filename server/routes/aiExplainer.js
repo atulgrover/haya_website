@@ -28,28 +28,49 @@ const LANGUAGE_CONFIG = {
 };
 
 /**
+ * Sanitize upstream text typos from raw government QP PDFs
+ */
+function cleanText(text) {
+    if (!text) return '';
+    return text
+        .replace(/\bpeform\b/gi, 'Perform')
+        .replace(/\bpeforming\b/gi, 'Performing')
+        .replace(/\bpeformed\b/gi, 'Performed')
+        .replace(/\bacordance\b/gi, 'accordance')
+        .replace(/\bguidence\b/gi, 'guidance')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+/**
  * Helper to construct rich structured AI prompt tailored to perspective & language
  */
 function buildExplanationPrompt(pc, perspective, langConfig) {
     const langName = langConfig.name;
     const scriptName = langConfig.script;
 
+    const sanitizedDesc = cleanText(pc.pc_description);
+    const sanitizedIntent = cleanText(pc.pc_intent);
+    const sanitizedNos = cleanText(pc.nos_title);
+    const sanitizedQp = cleanText(pc.qp_name || pc.qp_code);
+    const sanitizedModule = cleanText(pc.module_title);
+
     let perspectiveDirectives = '';
     if (perspective === 'sop') {
         perspectiveDirectives = `
 Perspective: INDUSTRIAL PLANT WORKSTATION STANDARD OPERATING PROCEDURE (SOP)
 - Context: Factory shop-floor standard work instruction for plant technicians.
-- Action Directive: "${pc.sop_action_directive || pc.pc_description}"
-- Engineering Tolerance: "${pc.sop_parameter_tolerance || 'Strict nominal tolerances'}"
-- Critical Safety Knack: "${pc.sop_critical_knack || 'Zero-energy state & PPE adherence'}"
+- Action Directive: "${cleanText(pc.sop_action_directive) || sanitizedDesc}"
+- Engineering Tolerance: "${cleanText(pc.sop_parameter_tolerance) || 'Strict nominal tolerances'}"
+- Critical Safety Knack: "${cleanText(pc.sop_critical_knack) || 'Zero-energy state & PPE adherence'}"
 - Tone: Crisp, compliant, safety-first, procedural.
 `;
     } else if (perspective === 'msme') {
         perspectiveDirectives = `
 Perspective: MSME TURNKEY COMMERCIAL SETUP & MACHINERY BOM
 - Context: Small enterprise owner / commercial workshop operator setting up operations.
-- Commercial Machine: "${pc.machine_name || 'Industrial Calibrated Workstation'}"
-- Equipment Spec: "${pc.machine_spec || 'Commercial grade 220V/440V unit'}"
+- Commercial Machine: "${cleanText(pc.machine_name) || 'Industrial Calibrated Workstation'}"
+- Equipment Spec: "${cleanText(pc.machine_spec) || 'Commercial grade 220V/440V unit'}"
 - Estimated CAPEX: "₹${pc.machine_capex_cost_inr || '35,000'}"
 - Tone: Business-oriented, equipment operation, maintenance, batch throughput.
 `;
@@ -57,8 +78,8 @@ Perspective: MSME TURNKEY COMMERCIAL SETUP & MACHINERY BOM
         perspectiveDirectives = `
 Perspective: VOCATIONAL SKILL MASTERCLASS (INTERN / APPRENTICE)
 - Context: Practical training demonstration for vocational students and apprentices.
-- Task Description: "${pc.pc_description}"
-- Standard Action Intent: "${pc.pc_intent}"
+- Task Description: "${sanitizedDesc}"
+- Standard Action Intent: "${sanitizedIntent}"
 - Tone: Pedagogical, encouraging, hands-on, step-by-step.
 `;
     }
@@ -68,32 +89,41 @@ Perspective: VOCATIONAL SKILL MASTERCLASS (INTERN / APPRENTICE)
 Explain the following practical vocational task in 200 to 280 words in ${langName} language (${scriptName} script):
 
 - Sector: "${pc.sector || 'Technical Vocational'}"
-- Qualification Pack: "${pc.qp_name || pc.qp_code}"
-- Occupational Standard (NOS): "${pc.nos_title || 'Core Occupational Task'}"
-- Workstation Module: "${pc.module_title || 'Workstation Execution'}"
+- Qualification Pack: "${sanitizedQp}"
+- Occupational Standard (NOS): "${sanitizedNos || 'Core Occupational Task'}"
+- Workstation Module: "${sanitizedModule || 'Workstation Execution'}"
 ${perspectiveDirectives}
 
-Structure your response clearly with Markdown:
-1. **🔬 Technical Overview / सिद्धांत एवं परिचय** (1-2 paragraphs explaining why this task is crucial and the core mechanism)
-2. **📋 Step-by-Step Practical Sequence / चरण-दर-चरण कार्य विधि** (3-4 concise numbered bullet steps)
-3. **⚠️ Critical Safety & Quality Rules / सुरक्षा एवं गुणवत्ता सावधानियां** (2 bullet points on common mistakes & tolerances)
-4. **💡 Master Craftsman Pro Tip / उस्ताद की सीख** (1 insider tip for flawless execution)
+Structure your response clearly with clean Markdown (DO NOT use emojis or icons):
+### 1. Technical Overview
+(1-2 paragraphs explaining why this task is crucial and the core mechanism)
 
-IMPORTANT: Write naturally in ${langName} in ${scriptName} script. Use standard technical terminology commonly understood by Indian practitioners. Output raw markdown only.`;
+### 2. Practical Execution Sequence
+(3-4 concise numbered bullet steps)
+
+### 3. Critical Safety & Quality Rules
+(2 bullet points on common mistakes & tolerances)
+
+### 4. Master Craftsman Pro Tip
+(1 insider tip for flawless execution)
+
+IMPORTANT: Write naturally and fluently in ${langName} (${scriptName} script). Do NOT include any emojis or icon characters in the output. Output raw markdown only.`;
 }
 
 /**
  * Generate fallback explanation when LLM is offline
  */
 function buildDeterministicFallback(pc, perspective, lang) {
-    const isIndic = lang !== 'en';  // All Indic languages get native-language content
-    const title = pc.pc_intent || pc.pc_description;
+    const isIndic = lang !== 'en';
+    const title = cleanText(pc.pc_intent || pc.pc_description);
+    const nosTitle = cleanText(pc.nos_title) || 'Standard Workstation Procedure';
+    const sector = pc.sector || 'Technical Vocational';
     
     if (perspective === 'sop') {
         return {
             explanation_markdown: isIndic
-                ? `### मानक संचालन प्रक्रिया (SOP): ${title}\n\n**1. प्रक्रिया का उद्देश्य:**\nयह कार्य इकाई ${pc.sector} क्षेत्र के सुरक्षा मानकों और गुणवत्ता दिशानिर्देशों के तहत निष्पादित की जाती है। सभी ऑपरेटरों को कार्य शुरू करने से पहले उपकरण की जांच करनी चाहिए।\n\n**2. चरण-दर-चरण कार्य विधि:**\n1. कार्यस्थल पर आवश्यक टूल्स और सुरक्षा उपकरणों (PPE) को व्यवस्थित करें।\n2. ${pc.sop_action_directive || pc.pc_description} के अनुसार प्रारंभिक सेटिंग्स की पुष्टि करें।\n3. टॉलरेंस सीमा: **${pc.sop_parameter_tolerance || 'निर्दिष्ट इंजीनियरिंग मानकों के भीतर'}** का पालन करें।\n4. कार्य पूरा होने पर गुणवत्ता चेकलिस्ट सत्यापित कर लॉग बुक में दर्ज करें।\n\n**3. सुरक्षा एवं गुणवत्ता:**\n- ${pc.sop_critical_knack || 'कार्य के दौरान उचित सुरक्षात्मक गियर पहनें और शून्य-ऊर्जा स्थिति बनाए रखें।'}\n\n**4. उस्ताद की सीख:**\nसटीक माप और नियमित कैलिब्रेशन से मशीन डाउनटाइम 40% तक कम होता है।`
-                : `### Standard Operating Procedure (SOP): ${title}\n\n**1. Procedural Objective:**\nThis workstation task is executed strictly in compliance with ${pc.sector} industrial safety codes and quality rubrics. Prior to machine engagement, verify all safety interlocks and calibration parameters.\n\n**2. Step-by-Step Execution Sequence:**\n1. Stage the workstation with required certified tooling and dielectric PPE.\n2. Execute action sequence: "${pc.sop_action_directive || pc.pc_description}".\n3. Maintain nominal operating tolerance: **${pc.sop_parameter_tolerance || 'Standard nominal limits'}**.\n4. Complete final dimensional/functional verification and update plant log.\n\n**3. Safety & Quality Controls:**\n- ${pc.sop_critical_knack || 'Maintain zero-energy state verification prior to terminal contact.'}\n\n**4. Master Pro-Tip:**\nVerifying mechanical alignment before tightening fasteners prevents thermal stress and micro-fractures.`,
+                ? `### मानक संचालन प्रक्रिया (SOP): ${title}\n\n### 1. प्रक्रिया का उद्देश्य\nयह कार्य इकाई ${sector} क्षेत्र के सुरक्षा मानकों और गुणवत्ता दिशानिर्देशों के तहत निष्पादित की जाती है। ${nosTitle} के तहत सभी ऑपरेटरों को कार्य शुरू करने से पहले उपकरण और वर्कपीस की जांच करनी चाहिए।\n\n### 2. चरण-दर-चरण कार्य विधि\n1. कार्यस्थल पर आवश्यक टूल्स, वर्कपीस और सुरक्षा उपकरणों (PPE) को व्यवस्थित करें।\n2. ${cleanText(pc.sop_action_directive) || cleanText(pc.pc_description)} के अनुसार प्रारंभिक सेटिंग्स की पुष्टि करें।\n3. टॉलरेंस सीमा: **${cleanText(pc.sop_parameter_tolerance) || 'निर्दिष्ट इंजीनियरिंग मानकों के भीतर'}** का कड़ाई से पालन करें।\n4. कार्य पूरा होने पर गुणवत्ता चेकलिस्ट सत्यापित कर लॉग बुक में दर्ज करें।\n\n### 3. सुरक्षा एवं गुणवत्ता नियंत्रण\n- ${cleanText(pc.sop_critical_knack) || 'कार्य के दौरान उचित सुरक्षात्मक गियर पहनें और शून्य-ऊर्जा स्थिति बनाए रखें।'}\n- गैर-अनुरूपता पाए जाने पर कार्य तुरंत रोकें और लाइन सुपरवाइजर को सूचित करें।\n\n### 4. उस्ताद की सीख\nसटीक माप और नियमित कैलिब्रेशन से मशीन डाउनटाइम और स्क्रैप दर में उल्लेखनीय कमी आती है।`
+                : `### Standard Operating Procedure (SOP): ${title}\n\n### 1. Procedural Objective\nThis workstation task is executed strictly in compliance with ${sector} industrial safety codes and quality rubrics under ${nosTitle}. Prior to execution, verify all safety interlocks and calibration parameters.\n\n### 2. Step-by-Step Execution Sequence\n1. Stage the workstation with certified tooling, clean workpieces, and dielectric PPE.\n2. Execute action sequence: "${cleanText(pc.sop_action_directive) || cleanText(pc.pc_description)}".\n3. Maintain nominal operating tolerance: **${cleanText(pc.sop_parameter_tolerance) || 'Standard nominal limits'}**.\n4. Complete final dimensional/functional verification and update plant log.\n\n### 3. Safety & Quality Controls\n- ${cleanText(pc.sop_critical_knack) || 'Maintain zero-energy state verification prior to terminal contact.'}\n- Quarantine non-conforming items immediately to prevent downstream defects.\n\n### 4. Master Pro-Tip\nVerifying mechanical alignment and tool calibration before engagement prevents thermal stress and micro-fractures.`,
             key_takeaways: [
                 `Tolerance: ${pc.sop_parameter_tolerance || 'Standard nominal limits'}`,
                 `Action: ${pc.sop_action_directive || pc.pc_description}`,
@@ -106,8 +136,8 @@ function buildDeterministicFallback(pc, perspective, lang) {
     if (perspective === 'msme') {
         return {
             explanation_markdown: isIndic
-                ? `### MSME मशीनरी एवं व्यवसाय गाइड: ${pc.machine_name || 'व्यावसायिक उपकरण'}\n\n**1. उपकरण का विवरण एवं लागत:**\n- **मशीन का नाम:** ${pc.machine_name || 'औद्योगिक वर्कस्टेशन'}\n- **विनिर्देश (Spec):** ${pc.machine_spec || 'कमर्शियल 220V/440V सेटअप'}\n- **अनुमानित पूंजी निवेश (CAPEX):** ₹${pc.machine_capex_cost_inr || '35,000'}\n\n**2. दैनिक उत्पादन चक्र:**\n1. सुबह की शिफ्ट में ऑपरेटर मशीन का प्री-चेक और लुब्रिकेशन पूरा करें।\n2. कच्चा माल लोड करें और स्पेसिफिकेशन के अनुसार बैच रन शुरू करें।\n3. प्रति घंटे आउटपुट और पावर खपत की निगरानी रखें।\n\n**3. बैंक एवं मुद्रा लोन योजना:**\nयह उपकरण PMEGP और Mudra लोन सब्सिडी के अंतर्गत 100% बैंक योग्य प्रोजेक्ट प्रोफाइल के अनुकूल है।`
-                : `### MSME Machine & Commercial Blueprint: ${pc.machine_name || 'Commercial Apparatus'}\n\n**1. Equipment & CAPEX Profile:**\n- **Machinery Name:** ${pc.machine_name || 'Commercial Precision Workstation'}\n- **Specification:** ${pc.machine_spec || 'Industrial 220V/440V Calibrated Apparatus'}\n- **Estimated Capital Outlay (CAPEX):** ₹${pc.machine_capex_cost_inr || '35,000'}\n\n**2. Daily Production Workflow:**\n1. Complete pre-operational visual inspection and fluid lubrication.\n2. Calibrate tooling and execute primary batch processing.\n3. Verify unit throughput and record cycle-time metrics.\n\n**3. Bankable Feasibility:**\nThis capital equipment is fully eligible for PMEGP and Mudra MSME credit guarantee support.`,
+                ? `### MSME मशीनरी एवं व्यवसाय गाइड: ${cleanText(pc.machine_name) || 'व्यावसायिक उपकरण'}\n\n### 1. उपकरण का विवरण एवं लागत\n- **मशीन का नाम:** ${cleanText(pc.machine_name) || 'औद्योगिक वर्कस्टेशन'}\n- **विनिर्देश (Spec):** ${cleanText(pc.machine_spec) || 'कमर्शियल 220V/440V सेटअप'}\n- **अनुमानित पूंजी निवेश (CAPEX):** ₹${pc.machine_capex_cost_inr || '35,000'}\n\n### 2. दैनिक उत्पादन चक्र\n1. सुबह की शिफ्ट में ऑपरेटर मशीन का प्री-चेक और लुब्रिकेशन पूरा करें।\n2. कच्चा माल लोड करें और स्पेसिफिकेशन के अनुसार बैच रन शुरू करें।\n3. प्रति घंटे आउटपुट और पावर खपत की निगरानी रखें।\n4. शिफ्ट समाप्त होने पर टूल्स को साफ कर सुरक्षा लॉक लगाएं।\n\n### 3. बैंक एवं मुद्रा लोन योजना\nयह उपकरण PMEGP और Mudra लोन सब्सिडी के अंतर्गत 100% बैंक योग्य प्रोजेक्ट प्रोफाइल के अनुकूल है।\n\n### 4. उस्ताद की सीख\nनियमित निवारक रखरखाव से उपकरण की आयु दोगुनी हो जाती है।`
+                : `### MSME Machine & Commercial Blueprint: ${cleanText(pc.machine_name) || 'Commercial Apparatus'}\n\n### 1. Equipment & CAPEX Profile\n- **Machinery Name:** ${cleanText(pc.machine_name) || 'Commercial Precision Workstation'}\n- **Specification:** ${cleanText(pc.machine_spec) || 'Industrial 220V/440V Calibrated Apparatus'}\n- **Estimated Capital Outlay (CAPEX):** ₹${pc.machine_capex_cost_inr || '35,000'}\n\n### 2. Daily Production Workflow\n1. Complete pre-operational visual inspection and fluid lubrication.\n2. Calibrate tooling and execute primary batch processing.\n3. Verify unit throughput and record cycle-time metrics.\n4. Clean and secure equipment at shift completion.\n\n### 3. Bankable Feasibility\nThis capital equipment is fully eligible for PMEGP and Mudra MSME credit guarantee support.\n\n### 4. Master Pro-Tip\nPreventive maintenance schedules protect machine uptime and guarantee continuous batch quality.`,
             key_takeaways: [
                 `Machine: ${pc.machine_name || 'Commercial Precision Workstation'}`,
                 `CAPEX: ₹${pc.machine_capex_cost_inr || '35,000'}`,
@@ -120,8 +150,8 @@ function buildDeterministicFallback(pc, perspective, lang) {
     // Default 'skill'
     return {
         explanation_markdown: isIndic
-            ? `### वोकेशनल मास्टरक्लास: ${title}\n\n**1. व्यावहारिक सिद्धांत:**\n${pc.sector} उद्योग में "${pc.pc_description}" एक महत्वपूर्ण बुनियादी कौशल है। सही तकनीक से काम करने पर उत्पादकता और सटीकता दोनों में सुधार होता है।\n\n**2. चरण-दर-चरण कार्य विधि:**\n1. कार्य की योजना बनाएं और आवश्यक सामग्री एकत्रित करें।\n2. मानक कार्यविधि (SOP) का पालन करते हुए कार्य को सावधानीपूर्वक शुरू करें।\n3. हर चरण पर सटीकता की जांच करें और किसी भी त्रुटि को तुरंत सुधारें।\n4. अंतिम परिणाम का निरीक्षण करें और अपने वर्कस्टेशन को साफ रखें।\n\n**3. गुणवत्ता एवं सावधानियां:**\n- काम करते समय जल्दबाजी न करें; सुरक्षा उपकरणों का उपयोग अनिवार्य है।\n\n**4. उस्ताद की सीख:**\nनियमित अभ्यास और बुनियादी टूल्स की सही समझ ही एक कुशल कारीगर की असली पहचान है।`
-            : `### Vocational Skill Masterclass: ${title}\n\n**1. Technical Overview & Core Principle:**\nIn the ${pc.sector} sector, mastering "${pc.pc_description}" is fundamental to becoming an industry-ready technician. Understanding both the operational theory and the tactile knack ensures flawless execution.\n\n**2. Step-by-Step Practical Sequence:**\n1. Prepare the workstation and inspect all required handheld instruments.\n2. Execute the primary sequence systematically following occupational guidelines.\n3. Validate physical tolerances at intermediate stages to eliminate rework.\n4. Complete the final quality audit and clean the work zone.\n\n**3. Quality Rules & Common Pitfalls:**\n- Avoid skipping calibration checks prior to live operations.\n- Maintain personal protective equipment (PPE) compliance at all times.\n\n**4. Master Craftsman Pro-Tip:**\nProper hand posture and steady tool grip reduce operator fatigue and increase accuracy by over 30%.`,
+            ? `### वोकेशनल मास्टरक्लास: ${title}\n\n### 1. व्यावहारिक सिद्धांत\n${sector} उद्योग में "${cleanText(pc.pc_description)}" एक महत्वपूर्ण बुनियादी कौशल है। ${nosTitle} के अंतर्गत सही तकनीक से कार्य करने पर उत्पादकता और सटीकता दोनों में सुधार होता है।\n\n### 2. चरण-दर-चरण कार्य विधि\n1. कार्य की योजना बनाएं और आवश्यक टूल्स एवं सामग्री एकत्रित करें।\n2. मानक कार्यविधि (SOP) का पालन करते हुए कार्य को सावधानीपूर्वक शुरू करें।\n3. हर चरण पर सटीकता और भौतिक माप की जांच करें।\n4. अंतिम परिणाम का निरीक्षण करें और अपने वर्कस्टेशन को स्वच्छ रखें।\n\n### 3. गुणवत्ता एवं सावधानियां\n- काम करते समय सुरक्षा नियमों का पालन करें और निर्धारित PPE पहनें।\n- किसी भी उपकरण या पार्ट में विचलन दिखने पर तुरंत सुधार करें।\n\n### 4. उस्ताद की सीख\nनियमित अभ्यास और बुनियादी टूल्स की सही समझ ही एक कुशल कारीगर की पहचान है।`
+            : `### Vocational Skill Masterclass: ${title}\n\n### 1. Technical Overview & Core Principle\nIn the ${sector} sector, mastering "${cleanText(pc.pc_description)}" is fundamental to becoming an industry-ready technician. Adhering to ${nosTitle} standards ensures operational safety and tactile proficiency.\n\n### 2. Step-by-Step Practical Sequence\n1. Prepare the workstation and inspect all required tooling and instruments.\n2. Execute the primary sequence systematically following occupational guidelines.\n3. Validate physical tolerances at intermediate stages to eliminate rework.\n4. Complete the final quality audit and clean the work zone.\n\n### 3. Quality Rules & Common Pitfalls\n- Avoid skipping calibration checks prior to live operations.\n- Maintain personal protective equipment (PPE) compliance at all times.\n\n### 4. Master Craftsman Pro-Tip\nProper hand posture and steady tool grip reduce operator fatigue and increase accuracy by over 30%.`,
         key_takeaways: [
             `Core Focus: ${pc.pc_intent || pc.pc_description}`,
             `Sector: ${pc.sector || 'Vocational Training'}`,
@@ -138,41 +168,44 @@ async function callSarvamExplainer(prompt) {
     const apiKey = process.env.SARVAM_API_KEY;
     if (!apiKey) return null;
 
-    try {
-        const res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'api-subscription-key': apiKey.trim()
-            },
-            body: JSON.stringify({
-                model: 'sarvam-105b',
-                messages: [{ role: 'user', content: prompt }],
-                temperature: 0.2,
-                max_tokens: 1200
-            }),
-            signal: AbortSignal.timeout(6000)
-        });
+    // Try fast conversational model first, fallback to base 105b
+    const models = ['sarvam-105b-conversations', 'sarvam-105b'];
 
-        if (res.ok) {
-            const data = await res.json();
-            const choice = data.choices?.[0];
-            let text = choice?.message?.content;
-            
-            // If reasoning model returned reasoning_content instead of content
-            if (!text && choice?.message?.reasoning_content) {
-                const reasoning = choice.message.reasoning_content;
-                // Attempt to extract final markdown output if embedded
-                const match = reasoning.match(/###[\s\S]+/);
-                if (match) text = match[0];
-            }
+    for (const model of models) {
+        try {
+            const res = await fetch('https://api.sarvam.ai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'api-subscription-key': apiKey.trim()
+                },
+                body: JSON.stringify({
+                    model: model,
+                    messages: [{ role: 'user', content: prompt }],
+                    temperature: 0.2,
+                    max_tokens: 1500
+                }),
+                signal: AbortSignal.timeout(25000)
+            });
 
-            if (text && text.trim().length > 50) {
-                return text.trim();
+            if (res.ok) {
+                const data = await res.json();
+                const choice = data.choices?.[0];
+                let text = choice?.message?.content;
+                
+                if (!text && choice?.message?.reasoning_content) {
+                    const reasoning = choice.message.reasoning_content;
+                    const match = reasoning.match(/###[\s\S]+/);
+                    if (match) text = match[0];
+                }
+
+                if (text && text.trim().length > 50) {
+                    return text.trim();
+                }
             }
+        } catch (err) {
+            console.warn(`[AI Explainer] Sarvam ${model} error: ${err.message}`);
         }
-    } catch (err) {
-        console.warn(`[AI Explainer] Sarvam call error: ${err.message}`);
     }
 
     return null;
