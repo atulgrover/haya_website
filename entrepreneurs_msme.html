@@ -718,16 +718,17 @@
   <script src="js/components.js"></script>
   <script>
     let allCards = [];
-    let currentNosCode = '';
+    let currentQpCode = '';
     let currentBlueprint = null;
     let selectedSector = 'all';
 
     document.addEventListener('DOMContentLoaded', async () => {
       if (window.HayaIdeDocking) {
         HayaIdeDocking.init({ 
-          rightPanelId: 'blueprintInspector',
+          rightPanelId: 'panelRight',
           storagePrefix: 'haya_startups_ide_' 
         });
+        HayaIdeDocking.toggleLeftPanel(true);
       }
       await loadSectors();
       await loadMsmeCards();
@@ -761,6 +762,10 @@
         if (data.success && data.cards && data.cards.length > 0) {
           allCards = data.cards;
           renderCards(allCards);
+
+          if (!currentQpCode && allCards.length > 0) {
+            selectCard(allCards[0].qp_code);
+          }
         } else {
           grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">No MSME opportunities found.</div>';
         }
@@ -777,13 +782,11 @@
       if (countSpan) {
         const q = (document.getElementById('searchTrade') ? document.getElementById('searchTrade').value.trim() : '');
         const sec = (document.getElementById('selectSector') ? document.getElementById('selectSector').value : 'all');
-        const cap = (document.getElementById('selectCapex') ? document.getElementById('selectCapex').value : 'all');
-        const sch = (document.getElementById('selectScheme') ? document.getElementById('selectScheme').value : 'all');
-        const isFiltered = q || sec !== 'all' || cap !== 'all' || sch !== 'all';
+        const isFiltered = q || sec !== 'all';
         if (isFiltered) {
           countSpan.innerText = `Showing ${cards ? cards.length : 0} matching MSME Business Opportunities`;
         } else {
-          countSpan.innerText = `Showing ${cards ? cards.length : 0} of 11,420 MSME Business Blueprints — Use Left Filters to Explore All`;
+          countSpan.innerText = `Showing ${cards ? cards.length : 0} of 2,002 MSME Business Blueprints — Use Left Filters to Explore All`;
         }
       }
 
@@ -793,14 +796,7 @@
       }
 
       grid.innerHTML = cards.map(c => {
-        // Strip out technical codes like (AAS/N0502) and raw prefixes
-        let cleanTitle = (c.business_title || `Turnkey Enterprise`)
-          .replace(/\s*\([A-Z0-9_\/-]+\)\s*/gi, ' ')
-          .replace(/^Turnkey\s+/i, '')
-          .trim();
-        if (!cleanTitle) cleanTitle = (c.qp_name || 'Commercial Micro-Enterprise');
-
-        const cost = c.total_project_cost_inr || 150000;
+        const cost = c.total_project_cost_inr || 350000;
         let costStr = '';
         if (cost >= 100000) {
           costStr = `₹ ${(cost / 100000).toFixed(2).replace(/\.00$/, '')} Lakhs`;
@@ -808,192 +804,162 @@
           costStr = `₹ ${cost.toLocaleString('en-IN')}`;
         }
 
-        const monthlyProfit = Math.round(cost * 0.22);
-        const profitStr = `₹ ${monthlyProfit.toLocaleString('en-IN')}/mo`;
+        const profit = c.net_monthly_profit_inr || 65000;
+        const profitStr = `₹ ${profit.toLocaleString('en-IN')}/mo`;
 
         return `
-          <div class="blueprint-card ${c.nos_code === currentNosCode ? 'active' : ''}" onclick="selectCard('${c.nos_code}', this)">
+          <div class="blueprint-card ${c.qp_code === currentQpCode ? 'active' : ''}" onclick="selectCard('${c.qp_code}', this)">
             <div class="card-top-bar">
               <span class="capex-badge">${costStr} Capex</span>
               <span class="qp-badge">${c.sector || 'General'}</span>
             </div>
-            <h3 class="blueprint-title">${cleanTitle}</h3>
-            <p class="blueprint-desc">Commercial ${c.sector || 'industry'} setup offering turnkey operations, pre-configured tooling BOM, and bank subsidy clearance.</p>
+            <h3 class="blueprint-title">${escapeHtmlText(c.business_title)}</h3>
+            <p class="blueprint-desc">${escapeHtmlText(c.tagline || c.executive_summary || 'Commercial MSME enterprise setup with PMEGP/Mudra bank financing.')}</p>
+            <div class="blueprint-meta-row">
+              <span class="meta-chip" style="color:#047857; background:#ECFDF5;"><strong>${c.subsidy_pct || 35}%</strong> PMEGP Subsidy</span>
+              <span class="meta-chip">Est. Net Profit: <strong>${profitStr}</strong></span>
+            </div>
           </div>
         `;
       }).join('');
     }
 
-    function selectCard(nosCode, cardEl) {
-      currentNosCode = nosCode;
+    function selectCard(qpCode, cardEl) {
+      currentQpCode = qpCode;
       document.querySelectorAll('.blueprint-card').forEach(c => c.classList.remove('active'));
       if (cardEl) cardEl.classList.add('active');
       if (window.HayaIdeDocking) {
         HayaIdeDocking.openRightPanel();
       }
-      inspectCard(nosCode);
+      inspectCard(qpCode);
     }
 
-    async function inspectCard(nosCode) {
-      currentNosCode = nosCode;
+    async function inspectCard(qpCode) {
+      currentQpCode = qpCode;
+      const loaderTitle = document.getElementById('inspTitle');
+      if (loaderTitle) loaderTitle.innerText = 'Synthesizing MSME Business Blueprint...';
+
       try {
-        const res = await fetch(`/api/skillpedia/msme/details?nos=${encodeURIComponent(nosCode)}`);
+        const res = await fetch(`/api/skillpedia/msme/details?qp=${encodeURIComponent(qpCode)}`);
         const data = await res.json();
 
         if (data.success && data.blueprint) {
           currentBlueprint = data.blueprint;
           const bp = data.blueprint;
-          const dpr = bp.financial_dpr || {};
+          const fm = bp.financial_model || {};
 
-          const cost = dpr.total_project_cost || bp.total_project_cost_inr || 150000;
-          const margin = dpr.promoter_contribution_inr || Math.round(cost * 0.05);
-          const marginPct = dpr.promoter_contribution_pct || 5;
-          const loan = dpr.bank_term_loan_inr || Math.round(cost * 0.60);
-          const subsidy = dpr.govt_subsidy_inr || Math.round(cost * 0.35);
-          const subsidyPct = dpr.govt_subsidy_pct || 35;
-          const rev = dpr.monthly_projected_revenue || Math.round(cost * 0.45);
-          const profit = dpr.monthly_net_profit_ebitda || Math.round(cost * 0.20);
-          const dscr = dpr.dscr_ratio || '2.85x';
-          const payback = dpr.payback_period_months || 5.5;
-          const space = bp.space_sqft || 150;
-          const power = bp.power_req || '2 kW Single Phase';
-          const clients = (bp.target_clients && bp.target_clients.length > 0) 
-            ? bp.target_clients.join(', ') 
-            : 'Local consumers, SME workshops, institutional accounts, and commercial fleets';
+          const cost = fm.total_project_cost_inr || 350000;
+          const margin = fm.promoter_equity_10_pct_inr || Math.round(cost * 0.10);
+          const loan = fm.bank_loan_90_pct_inr || Math.round(cost * 0.90);
+          const subsidy = fm.pmegp_subsidy_amount_inr || Math.round(cost * 0.35);
+          const subsidyPct = fm.pmegp_subsidy_pct || 35;
+          const rev = fm.estimated_monthly_revenue_inr || 120000;
+          const profit = fm.net_monthly_profit_inr || 65000;
+          const payback = fm.roi_payback_months || 6;
 
           // Top Inspector Header
-          document.getElementById('inspTitle').innerText = bp.business_title || `Turnkey ${data.nos_title} Unit`;
-          document.getElementById('inspSub').innerText = `NOS: ${data.nos_code} • Sector: ${data.sector} • NSQF Level ${data.nsqf_level || '4'}`;
+          document.getElementById('inspTitle').innerText = bp.business_title || `Turnkey ${data.qp_name} Enterprise`;
+          document.getElementById('inspSub').innerText = `${data.qp_code} • Sector: ${data.sector} • NSQF Level ${data.nsqf_level || '4'}`;
 
           // Snapshot Bar
-          document.getElementById('snapScheme').innerText = `${dpr.scheme || 'PMEGP / Mudra'} (${subsidyPct}% Subsidy)`;
+          document.getElementById('snapScheme').innerText = `PMEGP / Mudra (${subsidyPct}% Subsidy)`;
           document.getElementById('snapCapex').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
-          document.getElementById('snapMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (${marginPct}%)`;
+          document.getElementById('snapMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (10%)`;
           document.getElementById('snapLoan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
           document.getElementById('snapSubsidy').innerText = `₹ ${subsidy.toLocaleString('en-IN')}`;
-          document.getElementById('snapDscr').innerText = `${dscr} (Bank Sound)`;
+          document.getElementById('snapDscr').innerText = `2.85x (Bank Sound)`;
           document.getElementById('snapProfit').innerText = `₹ ${profit.toLocaleString('en-IN')} / mo`;
 
           // Chapter 1: Executive Summary
-          document.getElementById('sec11-text').innerText = `Establishment of a standardized ${bp.business_title || data.nos_title} micro-enterprise in ${data.sector} under ${bp.business_model_type || 'Turnkey Service Model'}.`;
-          document.getElementById('sec12-text').innerText = `Provides precision, NCVET-compliant technical services and production to resolve persistent regional shortages of certified ${data.sector} workmanship.`;
-          document.getElementById('sec13-text').innerText = `Serving ${clients} utilizing standardized commercial apparatus and certified testing protocols.`;
+          document.getElementById('sec11-text').innerText = bp.executive_summary || `Commercial setup for ${bp.business_title} in ${data.sector} sector.`;
+          document.getElementById('sec12-text').innerText = `Provides precision, NCVET-compliant technical services and commercial operations mapped to ${data.qp_code}.`;
+          document.getElementById('sec13-text').innerText = (bp.target_customers && bp.target_customers.length > 0)
+            ? bp.target_customers.join(' • ')
+            : 'Local consumers, SME workshops, institutional accounts, and commercial clients';
           document.getElementById('ch1-cost').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
           document.getElementById('ch1-loan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
-          document.getElementById('ch1-dscr').innerText = `${dscr} DSCR`;
+          document.getElementById('ch1-dscr').innerText = `2.85x DSCR`;
 
           // Chapter 2: Business & Industry Overview
-          document.getElementById('sec21-text').innerText = `To deliver dependable, precision ${data.nos_title} solutions with high operational safety, transparent billing, and zero customer downtime.`;
-          document.getElementById('sec22-text').innerText = `Direct unit job execution, preventive maintenance contracts (AMC), and OEM component supply with a projected monthly turnover of ₹ ${rev.toLocaleString('en-IN')}.`;
-          document.getElementById('sec23-text').innerText = `Strong growth trajectory in ${data.sector} sector supported by government MSME prioritization, Make-in-India mandates, and national skill infrastructure.`;
+          document.getElementById('sec21-text').innerText = bp.tagline || `To deliver dependable, precision solutions with high operational safety and customer satisfaction.`;
+          document.getElementById('sec22-text').innerText = (bp.revenue_streams && bp.revenue_streams.length > 0)
+            ? bp.revenue_streams.map(s => `${s.stream_name}: ${s.unit_economics}`).join('; ')
+            : `Turnkey commercial delivery with projected monthly turnover of ₹ ${rev.toLocaleString('en-IN')}.`;
+          document.getElementById('sec23-text').innerText = `High-growth enterprise supported by Ministry of MSME, Make-in-India mandates, and PMEGP subsidy schemes.`;
 
           // Chapter 3: Products & Services
-          document.getElementById('sec31-text').innerText = `Commercial execution of ${data.nos_title} specifications, testing calibrations, diagnostics, and repairs conforming to national standards.`;
-          document.getElementById('sec32-text').innerText = `Standardized digital testing logs, verified manufacturer tolerance adherence, and rapid local turnaround within 24-48 hours.`;
+          document.getElementById('sec31-text').innerText = (bp.revenue_streams && bp.revenue_streams.length > 0)
+            ? bp.revenue_streams.map(s => `• ${s.stream_name}: ${s.description}`).join('\n')
+            : `Commercial products and services conforming to national quality benchmarks.`;
+          document.getElementById('sec32-text').innerText = `Standardized quality verification logs, OEM spare sourcing, and prompt client delivery.`;
           document.getElementById('sec33-text').innerText = `Fully mapped to NCVET NSQF Level ${data.nsqf_level || '4'} Qualification Pack standards (${data.qp_code}).`;
 
           // Chapter 4: Market Analysis
-          document.getElementById('sec41-text').innerText = `Target customer profile: ${clients} located within an immediate 15–20 km operational catchment radius.`;
-          document.getElementById('sec44-text').innerText = `Direct B2B institutional outreach, verified Google Business Profile local search presence, and partnership tie-ups with regional ${data.sector} equipment dealers.`;
+          document.getElementById('sec41-text').innerText = `Target customer profile: ${(bp.target_customers || []).join(', ')}`;
+          document.getElementById('sec44-text').innerText = `Direct B2B institutional outreach, verified Google Business Profile local search presence, and partnership tie-ups with regional distributors.`;
 
           // Chapter 5: Operations & Machinery Plan
-          document.getElementById('ch5-space').innerText = `${space} Sq Ft`;
-          document.getElementById('ch5-power').innerText = power;
-          document.getElementById('ch5-bom-total').innerText = `Total Equipment Capex: ₹ ${cost.toLocaleString('en-IN')}`;
+          document.getElementById('ch5-space').innerText = `250–400 Sq Ft`;
+          document.getElementById('ch5-power').innerText = `2 to 5 kW Commercial`;
 
-          // Tool BOM Table
-          const bomTable = document.getElementById('bomTableBody');
-          const tools = bp.tool_bom || [];
-          if (tools.length > 0) {
-            bomTable.innerHTML = tools.map(t => `
+          // BOM Table
+          const bomTbody = document.getElementById('bomTableBody');
+          const bomList = bp.machinery_bom || [];
+          let bomTotal = 0;
+          bomTbody.innerHTML = bomList.map(m => {
+            bomTotal += (m.estimated_cost_inr || 0);
+            return `
               <tr>
                 <td>
-                  <strong style="color:var(--text-main); font-size:11.5px;">${t.name}</strong>
-                  <div style="font-size:10.5px; color:var(--text-muted);">${t.spec || 'Standard Specification'}</div>
+                  <div style="font-weight:700; color:#0F172A;">${escapeHtmlText(m.machine_name)}</div>
+                  <div style="font-size:11px; color:#64748B;">${escapeHtmlText(m.specification || '')} • ${m.power_kw || 0.5} kW</div>
                 </td>
-                <td style="font-weight:700; text-align:center;">${t.qty || 1}</td>
-                <td style="font-weight:700; color:var(--primary-color);">₹ ${(t.cost || 0).toLocaleString('en-IN')}</td>
+                <td style="text-align:center;">1</td>
+                <td style="font-weight:700; color:#0284C7;">₹ ${(m.estimated_cost_inr || 0).toLocaleString('en-IN')}</td>
               </tr>
-            `).join('');
-          } else {
-            bomTable.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:12px; color:var(--text-muted);">Standard turnkey apparatus kit pre-configured.</td></tr>`;
-          }
-
-          // 4-Phase Playbook
-          const playbookList = document.getElementById('playbookList');
-          const playbook = bp.day1_playbook || [];
-          if (playbook.length > 0) {
-            playbookList.innerHTML = playbook.map(p => `
-              <div class="playbook-phase-card">
-                <div class="playbook-phase-title">${p.phase}</div>
-                <div class="playbook-phase-action">${p.action}</div>
-              </div>
-            `).join('');
-          } else {
-            playbookList.innerHTML = `
-              <div class="playbook-phase-card">
-                <div class="playbook-phase-title">Phase 1: Site Setup & Utility Wiring</div>
-                <div class="playbook-phase-action">Prepare ${space} sq ft commercial workshop with ${power} power connection and safety earthing.</div>
-              </div>
-              <div class="playbook-phase-card">
-                <div class="playbook-phase-title">Phase 2: Machinery Procurement & Calibration</div>
-                <div class="playbook-phase-action">Procure certified tool BOM apparatus and execute initial calibration tests.</div>
-              </div>
-              <div class="playbook-phase-card">
-                <div class="playbook-phase-title">Phase 3: Pilot Test Operations</div>
-                <div class="playbook-phase-action">Conduct test job runs according to NCVET NSQF Level ${data.nsqf_level || '4'} quality standards.</div>
-              </div>
-              <div class="playbook-phase-card">
-                <div class="playbook-phase-title">Phase 4: Commercial Launch & Client Acquisition</div>
-                <div class="playbook-phase-action">Initiate commercial service delivery and activate local B2B dealer channels.</div>
-              </div>
             `;
-          }
+          }).join('');
+          document.getElementById('ch5-bom-total').innerText = `Total: ₹ ${bomTotal.toLocaleString('en-IN')}`;
 
-          // Chapter 6: Management & Staffing
-          document.getElementById('sec62-text').innerText = `Certified against NCVET NSQF Level ${data.nsqf_level || '4'} benchmarks for ${data.nos_title}.`;
+          // Playbook
+          const playbookEl = document.getElementById('playbookList');
+          const pbList = bp.launch_playbook || [];
+          playbookEl.innerHTML = pbList.map(p => `
+            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:8px 10px;">
+              <div style="font-weight:700; font-size:11.5px; color:#0284C7; margin-bottom:3px;">${escapeHtmlText(p.phase)}</div>
+              <ul style="margin:0; padding-left:16px; font-size:11.5px; color:#334155;">
+                ${(p.actions || []).map(act => `<li style="margin-bottom:2px;">${escapeHtmlText(act)}</li>`).join('')}
+              </ul>
+            </div>
+          `).join('');
 
           // Chapter 7: Financial Projections
           document.getElementById('finStatCost').innerText = `₹ ${cost.toLocaleString('en-IN')}`;
-          document.getElementById('finStatMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (${marginPct}%)`;
+          document.getElementById('finStatMargin').innerText = `₹ ${margin.toLocaleString('en-IN')} (10%)`;
           document.getElementById('finStatLoan').innerText = `₹ ${loan.toLocaleString('en-IN')}`;
           document.getElementById('finStatSubsidy').innerText = `₹ ${subsidy.toLocaleString('en-IN')} (${subsidyPct}%)`;
-          document.getElementById('finStatRev').innerText = `₹ ${rev.toLocaleString('en-IN')} / mo`;
-          document.getElementById('finStatProfit').innerText = `₹ ${profit.toLocaleString('en-IN')} / mo`;
-          document.getElementById('finStatDscr').innerText = `${dscr} (High Approval)`;
+          document.getElementById('finStatRev').innerText = `₹ ${rev.toLocaleString('en-IN')}`;
+          document.getElementById('finStatProfit').innerText = `₹ ${profit.toLocaleString('en-IN')}`;
+          document.getElementById('finStatDscr').innerText = `2.85x (High)`;
           document.getElementById('finStatPayback').innerText = `${payback} Months`;
-
-          // Chapter 9: Appendices
-          document.getElementById('sec91-text').innerText = `Full qualification syllabus, Knowledge Units (KU), and Skill Units (GS) verified under QP Code: ${data.qp_code || 'NCVET Standard'}.`;
         }
       } catch (err) {
         console.error('Error inspecting MSME card:', err);
       }
     }
 
-    function toggleChapter(chapterId) {
-      const card = document.getElementById(chapterId);
-      if (card) {
-        card.classList.toggle('open');
-      }
+    function toggleChapter(chId) {
+      const card = document.getElementById(chId);
+      if (card) card.classList.toggle('open');
     }
 
-    function expandAllChapters() {
-      document.querySelectorAll('.chapter-card').forEach(card => card.classList.add('open'));
-    }
-
-    function collapseAllChapters() {
-      document.querySelectorAll('.chapter-card').forEach(card => card.classList.remove('open'));
-    }
-
-    async function handleCombinedFilter() {
+    function handleCombinedFilter() {
       const q = document.getElementById('searchTrade').value.toLowerCase().trim();
       const sector = document.getElementById('selectSector').value;
-      const budget = document.getElementById('selectBudget').value;
 
       if (sector !== selectedSector) {
         selectedSector = sector;
-        await loadMsmeCards(sector);
+        loadMsmeCards(sector);
         return;
       }
 
@@ -1001,44 +967,36 @@
       if (q) {
         filtered = filtered.filter(c => 
           (c.business_title && c.business_title.toLowerCase().includes(q)) ||
-          (c.nos_code && c.nos_code.toLowerCase().includes(q)) ||
+          (c.qp_name && c.qp_name.toLowerCase().includes(q)) ||
+          (c.qp_code && c.qp_code.toLowerCase().includes(q)) ||
           (c.sector && c.sector.toLowerCase().includes(q))
         );
       }
-
-      if (budget !== 'all') {
-        filtered = filtered.filter(c => {
-          const cost = c.total_project_cost_inr || 150000;
-          if (budget === 'under1') return cost < 100000;
-          if (budget === '1to3') return cost >= 100000 && cost <= 300000;
-          if (budget === '3to5') return cost > 300000 && cost <= 500000;
-          if (budget === 'above5') return cost > 500000;
-          return true;
-        });
-      }
-
       renderCards(filtered);
     }
 
-    function resetMsmeFilters() {
+    function resetTradeFilters() {
       document.getElementById('searchTrade').value = '';
       document.getElementById('selectSector').value = 'all';
-      document.getElementById('selectBudget').value = 'all';
-      document.getElementById('selectModel').value = 'all';
-      document.getElementById('selectScheme').value = 'all';
       selectedSector = 'all';
       loadMsmeCards('all');
     }
 
     function downloadBankReport() {
       if (!currentBlueprint) {
-        alert('Please select a business opportunity card first.');
+        alert('Please select an MSME business blueprint first.');
         return;
       }
-      expandAllChapters();
-      setTimeout(() => {
-        window.print();
-      }, 250);
+      window.print();
+    }
+
+    function escapeHtmlText(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
     }
   </script>
 </body>

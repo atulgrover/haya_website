@@ -694,6 +694,8 @@ router.get(['/sop/details', '/sop/details/*'], async (req, res) => {
     }
 });
 
+const { generateMsmeBlueprint } = require('../utils/msmeSynthesizer');
+
 // GET /api/skillpedia/msme/cards — fetch MSME Business Opportunity Cards
 router.get('/msme/cards', async (req, res) => {
     try {
@@ -703,10 +705,10 @@ router.get('/msme/cards', async (req, res) => {
 
         let query = `
             SELECT 
-                n.id, n.qp_code, n.nos_code, n.nos_title, n.business_model_type, n.msme_blueprint_json,
-                q.qp_name, q.sector, q.nsqf_level
-            FROM nsqf_nos n
-            LEFT JOIN nsqf_qps q ON n.qp_code = q.qp_code
+                q.qp_code, q.qp_name, q.sector, q.sub_sector, q.nsqf_level,
+                b.business_title, b.tagline, b.executive_summary, b.financial_model
+            FROM nsqf_qps q
+            LEFT JOIN msme_business_blueprints b ON q.qp_code = b.qp_code
             WHERE 1=1
         `;
         const params = [];
@@ -716,39 +718,35 @@ router.get('/msme/cards', async (req, res) => {
             query += ` AND (q.sector = $${params.length} OR q.sector ILIKE '%' || $${params.length} || '%')`;
         }
 
-        query += ` ORDER BY n.id ASC LIMIT $${params.length + 1} OFFSET $${params.length + 2}`;
+        query += ` ORDER BY q.id ASC LIMIT $${params.length + 1} OFFSET $${params.length + 2}`;
         params.push(limit, offset);
 
         const rows = await db.pool.query(query, params);
 
         const cards = rows.rows.map(r => {
-            let bp = r.msme_blueprint_json;
-            if (typeof bp === 'string') {
-                try { bp = JSON.parse(bp); } catch {}
-            }
-            if (!bp) {
-                // Return structured fallback
-                bp = {
-                    business_title: `Turnkey ${r.nos_title} Station`,
-                    total_project_cost_inr: 150000,
-                    investment_bracket: '₹1 Lakh - ₹3 Lakhs',
-                    financial_dpr: { dscr_ratio: '2.85x', payback_period_months: 5.5, govt_subsidy_pct: 35 }
-                };
-            }
+            const fm = r.financial_model || {};
+            const cleanTitle = (r.qp_name || 'Commercial Trade')
+                .replace(/^Standard Operating Procedure:\s*/i, '')
+                .replace(/^SOP\s*:\s*/i, '')
+                .trim();
+            const busTitle = r.business_title || `Turnkey ${cleanTitle} Enterprise`;
+            const totalCost = fm.total_project_cost_inr || 350000;
+            const netProfit = fm.net_monthly_profit_inr || 65000;
+            const subsidyPct = fm.pmegp_subsidy_pct || 35;
+
             return {
-                id: r.id,
-                nos_code: r.nos_code,
                 qp_code: r.qp_code,
                 qp_name: r.qp_name,
                 sector: r.sector || 'General',
+                sub_sector: r.sub_sector || '',
                 nsqf_level: r.nsqf_level || '4',
-                business_title: bp.business_title,
-                business_model_type: r.business_model_type || bp.business_model_type || 'Turnkey_Service_Kiosk',
-                total_project_cost_inr: bp.total_project_cost_inr || 150000,
-                investment_bracket: bp.investment_bracket || '₹1 Lakh - ₹3 Lakhs',
-                dscr_ratio: (bp.financial_dpr && bp.financial_dpr.dscr_ratio) || '2.85x',
-                payback_period_months: (bp.financial_dpr && bp.financial_dpr.payback_period_months) || 5.5,
-                subsidy_pct: (bp.financial_dpr && bp.financial_dpr.govt_subsidy_pct) || 35
+                business_title: busTitle,
+                tagline: r.tagline || `${r.sector || 'Commercial'} MSME Business Blueprint`,
+                executive_summary: r.executive_summary || '',
+                total_project_cost_inr: totalCost,
+                net_monthly_profit_inr: netProfit,
+                subsidy_pct: subsidyPct,
+                is_synthesized: !!r.business_title
             };
         });
 
@@ -758,70 +756,48 @@ router.get('/msme/cards', async (req, res) => {
             cards
         });
     } catch (e) {
+        console.error('[MSME Cards] Error:', e);
         res.status(500).json({ success: false, error: e.message });
     }
 });
 
-// GET /api/skillpedia/msme/details — fetch full MSME Blueprint, Tool BOM, and Bankable DPR
-router.get(['/msme/details', '/msme/details/*'], async (req, res) => {
+// GET /api/skillpedia/msme/details — fetch full MSME Blueprint with live LLM synthesis & write-through cache
+router.get(['/msme/details', '/msme/details/*', '/msme/blueprint'], async (req, res) => {
     try {
-        let nosCode = req.query.nos || req.query.nosCode || '';
-        if (!nosCode && req.params[0]) {
-            nosCode = req.params[0];
+        let rawCode = req.query.qp || req.query.qpCode || req.query.nos || req.query.nosCode || '';
+        if (!rawCode && req.params[0]) {
+            rawCode = req.params[0];
         }
-        if (nosCode.startsWith('/')) nosCode = nosCode.substring(1);
-        nosCode = decodeURIComponent(nosCode).trim().replace(/_/g, '/');
+        if (rawCode.startsWith('/')) rawCode = rawCode.substring(1);
+        const qpCode = decodeURIComponent(rawCode).trim().replace(/_/g, '/');
 
-        const nosRow = await db.prepare(`SELECT * FROM nsqf_nos WHERE nos_code = ? OR REPLACE(nos_code, '/', '_') = ?`).get(nosCode, nosCode.replace(/\//g, '_'));
-        if (!nosRow) {
-            return res.status(404).json({ success: false, error: 'NOS unit not found' });
+        // Fetch master QP row
+        const qpRes = await db.pool.query(
+            `SELECT qp_code, qp_name, sector, sub_sector, occupation, nsqf_level 
+             FROM nsqf_qps 
+             WHERE qp_code = $1 OR REPLACE(qp_code, '/', '_') = $2 LIMIT 1`,
+            [qpCode, qpCode.replace(/\//g, '_')]
+        );
+
+        if (!qpRes.rows || qpRes.rows.length === 0) {
+            return res.status(404).json({ success: false, error: `Qualification pack ${qpCode} not found` });
         }
+        const qpRow = qpRes.rows[0];
 
-        const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ?`).get(nosRow.qp_code) || { qp_code: nosRow.qp_code, sector: 'General', nsqf_level: '4' };
-
-        let blueprint = nosRow.msme_blueprint_json;
-        if (typeof blueprint === 'string') {
-            try { blueprint = JSON.parse(blueprint); } catch {}
-        }
-
-        if (!blueprint) {
-            // Lazy synthesize if not present
-            const pcs = await db.prepare(`SELECT * FROM nsqf_pcs WHERE qp_code = ? AND nos_code = ? ORDER BY sequence_order ASC, id ASC`).all(nosRow.qp_code, nosRow.nos_code);
-            const { generateHeuristicMsmeBlueprint } = require('../../scripts/nsqf_msme_synthesizer');
-            // Or fallback json
-            blueprint = {
-                business_title: `Turnkey ${nosRow.nos_title} Commercial Station`,
-                business_model_type: 'Turnkey_Service_Kiosk',
-                total_project_cost_inr: 150000,
-                tool_bom: [
-                    { name: `Workstation Precision Apparatus for ${nosRow.nos_title}`, spec: 'Industrial grade apparatus', qty: 1, cost: 65000 },
-                    { name: 'Standard Calibration & Testing Kit', spec: 'Digital measurement apparatus', qty: 1, cost: 25000 }
-                ],
-                financial_dpr: {
-                    scheme: 'PMEGP / Mudra',
-                    total_project_cost: 150000,
-                    promoter_contribution_inr: 7500,
-                    govt_subsidy_inr: 52500,
-                    bank_term_loan_inr: 90000,
-                    monthly_projected_revenue: 65000,
-                    monthly_net_profit_ebitda: 28000,
-                    dscr_ratio: '2.85x',
-                    payback_period_months: 5.5
-                }
-            };
-        }
+        // Synthesize or retrieve from PostgreSQL write-through cache
+        const blueprint = await generateMsmeBlueprint(qpRow.qp_code);
 
         res.json({
             success: true,
-            nos_code: nosRow.nos_code,
-            nos_title: nosRow.nos_title,
-            qp_code: nosRow.qp_code,
+            qp_code: qpRow.qp_code,
             qp_name: qpRow.qp_name,
             sector: qpRow.sector,
+            sub_sector: qpRow.sub_sector,
             nsqf_level: qpRow.nsqf_level,
             blueprint
         });
     } catch (e) {
+        console.error('[MSME Details] Error generating blueprint:', e);
         res.status(500).json({ success: false, error: e.message });
     }
 });
