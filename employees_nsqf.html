@@ -510,7 +510,6 @@
         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
           <div>
             <div class="inspector-title" id="inspectorTitle">Lesson Inspector</div>
-            <div class="inspector-subtitle" id="inspectorSubtitle">Select a job role card to explore NCVET Performance Criteria and micro-learning reels.</div>
           </div>
           <div class="inspector-actions-bar">
             <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore Inspector (Esc)">⤢</button>
@@ -776,25 +775,10 @@
 
       title.innerText = `${qpName} (${qpCode})`;
       content.innerHTML = `
-        <!-- Top Action Toolbar for Selected Role -->
-        <div style="background:#F8FAFC; border:1px solid var(--border-color); border-radius:10px; padding:12px; display:flex; flex-direction:column; gap:8px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
-            <button onclick="openWikiQrModal('${qpCode}', '${encodeURIComponent(qpName)}')" 
-                    style="background:#0284C7; color:#FFFFFF; border:1px solid #0369A1; border-radius:6px; padding:8px 10px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 2px 4px rgba(2,132,199,0.2); transition:all 0.15s;">
-              <span>📱</span> Download Offline Wiki
-            </button>
-            <a href="${pdfUrl}" target="_blank" rel="noopener" 
-               style="background:#0F172A; color:#FFFFFF; border:1px solid #1E293B; border-radius:6px; padding:8px 10px; font-size:12px; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 2px 4px rgba(15,23,42,0.2); transition:all 0.15s;">
-              <span>📄</span> Skill Curriculum (PDF)
-            </a>
-          </div>
-          <div style="font-size:11px; color:#64748B; text-align:center;">
-            ⚡ 100% Offline Tiddloid / Safari PWA Ready • Official NCVET Standards
-          </div>
-        </div>
         <div id="inspectorAccordionWrap">
           <div style="font-size:12px; color:var(--text-muted); padding:16px; text-align:center;">⏳ Loading NOS &amp; Performance Criteria...</div>
         </div>
+        <div id="inspectorDownloadFooter" style="display:none;"></div>
       `;
       if (window.HayaIdeDocking) {
         HayaIdeDocking.openRightPanel();
@@ -904,6 +888,26 @@
               }).join('')}
             </div>
           `;
+
+          // Render sticky bottom download footer
+          const footer = document.getElementById('inspectorDownloadFooter');
+          if (footer) {
+            footer.style.display = 'block';
+            footer.innerHTML = `
+              <div style="position:sticky; bottom:0; background:#FFFFFF; border-top:1px solid var(--border-color); padding:12px; margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:8px; box-shadow:0 -4px 16px rgba(0,0,0,0.06); z-index:10;">
+                <button onclick="openWikiQrModal('${qpCode}', '${encodeURIComponent(qpName)}')" 
+                        style="background:#0284C7; color:#FFFFFF; border:1px solid #0369A1; border-radius:8px; padding:10px 10px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 2px 6px rgba(2,132,199,0.25); transition:all 0.15s;"
+                        onmouseover="this.style.background='#0369A1'" onmouseout="this.style.background='#0284C7'">
+                  <span>📱</span> Offline Wiki
+                </button>
+                <a href="${pdfUrl}" target="_blank" rel="noopener" 
+                   style="background:#0F172A; color:#FFFFFF; border:1px solid #1E293B; border-radius:8px; padding:10px 10px; font-size:12px; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 2px 6px rgba(15,23,42,0.2); transition:all 0.15s;"
+                   onmouseover="this.style.background='#1E293B'" onmouseout="this.style.background='#0F172A'">
+                  <span>📄</span> Skill PDF
+                </a>
+              </div>
+            `;
+          }
         } else {
           document.getElementById('inspectorAccordionWrap').innerHTML = `
             <div style="font-size:12px; color:#EF4444; padding:16px; text-align:center;">⚠️ Unable to load curriculum. Please try again.</div>
