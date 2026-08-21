@@ -430,6 +430,41 @@ async function initSchema() {
             );
 
             CREATE INDEX IF NOT EXISTS idx_pc_explain_lookup ON pc_explanations_cache(pc_id, perspective, lang);
+
+            CREATE TABLE IF NOT EXISTS msme_business_blueprints (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT UNIQUE NOT NULL,
+                business_title TEXT NOT NULL,
+                tagline TEXT,
+                executive_summary TEXT,
+                target_customers JSONB,
+                revenue_streams JSONB,
+                machinery_bom JSONB,
+                financial_model JSONB,
+                launch_playbook JSONB,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+                updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
+
+            CREATE TABLE IF NOT EXISTS hil_video_curations (
+                id SERIAL PRIMARY KEY,
+                pc_id INT NOT NULL,
+                qp_code TEXT NOT NULL,
+                nos_code TEXT NOT NULL,
+                pc_code TEXT NOT NULL,
+                video_id TEXT NOT NULL,
+                video_title TEXT,
+                video_url TEXT,
+                start_seconds INT DEFAULT 0,
+                end_seconds INT,
+                previous_video_id TEXT,
+                curator_email TEXT,
+                curator_name TEXT,
+                confidence_score INT DEFAULT 100,
+                curator_notes TEXT,
+                ip_address TEXT,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
         `);
 
         console.log('[Haya Portal DB] ✅ Local PostgreSQL schema verified & connected.');
