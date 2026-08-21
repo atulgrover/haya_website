@@ -611,30 +611,73 @@ router.get(['/sop/details', '/sop/details/*'], async (req, res) => {
         const qpCode = decodeURIComponent(rawCode).trim().replace(/_/g, '/');
         const cleanQp = qpCode.replace(/\//g, '_');
 
-        const qpRow = await db.prepare(`SELECT * FROM nsqf_qps WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ?`).get(qpCode, cleanQp);
-        const modules = await db.prepare(`SELECT * FROM nsqf_modules WHERE qp_code = ? OR REPLACE(qp_code, '/', '_') = ? ORDER BY sequence_order ASC, id ASC`).all(qpCode, cleanQp);
+        const qpRes = await db.pool.query(
+            `SELECT * FROM nsqf_qps WHERE qp_code = $1 OR REPLACE(qp_code, '/', '_') = $2 LIMIT 1`,
+            [qpCode, cleanQp]
+        );
+        const qpRow = qpRes.rows && qpRes.rows[0];
 
-        const sops = [];
-        for (const m of modules) {
-            let sopDoc = m.sop_procedure_json;
-            if (typeof sopDoc === 'string') {
-                try { sopDoc = JSON.parse(sopDoc); } catch {}
-            }
-            if (sopDoc) {
-                sops.push(sopDoc);
-            }
-        }
+        // Fetch real Occupational Standards (NOS) from PostgreSQL
+        const nosRes = await db.pool.query(
+            `SELECT id, qp_code, nos_code, nos_title, sequence_order 
+             FROM nsqf_nos 
+             WHERE qp_code = $1 OR REPLACE(qp_code, '/', '_') = $2 
+             ORDER BY sequence_order ASC, id ASC`,
+            [qpCode, cleanQp]
+        );
+        const nosList = nosRes.rows || [];
+
+        // Fetch all atomic Performance Criteria (PCs) for this QP
+        const pcsRes = await db.pool.query(
+            `SELECT 
+                id, qp_code, nos_code, pc_code, pc_description, pc_intent,
+                sop_intent, sop_action_directive, sop_parameter_tolerance, sop_critical_knack, sop_search_query,
+                video_id, video_title, start_seconds, end_seconds
+             FROM nsqf_pcs
+             WHERE qp_code = $1 OR REPLACE(qp_code, '/', '_') = $2
+             ORDER BY id ASC`,
+            [qpCode, cleanQp]
+        );
+        const pcsList = pcsRes.rows || [];
+
+        // Group into real industrial workstations
+        const workstations = nosList.map((n, idx) => {
+            const nosPcs = pcsList.filter(p => p.nos_code === n.nos_code);
+            return {
+                workstation_number: `WS-0${idx + 1}`,
+                nos_code: n.nos_code,
+                workstation_title: n.nos_title,
+                total_checkpoints: nosPcs.length,
+                checkpoints: nosPcs.map((p, pIdx) => ({
+                    id: p.id,
+                    step_number: pIdx + 1,
+                    pc_code: p.pc_code,
+                    pc_description: p.pc_description,
+                    action_directive: p.sop_action_directive || p.pc_description,
+                    parameter_tolerance: p.sop_parameter_tolerance || 'Strict nominal tolerances',
+                    critical_safety_knack: p.sop_critical_knack || 'Adhere to statutory plant safety codes',
+                    video_id: p.video_id,
+                    video_title: p.video_title,
+                    start_seconds: p.start_seconds || 0,
+                    end_seconds: p.end_seconds || null
+                }))
+            };
+        });
 
         res.json({
             success: true,
             qp_code: qpCode,
             qp_name: qpRow ? qpRow.qp_name : qpCode,
             sector: qpRow ? qpRow.sector : 'General',
+            sub_sector: qpRow ? qpRow.sub_sector : '',
+            occupation: qpRow ? qpRow.occupation : '',
             nsqf_level: qpRow ? qpRow.nsqf_level : '4',
-            total_workstations: sops.length,
-            sops
+            total_workstations: workstations.length,
+            total_pcs: pcsList.length,
+            workstations
         });
     } catch (e) {
+        console.error('[/sop/details error]:', e);
         res.status(500).json({ success: false, error: e.message });
     }
 });
