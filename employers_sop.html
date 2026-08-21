@@ -225,7 +225,7 @@
     <!-- LEFT PANEL: Structured Work Guide Filters -->
     <aside class="panel-left" id="panelLeft">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-        <h2 class="panel-title" style="margin-bottom: 0;">Implement Standard Procedures</h2>
+        <h2 class="panel-title" style="margin-bottom: 0;">Standard Operating Processes</h2>
         <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
       </div>
 
@@ -417,8 +417,17 @@
 
     function renderCards(cards) {
       const grid = document.getElementById('sopGrid');
-      const countEl = document.getElementById('sopCount');
-      if (countEl) countEl.innerText = cards.length;
+      const countEl = document.getElementById('resultsCount');
+      if (countEl) {
+        const q = (document.getElementById('searchSop')?.value || '').trim();
+        const sec = selectedSector || 'all';
+        const isFiltered = q !== '' || sec !== 'all';
+        if (isFiltered) {
+          countEl.innerText = `Showing ${cards.length} matching Standard Operating Procedures`;
+        } else {
+          countEl.innerText = `Showing ${cards.length} of 2,002 SOPs — Use Left Filters to Explore All`;
+        }
+      }
 
       if (cards.length === 0) {
         grid.innerHTML = '<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column:1/-1;">No process guides matching criteria.</div>';
