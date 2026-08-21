@@ -1194,45 +1194,118 @@
     }
 
     function cleanCommercialTitle(rawTitle, qpName, sector) {
-      let title = (rawTitle || '').replace(/^Turnkey\s+/i, '').replace(/\s+Enterprise$/i, '').trim();
+      let title = (rawTitle || '').replace(/^Turnkey\s+/i, '').replace(/\s+Enterprise$/i, '').replace(/\s+Pvt\.?\s*Ltd\.?/i, '').trim();
 
-      const employeeRegex = /\b(executive|assistant|agent|operator|technician|handler|helper|worker|attendant|mechanic|officer|specialist|planner|inspector|supervisor|auditor|coordinator|controller|setter|fitter|welder|electrician|driver|stitcher|finisher|cutter|packer|loader)\b/gi;
+      const employeeRegex = /\b(executive|assistant|agent|operator|technician|handler|helper|worker|attendant|mechanic|officer|specialist|planner|inspector|supervisor|auditor|coordinator|controller|setter|fitter|welder|electrician|driver|stitcher|finisher|cutter|packer|loader|maker|trainee|apprentice|consultant|advisor|instructor)\b/gi;
+      const redundantPrefixRegex = /^(airline|aerospace|aircraft|aviation|automotive|auto|agricultural|agriculture|handloom|textile|commercial|turnkey|general|standard|basic|advanced|senior|junior|lead)\s+/gi;
 
-      // If already a synthesized brand name and doesn't contain employee tokens, use it
-      if (title && !employeeRegex.test(title) && title.length > 5 && !title.startsWith('Turnkey')) {
-        return title;
+      const rawCleaned = title.replace(redundantPrefixRegex, '').trim();
+      if (rawCleaned && !employeeRegex.test(rawCleaned)) {
+        const w = rawCleaned.split(/\s+/);
+        if (w.length >= 2 && w.length <= 4) {
+          return rawCleaned;
+        }
       }
 
-      // Strip employee words
-      let base = (qpName || title || 'Commercial').replace(employeeRegex, '').replace(/\s+/g, ' ').trim();
+      const textToAnalyze = `${qpName || ''} ${title || ''} ${sector || ''}`.toLowerCase();
+
+      // High-status domain-anchored 2-to-4 word brand generator
+      if (textToAnalyze.includes('baggage') || textToAnalyze.includes('luggage')) {
+        return 'Transit Baggage Logistics';
+      }
+      if (textToAnalyze.includes('cargo') || textToAnalyze.includes('freight')) {
+        return 'AeroLink Cargo Express';
+      }
+      if (textToAnalyze.includes('customer service') || textToAnalyze.includes('passenger') || textToAnalyze.includes('hospitality')) {
+        return 'Passenger Concierge Services';
+      }
+      if (textToAnalyze.includes('reservation') || textToAnalyze.includes('ticketing') || textToAnalyze.includes('booking')) {
+        return 'Flight Ticketing Desk';
+      }
+      if (textToAnalyze.includes('security') || textToAnalyze.includes('screening') || textToAnalyze.includes('guard')) {
+        return 'Airside Security Services';
+      }
+      if (textToAnalyze.includes('flight dispatch') || textToAnalyze.includes('dispatcher')) {
+        return 'Flight Dispatch Control';
+      }
+      if (textToAnalyze.includes('solar') || textToAnalyze.includes('pv') || textToAnalyze.includes('solar pump')) {
+        return 'AgriSun Solar Grids';
+      }
+      if (textToAnalyze.includes('paddy') || textToAnalyze.includes('rice') || textToAnalyze.includes('grain')) {
+        return 'GreenGrain Paddy Milling';
+      }
+      if (textToAnalyze.includes('sugarcane') || textToAnalyze.includes('cane') || textToAnalyze.includes('sugar')) {
+        return 'CaneCraft Sugar Works';
+      }
+      if (textToAnalyze.includes('farm machinery') || textToAnalyze.includes('tractor') || textToAnalyze.includes('harvester')) {
+        return 'AgriMech Farm Fleet';
+      }
+      if (textToAnalyze.includes('nursery') || textToAnalyze.includes('garden') || textToAnalyze.includes('landscap') || textToAnalyze.includes('gardener')) {
+        return 'GreenScape Nursery Studio';
+      }
+      if (textToAnalyze.includes('dairy') || textToAnalyze.includes('milk') || textToAnalyze.includes('cheese')) {
+        return 'PureDairy Milk Processing';
+      }
+      if (textToAnalyze.includes('paint') || textToAnalyze.includes('detail') || textToAnalyze.includes('coating')) {
+        return 'Apex Auto Detailing';
+      }
+      if (textToAnalyze.includes('electrician') || textToAnalyze.includes('four wheeler') || textToAnalyze.includes('two wheeler') || textToAnalyze.includes('ev ')) {
+        return 'VoltAuto Diagnostic Works';
+      }
+      if (textToAnalyze.includes('driver') || textToAnalyze.includes('transport') || textToAnalyze.includes('commercial vehicle') || textToAnalyze.includes('fleet')) {
+        return 'FleetHaul Transport Services';
+      }
+      if (textToAnalyze.includes('engine') || textToAnalyze.includes('auto service') || textToAnalyze.includes('mechanic') || textToAnalyze.includes('vehicle service')) {
+        return 'Bharat EngineCare Studio';
+      }
+      if (textToAnalyze.includes('cnc') || textToAnalyze.includes('edm') || textToAnalyze.includes('machinist') || textToAnalyze.includes('lathe') || textToAnalyze.includes('milling')) {
+        return 'PrecisionSpark CNC Works';
+      }
+      if (textToAnalyze.includes('weld') || textToAnalyze.includes('fabricat') || textToAnalyze.includes('arc')) {
+        return 'Titan Arc Fabrication';
+      }
+      if (textToAnalyze.includes('tool') || textToAnalyze.includes('die') || textToAnalyze.includes('mould')) {
+        return 'Matrix Tool & Die';
+      }
+      if (textToAnalyze.includes('sew') || textToAnalyze.includes('stitch') || textToAnalyze.includes('tailor') || textToAnalyze.includes('garment')) {
+        return 'Bespoke Garment Studio';
+      }
+      if (textToAnalyze.includes('fashion') || textToAnalyze.includes('designer') || textToAnalyze.includes('apparel design')) {
+        return 'Aura Fashion Studio';
+      }
+      if (textToAnalyze.includes('general duty') || textToAnalyze.includes('home health') || textToAnalyze.includes('nursing') || textToAnalyze.includes('patient care')) {
+        return 'CareFirst Home Healthcare';
+      }
+      if (textToAnalyze.includes('phlebotom') || textToAnalyze.includes('blood') || textToAnalyze.includes('lab') || textToAnalyze.includes('diagnost')) {
+        return 'Pulse Diagnostics Hub';
+      }
+
+      // Generic concise 2-4 word fallback
+      let base = (qpName || title || 'Commercial')
+        .replace(redundantPrefixRegex, '')
+        .replace(employeeRegex, '')
+        .replace(/[–—\-\/]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const words = base.split(/\s+/).filter(w => w.length > 2).slice(0, 2);
+      const prefix = words.length > 0 ? words.join(' ') : 'Commercial';
       const s = (sector || '').toLowerCase();
-      const b = base.toLowerCase();
 
-      if (b.includes('baggage') || b.includes('cargo') || b.includes('logistic')) {
-        return base.toLowerCase().includes('logistic') ? `${base} & Handling Services` : `${base} Logistics & Express Hub`;
+      let fallbackTitle = '';
+      if (s.includes('agri') || s.includes('food')) {
+        fallbackTitle = `${prefix} AgriTech Works`;
+      } else if (s.includes('auto')) {
+        fallbackTitle = `${prefix} Auto Studio`;
+      } else if (s.includes('capital') || s.includes('metal')) {
+        fallbackTitle = `${prefix} Precision Works`;
+      } else if (s.includes('apparel') || s.includes('textile')) {
+        fallbackTitle = `${prefix} Apparel Studio`;
+      } else {
+        fallbackTitle = `${prefix} Commercial Hub`;
       }
-      if (b.includes('customer service') || b.includes('hospitality') || b.includes('concierge')) {
-        return `${base} Concierge & Client Agency`;
-      }
-      if (b.includes('reservation') || b.includes('ticketing') || b.includes('travel')) {
-        return `${base} Flight Ticketing & Travel Desk`;
-      }
-      if (b.includes('security') || b.includes('screening')) {
-        return `${base} & Airside Screening Services`;
-      }
-      if (s.includes('auto') || b.includes('auto') || b.includes('engine') || b.includes('vehicle')) {
-        return `${base} Automotive Works & Care Studio`;
-      }
-      if (s.includes('agri') || b.includes('crop') || b.includes('farm') || b.includes('solar')) {
-        return `${base} AgriTech Solutions & Systems`;
-      }
-      if (s.includes('apparel') || s.includes('textile') || b.includes('sewing') || b.includes('garment')) {
-        return `${base} Apparel & Garment Studio`;
-      }
-      if (s.includes('capital') || b.includes('cnc') || b.includes('machin') || b.includes('tool')) {
-        return `${base} Precision Tooling Works`;
-      }
-      return `${base} Commercial Solutions`;
+
+      return fallbackTitle.split(/\s+/).slice(0, 4).join(' ');
     }
 
     function renderCards(cards) {
