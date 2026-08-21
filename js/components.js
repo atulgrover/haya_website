@@ -180,7 +180,7 @@ function renderSiteHeader() {
         if (path.endsWith('employees_nsqf.html') || path.endsWith('students.html')) pillar = 'employees_nsqf';
         else if (path.endsWith('employers_sop.html') || path.endsWith('employees.html')) pillar = 'employers_sop';
         else if (path.endsWith('entrepreneurs_msme.html')) pillar = 'entrepreneurs_msme';
-        else if (path.endsWith('professionals_apnet.html') || path.endsWith('professionals.html')) pillar = 'professionals_apnet';
+        else if (path.endsWith('professionals_apnet.html') || path.endsWith('professionals.html') || path.endsWith('experts.html')) pillar = 'professionals_apnet';
         else if (path.endsWith('login.html')) pillar = 'login';
         else if (path.endsWith('index.html') || path === '/' || path === '') pillar = 'home';
     }
@@ -189,7 +189,7 @@ function renderSiteHeader() {
     if (pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees') subBadge = 'Employees';
     else if (pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners') subBadge = 'Employers';
     else if (pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs') subBadge = 'Entrepreneurs';
-    else if (pillar === 'professionals_apnet' || pillar === 'professionals') subBadge = 'Professionals';
+    else if (pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts') subBadge = 'Experts';
     else if (pillar === 'login') subBadge = 'Login';
 
     headerMount.innerHTML = `
@@ -203,7 +203,7 @@ function renderSiteHeader() {
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
             <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers</a></li>
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs</a></li>
-            <li><a href="professionals_apnet.html" class="nav-link ${pillar === 'professionals_apnet' || pillar === 'professionals' ? 'active' : ''}">Professionals</a></li>
+            <li><a href="professionals_apnet.html" class="nav-link ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts</a></li>
             <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
           </ul>
           <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
@@ -220,7 +220,7 @@ function renderSiteHeader() {
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
-        <a href="professionals_apnet.html" class="${pillar === 'professionals_apnet' || pillar === 'professionals' ? 'active' : ''}">Professionals ${pillar === 'professionals_apnet' || pillar === 'professionals' ? '●' : ''}</a>
+        <a href="professionals_apnet.html" class="${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? '●' : ''}</a>
         <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Login</a>
       </nav>
     `;
@@ -400,7 +400,7 @@ function injectAuthModal() {
                     <h2 class="auth-modal-title" id="authModalTitle">HAYAGRIVA SSO</h2>
                     <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
                 </div>
-                <p class="auth-modal-sub" id="authModalSub">Single Sign-On for Interns, Employers, Startups &amp; Professionals</p>
+                <p class="auth-modal-sub" id="authModalSub">Single Sign-On for Interns, Employers, Startups &amp; Experts</p>
                 <div class="auth-modal-alert" id="authModalAlert"></div>
                 <form class="auth-modal-form" id="authModalForm" onsubmit="handleAuthSubmit(event)">
                     <div class="form-group">
@@ -409,7 +409,7 @@ function injectAuthModal() {
                             <option value="student">Intern (Skills Learner)</option>
                             <option value="employer">Employer (Workshop / Factory)</option>
                             <option value="entrepreneur">Startup (Small Business Founder)</option>
-                            <option value="professional">Professional (Legal / CA / Expert)</option>
+                            <option value="professional">Expert (Legal / CA / Insolvency)</option>
                             <option value="admin">Administrator</option>
                         </select>
                     </div>
@@ -607,7 +607,7 @@ function updateAuthButtonsUI() {
                 portalLabel = 'Startups Portal';
             } else if (user.role === 'professional') {
                 portalPage = 'professionals_apnet.html';
-                portalLabel = 'Professionals Portal';
+                portalLabel = 'Experts Portal';
             } else {
                 portalPage = 'dashboard.html';
                 portalLabel = 'Control Dashboard';
