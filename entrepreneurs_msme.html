@@ -246,59 +246,30 @@
       font-weight: 800;
     }
     
-    /* 2-Line Pitch Hook */
+    /* 3-4 Line Rich Founder Pitch */
     .venture-pitch {
-      font-size: 12px;
+      font-size: 12.5px;
       color: #334155;
-      line-height: 1.45;
+      line-height: 1.55;
       margin: 0;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      flex: 1;
     }
     
-    /* Moat Trait Pill Bar */
-    .venture-moat-bar {
-      display: flex;
-      gap: 4px;
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 6px;
-      padding: 5px 8px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: auto;
-    }
-    
-    .venture-moat-chip {
-      font-size: 10.5px;
-      color: #475569;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .venture-moat-chip strong {
-      color: #0F172A;
-      font-weight: 700;
-    }
-    .venture-moat-chip:not(:last-child)::after {
-      content: '•';
-      color: #CBD5E1;
-      margin-left: 5px;
-    }
-    
-    /* Bottom Action Row */
+    /* Bottom Action Row with Serial CTA */
     .venture-cta-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 7px;
+      padding-top: 10px;
       border-top: 1px solid #F1F5F9;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       color: #0284C7;
+      margin-top: auto;
     }
     
     .venture-card:hover .venture-cta-arrow {
@@ -1277,7 +1248,7 @@
                data-qp="${c.qp_code}"
                onclick="selectCard('${c.qp_code}', this)">
             
-            <!-- Header Row: Monogram + Title + Serial Badge + Star -->
+            <!-- Header Row: Monogram + Title + Star -->
             <div class="venture-card-header">
               <div class="venture-brand-group">
                 <div class="venture-monogram">${monogram}</div>
@@ -1286,30 +1257,20 @@
                   <div class="venture-sector-tag">${escapeHtmlText(c.sector || 'General Enterprise')}</div>
                 </div>
               </div>
-              <div class="venture-header-actions">
-                <span class="venture-serial-badge">${serialTag}</span>
-                <button class="venture-bookmark-btn ${isSaved ? 'saved' : ''}" 
-                        id="star-${c.qp_code.replace(/[\/:]/g, '_')}"
-                        onclick="toggleSaveVenture('${c.qp_code}', event)"
-                        title="${isSaved ? 'Remove from Saved' : 'Save Venture Blueprint'}">
-                  ${isSaved ? '★' : '☆'}
-                </button>
-              </div>
+              <button class="venture-bookmark-btn ${isSaved ? 'saved' : ''}" 
+                      id="star-${c.qp_code.replace(/[\/:]/g, '_')}"
+                      onclick="toggleSaveVenture('${c.qp_code}', event)"
+                      title="${isSaved ? 'Remove from Saved' : 'Save Venture Blueprint'}">
+                ${isSaved ? '★' : '☆'}
+              </button>
             </div>
 
-            <!-- 2-Line Founder Hook Pitch -->
+            <!-- 3-4 Line Rich Founder Pitch -->
             <p class="venture-pitch">${escapeHtmlText(pitch)}</p>
 
-            <!-- Moat Trait Micro-Chips -->
-            <div class="venture-moat-bar">
-              <span class="venture-moat-chip">🎯 <strong>Market:</strong> ${traits.market}</span>
-              <span class="venture-moat-chip">⚡ <strong>Moat:</strong> ${traits.moat}</span>
-              <span class="venture-moat-chip">⏱️ <strong>Setup:</strong> ${traits.setup}</span>
-            </div>
-
-            <!-- Bottom CTA -->
+            <!-- Bottom CTA with Serial -->
             <div class="venture-cta-row">
-              <span>Claim Venture Blueprint</span>
+              <span>Claim ${c.qp_code.replace(/[\/:]/g, '-')} Business</span>
               <span class="venture-cta-arrow">➔</span>
             </div>
 
