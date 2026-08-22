@@ -164,6 +164,96 @@ function renderSiteHeader() {
                 background: var(--primary-light, rgba(30, 108, 147, 0.1));
                 font-weight: 700;
             }
+            .nav-dropdown {
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+            .nav-dropdown-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                cursor: pointer;
+            }
+            .nav-dropdown-toggle svg {
+                width: 12px;
+                height: 12px;
+                transition: transform 0.2s ease;
+            }
+            .nav-dropdown:hover .nav-dropdown-toggle svg,
+            .nav-dropdown.open .nav-dropdown-toggle svg {
+                transform: rotate(180deg);
+            }
+            .dropdown-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                min-width: 190px;
+                background: #FFFFFF;
+                border: 1px solid var(--border-color, #E2E8F0);
+                border-radius: 8px;
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+                padding: 6px;
+                list-style: none;
+                margin: 4px 0 0 0;
+                display: none;
+                flex-direction: column;
+                gap: 2px;
+                z-index: 1001;
+                animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            @keyframes dropdownFadeIn {
+                from { opacity: 0; transform: translateY(-4px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .nav-dropdown:hover .dropdown-menu,
+            .nav-dropdown:focus-within .dropdown-menu,
+            .nav-dropdown.open .dropdown-menu {
+                display: flex;
+            }
+            .dropdown-item {
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 13.5px;
+                font-weight: 500;
+                color: var(--text-main, #212121);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: all 0.15s ease;
+            }
+            .dropdown-item:hover, .dropdown-item.active {
+                background-color: var(--primary-light, rgba(30, 108, 147, 0.1));
+                color: var(--primary-color, #1E6C93);
+            }
+            .badge-coming-soon {
+                font-size: 10px;
+                font-weight: 700;
+                text-transform: uppercase;
+                background: #FEF3C7;
+                color: #B45309;
+                padding: 2px 6px;
+                border-radius: 4px;
+                letter-spacing: 0.4px;
+            }
+            .nav-mobile-group {
+                background: #F8FAFC;
+                border: 1px solid #EEF2F6;
+                border-radius: 8px;
+                padding: 8px 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .nav-mobile-group-title {
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: var(--text-muted, #64748B);
+                letter-spacing: 0.8px;
+                padding: 2px 6px;
+            }
             @media (max-width: 768px) {
                 .nav-links { display: none; }
                 .nav-hamburger { display: block; }
@@ -180,7 +270,8 @@ function renderSiteHeader() {
         if (path.endsWith('employees_nsqf.html') || path.endsWith('students.html')) pillar = 'employees_nsqf';
         else if (path.endsWith('employers_sop.html') || path.endsWith('employees.html')) pillar = 'employers_sop';
         else if (path.endsWith('entrepreneurs_msme.html')) pillar = 'entrepreneurs_msme';
-        else if (path.endsWith('professionals_apnet.html') || path.endsWith('professionals.html') || path.endsWith('experts.html')) pillar = 'professionals_apnet';
+        else if (path.endsWith('professionals_ide.html') || path.endsWith('professionals_apnet.html') || path.endsWith('professionals.html') || path.endsWith('experts.html')) pillar = 'professionals_ide';
+        else if (path.endsWith('professionals_services.html')) pillar = 'professionals_services';
         else if (path.endsWith('login.html')) pillar = 'login';
         else if (path.endsWith('index.html') || path === '/' || path === '') pillar = 'home';
     }
@@ -189,7 +280,7 @@ function renderSiteHeader() {
     if (pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees') subBadge = 'Employees';
     else if (pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners') subBadge = 'Employers';
     else if (pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs') subBadge = 'Entrepreneurs';
-    else if (pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts') subBadge = 'Experts';
+    else if (pillar === 'professionals_ide' || pillar === 'professionals_services' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts') subBadge = 'Professionals';
     else if (pillar === 'login') subBadge = 'Login';
 
     headerMount.innerHTML = `
@@ -200,7 +291,18 @@ function renderSiteHeader() {
           </a>
           <ul class="nav-links">
             <li><a href="index.html" class="nav-link ${pillar === 'home' ? 'active' : ''}">Home</a></li>
-            <li><a href="professionals_apnet.html" class="nav-link ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts</a></li>
+            <li class="nav-dropdown" id="navProfDropdown">
+              <a href="#" onclick="return false;" class="nav-link nav-dropdown-toggle ${['professionals_ide', 'professionals_services', 'professionals_apnet', 'professionals', 'experts'].includes(pillar) ? 'active' : ''}" aria-expanded="false" aria-haspopup="true">
+                Professionals
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="professionals_ide.html" class="dropdown-item ${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">🛠️ Products</a></li>
+                <li><a href="professionals_services.html" class="dropdown-item ${pillar === 'professionals_services' ? 'active' : ''}">💼 Services <span class="badge-coming-soon">Soon</span></a></li>
+              </ul>
+            </li>
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
             <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers</a></li>
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs</a></li>
@@ -217,7 +319,11 @@ function renderSiteHeader() {
       </header>
       <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
         <a href="index.html" class="${pillar === 'home' ? 'active' : ''}">Home ${pillar === 'home' ? '●' : ''}</a>
-        <a href="professionals_apnet.html" class="${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? '●' : ''}</a>
+        <div class="nav-mobile-group">
+          <div class="nav-mobile-group-title">Professionals</div>
+          <a href="professionals_ide.html" class="${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">🛠️ Products (Desktop IDE)</a>
+          <a href="professionals_services.html" class="${pillar === 'professionals_services' ? 'active' : ''}">💼 Services <span class="badge-coming-soon">Soon</span></a>
+        </div>
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
@@ -553,8 +659,8 @@ async function handleAuthSubmit(e) {
                     window.location.href = 'employers_sop.html';
                 } else if (data.user.role === 'entrepreneur' && !window.location.pathname.endsWith('entrepreneurs_msme.html')) {
                     window.location.href = 'entrepreneurs_msme.html';
-                } else if (data.user.role === 'professional' && !window.location.pathname.endsWith('professionals_apnet.html')) {
-                    window.location.href = 'professionals_apnet.html';
+                } else if (data.user.role === 'professional' && !window.location.pathname.endsWith('professionals_ide.html')) {
+                    window.location.href = 'professionals_ide.html';
                 } else {
                     window.location.reload();
                 }
@@ -606,8 +712,8 @@ function updateAuthButtonsUI() {
                 portalPage = 'entrepreneurs_msme.html';
                 portalLabel = 'Startups Portal';
             } else if (user.role === 'professional') {
-                portalPage = 'professionals_apnet.html';
-                portalLabel = 'Experts Portal';
+                portalPage = 'professionals_ide.html';
+                portalLabel = 'Professionals IDE';
             } else {
                 portalPage = 'dashboard.html';
                 portalLabel = 'Control Dashboard';
