@@ -200,10 +200,10 @@ function renderSiteHeader() {
           </a>
           <ul class="nav-links">
             <li><a href="index.html" class="nav-link ${pillar === 'home' ? 'active' : ''}">Home</a></li>
+            <li><a href="professionals_apnet.html" class="nav-link ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts</a></li>
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
             <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers</a></li>
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs</a></li>
-            <li><a href="professionals_apnet.html" class="nav-link ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts</a></li>
             <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
           </ul>
           <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
@@ -217,10 +217,10 @@ function renderSiteHeader() {
       </header>
       <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
         <a href="index.html" class="${pillar === 'home' ? 'active' : ''}">Home ${pillar === 'home' ? '●' : ''}</a>
+        <a href="professionals_apnet.html" class="${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? '●' : ''}</a>
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
-        <a href="professionals_apnet.html" class="${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Experts ${pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? '●' : ''}</a>
         <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Login</a>
       </nav>
     `;
