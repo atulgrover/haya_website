@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professionals Services | Agentic Legal &amp; Audit Advisory | HAYAGRIVA</title>
-  <meta name="description" content="On-Demand Sovereign Agentic Advisory, Forensics &amp; Audit Infrastructure for Lawyers, Insolvency Practitioners, CAs, and Corporate Advocates.">
+  <title>Professionals Services | Managed Legal &amp; Audit Advisory | HAYAGRIVA</title>
+  <meta name="description" content="Managed Sovereign Agentic Advisory, Forensics &amp; Audit Infrastructure for Lawyers, Insolvency Practitioners, CAs, and Corporate Advocates.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/ide-docking.css">
 
   <style>
     :root {
@@ -19,320 +20,157 @@
       --text-muted: #5F6368;
       --primary-color: #1E6C93;
       --primary-hover: #165272;
-      --primary-light: rgba(30, 108, 147, 0.08);
+      --primary-light: rgba(30, 108, 147, 0.1);
       --border-color: #E2E8F0;
       --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      --hover-shadow: 0 12px 20px -3px rgba(30, 108, 147, 0.15), 0 4px 6px -2px rgba(30, 108, 147, 0.05);
+      --hover-shadow: 0 10px 15px -3px rgba(30, 108, 147, 0.12), 0 4px 6px -2px rgba(30, 108, 147, 0.05);
       --font-main: 'Lato', sans-serif;
       --font-heading: 'Google Sans', sans-serif;
       --font-mono: 'Roboto Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    body { font-family: var(--font-main); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; margin: 0; }
     a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease; }
     a:hover { color: var(--primary-hover); }
 
-    /* Hero Section */
-    .services-hero {
-      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #1E6C93 100%);
-      color: #FFFFFF;
-      padding: 72px 24px 64px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* 3-Panel Workspace Layout */
+    .ide-container { display: flex; flex: 1; min-height: calc(100vh - 64px); width: 100%; }
+
+    /* LEFT PANEL: Advisory Services Directory */
+    .panel-left {
+      width: 290px; min-width: 260px; background: #FFFFFF; border-right: 1px solid var(--border-color);
+      display: flex; flex-direction: column; flex-shrink: 0; padding: 16px 14px; gap: 12px;
+      overflow-y: auto; z-index: 100;
     }
-    .services-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.15), transparent 70%);
-      pointer-events: none;
-    }
-    .hero-content {
-      max-width: 860px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-    .coming-soon-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(239, 68, 68, 0.18);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #FECACA;
-      padding: 6px 14px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 700;
-      font-family: var(--font-mono);
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      backdrop-filter: blur(8px);
-    }
-    .coming-soon-pill span.pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: #EF4444;
-      border-radius: 50%;
-      display: inline-block;
-      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-    }
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 38px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    .hero-subtitle {
-      font-size: 16.5px;
-      color: #CBD5E1;
-      max-width: 720px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-    .hero-cta-row {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .btn-primary-hero {
-      background: #38BDF8;
-      color: #0F172A;
-      font-weight: 700;
-      padding: 12px 26px;
-      border-radius: 8px;
-      font-size: 14.5px;
+    .panel-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+    
+    .filter-group { display: flex; flex-direction: column; gap: 4px; }
+    .filter-input {
+      padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 8px;
+      font-size: 13px; background: #FFFFFF; color: var(--text-main); outline: none; width: 100%;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
     }
-    .btn-primary-hero:hover {
-      background: #7DD3FC;
-      color: #0F172A;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.45);
+    .filter-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px var(--primary-light); }
+
+    .service-list { display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
+    .service-item {
+      padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border-color);
+      background: #FFFFFF; cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column; gap: 4px;
     }
-    .btn-secondary-hero {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
-      font-weight: 600;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 14.5px;
-      transition: all 0.2s ease;
-      backdrop-filter: blur(6px);
+    .service-item:hover {
+      border-color: var(--primary-color); background-color: #F8FAFC; transform: translateY(-1px);
     }
-    .btn-secondary-hero:hover {
-      background: rgba(255, 255, 255, 0.18);
-      color: #FFFFFF;
-      border-color: rgba(255, 255, 255, 0.4);
+    .service-item.active {
+      border-color: var(--primary-color); background-color: var(--primary-light);
+      box-shadow: 0 2px 6px rgba(30, 108, 147, 0.12);
+    }
+    .service-item-title { font-size: 13.5px; font-weight: 700; color: var(--text-main); line-height: 1.35; }
+    .service-item.active .service-item-title { color: var(--primary-color); }
+    .service-item-meta { display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+    .service-item-price { font-family: var(--font-heading); font-weight: 700; color: var(--primary-color); }
+
+    /* CENTER PANEL: Service Dossier & Live Execution Terminal */
+    .panel-center { flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; background: var(--bg-primary); }
+
+    .service-dossier-header {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 22px 24px; box-shadow: var(--card-shadow);
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .service-badge-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .service-category-badge {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      color: var(--primary-color); background: var(--primary-light);
+      padding: 3px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.6px;
+    }
+    .service-sla-badge {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      color: #047857; background: #ECFDF5; padding: 3px 8px; border-radius: 4px;
+    }
+    .dossier-title { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--primary-color); margin-top: 4px; }
+    .dossier-desc { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
+
+    /* Workflow Execution Terminal */
+    .terminal-container {
+      background-color: #1E293B; color: #F8FAFC; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); border: 1px solid #334155; width: 100%;
+    }
+    .terminal-header {
+      background-color: #0F172A; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+    .terminal-dots { display: flex; gap: 8px; }
+    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .dot-red { background-color: #EF4444; }
+    .dot-yellow { background-color: #F59E0B; }
+    .dot-green { background-color: #10B981; }
+    .terminal-title { font-family: var(--font-mono); font-size: 13px; color: #94A3B8; font-weight: 500; }
+
+    .terminal-body { padding: 20px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7; overflow-x: auto; }
+    .terminal-step { margin-bottom: 12px; }
+    .terminal-step-header { color: #38BDF8; font-weight: 700; }
+    .terminal-step-desc { color: #CBD5E1; margin-left: 18px; }
+    .terminal-highlight { color: #10B981; }
+
+    /* 4-6 Capability Specification Cards Grid */
+    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .spec-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 18px 20px; box-shadow: var(--card-shadow); transition: all 0.25s ease;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .spec-card:hover {
+      transform: translateY(-2px); box-shadow: var(--hover-shadow); border-color: var(--primary-color);
+    }
+    .spec-card-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .spec-card-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* RIGHT PANEL: Engagement & Ordering Console */
+    .panel-right {
+      width: 380px; min-width: 330px; background: #FFFFFF; border-left: 1px solid var(--border-color);
+      display: flex; flex-direction: column; flex-shrink: 0; padding: 20px; gap: 18px;
+      position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;
+    }
+    .panel-right.collapsed { display: none; }
+    .panel-right.maximized { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 2000; top: 0; }
+    
+    .inspector-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+    .btn-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+    .btn-close:hover { color: var(--text-main); }
+
+    .price-box {
+      background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .price-box-label { font-size: 11.5px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.6px; }
+    .price-box-val { font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--primary-color); }
+    .price-box-sub { font-size: 12px; color: var(--text-muted); }
+
+    .engagement-form { display: flex; flex-direction: column; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-label { font-size: 12px; font-weight: 700; color: var(--text-main); }
+    .form-input, .form-textarea {
+      padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 6px;
+      font-size: 13px; font-family: var(--font-main); outline: none; background: #FFFFFF;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--primary-color); }
+    .btn-submit-order {
+      background: var(--primary-color); color: #FFFFFF; font-weight: 700;
+      padding: 11px 16px; border-radius: 6px; font-size: 13.5px; border: none; cursor: pointer;
+      transition: background 0.2s ease; width: 100%; margin-top: 4px;
+    }
+    .btn-submit-order:hover { background: var(--primary-hover); }
+
+    .order-success-banner {
+      display: none; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 8px;
+      padding: 14px; color: #065F46; font-size: 13px; line-height: 1.5;
     }
 
-    /* Container */
-    .services-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 24px;
-      flex: 1;
-    }
-
-    .section-header-centered {
-      text-align: center;
-      margin-bottom: 44px;
-    }
-    .section-tag {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--primary-color);
-      background: var(--primary-light);
-      padding: 4px 12px;
-      border-radius: 20px;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 10px;
-    }
-    .section-heading {
-      font-family: var(--font-heading);
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 10px;
-    }
-    .section-lead {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    /* Grid */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 60px;
-    }
-    .service-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--hover-shadow);
-      border-color: var(--primary-color);
-    }
-    .service-badge-status {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: #FEF3C7;
-      color: #92400E;
-      text-transform: uppercase;
-    }
-    .service-category-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--primary-color);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-    .service-title {
-      font-family: var(--font-heading);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-    .service-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .service-features {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      border-top: 1px solid var(--border-color);
-      padding-top: 14px;
-    }
-    .service-features li {
-      font-size: 12.5px;
-      color: var(--text-main);
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
-    }
-    .service-features li span.check {
-      color: #10B981;
-      font-weight: 800;
-    }
-
-    /* Waitlist Card */
-    .waitlist-banner {
-      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
-      border: 1px solid #BFDBFE;
-      border-radius: 16px;
-      padding: 36px 32px;
-      text-align: center;
-      box-shadow: var(--card-shadow);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .waitlist-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-    .waitlist-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 auto 24px;
-    }
-    .waitlist-form {
-      display: flex;
-      gap: 10px;
-      max-width: 520px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-    .waitlist-input {
-      flex: 1;
-      min-width: 240px;
-      padding: 12px 16px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-size: 14px;
-      outline: none;
-      background: #FFFFFF;
-      transition: border-color 0.2s ease;
-    }
-    .waitlist-input:focus {
-      border-color: var(--primary-color);
-    }
-    .btn-waitlist-submit {
-      background: var(--primary-color);
-      color: #FFFFFF;
-      border: none;
-      font-weight: 700;
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-    .btn-waitlist-submit:hover {
-      background: var(--primary-hover);
-    }
-    .waitlist-success-msg {
-      display: none;
-      margin-top: 14px;
-      font-size: 13.5px;
-      color: #047857;
-      font-weight: 600;
-    }
-
-    @media (max-width: 768px) {
-      .hero-title { font-size: 28px; }
-      .services-hero { padding: 48px 16px; }
-      .services-container { padding: 40px 16px; }
-      .waitlist-banner { padding: 24px 16px; }
+    @media (max-width: 1024px) {
+      .ide-container { flex-direction: column; }
+      .panel-left, .panel-right { width: 100%; position: static; height: auto; }
     }
   </style>
 </head>
@@ -341,167 +179,398 @@
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
   <div id="site-header" data-pillar="professionals_services"></div>
 
-  <!-- Hero Section -->
-  <section class="services-hero">
-    <div class="hero-content">
-      <div class="coming-soon-pill">
-        <span class="pulse-dot"></span> Launching Q3 2026 • Private Early Access
+  <!-- Panel scrim (mobile overlay backdrop) -->
+  <div class="panel-scrim" id="panelScrim"></div>
+
+  <!-- 3-Panel Workspace Layout Container -->
+  <div class="ide-container" id="ideContainer">
+
+    <!-- Floating Restore Button when Left Sidebar is Collapsed -->
+    <button id="btnRestoreLeft" class="ide-restore-left-btn">
+      Show Services Directory (Cmd+B)
+    </button>
+
+    <!-- LEFT PANEL: Advisory Services Directory -->
+    <aside class="panel-left" id="panelLeft">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+        <h2 class="panel-title" style="margin-bottom: 0;">Advisory Services</h2>
+        <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
       </div>
-      <h1 class="hero-title">HAYAGRIVA Professional Services</h1>
-      <p class="hero-subtitle">
-        On-Demand Sovereign Agentic Advisory, Forensics, and Audit Infrastructure for Lawyers, Insolvency Professionals, Chartered Accountants, and Corporate Advocates in India.
-      </p>
-      <div class="hero-cta-row">
-        <a href="#early-access" class="btn-primary-hero">Request Early Access ➔</a>
-        <a href="professionals_ide.html" class="btn-secondary-hero">Explore Products (Desktop IDE)</a>
+
+      <!-- Search Input -->
+      <div class="filter-group">
+        <input type="text" id="searchService" class="filter-input" placeholder="Search advisory services..." oninput="handleSearchServices()">
       </div>
-    </div>
-  </section>
 
-  <!-- Main Body Content -->
-  <main class="services-container">
+      <!-- Services List Container -->
+      <div class="service-list" id="serviceList">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </aside>
 
-    <div class="section-header-centered">
-      <span class="section-tag">Managed Professional Infrastructure</span>
-      <h2 class="section-heading">Specialized Autonomous Agent Workflows</h2>
-      <p class="section-lead">
-        Beyond our standalone Desktop IDE, HAYAGRIVA Professional Services delivers fully managed, air-gapped computational audits and precedent synthesis dossiers.
-      </p>
-    </div>
+    <!-- CENTER PANEL: Service Dossier & Execution Terminal -->
+    <main class="panel-center" id="panelCenter">
+      <button class="filter-drawer-toggle" id="filterDrawerToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
+        </svg>
+        Filter Advisory Services
+      </button>
 
-    <!-- 6 Services Preview Cards -->
-    <div class="services-grid">
+      <div class="results-header">
+        <span class="results-count" id="resultsCount">Loading Advisory Services...</span>
+      </div>
 
-      <!-- Service 1: CIRP Forensic Audit -->
-      <div class="service-card">
-        <span class="service-badge-status">In Development</span>
-        <div>
-          <span class="service-category-tag">Insolvency &amp; Liquidation</span>
-          <h3 class="service-title">CIRP Due Diligence &amp; Claim Audits</h3>
-          <p class="service-desc">
-            Automated verification of admitted creditor claim forms (Form C / D) against IBBI CIRP Regulations, 2016 and verified ledger cross-indexes.
-          </p>
+      <!-- Dynamic Active Service Header -->
+      <div class="service-dossier-header" id="serviceHeader">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Live Workflow Execution Terminal -->
+      <div class="terminal-container" id="workflowTerminal">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Specification Cards Grid -->
+      <div class="spec-grid" id="specGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </main>
+
+    <!-- RIGHT PANEL: Engagement & Ordering Console -->
+    <aside class="panel-right" id="panelRight">
+      <div class="inspector-header">
+        <h2 class="panel-title" id="inspectorTitle">Engagement Console</h2>
+        <div class="inspector-actions-bar">
+          <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore View (Esc)">⤢</button>
+          <button class="ide-btn-icon" onclick="HayaIdeDocking.closeRightPanel()" title="Close Inspector (Esc)">✕</button>
         </div>
-        <ul class="service-features">
-          <li><span class="check">✓</span> Admitted claim reconciliation &amp; voting share calculation</li>
-          <li><span class="check">✓</span> CIRP statutory timeline compliance monitoring</li>
-        </ul>
       </div>
 
-      <!-- Service 2: PUFE Forensic Audit -->
-      <div class="service-card">
-        <span class="service-badge-status">In Development</span>
-        <div>
-          <span class="service-category-tag">Forensic Accounting</span>
-          <h3 class="service-title">Promoter PUFE Forensic Audits</h3>
-          <p class="service-desc">
-            Deep-scan audit identifying Preferential, Undervalued, Fraudulent, and Extortionate credit transactions (Sec 43-51, IBC) with forensic evidence bundles.
-          </p>
+      <div class="price-box" id="priceBox">
+        <span class="price-box-label">Standard Engagement Fee</span>
+        <span class="price-box-val" id="priceValue">₹999</span>
+        <span class="price-box-sub" id="priceSub">Turnaround: 24 - 48 Hours • Air-Gapped Verification</span>
+      </div>
+
+      <form class="engagement-form" id="engagementForm" onsubmit="handleEngagementSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="reqName">Lead Practitioner / Advocate</label>
+          <input type="text" id="reqName" class="form-input" placeholder="e.g. Adv. Rajesh Sharma" required>
         </div>
-        <ul class="service-features">
-          <li><span class="check">✓</span> Two-year lookback period bank feed reconstruction</li>
-          <li><span class="check">✓</span> Court-admissible transaction anomaly mapping</li>
-        </ul>
-      </div>
 
-      <!-- Service 3: Supreme Court & NCLAT Precedents -->
-      <div class="service-card">
-        <span class="service-badge-status">In Development</span>
-        <div>
-          <span class="service-category-tag">Judicial Precedents</span>
-          <h3 class="service-title">NCLT &amp; NCLAT Bench Precedent Briefs</h3>
-          <p class="service-desc">
-            Bench-wise precedent similarity synthesis across 100,000+ national judgements using calibrated InLegal-SBERT legal vector embeddings.
-          </p>
+        <div class="form-group">
+          <label class="form-label" for="reqEmail">Corporate Email Address</label>
+          <input type="email" id="reqEmail" class="form-input" placeholder="name@firm-law.com" required>
         </div>
-        <ul class="service-features">
-          <li><span class="check">✓</span> 1-Click case law headnote extraction &amp; SLP synopses</li>
-          <li><span class="check">✓</span> Bench-specific ruling patterns &amp; admission trends</li>
-        </ul>
-      </div>
 
-      <!-- Service 4: Patent Prior Art -->
-      <div class="service-card">
-        <span class="service-badge-status">In Development</span>
-        <div>
-          <span class="service-category-tag">Intellectual Property</span>
-          <h3 class="service-title">Patent Prior Art Vector Clearance</h3>
-          <p class="service-desc">
-            High-speed semantic search across 1.2M Indian Patent Specifications, IPO Journal issues, and USPTO/EPO global patent gazettes.
-          </p>
+        <div class="form-group">
+          <label class="form-label" for="reqCase">Case / Matter Reference</label>
+          <input type="text" id="reqCase" class="form-input" placeholder="e.g. CP(IB) No. 442/2026 or Claim Bundle #12" required>
         </div>
-        <ul class="service-features">
-          <li><span class="check">✓</span> Claim chart mapping &amp; novelty risk scoring</li>
-          <li><span class="check">✓</span> Automated FER response antecedent basis linting</li>
-        </ul>
-      </div>
 
-      <!-- Service 5: Arbitral Award Audit -->
-      <div class="service-card">
-        <span class="service-badge-status">In Development</span>
-        <div>
-          <span class="service-category-tag">Arbitration &amp; Contracts</span>
-          <h3 class="service-title">Arbitral Award Section 31 Audits</h3>
-          <p class="service-desc">
-            Statutory interest calculation engine under Sec 31(7) Arbitration &amp; Conciliation Act, 1996 with electronic evidence admissibility certification (BSA).
-          </p>
+        <div class="form-group">
+          <label class="form-label" for="reqScope">Specific Directives &amp; Audit Scope</label>
+          <textarea id="reqScope" class="form-textarea" rows="3" placeholder="Provide instructions, specific sections, or ledger lookback windows..."></textarea>
         </div>
-        <ul class="service-features">
-          <li><span class="check">✓</span> Compound vs. simple post-award interest schedules</li>
-          <li><span class="check">✓</span> Section 65B / BSA digital certificate verification</li>
-        </ul>
-      </div>
 
-      <!-- Service 6: Sovereign Cloud LLM Enclaves -->
-      <div class="service-card">
-        <span class="service-badge-status">In Development</span>
-        <div>
-          <span class="service-category-tag">Sovereign Cloud</span>
-          <h3 class="service-title">Sovereign Private Cloud LLM Enclaves</h3>
-          <p class="service-desc">
-            Dedicated private GPU inference enclaves physically located within Indian data centers with strict Zero Cloud Data Transmission guarantees.
-          </p>
-        </div>
-        <ul class="service-features">
-          <li><span class="check">✓</span> ISO 27001 &amp; SOC2 Type II air-gapped compliance</li>
-          <li><span class="check">✓</span> 100% confidential privileged client communication</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Waitlist / Early Access Form -->
-    <div class="waitlist-banner" id="early-access">
-      <h3 class="waitlist-title">Join the Professional Services Private Beta</h3>
-      <p class="waitlist-desc">
-        Be the first to access our managed advisory pipelines and receive priority provisioning for high-throughput forensic subagent tasks.
-      </p>
-      <form class="waitlist-form" onsubmit="handleWaitlistSubmit(event)">
-        <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="Enter your corporate email address..." required />
-        <button type="submit" class="btn-waitlist-submit">Notify Me at Launch</button>
+        <button type="submit" class="btn-submit-order">Request / Order Service ➔</button>
       </form>
-      <div class="waitlist-success-msg" id="waitlistSuccess">
-        Thank you for subscribing! Your priority invitation has been reserved.
-      </div>
-    </div>
 
-  </main>
+      <div class="order-success-banner" id="orderSuccess">
+        <strong>Engagement Request Received.</strong> Our technical advisory desk will reach out to your registered corporate email with secure intake instructions.
+      </div>
+    </aside>
+
+  </div>
 
   <!-- Universal Footer Mount Point -->
   <div id="site-footer"></div>
 
-  <script src="js/responsive.js"></script>
-  <script src="js/components.js"></script>
   <script>
-    function handleWaitlistSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('waitlistEmail').value;
-      if (!email) return;
+    const servicesCatalog = [
+      {
+        id: 'cirp_claim_audit',
+        title: 'CIRP Due Diligence & Form Verification Audit',
+        category: 'Insolvency & Liquidation',
+        price: '₹999',
+        turnaround: '24 Hours',
+        statute: 'IBBI (CIRP) Regulations, 2016 (Reg 13 & 39)',
+        description: 'Automated statutory verification and cross-reconciliation of admitted financial and operational creditor claim forms (Form B, Form C, Form D) with CoC voting share calculations.',
+        workflow: [
+          { step: 'Step 01 / Intake', desc: 'Ingestion of Form C claim submissions, bank sanction letters, and Tally ledger archives.' },
+          { step: 'Step 02 / Disqualification Linting', desc: 'Automated Section 29A and Section 5(24) related party exclusion verification checks.' },
+          { step: 'Step 03 / Voting Share Schedule', desc: 'Reg 13(2) list of admitted claims compiled with precision decimal voting share weights.' },
+          { step: 'Step 04 / Output Matrix', desc: 'DOCX Form H compliance annexure and court-admissible audit certificate signed with local Ed25519 hash.' }
+        ],
+        specs: [
+          { title: 'Statutory Directives', text: 'Calibrated against IBBI (Insolvency Resolution Process for Corporate Persons) Regulations, 2016 and Section 21 of IBC 2016.' },
+          { title: 'Voting Calibration', text: 'Fractional voting percentages computed up to 4 decimal points to ensure infallible CoC resolution pass rates.' },
+          { title: 'Exclusion Tracing', text: 'Cross-references DIN and PAN numbers against national related-party and wilful defaulter registries.' },
+          { title: 'Air-Gapped Execution', text: 'Zero cloud data retention. All financial statements are audited within dedicated local hardware boundaries.' }
+        ]
+      },
+      {
+        id: 'pufe_forensic_audit',
+        title: 'Promoter Track Record & PUFE Forensic Audit',
+        category: 'Forensic Accounting',
+        price: '₹2,499',
+        turnaround: '48 Hours',
+        statute: 'Insolvency and Bankruptcy Code (Sections 43, 45, 50, 66)',
+        description: 'Comprehensive financial anomaly scan identifying Preferential, Undervalued, Extortionate, and Fraudulent trading transactions across a 2-year lookback period.',
+        workflow: [
+          { step: 'Step 01 / Ledger Reconstruction', desc: 'Normalization of 24-month bank transaction ledgers, cash books, and MCA annual returns (AOC-4).' },
+          { step: 'Step 02 / Anomaly Vector Scoring', desc: 'Identifies related-party circular debt payments and uncommercial property transfers during the relevant lookback period.' },
+          { step: 'Step 03 / Quantum Assessment', desc: 'Determines the clawback value under Sections 44 and 48 for recovery application before NCLT benches.' },
+          { step: 'Step 04 / Evidentiary Report', desc: 'Full forensic audit report with tabular transaction maps ready for filing under Section 66.' }
+        ],
+        specs: [
+          { title: 'Lookback Window', text: 'Supports statutory 1-year (unrelated parties) and 2-year (related parties under Sec 43(4)) audit timelines.' },
+          { title: 'Circular Routing Detection', text: 'Scans layered bank transfers across intermediary shell entities to identify diverted corporate funds.' },
+          { title: 'Admissibility Standard', text: 'Constructed according to Supreme Court guidance in Anuj Jain v. Axis Bank and Tata Steel BSL.' },
+          { title: 'Confidentiality Protocol', text: 'Encrypted audit vaults with complete hardware isolation and NDAs signed prior to data intake.' }
+        ]
+      },
+      {
+        id: 'nclt_precedent_briefs',
+        title: 'NCLT & NCLAT Bench Precedent Summary & Briefs',
+        category: 'Judicial Precedents',
+        price: '₹1,499',
+        turnaround: '12 Hours',
+        statute: 'InLegal-SBERT Precedent Vector Index (100k+ Rulings)',
+        description: 'Bench-specific case law synthesis and legal similarity briefs analyzing admission patterns, moratorium exceptions, and approved resolution plans.',
+        workflow: [
+          { step: 'Step 01 / Issue Framing', desc: 'Extraction of core legal propositions, section references, and forum jurisdiction.' },
+          { step: 'Step 02 / Vector Similarity', desc: 'Cosine similarity ranking against 100,000+ Supreme Court, NCLAT, and bench rulings.' },
+          { step: 'Step 03 / Bench Pattern Analysis', desc: 'Identifies recent conflicting ratio decidendi across Mumbai, Delhi, and Chennai benches.' },
+          { step: 'Step 04 / Precedent Dossier', desc: 'Structured legal memorandum with verbatim headnotes, case citations, and distinguishing arguments.' }
+        ],
+        specs: [
+          { title: 'InLegal-SBERT Embeddings', text: 'Trained on Indian judicial vocabulary to capture semantic nuances beyond simple keyword matching.' },
+          { title: 'Bench Alignment', text: 'Highlights rulings from the specific NCLT bench hearing your active petition for persuasive advocacy.' },
+          { title: 'Distinguishing Vectors', text: 'Flags distinguishable factual matrices to effectively counter opposing counsel precedents.' },
+          { title: 'Standard Delivery', text: 'Instant digital delivery in formatted Markdown, PDF, and DOCX formats.' }
+        ]
+      },
+      {
+        id: 'patent_prior_art',
+        title: 'Patentability & 35 U.S.C. 101/102 Prior Art Search',
+        category: 'Intellectual Property',
+        price: '₹2,999',
+        turnaround: '48 Hours',
+        statute: 'Indian Patents Act 1970 & 35 U.S.C. 101/102/103',
+        description: 'Deep semantic prior art search across 1.2M Indian patent specifications, IPO Journal publications, USPTO, EPO, and WIPO databases with Alice Step 2B scoring.',
+        workflow: [
+          { step: 'Step 01 / Claim Dissection', desc: 'Deconstructs independent and dependent claims into discrete novel technical features.' },
+          { step: 'Step 02 / Global Patent Vector Search', desc: 'Cross-searches Indian, US, and European patent gazettes using dense technical embeddings.' },
+          { step: 'Step 03 / 102/103 Matrix', desc: 'Compiles element-by-element prior art mapping with novelty and obviousness risk ratings.' },
+          { step: 'Step 04 / Clearance Dossier', desc: 'Comprehensive prior art matrix and suggested claim narrowing amendments for FER compliance.' }
+        ],
+        specs: [
+          { title: 'Section 3(k) Screening', text: 'Analyzes software and algorithm claims against Indian Patent Office Guidelines on CRIs.' },
+          { title: 'Global Coverage', text: 'Search corpus spans IPO India, USPTO, EPO (Espacenet), WIPO (PCT), and IEEE scientific publications.' },
+          { title: 'Antecedent Linting', text: 'Validates claim dependency chains and ensures strict antecedent basis conformity.' },
+          { title: 'Commercial Confidentiality', text: 'Strict proprietary handling guaranteeing zero leak of unfiled provisional inventions.' }
+        ]
+      },
+      {
+        id: 'arbitral_award_audit',
+        title: 'Arbitral Award Section 31 Interest & Admissibility Audit',
+        category: 'Arbitration & Contracts',
+        price: '₹2,499',
+        turnaround: '24 Hours',
+        statute: 'Arbitration and Conciliation Act 1996 (as amended)',
+        description: 'Statutory interest calculation engine under Sec 31(7) with electronic evidence admissibility certification under the Bharatiya Sakshya Adhiniyam / Section 65B.',
+        workflow: [
+          { step: 'Step 01 / Claim Intake', desc: 'Pleadings, statement of claim, and arbitral contract milestone schedules ingested.' },
+          { step: 'Step 02 / Mathematical Audit', desc: 'Calculates pre-award, pendente lite, and post-award interest rates across discrete claims.' },
+          { step: 'Step 03 / Evidence Certification', desc: 'Verifies digital exhibits, email chains, and hash integrity for Section 65B / BSA certificates.' },
+          { step: 'Step 04 / Final Award Annexure', desc: 'Court-admissible mathematical interest schedules ready for incorporation into final award.' }
+        ],
+        specs: [
+          { title: 'Sec 31(7) Precision', text: 'Prevents arbitral award set-aside challenges by ensuring statutory interest compliance.' },
+          { title: 'BSA Evidence Compliance', text: 'Automated audit of hash integrity and certificate formats for electronic records.' },
+          { title: 'Limitation Checking', text: 'Calculates statutory enforcement periods under Section 34 and Section 36.' },
+          { title: 'Signed Hash Certificate', text: 'Includes cryptographic SHA-256 and Ed25519 verification hashes for tamper-evidence.' }
+        ]
+      },
+      {
+        id: 'sovereign_cloud_enclave',
+        title: 'Sovereign Private Cloud LLM Enclave Deployment',
+        category: 'Sovereign Cloud',
+        price: '₹3,499',
+        turnaround: '72 Hours',
+        statute: 'ISO 27001, SOC2 Type II & Indian Data Localization',
+        description: 'Provisioning of dedicated private GPU inference enclaves physically hosted in Indian tier-4 data centers with strict Zero External Cloud Data Transmission guarantees.',
+        workflow: [
+          { step: 'Step 01 / Infrastructure Setup', desc: 'Dedicated isolated GPU server instances allocated within Indian data center perimeters.' },
+          { step: 'Step 02 / Local Model Weights', desc: 'Deployment of SaulLM-7B, DeepSeek-R1-Distill, and InLegal-SBERT models without internet gateways.' },
+          { step: 'Step 03 / Client VPN Tunnel', desc: 'Configures zero-trust WireGuard VPN access for your firm’s attorneys and insolvency teams.' },
+          { step: 'Step 04 / Security Handover', desc: 'Master root keys and audit logs transferred exclusively to the firm’s managing partners.' }
+        ],
+        specs: [
+          { title: 'Absolute Data Privacy', text: 'Client confidential communications, plaints, and audit ledgers never traverse public cloud APIs.' },
+          { title: 'Indian Jurisdiction', text: 'Hardware strictly located in Mumbai/Noida data centers in compliance with DPDP Act 2023.' },
+          { title: 'High-Throughput Inference', text: 'Dedicated GPU compute handling up to 100 concurrent research queries per second.' },
+          { title: 'Sovereignty Audit Trail', text: 'Tamper-evident system logs proving zero external network transmission.' }
+        ]
+      }
+    ];
 
-      const successMsg = document.getElementById('waitlistSuccess');
-      successMsg.style.display = 'block';
-      document.getElementById('waitlistEmail').value = '';
+    let activeService = servicesCatalog[0];
+    let filteredServices = [...servicesCatalog];
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.init({ storagePrefix: 'haya_professionals_services_' });
+      }
+      renderServicesList(filteredServices);
+      selectService(servicesCatalog[0].id);
+    });
+
+    function renderServicesList(services) {
+      const list = document.getElementById('serviceList');
+      const countSpan = document.getElementById('resultsCount');
+
+      if (countSpan) {
+        countSpan.innerText = `Showing ${services.length} of ${servicesCatalog.length} Professional Advisory Services`;
+      }
+
+      if (!services || services.length === 0) {
+        list.innerHTML = `<div style="padding: 16px 8px; text-align: center; color: var(--text-muted); font-size: 12px;">No matching advisory services found.</div>`;
+        return;
+      }
+
+      list.innerHTML = services.map(s => {
+        const isActive = activeService && activeService.id === s.id;
+        return `
+          <div class="service-item ${isActive ? 'active' : ''}" onclick="selectService('${s.id}')">
+            <div class="service-item-title">${s.title}</div>
+            <div class="service-item-meta">
+              <span>${s.category}</span>
+              <span class="service-item-price">${s.price}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleSearchServices() {
+      const q = (document.getElementById('searchService') ? document.getElementById('searchService').value : '').trim().toLowerCase();
+
+      filteredServices = servicesCatalog.filter(s => {
+        if (!q) return true;
+        const matchTitle = s.title.toLowerCase().includes(q);
+        const matchCat = s.category.toLowerCase().includes(q);
+        const matchDesc = s.description.toLowerCase().includes(q);
+        const matchStatute = s.statute.toLowerCase().includes(q);
+        return matchTitle || matchCat || matchDesc || matchStatute;
+      });
+
+      renderServicesList(filteredServices);
+
+      if (filteredServices.length > 0) {
+        if (!activeService || !filteredServices.some(s => s.id === activeService.id)) {
+          selectService(filteredServices[0].id);
+        }
+      }
+    }
+
+    function selectService(serviceId) {
+      activeService = servicesCatalog.find(s => s.id === serviceId);
+      if (!activeService) return;
+
+      renderServicesList(filteredServices);
+
+      // Render Middle Panel Dossier Header
+      const header = document.getElementById('serviceHeader');
+      header.innerHTML = `
+        <div class="service-badge-row">
+          <span class="service-category-badge">${activeService.category}</span>
+          <span class="service-sla-badge">SLA: ${activeService.turnaround}</span>
+        </div>
+        <h1 class="dossier-title">${activeService.title}</h1>
+        <p class="dossier-desc">${activeService.description}</p>
+      `;
+
+      // Render Middle Panel Workflow Execution Terminal
+      const terminal = document.getElementById('workflowTerminal');
+      terminal.innerHTML = `
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+          <div class="terminal-title">Workflow Execution Pipeline: ${activeService.id}</div>
+          <div style="font-size: 12px; color: #10B981; font-weight: 700;">Status: Ready</div>
+        </div>
+        <div class="terminal-body">
+          <div style="color: #94A3B8; margin-bottom: 14px;">[Regulatory Anchor]: ${activeService.statute}</div>
+          ${activeService.workflow.map(w => `
+            <div class="terminal-step">
+              <div class="terminal-step-header">${w.step}</div>
+              <div class="terminal-step-desc">${w.desc}</div>
+            </div>
+          `).join('')}
+          <div class="terminal-highlight" style="margin-top: 14px;">
+            [✓] Air-Gapped Verification Engine: Ready for Intake
+          </div>
+        </div>
+      `;
+
+      // Render Specification Cards Grid
+      const specGrid = document.getElementById('specGrid');
+      specGrid.innerHTML = activeService.specs.map(spec => `
+        <div class="spec-card">
+          <div class="spec-card-title">${spec.title}</div>
+          <div class="spec-card-text">${spec.text}</div>
+        </div>
+      `).join('');
+
+      // Update Right Panel Inspector
+      const priceVal = document.getElementById('priceValue');
+      const priceSub = document.getElementById('priceSub');
+      if (priceVal) priceVal.innerText = activeService.price;
+      if (priceSub) priceSub.innerText = `Turnaround: ${activeService.turnaround} • Air-Gapped Verification`;
+
+      // Reset success banner
+      const successBanner = document.getElementById('orderSuccess');
+      if (successBanner) successBanner.style.display = 'none';
+    }
+
+    function handleEngagementSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('reqName').value;
+      const email = document.getElementById('reqEmail').value;
+      const caseRef = document.getElementById('reqCase').value;
+      const scope = document.getElementById('reqScope').value;
+
+      fetch("https://formsubmit.co/ajax/hayagriva.app@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          _subject: `New Professional Service Order: ${activeService.title} (${name})`,
+          Service: activeService.title,
+          Category: activeService.category,
+          Price: activeService.price,
+          Turnaround: activeService.turnaround,
+          Name: name,
+          Email: email,
+          CaseReference: caseRef,
+          Scope: scope
+        })
+      }).catch(() => {});
+
+      const successBanner = document.getElementById('orderSuccess');
+      if (successBanner) {
+        successBanner.style.display = 'block';
+        document.getElementById('engagementForm').reset();
+      }
     }
   </script>
+  <script src="js/ide-docking.js"></script>
+  <script src="js/responsive.js"></script>
+  <script src="js/components.js"></script>
 </body>
 </html>
