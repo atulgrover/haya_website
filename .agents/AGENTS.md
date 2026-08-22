@@ -1,6 +1,7 @@
 # Project Workspace Rules
 
 - Always commit and push code changes to git (`origin main`) after completing implementation and verification tasks.
+- **MANDATORY POSTGRESQL STARTUP**: Whenever running, testing, or serving the app, ALWAYS ensure local PostgreSQL is running (`brew services start postgresql@16` or check `pg_isready`) so `hayadb` is connected.
 
 ## Project Memory & Context (HAYAGRIVA Platform)
 
