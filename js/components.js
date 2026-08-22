@@ -299,8 +299,8 @@ function renderSiteHeader() {
                 </svg>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="professionals_ide.html" class="dropdown-item ${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">🛠️ Products</a></li>
-                <li><a href="professionals_services.html" class="dropdown-item ${pillar === 'professionals_services' ? 'active' : ''}">💼 Services <span class="badge-coming-soon">Soon</span></a></li>
+                <li><a href="professionals_ide.html" class="dropdown-item ${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Products</a></li>
+                <li><a href="professionals_services.html" class="dropdown-item ${pillar === 'professionals_services' ? 'active' : ''}">Services</a></li>
               </ul>
             </li>
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
@@ -321,8 +321,8 @@ function renderSiteHeader() {
         <a href="index.html" class="${pillar === 'home' ? 'active' : ''}">Home ${pillar === 'home' ? '●' : ''}</a>
         <div class="nav-mobile-group">
           <div class="nav-mobile-group-title">Professionals</div>
-          <a href="professionals_ide.html" class="${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">🛠️ Products (Desktop IDE)</a>
-          <a href="professionals_services.html" class="${pillar === 'professionals_services' ? 'active' : ''}">💼 Services <span class="badge-coming-soon">Soon</span></a>
+          <a href="professionals_ide.html" class="${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Products (Desktop IDE)</a>
+          <a href="professionals_services.html" class="${pillar === 'professionals_services' ? 'active' : ''}">Services</a>
         </div>
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>

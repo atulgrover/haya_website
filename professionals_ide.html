@@ -66,11 +66,10 @@
       border-color: var(--primary-color); background-color: var(--primary-light);
       box-shadow: 0 2px 6px rgba(30, 108, 147, 0.12);
     }
-    .role-title-row { display: flex; align-items: center; gap: 8px; }
-    .role-icon { font-size: 15px; line-height: 1; flex-shrink: 0; }
+    .role-title-row { display: flex; align-items: center; justify-content: space-between; }
     .role-title { font-size: 13.5px; font-weight: 700; color: var(--text-main); }
     .role-item.active .role-title { color: var(--primary-color); }
-    .role-meta { font-size: 11.5px; color: var(--text-muted); padding-left: 23px; }
+    .role-meta { font-size: 11.5px; color: var(--text-muted); padding-left: 0; }
 
     /* CENTER PANEL: WORKBENCH Core Engine + 6 Standalone Segment Cards */
     .panel-center { flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; background: var(--bg-primary); }
@@ -180,7 +179,7 @@
 
     <!-- Floating Restore Button when Left Sidebar is Collapsed -->
     <button id="btnRestoreLeft" class="ide-restore-left-btn">
-      <span>▶</span> Show Professional IDEs (Cmd+B)
+      Show Professional IDEs (Cmd+B)
     </button>
 
     <!-- LEFT PANEL: Streamlined Professional IDE Practices Directory -->
@@ -192,7 +191,7 @@
 
       <!-- Keyword Search -->
       <div class="filter-group">
-        <input type="text" id="searchRole" class="filter-input" placeholder="🔍 Search professional practice..." oninput="handleCombinedFilter()">
+        <input type="text" id="searchRole" class="filter-input" placeholder="Search professional practice..." oninput="handleCombinedFilter()">
       </div>
 
       <!-- Filtered Professional Practice Cards List -->
@@ -291,20 +290,11 @@
         return;
       }
 
-      const categoryIcons = {
-        'Intellectual Property': '🛡️',
-        'Insolvency & Bankruptcy': '⚖️',
-        'Corporate & Litigation': '🏛️',
-        'Arbitration & Contracts': '📜'
-      };
-
       list.innerHTML = roles.map(r => {
-        const icon = categoryIcons[r.category] || '⚖️';
         const isActive = activeRole && activeRole.id === r.id;
         return `
           <div class="role-item ${isActive ? 'active' : ''}" onclick="selectRole('${r.id}')">
             <div class="role-title-row">
-              <span class="role-icon">${icon}</span>
               <span class="role-title">${r.role_title}</span>
             </div>
             <span class="role-meta">${r.category || 'Practice'}</span>
@@ -356,7 +346,7 @@
       // Render Dynamic WORKBENCH IDE Window tailored for activeRole
       renderWorkbenchIdeSimulator(activeRole);
 
-      // Render 6 Standalone Cards Grid
+      // Render 6 Standalone Cards Grid without icons
       const grid = document.getElementById('segmentsGrid');
       grid.innerHTML = `
         <!-- Card 1: Embedding Models -->
@@ -365,7 +355,7 @@
             <span class="segment-badge">BRAIN / VECTORS</span>
             <span class="segment-arrow">➔</span>
           </div>
-          <h3 class="segment-title">🧠 Embedding Models</h3>
+          <h3 class="segment-title">Embedding Models</h3>
           <p class="segment-desc">
             <strong>Model:</strong> <code>${activeRole.embeddings.model_name}</code> (${activeRole.embeddings.dimensions}-dim)<br/>
             <strong>Scope:</strong> ${activeRole.embeddings.scope}
@@ -378,7 +368,7 @@
             <span class="segment-badge">REASONING ENGINE</span>
             <span class="segment-arrow">➔</span>
           </div>
-          <h3 class="segment-title">⚡ LLM Reasoning Engines</h3>
+          <h3 class="segment-title">LLM Reasoning Engines</h3>
           <p class="segment-desc">
             <strong>Primary LLM:</strong> <code>${activeRole.llm.model_name}</code><br/>
             <strong>Air-Gapped:</strong> ${activeRole.llm.local_gguf}
@@ -391,7 +381,7 @@
             <span class="segment-badge">SOVEREIGN VAULTS</span>
             <span class="segment-arrow">➔</span>
           </div>
-          <h3 class="segment-title">📦 Domain Vault Assets</h3>
+          <h3 class="segment-title">Domain Vault Assets</h3>
           <p class="segment-desc">
             <strong>Vault:</strong> ${activeRole.vaults.vault_name}<br/>
             <strong>Size:</strong> <code>${activeRole.vaults.size}</code>
@@ -404,7 +394,7 @@
             <span class="segment-badge">SUBAGENT ROSTER</span>
             <span class="segment-arrow">➔</span>
           </div>
-          <h3 class="segment-title">🤖 Specialist AI Agents</h3>
+          <h3 class="segment-title">Specialist AI Agents</h3>
           <p class="segment-desc">
             Contains <strong>${activeRole.agents.length} Specialized Subagents</strong> tuned specifically for ${activeRole.category}.
           </p>
@@ -416,7 +406,7 @@
             <span class="segment-badge">REGULATORY GATEWAY</span>
             <span class="segment-arrow">➔</span>
           </div>
-          <h3 class="segment-title">🏛️ Gateway Audit</h3>
+          <h3 class="segment-title">Gateway Audit</h3>
           <p class="segment-desc">
             <strong>Body:</strong> ${activeRole.gateway ? activeRole.gateway.statutory_body : 'Statutory Regulatory Body'}<br/>
             <strong>Sovereignty:</strong> ${activeRole.gateway ? activeRole.gateway.sovereignty : 'Air-Gapped Local Audit'}
@@ -429,7 +419,7 @@
             <span class="segment-badge">COMPANY SERVICES</span>
             <span class="segment-arrow">➔</span>
           </div>
-          <h3 class="segment-title">🛒 Services Marketplace</h3>
+          <h3 class="segment-title">Services Marketplace</h3>
           <p class="segment-desc">
             Specialized expert audit reports, precedent summaries, and forensic analysis offered for <strong>${activeRole.role_title}</strong>.
           </p>
@@ -454,7 +444,7 @@
         `| Related Parties|   850,000,000      |  0.00% (Sec 5-24)| Excluded|`,
         ``,
         `<span style="color: #10B981;">[✓] Section 29A Disqualification Audit: Passed (0 Disqualifications found)</span>`,
-        `<span style="color: #38BDF8;">[ℹ] Signed with local Ed25519 private key. Payload ready for iPIE portal.</span>`
+        `<span style="color: #38BDF8;">[i] Signed with local Ed25519 private key. Payload ready for iPIE portal.</span>`
       ];
       let contextFiles = [
         { name: "Jaypee_Information_Mem.pdf", checked: true },
@@ -476,7 +466,7 @@
           `| Clause B| 35 U.S.C. 102   | 0.04 (Distinct)   | Verified          |`,
           ``,
           `<span style="color: #10B981;">[✓] 35 U.S.C. 101 Eligibility Audit: Passed (Alice Step 2B Specific Technical Improvement)</span>`,
-          `<span style="color: #38BDF8;">[ℹ] Antecedent linter clean. 0 unlinked dependent claim references.</span>`
+          `<span style="color: #38BDF8;">[i] Antecedent linter clean. 0 unlinked dependent claim references.</span>`
         ];
         contextFiles = [
           { name: "USPTO_Patent_Spec.pdf", checked: true },
@@ -497,7 +487,7 @@
           `| 04-03-2026 | Supreme Court      | Special Leave Petition | Pending  |`,
           ``,
           `<span style="color: #10B981;">[✓] Limitation Period Audit: Passed (Filed within 90 days from HC Decree)</span>`,
-          `<span style="color: #38BDF8;">[ℹ] InLegal-SBERT Precedent Match: Cosine Similarity 0.94 with 2024 SC 882.</span>`
+          `<span style="color: #38BDF8;">[i] InLegal-SBERT Precedent Match: Cosine Similarity 0.94 with 2024 SC 882.</span>`
         ];
         contextFiles = [
           { name: "Impugned_Order_HC.pdf", checked: true },
@@ -518,7 +508,7 @@
           `| Claim 2  | Delayed Costs       |  4,20,00,000       |  2,10,00,000       | 9.0% P.A.     |`,
           ``,
           `<span style="color: #10B981;">[✓] Section 31(7) Statutory Interest Audit: Verified & Calculated</span>`,
-          `<span style="color: #38BDF8;">[ℹ] Signed with local Ed25519 private key. Award tamper-proof hash generated.</span>`
+          `<span style="color: #38BDF8;">[i] Signed with local Ed25519 private key. Award tamper-proof hash generated.</span>`
         ];
         contextFiles = [
           { name: "Pleadings_Bundle.pdf", checked: true },
@@ -535,15 +525,15 @@
             <span class="ide-dot dot-green"></span>
           </div>
           <div class="ide-title">Hayagriva WORKBENCH (ipe) IDE - ${caseTitle}</div>
-          <div style="font-size: 12px; color: #10B981; font-weight: 700;">● Engine: Port 8090 (Standard)</div>
+          <div style="font-size: 12px; color: #10B981; font-weight: 700;">Engine: Port 8090 (Standard)</div>
         </div>
         <div class="ide-body">
           <!-- Sidebar -->
           <div class="ide-sidebar">
             <div class="ide-tree-title">Explorer</div>
-            ${fileList.map((f, i) => `<div class="ide-tree-item ${i === 0 ? 'active' : ''}">${f.endsWith('.d3') ? '📊' : f.includes('/') ? '📁' : '📄'} ${f}</div>`).join('')}
+            ${fileList.map((f, i) => `<div class="ide-tree-item ${i === 0 ? 'active' : ''}">${f}</div>`).join('')}
             <div class="ide-tree-title" style="margin-top: 18px;">Subagents</div>
-            ${subagentList.map(s => `<div class="ide-tree-item" style="color: #38BDF8;">🤖 ${s}</div>`).join('')}
+            ${subagentList.map(s => `<div class="ide-tree-item" style="color: #38BDF8;">${s}</div>`).join('')}
           </div>
           <!-- Editor -->
           <div class="ide-editor">
@@ -580,7 +570,7 @@
       }
 
       if (segmentType === 'embeddings') {
-        title.innerText = '🧠 Embedding Model Specifications';
+        title.innerText = 'Embedding Model Specifications';
         content.innerHTML = `
           <div class="inspector-section">
             <div class="inspector-sec-title">ONNX Vector Engine</div>
@@ -593,7 +583,7 @@
           </div>
         `;
       } else if (segmentType === 'llm') {
-        title.innerText = '⚡ LLM Reasoning Engine';
+        title.innerText = 'LLM Reasoning Engine';
         content.innerHTML = `
           <div class="inspector-section">
             <div class="inspector-sec-title">Configured Reasoning Models</div>
@@ -606,7 +596,7 @@
           </div>
         `;
       } else if (segmentType === 'vaults') {
-        title.innerText = '📦 Domain Data Vault Assets';
+        title.innerText = 'Domain Data Vault Assets';
         content.innerHTML = `
           <div class="inspector-section">
             <div class="inspector-sec-title">Local SQLite Data Package</div>
@@ -619,18 +609,18 @@
           </div>
 
           <a href="/${activeRole.marketplace.download_url}" class="btn-download" style="margin-top: 10px;">
-            ⬇️ Download ${activeRole.marketplace.file_name} (${activeRole.marketplace.file_size})
+            Download ${activeRole.marketplace.file_name} (${activeRole.marketplace.file_size})
           </a>
         `;
       } else if (segmentType === 'agents') {
-        title.innerText = '🤖 Specialist AI Agents Roster';
+        title.innerText = 'Specialist AI Agents Roster';
         content.innerHTML = `
           <div class="inspector-section">
             <div class="inspector-sec-title">${activeRole.agents.length} Specialized Subagents</div>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
               ${activeRole.agents.map(a => `
                 <div style="background: #FFF; border: 1px solid var(--border-color); padding: 10px; border-radius: 6px;">
-                  <div style="font-weight: 700; font-size: 13.5px; color: var(--primary-color);">🤖 ${a.name}</div>
+                  <div style="font-weight: 700; font-size: 13.5px; color: var(--primary-color);">${a.name}</div>
                   <div style="font-size: 11.5px; color: var(--text-muted); font-family: 'Roboto Mono', monospace;">${a.file}</div>
                   <div style="font-size: 12.5px; color: var(--text-main); margin-top: 4px;">${a.description}</div>
                 </div>
@@ -639,7 +629,7 @@
           </div>
         `;
       } else if (segmentType === 'gateway') {
-        title.innerText = '🏛️ Gateway Audit & Compliance';
+        title.innerText = 'Gateway Audit & Compliance';
         const gw = activeRole.gateway || {};
         content.innerHTML = `
           <div class="inspector-section">
@@ -656,14 +646,14 @@
             <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px;">
               ${(gw.portals || ['NCLT e-Courts Portal', 'IBBI Portal', 'Resolution Bazaar']).map(p => `
                 <div style="background: #FFF; border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 6px; font-size: 12.5px; font-weight: 600; color: var(--primary-color);">
-                  🌐 ${p}
+                  ${p}
                 </div>
               `).join('')}
             </div>
           </div>
         `;
       } else if (segmentType === 'marketplace') {
-        title.innerText = '🛒 Professional Services Marketplace';
+        title.innerText = 'Professional Services Marketplace';
         
         let services = [
           { title: 'CIRP Due Diligence & Form Verification Audit Report', price: '₹999', desc: 'Automated audit of admitted claim forms (Form C/D) against IBBI CIRP Regulations, 2016.' },
@@ -700,7 +690,7 @@
                 <div style="font-weight: 700; font-size: 13.5px; color: var(--text-main); margin-bottom: 4px; padding-right: 60px;">${s.title}</div>
                 <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 10px;">${s.desc}</div>
                 <button class="btn-download" style="font-size: 12.5px; padding: 7px 12px;" onclick="orderService('${s.title}')">
-                  🛒 Request / Order Service
+                  Request / Order Service
                 </button>
               </div>
             `).join('')}
