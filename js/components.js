@@ -270,6 +270,7 @@ function renderSiteHeader() {
         if (path.endsWith('employees_nsqf.html') || path.endsWith('students.html')) pillar = 'employees_nsqf';
         else if (path.endsWith('employers_sop.html') || path.endsWith('employees.html')) pillar = 'employers_sop';
         else if (path.endsWith('entrepreneurs_msme.html')) pillar = 'entrepreneurs_msme';
+        else if (path.endsWith('professionals_solutions.html') || path.endsWith('solutions.html') || path.endsWith('datarooms.html')) pillar = 'professionals_solutions';
         else if (path.endsWith('professionals_ide.html') || path.endsWith('professionals_apnet.html') || path.endsWith('professionals.html') || path.endsWith('experts.html')) pillar = 'professionals_ide';
         else if (path.endsWith('professionals_services.html')) pillar = 'professionals_services';
         else if (path.endsWith('login.html')) pillar = 'login';
@@ -280,7 +281,7 @@ function renderSiteHeader() {
     if (pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees') subBadge = 'Employees';
     else if (pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners') subBadge = 'Employers';
     else if (pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs') subBadge = 'Entrepreneurs';
-    else if (pillar === 'professionals_ide' || pillar === 'professionals_services' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts') subBadge = 'Professionals';
+    else if (pillar === 'professionals_ide' || pillar === 'professionals_services' || pillar === 'professionals_solutions' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts') subBadge = 'Professionals';
     else if (pillar === 'login') subBadge = 'Login';
 
     headerMount.innerHTML = `
@@ -292,7 +293,7 @@ function renderSiteHeader() {
           <ul class="nav-links">
             <li><a href="index.html" class="nav-link ${pillar === 'home' ? 'active' : ''}">Home</a></li>
             <li class="nav-dropdown" id="navProfDropdown">
-              <a href="#" onclick="return false;" class="nav-link nav-dropdown-toggle ${['professionals_ide', 'professionals_services', 'professionals_apnet', 'professionals', 'experts'].includes(pillar) ? 'active' : ''}" aria-expanded="false" aria-haspopup="true">
+              <a href="#" onclick="return false;" class="nav-link nav-dropdown-toggle ${['professionals_ide', 'professionals_services', 'professionals_solutions', 'professionals_apnet', 'professionals', 'experts'].includes(pillar) ? 'active' : ''}" aria-expanded="false" aria-haspopup="true">
                 Professionals
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
@@ -301,6 +302,7 @@ function renderSiteHeader() {
               <ul class="dropdown-menu">
                 <li><a href="professionals_ide.html" class="dropdown-item ${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Products</a></li>
                 <li><a href="professionals_services.html" class="dropdown-item ${pillar === 'professionals_services' ? 'active' : ''}">Services</a></li>
+                <li><a href="professionals_solutions.html" class="dropdown-item ${pillar === 'professionals_solutions' ? 'active' : ''}">Solutions</a></li>
               </ul>
             </li>
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
@@ -323,6 +325,7 @@ function renderSiteHeader() {
           <div class="nav-mobile-group-title">Professionals</div>
           <a href="professionals_ide.html" class="${pillar === 'professionals_ide' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts' ? 'active' : ''}">Products (Desktop IDE)</a>
           <a href="professionals_services.html" class="${pillar === 'professionals_services' ? 'active' : ''}">Services</a>
+          <a href="professionals_solutions.html" class="${pillar === 'professionals_solutions' ? 'active' : ''}">Solutions</a>
         </div>
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
