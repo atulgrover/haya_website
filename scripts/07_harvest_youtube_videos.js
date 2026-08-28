@@ -325,14 +325,14 @@ async function harvestPcsForQp(qpCode, cleanQp, pool, force = false) {
         SELECT p.id, p.qp_code, p.nos_code, p.pc_code, p.pc_description, p.pc_intent, p.pc_intent_hi,
                p.contextual_search_query, p.contextual_search_query_hi,
                p.tool_keywords, p.negative_keywords, p.positive_signals,
-               p.video_id, p.video_id_hi, q.sector, q.qp_name
+               p.video_id, q.sector, q.qp_name
         FROM nsqf_pcs p
         JOIN nsqf_qps q ON p.qp_code = q.qp_code
         WHERE (p.qp_code = $1 OR p.qp_code = $2)
         ORDER BY p.sequence_order ASC, p.id ASC
     `, [qpCode, cleanQp]);
 
-    const pcsToHarvest = pcs.rows.filter(pc => force || !pc.video_id || !pc.video_id_hi);
+    const pcsToHarvest = pcs.rows.filter(pc => force || !pc.video_id);
     if (pcsToHarvest.length === 0) return 0;
 
     const usedSet = new Set();
@@ -351,28 +351,21 @@ async function harvestPcsForQp(qpCode, cleanQp, pool, force = false) {
                 positive_signals: pc.positive_signals
             };
 
-            const [enVid, hiVid] = await Promise.all([
-                harvestVideoForGuidance(guidance, pc.sector, 'eng', pool, usedSet),
-                harvestVideoForGuidance(guidance, pc.sector, 'hi', pool, usedSet)
-            ]);
-
-            return { pc, enVid, hiVid };
+            const enVid = await harvestVideoForGuidance(guidance, pc.sector, 'eng', pool, usedSet);
+            return { pc, enVid };
         }));
 
-        for (const { pc, enVid, hiVid } of results) {
+        for (const { pc, enVid } of results) {
             usedSet.add(enVid.videoId);
-            usedSet.add(hiVid.videoId);
-            const score = Math.round((enVid.auditScore + hiVid.auditScore) / 2);
+            const score = enVid.auditScore;
 
             await pool.query(`
                 UPDATE nsqf_pcs
                 SET video_id = $1, video_title = $2, video_url = $3, thumbnail_url = $4,
-                    video_id_hi = $5, video_title_hi = $6, video_url_hi = $7, thumbnail_url_hi = $8,
-                    audit_score = $9
-                WHERE id = $10
+                    audit_score = $5
+                WHERE id = $6
             `, [
                 enVid.videoId, enVid.videoTitle, enVid.videoUrl, enVid.thumbnailUrl,
-                hiVid.videoId, hiVid.videoTitle, hiVid.videoUrl, hiVid.thumbnailUrl,
                 score, pc.id
             ]);
             count++;
@@ -449,22 +442,17 @@ async function harvestSopsForQp(qpCode, cleanQp, pool, force = false) {
             const sop = typeof mod.sop_procedure_json === 'string' ? JSON.parse(mod.sop_procedure_json) : mod.sop_procedure_json;
             const guidance = sop.video_guidance || { intent: mod.module_title, search_query: mod.module_title };
 
-            if (force || !sop.video?.video_id || !sop.video_hi?.video_id) {
-                const [enVid, hiVid] = await Promise.all([
-                    harvestVideoForGuidance(guidance, sector, 'eng', pool, usedSet),
-                    harvestVideoForGuidance(guidance, sector, 'hi', pool, usedSet)
-                ]);
+            if (force || !sop.video?.video_id) {
+                const enVid = await harvestVideoForGuidance(guidance, sector, 'eng', pool, usedSet);
 
                 sop.video = {
                     video_id: enVid.videoId, video_title: enVid.videoTitle,
                     video_url: enVid.videoUrl, thumbnail_url: enVid.thumbnailUrl,
                     duration_seconds: enVid.durationSeconds, audit_score: enVid.auditScore
                 };
-                sop.video_hi = {
-                    video_id: hiVid.videoId, video_title: hiVid.videoTitle,
-                    video_url: hiVid.videoUrl, thumbnail_url: hiVid.thumbnailUrl,
-                    duration_seconds: hiVid.durationSeconds, audit_score: hiVid.auditScore
-                };
+
+                // Note: Hindi video logic intentionally removed to save quota and cache space.
+                // Text translation is offloaded to pc_explanations_cache.
 
                 sop.video_clip = {
                     video_id: enVid.videoId,
@@ -537,21 +525,16 @@ async function harvestMsmeForQp(qpCode, cleanQp, pool, force = false) {
             // A. Harvest Pitch Video
             const pitchGuidance = msme.pitch_video_guidance || { intent: msme.business_title, search_query: msme.business_title };
             if (force || !msme.pitch_video?.video_id) {
-                const [enVid, hiVid] = await Promise.all([
-                    harvestVideoForGuidance(pitchGuidance, sector, 'eng', pool, usedSet),
-                    harvestVideoForGuidance(pitchGuidance, sector, 'hi', pool, usedSet)
-                ]);
+                const enVid = await harvestVideoForGuidance(pitchGuidance, sector, 'eng', pool, usedSet);
 
                 msme.pitch_video = {
                     video_id: enVid.videoId, video_title: enVid.videoTitle,
                     video_url: enVid.videoUrl, thumbnail_url: enVid.thumbnailUrl,
                     duration_seconds: enVid.durationSeconds, audit_score: enVid.auditScore
                 };
-                msme.pitch_video_hi = {
-                    video_id: hiVid.videoId, video_title: hiVid.videoTitle,
-                    video_url: hiVid.videoUrl, thumbnail_url: hiVid.thumbnailUrl,
-                    duration_seconds: hiVid.durationSeconds, audit_score: hiVid.auditScore
-                };
+                
+                // Note: Hindi video logic intentionally removed to save quota and cache space.
+                // Text translation is offloaded to pc_explanations_cache.
                 msme.pitch_video_clip = {
                     video_id: enVid.videoId,
                     start_seconds: 45,
