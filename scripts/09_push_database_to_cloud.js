@@ -118,6 +118,21 @@ async function main() {
     console.log(` Mode: ${isDryRun ? 'DRY-RUN' : isAfresh ? 'AFRESH PURGE & UPLOAD' : 'INCREMENTAL SYNC'}`);
     console.log('================================================================================\n');
 
+    console.log('🧹 [Local Maintenance] Purging expired YouTube API cache (Policy III.E.4 7-day TTL)...');
+    try {
+        const purgeRes = await localPool.query(`DELETE FROM youtube_search_cache WHERE cached_at < NOW() - INTERVAL '7 days'`);
+        if (purgeRes.rowCount > 0) {
+            console.log(`✅ Purged ${purgeRes.rowCount.toLocaleString()} expired cache entries from local hayadb.`);
+            await localPool.query(`VACUUM FULL youtube_search_cache`);
+            console.log(`✅ Reclaimed disk space via VACUUM FULL.`);
+        } else {
+            console.log(`✅ Cache is already clean.`);
+        }
+    } catch (e) {
+        console.error('⚠️ Failed to purge cache:', e.message);
+    }
+    console.log();
+
     if (isDryRun) {
         console.log('📊 Row count comparison (local → Neon):\n');
         console.log('  Table                      Local      Neon       Δ');

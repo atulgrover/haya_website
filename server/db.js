@@ -471,8 +471,8 @@ async function initSchema() {
 
         // ── Idempotent column migrations (safe on existing hayadb) ───────────
         const migrations = [
-            `ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS kus JSONB`,
-            `ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS gs JSONB`,
+            `ALTER TABLE nsqf_nos DROP COLUMN IF EXISTS kus`,
+            `ALTER TABLE nsqf_nos DROP COLUMN IF EXISTS gs`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS theory_marks NUMERIC(6,2)`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS practical_marks NUMERIC(6,2)`,
             `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS project_marks NUMERIC(6,2)`,

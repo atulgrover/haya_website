@@ -487,17 +487,15 @@ async function main() {
         try {
             await client.query('BEGIN');
 
-            // ── 1. Upsert nsqf_nos (with kus & gs JSONB arrays) ─────────────
+            // ── 1. Upsert nsqf_nos (Knowledge Units & Generic Skills stored in dedicated tables) ─────────────
             for (const n of nosList) {
                 await client.query(`
-                    INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order, kus, gs)
-                    VALUES ($1, $2, $3, $4, $5, $6)
+                    INSERT INTO nsqf_nos (qp_code, nos_code, nos_title, sequence_order)
+                    VALUES ($1, $2, $3, $4)
                     ON CONFLICT (qp_code, nos_code) DO UPDATE SET
                         nos_title      = EXCLUDED.nos_title,
-                        sequence_order = EXCLUDED.sequence_order,
-                        kus            = EXCLUDED.kus,
-                        gs             = EXCLUDED.gs
-                `, [qp.qp_code, n.nos_code, n.nos_title, n.sequence_order, JSON.stringify(n.kus || []), JSON.stringify(n.gs || [])]);
+                        sequence_order = EXCLUDED.sequence_order
+                `, [qp.qp_code, n.nos_code, n.nos_title, n.sequence_order]);
             }
             totalNos += nosList.length;
 
