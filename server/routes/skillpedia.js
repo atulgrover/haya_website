@@ -1028,4 +1028,44 @@ router.post('/progress/toggle-pc', async (req, res) => {
     }
 });
 
+
+// GET /api/skillpedia/nsqf/theory — fetch Knowledge Understandings (KUs) and Generic Skills (GSs)
+router.get('/nsqf/theory', async (req, res) => {
+    try {
+        let rawQp = req.query.qp || '';
+        let rawNos = req.query.nos || '';
+        if (rawQp.startsWith('/')) rawQp = rawQp.substring(1);
+        if (rawNos.startsWith('/')) rawNos = rawNos.substring(1);
+        
+        const qpCode = decodeURIComponent(rawQp).trim().replace(/_/g, '/');
+        const nosCode = decodeURIComponent(rawNos).trim().replace(/_/g, '/');
+        
+        const cleanQp = qpCode.replace(/\//g, '_');
+        const cleanNos = nosCode.replace(/\//g, '_');
+
+        const kus = await db.prepare(`
+            SELECT ku_code, ku_description 
+            FROM nsqf_kus 
+            WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?) 
+              AND (nos_code = ? OR REPLACE(nos_code, '/', '_') = ?)
+            ORDER BY id ASC
+        `).all(qpCode, cleanQp, nosCode, cleanNos);
+
+        const gs = await db.prepare(`
+            SELECT gs_code, gs_description 
+            FROM nsqf_gs 
+            WHERE (qp_code = ? OR REPLACE(qp_code, '/', '_') = ?) 
+              AND (nos_code = ? OR REPLACE(nos_code, '/', '_') = ?)
+            ORDER BY id ASC
+        `).all(qpCode, cleanQp, nosCode, cleanNos);
+
+        res.json({
+            success: true,
+            kus: kus || [],
+            gs: gs || []
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
 module.exports = router;
