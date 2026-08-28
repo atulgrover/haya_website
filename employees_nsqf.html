@@ -849,8 +849,8 @@
                           <div style="border:1px solid rgba(0,0,0,0.08); border-radius:8px; padding:10px; background:#FFF;">
                             <!-- Hyperlinked Module Header -->
                             <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap;">
-                              <div onclick="openPcTiddlerModal('${encodeURIComponent(firstPcId)}')" style="font-size:13px; font-weight:700; color:#0284C7; cursor:pointer; line-height:1.3; display:inline-flex; align-items:center; gap:6px; flex:1;">
-                                <span style="font-size:11px; color:#0284C7;">▶</span> ${mod.module_title || mod.nos_title}
+                              <div onclick="toggleAccordionFolder('mod-grp-${nIdx}-${mSubIdx}')" style="font-size:13px; font-weight:700; color:#0284C7; cursor:pointer; line-height:1.3; display:inline-flex; align-items:center; gap:6px; flex:1; user-select:none;">
+                                <span id="acc-icon-mod-grp-${nIdx}-${mSubIdx}" style="font-size:11px; color:#0284C7;">▼</span> ${mod.module_title || mod.nos_title}
                               </div>
 
                               <div style="display:flex; align-items:center; gap:6px;">
@@ -864,7 +864,7 @@
                             </div>
 
                             <!-- Distilled PC Intent Checklist (Clickable to In-Page PC Modal) -->
-                            <div style="margin-top:8px; display:flex; flex-direction:column; gap:4px; padding-left:2px;">
+                            <div id="mod-grp-${nIdx}-${mSubIdx}" style="margin-top:8px; display:flex; flex-direction:column; gap:4px; padding-left:2px;">
                               ${(mod.pcs || []).map(pc => {
                                 return `
                                 <div onclick="openPcTiddlerModal('${encodeURIComponent(pc.pc_id)}')" 
