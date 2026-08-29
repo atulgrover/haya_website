@@ -15,6 +15,7 @@ const skillpediaRouter  = require('./routes/skillpedia');
 const searchVideoRouter = require('./routes/searchVideo');
 const aiExplainerRouter = require('./routes/aiExplainer');
 const curatorRouter = require('./routes/curator');
+const patentsRouter = require('./routes/patents');
 const { ensureKeyPair } = require('./utils/license-signer');
 const compression = require('compression');
 
@@ -44,6 +45,7 @@ app.use('/api/skillpedia',    skillpediaRouter);
 app.use('/api/search-video', searchVideoRouter);
 app.use('/api/ai', aiExplainerRouter);
 app.use('/api/curator', curatorRouter);
+app.use('/api/patents', patentsRouter);
 
 // Legal & Policy Direct Route Endpoints (https://hayagriva.app/privacy & https://hayagriva.app/terms)
 app.get('/privacy', (req, res) => {

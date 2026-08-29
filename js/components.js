@@ -270,6 +270,7 @@ function renderSiteHeader() {
         if (path.endsWith('employees_nsqf.html') || path.endsWith('students.html')) pillar = 'employees_nsqf';
         else if (path.endsWith('employers_sop.html') || path.endsWith('employees.html')) pillar = 'employers_sop';
         else if (path.endsWith('entrepreneurs_msme.html')) pillar = 'entrepreneurs_msme';
+        else if (path.endsWith('patents.html') || path.endsWith('patent.html')) pillar = 'patents';
         else if (path.endsWith('login.html')) pillar = 'login';
         else if (path.endsWith('index.html') || path === '/' || path === '') pillar = 'home';
     }
@@ -278,7 +279,7 @@ function renderSiteHeader() {
     if (pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees') subBadge = 'Employees';
     else if (pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners') subBadge = 'Employers';
     else if (pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs') subBadge = 'Entrepreneurs';
-    else if (pillar === 'login' || pillar === 'patents') subBadge = 'Patents';
+    else if (pillar === 'patents') subBadge = 'Patents';
 
     headerMount.innerHTML = `
       <header class="header-nav">
@@ -291,7 +292,7 @@ function renderSiteHeader() {
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
             <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers</a></li>
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs</a></li>
-            <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Patents</a></li>
+            <li><a href="patents.html" class="nav-link ${pillar === 'patents' ? 'active' : ''}">Patents</a></li>
           </ul>
           <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -307,7 +308,7 @@ function renderSiteHeader() {
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
-        <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Patents</a>
+        <a href="patents.html" class="${pillar === 'patents' ? 'active' : ''}">Patents ${pillar === 'patents' ? '●' : ''}</a>
       </nav>
     `;
 

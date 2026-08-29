@@ -458,6 +458,26 @@ async function initSchema() {
                 ip_address TEXT,
                 created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
             );
+
+            CREATE TABLE IF NOT EXISTS nsqf_patents (
+                id SERIAL PRIMARY KEY,
+                qp_code TEXT UNIQUE NOT NULL,
+                patent_title TEXT NOT NULL,
+                ipc_classes JSONB NOT NULL DEFAULT '[]',
+                technical_field TEXT NOT NULL,
+                background_problem TEXT NOT NULL,
+                technical_solution TEXT NOT NULL,
+                hardware_bom JSONB NOT NULL DEFAULT '[]',
+                operational_steps JSONB NOT NULL DEFAULT '[]',
+                claims_apparatus JSONB NOT NULL DEFAULT '[]',
+                claims_method JSONB NOT NULL DEFAULT '[]',
+                prior_art_queries JSONB NOT NULL DEFAULT '[]',
+                commercial_viability TEXT,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+                updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_patents_qp ON nsqf_patents(qp_code);
         `);
 
         console.log('[Haya Portal DB] ✅ Local PostgreSQL schema verified & connected.');
