@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Single Sign-On (SSO) — HAYAGRIVA</title>
+  <title>Patents &amp; IP Access — HAYAGRIVA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -88,12 +88,12 @@
 
   <!-- Top Header Navigation Bar -->
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="login"></div>
+  <div id="site-header" data-pillar="patents"></div>
 
   <div class="auth-wrapper">
     <div class="auth-card">
-      <h1 class="auth-title">HAYAGRIVA SSO</h1>
-      <p class="auth-sub">Single Sign-On for Interns, Employers, Startups &amp; Experts</p>
+      <h1 class="auth-title">PATENTS &amp; IP ACCESS</h1>
+      <p class="auth-sub">Sign in or create an account to unlock Patent Intelligence, Prior Art Analysis &amp; IP Workspaces.</p>
 
       <div id="authAlert" class="alert"></div>
 
@@ -129,7 +129,7 @@
           <input type="password" id="password" class="form-input" placeholder="••••••••" required />
         </div>
 
-        <button type="submit" class="submit-btn" id="submitBtn">Sign In</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Sign In to Access Patents</button>
       </form>
 
       <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
@@ -156,7 +156,7 @@
       e.preventDefault();
       isSignup = !isSignup;
       document.getElementById('fullNameGroup').style.display = isSignup ? 'block' : 'none';
-      document.getElementById('submitBtn').innerText = isSignup ? 'Create Account' : 'Sign In';
+      document.getElementById('submitBtn').innerText = isSignup ? 'Create Account & Access Patents' : 'Sign In to Access Patents';
       document.getElementById('toggleText').innerText = isSignup ? 'Already have an account?' : "Don't have an account?";
       document.getElementById('toggleLink').innerText = isSignup ? 'Sign In' : 'Create One';
     }

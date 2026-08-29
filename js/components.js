@@ -282,7 +282,7 @@ function renderSiteHeader() {
     else if (pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners') subBadge = 'Employers';
     else if (pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs') subBadge = 'Entrepreneurs';
     else if (pillar === 'professionals_ide' || pillar === 'professionals_services' || pillar === 'professionals_solutions' || pillar === 'professionals_apnet' || pillar === 'professionals' || pillar === 'experts') subBadge = 'Professionals';
-    else if (pillar === 'login') subBadge = 'Login';
+    else if (pillar === 'login' || pillar === 'patents') subBadge = 'Patents';
 
     headerMount.innerHTML = `
       <header class="header-nav">
@@ -308,7 +308,7 @@ function renderSiteHeader() {
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
             <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers</a></li>
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs</a></li>
-            <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Login</a></li>
+            <li><a href="#" onclick="openAuthModal(false); return false;" class="nav-link login-btn" id="main-auth-btn">Patents</a></li>
           </ul>
           <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -330,7 +330,7 @@ function renderSiteHeader() {
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
-        <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Login</a>
+        <a href="#" onclick="openAuthModal(false); return false;" class="login-btn">Patents</a>
       </nav>
     `;
 
@@ -506,10 +506,10 @@ function injectAuthModal() {
         <div class="auth-modal-overlay" id="authModalOverlay" onclick="handleAuthOverlayClick(event)">
             <div class="auth-modal-card" id="authModalCard">
                 <div class="auth-modal-header">
-                    <h2 class="auth-modal-title" id="authModalTitle">HAYAGRIVA SSO</h2>
+                    <h2 class="auth-modal-title" id="authModalTitle">Patents &amp; IP Access</h2>
                     <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
                 </div>
-                <p class="auth-modal-sub" id="authModalSub">Single Sign-On for Interns, Employers, Startups &amp; Experts</p>
+                <p class="auth-modal-sub" id="authModalSub">Sign in or register to unlock Patent Intelligence, Prior Art Analysis &amp; IP Workspaces.</p>
                 <div class="auth-modal-alert" id="authModalAlert"></div>
                 <form class="auth-modal-form" id="authModalForm" onsubmit="handleAuthSubmit(event)">
                     <div class="form-group">
@@ -538,7 +538,7 @@ function injectAuthModal() {
                         <label class="form-label" for="authPassword">Password</label>
                         <input type="password" id="authPassword" class="form-input" placeholder="••••••••" required />
                     </div>
-                    <button type="submit" class="auth-modal-btn" id="authSubmitBtn">Sign In</button>
+                    <button type="submit" class="auth-modal-btn" id="authSubmitBtn">Sign In to Access Patents</button>
                 </form>
                 <div class="auth-modal-toggle">
                     <span id="authToggleText">Don't have an account?</span>
@@ -564,7 +564,7 @@ function openAuthModal(signup = false) {
     if (alertBox) alertBox.style.display = 'none';
 
     document.getElementById('authFullNameGroup').style.display = authIsSignup ? 'block' : 'none';
-    document.getElementById('authSubmitBtn').innerText = authIsSignup ? 'Create Account' : 'Sign In';
+    document.getElementById('authSubmitBtn').innerText = authIsSignup ? 'Create Account & Access Patents' : 'Sign In to Access Patents';
     document.getElementById('authToggleText').innerText = authIsSignup ? 'Already have an account?' : "Don't have an account?";
     document.getElementById('authToggleLink').innerText = authIsSignup ? 'Sign In' : 'Create One';
 
@@ -679,7 +679,7 @@ async function handleAuthSubmit(e) {
         alertBox.style.display = 'block';
     } finally {
         btn.disabled = false;
-        btn.innerText = authIsSignup ? 'Create Account' : 'Sign In';
+        btn.innerText = authIsSignup ? 'Create Account & Access Patents' : 'Sign In to Access Patents';
     }
 }
 
@@ -744,7 +744,7 @@ function updateAuthButtonsUI() {
                 <a href="#" onclick="handleSignOut(event)" class="user-profile-item logout">Sign Out</a>
             `;
         } else {
-            btn.textContent = 'Login';
+            btn.textContent = 'Patents';
             btn.classList.remove('user-profile-trigger');
             btn.setAttribute('onclick', 'openAuthModal(false); return false;');
 
