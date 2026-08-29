@@ -43,6 +43,11 @@ const pool = new Pool({
     ...(isNeon ? { ssl: { rejectUnauthorized: false } } : {})
 });
 
+// Ensure every pooled connection explicitly defaults to public schema (critical for Neon/Cloud pooler)
+pool.on('connect', (client) => {
+    client.query('SET search_path TO public;').catch(() => {});
+});
+
 // ── SQL placeholder converter: ? → $1, $2, ... (SQLite → PG compat layer) ────
 const convertSql = (sql) => {
     let s = String(sql || '')
@@ -102,6 +107,8 @@ const PIPELINE_STATUSES = [
 // ── Schema bootstrap (idempotent — safe to run on every startup) ──────────────
 async function initSchema() {
     try {
+        await pool.query('SET search_path TO public;');
+
         await pool.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id SERIAL PRIMARY KEY,
