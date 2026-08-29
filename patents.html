@@ -3,181 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patents | National Industrial Invention Blueprints | HAYAGRIVA</title>
+  <title>Inventors | National Industrial Patent Blueprints | HAYAGRIVA</title>
   <meta name="description" content="Turnkey industrial patent blueprints and provisional claims derived from 2,002 national qualification standards and shop-floor engineering tolerances.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/ide-docking.css">
+  <link rel="stylesheet" href="css/pillar-layout.css">
   
   <style>
-    :root {
-      --bg-primary: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --primary-color: #1E6C93;
-      --primary-hover: #165272;
-      --primary-light: rgba(30, 108, 147, 0.08);
-      --accent-gold: #D97706;
-      --accent-gold-light: #FEF3C7;
-      --accent-purple: #7C3AED;
-      --accent-purple-light: #EDE9FE;
-      --text-main: #0F172A;
-      --text-muted: #64748B;
-      --border-color: #E2E8F0;
-      --font-main: 'Lato', sans-serif;
-      --font-heading: 'Google Sans', sans-serif;
-      --font-mono: 'Roboto Mono', monospace;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: var(--font-main);
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    a { color: var(--primary-color); text-decoration: none; }
-
-    /* Hero Banner */
-    .patents-hero {
-      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #1E6C93 100%);
-      color: #FFFFFF;
-      padding: 42px 24px 36px;
-      text-align: center;
-      position: relative;
-      border-bottom: 1px solid #334155;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 14px;
-      background: rgba(217, 119, 6, 0.2);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      color: #FCD34D;
-      border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 10px;
-    }
-    .hero-subtitle {
-      font-size: 15px;
-      color: #94A3B8;
-      max-width: 780px;
-      margin: 0 auto 24px;
-      line-height: 1.5;
-    }
-    .hero-stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .stat-pill {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 6px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #E2E8F0;
-    }
-
-    /* Main Container */
-    .patents-layout {
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    /* SECTION 1: Sector & Trade Explorer */
-    .section-container {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 24px 28px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-    }
-    .sec-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 22px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .sec-title-wrap h2 {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .sec-subtitle {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-top: 3px;
-    }
-
-    /* Filter Toolbar */
-    .filter-bar {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .filter-input, .filter-select {
-      padding: 10px 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-size: 14px;
-      font-family: inherit;
-      background: #FFFFFF;
-      color: var(--text-main);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .filter-input:focus, .filter-select:focus {
-      border-color: var(--primary-color);
-    }
-    .search-box { flex: 1; min-width: 260px; }
-
-    /* Patent Grid */
+    /* Specific Patent Blueprint Component Styles */
     .patent-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 16px;
+      padding-bottom: 40px;
     }
     .patent-card {
       background: #FFFFFF;
       border: 1.5px solid var(--border-color);
       border-radius: 12px;
-      padding: 20px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
       cursor: pointer;
       position: relative;
@@ -185,7 +36,7 @@
     .patent-card:hover, .patent-card.active {
       border-color: var(--primary-color);
       transform: translateY(-2px);
-      box-shadow: 0 12px 24px -8px rgba(30, 108, 147, 0.15);
+      box-shadow: 0 10px 22px -6px rgba(30, 108, 147, 0.15);
     }
     .patent-card.active {
       border-width: 2px;
@@ -195,23 +46,23 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
     }
     .card-monogram {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 8px;
       background: var(--primary-light);
       color: var(--primary-color);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       flex-shrink: 0;
     }
     .card-ipc-badge {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       padding: 3px 8px;
       border-radius: 4px;
@@ -221,16 +72,16 @@
     }
     .card-title {
       font-family: var(--font-heading);
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
       color: var(--text-main);
       line-height: 1.35;
     }
     .card-trade-sub {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-muted);
       display: flex;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
     }
     .card-trade-code {
@@ -240,13 +91,13 @@
     }
     .card-btn {
       width: 100%;
-      padding: 9px 14px;
+      padding: 8px 12px;
       background: var(--primary-color);
       color: #FFFFFF;
       border: none;
       border-radius: 6px;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 12.5px;
       cursor: pointer;
       transition: background 0.18s;
       display: flex;
@@ -256,61 +107,23 @@
     }
     .card-btn:hover { background: var(--primary-hover); }
 
-    /* SECTION 2 & 3: Selected Patent Blueprint Dossier */
-    .dossier-wrapper {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-    }
-    @media (max-width: 1024px) {
-      .dossier-wrapper { grid-template-columns: 1fr; }
-    }
-
-    /* Technical & Hardware Dossier */
-    .dossier-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .dossier-header-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent-purple);
-      background: var(--accent-purple-light);
-      padding: 3px 10px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      width: fit-content;
-    }
-    .dossier-patent-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.35;
-    }
+    /* Dossier Meta and Content Blocks */
     .dossier-meta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
       background: #F8FAFC;
-      padding: 14px;
+      padding: 12px;
       border-radius: 8px;
       border: 1px solid var(--border-color);
     }
-    .meta-item-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .meta-item-val { font-size: 13.5px; font-weight: 600; color: var(--text-main); }
+    .meta-item-label { font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .meta-item-val { font-size: 12.5px; font-weight: 600; color: var(--text-main); }
 
-    .content-block { display: flex; flex-direction: column; gap: 8px; }
+    .content-block { display: flex; flex-direction: column; gap: 6px; }
     .block-heading {
       font-family: var(--font-heading);
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--text-main);
       display: flex;
@@ -318,58 +131,54 @@
       gap: 6px;
     }
     .block-body {
-      font-size: 13.5px;
+      font-size: 12.5px;
       color: #334155;
       line-height: 1.55;
       background: #FAFAFA;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border-radius: 8px;
       border: 1px solid var(--border-color);
     }
 
-    /* Hardware BOM Table */
+    /* BOM Table */
     .bom-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
-      margin-top: 6px;
+      font-size: 12px;
+      margin-top: 4px;
     }
     .bom-table th {
       background: #F1F5F9;
-      padding: 8px 10px;
+      padding: 7px 9px;
       text-align: left;
       font-weight: 700;
       color: #475569;
       border-bottom: 1px solid var(--border-color);
     }
     .bom-table td {
-      padding: 8px 10px;
+      padding: 7px 9px;
       border-bottom: 1px solid #F1F5F9;
       color: #1E293B;
     }
 
-    /* Steps Flowchart */
-    .flow-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    /* Flowchart Steps */
+    .flow-steps { display: flex; flex-direction: column; gap: 7px; }
     .flow-step-item {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: flex-start;
       background: #FFFFFF;
       border: 1px solid var(--border-color);
-      padding: 10px 14px;
-      border-radius: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
     }
     .step-num-pill {
       background: var(--primary-color);
       color: #FFFFFF;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -377,63 +186,46 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
-    .step-text h4 { font-size: 13px; font-weight: 700; color: var(--text-main); }
-    .step-text p { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+    .step-text h4 { font-size: 12px; font-weight: 700; color: var(--text-main); }
+    .step-text p { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
 
-    /* SECTION 3: Claims & Prior Art Panel */
-    .claims-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    /* Claims Cards */
     .claim-item {
       background: #F8FAFC;
       border-left: 3px solid var(--primary-color);
-      padding: 12px 16px;
-      border-radius: 0 8px 8px 0;
-      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12.5px;
       color: #1E293B;
       line-height: 1.5;
     }
     .claim-tag {
       font-weight: 700;
       color: var(--primary-color);
-      font-size: 11.5px;
+      font-size: 11px;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .radar-box {
       background: #FFFBEB;
       border: 1px solid #FCD34D;
       border-radius: 8px;
-      padding: 14px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    .radar-box-title {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #92400E;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
     .radar-link-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: #FFFFFF;
       border: 1px solid #F59E0B;
       color: #B45309;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 6px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       transition: all 0.2s;
     }
@@ -441,24 +233,25 @@
 
     .btn-export-patent {
       width: 100%;
-      padding: 14px;
+      padding: 12px;
       background: linear-gradient(135deg, #1E6C93 0%, #0F172A 100%);
       color: #FFFFFF;
       border: none;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.25);
+      box-shadow: 0 4px 10px rgba(30, 108, 147, 0.2);
       transition: transform 0.18s;
+      margin-top: 10px;
     }
     .btn-export-patent:hover { transform: translateY(-1px); }
 
-    /* Export Modal */
+    /* Modal */
     .patent-modal-overlay {
       position: fixed;
       inset: 0;
@@ -475,33 +268,33 @@
       background: #FFFFFF;
       border-radius: 14px;
       width: 100%;
-      max-width: 460px;
-      padding: 28px 24px;
+      max-width: 440px;
+      padding: 24px 20px;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       position: relative;
     }
     .modal-close-btn {
       position: absolute;
-      top: 18px;
-      right: 18px;
+      top: 16px;
+      right: 16px;
       background: #F1F5F9;
       border: none;
       border-radius: 50%;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
     }
   </style>
 </head>
 <body>
 
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="patents"></div>
+  <div id="site-header" data-pillar="inventors"></div>
 
-  <!-- Hero Header -->
-  <section class="patents-hero">
-    <div class="hero-badge">⚡ National Industrial Invention Repository</div>
+  <!-- Hero Blue Banner (Scrolls smoothly up) -->
+  <section class="pillar-hero">
+    <div class="hero-badge">⚡ NATIONAL INDUSTRIAL INVENTION REPOSITORY</div>
     <h1 class="hero-title">Patents &amp; IP Innovation Blueprints</h1>
     <p class="hero-subtitle">
       Automated patent disclosures, technical BOMs, and provisional apparatus/method claims engineered from 2,002 National Qualification Standards and industrial shop-floor tolerances.
@@ -513,171 +306,202 @@
     </div>
   </section>
 
-  <!-- Main 3-Section Layout -->
-  <main class="patents-layout">
-    
-    <!-- SECTION 1: Sector & Trade Patent Explorer -->
-    <section class="section-container" id="section-explorer">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <h2><span>🔍</span> 1. Sector &amp; Trade Patent Explorer</h2>
-          <div class="sec-subtitle">Browse industrial trades or search specific engineering machinery to inspect patent blueprints.</div>
-        </div>
+  <!-- Universal 3-Panel IDE Workspace Layout -->
+  <div class="ide-container" id="ideContainer">
+
+    <!-- Floating Restore Button when Left Sidebar is Collapsed -->
+    <button id="btnRestoreLeft" class="ide-restore-left-btn">
+      <span>▶</span> Show Patent Filters (Cmd+B)
+    </button>
+
+    <!-- LEFT PANEL: Filters & Sector Directory -->
+    <aside class="panel-left" id="panelLeft">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <h2 class="panel-title" style="margin-bottom: 0;">Explore Inventions</h2>
+        <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
       </div>
 
-      <div class="filter-bar">
-        <input type="text" id="patentSearchInput" class="filter-input search-box" placeholder="Search by Trade Name, QP Code, or Machine (e.g. CNC, Aviation, Solar)..." oninput="handleSearch()" />
+      <!-- Keyword Search -->
+      <div class="filter-group">
+        <label class="filter-label" for="patentSearchInput">Search Keywords</label>
+        <input type="text" id="patentSearchInput" class="filter-input" placeholder="e.g. CNC, Aviation, Solar, Sensor..." oninput="handleSearch()" />
+      </div>
+
+      <!-- Sector Filter Dropdown -->
+      <div class="filter-group">
+        <label class="filter-label" for="sectorFilterSelect">1. Industrial Sector</label>
         <select id="sectorFilterSelect" class="filter-select" onchange="handleSectorFilter()">
           <option value="all">🌐 All 41 Industrial Sectors</option>
         </select>
       </div>
 
+      <!-- Technology Classification Domain -->
+      <div class="filter-group">
+        <label class="filter-label" for="techDomainSelect">2. Invention Domain</label>
+        <select id="techDomainSelect" class="filter-select" onchange="handleSearch()">
+          <option value="all">All Technology Domains</option>
+          <option value="sensor">Acoustic &amp; IoT Sensor Feedback</option>
+          <option value="automation">Closed-Loop Machine Automation</option>
+          <option value="quality">Real-Time In-Situ QA Gantry</option>
+          <option value="thermal">Thermal Drift &amp; Wear Compensation</option>
+        </select>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border-color);">
+        <button class="filter-select" style="background: #F1F5F9; border-color: var(--border-color); color: var(--text-muted); font-weight: 700; cursor: pointer;" onclick="resetFilters()">
+          ↺ Reset All Filters
+        </button>
+      </div>
+    </aside>
+
+    <!-- CENTER PANEL: Patent Blueprints Stream -->
+    <main class="panel-center" id="panelCenter">
+      <div class="center-header">
+        <div>
+          <h2 class="center-header-title">National Industrial Patent Catalog</h2>
+          <div class="center-header-sub" id="patentCountBadge">Showing patent blueprints across 41 sectors</div>
+        </div>
+      </div>
+
       <div id="patentCardsGrid" class="patent-cards-grid">
         <!-- Hydrated dynamically -->
       </div>
-    </section>
+    </main>
 
-    <!-- SECTION 2 & 3: Selected Patent Blueprint Dossier -->
-    <section class="section-container" id="section-dossier">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <h2><span>⚙️</span> 2 &amp; 3. Selected Patent Architecture &amp; Provisional Claims</h2>
-          <div class="sec-subtitle" id="dossierSubtitle">Detailed engineering BOM, operational state flowchart, and provisional legal claims.</div>
+    <!-- RIGHT PANEL: Detail Inspector & Claims Studio -->
+    <aside class="panel-right" id="panelRight">
+      <div class="inspector-header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
+          <div>
+            <span class="card-ipc-badge" id="dossierIpcBadge">IPC: B23Q 17/09</span>
+            <h3 class="inspector-title" id="dossierTitle" style="margin-top: 6px;">Loading Patent Blueprint...</h3>
+            <div class="inspector-subtitle" id="dossierSubtitle">...</div>
+          </div>
+          <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleRightPanel(false)" title="Close Inspector">✕</button>
         </div>
       </div>
 
-      <div class="dossier-wrapper">
-        <!-- Section 2: Technical Field & BOM -->
-        <div class="dossier-card" id="dossierLeftCard">
+      <div class="inspector-content" id="dossierContent">
+        <div class="dossier-meta-grid">
           <div>
-            <span class="dossier-header-badge" id="dossierIpcBadge">IPC Class: B23Q 17/09</span>
-            <h3 class="dossier-patent-title" id="dossierTitle">Loading Patent Blueprint...</h3>
+            <div class="meta-item-label">Trade Code</div>
+            <div class="meta-item-val" id="dossierQpCode">CSC/Q0115</div>
           </div>
-
-          <div class="dossier-meta-grid">
-            <div>
-              <div class="meta-item-label">Qualification Pack</div>
-              <div class="meta-item-val" id="dossierQpCode">CSC/Q0115</div>
-            </div>
-            <div>
-              <div class="meta-item-label">Industrial Sector</div>
-              <div class="meta-item-val" id="dossierSector">Capital Goods</div>
-            </div>
-            <div>
-              <div class="meta-item-label">Venture Title</div>
-              <div class="meta-item-val" id="dossierTrade">CNC Precision Works</div>
-            </div>
+          <div>
+            <div class="meta-item-label">Sector</div>
+            <div class="meta-item-val" id="dossierSector">Capital Goods</div>
           </div>
-
-          <div class="content-block">
-            <div class="block-heading"><span>⚠️</span> Shop-Floor Problem &amp; Physical Bottleneck</div>
-            <div class="block-body" id="dossierProblem">...</div>
-          </div>
-
-          <div class="content-block">
-            <div class="block-heading"><span>💡</span> Inventive Step &amp; Technical Solution</div>
-            <div class="block-body" id="dossierSolution">...</div>
-          </div>
-
-          <div class="content-block">
-            <div class="block-heading"><span>🔩</span> Hardware Architecture &amp; Sensor BOM</div>
-            <table class="bom-table">
-              <thead>
-                <tr>
-                  <th>Component</th>
-                  <th>Specification</th>
-                  <th>Qty</th>
-                  <th>Est. Cost (₹)</th>
-                </tr>
-              </thead>
-              <tbody id="dossierBomTableBody">
-                <!-- Hydrated dynamically -->
-              </tbody>
-            </table>
-          </div>
-
-          <div class="content-block">
-            <div class="block-heading"><span>🔄</span> 5-Phase Operational Sequence Flowchart</div>
-            <div class="flow-steps" id="dossierStepsContainer">
-              <!-- Hydrated dynamically -->
-            </div>
+          <div>
+            <div class="meta-item-label">Venture</div>
+            <div class="meta-item-val" id="dossierTrade">CNC Precision Works</div>
           </div>
         </div>
 
-        <!-- Section 3: Provisional Claims & Prior Art Radar -->
-        <div class="claims-card" id="dossierRightCard">
-          <div class="sec-title-wrap">
-            <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700;">⚖️ Section 3: Provisional Claims</h3>
-            <div class="sec-subtitle">Independent and dependent legal claims ready for IP submission.</div>
-          </div>
+        <div class="content-block">
+          <div class="block-heading"><span>⚠️</span> Shop-Floor Problem &amp; Bottleneck</div>
+          <div class="block-body" id="dossierProblem">...</div>
+        </div>
 
-          <div id="dossierClaimsContainer" style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="content-block">
+          <div class="block-heading"><span>💡</span> Inventive Step &amp; Technical Solution</div>
+          <div class="block-body" id="dossierSolution">...</div>
+        </div>
+
+        <div class="content-block">
+          <div class="block-heading"><span>🔩</span> Hardware Architecture &amp; Sensor BOM</div>
+          <table class="bom-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Specification</th>
+                <th>Qty</th>
+                <th>Est. Cost</th>
+              </tr>
+            </thead>
+            <tbody id="dossierBomTableBody">
+              <!-- Hydrated dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="content-block">
+          <div class="block-heading"><span>🔄</span> Operational Sequence Flowchart</div>
+          <div class="flow-steps" id="dossierStepsContainer">
             <!-- Hydrated dynamically -->
           </div>
-
-          <div class="radar-box">
-            <div class="radar-box-title"><span>🔍</span> 1-Click Prior Art Verification Radar</div>
-            <p style="font-size: 12px; color: #78350F; line-height: 1.4;">
-              Verify novelty across international patent repositories with automated Boolean search queries:
-            </p>
-            <div id="priorArtLinksContainer" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
-              <!-- Hydrated dynamically -->
-            </div>
-          </div>
-
-          <div class="content-block">
-            <div class="block-heading"><span>📈</span> Commercial Viability &amp; MSME Deployment</div>
-            <div class="block-body" id="dossierViability" style="font-size: 12.5px;">...</div>
-          </div>
-
-          <button class="btn-export-patent" onclick="openExportModal()">
-            <span>📥</span> Download Full Patent Dossier (.DOCX / .PDF)
-          </button>
         </div>
-      </div>
-    </section>
 
-  </main>
+        <div class="content-block">
+          <div class="block-heading"><span>⚖️</span> Provisional Patent Claims</div>
+          <div id="dossierClaimsContainer" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Hydrated dynamically -->
+          </div>
+        </div>
+
+        <div class="radar-box">
+          <div style="font-size: 12px; font-weight: 700; color: #92400E; display: flex; align-items: center; gap: 5px;">
+            <span>🔍</span> 1-Click International Prior Art Radar
+          </div>
+          <div id="priorArtLinksContainer" style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <!-- Hydrated dynamically -->
+          </div>
+        </div>
+
+        <div class="content-block">
+          <div class="block-heading"><span>📈</span> Commercial Viability &amp; Deployment</div>
+          <div class="block-body" id="dossierViability">...</div>
+        </div>
+
+        <button class="btn-export-patent" onclick="openExportModal()">
+          <span>📥</span> Download Full Patent Package (.DOCX / .PDF)
+        </button>
+      </div>
+    </aside>
+
+  </div>
 
   <!-- Soft-Gated Export Modal -->
   <div class="patent-modal-overlay" id="exportModal" onclick="handleModalOverlayClick(event)">
     <div class="patent-modal-card">
       <button class="modal-close-btn" onclick="closeExportModal()">✕</button>
-      <h3 style="font-family: var(--font-heading); font-size: 19px; font-weight: 700; margin-bottom: 6px;">📥 Export Patent Dossier</h3>
-      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.4;">
+      <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 6px;">📥 Export Patent Dossier</h3>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.4;">
         Enter your work email to receive the complete provisional patent application package (including Word claims document, hardware schematics, and prior art matrix).
       </p>
       
       <form onsubmit="handleExportSubmit(event)">
-        <div style="margin-bottom: 14px; text-align: left;">
-          <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Full Name *</label>
+        <div style="margin-bottom: 12px; text-align: left;">
+          <label style="display: block; font-size: 11.5px; font-weight: 700; margin-bottom: 4px;">Full Name *</label>
           <input type="text" id="exportName" class="filter-input" placeholder="e.g. Dr. Rajesh Kumar" required style="width: 100%;" />
         </div>
-        <div style="margin-bottom: 18px; text-align: left;">
-          <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Email Address *</label>
+        <div style="margin-bottom: 16px; text-align: left;">
+          <label style="display: block; font-size: 11.5px; font-weight: 700; margin-bottom: 4px;">Email Address *</label>
           <input type="email" id="exportEmail" class="filter-input" placeholder="name@company.com" required style="width: 100%;" />
         </div>
         <button type="submit" class="btn-export-patent" style="width: 100%;" id="btnDownloadConfirm">
           Download Patent Package (Instant) →
         </button>
       </form>
-      <div id="exportSuccessMsg" style="display: none; margin-top: 14px; padding: 10px; border-radius: 6px; background: #DCFCE7; color: #166534; font-size: 13px; text-align: center;">
+      <div id="exportSuccessMsg" style="display: none; margin-top: 12px; padding: 8px; border-radius: 6px; background: #DCFCE7; color: #166534; font-size: 12.5px; text-align: center;">
         ✨ Patent dossier downloaded successfully!
       </div>
     </div>
   </div>
 
-  <!-- Unified Footer Container -->
-  <div id="site-footer"></div>
-
   <script src="js/responsive.js"></script>
+  <script src="js/ide-docking.js"></script>
   <script src="js/components.js"></script>
   <script>
     let allCatalog = [];
     let currentQp = 'CSC/Q0115';
 
     async function initPatentsPortal() {
-      // 1. Fetch initial catalog and sectors
+      // Initialize IDE 3-Panel Splitter Engine
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.init({ storagePrefix: 'haya_patents_' });
+      }
+
+      // Fetch catalog
       try {
         const res = await fetch('/api/patents/catalog');
         const data = await res.json();
@@ -690,7 +514,6 @@
         console.error('Failed to load patent catalog:', err);
       }
 
-      // 2. Check query params or load default sample
       const urlParams = new URLSearchParams(window.location.search);
       const qpParam = urlParams.get('qp');
       loadPatentDossier(qpParam || currentQp);
@@ -710,6 +533,9 @@
     function renderCards(list) {
       const grid = document.getElementById('patentCardsGrid');
       grid.innerHTML = '';
+
+      const countBadge = document.getElementById('patentCountBadge');
+      if (countBadge) countBadge.innerText = `Showing ${list.length} patent blueprints`;
 
       if (!list || list.length === 0) {
         grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px;">No matching trade patents found.</div>';
@@ -743,8 +569,16 @@
     function handleSearch() {
       const q = document.getElementById('patentSearchInput').value.toLowerCase().trim();
       const sec = document.getElementById('sectorFilterSelect').value;
+      const domain = document.getElementById('techDomainSelect').value;
+
       let filtered = allCatalog;
       if (sec !== 'all') filtered = filtered.filter(c => c.sector === sec);
+      if (domain !== 'all') {
+        filtered = filtered.filter(c => 
+          (c.patent_title && c.patent_title.toLowerCase().includes(domain)) ||
+          (c.technical_field && c.technical_field.toLowerCase().includes(domain))
+        );
+      }
       if (q) {
         filtered = filtered.filter(c => 
           (c.qp_code && c.qp_code.toLowerCase().includes(q)) ||
@@ -761,9 +595,21 @@
       handleSearch();
     }
 
+    function resetFilters() {
+      document.getElementById('patentSearchInput').value = '';
+      document.getElementById('sectorFilterSelect').value = 'all';
+      document.getElementById('techDomainSelect').value = 'all';
+      renderCards(allCatalog);
+    }
+
     async function loadPatentDossier(qpCode) {
       currentQp = qpCode;
       document.querySelectorAll('.patent-card').forEach(c => c.classList.remove('active'));
+
+      // Ensure right panel is visible
+      if (window.HayaIdeDocking) {
+        HayaIdeDocking.toggleRightPanel(true);
+      }
 
       try {
         const res = await fetch(`/api/patents/qp/${encodeURIComponent(qpCode)}`);
@@ -838,7 +684,7 @@
             btn.href = gLink;
             btn.target = '_blank';
             btn.rel = 'noopener noreferrer';
-            btn.innerHTML = `<span>🔎</span> "${queryStr.slice(0, 32)}..." ↗`;
+            btn.innerHTML = `<span>🔎</span> "${queryStr.slice(0, 24)}..." ↗`;
             radarContainer.appendChild(btn);
           });
         }

@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/ide-docking.css">
+  <link rel="stylesheet" href="css/pillar-layout.css">
   
   <style>
     :root {
@@ -32,11 +33,11 @@
       background-color: var(--bg-primary);
       color: var(--text-main);
       line-height: 1.6;
-      height: 100vh;
-      max-height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
     a { color: var(--primary-color); text-decoration: none; }
 
