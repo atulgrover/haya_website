@@ -38,6 +38,8 @@ const CANONICAL_TABLES = [
     'nsqf_pcs',
     'nsqf_kus',
     'nsqf_gs',
+    'nsqf_patents',
+    'msme_business_blueprints',
     'video_swap_suggestions',
     'pc_explanations_cache',
     'users',
@@ -64,7 +66,7 @@ const neonPool  = new Pool({ connectionString: NEON_URL, ssl: { rejectUnauthoriz
 
 async function getCount(pool, table) {
     try {
-        const r = await pool.query(`SELECT COUNT(*) AS c FROM "${table}"`);
+        const r = await pool.query(`SELECT COUNT(*) AS c FROM public."${table}"`);
         return parseInt(r.rows[0].c, 10);
     } catch {
         return -1;
