@@ -417,13 +417,80 @@
       cursor: pointer;
       color: var(--text-muted);
     }
+    /* Hero Blue Banner */
+    .pillar-hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #1E6C93 100%);
+      color: #FFFFFF;
+      padding: 36px 24px 30px;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid #334155;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      background: rgba(217, 119, 6, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #FCD34D;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .hero-subtitle {
+      font-size: 14.5px;
+      color: #94A3B8;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+    }
+    .hero-stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="interns"></div>
+  <div id="site-header" data-pillar="employees_nsqf"></div>
+
+  <!-- Hero Blue Banner -->
+  <section class="pillar-hero">
+    <div class="hero-badge">🎓 NATIONAL QUALIFICATION FRAMEWORK (NSQF)</div>
+    <h1 class="hero-title">Vocational Skills &amp; Micro-Learning Reels</h1>
+    <p class="hero-subtitle">
+      Master official NCVET qualification packs with atomic performance criteria, multilingual AI masterclass explainers, and real-time video demonstrations.
+    </p>
+    <div class="hero-stats-row">
+      <div class="stat-pill">📚 2,002 NCVET Job Roles</div>
+      <div class="stat-pill">🎯 176,727 Atomic Performance Criteria</div>
+      <div class="stat-pill">🗣️ 10 Indic AI Languages</div>
+    </div>
+  </section>
 
   <!-- Panel scrim (mobile overlay backdrop) -->
   <div class="panel-scrim" id="panelScrim"></div>
