@@ -47,6 +47,18 @@ The Ministry of Corporate Affairs (MCA) **Integrated Platform for Insolvency Eco
 2. Open your case workspace directory (e.g. `~/Documents/Sample_CIRP_Matter`).
 3. Verify that `InLegal-SBERT` ONNX vector pipeline pre-warms automatically in the status bar.
 
+### 0.3 Pre-Packaged Offline Client Vaults & Autocomplete Triggers
+
+Every workspace is backed by modular encrypted `.zip` vaults containing over **38,000 indexed sections, case headnotes, and legal drafts**:
+
+| Vault Name | Indexed Content | Monaco Autocomplete Triggers |
+| :--- | :--- | :--- |
+| **IBC Laws Vault** (10,771 sections) | IBC Code 2016 & 9 IBBI Regulations | Type `@@ibc/` (e.g. `@@ibc/sec14`, `@@ibc/reg35a`) |
+| **MCA / Companies Act** (1,574 sections) | Companies Act 2013 & 48 Rule Books | Type `@@mca/` (e.g. `@@mca/sec230`, `@@mca/sec134`) |
+| **Case Law Vault** (17,558 headnotes) | Precedents from SC, HC, NCLT/NCLAT | Type `@@case/` |
+| **Master Documents Factory** (3,510 drafts) | Pleadings, contracts, conveyancing, CA RK Gupta precedents | Type `@@form/`, `@@prec/`, `@@card/` |
+| **RERA / Arbitration / Debt Recovery** | RERA, Arb 1996, SARFAESI & RDDBFI | Type `@@rera/`, `@@arbitration/`, `@@debt_recovery/` |
+
 ---
 
 ## Chapter 1: Process Commencement & Statutory Timeline Clock (iPIE Stage 01)

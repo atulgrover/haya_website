@@ -166,4 +166,51 @@ node -e "
 
 ---
 
-*Haya Portal Admin Handbook v1.0 — 2026*
+---
+
+## 📦 8. Client Vaults & Legal Precedents Distribution Catalog
+
+Hayagriva IDE distributes encrypted offline client vaults (`.vlt.data` with `inlegal-sbert` 768-dim semantic embeddings) built via the Master Vault Factory (`haya_ide_vault_code`). All assets are registered in `latest.json` and hosted on the portal release CDN.
+
+### 8.1 Active Production Vaults Inventory (Week 37 / Sept 2026)
+
+| Vault Package | Archive Name | Compressed Size | Indexed Items | Domain & Content Description |
+| :--- | :--- | :---: | :---: | :--- |
+| **Cases Vault** | `cases_vault_2026-W37.zip` | **132.8 MB** | **17,558** | **Judgment Headnotes & Metadata only** across Supreme Court, High Courts, and NCLT/NCLAT (full case bodies stripped for privacy). |
+| **IBC Laws Vault** | `ibc_laws_vault_2026-W37.zip` | **90.0 MB** | **10,771** | Complete Insolvency & Bankruptcy Code 2016 + 9 IBBI Regulations (June 2026 compilation). Triggers: `@@ibc/...` |
+| **Consolidated Laws** | `laws_vault_2026-W37.zip` | **33.6 MB** | **4,026** | Unified statutory text across IBC, MCA, Arbitration, SARFAESI, and RERA. |
+| **Legal Documents Factory** | `documents_vault_2026-W37.zip` | **28.7 MB** | **3,510** | **The Master Template Vault:** All pleadings, corporate contracts, conveyancing deeds, and CA RK Gupta precedents combined. |
+| **MCA / Companies Act** | `mca_laws_vault_2026-W37.zip` | **12.5 MB** | **1,574** | Companies Act 2013 + 48 MCA Rule Books + NCLT Rules with Monaco triggers `@@mca/...` |
+| **RERA Laws** | `rera_laws_vault_2026-W37.zip` | **2.1 MB** | **222** | Real Estate (Regulation & Development) Act 2016 & State Rules. Triggers: `@@rera/...` |
+| **Arbitration Laws** | `arbitration_laws_vault_2026-W37.zip` | **1.4 MB** | **160** | Arbitration & Conciliation Act 1996 (as amended up to 2026). Triggers: `@@arbitration/...` |
+| **Debt Recovery Laws** | `debt_recovery_laws_vault_2026-W37.zip` | **0.6 MB** | **69** | SARFAESI Act 2002 & RDDBFI (DRT) Act 1993. Triggers: `@@debt_recovery/...` |
+| **CUAD Contract Benchmark** | `cuad_benchmark_vault_2026-W37.zip` | **103.2 MB** | **13,829** | 510 commercial contracts classified across 41 legal risk categories (Atticus AI). |
+| **ACORD Standard Clauses** | `acord_clauses_vault_2026-W37.zip` | **32.6 MB** | **4,200** | Standardized, attorney-reviewed contract clauses across corporate transactions. |
+
+### 8.2 Specialized Process Suite Vaults
+
+Standalone modular packages containing forms, AI drafting prompts, checklist trackers, and agent skills:
+- **`cirp_suite_vault_2026-W36.zip`** (254 KB): CIRP Form A–H, claim verification memos, CoC minutes, avoidance opinions.
+- **`liquidation_suite_vault_2026-W36.zip`** (1.45 MB): 63 phase-by-phase liquidation instruments, e-auction sale notices, Sec 53 waterfall.
+- **`voluntary_liquidation_suite_vault_2026-W36.zip`** (1.53 MB): Declaration of solvency, stakeholder consultations, final dissolution drafts.
+- **`ppirp_suite_vault_2026-W36.zip`** (284 KB): Pre-packaged insolvency Forms P1–P14, base resolution plan checklists.
+- **`personal_guarantor_suite_vault_2026-W36.zip`** (178 KB): Sec 94 debtor / Sec 95 creditor applications, repayment plans, bankruptcy orders.
+
+### 8.3 Disaster-Recovery Database Persistence (PostgreSQL)
+
+In addition to compiled `.zip` archives, all **1,997 legal templates** across 35 categories are persisted inside `postgresql://localhost:5432/ibclaw_db` (table: `public.ibc_templates`) with SHA-256 integrity hashes:
+- **Pleadings & Petitions**: 461 templates (`civil_pleadings`, `criminal_pleadings`, `petitions`, `notices`)
+- **Corporate & Contracts**: 426 templates (`agreements`, `company_formats`, `bonds_and_guarantees`, `leases`)
+- **Tax & Conveyancing**: 384 templates (`income_tax`, `real_estate_conveyancing`, `wills`, `trusts`)
+- **IBC & Practice Precedents**: 307 templates (`ibc_precedents`, `ibc_forms`, `unprescribed_compendium`, `resolution_plans`, `real_estate_cirp`, `practice_notes`)
+- **Other Practice Domains**: 419 templates (`arbitration`, `banking`, `intellectual_property`, `consumer_court`, `labor_laws`)
+
+**Disaster-Recovery Command**: If disk files are ever deleted, restore all 1,997 templates in ~2 seconds:
+```bash
+python3 scripts/sync_templates_to_db.py --restore
+```
+
+---
+
+*Haya Portal Admin Handbook v2.0 — Updated September 2026*
+
