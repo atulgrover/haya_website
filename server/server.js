@@ -16,6 +16,7 @@ const searchVideoRouter = require('./routes/searchVideo');
 const aiExplainerRouter = require('./routes/aiExplainer');
 const curatorRouter = require('./routes/curator');
 const patentsRouter = require('./routes/patents');
+const personalitiesRouter = require('./routes/personalities');
 const { ensureKeyPair } = require('./utils/license-signer');
 const compression = require('compression');
 
@@ -46,6 +47,20 @@ app.use('/api/search-video', searchVideoRouter);
 app.use('/api/ai', aiExplainerRouter);
 app.use('/api/curator', curatorRouter);
 app.use('/api/patents', patentsRouter);
+app.use('/api/personalities', personalitiesRouter);
+
+// Direct Route Endpoints
+app.get('/personalities', (req, res) => {
+    res.sendFile(path.join(__dirname, '../personalities.html'));
+});
+
+app.get('/compendium', (req, res) => {
+    res.sendFile(path.join(__dirname, '../compendium.html'));
+});
+
+app.get('/HPTI_Compendium', (req, res) => {
+    res.redirect('/compendium');
+});
 
 // Legal & Policy Direct Route Endpoints (https://hayagriva.app/privacy & https://hayagriva.app/terms)
 app.get('/privacy', (req, res) => {

@@ -4,7 +4,8 @@
  * HAYAGRIVA Component Loader & In-Page SSO Auth Modal + User Profile Dropdown
  */
 
-let authIsSignup = false;
+var authIsSignup = typeof window.authIsSignup !== 'undefined' ? window.authIsSignup : false;
+window.authIsSignup = authIsSignup;
 
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Render universal site header if mount point exists
@@ -134,6 +135,41 @@ function renderSiteHeader() {
             }
             .login-btn:hover {
                 background-color: var(--primary-hover, #165272) !important;
+            }
+            .nav-pill-blue {
+                background: linear-gradient(135deg, #1E6C93 0%, #2563EB 100%) !important;
+                color: #FFFFFF !important;
+                font-weight: 700 !important;
+                padding: 6px 16px !important;
+                border-radius: 9999px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+                transition: all 0.2s ease !important;
+                letter-spacing: 0.2px;
+            }
+            .nav-pill-blue:hover {
+                background: linear-gradient(135deg, #165272 0%, #1D4ED8 100%) !important;
+                color: #FFFFFF !important;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 14px rgba(37, 99, 235, 0.5) !important;
+            }
+            .nav-pill-blue.active {
+                box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #2563EB !important;
+            }
+            .pill-sparkle {
+                font-size: 11px;
+                color: #93C5FD;
+            }
+            .mobile-nav-pill-blue {
+                background: linear-gradient(135deg, #1E6C93 0%, #2563EB 100%) !important;
+                color: #FFFFFF !important;
+                font-weight: 700 !important;
+                border-radius: 9999px !important;
+                margin-top: 4px;
+                text-align: center;
+                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3) !important;
             }
             .nav-hamburger {
                 display: none;
@@ -271,6 +307,7 @@ function renderSiteHeader() {
         else if (path.endsWith('employers_sop.html') || path.endsWith('employees.html')) pillar = 'employers_sop';
         else if (path.endsWith('entrepreneurs_msme.html')) pillar = 'entrepreneurs_msme';
         else if (path.endsWith('patents.html') || path.endsWith('patent.html')) pillar = 'patents';
+        else if (path.endsWith('personalities.html') || path.endsWith('personality.html')) pillar = 'personalities';
         else if (path.endsWith('login.html')) pillar = 'login';
         else if (path.endsWith('index.html') || path === '/' || path === '') pillar = 'home';
     }
@@ -279,7 +316,8 @@ function renderSiteHeader() {
     if (pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees') subBadge = 'Employees';
     else if (pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners') subBadge = 'Employers';
     else if (pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs') subBadge = 'Entrepreneurs';
-    else if (pillar === 'patents' || pillar === 'inventors') subBadge = 'Inventors';
+    else if (pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors') subBadge = 'Enventors';
+    else if (pillar === 'personalities') subBadge = 'HPTI';
 
     headerMount.innerHTML = `
       <header class="header-nav">
@@ -292,7 +330,9 @@ function renderSiteHeader() {
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees</a></li>
             <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers</a></li>
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs</a></li>
-            <li><a href="patents.html" class="nav-link ${pillar === 'patents' || pillar === 'inventors' ? 'active' : ''}">Inventors</a></li>
+            <!-- Enventors tab commented out to declutter header; patents.html preserved for future use -->
+            <!-- <li><a href="patents.html" class="nav-link ${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? 'active' : ''}">Enventors</a></li> -->
+            <li><a href="personalities.html" class="nav-link nav-pill-blue ${pillar === 'personalities' ? 'active' : ''}" title="HPTI — Haya Personality Type Indicators">HPTI <span class="pill-sparkle">✦</span></a></li>
           </ul>
           <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -308,7 +348,8 @@ function renderSiteHeader() {
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
-        <a href="patents.html" class="${pillar === 'patents' || pillar === 'inventors' ? 'active' : ''}">Inventors ${pillar === 'patents' || pillar === 'inventors' ? '●' : ''}</a>
+        <!-- <a href="patents.html" class="${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? 'active' : ''}">Enventors ${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? '●' : ''}</a> -->
+        <a href="personalities.html" class="mobile-nav-pill-blue ${pillar === 'personalities' ? 'active' : ''}" title="HPTI — Haya Personality Type Indicators">HPTI (Haya Personality Type Indicators) ${pillar === 'personalities' ? '●' : ''}</a>
       </nav>
     `;
 
