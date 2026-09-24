@@ -605,9 +605,18 @@
       }
       await initCascadingFilters();
 
-      // Deep-linking: auto-filter sector if present in URL query
+      // Deep-linking: auto-filter sector & QP if present in URL query
       const urlParams = new URLSearchParams(window.location.search);
       const initialSector = urlParams.get('sector');
+      const initialQp = urlParams.get('qp') || urlParams.get('search');
+
+      if (initialQp) {
+        currentFilters.search = initialQp;
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.value = initialQp;
+        window._initialAutoOpenQp = initialQp;
+      }
+
       if (initialSector) {
         currentFilters.sector = initialSector;
         const select = document.getElementById('selectSector');
@@ -823,6 +832,21 @@
             </div>
           `;
           }).join('');
+
+          // Auto-open inspector if initial deep link requested a specific QP
+          if (window._initialAutoOpenQp) {
+            const target = window._initialAutoOpenQp.trim().toLowerCase();
+            const matchedCard = data.cards.find(c => 
+              (c.qp_code || '').toLowerCase() === target || 
+              (c.qp_code || '').toLowerCase().includes(target)
+            );
+            if (matchedCard) {
+              const matchedEl = grid.querySelector('.qp-card');
+              const pdfUrl = matchedCard.curriculum_pdf_url || `https://s3.ap-south-1.amazonaws.com/nsdcproddocuments/qpPdf/${(matchedCard.qp_code || '').replace(/\//g, '_')}_v${(matchedCard.version || '1.0').replace(/^v/i, '')}.pdf`;
+              openDetailInspector(matchedCard.qp_code, encodeURIComponent(matchedCard.qp_name), pdfUrl, matchedEl);
+            }
+            window._initialAutoOpenQp = null;
+          }
         } else {
           countSpan.innerText = `0 Job Roles Found`;
           grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No Qualification Packs matched your selected filters.</div>`;

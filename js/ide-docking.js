@@ -81,7 +81,7 @@ window.HayaIdeDocking = (function () {
             leftResizer = document.createElement('div');
             leftResizer.id = activeConfig.leftResizerId;
             leftResizer.className = 'ide-resizer ide-resizer-left' + (leftPanel.classList.contains('collapsed') ? ' hidden' : '');
-            leftResizer.title = 'Drag to resize sidebar • Double click to reset';
+            leftResizer.setAttribute('aria-label', 'Drag to resize sidebar • Double click to reset');
             leftPanel.after(leftResizer);
         }
 
@@ -89,7 +89,7 @@ window.HayaIdeDocking = (function () {
             rightResizer = document.createElement('div');
             rightResizer.id = activeConfig.rightResizerId;
             rightResizer.className = 'ide-resizer ide-resizer-right' + (rightPanel.classList.contains('collapsed') ? ' hidden' : '');
-            rightResizer.title = 'Drag to resize inspector • Double click to reset';
+            rightResizer.setAttribute('aria-label', 'Drag to resize inspector • Double click to reset');
             rightPanel.before(rightResizer);
         }
 
