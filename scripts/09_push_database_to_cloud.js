@@ -99,6 +99,17 @@ async function streamTable(table) {
     process.stdout.write(`  ➜ Uploading ${table.padEnd(26)} ... `);
     const start = Date.now();
     try {
+        const initialCount = await getCount(neonPool, table);
+        if (initialCount === -1) {
+            // Table doesn't exist on Neon yet! Mirror schema & indexes from local
+            const dumpSchemaCmd = `pg_dump "${LOCAL_URL}" --no-owner --no-acl --table="${table}" --schema-only`;
+            const restoreSchemaCmd = `psql "${NEON_URL}" -q -v ON_ERROR_STOP=1`;
+            execSync(`${dumpSchemaCmd} | ${restoreSchemaCmd}`, { stdio: ['pipe', 'pipe', 'inherit'] });
+        } else {
+            // Truncate existing table on Neon to prevent duplicate key collisions during reload
+            await neonPool.query(`TRUNCATE TABLE public."${table}" CASCADE;`);
+        }
+
         const dumpCmd = `pg_dump "${LOCAL_URL}" --no-owner --no-acl --table="${table}" --data-only`;
         const restoreCmd = `psql "${NEON_URL}" -q -v ON_ERROR_STOP=1`;
         execSync(`${dumpCmd} | ${restoreCmd}`, { stdio: ['pipe', 'pipe', 'inherit'] });
