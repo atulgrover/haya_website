@@ -32,6 +32,14 @@ const {
   searchKnowledgeDb
 } = require('../utils/knowledgeRetriever');
 
+const db = require('../db');
+const {
+  TOP_FLAGSHIP_SECTORS,
+  FLAGSHIP_ALIGNMENTS,
+  getAvailableSectors,
+  getCareersForSector
+} = require('../utils/careerAligner');
+
 /**
  * ╔══════════════════════════════════════════════════════════════════╗
  * ║  HAYA PERSONALITIES API ROUTER                                  ║
@@ -1124,6 +1132,37 @@ router.get('/corpus/search', async (req, res) => {
     count: results.length,
     results
   });
+});
+
+// ── GET /api/personalities/sectors ──
+router.get('/sectors', async (req, res) => {
+  try {
+    const sectors = await getAvailableSectors(db);
+    res.json({
+      success: true,
+      count: sectors.length,
+      flagships: TOP_FLAGSHIP_SECTORS,
+      sectors
+    });
+  } catch (err) {
+    console.error('Error in /api/personalities/sectors:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ── GET /api/personalities/careers ──
+router.get('/careers', async (req, res) => {
+  try {
+    const { code, sector } = req.query;
+    if (!code) {
+      return res.status(400).json({ success: false, error: 'Query parameter "code" is required.' });
+    }
+    const alignment = await getCareersForSector(code, sector, db);
+    res.json(alignment);
+  } catch (err) {
+    console.error('Error in /api/personalities/careers:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // ══════════════════════════════════════════════════════════════════

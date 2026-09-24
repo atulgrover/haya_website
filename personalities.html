@@ -603,6 +603,21 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .ncvet-qp-card:hover {
+      border-color: #2563EB;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+      transform: translateY(-1px);
+    }
+    .sector-select-picker {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 14px 14px;
+      padding-right: 28px !important;
     }
     .qp-title {
       font-size: 12.5px;
@@ -879,10 +894,10 @@
         <!-- Dual-Layer Mode Switcher Header embedded in 48px header -->
         <div class="mode-switcher-segmented">
           <button class="mode-tab-btn active" id="tabModePrakriti" onclick="switchDiagnosticMode('prakriti')">
-            <span>🧘</span> Prakriti Baseline
+            <span>🧘</span> Prakriti
           </button>
           <button class="mode-tab-btn" id="tabModeVikriti" onclick="switchDiagnosticMode('vikriti')">
-            <span>🔥</span> Vikriti Audit
+            <span>🔥</span> Vikriti
           </button>
         </div>
 
@@ -1147,19 +1162,50 @@
           </div>
         </div>
 
-        <!-- NCVET & NSQF Certified Vocational Grid -->
-        <div style="background: #FFFFFF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div style="font-size: 12px; font-weight: 800; color: #1D4ED8; text-transform: uppercase; letter-spacing: 0.5px;">
-              🎯 NCVET &amp; NSQF Career Alignment
+        <!-- NCVET & NSQF Certified Vocational Grid with Sector Dropdown -->
+        <div style="background: #FFFFFF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 12px; font-weight: 800; color: #1D4ED8; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+              <span>🎯</span> NCVET &amp; NSQF Career Alignment
             </div>
-            <span style="font-size: 11px; background: #DBEAFE; color: #1E40AF; padding: 2px 8px; border-radius: 9999px; font-weight: 700;" id="dossierSectorBadge">
-              Defense &amp; Aerospace SSC
+            <span style="font-size: 10.5px; background: #DBEAFE; color: #1E40AF; padding: 2px 10px; border-radius: 9999px; font-weight: 700;" id="dossierSectorBadge">
+              Aerospace &amp; Aviation SSC (AASSC)
             </span>
           </div>
 
-          <div style="font-size: 12px; color: #475569;" id="dossierNcvetMeta">
-            Official NSQF Band: <strong>Level 9 (Senior Executive)</strong> • US O*NET SOC: <strong>11-1011.00</strong>
+          <!-- Sector Selector Row -->
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <div style="font-size: 11.5px; font-weight: 700; color: #475569; display: flex; align-items: center; gap: 5px; white-space: nowrap;">
+              <span>🏢</span> <span>Sector:</span>
+            </div>
+            <select id="dossierSectorSelect" class="sector-select-picker" onchange="onDossierSectorChanged(this.value)" style="flex: 1; max-width: 250px; font-size: 12px; font-weight: 600; color: #0F172A; background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 6px; padding: 5px 8px; outline: none; cursor: pointer; transition: border-color 0.2s;">
+              <optgroup label="⭐ Top Flagship Sectors">
+                <option value="aerospace" selected>🚀 Aerospace, Aviation &amp; Defense</option>
+                <option value="it_ai">💻 IT-ITeS &amp; Artificial Intelligence</option>
+                <option value="healthcare">🏥 Healthcare &amp; Life Sciences</option>
+                <option value="bfsi">📈 BFSI &amp; Capital Markets</option>
+                <option value="management">🏛️ Management &amp; Governance</option>
+                <option value="green_energy">🌱 Green Energy &amp; Sustainability</option>
+                <option value="logistics">🚢 Logistics &amp; Global Supply Chain</option>
+                <option value="automotive">⚡ Automotive &amp; Future Mobility</option>
+                <option value="electronics">🔬 Electronics &amp; Semiconductors</option>
+                <option value="infrastructure">🏗️ Infrastructure &amp; Construction</option>
+                <option value="media">🎬 Media, Gaming &amp; Entertainment</option>
+                <option value="agriculture">🌾 Agriculture &amp; Agri-Tech</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Official Meta Line -->
+          <div style="font-size: 12px; color: #475569; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;" id="dossierNcvetMeta">
+            <span>Official NSQF Band: <strong>Level 9</strong></span>
+            <span>QP: <strong>AAS/Q1101</strong></span>
+            <span>US O*NET: <strong>11-1011.00</strong></span>
+          </div>
+
+          <!-- Swabhava Sector Role Highlight -->
+          <div id="dossierSwabhavaRoleBox" style="background: #EFF6FF; border-left: 3px solid #3B82F6; padding: 8px 12px; border-radius: 4px; font-size: 12.5px; font-weight: 700; color: #1E3A8A;">
+            Director of Aerospace Defense &amp; Flight Operations
           </div>
 
           <div id="dossierCareersList" style="display: flex; flex-direction: column; gap: 6px;">
@@ -1167,7 +1213,7 @@
           </div>
 
           <!-- Swadharma Directive -->
-          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; padding: 10px 12px; border-radius: 8px; font-size: 12px; color: #166534; line-height: 1.45;">
+          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; padding: 10px 12px; border-radius: 8px; font-size: 12px; color: #166534; line-height: 1.45;" id="dossierSwadharmaDirective">
             <strong>Swadharma Law (Gita 18.47):</strong> Better is your own duty though imperfect, than another's duty well-performed. Protect your sovereign craft against alien corporate conformity.
           </div>
         </div>
@@ -1277,6 +1323,8 @@
     let vikritiAnswers = {};
     let activeArchetype = null;
     let lastEvaluationData = null;
+    let availableSectors = [];
+    let currentSectorSelection = 'aerospace';
 
     // Initialize Portal
     async function initPersonalitiesPortal() {
@@ -1301,17 +1349,25 @@
 
       // 2. Fetch Data from Backend
       try {
-        const [archRes, qRes] = await Promise.all([
+        const [archRes, qRes, sectorRes] = await Promise.all([
           fetch('/api/personalities/archetypes'),
-          fetch('/api/personalities/questions?tier=' + currentTier)
+          fetch('/api/personalities/questions?tier=' + currentTier),
+          fetch('/api/personalities/sectors')
         ]);
         const archData = await archRes.json();
         const qData = await qRes.json();
+        const sectorData = await sectorRes.json();
 
         if (archData.success) allArchetypes = archData.archetypes;
         if (qData.success) {
           prakritiQuestions = qData.questions || [];
           vikritiQuestions = qData.vikriti_questions || [];
+        }
+        if (sectorData && sectorData.success) {
+          availableSectors = sectorData.sectors || [];
+          populateSectorDropdown(availableSectors, sectorData.flagships);
+        } else {
+          populateSectorDropdown();
         }
 
         renderArchetypeCards(allArchetypes);
@@ -1538,7 +1594,7 @@
           <div class="question-card" id="vCard_${q.id}">
             <div class="q-top-row">
               <span class="q-pillar-tag" style="background: #FEF3C7; color: #92400E; border-color: #FDE68A;">
-                Vikriti Audit • ${q.category}
+                Vikriti • ${q.category}
               </span>
               <span style="font-family: var(--font-mono); font-size: 11px; color: #64748B; margin-left: auto;">Stress Check ${idx + 1} of ${vikritiQuestions.length}</span>
             </div>
@@ -1654,26 +1710,8 @@
       // Shadow Warning Box
       document.getElementById('dossierShadowWarning').innerText = arch.shadow_warning || 'Maintain strict mindfulness against egoic rigidity.';
 
-      // NCVET Details
-      const details = arch.ncvet_details || { nsqf_level: 9, qp_code: 'MEP/Q0101', ssc_council: 'Management SSC', us_onet_code: '11-1011.00' };
-      document.getElementById('dossierSectorBadge').innerText = details.ssc_council;
-      document.getElementById('dossierNcvetMeta').innerHTML = `
-        Official NSQF Band: <strong>Level ${details.nsqf_level}</strong> • QP Code: <strong>${details.qp_code}</strong> • US O*NET: <strong>${details.us_onet_code}</strong>
-      `;
-
-      // Careers List
-      document.getElementById('dossierCareersList').innerHTML = arch.aligned_ncvet_careers.map(c => `
-        <div class="ncvet-qp-card">
-          <div>
-            <div class="qp-title">${c}</div>
-            <div class="qp-meta">
-              <span>National Qualification Standard</span> • 
-              <span>${details.ssc_council.split(' ')[0]}</span>
-            </div>
-          </div>
-          <span class="qp-badge">NSQF L${details.nsqf_level}</span>
-        </div>
-      `).join('');
+      // NCVET Sector Alignment (Option C Hybrid)
+      renderDossierSectorAlignment(arch);
 
       // Sadhana Protocol
       const sadhana = arch.sadhana_protocol || {
@@ -2031,6 +2069,142 @@
 
     function closeCompendiumReader() {
       document.getElementById('compendiumModal').style.display = 'none';
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // NCVET SECTOR CAREER ALIGNMENT ENGINE (OPTION C HYBRID)
+    // ══════════════════════════════════════════════════════════════════
+    function populateSectorDropdown(sectors, flagships) {
+      const select = document.getElementById('dossierSectorSelect');
+      if (!select) return;
+
+      const flagList = flagships || [
+        { id: 'aerospace', name: 'Aerospace, Aviation & Defense', icon: '🚀' },
+        { id: 'it_ai', name: 'IT-ITeS & Artificial Intelligence', icon: '💻' },
+        { id: 'healthcare', name: 'Healthcare & Life Sciences', icon: '🏥' },
+        { id: 'bfsi', name: 'BFSI & Capital Markets', icon: '📈' },
+        { id: 'management', name: 'Management & Governance', icon: '🏛️' },
+        { id: 'green_energy', name: 'Green Energy & Sustainability', icon: '🌱' },
+        { id: 'logistics', name: 'Logistics & Global Supply Chain', icon: '🚢' },
+        { id: 'automotive', name: 'Automotive & Future Mobility', icon: '⚡' },
+        { id: 'electronics', name: 'Electronics & Semiconductors', icon: '🔬' },
+        { id: 'infrastructure', name: 'Infrastructure & Construction', icon: '🏗️' },
+        { id: 'media', name: 'Media, Gaming & Entertainment', icon: '🎬' },
+        { id: 'agriculture', name: 'Agriculture & Agri-Tech', icon: '🌾' }
+      ];
+
+      let html = '<optgroup label="⭐ Top Flagship Sectors">';
+      for (const f of flagList) {
+        html += `<option value="${f.id}">${f.icon || '⭐'} ${f.name}</option>`;
+      }
+      html += '</optgroup>';
+
+      if (sectors && sectors.length > 0) {
+        const others = sectors.filter(s => !s.is_flagship);
+        if (others.length > 0) {
+          html += '<optgroup label="🏛️ All NCVET &amp; NSQF Sectors (38+)">';
+          for (const o of others) {
+            html += `<option value="${o.name}">🏛️ ${o.name} (${o.count || 'NCVET'})</option>`;
+          }
+          html += '</optgroup>';
+        }
+      }
+
+      select.innerHTML = html;
+      select.value = currentSectorSelection || 'aerospace';
+    }
+
+    function renderDossierSectorAlignment(arch) {
+      if (!arch) return;
+      const selectEl = document.getElementById('dossierSectorSelect');
+      const targetSector = currentSectorSelection || arch.ncvet_details?.sector_id || 'aerospace';
+      if (selectEl) {
+        selectEl.value = targetSector;
+      }
+      updateSectorCareers(arch.eccp_code, targetSector);
+    }
+
+    async function updateSectorCareers(eccpCode, sectorId) {
+      const listEl = document.getElementById('dossierCareersList');
+      if (listEl) {
+        listEl.innerHTML = `
+          <div style="padding: 14px; text-align: center; color: #64748B; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <div style="width: 14px; height: 14px; border: 2px solid #CBD5E1; border-top-color: #2563EB; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+            <span>Aligning Swabhava with sector...</span>
+          </div>
+        `;
+      }
+
+      try {
+        const res = await fetch(`/api/personalities/careers?code=${encodeURIComponent(eccpCode)}&sector=${encodeURIComponent(sectorId)}`);
+        const data = await res.json();
+        if (data.success) {
+          applyCareerAlignmentData(data);
+        }
+      } catch (err) {
+        console.error('Failed to fetch careers for sector:', err);
+      }
+    }
+
+    function applyCareerAlignmentData(data) {
+      const badgeEl = document.getElementById('dossierSectorBadge');
+      const metaEl = document.getElementById('dossierNcvetMeta');
+      const roleBoxEl = document.getElementById('dossierSwabhavaRoleBox');
+      const listEl = document.getElementById('dossierCareersList');
+      const directiveEl = document.getElementById('dossierSwadharmaDirective');
+
+      if (badgeEl) badgeEl.innerText = data.ssc_council || 'NCVET Council';
+      if (metaEl) {
+        metaEl.innerHTML = `
+          <span>Official NSQF Band: <strong>Level ${data.nsqf_level || 9}</strong></span>
+          <span>QP: <strong>${data.qp_code || 'NCVET'}</strong></span>
+          <span>US O*NET: <strong>${data.us_onet_code || '11-1021.00'}</strong></span>
+        `;
+      }
+      if (roleBoxEl) {
+        roleBoxEl.innerHTML = `
+          <div style="font-size: 10.5px; text-transform: uppercase; color: #1D4ED8; font-weight: 800; margin-bottom: 2px; letter-spacing: 0.3px;">Sovereign Archetype Role in ${data.sector_name || 'Sector'}:</div>
+          <div style="font-size: 13px; font-weight: 800; color: #0F172A;">${data.swabhava_role}</div>
+        `;
+      }
+
+      if (listEl && Array.isArray(data.aligned_careers)) {
+        listEl.innerHTML = data.aligned_careers.map(c => {
+          const match = c.match(/^(.*?)\s*\((.*?)\s*-\s*NSQF\s*(.*?)\)$/);
+          const title = match ? match[1] : c;
+          const qpCode = match ? match[2] : (data.qp_code || 'NCVET');
+          const level = match ? match[3] : `L${data.nsqf_level || 8}`;
+          return `
+            <div class="ncvet-qp-card" onclick="searchQpOnPortal('${qpCode}')" title="Click to inspect ${qpCode} on Hayagriva NSQF Explorer" style="cursor: pointer;">
+              <div style="flex: 1;">
+                <div class="qp-title" style="font-size: 12.5px; font-weight: 700; color: #0F172A;">${title}</div>
+                <div class="qp-meta" style="font-size: 11px; color: #64748B; margin-top: 3px; display: flex; align-items: center; gap: 6px;">
+                  <span>National Standard</span> • 
+                  <span>${(data.ssc_council || '').split('(')[0].trim()}</span> • 
+                  <span style="color: #2563EB; font-weight: 700;">${qpCode}</span>
+                </div>
+              </div>
+              <span class="qp-badge" style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; font-weight: 800; font-size: 10.5px; padding: 2px 7px; border-radius: 4px;">NSQF ${level}</span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      if (directiveEl && data.swadharma_directive) {
+        directiveEl.innerHTML = `<strong>Swadharma Law (Gita 18.47):</strong> ${data.swadharma_directive}`;
+      }
+    }
+
+    function searchQpOnPortal(qpCode) {
+      if (!qpCode || qpCode === 'NCVET') return;
+      window.open(`/employees_nsqf.html?search=${encodeURIComponent(qpCode)}`, '_blank');
+    }
+
+    function onDossierSectorChanged(sectorId) {
+      currentSectorSelection = sectorId;
+      if (activeArchetype) {
+        updateSectorCareers(activeArchetype.eccp_code, sectorId);
+      }
     }
 
     // Startup

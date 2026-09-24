@@ -218,6 +218,21 @@ async function main() {
     assert(searchData.success, 'Search endpoint should succeed');
     console.log(`  ✓ GET /api/personalities/corpus/search?q=samkhya+tattvas -> Found ${searchData.count} chunks via PostgreSQL`);
 
+    // Test 7: GET /sectors (Multi-Sector Directory)
+    const sectorsRes = await fetch(`${baseUrl}/sectors`);
+    const sectorsData = await sectorsRes.json();
+    assert(sectorsData.success, 'Sectors endpoint should succeed');
+    assert(sectorsData.flagships.length === 12, 'Must have 12 Flagship Sectors');
+    console.log(`  ✓ GET /api/personalities/sectors -> Found ${sectorsData.count} total sectors (${sectorsData.flagships.length} Flagships)`);
+
+    // Test 8: GET /careers (Sector Career Alignment Engine)
+    const careersRes = await fetch(`${baseUrl}/careers?code=SR-BM-K-D&sector=healthcare`);
+    const careersData = await careersRes.json();
+    assert(careersData.success, 'Careers endpoint should succeed');
+    assert.strictEqual(careersData.swabhava_role, 'Chief of Emergency Trauma & Critical Care Surgery', 'Kshatriya Healthcare role must match');
+    assert(careersData.aligned_careers.length >= 4, 'Must return at least 4 certified QPs');
+    console.log(`  ✓ GET /api/personalities/careers?code=SR-BM-K-D&sector=healthcare -> "${careersData.swabhava_role}" (${careersData.aligned_careers.length} QPs)`);
+
     console.log('\n🎉 ALL 5 E2E PHASES & TESTS PASSED PERFECTLY WITH POSTGRESQL!\n');
     server.close();
     process.exit(0);
