@@ -2193,13 +2193,13 @@
       if (!listEl || !data || !Array.isArray(data.aligned_careers)) return;
 
       const sectorSelect = document.getElementById('dossierSectorSelect');
-      const sectorName = data.sector_name || (sectorSelect ? sectorSelect.value : '');
+      const sectorName = data.db_sector || data.sector_name || (sectorSelect ? sectorSelect.value : '');
 
       listEl.innerHTML = data.aligned_careers.map((c, idx) => {
-        const match = c.match(/^(.*?)\s*\((.*?)\s*-\s*NSQF\s*(.*?)\)$/);
-        const title = match ? match[1] : c;
-        const qpCode = match ? match[2] : (data.qp_code || 'NCVET');
-        const level = match ? match[3] : `L${data.nsqf_level || 8}`;
+        const match = c.match(/^(.*?)\s*\(([A-Z0-9_/]+)\s*-\s*NSQF\s*([^)]+)\)$/i) || c.match(/^(.*?)\s*\((.*?)\s*-\s*NSQF\s*(.*?)\)$/);
+        const title = match ? match[1].trim() : c;
+        const qpCode = match ? match[2].trim() : (data.qp_code || 'NCVET');
+        const level = match ? match[3].trim() : `L${data.nsqf_level || 8}`;
         const isPrimary = idx === 0;
 
         return `

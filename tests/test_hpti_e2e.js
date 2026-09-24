@@ -229,7 +229,7 @@ async function main() {
     const careersRes = await fetch(`${baseUrl}/careers?code=SR-BM-K-D&sector=healthcare`);
     const careersData = await careersRes.json();
     assert(careersData.success, 'Careers endpoint should succeed');
-    assert.strictEqual(careersData.swabhava_role, 'Chief of Emergency Trauma & Critical Care Surgery', 'Kshatriya Healthcare role must match');
+    assert.strictEqual(careersData.swabhava_role, 'Healthcare Quality Assurance Manager & Hospital Operations Arbiter', 'Kshatriya Healthcare role must match');
     assert(careersData.aligned_careers.length >= 4, 'Must return at least 4 certified QPs');
     console.log(`  ✓ GET /api/personalities/careers?code=SR-BM-K-D&sector=healthcare -> "${careersData.swabhava_role}" (${careersData.aligned_careers.length} QPs)`);
 

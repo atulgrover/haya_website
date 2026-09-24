@@ -1137,12 +1137,12 @@ router.get('/corpus/search', async (req, res) => {
 // ── GET /api/personalities/sectors ──
 router.get('/sectors', async (req, res) => {
   try {
-    const sectors = await getAvailableSectors(db);
+    const sectorsData = await getAvailableSectors(db);
     res.json({
       success: true,
-      count: sectors.length,
-      flagships: TOP_FLAGSHIP_SECTORS,
-      sectors
+      count: sectorsData.all_sectors ? sectorsData.all_sectors.length : 0,
+      flagships: sectorsData.flagships || TOP_FLAGSHIP_SECTORS,
+      sectors: sectorsData.all_sectors || []
     });
   } catch (err) {
     console.error('Error in /api/personalities/sectors:', err);

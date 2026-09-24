@@ -620,7 +620,22 @@
       if (initialSector) {
         currentFilters.sector = initialSector;
         const select = document.getElementById('selectSector');
-        if (select) select.value = initialSector;
+        if (select) {
+          let matchedVal = '';
+          const targetLower = initialSector.toLowerCase().trim();
+          for (let opt of select.options) {
+            if (!opt.value) continue;
+            const optLower = opt.value.toLowerCase().trim();
+            if (optLower === targetLower || targetLower.includes(optLower) || optLower.includes(targetLower)) {
+              matchedVal = opt.value;
+              break;
+            }
+          }
+          if (matchedVal) {
+            select.value = matchedVal;
+            currentFilters.sector = matchedVal;
+          }
+        }
         await onSectorChange(false);
       } else {
         await fetchCards();

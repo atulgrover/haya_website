@@ -308,8 +308,10 @@ router.get('/qps/cards', async (req, res) => {
             args.push(term, term, term, term, term);
         }
         if (sector) {
-            baseSql += ` AND sector = ?`;
-            args.push(sector);
+            // Tolerant sector matching: exact match, ILIKE prefix, or contained substring
+            const primarySectorWord = sector.trim().split('&')[0].split(',')[0].trim();
+            baseSql += ` AND (sector = ? OR sector ILIKE ? OR ? ILIKE ('%' || sector || '%'))`;
+            args.push(sector, `%${primarySectorWord}%`, sector);
         }
         if (subsector) {
             baseSql += ` AND sub_sector = ?`;
@@ -325,8 +327,22 @@ router.get('/qps/cards', async (req, res) => {
         }
 
         // Get total matching count (distinct QPs)
-        const countRow = await db.prepare(`SELECT COUNT(DISTINCT qp_code) as total ${baseSql}`).get(...args);
-        const matchCount = countRow ? countRow.total : 0;
+        let countRow = await db.prepare(`SELECT COUNT(DISTINCT qp_code) as total ${baseSql}`).get(...args);
+        let matchCount = countRow ? countRow.total : 0;
+
+        // Resilient Fallback: If sector + q returned 0, but q was specifically requested (e.g. deep link to a QP),
+        // search across all sectors so the user is never stranded with 0 results
+        if (matchCount === 0 && q && sector) {
+            const fallbackSql = `FROM nsqf_qps WHERE (qp_name LIKE ? OR qp_code LIKE ? OR sector LIKE ? OR occupation LIKE ? OR min_education_exp LIKE ?)`;
+            const term = `%${q.trim()}%`;
+            const fbCountRow = await db.prepare(`SELECT COUNT(DISTINCT qp_code) as total ${fallbackSql}`).get(term, term, term, term, term);
+            if (fbCountRow && fbCountRow.total > 0) {
+                baseSql = fallbackSql;
+                args.length = 0;
+                args.push(term, term, term, term, term);
+                matchCount = fbCountRow.total;
+            }
+        }
 
         // Get overall database count (distinct QPs)
         const dbCountRow = await db.prepare(`SELECT COUNT(DISTINCT qp_code) as total FROM nsqf_qps`).get();
