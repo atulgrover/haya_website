@@ -592,7 +592,7 @@
       line-height: 1.45;
     }
 
-    /* NCVET QP Card Grid & Preselection State */
+    /* NCVET QP Card Grid & Clean States */
     .ncvet-qp-card {
       background: #FFFFFF;
       border: 1.5px solid #E2E8F0;
@@ -602,21 +602,17 @@
       flex-direction: column;
       gap: 5px;
       margin-bottom: 6px;
-      cursor: pointer;
-      position: relative;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .ncvet-qp-card:hover {
       border-color: #93C5FD;
-      background: #F8FAFC;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.08);
       transform: translateY(-1px);
     }
-    .ncvet-qp-card.is-preselected {
-      border: 1.5px solid #2563EB;
-      background: #F0F7FF;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
-      border-left: 4px solid #2563EB;
+    .ncvet-qp-card.is-primary-card {
+      border-color: #BFDBFE;
+      border-left: 3.5px solid #2563EB;
+      background: #F8FAFC;
     }
     .qp-header-row {
       display: flex;
@@ -631,7 +627,7 @@
       line-height: 1.35;
     }
     .qp-badge {
-      font-size: 10.5px;
+      font-size: 10px;
       background: #EFF6FF;
       color: #1D4ED8;
       border: 1px solid #BFDBFE;
@@ -640,34 +636,29 @@
       border-radius: 4px;
       white-space: nowrap;
     }
-    .ncvet-qp-card.is-preselected .qp-badge {
+    .ncvet-qp-card.is-primary-card .qp-badge {
       background: #2563EB;
       color: #FFFFFF;
       border-color: #2563EB;
     }
-    .qp-meta {
-      font-size: 11px;
-      color: #64748B;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .qp-action-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 3px;
-      padding-top: 5px;
-      border-top: 1px solid rgba(226, 232, 240, 0.6);
-    }
-    .badge-preselected-pill {
+    .badge-primary-fit {
       font-size: 10px;
       font-weight: 700;
-      color: #1D4ED8;
+      color: #1E40AF;
       background: #DBEAFE;
       padding: 1.5px 7px;
-      border-radius: 9999px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .badge-lateral-role {
+      font-size: 10px;
+      font-weight: 600;
+      color: #64748B;
+      background: #F1F5F9;
+      padding: 1.5px 7px;
+      border-radius: 4px;
       display: inline-flex;
       align-items: center;
       gap: 3px;
@@ -678,7 +669,7 @@
       color: #2563EB;
       text-decoration: none;
       background: rgba(37, 99, 235, 0.08);
-      padding: 2.5px 8px;
+      padding: 2px 8px;
       border-radius: 4px;
       display: inline-flex;
       align-items: center;
@@ -1230,12 +1221,17 @@
         <!-- NCVET & NSQF Certified Vocational Grid with Sector Dropdown -->
         <div style="background: #FFFFFF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
           
-          <!-- Unified Header Row: Title on Left, Sector Dropdown on Right -->
-          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
-            <div style="font-size: 12px; font-weight: 800; color: #1D4ED8; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
-              <span>🎯</span> NCVET Career Alignment
+          <!-- Unified Header Row: Title & Subtitle on Left, Sector Dropdown on Right -->
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <div>
+              <div style="font-size: 12.5px; font-weight: 800; color: #1D4ED8; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                <span>🎯</span> NCVET Career Alignment
+              </div>
+              <div id="dossierNcvetMeta" style="font-size: 11px; color: #64748B; margin-top: 2px;">
+                Band: <strong>NSQF Level 6–9</strong> • US O*NET: <strong>11-1011.00</strong>
+              </div>
             </div>
-            <select id="dossierSectorSelect" class="sector-select-picker" onchange="onDossierSectorChanged(this.value)" style="max-width: 210px; font-size: 11.5px; font-weight: 700; color: #1E40AF; background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 6px; padding: 4px 26px 4px 8px; outline: none; cursor: pointer; transition: all 0.2s;">
+            <select id="dossierSectorSelect" class="sector-select-picker" onchange="onDossierSectorChanged(this.value)" style="max-width: 210px; font-size: 11.5px; font-weight: 700; color: #1E40AF; background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 6px; padding: 5px 26px 5px 8px; outline: none; cursor: pointer; transition: all 0.2s;">
               <optgroup label="⭐ Top Flagship Sectors">
                 <option value="aerospace" selected>🚀 Aerospace &amp; Defense</option>
                 <option value="it_ai">💻 IT-ITeS &amp; AI</option>
@@ -1253,18 +1249,7 @@
             </select>
           </div>
 
-          <!-- Clean Archetype Sector Role Banner -->
-          <div id="dossierSwabhavaRoleBox" style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 3.5px solid #2563EB; padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
-            <div>
-              <div style="font-size: 10px; text-transform: uppercase; color: #64748B; font-weight: 700; letter-spacing: 0.5px;">Sovereign Archetype Role:</div>
-              <div id="dossierRoleTitle" style="font-size: 13px; font-weight: 800; color: #0F172A; margin-top: 1px;">Director of Aerospace Defense &amp; Flight Operations</div>
-            </div>
-            <div id="dossierNcvetMeta" style="font-size: 11px; color: #475569; font-weight: 600; background: #FFFFFF; padding: 3px 8px; border-radius: 4px; border: 1px solid #CBD5E1;">
-              NSQF Band: <strong>Level 6–9</strong> • O*NET: <strong>11-1011.00</strong>
-            </div>
-          </div>
-
-          <!-- Interactive Job Roles List (Preselected by default) -->
+          <!-- Clean Certified Job Roles List -->
           <div id="dossierCareersList" style="display: flex; flex-direction: column; gap: 6px;">
             <!-- Hydrated dynamically -->
           </div>
@@ -2203,19 +2188,10 @@
       }
     }
 
-    let currentSectorCareersData = null;
-    let selectedQpIndex = 0;
-
-    function selectCareerQp(index) {
-      selectedQpIndex = index;
-      renderCareersList();
-    }
-
-    function renderCareersList() {
+    function renderCareersList(data) {
       const listEl = document.getElementById('dossierCareersList');
-      if (!listEl || !currentSectorCareersData || !Array.isArray(currentSectorCareersData.aligned_careers)) return;
+      if (!listEl || !data || !Array.isArray(data.aligned_careers)) return;
 
-      const data = currentSectorCareersData;
       const sectorSelect = document.getElementById('dossierSectorSelect');
       const sectorName = data.sector_name || (sectorSelect ? sectorSelect.value : '');
 
@@ -2224,32 +2200,27 @@
         const title = match ? match[1] : c;
         const qpCode = match ? match[2] : (data.qp_code || 'NCVET');
         const level = match ? match[3] : `L${data.nsqf_level || 8}`;
-        const isPreselected = idx === selectedQpIndex;
+        const isPrimary = idx === 0;
 
         return `
-          <div class="ncvet-qp-card ${isPreselected ? 'is-preselected' : ''}" 
-               onclick="selectCareerQp(${idx})" 
-               title="${isPreselected ? 'Active Preselected QP' : 'Click to preselect this QP'}">
+          <div class="ncvet-qp-card ${isPrimary ? 'is-primary-card' : ''}">
             <div class="qp-header-row">
               <div class="qp-title">${title}</div>
               <span class="qp-badge">NSQF ${level}</span>
             </div>
             
-            <div class="qp-meta">
-              <span style="font-family: var(--font-mono); font-weight: 700; color: #1D4ED8;">${qpCode}</span>
-              <span>•</span>
-              <span>National Standard</span>
-            </div>
-
-            <div class="qp-action-row">
-              ${isPreselected 
-                ? `<span class="badge-preselected-pill">✓ Preselected Fit</span>` 
-                : `<span style="font-size: 10.5px; color: #94A3B8;">Click to select</span>`}
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-family: var(--font-mono); font-weight: 700; color: #1D4ED8; font-size: 11px;">${qpCode}</span>
+                <span style="color: #CBD5E1;">•</span>
+                ${isPrimary 
+                  ? `<span class="badge-primary-fit">★ Primary Fit</span>` 
+                  : `<span class="badge-lateral-role">Lateral Role</span>`}
+              </div>
               <a href="/employees_nsqf.html?sector=${encodeURIComponent(sectorName)}&qp=${encodeURIComponent(qpCode)}" 
                  target="_blank" 
                  class="btn-inspect-link" 
-                 onclick="event.stopPropagation();" 
-                 title="Open ${qpCode} preselected in National Explorer with syllabus, videos &amp; PCs">
+                 title="Open ${qpCode} in National Explorer with syllabus, videos &amp; PCs">
                 <span>Inspect in Explorer</span>
                 <span>↗</span>
               </a>
@@ -2260,24 +2231,17 @@
     }
 
     function applyCareerAlignmentData(data) {
-      currentSectorCareersData = data;
-      selectedQpIndex = 0; // Default top recommended QP preselected
-
-      const roleTitleEl = document.getElementById('dossierRoleTitle');
       const metaEl = document.getElementById('dossierNcvetMeta');
       const directiveEl = document.getElementById('dossierSwadharmaDirective');
 
-      if (roleTitleEl) {
-        roleTitleEl.innerText = data.swabhava_role || 'Sovereign Industry Lead';
-      }
       if (metaEl) {
-        metaEl.innerHTML = `Band: <strong>NSQF L${data.nsqf_level || 8}</strong> • O*NET: <strong>${data.us_onet_code || '11-1021.00'}</strong>`;
+        metaEl.innerHTML = `Band: <strong>NSQF L${data.nsqf_level || 8}</strong> • US O*NET: <strong>${data.us_onet_code || '11-1021.00'}</strong>`;
       }
       if (directiveEl && data.swadharma_directive) {
         directiveEl.innerHTML = `<strong>Swadharma Law (Gita 18.47):</strong> ${data.swadharma_directive}`;
       }
 
-      renderCareersList();
+      renderCareersList(data);
     }
 
     function onDossierSectorChanged(sectorId) {
