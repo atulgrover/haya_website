@@ -4,11 +4,38 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+
+const {
+  loadMatrix,
+  normalizeSubvectors,
+  matchCentroids,
+  getArchetypeByCode,
+  synthesizeDynamicProfile
+} = require('../utils/eccpMatrix');
+
+const {
+  RAPID_QUESTIONS,
+  VOCATIONAL_QUESTIONS_27,
+  VIKRITI_QUESTIONS
+} = require('../utils/questionBank');
+
+const {
+  recordSessionTelemetry,
+  getPsychometricReport,
+  exportFactorAnalysisCSV
+} = require('../utils/psychometrics');
+
+const {
+  generateGroundedCounsel,
+  searchKnowledge,
+  searchKnowledgeDb
+} = require('../utils/knowledgeRetriever');
 
 /**
  * ╔══════════════════════════════════════════════════════════════════╗
  * ║  HAYA PERSONALITIES API ROUTER                                  ║
- * ║  Sanatani Typology • ECCP Framework • Ramayana & Mahabharata    ║
+ * ║  Vedic Typology • ECCP Framework • Ramayana & Mahabharata        ║
  * ║  NCVET & NSQF Certified Vocational Alignment                    ║
  * ╚══════════════════════════════════════════════════════════════════╝
  */
@@ -743,410 +770,12 @@ const EPIC_ARCHETYPES = [
 ];
 
 // ══════════════════════════════════════════════════════════════════
-// 9 PRAKRITI SITUATIONAL SCENARIOS (Innate Nature Baseline)
+// STANDARDIZED PSYCHOMETRIC BATTERY (Loaded from questionBank.js)
 // ══════════════════════════════════════════════════════════════════
-const PRAKRITI_QUESTIONS = [
-  // ── Pillar I: Energy (Triguna Dynamics) ──
-  {
-    id: 'q1',
-    pillar: 'I',
-    pillar_title: 'Energy & Prana Dynamics (Triguna)',
-    gita_vector: 'Dhriti & Sukha (Gita 18.33-39)',
-    title: 'Reaction to Sudden Crisis & Organizational Shock',
-    shastric_rationale: 'Tests whether your physiological nervous system defaults to Sattvik equanimity, Rajasik agitation, or Tamasik withdrawal under sudden friction.',
-    scenario: 'Your organization experiences an unexpected catastrophe: a production outage, sudden executive resignation, or severe market crash. Your immediate unconditioned reflex is:',
-    options: [
-      {
-        id: 'S',
-        label: 'Sattvik Equanimity & Centering',
-        desc: 'A swift centering of breath, quiet detached observation of all moving variables, and a calm, deliberate assessment of what duty (Dharma) requires next.',
-        code: 'S',
-        vector: { sattva: 0.7, rajas: 0.2, tamas: 0.1 }
-      },
-      {
-        id: 'R',
-        label: 'Rajasik Kinetic Mobilization',
-        desc: 'An immediate surge of adrenaline, rapid-fire communications, urgent counter-measures, and a fierce drive to conquer the crisis through immediate motion.',
-        code: 'R',
-        vector: { sattva: 0.2, rajas: 0.7, tamas: 0.1 }
-      },
-      {
-        id: 'T',
-        label: 'Tamasik Grounding & Containment',
-        desc: 'A heavy sense of immobility, deep caution, refusing to make sudden moves, and waiting behind defensive shields until the chaotic storm clears.',
-        code: 'T',
-        vector: { sattva: 0.1, rajas: 0.2, tamas: 0.7 }
-      }
-    ]
-  },
-  {
-    id: 'q2',
-    pillar: 'I',
-    pillar_title: 'Energy & Prana Dynamics (Triguna)',
-    gita_vector: 'Sukha & Ahara (Gita 17.8-10)',
-    title: 'Restoration of Cognitive & Vital Reserves',
-    shastric_rationale: 'Evaluates which qualitative environment replenishes your Pranamaya and Manomaya sheaths after exhausting exertion.',
-    scenario: 'After three months of relentless, exhausting labor, what environment genuinely restores your cognitive clarity, vitality, and spirit?',
-    options: [
-      {
-        id: 'S',
-        label: 'Harmonious Sanctuary & Purposeful Study (Sattva)',
-        desc: 'Quiet, ordered spaces with foundational texts, reflective writing, nature walks, and noble philosophical conversation with trusted mentors.',
-        code: 'S',
-        vector: { sattva: 0.8, rajas: 0.1, tamas: 0.1 }
-      },
-      {
-        id: 'R',
-        label: 'Dynamic Sprints & Kinetic Social Momentum (Rajas)',
-        desc: 'High-impact travel, engaging in athletic challenges, brainstorming bold new ventures with peers, and celebrating hard-fought victories.',
-        code: 'R',
-        vector: { sattva: 0.1, rajas: 0.8, tamas: 0.1 }
-      },
-      {
-        id: 'T',
-        label: 'Total Solitude, Darkness & Sensory Shutdown (Tamas)',
-        desc: 'Unbroken sleep, deep isolation away from all screens and people, minimal sensory stimulation, and allowing the biological battery to recharge in silence.',
-        code: 'T',
-        vector: { sattva: 0.3, rajas: 0.1, tamas: 0.6 }
-      }
-    ]
-  },
-  {
-    id: 'q3',
-    pillar: 'I',
-    pillar_title: 'Energy & Prana Dynamics (Triguna)',
-    gita_vector: 'Karma & Karta (Gita 18.23-28)',
-    title: 'Daily Motivational Cadence & Work Flow',
-    shastric_rationale: 'Measures whether your daily work energy operates via steady discipline (Abhyasa), intense sprints, or sporadic curiosity.',
-    scenario: 'How do you naturally expend your working energy over quarters and years when no external boss is watching you?',
-    options: [
-      {
-        id: 'S',
-        label: 'Sustained Flow & Sacred Craftsmanship (Abhyasa)',
-        desc: 'A steady, unshakeable daily rhythm where work is treated as a sacred offering (Yajna); zero reliance on manic adrenaline or public applause.',
-        code: 'S',
-        vector: { sattva: 0.8, rajas: 0.1, tamas: 0.1 }
-      },
-      {
-        id: 'R',
-        label: 'High-Velocity Sprints & Mission Targets (Rajas)',
-        desc: 'Operating in passionate, high-adrenaline bursts chasing ambitious targets, followed by brief recovery before launching the next campaign.',
-        code: 'R',
-        vector: { sattva: 0.2, rajas: 0.7, tamas: 0.1 }
-      },
-      {
-        id: 'T',
-        label: 'Deliberate Preservation & Rhythmic Routine (Tamas)',
-        desc: 'A methodical, protective pace prioritizing procedural stability, safety checks, and zero deviations from established, proven protocols.',
-        code: 'T',
-        vector: { sattva: 0.2, rajas: 0.2, tamas: 0.6 }
-      }
-    ]
-  },
+const PRAKRITI_QUESTIONS = RAPID_QUESTIONS;
 
-  // ── Pillar II: Cognition (Antahkarana Locus) ──
-  {
-    id: 'q4',
-    pillar: 'II',
-    pillar_title: 'Cognition & Inner Instrument (Antahkarana)',
-    gita_vector: 'Buddhi (Gita 18.30-32)',
-    title: 'Processing Complex, Ambiguous Strategic Dilemmas',
-    shastric_rationale: 'Tests whether your decision engine is governed by Buddhi (first principles), Manas (relational networks), or Ahankara (executive command).',
-    scenario: 'You are presented with a massive, unprecedented crisis with zero existing playbook. How does your inner mind instinctively deconstruct it?',
-    options: [
-      {
-        id: 'B',
-        label: 'First-Principles Truth & Universal Patterns (Buddhi-Led)',
-        desc: 'Stripping away superficial symptoms, examining historical analogues, and deriving the invariant structural law governing the system.',
-        code: 'B',
-        varna: 'Brahmana',
-        cognition: 'Buddhi'
-      },
-      {
-        id: 'K',
-        label: 'Command Levers, Downside Protection & Tactics (Ahankara-Buddhi)',
-        desc: 'Establishing immediate chain-of-command, isolating points of failure, assessing sovereign risks, and executing bold, decisive interventions.',
-        code: 'K',
-        varna: 'Kshatriya',
-        cognition: 'Ahankara'
-      },
-      {
-        id: 'V',
-        label: 'Resource Arbitrage & Ecosystem Networks (Manas-Buddhi)',
-        desc: 'Analyzing stakeholder incentives, capital flow, supply logistics, and negotiating mutually beneficial alliances to solve the bottleneck.',
-        code: 'V',
-        varna: 'Vaishya',
-        cognition: 'Manas'
-      },
-      {
-        id: 'S',
-        label: 'Hands-On Tooling & Direct Execution (Pragmatic Action)',
-        desc: 'Going straight to the shop-floor or codebase; inspecting the physical hardware and debugging the machine directly with your hands.',
-        code: 'S',
-        varna: 'Shudra',
-        cognition: 'Manas'
-      }
-    ]
-  },
-  {
-    id: 'q5',
-    pillar: 'II',
-    pillar_title: 'Cognition & Inner Instrument (Antahkarana)',
-    gita_vector: 'Jnana & Viveka (Gita 18.20-22)',
-    title: 'High-Stakes Ethical Crossroads',
-    shastric_rationale: 'Evaluates your internal moral arbiter: universal duty (Dharma), economic sustainability (Artha), or autonomous conscience (Moksha).',
-    scenario: 'A lucrative business proposal guarantees immense financial upside, but requires exploiting a legal loophole that causes hidden harm to the community. Your decision arbiter is:',
-    options: [
-      {
-        id: 'D',
-        label: 'Nitya-Anitya-Viveka: Universal Duty (Dharma)',
-        desc: 'Absolute rejection. Asking: "Is this righteous?", knowing that short-term wealth acquired through Adharma destroys the institution in the end.',
-        code: 'D',
-        purpose: 'Dharma',
-        cognition: 'Buddhi'
-      },
-      {
-        id: 'A',
-        label: 'Long-Term Systemic Durability & Stakeholder Balance (Artha)',
-        desc: 'Pragmatic calculation: Evaluating reputational risk, regulatory blowback, and seeking a structural compromise that preserves enterprise sustainability.',
-        code: 'A',
-        purpose: 'Artha',
-        cognition: 'Manas'
-      },
-      {
-        id: 'M',
-        label: 'Sovereign Conscience & Inner Freedom (Moksha)',
-        desc: 'Uncompromising personal refusal. You refuse to let external gold bind your soul or compromise your inner sovereign integrity.',
-        code: 'M',
-        purpose: 'Moksha',
-        cognition: 'Ahankara'
-      }
-    ]
-  },
-  {
-    id: 'q6',
-    pillar: 'II',
-    pillar_title: 'Cognition & Inner Instrument (Antahkarana)',
-    gita_vector: 'Karta & Dhriti (Gita 18.26-35)',
-    title: 'Processing Major Professional Failure & Betrayal',
-    shastric_rationale: 'Measures how your Antahkarana recalibrates after acute crisis: intellectual decoupling, karmic introspection, or sovereign grit.',
-    scenario: 'A multi-year initiative collapses unexpectedly due to external betrayal or black-swan market disruption. Your internal processing mechanism is:',
-    options: [
-      {
-        id: 'B',
-        label: 'Objective Algorithmic Deconstruction (Buddhi-Led)',
-        desc: 'Instantly detaching personal ego; treating the collapse as raw experimental data; rewriting the mental model with clinical scientific precision.',
-        code: 'B',
-        cognition: 'Buddhi'
-      },
-      {
-        id: 'A',
-        label: 'Unyielding Sovereign Fortitude (Ahankara-Led)',
-        desc: 'Absorbing the blow through sheer inner willpower; refusing to surrender; doubling down on preparation to conquer the next summit.',
-        code: 'A',
-        cognition: 'Ahankara'
-      },
-      {
-        id: 'S',
-        label: 'Karmic Purification & Humility (Sattvik-Buddhi)',
-        desc: 'Viewing the setback as a cosmic teacher highlighting pride or blind spots, cultivating deeper spiritual humility and patience.',
-        code: 'S',
-        cognition: 'Buddhi'
-      }
-    ]
-  },
-
-  // ── Pillar III: Competency & Purpose (Swadharma & Purushartha) ──
-  {
-    id: 'q7',
-    pillar: 'III',
-    pillar_title: 'Competency & Purpose (Swadharma & Purushartha)',
-    gita_vector: 'Varna-Swabhava (Gita 18.41-44)',
-    title: 'Unconstrained Vocational Calling',
-    shastric_rationale: 'Isolates your innate Swabhava (natural aptitude) by removing survival pressures and social status rewards.',
-    scenario: 'If all financial needs, social prestige, and family expectations were permanently solved tomorrow, what would you spend 12 hours a day doing for the next 20 years?',
-    options: [
-      {
-        id: 'B',
-        label: 'Deep Research, Synthesis & Philosophical Treatises (Brahmana)',
-        desc: 'Discovering foundational truths, authoring seminal treatises, designing master algorithms, and mentoring the brightest minds.',
-        code: 'B',
-        varna: 'Brahmana',
-        purpose: 'Moksha'
-      },
-      {
-        id: 'K',
-        label: 'High-Stakes Sovereign Leadership & Crisis Protection (Kshatriya)',
-        desc: 'Commanding critical institutions, protecting the vulnerable, steering nations/enterprises through perilous turnarounds, and defending justice.',
-        code: 'K',
-        varna: 'Kshatriya',
-        purpose: 'Dharma'
-      },
-      {
-        id: 'V',
-        label: 'Building Scaling Marketplaces & Global Ecosystems (Vaishya)',
-        desc: 'Mobilizing venture capital, architecting global trade networks, funding breakthroughs, and building enduring engines of material abundance.',
-        code: 'V',
-        varna: 'Vaishya',
-        purpose: 'Artha'
-      },
-      {
-        id: 'S',
-        label: 'Tangible Mastery, Precision Fabrication & Craft (Shudra)',
-        desc: 'Crafting masterworks with your own hands—high-precision machines, master software code, aerospace components, or architectural landmarks.',
-        code: 'S',
-        varna: 'Shudra',
-        purpose: 'Kama'
-      }
-    ]
-  },
-  {
-    id: 'q8',
-    pillar: 'III',
-    pillar_title: 'Competency & Purpose (Swadharma & Purushartha)',
-    gita_vector: 'Purushartha (Artha vs. Dharma)',
-    title: 'Relationship with Capital, Scale & Ambition',
-    shastric_rationale: 'Diagnoses whether you view wealth as fuel for protection (Kshatriya), scorecards of enterprise (Vaishya), or a secondary byproduct (Brahmana).',
-    scenario: 'What is your authentic, private relationship with capital accumulation, material leverage, and worldly power?',
-    options: [
-      {
-        id: 'D',
-        label: 'Fuel for Sovereign Defense & Protection (Dharma)',
-        desc: 'Capital is defensive ammunition: it provides the leverage required to defend freedom, protect your team, and fund noble civilizational causes.',
-        code: 'D',
-        purpose: 'Dharma'
-      },
-      {
-        id: 'A',
-        label: 'The Objective Scoreboard of Realized Value (Artha)',
-        desc: 'Capital is a precise metric measuring how effectively your system architecture solves human and economic problems in the open market.',
-        code: 'A',
-        purpose: 'Artha'
-      },
-      {
-        id: 'M',
-        label: 'A Functional Utility Subordinate to Truth (Moksha)',
-        desc: 'Money is necessary for biological maintenance, but genuine wealth is knowledge, self-mastery, peace of mind, and intellectual sovereignty.',
-        code: 'M',
-        purpose: 'Moksha'
-      }
-    ]
-  },
-  {
-    id: 'q9',
-    pillar: 'III',
-    pillar_title: 'Competency & Purpose (Swadharma & Purushartha)',
-    gita_vector: 'Swadharma Summit (Gita 18.47)',
-    title: 'Ultimate Existential Justification of Your Life',
-    shastric_rationale: 'Evaluates your ultimate Purushartha vector: what legacy makes your life feel entirely justified upon death.',
-    scenario: 'Standing at the very end of your life, looking back at all your labor, which statement would make you feel your existence on Earth was fully justified?',
-    options: [
-      {
-        id: 'D',
-        label: 'The Incorruptible Shield: "I upheld justice and protected duty." (Dharma)',
-        desc: '"I stood firm when others compromised; I defended righteousness, protected those who trusted me, and lived an honorable life."',
-        code: 'D',
-        purpose: 'Dharma'
-      },
-      {
-        id: 'A',
-        label: 'The Civilizational Builder: "I built enduring engines of abundance." (Artha)',
-        desc: '"I created lasting institutions, provided livelihoods for thousands, and scaled systems that generated enduring prosperity."',
-        code: 'A',
-        purpose: 'Artha'
-      },
-      {
-        id: 'M',
-        label: 'The Luminous Clarifier: "I decoded truth and realized freedom." (Moksha)',
-        desc: '"I mastered my inner mind, transmitted enduring wisdom, and walked through worldly illusions with unshakeable inner peace."',
-        code: 'M',
-        purpose: 'Moksha'
-      },
-      {
-        id: 'K',
-        label: 'The Master Artisan: "I perfected my craft to divine standards." (Kama)',
-        desc: '"I brought tangible beauty, precision, and functional grace into the world through the dedicated mastery of my hands and tools."',
-        code: 'K',
-        purpose: 'Kama'
-      }
-    ]
-  }
-];
-
-// ══════════════════════════════════════════════════════════════════
-// 6 VIKRITI BURNOUT AUDIT SCENARIOS (Current Stress & Mask Check)
-// ══════════════════════════════════════════════════════════════════
-const VIKRITI_QUESTIONS = [
-  {
-    id: 'v1',
-    category: 'Biological & Pranamaya Load',
-    title: 'Sleep & Nervous System Depletion',
-    prompt: 'Over the past 90 days, your sleep quality and morning energy can be described as:',
-    options: [
-      { code: 'V_LOW', label: 'Balanced (Sattva)', desc: 'Waking naturally refreshed around dawn; clear mental focus; zero sleep aids needed.', score: 0 },
-      { code: 'V_MED', label: 'Agitated (Rajas)', desc: 'Waking with racing thoughts; relying on caffeine to start; heart palpitating occasionally.', score: 2 },
-      { code: 'V_HIGH', label: 'Exhausted (Tamas)', desc: 'Heavy brain fog; feeling drained despite 8+ hours in bed; profound chronic fatigue.', score: 4 }
-    ]
-  },
-  {
-    id: 'v2',
-    category: 'Cognitive & Manomaya Fragmentation',
-    title: 'Attention Span & Digital Sensory Load',
-    prompt: 'When attempting 90 minutes of continuous deep work, your mind experiences:',
-    options: [
-      { code: 'V_LOW', label: 'Unbroken Flow', desc: 'Effortless immersion in single-pointed focus (Ekagrata) without impulse to check notifications.', score: 0 },
-      { code: 'V_MED', label: 'Restless Multi-Tasking', desc: 'Compulsive tab-switching; feeling anxious if away from Slack/email for more than 20 minutes.', score: 2 },
-      { code: 'V_HIGH', label: 'Cognitive Paralysis', desc: 'Overwhelmed by micro-decisions; doom-scrolling to escape dread; inability to complete tasks.', score: 4 }
-    ]
-  },
-  {
-    id: 'v3',
-    category: 'Workplace Environment & Paradharma',
-    title: 'Alignment with Current Job Role',
-    prompt: 'How closely does your current daily corporate role align with your natural Swabhava?',
-    options: [
-      { code: 'V_LOW', label: 'Strong Swadharma', desc: 'I do work that feels organic to my natural gifts; my energy expands after working.', score: 0 },
-      { code: 'V_MED', label: 'Mild Paradharma', desc: 'I am good at my job, but it drains me; I perform for compensation and social status.', score: 2 },
-      { code: 'V_HIGH', label: 'Severe Paradharma', desc: 'I feel like a fraud or machine; daily tasks contradict my deepest values; intense burnout.', score: 4 }
-    ]
-  },
-  {
-    id: 'v4',
-    category: 'Emotional Reactivity',
-    title: 'Response to Mild Workplace Friction',
-    prompt: 'When a colleague or manager gives critical feedback or challenges your proposal:',
-    options: [
-      { code: 'V_LOW', label: 'Objective Discernment', desc: 'I listen calmly, extract useful data, and improve without taking personal offense.', score: 0 },
-      { code: 'V_MED', label: 'Defensive Irritation', desc: 'I feel an instant surge of defensive pride, irritability, or need to prove them wrong.', score: 2 },
-      { code: 'V_HIGH', label: 'Numb Withdrawal', desc: 'I feel crushed, cynical, or completely disconnected, thinking "nothing matters anyway".', score: 4 }
-    ]
-  },
-  {
-    id: 'v5',
-    category: 'Somatic Health & Digestion (Agni)',
-    title: 'Digestive Fire & Metabolic Vitality',
-    prompt: 'How is your digestion and physical metabolism under current work deadlines?',
-    options: [
-      { code: 'V_LOW', label: 'Clean Agni', desc: 'Steady appetite, clean digestion, no acid reflux or bloating, robust vitality.', score: 0 },
-      { code: 'V_MED', label: 'Irregular Pitta/Vata', desc: 'Acid reflux, skipped meals, nervous stomach, or stress snacking on junk food.', score: 2 },
-      { code: 'V_HIGH', label: 'Sluggish Manda-Agni', desc: 'Heavy sluggishness after food, chronic bloating, relying on antacids and stimulants.', score: 4 }
-    ]
-  },
-  {
-    id: 'v6',
-    category: 'Existential Fulfillment',
-    title: 'Sense of Sacred Purpose (Purushartha)',
-    prompt: 'When you reflect on the ultimate meaning and impact of your work over the past year:',
-    options: [
-      { code: 'V_LOW', label: 'Deeply Meaningful', desc: 'I feel my labor serves a noble purpose and contributes to human flourishing.', score: 0 },
-      { code: 'V_MED', label: 'Mixed / Transactional', desc: 'It pays the bills and gives status, but leaves my deeper soul somewhat empty.', score: 2 },
-      { code: 'V_HIGH', label: 'Existential Nausea', desc: 'I feel trapped in soul-crushing corporate theater; desperate for a radical life pivot.', score: 4 }
-    ]
-  }
-];
-
-// Helper: Calculate ECCP Vector from Answer Key
-function evaluateECCP(answers, vikritiAnswers = {}) {
+// Helper: Calculate ECCP Vector from Answer Key using 14-Simplex Normalization & Euclidean Centroids
+function evaluateECCP(answers, vikritiAnswers = {}, tier = 'vocational') {
   const scores = {
     guna: { S: 0, R: 0, T: 0 },
     cognition: { B: 0, M: 0, A: 0 },
@@ -1154,83 +783,78 @@ function evaluateECCP(answers, vikritiAnswers = {}) {
     purpose: { D: 0, A: 0, K: 0, M: 0 }
   };
 
-  // Map Q1 - Q3 to Guna
-  ['q1', 'q2', 'q3'].forEach(q => {
-    const val = answers[q] || 'S';
-    scores.guna[val] = (scores.guna[val] || 0) + 1;
+  const activeQuestions = tier === 'rapid' ? RAPID_QUESTIONS : VOCATIONAL_QUESTIONS_27;
+
+  // Process answers with weighted mappings
+  activeQuestions.forEach(q => {
+    const userVal = answers[q.id];
+    if (!userVal) return;
+
+    const opt = q.options.find(o => o.id === userVal || o.code === userVal);
+    if (opt && opt.weights) {
+      if (opt.weights.guna) {
+        for (const [k, v] of Object.entries(opt.weights.guna)) {
+          scores.guna[k] = (scores.guna[k] || 0) + v;
+        }
+      }
+      if (opt.weights.cognition) {
+        for (const [k, v] of Object.entries(opt.weights.cognition)) {
+          scores.cognition[k] = (scores.cognition[k] || 0) + v;
+        }
+      }
+      if (opt.weights.competency) {
+        for (const [k, v] of Object.entries(opt.weights.competency)) {
+          scores.competency[k] = (scores.competency[k] || 0) + v;
+        }
+      }
+      if (opt.weights.purpose) {
+        for (const [k, v] of Object.entries(opt.weights.purpose)) {
+          scores.purpose[k] = (scores.purpose[k] || 0) + v;
+        }
+      }
+    } else {
+      // Fallback for direct single-letter answer codes
+      if (['S', 'R', 'T'].includes(userVal)) scores.guna[userVal] = (scores.guna[userVal] || 0) + 2;
+      else if (['BM', 'MM', 'AM'].includes(userVal)) scores.cognition[userVal[0]] = (scores.cognition[userVal[0]] || 0) + 2;
+      else if (['B', 'K', 'V', 'S'].includes(userVal)) scores.competency[userVal] = (scores.competency[userVal] || 0) + 2;
+      else if (['D', 'A', 'M'].includes(userVal)) scores.purpose[userVal] = (scores.purpose[userVal] || 0) + 2;
+    }
   });
 
-  // Map Q4 - Q6 to Cognition and Competency
-  if (answers.q4) {
-    if (answers.q4 === 'B') { scores.competency.B += 2; scores.cognition.B += 1; }
-    else if (answers.q4 === 'K') { scores.competency.K += 2; scores.cognition.A += 1; }
-    else if (answers.q4 === 'V') { scores.competency.V += 2; scores.cognition.M += 1; }
-    else if (answers.q4 === 'S') { scores.competency.S += 2; scores.cognition.M += 1; }
-  }
+  // Calculate 14-dimensional normalized simplex vector
+  const { vector14, normalized } = normalizeSubvectors(scores);
 
-  if (answers.q5) {
-    if (answers.q5 === 'D') { scores.purpose.D += 2; scores.cognition.B += 1; }
-    else if (answers.q5 === 'A') { scores.purpose.A += 2; scores.cognition.M += 1; }
-    else if (answers.q5 === 'M') { scores.purpose.M += 2; scores.cognition.A += 1; }
-  }
+  // Euclidean distance matching across all 144 Archetype Centroids
+  const { bestMatch, secondMatch, minDistance, confidenceIndex, allDistances } = matchCentroids(vector14);
 
-  if (answers.q6) {
-    if (answers.q6 === 'B') scores.cognition.B += 2;
-    else if (answers.q6 === 'S') { scores.cognition.B += 1; scores.guna.S += 1; }
-    else if (answers.q6 === 'A') scores.cognition.A += 2;
-  }
-
-  // Map Q7 - Q9 to Competency and Purpose
-  if (answers.q7) {
-    if (answers.q7 === 'B') { scores.competency.B += 2; scores.purpose.M += 1; }
-    else if (answers.q7 === 'K') { scores.competency.K += 2; scores.purpose.D += 1; }
-    else if (answers.q7 === 'V') { scores.competency.V += 2; scores.purpose.A += 1; }
-    else if (answers.q7 === 'S') { scores.competency.S += 2; scores.purpose.K += 1; }
-  }
-
-  if (answers.q8) {
-    if (answers.q8 === 'D') scores.purpose.D += 2;
-    else if (answers.q8 === 'A') scores.purpose.A += 2;
-    else if (answers.q8 === 'M') scores.purpose.M += 2;
-  }
-
-  if (answers.q9) {
-    if (answers.q9 === 'D') scores.purpose.D += 2;
-    else if (answers.q9 === 'A') scores.purpose.A += 2;
-    else if (answers.q9 === 'M') scores.purpose.M += 2;
-    else if (answers.q9 === 'K') scores.purpose.K += 2;
-  }
-
-  // Determine top dimension values
+  // Find nearest curated Epic Archetype (from the 24 living mirrors)
+  let bestCurated = EPIC_ARCHETYPES[0];
+  let maxCuratedScore = -1;
   const topGuna = Object.keys(scores.guna).reduce((a, b) => scores.guna[a] >= scores.guna[b] ? a : b);
-  const secondGuna = Object.keys(scores.guna).filter(k => k !== topGuna).reduce((a, b) => scores.guna[a] >= scores.guna[b] ? a : b);
   const topCognition = Object.keys(scores.cognition).reduce((a, b) => scores.cognition[a] >= scores.cognition[b] ? a : b);
   const topCompetency = Object.keys(scores.competency).reduce((a, b) => scores.competency[a] >= scores.competency[b] ? a : b);
   const topPurpose = Object.keys(scores.purpose).reduce((a, b) => scores.purpose[a] >= scores.purpose[b] ? a : b);
 
-  const eccp_code = `${topGuna}${secondGuna}-${topCognition}M-${topCompetency}-${topPurpose}`;
-
-  // Find best matching epic archetype
-  let bestMatch = EPIC_ARCHETYPES[0];
-  let maxScore = -1;
-
   EPIC_ARCHETYPES.forEach(arch => {
     let matchScore = 0;
     const parts = arch.eccp_code.split('-');
-    if (parts[0].includes(topGuna)) matchScore += 2;
-    if (parts[1].includes(topCognition)) matchScore += 2;
-    if (parts[2].includes(topCompetency)) matchScore += 3;
-    if (parts[3].includes(topPurpose)) matchScore += 3;
+    if (parts[0] && parts[0].includes(topGuna)) matchScore += 2;
+    if (parts[1] && parts[1].includes(topCognition)) matchScore += 2;
+    if (parts[2] && parts[2].includes(topCompetency)) matchScore += 3;
+    if (parts[3] && parts[3].includes(topPurpose)) matchScore += 3;
 
-    if (matchScore > maxScore) {
-      maxScore = matchScore;
-      bestMatch = arch;
+    if (matchScore > maxCuratedScore) {
+      maxCuratedScore = matchScore;
+      bestCurated = arch;
     }
   });
 
+  // Dynamic Synthesis Profile
+  const dynamicSynthesis = synthesizeDynamicProfile(bestMatch, normalized, confidenceIndex);
+
   // Calculate Vikriti Burnout Score if provided
   let vikritiScore = 0;
-  let vikritiMax = 24;
+  const vikritiMax = 24;
   let vikritiLevel = 'Optimal Equilibrium (Sattvik State)';
   let vikritiAlert = 'Your daily metabolic and emotional load is well-integrated with your innate constitution.';
 
@@ -1254,15 +878,26 @@ function evaluateECCP(answers, vikritiAnswers = {}) {
   }
 
   return {
-    eccp_code,
+    eccp_code: bestMatch.eccp_code,
+    confidence_index: confidenceIndex,
+    euclidean_distance: minDistance,
     scores,
+    normalized,
+    vector14,
     dominant: {
-      energy: topGuna === 'S' ? 'Sattvik' : (topGuna === 'R' ? 'Rajasik' : 'Tamasik'),
-      cognition: topCognition === 'B' ? 'Buddhi-Led' : (topCognition === 'M' ? 'Manas-Led' : 'Ahankara-Led'),
-      competency: topCompetency === 'B' ? 'Brahmana' : (topCompetency === 'K' ? 'Kshatriya' : (topCompetency === 'V' ? 'Vaishya' : 'Shudra')),
-      purpose: topPurpose === 'D' ? 'Dharma' : (topPurpose === 'A' ? 'Artha' : (topPurpose === 'M' ? 'Moksha' : 'Kama'))
+      energy: bestMatch.energy_mode,
+      cognition: bestMatch.cognition_locus,
+      competency: bestMatch.competency_domain,
+      purpose: bestMatch.purpose_vector
     },
-    matched_archetype: bestMatch,
+    matched_archetype: bestCurated,
+    master_144_archetype: {
+      ...bestMatch,
+      compound_title: bestMatch.english_title
+    },
+    secondary_archetype: secondMatch,
+    top_candidate_archetypes: allDistances,
+    dynamic_synthesis: dynamicSynthesis,
     vikriti_audit: {
       score: vikritiScore,
       max_score: vikritiMax,
@@ -1275,9 +910,32 @@ function evaluateECCP(answers, vikritiAnswers = {}) {
 
 // ── GET /api/personalities/archetypes ──
 router.get('/archetypes', (req, res) => {
-  const { epic, tier } = req.query;
-  let filtered = EPIC_ARCHETYPES;
+  const { epic, tier, mode, competency, purpose } = req.query;
 
+  if (mode === '144') {
+    const data = loadMatrix();
+    let list = data.list;
+
+    if (tier && tier !== 'all') {
+      list = list.filter(a => a.energy_mode.toLowerCase().includes(tier.toLowerCase()));
+    }
+    if (competency && competency !== 'all') {
+      list = list.filter(a => a.competency_domain.toLowerCase() === competency.toLowerCase());
+    }
+    if (purpose && purpose !== 'all') {
+      list = list.filter(a => a.purpose_vector.toLowerCase() === purpose.toLowerCase());
+    }
+
+    return res.json({
+      success: true,
+      mode: '144_matrix',
+      total: list.length,
+      archetypes: list
+    });
+  }
+
+  // Default: Return 24 curated epic archetypes
+  let filtered = EPIC_ARCHETYPES;
   if (epic && epic !== 'all') {
     filtered = filtered.filter(a => a.epic.toLowerCase() === epic.toLowerCase());
   }
@@ -1290,44 +948,128 @@ router.get('/archetypes', (req, res) => {
     compendium_file: getArchetypeCompendiumFile(a)
   }));
 
-  res.json({ success: true, count: enriched.length, archetypes: enriched });
+  res.json({ success: true, mode: 'curated_24', count: enriched.length, archetypes: enriched });
 });
 
 // ── GET /api/personalities/questions ──
 router.get('/questions', (req, res) => {
+  const tier = req.query.tier || 'vocational';
+  const questions = tier === 'rapid' ? RAPID_QUESTIONS : VOCATIONAL_QUESTIONS_27;
+
   res.json({
     success: true,
-    count: PRAKRITI_QUESTIONS.length,
-    questions: PRAKRITI_QUESTIONS,
-    vikriti_questions: VIKRITI_QUESTIONS
+    tier,
+    count: questions.length,
+    questions,
+    vikriti_questions: VIKRITI_QUESTIONS,
+    tier_info: {
+      rapid: { name: 'Tier 1 Rapid Screening', count: RAPID_QUESTIONS.length, estimated_time: '3 minutes' },
+      vocational: { name: 'Tier 2 Certified Vocational Battery', count: VOCATIONAL_QUESTIONS_27.length, estimated_time: '8 minutes' }
+    }
   });
 });
 
 // ── POST /api/personalities/evaluate ──
-router.post('/evaluate', (req, res) => {
-  const { answers, vikriti_answers } = req.body;
+router.post('/evaluate', async (req, res) => {
+  const { answers, vikriti_answers, tier } = req.body;
   if (!answers || typeof answers !== 'object') {
     return res.status(400).json({ success: false, error: 'Answers payload must be an object with question keys.' });
   }
-  const result = evaluateECCP(answers, vikriti_answers);
-  res.json({ success: true, ...result });
+
+  const determinedTier = tier || (Object.keys(answers).length > 12 ? 'vocational' : 'rapid');
+  const result = evaluateECCP(answers, vikriti_answers, determinedTier);
+
+  const sessionId = req.body.session_id || crypto.randomUUID();
+
+  // Record psychometric telemetry in database
+  try {
+    await recordSessionTelemetry({
+      sessionId,
+      tier: determinedTier,
+      eccpCode: result.eccp_code,
+      confidenceIndex: result.confidence_index,
+      rawScores: result.scores,
+      normalizedVector: result.normalized,
+      matchedArchetypeId: result.matched_archetype ? result.matched_archetype.id : result.master_144_archetype.id,
+      vikritiScore: result.vikriti_audit.score,
+      answers,
+      questionBank: determinedTier === 'rapid' ? RAPID_QUESTIONS : VOCATIONAL_QUESTIONS_27
+    });
+  } catch (err) {
+    console.warn('[ECCP Telemetry] Non-fatal error logging session:', err.message);
+  }
+
+  res.json({
+    success: true,
+    session_id: sessionId,
+    tier: determinedTier,
+    ...result
+  });
+});
+
+// ── GET /api/personalities/psychometrics/stats ──
+router.get('/psychometrics/stats', async (req, res) => {
+  const report = await getPsychometricReport();
+  res.json(report);
+});
+
+// ── GET /api/personalities/psychometrics/export ──
+router.get('/psychometrics/export', async (req, res) => {
+  const data = await exportFactorAnalysisCSV();
+  if (!data.success) {
+    return res.status(400).json(data);
+  }
+
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Disposition', 'attachment; filename="hpti_eccp_empirical_dataset.csv"');
+  res.send(data.csv);
 });
 
 // ── POST /api/personalities/chat ──
-router.post('/chat', (req, res) => {
+router.post('/chat', async (req, res) => {
   const { query, archetype_id, eccp_code } = req.body;
   if (!query) {
     return res.status(400).json({ success: false, error: 'Query is required.' });
   }
 
-  const arch = EPIC_ARCHETYPES.find(a => a.id === archetype_id) || EPIC_ARCHETYPES[0];
+  // Lookup archetype from 24 curated or 144 master matrix
+  let arch = EPIC_ARCHETYPES.find(a => a.id === archetype_id);
+  if (!arch && eccp_code) {
+    const mArch = getArchetypeByCode(eccp_code);
+    if (mArch) {
+      arch = {
+        name: mArch.epic_anchor,
+        sanskrit_title: mArch.sanskrit_title,
+        english_moniker: mArch.english_title,
+        epic: 'Itihasa (Ramayana / Mahabharata)',
+        eccp_code: mArch.eccp_code,
+        guna_base: mArch.energy_mode,
+        antahkarana: mArch.cognition_locus,
+        competency: mArch.competency_domain,
+        purpose: mArch.purpose_vector,
+        quote: mArch.psychological_summary,
+        shadow_warning: mArch.shadow_warning,
+        aligned_ncvet_careers: mArch.ncvet_alignment.aligned_careers,
+        ncvet_details: {
+          nsqf_level: mArch.ncvet_alignment.nsqf_level,
+          qp_code: mArch.ncvet_alignment.qp_code,
+          ssc_council: mArch.ncvet_alignment.primary_sector,
+          us_onet_code: mArch.ncvet_alignment.us_onet_code
+        },
+        sadhana_protocol: mArch.sadhana_protocol,
+        compendium_chapter: 'Chapter 16: The Master 144 Archetypal Lexicon'
+      };
+    }
+  }
+
+  if (!arch) arch = EPIC_ARCHETYPES[0];
   const qLower = query.toLowerCase();
 
   let answer = '';
   if (qLower.includes('why') || qLower.includes('match') || qLower.includes('who') || qLower.includes('meaning')) {
-    answer = `Based on your ECCP code (${eccp_code || arch.eccp_code}), your psychological vector mirrors ${arch.name} (${arch.sanskrit_title}). In the ${arch.epic}, ${arch.name} embodies your core drive: "${arch.quote}". Your dominant energy is ${arch.guna_base} and your cognitive style operates via ${arch.antahkarana}. You do not merely seek routine employment; you are fueled by ${arch.purpose}, which makes your natural leverage flourish in high-responsibility environments without burning out.`;
+    answer = `Based on your ECCP code (${eccp_code || arch.eccp_code}), your psychological vector mirrors ${arch.name} (${arch.sanskrit_title || arch.english_moniker}). In classical literature, ${arch.name} embodies your core drive: "${arch.quote}". Your dominant energy is ${arch.guna_base} and your cognitive style operates via ${arch.antahkarana}. You do not merely seek routine employment; you are fueled by ${arch.purpose}, which makes your natural leverage flourish in high-responsibility environments without burning out.`;
   } else if (qLower.includes('career') || qLower.includes('job') || qLower.includes('ncvet') || qLower.includes('nsqf') || qLower.includes('role')) {
-    answer = `Under India's certified NCVET and NSQF national framework, an archetype of ${arch.name} (${arch.competency}) is accredited for ${arch.aligned_ncvet_careers.slice(0, 3).join(', ')} under ${arch.ncvet_details.ssc_council} (NSQF Level ${arch.ncvet_details.nsqf_level}, QP Code: ${arch.ncvet_details.qp_code}). Globally, this crosswalks directly to US O*NET SOC ${arch.ncvet_details.us_onet_code}. In these roles, your Swadharma creates high multiplicative value because your energy operates with natural authority, strategic resilience, and systematic clarity.`;
+    answer = `Under India's certified NCVET and NSQF national framework, an archetype of ${arch.name} (${arch.competency}) is accredited for ${arch.aligned_ncvet_careers ? arch.aligned_ncvet_careers.slice(0, 3).join(', ') : 'High-level Strategic Leadership'} under ${arch.ncvet_details.ssc_council} (NSQF Level ${arch.ncvet_details.nsqf_level}, QP Code: ${arch.ncvet_details.qp_code}). Globally, this crosswalks directly to US O*NET SOC ${arch.ncvet_details.us_onet_code}. In these roles, your Swadharma creates high multiplicative value because your energy operates with natural authority, strategic resilience, and systematic clarity.`;
   } else if (qLower.includes('burnout') || qLower.includes('friction') || qLower.includes('stress') || qLower.includes('vikriti')) {
     answer = `In Vedic psychology, burnout is diagnosed as Vikriti (temporary pathological deviation from your innate Prakriti). With an energy dynamic of ${arch.guna_base}, your primary shadow risk is: "${arch.shadow_warning}". As Lord Krishna instructs in Bhagavad Gita 18.47: "śhreyān swa-dharmo viguṇaḥ para-dharmāt sv-anuṣhṭhitāt" (Better is one's own duty though imperfect, than another's duty well-performed). To heal this imbalance, follow your personalized Sadhana Protocol: ${arch.sadhana_protocol.pranayama}, combined with ${arch.sadhana_protocol.ahara}.`;
   } else if (qLower.includes('sadhana') || qLower.includes('elevation') || qLower.includes('diet') || qLower.includes('pranayama')) {
@@ -1335,7 +1077,16 @@ router.post('/chat', (req, res) => {
   } else if (qLower.includes('blind') || qLower.includes('shadow') || qLower.includes('weakness') || qLower.includes('pitfall')) {
     answer = `Every heroic archetype carries an Epic Shadow. For ${arch.name}, your primary vulnerability is: "${arch.shadow_warning}". In corporate settings, be vigilant not to let your natural drive degenerate into this shadow pattern. Ground your intellect daily in Viveka (objective discernment) to remain in your supreme Sattvik state.`;
   } else {
-    answer = `In the Sanatani tradition, self-knowledge (Atma-Jnana) begins by understanding your inner instrument (Antahkarana). For a profile aligned with ${arch.name} (${arch.eccp_code}), your intimate reason to live is expressed through ${arch.purpose}. In modern professional practice, focus on high-leverage domains: ${arch.aligned_ncvet_careers[0]}, ensuring your operational cadence remains steady, dignified, and anchored in truth. Consult ${arch.compendium_chapter} in the HPTI Compendium for the full shastric analysis.`;
+    answer = `In the Vedic tradition, self-knowledge (Atma-Jnana) begins by understanding your inner instrument (Antahkarana). For a profile aligned with ${arch.name} (${arch.eccp_code}), your intimate reason to live is expressed through ${arch.purpose}. In modern professional practice, focus on high-leverage domains: ${arch.aligned_ncvet_careers ? arch.aligned_ncvet_careers[0] : 'Strategic Leadership'}, ensuring your operational cadence remains steady, dignified, and anchored in truth. Consult ${arch.compendium_chapter} in the HPTI Compendium for the full shastric analysis.`;
+  }
+
+  // Synthesize dynamic RAG counsel from compendium shastras and NCVET qualification packs (PostgreSQL Full-Text Search)
+  const grounded = await generateGroundedCounsel(query, arch, eccp_code || arch.eccp_code);
+  if (grounded && grounded.shastric_insight) {
+    answer += grounded.shastric_insight;
+  }
+  if (grounded && grounded.career_pathways && (qLower.includes('career') || qLower.includes('job') || qLower.includes('role') || qLower.includes('ncvet') || qLower.includes('pathway') || !qLower.includes('burnout'))) {
+    answer += grounded.career_pathways;
   }
 
   res.json({
@@ -1344,10 +1095,34 @@ router.post('/chat', (req, res) => {
     archetype: arch.name,
     sanskrit_title: arch.sanskrit_title,
     epic: arch.epic,
-    citation: arch.epic_citation,
-    devanagari: arch.devanagari,
+    citation: arch.epic_citation || (grounded.citations && grounded.citations.length ? grounded.citations[0] : 'HPTI Master Lexicon'),
+    devanagari: arch.devanagari || '',
     shadow_warning: arch.shadow_warning,
-    ncvet_details: arch.ncvet_details
+    ncvet_details: arch.ncvet_details,
+    shastric_citations: grounded.citations || []
+  });
+});
+
+// ── GET /api/personalities/corpus/search ──
+router.get('/corpus/search', async (req, res) => {
+  const { q, type, competency, min_nsqf, max_nsqf, limit } = req.query;
+  if (!q) {
+    return res.status(400).json({ success: false, error: 'Query parameter "q" is required.' });
+  }
+
+  const results = await searchKnowledgeDb(q, {
+    corpusType: type,
+    varnaCompetency: competency,
+    nsqfLevelMin: min_nsqf ? parseInt(min_nsqf, 10) : undefined,
+    nsqfLevelMax: max_nsqf ? parseInt(max_nsqf, 10) : undefined,
+    limit: limit ? parseInt(limit, 10) : 10
+  });
+
+  res.json({
+    success: true,
+    query: q,
+    count: results.length,
+    results
   });
 });
 
@@ -1420,7 +1195,7 @@ const COMPENDIUM_TOC = [
       { num: 21, title: 'Psychometric Instrument Design & Scenario Calibration', file: '06_Diagnostic_Instrumentation/chapter_21_psychometric_design.md', summary: 'Designing situational dilemmas that bypass social desirability bias and reveal instinctual Gunic patterns.' },
       { num: 22, title: 'Algorithmic Scoring & Multi-Vector Normalization', file: '06_Diagnostic_Instrumentation/chapter_22_scoring_algorithms.md', summary: 'Mathematical models for vector distance, Guna balancing, and Vikriti variance calculation.' },
       { num: 23, title: 'Sovereign Local-First Software Architecture', file: '06_Diagnostic_Instrumentation/chapter_23_software_architecture.md', summary: 'Building zero-data-leakage psychometric platforms with private client-side evaluation.' },
-      { num: 24, title: 'Embedded Sanatani RAG Architecture & Shastric Grounding', file: '06_Diagnostic_Instrumentation/chapter_24_rag_and_vedic_counselor.md', summary: 'Knowledge retrieval pipelines synthesizing classical Sanskrit commentaries for contextual counseling.' }
+      { num: 24, title: 'Embedded Vedic RAG Architecture & Shastric Grounding', file: '06_Diagnostic_Instrumentation/chapter_24_rag_and_vedic_counselor.md', summary: 'Knowledge retrieval pipelines synthesizing classical Sanskrit commentaries for contextual counseling.' }
     ]
   },
   {
@@ -1447,7 +1222,7 @@ function getArchetypeCompendiumFile(arch) {
 router.get('/compendium/toc', (req, res) => {
   res.json({
     success: true,
-    title: 'HPTI Master Compendium: Sanatani Psychology, Epic Archetypes & National Vocational Realization',
+    title: 'HPTI Master Compendium: Vedic Psychology, Epic Archetypes & National Vocational Realization',
     total_volumes: COMPENDIUM_TOC.length,
     total_chapters: 28,
     volumes: COMPENDIUM_TOC

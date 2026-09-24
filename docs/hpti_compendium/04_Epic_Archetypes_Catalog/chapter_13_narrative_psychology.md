@@ -17,10 +17,10 @@ MBTI succeeds in capturing the human imagination because it gives people **stori
 
 Humans are **narrative-generating beings** (*Homo Narrans*). We understand our identity, our workplace struggles, and our moral crossroads by comparing ourselves to mythic characters who have walked the path before us.
 
-In the Sanatani civilizational heritage, this psychological principle has been perfected over millennia through the genre of **Itihasa** (literally, *“iti-ha-asa”* — *“so indeed it occurred”*), embodied in the world's two greatest epic masterpieces: the **Ramayana** of Sage Valmiki and the **Mahabharata** of Sage Vyasa.
+In the Vedic civilizational heritage, this psychological principle has been perfected over millennia through the genre of **Itihasa** (literally, *“iti-ha-asa”* — *“so indeed it occurred”*), embodied in the world's two greatest epic masterpieces: the **Ramayana** of Sage Valmiki and the **Mahabharata** of Sage Vyasa.
 
 ```
-       WESTERN PSYCHOMETRICS                          SANATANI ITIHASA
+       WESTERN PSYCHOMETRICS                          Vedic Itihasa
    (Cold Trait Percentiles)                      (Living Archetypal Mirrors)
 ┌────────────────────────────┐                ┌────────────────────────────┐
 │ • Descriptive statistics   │                │ • Living, breathing humans │
@@ -49,17 +49,17 @@ In the Epics, every possible permutation of human motivation, ambition, loyalty,
 
 ---
 
-## 3. Jungian Archetypes vs. Sanatani Itihasa
+## 3. Jungian Archetypes vs. Vedic Itihasa
 
 In the 20th century, Carl Jung revolutionized Western psychoanalysis by positing the existence of the **Collective Unconscious**—a deep evolutionary layer of the human psyche populated by universal mythic motifs and archetypes (*The Hero, The Shadow, The Wise Old Man, The Trickster*).
 
-While Jung made brilliant strides, the Sanatani Itihasa tradition surpasses Jungian theory in three fundamental ways:
+While Jung made brilliant strides, the Vedic Itihasa tradition surpasses Jungian theory in three fundamental ways:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│               JUNGIAN ARCHETYPES vs. SANATANI ITIHASA                  │
+│               JUNGIAN ARCHETYPES vs. Vedic Itihasa                  │
 ├───────────────────────────────┬────────────────────────────────────────┤
-│ JUNGIAN PSYCHOLOGY            │ SANATANI ITIHASA                       │
+│ JUNGIAN PSYCHOLOGY            │ Vedic Itihasa                       │
 ├───────────────────────────────┼────────────────────────────────────────┤
 │ 1. Abstract & Mythological    │ 1. Historical & Embodied               │
 │ Archetypes exist as shadowy,  │ Characters are fully dimensional, with │

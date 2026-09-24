@@ -11,7 +11,7 @@
 
 In modern sociological discourse, the Sanskrit word **Varna** is universally conflated with the rigid, birth-based caste system (*Jati*). Western colonial ethnographers (such as Herbert Risley and the 1901 Census of India) codified fluid, local occupational communities into a frozen, oppressive hierarchical hierarchy, creating profound civilizational trauma.
 
-In authentic Sanatani ontology, **Varna has nothing to do with birth, ancestry, or hereditary privilege**.
+In authentic Vedic ontology, **Varna has nothing to do with birth, ancestry, or hereditary privilege**.
 
 The *Bhagavad Gita* (4.13) states this with mathematical clarity:
 > *“cātur-varṇyaṁ mayā sṛṣṭaṁ **guṇa-karma-vibhāgaśaḥ**”*  

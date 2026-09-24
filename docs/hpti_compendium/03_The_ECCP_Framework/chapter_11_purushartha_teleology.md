@@ -13,7 +13,7 @@ Why do we work?
 
 For the modern global workforce, the answer to this question is tragically narrow. In standard corporate economics, human labor is viewed primarily as a transactional mechanism to generate monetary income (*Artha*), which can subsequently be exchanged for consumer entertainment and sensory gratification (*Kama*). When high-earning professionals accumulate millions in wealth and exhaust their capacity for consumption, they frequently hit a wall of catastrophic psychological meaninglessness—what contemporary psychologists term "the existential vacuum" or "executive anhedonia."
 
-In the Sanatani philosophical tradition, human motivation is structured around the **Purusharthas** (literally, *“the four legitimate aims of human existence”*):
+In the Vedic philosophical tradition, human motivation is structured around the **Purusharthas** (literally, *“the four legitimate aims of human existence”*):
 1. **Dharma**: Ethical duty, systemic order, cosmic harmony, and righteousness.
 2. **Artha**: Material abundance, economic security, asset creation, and political influence.
 3. **Kama**: Aesthetic vitality, emotional resonance, cultural beauty, and sensory delight.
@@ -42,7 +42,7 @@ The Vedic tradition rejects this linear reductionism. Purushartha is not a step-
 ```
 
 1. **Dharma is the Foundation**: Artha (wealth) and Kama (pleasure) without Dharma (ethics) lead directly to predatory capitalism, societal collapse, and personal ruin.
-2. **Artha and Kama are Legitimate Sacraments**: Unlike world-denying Western asceticisms, Hinduism celebrates wealth generation and aesthetic beauty as divine expressions, provided they are rooted in Dharma.
+2. **Artha and Kama are Legitimate Sacraments**: Unlike world-denying Western asceticisms, Vedic traditions celebrates wealth generation and aesthetic beauty as divine expressions, provided they are rooted in Dharma.
 3. **Moksha is the Polar Star**: The ultimate benchmark against which all work is measured: *Does this career liberate my consciousness, or does it bind me into deeper psychological slavery?*
 
 ---

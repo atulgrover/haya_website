@@ -485,6 +485,77 @@ async function initSchema() {
             );
 
             CREATE INDEX IF NOT EXISTS idx_patents_qp ON nsqf_patents(qp_code);
+
+            CREATE TABLE IF NOT EXISTS eccp_test_sessions (
+                id SERIAL PRIMARY KEY,
+                session_id TEXT UNIQUE NOT NULL,
+                tier VARCHAR(50) DEFAULT 'rapid',
+                eccp_code TEXT NOT NULL,
+                confidence_index INT DEFAULT 0,
+                raw_scores JSONB NOT NULL DEFAULT '{}',
+                normalized_vector JSONB NOT NULL DEFAULT '{}',
+                matched_archetype_id TEXT,
+                vikriti_score INT DEFAULT 0,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
+
+            CREATE TABLE IF NOT EXISTS eccp_item_responses (
+                id SERIAL PRIMARY KEY,
+                session_id TEXT NOT NULL REFERENCES eccp_test_sessions(session_id) ON DELETE CASCADE,
+                question_id TEXT NOT NULL,
+                dimension VARCHAR(50) NOT NULL,
+                selected_option TEXT NOT NULL,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_eccp_sessions_tier ON eccp_test_sessions(tier);
+            CREATE INDEX IF NOT EXISTS idx_eccp_sessions_code ON eccp_test_sessions(eccp_code);
+            CREATE INDEX IF NOT EXISTS idx_eccp_responses_sess ON eccp_item_responses(session_id);
+            CREATE INDEX IF NOT EXISTS idx_eccp_responses_qid ON eccp_item_responses(question_id);
+
+            CREATE TABLE IF NOT EXISTS eccp_archetypes_144 (
+                eccp_code VARCHAR(32) PRIMARY KEY,
+                english_title VARCHAR(255) NOT NULL,
+                sanskrit_title VARCHAR(255),
+                core_functional_title VARCHAR(255),
+                energy_mode VARCHAR(64),
+                cognition_locus VARCHAR(64),
+                competency_domain VARCHAR(64),
+                purpose_vector VARCHAR(64),
+                epic_anchor VARCHAR(128),
+                psychological_summary TEXT,
+                shadow_warning TEXT,
+                nsqf_level NUMERIC(4, 1),
+                qp_code VARCHAR(64),
+                primary_sector VARCHAR(255),
+                us_onet_code VARCHAR(64),
+                aligned_careers JSONB DEFAULT '[]',
+                sadhana_protocol JSONB DEFAULT '{}',
+                centroid_vector JSONB DEFAULT '[]',
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
+
+            CREATE TABLE IF NOT EXISTS eccp_knowledge_corpus (
+                id VARCHAR(128) PRIMARY KEY,
+                corpus_type VARCHAR(64) NOT NULL,
+                title VARCHAR(512),
+                section_heading VARCHAR(512),
+                content TEXT NOT NULL,
+                quotes JSONB DEFAULT '[]',
+                varna_competency VARCHAR(16),
+                nsqf_level NUMERIC(4, 1),
+                qp_code VARCHAR(64),
+                metadata JSONB DEFAULT '{}',
+                search_vector TSVECTOR,
+                created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_eccp_arch_code ON eccp_archetypes_144(eccp_code);
+            CREATE INDEX IF NOT EXISTS idx_eccp_arch_energy ON eccp_archetypes_144(energy_mode);
+            CREATE INDEX IF NOT EXISTS idx_eccp_arch_comp ON eccp_archetypes_144(competency_domain);
+            CREATE INDEX IF NOT EXISTS idx_eccp_corpus_type ON eccp_knowledge_corpus(corpus_type);
+            CREATE INDEX IF NOT EXISTS idx_eccp_corpus_varna ON eccp_knowledge_corpus(varna_competency);
+            CREATE INDEX IF NOT EXISTS idx_eccp_corpus_tsv ON eccp_knowledge_corpus USING GIN(search_vector);
         `);
 
         console.log('[Haya Portal DB] ✅ Local PostgreSQL schema verified & connected.');

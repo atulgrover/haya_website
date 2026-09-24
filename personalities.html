@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HPTI | Haya Personality Type Indicators | Sanatani Archetypes &amp; ECCP | HAYAGRIVA</title>
-  <meta name="description" content="Discover your innate Sanatani archetype using HPTI (Haya Personality Type Indicators) powered by the 4-Dimensional ECCP framework (Energy, Cognition, Competency, Purpose) across 144 epic archetypes mapped to certified NCVET &amp; NSQF national vocational roles." />
+  <title>HPTI | Haya Personality Type Indicators | Vedic Archetypes &amp; ECCP | HAYAGRIVA</title>
+  <meta name="description" content="Discover your innate Vedic archetype using HPTI (Haya Personality Type Indicators) powered by the 4-Dimensional ECCP framework (Energy, Cognition, Competency, Purpose) across 144 epic archetypes mapped to certified NCVET &amp; NSQF national vocational roles." />
 
   <!-- Fonts & Core Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -794,7 +794,7 @@
   <section class="pillar-hero">
     <h1 class="hero-title">HPTI: Haya Personality Type Indicators</h1>
     <p class="hero-subtitle">
-      Sanatani psychometrics powered by the 4-dimensional ECCP framework across 144 Epic archetypes, directly mapped to 2,002 certified NCVET &amp; NSQF national vocational qualifications.
+      Vedic psychometrics powered by the 4-dimensional ECCP framework across 144 Epic archetypes, directly mapped to 2,002 certified NCVET &amp; NSQF national vocational qualifications.
     </p>
     <div class="hero-stats-row">
       <div class="stat-pill">🏛️ 144 ECCP Archetypes</div>
@@ -882,7 +882,7 @@
             <span>🧘</span> Prakriti Baseline
           </button>
           <button class="mode-tab-btn" id="tabModeVikriti" onclick="switchDiagnosticMode('vikriti')">
-            <span>🔥</span> Vikriti Stress Audit
+            <span>🔥</span> Vikriti Audit
           </button>
         </div>
 
@@ -900,11 +900,26 @@
       <div class="panel-center-content" style="padding: 16px 20px;">
         <div style="margin-bottom: 10px;">
           <h2 class="center-mode-title" id="centerModeTitle" style="font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 2px 0;">
-            ECCP Sanatani Personality Diagnostic
+            ECCP Vedic Personality Diagnostic
           </h2>
           <div class="center-mode-subtitle" id="centerModeSubtitle" style="font-size: 12.5px; color: #64748B;">
-            Answer 9 scenarios to uncover your innate Prakriti, Epic mirror, and certified NCVET vocation.
+            Answer 27 scenarios to uncover your innate Prakriti, 144 Compound Archetype, and certified NCVET vocation.
           </div>
+        </div>
+
+        <!-- Tier Switcher Bar & Psychometric Telemetry Trigger -->
+        <div class="tier-switcher-container" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; background: #F1F5F9; padding: 5px 8px; border-radius: 8px; border: 1px solid #CBD5E1; flex-wrap: wrap; gap: 6px;">
+          <div style="display: flex; gap: 4px;">
+            <button id="btnTierVocational" class="tier-pill-btn active" onclick="switchQuestionTier('vocational')" style="padding: 5px 12px; font-size: 11.5px; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; background: #2563EB; color: #FFF; transition: all 0.15s ease;">
+              ⭐ Tier 2: Certified Vocational (27 Qs)
+            </button>
+            <button id="btnTierRapid" class="tier-pill-btn" onclick="switchQuestionTier('rapid')" style="padding: 5px 12px; font-size: 11.5px; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; background: transparent; color: #475569; transition: all 0.15s ease;">
+              ⚡ Tier 1: Rapid Screening (9 Qs)
+            </button>
+          </div>
+          <button onclick="openPsychometricsModal()" style="background: #FFFFFF; border: 1px solid #CBD5E1; color: #1E293B; font-size: 11px; font-weight: 700; border-radius: 6px; padding: 5px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+            <span>📊</span> Psychometric Telemetry &amp; Export
+          </button>
         </div>
 
         <!-- 1-Click Preset Testing Bar (Compact & Sleek) -->
@@ -931,7 +946,7 @@
             ↺ Reset Answers
           </button>
           <button id="btnCalculateECCP" class="nav-pill-blue" style="font-size: 13px; font-weight: 700; padding: 9px 20px; cursor: pointer; border: none; background: #2563EB; color: #FFF; border-radius: 6px;" onclick="calculateAndInspect()">
-            Calculate Sanatani ECCP Archetype →
+            Calculate Vedic ECCP Archetype →
           </button>
         </div>
       </div>
@@ -1031,6 +1046,27 @@
               <div id="barKama" class="meter-seg" style="background: #D97706; width: 25%;" title="Kama (Aesthetic/Experiential)"></div>
               <div id="barMoksha" class="meter-seg" style="background: #9333EA; width: 25%;" title="Moksha (Liberation/Truth)"></div>
             </div>
+          </div>
+        </div>
+
+        <!-- 144 ECCP Compound Archetype Banner (Visible on Diagnostic Evaluation) -->
+        <div id="master144Banner" style="display: none; background: linear-gradient(135deg, #0F172A, #1E293B); border: 1.5px solid #38BDF8; border-radius: 12px; padding: 14px 16px; color: #FFFFFF; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 10.5px; font-weight: 800; color: #38BDF8; letter-spacing: 0.6px; text-transform: uppercase;">
+              🧬 144 ECCP Compound Archetype
+            </span>
+            <span id="badgeConfidenceIndex" style="font-size: 11px; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: #38BDF8; border: 1px solid #38BDF8; padding: 2px 8px; border-radius: 9999px;">
+              85% Concordance
+            </span>
+          </div>
+          <div id="valMasterEnglishTitle" style="font-size: 15px; font-weight: 800; color: #FFFFFF; margin-bottom: 2px; line-height: 1.3;">
+            The Sattvik Intellect-Led Constitutional Jurist
+          </div>
+          <div id="valMasterSanskritTitle" style="font-size: 12px; color: #94A3B8; font-style: italic; margin-bottom: 8px;">
+            Sattvik Buddhi Niti-Kovidha
+          </div>
+          <div id="valMasterSecondary" style="font-size: 11.5px; color: #CBD5E1; background: rgba(255,255,255,0.06); padding: 5px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+            Secondary Resonance: S-BM-B-M (The Transcendent Sage)
           </div>
         </div>
 
@@ -1176,18 +1212,18 @@
           </div>
         </div>
 
-        <!-- Interactive Sanatani RAG Chat Assistant -->
+        <!-- Interactive Vedic RAG Chat Assistant -->
         <div class="rag-chat-container">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <strong style="font-size: 12.5px; color: #0F172A; display: flex; align-items: center; gap: 6px;">
-              <span>🤖</span> Ask Sanatani RAG Counselor
+              <span>🤖</span> Ask Vedic RAG Counselor
             </strong>
             <span style="font-size: 10.5px; background: #EFF6FF; color: #1D4ED8; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Local-First</span>
           </div>
 
           <div class="rag-chat-messages" id="ragMessages">
             <div class="rag-msg agent">
-              Namaste. I am your Sanatani Vocation Counselor. Ask me anything about your <strong>ECCP code</strong>, your matched Epic archetype, how to resolve ethical dilemmas, or your certified NCVET career roadmap.
+              Namaste. I am your Vedic Vocation Counselor. Ask me anything about your <strong>ECCP code</strong>, your matched Epic archetype, how to resolve ethical dilemmas, or your certified NCVET career roadmap.
             </div>
           </div>
 
@@ -1236,9 +1272,11 @@
     let prakritiQuestions = [];
     let vikritiQuestions = [];
     let currentMode = 'prakriti'; // 'prakriti' | 'vikriti'
+    let currentTier = 'vocational'; // 'vocational' | 'rapid'
     let prakritiAnswers = {};
     let vikritiAnswers = {};
     let activeArchetype = null;
+    let lastEvaluationData = null;
 
     // Initialize Portal
     async function initPersonalitiesPortal() {
@@ -1265,7 +1303,7 @@
       try {
         const [archRes, qRes] = await Promise.all([
           fetch('/api/personalities/archetypes'),
-          fetch('/api/personalities/questions')
+          fetch('/api/personalities/questions?tier=' + currentTier)
         ]);
         const archData = await archRes.json();
         const qData = await qRes.json();
@@ -1302,8 +1340,8 @@
       const subEl = document.getElementById('centerModeSubtitle');
 
       if (mode === 'prakriti') {
-        titleEl.innerText = 'ECCP Sanatani Personality Diagnostic (Prakriti Baseline)';
-        subEl.innerText = 'Answer 9 scenarios to uncover your innate Prakriti, Epic mirror, and certified NCVET vocation.';
+        titleEl.innerText = currentTier === 'vocational' ? 'ECCP Certified Vocational Battery (Tier 2)' : 'ECCP Rapid Screening (Tier 1)';
+        subEl.innerText = currentTier === 'vocational' ? 'Answer 27 scenarios to uncover your innate Prakriti, 144 Compound Archetype, and certified NCVET vocation.' : 'Answer 9 rapid scenarios for quick orientation and immediate archetype matching.';
       } else {
         titleEl.innerText = 'Modern Burnout & Stress Audit (Vikriti Check)';
         subEl.innerText = 'Answer 6 metabolic and nervous-load questions to calculate your current corporate burnout delta.';
@@ -1311,6 +1349,68 @@
 
       renderActiveQuestions();
       updateProgress();
+    }
+
+    // Switch Question Tier (Tier 2 Vocational 27 Qs vs Tier 1 Rapid 9 Qs)
+    async function switchQuestionTier(tier) {
+      currentTier = tier;
+      const btnVoc = document.getElementById('btnTierVocational');
+      const btnRap = document.getElementById('btnTierRapid');
+
+      if (btnVoc) {
+        btnVoc.style.background = tier === 'vocational' ? '#2563EB' : 'transparent';
+        btnVoc.style.color = tier === 'vocational' ? '#FFF' : '#475569';
+      }
+      if (btnRap) {
+        btnRap.style.background = tier === 'rapid' ? '#2563EB' : 'transparent';
+        btnRap.style.color = tier === 'rapid' ? '#FFF' : '#475569';
+      }
+
+      const subEl = document.getElementById('centerModeSubtitle');
+      if (subEl) {
+        subEl.innerText = tier === 'vocational' 
+          ? 'Answer 27 scenarios to uncover your innate Prakriti, 144 Compound Archetype, and certified NCVET vocation.'
+          : 'Answer 9 rapid scenarios for quick orientation and immediate archetype matching.';
+      }
+
+      try {
+        const res = await fetch('/api/personalities/questions?tier=' + tier);
+        const data = await res.json();
+        if (data.success) {
+          prakritiQuestions = data.questions || [];
+          prakritiAnswers = {};
+          renderActiveQuestions();
+          updateProgress();
+          updateLiveMeters();
+        }
+      } catch (err) {
+        console.error('Error switching tier:', err);
+      }
+    }
+
+    // Psychometrics Modal Controls
+    async function openPsychometricsModal() {
+      const modal = document.getElementById('psychometricsModal');
+      if (!modal) return;
+      modal.style.display = 'flex';
+
+      try {
+        const res = await fetch('/api/personalities/psychometrics/stats');
+        const data = await res.json();
+        if (data.success) {
+          const sessEl = document.getElementById('psychoTotalSessions');
+          const confEl = document.getElementById('psychoAvgConfidence');
+          if (sessEl) sessEl.innerText = data.total_sessions || 0;
+          if (confEl) confEl.innerText = (data.avg_confidence_index || 0) + '%';
+        }
+      } catch (err) {
+        console.warn('Failed to load psychometric stats:', err);
+      }
+    }
+
+    function closePsychometricsModal() {
+      const modal = document.getElementById('psychometricsModal');
+      if (modal) modal.style.display = 'none';
     }
 
     // Render Archetype Cards in Left Sidebar
@@ -1398,7 +1498,7 @@
         container.innerHTML = prakritiQuestions.map((q, idx) => `
           <div class="question-card" id="qCard_${q.id}">
             <div class="q-top-row">
-              <span class="q-pillar-tag">Pillar ${q.pillar}: ${q.pillar_title}</span>
+              <span class="q-pillar-tag">${q.pillar ? "Pillar " + q.pillar + ": " + q.pillar_title : (q.section || (q.dimension ? q.dimension.toUpperCase() : "Vocational"))}</span>
               ${q.gita_vector ? `<span class="q-gita-tag">Gita 18: ${q.gita_vector}</span>` : ''}
               <span style="font-family: var(--font-mono); font-size: 11px; color: #64748B; margin-left: auto;">Q${idx + 1} of ${prakritiQuestions.length}</span>
             </div>
@@ -1413,20 +1513,22 @@
             ` : ''}
 
             <div class="q-options-grid">
-              ${q.options.map(opt => `
-                <label class="option-label ${prakritiAnswers[q.id] === opt.code ? 'selected' : ''}" id="optLabel_${q.id}_${opt.code}">
+              ${q.options.map(opt => {
+                const optVal = opt.code || opt.id;
+                return `
+                <label class="option-label ${prakritiAnswers[q.id] === optVal ? 'selected' : ''}" id="optLabel_${q.id}_${optVal}">
                   <input type="radio" 
                          name="${q.id}" 
-                         value="${opt.code}" 
+                         value="${optVal}" 
                          class="option-radio" 
-                         ${prakritiAnswers[q.id] === opt.code ? 'checked' : ''} 
-                         onchange="selectPrakritiOption('${q.id}', '${opt.code}')" />
+                         ${prakritiAnswers[q.id] === optVal ? 'checked' : ''} 
+                         onchange="selectPrakritiOption('${q.id}', '${optVal}')" />
                   <div class="option-content">
                     <div class="option-title">${opt.label}</div>
                     <div class="option-desc">${opt.desc}</div>
                   </div>
                 </label>
-              `).join('')}
+              `; }).join('')}
             </div>
           </div>
         `).join('');
@@ -1596,32 +1698,78 @@
       }
     }
 
-    // Apply Presets
+    // Apply Presets (Calibrated for both 9-Rapid and 27-Vocational Batteries)
     function applyPreset(type) {
-      if (type === 'arjuna') {
-        prakritiAnswers = { q1: 'R', q2: 'R', q3: 'R', q4: 'K', q5: 'D', q6: 'A', q7: 'K', q8: 'D', q9: 'D' };
-      } else if (type === 'vidura') {
-        prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'B', q5: 'D', q6: 'B', q7: 'B', q8: 'D', q9: 'D' };
-      } else if (type === 'rama') {
-        prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'K', q5: 'D', q6: 'B', q7: 'K', q8: 'D', q9: 'D' };
-      } else if (type === 'hanuman') {
-        prakritiAnswers = { q1: 'S', q2: 'R', q3: 'S', q4: 'K', q5: 'D', q6: 'A', q7: 'K', q8: 'D', q9: 'D' };
-      } else if (type === 'sugriva') {
-        prakritiAnswers = { q1: 'R', q2: 'R', q3: 'S', q4: 'V', q5: 'A', q6: 'A', q7: 'V', q8: 'A', q9: 'A' };
-      } else if (type === 'janaka') {
-        prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'V', q5: 'D', q6: 'B', q7: 'V', q8: 'A', q9: 'M' };
-      } else if (type === 'karna') {
-        prakritiAnswers = { q1: 'R', q2: 'R', q3: 'R', q4: 'K', q5: 'M', q6: 'A', q7: 'K', q8: 'A', q9: 'A' };
+      if (currentTier === 'rapid') {
+        if (type === 'arjuna') prakritiAnswers = { q1: 'R', q2: 'R', q3: 'R', q4: 'K', q5: 'D', q6: 'A', q7: 'K', q8: 'D', q9: 'D' };
+        else if (type === 'vidura') prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'B', q5: 'D', q6: 'B', q7: 'B', q8: 'D', q9: 'D' };
+        else if (type === 'rama') prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'K', q5: 'D', q6: 'B', q7: 'K', q8: 'D', q9: 'D' };
+        else if (type === 'hanuman') prakritiAnswers = { q1: 'S', q2: 'R', q3: 'S', q4: 'K', q5: 'D', q6: 'A', q7: 'K', q8: 'D', q9: 'D' };
+        else if (type === 'sugriva') prakritiAnswers = { q1: 'R', q2: 'R', q3: 'S', q4: 'V', q5: 'A', q6: 'A', q7: 'V', q8: 'A', q9: 'A' };
+        else if (type === 'janaka') prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'V', q5: 'D', q6: 'B', q7: 'V', q8: 'A', q9: 'M' };
+        else if (type === 'karna') prakritiAnswers = { q1: 'R', q2: 'R', q3: 'R', q4: 'K', q5: 'M', q6: 'A', q7: 'K', q8: 'A', q9: 'A' };
+      } else {
+        if (type === 'arjuna') {
+          prakritiAnswers = {
+            v_q1: 'R', v_q2: 'R', v_q3: 'R', v_q4: 'R', v_q5: 'R', v_q6: 'R', v_q7: 'R',
+            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'AM', v_q12: 'BM', v_q13: 'AM', v_q14: 'BM',
+            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
+            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'A', v_q26: 'D', v_q27: 'D'
+          };
+        } else if (type === 'vidura') {
+          prakritiAnswers = {
+            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
+            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
+            v_q15: 'B', v_q16: 'B', v_q17: 'B', v_q18: 'B', v_q19: 'B', v_q20: 'B', v_q21: 'B',
+            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'D', v_q26: 'D', v_q27: 'D'
+          };
+        } else if (type === 'rama') {
+          prakritiAnswers = {
+            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
+            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
+            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
+            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'D', v_q26: 'D', v_q27: 'D'
+          };
+        } else if (type === 'hanuman') {
+          prakritiAnswers = {
+            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
+            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
+            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
+            v_q22: 'M', v_q23: 'M', v_q24: 'M', v_q25: 'M', v_q26: 'M', v_q27: 'M'
+          };
+        } else if (type === 'sugriva') {
+          prakritiAnswers = {
+            v_q1: 'R', v_q2: 'R', v_q3: 'R', v_q4: 'R', v_q5: 'R', v_q6: 'R', v_q7: 'R',
+            v_q8: 'MM', v_q9: 'MM', v_q10: 'MM', v_q11: 'MM', v_q12: 'MM', v_q13: 'MM', v_q14: 'MM',
+            v_q15: 'V', v_q16: 'V', v_q17: 'V', v_q18: 'V', v_q19: 'V', v_q20: 'V', v_q21: 'V',
+            v_q22: 'A', v_q23: 'A', v_q24: 'A', v_q25: 'A', v_q26: 'A', v_q27: 'A'
+          };
+        } else if (type === 'janaka') {
+          prakritiAnswers = {
+            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
+            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
+            v_q15: 'V', v_q16: 'V', v_q17: 'V', v_q18: 'V', v_q19: 'V', v_q20: 'V', v_q21: 'V',
+            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'M', v_q26: 'M', v_q27: 'M'
+          };
+        } else if (type === 'karna') {
+          prakritiAnswers = {
+            v_q1: 'R', v_q2: 'R', v_q3: 'R', v_q4: 'R', v_q5: 'R', v_q6: 'R', v_q7: 'R',
+            v_q8: 'AM', v_q9: 'AM', v_q10: 'AM', v_q11: 'AM', v_q12: 'AM', v_q13: 'AM', v_q14: 'AM',
+            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
+            v_q22: 'A', v_q23: 'A', v_q24: 'A', v_q25: 'A', v_q26: 'A', v_q27: 'A'
+          };
+        }
       }
 
       currentMode = 'prakriti';
       switchDiagnosticMode('prakriti');
+      renderActiveQuestions();
       updateProgress();
       updateLiveMeters();
       calculateAndInspect();
     }
 
-    // Live Meters Update
+    // Live Meters Update (Dynamic Simplex Calculation)
     function updateLiveMeters() {
       const ans = prakritiAnswers;
       let s = 1, r = 1, t = 1;
@@ -1629,49 +1777,45 @@
       let brahmana = 1, kshatriya = 1, vaishya = 1, shudra = 1;
       let dharma = 1, artha = 1, kama = 1, moksha = 1;
 
-      ['q1', 'q2', 'q3'].forEach(q => {
-        if (ans[q] === 'S') s += 3;
-        else if (ans[q] === 'R') r += 3;
-        else if (ans[q] === 'T') t += 3;
-      });
-
-      if (ans.q4) {
-        if (ans.q4 === 'B') { brahmana += 3; b += 2; }
-        else if (ans.q4 === 'K') { kshatriya += 3; a += 2; }
-        else if (ans.q4 === 'V') { vaishya += 3; m += 2; }
-        else if (ans.q4 === 'S') { shudra += 3; m += 2; }
-      }
-
-      if (ans.q5) {
-        if (ans.q5 === 'D') { dharma += 3; b += 2; }
-        else if (ans.q5 === 'A') { artha += 3; m += 2; }
-        else if (ans.q5 === 'M') { moksha += 3; a += 2; }
-      }
-
-      if (ans.q6) {
-        if (ans.q6 === 'B') b += 3;
-        else if (ans.q6 === 'S') { s += 2; b += 1; }
-        else if (ans.q6 === 'A') a += 3;
-      }
-
-      if (ans.q7) {
-        if (ans.q7 === 'B') { brahmana += 3; moksha += 2; }
-        else if (ans.q7 === 'K') { kshatriya += 3; dharma += 2; }
-        else if (ans.q7 === 'V') { vaishya += 3; artha += 2; }
-        else if (ans.q7 === 'S') { shudra += 3; kama += 2; }
-      }
-
-      if (ans.q8) {
-        if (ans.q8 === 'D') dharma += 3;
-        else if (ans.q8 === 'A') artha += 3;
-        else if (ans.q8 === 'M') moksha += 3;
-      }
-
-      if (ans.q9) {
-        if (ans.q9 === 'D') dharma += 3;
-        else if (ans.q9 === 'A') artha += 3;
-        else if (ans.q9 === 'M') moksha += 3;
-        else if (ans.q9 === 'K') kama += 3;
+      for (const [qId, val] of Object.entries(ans)) {
+        const qObj = prakritiQuestions.find(q => q.id === qId);
+        const opt = qObj ? qObj.options.find(o => o.id === val || o.code === val) : null;
+        if (opt && opt.weights) {
+          if (opt.weights.guna) {
+            s += opt.weights.guna.S || 0;
+            r += opt.weights.guna.R || 0;
+            t += opt.weights.guna.T || 0;
+          }
+          if (opt.weights.cognition) {
+            b += opt.weights.cognition.B || 0;
+            m += opt.weights.cognition.M || 0;
+            a += opt.weights.cognition.A || 0;
+          }
+          if (opt.weights.competency) {
+            brahmana += opt.weights.competency.B || 0;
+            kshatriya += opt.weights.competency.K || 0;
+            vaishya += opt.weights.competency.V || 0;
+            shudra += opt.weights.competency.S || 0;
+          }
+          if (opt.weights.purpose) {
+            dharma += opt.weights.purpose.D || 0;
+            artha += opt.weights.purpose.A || 0;
+            kama += opt.weights.purpose.K || 0;
+            moksha += opt.weights.purpose.M || 0;
+          }
+        } else {
+          if (val === 'S') s += 3; else if (val === 'R') r += 3; else if (val === 'T') t += 3;
+          if (val === 'B') { brahmana += 3; b += 2; }
+          if (val === 'K') { kshatriya += 3; a += 2; }
+          if (val === 'V') { vaishya += 3; m += 2; }
+          if (val === 'S') { shudra += 3; m += 2; }
+          if (val === 'D') dharma += 3;
+          if (val === 'A') artha += 3;
+          if (val === 'M') moksha += 3;
+          if (val === 'BM') b += 3;
+          if (val === 'MM') m += 3;
+          if (val === 'AM') a += 3;
+        }
       }
 
       const gTot = s + r + t;
@@ -1722,8 +1866,9 @@
     // Calculate Final Archetype & Vikriti Delta
     async function calculateAndInspect() {
       const pCount = Object.keys(prakritiAnswers).length;
-      if (pCount < 3) {
-        alert('Please answer at least 3 scenarios to generate an initial diagnostic calculation.');
+      const minRequired = currentTier === 'rapid' ? 3 : 5;
+      if (pCount < minRequired) {
+        alert("Please answer at least " + minRequired + " scenarios to generate a psychometrically valid calculation.");
         return;
       }
 
@@ -1732,20 +1877,36 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            tier: currentTier,
             answers: prakritiAnswers,
             vikriti_answers: vikritiAnswers
           })
         });
         const data = await res.json();
-        if (data.success && data.matched_archetype) {
-          selectArchetype(data.matched_archetype.id);
-          document.getElementById('dossierStatusBadge').innerText = 'DIAGNOSTIC COMPLETE: ECCP MATCH CONFIRMED';
+        if (data.success && (data.matched_archetype || data.master_144_archetype)) {
+          lastEvaluationData = data;
+          if (data.matched_archetype) {
+            selectArchetype(data.matched_archetype.id);
+          }
+          document.getElementById('dossierStatusBadge').innerText = "DIAGNOSTIC COMPLETE • " + data.confidence_index + "% CONCORDANCE";
+
+          // 144 ECCP Compound Archetype Banner
+          const banner = document.getElementById('master144Banner');
+          if (banner && data.master_144_archetype) {
+            banner.style.display = 'block';
+            document.getElementById('badgeConfidenceIndex').innerText = data.confidence_index + "% Concordance";
+            document.getElementById('valMasterEnglishTitle').innerText = data.master_144_archetype.english_title;
+            document.getElementById('valMasterSanskritTitle').innerText = data.master_144_archetype.sanskrit_title;
+            if (data.secondary_archetype) {
+              document.getElementById('valMasterSecondary').innerText = "Secondary Resonance: " + data.secondary_archetype.eccp_code + " (" + data.secondary_archetype.english_title + ")";
+            }
+          }
 
           // Vikriti Alert Box
           const vBox = document.getElementById('vikritiAlertBox');
           if (data.vikriti_audit && data.vikriti_audit.score > 0) {
             vBox.style.display = 'block';
-            document.getElementById('vikritiPctBadge').innerText = `${data.vikriti_audit.percentage}% Stress Load`;
+            document.getElementById('vikritiPctBadge').innerText = data.vikriti_audit.percentage + "% Stress Load";
             document.getElementById('vikritiAlertText').innerText = data.vikriti_audit.alert;
           } else {
             vBox.style.display = 'none';
@@ -1772,7 +1933,7 @@
       updateLiveMeters();
     }
 
-    // Send Query to Sanatani RAG Agent
+    // Send Query to Vedic RAG Agent
     async function sendRAGChat(presetText) {
       const input = document.getElementById('ragInputText');
       const query = presetText || (input ? input.value.trim() : '');
@@ -1884,7 +2045,7 @@
           <div style="font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px;">
             <span>📖</span> <span id="modalCompTitle">HPTI Master Compendium</span>
           </div>
-          <div style="font-size: 11.5px; color: #94A3B8;">Sanatani Psychology • ECCP Framework • Ramayana &amp; Mahabharata • NSQF Standards</div>
+          <div style="font-size: 11.5px; color: #94A3B8;">Vedic Psychology • ECCP Framework • Ramayana &amp; Mahabharata • NSQF Standards</div>
         </div>
         <div style="display: flex; align-items: center; gap: 12px;">
           <a id="modalOpenExternal" href="/compendium" target="_blank" style="color: #60A5FA; font-size: 12.5px; text-decoration: none; font-weight: 700; background: rgba(37,99,235,0.2); padding: 5px 10px; border-radius: 4px; border: 1px solid rgba(96,165,250,0.3);">
@@ -1897,6 +2058,64 @@
       </div>
       <div id="modalCompContent" class="markdown-body" style="flex: 1; overflow-y: auto; padding: 36px 44px; font-size: 15px; line-height: 1.75; color: #1E293B;">
         <!-- Loaded dynamically via fetch -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Psychometrics & Scientific Validation Modal -->
+  <div id="psychometricsModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 99999; align-items: center; justify-content: center;">
+    <div style="width: 620px; max-width: 92vw; background: #FFFFFF; border-radius: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; border: 1.5px solid #CBD5E1;">
+      <div style="padding: 16px 20px; background: #0F172A; color: #FFF; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1E293B;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px;">📊</span>
+          <div>
+            <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.3px;">HPTI Psychometrics &amp; Telemetry</div>
+            <div style="font-size: 11px; color: #94A3B8;">APA / ITC Validation Pipeline • EFA / CFA Benchmarks</div>
+          </div>
+        </div>
+        <button onclick="closePsychometricsModal()" style="background: rgba(255,255,255,0.15); border: none; color: #FFF; width: 28px; height: 28px; border-radius: 6px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+      </div>
+      <div style="padding: 22px; font-size: 13px; color: #334155; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 22px; font-weight: 800; color: #2563EB;" id="psychoTotalSessions">...</div>
+            <div style="font-size: 11px; color: #64748B; font-weight: 700; text-transform: uppercase;">Empirical Sessions</div>
+          </div>
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 22px; font-weight: 800; color: #059669;" id="psychoAvgConfidence">...</div>
+            <div style="font-size: 11px; color: #64748B; font-weight: 700; text-transform: uppercase;">Avg Concordance</div>
+          </div>
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 22px; font-weight: 800; color: #7C3AED;">&ge; 0.85</div>
+            <div style="font-size: 11px; color: #64748B; font-weight: 700; text-transform: uppercase;">Target Cronbach α</div>
+          </div>
+        </div>
+
+        <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 4px solid #2563EB; padding: 12px 14px; border-radius: 6px;">
+          <strong style="color: #1E3A8A; font-size: 12.5px;">Phase 1 Psychometric Telemetry &amp; Ingestion:</strong>
+          <p style="margin: 4px 0 0 0; font-size: 12px; color: #1E40AF; line-height: 1.5;">
+            Every assessment response vector is automatically logged to PostgreSQL (<code>eccp_test_sessions</code> &amp; <code>eccp_item_responses</code>) to calculate subscale reliability, test-retest coefficients, and item discrimination indices.
+          </p>
+        </div>
+
+        <div style="border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; background: #F8FAFC;">
+          <div style="font-size: 11.5px; font-weight: 700; color: #475569; margin-bottom: 6px; text-transform: uppercase;">Four-Axis Psychometric Latent Model</div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #334155; line-height: 1.6;">
+            <span>• Energy (Triguna 3-simplex)</span>
+            <span>• Cognition (Antahkarana 3-simplex)</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #334155; line-height: 1.6;">
+            <span>• Competency (Varna 4-simplex)</span>
+            <span>• Purpose (Purushartha 4-simplex)</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 6px;">
+          <span style="font-size: 11px; color: #64748B;">Ready for SPSS, R, and Python CFA</span>
+          <a href="/api/personalities/psychometrics/export" download style="display: inline-flex; align-items: center; gap: 6px; background: #2563EB; color: #FFF; font-weight: 700; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-size: 12px; box-shadow: 0 2px 4px rgba(37,99,235,0.2);">
+            ⬇️ Export Empirical Dataset (CSV)
+          </a>
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-# HPTI: The Compendium of Sanatani Psychology, Epic Archetypes & National Vocational Realization
+# HPTI: The Compendium of Vedic Psychology, Epic Archetypes & National Vocational Realization
 
 > **Haya Personality Type Indicators (HPTI)**  
 > *A 4-Dimensional Ontological Framework Harmonizing Sāmkhya, Vedanta, Itihasa, and the National Skills Qualification Framework (NSQF / NCVET).*
@@ -61,7 +61,7 @@ This compendium unites:
 - [Chapter 21: Psychometric Instrument Design & Scenario Calibration](06_Diagnostic_Instrumentation/chapter_21_psychometric_design.md)
 - [Chapter 22: Algorithmic Scoring & Multi-Vector Normalization](06_Diagnostic_Instrumentation/chapter_22_scoring_algorithms.md)
 - [Chapter 23: Sovereign Local-First Software Architecture](06_Diagnostic_Instrumentation/chapter_23_software_architecture.md)
-- [Chapter 24: Embedded Sanatani RAG Architecture & Shastric Grounding](06_Diagnostic_Instrumentation/chapter_24_rag_and_vedic_counselor.md)
+- [Chapter 24: Embedded Vedic RAG Architecture & Shastric Grounding](06_Diagnostic_Instrumentation/chapter_24_rag_and_vedic_counselor.md)
 
 ### [Volume 7: The Sadhana Protocol (Elevation, Leadership & Civilization)](07_The_Sadhana_Protocol/)
 *Practical Evolution, Dharmic Organizations & Viksit Bharat*

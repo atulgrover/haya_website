@@ -8,7 +8,7 @@
 
 ## 1. Introduction: The Universal Applicability of Vedic Ontology
 
-A fundamental premise of the Sanatani tradition is that cosmic law (*Sanatana Dharma*) is not a localized, sectarian creed; it is **universal reality (*Apaurusheya*)**. 
+A fundamental premise of the Vedic tradition is that cosmic law (*Vedic Dharma*) is not a localized, sectarian creed; it is **universal reality (*Apaurusheya*)**. 
 
 The biological humors (*Tridosha*), the energetic forces of consciousness (*Triguna*), the cognitive functions of the inner mind (*Antahkarana*), and the four natural vocational competencies (*Varna-Swabhava*) operate in every human nervous system, whether an individual is born in Varanasi, Tokyo, London, or San Francisco.
 
@@ -105,7 +105,7 @@ While practically useful, Holland's model is **purely descriptive and two-dimens
 
 ### Table 20.2: Why HPTI Surpasses Holland RIASEC
 
-| Feature | Holland RIASEC | HPTI (Sanatani ECCP) |
+| Feature | Holland RIASEC | HPTI (Vedic ECCP) |
 |:---|:---|:---|
 | **Underlying Metaphysics**| Surface behavioral preferences | 24 Tattvas & Sāmkhya Cosmology |
 | **Energetic Vitality** | None (assumes constant energy) | **Triguna Dynamic (`[E]`)**: Sattva, Rajas, Tamas |

@@ -54,7 +54,11 @@ const CANONICAL_TABLES = [
     'report_orders',
     'nsqf_curricula',
     'nsqf_video_audit_logs',
-    'youtube_search_cache'
+    'youtube_search_cache',
+    'eccp_archetypes_144',
+    'eccp_knowledge_corpus',
+    'eccp_test_sessions',
+    'eccp_item_responses'
 ];
 
 const TABLES_TO_SYNC = tableFlag

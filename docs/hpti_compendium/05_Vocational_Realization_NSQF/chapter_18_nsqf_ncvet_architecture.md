@@ -112,7 +112,7 @@ To operationalize the NSQF across a subcontinent of 1.4 billion citizens, the **
 
 Modern career diagnostic portals in India suffer from an enormous disconnect: they administer Western tests (MBTI, Holland Codes) and output vague, generic recommendations like *"You should be an analyst"* or *"You are a creative thinker"*.
 
-**HPTI bridges the ancient Sanatani archetype directly to certified national standards**:
+**HPTI bridges the ancient Vedic archetype directly to certified national standards**:
 
 ```
 [ USER COMPLETES HPTI EVALUATION ]

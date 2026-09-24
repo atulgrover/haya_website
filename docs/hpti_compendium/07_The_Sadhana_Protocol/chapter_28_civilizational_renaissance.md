@@ -87,7 +87,7 @@ While HPTI is rooted in Bharat’s sovereign civilizational heritage, its ultima
 
 The Western world is currently dying of a spiritual and psychological drought. In the United States, Europe, and East Asia, millions of human beings are suffering from profound loneliness, digital addiction, family dissolution, and occupational alienation. They have conquered the outer material world, yet their inner minds (*Antahkarana*) remain uncalibrated battlefields of anxiety and confusion.
 
-To this fractured world, **HPTI offers the immortal healing gift of Sanatana Dharma**:
+To this fractured world, **HPTI offers the immortal healing gift of Vedic Dharma**:
 1. **The Gift of Non-Guilt**: Teaching humanity that the mind is Prakriti (matter), and that mental fluctuations are Gunas interacting with Gunas, not permanent flaws of the soul.
 2. **The Gift of Swadharma**: Liberating workers from the soul-destroying treadmill of prestige-chasing and anchoring them in authentic, joyful labor.
 3. **The Gift of the Witness (*Sakshi*)**: Revealing to every human being that beneath their neuroses, fears, titles, and grief lies the immortal, luminous, and ever-free Consciousness (*Atman*).

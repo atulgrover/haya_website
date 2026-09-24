@@ -125,4 +125,4 @@ The evaluation request transmits only raw option codes, returning the calculated
 }
 ```
 
-In the next chapter, we investigate the artificial intelligence layer that brings the ancient texts to life: **Chapter 24: Embedded Sanatani RAG Architecture & Shastric Grounding**.
+In the next chapter, we investigate the artificial intelligence layer that brings the ancient texts to life: **Chapter 24: Embedded Vedic RAG Architecture & Shastric Grounding**.

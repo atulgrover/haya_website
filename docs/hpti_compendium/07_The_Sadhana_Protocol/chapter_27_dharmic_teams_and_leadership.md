@@ -33,7 +33,7 @@ An executive team dominated by a single psychological archetype is an organizati
 └───────────────────┴────────────────────────────────────────────────────┘
 ```
 
-In the Sanatani civilizational tradition, enduring institutions—from the legendary council of King Dasharatha in Ayodhya to the Mauryan administration under Chanakya—were engineered around **Dharmic Ecosystemic Balance**: the conscious, harmonious integration of all four Swabhava competencies into a unified operational whole.
+In the Vedic civilizational tradition, enduring institutions—from the legendary council of King Dasharatha in Ayodhya to the Mauryan administration under Chanakya—were engineered around **Dharmic Ecosystemic Balance**: the conscious, harmonious integration of all four Swabhava competencies into a unified operational whole.
 
 ---
 

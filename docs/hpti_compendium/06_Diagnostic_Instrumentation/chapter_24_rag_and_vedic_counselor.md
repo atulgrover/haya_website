@@ -1,4 +1,4 @@
-# Chapter 24: Embedded Sanatani RAG Architecture & Shastric Grounding
+# Chapter 24: Embedded Vedic RAG Architecture & Shastric Grounding
 
 > *“tad viddhi praṇipātena paripraśnena sevayā |*  
 > *upadekṣyanti te jñānaṁ jñāninas tattva-darśinaḥ ||”*  
@@ -14,13 +14,13 @@ In recent years, Large Language Models (LLMs) such as GPT-4, Claude, and Gemini 
 2. **Hallucination of Shlokas**: They frequently invent fictional Sanskrit verses or misattribute citations.
 3. **Absence of Contextual Personalization**: They offer generic, platitudinous advice detached from the user’s specific energetic constitution (*Prakriti*).
 
-To solve this, the HPTI system embeds a **Retrieval-Augmented Generation (RAG) Architecture** grounded directly in authentic Sanskrit canonical corpora: the **Sanatani RAG Counselor**.
+To solve this, the HPTI system embeds a **Retrieval-Augmented Generation (RAG) Architecture** grounded directly in authentic Sanskrit canonical corpora: the **Vedic RAG Counselor**.
 
 In this chapter, we document the technical architecture, vector indexing methodology, contextual injection pipeline, and prompt engineering protocols that govern the in-dossier AI mentor.
 
 ---
 
-## 2. The Sanatani RAG Architectural Pipeline
+## 2. The Vedic RAG Architectural Pipeline
 
 ```
 [ USER QUERY: "I am facing a conflict between company loyalty and ethical duty." ]
@@ -58,9 +58,9 @@ In this chapter, we document the technical architecture, vector indexing methodo
 The RAG engine is governed by a strict system prompt that enforces authentic traditional grounding and prevents modern cultural distortions:
 
 ```markdown
-### SYSTEM DIRECTIVE: SANATANI VOCATIONAL PRECEPTOR (HPTI RAG)
+### SYSTEM DIRECTIVE: Vedic VOCATIONAL PRECEPTOR (HPTI RAG)
 
-You are an enlightened Sanatani Preceptor (Acharya) rooted in the unbroken 
+You are an enlightened Vedic Preceptor (Acharya) rooted in the unbroken 
 philosophical traditions of Samkhya, Vedanta, Ayurveda, and the Epics 
 (Ramayana and Mahabharata).
 
@@ -112,7 +112,7 @@ router.post('/chat', async (req, res) => {
 When a user testing as **Arjuna (`SR-BM-K-D`)** asks the in-dossier counselor:
 > *“My company is asking me to release software that has known security flaws to beat a competitor's product launch. What should I do?”*
 
-The Sanatani RAG Counselor responds:
+The Vedic RAG Counselor responds:
 > **Arjuna (Bhagavad Gita 2.31–33):**  
 > *“sva-dharmam api cāvekṣya na vikampitum arhasi |*  
 > *dharmyād dhi yuddhāc chreyo 'nyat kṣatriyasya na vidyate ||”*  
@@ -128,6 +128,6 @@ Across Volume 6, we have documented the complete engineering architecture of the
 - **Chapter 21**: Designed the *Situational Judgment Scenarios* and established construct validity benchmarks.
 - **Chapter 22**: Formulated the *Vector Mathematics, Normalization Equations*, and nearest-centroid archetype resolution algorithms.
 - **Chapter 23**: Documented the *Local-First Software Architecture*, 3-panel IDE docking engine, and sovereign zero-knowledge REST API.
-- **Chapter 24**: Engineered the *Embedded Sanatani RAG Architecture* grounding AI counseling in authentic Sanskrit canonical corpora.
+- **Chapter 24**: Engineered the *Embedded Vedic RAG Architecture* grounding AI counseling in authentic Sanskrit canonical corpora.
 
 Now, we enter the final and most transformative section: **Volume 7: The Sadhana Protocol (Elevation, Leadership & Civilization)**.
