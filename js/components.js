@@ -224,7 +224,7 @@ function renderSiteHeader() {
                 position: absolute;
                 top: 100%;
                 left: 0;
-                min-width: 190px;
+                min-width: 240px;
                 background: #FFFFFF;
                 border: 1px solid var(--border-color, #E2E8F0);
                 border-radius: 8px;
@@ -307,7 +307,7 @@ function renderSiteHeader() {
         else if (path.endsWith('employers_sop.html') || path.endsWith('employees.html')) pillar = 'employers_sop';
         else if (path.endsWith('entrepreneurs_msme.html')) pillar = 'entrepreneurs_msme';
         else if (path.endsWith('patents.html') || path.endsWith('patent.html')) pillar = 'patents';
-        else if (path.endsWith('personalities.html') || path.endsWith('personality.html')) pillar = 'personalities';
+        else if (path.includes('personalities') || path.includes('personality')) pillar = 'personalities';
         else if (path.endsWith('login.html')) pillar = 'login';
         else if (path.endsWith('index.html') || path === '/' || path === '') pillar = 'home';
     }
@@ -317,6 +317,8 @@ function renderSiteHeader() {
     else if (pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners') subBadge = 'Employers';
     else if (pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs') subBadge = 'Entrepreneurs';
     else if (pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors') subBadge = 'Enventors';
+    else if (path.endsWith('personalities_generic.html')) subBadge = 'Corporate';
+    else if (path.endsWith('personalities_vedic.html')) subBadge = 'Vedic';
     else if (pillar === 'personalities') subBadge = 'HPTI';
 
     headerMount.innerHTML = `
@@ -332,7 +334,34 @@ function renderSiteHeader() {
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs</a></li>
             <!-- Enventors tab commented out to declutter header; patents.html preserved for future use -->
             <!-- <li><a href="patents.html" class="nav-link ${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? 'active' : ''}">Enventors</a></li> -->
-            <li><a href="personalities.html" class="nav-link nav-pill-blue ${pillar === 'personalities' ? 'active' : ''}" title="HPTI — Haya Personality Type Indicators">HPTI <span class="pill-sparkle">✦</span></a></li>
+            <li class="nav-dropdown">
+              <a href="personalities_generic.html" class="nav-link nav-pill-blue nav-dropdown-toggle ${pillar === 'personalities' ? 'active' : ''}" title="HPTI — Haya Personality Type Indicators">
+                HPTI <span class="pill-sparkle">✦</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 12px; height: 12px; margin-left: 2px;"><path d="M6 9l6 6 6-6"/></svg>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="personalities_generic.html" class="dropdown-item ${path.endsWith('personalities_generic.html') ? 'active' : ''}">
+                    <div>
+                      <div style="font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                        <span>🌐</span> Corporate / Professional
+                      </div>
+                      <div style="font-size: 11px; color: #64748B; margin-top: 1px;">Executive &amp; Vocational Typology</div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="personalities_vedic.html" class="dropdown-item ${path.endsWith('personalities_vedic.html') ? 'active' : ''}">
+                    <div>
+                      <div style="font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                        <span>📜</span> Vedic &amp; Epic Shastric
+                      </div>
+                      <div style="font-size: 11px; color: #64748B; margin-top: 1px;">ECCP Archetypes &amp; Epic Mirrors</div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
           <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -348,8 +377,11 @@ function renderSiteHeader() {
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Employees ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
-        <!-- <a href="patents.html" class="${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? 'active' : ''}">Enventors ${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? '●' : ''}</a> -->
-        <a href="personalities.html" class="mobile-nav-pill-blue ${pillar === 'personalities' ? 'active' : ''}" title="HPTI — Haya Personality Type Indicators">HPTI (Haya Personality Type Indicators) ${pillar === 'personalities' ? '●' : ''}</a>
+        <div class="nav-mobile-group">
+          <div class="nav-mobile-group-title">HPTI — Personality Typology</div>
+          <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">🌐 Corporate / Professional HPTI ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>
+          <a href="personalities_vedic.html" class="${path.endsWith('personalities_vedic.html') ? 'active' : ''}">📜 Vedic &amp; Epic Shastric HPTI ${path.endsWith('personalities_vedic.html') ? '●' : ''}</a>
+        </div>
       </nav>
     `;
 

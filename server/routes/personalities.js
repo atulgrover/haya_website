@@ -953,23 +953,122 @@ router.get('/archetypes', (req, res) => {
 
   const enriched = filtered.map(a => ({
     ...a,
+    generic_title: a.english_moniker,
+    leadership_axiom: LEADERSHIP_AXIOMS[a.id] || "Lead with systemic clarity, principled execution, and dedication to institutional excellence.",
     compendium_file: getArchetypeCompendiumFile(a)
   }));
 
   res.json({ success: true, mode: 'curated_24', count: enriched.length, archetypes: enriched });
 });
 
+// Executive Leadership Axioms for Corporate / Generic Mode
+const LEADERSHIP_AXIOMS = {
+  rama: "Institutional leadership requires unwavering adherence to truth and constitutional order above personal convenience.",
+  vidura: "A single flawed policy compromise can dismantle an entire enterprise; maintain uncompromising systemic integrity.",
+  hanuman: "Mastery of physical execution combined with humble service produces unmatched compound organizational velocity.",
+  janaka: "True executive sovereignty lies in detached systemic oversight while operating in the midst of commercial scale.",
+  yudhishthira: "Sustainable enterprise requires ethical invariants; sacrificing integrity for short-term gain guarantees long-term ruin.",
+  bhishma: "Institutional continuity and governance stability are anchored by leaders who keep their fiduciary word at all costs.",
+  arjuna: "Peak execution demands laser-focused concentration, deliberate training, and the emotional discipline to act without paralysis.",
+  krishna: "Strategic agility and game-theoretic wisdom must guide leaders through complex, high-stakes competitive landscapes.",
+  lakshmana: "Vigilant operational protection and proactive risk defense safeguard the core mission before threats materialize.",
+  bharata: "Servant leadership means acting as a fiduciary custodian of the enterprise, never treating shared resources as private entitlement.",
+  sugriva: "Strategic alliances, trust-building, and pragmatic resource-sharing turn fragmented teams into market-leading coalitions.",
+  karna: "Unmatched technical talent and merit must be anchored in righteous corporate alignment, or loyalty will be tragic.",
+  drona: "Rigorous pedagogy and unbending standards of discipline transform raw potential into world-class practitioners.",
+  kripa: "Institutional memory and protocol consistency prevent the chaos of erratic change during crisis.",
+  ashwatthama: "Brilliant technical capabilities without emotional regulation lead to reckless destruction under high-stress failure.",
+  duryodhana: "Cautionary Profile: Zero-sum competitiveness and paranoia destroy enterprises from within; true growth is non-zero-sum.",
+  shakuni: "Cautionary Profile: Manipulative corporate politicking and short-term games create toxic culture and regulatory doom.",
+  ravana: "Cautionary Profile: Hyper-competence and material resources corrupted by hubristic entitlement lead to inevitable collapse.",
+  kumbhakarna: "Cautionary Profile: Colossal latent technical strength wasted through chronic procrastination and passive compliance.",
+  vibheeshana: "Courageous whistleblowing and principled defection protect societal truth when leadership loses its moral compass.",
+  dhrishtadyumna: "Purpose-built execution focus: cutting through distractions to achieve the single decisive operational objective.",
+  sahadeva: "Dispassionate predictive analytics and systems forecasting detect market inflection points years in advance.",
+  nakula: "Meticulous stewardship, operational maintenance, and systems care keep complex infrastructure running smoothly.",
+  sthira_karmi: "The bedrock of all industrial value: quiet, flawless craft, and relentless pride in operational execution."
+};
+
+function enrichQuestionsWithDualLabels(qList) {
+  return qList.map(q => {
+    const enrichedOptions = q.options.map(opt => {
+      const genericLabel = (opt.label || '')
+        .replace(/\s*\((Sattva|Rajas|Tamas|Brahmana|Kshatriya|Vaishya|Shudra|Buddhi|Buddhi-Led|Manas|Manas-Led|Ahankara|Ahankara-Led|Dharma|Artha|Kama|Moksha)\)/gi, '')
+        .replace(/\s*\(Brahma Muhurta\)/gi, ' (Early Dawn)')
+        .replace(/\s*\(Pitta Drive\)/gi, ' (High-Energy Drive)')
+        .replace(/\s*\(Kapha\/Tamas Stability\)/gi, ' (Grounded Stability)')
+        .trim();
+
+      const genericDesc = opt.desc
+        ? opt.desc
+            .replace(/\bSattva\b/gi, 'clarity')
+            .replace(/\bRajas\b/gi, 'kinetic drive')
+            .replace(/\bTamas\b/gi, 'stability')
+            .replace(/\bBrahmana\b/gi, 'systems architecture')
+            .replace(/\bKshatriya\b/gi, 'executive command')
+            .replace(/\bVaishya\b/gi, 'commercial scaling')
+            .replace(/\bShudra\b/gi, 'operational craft')
+            .replace(/\bDharma\b/gi, 'integrity & duty')
+            .replace(/\bMoksha\b/gi, 'intellectual freedom')
+        : '';
+
+      return {
+        ...opt,
+        generic_label: genericLabel,
+        generic_desc: genericDesc,
+        vedic_label: opt.label,
+        vedic_desc: opt.desc
+      };
+    });
+
+    return {
+      ...q,
+      options: enrichedOptions
+    };
+  });
+}
+
+function enrichVikritiQuestions(vList) {
+  return vList.map(v => {
+    const enrichedOptions = v.options.map(opt => {
+      let gLabel = opt.label;
+      if (opt.label.includes('Sattva')) gLabel = 'Balanced & Restored';
+      else if (opt.label.includes('Rajas')) gLabel = 'Agitated & Over-Stimulated';
+      else if (opt.label.includes('Tamas')) gLabel = 'Exhausted & Drained';
+      else if (opt.label.includes('Swadharma')) gLabel = 'Strong Role Fit & Alignment';
+      else if (opt.label.includes('Mild Paradharma')) gLabel = 'Mild Role Misalignment';
+      else if (opt.label.includes('Severe Paradharma')) gLabel = 'Severe Role Burnout';
+      else if (opt.label.includes('Clean Agni')) gLabel = 'Optimal Physical Vitality';
+      else if (opt.label.includes('Pitta/Vata')) gLabel = 'Stress-Induced Metabolic Friction';
+      else if (opt.label.includes('Manda-Agni')) gLabel = 'Chronic Sluggishness & Depletion';
+
+      return {
+        ...opt,
+        generic_label: gLabel,
+        vedic_label: opt.label
+      };
+    });
+
+    return {
+      ...v,
+      options: enrichedOptions
+    };
+  });
+}
+
 // ── GET /api/personalities/questions ──
 router.get('/questions', (req, res) => {
   const tier = req.query.tier || 'vocational';
-  const questions = tier === 'rapid' ? RAPID_QUESTIONS : VOCATIONAL_QUESTIONS_27;
+  const baseQuestions = tier === 'rapid' ? RAPID_QUESTIONS : VOCATIONAL_QUESTIONS_27;
+  const questions = enrichQuestionsWithDualLabels(baseQuestions);
+  const vikritiQuestions = enrichVikritiQuestions(VIKRITI_QUESTIONS);
 
   res.json({
     success: true,
     tier,
     count: questions.length,
     questions,
-    vikriti_questions: VIKRITI_QUESTIONS,
+    vikriti_questions: vikritiQuestions,
     tier_info: {
       rapid: { name: 'Tier 1 Rapid Screening', count: RAPID_QUESTIONS.length, estimated_time: '3 minutes' },
       vocational: { name: 'Tier 2 Certified Vocational Battery', count: VOCATIONAL_QUESTIONS_27.length, estimated_time: '8 minutes' }

@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HPTI | Haya Personality Type Indicators | Vedic Archetypes &amp; ECCP | HAYAGRIVA</title>
-  <meta name="description" content="Discover your innate Vedic archetype using HPTI (Haya Personality Type Indicators) powered by the 4-Dimensional ECCP framework (Energy, Cognition, Competency, Purpose) across 144 epic archetypes mapped to certified NCVET &amp; NSQF national vocational roles." />
+  <title>HPTI Portals | Haya Personality Type Indicators | HAYAGRIVA</title>
+  <meta name="description" content="Choose between the Corporate &amp; Professional HPTI Diagnostic Portal and the Vedic &amp; Epic Shastric Archetypal Portal powered by the ECCP Framework." />
+
+  <!-- Instant query router -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mode') === 'vedic' || window.location.hash.includes('vedic')) {
+      window.location.replace('personalities_vedic.html');
+    } else if (params.get('mode') === 'generic' || params.get('mode') === 'corporate' || window.location.hash.includes('corporate')) {
+      window.location.replace('personalities_generic.html');
+    }
+  </script>
 
   <!-- Fonts & Core Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,2330 +23,290 @@
   
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/ide-docking.css" />
-  <link rel="stylesheet" href="css/pillar-layout.css" />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style>
     :root {
       --bg-primary: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --primary-color: #1E6C93;
-      --primary-hover: #165272;
-      --primary-light: rgba(30, 108, 147, 0.08);
-      --border-color: #CBD5E1;
       --font-main: 'Plus Jakarta Sans', sans-serif;
       --font-heading: 'Google Sans', 'Plus Jakarta Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
       --font-devanagari: 'Noto Serif Devanagari', serif;
-      --epic-gold: #D97706;
-      --epic-blue: #2563EB;
-      --epic-purple: #7C3AED;
-      --epic-emerald: #059669;
-      --epic-crimson: #DC2626;
-      --epic-amber-bg: #FFFBEB;
-      --epic-amber-border: #FDE68A;
     }
 
     body {
-      font-family: var(--font-main);
-      color: var(--text-main);
-    }
-
-    /* ── Standardized 48px Panel Headers for Horizontal Alignment ── */
-    .panel-header-standard {
-      position: sticky;
-      top: 0;
-      z-index: 35;
-      height: 48px;
-      min-height: 48px;
-      padding: 0 16px;
-      background: #F8FAFC;
-      border-bottom: 1px solid #CBD5E1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-sizing: border-box;
-      flex-shrink: 0;
-    }
-    .panel-header-title {
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #0F172A;
       margin: 0;
-      letter-spacing: 0.3px;
+      background: #F8FAFC;
+      font-family: var(--font-main);
+      color: #0F172A;
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .panel-count-badge {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      background: #E2E8F0;
-      color: #334155;
-      padding: 2px 7px;
-      border-radius: 9999px;
-    }
-    .mode-switcher-segmented {
-      display: inline-flex;
-      background: #E2E8F0;
-      padding: 3px;
-      border-radius: 8px;
-      gap: 3px;
-    }
-    .mode-switcher-segmented .mode-tab-btn {
-      padding: 5px 12px;
-      border-radius: 6px;
-      font-size: 11.5px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      background: transparent;
-      color: #475569;
-      transition: all 0.15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .mode-switcher-segmented .mode-tab-btn.active {
-      background: #FFFFFF;
-      color: #1E6C93;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    }
-    .progress-pill-badge {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #1D4ED8;
-      background: #EFF6FF;
-      border: 1px solid #BFDBFE;
-      padding: 3px 10px;
-      border-radius: 9999px;
-      white-space: nowrap;
-    }
-    .tier-badge-mini {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border: 1px solid #BFDBFE;
-      padding: 2px 6px;
-      border-radius: 4px;
-      white-space: nowrap;
+      flex-direction: column;
     }
 
-    /* Container level zero-padding for sticky header alignment */
-    .panel-left#panelLeft,
-    .panel-center#panelCenter,
-    .panel-right#panelRight {
-      padding: 0 !important;
-    }
-
-    .hero-stats-row {
+    .gateway-container {
+      max-width: 1100px;
+      margin: 40px auto 60px;
+      padding: 0 24px;
+      flex: 1;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      text-align: center;
     }
-    .stat-pill {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(8px);
+
+    .gateway-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1D4ED8;
+      font-size: 12px;
+      font-weight: 800;
       padding: 6px 14px;
       border-radius: 9999px;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #E2E8F0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
     }
 
-    /* Left Panel: Tier Filters */
-    .tier-filter-pills {
+    .gateway-title {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+
+    .gateway-sub {
+      font-size: 16px;
+      color: #475569;
+      max-width: 720px;
+      line-height: 1.6;
+      margin: 0 auto 36px;
+    }
+
+    .cards-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 5px;
-      margin-bottom: 10px;
-    }
-    .tier-pill-btn {
-      padding: 5px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      border: 1px solid #CBD5E1;
-      background: #F8FAFC;
-      color: #475569;
-      cursor: pointer;
-      transition: all 0.16s ease;
-      text-align: center;
-    }
-    .tier-pill-btn:hover {
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border-color: #93C5FD;
-    }
-    .tier-pill-btn.active {
-      background: #1E6C93;
-      color: #FFFFFF;
-      border-color: #1E6C93;
-      box-shadow: 0 1px 3px rgba(30, 108, 147, 0.25);
-    }
-
-    /* Left Panel: Epic Filter Pills */
-    .epic-filter-pills {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-    .epic-pill-btn {
-      flex: 1;
-      padding: 6px 8px;
-      border-radius: 6px;
-      font-size: 11.5px;
-      font-weight: 700;
-      border: 1px solid #CBD5E1;
-      background: #F8FAFC;
-      color: #475569;
-      cursor: pointer;
-      transition: all 0.16s ease;
-      text-align: center;
-    }
-    .epic-pill-btn:hover {
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border-color: #93C5FD;
-    }
-    .epic-pill-btn.active {
-      background: #2563EB;
-      color: #FFFFFF;
-      border-color: #2563EB;
-      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
-    }
-
-    /* Character Archetype Cards in Left Panel */
-    .character-card {
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px 14px;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      width: 100%;
       text-align: left;
     }
-    .character-card:hover {
-      border-color: var(--epic-blue);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
     }
-    .character-card.active {
-      border-color: var(--epic-blue);
-      background: #F0F7FF;
-      box-shadow: 0 0 0 1px var(--epic-blue);
-    }
-    .char-card-header {
+
+    .portal-card {
+      background: #FFFFFF;
+      border: 2px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 32px 28px;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 6px;
-    }
-    .char-monogram {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      color: #FFF;
-      flex-shrink: 0;
-    }
-    .char-name {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.25;
-    }
-    .char-sanskrit-title {
-      font-size: 11px;
-      color: var(--epic-gold);
-      font-weight: 700;
-      font-style: italic;
-    }
-    .char-epic-tag {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 9999px;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-    .tag-ramayana {
-      background: #FEF3C7;
-      color: #92400E;
-      border: 1px solid rgba(217, 119, 6, 0.25);
-    }
-    .tag-mahabharata {
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border: 1px solid rgba(37, 99, 235, 0.25);
-    }
-    .tag-shadow {
-      background: #FEE2E2;
-      color: #991B1B;
-      border: 1px solid rgba(220, 38, 38, 0.25);
-    }
-    .char-eccp-badge {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      color: #0F172A;
-      background: #F1F5F9;
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid #CBD5E1;
-      width: fit-content;
-    }
-    .char-nsqf-tag {
-      font-size: 10px;
-      color: #475569;
-      background: #E2E8F0;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    /* Center Panel: Mode Switcher */
-    .mode-switcher-container {
-      display: flex;
-      background: #E2E8F0;
-      padding: 4px;
-      border-radius: 10px;
-      gap: 4px;
-      margin-bottom: 14px;
-    }
-    .mode-tab-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      background: transparent;
-      color: #475569;
-      transition: all 0.16s ease;
-    }
-    .mode-tab-btn.active {
-      background: #FFFFFF;
-      color: #1E6C93;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    }
-
-    /* Center Panel: Presets & Progress */
-    .test-preset-bar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      background: #F8FAFC;
-      border: 1px dashed #CBD5E1;
-      padding: 8px 12px;
-      border-radius: 8px;
-      margin-bottom: 14px;
-    }
-    .preset-chip-btn {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: 6px;
-      border: 1px solid #CBD5E1;
-      background: #FFFFFF;
-      color: #334155;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .preset-chip-btn:hover {
-      background: #EFF6FF;
-      border-color: #93C5FD;
-      color: #1D4ED8;
-    }
-    .progress-bar-container {
-      width: 100%;
-      height: 8px;
-      background: #E2E8F0;
-      border-radius: 9999px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
       overflow: hidden;
-      margin: 8px 0;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #1E6C93, #2563EB);
-      width: 0%;
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04);
+      text-decoration: none;
+      color: inherit;
     }
 
-    /* Center Panel: Question Card */
-    .question-card {
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-color);
-      border-radius: 12px;
-      padding: 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-      transition: border-color 0.2s ease;
-    }
-    .question-card:focus-within, .question-card.highlighted {
-      border-color: var(--epic-blue);
-    }
-    .q-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .q-pillar-tag {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border: 1px solid #BFDBFE;
-    }
-    .q-gita-tag {
-      font-size: 11px;
-      font-weight: 600;
-      background: #FFFBEB;
-      color: #92400E;
-      border: 1px solid #FDE68A;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-    .q-scenario-title {
-      font-family: var(--font-heading);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.35;
-      margin: 0;
-    }
-    .q-scenario-text {
-      font-size: 13.5px;
-      color: #334155;
-      line-height: 1.5;
-      margin: 0;
-    }
-    .q-rationale-toggle {
-      font-size: 11px;
-      color: #2563EB;
-      cursor: pointer;
-      text-decoration: underline;
-      display: inline-block;
-      margin-top: -4px;
-    }
-    .q-rationale-box {
-      font-size: 11.5px;
-      background: #F8FAFC;
-      border-left: 3px solid #3B82F6;
-      padding: 6px 10px;
-      color: #475569;
-      border-radius: 0 6px 6px 0;
-      display: none;
+    .portal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -4px rgba(0,0,0,0.1);
     }
 
-    /* Question Options List */
-    .q-options-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .option-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1.5px solid var(--border-color);
-      background: #FAFAFA;
-      cursor: pointer;
-      transition: all 0.16s ease;
-    }
-    .option-label:hover {
-      border-color: #93C5FD;
-      background: #F0F7FF;
-    }
-    .option-label.selected {
-      border-color: var(--epic-blue);
-      background: #EFF6FF;
-      box-shadow: 0 0 0 1px var(--epic-blue);
-    }
-    .option-radio {
-      margin-top: 3px;
-      accent-color: var(--epic-blue);
-      cursor: pointer;
-    }
-    .option-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .option-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .option-desc {
-      font-size: 12px;
-      color: #475569;
-      line-height: 1.4;
-    }
-
-    /* Right Panel: Dossier Enhancements */
-    .four-box-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-    .eccp-quad-box {
-      background: #F8FAFC;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .quad-label {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #64748B;
-    }
-    .quad-token {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 800;
-      color: #1E293B;
-    }
-    .quad-desc {
-      font-size: 11px;
-      color: #334155;
-      line-height: 1.3;
-    }
-
-    /* Devanagari Sanskrit Callout */
-    .devanagari-card {
-      background: #FFFBEB;
-      border: 1px solid #FDE68A;
-      border-left: 4px solid #D97706;
-      border-radius: 8px;
-      padding: 12px 14px;
-    }
-    .devanagari-text {
-      font-family: var(--font-devanagari);
-      font-size: 15px;
-      color: #78350F;
-      line-height: 1.6;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .devanagari-translit {
-      font-size: 11.5px;
-      font-style: italic;
-      color: #92400E;
-      line-height: 1.45;
-    }
-
-    /* Shadow Warning Callout */
-    .shadow-warning-card {
-      background: #FEF2F2;
-      border: 1px solid #FECACA;
-      border-left: 4px solid #DC2626;
-      border-radius: 8px;
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .shadow-title {
-      font-size: 11.5px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #991B1B;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .shadow-body {
-      font-size: 12.5px;
-      color: #7F1D1D;
-      line-height: 1.45;
-    }
-
-    /* NCVET QP Card Grid & Clean States */
-    .ncvet-qp-card {
-      background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 8px;
-      padding: 10px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 6px;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .ncvet-qp-card:hover {
-      border-color: #93C5FD;
-      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.08);
-      transform: translateY(-1px);
-    }
-    .ncvet-qp-card.is-primary-card {
-      border-color: #BFDBFE;
-      border-left: 3.5px solid #2563EB;
-      background: #F8FAFC;
-    }
-    .qp-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .qp-title {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #0F172A;
-      line-height: 1.35;
-    }
-    .qp-badge {
-      font-size: 10px;
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border: 1px solid #BFDBFE;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .ncvet-qp-card.is-primary-card .qp-badge {
-      background: #2563EB;
-      color: #FFFFFF;
+    .portal-card.card-generic:hover {
       border-color: #2563EB;
     }
-    .badge-primary-fit {
-      font-size: 10px;
-      font-weight: 700;
-      color: #1E40AF;
-      background: #DBEAFE;
-      padding: 1.5px 7px;
-      border-radius: 4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
+
+    .portal-card.card-vedic:hover {
+      border-color: #D97706;
     }
-    .badge-lateral-role {
-      font-size: 10px;
-      font-weight: 600;
-      color: #64748B;
-      background: #F1F5F9;
-      padding: 1.5px 7px;
-      border-radius: 4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .btn-inspect-link {
+
+    .card-badge {
       font-size: 11px;
-      font-weight: 700;
-      color: #2563EB;
-      text-decoration: none;
-      background: rgba(37, 99, 235, 0.08);
-      padding: 2px 8px;
-      border-radius: 4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: all 0.15s;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 14px;
+      width: fit-content;
     }
-    .btn-inspect-link:hover {
-      background: #2563EB;
-      color: #FFFFFF;
-    }
-    .sector-select-picker {
-      appearance: none;
-      -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 8px center;
-      background-size: 14px 14px;
-      padding-right: 28px !important;
-    }
-      font-size: 10.5px;
+
+    .badge-generic {
       background: #EFF6FF;
       color: #1D4ED8;
       border: 1px solid #BFDBFE;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      white-space: nowrap;
     }
 
-    /* Sadhana Protocol Card */
-    .sadhana-card {
-      background: #F0FDF4;
-      border: 1px solid #BBF7D0;
-      border-left: 4px solid #16A34A;
-      border-radius: 8px;
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .badge-vedic {
+      background: #FFFBEB;
+      color: #B45309;
+      border: 1px solid #FDE68A;
     }
-    .sadhana-title {
-      font-size: 11.5px;
+
+    .card-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+    }
+
+    .card-h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
       font-weight: 800;
-      text-transform: uppercase;
-      color: #166534;
-      letter-spacing: 0.5px;
-    }
-    .sadhana-item {
-      font-size: 12px;
-      color: #14532D;
-      line-height: 1.4;
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
+      margin: 0 0 8px;
+      color: #0F172A;
     }
 
-    /* Live Vector Meters */
-    .meters-card {
-      background: #F8FAFC;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .meter-row {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .meter-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-    .meter-track {
-      height: 6px;
-      background: #E2E8F0;
-      border-radius: 9999px;
-      overflow: hidden;
-      display: flex;
-    }
-    .meter-seg {
-      height: 100%;
-      transition: width 0.3s ease;
+    .card-desc {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 20px;
     }
 
-    /* RAG Chat Box */
-    .rag-chat-container {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px;
+    .card-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-    .rag-chat-messages {
-      max-height: 220px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+
+    .card-features li {
       font-size: 12.5px;
-    }
-    .rag-msg {
-      padding: 8px 12px;
-      border-radius: 8px;
-      line-height: 1.45;
-    }
-    .rag-msg.agent {
-      background: #EFF6FF;
-      color: #1E3A8A;
-      align-self: flex-start;
-      border: 1px solid #DBEAFE;
-    }
-    .rag-msg.user {
-      background: #1E6C93;
-      color: #FFFFFF;
-      align-self: flex-end;
-    }
-    .rag-quick-prompts {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .rag-chip {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 9999px;
-      background: #F1F5F9;
-      border: 1px solid #CBD5E1;
       color: #334155;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .rag-chip:hover {
-      background: #DBEAFE;
-      color: #1D4ED8;
-      border-color: #93C5FD;
-    }
-    .rag-input-row {
       display: flex;
-      gap: 6px;
+      align-items: center;
+      gap: 8px;
     }
-    .rag-input {
-      flex: 1;
-      padding: 7px 10px;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-size: 12.5px;
-      outline: none;
-    }
-    .rag-input:focus {
-      border-color: var(--epic-blue);
-    }
-    .rag-btn-send {
-      padding: 7px 14px;
-      background: var(--epic-blue);
-      color: #FFFFFF;
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 800;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
       border: none;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 12px;
       cursor: pointer;
-      transition: background 0.15s;
     }
-    .rag-btn-send:hover {
+
+    .cta-generic {
+      background: #2563EB;
+      color: #FFFFFF;
+    }
+    .cta-generic:hover {
       background: #1D4ED8;
     }
 
-    @media print {
-      #site-header, #site-footer, .panel-left, .panel-center, #btnRestoreLeft, .pillar-hero {
-        display: none !important;
-      }
-      .panel-right {
-        width: 100% !important;
-        max-width: 100% !important;
-        border: none !important;
-      }
+    .cta-vedic {
+      background: #D97706;
+      color: #FFFFFF;
+    }
+    .cta-vedic:hover {
+      background: #B45309;
+    }
+
+    .shared-pill {
+      margin-top: 36px;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="personalities"></div>
+  <!-- Dynamic Universal Header injected by components.js -->
+  <div id="universalHeader"></div>
 
-  <!-- Hero Banner -->
-  <section class="pillar-hero">
-    <h1 class="hero-title">HPTI: Haya Personality Type Indicators</h1>
-    <p class="hero-subtitle">
-      Vedic psychometrics powered by the 4-dimensional ECCP framework across 144 Epic archetypes, directly mapped to 2,002 certified NCVET &amp; NSQF national vocational qualifications.
+  <main class="gateway-container">
+    <div class="gateway-pill">
+      <span>🧬</span> Haya Personality Type Indicators (HPTI)
+    </div>
+
+    <h1 class="gateway-title">
+      Select Your Diagnostic Portal
+    </h1>
+    <p class="gateway-sub">
+      Both portals share the identical psychometric scoring engine, 144 ECCP compound taxonomy, and deep integration with certified NCVET / NSQF national career roles across 38+ industry sectors.
     </p>
-    <div class="hero-stats-row">
-      <div class="stat-pill">🏛️ 144 ECCP Archetypes</div>
-      <div class="stat-pill">📜 Ramayana &amp; Mahabharata</div>
-      <div class="stat-pill">🎯 2,002 NCVET &amp; NSQF Roles</div>
-      <a href="/compendium" target="_blank" class="stat-pill" style="text-decoration: none; color: #FDE68A; border-color: rgba(253, 230, 138, 0.4);">
-        📖 HPTI Compendium (28 Chapters) ➔
+
+    <div class="cards-grid">
+      <!-- Card 1: Corporate / Professional -->
+      <a href="personalities_generic.html" class="portal-card card-generic">
+        <div>
+          <span class="card-badge badge-generic">Corporate &amp; Enterprise</span>
+          <div class="card-icon">🌐</div>
+          <h2 class="card-h3">Corporate / Professional HPTI</h2>
+          <p class="card-desc">
+            Designed for corporate teams, enterprise HR diagnostics, leadership coaching, and secular career navigation with executive terminology.
+          </p>
+          <ul class="card-features">
+            <li><span>✓</span> Secular executive archetypes &amp; operating axioms</li>
+            <li><span>✓</span> 9-Scenario Rapid &amp; 27-Scenario Vocational batteries</li>
+            <li><span>✓</span> Burnout &amp; stress load audit delta</li>
+            <li><span>✓</span> Identical 38+ sector NCVET career role alignment</li>
+          </ul>
+        </div>
+        <div class="card-cta cta-generic">
+          Launch Corporate Portal ➔
+        </div>
+      </a>
+
+      <!-- Card 2: Vedic & Epic Shastric -->
+      <a href="personalities_vedic.html" class="portal-card card-vedic">
+        <div>
+          <span class="card-badge badge-vedic">Shastric &amp; Classical</span>
+          <div class="card-icon">📜</div>
+          <h2 class="card-h3">Vedic &amp; Epic Shastric HPTI</h2>
+          <p class="card-desc">
+            Authentic shastric immersion rooted in the Valmiki Ramayana, Vyasa Mahabharata, Bhagavad Gita, and Triguna-Purushartha archetypes.
+          </p>
+          <ul class="card-features">
+            <li><span>✓</span> Original Devanagari Sanskrit shlokas &amp; citations</li>
+            <li><span>✓</span> 24 Epic mirror character archetypes</li>
+            <li><span>✓</span> Actionable Sadhana protocols (Pranayama, Ahara, Dinacharya)</li>
+            <li><span>✓</span> Identical 38+ sector NCVET career role alignment</li>
+          </ul>
+        </div>
+        <div class="card-cta cta-vedic">
+          Launch Vedic Portal ➔
+        </div>
       </a>
     </div>
-  </section>
 
-  <!-- Universal 3-Panel IDE Workspace Layout -->
-  <div class="ide-container" id="ideContainer">
+    <div class="shared-pill">
+      <span>🎯</span>
+      <span><strong>Shared Core Invariant:</strong> Both portals allow choosing any industry sector to inspect tailored NCVET/NSQF job-roles with 1-click deep links into the National Explorer.</span>
+    </div>
+  </main>
 
-    <!-- Floating Restore Button when Left Sidebar is Collapsed -->
-    <button id="btnRestoreLeft" class="ide-restore-left-btn">
-      <span>▶</span> Show Epic Archetypes (Cmd+B)
-    </button>
+  <!-- Universal Footer injected by components.js -->
+  <div id="universalFooter"></div>
 
-    <!-- LEFT PANEL: Archetypal Spectrum & Corpus Explorer -->
-    <aside class="panel-left" id="panelLeft">
-      
-      <!-- Standardized Sticky 48px Header -->
-      <div class="panel-header-standard">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 15px;">📜</span>
-          <h2 class="panel-header-title">Epic Archetypes</h2>
-          <span class="panel-count-badge" id="archetypesCountBadge">24</span>
-        </div>
-        <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleLeftPanel(false)" title="Collapse Sidebar (Cmd+B)">◀</button>
-      </div>
-
-      <div class="panel-left-content" style="padding: 14px 16px;">
-        <!-- Keyword Search for Character -->
-        <div style="margin-bottom: 10px;">
-          <input type="text" id="characterSearchInput" class="filter-input" placeholder="🔍 Search character or ECCP code..." oninput="handleCharacterSearch()" style="width: 100%; box-sizing: border-box;" />
-        </div>
-
-        <!-- Tier & Epic Segmented Filters (Clean, compact rows) -->
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px; border-radius: 8px;">
-          <div>
-            <div style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #64748B; letter-spacing: 0.5px; margin-bottom: 5px;">Sovereign Tiers</div>
-            <div class="tier-filter-pills" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; margin-bottom: 0;">
-              <button class="tier-pill-btn active" data-tier="all" onclick="filterByTier('all', this)">All</button>
-              <button class="tier-pill-btn" data-tier="sattvik" onclick="filterByTier('sattvik', this)">Sattvik</button>
-              <button class="tier-pill-btn" data-tier="rajasik" onclick="filterByTier('rajasik', this)">Rajasik</button>
-              <button class="tier-pill-btn" data-tier="tamasik" onclick="filterByTier('tamasik', this)">Shadow</button>
-            </div>
-          </div>
-          <div>
-            <div style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #64748B; letter-spacing: 0.5px; margin-bottom: 5px;">Epic Corpus</div>
-            <div class="epic-filter-pills" style="display: flex; gap: 4px; margin-bottom: 0;">
-              <button class="epic-pill-btn active" data-epic="all" onclick="filterByEpic('all', this)">All</button>
-              <button class="epic-pill-btn" data-epic="ramayana" onclick="filterByEpic('ramayana', this)">Ramayana</button>
-              <button class="epic-pill-btn" data-epic="mahabharata" onclick="filterByEpic('mahabharata', this)">Mahabharata</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Character Archetypes Stream -->
-        <div style="display: flex; flex-direction: column; gap: 8px;" id="characterCardsList">
-          <!-- Hydrated dynamically -->
-        </div>
-
-        <!-- ECCP Taxonomy Explainer Box -->
-        <div style="margin-top: 16px; padding: 12px; background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; font-size: 11.5px; color: var(--text-muted);">
-          <strong style="color: var(--text-main); display: block; margin-bottom: 4px;">The ECCP 144 Matrix:</strong>
-          • <strong>[E] Energy:</strong> Triguna (Sattva, Rajas, Tamas)<br>
-          • <strong>[C] Cognition:</strong> Antahkarana (Buddhi, Manas, Ahankara)<br>
-          • <strong>[C] Competency:</strong> Varna-Swabhava (B, K, V, S)<br>
-          • <strong>[P] Purpose:</strong> Purushartha (D, A, K, M)<br>
-          <span style="font-family: var(--font-mono); font-size: 10.5px; color: #2563EB;">Permutations: 3×3×4×4 = 144</span>
-        </div>
-      </div>
-    </aside>
-
-    <!-- CENTER PANEL: Diagnostic Personality Questions -->
-    <main class="panel-center" id="panelCenter">
-      
-      <!-- Standardized Sticky 48px Header -->
-      <div class="panel-header-standard">
-        <!-- Dual-Layer Mode Switcher Header embedded in 48px header -->
-        <div class="mode-switcher-segmented">
-          <button class="mode-tab-btn active" id="tabModePrakriti" onclick="switchDiagnosticMode('prakriti')">
-            <span>🧘</span> Prakriti
-          </button>
-          <button class="mode-tab-btn" id="tabModeVikriti" onclick="switchDiagnosticMode('vikriti')">
-            <span>🔥</span> Vikriti
-          </button>
-        </div>
-
-        <!-- Live Progress Counter Badge -->
-        <div class="progress-pill-badge" id="progressPercentageText">
-          0% Answered (0/9)
-        </div>
-      </div>
-
-      <!-- Slim 3px Progress Bar Track immediately beneath sticky header -->
-      <div class="progress-bar-container" style="height: 3px; margin: 0; border-radius: 0; background: #E2E8F0;">
-        <div class="progress-bar-fill" id="progressBarFill"></div>
-      </div>
-
-      <div class="panel-center-content" style="padding: 16px 20px;">
-        <div style="margin-bottom: 10px;">
-          <h2 class="center-mode-title" id="centerModeTitle" style="font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 2px 0;">
-            ECCP Vedic Personality Diagnostic
-          </h2>
-          <div class="center-mode-subtitle" id="centerModeSubtitle" style="font-size: 12.5px; color: #64748B;">
-            Answer 27 scenarios to uncover your innate Prakriti, 144 Compound Archetype, and certified NCVET vocation.
-          </div>
-        </div>
-
-        <!-- Tier Switcher Bar & Psychometric Telemetry Trigger -->
-        <div class="tier-switcher-container" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; background: #F1F5F9; padding: 5px 8px; border-radius: 8px; border: 1px solid #CBD5E1; flex-wrap: wrap; gap: 6px;">
-          <div style="display: flex; gap: 4px;">
-            <button id="btnTierVocational" class="tier-pill-btn active" onclick="switchQuestionTier('vocational')" style="padding: 5px 12px; font-size: 11.5px; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; background: #2563EB; color: #FFF; transition: all 0.15s ease;">
-              ⭐ Tier 2: Certified Vocational (27 Qs)
-            </button>
-            <button id="btnTierRapid" class="tier-pill-btn" onclick="switchQuestionTier('rapid')" style="padding: 5px 12px; font-size: 11.5px; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; background: transparent; color: #475569; transition: all 0.15s ease;">
-              ⚡ Tier 1: Rapid Screening (9 Qs)
-            </button>
-          </div>
-          <button onclick="openPsychometricsModal()" style="background: #FFFFFF; border: 1px solid #CBD5E1; color: #1E293B; font-size: 11px; font-weight: 700; border-radius: 6px; padding: 5px 10px; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-            <span>📊</span> Psychometric Telemetry &amp; Export
-          </button>
-        </div>
-
-        <!-- 1-Click Preset Testing Bar (Compact & Sleek) -->
-        <div class="test-preset-bar" id="prakritiPresetsBar" style="padding: 6px 10px; margin-bottom: 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; display: flex; align-items: center; gap: 5px; flex-wrap: wrap;">
-          <span style="font-size: 11px; font-weight: 700; color: #475569; margin-right: 2px;">Fill as:</span>
-          <button class="preset-chip-btn" onclick="applyPreset('arjuna')">🏹 Arjuna</button>
-          <button class="preset-chip-btn" onclick="applyPreset('vidura')">📜 Vidura</button>
-          <button class="preset-chip-btn" onclick="applyPreset('rama')">👑 Rama</button>
-          <button class="preset-chip-btn" onclick="applyPreset('hanuman')">⛰️ Hanuman</button>
-          <button class="preset-chip-btn" onclick="applyPreset('sugriva')">🤝 Sugriva</button>
-          <button class="preset-chip-btn" onclick="applyPreset('janaka')">🏛️ Janaka</button>
-          <button class="preset-chip-btn" onclick="applyPreset('karna')">☀️ Karna</button>
-          <button class="preset-chip-btn" style="margin-left: auto; color: #DC2626; border-color: #FECACA;" onclick="resetTest()">↺ Clear</button>
-        </div>
-
-        <!-- Question Cards Container -->
-        <div id="questionsContainer" style="display: flex; flex-direction: column; gap: 14px;">
-          <!-- Hydrated dynamically from PRAKRITI or VIKRITI questions -->
-        </div>
-
-        <!-- Action Footer for Assessment -->
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: #FFFFFF; border: 1.5px solid var(--border-color); border-radius: 10px; margin-top: 14px; margin-bottom: 30px;">
-          <button class="filter-select" style="width: auto; background: #F8FAFC; border-color: #CBD5E1; color: #475569; font-weight: 700; cursor: pointer; padding: 9px 16px; font-size: 13px;" onclick="resetTest()">
-            ↺ Reset Answers
-          </button>
-          <button id="btnCalculateECCP" class="nav-pill-blue" style="font-size: 13px; font-weight: 700; padding: 9px 20px; cursor: pointer; border: none; background: #2563EB; color: #FFF; border-radius: 6px;" onclick="calculateAndInspect()">
-            Calculate Vedic ECCP Archetype →
-          </button>
-        </div>
-      </div>
-    </main>
-
-    <!-- RIGHT PANEL: Result Studio & NCVET Alignment Inspector -->
-    <aside class="panel-right" id="panelRight">
-      
-      <!-- Standardized Sticky 48px Header -->
-      <div class="panel-header-standard">
-        <div style="display: flex; align-items: center; gap: 8px; overflow: hidden;">
-          <span style="font-size: 15px;">👑</span>
-          <h3 class="panel-header-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-            <span id="dossierHeroTitle">Arjuna</span>
-          </h3>
-          <span class="tier-badge-mini" id="dossierStatusBadge">LIVE RADAR</span>
-          <span id="dossierHeroSub" style="display: none;"></span>
-        </div>
-        <div style="display: flex; gap: 4px; align-items: center; flex-shrink: 0;">
-          <button class="ide-btn-icon" onclick="HayaIdeDocking.maximizeRightPanel()" title="Maximize / Restore Inspector">⤢</button>
-          <button class="ide-btn-icon" onclick="HayaIdeDocking.toggleRightPanel(false)" title="Close Inspector">✕</button>
-        </div>
-      </div>
-
-      <!-- Scrollable Inspector Body -->
-      <div class="panel-right-content" style="flex: 1; overflow-y: auto; padding: 16px 18px; display: flex; flex-direction: column; gap: 14px;" id="dossierBody">
-
-        <!-- Vikriti Burnout Alert Bar (Visible if Vikriti audit conducted) -->
-        <div id="vikritiAlertBox" style="display: none; background: #FEF3C7; border: 1.5px solid #FDE68A; border-radius: 10px; padding: 12px 14px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-            <strong style="font-size: 12px; color: #92400E; text-transform: uppercase;">🔥 Vikriti Burnout Audit Delta</strong>
-            <span id="vikritiPctBadge" style="font-size: 11px; font-weight: 800; background: #D97706; color: #FFF; padding: 2px 6px; border-radius: 4px;">25% Load</span>
-          </div>
-          <p id="vikritiAlertText" style="font-size: 12.5px; color: #78350F; margin: 0; line-height: 1.45;">
-            Operating under moderate Rajasik agitation leakage.
-          </p>
-        </div>
-
-        <!-- Live ECCP Vector Gauges -->
-        <div class="meters-card">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 11.5px; font-weight: 800; color: #1E293B; letter-spacing: 0.5px; text-transform: uppercase;">
-              Innate Vector Distribution (Prakriti)
-            </span>
-            <span style="font-size: 10.5px; color: #2563EB; font-weight: 700;">Live Calibration</span>
-          </div>
-
-          <!-- Energy (Triguna) Meter -->
-          <div class="meter-row">
-            <div class="meter-labels">
-              <span>Energy (Triguna)</span>
-              <span id="meterGunaText" style="font-family: var(--font-mono); color: #2563EB;">S: 33% | R: 33% | T: 33%</span>
-            </div>
-            <div class="meter-track">
-              <div id="barSattva" class="meter-seg" style="background: #10B981; width: 33.3%;" title="Sattva (Equanimity)"></div>
-              <div id="barRajas" class="meter-seg" style="background: #F59E0B; width: 33.3%;" title="Rajas (Passion/Drive)"></div>
-              <div id="barTamas" class="meter-seg" style="background: #64748B; width: 33.4%;" title="Tamas (Grounding/Endurance)"></div>
-            </div>
-          </div>
-
-          <!-- Cognition (Antahkarana) Meter -->
-          <div class="meter-row">
-            <div class="meter-labels">
-              <span>Cognition (Antahkarana)</span>
-              <span id="meterCognitionText" style="font-family: var(--font-mono); color: #7C3AED;">Buddhi: 33% | Manas: 33% | Ahankara: 33%</span>
-            </div>
-            <div class="meter-track">
-              <div id="barBuddhi" class="meter-seg" style="background: #7C3AED; width: 33.3%;" title="Buddhi (Intellect)"></div>
-              <div id="barManas" class="meter-seg" style="background: #3B82F6; width: 33.3%;" title="Manas (Mind/Sensory)"></div>
-              <div id="barAhankara" class="meter-seg" style="background: #EC4899; width: 33.4%;" title="Ahankara (Agency/Will)"></div>
-            </div>
-          </div>
-
-          <!-- Competency (Varna-Swabhava) Meter -->
-          <div class="meter-row">
-            <div class="meter-labels">
-              <span>Competency (Varna-Swabhava)</span>
-              <span id="meterVarnaText" style="font-family: var(--font-mono); color: #D97706;">B: 25% | K: 25% | V: 25% | S: 25%</span>
-            </div>
-            <div class="meter-track">
-              <div id="barBrahmana" class="meter-seg" style="background: #0284C7; width: 25%;" title="Brahmana (Knowledge)"></div>
-              <div id="barKshatriya" class="meter-seg" style="background: #DC2626; width: 25%;" title="Kshatriya (Strategy/Ops)"></div>
-              <div id="barVaishya" class="meter-seg" style="background: #D97706; width: 25%;" title="Vaishya (Networks/Trade)"></div>
-              <div id="barShudra" class="meter-seg" style="background: #059669; width: 25%;" title="Shudra (Craft/Service)"></div>
-            </div>
-          </div>
-
-          <!-- Purpose (Purushartha) Meter -->
-          <div class="meter-row">
-            <div class="meter-labels">
-              <span>Purpose (Purushartha)</span>
-              <span id="meterPurposeText" style="font-family: var(--font-mono); color: #059669;">D: 25% | A: 25% | K: 25% | M: 25%</span>
-            </div>
-            <div class="meter-track">
-              <div id="barDharma" class="meter-seg" style="background: #2563EB; width: 25%;" title="Dharma (Righteous Order)"></div>
-              <div id="barArtha" class="meter-seg" style="background: #16A34A; width: 25%;" title="Artha (Material Mastery)"></div>
-              <div id="barKama" class="meter-seg" style="background: #D97706; width: 25%;" title="Kama (Aesthetic/Experiential)"></div>
-              <div id="barMoksha" class="meter-seg" style="background: #9333EA; width: 25%;" title="Moksha (Liberation/Truth)"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 144 ECCP Compound Archetype Banner (Visible on Diagnostic Evaluation) -->
-        <div id="master144Banner" style="display: none; background: linear-gradient(135deg, #0F172A, #1E293B); border: 1.5px solid #38BDF8; border-radius: 12px; padding: 14px 16px; color: #FFFFFF; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <span style="font-size: 10.5px; font-weight: 800; color: #38BDF8; letter-spacing: 0.6px; text-transform: uppercase;">
-              🧬 144 ECCP Compound Archetype
-            </span>
-            <span id="badgeConfidenceIndex" style="font-size: 11px; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: #38BDF8; border: 1px solid #38BDF8; padding: 2px 8px; border-radius: 9999px;">
-              85% Concordance
-            </span>
-          </div>
-          <div id="valMasterEnglishTitle" style="font-size: 15px; font-weight: 800; color: #FFFFFF; margin-bottom: 2px; line-height: 1.3;">
-            The Sattvik Intellect-Led Constitutional Jurist
-          </div>
-          <div id="valMasterSanskritTitle" style="font-size: 12px; color: #94A3B8; font-style: italic; margin-bottom: 8px;">
-            Sattvik Buddhi Niti-Kovidha
-          </div>
-          <div id="valMasterSecondary" style="font-size: 11.5px; color: #CBD5E1; background: rgba(255,255,255,0.06); padding: 5px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
-            Secondary Resonance: S-BM-B-M (The Transcendent Sage)
-          </div>
-        </div>
-
-        <!-- Fourfold ECCP Deconstruction Grid -->
-        <div class="four-box-grid">
-          <div class="eccp-quad-box">
-            <span class="quad-label">[E] Energy</span>
-            <span class="quad-token" id="quadEnergy">Sattva-Rajas</span>
-            <span class="quad-desc" id="quadEnergyDesc">Strategic Dynamic Drive</span>
-          </div>
-          <div class="eccp-quad-box">
-            <span class="quad-label">[C] Cognition</span>
-            <span class="quad-token" id="quadCognition">Buddhi-Led</span>
-            <span class="quad-desc" id="quadCognitionDesc">Objective Reasoning &amp; Viveka</span>
-          </div>
-          <div class="eccp-quad-box">
-            <span class="quad-label">[C] Competency</span>
-            <span class="quad-token" id="quadCompetency">Kshatriya</span>
-            <span class="quad-desc" id="quadCompetencyDesc">Executive Command &amp; Protection</span>
-          </div>
-          <div class="eccp-quad-box">
-            <span class="quad-label">[P] Purpose</span>
-            <span class="quad-token" id="quadPurpose">Dharma</span>
-            <span class="quad-desc" id="quadPurposeDesc">Universal Cosmic Order</span>
-          </div>
-        </div>
-
-        <!-- Matched Epic Mirror Character Dossier -->
-        <div style="background: #FFFFFF; border: 1.5px solid var(--border-color); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <div id="dossierMonogram" style="width: 48px; height: 48px; border-radius: 10px; background: #2563EB; color: #FFF; font-size: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              🏹
-            </div>
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <h4 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: #0F172A; margin: 0;" id="dossierCharName">
-                  Arjuna
-                </h4>
-                <span class="char-epic-tag tag-mahabharata" id="dossierEpicBadge">Mahabharata</span>
-              </div>
-              <div style="font-size: 12.5px; color: var(--epic-gold); font-weight: 700; margin-top: 1px;" id="dossierSanskritTitle">
-                Dhananjaya (The Master of Focused Action)
-              </div>
-            </div>
-          </div>
-
-          <!-- Devanagari Sanskrit Callout -->
-          <div class="devanagari-card">
-            <div class="devanagari-text" id="dossierDevanagari">
-              तस्मात्त्वमुत्तिष्ठ यशो लभस्व जित्वा शत्रून् भुङ्क्ष्व राज्यं समृद्धम् ।
-            </div>
-            <div class="devanagari-translit" id="dossierQuote">
-              "nimitta-mātraṁ bhava savya-sācin (Become merely an instrument of cosmic duty)."
-            </div>
-            <div style="font-weight: 700; margin-top: 4px; font-style: normal; font-size: 11px; color: #92400E;" id="dossierCitation">
-              — Bhagavad Gita 11.33
-            </div>
-          </div>
-
-          <!-- Psychological Synthesis -->
-          <div>
-            <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748B; margin-bottom: 4px;">
-              Psychological Operating Mode &amp; Swabhava
-            </div>
-            <p style="font-size: 13px; color: #334155; line-height: 1.55; margin: 0;" id="dossierSummary">
-              Thrives under friction and high-stakes responsibility, but experiences deep existential pauses when ethical consequences contradict personal attachments.
-            </p>
-          </div>
-
-          <!-- Epic Shadow Warning Alert Box -->
-          <div class="shadow-warning-card" id="dossierShadowBox">
-            <div class="shadow-title">
-              <span>⚠️</span> The Epic Shadow Warning
-            </div>
-            <div class="shadow-body" id="dossierShadowWarning">
-              Vulnerability to existential despondency (Vishada) when personal attachments conflict with righteous duty.
-            </div>
-          </div>
-        </div>
-
-        <!-- NCVET & NSQF Certified Vocational Grid with Sector Dropdown -->
-        <div style="background: #FFFFFF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-          
-          <!-- Unified Header Row: Title & Subtitle on Left, Sector Dropdown on Right -->
-          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <div>
-              <div style="font-size: 12.5px; font-weight: 800; color: #1D4ED8; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
-                <span>🎯</span> NCVET Career Alignment
-              </div>
-              <div id="dossierNcvetMeta" style="font-size: 11px; color: #64748B; margin-top: 2px;">
-                Band: <strong>NSQF Level 6–9</strong> • US O*NET: <strong>11-1011.00</strong>
-              </div>
-            </div>
-            <select id="dossierSectorSelect" class="sector-select-picker" onchange="onDossierSectorChanged(this.value)" style="max-width: 210px; font-size: 11.5px; font-weight: 700; color: #1E40AF; background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 6px; padding: 5px 26px 5px 8px; outline: none; cursor: pointer; transition: all 0.2s;">
-              <optgroup label="⭐ Top Flagship Sectors">
-                <option value="aerospace" selected>🚀 Aerospace &amp; Defense</option>
-                <option value="it_ai">💻 IT-ITeS &amp; AI</option>
-                <option value="healthcare">🏥 Healthcare &amp; Life Sciences</option>
-                <option value="bfsi">📈 BFSI &amp; Capital Markets</option>
-                <option value="management">🏛️ Management &amp; Governance</option>
-                <option value="green_energy">🌱 Green Energy &amp; Climate</option>
-                <option value="logistics">🚢 Logistics &amp; Supply Chain</option>
-                <option value="automotive">⚡ Automotive &amp; EV</option>
-                <option value="electronics">🔬 Electronics &amp; Silicon</option>
-                <option value="infrastructure">🏗️ Infrastructure &amp; Smart Cities</option>
-                <option value="media">🎬 Media &amp; Entertainment</option>
-                <option value="agriculture">🌾 Agriculture &amp; Food</option>
-              </optgroup>
-            </select>
-          </div>
-
-          <!-- Clean Certified Job Roles List -->
-          <div id="dossierCareersList" style="display: flex; flex-direction: column; gap: 6px;">
-            <!-- Hydrated dynamically -->
-          </div>
-
-          <!-- Swadharma Directive -->
-          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; padding: 8px 12px; border-radius: 6px; font-size: 11.5px; color: #166534; line-height: 1.45;" id="dossierSwadharmaDirective">
-            <strong>Swadharma Law (Gita 18.47):</strong> Better is your own duty though imperfect, than another's duty well-performed. Protect your sovereign craft against alien corporate conformity.
-          </div>
-        </div>
-
-        <!-- Compendium Chapter Deep-Link Card -->
-        <div class="compendium-chapter-card" id="dossierCompendiumCard" style="background: #FFFBEB; border: 1px solid #FCD34D; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-            <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: #92400E; letter-spacing: 0.05em;">
-              📖 HPTI Master Compendium
-            </span>
-            <span style="font-size: 10px; background: #FEF3C7; color: #B45309; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Authoritative Text</span>
-          </div>
-          <div style="font-size: 12.5px; font-weight: 700; color: #78350F; margin-bottom: 4px;" id="dossierCompendiumChapterTitle">
-            Chapter 14: The Ramayana Archetypal Spectrum
-          </div>
-          <div style="font-size: 11px; color: #92400E; margin-bottom: 8px;">
-            In-depth treatise on this archetype's Antahkarana locus, classical commentaries, and NCVET competency trajectory.
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <button onclick="openCompendiumReader()" style="flex: 1; padding: 6px 10px; background: #D97706; color: #FFF; border: none; border-radius: 4px; font-size: 11.5px; font-weight: 700; cursor: pointer;">
-              Read Chapter In-App ➔
-            </button>
-            <a id="dossierCompendiumExtLink" href="/compendium" target="_blank" style="padding: 6px 10px; background: #FFFFFF; color: #92400E; border: 1px solid #FCD34D; border-radius: 4px; font-size: 11.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center;">
-              Full Page ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- Actionable Sadhana Protocol Card -->
-        <div class="sadhana-card" id="dossierSadhanaBox">
-          <div class="sadhana-title">
-            🧘 Actionable Sadhana Protocol (Guna Elevation)
-          </div>
-          <div class="sadhana-item" id="sadhanaPranayama">
-            <strong>• Breath:</strong> Nadi Shodhana (15 mins) &amp; Ujjayi to anchor nervous balance.
-          </div>
-          <div class="sadhana-item" id="sadhanaAhara">
-            <strong>• Sensory/Diet:</strong> Fresh Sattvik whole foods, avoid excess caffeine and evening screens.
-          </div>
-          <div class="sadhana-item" id="sadhanaDinacharya">
-            <strong>• Cadence:</strong> Brahma Muhurta deep focus (05:00 AM - 07:30 AM).
-          </div>
-        </div>
-
-        <!-- Interactive Vedic RAG Chat Assistant -->
-        <div class="rag-chat-container">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <strong style="font-size: 12.5px; color: #0F172A; display: flex; align-items: center; gap: 6px;">
-              <span>🤖</span> Ask Vedic RAG Counselor
-            </strong>
-            <span style="font-size: 10.5px; background: #EFF6FF; color: #1D4ED8; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Local-First</span>
-          </div>
-
-          <div class="rag-chat-messages" id="ragMessages">
-            <div class="rag-msg agent">
-              Namaste. I am your Vedic Vocation Counselor. Ask me anything about your <strong>ECCP code</strong>, your matched Epic archetype, how to resolve ethical dilemmas, or your certified NCVET career roadmap.
-            </div>
-          </div>
-
-          <!-- Quick Chips -->
-          <div class="rag-quick-prompts">
-            <button class="rag-chip" onclick="askQuickRAG('Why did I match this archetype?')">Why this archetype?</button>
-            <button class="rag-chip" onclick="askQuickRAG('What is my biggest shadow blind spot?')">My shadow blind spot?</button>
-            <button class="rag-chip" onclick="askQuickRAG('What is my NCVET qualification roadmap?')">NCVET career roadmap?</button>
-            <button class="rag-chip" onclick="askQuickRAG('How do I practice my Sadhana protocol?')">Sadhana protocol?</button>
-          </div>
-
-          <div class="rag-input-row">
-            <input type="text" id="ragInputText" class="rag-input" placeholder="Ask about your archetype, Swadharma, or careers..." onkeydown="if(event.key==='Enter') sendRAGChat()" />
-            <button class="rag-btn-send" onclick="sendRAGChat()">Ask ➔</button>
-          </div>
-        </div>
-
-        <!-- Export & Compendium Deep-Link Buttons -->
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px; margin-bottom: 24px;">
-          <button class="filter-select" style="background: #2563EB; color: #FFFFFF; font-weight: 700; border: none; cursor: pointer; padding: 10px; text-align: center;" onclick="printDossier()">
-            🖨️ Export Sovereign Executive Dossier (PDF)
-          </button>
-          <a href="/compendium" target="_blank" style="text-decoration: none; text-align: center; padding: 9px; background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 6px; color: #1E293B; font-size: 12px; font-weight: 700;">
-            📖 Open Full HPTI Compendium (28 Chapters)
-          </a>
-        </div>
-
-      </div>
-    </aside>
-
-  </div>
-
-  <!-- Unified Footer Container (Loaded dynamically via components/footer.html) -->
-  <div id="site-footer"></div>
-
-  <!-- Scripts -->
-  <script src="js/responsive.js"></script>
-  <script src="js/ide-docking.js"></script>
   <script src="js/components.js"></script>
-
-  <script>
-    /* ══════════════════════════════════════════════════════════════════
-       HAYA PERSONALITIES CLIENT LOGIC & DIAGNOSTIC ENGINE (V2.0)
-       ══════════════════════════════════════════════════════════════════ */
-    let allArchetypes = [];
-    let prakritiQuestions = [];
-    let vikritiQuestions = [];
-    let currentMode = 'prakriti'; // 'prakriti' | 'vikriti'
-    let currentTier = 'vocational'; // 'vocational' | 'rapid'
-    let prakritiAnswers = {};
-    let vikritiAnswers = {};
-    let activeArchetype = null;
-    let lastEvaluationData = null;
-    let availableSectors = [];
-    let currentSectorSelection = 'aerospace';
-
-    // Initialize Portal
-    async function initPersonalitiesPortal() {
-      // 1. Initialize IDE 3-Panel Draggable Docking Engine
-      if (window.HayaIdeDocking) {
-        window.HayaIdeDocking.init({
-          storagePrefix: 'haya_personalities_',
-          containerId: 'ideContainer',
-          leftPanelId: 'panelLeft',
-          rightPanelId: 'panelRight',
-          leftResizerId: 'leftResizer',
-          rightResizerId: 'rightResizer',
-          restoreLeftBtnId: 'btnRestoreLeft',
-          minLeftWidth: 200,
-          maxLeftWidth: 460,
-          defaultLeftWidth: 280,
-          minRightWidth: 320,
-          maxRightWidth: 780,
-          defaultRightWidth: 460
-        });
-      }
-
-      // 2. Fetch Data from Backend
-      try {
-        const [archRes, qRes, sectorRes] = await Promise.all([
-          fetch('/api/personalities/archetypes'),
-          fetch('/api/personalities/questions?tier=' + currentTier),
-          fetch('/api/personalities/sectors')
-        ]);
-        const archData = await archRes.json();
-        const qData = await qRes.json();
-        const sectorData = await sectorRes.json();
-
-        if (archData.success) allArchetypes = archData.archetypes;
-        if (qData.success) {
-          prakritiQuestions = qData.questions || [];
-          vikritiQuestions = qData.vikriti_questions || [];
-        }
-        if (sectorData && sectorData.success) {
-          availableSectors = sectorData.sectors || [];
-          populateSectorDropdown(availableSectors, sectorData.flagships);
-        } else {
-          populateSectorDropdown();
-        }
-
-        renderArchetypeCards(allArchetypes);
-        renderActiveQuestions();
-
-        // Default baseline preview
-        const defaultArch = allArchetypes.find(a => a.id === 'arjuna') || allArchetypes[0];
-        if (defaultArch) {
-          selectArchetype(defaultArch.id);
-        }
-      } catch (err) {
-        console.error('Error fetching personalities data:', err);
-      }
-    }
-
-    // Switch Diagnostic Testing Mode
-    function switchDiagnosticMode(mode) {
-      currentMode = mode;
-      document.getElementById('tabModePrakriti').classList.toggle('active', mode === 'prakriti');
-      document.getElementById('tabModeVikriti').classList.toggle('active', mode === 'vikriti');
-
-      const presetsBar = document.getElementById('prakritiPresetsBar');
-      if (presetsBar) presetsBar.style.display = mode === 'prakriti' ? 'flex' : 'none';
-
-      const titleEl = document.getElementById('centerModeTitle');
-      const subEl = document.getElementById('centerModeSubtitle');
-
-      if (mode === 'prakriti') {
-        titleEl.innerText = currentTier === 'vocational' ? 'ECCP Certified Vocational Battery (Tier 2)' : 'ECCP Rapid Screening (Tier 1)';
-        subEl.innerText = currentTier === 'vocational' ? 'Answer 27 scenarios to uncover your innate Prakriti, 144 Compound Archetype, and certified NCVET vocation.' : 'Answer 9 rapid scenarios for quick orientation and immediate archetype matching.';
-      } else {
-        titleEl.innerText = 'Modern Burnout & Stress Audit (Vikriti Check)';
-        subEl.innerText = 'Answer 6 metabolic and nervous-load questions to calculate your current corporate burnout delta.';
-      }
-
-      renderActiveQuestions();
-      updateProgress();
-    }
-
-    // Switch Question Tier (Tier 2 Vocational 27 Qs vs Tier 1 Rapid 9 Qs)
-    async function switchQuestionTier(tier) {
-      currentTier = tier;
-      const btnVoc = document.getElementById('btnTierVocational');
-      const btnRap = document.getElementById('btnTierRapid');
-
-      if (btnVoc) {
-        btnVoc.style.background = tier === 'vocational' ? '#2563EB' : 'transparent';
-        btnVoc.style.color = tier === 'vocational' ? '#FFF' : '#475569';
-      }
-      if (btnRap) {
-        btnRap.style.background = tier === 'rapid' ? '#2563EB' : 'transparent';
-        btnRap.style.color = tier === 'rapid' ? '#FFF' : '#475569';
-      }
-
-      const subEl = document.getElementById('centerModeSubtitle');
-      if (subEl) {
-        subEl.innerText = tier === 'vocational' 
-          ? 'Answer 27 scenarios to uncover your innate Prakriti, 144 Compound Archetype, and certified NCVET vocation.'
-          : 'Answer 9 rapid scenarios for quick orientation and immediate archetype matching.';
-      }
-
-      try {
-        const res = await fetch('/api/personalities/questions?tier=' + tier);
-        const data = await res.json();
-        if (data.success) {
-          prakritiQuestions = data.questions || [];
-          prakritiAnswers = {};
-          renderActiveQuestions();
-          updateProgress();
-          updateLiveMeters();
-        }
-      } catch (err) {
-        console.error('Error switching tier:', err);
-      }
-    }
-
-    // Psychometrics Modal Controls
-    async function openPsychometricsModal() {
-      const modal = document.getElementById('psychometricsModal');
-      if (!modal) return;
-      modal.style.display = 'flex';
-
-      try {
-        const res = await fetch('/api/personalities/psychometrics/stats');
-        const data = await res.json();
-        if (data.success) {
-          const sessEl = document.getElementById('psychoTotalSessions');
-          const confEl = document.getElementById('psychoAvgConfidence');
-          if (sessEl) sessEl.innerText = data.total_sessions || 0;
-          if (confEl) confEl.innerText = (data.avg_confidence_index || 0) + '%';
-        }
-      } catch (err) {
-        console.warn('Failed to load psychometric stats:', err);
-      }
-    }
-
-    function closePsychometricsModal() {
-      const modal = document.getElementById('psychometricsModal');
-      if (modal) modal.style.display = 'none';
-    }
-
-    // Render Archetype Cards in Left Sidebar
-    function renderArchetypeCards(list) {
-      const container = document.getElementById('characterCardsList');
-      const badge = document.getElementById('archetypesCountBadge');
-      if (badge) badge.innerText = list.length;
-      if (!container) return;
-
-      container.innerHTML = list.map(a => {
-        let tagClass = 'tag-mahabharata';
-        if (a.tier === 'tamasik') tagClass = 'tag-shadow';
-        else if (a.epic.toLowerCase() === 'ramayana') tagClass = 'tag-ramayana';
-
-        return `
-          <div class="character-card ${activeArchetype && activeArchetype.id === a.id ? 'active' : ''}" 
-               id="charCard_${a.id}" 
-               onclick="selectArchetype('${a.id}')">
-            <div class="char-card-header">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <div class="char-monogram" style="background: ${a.color || '#2563EB'};">
-                  ${a.icon || '⚔️'}
-                </div>
-                <div>
-                  <div class="char-name">${a.name}</div>
-                  <div class="char-sanskrit-title">${a.sanskrit_title || ''}</div>
-                </div>
-              </div>
-              <span class="char-epic-tag ${tagClass}">
-                ${a.tier === 'tamasik' ? 'Shadow' : a.epic}
-              </span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-              <span class="char-eccp-badge">${a.eccp_code}</span>
-              <span class="char-nsqf-tag">NSQF L${a.ncvet_details ? a.ncvet_details.nsqf_level : '8'}</span>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // Filter by Sovereign Tier
-    function filterByTier(tier, btn) {
-      document.querySelectorAll('.tier-pill-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      handleCharacterSearch();
-    }
-
-    // Filter by Epic Pill
-    function filterByEpic(epic, btn) {
-      document.querySelectorAll('.epic-pill-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      handleCharacterSearch();
-    }
-
-    // Combined Search and Filter
-    function handleCharacterSearch() {
-      const query = (document.getElementById('characterSearchInput').value || '').toLowerCase();
-      const activeTierBtn = document.querySelector('.tier-pill-btn.active');
-      const tierFilter = activeTierBtn ? activeTierBtn.getAttribute('data-tier') : 'all';
-      const activeEpicBtn = document.querySelector('.epic-pill-btn.active');
-      const epicFilter = activeEpicBtn ? activeEpicBtn.getAttribute('data-epic') : 'all';
-
-      const filtered = allArchetypes.filter(a => {
-        const matchesQuery = !query || 
-          a.name.toLowerCase().includes(query) || 
-          (a.sanskrit_title && a.sanskrit_title.toLowerCase().includes(query)) || 
-          a.eccp_code.toLowerCase().includes(query);
-
-        const matchesTier = (tierFilter === 'all') || (a.tier && a.tier.toLowerCase() === tierFilter.toLowerCase());
-        const matchesEpic = (epicFilter === 'all') || (a.epic && a.epic.toLowerCase() === epicFilter.toLowerCase());
-
-        return matchesQuery && matchesTier && matchesEpic;
-      });
-
-      renderArchetypeCards(filtered);
-    }
-
-    // Render Active Questions
-    function renderActiveQuestions() {
-      const container = document.getElementById('questionsContainer');
-      if (!container) return;
-
-      if (currentMode === 'prakriti') {
-        container.innerHTML = prakritiQuestions.map((q, idx) => `
-          <div class="question-card" id="qCard_${q.id}">
-            <div class="q-top-row">
-              <span class="q-pillar-tag">${q.pillar ? "Pillar " + q.pillar + ": " + q.pillar_title : (q.section || (q.dimension ? q.dimension.toUpperCase() : "Vocational"))}</span>
-              ${q.gita_vector ? `<span class="q-gita-tag">Gita 18: ${q.gita_vector}</span>` : ''}
-              <span style="font-family: var(--font-mono); font-size: 11px; color: #64748B; margin-left: auto;">Q${idx + 1} of ${prakritiQuestions.length}</span>
-            </div>
-            <h3 class="q-scenario-title">${q.title}</h3>
-            <p class="q-scenario-text">${q.scenario}</p>
-
-            ${q.shastric_rationale ? `
-              <span class="q-rationale-toggle" onclick="toggleRationale('${q.id}')">📖 Shastric Insight &amp; Rationale</span>
-              <div class="q-rationale-box" id="ratBox_${q.id}">
-                ${q.shastric_rationale}
-              </div>
-            ` : ''}
-
-            <div class="q-options-grid">
-              ${q.options.map(opt => {
-                const optVal = opt.code || opt.id;
-                return `
-                <label class="option-label ${prakritiAnswers[q.id] === optVal ? 'selected' : ''}" id="optLabel_${q.id}_${optVal}">
-                  <input type="radio" 
-                         name="${q.id}" 
-                         value="${optVal}" 
-                         class="option-radio" 
-                         ${prakritiAnswers[q.id] === optVal ? 'checked' : ''} 
-                         onchange="selectPrakritiOption('${q.id}', '${optVal}')" />
-                  <div class="option-content">
-                    <div class="option-title">${opt.label}</div>
-                    <div class="option-desc">${opt.desc}</div>
-                  </div>
-                </label>
-              `; }).join('')}
-            </div>
-          </div>
-        `).join('');
-      } else {
-        // Vikriti Burnout Audit Questions
-        container.innerHTML = vikritiQuestions.map((q, idx) => `
-          <div class="question-card" id="vCard_${q.id}">
-            <div class="q-top-row">
-              <span class="q-pillar-tag" style="background: #FEF3C7; color: #92400E; border-color: #FDE68A;">
-                Vikriti • ${q.category}
-              </span>
-              <span style="font-family: var(--font-mono); font-size: 11px; color: #64748B; margin-left: auto;">Stress Check ${idx + 1} of ${vikritiQuestions.length}</span>
-            </div>
-            <h3 class="q-scenario-title">${q.title}</h3>
-            <p class="q-scenario-text">${q.prompt}</p>
-
-            <div class="q-options-grid">
-              ${q.options.map(opt => `
-                <label class="option-label ${vikritiAnswers[q.id] === opt.code ? 'selected' : ''}" id="vLabel_${q.id}_${opt.code}">
-                  <input type="radio" 
-                         name="vikriti_${q.id}" 
-                         value="${opt.code}" 
-                         class="option-radio" 
-                         ${vikritiAnswers[q.id] === opt.code ? 'checked' : ''} 
-                         onchange="selectVikritiOption('${q.id}', '${opt.code}')" />
-                  <div class="option-content">
-                    <div class="option-title">${opt.label}</div>
-                    <div class="option-desc">${opt.desc}</div>
-                  </div>
-                </label>
-              `).join('')}
-            </div>
-          </div>
-        `).join('');
-      }
-    }
-
-    function toggleRationale(qId) {
-      const box = document.getElementById(`ratBox_${qId}`);
-      if (box) {
-        box.style.display = box.style.display === 'block' ? 'none' : 'block';
-      }
-    }
-
-    function selectPrakritiOption(qId, code) {
-      prakritiAnswers[qId] = code;
-      const labels = document.querySelectorAll(`[id^="optLabel_${qId}_"]`);
-      labels.forEach(l => l.classList.remove('selected'));
-      const activeLabel = document.getElementById(`optLabel_${qId}_${code}`);
-      if (activeLabel) activeLabel.classList.add('selected');
-
-      updateProgress();
-      updateLiveMeters();
-    }
-
-    function selectVikritiOption(qId, code) {
-      vikritiAnswers[qId] = code;
-      const labels = document.querySelectorAll(`[id^="vLabel_${qId}_"]`);
-      labels.forEach(l => l.classList.remove('selected'));
-      const activeLabel = document.getElementById(`vLabel_${qId}_${code}`);
-      if (activeLabel) activeLabel.classList.add('selected');
-
-      updateProgress();
-    }
-
-    function updateProgress() {
-      if (currentMode === 'prakriti') {
-        const count = Object.keys(prakritiAnswers).length;
-        const total = prakritiQuestions.length || 9;
-        const pct = Math.round((count / total) * 100);
-        document.getElementById('progressBarFill').style.width = `${pct}%`;
-        document.getElementById('progressPercentageText').innerText = `${pct}% Complete (${count}/${total} Answered)`;
-      } else {
-        const count = Object.keys(vikritiAnswers).length;
-        const total = vikritiQuestions.length || 6;
-        const pct = Math.round((count / total) * 100);
-        document.getElementById('progressBarFill').style.width = `${pct}%`;
-        document.getElementById('progressPercentageText').innerText = `${pct}% Stress Check (${count}/${total} Answered)`;
-      }
-    }
-
-    // Select and inspect Archetype
-    function selectArchetype(id) {
-      const arch = allArchetypes.find(a => a.id === id);
-      if (!arch) return;
-      activeArchetype = arch;
-
-      // Update active cards
-      document.querySelectorAll('.character-card').forEach(c => c.classList.remove('active'));
-      const activeCard = document.getElementById(`charCard_${id}`);
-      if (activeCard) activeCard.classList.add('active');
-
-      // Populate Inspector
-      document.getElementById('dossierStatusBadge').innerText = `${arch.tier.toUpperCase()} ARCHETYPE: ${arch.epic.toUpperCase()}`;
-      document.getElementById('dossierHeroTitle').innerText = arch.name;
-      document.getElementById('dossierHeroSub').innerText = `${arch.sanskrit_title || ''} • ${arch.english_moniker || ''}`;
-
-      document.getElementById('dossierMonogram').innerText = arch.icon || '📜';
-      document.getElementById('dossierMonogram').style.background = arch.color || '#2563EB';
-      document.getElementById('dossierCharName').innerText = arch.name;
-      document.getElementById('dossierSanskritTitle').innerText = `${arch.sanskrit_title || ''} (${arch.english_moniker || ''})`;
-      document.getElementById('dossierEpicBadge').innerText = arch.epic;
-
-      // Devanagari Sanskrit Shloka Box
-      document.getElementById('dossierDevanagari').innerText = arch.devanagari || 'रामो विग्रहवान् धर्मः साधुः सत्यपराक्रमः ।';
-      document.getElementById('dossierQuote').innerText = `"${arch.quote}"`;
-      document.getElementById('dossierCitation').innerText = `— ${arch.epic_citation}`;
-
-      // Fourfold Quad Box
-      const parts = arch.eccp_code.split('-');
-      document.getElementById('quadEnergy').innerText = parts[0] || 'SR';
-      document.getElementById('quadEnergyDesc').innerText = arch.guna_base.split('(')[0].trim();
-      document.getElementById('quadCognition').innerText = parts[1] || 'BM';
-      document.getElementById('quadCognitionDesc').innerText = arch.antahkarana.split('(')[0].trim();
-      document.getElementById('quadCompetency').innerText = parts[2] || 'K';
-      document.getElementById('quadCompetencyDesc').innerText = arch.competency.split('(')[0].trim();
-      document.getElementById('quadPurpose').innerText = parts[3] || 'D';
-      document.getElementById('quadPurposeDesc').innerText = arch.purpose.split('(')[0].trim();
-
-      // Psychological Summary
-      document.getElementById('dossierSummary').innerText = arch.psychological_summary;
-
-      // Shadow Warning Box
-      document.getElementById('dossierShadowWarning').innerText = arch.shadow_warning || 'Maintain strict mindfulness against egoic rigidity.';
-
-      // NCVET Sector Alignment (Option C Hybrid)
-      renderDossierSectorAlignment(arch);
-
-      // Sadhana Protocol
-      const sadhana = arch.sadhana_protocol || {
-        pranayama: 'Nadi Shodhana (15 mins) & Ujjayi',
-        ahara: 'Sattvik cooling whole foods',
-        dinacharya: 'Brahma Muhurta deep focus (05:00 AM)'
-      };
-      document.getElementById('sadhanaPranayama').innerHTML = `<strong>• Breath (Pranayama):</strong> ${sadhana.pranayama}`;
-      document.getElementById('sadhanaAhara').innerHTML = `<strong>• Sensory / Diet (Ahara):</strong> ${sadhana.ahara}`;
-      document.getElementById('sadhanaDinacharya').innerHTML = `<strong>• Rhythm (Dinacharya):</strong> ${sadhana.dinacharya}`;
-
-      // Compendium Chapter Deep Link
-      const compChapter = arch.compendium_chapter || 'Chapter 14: The Ramayana Archetypal Spectrum';
-      const compFile = arch.compendium_file || (arch.epic === 'Ramayana' ? '04_Epic_Archetypes_Catalog/chapter_14_ramayana_archetypes.md' : '04_Epic_Archetypes_Catalog/chapter_15_mahabharata_archetypes.md');
-      document.getElementById('dossierCompendiumChapterTitle').innerText = compChapter;
-      document.getElementById('dossierCompendiumExtLink').href = `/compendium?chapter=${encodeURIComponent(compFile)}`;
-      activeArchetypeCompFile = compFile;
-
-      // Open right panel if closed
-      if (window.HayaIdeDocking) {
-        window.HayaIdeDocking.toggleRightPanel(true);
-      }
-    }
-
-    // Apply Presets (Calibrated for both 9-Rapid and 27-Vocational Batteries)
-    function applyPreset(type) {
-      if (currentTier === 'rapid') {
-        if (type === 'arjuna') prakritiAnswers = { q1: 'R', q2: 'R', q3: 'R', q4: 'K', q5: 'D', q6: 'A', q7: 'K', q8: 'D', q9: 'D' };
-        else if (type === 'vidura') prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'B', q5: 'D', q6: 'B', q7: 'B', q8: 'D', q9: 'D' };
-        else if (type === 'rama') prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'K', q5: 'D', q6: 'B', q7: 'K', q8: 'D', q9: 'D' };
-        else if (type === 'hanuman') prakritiAnswers = { q1: 'S', q2: 'R', q3: 'S', q4: 'K', q5: 'D', q6: 'A', q7: 'K', q8: 'D', q9: 'D' };
-        else if (type === 'sugriva') prakritiAnswers = { q1: 'R', q2: 'R', q3: 'S', q4: 'V', q5: 'A', q6: 'A', q7: 'V', q8: 'A', q9: 'A' };
-        else if (type === 'janaka') prakritiAnswers = { q1: 'S', q2: 'S', q3: 'S', q4: 'V', q5: 'D', q6: 'B', q7: 'V', q8: 'A', q9: 'M' };
-        else if (type === 'karna') prakritiAnswers = { q1: 'R', q2: 'R', q3: 'R', q4: 'K', q5: 'M', q6: 'A', q7: 'K', q8: 'A', q9: 'A' };
-      } else {
-        if (type === 'arjuna') {
-          prakritiAnswers = {
-            v_q1: 'R', v_q2: 'R', v_q3: 'R', v_q4: 'R', v_q5: 'R', v_q6: 'R', v_q7: 'R',
-            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'AM', v_q12: 'BM', v_q13: 'AM', v_q14: 'BM',
-            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
-            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'A', v_q26: 'D', v_q27: 'D'
-          };
-        } else if (type === 'vidura') {
-          prakritiAnswers = {
-            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
-            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
-            v_q15: 'B', v_q16: 'B', v_q17: 'B', v_q18: 'B', v_q19: 'B', v_q20: 'B', v_q21: 'B',
-            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'D', v_q26: 'D', v_q27: 'D'
-          };
-        } else if (type === 'rama') {
-          prakritiAnswers = {
-            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
-            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
-            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
-            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'D', v_q26: 'D', v_q27: 'D'
-          };
-        } else if (type === 'hanuman') {
-          prakritiAnswers = {
-            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
-            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
-            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
-            v_q22: 'M', v_q23: 'M', v_q24: 'M', v_q25: 'M', v_q26: 'M', v_q27: 'M'
-          };
-        } else if (type === 'sugriva') {
-          prakritiAnswers = {
-            v_q1: 'R', v_q2: 'R', v_q3: 'R', v_q4: 'R', v_q5: 'R', v_q6: 'R', v_q7: 'R',
-            v_q8: 'MM', v_q9: 'MM', v_q10: 'MM', v_q11: 'MM', v_q12: 'MM', v_q13: 'MM', v_q14: 'MM',
-            v_q15: 'V', v_q16: 'V', v_q17: 'V', v_q18: 'V', v_q19: 'V', v_q20: 'V', v_q21: 'V',
-            v_q22: 'A', v_q23: 'A', v_q24: 'A', v_q25: 'A', v_q26: 'A', v_q27: 'A'
-          };
-        } else if (type === 'janaka') {
-          prakritiAnswers = {
-            v_q1: 'S', v_q2: 'S', v_q3: 'S', v_q4: 'S', v_q5: 'S', v_q6: 'S', v_q7: 'S',
-            v_q8: 'BM', v_q9: 'BM', v_q10: 'BM', v_q11: 'BM', v_q12: 'BM', v_q13: 'BM', v_q14: 'BM',
-            v_q15: 'V', v_q16: 'V', v_q17: 'V', v_q18: 'V', v_q19: 'V', v_q20: 'V', v_q21: 'V',
-            v_q22: 'D', v_q23: 'D', v_q24: 'D', v_q25: 'M', v_q26: 'M', v_q27: 'M'
-          };
-        } else if (type === 'karna') {
-          prakritiAnswers = {
-            v_q1: 'R', v_q2: 'R', v_q3: 'R', v_q4: 'R', v_q5: 'R', v_q6: 'R', v_q7: 'R',
-            v_q8: 'AM', v_q9: 'AM', v_q10: 'AM', v_q11: 'AM', v_q12: 'AM', v_q13: 'AM', v_q14: 'AM',
-            v_q15: 'K', v_q16: 'K', v_q17: 'K', v_q18: 'K', v_q19: 'K', v_q20: 'K', v_q21: 'K',
-            v_q22: 'A', v_q23: 'A', v_q24: 'A', v_q25: 'A', v_q26: 'A', v_q27: 'A'
-          };
-        }
-      }
-
-      currentMode = 'prakriti';
-      switchDiagnosticMode('prakriti');
-      renderActiveQuestions();
-      updateProgress();
-      updateLiveMeters();
-      calculateAndInspect();
-    }
-
-    // Live Meters Update (Dynamic Simplex Calculation)
-    function updateLiveMeters() {
-      const ans = prakritiAnswers;
-      let s = 1, r = 1, t = 1;
-      let b = 1, m = 1, a = 1;
-      let brahmana = 1, kshatriya = 1, vaishya = 1, shudra = 1;
-      let dharma = 1, artha = 1, kama = 1, moksha = 1;
-
-      for (const [qId, val] of Object.entries(ans)) {
-        const qObj = prakritiQuestions.find(q => q.id === qId);
-        const opt = qObj ? qObj.options.find(o => o.id === val || o.code === val) : null;
-        if (opt && opt.weights) {
-          if (opt.weights.guna) {
-            s += opt.weights.guna.S || 0;
-            r += opt.weights.guna.R || 0;
-            t += opt.weights.guna.T || 0;
-          }
-          if (opt.weights.cognition) {
-            b += opt.weights.cognition.B || 0;
-            m += opt.weights.cognition.M || 0;
-            a += opt.weights.cognition.A || 0;
-          }
-          if (opt.weights.competency) {
-            brahmana += opt.weights.competency.B || 0;
-            kshatriya += opt.weights.competency.K || 0;
-            vaishya += opt.weights.competency.V || 0;
-            shudra += opt.weights.competency.S || 0;
-          }
-          if (opt.weights.purpose) {
-            dharma += opt.weights.purpose.D || 0;
-            artha += opt.weights.purpose.A || 0;
-            kama += opt.weights.purpose.K || 0;
-            moksha += opt.weights.purpose.M || 0;
-          }
-        } else {
-          if (val === 'S') s += 3; else if (val === 'R') r += 3; else if (val === 'T') t += 3;
-          if (val === 'B') { brahmana += 3; b += 2; }
-          if (val === 'K') { kshatriya += 3; a += 2; }
-          if (val === 'V') { vaishya += 3; m += 2; }
-          if (val === 'S') { shudra += 3; m += 2; }
-          if (val === 'D') dharma += 3;
-          if (val === 'A') artha += 3;
-          if (val === 'M') moksha += 3;
-          if (val === 'BM') b += 3;
-          if (val === 'MM') m += 3;
-          if (val === 'AM') a += 3;
-        }
-      }
-
-      const gTot = s + r + t;
-      const sPct = Math.round((s / gTot) * 100);
-      const rPct = Math.round((r / gTot) * 100);
-      const tPct = 100 - sPct - rPct;
-
-      document.getElementById('barSattva').style.width = `${sPct}%`;
-      document.getElementById('barRajas').style.width = `${rPct}%`;
-      document.getElementById('barTamas').style.width = `${tPct}%`;
-      document.getElementById('meterGunaText').innerText = `S: ${sPct}% | R: ${rPct}% | T: ${tPct}%`;
-
-      const cTot = b + m + a;
-      const bPct = Math.round((b / cTot) * 100);
-      const mPct = Math.round((m / cTot) * 100);
-      const aPct = 100 - bPct - mPct;
-
-      document.getElementById('barBuddhi').style.width = `${bPct}%`;
-      document.getElementById('barManas').style.width = `${mPct}%`;
-      document.getElementById('barAhankara').style.width = `${aPct}%`;
-      document.getElementById('meterCognitionText').innerText = `Buddhi: ${bPct}% | Manas: ${mPct}% | Ahankara: ${aPct}%`;
-
-      const vTot = brahmana + kshatriya + vaishya + shudra;
-      const brPct = Math.round((brahmana / vTot) * 100);
-      const ksPct = Math.round((kshatriya / vTot) * 100);
-      const vaPct = Math.round((vaishya / vTot) * 100);
-      const shPct = 100 - brPct - ksPct - vaPct;
-
-      document.getElementById('barBrahmana').style.width = `${brPct}%`;
-      document.getElementById('barKshatriya').style.width = `${ksPct}%`;
-      document.getElementById('barVaishya').style.width = `${vaPct}%`;
-      document.getElementById('barShudra').style.width = `${shPct}%`;
-      document.getElementById('meterVarnaText').innerText = `B: ${brPct}% | K: ${ksPct}% | V: ${vaPct}% | S: ${shPct}%`;
-
-      const pTot = dharma + artha + kama + moksha;
-      const dhPct = Math.round((dharma / pTot) * 100);
-      const arPct = Math.round((artha / pTot) * 100);
-      const kaPct = Math.round((kama / pTot) * 100);
-      const moPct = 100 - dhPct - arPct - kaPct;
-
-      document.getElementById('barDharma').style.width = `${dhPct}%`;
-      document.getElementById('barArtha').style.width = `${arPct}%`;
-      document.getElementById('barKama').style.width = `${kaPct}%`;
-      document.getElementById('barMoksha').style.width = `${moPct}%`;
-      document.getElementById('meterPurposeText').innerText = `D: ${dhPct}% | A: ${arPct}% | K: ${kaPct}% | M: ${moPct}%`;
-    }
-
-    // Calculate Final Archetype & Vikriti Delta
-    async function calculateAndInspect() {
-      const pCount = Object.keys(prakritiAnswers).length;
-      const minRequired = currentTier === 'rapid' ? 3 : 5;
-      if (pCount < minRequired) {
-        alert("Please answer at least " + minRequired + " scenarios to generate a psychometrically valid calculation.");
-        return;
-      }
-
-      try {
-        const res = await fetch('/api/personalities/evaluate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            tier: currentTier,
-            answers: prakritiAnswers,
-            vikriti_answers: vikritiAnswers
-          })
-        });
-        const data = await res.json();
-        if (data.success && (data.matched_archetype || data.master_144_archetype)) {
-          lastEvaluationData = data;
-          if (data.matched_archetype) {
-            selectArchetype(data.matched_archetype.id);
-          }
-          document.getElementById('dossierStatusBadge').innerText = "DIAGNOSTIC COMPLETE • " + data.confidence_index + "% CONCORDANCE";
-
-          // 144 ECCP Compound Archetype Banner
-          const banner = document.getElementById('master144Banner');
-          if (banner && data.master_144_archetype) {
-            banner.style.display = 'block';
-            document.getElementById('badgeConfidenceIndex').innerText = data.confidence_index + "% Concordance";
-            document.getElementById('valMasterEnglishTitle').innerText = data.master_144_archetype.english_title;
-            document.getElementById('valMasterSanskritTitle').innerText = data.master_144_archetype.sanskrit_title;
-            if (data.secondary_archetype) {
-              document.getElementById('valMasterSecondary').innerText = "Secondary Resonance: " + data.secondary_archetype.eccp_code + " (" + data.secondary_archetype.english_title + ")";
-            }
-          }
-
-          // Vikriti Alert Box
-          const vBox = document.getElementById('vikritiAlertBox');
-          if (data.vikriti_audit && data.vikriti_audit.score > 0) {
-            vBox.style.display = 'block';
-            document.getElementById('vikritiPctBadge').innerText = data.vikriti_audit.percentage + "% Stress Load";
-            document.getElementById('vikritiAlertText').innerText = data.vikriti_audit.alert;
-          } else {
-            vBox.style.display = 'none';
-          }
-
-          // Scroll inspector into view
-          const dossierBody = document.getElementById('dossierBody');
-          if (dossierBody) dossierBody.scrollTop = 0;
-        }
-      } catch (err) {
-        console.error('Calculation error:', err);
-      }
-    }
-
-    // Reset Test
-    function resetTest() {
-      if (currentMode === 'prakriti') {
-        prakritiAnswers = {};
-      } else {
-        vikritiAnswers = {};
-      }
-      renderActiveQuestions();
-      updateProgress();
-      updateLiveMeters();
-    }
-
-    // Send Query to Vedic RAG Agent
-    async function sendRAGChat(presetText) {
-      const input = document.getElementById('ragInputText');
-      const query = presetText || (input ? input.value.trim() : '');
-      if (!query) return;
-
-      if (input) input.value = '';
-
-      const msgBox = document.getElementById('ragMessages');
-      // Append user msg
-      const userDiv = document.createElement('div');
-      userDiv.className = 'rag-msg user';
-      userDiv.innerText = query;
-      msgBox.appendChild(userDiv);
-      msgBox.scrollTop = msgBox.scrollHeight;
-
-      // Append thinking msg
-      const thinkingDiv = document.createElement('div');
-      thinkingDiv.className = 'rag-msg agent';
-      thinkingDiv.innerText = 'Retrieving Upanishad, Gita and NCVET context...';
-      msgBox.appendChild(thinkingDiv);
-      msgBox.scrollTop = msgBox.scrollHeight;
-
-      try {
-        const res = await fetch('/api/personalities/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            query,
-            archetype_id: activeArchetype ? activeArchetype.id : 'arjuna',
-            eccp_code: activeArchetype ? activeArchetype.eccp_code : 'SR-BM-K-D'
-          })
-        });
-        const data = await res.json();
-        if (data.success) {
-          thinkingDiv.innerHTML = `
-            <strong>${data.archetype} (${data.citation}):</strong><br>
-            ${data.devanagari ? `<div style="font-family: var(--font-devanagari); font-size: 13px; color: #78350F; margin: 4px 0;">${data.devanagari}</div>` : ''}
-            ${data.response}
-          `;
-        } else {
-          thinkingDiv.innerText = 'Inquiry received. Align your Swadharma with your highest natural capacity (Swabhava) to ensure lifelong vitality.';
-        }
-      } catch (err) {
-        thinkingDiv.innerText = 'Inquiry received. Align your daily action with your inherent constitution (Prakriti) and duty (Dharma).';
-      }
-      msgBox.scrollTop = msgBox.scrollHeight;
-    }
-
-    function askQuickRAG(text) {
-      sendRAGChat(text);
-    }
-
-    // Export / Print Dossier
-    function printDossier() {
-      window.print();
-    }
-
-    // Compendium Modal Reader Logic
-    let activeArchetypeCompFile = '04_Epic_Archetypes_Catalog/chapter_14_ramayana_archetypes.md';
-
-    function openCompendiumReader(customFile) {
-      const file = customFile || activeArchetypeCompFile;
-      const modal = document.getElementById('compendiumModal');
-      const content = document.getElementById('modalCompContent');
-      const title = document.getElementById('modalCompTitle');
-      const extLink = document.getElementById('modalOpenExternal');
-
-      modal.style.display = 'flex';
-      extLink.href = `/compendium?chapter=${encodeURIComponent(file)}`;
-      content.innerHTML = `
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px; color: #64748B; gap: 12px;">
-          <div style="width: 32px; height: 32px; border: 3px solid #E2E8F0; border-top-color: #2563EB; border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
-          <span>Loading Shastric Compendium Chapter...</span>
-        </div>
-      `;
-
-      fetch(`/api/personalities/compendium/chapter?file=${encodeURIComponent(file)}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            title.innerText = data.title;
-            if (window.marked && window.marked.parse) {
-              content.innerHTML = window.marked.parse(data.markdown);
-            } else {
-              content.innerHTML = `<pre style="white-space: pre-wrap; font-family: inherit;">${data.markdown}</pre>`;
-            }
-          } else {
-            content.innerHTML = `<div style="color: #DC2626; padding: 20px;">⚠️ ${data.error || 'Failed to load chapter'}</div>`;
-          }
-        })
-        .catch(err => {
-          content.innerHTML = `<div style="color: #DC2626; padding: 20px;">⚠️ Error loading chapter: ${err.message}</div>`;
-        });
-    }
-
-    function closeCompendiumReader() {
-      document.getElementById('compendiumModal').style.display = 'none';
-    }
-
-    // ══════════════════════════════════════════════════════════════════
-    // NCVET SECTOR CAREER ALIGNMENT ENGINE (OPTION C HYBRID)
-    // ══════════════════════════════════════════════════════════════════
-    function populateSectorDropdown(sectors, flagships) {
-      const select = document.getElementById('dossierSectorSelect');
-      if (!select) return;
-
-      const flagList = flagships || [
-        { id: 'aerospace', name: 'Aerospace, Aviation & Defense', icon: '🚀' },
-        { id: 'it_ai', name: 'IT-ITeS & Artificial Intelligence', icon: '💻' },
-        { id: 'healthcare', name: 'Healthcare & Life Sciences', icon: '🏥' },
-        { id: 'bfsi', name: 'BFSI & Capital Markets', icon: '📈' },
-        { id: 'management', name: 'Management & Governance', icon: '🏛️' },
-        { id: 'green_energy', name: 'Green Energy & Sustainability', icon: '🌱' },
-        { id: 'logistics', name: 'Logistics & Global Supply Chain', icon: '🚢' },
-        { id: 'automotive', name: 'Automotive & Future Mobility', icon: '⚡' },
-        { id: 'electronics', name: 'Electronics & Semiconductors', icon: '🔬' },
-        { id: 'infrastructure', name: 'Infrastructure & Construction', icon: '🏗️' },
-        { id: 'media', name: 'Media, Gaming & Entertainment', icon: '🎬' },
-        { id: 'agriculture', name: 'Agriculture & Agri-Tech', icon: '🌾' }
-      ];
-
-      let html = '<optgroup label="⭐ Top Flagship Sectors">';
-      for (const f of flagList) {
-        html += `<option value="${f.id}">${f.icon || '⭐'} ${f.name}</option>`;
-      }
-      html += '</optgroup>';
-
-      if (sectors && sectors.length > 0) {
-        const others = sectors.filter(s => !s.is_flagship);
-        if (others.length > 0) {
-          html += '<optgroup label="🏛️ All NCVET &amp; NSQF Sectors (38+)">';
-          for (const o of others) {
-            html += `<option value="${o.name}">🏛️ ${o.name} (${o.count || 'NCVET'})</option>`;
-          }
-          html += '</optgroup>';
-        }
-      }
-
-      select.innerHTML = html;
-      select.value = currentSectorSelection || 'aerospace';
-    }
-
-    function renderDossierSectorAlignment(arch) {
-      if (!arch) return;
-      const selectEl = document.getElementById('dossierSectorSelect');
-      const targetSector = currentSectorSelection || arch.ncvet_details?.sector_id || 'aerospace';
-      if (selectEl) {
-        selectEl.value = targetSector;
-      }
-      updateSectorCareers(arch.eccp_code, targetSector);
-    }
-
-    async function updateSectorCareers(eccpCode, sectorId) {
-      const listEl = document.getElementById('dossierCareersList');
-      if (listEl) {
-        listEl.innerHTML = `
-          <div style="padding: 14px; text-align: center; color: #64748B; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <div style="width: 14px; height: 14px; border: 2px solid #CBD5E1; border-top-color: #2563EB; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
-            <span>Aligning Swabhava with sector...</span>
-          </div>
-        `;
-      }
-
-      try {
-        const res = await fetch(`/api/personalities/careers?code=${encodeURIComponent(eccpCode)}&sector=${encodeURIComponent(sectorId)}`);
-        const data = await res.json();
-        if (data.success) {
-          applyCareerAlignmentData(data);
-        }
-      } catch (err) {
-        console.error('Failed to fetch careers for sector:', err);
-      }
-    }
-
-    function renderCareersList(data) {
-      const listEl = document.getElementById('dossierCareersList');
-      if (!listEl || !data || !Array.isArray(data.aligned_careers)) return;
-
-      const sectorSelect = document.getElementById('dossierSectorSelect');
-      const sectorName = data.db_sector || data.sector_name || (sectorSelect ? sectorSelect.value : '');
-
-      listEl.innerHTML = data.aligned_careers.map((c, idx) => {
-        const match = c.match(/^(.*?)\s*\(([A-Z0-9_/]+)\s*-\s*NSQF\s*([^)]+)\)$/i) || c.match(/^(.*?)\s*\((.*?)\s*-\s*NSQF\s*(.*?)\)$/);
-        const title = match ? match[1].trim() : c;
-        const qpCode = match ? match[2].trim() : (data.qp_code || 'NCVET');
-        const level = match ? match[3].trim() : `L${data.nsqf_level || 8}`;
-        const isPrimary = idx === 0;
-
-        return `
-          <div class="ncvet-qp-card ${isPrimary ? 'is-primary-card' : ''}">
-            <div class="qp-header-row">
-              <div class="qp-title">${title}</div>
-              <span class="qp-badge">NSQF ${level}</span>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-              <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="font-family: var(--font-mono); font-weight: 700; color: #1D4ED8; font-size: 11px;">${qpCode}</span>
-                <span style="color: #CBD5E1;">•</span>
-                ${isPrimary 
-                  ? `<span class="badge-primary-fit">★ Primary Fit</span>` 
-                  : `<span class="badge-lateral-role">Lateral Role</span>`}
-              </div>
-              <a href="/employees_nsqf.html?sector=${encodeURIComponent(sectorName)}&qp=${encodeURIComponent(qpCode)}" 
-                 target="_blank" 
-                 class="btn-inspect-link" 
-                 title="Open ${qpCode} in National Explorer with syllabus, videos &amp; PCs">
-                <span>Inspect in Explorer</span>
-                <span>↗</span>
-              </a>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function applyCareerAlignmentData(data) {
-      const metaEl = document.getElementById('dossierNcvetMeta');
-      const directiveEl = document.getElementById('dossierSwadharmaDirective');
-
-      if (metaEl) {
-        metaEl.innerHTML = `Band: <strong>NSQF L${data.nsqf_level || 8}</strong> • US O*NET: <strong>${data.us_onet_code || '11-1021.00'}</strong>`;
-      }
-      if (directiveEl && data.swadharma_directive) {
-        directiveEl.innerHTML = `<strong>Swadharma Law (Gita 18.47):</strong> ${data.swadharma_directive}`;
-      }
-
-      renderCareersList(data);
-    }
-
-    function onDossierSectorChanged(sectorId) {
-      currentSectorSelection = sectorId;
-      if (activeArchetype) {
-        updateSectorCareers(activeArchetype.eccp_code, sectorId);
-      }
-    }
-
-    // Startup
-    window.addEventListener('DOMContentLoaded', initPersonalitiesPortal);
-  </script>
-
-  <!-- In-App Compendium Slide-Over Modal -->
-  <div id="compendiumModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(4px); z-index: 99999; justify-content: flex-end;">
-    <div style="width: 820px; max-width: 95vw; height: 100%; background: #FFFFFF; display: flex; flex-direction: column; box-shadow: -8px 0 30px rgba(0,0,0,0.3);">
-      <div style="padding: 16px 24px; background: #0B192C; color: #FFFFFF; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1E293B;">
-        <div>
-          <div style="font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px;">
-            <span>📖</span> <span id="modalCompTitle">HPTI Master Compendium</span>
-          </div>
-          <div style="font-size: 11.5px; color: #94A3B8;">Vedic Psychology • ECCP Framework • Ramayana &amp; Mahabharata • NSQF Standards</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <a id="modalOpenExternal" href="/compendium" target="_blank" style="color: #60A5FA; font-size: 12.5px; text-decoration: none; font-weight: 700; background: rgba(37,99,235,0.2); padding: 5px 10px; border-radius: 4px; border: 1px solid rgba(96,165,250,0.3);">
-            Open Full Page ↗
-          </a>
-          <button onclick="closeCompendiumReader()" style="background: rgba(255,255,255,0.15); border: none; color: #FFF; width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center;">
-            ✕
-          </button>
-        </div>
-      </div>
-      <div id="modalCompContent" class="markdown-body" style="flex: 1; overflow-y: auto; padding: 36px 44px; font-size: 15px; line-height: 1.75; color: #1E293B;">
-        <!-- Loaded dynamically via fetch -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Psychometrics & Scientific Validation Modal -->
-  <div id="psychometricsModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 99999; align-items: center; justify-content: center;">
-    <div style="width: 620px; max-width: 92vw; background: #FFFFFF; border-radius: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column; border: 1.5px solid #CBD5E1;">
-      <div style="padding: 16px 20px; background: #0F172A; color: #FFF; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1E293B;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 20px;">📊</span>
-          <div>
-            <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.3px;">HPTI Psychometrics &amp; Telemetry</div>
-            <div style="font-size: 11px; color: #94A3B8;">APA / ITC Validation Pipeline • EFA / CFA Benchmarks</div>
-          </div>
-        </div>
-        <button onclick="closePsychometricsModal()" style="background: rgba(255,255,255,0.15); border: none; color: #FFF; width: 28px; height: 28px; border-radius: 6px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
-      </div>
-      <div style="padding: 22px; font-size: 13px; color: #334155; display: flex; flex-direction: column; gap: 14px;">
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px; border-radius: 8px; text-align: center;">
-            <div style="font-size: 22px; font-weight: 800; color: #2563EB;" id="psychoTotalSessions">...</div>
-            <div style="font-size: 11px; color: #64748B; font-weight: 700; text-transform: uppercase;">Empirical Sessions</div>
-          </div>
-          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px; border-radius: 8px; text-align: center;">
-            <div style="font-size: 22px; font-weight: 800; color: #059669;" id="psychoAvgConfidence">...</div>
-            <div style="font-size: 11px; color: #64748B; font-weight: 700; text-transform: uppercase;">Avg Concordance</div>
-          </div>
-          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 12px; border-radius: 8px; text-align: center;">
-            <div style="font-size: 22px; font-weight: 800; color: #7C3AED;">&ge; 0.85</div>
-            <div style="font-size: 11px; color: #64748B; font-weight: 700; text-transform: uppercase;">Target Cronbach α</div>
-          </div>
-        </div>
-
-        <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 4px solid #2563EB; padding: 12px 14px; border-radius: 6px;">
-          <strong style="color: #1E3A8A; font-size: 12.5px;">Phase 1 Psychometric Telemetry &amp; Ingestion:</strong>
-          <p style="margin: 4px 0 0 0; font-size: 12px; color: #1E40AF; line-height: 1.5;">
-            Every assessment response vector is automatically logged to PostgreSQL (<code>eccp_test_sessions</code> &amp; <code>eccp_item_responses</code>) to calculate subscale reliability, test-retest coefficients, and item discrimination indices.
-          </p>
-        </div>
-
-        <div style="border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; background: #F8FAFC;">
-          <div style="font-size: 11.5px; font-weight: 700; color: #475569; margin-bottom: 6px; text-transform: uppercase;">Four-Axis Psychometric Latent Model</div>
-          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #334155; line-height: 1.6;">
-            <span>• Energy (Triguna 3-simplex)</span>
-            <span>• Cognition (Antahkarana 3-simplex)</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #334155; line-height: 1.6;">
-            <span>• Competency (Varna 4-simplex)</span>
-            <span>• Purpose (Purushartha 4-simplex)</span>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 6px;">
-          <span style="font-size: 11px; color: #64748B;">Ready for SPSS, R, and Python CFA</span>
-          <a href="/api/personalities/psychometrics/export" download style="display: inline-flex; align-items: center; gap: 6px; background: #2563EB; color: #FFF; font-weight: 700; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-size: 12px; box-shadow: 0 2px 4px rgba(37,99,235,0.2);">
-            ⬇️ Export Empirical Dataset (CSV)
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </body>
 </html>
