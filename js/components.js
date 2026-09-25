@@ -222,31 +222,44 @@ function renderSiteHeader() {
             }
             .dropdown-menu {
                 position: absolute;
-                top: 100%;
+                top: calc(100% + 4px);
                 right: 0;
                 left: auto;
-                min-width: 130px;
+                min-width: 140px;
                 background: #FFFFFF;
                 border: 1px solid var(--border-color, #E2E8F0);
                 border-radius: 8px;
-                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
                 padding: 6px;
                 list-style: none;
-                margin: 6px 0 0 0;
-                display: none;
+                margin: 0;
+                display: flex;
                 flex-direction: column;
                 gap: 2px;
                 z-index: 1001;
-                animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-4px);
+                pointer-events: none;
+                transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s;
             }
-            @keyframes dropdownFadeIn {
-                from { opacity: 0; transform: translateY(-4px); }
-                to { opacity: 1; transform: translateY(0); }
+            /* Seamless invisible hover bridge to completely eliminate the gap between button and menu */
+            .dropdown-menu::before {
+                content: '';
+                position: absolute;
+                top: -12px;
+                left: 0;
+                right: 0;
+                height: 12px;
+                background: transparent;
             }
             .nav-dropdown:hover .dropdown-menu,
             .nav-dropdown:focus-within .dropdown-menu,
             .nav-dropdown.open .dropdown-menu {
-                display: flex;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
             }
             .dropdown-item {
                 padding: 8px 14px;
@@ -377,6 +390,23 @@ function renderSiteHeader() {
         hamburger.addEventListener('click', () => {
             const isOpen = drawer.classList.toggle('open');
             hamburger.setAttribute('aria-expanded', isOpen);
+        });
+    }
+
+    // Bind Personality Tests dropdown toggle on click (for deliberate touch / click interaction)
+    const dropdown = headerMount.querySelector('.nav-dropdown');
+    const dropdownToggle = headerMount.querySelector('.nav-dropdown-toggle');
+    if (dropdown && dropdownToggle) {
+        dropdownToggle.addEventListener('click', (e) => {
+            // Prevent immediate navigation so the user can deliberately pick from the dropdown
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+        });
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
         });
     }
 }
