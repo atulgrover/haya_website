@@ -223,15 +223,16 @@ function renderSiteHeader() {
             .dropdown-menu {
                 position: absolute;
                 top: 100%;
-                left: 0;
-                min-width: 240px;
+                right: 0;
+                left: auto;
+                min-width: 130px;
                 background: #FFFFFF;
                 border: 1px solid var(--border-color, #E2E8F0);
                 border-radius: 8px;
                 box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
                 padding: 6px;
                 list-style: none;
-                margin: 4px 0 0 0;
+                margin: 6px 0 0 0;
                 display: none;
                 flex-direction: column;
                 gap: 2px;
@@ -248,15 +249,13 @@ function renderSiteHeader() {
                 display: flex;
             }
             .dropdown-item {
-                padding: 8px 12px;
+                padding: 8px 14px;
                 border-radius: 6px;
-                font-size: 13.5px;
-                font-weight: 500;
+                font-size: 14px;
+                font-weight: 600;
                 color: var(--text-main, #212121);
                 text-decoration: none;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+                display: block;
                 transition: all 0.15s ease;
             }
             .dropdown-item:hover, .dropdown-item.active {
@@ -335,30 +334,16 @@ function renderSiteHeader() {
             <!-- Enventors tab commented out to declutter header; patents.html preserved for future use -->
             <!-- <li><a href="patents.html" class="nav-link ${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? 'active' : ''}">Enventors</a></li> -->
             <li class="nav-dropdown">
-              <a href="personalities_generic.html" class="nav-link nav-pill-blue nav-dropdown-toggle ${pillar === 'personalities' ? 'active' : ''}" title="Personality Tests — Haya Personality Type Indicators">
-                Personality Tests <span class="pill-sparkle">✦</span>
+              <a href="personalities_generic.html" class="nav-link nav-pill-blue nav-dropdown-toggle ${pillar === 'personalities' ? 'active' : ''}" title="Personality Tests">
+                Personality Tests
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 12px; height: 12px; margin-left: 2px;"><path d="M6 9l6 6 6-6"/></svg>
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="personalities_generic.html" class="dropdown-item ${path.endsWith('personalities_generic.html') ? 'active' : ''}">
-                    <div>
-                      <div style="font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 6px;">
-                        <span>🌐</span> Corporate / Professional
-                      </div>
-                      <div style="font-size: 11px; color: #64748B; margin-top: 1px;">Executive &amp; Vocational Typology</div>
-                    </div>
-                  </a>
+                  <a href="personalities_generic.html" class="dropdown-item ${path.endsWith('personalities_generic.html') ? 'active' : ''}">Generic</a>
                 </li>
                 <li>
-                  <a href="personalities_vedic.html" class="dropdown-item ${path.endsWith('personalities_vedic.html') ? 'active' : ''}">
-                    <div>
-                      <div style="font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 6px;">
-                        <span>📜</span> Vedic &amp; Epic Shastric
-                      </div>
-                      <div style="font-size: 11px; color: #64748B; margin-top: 1px;">ECCP Archetypes &amp; Epic Mirrors</div>
-                    </div>
-                  </a>
+                  <a href="personalities_vedic.html" class="dropdown-item ${path.endsWith('personalities_vedic.html') ? 'active' : ''}">Vedic</a>
                 </li>
               </ul>
             </li>
@@ -379,8 +364,8 @@ function renderSiteHeader() {
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
         <div class="nav-mobile-group">
           <div class="nav-mobile-group-title">Personality Tests</div>
-          <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">🌐 Corporate / Professional ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>
-          <a href="personalities_vedic.html" class="${path.endsWith('personalities_vedic.html') ? 'active' : ''}">📜 Vedic &amp; Epic Shastric ${path.endsWith('personalities_vedic.html') ? '●' : ''}</a>
+          <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">Generic ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>
+          <a href="personalities_vedic.html" class="${path.endsWith('personalities_vedic.html') ? 'active' : ''}">Vedic ${path.endsWith('personalities_vedic.html') ? '●' : ''}</a>
         </div>
       </nav>
     `;
