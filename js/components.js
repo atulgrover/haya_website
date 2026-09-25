@@ -319,7 +319,7 @@ function renderSiteHeader() {
     else if (pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors') subBadge = 'Enventors';
     else if (path.endsWith('personalities_generic.html')) subBadge = 'Corporate';
     else if (path.endsWith('personalities_vedic.html')) subBadge = 'Vedic';
-    else if (pillar === 'personalities') subBadge = 'HPTI';
+    else if (pillar === 'personalities') subBadge = 'Personality Tests';
 
     headerMount.innerHTML = `
       <header class="header-nav">
@@ -335,8 +335,8 @@ function renderSiteHeader() {
             <!-- Enventors tab commented out to declutter header; patents.html preserved for future use -->
             <!-- <li><a href="patents.html" class="nav-link ${pillar === 'patents' || pillar === 'inventors' || pillar === 'enventors' ? 'active' : ''}">Enventors</a></li> -->
             <li class="nav-dropdown">
-              <a href="personalities_generic.html" class="nav-link nav-pill-blue nav-dropdown-toggle ${pillar === 'personalities' ? 'active' : ''}" title="HPTI — Haya Personality Type Indicators">
-                HPTI <span class="pill-sparkle">✦</span>
+              <a href="personalities_generic.html" class="nav-link nav-pill-blue nav-dropdown-toggle ${pillar === 'personalities' ? 'active' : ''}" title="Personality Tests — Haya Personality Type Indicators">
+                Personality Tests <span class="pill-sparkle">✦</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 12px; height: 12px; margin-left: 2px;"><path d="M6 9l6 6 6-6"/></svg>
               </a>
               <ul class="dropdown-menu">
@@ -378,9 +378,9 @@ function renderSiteHeader() {
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Employers ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Entrepreneurs ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
         <div class="nav-mobile-group">
-          <div class="nav-mobile-group-title">HPTI — Personality Typology</div>
-          <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">🌐 Corporate / Professional HPTI ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>
-          <a href="personalities_vedic.html" class="${path.endsWith('personalities_vedic.html') ? 'active' : ''}">📜 Vedic &amp; Epic Shastric HPTI ${path.endsWith('personalities_vedic.html') ? '●' : ''}</a>
+          <div class="nav-mobile-group-title">Personality Tests</div>
+          <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">🌐 Corporate / Professional ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>
+          <a href="personalities_vedic.html" class="${path.endsWith('personalities_vedic.html') ? 'active' : ''}">📜 Vedic &amp; Epic Shastric ${path.endsWith('personalities_vedic.html') ? '●' : ''}</a>
         </div>
       </nav>
     `;
