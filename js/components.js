@@ -361,13 +361,25 @@ function renderSiteHeader() {
               </ul>
             </li>
           </ul>
-          <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
+          <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
+            <div id="varahaAuthAction">
+              <a href="http://localhost:3300/auth/login?app=varaha" class="btn-varaha-auth" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: background 0.2s;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Sign In / Track Progress
+              </a>
+            </div>
+            <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Learning Studio" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #F1F5F9; color: #334155; font-size: 13px; font-weight: 500; border-radius: 6px; border: 1px solid #CBD5E1; text-decoration: none;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Desktop Studio
+            </a>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
       <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
@@ -409,6 +421,38 @@ function renderSiteHeader() {
             }
         });
     }
+
+    // --- Varaha & Garuda SSO Session Listener ---
+    if (window.location.hash.includes("token=")) {
+        try {
+            const params = new URLSearchParams(window.location.hash.substring(1));
+            const token = params.get("token");
+            const name = params.get("name") || "Learner";
+            if (token) {
+                localStorage.setItem("varaha_token", token);
+                localStorage.setItem("varaha_user", JSON.stringify({ name, token }));
+                history.replaceState(null, "", window.location.pathname + window.location.search);
+            }
+        } catch (e) {
+            console.warn("Error parsing auth hash", e);
+        }
+    }
+
+    const authMount = headerMount.querySelector("#varahaAuthAction");
+    const savedVarahaUser = localStorage.getItem("varaha_user");
+    if (authMount && savedVarahaUser) {
+        try {
+            const parsed = JSON.parse(savedVarahaUser);
+            authMount.innerHTML = `
+              <div style="display: inline-flex; align-items: center; gap: 8px; background: #F0FDF4; border: 1px solid #BBF7D0; padding: 4px 10px; border-radius: 20px;">
+                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22C55E;"></span>
+                <span style="font-size: 13px; font-weight: 600; color: #166534;">${parsed.name || "Learner"}</span>
+                <a href="#logout" onclick="localStorage.removeItem('varaha_token'); localStorage.removeItem('varaha_user'); location.reload();" style="font-size: 11px; color: #64748B; margin-left: 4px; text-decoration: underline;">Logout</a>
+              </div>
+            `;
+        } catch (e) {}
+    }
+
 }
 
 /* ── Inject Auth Modal HTML & CSS ────────────────────────────── */
