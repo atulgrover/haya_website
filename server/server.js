@@ -3,28 +3,20 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const db = require('./db');
-const { router: authRouter } = require('./routes/auth');
-const licenseRouter = require('./routes/license');
-const downloadsRouter = require('./routes/downloads');
-const paymentsRouter = require('./routes/payments');
+const compression = require('compression');
+
 const wikiRouter = require('./routes/wiki');
-const reportsRouter = require('./routes/reports');
 const ipieRouter = require('./routes/ipie');
-const skillpediaRouter  = require('./routes/skillpedia');
+const skillpediaRouter = require('./routes/skillpedia');
 const searchVideoRouter = require('./routes/searchVideo');
 const aiExplainerRouter = require('./routes/aiExplainer');
 const curatorRouter = require('./routes/curator');
 const patentsRouter = require('./routes/patents');
 const personalitiesRouter = require('./routes/personalities');
-const { ensureKeyPair } = require('./utils/license-signer');
-const compression = require('compression');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Ensure Ed25519 Key Pair exists on startup
-ensureKeyPair();
+const PORT = process.env.PORT || 8080;
+const GARUDA_AUTH_URL = process.env.GARUDA_AUTH_URL || 'http://localhost:3300/auth/login?app=varaha';
 
 // Middleware
 app.use(compression());
@@ -34,20 +26,24 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static frontend portal files
 app.use(express.static(path.join(__dirname, '..')));
 
-// API Routes
-app.use('/api/auth', authRouter);
-app.use('/api/license', licenseRouter);
-app.use('/api/downloads', downloadsRouter);
-app.use('/api/payments', paymentsRouter);
+// Sovereign Skilling & Content APIs
 app.use('/api/wiki', wikiRouter);
-app.use('/api/reports', reportsRouter);
 app.use('/api/ipie', ipieRouter);
-app.use('/api/skillpedia',    skillpediaRouter);
+app.use('/api/skillpedia', skillpediaRouter);
 app.use('/api/search-video', searchVideoRouter);
 app.use('/api/ai', aiExplainerRouter);
 app.use('/api/curator', curatorRouter);
 app.use('/api/patents', patentsRouter);
 app.use('/api/personalities', personalitiesRouter);
+
+// Delegated Auth & Dashboard redirects (Migrated to Garuda)
+app.get(['/dashboard', '/dashboard.html'], (req, res) => {
+    res.redirect(GARUDA_AUTH_URL);
+});
+
+app.get(['/login', '/login.html', '/signup', '/signup.html'], (req, res) => {
+    res.redirect(GARUDA_AUTH_URL);
+});
 
 // Direct Route Endpoints
 app.get('/personalities', (req, res) => {
@@ -62,7 +58,7 @@ app.get('/HPTI_Compendium', (req, res) => {
     res.redirect('/compendium');
 });
 
-// Legal & Policy Direct Route Endpoints (https://hayagriva.app/privacy & https://hayagriva.app/terms)
+// Legal & Policy Direct Route Endpoints
 app.get('/privacy', (req, res) => {
     res.sendFile(path.join(__dirname, '../privacy.html'));
 });
@@ -82,23 +78,21 @@ app.get('/reel.html', (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', service: 'Haya Portal Server', timestamp: new Date().toISOString() });
+    res.json({
+        status: 'ok',
+        service: 'VARAHA Sovereign Skilling Portal',
+        role: 'VOCATIONAL_LEARNING',
+        garudaAuthUrl: GARUDA_AUTH_URL,
+        timestamp: new Date().toISOString()
+    });
 });
 
-// Self-Ping Keep-Alive (Prevents Render free tier auto-sleep)
-if (process.env.RENDER_EXTERNAL_URL) {
-    const PING_INTERVAL = 10 * 60 * 1000; // Ping every 10 mins (Render sleeps after 15 mins)
-    setInterval(() => {
-        const pingUrl = `${process.env.RENDER_EXTERNAL_URL}/api/health`;
-        fetch(pingUrl)
-            .then(res => console.log(`[Keep-Alive Ping] Sent to ${pingUrl} -> HTTP ${res.status}`))
-            .catch(err => console.warn(`[Keep-Alive Ping Warning] ${err.message}`));
-    }, PING_INTERVAL);
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`=======================================================`);
+        console.log(`🐗 VARAHA Sovereign Skilling Portal running at http://localhost:${PORT}`);
+        console.log(`=======================================================`);
+    });
 }
 
-
-app.listen(PORT, () => {
-    console.log(`=======================================================`);
-    console.log(`🚀 HAYA PORTAL Server running at http://localhost:${PORT}`);
-    console.log(`=======================================================`);
-});
+module.exports = app;

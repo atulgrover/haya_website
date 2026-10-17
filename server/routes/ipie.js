@@ -2,7 +2,13 @@
 
 const express = require('express');
 const router = express.Router();
-const { authenticateToken } = require('./auth');
+// Lightweight auth middleware for simulation payloads
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
+    req.user = token ? { id: "authenticated-user" } : { id: "demo-user" };
+    next();
+}
 
 // In-memory storage for user completed iPIE simulation stages
 const userStageCompletions = new Map(); // userId -> Set of stageIds
