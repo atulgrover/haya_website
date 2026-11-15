@@ -844,6 +844,310 @@
       background: #1D4ED8;
     }
 
+    /* ══════════════════════════════════════════════════════════════════
+       MANDALA WORKBENCH & AGENTIC SOUL STYLES
+       ══════════════════════════════════════════════════════════════════ */
+    .mandala-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+      position: relative;
+    }
+    .mandala-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .mandala-title {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 0 0 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mandala-subtitle {
+      font-size: 12px;
+      color: #64748B;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Mode Segmented Switch */
+    .mandala-mode-segmented {
+      display: inline-flex;
+      background: #F1F5F9;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 3px;
+      gap: 4px;
+    }
+    .mandala-mode-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+    }
+    .mandala-mode-btn:hover {
+      color: #0F172A;
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .mandala-mode-btn.active {
+      background: #1E6C93;
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(30, 108, 147, 0.3);
+    }
+    .mandala-mode-desc-bar {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 11.5px;
+      color: #1E40AF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    /* Canvas / SVG Area */
+    .mandala-canvas-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 4px 0 12px 0;
+    }
+    .mandala-svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+      cursor: crosshair;
+      user-select: none;
+      touch-action: none;
+    }
+
+    /* Dynamic Guna Pills */
+    .guna-pills-row {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .guna-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .guna-pill-sattva {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+    .guna-pill-rajas {
+      background: #FFFBEB;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+    .guna-pill-tamas {
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+    }
+
+    /* Presets Chips */
+    .mandala-presets-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .preset-chip-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+    .mandala-preset-btn {
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .mandala-preset-btn:hover {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border-color: #93C5FD;
+    }
+    .mandala-preset-btn.active {
+      background: #2563EB;
+      color: #FFFFFF;
+      border-color: #2563EB;
+    }
+
+    /* Soul Spec Card in Right Panel */
+    .soul-spec-card {
+      background: linear-gradient(135deg, #0B192C 0%, #1E293B 100%);
+      border: 1.5px solid #38BDF8;
+      border-radius: 12px;
+      padding: 16px 18px;
+      color: #FFFFFF;
+      box-shadow: 0 4px 18px rgba(14, 165, 233, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .soul-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .soul-mode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .soul-mode-mirror {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+    }
+    .soul-mode-counterweight {
+      background: rgba(245, 158, 11, 0.2);
+      color: #FBBF24;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+    }
+    .soul-harness-target {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: #94A3B8;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .soul-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin: 0;
+    }
+    .soul-maxim-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid #38BDF8;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      color: #E2E8F0;
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .soul-knack-text {
+      font-size: 11.5px;
+      color: #CBD5E1;
+      line-height: 1.45;
+    }
+    .soul-knack-text strong {
+      color: #F8FAFC;
+    }
+    .soul-actions-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .btn-download-soul {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: 6px;
+      border: none;
+      background: #2563EB;
+      color: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+      transition: all 0.15s ease;
+    }
+    .btn-download-soul:hover {
+      background: #1D4ED8;
+      transform: translateY(-1px);
+    }
+    .btn-copy-soul {
+      padding: 9px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.1);
+      color: #F1F5F9;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+    .btn-copy-soul:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .soul-harness-caption {
+      font-size: 10.5px;
+      color: #94A3B8;
+      text-align: center;
+      margin-top: -2px;
+    }
+
     @media print {
       #site-header, #site-footer, .panel-left, .panel-center, #btnRestoreLeft, .pillar-hero {
         display: none !important;
@@ -887,14 +1191,15 @@
 
   <!-- Hero Banner -->
   <section class="pillar-hero">
-    <h1 class="hero-title">HPTI: Vedic &amp; Epic Shastric Typology</h1>
+    <h1 class="hero-title">Agentic Alter-Ego &amp; Vedic Soul Forge</h1>
     <p class="hero-subtitle">
-      Vedic psychometrics powered by the 4-dimensional ECCP framework across 144 Epic archetypes, directly mapped to 2,002 certified NCVET &amp; NSQF national vocational qualifications.
+      What personality do you want your AI Agent to have? Calibrate your agent's cognitive soul, Guna balance, and dharmic directives. Download as <strong>soul.md</strong> to load alongside your vocational <strong>SKILL.md</strong> inside the Hayagriva Desktop Harness.
     </p>
     <div class="hero-stats-row">
-      <div class="stat-pill">🏛️ 144 ECCP Archetypes</div>
-      <div class="stat-pill">📜 Ramayana &amp; Mahabharata</div>
-      <div class="stat-pill">🎯 2,002 NCVET &amp; NSQF Roles</div>
+      <div class="stat-pill">Triguna Dynamic Mandala</div>
+      <div class="stat-pill">Mirror or Counter-Weight Mode</div>
+      <div class="stat-pill">144 Epic Shastric Archetypes</div>
+      <div class="stat-pill">Executable soul.md Specification</div>
       <a href="/compendium" target="_blank" class="stat-pill" style="text-decoration: none; color: #FDE68A; border-color: rgba(253, 230, 138, 0.4);">
         📖 HPTI Compendium (28 Chapters) ➔
       </a>
@@ -993,6 +1298,130 @@
       </div>
 
       <div class="panel-center-content" style="padding: 16px 20px;">
+        <!-- ══════════════════════════════════════════════════════════════
+             TRIGUNA MANDALA & AGENT ALTER-EGO WORKBENCH
+             ══════════════════════════════════════════════════════════════ -->
+        <section class="mandala-card" id="mandalaWorkbench">
+          <div class="mandala-header-row">
+            <div>
+              <h2 class="mandala-title">
+                <span>🔯</span> What personality do you want your AI Agent to have?
+              </h2>
+              <p class="mandala-subtitle">
+                Calibrate your agent's cognitive soul via the dynamic Triguna mandala. Choose whether your agent mirrors your rhythm or provides an objective counter-weight to keep you in check.
+              </p>
+            </div>
+
+            <!-- Mode Segmented Switch -->
+            <div class="mandala-mode-segmented">
+              <button class="mandala-mode-btn active" id="btnModeMirror" onclick="setMandalaMode('mirror')" title="Agent mirrors your operating cadence">
+                <span>🪞</span> Alter-Ego (Mirror)
+              </button>
+              <button class="mandala-mode-btn" id="btnModeCounterweight" onclick="setMandalaMode('counterweight')" title="Agent inverts dominant traits to balance blind spots">
+                <span>⚖️</span> Counter-Weight (Keep Me in Check)
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Mode Description Bar -->
+          <div class="mandala-mode-desc-bar" id="mandalaModeDescBar">
+            <span id="mandalaModeIcon">🪞</span>
+            <span id="mandalaModeText"><strong>Mirror Mode:</strong> Your agent directly matches your cognitive velocity, dynamic drive, and communicative cadence.</span>
+          </div>
+
+          <!-- Interactive Triguna Mandala Canvas / SVG Area -->
+          <div class="mandala-canvas-wrap">
+            <svg id="mandalaSvg" class="mandala-svg" viewBox="0 0 380 340">
+              <defs>
+                <radialGradient id="mandalaBgGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#EFF6FF" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+                </radialGradient>
+                <filter id="puckShadow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.35"/>
+                </filter>
+              </defs>
+
+              <!-- Concentric Mandala Geometry Rings -->
+              <circle cx="190" cy="209" r="160" fill="url(#mandalaBgGlow)" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3,3"/>
+              <circle cx="190" cy="209" r="110" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2,2"/>
+              <circle cx="190" cy="209" r="60" fill="none" stroke="#CBD5E1" stroke-width="1"/>
+              <circle cx="190" cy="209" r="4" fill="#94A3B8"/>
+
+              <!-- Median Lines Connecting Vertices to Center -->
+              <line x1="190" y1="48" x2="190" y2="290" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2,2"/>
+              <line x1="50" y1="290" x2="260" y2="169" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2,2"/>
+              <line x1="330" y1="290" x2="120" y2="169" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2,2"/>
+
+              <!-- Outer Equilateral Triangle Boundary -->
+              <polygon id="triangleBoundary" points="190,48 50,290 330,290" fill="rgba(248, 250, 252, 0.45)" stroke="#94A3B8" stroke-width="2.5" stroke-linejoin="round"/>
+
+              <!-- Inner Triangle Accents (Sri Yantra subtle resonance) -->
+              <polygon points="190,290 120,169 260,169" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,4"/>
+
+              <!-- Vertex Markers -->
+              <!-- Sattva Vertex (Top) -->
+              <circle cx="190" cy="48" r="14" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+              <circle cx="190" cy="48" r="6" fill="#10B981"/>
+              <text x="190" y="24" text-anchor="middle" font-size="12" font-weight="800" fill="#065F46" font-family="system-ui">SATTVA (Wisdom &amp; Clarity)</text>
+
+              <!-- Rajas Vertex (Bottom-Left) -->
+              <circle cx="50" cy="290" r="14" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+              <circle cx="50" cy="290" r="6" fill="#F59E0B"/>
+              <text x="50" y="318" text-anchor="middle" font-size="12" font-weight="800" fill="#92400E" font-family="system-ui">RAJAS (Action &amp; Fire)</text>
+
+              <!-- Tamas Vertex (Bottom-Right) -->
+              <circle cx="330" cy="290" r="14" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/>
+              <circle cx="330" cy="290" r="6" fill="#64748B"/>
+              <text x="330" y="318" text-anchor="middle" font-size="12" font-weight="800" fill="#334155" font-family="system-ui">TAMAS (Grounding &amp; Restraint)</text>
+
+              <!-- Dynamic Balancing Vector Line (Visible in Counter-Weight mode) -->
+              <line id="counterVectorLine" x1="190" y1="209" x2="190" y2="209" stroke="#2563EB" stroke-width="2.5" stroke-dasharray="5,4" style="display: none;"/>
+
+              <!-- User Ghost Puck (In Counter-Weight mode, shows user origin point) -->
+              <g id="userGhostPuck" style="display: none;">
+                <circle id="ghostPuckRing" cx="190" cy="209" r="16" fill="rgba(100, 116, 139, 0.2)" stroke="#475569" stroke-width="2" stroke-dasharray="3,2"/>
+                <circle id="ghostPuckCore" cx="190" cy="209" r="4" fill="#475569"/>
+                <text id="ghostPuckLabel" x="190" y="235" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">You</text>
+              </g>
+
+              <!-- Active Agent Target Beacon Puck (Draggable) -->
+              <g id="agentPuck" style="cursor: grab;" filter="url(#puckShadow)">
+                <circle id="puckPulseRing" cx="190" cy="209" r="22" fill="none" stroke="#2563EB" stroke-width="1.5" opacity="0.6"/>
+                <circle id="puckBody" cx="190" cy="209" r="14" fill="#2563EB" stroke="#FFFFFF" stroke-width="2.5"/>
+                <circle id="puckCore" cx="190" cy="209" r="5" fill="#FFFFFF"/>
+                <text id="puckLabel" x="190" y="238" text-anchor="middle" font-size="10" font-weight="800" fill="#1E40AF">Agent Soul</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Live Guna Metric Badges -->
+          <div class="guna-pills-row">
+            <span class="guna-pill guna-pill-sattva" id="gunaPillSattva">
+              <span>🌿 Sattva:</span> <strong id="valSattvaPct">33%</strong>
+            </span>
+            <span class="guna-pill guna-pill-rajas" id="gunaPillRajas">
+              <span>🔥 Rajas:</span> <strong id="valRajasPct">34%</strong>
+            </span>
+            <span class="guna-pill guna-pill-tamas" id="gunaPillTamas">
+              <span>⛰️ Tamas:</span> <strong id="valTamasPct">33%</strong>
+            </span>
+          </div>
+
+          <!-- Archetype Presets Row -->
+          <div class="mandala-presets-row">
+            <span class="preset-chip-tag">Archetype Presets:</span>
+            <button class="mandala-preset-btn active" id="btnMandalaArjuna" onclick="applyMandalaPreset('arjuna')">🏹 Arjuna</button>
+            <button class="mandala-preset-btn" id="btnMandalaChanakya" onclick="applyMandalaPreset('chanakya')">⚖️ Chanakya</button>
+            <button class="mandala-preset-btn" id="btnMandalaVidura" onclick="applyMandalaPreset('vidura')">📜 Vidura</button>
+            <button class="mandala-preset-btn" id="btnMandalaJanaka" onclick="applyMandalaPreset('janaka')">🏛️ Janaka</button>
+            <button class="mandala-preset-btn" id="btnMandalaRama" onclick="applyMandalaPreset('rama')">👑 Rama</button>
+            <button class="mandala-preset-btn" id="btnMandalaHanuman" onclick="applyMandalaPreset('hanuman')">⛰️ Hanuman</button>
+            <button class="mandala-preset-btn" id="btnMandalaVishvakarma" onclick="applyMandalaPreset('vishvakarma')">🔨 Vishvakarma</button>
+            <button class="mandala-preset-btn" id="btnMandalaKarna" onclick="applyMandalaPreset('karna')">☀️ Karna</button>
+          </div>
+        </section>
+
         <div style="margin-bottom: 10px;">
           <h2 class="center-mode-title" id="centerModeTitle" style="font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 2px 0;">
             ECCP Vedic Personality Diagnostic
@@ -1068,6 +1497,48 @@
 
       <!-- Scrollable Inspector Body -->
       <div class="panel-right-content" style="flex: 1; overflow-y: auto; padding: 16px 18px; display: flex; flex-direction: column; gap: 14px;" id="dossierBody">
+
+        <!-- ══════════════════════════════════════════════════════════════
+             LIVE AGENTIC SOUL SPEC ACTION CARD
+             ══════════════════════════════════════════════════════════════ -->
+        <div class="soul-spec-card" id="soulSpecCard">
+          <div class="soul-card-header">
+            <div>
+              <div style="font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: #38BDF8; margin-bottom: 2px;">
+                ⚡ Autonomous Alter-Ego Specification
+              </div>
+              <h3 class="soul-title" id="soulTitle">Arjuna Alter-Ego</h3>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+              <span class="soul-mode-badge soul-mode-mirror" id="soulModeBadge">🪞 Alter-Ego</span>
+              <span class="soul-harness-target">Target: Hayagriva IPE</span>
+            </div>
+          </div>
+
+          <!-- Guiding Shastric Maxim -->
+          <div class="soul-maxim-box" id="soulMaximBox">
+            "nimitta-mātraṁ bhava savya-sācin (Become merely an instrument of cosmic duty)."
+          </div>
+
+          <!-- Tactical Knack & Guardrail -->
+          <div class="soul-knack-text" id="soulKnackText">
+            <strong>Operating Knack:</strong> Executes technical workstations with razor precision and millimeter tolerances. Questions assumptions before firing destructive actions.
+          </div>
+
+          <!-- Prominent Action Buttons -->
+          <div class="soul-actions-row">
+            <button class="btn-download-soul" onclick="downloadSoulMarkdown()" title="Download executable soul.md specification">
+              <span>⚡</span> Download soul.md
+            </button>
+            <button class="btn-copy-soul" id="btnCopySoul" onclick="copySoulMarkdown()" title="Copy Markdown to Clipboard">
+              <span>📋</span> Copy Spec
+            </button>
+          </div>
+
+          <div class="soul-harness-caption">
+            Load <strong>soul.md</strong> alongside your vocational <strong>SKILL.md</strong> into Hayagriva Desktop Harness.
+          </div>
+        </div>
 
         <!-- Vikriti Burnout Alert Bar (Visible if Vikriti audit conducted) -->
         <div id="vikritiAlertBox" style="display: none; background: #FEF3C7; border: 1.5px solid #FDE68A; border-radius: 10px; padding: 12px 14px;">
@@ -1392,6 +1863,454 @@
     let availableSectors = [];
     let currentSectorSelection = 'aerospace';
 
+    /* ══════════════════════════════════════════════════════════════════
+       MANDALA & AGENTIC SOUL ENGINE (BARYCENTRIC DYNAMICS)
+       ══════════════════════════════════════════════════════════════════ */
+    let mandalaMode = 'mirror'; // 'mirror' | 'counterweight'
+    let userGunas = { sattva: 25, rajas: 65, tamas: 10 };
+    let agentGunas = { sattva: 25, rajas: 65, tamas: 10 };
+    let isDraggingMandala = false;
+
+    const MANDALA_VERTICES = {
+      A: { x: 190, y: 48 },   // Sattva (Top)
+      B: { x: 50, y: 290 },   // Rajas (Bottom-Left)
+      C: { x: 330, y: 290 }   // Tamas (Bottom-Right)
+    };
+    const MANDALA_DET = -67760;
+
+    // Archetype Presets (Calibrated Guna Coordinates)
+    const MANDALA_ARCHETYPE_PRESETS = {
+      arjuna:      { id: 'arjuna', s: 25, r: 65, t: 10 },
+      chanakya:    { id: 'chanakya', s: 25, r: 65, t: 10 },
+      vidura:      { id: 'vidura', s: 75, r: 20, t: 5 },
+      janaka:      { id: 'janaka', s: 70, r: 15, t: 15 },
+      rama:        { id: 'rama', s: 80, r: 15, t: 5 },
+      hanuman:     { id: 'hanuman', s: 50, r: 45, t: 5 },
+      vishvakarma: { id: 'vishvakarma', s: 40, r: 50, t: 10 },
+      karna:       { id: 'karna', s: 20, r: 70, t: 10 }
+    };
+
+    function computeGunaWeights(px, py) {
+      let wA = (290 - py) / 242;
+      let wB = (242 * (px - 330) - 140 * (py - 290)) / MANDALA_DET;
+      let wC = 1 - wA - wB;
+      wA = Math.max(0, wA);
+      wB = Math.max(0, wB);
+      wC = Math.max(0, wC);
+      const sum = wA + wB + wC;
+      if (sum > 0) {
+        wA /= sum;
+        wB /= sum;
+        wC /= sum;
+      }
+      const s = Math.round(wA * 100);
+      const r = Math.round(wB * 100);
+      const t = 100 - s - r;
+      return { wA, wB, wC, s, r, t };
+    }
+
+    function computeMandalaXY(wA, wB, wC) {
+      return {
+        x: Math.round(wA * MANDALA_VERTICES.A.x + wB * MANDALA_VERTICES.B.x + wC * MANDALA_VERTICES.C.x),
+        y: Math.round(wA * MANDALA_VERTICES.A.y + wB * MANDALA_VERTICES.B.y + wC * MANDALA_VERTICES.C.y)
+      };
+    }
+
+    function computeCounterWeightGunas(s, r, t) {
+      if (r >= s && r >= t) {
+        return { sattva: r, rajas: s, tamas: t };
+      } else if (t >= s && t >= r) {
+        return { sattva: s, rajas: t, tamas: r };
+      } else {
+        return { sattva: r, rajas: s, tamas: t };
+      }
+    }
+
+    function setMandalaMode(mode) {
+      mandalaMode = mode;
+      const isCounter = mode === 'counterweight';
+
+      const btnMirror = document.getElementById('btnModeMirror');
+      const btnCounter = document.getElementById('btnModeCounterweight');
+      if (btnMirror) btnMirror.classList.toggle('active', !isCounter);
+      if (btnCounter) btnCounter.classList.toggle('active', isCounter);
+
+      const descIcon = document.getElementById('mandalaModeIcon');
+      const descText = document.getElementById('mandalaModeText');
+      if (isCounter) {
+        if (descIcon) descIcon.innerText = '⚖️';
+        if (descText) descText.innerHTML = '<strong>Counter-Weight Mode:</strong> Your agent actively balances your blind spots — injecting Sattvik discernment to check Rajasic haste, or Rajasik spark against inertia.';
+      } else {
+        if (descIcon) descIcon.innerText = '🪞';
+        if (descText) descText.innerHTML = '<strong>Mirror Mode:</strong> Your agent directly matches your cognitive velocity, dynamic drive, and communicative cadence.';
+      }
+
+      if (isCounter) {
+        agentGunas = computeCounterWeightGunas(userGunas.sattva, userGunas.rajas, userGunas.tamas);
+      } else {
+        agentGunas = { ...userGunas };
+      }
+
+      updateMandalaVisuals();
+      findClosestArchetypeAndSelect(agentGunas);
+    }
+
+    function updateMandalaVisuals() {
+      const isCounter = mandalaMode === 'counterweight';
+
+      const userW_A = userGunas.sattva / 100;
+      const userW_B = userGunas.rajas / 100;
+      const userW_C = userGunas.tamas / 100;
+      const userPos = computeMandalaXY(userW_A, userW_B, userW_C);
+
+      const agentW_A = agentGunas.sattva / 100;
+      const agentW_B = agentGunas.rajas / 100;
+      const agentW_C = agentGunas.tamas / 100;
+      const agentPos = computeMandalaXY(agentW_A, agentW_B, agentW_C);
+
+      const userGhost = document.getElementById('userGhostPuck');
+      const ghostCore = document.getElementById('ghostPuckCore');
+      const ghostRing = document.getElementById('ghostPuckRing');
+      const ghostLabel = document.getElementById('ghostPuckLabel');
+      const vectorLine = document.getElementById('counterVectorLine');
+
+      const agentPuck = document.getElementById('agentPuck');
+      const puckBody = document.getElementById('puckBody');
+      const puckPulse = document.getElementById('puckPulseRing');
+      const puckCore = document.getElementById('puckCore');
+      const puckLabel = document.getElementById('puckLabel');
+
+      if (isCounter) {
+        if (userGhost && ghostCore && ghostRing && ghostLabel) {
+          userGhost.style.display = 'block';
+          ghostCore.setAttribute('cx', userPos.x);
+          ghostCore.setAttribute('cy', userPos.y);
+          ghostRing.setAttribute('cx', userPos.x);
+          ghostRing.setAttribute('cy', userPos.y);
+          ghostLabel.setAttribute('x', userPos.x);
+          ghostLabel.setAttribute('y', userPos.y + 26);
+        }
+        if (vectorLine) {
+          vectorLine.style.display = 'block';
+          vectorLine.setAttribute('x1', userPos.x);
+          vectorLine.setAttribute('y1', userPos.y);
+          vectorLine.setAttribute('x2', agentPos.x);
+          vectorLine.setAttribute('y2', agentPos.y);
+        }
+
+        if (agentPuck && puckBody && puckPulse && puckCore && puckLabel) {
+          puckBody.setAttribute('cx', agentPos.x);
+          puckBody.setAttribute('cy', agentPos.y);
+          puckBody.setAttribute('fill', '#D97706');
+          puckPulse.setAttribute('cx', agentPos.x);
+          puckPulse.setAttribute('cy', agentPos.y);
+          puckPulse.setAttribute('stroke', '#F59E0B');
+          puckCore.setAttribute('cx', agentPos.x);
+          puckCore.setAttribute('cy', agentPos.y);
+          puckLabel.setAttribute('x', agentPos.x);
+          puckLabel.setAttribute('y', agentPos.y + 26);
+          puckLabel.textContent = 'Agent Counter-Weight';
+          puckLabel.setAttribute('fill', '#92400E');
+        }
+      } else {
+        if (userGhost) userGhost.style.display = 'none';
+        if (vectorLine) vectorLine.style.display = 'none';
+
+        if (agentPuck && puckBody && puckPulse && puckCore && puckLabel) {
+          puckBody.setAttribute('cx', userPos.x);
+          puckBody.setAttribute('cy', userPos.y);
+          puckBody.setAttribute('fill', '#2563EB');
+          puckPulse.setAttribute('cx', userPos.x);
+          puckPulse.setAttribute('cy', userPos.y);
+          puckPulse.setAttribute('stroke', '#2563EB');
+          puckCore.setAttribute('cx', userPos.x);
+          puckCore.setAttribute('cy', userPos.y);
+          puckLabel.setAttribute('x', userPos.x);
+          puckLabel.setAttribute('y', userPos.y + 26);
+          puckLabel.textContent = 'Agent Alter-Ego';
+          puckLabel.setAttribute('fill', '#1E40AF');
+        }
+      }
+
+      const elS = document.getElementById('valSattvaPct');
+      const elR = document.getElementById('valRajasPct');
+      const elT = document.getElementById('valTamasPct');
+      if (elS) elS.innerText = `${agentGunas.sattva}%`;
+      if (elR) elR.innerText = `${agentGunas.rajas}%`;
+      if (elT) elT.innerText = `${agentGunas.tamas}%`;
+
+      const barS = document.getElementById('barSattva');
+      const barR = document.getElementById('barRajas');
+      const barT = document.getElementById('barTamas');
+      const meterText = document.getElementById('meterGunaText');
+      if (barS) barS.style.width = `${agentGunas.sattva}%`;
+      if (barR) barR.style.width = `${agentGunas.rajas}%`;
+      if (barT) barT.style.width = `${agentGunas.tamas}%`;
+      if (meterText) meterText.innerText = `S: ${agentGunas.sattva}% | R: ${agentGunas.rajas}% | T: ${agentGunas.tamas}%`;
+
+      if (activeArchetype) {
+        updateSoulSpecCard(activeArchetype, mandalaMode, agentGunas);
+      }
+    }
+
+    function findClosestArchetypeAndSelect(targetGunas) {
+      if (!allArchetypes || allArchetypes.length === 0) return;
+
+      let closestArch = null;
+      let minDistance = Infinity;
+
+      for (const arch of allArchetypes) {
+        let archS = 33, archR = 33, archT = 33;
+        if (arch.tier === 'sattvik') {
+          archS = 70; archR = 20; archT = 10;
+        } else if (arch.tier === 'rajasik') {
+          archS = 25; archR = 65; archT = 10;
+        } else if (arch.tier === 'tamasik') {
+          archS = 15; archR = 35; archT = 50;
+        }
+        const presetKey = arch.id.toLowerCase();
+        if (MANDALA_ARCHETYPE_PRESETS[presetKey]) {
+          archS = MANDALA_ARCHETYPE_PRESETS[presetKey].s;
+          archR = MANDALA_ARCHETYPE_PRESETS[presetKey].r;
+          archT = MANDALA_ARCHETYPE_PRESETS[presetKey].t;
+        }
+
+        const dist = Math.hypot(targetGunas.sattva - archS, targetGunas.rajas - archR, targetGunas.tamas - archT);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestArch = arch;
+        }
+      }
+
+      if (closestArch && (!activeArchetype || activeArchetype.id !== closestArch.id)) {
+        selectArchetype(closestArch.id, true);
+      }
+    }
+
+    function applyMandalaPreset(key) {
+      const preset = MANDALA_ARCHETYPE_PRESETS[key];
+      if (!preset) return;
+
+      document.querySelectorAll('.mandala-preset-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('btnMandala' + key.charAt(0).toUpperCase() + key.slice(1));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      userGunas = { sattva: preset.s, rajas: preset.r, tamas: preset.t };
+      if (mandalaMode === 'counterweight') {
+        agentGunas = computeCounterWeightGunas(userGunas.sattva, userGunas.rajas, userGunas.tamas);
+      } else {
+        agentGunas = { ...userGunas };
+      }
+
+      updateMandalaVisuals();
+
+      const targetArch = allArchetypes.find(a => a.id === preset.id) || allArchetypes.find(a => a.id.includes(key));
+      if (targetArch) {
+        selectArchetype(targetArch.id, true);
+      }
+    }
+
+    function initMandalaInteractions() {
+      const svg = document.getElementById('mandalaSvg');
+      if (!svg) return;
+
+      function handlePointer(evt) {
+        const rect = svg.getBoundingClientRect();
+        const clientX = evt.clientX || (evt.touches && evt.touches[0] ? evt.touches[0].clientX : 0);
+        const clientY = evt.clientY || (evt.touches && evt.touches[0] ? evt.touches[0].clientY : 0);
+        
+        const scaleX = 380 / rect.width;
+        const scaleY = 340 / rect.height;
+        const px = (clientX - rect.left) * scaleX;
+        const py = (clientY - rect.top) * scaleY;
+
+        const weights = computeGunaWeights(px, py);
+        userGunas = { sattva: weights.s, rajas: weights.r, tamas: weights.t };
+
+        if (mandalaMode === 'counterweight') {
+          agentGunas = computeCounterWeightGunas(userGunas.sattva, userGunas.rajas, userGunas.tamas);
+        } else {
+          agentGunas = { ...userGunas };
+        }
+
+        updateMandalaVisuals();
+        findClosestArchetypeAndSelect(agentGunas);
+      }
+
+      svg.addEventListener('mousedown', (e) => {
+        isDraggingMandala = true;
+        handlePointer(e);
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (isDraggingMandala) handlePointer(e);
+      });
+      window.addEventListener('mouseup', () => {
+        isDraggingMandala = false;
+      });
+
+      svg.addEventListener('touchstart', (e) => {
+        isDraggingMandala = true;
+        handlePointer(e);
+      }, { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (isDraggingMandala) handlePointer(e);
+      }, { passive: true });
+      window.addEventListener('touchend', () => {
+        isDraggingMandala = false;
+      });
+    }
+
+    function updateSoulSpecCard(arch, mode, gunas) {
+      const card = document.getElementById('soulSpecCard');
+      if (!card || !arch) return;
+
+      const isCounter = mode === 'counterweight';
+      const titleEl = document.getElementById('soulTitle');
+      const badgeEl = document.getElementById('soulModeBadge');
+      const maximEl = document.getElementById('soulMaximBox');
+      const knackEl = document.getElementById('soulKnackText');
+
+      if (titleEl) {
+        titleEl.textContent = `${arch.name} Alter-Ego`;
+      }
+      if (badgeEl) {
+        badgeEl.className = isCounter ? 'soul-mode-badge soul-mode-counterweight' : 'soul-mode-badge soul-mode-mirror';
+        badgeEl.innerHTML = isCounter ? '⚖️ Counter-Weight' : '🪞 Alter-Ego';
+      }
+      if (maximEl) {
+        maximEl.textContent = `"${arch.quote || 'Act with steadfast devotion to duty.'}"`;
+      }
+      if (knackEl) {
+        if (isCounter) {
+          knackEl.innerHTML = `<strong>Counter-Weight Guardrail:</strong> Proactively checks impulsiveness, enforces architectural review pauses, and balances despondency. ${arch.shadow_warning || ''}`;
+        } else {
+          knackEl.innerHTML = `<strong>Operational Knack:</strong> Accelerates execution velocity with millimeter precision, strictly enforcing vocational standards and physical safety.`;
+        }
+      }
+    }
+
+    function generateSoulMarkdown(arch, mode, gunas) {
+      if (!arch) arch = { name: 'Arjuna', sanskrit_title: 'Dhananjaya', eccp_code: 'SR-BM-K-D', epic: 'Mahabharata' };
+      const isCounterWeight = mode === 'counterweight';
+      const modeLabel = isCounterWeight ? 'Counter-Weight (Keep Me in Check)' : 'Alter-Ego (Mirror)';
+      const modeDesc = isCounterWeight 
+        ? 'Counterbalances user blind spots by providing grounding wisdom, questioning impulsive assumptions, and checking emotional despondency.'
+        : 'Mirrors the user\'s cognitive cadence, accelerating decision-making and operational execution with matching velocity.';
+      
+      const counterDirective = isCounterWeight
+        ? '4. **Nivritti (Counter-Balancing Check)**: When user displays excessive Rajasic haste or Tamasic inertia, intervene with structured pause protocols.'
+        : '4. **Pravritti (Dynamic Alignment)**: Amplify and mirror the user\'s creative velocity without introducing unnecessary frictional gates.';
+
+      const yaml = [
+        '---',
+        `name: "${arch.name} Alter-Ego"`,
+        `archetype: "${arch.name} - ${arch.sanskrit_title || 'Niti-Kovidha'}"`,
+        `eccp_code: "${arch.eccp_code || 'SS-BM-K-D'}"`,
+        `epic_anchor: "${arch.epic || 'Mahabharata'}"`,
+        `interaction_mode: "${modeLabel}"`,
+        'gunas:',
+        `  sattva: ${gunas.sattva}%`,
+        `  rajas: ${gunas.rajas}%`,
+        `  tamas: ${gunas.tamas}%`,
+        'target_harness: "Hayagriva Desktop IPE"',
+        'schema_version: "1.0.0"',
+        `created_at: "${new Date().toISOString()}"`,
+        '---'
+      ].join('\n');
+
+      const md = [
+        yaml,
+        '',
+        `# ${arch.name} - Agentic Soul Specification`,
+        '',
+        `> "${arch.devanagari || 'तस्मात्त्वमुत्तिष्ठ यशो लभस्व'}"  `,
+        `> — *${arch.epic_citation || 'Bhagavad Gita'}*`,
+        '',
+        `You are the sovereign agentic alter-ego and vocational co-pilot configured in **${modeLabel}** mode.`,
+        '',
+        '## 1. Dharmic Core & Cognitive Locus',
+        `- **Interaction Mode**: ${modeDesc}`,
+        `- **Guna Constitution**: Sattva ${gunas.sattva}%, Rajas ${gunas.rajas}%, Tamas ${gunas.tamas}%`,
+        `- **Cognitive Style**: ${arch.antahkarana || 'Buddhi-Led Objective Reasoning'}`,
+        `- **Sovereign Swabhava**: ${arch.competency || 'Kshatriya Strategic Execution'}`,
+        `- **Purushartha Vector**: ${arch.purpose || 'Dharma Universal Order'}`,
+        '',
+        '## 2. Guiding Shastric Maxims',
+        `- **Primary Maxim**: "${arch.quote || 'Act with steadfast devotion to duty.'}" (${arch.epic_citation || 'Shastras'})`,
+        `- **Swadharma Rule (Gita 18.47)**: Better is one's own duty, though imperfect, than another's duty well executed. Protect your sovereign craft against alien corporate conformity.`,
+        '',
+        '## 3. Dharmic Directives & Operational Knacks',
+        '1. **Viveka (Discernment)**: Rigorously analyze instructions from companion `SKILL.md` before tool invocation.',
+        '2. **Karmasu Kaushalam (Precision)**: Execute tasks with millimeter tolerances, strict physical safety, and zero cutting corners.',
+        '3. **Satya (Truth & Candor)**: Flag edge cases, architectural debt, or procedural risks without sycophancy.',
+        counterDirective,
+        '',
+        '## 4. Voice & Communication Protocol',
+        '- **Formality**: Grounded, shastric yet pragmatic, precise, zero filler or flattering preamble.',
+        '- **Cadence**: Immediate technical analysis, followed by clear, bulleted verification steps.',
+        `- **Shadow Guardrail**: ${arch.shadow_warning || 'Maintain strict mindfulness against egoic rigidity.'}`,
+        ''
+      ].join('\n');
+
+      return md;
+    }
+
+    function downloadSoulMarkdown() {
+      const arch = activeArchetype || (allArchetypes[0] || { name: 'Arjuna' });
+      const mdContent = generateSoulMarkdown(arch, mandalaMode, agentGunas);
+      const blob = new Blob([mdContent], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'soul.md';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function copySoulMarkdown() {
+      const arch = activeArchetype || (allArchetypes[0] || { name: 'Arjuna' });
+      const mdContent = generateSoulMarkdown(arch, mandalaMode, agentGunas);
+      const btn = document.getElementById('btnCopySoul');
+
+      function showCopied() {
+        if (btn) {
+          const orig = btn.innerHTML;
+          btn.innerHTML = '<span>✓</span> Copied!';
+          btn.style.background = '#059669';
+          setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.style.background = '';
+          }, 2000);
+        }
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mdContent).then(showCopied).catch(() => {
+          fallbackCopyText(mdContent, showCopied);
+        });
+      } else {
+        fallbackCopyText(mdContent, showCopied);
+      }
+    }
+
+    function fallbackCopyText(text, cb) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        if (cb) cb();
+      } catch (e) {
+        console.warn('Copy failed:', e);
+      }
+      document.body.removeChild(ta);
+    }
+
     // Initialize Portal
     async function initPersonalitiesPortal() {
       // 1. Initialize IDE 3-Panel Draggable Docking Engine
@@ -1438,6 +2357,10 @@
 
         renderArchetypeCards(allArchetypes);
         renderActiveQuestions();
+
+        // 3. Initialize Interactive Triguna Mandala
+        initMandalaInteractions();
+        updateMandalaVisuals();
 
         // Default baseline preview
         const defaultArch = allArchetypes.find(a => a.id === 'arjuna') || allArchetypes[0];
@@ -1733,7 +2656,7 @@
     }
 
     // Select and inspect Archetype
-    function selectArchetype(id) {
+    function selectArchetype(id, skipMandalaRecalc = false) {
       const arch = allArchetypes.find(a => a.id === id);
       if (!arch) return;
       activeArchetype = arch;
@@ -1742,6 +2665,37 @@
       document.querySelectorAll('.character-card').forEach(c => c.classList.remove('active'));
       const activeCard = document.getElementById(`charCard_${id}`);
       if (activeCard) activeCard.classList.add('active');
+
+      // Sync Archetype Presets Buttons in Mandala
+      document.querySelectorAll('.mandala-preset-btn').forEach(b => b.classList.remove('active'));
+      const activePresetBtn = document.getElementById('btnMandala' + id.charAt(0).toUpperCase() + id.slice(1));
+      if (activePresetBtn) activePresetBtn.classList.add('active');
+
+      // Update Live Soul Spec Card in Right Panel
+      updateSoulSpecCard(arch, mandalaMode, agentGunas);
+
+      // If user selected an archetype from the list or preset, update the mandala coordinates to match
+      if (!skipMandalaRecalc) {
+        const presetKey = id.toLowerCase();
+        if (MANDALA_ARCHETYPE_PRESETS[presetKey]) {
+          userGunas = {
+            sattva: MANDALA_ARCHETYPE_PRESETS[presetKey].s,
+            rajas: MANDALA_ARCHETYPE_PRESETS[presetKey].r,
+            tamas: MANDALA_ARCHETYPE_PRESETS[presetKey].t
+          };
+        } else {
+          if (arch.tier === 'sattvik') userGunas = { sattva: 70, rajas: 20, tamas: 10 };
+          else if (arch.tier === 'rajasik') userGunas = { sattva: 25, rajas: 65, tamas: 10 };
+          else userGunas = { sattva: 15, rajas: 35, tamas: 50 };
+        }
+
+        if (mandalaMode === 'counterweight') {
+          agentGunas = computeCounterWeightGunas(userGunas.sattva, userGunas.rajas, userGunas.tamas);
+        } else {
+          agentGunas = { ...userGunas };
+        }
+        updateMandalaVisuals();
+      }
 
       // Populate Inspector
       document.getElementById('dossierStatusBadge').innerText = `${arch.tier.toUpperCase()} ARCHETYPE: ${arch.epic.toUpperCase()}`;
