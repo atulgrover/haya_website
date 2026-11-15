@@ -457,9 +457,6 @@
     </header>
   </div>
 
-  <!-- Main Isolated Scrollable Workspace Shell -->
-  <main id="app-workspace" data-view="playbooks">
-
   <!-- Hero Blue Banner -->
   <section class="pillar-hero">
     <h1 class="hero-title">Autonomous Domain Skills &amp; Agentic Co-Pilots</h1>
@@ -574,8 +571,6 @@
 
   <!-- Unified Dark Deep Blue Footer Container (Loaded dynamically via components/footer.html) -->
   <div id="site-footer"></div>
-
-  </main>
 
   <script>
     let currentFilters = { sector: '', sub_sector: '', occupation: '', qp_code: '', search: '' };
@@ -1962,7 +1957,13 @@
     </div>
   </div>
 
+  <script src="js/ide-docking.js"></script>
+  <script src="js/responsive.js"></script>
+  <script src="js/components.js"></script>
+</body>
 
+</html>
+<script>
     async function openTheoryModal(qpEnc, nosEnc, titleEnc) {
         const qpCode = decodeURIComponent(qpEnc);
         const nosCode = decodeURIComponent(nosEnc);
@@ -2157,9 +2158,3 @@
             .replace(/'/g, '&#039;');
     }
 </script>
-
-  <script src="js/ide-docking.js"></script>
-  <script src="js/responsive.js"></script>
-  <script src="js/components.js"></script>
-</body>
-</html>

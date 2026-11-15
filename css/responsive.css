@@ -43,38 +43,6 @@ html {
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Viewport Shell Architecture ──────────────────────────────── */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-#site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 64px;
-  z-index: 10000;
-  background-color: #FFFFFF;
-  view-transition-name: site-header;
-}
-
-#app-workspace {
-  position: fixed;
-  top: 64px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  view-transition-name: app-workspace;
-}
-
 /* ── Universal Header Core Styles (Pre-Loaded in <head>) ─────── */
 .header-nav {
   height: 64px;
@@ -82,7 +50,8 @@ html, body {
   border-bottom: 1px solid var(--border-color, #E2E8F0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
 }
 .nav-container {
