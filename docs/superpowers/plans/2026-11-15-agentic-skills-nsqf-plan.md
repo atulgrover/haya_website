@@ -39,16 +39,16 @@
 - Test: Run migration query on `hayadb` and verify columns exist.
 
 **Steps:**
-- [ ] Add migration queries in `server/db.js`:
+- [x] Add migration queries in `server/db.js`:
   ```sql
   ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS skill_markdown TEXT;
   ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS skill_metadata JSONB;
   ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS skill_markdown TEXT;
   ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS skill_metadata JSONB;
   ```
-- [ ] Execute migration on PostgreSQL `hayadb`.
-- [ ] Verify columns exist on `nsqf_nos` and `nsqf_pcs`.
-- [ ] Commit changes: `git commit -m "feat(db): add skill_markdown and skill_metadata to nsqf_nos and nsqf_pcs"`.
+- [x] Execute migration on PostgreSQL `hayadb`.
+- [x] Verify columns exist on `nsqf_nos` and `nsqf_pcs`.
+- [x] Commit changes: `git commit -m "feat(db): add skill_markdown and skill_metadata to nsqf_nos and nsqf_pcs"`.
 
 ---
 
@@ -60,22 +60,22 @@
 - Test: `curl -s "http://localhost:3001/api/skillpedia/agent-skill?level=nos&qp=AAS/Q0301&nos=AAS/N0301"`
 
 **Steps:**
-- [ ] Create `server/routes/agentSkills.js` handling `GET /api/skillpedia/agent-skill`.
-- [ ] Implement NOS Level logic:
+- [x] Create `server/routes/agentSkills.js` handling `GET /api/skillpedia/agent-skill`.
+- [x] Implement NOS Level logic:
   - Check `nsqf_nos.skill_markdown` where `qp_code = $1 AND nos_code = $2`.
   - If cached: return `{ success: true, is_cached: true, markdown: ..., metadata: ... }`.
   - If miss: query all PCs of that `(qp_code, nos_code)` from `nsqf_pcs`.
   - Synthesize Superpowers/Antigravity `SKILL.md` (YAML frontmatter, operational scope, sequenced workflow, tolerances, BOM equipment, pro knacks, LOTO guardrails).
   - Update `nsqf_nos SET skill_markdown = $1, skill_metadata = $2`.
   - Return `{ success: true, is_cached: false, markdown: ... }`.
-- [ ] Implement PC Level logic:
+- [x] Implement PC Level logic:
   - Check `nsqf_pcs.skill_markdown` where `qp_code = $1 AND nos_code = $2 AND pc_code = $3` (or `id = $1`).
   - If cached: return `{ success: true, is_cached: true, markdown: ... }`.
   - If miss: query single PC row, synthesize atomic `.md` card, save to `nsqf_pcs.skill_markdown`.
   - Return `{ success: true, is_cached: false, markdown: ... }`.
-- [ ] Mount route in `server/server.js`.
-- [ ] Test with `curl` to verify cache miss saves to DB and subsequent call returns `is_cached: true`.
-- [ ] Commit changes: `git commit -m "feat(api): add agent-skill write-through cache endpoint"`.
+- [x] Mount route in `server/server.js`.
+- [x] Test with `curl` to verify cache miss saves to DB and subsequent call returns `is_cached: true`.
+- [x] Commit changes: `git commit -m "feat(api): add agent-skill write-through cache endpoint"`.
 
 ---
 
@@ -86,11 +86,11 @@
 - Test: Visual check of the right drawer on `http://localhost:3001/employees_nsqf.html`.
 
 **Steps:**
-- [ ] Remove `⏱️ ${pc.start_seconds || 45}s-${pc.end_seconds || 135}s` badge from each PC row.
-- [ ] Remove `[ 🧠 Viva Exam ]` and `[ 🎬 Open ]` buttons from module headers.
-- [ ] Add `[ ⚡ Skill Code ]` button on parent NOS header bar (beside `[ 📚 Theory ]`) with `onclick="event.stopPropagation(); openNosSkillModal(...)"`.
-- [ ] Keep accordion bar click behavior intact (clicking the bar expands/collapses the PCs below).
-- [ ] Commit changes: `git commit -m "feat(ui): clean drawer clutter and add NOS Skill Code trigger"`.
+- [x] Remove `⏱️ ${pc.start_seconds || 45}s-${pc.end_seconds || 135}s` badge from each PC row.
+- [x] Remove `[ 🧠 Viva Exam ]` and `[ 🎬 Open ]` buttons from module headers.
+- [x] Add `[ ⚡ Skill Code ]` button on parent NOS header bar (beside `[ 📚 Theory ]`) with `onclick="event.stopPropagation(); openNosSkillModal(...)"`.
+- [x] Keep accordion bar click behavior intact (clicking the bar expands/collapses the PCs below).
+- [x] Commit changes: `git commit -m "feat(ui): clean drawer clutter and add NOS Skill Code trigger"`.
 
 ---
 
@@ -101,17 +101,17 @@
 - Test: Click `[ ⚡ Skill Code ]` on any NOS and verify modal opens with syntax-styled markdown.
 
 **Steps:**
-- [ ] Add `#nosSkillModal` HTML markup in `employees_nsqf.html`:
+- [x] Add `#nosSkillModal` HTML markup in `employees_nsqf.html`:
   - Centered modal container with backdrop blur.
   - Header: NOS Code, Title, Qualification name, Scope badge (`X criteria synthesized`).
   - Action buttons: `[ 📋 Copy SKILL.md ]`, `[ ⬇ Download .skill.md ]`, `[ ✕ Close ]`.
   - Content area: Shimmer loader while fetching, syntax-styled `<pre><code>` block for the generated markdown.
-- [ ] Implement JavaScript functions:
+- [x] Implement JavaScript functions:
   - `openNosSkillModal(qpCode, nosCode, nosTitle)`: calls `/api/skillpedia/agent-skill?level=nos&qp=...&nos=...` and renders markdown.
   - `closeNosSkillModal()`: hides modal.
   - `copyNosSkillMarkdown()`: copies raw markdown to clipboard with toast confirmation.
   - `downloadNosSkillMarkdown()`: triggers browser Blob download of `[nos_code]-skill.md`.
-- [ ] Commit changes: `git commit -m "feat(ui): implement centered NOS Skill Code modal with download/copy"`.
+- [x] Commit changes: `git commit -m "feat(ui): implement centered NOS Skill Code modal with download/copy"`.
 
 ---
 
@@ -122,16 +122,16 @@
 - Test: Click a PC to verify video on top-left, atomic markdown card on bottom-left, AI on right, and no Viva Exam in footer.
 
 **Steps:**
-- [ ] In `#pcTiddlerModal` Left Column, insert `#pcMarkdownCard` directly below the video bounds:
+- [x] In `#pcTiddlerModal` Left Column, insert `#pcMarkdownCard` directly below the video bounds:
   - Header: `📄 ATOMIC SKILL CARD (.MD)` + `[ ⬇ Download Card ]` + `[ 📋 Copy ]`.
   - Pre-styled code container showing the criterion's exact Markdown specification.
-- [ ] Update `renderPcModalContent(pc, idx, total)`:
+- [x] Update `renderPcModalContent(pc, idx, total)`:
   - Fetch or render the atomic `.md` card via `/api/skillpedia/agent-skill?level=pc&qp=...&nos=...&pc=...`.
   - Wire `downloadPcSkillCard()` and `copyPcSkillCard()`.
-- [ ] In the modal footer:
+- [x] In the modal footer:
   - Delete `[ Viva Exam ]` button (`triggerModuleVivaFromPcModal()`).
   - Keep clean navigation: `[ ← Previous ]`, `PC X of Y`, `[ Next → ]`.
-- [ ] Commit changes: `git commit -m "feat(ui): add atomic markdown card to PC modal and clean footer"`.
+- [x] Commit changes: `git commit -m "feat(ui): add atomic markdown card to PC modal and clean footer"`.
 
 ---
 
@@ -141,11 +141,11 @@
 - Test: Full user journey on `http://localhost:3001/employees_nsqf.html`.
 
 **Steps:**
-- [ ] Verify right drawer loads with 0 layout shift and no timer/exam buttons.
-- [ ] Click `[ ⚡ Skill Code ]` on NOS: verify centered modal opens, markdown is fetched and saved to `nsqf_nos.skill_markdown`.
-- [ ] Close and re-click `[ ⚡ Skill Code ]`: verify 0ms instant display from database cache (`is_cached: true`).
-- [ ] Test `[ ⬇ Download .skill.md ]`: verify downloaded file has valid YAML frontmatter and directives.
-- [ ] Click a PC: verify YouTube plays, AI explainer loads on right, and atomic `.md` card renders below video.
-- [ ] Test `[ ⬇ Download Card ]` on PC: verify downloaded atomic `.md` file.
-- [ ] Verify footer has no Viva Exam button and Next/Prev stepping works smoothly.
-- [ ] Commit and push changes to git (`origin main`).
+- [x] Verify right drawer loads with 0 layout shift and no timer/exam buttons.
+- [x] Click `[ ⚡ Skill Code ]` on NOS: verify centered modal opens, markdown is fetched and saved to `nsqf_nos.skill_markdown`.
+- [x] Close and re-click `[ ⚡ Skill Code ]`: verify 0ms instant display from database cache (`is_cached: true`).
+- [x] Test `[ ⬇ Download .skill.md ]`: verify downloaded file has valid YAML frontmatter and directives.
+- [x] Click a PC: verify YouTube plays, AI explainer loads on right, and atomic `.md` card renders below video.
+- [x] Test `[ ⬇ Download Card ]` on PC: verify downloaded atomic `.md` file.
+- [x] Verify footer has no Viva Exam button and Next/Prev stepping works smoothly.
+- [x] Commit and push changes to git (`origin main`).
