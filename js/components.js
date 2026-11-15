@@ -337,7 +337,7 @@ function renderSiteHeader() {
       <header class="header-nav">
         <div class="nav-container">
           <a href="index.html" class="brand-logo">
-            <span>HAYAGRIVA</span> ${subBadge ? `<span class="brand-sub">${subBadge}</span>` : ''}
+            <span>AGENTIC PROFESSIONALS</span> ${subBadge ? `<span class="brand-sub">${subBadge}</span>` : ''}
           </a>
           <ul class="nav-links">
             <li><a href="index.html" class="nav-link ${pillar === 'home' ? 'active' : ''}">Home</a></li>
@@ -362,15 +362,9 @@ function renderSiteHeader() {
             </li>
           </ul>
           <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
-            <div id="varahaAuthAction">
-              <a href="http://localhost:3300/auth/login?app=varaha" class="btn-varaha-auth" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: background 0.2s;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Sign In / Track Progress
-              </a>
-            </div>
-            <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Learning Studio" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #F1F5F9; color: #334155; font-size: 13px; font-weight: 500; border-radius: 6px; border: 1px solid #CBD5E1; text-decoration: none;">
+            <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Agent Harness" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 6px rgba(30, 108, 147, 0.25);">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Desktop Studio
+              Hayagriva Harness
             </a>
             <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
