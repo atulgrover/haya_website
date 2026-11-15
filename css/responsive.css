@@ -59,6 +59,7 @@ html, body {
   height: 64px;
   z-index: 10000;
   background-color: #FFFFFF;
+  view-transition-name: site-header;
 }
 
 #app-workspace {
@@ -71,6 +72,7 @@ html, body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  view-transition-name: app-workspace;
 }
 
 /* ── Universal Header Core Styles (Pre-Loaded in <head>) ─────── */
