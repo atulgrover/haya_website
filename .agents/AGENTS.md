@@ -7,11 +7,15 @@
 
 ### Core Architecture & Portal Layout
 - **Public Marketing & Router Hub**: `index.html` (Central entrance hub introducing the 4 economic pillars with unified navigation header).
-- **Targeted Symmetrical Segment Portals**:
-  - `employees_nsqf.html` (Employees - NSQF): National Qualification Framework (NSQF) engine with 2,001 NCVET job roles & dynamic PC-based vocational micro-learning reels.
-  - `employers_sop.html` (Employers - SOP): National Standard Operating Procedures (SOP) catalog across 41 sectors, station workflows, and corporate domain isolation (`@company.com`).
-  - `entrepreneurs_msme.html` (Entrepreneurs - MSME): Turnkey MSME business blueprints, tool & machinery BOMs, day-1 operational playbooks, and bankable project profiles (PMEGP/Mudra).
-  - `professionals_apnet.html` (Professionals - APNET): **Agentic Professionals Network** showcasing Desktop IPE binaries, local GGUF models, `.vlt` statutory data vaults, and marketplace report ordering.
+- **Targeted Symmetrical Segment Portals (The 4 Unified Economic Pillars)**:
+  - `employees_nsqf.html` (**`ai.playbooks`**): National Qualification Framework (NSQF) engine with 2,002 NCVET job roles & dynamic PC-based vocational micro-learning reels.
+  - `employers_sop.html` (**`ai.workflows`**): National Standard Operating Procedures (SOP) catalog across 41 sectors, station workflows, and corporate domain isolation (`@company.com`).
+  - `entrepreneurs_msme.html` (**`ai.ventures`**): Turnkey MSME business blueprints, tool & machinery BOMs, day-1 operational playbooks, and bankable project profiles (PMEGP/Mudra).
+  - `personalities_vedic.html` (**`ai.personality`**): **Agentic Alter-Ego & Vedic Soul Forge** featuring an interactive visual Triguna Mandala (Barycentric simplex math), Mirror vs Counter-Weight modes, and 1-click **`soul.md`** generator for the Hayagriva Desktop Harness.
+- **Unified Navigation Header (`header-nav`)**:
+  - Brand: `agentic professionals` (lowercase)
+  - Navigation Tabs: `ai.playbooks` | `ai.workflows` | `ai.ventures` | `ai.personality`
+  - Right Action: Sole `Hayagriva Harness` download button (secondary dropdowns permanently eliminated).
 - **Interactive Collateral & Utilities**: `brochure.html` (Digital pitch deck), `workshop.html` (Masterclass registration), `handbook.html` (Operational docs viewer).
 - **Logged-In User Portal Dashboard**: `dashboard.html` (Logged-in control panel with tabs: `🔑 License & Payments`, `🖥️ Hayagriva IPE`, `🧠 LLM Models`, `📚 Data Vaults`, `🤖 IBC Agents`, `📊 Marketplace Reports`, `👤 Profile & Settings`).
 - **Auth Flow**: `login.html` and `signup.html` backed by `server/routes/auth.js` using PostgreSQL (`server/db.js`), `bcryptjs`, and JWT tokens.
@@ -83,6 +87,14 @@
 3. **YOUTUBE POLICY III.E.4 (EPHEMERAL CACHE - ZERO PERMANENT STORAGE)**:
    - Video IDs are **never** stored permanently in `nsqf_pcs`.
    - On-the-fly streaming searches via `youtube_search_cache` table with automated 7-day TTL purge (`DELETE FROM youtube_search_cache WHERE cached_at < NOW() - INTERVAL '7 days'`).
+
+4. **AGENTIC SOUL SPECIFICATION (`soul.md`) & TRIGUNA SIMPLEX**:
+   - The Mind/Soul of each autonomous agent is calibrated on `personalities_vedic.html` (`ai.personality`).
+   - Uses an interactive SVG equilateral triangle with barycentric simplex math where Sattva, Rajas, and Tamas strictly sum to 100% ($S\% + R\% + T\% = 100\%$).
+   - Supports two explicit interaction dynamics:
+     - `🪞 Alter-Ego (Mirror)`: Matches user velocity and operational cadence.
+     - `⚖️ Counter-Weight (Keep Me in Check)`: Inverts dominant Gunas with balancing counter-forces (e.g. Sattvic discernment to check impulsive Rajasic haste) and displays a balancing vector with user ghost puck and agent beacon.
+   - Exports a valid `soul.md` markdown specification with YAML frontmatter for ingestion by the local **Hayagriva Desktop Harness** alongside vocational `SKILL.md`.
 
 ---
 
