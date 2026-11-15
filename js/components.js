@@ -101,6 +101,16 @@ function renderSiteHeader() {
     const headerMount = document.getElementById('site-header');
     if (!headerMount) return;
 
+    // If static header is already pre-rendered in HTML, do NOT thrash DOM - only hook up mobile menu
+    if (headerMount.querySelector('.header-nav')) {
+        const navHamburger = document.getElementById('navHamburger');
+        const navMobileDrawer = document.getElementById('navMobileDrawer');
+        if (navHamburger && navMobileDrawer) {
+            navHamburger.onclick = () => navMobileDrawer.classList.toggle('open');
+        }
+        return;
+    }
+
     // Inject Universal Header Styles if not already injected
     if (!document.getElementById('universalHeaderStyles')) {
         const headerStyle = document.createElement('style');

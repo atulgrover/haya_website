@@ -539,16 +539,16 @@
     }
     .hero-title {
       font-family: var(--font-heading);
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: -0.2px;
       margin-bottom: 8px;
     }
     .hero-subtitle {
       font-size: 14.5px;
       color: #94A3B8;
-      max-width: 800px;
-      margin: 0 auto 20px;
+      max-width: 820px;
+      margin: 0 auto 18px;
       line-height: 1.5;
     }
     .hero-stats-row {
@@ -570,8 +570,40 @@
 </head>
 <body>
 
-  <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="entrepreneurs_msme"></div>
+  <!-- Universal Header Mount Point (Pre-rendered Static Shell) -->
+  <div id="site-header" data-pillar="entrepreneurs_msme">
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="index.html" class="brand-logo">
+          <span>AGENTIC PROFESSIONALS</span> <span class="brand-sub">Ventures</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="employees_nsqf.html" class="nav-link">Playbooks</a></li>
+          <li><a href="employers_sop.html" class="nav-link">Workflows</a></li>
+          <li><a href="entrepreneurs_msme.html" class="nav-link active">Ventures</a></li>
+        </ul>
+        <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
+          <div class="nav-dropdown nav-dropdown-desktop">
+            <a href="personalities_generic.html" class="nav-link nav-pill-blue nav-dropdown-toggle" title="Personality Tests">
+              Personality Tests
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 12px; height: 12px; margin-left: 2px;"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="personalities_generic.html" class="dropdown-item">Generic</a></li>
+              <li><a href="personalities_vedic.html" class="dropdown-item">Vedic</a></li>
+            </ul>
+          </div>
+          <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Agent Harness" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 6px rgba(30, 108, 147, 0.25);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Hayagriva Harness
+          </a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
 
   <!-- Hero Blue Banner -->
   <section class="pillar-hero">

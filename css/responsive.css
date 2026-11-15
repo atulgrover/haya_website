@@ -43,6 +43,173 @@ html {
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ── Universal Header Core Styles (Pre-Loaded in <head>) ─────── */
+.header-nav {
+  height: 64px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--border-color, #E2E8F0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-container {
+  max-width: 100%;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.brand-logo {
+  font-family: var(--font-heading, 'Google Sans', sans-serif);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  color: var(--text-main, #212121);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.brand-sub {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--primary-color, #1E6C93);
+  background: var(--primary-light, rgba(30, 108, 147, 0.1));
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 8px;
+  letter-spacing: 0px;
+  display: inline-block;
+  min-width: 90px;
+  text-align: center;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-link {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main, #212121);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.nav-link:hover {
+  color: var(--primary-color, #1E6C93);
+  background-color: var(--primary-light, rgba(30, 108, 147, 0.1));
+}
+.nav-link.active {
+  color: var(--primary-color, #1E6C93);
+  background-color: var(--primary-light, rgba(30, 108, 147, 0.12));
+  font-weight: 600;
+}
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.nav-dropdown-toggle svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+}
+.nav-dropdown:hover .nav-dropdown-toggle svg,
+.nav-dropdown.open .nav-dropdown-toggle svg {
+  transform: rotate(180deg);
+}
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: auto;
+  min-width: 140px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color, #E2E8F0);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  padding: 6px;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s;
+}
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu,
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dropdown-item {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main, #212121);
+  text-decoration: none;
+  display: block;
+  transition: all 0.15s ease;
+}
+.dropdown-item:hover, .dropdown-item.active {
+  background-color: var(--primary-light, rgba(30, 108, 147, 0.1));
+  color: var(--primary-color, #1E6C93);
+}
+.nav-pill-blue {
+  background: linear-gradient(135deg, #1E6C93 0%, #2563EB 100%) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+  transition: all 0.2s ease !important;
+  letter-spacing: 0.2px;
+}
+.nav-pill-blue:hover {
+  background: linear-gradient(135deg, #165272 0%, #1D4ED8 100%) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.5) !important;
+}
+.nav-pill-blue.active {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #2563EB !important;
+}
+
 .nav-container { position: relative; }
 
 /* ── Unified Header Brand Sub-Title ──────────────────── */
