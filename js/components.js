@@ -137,22 +137,22 @@ function renderSiteHeader() {
             .brand-logo {
                 font-family: var(--font-heading, 'Google Sans', sans-serif);
                 font-weight: 700;
-                font-size: 20px;
-                letter-spacing: 1.5px;
+                font-size: 19px;
+                letter-spacing: -0.2px;
                 color: var(--text-main, #212121);
                 text-decoration: none;
-                display: flex;
+                display: inline-flex;
                 align-items: center;
+                gap: 10px;
+            }
+            .brand-icon {
+                height: 28px;
+                width: auto;
+                display: block;
+                object-fit: contain;
             }
             .brand-sub {
-                font-size: 13px;
-                font-weight: 500;
-                color: var(--primary-color, #1E6C93);
-                background: var(--primary-light, rgba(30, 108, 147, 0.1));
-                padding: 3px 10px;
-                border-radius: 20px;
-                margin-left: 8px;
-                letter-spacing: 0px;
+                display: none !important;
             }
             .nav-links {
                 display: flex;
@@ -393,12 +393,13 @@ function renderSiteHeader() {
       <header class="header-nav">
         <div class="nav-container">
           <a href="index.html" class="brand-logo">
-            <span>AGENTIC PROFESSIONALS</span> ${subBadge ? `<span class="brand-sub">${subBadge}</span>` : ''}
+            <img src="branding/hayagriva_icon.png" alt="Hayagriva" class="brand-icon">
+            <span>agentic hayagriva</span>
           </a>
           <ul class="nav-links">
-            <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Playbooks</a></li>
-            <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Workflows</a></li>
-            <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Ventures</a></li>
+            <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">playbooks</a></li>
+            <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">workflows</a></li>
+            <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ventures</a></li>
           </ul>
           <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
             <div class="nav-dropdown nav-dropdown-desktop">
@@ -430,9 +431,9 @@ function renderSiteHeader() {
         </div>
       </header>
       <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
-        <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">Playbooks ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
-        <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">Workflows ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
-        <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">Ventures ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
+        <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">playbooks ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
+        <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">workflows ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
+        <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ventures ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
         <div class="nav-mobile-group">
           <div class="nav-mobile-group-title">Personality Tests</div>
           <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">Generic ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>

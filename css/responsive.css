@@ -66,25 +66,22 @@ html {
 .brand-logo {
   font-family: var(--font-heading, 'Google Sans', sans-serif);
   font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 1.5px;
+  font-size: 19px;
+  letter-spacing: -0.2px;
   color: var(--text-main, #212121);
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
+}
+.brand-icon {
+  height: 28px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 .brand-sub {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--primary-color, #1E6C93);
-  background: var(--primary-light, rgba(30, 108, 147, 0.1));
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-left: 8px;
-  letter-spacing: 0px;
-  display: inline-block;
-  min-width: 90px;
-  text-align: center;
+  display: none !important;
 }
 .nav-links {
   display: flex;
