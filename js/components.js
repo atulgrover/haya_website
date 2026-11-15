@@ -361,7 +361,6 @@ function renderSiteHeader() {
                 .nav-links { display: none; }
                 .nav-hamburger { display: block; }
                 .nav-mobile-drawer.open { display: flex; }
-                .nav-dropdown-desktop { display: none !important; }
             }
         `;
         document.head.appendChild(headerStyle);
@@ -400,22 +399,9 @@ function renderSiteHeader() {
             <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">ai.playbooks</a></li>
             <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">ai.workflows</a></li>
             <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ai.ventures</a></li>
+            <li><a href="personalities_vedic.html" class="nav-link ${pillar === 'personalities' || pillar === 'personalities_vedic' ? 'active' : ''}">ai.personality</a></li>
           </ul>
           <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
-            <div class="nav-dropdown nav-dropdown-desktop">
-              <a href="personalities_generic.html" class="nav-link nav-pill-blue nav-dropdown-toggle ${pillar === 'personalities' ? 'active' : ''}" title="Personality Tests">
-                Personality Tests
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 12px; height: 12px; margin-left: 2px;"><path d="M6 9l6 6 6-6"/></svg>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="personalities_generic.html" class="dropdown-item ${path.endsWith('personalities_generic.html') ? 'active' : ''}">Generic</a>
-                </li>
-                <li>
-                  <a href="personalities_vedic.html" class="dropdown-item ${path.endsWith('personalities_vedic.html') ? 'active' : ''}">Vedic</a>
-                </li>
-              </ul>
-            </div>
             <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Agent Harness" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 6px rgba(30, 108, 147, 0.25);">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Hayagriva Harness
@@ -434,11 +420,7 @@ function renderSiteHeader() {
         <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">ai.playbooks ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
         <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">ai.workflows ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
         <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ai.ventures ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
-        <div class="nav-mobile-group">
-          <div class="nav-mobile-group-title">Personality Tests</div>
-          <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">Generic ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>
-          <a href="personalities_vedic.html" class="${path.endsWith('personalities_vedic.html') ? 'active' : ''}">Vedic ${path.endsWith('personalities_vedic.html') ? '●' : ''}</a>
-        </div>
+        <a href="personalities_vedic.html" class="${pillar === 'personalities' || pillar === 'personalities_vedic' ? 'active' : ''}">ai.personality ${pillar === 'personalities' || pillar === 'personalities_vedic' ? '●' : ''}</a>
       </nav>
     `;
 
@@ -449,23 +431,6 @@ function renderSiteHeader() {
         hamburger.addEventListener('click', () => {
             const isOpen = drawer.classList.toggle('open');
             hamburger.setAttribute('aria-expanded', isOpen);
-        });
-    }
-
-    // Bind Personality Tests dropdown toggle on click (for deliberate touch / click interaction)
-    const dropdown = headerMount.querySelector('.nav-dropdown');
-    const dropdownToggle = headerMount.querySelector('.nav-dropdown-toggle');
-    if (dropdown && dropdownToggle) {
-        dropdownToggle.addEventListener('click', (e) => {
-            // Prevent immediate navigation so the user can deliberately pick from the dropdown
-            e.preventDefault();
-            dropdown.classList.toggle('open');
-        });
-        // Close when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('open');
-            }
         });
     }
 

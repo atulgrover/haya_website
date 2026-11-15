@@ -858,8 +858,32 @@
 </head>
 <body>
 
-  <!-- Universal Header Mount Point (Hydrated by js/components.js) -->
-  <div id="site-header" data-pillar="personalities"></div>
+  <!-- Universal Header Mount Point (Pre-rendered Static Shell) -->
+  <div id="site-header" data-pillar="personalities">
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="index.html" class="brand-logo">
+          <img src="branding/hayagriva_icon.png" alt="Hayagriva" class="brand-icon">
+          <span>agentic professionals</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="employees_nsqf.html" class="nav-link">ai.playbooks</a></li>
+          <li><a href="employers_sop.html" class="nav-link">ai.workflows</a></li>
+          <li><a href="entrepreneurs_msme.html" class="nav-link">ai.ventures</a></li>
+          <li><a href="personalities_vedic.html" class="nav-link active">ai.personality</a></li>
+        </ul>
+        <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
+          <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Agent Harness" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 6px rgba(30, 108, 147, 0.25);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Hayagriva Harness
+          </a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
 
   <!-- Hero Banner -->
   <section class="pillar-hero">
