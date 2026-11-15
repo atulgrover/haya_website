@@ -40,6 +40,14 @@ body {
 
 a { color: var(--primary-color); text-decoration: none; }
 
+/* ── Universal Site Header (Anti-Shift Reservation) ────────── */
+#site-header {
+  min-height: 64px;
+  height: 64px;
+  background-color: #FFFFFF;
+  display: block;
+}
+
 /* ── Universal Hero Blue Banner ──────────────────────────────── */
 .pillar-hero {
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #1E6C93 100%);

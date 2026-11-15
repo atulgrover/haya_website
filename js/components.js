@@ -49,7 +49,52 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (params.get('signup') === '1') {
         openAuthModal(true);
     }
+
+    // 7. Instant 0ms Page Pre-fetching & Anti-Jolt Transitions
+    injectSpeculationRules();
 });
+
+/* ── Instant 0ms Transition Speculation Rules & Hover Prefetch ── */
+function injectSpeculationRules() {
+    if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+        if (!document.getElementById('siteSpeculationRules')) {
+            const specScript = document.createElement('script');
+            specScript.id = 'siteSpeculationRules';
+            specScript.type = 'speculationrules';
+            specScript.textContent = JSON.stringify({
+                prefetch: [
+                    {
+                        source: "list",
+                        urls: [
+                            "employees_nsqf.html",
+                            "employers_sop.html",
+                            "entrepreneurs_msme.html",
+                            "index.html",
+                            "personalities_generic.html",
+                            "personalities_vedic.html"
+                        ],
+                        eagerness: "moderate"
+                    }
+                ]
+            });
+            document.head.appendChild(specScript);
+        }
+    }
+
+    // Hover Prefetch Fallback (Safari, Firefox)
+    document.addEventListener('mouseover', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.href && link.origin === window.location.origin) {
+            const path = link.pathname;
+            if (path.endsWith('.html') && !document.querySelector(`link[rel="prefetch"][href="${path}"]`)) {
+                const prefetch = document.createElement('link');
+                prefetch.rel = 'prefetch';
+                prefetch.href = path;
+                document.head.appendChild(prefetch);
+            }
+        }
+    }, { passive: true });
+}
 
 /* ── Universal Dynamic Header Renderer ───────────────────────── */
 function renderSiteHeader() {

@@ -2,11 +2,46 @@
    HAYAGRIVA Portal — Shared Mobile Responsive Stylesheet
    Loaded by: index, employees, students, professionals,
               login, signup pages
-   Breakpoints:
-     768px — tablet: collapse sidebar, hamburger nav
-     480px — mobile: single column, full-width
-     375px — small phone: tighten spacing/fonts
    ======================================================= */
+
+/* ── Universal Anti-Jitter & View Transitions System ───────────────────── */
+html {
+  scrollbar-gutter: stable;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+#site-header {
+  min-height: 64px;
+  height: 64px;
+  background-color: #FFFFFF;
+  display: block;
+  view-transition-name: site-header;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.pillar-hero {
+  view-transition-name: pillar-hero;
+}
+
+::view-transition-old(pillar-hero),
+::view-transition-new(pillar-hero) {
+  animation-duration: 0.18s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.18s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 .nav-container { position: relative; }
 
