@@ -394,12 +394,12 @@ function renderSiteHeader() {
         <div class="nav-container">
           <a href="index.html" class="brand-logo">
             <img src="branding/hayagriva_icon.png" alt="Hayagriva" class="brand-icon">
-            <span>agentic hayagriva</span>
+            <span>agentic professionals</span>
           </a>
           <ul class="nav-links">
-            <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">playbooks</a></li>
-            <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">workflows</a></li>
-            <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ventures</a></li>
+            <li><a href="employees_nsqf.html" class="nav-link ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">ai.playbooks</a></li>
+            <li><a href="employers_sop.html" class="nav-link ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">ai.workflows</a></li>
+            <li><a href="entrepreneurs_msme.html" class="nav-link ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ai.ventures</a></li>
           </ul>
           <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
             <div class="nav-dropdown nav-dropdown-desktop">
@@ -431,9 +431,9 @@ function renderSiteHeader() {
         </div>
       </header>
       <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation">
-        <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">playbooks ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
-        <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">workflows ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
-        <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ventures ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
+        <a href="employees_nsqf.html" class="${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? 'active' : ''}">ai.playbooks ${pillar === 'employees_nsqf' || pillar === 'interns' || pillar === 'employees' ? '●' : ''}</a>
+        <a href="employers_sop.html" class="${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? 'active' : ''}">ai.workflows ${pillar === 'employers_sop' || pillar === 'employers' || pillar === 'owners' ? '●' : ''}</a>
+        <a href="entrepreneurs_msme.html" class="${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? 'active' : ''}">ai.ventures ${pillar === 'entrepreneurs_msme' || pillar === 'startups' || pillar === 'entrepreneurs' ? '●' : ''}</a>
         <div class="nav-mobile-group">
           <div class="nav-mobile-group-title">Personality Tests</div>
           <a href="personalities_generic.html" class="${path.endsWith('personalities_generic.html') ? 'active' : ''}">Generic ${path.endsWith('personalities_generic.html') ? '●' : ''}</a>
