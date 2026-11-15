@@ -603,6 +603,10 @@ async function initSchema() {
             `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS perspective VARCHAR(20) DEFAULT 'skill'`,
             `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS cached_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`,
             `ALTER TABLE youtube_search_cache ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`,
+            `ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS skill_markdown TEXT`,
+            `ALTER TABLE nsqf_nos ADD COLUMN IF NOT EXISTS skill_metadata JSONB`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS skill_markdown TEXT`,
+            `ALTER TABLE nsqf_pcs ADD COLUMN IF NOT EXISTS skill_metadata JSONB`,
         ];
         for (const sql of migrations) {
             try { await pool.query(sql); } catch (_) {}
