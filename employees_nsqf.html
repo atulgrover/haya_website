@@ -53,65 +53,6 @@
       text-decoration: none;
     }
 
-    /* Top Navigation Bar */
-    .header-nav {
-      height: 64px;
-      background-color: #FFFFFF;
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      flex-shrink: 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .nav-container {
-      max-width: 100%;
-      padding: 0 24px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand-logo {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 20px;
-      letter-spacing: 1.5px;
-      color: var(--text-main);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
-    }
-
-    .nav-link {
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-main);
-      transition: all 0.2s ease;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--primary-color);
-      background-color: var(--primary-light);
-    }
-
-    .login-btn {
-      background-color: var(--primary-color);
-      color: #FFFFFF !important;
-      font-weight: 600;
-      padding: 7px 18px;
-      border-radius: 6px;
-    }
-
     /* 3-Panel IDE Layout */
     .ide-container {
       display: flex;
@@ -2016,13 +1957,7 @@
     </div>
   </div>
 
-  <script src="js/ide-docking.js"></script>
-  <script src="js/responsive.js"></script>
-  <script src="js/components.js"></script>
-</body>
 
-</html>
-<script>
     async function openTheoryModal(qpEnc, nosEnc, titleEnc) {
         const qpCode = decodeURIComponent(qpEnc);
         const nosCode = decodeURIComponent(nosEnc);
@@ -2217,3 +2152,9 @@
             .replace(/'/g, '&#039;');
     }
 </script>
+
+  <script src="js/ide-docking.js"></script>
+  <script src="js/responsive.js"></script>
+  <script src="js/components.js"></script>
+</body>
+</html>
