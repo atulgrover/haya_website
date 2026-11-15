@@ -13,6 +13,7 @@ const aiExplainerRouter = require('./routes/aiExplainer');
 const curatorRouter = require('./routes/curator');
 const patentsRouter = require('./routes/patents');
 const personalitiesRouter = require('./routes/personalities');
+const agentSkillsRouter = require('./routes/agentSkills');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -35,6 +36,7 @@ app.use('/api/ai', aiExplainerRouter);
 app.use('/api/curator', curatorRouter);
 app.use('/api/patents', patentsRouter);
 app.use('/api/personalities', personalitiesRouter);
+app.use('/api/skillpedia', agentSkillsRouter);
 
 // Delegated Auth & Dashboard redirects (Migrated to Garuda)
 app.get(['/dashboard', '/dashboard.html'], (req, res) => {
