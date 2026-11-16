@@ -120,3 +120,18 @@ echo -e "  📊 Check status:   ${BOLD}./status.sh${RESET}"
 echo -e "  🛑 Stop all apps:   ${BOLD}./stop.sh${RESET}"
 echo -e "  📁 View logs in:    ${BOLD}logs/${RESET}"
 echo ""
+
+# Automatically open all 4 portals in 4 browser tabs
+echo -e "${BOLD}${CYAN}🚀 Launching all 4 portals in your browser tabs...${RESET}"
+sleep 1
+if command -v open > /dev/null 2>&1; then
+    # macOS
+    open "http://localhost:3001" "http://localhost:3000" "http://localhost:3002" "http://localhost:3003"
+elif command -v xdg-open > /dev/null 2>&1; then
+    # Linux
+    xdg-open "http://localhost:3001" &
+    xdg-open "http://localhost:3000" &
+    xdg-open "http://localhost:3002" &
+    xdg-open "http://localhost:3003" &
+fi
+echo -e "${GREEN}✔ Browser tabs opened.${RESET}\n"
