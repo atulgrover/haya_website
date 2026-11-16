@@ -108,5 +108,5 @@
   Run `node tests/test_launchpad_domains.js` and verify 100% pass rate.
 - [x] **Step 3: Smoke test all HTTP routes**
   Verify HTTP 200 on `/`, `/employees_nsqf.html`, `/employers_sop.html`, `/entrepreneurs_msme.html`, `/personalities_vedic.html`.
-- [ ] **Step 4: Commit and push to Git**
+- [x] **Step 4: Commit and push to Git**
   Stage all files, commit with descriptive message, and push to `origin main`.
