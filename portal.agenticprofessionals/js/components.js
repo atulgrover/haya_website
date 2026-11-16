@@ -4,6 +4,29 @@
  * HAYAGRIVA Component Loader & In-Page SSO Auth Modal + User Profile Dropdown
  */
 
+/**
+ * Smart Environment-Aware Domain URL Resolver
+ * Localhost -> routes to designated local port
+ * Production -> routes to https://${subdomain}.agenticprofessionals.net
+ */
+function getDomainUrl(subdomain) {
+    if (!subdomain) return window.location.origin;
+    const hostname = window.location.hostname;
+    const isLocal = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '0.0.0.0';
+    if (isLocal) {
+        const portMap = {
+            portal: 3001,
+            ibc: 3002,
+            bns: 3003,
+            hayagriva: 3000
+        };
+        const targetPort = portMap[subdomain] || 3001;
+        return `http://localhost:${targetPort}`;
+    }
+    return `https://${subdomain}.agenticprofessionals.net`;
+}
+window.getDomainUrl = getDomainUrl;
+
 var authIsSignup = typeof window.authIsSignup !== 'undefined' ? window.authIsSignup : false;
 window.authIsSignup = authIsSignup;
 
@@ -101,13 +124,17 @@ function renderSiteHeader() {
     const headerMount = document.getElementById('site-header');
     if (!headerMount) return;
 
-    // If static header is already pre-rendered in HTML, do NOT thrash DOM - only hook up mobile menu
+    // If static header is already pre-rendered in HTML, do NOT thrash DOM - only hook up mobile menu and smart links
     if (headerMount.querySelector('.header-nav')) {
         const navHamburger = document.getElementById('navHamburger');
         const navMobileDrawer = document.getElementById('navMobileDrawer');
         if (navHamburger && navMobileDrawer) {
             navHamburger.onclick = () => navMobileDrawer.classList.toggle('open');
         }
+        const hayagrivaBtns = headerMount.querySelectorAll('.btn-varaha-download');
+        hayagrivaBtns.forEach(btn => {
+            btn.href = getDomainUrl('hayagriva');
+        });
         return;
     }
 
@@ -402,7 +429,7 @@ function renderSiteHeader() {
             <li><a href="personalities_vedic.html" class="nav-link ${pillar === 'personalities' || pillar === 'personalities_vedic' ? 'active' : ''}">ai.personality</a></li>
           </ul>
           <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
-            <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Agent Harness" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 6px rgba(30, 108, 147, 0.25);">
+            <a href="${getDomainUrl('hayagriva')}" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Agent Harness" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 6px rgba(30, 108, 147, 0.25);">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Hayagriva Harness
             </a>

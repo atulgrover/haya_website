@@ -37,15 +37,15 @@
 - Link: `agenticprofessionals/hayagriva.agenticprofessionals` &rarr; `~/Desktop/Hayagriva/harness`
 - Retire: `~/Desktop/domains.agentic professionals` (empty)
 
-- [ ] **Step 1: Move master portal code into `portal.agenticprofessionals`**
+- [x] **Step 1: Move master portal code into `portal.agenticprofessionals`**
   Move HTML, server, css, js, branding, data, and scripts into `portal.agenticprofessionals/`. Keep top-level `.git` or preserve repository root.
-- [ ] **Step 2: Move `ibc` and `bns` subdomains inside `agenticprofessionals`**
+- [x] **Step 2: Move `ibc` and `bns` subdomains inside `agenticprofessionals`**
   Relocate `ibc.agenticprofessionals` and `bns.agenticprofessionals` from `domains.agentic professionals` into `agenticprofessionals/`.
-- [ ] **Step 3: Wire `hayagriva.agenticprofessionals` symlink**
+- [x] **Step 3: Wire `hayagriva.agenticprofessionals` symlink**
   Create symlink `agenticprofessionals/hayagriva.agenticprofessionals` pointing to `/Users/atulgrover/Desktop/Hayagriva/harness`.
-- [ ] **Step 4: Retire old `domains.agentic professionals` folder**
+- [x] **Step 4: Retire old `domains.agentic professionals` folder**
   Confirm all files are moved, then remove the empty outer `domains.agentic professionals` directory.
-- [ ] **Step 5: Verify portal server runs on port 3001**
+- [x] **Step 5: Verify portal server runs on port 3001**
   Start `portal.agenticprofessionals` server and verify HTTP 200 response on port 3001.
 
 ---
@@ -60,11 +60,11 @@
 - Consumes: Static domain metadata registry (IBC, BNS, GST, MCA, SEBI, DGFT, Hayagriva).
 - Produces: Interactive Domain Grid, Instant Search Field, Cluster Filter Pills.
 
-- [ ] **Step 1: Add Launchpad CSS Styles**
+- [x] **Step 1: Add Launchpad CSS Styles**
   Define styles for `.domain-grid`, `.domain-card`, `.domain-badge`, `.domain-search-bar`, `.cluster-pills-row`, and `.domain-card-cta`.
-- [ ] **Step 2: Insert Search Bar & Cluster Pills in `index.html` Hero**
+- [x] **Step 2: Insert Search Bar & Cluster Pills in `index.html` Hero**
   Add the high-contrast search input and cluster filter pills (`All`, `Corporate & Finance`, `Taxation`, `Courts & Regulatory`, `Harness`).
-- [ ] **Step 3: Insert Responsive Domain Cards Grid**
+- [x] **Step 3: Insert Responsive Domain Cards Grid**
   Add cards for:
   1. `ibc.agenticprofessionals.net` (Insolvency & Bankruptcy Code)
   2. `bns.agenticprofessionals.net` (Bharatiya Nyaya Sanhita)
@@ -75,7 +75,7 @@
   7. `cpc.agenticprofessionals.net` (Civil Procedure & Injunctions)
   8. `rera.agenticprofessionals.net` (Real Estate Regulatory Authority)
   9. `hayagriva.agenticprofessionals.net` (Sovereign Desktop Harness & Agent Forge)
-- [ ] **Step 4: Implement Instant Search & Filter Logic**
+- [x] **Step 4: Implement Instant Search & Filter Logic**
   Write JavaScript function `filterDomains()` that performs live keyword matching across title, acts, and tags as the user types.
 
 ---
@@ -86,13 +86,13 @@
 - Modify: `index.html`
 - Modify: `js/components.js`
 
-- [ ] **Step 1: Implement `getDomainUrl(subdomain)` helper**
+- [x] **Step 1: Implement `getDomainUrl(subdomain)` helper**
   Configure environment-aware URL resolver:
   - Localhost &rarr; resolves to corresponding local ports or local views (`:3002`, `:3003`, etc.).
   - Production &rarr; resolves to `https://${subdomain}.agenticprofessionals.net`.
-- [ ] **Step 2: Wire all card CTA buttons to `getDomainUrl()`**
+- [x] **Step 2: Wire all card CTA buttons to `getDomainUrl()`**
   Ensure clicking any card routes to the correct target URL in both local dev and production.
-- [ ] **Step 3: Update Header Hayagriva CTA**
+- [x] **Step 3: Update Header Hayagriva CTA**
   Update the header download button to route via `getDomainUrl('hayagriva')`.
 
 ---
@@ -102,11 +102,11 @@
 **Files:**
 - Test: `tests/test_launchpad_domains.js`
 
-- [ ] **Step 1: Write automated launchpad test script**
+- [x] **Step 1: Write automated launchpad test script**
   Test domain card count, search filtering logic, subdomain badge formatting, and URL generation.
-- [ ] **Step 2: Execute automated test suite**
+- [x] **Step 2: Execute automated test suite**
   Run `node tests/test_launchpad_domains.js` and verify 100% pass rate.
-- [ ] **Step 3: Smoke test all HTTP routes**
+- [x] **Step 3: Smoke test all HTTP routes**
   Verify HTTP 200 on `/`, `/employees_nsqf.html`, `/employers_sop.html`, `/entrepreneurs_msme.html`, `/personalities_vedic.html`.
 - [ ] **Step 4: Commit and push to Git**
   Stage all files, commit with descriptive message, and push to `origin main`.
