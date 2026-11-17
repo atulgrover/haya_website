@@ -48,7 +48,6 @@ check_service() {
     echo ""
 }
 
-check_service "⚡ HAYAGRIVA SOVEREIGN ENGINE" "$PID_DIR/hayagriva.pid" 3000 "http://localhost:3000" "$LOG_DIR/hayagriva.log"
-check_service "🌐 APEX NETWORK LAUNCHPAD" "$PID_DIR/portal.pid" 3001 "http://localhost:3001" "$LOG_DIR/portal.log"
+check_service "🌐 APEX NETWORK & TRAINING ACADEMY" "$PID_DIR/portal.pid" 3001 "http://localhost:3001" "$LOG_DIR/portal.log"
 check_service "🏛️  IBC PRACTICE HUB" "$PID_DIR/ibc.pid" 3002 "http://localhost:3002" "$LOG_DIR/ibc.log"
 check_service "⚖️  BNS CRIMINAL LAW HUB" "$PID_DIR/bns.pid" 3003 "http://localhost:3003" "$LOG_DIR/bns.log"

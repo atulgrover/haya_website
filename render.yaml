@@ -1,0 +1,63 @@
+# ==============================================================================
+# Render Multi-Service Blueprint for Agentic Professionals Federated Network
+# Deploys 3 independent Web Services connected to the same PostgreSQL Database.
+# ==============================================================================
+
+services:
+  # ----------------------------------------------------------------------------
+  # Service 1: Apex Portal & Training Academy (Node.js runtime)
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: portal-agenticprofessionals
+    runtime: node
+    rootDir: portal.agenticprofessionals
+    plan: standard
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false # Set to Supabase pooled connection string in Render Dashboard
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+
+  # ----------------------------------------------------------------------------
+  # Service 2: IBC Practice Hub (Go runtime)
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: ibc-agenticprofessionals
+    runtime: go
+    rootDir: ibc.agenticprofessionals
+    plan: standard
+    buildCommand: go build -o bin/openibc-server server/main.go
+    startCommand: ./bin/openibc-server
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Same shared Supabase pooled connection string
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+
+  # ----------------------------------------------------------------------------
+  # Service 3: BNS Criminal Law Hub (Go runtime)
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: bns-agenticprofessionals
+    runtime: go
+    rootDir: bns.agenticprofessionals
+    plan: standard
+    buildCommand: go build -o bin/openbns-server server/main.go
+    startCommand: ./bin/openbns-server
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Same shared Supabase pooled connection string
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false

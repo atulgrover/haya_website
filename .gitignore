@@ -1,22 +1,14 @@
 .DS_Store
 node_modules/
-server/portal_database.db
-server/portal_database.db-shm
-server/portal_database.db-wal
-server/keys/
-backups/
 .env
 *.log
+logs/
+.pids/
+archive/
+backups/
+**/backups/
 .superpowers/
 
-archive/
-
-
-# Subdomain independent repositories & symlinks
+# Subdomain independent repositories (managed as separate git repos)
 ibc.agenticprofessionals/
 bns.agenticprofessionals/
-hayagriva.agenticprofessionals/
-hayagriva.agenticprofessionals
-OPENIBC - HARNESS
-.pids/
-logs/

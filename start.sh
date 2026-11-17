@@ -16,7 +16,7 @@ YELLOW="\033[0;33m"
 RED="\033[0;31m"
 RESET="\033[0m"
 
-echo -e "${BOLD}🚀 Starting Agentic Professionals Federated Network (4 Domains)...${RESET}\n"
+echo -e "${BOLD}🚀 Starting Agentic Professionals Federated Network (3 Hubs)...${RESET}\n"
 
 # Helper to check if a process is running
 is_running() {
@@ -43,39 +43,26 @@ check_and_free_port() {
     fi
 }
 
-# 1. Start HAYAGRIVA Sovereign Engine & Web Portal (Port 3000)
-HAYA_DIR="$SCRIPT_DIR/hayagriva.agenticprofessionals"
-HAYA_PID_FILE="$PID_DIR/hayagriva.pid"
-HAYA_LOG="$LOG_DIR/hayagriva.log"
+# Ensure retired legacy port 3000 is clean
+check_and_free_port 3000 "Legacy Hayagriva Port"
+rm -f "$PID_DIR/hayagriva.pid"
 
-if is_running "$HAYA_PID_FILE"; then
-    echo -e "${YELLOW}⚡ Hayagriva Portal is already running (PID: $(cat "$HAYA_PID_FILE"))${RESET}"
-else
-    check_and_free_port 3000 "Hayagriva Portal"
-    echo -e "${CYAN}▶ Starting Hayagriva Portal (Port 3000)...${RESET}"
-    (cd "$HAYA_DIR" && node server.js >> "$HAYA_LOG" 2>&1) &
-    HAYA_PID=$!
-    echo "$HAYA_PID" > "$HAYA_PID_FILE"
-    echo -e "${GREEN}✔ Hayagriva Portal spawned (PID: $HAYA_PID, logs: logs/hayagriva.log)${RESET}"
-fi
-
-# 2. Start APEX PORTAL Website (Port 3001)
+# 1. Start APEX LAUNCHPAD & TRAINING ACADEMY (Port 3001)
 PORTAL_DIR="$SCRIPT_DIR/portal.agenticprofessionals"
 PORTAL_PID_FILE="$PID_DIR/portal.pid"
 PORTAL_LOG="$LOG_DIR/portal.log"
 
 if is_running "$PORTAL_PID_FILE"; then
-    echo -e "${YELLOW}⚡ Apex Portal is already running (PID: $(cat "$PORTAL_PID_FILE"))${RESET}"
+    echo -e "${YELLOW}⚡ Apex Launchpad is already running (PID: $(cat "$PORTAL_PID_FILE"))${RESET}"
 else
-    check_and_free_port 3001 "Apex Portal"
-    echo -e "${CYAN}▶ Starting Apex Portal (Port 3001)...${RESET}"
-    (cd "$PORTAL_DIR" && node server/server.js >> "$PORTAL_LOG" 2>&1) &
-    PORTAL_PID=$!
-    echo "$PORTAL_PID" > "$PORTAL_PID_FILE"
-    echo -e "${GREEN}✔ Apex Portal spawned (PID: $PORTAL_PID, logs: logs/portal.log)${RESET}"
+    check_and_free_port 3001 "Apex Launchpad"
+    echo -e "${CYAN}▶ Starting Apex Launchpad & Training Hub (Port 3001)...${RESET}"
+    (cd "$PORTAL_DIR" && nohup node server/server.js >> "$PORTAL_LOG" 2>&1 & echo $! > "$PORTAL_PID_FILE")
+    PORTAL_PID=$(cat "$PORTAL_PID_FILE")
+    echo -e "${GREEN}✔ Apex Launchpad spawned (PID: $PORTAL_PID, logs: logs/portal.log)${RESET}"
 fi
 
-# 3. Start IBC Practice Portal (Port 3002)
+# 2. Start IBC Practice Portal (Port 3002)
 IBC_DIR="$SCRIPT_DIR/ibc.agenticprofessionals"
 IBC_PID_FILE="$PID_DIR/ibc.pid"
 IBC_LOG="$LOG_DIR/ibc.log"
@@ -85,13 +72,13 @@ if is_running "$IBC_PID_FILE"; then
 else
     check_and_free_port 3002 "IBC Portal"
     echo -e "${CYAN}▶ Starting IBC Practice Hub (Port 3002)...${RESET}"
-    (cd "$IBC_DIR" && PORT=3002 ./bin/openibc-server >> "$IBC_LOG" 2>&1) &
+    (cd "$IBC_DIR" && exec env PORT=3002 ./bin/openibc-server >> "$IBC_LOG" 2>&1) &
     IBC_PID=$!
     echo "$IBC_PID" > "$IBC_PID_FILE"
     echo -e "${GREEN}✔ IBC Practice Hub spawned (PID: $IBC_PID, logs: logs/ibc.log)${RESET}"
 fi
 
-# 4. Start BNS Criminal Law Portal (Port 3003)
+# 3. Start BNS Criminal Law Portal (Port 3003)
 BNS_DIR="$SCRIPT_DIR/bns.agenticprofessionals"
 BNS_PID_FILE="$PID_DIR/bns.pid"
 BNS_LOG="$LOG_DIR/bns.log"
@@ -101,7 +88,7 @@ if is_running "$BNS_PID_FILE"; then
 else
     check_and_free_port 3003 "BNS Portal"
     echo -e "${CYAN}▶ Starting BNS Criminal Law Hub (Port 3003)...${RESET}"
-    (cd "$BNS_DIR" && PORT=3003 ./bin/openbns-server >> "$BNS_LOG" 2>&1) &
+    (cd "$BNS_DIR" && exec env PORT=3003 ./bin/openbns-server >> "$BNS_LOG" 2>&1) &
     BNS_PID=$!
     echo "$BNS_PID" > "$BNS_PID_FILE"
     echo -e "${GREEN}✔ BNS Criminal Law Hub spawned (PID: $BNS_PID, logs: logs/bns.log)${RESET}"
@@ -109,28 +96,26 @@ fi
 
 echo ""
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "${BOLD}${GREEN}✔ All 4 Federated Domains Running Successfully!${RESET}"
+echo -e "${BOLD}${GREEN}✔ All 3 Federated Domains Running Successfully!${RESET}"
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "  🌐 ${CYAN}Apex Launchpad Network:${RESET}   http://localhost:3001  (portal.agenticprofessionals)"
-echo -e "  ⚡ ${CYAN}Hayagriva Sovereign Engine:${RESET} http://localhost:3000  (hayagriva.agenticprofessionals)"
-echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}         http://localhost:3002  (ibc.agenticprofessionals)"
-echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}     http://localhost:3003  (bns.agenticprofessionals)"
+echo -e "  🌐 ${CYAN}Apex Launchpad & Training:${RESET} http://localhost:3001  (portal.agenticprofessionals)"
+echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}          http://localhost:3002  (ibc.agenticprofessionals)"
+echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}      http://localhost:3003  (bns.agenticprofessionals)"
 echo ""
 echo -e "  📊 Check status:   ${BOLD}./status.sh${RESET}"
 echo -e "  🛑 Stop all apps:   ${BOLD}./stop.sh${RESET}"
 echo -e "  📁 View logs in:    ${BOLD}logs/${RESET}"
 echo ""
 
-# Automatically open all 4 portals in 4 browser tabs
-echo -e "${BOLD}${CYAN}🚀 Launching all 4 portals in your browser tabs...${RESET}"
+# Automatically open 3 portals in browser tabs
+echo -e "${BOLD}${CYAN}🚀 Launching all 3 federated portals in your browser tabs...${RESET}"
 sleep 1
 if command -v open > /dev/null 2>&1; then
     # macOS
-    open "http://localhost:3001" "http://localhost:3000" "http://localhost:3002" "http://localhost:3003"
+    open "http://localhost:3001" "http://localhost:3002" "http://localhost:3003"
 elif command -v xdg-open > /dev/null 2>&1; then
     # Linux
     xdg-open "http://localhost:3001" &
-    xdg-open "http://localhost:3000" &
     xdg-open "http://localhost:3002" &
     xdg-open "http://localhost:3003" &
 fi

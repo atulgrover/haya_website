@@ -12,7 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/responsive.css?v=179493">
   <link rel="stylesheet" href="css/ide-docking.css">
   <link rel="stylesheet" href="css/pillar-layout.css">
 
@@ -421,29 +421,226 @@
 
 <body>
 
-  <!-- Universal Header Mount Point (Pre-rendered Static Shell) -->
+  <!-- Sovereign Master Header Mount Point (Matching OpenIBC Master Shell) -->
   <div id="site-header" data-pillar="employees_nsqf">
-    <header class="header-nav">
-      <div class="nav-container">
-        <a href="index.html" class="brand-logo">
-          <img src="branding/hayagriva_icon.png" alt="Hayagriva" class="brand-icon">
-          <span>agentic professionals</span>
+    <header class="site-header">
+      <!-- 1. Left: Brand Lockup & Track Switcher -->
+      <div class="brand-container">
+        <a href="index.html" class="brand-link" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+          <svg class="unicorn-icon" viewBox="0 0 852 845">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 L 796 96 L 792 96 L 785 99 L 781 99 L 760 105 L 757 107 L 749 108 L 746 110 L 742 110 L 736 113 L 732 113 L 725 116 L 721 116 L 718 118 L 711 119 L 708 121 L 700 122 L 690 126 L 682 127 L 679 129 L 672 130 L 658 135 L 654 135 L 651 137 L 633 141 L 630 143 L 626 143 L 619 146 L 605 149 L 602 151 L 598 151 L 591 154 L 587 154 L 573 159 L 566 160 L 563 162 L 559 162 L 552 165 L 548 165 L 538 168 L 535 170 L 527 171 L 525 172 L 524 175 L 532 187 L 532 190 L 534 192 L 533 196 L 520 177 L 508 165 L 489 152 L 469 143 L 464 143 L 461 140 L 458 139 L 470 138 L 484 140 L 486 138 L 487 131 L 490 124 L 490 120 L 493 115 L 493 112 L 495 110 L 496 105 L 498 103 L 498 101 L 504 90 L 519 68 L 509 69 L 498 72 L 479 80 L 455 94 L 454 96 L 452 96 L 441 105 L 437 105 L 438 97 L 446 79 L 446 76 L 449 72 L 454 58 L 457 54 L 460 45 L 462 43 L 463 36 L 460 36 L 457 38 L 451 39 L 449 41 L 436 45 L 434 47 L 426 50 L 418 55 L 416 55 L 386 74 L 357 97 L 321 133 L 317 134 L 317 132 L 323 123 L 323 121 L 334 106 L 339 101 L 341 97 L 333 97 L 327 99 L 320 99 L 305 102 L 301 104 L 292 105 L 277 110 L 273 110 L 261 115 L 249 118 L 244 121 L 241 121 L 215 132 L 178 152 L 153 169 L 131 187 L 104 215 L 91 232 L 85 244 L 87 244 L 90 241 L 92 241 L 99 236 L 107 233 L 133 219 L 144 214 L 149 213 L 151 211 L 154 211 L 156 209 L 172 203 L 193 197 L 198 197 L 208 194 L 213 196 L 205 201 L 186 209 L 161 223 L 134 241 L 109 261 L 87 283 L 71 303 L 55 331 L 46 355 L 46 360 L 44 363 L 43 373 L 41 377 L 41 384 L 38 396 L 36 423 L 36 442 L 38 467 L 40 472 L 43 492 L 46 499 L 46 503 L 49 509 L 49 512 L 52 517 L 52 520 L 54 522 L 55 527 L 57 529 L 63 543 L 68 550 L 68 552 L 84 574 L 107 598 L 126 614 L 129 615 L 133 619 L 173 644 L 202 658 L 218 664 L 220 666 L 223 666 L 235 672 L 253 678 L 263 683 L 266 683 L 276 688 L 279 688 L 284 691 L 287 691 L 345 716 L 344 708 L 339 695 L 339 691 L 331 672 L 314 641 L 300 621 L 290 609 L 291 606 L 295 609 L 297 609 L 311 619 L 331 636 L 348 654 L 365 677 L 375 693 L 376 697 L 382 707 L 387 719 L 389 721 L 389 724 L 397 742 L 403 761 L 406 777 L 408 781 L 409 791 L 411 796 L 412 808 L 415 808 L 430 782 L 430 780 L 438 766 L 438 764 L 440 762 L 454 729 L 454 726 L 462 706 L 463 699 L 465 696 L 468 680 L 470 676 L 471 666 L 474 654 L 474 647 L 476 641 L 477 624 L 476 582 L 474 576 L 473 564 L 468 548 L 468 544 L 462 528 L 455 513 L 452 509 L 451 505 L 441 491 L 440 488 L 424 468 L 412 456 L 389 439 L 353 404 L 344 391 L 336 374 L 336 370 L 334 367 L 333 362 L 332 342 L 334 329 L 342 307 L 345 302 L 348 302 L 348 327 L 351 341 L 354 347 L 354 350 L 362 364 L 373 375 L 377 378 L 379 378 L 389 384 L 395 386 L 403 387 L 407 389 L 419 389 L 433 392 L 440 395 L 451 402 L 463 414 L 471 426 L 477 438 L 477 441 L 482 452 L 485 464 L 486 475 L 488 479 L 488 484 L 494 501 L 500 508 L 504 510 L 509 510 L 514 507 L 517 503 L 518 500 L 518 489 L 517 484 L 513 476 L 517 475 L 521 478 L 529 488 L 529 490 L 531 492 L 534 499 L 535 504 L 538 510 L 542 514 L 547 516 L 563 515 L 570 511 L 580 501 L 583 496 L 589 480 L 589 474 L 591 468 L 591 452 L 589 445 L 588 431 L 586 427 L 586 422 L 583 410 L 581 407 L 580 400 L 575 388 L 572 375 L 564 355 L 564 351 L 558 336 L 554 322 L 553 314 L 550 307 L 550 301 L 548 296 L 547 281 L 545 273 L 545 237 L 542 224 L 546 220 L 550 219 L 554 216 L 608 191 L 620 184 L 641 175 L 661 164 L 670 161 L 684 153 L 703 145 L 723 134 L 732 131 L 740 126 L 742 126 L 756 118 L 771 112 L 785 104 L 800 98 Z" />
+          </svg>
+          <span class="brand-title-static">agentic professionals</span>
         </a>
+        <span class="brand-dash">-</span>
+        <div class="track-picker-wrapper" id="brand-trigger">
+          <button type="button" class="brand-title-btn" id="brand-title-btn">
+            <span id="brand-title-text">employees</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+
+          <!-- Popover Dropdown Underneath Track -->
+          <div class="subdomain-dropdown" id="subdomain-dropdown">
+            <a href="employees_nsqf.html" class="dropdown-item active" data-track="employees">employees</a>
+            <a href="employers_sop.html" class="dropdown-item" data-track="employers">employers</a>
+            <a href="entrepreneurs_msme.html" class="dropdown-item" data-track="entrepreneurs">entrepreneurs</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Center: Megamenus Navigation -->
+      <nav>
         <ul class="nav-links">
-          <li><a href="employees_nsqf.html" class="nav-link active">ai.playbooks</a></li>
-          <li><a href="employers_sop.html" class="nav-link">ai.workflows</a></li>
-          <li><a href="entrepreneurs_msme.html" class="nav-link">ai.ventures</a></li>
-          <li><a href="personalities_vedic.html" class="nav-link">ai.personality</a></li>
+          
+          <!-- Item 1: Opportunities -->
+          <li class="nav-item">
+            <a href="employees_nsqf.html" class="nav-btn pill-active" id="nav-opportunities">employee opportunities</a>
+          </li>
+
+          <!-- Item 2: Intelligence Mega Menu (740px Flyout) -->
+          <li class="nav-item" id="nav-intelligence-container">
+            <button type="button" class="nav-btn" id="nav-intelligence-btn">
+              <span id="intelligence-label">employee intelligence</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+
+            <!-- 740px Megamenu Panel -->
+            <div class="megamenu-panel" id="megamenu-intelligence">
+              <div class="megamenu-grid">
+                <!-- Left Column: Intelligence Assets -->
+                <div class="megamenu-col-left">
+                  <div>
+                    <h3 class="megamenu-col-title" id="intelligence-col-title">employee intelligence</h3>
+                    <div class="space-y-1" id="intelligence-assets-list">
+                      <a href="employees_nsqf.html" class="menu-card">
+                        <div class="menu-card-info">
+                          <h4>nsqf qualifications &amp; roles</h4>
+                          <p>browse mapped occupational standards across 38 sector skill councils</p>
+                        </div>
+                      </a>
+                      <a href="employees_nsqf.html" class="menu-card">
+                        <div class="menu-card-info">
+                          <h4>agentic ai workflows</h4>
+                          <p>explore prompt-to-production skill matrix &amp; corporate sop execution</p>
+                        </div>
+                      </a>
+                      <a href="employees_nsqf.html" class="menu-card">
+                        <div class="menu-card-info">
+                          <h4>wage benchmarks &amp; roles</h4>
+                          <p>live compensation trends and salary bands across tech &amp; corporate</p>
+                        </div>
+                      </a>
+                      <a href="employees_nsqf.html" class="menu-card">
+                        <div class="menu-card-info">
+                          <h4>apprenticeship schemes (naps)</h4>
+                          <p>government stipend subsidies &amp; formal contract pathways</p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Column: Sovereign Execution Dock -->
+                <div class="megamenu-col-dark" style="justify-content:center;">
+                  <div class="dark-dock-header">
+                    <span>sovereign workforce dock</span>
+                    <span class="pulse-dot"></span>
+                  </div>
+                  <div class="dock-actions-list" id="intelligence-actions-list" style="margin:0 0 12px 0;">
+                    <a href="employees_nsqf.html" class="dock-action-row">
+                      <div class="dock-action-left">
+                        <div class="dock-action-text">
+                          <h5>fast-track credential audit</h5>
+                          <p>digilocker &amp; nsqf certification verification</p>
+                        </div>
+                      </div>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    </a>
+                    <a href="employees_nsqf.html" class="dock-action-row">
+                      <div class="dock-action-left">
+                        <div class="dock-action-text">
+                          <h5>agentic copilot download</h5>
+                          <p>sovereign offline skilling &amp; sop runner</p>
+                        </div>
+                      </div>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    </a>
+                  </div>
+                  <a href="employees_nsqf.html" class="dock-download-btn" id="intelligence-dock-cta" style="text-decoration:none;">
+                    <span>access skilling vault &rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Item 3: Consultations Mega Menu (740px Flyout) -->
+          <li class="nav-item" id="nav-consultations-container">
+            <button type="button" class="nav-btn" id="nav-consultations-btn">
+              <span id="consultations-label">employee consultations</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+
+            <!-- 740px Megamenu Panel -->
+            <div class="megamenu-panel" id="megamenu-consultations">
+              <div class="megamenu-grid">
+                <!-- Left Column: Advisory Tracks -->
+                <div class="megamenu-col-left">
+                  <div>
+                    <h3 class="megamenu-col-title" id="consultations-col-title">employee consultations</h3>
+                    <div class="space-y-1" id="consultations-tracks-list">
+                      <div class="menu-card selected" data-track-slug="career-transition" data-track-name="career transition to agentic ai" data-track-scope="curriculum pathway, nsqf level 7-9 certification planning, and agentic workspace setup.">
+                        <div class="menu-card-info">
+                          <h4>career transition to agentic ai</h4>
+                          <p>curriculum pathway, nsqf level 7-9 certification planning, and agentic workspace setup.</p>
+                        </div>
+                      </div>
+                      <div class="menu-card" data-track-slug="portfolio-audit" data-track-name="resume &amp; portfolio audit" data-track-scope="ai agent proof-of-work validation, prompt portfolio review, and verified skill dossier.">
+                        <div class="menu-card-info">
+                          <h4>resume &amp; portfolio audit</h4>
+                          <p>ai agent proof-of-work validation, prompt portfolio review, and verified skill dossier.</p>
+                        </div>
+                      </div>
+                      <div class="menu-card" data-track-slug="compensation-advisory" data-track-name="compensation &amp; contract advisory" data-track-scope="employment agreement vetting, stock option grants, and remote contract terms.">
+                        <div class="menu-card-info">
+                          <h4>compensation &amp; contract advisory</h4>
+                          <p>employment agreement vetting, stock option grants, and remote contract terms.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Column: Scope & Booking Dock -->
+                <div class="megamenu-col-dark" id="calnode-dock">
+                  <div id="consultation-dock-container" style="flex:1;display:flex;flex-direction:column;min-height:0;justify-content:space-between;">
+                    <div class="consultation-scope-card" id="consultation-scope-card">
+                      <p class="consultation-narrative-text" id="consultation-narrative-text">
+                        <strong id="selected-track-name">career transition to agentic ai</strong> &ndash;
+                        <span id="selected-track-scope">curriculum pathway, nsqf level 7-9 certification planning, and agentic workspace setup.</span>
+                      </p>
+                    </div>
+
+                    <button type="button" class="fast-track-submit-btn" id="calnode-book-trigger">
+                      <span id="calnode-book-trigger-text">book briefing &rarr;</span>
+                    </button>
+                  </div>
+
+                  <a href="tel:+919316015274" class="calnode-emergency-contact">
+                    <span style="color:#94a3b8;">advisory hotline:</span>
+                    <strong style="color:#34d399;">93160-15274</strong>
+                    <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
         </ul>
-        <div class="nav-right-actions" style="display: flex; align-items: center; gap: 10px;">
-          <a href="http://localhost:3300/download/hayagriva" target="_blank" class="btn-varaha-download" title="Download Hayagriva Desktop Agent Harness" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #1E6C93; color: #FFFFFF; font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 6px rgba(30, 108, 147, 0.25);">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Hayagriva Harness
-          </a>
-          <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </nav>
+
+      <!-- 3. Actions Tray (Right): answers, reports & sign in -->
+      <div class="actions-tray">
+        <button type="button" class="answers-nav-btn" id="nav-answers-btn">
+          <span>answers</span>
+        </button>
+
+        <a href="personalities_vedic.html" class="catalog-nav-btn" id="nav-reports-btn" style="text-decoration:none;">
+          <span>reports</span>
+        </a>
+
+        <!-- Logged-Out User Gateway -->
+        <div id="auth-logged-out-tray" style="display:flex;align-items:center;">
+          <button type="button" class="catalog-nav-btn" id="open-auth-btn">
+            <span>sign in</span>
           </button>
         </div>
+
+        <!-- Logged-In User Gateway -->
+        <div id="auth-logged-in-tray" style="display:none;align-items:center;">
+          <div style="position:relative;">
+            <div class="user-profile-btn" id="user-profile-trigger">
+              <div class="user-avatar-circle" id="user-avatar-text">AP</div>
+              <span id="user-display-name" style="display:none;">admin</span>
+              <svg class="chevron-icon" style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            <div class="user-profile-dropdown" id="user-profile-dropdown">
+              <div style="padding:8px 10px;border-bottom:1px solid #f1f5f9;margin-bottom:4px;">
+                <span id="user-email-text" style="font-size:11px;font-family:monospace;color:#64748b;display:block;word-break:break-all;line-height:1.2;">admin@agenticprofessionals.net</span>
+                <span id="user-role-badge" style="display:none;"></span>
+              </div>
+              <button type="button" id="dropdown-workspace-btn" class="dropdown-item" style="width:100%;text-align:left;cursor:pointer;border:none;background:none;font-size:12.5px;padding:5px 10px;text-transform:lowercase;">
+                user console
+              </button>
+              <a href="/admin" id="admin-dashboard-link" class="dropdown-item" style="font-size:12.5px;display:none;padding:5px 10px;text-transform:lowercase;">admin console</a>
+              <button type="button" id="logout-btn" class="dropdown-item" style="width:100%;text-align:left;color:#e11d48;cursor:pointer;border:none;background:none;font-size:12.5px;padding:5px 10px;text-transform:lowercase;">
+                log out
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </header>
   </div>
@@ -1950,19 +2147,12 @@
 
   <script src="js/ide-docking.js"></script>
   <script src="js/responsive.js"></script>
-  <script src="js/components.js"></script>
-</body>
-
-</html>
-<script>
+  <script src="js/components.js?v=179493"></script>
+  <script>
     async function openTheoryModal(qpEnc, nosEnc, titleEnc) {
         const qpCode = decodeURIComponent(qpEnc);
         const nosCode = decodeURIComponent(nosEnc);
         const title = decodeURIComponent(titleEnc);
-        
-        // Use the Viva modal layout for consistency, or a new modal?
-        // Let's create a new modal on the fly or just use a generic modal.
-        // We'll dynamically inject a modal overlay into the body.
         
         const existing = document.getElementById('theoryModalOverlay');
         if (existing) existing.remove();
@@ -2148,4 +2338,7 @@
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
     }
-</script>
+  </script>
+</body>
+
+</html>

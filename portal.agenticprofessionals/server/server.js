@@ -47,6 +47,23 @@ app.get(['/login', '/login.html', '/signup', '/signup.html'], (req, res) => {
     res.redirect(GARUDA_AUTH_URL);
 });
 
+// Clean Track Routes (Single-word aliases for all federated tracks)
+app.get(['/employees', '/employees.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, '../employees_nsqf.html'));
+});
+
+app.get(['/employers', '/employers.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, '../employers_sop.html'));
+});
+
+app.get(['/entrepreneurs', '/entrepreneurs.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, '../entrepreneurs_msme.html'));
+});
+
+app.get(['/reports', '/reports.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, '../personalities_vedic.html'));
+});
+
 // Direct Route Endpoints
 app.get('/personalities', (req, res) => {
     res.sendFile(path.join(__dirname, '../personalities.html'));
