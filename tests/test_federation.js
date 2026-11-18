@@ -1,13 +1,14 @@
 const http = require('http');
 
 const ENDPOINTS = [
-  { url: 'http://localhost:3001/', name: 'Portal (3001) - Root' },
-  { url: 'http://localhost:3001/employees', name: 'Portal (3001) - /employees' },
-  { url: 'http://localhost:3001/employers', name: 'Portal (3001) - /employers' },
-  { url: 'http://localhost:3001/entrepreneurs', name: 'Portal (3001) - /entrepreneurs' },
-  { url: 'http://localhost:3001/reports', name: 'Portal (3001) - /reports' },
+  { url: 'http://localhost:3001/', name: 'Skills (3001) - Root' },
+  { url: 'http://localhost:3001/employees', name: 'Skills (3001) - /employees' },
+  { url: 'http://localhost:3001/employers', name: 'Skills (3001) - /employers' },
+  { url: 'http://localhost:3001/entrepreneurs', name: 'Skills (3001) - /entrepreneurs' },
+  { url: 'http://localhost:3001/reports', name: 'Skills (3001) - /reports' },
   { url: 'http://localhost:3002/', name: 'IBC (3002) - Root' },
-  { url: 'http://localhost:3003/', name: 'BNS (3003) - Root' }
+  { url: 'http://localhost:3003/', name: 'BNS (3003) - Root' },
+  { url: 'http://localhost:3004/', name: 'AICafe (3004) - Root' }
 ];
 
 async function checkUrl(endpoint) {

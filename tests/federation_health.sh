@@ -28,7 +28,7 @@ check_endpoint() {
     fi
 }
 
-echo -e "${BOLD}1. Apex Portal & Training Hub (Port 3001)${RESET}"
+echo -e "${BOLD}1. Sovereign Skills Academy (Port 3001)${RESET}"
 check_endpoint "http://localhost:3001/" "Launchpad Root"
 check_endpoint "http://localhost:3001/employees" "Employee NSQF Route Alias"
 check_endpoint "http://localhost:3001/employers" "Employer SOP Route Alias"
@@ -40,5 +40,8 @@ check_endpoint "http://localhost:3002/" "OpenIBC Root"
 
 echo -e "\n${BOLD}3. BNS Criminal Law Hub (Port 3003)${RESET}"
 check_endpoint "http://localhost:3003/" "OpenBNS Root"
+
+echo -e "\n${BOLD}4. AICafe Mobile Super-App (Port 3004)${RESET}"
+check_endpoint "http://localhost:3004/" "AICafe Root"
 
 echo -e "\n${BOLD}${GREEN}🎉 All Federated Endpoints Responding Healthy!${RESET}"

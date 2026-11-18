@@ -5,12 +5,12 @@
 
 services:
   # ----------------------------------------------------------------------------
-  # Service 1: Apex Portal & Training Academy (Node.js runtime)
+  # Service 1: Sovereign Skills Academy (Node.js runtime)
   # ----------------------------------------------------------------------------
   - type: web
-    name: portal-agenticprofessionals
+    name: skills-agenticprofessionals
     runtime: node
-    rootDir: portal.agenticprofessionals
+    rootDir: skills.agenticprofessionals
     plan: standard
     buildCommand: npm install
     startCommand: npm start

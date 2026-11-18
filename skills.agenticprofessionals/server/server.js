@@ -99,7 +99,7 @@ app.get('/reel.html', (req, res) => {
 app.get('/api/health', (req, res) => {
     res.json({
         status: 'ok',
-        service: 'VARAHA Sovereign Skilling Portal',
+        service: 'Sovereign Skills Academy',
         role: 'VOCATIONAL_LEARNING',
         garudaAuthUrl: GARUDA_AUTH_URL,
         timestamp: new Date().toISOString()
@@ -109,7 +109,7 @@ app.get('/api/health', (req, res) => {
 if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`=======================================================`);
-        console.log(`🐗 VARAHA Sovereign Skilling Portal running at http://localhost:${PORT}`);
+        console.log(`🎓 Sovereign Skills Academy running at http://localhost:${PORT}`);
         console.log(`=======================================================`);
     });
 }
