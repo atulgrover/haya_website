@@ -12,7 +12,7 @@ YELLOW="\033[0;33m"
 RED="\033[0;31m"
 RESET="\033[0m"
 
-echo -e "${BOLD}🛑 Stopping Agentic Professionals Federated Network (3 Hubs)...${RESET}\n"
+echo -e "${BOLD}🛑 Stopping Agentic Professionals Federated Network (4 Hubs)...${RESET}\n"
 
 # Helper to kill process by PID file
 stop_pid_file() {
@@ -51,15 +51,17 @@ stop_pid_file "$PID_DIR/hayagriva.pid" "Hayagriva Legacy Web Portal (Port 3000)"
 kill_port 3000 "Legacy Hayagriva Port 3000"
 
 # Stop active domain services by PID file
-stop_pid_file "$PID_DIR/portal.pid" "Apex Launchpad & Training Hub (Port 3001)"
+stop_pid_file "$PID_DIR/skills.pid" "Skills Academy (Port 3001)"
+stop_pid_file "$PID_DIR/portal.pid" "Legacy Portal (Port 3001)"
 stop_pid_file "$PID_DIR/ibc.pid" "IBC Practice Hub (Port 3002)"
 stop_pid_file "$PID_DIR/bns.pid" "BNS Criminal Law Hub (Port 3003)"
+stop_pid_file "$PID_DIR/aicafe.pid" "AICafe / HackNStay (Port 3004)"
 
-# Ensure all 3 ports are completely freed
-kill_port 3001 "Apex Launchpad"
+# Ensure all 4 ports are completely freed
+kill_port 3001 "Skills Academy"
 kill_port 3002 "IBC Practice Hub"
 kill_port 3003 "BNS Criminal Law Hub"
+kill_port 3004 "AICafe / HackNStay Hub"
 
 echo ""
-echo -e "${BOLD}${GREEN}✔ All Federated Hubs have been stopped successfully.${RESET}"
-echo ""
+echo -e "${BOLD}${GREEN}✔ All 4 Federated Hubs cleanly terminated.${RESET}\n"

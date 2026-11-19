@@ -16,7 +16,7 @@ YELLOW="\033[0;33m"
 RED="\033[0;31m"
 RESET="\033[0m"
 
-echo -e "${BOLD}🚀 Starting Agentic Professionals Federated Network (3 Hubs)...${RESET}\n"
+echo -e "${BOLD}🚀 Starting Agentic Professionals Federated Network (4 Hubs)...${RESET}\n"
 
 # Helper to check if a process is running
 is_running() {
@@ -47,19 +47,20 @@ check_and_free_port() {
 check_and_free_port 3000 "Legacy Hayagriva Port"
 rm -f "$PID_DIR/hayagriva.pid"
 
-# 1. Start APEX LAUNCHPAD & TRAINING ACADEMY (Port 3001)
-PORTAL_DIR="$SCRIPT_DIR/portal.agenticprofessionals"
-PORTAL_PID_FILE="$PID_DIR/portal.pid"
-PORTAL_LOG="$LOG_DIR/portal.log"
+# 1. Start SKILLS ACADEMY (Port 3001)
+SKILLS_DIR="$SCRIPT_DIR/skills.agenticprofessionals"
+SKILLS_PID_FILE="$PID_DIR/skills.pid"
+SKILLS_LOG="$LOG_DIR/skills.log"
 
-if is_running "$PORTAL_PID_FILE"; then
-    echo -e "${YELLOW}⚡ Apex Launchpad is already running (PID: $(cat "$PORTAL_PID_FILE"))${RESET}"
+if is_running "$SKILLS_PID_FILE"; then
+    echo -e "${YELLOW}⚡ Skills Academy is already running (PID: $(cat "$SKILLS_PID_FILE"))${RESET}"
 else
-    check_and_free_port 3001 "Apex Launchpad"
-    echo -e "${CYAN}▶ Starting Apex Launchpad & Training Hub (Port 3001)...${RESET}"
-    (cd "$PORTAL_DIR" && nohup node server/server.js >> "$PORTAL_LOG" 2>&1 & echo $! > "$PORTAL_PID_FILE")
-    PORTAL_PID=$(cat "$PORTAL_PID_FILE")
-    echo -e "${GREEN}✔ Apex Launchpad spawned (PID: $PORTAL_PID, logs: logs/portal.log)${RESET}"
+    check_and_free_port 3001 "Skills Academy"
+    echo -e "${CYAN}▶ Starting Skills Academy (Port 3001)...${RESET}"
+    (cd "$SKILLS_DIR" && exec node server/server.js >> "$SKILLS_LOG" 2>&1) &
+    SKILLS_PID=$!
+    echo "$SKILLS_PID" > "$SKILLS_PID_FILE"
+    echo -e "${GREEN}✔ Skills Academy spawned (PID: $SKILLS_PID, logs: logs/skills.log)${RESET}"
 fi
 
 # 2. Start IBC Practice Portal (Port 3002)
@@ -94,29 +95,42 @@ else
     echo -e "${GREEN}✔ BNS Criminal Law Hub spawned (PID: $BNS_PID, logs: logs/bns.log)${RESET}"
 fi
 
+# 4. Start AICAFE / HACKNSTAY Super-App (Port 3004)
+AICAFE_DIR="$SCRIPT_DIR/aicafe.agenticprofessionals"
+AICAFE_PID_FILE="$PID_DIR/aicafe.pid"
+AICAFE_LOG="$LOG_DIR/aicafe.log"
+
+if is_running "$AICAFE_PID_FILE"; then
+    echo -e "${YELLOW}⚡ AICafe / HackNStay is already running (PID: $(cat "$AICAFE_PID_FILE"))${RESET}"
+else
+    check_and_free_port 3004 "AICafe Super-App"
+    echo -e "${CYAN}▶ Starting AICafe / HackNStay Hub (Port 3004)...${RESET}"
+    (cd "$AICAFE_DIR" && exec ./start.sh >> "$AICAFE_LOG" 2>&1) &
+    AICAFE_PID=$!
+    echo "$AICAFE_PID" > "$AICAFE_PID_FILE"
+    echo -e "${GREEN}✔ AICafe / HackNStay Hub spawned (PID: $AICAFE_PID, logs: logs/aicafe.log)${RESET}"
+fi
+
 echo ""
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "${BOLD}${GREEN}✔ All 3 Federated Domains Running Successfully!${RESET}"
+echo -e "${BOLD}${GREEN}✔ All 4 Federated Domains Running Successfully!${RESET}"
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "  🌐 ${CYAN}Apex Launchpad & Training:${RESET} http://localhost:3001  (portal.agenticprofessionals)"
-echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}          http://localhost:3002  (ibc.agenticprofessionals)"
-echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}      http://localhost:3003  (bns.agenticprofessionals)"
+echo -e "  🎓 ${CYAN}Skills Academy:${RESET}             http://localhost:3001  (skills.agenticprofessionals)"
+echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}           http://localhost:3002  (ibc.agenticprofessionals)"
+echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}       http://localhost:3003  (bns.agenticprofessionals)"
+echo -e "  ☕ ${CYAN}AICafe / HackNStay Hub:${RESET}     http://localhost:3004  (aicafe.agenticprofessionals)"
 echo ""
 echo -e "  📊 Check status:   ${BOLD}./status.sh${RESET}"
 echo -e "  🛑 Stop all apps:   ${BOLD}./stop.sh${RESET}"
 echo -e "  📁 View logs in:    ${BOLD}logs/${RESET}"
 echo ""
 
-# Automatically open 3 portals in browser tabs
-echo -e "${BOLD}${CYAN}🚀 Launching all 3 federated portals in your browser tabs...${RESET}"
+# Automatically open port 3004 (Main Super-App) in browser
+echo -e "${BOLD}${CYAN}🚀 Launching HackNStay Super-App in browser...${RESET}"
 sleep 1
 if command -v open > /dev/null 2>&1; then
-    # macOS
-    open "http://localhost:3001" "http://localhost:3002" "http://localhost:3003"
+    open "http://localhost:3004"
 elif command -v xdg-open > /dev/null 2>&1; then
-    # Linux
-    xdg-open "http://localhost:3001" &
-    xdg-open "http://localhost:3002" &
-    xdg-open "http://localhost:3003" &
+    xdg-open "http://localhost:3004" &
 fi
-echo -e "${GREEN}✔ Browser tabs opened.${RESET}\n"
+echo -e "${GREEN}✔ Browser tab opened.${RESET}\n"
