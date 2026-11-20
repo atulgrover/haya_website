@@ -23,7 +23,7 @@ is_running() {
     local pid_file="$1"
     if [ -f "$pid_file" ]; then
         local pid=$(cat "$pid_file")
-        if ps -p "$pid" > /dev/null 2>&1; then
+        if [ -n "$pid" ] && ps -p "$pid" > /dev/null 2>&1; then
             return 0
         fi
     fi
@@ -57,9 +57,12 @@ if is_running "$SKILLS_PID_FILE"; then
 else
     check_and_free_port 3001 "Skills Academy"
     echo -e "${CYAN}▶ Starting Skills Academy (Port 3001)...${RESET}"
-    (cd "$SKILLS_DIR" && exec node server/server.js >> "$SKILLS_LOG" 2>&1) &
+    cd "$SKILLS_DIR"
+    nohup node server/server.js >> "$SKILLS_LOG" 2>&1 &
     SKILLS_PID=$!
+    disown "$SKILLS_PID" 2>/dev/null || true
     echo "$SKILLS_PID" > "$SKILLS_PID_FILE"
+    cd "$SCRIPT_DIR"
     echo -e "${GREEN}✔ Skills Academy spawned (PID: $SKILLS_PID, logs: logs/skills.log)${RESET}"
 fi
 
@@ -73,9 +76,12 @@ if is_running "$IBC_PID_FILE"; then
 else
     check_and_free_port 3002 "IBC Portal"
     echo -e "${CYAN}▶ Starting IBC Practice Hub (Port 3002)...${RESET}"
-    (cd "$IBC_DIR" && exec env PORT=3002 ./bin/openibc-server >> "$IBC_LOG" 2>&1) &
+    cd "$IBC_DIR"
+    nohup ./bin/openibc-server >> "$IBC_LOG" 2>&1 &
     IBC_PID=$!
+    disown "$IBC_PID" 2>/dev/null || true
     echo "$IBC_PID" > "$IBC_PID_FILE"
+    cd "$SCRIPT_DIR"
     echo -e "${GREEN}✔ IBC Practice Hub spawned (PID: $IBC_PID, logs: logs/ibc.log)${RESET}"
 fi
 
@@ -89,9 +95,12 @@ if is_running "$BNS_PID_FILE"; then
 else
     check_and_free_port 3003 "BNS Portal"
     echo -e "${CYAN}▶ Starting BNS Criminal Law Hub (Port 3003)...${RESET}"
-    (cd "$BNS_DIR" && exec env PORT=3003 ./bin/openbns-server >> "$BNS_LOG" 2>&1) &
+    cd "$BNS_DIR"
+    nohup ./bin/openbns-server >> "$BNS_LOG" 2>&1 &
     BNS_PID=$!
+    disown "$BNS_PID" 2>/dev/null || true
     echo "$BNS_PID" > "$BNS_PID_FILE"
+    cd "$SCRIPT_DIR"
     echo -e "${GREEN}✔ BNS Criminal Law Hub spawned (PID: $BNS_PID, logs: logs/bns.log)${RESET}"
 fi
 
@@ -105,9 +114,12 @@ if is_running "$AICAFE_PID_FILE"; then
 else
     check_and_free_port 3004 "AICafe Super-App"
     echo -e "${CYAN}▶ Starting AICafe / HackNStay Hub (Port 3004)...${RESET}"
-    (cd "$AICAFE_DIR" && exec ./start.sh >> "$AICAFE_LOG" 2>&1) &
+    cd "$AICAFE_DIR"
+    nohup ./start.sh >> "$AICAFE_LOG" 2>&1 &
     AICAFE_PID=$!
+    disown "$AICAFE_PID" 2>/dev/null || true
     echo "$AICAFE_PID" > "$AICAFE_PID_FILE"
+    cd "$SCRIPT_DIR"
     echo -e "${GREEN}✔ AICafe / HackNStay Hub spawned (PID: $AICAFE_PID, logs: logs/aicafe.log)${RESET}"
 fi
 
