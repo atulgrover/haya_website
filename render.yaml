@@ -1,16 +1,16 @@
 # ==============================================================================
-# Render Multi-Service Blueprint for Agentic Professionals Federated Network
-# Deploys 4 services: 3 Web Services (PostgreSQL connected) + 1 Static Site (AICafe SPA)
+# Render Multi-Service Blueprint for Agentic Professionals Sovereign Network
+# Deploys 3 Web Services (PostgreSQL connected)
 # ==============================================================================
 
 services:
   # ----------------------------------------------------------------------------
-  # Service 1: Sovereign Skills Academy (Node.js runtime)
+  # Service 1: Sovereign IAS Academy (Node.js runtime)
   # ----------------------------------------------------------------------------
   - type: web
-    name: skills-agenticprofessionals
+    name: ias-agenticprofessionals
     runtime: node
-    rootDir: skills.agenticprofessionals
+    rootDir: ias.agenticprofessionals
     plan: standard
     buildCommand: npm install
     startCommand: npm start
@@ -61,16 +61,3 @@ services:
         sync: false
       - key: SUPABASE_ANON_KEY
         sync: false
-
-  # ----------------------------------------------------------------------------
-  # Service 4: AICafe Mobile Super-App (Static Vite React SPA)
-  # ----------------------------------------------------------------------------
-  - type: static
-    name: aicafe-agenticprofessionals
-    rootDir: aicafe.agenticprofessionals
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html

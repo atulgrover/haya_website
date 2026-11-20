@@ -14,7 +14,7 @@ RED="\033[0;31m"
 GRAY="\033[0;90m"
 RESET="\033[0m"
 
-echo -e "${BOLD}📋 Agentic Professionals Federated Network Status${RESET}\n"
+echo -e "${BOLD}📋 Agentic Professionals Sovereign Digital Network Status${RESET}\n"
 
 check_service() {
     local name="$1"
@@ -48,7 +48,6 @@ check_service() {
     echo ""
 }
 
-check_service "🎓 SKILLS ACADEMY" "$PID_DIR/skills.pid" 3001 "http://localhost:3001" "$LOG_DIR/skills.log"
+check_service "🎓 IAS SOVEREIGN ACADEMY" "$PID_DIR/ias.pid" 3001 "http://localhost:3001" "$LOG_DIR/ias.log"
 check_service "🏛️  IBC PRACTICE HUB" "$PID_DIR/ibc.pid" 3002 "http://localhost:3002" "$LOG_DIR/ibc.log"
 check_service "⚖️  BNS CRIMINAL LAW HUB" "$PID_DIR/bns.pid" 3003 "http://localhost:3003" "$LOG_DIR/bns.log"
-check_service "☕ AICAFE / HACKNSTAY HUB" "$PID_DIR/aicafe.pid" 3004 "http://localhost:3004" "$LOG_DIR/aicafe.log"

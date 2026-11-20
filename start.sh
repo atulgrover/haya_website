@@ -16,7 +16,7 @@ YELLOW="\033[0;33m"
 RED="\033[0;31m"
 RESET="\033[0m"
 
-echo -e "${BOLD}🚀 Starting Agentic Professionals Federated Network (4 Hubs)...${RESET}\n"
+echo -e "${BOLD}🚀 Starting Agentic Professionals Sovereign Digital Network (3 Hubs)...${RESET}\n"
 
 # Helper to check if a process is running
 is_running() {
@@ -47,23 +47,23 @@ check_and_free_port() {
 check_and_free_port 3000 "Legacy Hayagriva Port"
 rm -f "$PID_DIR/hayagriva.pid"
 
-# 1. Start SKILLS ACADEMY (Port 3001)
-SKILLS_DIR="$SCRIPT_DIR/skills.agenticprofessionals"
-SKILLS_PID_FILE="$PID_DIR/skills.pid"
-SKILLS_LOG="$LOG_DIR/skills.log"
+# 1. Start IAS SOVEREIGN ACADEMY (Port 3001)
+IAS_DIR="$SCRIPT_DIR/ias.agenticprofessionals"
+IAS_PID_FILE="$PID_DIR/ias.pid"
+IAS_LOG="$LOG_DIR/ias.log"
 
-if is_running "$SKILLS_PID_FILE"; then
-    echo -e "${YELLOW}⚡ Skills Academy is already running (PID: $(cat "$SKILLS_PID_FILE"))${RESET}"
+if is_running "$IAS_PID_FILE"; then
+    echo -e "${YELLOW}⚡ IAS Sovereign Academy is already running (PID: $(cat "$IAS_PID_FILE"))${RESET}"
 else
-    check_and_free_port 3001 "Skills Academy"
-    echo -e "${CYAN}▶ Starting Skills Academy (Port 3001)...${RESET}"
-    cd "$SKILLS_DIR"
-    nohup node server/server.js >> "$SKILLS_LOG" 2>&1 &
-    SKILLS_PID=$!
-    disown "$SKILLS_PID" 2>/dev/null || true
-    echo "$SKILLS_PID" > "$SKILLS_PID_FILE"
+    check_and_free_port 3001 "IAS Academy"
+    echo -e "${CYAN}▶ Starting IAS Sovereign Academy (Port 3001)...${RESET}"
+    cd "$IAS_DIR"
+    nohup node server/server.js >> "$IAS_LOG" 2>&1 &
+    IAS_PID=$!
+    disown "$IAS_PID" 2>/dev/null || true
+    echo "$IAS_PID" > "$IAS_PID_FILE"
     cd "$SCRIPT_DIR"
-    echo -e "${GREEN}✔ Skills Academy spawned (PID: $SKILLS_PID, logs: logs/skills.log)${RESET}"
+    echo -e "${GREEN}✔ IAS Sovereign Academy spawned (PID: $IAS_PID, logs: logs/ias.log)${RESET}"
 fi
 
 # 2. Start IBC Practice Portal (Port 3002)
@@ -104,45 +104,25 @@ else
     echo -e "${GREEN}✔ BNS Criminal Law Hub spawned (PID: $BNS_PID, logs: logs/bns.log)${RESET}"
 fi
 
-# 4. Start AICAFE / HACKNSTAY Super-App (Port 3004)
-AICAFE_DIR="$SCRIPT_DIR/aicafe.agenticprofessionals"
-AICAFE_PID_FILE="$PID_DIR/aicafe.pid"
-AICAFE_LOG="$LOG_DIR/aicafe.log"
-
-if is_running "$AICAFE_PID_FILE"; then
-    echo -e "${YELLOW}⚡ AICafe / HackNStay is already running (PID: $(cat "$AICAFE_PID_FILE"))${RESET}"
-else
-    check_and_free_port 3004 "AICafe Super-App"
-    echo -e "${CYAN}▶ Starting AICafe / HackNStay Hub (Port 3004)...${RESET}"
-    cd "$AICAFE_DIR"
-    nohup ./start.sh >> "$AICAFE_LOG" 2>&1 &
-    AICAFE_PID=$!
-    disown "$AICAFE_PID" 2>/dev/null || true
-    echo "$AICAFE_PID" > "$AICAFE_PID_FILE"
-    cd "$SCRIPT_DIR"
-    echo -e "${GREEN}✔ AICafe / HackNStay Hub spawned (PID: $AICAFE_PID, logs: logs/aicafe.log)${RESET}"
-fi
-
 echo ""
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "${BOLD}${GREEN}✔ All 4 Federated Domains Running Successfully!${RESET}"
+echo -e "${BOLD}${GREEN}✔ All 3 Sovereign Digital Hubs Running Successfully!${RESET}"
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "  🎓 ${CYAN}Skills Academy:${RESET}             http://localhost:3001  (skills.agenticprofessionals)"
-echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}           http://localhost:3002  (ibc.agenticprofessionals)"
-echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}       http://localhost:3003  (bns.agenticprofessionals)"
-echo -e "  ☕ ${CYAN}AICafe / HackNStay Hub:${RESET}     http://localhost:3004  (aicafe.agenticprofessionals)"
+echo -e "  🎓 ${CYAN}IAS Sovereign Academy:${RESET}        http://localhost:3001  (ias.agenticprofessionals)"
+echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}             http://localhost:3002  (ibc.agenticprofessionals)"
+echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}         http://localhost:3003  (bns.agenticprofessionals)"
 echo ""
 echo -e "  📊 Check status:   ${BOLD}./status.sh${RESET}"
 echo -e "  🛑 Stop all apps:   ${BOLD}./stop.sh${RESET}"
 echo -e "  📁 View logs in:    ${BOLD}logs/${RESET}"
 echo ""
 
-# Automatically open port 3004 (Main Super-App) in browser
-echo -e "${BOLD}${CYAN}🚀 Launching HackNStay Super-App in browser...${RESET}"
+# Automatically open port 3001 (IAS Sovereign Academy) in browser
+echo -e "${BOLD}${CYAN}🚀 Launching IAS Sovereign Academy in browser...${RESET}"
 sleep 1
 if command -v open > /dev/null 2>&1; then
-    open "http://localhost:3004"
+    open "http://localhost:3001"
 elif command -v xdg-open > /dev/null 2>&1; then
-    xdg-open "http://localhost:3004" &
+    xdg-open "http://localhost:3001" &
 fi
 echo -e "${GREEN}✔ Browser tab opened.${RESET}\n"
