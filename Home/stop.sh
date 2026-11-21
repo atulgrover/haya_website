@@ -53,17 +53,13 @@ kill_port() {
 
 # Stop by PID files
 stop_pid_file "$PID_DIR/home.pid" "Root Gateway (Port 3000)"
-stop_pid_file "$PID_DIR/ias.pid" "IAS Sovereign Academy (Port 3001)"
 stop_pid_file "$PID_DIR/ibc.pid" "IBC Practice Hub (Port 3002)"
 stop_pid_file "$PID_DIR/bns.pid" "BNS Criminal Law Hub (Port 3003)"
-stop_pid_file "$PID_DIR/hackstay.pid" "Hack & Stay Super-App (Port 3004)"
 
 # Clean any lingering port listeners
 kill_port 3000 "Root Gateway"
-kill_port 3001 "IAS Academy"
 kill_port 3002 "IBC Practice Hub"
 kill_port 3003 "BNS Criminal Law Hub"
-kill_port 3004 "Hack & Stay"
 
 echo ""
 echo -e "${BOLD}${GREEN}✔ All Domains Successfully Terminated.${RESET}\n"

@@ -44,7 +44,5 @@ check_domain() {
 }
 
 check_domain "🌐 ROOT GATEWAY (HOME)" 3000 "http://localhost:3000" "$LOG_DIR/home.log"
-check_domain "🎓 IAS SOVEREIGN ACADEMY" 3001 "http://localhost:3001" "$LOG_DIR/ias.log"
 check_domain "🏛️  IBC PRACTICE HUB" 3002 "http://localhost:3002" "$LOG_DIR/ibc.log"
 check_domain "⚖️  BNS CRIMINAL LAW HUB" 3003 "http://localhost:3003" "$LOG_DIR/bns.log"
-check_domain "☕ HACK & STAY SUPER-APP" 3004 "http://localhost:3004" "$LOG_DIR/hackstay.log"

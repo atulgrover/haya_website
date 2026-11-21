@@ -3,7 +3,6 @@
 # Agentic Professionals Master Orchestrator (Home)
 # Starts all portals simultaneously:
 #   • Port 3000: Root Gateway (Home)
-#   • Port 3001: IAS Sovereign Academy (ias.agenticprofessionals)
 #   • Port 3002: OpenIBC Sovereign Practice Hub (ibc.agenticprofessionals)
 #   • Port 3003: OpenBNS Criminal Law Hub (bns.agenticprofessionals)
 # ==============================================================================
@@ -56,32 +55,7 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# 1. Start IAS SOVEREIGN ACADEMY (Port 3001)
-# ------------------------------------------------------------------------------
-IAS_DIR="$ROOT_DIR/ias.agenticprofessionals"
-IAS_PID_FILE="$PID_DIR/ias.pid"
-IAS_LOG="$LOG_DIR/ias.log"
-
-if is_port_listening 3001; then
-    IAS_PID=$(lsof -ti :3001 | head -n 1)
-    echo "$IAS_PID" > "$IAS_PID_FILE"
-    echo -e "${GREEN}⚡ IAS Sovereign Academy is already live (PID: $IAS_PID, Port: 3001)${RESET}"
-else
-    echo -e "${CYAN}▶ Starting IAS Sovereign Academy (Port 3001)...${RESET}"
-    cd "$IAS_DIR"
-    (nohup node server/server.js < /dev/null >> "$IAS_LOG" 2>&1 &)
-    sleep 1
-    IAS_PID=$(lsof -ti :3001 | head -n 1)
-    if [ -n "$IAS_PID" ]; then
-        echo "$IAS_PID" > "$IAS_PID_FILE"
-        echo -e "${GREEN}✔ IAS Sovereign Academy spawned (PID: $IAS_PID, Port: 3001)${RESET}"
-    else
-        echo -e "${YELLOW}⚠ IAS Sovereign Academy spawned, awaiting port 3001${RESET}"
-    fi
-fi
-
-# ------------------------------------------------------------------------------
-# 2. Start IBC PRACTICE PORTAL (Port 3002)
+# 1. Start IBC PRACTICE PORTAL (Port 3002)
 # ------------------------------------------------------------------------------
 IBC_DIR="$ROOT_DIR/ibc.agenticprofessionals"
 IBC_PID_FILE="$PID_DIR/ibc.pid"
@@ -106,7 +80,7 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# 3. Start BNS CRIMINAL LAW PORTAL (Port 3003)
+# 2. Start BNS CRIMINAL LAW PORTAL (Port 3003)
 # ------------------------------------------------------------------------------
 BNS_DIR="$ROOT_DIR/bns.agenticprofessionals"
 BNS_PID_FILE="$PID_DIR/bns.pid"
@@ -134,10 +108,9 @@ cd "$SCRIPT_DIR"
 
 echo ""
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "${BOLD}${GREEN}✔ Portals Are Live & Running Simultaneously!${RESET}"
+echo -e "${BOLD}${GREEN}✔ All Portals Are Live & Running Simultaneously!${RESET}"
 echo -e "${BOLD}================================================================${RESET}"
 echo -e "  🌐 ${CYAN}Root Gateway (Home):${RESET}         http://localhost:3000"
-echo -e "  🎓 ${CYAN}IAS Sovereign Academy:${RESET}       http://localhost:3001  (ias.agenticprofessionals)"
 echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}            http://localhost:3002  (ibc.agenticprofessionals)"
 echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}        http://localhost:3003  (bns.agenticprofessionals)"
 echo ""

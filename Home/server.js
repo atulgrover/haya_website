@@ -44,12 +44,10 @@ function isPortListening(port) {
 const server = http.createServer((req, res) => {
   const urlPath = req.url.split('?')[0];
 
-  // API Route: Live Health Status of all subdomains
+  // API Route: Live Health Status of all Agentic Professionals portals
   if (urlPath === '/api/status') {
-    const ias = isPortListening(3001);
     const ibc = isPortListening(3002);
     const bns = isPortListening(3003);
-    const hackstay = isPortListening(3004);
 
     res.writeHead(200, {
       'Content-Type': 'application/json',
@@ -59,10 +57,8 @@ const server = http.createServer((req, res) => {
     res.end(
       JSON.stringify({
         home: true,
-        ias: ias,
         ibc: ibc,
         bns: bns,
-        hackstay: hackstay,
         timestamp: new Date().toISOString(),
       })
     );
