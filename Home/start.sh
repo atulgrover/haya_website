@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # Agentic Professionals Master Orchestrator (Home)
-# Starts all domains simultaneously:
+# Starts all portals simultaneously:
 #   • Port 3000: Root Gateway (Home)
 #   • Port 3001: IAS Sovereign Academy (ias.agenticprofessionals)
 #   • Port 3002: OpenIBC Sovereign Practice Hub (ibc.agenticprofessionals)
 #   • Port 3003: OpenBNS Criminal Law Hub (bns.agenticprofessionals)
-#   • Port 3004: Hack & Stay Super-App (if present)
 # ==============================================================================
 set -euo pipefail
 
@@ -24,7 +23,7 @@ CYAN="\033[0;36m"
 YELLOW="\033[0;33m"
 RESET="\033[0m"
 
-echo -e "${BOLD}🚀 Starting All Agentic Professionals Domains Simultaneously...${RESET}\n"
+echo -e "${BOLD}🚀 Starting Agentic Professionals Portals Simultaneously...${RESET}\n"
 
 is_port_listening() {
     local port="$1"
@@ -131,46 +130,16 @@ else
     fi
 fi
 
-# ------------------------------------------------------------------------------
-# 4. Check & Start HACK & STAY (Port 3004) if present
-# ------------------------------------------------------------------------------
-HACKNSTAY_DIR="/Users/atulgrover/Desktop/Hack & Stay/hack&stay"
-HACKNSTAY_PID_FILE="$PID_DIR/hackstay.pid"
-HACKNSTAY_LOG="$LOG_DIR/hackstay.log"
-
-if [ -d "$HACKNSTAY_DIR" ]; then
-    if is_port_listening 3004; then
-        HACK_PID=$(lsof -ti :3004 | head -n 1)
-        echo "$HACK_PID" > "$HACKNSTAY_PID_FILE"
-        echo -e "${GREEN}⚡ Hack & Stay Super-App is already live (PID: $HACK_PID, Port: 3004)${RESET}"
-    else
-        echo -e "${CYAN}▶ Starting Hack & Stay Super-App (Port 3004)...${RESET}"
-        cd "$HACKNSTAY_DIR"
-        (nohup ./node_modules/.bin/vite --port 3004 --host 0.0.0.0 < /dev/null >> "$HACKNSTAY_LOG" 2>&1 &)
-        sleep 1
-        HACK_PID=$(lsof -ti :3004 | head -n 1)
-        if [ -n "$HACK_PID" ]; then
-            echo "$HACK_PID" > "$HACKNSTAY_PID_FILE"
-            echo -e "${GREEN}✔ Hack & Stay Super-App spawned (PID: $HACK_PID, Port: 3004)${RESET}"
-        else
-            echo -e "${YELLOW}⚠ Hack & Stay Super-App spawned, awaiting port 3004${RESET}"
-        fi
-    fi
-fi
-
 cd "$SCRIPT_DIR"
 
 echo ""
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "${BOLD}${GREEN}✔ All Domains Are Live & Running Simultaneously!${RESET}"
+echo -e "${BOLD}${GREEN}✔ Portals Are Live & Running Simultaneously!${RESET}"
 echo -e "${BOLD}================================================================${RESET}"
 echo -e "  🌐 ${CYAN}Root Gateway (Home):${RESET}         http://localhost:3000"
 echo -e "  🎓 ${CYAN}IAS Sovereign Academy:${RESET}       http://localhost:3001  (ias.agenticprofessionals)"
 echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}            http://localhost:3002  (ibc.agenticprofessionals)"
 echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}        http://localhost:3003  (bns.agenticprofessionals)"
-if [ -d "$HACKNSTAY_DIR" ]; then
-echo -e "  ☕ ${CYAN}Hack & Stay Venue Hub:${RESET}       http://localhost:3004  (hack&stay)"
-fi
 echo ""
 echo -e "  📊 Check status:   ${BOLD}./status.sh${RESET}"
 echo -e "  🛑 Stop all apps:   ${BOLD}./stop.sh${RESET}"
