@@ -45,11 +45,15 @@ if is_port_listening 3000; then
 else
     echo -e "${CYAN}▶ Starting Root Gateway (Port 3000)...${RESET}"
     cd "$SCRIPT_DIR"
-    nohup node server.js >> "$HOME_LOG" 2>&1 &
-    HOME_PID=$!
-    disown "$HOME_PID" 2>/dev/null || true
-    echo "$HOME_PID" > "$HOME_PID_FILE"
-    echo -e "${GREEN}✔ Root Gateway spawned (PID: $HOME_PID, Port: 3000)${RESET}"
+    (nohup node server.js < /dev/null >> "$HOME_LOG" 2>&1 &)
+    sleep 1
+    HOME_PID=$(lsof -ti :3000 | head -n 1)
+    if [ -n "$HOME_PID" ]; then
+        echo "$HOME_PID" > "$HOME_PID_FILE"
+        echo -e "${GREEN}✔ Root Gateway spawned (PID: $HOME_PID, Port: 3000)${RESET}"
+    else
+        echo -e "${YELLOW}⚠ Root Gateway spawned, awaiting port 3000${RESET}"
+    fi
 fi
 
 # ------------------------------------------------------------------------------
@@ -66,11 +70,15 @@ if is_port_listening 3001; then
 else
     echo -e "${CYAN}▶ Starting IAS Sovereign Academy (Port 3001)...${RESET}"
     cd "$IAS_DIR"
-    nohup node server/server.js >> "$IAS_LOG" 2>&1 &
-    IAS_PID=$!
-    disown "$IAS_PID" 2>/dev/null || true
-    echo "$IAS_PID" > "$IAS_PID_FILE"
-    echo -e "${GREEN}✔ IAS Sovereign Academy spawned (PID: $IAS_PID, Port: 3001)${RESET}"
+    (nohup node server/server.js < /dev/null >> "$IAS_LOG" 2>&1 &)
+    sleep 1
+    IAS_PID=$(lsof -ti :3001 | head -n 1)
+    if [ -n "$IAS_PID" ]; then
+        echo "$IAS_PID" > "$IAS_PID_FILE"
+        echo -e "${GREEN}✔ IAS Sovereign Academy spawned (PID: $IAS_PID, Port: 3001)${RESET}"
+    else
+        echo -e "${YELLOW}⚠ IAS Sovereign Academy spawned, awaiting port 3001${RESET}"
+    fi
 fi
 
 # ------------------------------------------------------------------------------
@@ -87,11 +95,15 @@ if is_port_listening 3002; then
 else
     echo -e "${CYAN}▶ Starting IBC Practice Hub (Port 3002)...${RESET}"
     cd "$IBC_DIR"
-    nohup ./bin/openibc-server >> "$IBC_LOG" 2>&1 &
-    IBC_PID=$!
-    disown "$IBC_PID" 2>/dev/null || true
-    echo "$IBC_PID" > "$IBC_PID_FILE"
-    echo -e "${GREEN}✔ IBC Practice Hub spawned (PID: $IBC_PID, Port: 3002)${RESET}"
+    (nohup ./bin/openibc-server < /dev/null >> "$IBC_LOG" 2>&1 &)
+    sleep 1
+    IBC_PID=$(lsof -ti :3002 | head -n 1)
+    if [ -n "$IBC_PID" ]; then
+        echo "$IBC_PID" > "$IBC_PID_FILE"
+        echo -e "${GREEN}✔ IBC Practice Hub spawned (PID: $IBC_PID, Port: 3002)${RESET}"
+    else
+        echo -e "${YELLOW}⚠ IBC Practice Hub spawned, awaiting port 3002${RESET}"
+    fi
 fi
 
 # ------------------------------------------------------------------------------
@@ -108,11 +120,15 @@ if is_port_listening 3003; then
 else
     echo -e "${CYAN}▶ Starting BNS Criminal Law Hub (Port 3003)...${RESET}"
     cd "$BNS_DIR"
-    nohup ./bin/openbns-server >> "$BNS_LOG" 2>&1 &
-    BNS_PID=$!
-    disown "$BNS_PID" 2>/dev/null || true
-    echo "$BNS_PID" > "$BNS_PID_FILE"
-    echo -e "${GREEN}✔ BNS Criminal Law Hub spawned (PID: $BNS_PID, Port: 3003)${RESET}"
+    (nohup ./bin/openbns-server < /dev/null >> "$BNS_LOG" 2>&1 &)
+    sleep 1
+    BNS_PID=$(lsof -ti :3003 | head -n 1)
+    if [ -n "$BNS_PID" ]; then
+        echo "$BNS_PID" > "$BNS_PID_FILE"
+        echo -e "${GREEN}✔ BNS Criminal Law Hub spawned (PID: $BNS_PID, Port: 3003)${RESET}"
+    else
+        echo -e "${YELLOW}⚠ BNS Criminal Law Hub spawned, awaiting port 3003${RESET}"
+    fi
 fi
 
 # ------------------------------------------------------------------------------
@@ -130,11 +146,15 @@ if [ -d "$HACKNSTAY_DIR" ]; then
     else
         echo -e "${CYAN}▶ Starting Hack & Stay Super-App (Port 3004)...${RESET}"
         cd "$HACKNSTAY_DIR"
-        nohup ./node_modules/.bin/vite --port 3004 --host 0.0.0.0 < /dev/null >> "$HACKNSTAY_LOG" 2>&1 &
-        HACK_PID=$!
-        disown "$HACK_PID" 2>/dev/null || true
-        echo "$HACK_PID" > "$HACKNSTAY_PID_FILE"
-        echo -e "${GREEN}✔ Hack & Stay Super-App spawned (PID: $HACK_PID, Port: 3004)${RESET}"
+        (nohup ./node_modules/.bin/vite --port 3004 --host 0.0.0.0 < /dev/null >> "$HACKNSTAY_LOG" 2>&1 &)
+        sleep 1
+        HACK_PID=$(lsof -ti :3004 | head -n 1)
+        if [ -n "$HACK_PID" ]; then
+            echo "$HACK_PID" > "$HACKNSTAY_PID_FILE"
+            echo -e "${GREEN}✔ Hack & Stay Super-App spawned (PID: $HACK_PID, Port: 3004)${RESET}"
+        else
+            echo -e "${YELLOW}⚠ Hack & Stay Super-App spawned, awaiting port 3004${RESET}"
+        fi
     fi
 fi
 
