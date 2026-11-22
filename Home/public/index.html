@@ -783,297 +783,442 @@
       font-family: var(--font-mono);
     }
 
-    /* ─── FEATURED SECTION: AGENTIC SPACES RADAR MAP ─── */
-    .spaces-section {
-      background: #FFFFFF;
+    /* ─── AGENTIC SPACES RADAR (SPLIT VIEW MATCHING INVESTOR OPPORTUNITIES) ─── */
+    .spaces-radar-section {
+      width: 100%;
+      border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
-      padding: 56px 24px;
-    }
-
-    .spaces-container {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .section-head-center {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
-    }
-
-    .section-subtitle {
-      font-size: 16px;
-      color: var(--text-muted);
-      max-width: 780px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Radar Controls: Toggle + City Filter */
-    .spaces-controls-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
-      background: #F8FAFC;
-      border: 1px solid var(--border-color);
-      padding: 12px 18px;
-      border-radius: 14px;
-      margin-bottom: 24px;
-    }
-
-    .segment-toggle-group {
-      display: inline-flex;
-      background: #E2E8F0;
-      padding: 4px;
-      border-radius: 10px;
-      gap: 4px;
-    }
-
-    .segment-btn {
-      padding: 8px 18px;
-      border: none;
-      border-radius: 8px;
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: #475569;
-      transition: all 0.2s ease;
-    }
-
-    .segment-btn.active {
       background: #FFFFFF;
-      color: #0F172A;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      position: relative;
     }
 
-    .segment-badge {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 2px 6px;
-      border-radius: 9999px;
+    .spaces-split-view {
+      display: flex;
+      width: 100%;
+      height: 700px;
+      position: relative;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    /* Left Sidebar (390px, Matching Investor Opportunities) */
+    .spaces-sidebar {
+      width: 390px;
+      min-width: 390px;
+      height: 100%;
+      background: #FFFFFF;
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      transition: width 0.25s ease, min-width 0.25s ease, margin-left 0.25s ease;
+      overflow: hidden;
+    }
+
+    .spaces-sidebar.collapsed {
+      width: 0 !important;
+      min-width: 0 !important;
+      margin-left: -390px !important;
+    }
+
+    .sidebar-header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    /* Mode Switcher: ☕ cafes vs 📚 libraries (Matching Image 2) */
+    .mode-switcher {
+      display: flex;
       background: #F1F5F9;
+      padding: 3px;
+      border-radius: 10px;
+      gap: 2px;
+    }
+
+    .mode-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 700;
       color: #64748B;
-    }
-
-    .segment-btn.active .segment-badge {
-      background: #EFF6FF;
-      color: var(--primary-blue);
-    }
-
-    .spaces-filter-tools {
+      padding: 7px 10px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.15s ease;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 6px;
     }
 
-    .city-select {
-      padding: 8px 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 500;
-      color: #0F172A;
+    .mode-btn.active {
       background: #FFFFFF;
-      cursor: pointer;
-      outline: none;
+      color: #0F172A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
-    .city-select:focus {
+    /* Search Box (Matching Image 2) */
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 38px;
+      padding: 0 34px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: #F8FAFC;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #0F172A;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary-blue);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(30, 108, 147, 0.08);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 11px;
+      width: 16px;
+      height: 16px;
+      color: #94A3B8;
+      pointer-events: none;
+    }
+
+    .search-clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #94A3B8;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px;
+      display: none;
+    }
+
+    .search-box.has-query .search-clear-btn {
+      display: block;
+    }
+
+    /* Jurisdiction Filter Row */
+    .filter-row {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .filter-select {
+      width: 100%;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: #F8FAFC;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 0 8px;
+      color: #334155;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-select:focus {
       border-color: var(--primary-blue);
     }
 
-    /* Spaces Map Grid (Map + Inspector Sidebar) */
-    .spaces-radar-grid {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 24px;
-      height: 560px;
+    /* Stats Bar */
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: #64748B;
     }
 
-    .map-canvas-container {
-      background: #F1F5F9;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: var(--card-shadow);
+    .stats-pill {
+      background: #ECFDF5;
+      color: #065F46;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #A7F3D0;
     }
 
-    #spaces-map {
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-    }
-
-    /* Inspector Sidebar Card */
-    .space-inspector-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
+    /* Scrollable Card List (Matching Image 2) */
+    .card-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-    }
-
-    .inspector-head {
-      padding: 20px 22px 14px;
-      border-bottom: 1px solid #F1F5F9;
+      gap: 10px;
       background: #F8FAFC;
     }
 
-    .inspector-type-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      display: inline-block;
-      margin-bottom: 8px;
+    .deal-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      position: relative;
     }
 
-    .tag-cafe {
+    .deal-card:hover {
+      border-color: var(--primary-blue);
+      box-shadow: 0 4px 14px rgba(30, 108, 147, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .deal-card.active {
+      border-color: var(--primary-blue);
+      background: #EFF6FF;
+      box-shadow: 0 0 0 1.5px var(--primary-blue);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .company-name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.3;
+    }
+
+    .stage-badge {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-cafe {
       background: #FEF3C7;
       color: #92400E;
       border: 1px solid #FDE68A;
     }
 
-    .tag-library {
+    .badge-lib {
       background: #ECFDF5;
       color: #065F46;
       border: 1px solid #A7F3D0;
     }
 
-    .inspector-title {
+    .bookmark-btn {
+      background: none;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      padding: 2px;
+      transition: color 0.15s;
+    }
+    .bookmark-btn:hover {
+      color: var(--primary-blue);
+    }
+
+    .card-badges-row {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .sub-badge {
       font-family: var(--font-heading);
-      font-size: 18px;
-      font-weight: 700;
-      color: #0F172A;
-      margin-bottom: 4px;
-      line-height: 1.3;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
     }
 
-    .inspector-location {
-      font-size: 12.5px;
-      color: #64748B;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .inspector-body {
-      padding: 20px 22px;
-      overflow-y: auto;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .amenities-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .amenity-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: #334155;
-    }
-
-    .amenity-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
-      background: #F1F5F9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-
-    .proximity-badge {
+    .court-badge {
       background: #EFF6FF;
-      border: 1px solid #BFDBFE;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 12px;
       color: #1E40AF;
-      line-height: 1.4;
+      border: 1px solid #BFDBFE;
     }
 
-    .inspector-footer {
-      padding: 16px 22px;
+    .city-badge {
+      background: #F1F5F9;
+      color: #475569;
+      border: 1px solid #E2E8F0;
+    }
+
+    .type-badge {
+      background: #FAF5FF;
+      color: #7E22CE;
+      border: 1px solid #E9D5FF;
+    }
+
+    .card-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding-top: 4px;
       border-top: 1px solid #F1F5F9;
-      background: #FAFAFA;
+    }
+
+    .metric-item {
       display: flex;
       flex-direction: column;
-      gap: 8px;
     }
 
-    .reserve-desk-btn {
+    .metric-key {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: #64748B;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .metric-val {
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    .card-footer-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .card-reserve-btn {
+      flex: 1;
       background: var(--primary-blue);
       color: #FFFFFF;
       border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
+      border-radius: 6px;
       font-family: var(--font-heading);
-      font-size: 13.5px;
+      font-size: 11.5px;
       font-weight: 700;
+      padding: 6px 10px;
       cursor: pointer;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.2s ease;
+      transition: background 0.15s;
     }
-
-    .reserve-desk-btn:hover {
+    .card-reserve-btn:hover {
       background: var(--primary-blue-hover);
     }
 
-    .directions-link {
+    .card-directions-btn {
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #475569;
       background: #FFFFFF;
       border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 5px 9px;
+      text-decoration: none;
+    }
+    .card-directions-btn:hover {
+      background: #F1F5F9;
       color: #0F172A;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-family: var(--font-heading);
-      font-size: 12.5px;
-      font-weight: 600;
-      text-align: center;
+    }
+
+    /* Sidebar Toggle Tab Button [ < ] (Matching Image 2) */
+    .sidebar-toggle-tab {
+      position: absolute;
+      top: 14px;
+      left: 376px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
+      cursor: pointer;
+      z-index: 200;
+      color: #475569;
+      transition: left 0.25s ease, background 0.15s, color 0.15s;
     }
 
-    .directions-link:hover {
+    .sidebar-toggle-tab:hover {
       background: #F8FAFC;
+      color: #0F172A;
+    }
+
+    .spaces-sidebar.collapsed ~ .sidebar-toggle-tab {
+      left: 14px;
+    }
+
+    .spaces-sidebar.collapsed ~ .sidebar-toggle-tab svg {
+      transform: rotate(180deg);
+    }
+
+    /* Right Full Map Canvas (Matching Image 2) */
+    .map-canvas {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      background: #E2E8F0;
+      z-index: 10;
+    }
+
+    #spaces-map {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 900px) {
+      .spaces-split-view {
+        flex-direction: column;
+        height: 850px;
+      }
+      .spaces-sidebar {
+        width: 100%;
+        min-width: 100%;
+        height: 400px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .map-canvas {
+        height: 450px;
+      }
+      .sidebar-toggle-tab {
+        display: none;
+      }
     }
 
     /* ─── 3 COMPANION PILLARS (SKILLS, COHORTS, EVENTS) ─── */
@@ -1935,105 +2080,68 @@
     </div>
   </section>
 
-  <!-- ─── FEATURED SECTION: AGENTIC SPACES RADAR (FIRST!) ─── -->
-  <section class="spaces-section" id="spaces-radar">
-    <div class="spaces-container">
-      <div class="section-head-center">
-        <span class="section-badge">GEOSPATIAL JUDICIAL RADAR</span>
-        <h2 class="section-title">Agentic Spaces Radar</h2>
-        <p class="section-subtitle">
-          Verified work-from-cafes and supreme court / high court reference libraries equipped with high-speed fiber, silent research zones, and immediate proximity to major court complexes and tribunals.
-        </p>
-      </div>
+  <!-- ─── AGENTIC SPACES RADAR (SPLIT VIEW MATCHING INVESTOR OPPORTUNITIES) ─── -->
+  <section class="spaces-radar-section" id="spaces-radar">
+    <div class="spaces-split-view" id="spaces-split-view">
 
-      <!-- Controls: Strict Toggle between Cafes & Libraries + City Filter -->
-      <div class="spaces-controls-bar">
-        <div class="segment-toggle-group">
-          <button type="button" class="segment-btn active" id="filter-cafes-btn" onclick="setSpacesFilter('cafe')">
-            <span>☕ Work-From-Cafes</span>
-            <span class="segment-badge" id="cafes-count-badge">8</span>
-          </button>
-          <button type="button" class="segment-btn" id="filter-libs-btn" onclick="setSpacesFilter('library')">
-            <span>📚 Law Libraries</span>
-            <span class="segment-badge" id="libs-count-badge">8</span>
-          </button>
-        </div>
+      <!-- LEFT SIDEBAR: List & Filtering (Matching Image 2) -->
+      <aside class="spaces-sidebar" id="spaces-sidebar">
+        <div class="sidebar-header">
 
-        <div class="spaces-filter-tools">
-          <label style="font-size: 13px; font-weight: 600; color: #475569;" for="city-select">Select Jurisdiction:</label>
-          <select id="city-select" class="city-select" onchange="filterByCity(this.value)">
-            <option value="all">National Radar (All Cities)</option>
-            <option value="Delhi NCR">Delhi NCR (Supreme Court / High Court / NCLT)</option>
-            <option value="Mumbai">Mumbai (Bombay High Court / NCLT BKC)</option>
-            <option value="Bengaluru">Bengaluru (Karnataka High Court / NCLT)</option>
-            <option value="Chandigarh">Chandigarh (Punjab &amp; Haryana High Court)</option>
-            <option value="Kolkata">Kolkata (Calcutta High Court)</option>
-            <option value="Hyderabad">Hyderabad (Telangana High Court)</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Radar Layout: Map Canvas + Space Inspector Sidebar -->
-      <div class="spaces-radar-grid">
-        <!-- Interactive Leaflet Canvas -->
-        <div class="map-canvas-container">
-          <div id="spaces-map"></div>
-        </div>
-
-        <!-- Space Inspector Card -->
-        <div class="space-inspector-card" id="space-inspector">
-          <div class="inspector-head">
-            <span class="inspector-type-tag tag-cafe" id="insp-type-tag">WORK-FROM-CAFE</span>
-            <h3 class="inspector-title" id="insp-title">Blue Tokai Coffee Roasters</h3>
-            <div class="inspector-location">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span id="insp-location">Saket District Court Annex, New Delhi</span>
-            </div>
-          </div>
-
-          <div class="inspector-body">
-            <div class="proximity-badge" id="insp-proximity">
-              <strong>Court Proximity:</strong> 350 meters from Saket District Court &bull; 8 mins to NCLT South
-            </div>
-
-            <div class="amenities-group">
-              <span style="font-size: 11px; font-family: var(--font-mono); color: #64748B; text-transform: uppercase; letter-spacing: 0.5px;">Verified Practitioner Amenities:</span>
-              
-              <div class="amenity-row">
-                <span class="amenity-icon">⚡</span>
-                <span id="insp-wifi">350 Mbps Dedicated Fiber Wi-Fi</span>
-              </div>
-              <div class="amenity-row">
-                <span class="amenity-icon">🔌</span>
-                <span id="insp-power">Universal Power Outlets at Every Worktable</span>
-              </div>
-              <div class="amenity-row">
-                <span class="amenity-icon">🤫</span>
-                <span id="insp-noise">Silent Research Zone (42 dB ambient)</span>
-              </div>
-              <div class="amenity-row">
-                <span class="amenity-icon">☕</span>
-                <span id="insp-specialty">Artisan Brews &bull; Private Conference Annex</span>
-              </div>
-            </div>
-
-            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;" id="insp-desc">
-              Preferred workspace for restructuring counsel and litigators between court calls. Features ergonomic benching, high-speed encrypted network access, and private nooks for confidential client calls.
-            </p>
-          </div>
-
-          <div class="inspector-footer">
-            <button type="button" class="reserve-desk-btn" onclick="openDeskReservationModal()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <span>Reserve a Work Desk</span>
+          <!-- Mode Switcher: ☕ cafes vs 📚 libraries (Matching Image 2) -->
+          <div class="mode-switcher">
+            <button type="button" class="mode-btn active" id="mode-cafes-btn" onclick="setSpacesFilter('cafe')">
+              <span>☕ cafes (8)</span>
             </button>
-            <a href="#" class="directions-link" id="insp-directions" target="_blank" rel="noopener">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-              <span>Get Turn-by-Turn Directions</span>
-            </a>
+            <button type="button" class="mode-btn" id="mode-libs-btn" onclick="setSpacesFilter('library')">
+              <span>📚 libraries (8)</span>
+            </button>
           </div>
+
+          <!-- Search Box (Matching Image 2) -->
+          <div class="search-box" id="spaces-search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="spaces-search-input" placeholder="search cafes, libraries, court complexes, city..." oninput="handleSearchSpaces(this.value)" />
+            <button type="button" id="spaces-search-clear" class="search-clear-btn" onclick="clearSpacesSearch()">&times;</button>
+          </div>
+
+          <!-- Filter Row: City Jurisdiction Select -->
+          <div class="filter-row">
+            <select id="sidebar-city-select" class="filter-select" onchange="filterByCity(this.value)">
+              <option value="all">All Jurisdictions (National Radar)</option>
+              <option value="Delhi NCR">Delhi NCR (Supreme Court / High Court / NCLT)</option>
+              <option value="Mumbai">Mumbai (Bombay High Court / NCLT BKC)</option>
+              <option value="Bengaluru">Bengaluru (Karnataka High Court / NCLT)</option>
+              <option value="Chandigarh">Chandigarh (Punjab &amp; Haryana High Court)</option>
+              <option value="Kolkata">Kolkata (Calcutta High Court)</option>
+              <option value="Hyderabad">Hyderabad (Telangana High Court)</option>
+            </select>
+          </div>
+
+          <!-- Stats Bar -->
+          <div class="stats-bar">
+            <span class="stats-pill"><span class="status-pulse"></span> <span id="spaces-count-display">8 verified spaces</span></span>
+            <span id="spaces-city-display">National Radar</span>
+          </div>
+
         </div>
+
+        <!-- Scrollable Card List (Matching Image 2) -->
+        <div class="card-list" id="spaces-card-list">
+          <!-- Rendered dynamically by JavaScript -->
+        </div>
+      </aside>
+
+      <!-- Sidebar Toggle Tab Button [ < ] (Matching Image 2) -->
+      <button type="button" class="sidebar-toggle-tab" id="sidebar-toggle-btn" onclick="toggleSidebarCollapse()" title="Collapse / Expand list ([ or \)">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <!-- RIGHT FULL MAP CANVAS (Matching Image 2) -->
+      <div class="map-canvas" id="spaces-map-canvas">
+        <div id="spaces-map"></div>
       </div>
+
     </div>
   </section>
 
@@ -2645,9 +2753,37 @@
 
     let currentFilter = 'cafe'; // 'cafe' or 'library'
     let currentCity = 'all';
+    let searchQuery = '';
+    let activeSpaceId = null;
     let map = null;
     let markersLayer = null;
-    let activeMarker = null;
+    let markersMap = {};
+    let bookmarkedSpaces = new Set();
+
+    // Load saved bookmarks from localStorage
+    try {
+      const savedBm = localStorage.getItem('agentic_spaces_bookmarks');
+      if (savedBm) {
+        bookmarkedSpaces = new Set(JSON.parse(savedBm));
+      }
+    } catch (e) {}
+
+    function saveBookmarks() {
+      try {
+        localStorage.setItem('agentic_spaces_bookmarks', JSON.stringify(Array.from(bookmarkedSpaces)));
+      } catch (e) {}
+    }
+
+    function toggleBookmark(id, event) {
+      if (event) event.stopPropagation();
+      if (bookmarkedSpaces.has(id)) {
+        bookmarkedSpaces.delete(id);
+      } else {
+        bookmarkedSpaces.add(id);
+      }
+      saveBookmarks();
+      renderCardsList();
+    }
 
     // Initialize Leaflet Map
     function initMap() {
@@ -2658,7 +2794,7 @@
       map = L.map('spaces-map', {
         zoomControl: true,
         scrollWheelZoom: true
-      }).setView([24.5, 78.5], 5);
+      }).setView([22.5, 78.5], 5);
 
       // CartoDB Positron - Pristine Institutional Light Mode Tiles
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -2669,9 +2805,18 @@
 
       markersLayer = L.layerGroup().addTo(map);
 
-      // Render pins and populate megamenu
+      // Render cards and pins, and populate megamenu
+      renderCardsList();
       renderMarkers();
       populateMegamenuSpaces();
+
+      // Keyboard shortcut [ or \ to toggle sidebar (matching IBC)
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === '[' || e.key === '\\') {
+          toggleSidebarCollapse();
+        }
+      });
     }
 
     // Custom Leaflet DivIcon
@@ -2689,104 +2834,294 @@
       });
     }
 
-    // Render Markers based on Active Filter and City
+    // Filter spaces based on type, city, and text search
+    function getFilteredSpaces() {
+      return spacesData.filter(item => {
+        const matchesType = (item.type === currentFilter);
+        const matchesCity = (currentCity === 'all' || item.city === currentCity);
+        const q = searchQuery.toLowerCase();
+        const matchesSearch = !q || (
+          item.name.toLowerCase().includes(q) ||
+          item.city.toLowerCase().includes(q) ||
+          item.location.toLowerCase().includes(q) ||
+          item.proximity.toLowerCase().includes(q) ||
+          item.specialty.toLowerCase().includes(q) ||
+          item.desc.toLowerCase().includes(q)
+        );
+        return matchesType && matchesCity && matchesSearch;
+      });
+    }
+
+    // Render Cards in Sidebar (Matching Image 2)
+    function renderCardsList() {
+      const cardList = document.getElementById('spaces-card-list');
+      const countDisplay = document.getElementById('spaces-count-display');
+      const cityDisplay = document.getElementById('spaces-city-display');
+      const cafesBtn = document.getElementById('mode-cafes-btn');
+      const libsBtn = document.getElementById('mode-libs-btn');
+
+      const filtered = getFilteredSpaces();
+
+      // Update Mode button counts
+      const totalCafes = spacesData.filter(s => s.type === 'cafe').length;
+      const totalLibs = spacesData.filter(s => s.type === 'library').length;
+      if (cafesBtn) cafesBtn.querySelector('span').textContent = `☕ cafes (${totalCafes})`;
+      if (libsBtn) libsBtn.querySelector('span').textContent = `📚 libraries (${totalLibs})`;
+
+      // Update Stats bar
+      if (countDisplay) {
+        countDisplay.textContent = `${filtered.length} verified ${currentFilter === 'cafe' ? 'spaces' : 'libraries'}`;
+      }
+      if (cityDisplay) {
+        cityDisplay.textContent = currentCity === 'all' ? 'National Radar' : currentCity;
+      }
+
+      if (!cardList) return;
+
+      if (filtered.length === 0) {
+        cardList.innerHTML = `
+          <div style="padding:48px 16px;text-align:center;color:#64748B;font-size:13px;">
+            <div style="font-size:24px;margin-bottom:8px;">🔍</div>
+            <div style="font-weight:600;color:#0F172A;margin-bottom:4px;">No verified spaces found</div>
+            <div style="margin-bottom:14px;">Try clearing your search or switching jurisdictions.</div>
+            <button type="button" onclick="clearSpacesSearch()" style="padding:6px 14px;border-radius:8px;border:1px solid #CBD5E1;background:#FFFFFF;color:#0F172A;font-size:12px;font-weight:600;cursor:pointer;">
+              Reset Search
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      // If activeSpaceId is not in filtered list, set it to the first item
+      if (!filtered.some(s => s.id === activeSpaceId)) {
+        activeSpaceId = filtered[0].id;
+      }
+
+      cardList.innerHTML = filtered.map(s => {
+        const isActive = (s.id === activeSpaceId);
+        const isBookmarked = bookmarkedSpaces.has(s.id);
+        const stageBadge = s.type === 'cafe' ? '300+ MBPS' : 'AIR-GAPPED ARCHIVE';
+        const stageBadgeClass = s.type === 'cafe' ? 'badge-cafe' : 'badge-lib';
+        const typeLabel = s.type === 'cafe' ? 'Work-From-Cafe' : 'Law Library';
+
+        // Extract court proximity short
+        const courtName = s.proximity.includes('from ') ? s.proximity.split('from ')[1] : s.proximity;
+        const courtDist = s.proximity.includes('from ') ? s.proximity.split('from ')[0].trim() : (s.proximity.includes('Within') ? 'Within Complex' : s.proximity.split('•')[0]);
+
+        return `
+          <div class="deal-card ${isActive ? 'active' : ''}" data-id="${s.id}" onclick="selectSpaceFromCard('${s.id}')">
+            <div class="card-top">
+              <div class="company-name" style="flex:1;">${s.name}</div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span class="stage-badge ${stageBadgeClass}">${stageBadge}</span>
+                <button type="button" class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" title="${isBookmarked ? 'Remove Bookmark' : 'Bookmark Space'}" onclick="toggleBookmark('${s.id}', event)">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-badges-row">
+              <span class="sub-badge court-badge">${s.city}</span>
+              <span class="sub-badge city-badge" title="${courtName}">${courtName.length > 26 ? courtName.slice(0,25) + '…' : courtName}</span>
+              <span class="sub-badge type-badge">${typeLabel}</span>
+            </div>
+
+            <div class="card-metrics-grid">
+              <div class="metric-item">
+                <span class="metric-key">COURT DISTANCE</span>
+                <span class="metric-val">${courtDist}</span>
+              </div>
+              <div class="metric-item" style="text-align:right;">
+                <span class="metric-key">${s.type === 'cafe' ? 'WIFI SPEED' : 'NOISE LEVEL'}</span>
+                <span class="metric-val" style="color:${s.type === 'cafe' ? '#059669' : '#0284C7'};">
+                  ${s.type === 'cafe' ? (s.wifi.split(' ')[0] + ' ' + s.wifi.split(' ')[1]) : (s.noise.includes('(') ? s.noise.split('(')[1].replace(')', '') : s.noise)}
+                </span>
+              </div>
+            </div>
+
+            <div class="card-footer-actions">
+              <button type="button" class="card-reserve-btn" onclick="event.stopPropagation(); openDeskReservationModal('${s.id}')">
+                Reserve Desk &rarr;
+              </button>
+              <a href="${s.directionsUrl}" target="_blank" rel="noopener" class="card-directions-btn" onclick="event.stopPropagation()">
+                Directions
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render Markers on Leaflet Map
     function renderMarkers() {
       if (!markersLayer) return;
       markersLayer.clearLayers();
+      markersMap = {};
 
-      const filtered = spacesData.filter(item => {
-        const matchesType = (item.type === currentFilter);
-        const matchesCity = (currentCity === 'all' || item.city === currentCity);
-        return matchesType && matchesCity;
-      });
-
+      const filtered = getFilteredSpaces();
       if (filtered.length === 0) return;
 
       const bounds = [];
 
-      filtered.forEach((item, index) => {
+      filtered.forEach((item) => {
+        const isCurrentActive = (item.id === activeSpaceId);
         const marker = L.marker([item.lat, item.lng], {
-          icon: createCustomPin(item, index === 0)
+          icon: createCustomPin(item, isCurrentActive)
         });
 
+        const popupContent = `
+          <div style="font-family:var(--font-heading);min-width:220px;padding:2px;">
+            <div style="font-weight:700;font-size:13.5px;color:#0F172A;margin-bottom:3px;line-height:1.3;">${item.name}</div>
+            <div style="font-size:11px;color:#0284C7;font-weight:600;margin-bottom:4px;">${item.type === 'cafe' ? '☕ Work-From-Cafe' : '📚 Law Library'} &bull; ${item.city}</div>
+            <div style="font-size:11.5px;color:#475569;margin-bottom:8px;line-height:1.4;">${item.proximity}</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E2E8F0;padding-top:6px;font-size:11.5px;">
+              <span style="font-family:monospace;font-weight:700;color:#059669;">${item.wifi}</span>
+              <a href="${item.directionsUrl}" target="_blank" rel="noopener" style="color:#1E6C93;font-weight:700;text-decoration:none;">Directions &rarr;</a>
+            </div>
+          </div>
+        `;
+        marker.bindPopup(popupContent, { maxWidth: 280, className: 'space-leaflet-popup' });
+
         marker.on('click', () => {
-          selectSpace(item, marker);
+          selectSpaceFromMarker(item.id);
         });
 
         markersLayer.addLayer(marker);
+        markersMap[item.id] = marker;
         bounds.push([item.lat, item.lng]);
 
-        // Default select first item
-        if (index === 0) {
-          selectSpace(item, marker);
+        if (isCurrentActive) {
+          setTimeout(() => {
+            if (markersMap[item.id]) markersMap[item.id].openPopup();
+          }, 100);
         }
       });
 
       if (bounds.length > 0) {
-        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
       }
     }
 
-    // Select Space and update Inspector Sidebar
-    function selectSpace(item, marker) {
-      if (activeMarker) {
-        // Reset old marker icon
-        activeMarker.setIcon(createCustomPin(activeMarker.spaceData, false));
+    // Select Space from clicking a card in the left sidebar
+    function selectSpaceFromCard(id) {
+      activeSpaceId = id;
+      const space = spacesData.find(s => s.id === id);
+      if (!space) return;
+
+      // Update card active classes
+      document.querySelectorAll('#spaces-card-list .deal-card').forEach(card => {
+        if (card.getAttribute('data-id') === id) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      // Update map markers
+      Object.keys(markersMap).forEach(mId => {
+        const marker = markersMap[mId];
+        const item = spacesData.find(s => s.id === mId);
+        if (item) {
+          marker.setIcon(createCustomPin(item, mId === id));
+        }
+      });
+
+      // Fly map to selected venue and open popup
+      if (map && markersMap[id]) {
+        map.flyTo([space.lat, space.lng], 15, { duration: 0.8 });
+        setTimeout(() => {
+          if (markersMap[id]) markersMap[id].openPopup();
+        }, 850);
       }
+    }
 
-      activeMarker = marker;
-      marker.spaceData = item;
-      marker.setIcon(createCustomPin(item, true));
+    // Select Space from clicking a pin on the map
+    function selectSpaceFromMarker(id) {
+      activeSpaceId = id;
 
-      // Update Inspector Sidebar
-      const typeTag = document.getElementById('insp-type-tag');
-      const title = document.getElementById('insp-title');
-      const loc = document.getElementById('insp-location');
-      const prox = document.getElementById('insp-proximity');
-      const wifi = document.getElementById('insp-wifi');
-      const power = document.getElementById('insp-power');
-      const noise = document.getElementById('insp-noise');
-      const spec = document.getElementById('insp-specialty');
-      const desc = document.getElementById('insp-desc');
-      const dirLink = document.getElementById('insp-directions');
+      // Update card active classes
+      document.querySelectorAll('#spaces-card-list .deal-card').forEach(card => {
+        if (card.getAttribute('data-id') === id) {
+          card.classList.add('active');
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          card.classList.remove('active');
+        }
+      });
 
-      if (typeTag) {
-        typeTag.textContent = item.type === 'cafe' ? 'WORK-FROM-CAFE' : 'LAW LIBRARY & ARCHIVE';
-        typeTag.className = `inspector-type-tag ${item.type === 'cafe' ? 'tag-cafe' : 'tag-library'}`;
-      }
-      if (title) title.textContent = item.name;
-      if (loc) loc.textContent = item.location;
-      if (prox) prox.innerHTML = `<strong>Court Proximity:</strong> ${item.proximity}`;
-      if (wifi) wifi.textContent = item.wifi;
-      if (power) power.textContent = item.power;
-      if (noise) noise.textContent = item.noise;
-      if (spec) spec.textContent = item.specialty;
-      if (desc) desc.textContent = item.desc;
-      if (dirLink) dirLink.href = item.directionsUrl;
+      // Update pins
+      Object.keys(markersMap).forEach(mId => {
+        const marker = markersMap[mId];
+        const item = spacesData.find(s => s.id === mId);
+        if (item) {
+          marker.setIcon(createCustomPin(item, mId === id));
+        }
+      });
     }
 
     // Switch between Cafes and Libraries
     function setSpacesFilter(type) {
       currentFilter = type;
 
-      const cafeBtn = document.getElementById('filter-cafes-btn');
-      const libBtn = document.getElementById('filter-libs-btn');
+      const cafeBtn = document.getElementById('mode-cafes-btn');
+      const libBtn = document.getElementById('mode-libs-btn');
 
-      if (type === 'cafe') {
-        cafeBtn.classList.add('active');
-        libBtn.classList.remove('active');
-      } else {
-        libBtn.classList.add('active');
-        cafeBtn.classList.remove('active');
+      if (cafeBtn && libBtn) {
+        if (type === 'cafe') {
+          cafeBtn.classList.add('active');
+          libBtn.classList.remove('active');
+        } else {
+          libBtn.classList.add('active');
+          cafeBtn.classList.remove('active');
+        }
       }
 
+      renderCardsList();
       renderMarkers();
     }
 
     // Filter by City
     function filterByCity(cityName) {
       currentCity = cityName;
+      renderCardsList();
       renderMarkers();
+    }
+
+    // Search spaces by text
+    function handleSearchSpaces(query) {
+      searchQuery = query || '';
+      const clearBtn = document.getElementById('spaces-search-clear');
+      if (clearBtn) {
+        clearBtn.style.display = searchQuery ? 'block' : 'none';
+      }
+      renderCardsList();
+      renderMarkers();
+    }
+
+    function clearSpacesSearch() {
+      const input = document.getElementById('spaces-search-input');
+      if (input) input.value = '';
+      handleSearchSpaces('');
+    }
+
+    // Toggle Sidebar Collapse (Matching Image 2)
+    function toggleSidebarCollapse() {
+      const sidebar = document.getElementById('spaces-sidebar');
+      const btn = document.getElementById('sidebar-toggle-btn');
+      if (!sidebar) return;
+
+      const isCollapsed = sidebar.classList.toggle('collapsed');
+      if (btn) {
+        btn.setAttribute('aria-expanded', !isCollapsed);
+        btn.title = isCollapsed ? 'Expand list ([ or \\)' : 'Collapse list ([ or \\)';
+      }
+
+      // Smoothly re-render Leaflet tiles across full canvas width
+      setTimeout(() => {
+        if (map) {
+          map.invalidateSize();
+        }
+      }, 260);
     }
 
     // Populate the Spaces Megamenu Dropdown
@@ -2815,12 +3150,14 @@
       const cafeBtn = document.getElementById('quick-toggle-cafes');
       const libBtn = document.getElementById('quick-toggle-libs');
 
-      if (type === 'cafe') {
-        cafeBtn.classList.add('active');
-        libBtn.classList.remove('active');
-      } else {
-        libBtn.classList.add('active');
-        cafeBtn.classList.remove('active');
+      if (cafeBtn && libBtn) {
+        if (type === 'cafe') {
+          cafeBtn.classList.add('active');
+          libBtn.classList.remove('active');
+        } else {
+          libBtn.classList.add('active');
+          cafeBtn.classList.remove('active');
+        }
       }
 
       populateMegamenuSpaces(type);
@@ -2831,9 +3168,16 @@
       if (!space) return;
 
       setSpacesFilter(space.type);
-      if (map) {
-        map.setView([space.lat, space.lng], 15);
-      }
+      currentCity = 'all';
+      const citySelect = document.getElementById('sidebar-city-select');
+      if (citySelect) citySelect.value = 'all';
+
+      renderCardsList();
+      renderMarkers();
+      selectSpaceFromCard(id);
+
+      const el = document.getElementById('spaces-radar');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
     function focusSpacesMap() {
@@ -2860,10 +3204,14 @@
 
     function openLoginModal() { openModal('login-modal'); }
     function openDownloadModal() { openModal('download-modal'); }
-    function openDeskReservationModal() {
-      const inspTitle = document.getElementById('insp-title')?.textContent || 'Legal Space';
+    function openDeskReservationModal(id) {
+      let spaceTitle = 'Legal Space';
+      if (id) {
+        const found = spacesData.find(s => s.id === id);
+        if (found) spaceTitle = found.name;
+      }
       const sub = document.getElementById('desk-modal-subtitle');
-      if (sub) sub.textContent = `Confirm check-in and Wi-Fi credential allocation at ${inspTitle}.`;
+      if (sub) sub.textContent = `Confirm check-in and Wi-Fi credential allocation at ${spaceTitle}.`;
       openModal('desk-modal');
     }
 
