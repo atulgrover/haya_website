@@ -2,11 +2,9 @@
 # ==============================================================================
 # Agentic Professionals Master Stopper (Home)
 # Stops all domains simultaneously:
-#   • Port 3000: Root Gateway (Home)
-#   • Port 3001: IAS Academy
-#   • Port 3002: OpenIBC Hub
-#   • Port 3003: OpenBNS Hub
-#   • Port 3004: Hack & Stay Super-App
+#   • Port 3000: Root Gateway (agenticprofessionals.net / www.agenticprofessionals.net)
+#   • Port 3002: IBC Sovereign Practice Hub (ibc.agenticprofessionals.net)
+#   • Port 3003: BNS Criminal Law Hub (bns.agenticprofessionals.net)
 # ==============================================================================
 set -euo pipefail
 

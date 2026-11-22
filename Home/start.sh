@@ -2,9 +2,9 @@
 # ==============================================================================
 # Agentic Professionals Master Orchestrator (Home)
 # Starts all portals simultaneously:
-#   • Port 3000: Root Gateway (Home)
-#   • Port 3002: OpenIBC Sovereign Practice Hub (ibc.agenticprofessionals)
-#   • Port 3003: OpenBNS Criminal Law Hub (bns.agenticprofessionals)
+#   • Port 3000: Root Gateway (agenticprofessionals.net / www.agenticprofessionals.net)
+#   • Port 3002: IBC Sovereign Practice Hub (ibc.agenticprofessionals.net)
+#   • Port 3003: BNS Criminal Law Hub (bns.agenticprofessionals.net)
 # ==============================================================================
 set -euo pipefail
 
@@ -69,7 +69,7 @@ else
     echo -e "${CYAN}▶ Starting IBC Practice Hub (Port 3002)...${RESET}"
     cd "$IBC_DIR"
     (nohup ./bin/openibc-server < /dev/null >> "$IBC_LOG" 2>&1 &)
-    sleep 1
+    sleep 2
     IBC_PID=$(lsof -ti :3002 | head -n 1)
     if [ -n "$IBC_PID" ]; then
         echo "$IBC_PID" > "$IBC_PID_FILE"
@@ -94,7 +94,7 @@ else
     echo -e "${CYAN}▶ Starting BNS Criminal Law Hub (Port 3003)...${RESET}"
     cd "$BNS_DIR"
     (nohup ./bin/openbns-server < /dev/null >> "$BNS_LOG" 2>&1 &)
-    sleep 1
+    sleep 2
     BNS_PID=$(lsof -ti :3003 | head -n 1)
     if [ -n "$BNS_PID" ]; then
         echo "$BNS_PID" > "$BNS_PID_FILE"
@@ -110,9 +110,9 @@ echo ""
 echo -e "${BOLD}================================================================${RESET}"
 echo -e "${BOLD}${GREEN}✔ All Portals Are Live & Running Simultaneously!${RESET}"
 echo -e "${BOLD}================================================================${RESET}"
-echo -e "  🌐 ${CYAN}Root Gateway (Home):${RESET}         http://localhost:3000"
-echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}            http://localhost:3002  (ibc.agenticprofessionals)"
-echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}        http://localhost:3003  (bns.agenticprofessionals)"
+echo -e "  🌐 ${CYAN}Root Gateway (Home):${RESET}         http://localhost:3000  (agenticprofessionals.net / www.agenticprofessionals.net)"
+echo -e "  🏛️  ${CYAN}IBC Practice Hub:${RESET}            http://localhost:3002  (ibc.agenticprofessionals.net)"
+echo -e "  ⚖️  ${CYAN}BNS Criminal Law Hub:${RESET}        http://localhost:3003  (bns.agenticprofessionals.net)"
 echo ""
 echo -e "  📊 Check status:   ${BOLD}./status.sh${RESET}"
 echo -e "  🛑 Stop all apps:   ${BOLD}./stop.sh${RESET}"
