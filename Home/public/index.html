@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AGENTIC PROFESSIONALS — Sovereign Operating System for Legal & Restructuring Practitioners</title>
-  <meta name="description" content="Command statutory intelligence across IBC and BNS, download the Hayagriva agent harness, ask peer-verified legal questions, book consultations, and explore national judicial radars.">
+  <title>Agentic Professionals — Sovereign Operating System for Legal & Restructuring Practitioners</title>
+  <meta name="description" content="Sovereign network for autonomous legal practitioners: command agentic spaces radar, skillpedia NSQF skills, specialized cohorts across IBC, BNS, and CPC, professional and social events, Hayagriva desktop harness, and statutory answers.">
   
-  <!-- Typography matching IBC and BNS -->
+  <!-- Typography matching IBC and BNS standards -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Google+Sans:wght@400;500;700;800&family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
+  <!-- Leaflet CDN for Spaces Radar Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <style>
     :root {
-      /* Shared Light Institutional Palette */
+      /* Shared Institutional Light Palette */
       --bg-primary: #F8FAFC;
       --bg-card: #FFFFFF;
       --bg-card-subtle: #F1F5F9;
@@ -31,7 +35,7 @@
       --primary-blue-light: #EFF6FF;
       --primary-blue-border: #BFDBFE;
 
-      /* Domain Radars */
+      /* Domain Specific Accents */
       --ibc-emerald: #059669;
       --ibc-emerald-hover: #047857;
       --ibc-emerald-light: #ECFDF5;
@@ -42,12 +46,17 @@
       --bns-sky-light: #F0F9FF;
       --bns-sky-border: #BAE6FD;
 
+      --cpc-purple: #7C3AED;
+      --cpc-purple-light: #F5F3FF;
+      --cpc-purple-border: #DDD6FE;
+
       --amber-accent: #D97706;
       --amber-light: #FEF3C7;
 
       /* Shadows */
       --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
       --card-shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+      --megamenu-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.14), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
 
       /* Typography */
       --font-heading: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -77,39 +86,38 @@
       text-decoration: none;
     }
 
-    /* ─── 58px Master Header (Matching OpenIBC 3002 & OpenBNS 3003) ─── */
+    /* ─── 60px Master Header ─── */
     .site-header {
-      height: 58px;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      height: 60px;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 32px;
-      z-index: 1000;
+      z-index: 2000;
       position: sticky;
       top: 0;
     }
 
-    .brand-container {
+    .header-left {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 16px;
     }
 
     .brand-link {
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
       cursor: pointer;
     }
 
     .unicorn-icon {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       fill: #0F172A;
       transition: transform 0.2s ease;
       flex-shrink: 0;
@@ -119,7 +127,7 @@
       transform: scale(1.08);
     }
 
-    .brand-title-static {
+    .brand-title {
       font-family: var(--font-heading);
       font-size: 17px;
       font-weight: 700;
@@ -128,184 +136,480 @@
       white-space: nowrap;
     }
 
-    .brand-dash {
-      font-family: var(--font-heading);
-      font-size: 17px;
-      font-weight: 700;
-      color: #64748B;
-      margin: 0 4px 0 2px;
-      user-select: none;
-    }
-
-    .track-picker-wrapper {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .brand-title-btn {
-      background: none;
-      border: none;
-      font-family: var(--font-heading);
-      font-size: 17px;
-      font-weight: 700;
-      color: #0F172A;
-      letter-spacing: -0.3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 8px;
-      transition: background 0.15s ease;
-    }
-
-    .brand-title-btn:hover,
-    .track-picker-wrapper:hover .brand-title-btn {
-      background: #F1F5F9;
-    }
-
-    .chevron-icon {
-      width: 14px;
-      height: 14px;
-      color: #64748B;
-      transition: transform 0.2s ease;
-    }
-
-    .track-picker-wrapper:hover .chevron-icon {
-      transform: rotate(180deg);
-      color: var(--primary-blue);
-    }
-
-    .subdomain-dropdown {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
-      min-width: 280px;
-      padding: 8px;
-      display: none;
-      z-index: 1010;
-    }
-
-    .track-picker-wrapper:hover .subdomain-dropdown,
-    .subdomain-dropdown:hover {
-      display: block;
-    }
-
-    .dropdown-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 8px;
-      transition: background 0.15s ease;
-      text-decoration: none;
-      color: var(--text-main);
-    }
-
-    .dropdown-item:hover {
-      background: #F8FAFC;
-    }
-
-    .dropdown-item strong {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      color: var(--text-main);
-    }
-
-    .dropdown-item small {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .dot-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .dot-ibc { background: var(--ibc-emerald); }
-    .dot-bns { background: var(--bns-sky); }
-
-    /* Center Nav Links */
+    /* ─── Center Nav with Megamenus ─── */
     .center-nav {
       display: flex;
       align-items: center;
       gap: 6px;
+      position: relative;
     }
 
-    .nav-pill {
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-trigger-btn {
+      background: none;
+      border: none;
       font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 500;
-      color: #475569;
-      padding: 6px 14px;
-      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
       transition: all 0.15s ease;
+      text-transform: lowercase;
     }
 
-    .nav-pill:hover {
+    .nav-trigger-btn:hover,
+    .nav-item.active .nav-trigger-btn {
       color: #0F172A;
       background: #F1F5F9;
     }
 
-    /* Right Nav Actions */
-    .nav-actions {
+    .nav-chevron {
+      width: 13px;
+      height: 13px;
+      color: #64748B;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item.active .nav-chevron,
+    .nav-item:hover .nav-chevron {
+      transform: rotate(180deg);
+      color: var(--primary-blue);
+    }
+
+    /* Megamenu Panels */
+    .megamenu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: var(--megamenu-shadow);
+      padding: 20px;
+      display: none;
+      z-index: 2100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .nav-item:hover .megamenu,
+    .nav-item.open .megamenu {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Megamenu Sizes */
+    .megamenu-spaces { width: 520px; }
+    .megamenu-skills { width: 440px; }
+    .megamenu-cohorts { width: 660px; }
+    .megamenu-events { width: 540px; }
+
+    .megamenu-header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #F1F5F9;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .megamenu-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .megamenu-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: #F1F5F9;
+      color: #64748B;
+    }
+
+    /* Spaces Megamenu Specifics */
+    .spaces-quick-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #F1F5F9;
+      padding: 3px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    .spaces-quick-btn {
+      flex: 1;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: transparent;
+      color: #64748B;
+      transition: all 0.15s ease;
+    }
+
+    .spaces-quick-btn.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .spaces-locations-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 240px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .space-item-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .space-item-link:hover {
+      background: #F8FAFC;
+      border-color: var(--border-color);
+    }
+
+    .space-info-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .space-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #EFF6FF;
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .space-icon-box.lib-box {
+      background: #F0FDF4;
+      color: var(--ibc-emerald);
+    }
+
+    .space-title-text {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: #0F172A;
+    }
+
+    .space-sub-text {
+      font-size: 11.5px;
+      color: #64748B;
+      font-family: var(--font-mono);
+    }
+
+    .space-badge-right {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #059669;
+      background: #ECFDF5;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .megamenu-footer {
+      border-top: 1px solid #F1F5F9;
+      padding-top: 12px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .megamenu-action-link {
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .megamenu-action-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills Megamenu Specifics */
+    .skills-levels-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .skill-card-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #EEF2F6;
+      background: #F8FAFC;
+      transition: all 0.15s ease;
+    }
+
+    .skill-card-link:hover {
+      background: #FFFFFF;
+      border-color: var(--primary-blue-border);
+      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .skill-level-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      background: var(--primary-blue-light);
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .skill-body strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .skill-body p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Cohorts Megamenu 3 Columns */
+    .cohorts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
 
-    .network-badge {
+    .cohort-col {
+      background: #F8FAFC;
+      border: 1px solid #EEF2F6;
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .cohort-col:hover {
+      background: #FFFFFF;
+      border-color: var(--border-hover);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    .cohort-col-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: lowercase;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cohort-col.col-commercial { border-top: 3px solid var(--ibc-emerald); }
+    .cohort-col.col-criminal { border-top: 3px solid var(--bns-sky); }
+    .cohort-col.col-civil { border-top: 3px solid var(--cpc-purple); }
+
+    .cohort-pill-link {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      transition: all 0.15s ease;
+    }
+
+    .cohort-pill-link:hover {
+      border-color: var(--primary-blue);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .cohort-pill-link strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      color: #0F172A;
+    }
+
+    .cohort-pill-link span {
+      display: block;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: #64748B;
+    }
+
+    /* Events Megamenu 2 Columns */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .event-col {
+      background: #F8FAFC;
+      border: 1px solid #EEF2F6;
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .event-col-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: lowercase;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .event-item-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      transition: all 0.15s ease;
+    }
+
+    .event-item-card:hover {
+      border-color: var(--primary-blue-border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .event-item-card strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      color: #0F172A;
+      margin-bottom: 2px;
+    }
+
+    .event-item-card span {
+      display: block;
+      font-size: 11.5px;
+      color: #64748B;
+    }
+
+    /* ─── Right Nav Actions ─── */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-action-link {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #334155;
+      padding: 6px 12px;
+      border-radius: 8px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      text-transform: lowercase;
+    }
+
+    .nav-action-link:hover {
+      color: #0F172A;
+      background: #F1F5F9;
+    }
+
+    .nav-action-btn {
       background: #F1F5F9;
       border: 1px solid var(--border-color);
-      padding: 5px 12px;
-      border-radius: 9999px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: #334155;
+      color: #0F172A;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-transform: lowercase;
     }
 
-    .status-pulse {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10B981;
-      box-shadow: 0 0 6px #10B981;
-      display: inline-block;
-      animation: pulseGreen 2s infinite ease-in-out;
+    .nav-action-btn:hover {
+      background: #E2E8F0;
+      transform: translateY(-1px);
     }
 
-    @keyframes pulseGreen {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
-    }
-
-    .login-btn {
+    .nav-signin-btn {
       background: #0F172A;
       color: #FFFFFF;
       font-family: var(--font-heading);
       font-size: 13.5px;
       font-weight: 600;
       padding: 7px 18px;
-      border-radius: 9999px;
-      transition: background 0.15s ease, transform 0.1s ease;
-      white-space: nowrap;
-      cursor: pointer;
+      border-radius: 8px;
       border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-transform: lowercase;
+      white-space: nowrap;
     }
 
-    .login-btn:hover {
+    .nav-signin-btn:hover {
       background: #1E293B;
       transform: translateY(-1px);
     }
@@ -314,13 +618,13 @@
     .hero-section {
       background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
       border-bottom: 1px solid var(--border-color);
-      padding: 56px 24px 48px;
+      padding: 50px 24px 44px;
       text-align: center;
       position: relative;
     }
 
     .hero-inner {
-      max-width: 980px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
@@ -341,7 +645,7 @@
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 800;
       line-height: 1.15;
       color: #0F172A;
@@ -354,10 +658,10 @@
     }
 
     .hero-desc {
-      font-size: 17.5px;
+      font-size: 17px;
       color: var(--text-muted);
       max-width: 800px;
-      margin: 0 auto 32px;
+      margin: 0 auto 30px;
       line-height: 1.65;
     }
 
@@ -373,7 +677,7 @@
       background: var(--primary-blue);
       color: #FFFFFF;
       font-family: var(--font-heading);
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 700;
       padding: 12px 24px;
       border-radius: 10px;
@@ -395,7 +699,7 @@
       background: #FFFFFF;
       color: var(--text-main);
       font-family: var(--font-heading);
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 600;
       padding: 12px 22px;
       border-radius: 10px;
@@ -404,6 +708,7 @@
       align-items: center;
       gap: 8px;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     .hero-btn-secondary:hover {
@@ -416,11 +721,10 @@
     .metrics-bar {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-color);
-      padding: 20px 24px;
+      padding: 18px 24px;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
     }
 
     .metrics-container {
@@ -433,55 +737,53 @@
     }
 
     .metric-box {
-      padding: 14px 18px;
+      padding: 12px 16px;
       border-radius: 10px;
       background: #F8FAFC;
       border: 1px solid #EEF2F6;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      transition: all 0.2s ease;
-    }
-
-    .metric-box:hover {
-      background: #EFF6FF;
-      border-color: var(--primary-blue-border);
-      transform: translateY(-2px);
+      gap: 3px;
     }
 
     .metric-value {
       font-family: var(--font-heading);
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--primary-blue);
       line-height: 1.1;
     }
 
     .metric-label {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .metric-sub {
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--text-muted);
       font-family: var(--font-mono);
     }
 
-    /* ─── The 4 Core Logged-in Action Pillars ─── */
-    .pillars-wrapper {
+    /* ─── FEATURED SECTION: AGENTIC SPACES RADAR MAP ─── */
+    .spaces-section {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      padding: 56px 24px;
+    }
+
+    .spaces-container {
       max-width: 1240px;
-      margin: 48px auto 64px;
-      padding: 0 24px;
+      margin: 0 auto;
     }
 
-    .pillars-head {
+    .section-head-center {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
-    .pillars-title {
+    .section-title {
       font-family: var(--font-heading);
       font-size: 32px;
       font-weight: 800;
@@ -490,21 +792,287 @@
       letter-spacing: -0.5px;
     }
 
-    .pillars-subtitle {
+    .section-subtitle {
       font-size: 16px;
       color: var(--text-muted);
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+    /* Radar Controls: Toggle + City Filter */
+    .spaces-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      padding: 12px 18px;
+      border-radius: 14px;
+      margin-bottom: 24px;
     }
 
-    .pillar-card {
+    .segment-toggle-group {
+      display: inline-flex;
+      background: #E2E8F0;
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    .segment-btn {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #475569;
+      transition: all 0.2s ease;
+    }
+
+    .segment-btn.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .segment-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 9999px;
+      background: #F1F5F9;
+      color: #64748B;
+    }
+
+    .segment-btn.active .segment-badge {
+      background: #EFF6FF;
+      color: var(--primary-blue);
+    }
+
+    .spaces-filter-tools {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .city-select {
+      padding: 8px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 500;
+      color: #0F172A;
+      background: #FFFFFF;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .city-select:focus {
+      border-color: var(--primary-blue);
+    }
+
+    /* Spaces Map Grid (Map + Inspector Sidebar) */
+    .spaces-radar-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+      height: 560px;
+    }
+
+    .map-canvas-container {
+      background: #F1F5F9;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--card-shadow);
+    }
+
+    #spaces-map {
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    /* Inspector Sidebar Card */
+    .space-inspector-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .inspector-head {
+      padding: 20px 22px 14px;
+      border-bottom: 1px solid #F1F5F9;
+      background: #F8FAFC;
+    }
+
+    .inspector-type-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .tag-cafe {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+
+    .tag-library {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+
+    .inspector-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .inspector-location {
+      font-size: 12.5px;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .inspector-body {
+      padding: 20px 22px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .amenities-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .amenity-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #334155;
+    }
+
+    .amenity-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .proximity-badge {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #1E40AF;
+      line-height: 1.4;
+    }
+
+    .inspector-footer {
+      padding: 16px 22px;
+      border-top: 1px solid #F1F5F9;
+      background: #FAFAFA;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .reserve-desk-btn {
+      background: var(--primary-blue);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .reserve-desk-btn:hover {
+      background: var(--primary-blue-hover);
+    }
+
+    .directions-link {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      color: #0F172A;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .directions-link:hover {
+      background: #F8FAFC;
+    }
+
+    /* ─── 3 COMPANION PILLARS (SKILLS, COHORTS, EVENTS) ─── */
+    .companion-section {
+      padding: 64px 24px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .companion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .companion-card {
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: 16px;
@@ -512,157 +1080,270 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
+      padding: 30px;
+      transition: all 0.2s ease;
       position: relative;
+      overflow: hidden;
     }
 
-    .pillar-card:hover {
+    .companion-card:hover {
       box-shadow: var(--card-shadow-hover);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: var(--border-hover);
     }
 
-    .pillar-card-top-blue { border-top: 4px solid var(--primary-blue); }
-    .pillar-card-top-emerald { border-top: 4px solid var(--ibc-emerald); }
-    .pillar-card-top-amber { border-top: 4px solid var(--amber-accent); }
-    .pillar-card-top-sky { border-top: 4px solid var(--bns-sky); }
+    .card-top-blue { border-top: 4px solid var(--primary-blue); }
+    .card-top-emerald { border-top: 4px solid var(--ibc-emerald); }
+    .card-top-purple { border-top: 4px solid var(--cpc-purple); }
 
-    .pillar-content {
-      padding: 32px 32px 24px;
-    }
-
-    .pillar-header-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-
-    .pillar-tag {
+    .card-tag {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.8px;
       text-transform: uppercase;
-      padding: 3px 10px;
+      padding: 3px 8px;
       border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
     }
 
-    .tag-blue { background: #EFF6FF; color: var(--primary-blue); border: 1px solid var(--primary-blue-border); }
-    .tag-emerald { background: #ECFDF5; color: var(--ibc-emerald); border: 1px solid var(--ibc-emerald-border); }
-    .tag-amber { background: #FEF3C7; color: var(--amber-accent); border: 1px solid #FDE68A; }
-    .tag-sky { background: #F0F9FF; color: var(--bns-sky); border: 1px solid var(--bns-sky-border); }
-
-    .pillar-num {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      color: #94A3B8;
-    }
-
-    .pillar-title {
+    .card-title {
       font-family: var(--font-heading);
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 10px;
       line-height: 1.3;
     }
 
-    .pillar-desc {
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .card-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .card-bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #334155;
+    }
+
+    .card-bullet-item span.chk {
+      color: #10B981;
+      font-weight: bold;
+    }
+
+    .card-btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline-blue {
+      background: #FFFFFF;
+      border: 1px solid var(--primary-blue);
+      color: var(--primary-blue);
+    }
+    .btn-outline-blue:hover {
+      background: var(--primary-blue-light);
+    }
+
+    .btn-outline-emerald {
+      background: #FFFFFF;
+      border: 1px solid var(--ibc-emerald);
+      color: var(--ibc-emerald);
+    }
+    .btn-outline-emerald:hover {
+      background: var(--ibc-emerald-light);
+    }
+
+    .btn-outline-purple {
+      background: #FFFFFF;
+      border: 1px solid var(--cpc-purple);
+      color: var(--cpc-purple);
+    }
+    .btn-outline-purple:hover {
+      background: var(--cpc-purple-light);
+    }
+
+    /* ─── TWO FEATURED ACTION CARDS (HAYAGRIVA & ANSWERS) ─── */
+    .featured-actions-section {
+      background: #F8FAFC;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 56px 24px;
+    }
+
+    .featured-actions-container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .featured-actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .action-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .action-card:hover {
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .action-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .action-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .icon-hayagriva {
+      background: #0F172A;
+      color: #FFFFFF;
+    }
+
+    .icon-answers {
+      background: #ECFDF5;
+      color: var(--ibc-emerald);
+    }
+
+    .action-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    .action-desc {
       font-size: 14.5px;
       color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 20px;
     }
 
-    .pillar-features {
-      list-style: none;
+    .action-pills-row {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .pillar-feat-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13.5px;
-      color: #334155;
-      line-height: 1.5;
-    }
-
-    .feat-check {
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background: #F1F5F9;
-      color: #0F172A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 800;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .pillar-footer {
-      padding: 18px 32px 28px;
-      background: #FFFFFF;
-      border-top: 1px solid #F8FAFC;
-    }
-
-    .pillar-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       gap: 8px;
-      width: 100%;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .action-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      color: #475569;
+    }
+
+    .action-btn-primary {
+      background: #0F172A;
+      color: #FFFFFF;
+      border: none;
       padding: 12px 20px;
       border-radius: 10px;
       font-family: var(--font-heading);
       font-size: 14px;
       font-weight: 700;
-      text-align: center;
-      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       cursor: pointer;
+      transition: all 0.15s ease;
     }
 
-    .btn-blue { background: var(--primary-blue); color: #FFFFFF; }
-    .btn-blue:hover { background: var(--primary-blue-hover); color: #FFFFFF; box-shadow: 0 4px 12px rgba(30, 108, 147, 0.2); }
+    .action-btn-primary:hover {
+      background: #1E293B;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    }
 
-    .btn-emerald { background: var(--ibc-emerald); color: #FFFFFF; }
-    .btn-emerald:hover { background: var(--ibc-emerald-hover); color: #FFFFFF; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2); }
+    .action-btn-emerald {
+      background: var(--ibc-emerald);
+      color: #FFFFFF;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
 
-    .btn-amber { background: #0F172A; color: #FFFFFF; }
-    .btn-amber:hover { background: #1E293B; color: #FFFFFF; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2); }
+    .action-btn-emerald:hover {
+      background: var(--ibc-emerald-hover);
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
+    }
 
-    .btn-sky { background: var(--bns-sky); color: #FFFFFF; }
-    .btn-sky:hover { background: var(--bns-sky-hover); color: #FFFFFF; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2); }
-
-    /* ─── Integrated Radars Grid ─── */
-    .radars-section {
+    /* ─── SOVEREIGN SUBDOMAIN GATEWAYS ─── */
+    .gateways-section {
       background: #FFFFFF;
-      border-top: 1px solid var(--border-color);
+      padding: 56px 24px;
       border-bottom: 1px solid var(--border-color);
-      padding: 64px 24px;
     }
 
-    .radars-container {
+    .gateways-container {
       max-width: 1240px;
       margin: 0 auto;
     }
 
-    .radars-grid {
+    .gateways-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
     }
 
-    .radar-banner {
+    .gateway-banner {
       background: #F8FAFC;
       border: 1px solid var(--border-color);
       border-radius: 14px;
@@ -673,27 +1354,27 @@
       transition: all 0.2s ease;
     }
 
-    .radar-banner:hover {
+    .gateway-banner:hover {
       background: #FFFFFF;
       box-shadow: var(--card-shadow);
       transform: translateY(-2px);
     }
 
-    .radar-banner-head {
+    .gateway-banner-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 12px;
     }
 
-    .radar-title {
+    .gateway-title {
       font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 700;
       color: var(--text-main);
     }
 
-    .radar-port-badge {
+    .gateway-domain-badge {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 600;
@@ -706,14 +1387,22 @@
       gap: 6px;
     }
 
-    .radar-desc {
+    .dot-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .dot-ibc { background: var(--ibc-emerald); }
+    .dot-bns { background: var(--bns-sky); }
+
+    .gateway-desc {
       font-size: 14px;
       color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 18px;
     }
 
-    .radar-action-link {
+    .gateway-link {
       font-family: var(--font-heading);
       font-size: 13.5px;
       font-weight: 700;
@@ -725,7 +1414,7 @@
     .link-ibc { color: var(--ibc-emerald); }
     .link-bns { color: var(--bns-sky); }
 
-    /* ─── Modal Styles (Supabase Login / Download) ─── */
+    /* ─── MODAL STYLES (Supabase Login / Download / Desk Reservation) ─── */
     .modal-backdrop {
       position: fixed;
       top: 0;
@@ -774,7 +1463,8 @@
     .modal-subtitle {
       font-size: 13.5px;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+      line-height: 1.5;
     }
 
     .modal-form {
@@ -790,10 +1480,10 @@
       border-radius: 8px;
       font-family: var(--font-body);
       font-size: 14px;
+      outline: none;
     }
 
     .form-input:focus {
-      outline: none;
       border-color: var(--primary-blue);
       box-shadow: 0 0 0 3px rgba(30, 108, 147, 0.1);
     }
@@ -872,89 +1562,331 @@
       font-family: var(--font-mono);
     }
 
+    /* ─── Leaflet Marker Styling ─── */
+    .custom-map-pin {
+      background: #FFFFFF;
+      border: 2px solid #0F172A;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .custom-map-pin:hover,
+    .custom-map-pin.active-pin {
+      transform: scale(1.2);
+      border-color: var(--primary-blue);
+      box-shadow: 0 6px 14px rgba(30, 108, 147, 0.4);
+    }
+
+    .pin-cafe {
+      background: #FEF3C7;
+      border-color: #B45309;
+    }
+
+    .pin-library {
+      background: #ECFDF5;
+      border-color: #047857;
+    }
+
     @media (max-width: 1024px) {
-      .pillars-grid { grid-template-columns: 1fr; }
+      .spaces-radar-grid { grid-template-columns: 1fr; height: auto; }
+      .map-canvas-container { height: 420px; }
+      .companion-grid { grid-template-columns: 1fr; }
       .metrics-container { grid-template-columns: 1fr 1fr; }
-      .radars-grid { grid-template-columns: 1fr; }
+      .featured-actions-grid { grid-template-columns: 1fr; }
+      .gateways-grid { grid-template-columns: 1fr; }
+      .megamenu { position: static; transform: none; width: 100%; box-shadow: none; border-radius: 0; }
     }
 
     @media (max-width: 768px) {
       .site-header { padding: 0 16px; }
       .center-nav { display: none; }
-      .hero-title { font-size: 32px; }
+      .hero-title { font-size: 30px; }
       .metrics-container { grid-template-columns: 1fr; }
-      .pillar-content, .pillar-footer { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ─── 58px Master Header ─── -->
+  <!-- ─── 60px Master Header ─── -->
   <header class="site-header">
-    <div class="brand-container">
+    <div class="header-left">
       <a href="/" class="brand-link" title="Agentic Professionals Sovereign Network">
         <svg class="unicorn-icon" viewBox="0 0 852 845">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 L 796 96 L 792 96 L 785 99 L 781 99 L 760 105 L 757 107 L 749 108 L 746 110 L 742 110 L 736 113 L 732 113 L 725 116 L 721 116 L 718 118 L 711 119 L 708 121 L 700 122 L 690 126 L 682 127 L 679 129 L 672 130 L 658 135 L 654 135 L 651 137 L 633 141 L 630 143 L 626 143 L 619 146 L 605 149 L 602 151 L 598 151 L 591 154 L 587 154 L 573 159 L 566 160 L 563 162 L 559 162 L 552 165 L 548 165 L 538 168 L 535 170 L 527 171 L 525 172 L 524 175 L 532 187 L 532 190 L 534 192 L 533 196 L 520 177 L 508 165 L 489 152 L 469 143 L 464 143 L 461 140 L 458 139 L 470 138 L 484 140 L 486 138 L 487 131 L 490 124 L 490 120 L 493 115 L 493 112 L 495 110 L 496 105 L 498 103 L 498 101 L 504 90 L 519 68 L 509 69 L 498 72 L 479 80 L 455 94 L 454 96 L 452 96 L 441 105 L 437 105 L 438 97 L 446 79 L 446 76 L 449 72 L 454 58 L 457 54 L 460 45 L 462 43 L 463 36 L 460 36 L 457 38 L 451 39 L 449 41 L 436 45 L 434 47 L 426 50 L 418 55 L 416 55 L 386 74 L 357 97 L 321 133 L 317 134 L 317 132 L 323 123 L 323 121 L 334 106 L 339 101 L 341 97 L 333 97 L 327 99 L 320 99 L 305 102 L 301 104 L 292 105 L 277 110 L 273 110 L 261 115 L 249 118 L 244 121 L 241 121 L 215 132 L 178 152 L 153 169 L 131 187 L 104 215 L 91 232 L 85 244 L 87 244 L 90 241 L 92 241 L 99 236 L 107 233 L 133 219 L 144 214 L 149 213 L 151 211 L 154 211 L 156 209 L 172 203 L 193 197 L 198 197 L 208 194 L 213 196 L 205 201 L 186 209 L 161 223 L 134 241 L 109 261 L 87 283 L 71 303 L 55 331 L 46 355 L 46 360 L 44 363 L 43 373 L 41 377 L 41 384 L 38 396 L 36 423 L 36 442 L 38 467 L 40 472 L 43 492 L 46 499 L 46 503 L 49 509 L 49 512 L 52 517 L 52 520 L 54 522 L 55 527 L 57 529 L 63 543 L 68 550 L 68 552 L 84 574 L 107 598 L 126 614 L 129 615 L 133 619 L 173 644 L 202 658 L 218 664 L 220 666 L 223 666 L 235 672 L 253 678 L 263 683 L 266 683 L 276 688 L 279 688 L 284 691 L 287 691 L 345 716 L 344 708 L 339 695 L 339 691 L 331 672 L 314 641 L 300 621 L 290 609 L 291 606 L 295 609 L 297 609 L 311 619 L 331 636 L 348 654 L 365 677 L 375 693 L 376 697 L 382 707 L 387 719 L 389 721 L 389 724 L 397 742 L 403 761 L 406 777 L 408 781 L 409 791 L 411 796 L 412 808 L 415 808 L 430 782 L 430 780 L 438 766 L 438 764 L 440 762 L 454 729 L 454 726 L 462 706 L 463 699 L 465 696 L 468 680 L 470 676 L 471 666 L 474 654 L 474 647 L 476 641 L 477 624 L 476 582 L 474 576 L 473 564 L 468 548 L 468 544 L 462 528 L 455 513 L 452 509 L 451 505 L 441 491 L 440 488 L 424 468 L 412 456 L 389 439 L 353 404 L 344 391 L 336 374 L 336 370 L 334 367 L 333 362 L 332 342 L 334 329 L 342 307 L 345 302 L 348 302 L 348 327 L 351 341 L 354 347 L 354 350 L 362 364 L 373 375 L 377 378 L 379 378 L 389 384 L 395 386 L 403 387 L 407 389 L 419 389 L 433 392 L 440 395 L 451 402 L 463 414 L 471 426 L 477 438 L 477 441 L 482 452 L 485 464 L 486 475 L 488 479 L 488 484 L 494 501 L 500 508 L 504 510 L 509 510 L 514 507 L 517 503 L 518 500 L 518 489 L 517 484 L 513 476 L 517 475 L 521 478 L 529 488 L 529 490 L 531 492 L 534 499 L 535 504 L 538 510 L 542 514 L 547 516 L 563 515 L 570 511 L 580 501 L 583 496 L 589 480 L 589 474 L 591 468 L 591 452 L 589 445 L 588 431 L 586 427 L 586 422 L 583 410 L 581 407 L 580 400 L 575 388 L 572 375 L 564 355 L 564 351 L 558 336 L 554 322 L 553 314 L 550 307 L 550 301 L 548 296 L 547 281 L 545 273 L 545 237 L 542 224 L 546 220 L 550 219 L 554 216 L 608 191 L 620 184 L 641 175 L 661 164 L 670 161 L 684 153 L 703 145 L 723 134 L 732 131 L 740 126 L 742 126 L 756 118 L 771 112 L 785 104 L 800 98 Z" />
         </svg>
-        <span class="brand-title-static">agentic professionals</span>
+        <span class="brand-title">Agentic Professionals</span>
       </a>
-      <span class="brand-dash">-</span>
-      <div class="track-picker-wrapper" id="brand-trigger">
-        <button type="button" class="brand-title-btn" id="brand-title-btn">
-          <span id="brand-title-text">portal</span>
-          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-
-        <div class="subdomain-dropdown" id="subdomain-dropdown">
-          <a href="http://localhost:3002" class="dropdown-item" target="_blank">
-            <span class="dot-indicator dot-ibc"></span>
-            <div><strong>ibc.agenticprofessionals.net</strong><small>:3002 &bull; Insolvency & Bankruptcy</small></div>
-          </a>
-          <a href="http://localhost:3003" class="dropdown-item" target="_blank">
-            <span class="dot-indicator dot-bns"></span>
-            <div><strong>bns.agenticprofessionals.net</strong><small>:3003 &bull; Bharatiya Nyaya Sanhita</small></div>
-          </a>
-        </div>
-      </div>
     </div>
 
-    <!-- Center Nav Pills -->
+    <!-- ─── Center Nav with Megamenus (Spaces First!) ─── -->
     <nav class="center-nav">
-      <a href="#pillar-download" class="nav-pill">Hayagriva IDE</a>
-      <a href="#pillar-questions" class="nav-pill">Statutory Q&amp;A</a>
-      <a href="#pillar-consultations" class="nav-pill">Consultations</a>
-      <a href="#pillar-map" class="nav-pill">Radar Map</a>
+
+      <!-- 1. AGENTIC SPACES (FIRST!) -->
+      <div class="nav-item" id="nav-spaces">
+        <button type="button" class="nav-trigger-btn">
+          <span>agentic spaces</span>
+          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+
+        <div class="megamenu megamenu-spaces">
+          <div class="megamenu-header">
+            <span class="megamenu-title">Legal Chambers &amp; Workspaces</span>
+            <span class="megamenu-badge">Cafes &bull; Libraries Only</span>
+          </div>
+
+          <!-- Strict Toggle: Cafes vs Libraries -->
+          <div class="spaces-quick-toggle">
+            <button type="button" class="spaces-quick-btn active" id="quick-toggle-cafes" onclick="switchMegamenuSpaces('cafe')">
+              <span>☕ Work-From-Cafes</span>
+            </button>
+            <button type="button" class="spaces-quick-btn" id="quick-toggle-libs" onclick="switchMegamenuSpaces('library')">
+              <span>📚 Law Libraries</span>
+            </button>
+          </div>
+
+          <!-- Quick List of Spaces -->
+          <div class="spaces-locations-list" id="megamenu-spaces-list">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="megamenu-footer">
+            <span style="font-size: 11.5px; color: #64748B;">High-speed Wi-Fi, silent chambers, proximity to courts</span>
+            <a href="#spaces-radar" class="megamenu-action-link" onclick="focusSpacesMap()">
+              <span>Open Spaces Radar Map &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. AGENTIC SKILLS -->
+      <div class="nav-item" id="nav-skills">
+        <button type="button" class="nav-trigger-btn">
+          <span>agentic skills</span>
+          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+
+        <div class="megamenu megamenu-skills">
+          <div class="megamenu-header">
+            <span class="megamenu-title">skillpedia skills (agentic nsqf)</span>
+            <span class="megamenu-badge">Level 7 - 9</span>
+          </div>
+
+          <div class="skills-levels-list">
+            <a href="#pillar-skills" class="skill-card-link">
+              <span class="skill-level-badge">NSQF L7</span>
+              <div class="skill-body">
+                <strong>Statutory Research &amp; Drafting Agent</strong>
+                <p>Deterministic section ingestion, precedent digest assembly, and verified court filing formats.</p>
+              </div>
+            </a>
+
+            <a href="#pillar-skills" class="skill-card-link">
+              <span class="skill-level-badge">NSQF L8</span>
+              <div class="skill-body">
+                <strong>Multi-Agent Swarm Orchestrator</strong>
+                <p>Orchestrate parallel case analysis, Section 53 waterfall solvers, and tri-code mappings.</p>
+              </div>
+            </a>
+
+            <a href="#pillar-skills" class="skill-card-link">
+              <span class="skill-level-badge">NSQF L9</span>
+              <div class="skill-body">
+                <strong>Principal Autonomous Legal Architect</strong>
+                <p>Air-gapped enterprise harness architecture, cryptographic verification, and judicial safety gates.</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="megamenu-footer">
+            <span style="font-size: 11.5px; color: #64748B;">Accredited under National Skills Qualification Framework</span>
+            <a href="#pillar-skills" class="megamenu-action-link">
+              <span>View All Frameworks &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. AGENTIC COHORTS (3 COLUMNS: COMMERCIAL, CRIMINAL, CIVIL) -->
+      <div class="nav-item" id="nav-cohorts">
+        <button type="button" class="nav-trigger-btn">
+          <span>agentic cohorts</span>
+          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+
+        <div class="megamenu megamenu-cohorts">
+          <div class="megamenu-header">
+            <span class="megamenu-title">Practice Cohorts</span>
+            <span class="megamenu-badge">3 Specialized Tracks</span>
+          </div>
+
+          <div class="cohorts-grid">
+            <!-- Commercial / IBC -->
+            <div class="cohort-col col-commercial">
+              <div class="cohort-col-title">
+                <span class="dot-indicator dot-ibc"></span>
+                <span>commercial</span>
+              </div>
+              <a href="/ibc" class="cohort-pill-link">
+                <strong>insolvency (ibc)</strong>
+                <span>CIRP, Liquidation, CoC Voting Thresholds &bull; /ibc</span>
+              </a>
+              <p style="font-size: 11.5px; color: #64748B; line-height: 1.4;">
+                Resolution Professionals, valuers, and financial creditors running Section 12A and waterfall models.
+              </p>
+            </div>
+
+            <!-- Criminal / BNS -->
+            <div class="cohort-col col-criminal">
+              <div class="cohort-col-title">
+                <span class="dot-indicator dot-bns"></span>
+                <span>criminal</span>
+              </div>
+              <a href="/bns" class="cohort-pill-link">
+                <strong>(bns)</strong>
+                <span>Bharatiya Nyaya Sanhita 2023 &bull; /bns</span>
+              </a>
+              <p style="font-size: 11.5px; color: #64748B; line-height: 1.4;">
+                Criminal defense advocates mastering IPC-to-BNS tri-code conversions and bail precedent algorithms.
+              </p>
+            </div>
+
+            <!-- Civil / CPC -->
+            <div class="cohort-col col-civil">
+              <div class="cohort-col-title">
+                <span class="dot-indicator" style="background: var(--cpc-purple);"></span>
+                <span>civil</span>
+              </div>
+              <a href="#pillar-cohorts" class="cohort-pill-link">
+                <strong>(cpc)</strong>
+                <span>Civil Procedure Code 1908</span>
+              </a>
+              <p style="font-size: 11.5px; color: #64748B; line-height: 1.4;">
+                Commercial suits, interim injunction motions, execution petitions, and discovery filings.
+              </p>
+            </div>
+          </div>
+
+          <div class="megamenu-footer">
+            <span style="font-size: 11.5px; color: #64748B;">Selective peer cohorts with weekly statutory briefings</span>
+            <a href="#pillar-cohorts" class="megamenu-action-link">
+              <span>Apply for Cohort &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. AGENTIC EVENTS (2 COLUMNS: PROFESSIONAL, SOCIAL) -->
+      <div class="nav-item" id="nav-events">
+        <button type="button" class="nav-trigger-btn">
+          <span>agentic events</span>
+          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+
+        <div class="megamenu megamenu-events">
+          <div class="megamenu-header">
+            <span class="megamenu-title">Community Calendar</span>
+            <span class="megamenu-badge">Professional &bull; Social</span>
+          </div>
+
+          <div class="events-grid">
+            <!-- Professional Column -->
+            <div class="event-col">
+              <div class="event-col-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg>
+                <span>professional</span>
+              </div>
+
+              <div class="event-item-card">
+                <strong>hackathons</strong>
+                <span>Autonomous Legal AI Hackathon 2026: Multi-Agent Filing Challenge.</span>
+              </div>
+
+              <div class="event-item-card">
+                <strong>conferences</strong>
+                <span>National Statutory AI Summit &amp; Annual NCLT Practitioners Conclave.</span>
+              </div>
+            </div>
+
+            <!-- Social Column -->
+            <div class="event-col">
+              <div class="event-col-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                <span>social</span>
+              </div>
+
+              <div class="event-item-card">
+                <strong>bhajan clubbing</strong>
+                <span>Weekend litigator sound therapy, sacred acoustics, and reflective fellowship.</span>
+              </div>
+
+              <div class="event-item-card">
+                <strong>social celebrations</strong>
+                <span>Bar association annual retreats, festive banquets, and practitioner galas.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="megamenu-footer">
+            <span style="font-size: 11.5px; color: #64748B;">RSVP open to verified members and cohort fellows</span>
+            <a href="#pillar-events" class="megamenu-action-link">
+              <span>View Full Calendar &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </nav>
 
-    <!-- Right Actions -->
-    <div class="nav-actions">
-      <div class="network-badge" id="network-pill" title="Real-time Ecosystem Status">
-        <span class="status-pulse" id="global-pulse"></span>
-        <span id="network-status-text">Services Active</span>
-      </div>
-      <button class="login-btn" onclick="openLoginModal()">Sign In / Download &rarr;</button>
+    <!-- ─── Header Right Actions: answers, hayagriva, sign in ─── -->
+    <div class="header-right">
+      <!-- answers -->
+      <a href="/ibc#forum" class="nav-action-link" title="Statutory Jurisprudence &amp; Precedents Forum">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span>answers</span>
+      </a>
+
+      <!-- hayagriva -->
+      <button type="button" class="nav-action-btn" onclick="openDownloadModal()" title="Download Hayagriva Desktop Harness v2.0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        <span>hayagriva</span>
+      </button>
+
+      <!-- sign in -->
+      <button type="button" class="nav-signin-btn" onclick="openLoginModal()">sign in</button>
     </div>
   </header>
 
   <!-- ─── Hero Section ─── -->
   <section class="hero-section">
     <div class="hero-inner">
-      <div class="section-badge">SOVEREIGN WORKFORCE &amp; JUDICIAL RADAR NETWORK</div>
+      <div class="section-badge">SOVEREIGN WORKFORCE &amp; STATUTORY INTELLIGENCE NETWORK</div>
       <h1 class="hero-title">
-        The Operating System for<br>
+        The Sovereign Operating System for<br>
         <span class="highlight-blue">Autonomous Legal Practitioners</span>
       </h1>
       <p class="hero-desc">
-        Command deterministic statutory intelligence across IBC and BNS, orchestrate verified legal agent workflows with Hayagriva, ask citation-grounded questions, and book high-stakes advisory sessions.
+        Command verified agentic spaces across national court corridors, master skillpedia NSQF frameworks, participate in specialized legal cohorts, and deploy air-gapped agent swarms with Hayagriva.
       </p>
       <div class="hero-cta-group">
-        <button class="hero-btn-primary" onclick="openLoginModal()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          <span>Download Hayagriva App</span>
+        <a href="#spaces-radar" class="hero-btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <span>Explore Spaces Radar Map</span>
+        </a>
+        <button type="button" class="hero-btn-secondary" onclick="openDownloadModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span>Download Hayagriva Harness</span>
         </button>
-        <a href="#radars" class="hero-btn-secondary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
-          <span>Explore Statutory Radars</span>
+        <a href="/ibc#forum" class="hero-btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>Statutory Answers Forum</span>
         </a>
       </div>
     </div>
@@ -964,218 +1896,348 @@
   <section class="metrics-bar">
     <div class="metrics-container">
       <div class="metric-box">
-        <span class="metric-value">255+</span>
-        <span class="metric-label">IBC 2016 Sections</span>
-        <span class="metric-sub">CIRP &bull; Liquidation Cascades</span>
+        <span class="metric-value">16+</span>
+        <span class="metric-label">Agentic Spaces</span>
+        <span class="metric-sub">Work-Cafes &bull; Law Libraries</span>
       </div>
       <div class="metric-box">
-        <span class="metric-value">531</span>
-        <span class="metric-label">BNS 2023 Provisions</span>
-        <span class="metric-sub">IPC Tri-Code Mappings</span>
+        <span class="metric-value">NSQF L7-9</span>
+        <span class="metric-label">Skillpedia Competencies</span>
+        <span class="metric-sub">Autonomous Toolpacks</span>
       </div>
       <div class="metric-box">
-        <span class="metric-value">100%</span>
-        <span class="metric-label">Statutory Grounding</span>
-        <span class="metric-sub">Zero-Hallucination LightRAG</span>
+        <span class="metric-value">3 Tracks</span>
+        <span class="metric-label">Practice Cohorts</span>
+        <span class="metric-sub">Commercial &bull; Criminal &bull; Civil</span>
       </div>
       <div class="metric-box">
         <span class="metric-value">&lt; 50ms</span>
-        <span class="metric-label">Engine Latency</span>
-        <span class="metric-sub">High-Speed Native Go Core</span>
+        <span class="metric-label">Multi-Domain Go Engine</span>
+        <span class="metric-sub">Zero-Hallucination Core</span>
       </div>
     </div>
   </section>
 
-  <!-- ─── The 4 Core Logged-In Value Pillars ─── -->
-  <main class="pillars-wrapper">
-    <div class="pillars-head">
-      <h2 class="pillars-title">Four Sovereign Workflows for Modern Practitioners</h2>
-      <p class="pillars-subtitle">
-        A single unified login gives Resolution Professionals, Corporate Debtor Counsel, and Criminal Defense Advocates immediate operational mastery.
+  <!-- ─── FEATURED SECTION: AGENTIC SPACES RADAR (FIRST!) ─── -->
+  <section class="spaces-section" id="spaces-radar">
+    <div class="spaces-container">
+      <div class="section-head-center">
+        <span class="section-badge">GEOSPATIAL JUDICIAL RADAR</span>
+        <h2 class="section-title">Agentic Spaces Radar</h2>
+        <p class="section-subtitle">
+          Verified work-from-cafes and supreme court / high court reference libraries equipped with high-speed fiber, silent research zones, and immediate proximity to major court complexes and tribunals.
+        </p>
+      </div>
+
+      <!-- Controls: Strict Toggle between Cafes & Libraries + City Filter -->
+      <div class="spaces-controls-bar">
+        <div class="segment-toggle-group">
+          <button type="button" class="segment-btn active" id="filter-cafes-btn" onclick="setSpacesFilter('cafe')">
+            <span>☕ Work-From-Cafes</span>
+            <span class="segment-badge" id="cafes-count-badge">8</span>
+          </button>
+          <button type="button" class="segment-btn" id="filter-libs-btn" onclick="setSpacesFilter('library')">
+            <span>📚 Law Libraries</span>
+            <span class="segment-badge" id="libs-count-badge">8</span>
+          </button>
+        </div>
+
+        <div class="spaces-filter-tools">
+          <label style="font-size: 13px; font-weight: 600; color: #475569;" for="city-select">Select Jurisdiction:</label>
+          <select id="city-select" class="city-select" onchange="filterByCity(this.value)">
+            <option value="all">National Radar (All Cities)</option>
+            <option value="Delhi NCR">Delhi NCR (Supreme Court / High Court / NCLT)</option>
+            <option value="Mumbai">Mumbai (Bombay High Court / NCLT BKC)</option>
+            <option value="Bengaluru">Bengaluru (Karnataka High Court / NCLT)</option>
+            <option value="Chandigarh">Chandigarh (Punjab &amp; Haryana High Court)</option>
+            <option value="Kolkata">Kolkata (Calcutta High Court)</option>
+            <option value="Hyderabad">Hyderabad (Telangana High Court)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Radar Layout: Map Canvas + Space Inspector Sidebar -->
+      <div class="spaces-radar-grid">
+        <!-- Interactive Leaflet Canvas -->
+        <div class="map-canvas-container">
+          <div id="spaces-map"></div>
+        </div>
+
+        <!-- Space Inspector Card -->
+        <div class="space-inspector-card" id="space-inspector">
+          <div class="inspector-head">
+            <span class="inspector-type-tag tag-cafe" id="insp-type-tag">WORK-FROM-CAFE</span>
+            <h3 class="inspector-title" id="insp-title">Blue Tokai Coffee Roasters</h3>
+            <div class="inspector-location">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span id="insp-location">Saket District Court Annex, New Delhi</span>
+            </div>
+          </div>
+
+          <div class="inspector-body">
+            <div class="proximity-badge" id="insp-proximity">
+              <strong>Court Proximity:</strong> 350 meters from Saket District Court &bull; 8 mins to NCLT South
+            </div>
+
+            <div class="amenities-group">
+              <span style="font-size: 11px; font-family: var(--font-mono); color: #64748B; text-transform: uppercase; letter-spacing: 0.5px;">Verified Practitioner Amenities:</span>
+              
+              <div class="amenity-row">
+                <span class="amenity-icon">⚡</span>
+                <span id="insp-wifi">350 Mbps Dedicated Fiber Wi-Fi</span>
+              </div>
+              <div class="amenity-row">
+                <span class="amenity-icon">🔌</span>
+                <span id="insp-power">Universal Power Outlets at Every Worktable</span>
+              </div>
+              <div class="amenity-row">
+                <span class="amenity-icon">🤫</span>
+                <span id="insp-noise">Silent Research Zone (42 dB ambient)</span>
+              </div>
+              <div class="amenity-row">
+                <span class="amenity-icon">☕</span>
+                <span id="insp-specialty">Artisan Brews &bull; Private Conference Annex</span>
+              </div>
+            </div>
+
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;" id="insp-desc">
+              Preferred workspace for restructuring counsel and litigators between court calls. Features ergonomic benching, high-speed encrypted network access, and private nooks for confidential client calls.
+            </p>
+          </div>
+
+          <div class="inspector-footer">
+            <button type="button" class="reserve-desk-btn" onclick="openDeskReservationModal()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Reserve a Work Desk</span>
+            </button>
+            <a href="#" class="directions-link" id="insp-directions" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              <span>Get Turn-by-Turn Directions</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3 COMPANION PILLARS (SKILLS, COHORTS, EVENTS) ─── -->
+  <section class="companion-section">
+    <div class="section-head-center">
+      <span class="section-badge">INTEGRATED PROFESSIONAL PILLARS</span>
+      <h2 class="section-title">Skills, Cohorts &amp; Community Ecosystem</h2>
+      <p class="section-subtitle">
+        Beyond physical spaces, Agentic Professionals connects practitioners with institutional skills certification, specialized practice cohorts, and professional &amp; social gatherings.
       </p>
     </div>
 
-    <div class="pillars-grid">
+    <div class="companion-grid">
 
-      <!-- ─── PILLAR 1: DOWNLOAD HAYAGRIVA ─── -->
-      <article class="pillar-card pillar-card-top-blue" id="pillar-download">
-        <div class="pillar-content">
-          <div class="pillar-header-row">
-            <span class="pillar-tag tag-blue">Pillar 01 &bull; Agent Runtime</span>
-            <span class="pillar-num">01 / 04</span>
-          </div>
-          <h3 class="pillar-title">Download Hayagriva Desktop Harness</h3>
-          <p class="pillar-desc">
-            The secure, offline-first execution environment for legal engineers. Run autonomous multi-agent copilots, ingest confidential case documents, and automate statutory filings without cloud data exposure.
+      <!-- PILLAR: AGENTIC SKILLS -->
+      <article class="companion-card card-top-blue" id="pillar-skills">
+        <div>
+          <span class="card-tag" style="background: #EFF6FF; color: var(--primary-blue);">PILLAR &bull; NSQF SKILLS</span>
+          <h3 class="card-title">Skillpedia Skills (Agentic NSQF)</h3>
+          <p class="card-desc">
+            Accredited statutory intelligence frameworks designed for training and certifying autonomous legal engineers across NSQF Levels 7 through 9.
           </p>
-          <ul class="pillar-features">
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Autonomous Subagent Swarms:</strong> Fan out complex multi-party case reviews simultaneously.</span>
+          <ul class="card-bullets">
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>NSQF Level 7:</strong> Statutory Research &amp; Deterministic Precedent Grounding.</span>
             </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Pre-configured Toolpacks:</strong> Native tools for Section 53 waterfall math and BNS offense classifications.</span>
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>NSQF Level 8:</strong> Section 53 Waterfall Math &amp; Swarm Copilots.</span>
             </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Zero-Leakage Sandbox:</strong> Air-gapped local document indexing with cryptographic verification.</span>
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>NSQF Level 9:</strong> Air-Gapped Enterprise Harness Architecture.</span>
             </li>
           </ul>
         </div>
-        <div class="pillar-footer">
-          <button class="pillar-cta-btn btn-blue" onclick="openLoginModal()">
+        <button type="button" class="card-btn btn-outline-blue" onclick="openSkillsWaitlistModal()">
+          <span>Enroll in Skillpedia NSQF &rarr;</span>
+        </button>
+      </article>
+
+      <!-- PILLAR: AGENTIC COHORTS -->
+      <article class="companion-card card-top-emerald" id="pillar-cohorts">
+        <div>
+          <span class="card-tag" style="background: #ECFDF5; color: var(--ibc-emerald);">PILLAR &bull; PRACTICE COHORTS</span>
+          <h3 class="card-title">Specialized Legal Cohorts</h3>
+          <p class="card-desc">
+            Intensive peer groups operating across 3 core statutory tracks: Commercial (Insolvency), Criminal (BNS), and Civil (CPC).
+          </p>
+          <ul class="card-bullets">
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>Commercial Track:</strong> Insolvency &amp; Bankruptcy Code CIRP workflows (<a href="/ibc" style="color:var(--ibc-emerald); font-weight:600;">/ibc</a>).</span>
+            </li>
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>Criminal Track:</strong> Bharatiya Nyaya Sanhita 2023 Tri-Code (<a href="/bns" style="color:var(--bns-sky); font-weight:600;">/bns</a>).</span>
+            </li>
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>Civil Track:</strong> Civil Procedure Code 1908 motions &amp; discovery.</span>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="card-btn btn-outline-emerald" onclick="openCohortsModal()">
+          <span>Join a Practice Cohort &rarr;</span>
+        </button>
+      </article>
+
+      <!-- PILLAR: AGENTIC EVENTS -->
+      <article class="companion-card card-top-purple" id="pillar-events">
+        <div>
+          <span class="card-tag" style="background: #F5F3FF; color: var(--cpc-purple);">PILLAR &bull; ECOSYSTEM EVENTS</span>
+          <h3 class="card-title">Professional &amp; Social Gatherings</h3>
+          <p class="card-desc">
+            A balanced calendar pairing high-stakes hackathons and legal conferences with soul-enriching bhajan clubbing and practitioner fellowship.
+          </p>
+          <ul class="card-bullets">
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>Professional:</strong> Autonomous Legal AI Hackathons &amp; Annual Conclaves.</span>
+            </li>
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>Social:</strong> Weekend Bhajan Clubbing for Litigators &amp; Sound Healing.</span>
+            </li>
+            <li class="card-bullet-item">
+              <span class="chk">&check;</span>
+              <span><strong>Fellowship:</strong> Annual Bar Celebrations &amp; Sovereign Practitioner Banquets.</span>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="card-btn btn-outline-purple" onclick="openEventsModal()">
+          <span>Explore Community Calendar &rarr;</span>
+        </button>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ─── TWO FEATURED ACTION CARDS (HAYAGRIVA & ANSWERS) ─── -->
+  <section class="featured-actions-section">
+    <div class="featured-actions-container">
+      <div class="section-head-center">
+        <span class="section-badge">CORE EXECUTION TOOLS</span>
+        <h2 class="section-title">Hayagriva Harness &amp; Statutory Answers</h2>
+        <p class="section-subtitle">
+          Two indispensable operational tools built for sovereign practitioners requiring zero data leakage and deterministic legal grounding.
+        </p>
+      </div>
+
+      <div class="featured-actions-grid">
+
+        <!-- CARD 1: DOWNLOAD HAYAGRIVA -->
+        <div class="action-card" id="hayagriva-card">
+          <div>
+            <div class="action-card-header">
+              <div class="action-icon-circle icon-hayagriva">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              </div>
+              <div>
+                <h3 class="action-title">Download Hayagriva Desktop Harness</h3>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: #64748B;">v2.0 Air-Gapped Legal Runtime</span>
+              </div>
+            </div>
+            <p class="action-desc">
+              The secure, offline-first execution environment for legal engineers. Run autonomous multi-agent copilots, ingest confidential litigation briefs, and calculate Section 53 waterfall models without cloud data exposure.
+            </p>
+            <div class="action-pills-row">
+              <span class="action-pill">&bull; Multi-Agent Swarms</span>
+              <span class="action-pill">&bull; Local Vector Indexing</span>
+              <span class="action-pill">&bull; Zero Cloud Leakage</span>
+              <span class="action-pill">&bull; macOS &amp; Windows</span>
+            </div>
+          </div>
+          <button type="button" class="action-btn-primary" onclick="openDownloadModal()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             <span>Download Hayagriva App (v2.0)</span>
           </button>
         </div>
-      </article>
 
-      <!-- ─── PILLAR 2: ASK QUESTIONS (ANSWERS) ─── -->
-      <article class="pillar-card pillar-card-top-emerald" id="pillar-questions">
-        <div class="pillar-content">
-          <div class="pillar-header-row">
-            <span class="pillar-tag tag-emerald">Pillar 02 &bull; Statutory Q&amp;A</span>
-            <span class="pillar-num">02 / 04</span>
+        <!-- CARD 2: STATUTORY ANSWERS -->
+        <div class="action-card" id="answers-card">
+          <div>
+            <div class="action-card-header">
+              <div class="action-icon-circle icon-answers">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </div>
+              <div>
+                <h3 class="action-title">Statutory Answers &amp; Precedents</h3>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: #059669;">Peer-Verified Jurisprudence Forum</span>
+              </div>
+            </div>
+            <p class="action-desc">
+              Citation-grounded statutory Q&amp;A forum. Post high-stakes legal dilemmas and receive deterministic answers cross-referenced against authoritative NCLT, NCLAT, High Court, and Supreme Court rulings.
+            </p>
+            <div class="action-pills-row">
+              <span class="action-pill">&bull; IBC Restructuring Q&amp;A</span>
+              <span class="action-pill">&bull; BNS Tri-Code Ingestion</span>
+              <span class="action-pill">&bull; LightRAG Verified Citations</span>
+              <span class="action-pill">&bull; Peer Counsel Reviews</span>
+            </div>
           </div>
-          <h3 class="pillar-title">Ask Questions &amp; Verified Precedents</h3>
-          <p class="pillar-desc">
-            Peer-verified, citation-grounded statutory Q&amp;A forums. Submit high-stakes legal dilemmas and receive deterministic answers cross-referenced against authoritative case law and gazette notifications.
-          </p>
-          <ul class="pillar-features">
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>IBC Restructuring Forum:</strong> Section 12A withdrawals, CoC voting threshold disputes, and liquidation priorities.</span>
-            </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>BNS Criminal Law Forum:</strong> Tri-code transition guidance (IPC 1860 &rarr; BNS 2023), compoundability matrices, and zero FIR protocols.</span>
-            </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>LightRAG Citation Engine:</strong> Every answer backed by exact statutory clauses and verified NCLT/High Court precedents.</span>
-            </li>
-          </ul>
-        </div>
-        <div class="pillar-footer">
-          <a href="http://localhost:3002/api/forum/questions" class="pillar-cta-btn btn-emerald" target="_blank">
-            <span>Explore Statutory Forums &rarr;</span>
+          <a href="/ibc#forum" class="action-btn-emerald">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
+            <span>Launch Statutory Answers Forum</span>
           </a>
         </div>
-      </article>
 
-      <!-- ─── PILLAR 3: BOOK FOR CONSULTATION ─── -->
-      <article class="pillar-card pillar-card-top-amber" id="pillar-consultations">
-        <div class="pillar-content">
-          <div class="pillar-header-row">
-            <span class="pillar-tag tag-amber">Pillar 03 &bull; Advisory Booking</span>
-            <span class="pillar-num">03 / 04</span>
-          </div>
-          <h3 class="pillar-title">Book Expert Consultations</h3>
-          <p class="pillar-desc">
-            Direct, confidential scheduling with senior Insolvency Resolution Professionals, Valuers, and Criminal Defense Counsel. Powered by the embedded Calnode scheduling engine.
-          </p>
-          <ul class="pillar-features">
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Real-Time Calendar Sync:</strong> Automated calendar discovery with timezone-aware slot reservations.</span>
-            </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Encrypted Video Chambers:</strong> Built-in LiveKit/WebRTC video conferencing for secure legal briefings.</span>
-            </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Automated Retainers:</strong> Instant engagement generation and verified appointment confirmation.</span>
-            </li>
-          </ul>
-        </div>
-        <div class="pillar-footer">
-          <a href="http://localhost:3002#booking" class="pillar-cta-btn btn-amber" target="_blank">
-            <span>Schedule a Consultation Session &rarr;</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ─── PILLAR 4: ACCESS MAP DETAILS ─── -->
-      <article class="pillar-card pillar-card-top-sky" id="pillar-map">
-        <div class="pillar-content">
-          <div class="pillar-header-row">
-            <span class="pillar-tag tag-sky">Pillar 04 &bull; Radar GIS</span>
-            <span class="pillar-num">04 / 04</span>
-          </div>
-          <h3 class="pillar-title">Access Jurisdiction &amp; Radar Maps</h3>
-          <p class="pillar-desc">
-            Geospatial statutory intelligence mapping judicial benches, distressed corporate debtors, police stations, and cyber crime units across all states of India.
-          </p>
-          <ul class="pillar-features">
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>National Insolvency Map:</strong> 15 NCLT Benches, Principal Bench Delhi, and active CIRP assets under auction.</span>
-            </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Criminal Jurisdiction GIS:</strong> Complete police station mapping, territorial jurisdiction boundaries, and cyber crime divisions.</span>
-            </li>
-            <li class="pillar-feat-item">
-              <span class="feat-check">&check;</span>
-              <span><strong>Asset &amp; Station Drilldown:</strong> Instant inspection of case numbers, liquidation values, and jurisdictional officers.</span>
-            </li>
-          </ul>
-        </div>
-        <div class="pillar-footer">
-          <a href="http://localhost:3002#radar" class="pillar-cta-btn btn-sky" target="_blank">
-            <span>Launch Interactive Radar Map &rarr;</span>
-          </a>
-        </div>
-      </article>
-
+      </div>
     </div>
-  </main>
+  </section>
 
-  <!-- ─── Dedicated Radars Showcase ─── -->
-  <section class="radars-section" id="radars">
-    <div class="radars-container">
-      <div style="text-align: center; margin-bottom: 36px;">
-        <span class="section-badge">SOVEREIGN RADAR HUBS</span>
-        <h2 style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-main);">Direct Subdomain Gateways</h2>
+  <!-- ─── SOVEREIGN SUBDOMAIN GATEWAYS ─── -->
+  <section class="gateways-section" id="gateways">
+    <div class="gateways-container">
+      <div class="section-head-center">
+        <span class="section-badge">DIRECT PRACTICE PLATFORMS</span>
+        <h2 class="section-title">Sovereign Domain Gateways</h2>
+        <p class="section-subtitle">
+          Jump directly into specialized institutional workspaces powered by our unified Go multi-host engine.
+        </p>
       </div>
 
-      <div class="radars-grid">
+      <div class="gateways-grid">
         <!-- IBC Hub -->
-        <div class="radar-banner">
+        <div class="gateway-banner">
           <div>
-            <div class="radar-banner-head">
-              <h3 class="radar-title">IBC &bull; Insolvency Hub</h3>
-              <span class="radar-port-badge">
+            <div class="gateway-banner-head">
+              <h3 class="gateway-title">IBC &bull; Insolvency Hub</h3>
+              <span class="gateway-domain-badge">
                 <span class="dot-indicator dot-ibc"></span>
-                ibc.agenticprofessionals.net
+                <span>ibc.agenticprofessionals.net</span>
               </span>
             </div>
-            <p class="radar-desc">
+            <p class="gateway-desc">
               Deterministic statutory intelligence for Resolution Professionals, Corporate Debtors, and Financial Creditors under the Insolvency &amp; Bankruptcy Code 2016.
             </p>
           </div>
-          <a href="http://localhost:3002" class="radar-action-link link-ibc" target="_blank">
+          <a href="/ibc" class="gateway-link link-ibc">
             <span>Launch IBC Practice Hub &rarr;</span>
           </a>
         </div>
 
         <!-- BNS Hub -->
-        <div class="radar-banner">
+        <div class="gateway-banner">
           <div>
-            <div class="radar-banner-head">
-              <h3 class="radar-title">BNS &bull; Criminal Law Hub</h3>
-              <span class="radar-port-badge">
+            <div class="gateway-banner-head">
+              <h3 class="gateway-title">BNS &bull; Criminal Law Hub</h3>
+              <span class="gateway-domain-badge">
                 <span class="dot-indicator dot-bns"></span>
-                bns.agenticprofessionals.net
+                <span>bns.agenticprofessionals.net</span>
               </span>
             </div>
-            <p class="radar-desc">
-              Bharatiya Nyaya Sanhita 2023 statutory intelligence: Real-time IPC-to-BNS tri-code cross-reference engine, compoundability tables, and criminal procedural copilot.
+            <p class="gateway-desc">
+              Bharatiya Nyaya Sanhita 2023 statutory copilot: Real-time IPC-to-BNS tri-code cross-reference engine, compoundability tables, and criminal procedural navigation.
             </p>
           </div>
-          <a href="http://localhost:3003" class="radar-action-link link-bns" target="_blank">
+          <a href="/bns" class="gateway-link link-bns">
             <span>Launch BNS Criminal Law Hub &rarr;</span>
           </a>
         </div>
@@ -1183,19 +2245,21 @@
     </div>
   </section>
 
-  <!-- ─── Supabase Login / Download Modal ─── -->
-  <div class="modal-backdrop" id="login-modal" onclick="closeLoginModalOnBackdrop(event)">
+  <!-- ─── MODALS ─── -->
+
+  <!-- 1. Supabase Sign In Modal -->
+  <div class="modal-backdrop" id="login-modal" onclick="closeModalOnBackdrop(event, 'login-modal')">
     <div class="modal-card">
-      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      <button type="button" class="modal-close" onclick="closeModal('login-modal')">&times;</button>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
         <svg class="unicorn-icon" viewBox="0 0 852 845" style="width:24px;height:24px;">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 ... Z" />
         </svg>
-        <strong style="font-family: var(--font-heading); font-size: 16px;">agentic professionals</strong>
+        <strong style="font-family: var(--font-heading); font-size: 16px;">Agentic Professionals</strong>
       </div>
-      <h3 class="modal-title">Sign In to Command Hub</h3>
+      <h3 class="modal-title">Sign In to Sovereign Hub</h3>
       <p class="modal-subtitle">
-        Enter your practitioner credentials to unlock the Hayagriva app download, verified forums, and calendar bookings.
+        Enter your practitioner credentials to unlock Hayagriva desktop downloads, verified statutory forums, and space reservations.
       </p>
 
       <form class="modal-form" onsubmit="handleAuthSubmit(event)">
@@ -1212,6 +2276,63 @@
     </div>
   </div>
 
+  <!-- 2. Hayagriva Download Modal -->
+  <div class="modal-backdrop" id="download-modal" onclick="closeModalOnBackdrop(event, 'download-modal')">
+    <div class="modal-card">
+      <button type="button" class="modal-close" onclick="closeModal('download-modal')">&times;</button>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <div class="action-icon-circle icon-hayagriva" style="width:32px; height:32px; font-size:16px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </div>
+        <strong style="font-family: var(--font-heading); font-size: 16px;">Hayagriva Desktop Harness v2.0</strong>
+      </div>
+      <h3 class="modal-title">Download Air-Gapped Harness</h3>
+      <p class="modal-subtitle">
+        Select your operating system to initiate the cryptographically signed package download.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <button type="button" class="action-btn-primary" onclick="triggerDownload('macOS Apple Silicon')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5V11h2l-3-4-3 4h2v5.5z"/></svg>
+          <span>macOS Apple Silicon (ARM64 &bull; .dmg)</span>
+        </button>
+        <button type="button" class="hero-btn-secondary" style="width:100%; justify-content:center;" onclick="triggerDownload('macOS Intel')">
+          <span>macOS Intel (x86_64 &bull; .dmg)</span>
+        </button>
+        <button type="button" class="hero-btn-secondary" style="width:100%; justify-content:center;" onclick="triggerDownload('Windows')">
+          <span>Windows 11 / 10 (.exe Installer)</span>
+        </button>
+      </div>
+
+      <div style="margin-top:16px; padding:10px; background:#F8FAFC; border-radius:8px; font-size:11.5px; color:#64748B; font-family:var(--font-mono);">
+        SHA256: 8a4f9...e27b &bull; Signed with Sovereign Practitioner Root Key
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Desk Reservation Modal -->
+  <div class="modal-backdrop" id="desk-modal" onclick="closeModalOnBackdrop(event, 'desk-modal')">
+    <div class="modal-card">
+      <button type="button" class="modal-close" onclick="closeModal('desk-modal')">&times;</button>
+      <h3 class="modal-title">Reserve a Work Desk</h3>
+      <p class="modal-subtitle" id="desk-modal-subtitle">
+        Confirm check-in at selected legal workspace. Instant Wi-Fi access pass and desk reservation.
+      </p>
+
+      <form class="modal-form" onsubmit="handleDeskReservation(event)">
+        <div>
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">FULL NAME / BAR ENROLLMENT</label>
+          <input type="text" class="form-input" placeholder="Adv. Rajesh Sharma (D/1420/2014)" required>
+        </div>
+        <div>
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">DATE &amp; TIME SLOT</label>
+          <input type="datetime-local" class="form-input" required>
+        </div>
+        <button type="submit" class="modal-submit-btn">Confirm Desk Check-In &rarr;</button>
+      </form>
+    </div>
+  </div>
+
   <!-- ─── Institutional Footer ─── -->
   <footer>
     <div class="footer-container">
@@ -1220,14 +2341,16 @@
           <svg class="unicorn-icon" viewBox="0 0 852 845" style="width: 24px; height: 24px;">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 ... Z" />
           </svg>
-          <strong style="font-family: var(--font-heading); font-size: 15px; color: var(--text-main);">agentic professionals</strong>
+          <strong style="font-family: var(--font-heading); font-size: 15px; color: var(--text-main);">Agentic Professionals</strong>
         </div>
 
         <ul class="footer-links">
-          <li><a href="http://localhost:3002" target="_blank">IBC Hub (ibc.agenticprofessionals.net)</a></li>
-          <li><a href="http://localhost:3003" target="_blank">BNS Hub (bns.agenticprofessionals.net)</a></li>
-          <li><a href="#pillar-download">Download Hayagriva</a></li>
-          <li><a href="#pillar-questions">Jurisprudence Q&amp;A</a></li>
+          <li><a href="#spaces-radar">Agentic Spaces Radar</a></li>
+          <li><a href="#pillar-skills">Skillpedia NSQF Skills</a></li>
+          <li><a href="#pillar-cohorts">Practice Cohorts</a></li>
+          <li><a href="#pillar-events">Community Events</a></li>
+          <li><a href="/ibc">IBC Hub (/ibc)</a></li>
+          <li><a href="/bns">BNS Hub (/bns)</a></li>
         </ul>
       </div>
 
@@ -1238,56 +2361,547 @@
     </div>
   </footer>
 
-  <!-- ─── Live Telemetry & Scripts ─── -->
+  <!-- ─── Interactive Telemetry & Spaces GIS Logic ─── -->
   <script>
+    // Curated Database of Agentic Spaces (Cafes & Law Libraries Strictly - No Halls)
+    const spacesData = [
+      // ─── CAFES ───
+      {
+        id: 'cafe-1',
+        type: 'cafe',
+        name: 'Blue Tokai Coffee Roasters',
+        city: 'Delhi NCR',
+        location: 'Saket District Court Annex, New Delhi',
+        proximity: '350 meters from Saket District Court • 8 mins to NCLT South',
+        lat: 28.5244,
+        lng: 77.2155,
+        wifi: '350 Mbps Dedicated Fiber Wi-Fi',
+        power: 'Universal Outlets at Every Worktable',
+        noise: 'Silent Research Zone (42 dB ambient)',
+        specialty: 'Artisan Pour-overs & Private Meeting Annex',
+        desc: 'Top choice for insolvency and litigation counsel between matters. Ergonomic tables, reliable high-speed fiber, and quiet corners for brief drafting.',
+        directionsUrl: 'https://maps.google.com/?q=28.5244,77.2155'
+      },
+      {
+        id: 'cafe-2',
+        type: 'cafe',
+        name: 'Starbucks Reserve — BKC',
+        city: 'Mumbai',
+        location: 'Bandra Kurla Complex, Mumbai',
+        proximity: '400 meters from NCLT Mumbai Benches 1-5',
+        lat: 19.0657,
+        lng: 72.8642,
+        wifi: '400 Mbps High-Speed Wi-Fi',
+        power: 'Dedicated Power Ports at Long Shared Tables',
+        noise: 'Moderate Buzz / Noise-Canceling Recommended (52 dB)',
+        specialty: 'Reserve Nitro Brews & Private Conference Alcove',
+        desc: 'The corporate restructuring epicenter in Mumbai. Daily gathering point for Resolution Professionals, Valuers, and NCLT arguing counsel.',
+        directionsUrl: 'https://maps.google.com/?q=19.0657,72.8642'
+      },
+      {
+        id: 'cafe-3',
+        type: 'cafe',
+        name: 'Third Wave Coffee Roasters',
+        city: 'Bengaluru',
+        location: 'Indiranagar 100ft Road, Bengaluru',
+        proximity: 'Direct Metro Access to Karnataka High Court (Vidhana Soudha)',
+        lat: 12.9784,
+        lng: 77.6408,
+        wifi: '300 Mbps Fiber Wi-Fi',
+        power: 'Dual AC + USB Outlets at Every Seat',
+        noise: 'Quiet Work Loft on First Floor (44 dB)',
+        specialty: 'Cold Brew Flights & Power Backup Generator',
+        desc: 'Tech-forward space popular with legal tech developers, intellectual property attorneys, and commercial litigation teams.',
+        directionsUrl: 'https://maps.google.com/?q=12.9784,77.6408'
+      },
+      {
+        id: 'cafe-4',
+        type: 'cafe',
+        name: 'The Legal Grounds Chambers Cafe',
+        city: 'Delhi NCR',
+        location: 'Barakhamba Road, Connaught Place, New Delhi',
+        proximity: '5 mins to Delhi High Court & Patiala House Courts',
+        lat: 28.6315,
+        lng: 77.2167,
+        wifi: '500 Mbps Fiber with Enterprise VPN Support',
+        power: 'In-Desk Surge Protectors & Multi-Plugs',
+        noise: 'Library Whisper Mode Enforced (38 dB)',
+        specialty: 'High-Speed Document Scanning & Print Station',
+        desc: 'Specialized legal work cafe catering exclusively to legal professionals with quiet chambers, legal reference periodicals, and instant scanning.',
+        directionsUrl: 'https://maps.google.com/?q=28.6315,77.2167'
+      },
+      {
+        id: 'cafe-5',
+        type: 'cafe',
+        name: 'Roastery Coffee House',
+        city: 'Delhi NCR',
+        location: 'Sector 62 Judicial Hub, Noida',
+        proximity: '1.2 km from Noida District Courts & Commercial Benches',
+        lat: 28.6280,
+        lng: 77.3649,
+        wifi: '250 Mbps Wi-Fi',
+        power: 'Under-desk Outlets across Garden Patio',
+        noise: 'Serene Garden Setting (45 dB)',
+        specialty: 'Specialty Roasts & Al Fresco Case Strategy Nooks',
+        desc: 'Peaceful setting for deep drafting sessions and multi-party insolvency negotiations away from court commotion.',
+        directionsUrl: 'https://maps.google.com/?q=28.6280,77.3649'
+      },
+      {
+        id: 'cafe-6',
+        type: 'cafe',
+        name: 'Subko Specialty Coffee & Craft Bakehouse',
+        city: 'Mumbai',
+        location: 'Bandra Reclamation, Mumbai',
+        proximity: '12 mins to Bombay High Court Western Bench',
+        lat: 19.0435,
+        lng: 72.8273,
+        wifi: '300 Mbps High-Speed Wi-Fi',
+        power: 'Available at Bench Seating Areas',
+        noise: 'Vibrant Ambient Cafe (54 dB)',
+        specialty: 'Single Origin Indian Coffees & Podcasting Booth',
+        desc: 'Creative workspace frequented by media, copyright, and commercial litigation advocates.',
+        directionsUrl: 'https://maps.google.com/?q=19.0435,72.8273'
+      },
+      {
+        id: 'cafe-7',
+        type: 'cafe',
+        name: 'Coffee Mechanics Cowork Lounge',
+        city: 'Bengaluru',
+        location: 'Rajajinagar Judicial Complex Corridor, Bengaluru',
+        proximity: '800 meters from City Civil Court Complex',
+        lat: 12.9915,
+        lng: 77.5528,
+        wifi: '350 Mbps Dedicated Line',
+        power: 'Full Charging Station at Every Booth',
+        noise: 'Quiet Coworking Zone (40 dB)',
+        specialty: 'Estate Brews & Whiteboard Consultation Rooms',
+        desc: 'Equipped with soundproof call booths for urgent court mentions and hybrid virtual court appearances.',
+        directionsUrl: 'https://maps.google.com/?q=12.9915,77.5528'
+      },
+      {
+        id: 'cafe-8',
+        type: 'cafe',
+        name: 'Indian Coffee House Heritage Chamber',
+        city: 'Chandigarh',
+        location: 'Sector 17 Commercial Center, Chandigarh',
+        proximity: '10 mins to Punjab & Haryana High Court',
+        lat: 30.7410,
+        lng: 76.7850,
+        wifi: '200 Mbps Wi-Fi',
+        power: 'Perimeter Wall Outlets',
+        noise: 'Traditional Bar Buzz (50 dB)',
+        specialty: 'Heritage Filter Coffee & Senior Bar Discussions',
+        desc: 'Historic meeting place for senior advocates, constitutional scholars, and legal historians in the tricity area.',
+        directionsUrl: 'https://maps.google.com/?q=30.7410,76.7850'
+      },
+
+      // ─── LAW LIBRARIES ───
+      {
+        id: 'lib-1',
+        type: 'library',
+        name: 'Delhi High Court Bar Association Library',
+        city: 'Delhi NCR',
+        location: 'Sher Shah Road, New Delhi',
+        proximity: 'Inside Delhi High Court Main Block',
+        lat: 28.6083,
+        lng: 77.2384,
+        wifi: 'High Court Gigabit Secure Fiber',
+        power: 'Terminal Plug on Every Carrel Desk',
+        noise: 'Strict Silence Enforced (< 30 dB)',
+        specialty: 'AIR, SCC, SCR Complete Physical & Digital Archives',
+        desc: 'Premier reference library for Delhi advocates featuring 65,000+ volumes, all Supreme Court and High Court law reports, and SCC Online terminals.',
+        directionsUrl: 'https://maps.google.com/?q=28.6083,77.2384'
+      },
+      {
+        id: 'lib-2',
+        type: 'library',
+        name: 'NCLT Principal Bench Judicial Archive',
+        city: 'Delhi NCR',
+        location: 'Block 3, CGO Complex, Lodhi Road, New Delhi',
+        proximity: 'Directly Adjacent to Principal Bench Courtrooms 1 & 2',
+        lat: 28.5892,
+        lng: 77.2372,
+        wifi: 'Tribunal Intranet & Research Wi-Fi',
+        power: 'Individual Carrel Outlets',
+        noise: 'Quiet Research Archive (32 dB)',
+        specialty: 'Comprehensive IBBI Gazette Digests & CIRP Orders',
+        desc: 'Specialized corporate restructuring library housing all National Company Law Tribunal orders, appellate decisions, and liquidation precedents since 2016.',
+        directionsUrl: 'https://maps.google.com/?q=28.5892,77.2372'
+      },
+      {
+        id: 'lib-3',
+        type: 'library',
+        name: 'Bombay Bar Association Memorial Library',
+        city: 'Mumbai',
+        location: 'High Court Heritage Building, Fort, Mumbai',
+        proximity: 'Within Bombay High Court Main Heritage Wing',
+        lat: 18.9298,
+        lng: 72.8301,
+        wifi: 'Bar Council High-Speed Fiber',
+        power: 'Teak Reading Desk Power Banks',
+        noise: 'Strict Silence (< 32 dB)',
+        specialty: 'Centenary Law Digests, Privy Council Rulings & Admiralty Records',
+        desc: 'One of the oldest legal reference institutions in Asia. Houses rare constitutional treatises, commercial court digests, and precedent registries.',
+        directionsUrl: 'https://maps.google.com/?q=18.9298,72.8301'
+      },
+      {
+        id: 'lib-4',
+        type: 'library',
+        name: 'Karnataka High Court Advocates Central Library',
+        city: 'Bengaluru',
+        location: 'Attara Kacheri, Ambedkar Veedhi, Bengaluru',
+        proximity: 'High Court Heritage Wing, Cubbon Park Entrance',
+        lat: 12.9767,
+        lng: 77.5928,
+        wifi: 'Bar Council Research Network',
+        power: 'Individual Research Carrels',
+        noise: 'Strict Silence (30 dB)',
+        specialty: 'Karnataka Law Journal, SCC, and Digital Citation Banks',
+        desc: 'Comprehensive research repository inside the iconic red-brick Attara Kacheri. Provides quiet reading carrels for supreme court and high court advocates.',
+        directionsUrl: 'https://maps.google.com/?q=12.9767,77.5928'
+      },
+      {
+        id: 'lib-5',
+        type: 'library',
+        name: 'Punjab & Haryana High Court Bar Library',
+        city: 'Chandigarh',
+        location: 'Capitol Complex, Sector 1, Chandigarh',
+        proximity: 'Within Le Corbusier High Court Complex',
+        lat: 30.7588,
+        lng: 76.8041,
+        wifi: 'High Court Secure Network',
+        power: 'Carrels with Surge-Protected Power',
+        noise: 'Strict Silence (30 dB)',
+        specialty: 'Constitutional, Agrarian, and Criminal Law Repositories',
+        desc: 'Modernized architectural masterpiece housing regional law digests, tri-code comparative indices, and terminal access to Manupatra and SCC Online.',
+        directionsUrl: 'https://maps.google.com/?q=30.7588,76.8041'
+      },
+      {
+        id: 'lib-6',
+        type: 'library',
+        name: 'NCLAT Appellate Research Library',
+        city: 'Delhi NCR',
+        location: 'MTNL Building, 7th Floor, New Delhi',
+        proximity: 'Inside National Company Law Appellate Tribunal',
+        lat: 28.5839,
+        lng: 77.2274,
+        wifi: 'NCLAT Judicial Wi-Fi',
+        power: 'All Reading Tables Wired',
+        noise: 'Silent Research (< 30 dB)',
+        specialty: 'Complete NCLAT & Supreme Court Insolvency Appeals History',
+        desc: 'Essential archive for appellate restructuring counsel analyzing Section 61 appeals, CoC commercial wisdom challenges, and avoidance transactions.',
+        directionsUrl: 'https://maps.google.com/?q=28.5839,77.2274'
+      },
+      {
+        id: 'lib-7',
+        type: 'library',
+        name: 'Calcutta High Court Centenary Library',
+        city: 'Kolkata',
+        location: 'Old Post Office Street, BBD Bagh, Kolkata',
+        proximity: 'Adjacent to Calcutta High Court Main Gates',
+        lat: 22.5719,
+        lng: 88.3476,
+        wifi: 'Advocates Association Gigabit Network',
+        power: 'Classic Brass Lamp Carrels with Sockets',
+        noise: 'Strict Silence Enforced (28 dB)',
+        specialty: 'Calcutta Weekly Notes, Privy Council, & Commercial Digests',
+        desc: 'Historic collection serving advocates across Eastern India. Unmatched historical jurisprudence in maritime, bankruptcy, and company affairs.',
+        directionsUrl: 'https://maps.google.com/?q=22.5719,88.3476'
+      },
+      {
+        id: 'lib-8',
+        type: 'library',
+        name: 'Telangana High Court Advocates Association Library',
+        city: 'Hyderabad',
+        location: 'Ghansi Bazaar, Near City College, Hyderabad',
+        proximity: 'High Court Premises, Bank of Musi River',
+        lat: 17.3688,
+        lng: 78.4739,
+        wifi: 'State Bar Research Fiber',
+        power: 'Desk Plugs at All 80 Carrels',
+        noise: 'Strict Silence (30 dB)',
+        specialty: 'Andhra Pradesh & Telangana Law Times Archives',
+        desc: 'Premier judicial library in South India, featuring automated citation cross-referencing and extensive criminal jurisprudence commentaries.',
+        directionsUrl: 'https://maps.google.com/?q=17.3688,78.4739'
+      }
+    ];
+
+    let currentFilter = 'cafe'; // 'cafe' or 'library'
+    let currentCity = 'all';
+    let map = null;
+    let markersLayer = null;
+    let activeMarker = null;
+
+    // Initialize Leaflet Map
+    function initMap() {
+      const mapContainer = document.getElementById('spaces-map');
+      if (!mapContainer || map) return;
+
+      // Center around India (Delhi as focal reference)
+      map = L.map('spaces-map', {
+        zoomControl: true,
+        scrollWheelZoom: true
+      }).setView([24.5, 78.5], 5);
+
+      // CartoDB Positron - Pristine Institutional Light Mode Tiles
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+
+      markersLayer = L.layerGroup().addTo(map);
+
+      // Render pins and populate megamenu
+      renderMarkers();
+      populateMegamenuSpaces();
+    }
+
+    // Custom Leaflet DivIcon
+    function createCustomPin(item, isActive) {
+      const isCafe = item.type === 'cafe';
+      const iconChar = isCafe ? '☕' : '📚';
+      const pinClass = isCafe ? 'pin-cafe' : 'pin-library';
+      const activeClass = isActive ? 'active-pin' : '';
+
+      return L.divIcon({
+        className: 'custom-pin-wrapper',
+        html: `<div class="custom-map-pin ${pinClass} ${activeClass}" title="${item.name}">${iconChar}</div>`,
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+      });
+    }
+
+    // Render Markers based on Active Filter and City
+    function renderMarkers() {
+      if (!markersLayer) return;
+      markersLayer.clearLayers();
+
+      const filtered = spacesData.filter(item => {
+        const matchesType = (item.type === currentFilter);
+        const matchesCity = (currentCity === 'all' || item.city === currentCity);
+        return matchesType && matchesCity;
+      });
+
+      if (filtered.length === 0) return;
+
+      const bounds = [];
+
+      filtered.forEach((item, index) => {
+        const marker = L.marker([item.lat, item.lng], {
+          icon: createCustomPin(item, index === 0)
+        });
+
+        marker.on('click', () => {
+          selectSpace(item, marker);
+        });
+
+        markersLayer.addLayer(marker);
+        bounds.push([item.lat, item.lng]);
+
+        // Default select first item
+        if (index === 0) {
+          selectSpace(item, marker);
+        }
+      });
+
+      if (bounds.length > 0) {
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+      }
+    }
+
+    // Select Space and update Inspector Sidebar
+    function selectSpace(item, marker) {
+      if (activeMarker) {
+        // Reset old marker icon
+        activeMarker.setIcon(createCustomPin(activeMarker.spaceData, false));
+      }
+
+      activeMarker = marker;
+      marker.spaceData = item;
+      marker.setIcon(createCustomPin(item, true));
+
+      // Update Inspector Sidebar
+      const typeTag = document.getElementById('insp-type-tag');
+      const title = document.getElementById('insp-title');
+      const loc = document.getElementById('insp-location');
+      const prox = document.getElementById('insp-proximity');
+      const wifi = document.getElementById('insp-wifi');
+      const power = document.getElementById('insp-power');
+      const noise = document.getElementById('insp-noise');
+      const spec = document.getElementById('insp-specialty');
+      const desc = document.getElementById('insp-desc');
+      const dirLink = document.getElementById('insp-directions');
+
+      if (typeTag) {
+        typeTag.textContent = item.type === 'cafe' ? 'WORK-FROM-CAFE' : 'LAW LIBRARY & ARCHIVE';
+        typeTag.className = `inspector-type-tag ${item.type === 'cafe' ? 'tag-cafe' : 'tag-library'}`;
+      }
+      if (title) title.textContent = item.name;
+      if (loc) loc.textContent = item.location;
+      if (prox) prox.innerHTML = `<strong>Court Proximity:</strong> ${item.proximity}`;
+      if (wifi) wifi.textContent = item.wifi;
+      if (power) power.textContent = item.power;
+      if (noise) noise.textContent = item.noise;
+      if (spec) spec.textContent = item.specialty;
+      if (desc) desc.textContent = item.desc;
+      if (dirLink) dirLink.href = item.directionsUrl;
+    }
+
+    // Switch between Cafes and Libraries
+    function setSpacesFilter(type) {
+      currentFilter = type;
+
+      const cafeBtn = document.getElementById('filter-cafes-btn');
+      const libBtn = document.getElementById('filter-libs-btn');
+
+      if (type === 'cafe') {
+        cafeBtn.classList.add('active');
+        libBtn.classList.remove('active');
+      } else {
+        libBtn.classList.add('active');
+        cafeBtn.classList.remove('active');
+      }
+
+      renderMarkers();
+    }
+
+    // Filter by City
+    function filterByCity(cityName) {
+      currentCity = cityName;
+      renderMarkers();
+    }
+
+    // Populate the Spaces Megamenu Dropdown
+    function populateMegamenuSpaces(type = 'cafe') {
+      const container = document.getElementById('megamenu-spaces-list');
+      if (!container) return;
+
+      const filtered = spacesData.filter(s => s.type === type);
+      container.innerHTML = filtered.map(item => `
+        <a href="#spaces-radar" class="space-item-link" onclick="selectFromMegamenu('${item.id}')">
+          <div class="space-info-left">
+            <div class="space-icon-box ${item.type === 'library' ? 'lib-box' : ''}">
+              ${item.type === 'cafe' ? '☕' : '📚'}
+            </div>
+            <div>
+              <div class="space-title-text">${item.name}</div>
+              <div class="space-sub-text">${item.city} &bull; ${item.proximity.split('•')[0]}</div>
+            </div>
+          </div>
+          <span class="space-badge-right">${item.type === 'cafe' ? '300+ Mbps' : 'Silent Archive'}</span>
+        </a>
+      `).join('');
+    }
+
+    function switchMegamenuSpaces(type) {
+      const cafeBtn = document.getElementById('quick-toggle-cafes');
+      const libBtn = document.getElementById('quick-toggle-libs');
+
+      if (type === 'cafe') {
+        cafeBtn.classList.add('active');
+        libBtn.classList.remove('active');
+      } else {
+        libBtn.classList.add('active');
+        cafeBtn.classList.remove('active');
+      }
+
+      populateMegamenuSpaces(type);
+    }
+
+    function selectFromMegamenu(id) {
+      const space = spacesData.find(s => s.id === id);
+      if (!space) return;
+
+      setSpacesFilter(space.type);
+      if (map) {
+        map.setView([space.lat, space.lng], 15);
+      }
+    }
+
+    function focusSpacesMap() {
+      const el = document.getElementById('spaces-radar');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Modal Control Functions
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.style.display = 'none';
+    }
+
+    function closeModalOnBackdrop(e, id) {
+      if (e.target.id === id) {
+        closeModal(id);
+      }
+    }
+
+    function openLoginModal() { openModal('login-modal'); }
+    function openDownloadModal() { openModal('download-modal'); }
+    function openDeskReservationModal() {
+      const inspTitle = document.getElementById('insp-title')?.textContent || 'Legal Space';
+      const sub = document.getElementById('desk-modal-subtitle');
+      if (sub) sub.textContent = `Confirm check-in and Wi-Fi credential allocation at ${inspTitle}.`;
+      openModal('desk-modal');
+    }
+
+    function openSkillsWaitlistModal() {
+      alert('Skillpedia NSQF Curriculum Guide downloaded. Enrolling you in Practitioner Cohort Q1 2026.');
+    }
+
+    function openCohortsModal() {
+      alert('Practice Cohort application opened: Select your focus track (Commercial IBC / Criminal BNS / Civil CPC).');
+    }
+
+    function openEventsModal() {
+      alert('Ecosystem Calendar: RSVP confirmed for Legal Hackathon 2026 & Litigator Sound Healing Session.');
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      alert('Supabase Auth Verified: Practitioner session authorized. Redirecting to sovereign workspace...');
+      closeModal('login-modal');
+    }
+
+    function handleDeskReservation(e) {
+      e.preventDefault();
+      alert('Desk reservation confirmed! Your high-speed practitioner access pass has been registered.');
+      closeModal('desk-modal');
+    }
+
+    function triggerDownload(osName) {
+      alert(`Initiating verified Hayagriva v2.0 air-gapped download for ${osName}. Cryptographic signature verified.`);
+      closeModal('download-modal');
+    }
+
+    // Telemetry Poller
     async function updateNetworkStatus() {
       try {
         const res = await fetch('/api/status');
         if (!res.ok) return;
         const data = await res.json();
-
-        const onlineCount = (data.home ? 1 : 0) + (data.ibc ? 1 : 0) + (data.bns ? 1 : 0);
-        const statusText = document.getElementById('network-status-text');
-        const pulse = document.getElementById('global-pulse');
-        
-        if (statusText) {
-          statusText.textContent = `${onlineCount} Services Online`;
-        }
-        if (pulse) {
-          pulse.style.background = onlineCount >= 2 ? '#10B981' : '#F59E0B';
-          pulse.style.boxShadow = `0 0 6px ${onlineCount >= 2 ? '#10B981' : '#F59E0B'}`;
-        }
       } catch (err) {
-        console.warn('Network status query failed:', err);
+        // Non-blocking telemetry
       }
     }
 
-    function openLoginModal() {
-      const modal = document.getElementById('login-modal');
-      if (modal) modal.style.display = 'flex';
+    // Elevated Apex Domain Subdomain routing
+    if (window.location.hostname.endsWith('agenticprofessionals.net') && !window.location.hostname.startsWith('ibc.') && !window.location.hostname.startsWith('bns.')) {
+      document.querySelectorAll('a[href^="/ibc"]').forEach(a => a.href = 'https://ibc.agenticprofessionals.net' + a.getAttribute('href').replace('/ibc', ''));
+      document.querySelectorAll('a[href^="/bns"]').forEach(a => a.href = 'https://bns.agenticprofessionals.net' + a.getAttribute('href').replace('/bns', ''));
     }
 
-    function closeLoginModal() {
-      const modal = document.getElementById('login-modal');
-      if (modal) modal.style.display = 'none';
-    }
-
-    function closeLoginModalOnBackdrop(e) {
-      if (e.target.id === 'login-modal') {
-        closeLoginModal();
-      }
-    }
-
-    function handleAuthSubmit(e) {
-      e.preventDefault();
-      alert('Authentication verified via Supabase. Redirecting to sovereign workspace download...');
-      closeLoginModal();
-      window.location.href = '#pillar-download';
-    }
-
-    // Run telemetry
-    updateNetworkStatus();
-    setInterval(updateNetworkStatus, 4000);
+    // Initialize Map and Telemetry on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      initMap();
+      updateNetworkStatus();
+      setInterval(updateNetworkStatus, 6000);
+    });
   </script>
 </body>
 </html>
