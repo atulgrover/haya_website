@@ -231,7 +231,7 @@
     .megamenu-spaces { width: 520px; }
     .megamenu-skills { width: 440px; }
     .megamenu-cohorts { width: 660px; }
-    .megamenu-events { width: 540px; }
+    .megamenu-events { width: 640px; }
 
     .megamenu-header {
       display: flex;
@@ -539,27 +539,81 @@
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 10px;
+      padding: 11px 12px;
       transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .event-item-card:hover {
       border-color: var(--primary-blue-border);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.08);
+      transform: translateY(-1px);
     }
 
     .event-item-card strong {
       display: block;
       font-family: var(--font-heading);
       font-size: 13px;
+      font-weight: 700;
       color: #0F172A;
-      margin-bottom: 2px;
+      line-height: 1.3;
     }
 
-    .event-item-card span {
-      display: block;
-      font-size: 11.5px;
+    .event-venue-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #0284C7;
+      background: #F0F9FF;
+      border: 1px solid #BAE6FD;
+      padding: 2px 7px;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin: 3px 0;
+    }
+
+    .event-venue-tag.lib-tag {
+      color: #059669;
+      background: #ECFDF5;
+      border-color: #A7F3D0;
+    }
+
+    .event-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
       color: #64748B;
+      font-family: var(--font-mono);
+      margin-top: 2px;
+    }
+
+    .event-reserve-btn {
+      margin-top: 6px;
+      width: 100%;
+      background: #0F172A;
+      color: #FFFFFF;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .event-reserve-btn:hover {
+      background: var(--primary-blue);
+      box-shadow: 0 2px 8px rgba(30, 108, 147, 0.25);
     }
 
     /* ─── Right Nav Actions ─── */
@@ -1800,17 +1854,17 @@
 
         <div class="megamenu megamenu-spaces">
           <div class="megamenu-header">
-            <span class="megamenu-title">Legal Chambers &amp; Workspaces</span>
-            <span class="megamenu-badge">Cafes &bull; Libraries Only</span>
+            <span class="megamenu-title">VISITABLE PHYSICAL SPACES</span>
+            <span class="megamenu-badge">Cafes &bull; Libraries</span>
           </div>
 
           <!-- Strict Toggle: Cafes vs Libraries -->
           <div class="spaces-quick-toggle">
             <button type="button" class="spaces-quick-btn active" id="quick-toggle-cafes" onclick="switchMegamenuSpaces('cafe')">
-              <span>☕ Work-From-Cafes</span>
+              <span>☕ Work &amp; Study Cafes</span>
             </button>
             <button type="button" class="spaces-quick-btn" id="quick-toggle-libs" onclick="switchMegamenuSpaces('library')">
-              <span>📚 Law Libraries</span>
+              <span>📚 Computer &amp; AI Libraries</span>
             </button>
           </div>
 
@@ -1820,7 +1874,7 @@
           </div>
 
           <div class="megamenu-footer">
-            <span style="font-size: 11.5px; color: #64748B;">High-speed Wi-Fi, silent chambers, proximity to courts</span>
+            <span style="font-size: 11.5px; color: #64748B;">High-speed Wi-Fi &bull; PC Terminals &bull; AI Books</span>
             <a href="#spaces-radar" class="megamenu-action-link" onclick="focusSpacesMap()">
               <span>Open Spaces Radar Map &rarr;</span>
             </a>
@@ -1838,39 +1892,39 @@
         <div class="megamenu megamenu-skills">
           <div class="megamenu-header">
             <span class="megamenu-title">skillpedia skills (agentic nsqf)</span>
-            <span class="megamenu-badge">Level 7 - 9</span>
+            <span class="megamenu-badge">Level 5 - 9</span>
           </div>
 
           <div class="skills-levels-list">
             <a href="#pillar-skills" class="skill-card-link">
-              <span class="skill-level-badge">NSQF L7</span>
+              <span class="skill-level-badge">NSQF L5-6</span>
               <div class="skill-body">
-                <strong>Statutory Research &amp; Drafting Agent</strong>
-                <p>Deterministic section ingestion, precedent digest assembly, and verified court filing formats.</p>
+                <strong>Agentic Prompting &amp; Local LLMs</strong>
+                <p>Ollama, tool calling, local inference, and deterministic workflow pipelines for young learners.</p>
               </div>
             </a>
 
             <a href="#pillar-skills" class="skill-card-link">
-              <span class="skill-level-badge">NSQF L8</span>
+              <span class="skill-level-badge">NSQF L7-8</span>
               <div class="skill-body">
                 <strong>Multi-Agent Swarm Orchestrator</strong>
-                <p>Orchestrate parallel case analysis, Section 53 waterfall solvers, and tri-code mappings.</p>
+                <p>Orchestrate research swarms, statutory section extractors, and Section 53 waterfall solvers for practitioners.</p>
               </div>
             </a>
 
             <a href="#pillar-skills" class="skill-card-link">
               <span class="skill-level-badge">NSQF L9</span>
               <div class="skill-body">
-                <strong>Principal Autonomous Legal Architect</strong>
-                <p>Air-gapped enterprise harness architecture, cryptographic verification, and judicial safety gates.</p>
+                <strong>Principal Autonomous Systems Architect</strong>
+                <p>Air-gapped enterprise harness architecture, cryptographic verification, and sovereign judicial safety gates.</p>
               </div>
             </a>
           </div>
 
           <div class="megamenu-footer">
-            <span style="font-size: 11.5px; color: #64748B;">Accredited under National Skills Qualification Framework</span>
+            <span style="font-size: 11.5px; color: #64748B;">National Skills Qualification Framework Accredited</span>
             <a href="#pillar-skills" class="megamenu-action-link">
-              <span>View All Frameworks &rarr;</span>
+              <span>View Curriculum Guide &rarr;</span>
             </a>
           </div>
         </div>
@@ -1954,8 +2008,8 @@
 
         <div class="megamenu megamenu-events">
           <div class="megamenu-header">
-            <span class="megamenu-title">Community Calendar</span>
-            <span class="megamenu-badge">Professional &bull; Social</span>
+            <span class="megamenu-title">Events at Cafes &amp; Libraries</span>
+            <span class="megamenu-badge">Reserve a Physical Seat</span>
           </div>
 
           <div class="events-grid">
@@ -1963,17 +2017,46 @@
             <div class="event-col">
               <div class="event-col-title">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg>
-                <span>professional</span>
+                <span>professional track</span>
               </div>
 
+              <!-- Event 1 -->
               <div class="event-item-card">
-                <strong>hackathons</strong>
-                <span>Autonomous Legal AI Hackathon 2026: Multi-Agent Filing Challenge.</span>
+                <strong>Autonomous AI Hackathon 2026</strong>
+                <span class="event-venue-tag">☕ Blue Tokai Saket &bull; Delhi NCR</span>
+                <div class="event-meta-row">
+                  <span>Sat, Dec 6 &bull; 10 AM</span>
+                  <span style="color:#059669;font-weight:700;">12 seats left</span>
+                </div>
+                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-1')">
+                  Reserve Seat &rarr;
+                </button>
               </div>
 
+              <!-- Event 2 -->
               <div class="event-item-card">
-                <strong>conferences</strong>
-                <span>National Statutory AI Summit &amp; Annual NCLT Practitioners Conclave.</span>
+                <strong>Agentic Skills Saturday Study Hall</strong>
+                <span class="event-venue-tag">☕ Third Wave Indiranagar &bull; Bengaluru</span>
+                <div class="event-meta-row">
+                  <span>Sat, Dec 13 &bull; 11 AM</span>
+                  <span style="color:#059669;font-weight:700;">8 seats left</span>
+                </div>
+                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-2')">
+                  Reserve Seat &rarr;
+                </button>
+              </div>
+
+              <!-- Event 3 -->
+              <div class="event-item-card">
+                <strong>Statutory AI Practitioner Conclave</strong>
+                <span class="event-venue-tag lib-tag">📚 Centenary Library &bull; Kolkata</span>
+                <div class="event-meta-row">
+                  <span>Fri, Dec 19 &bull; 2 PM</span>
+                  <span style="color:#059669;font-weight:700;">15 seats left</span>
+                </div>
+                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-3')">
+                  Reserve Seat &rarr;
+                </button>
               </div>
             </div>
 
@@ -1981,23 +2064,52 @@
             <div class="event-col">
               <div class="event-col-title">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                <span>social</span>
+                <span>social &bull; fellowship</span>
               </div>
 
+              <!-- Event 4 -->
               <div class="event-item-card">
-                <strong>bhajan clubbing</strong>
-                <span>Weekend litigator sound therapy, sacred acoustics, and reflective fellowship.</span>
+                <strong>Mindful Co-working &amp; Bhajan Clubbing</strong>
+                <span class="event-venue-tag">☕ Starbucks Reserve BKC &bull; Mumbai</span>
+                <div class="event-meta-row">
+                  <span>Sun, Dec 7 &bull; 5 PM</span>
+                  <span style="color:#059669;font-weight:700;">9 seats left</span>
+                </div>
+                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-4')">
+                  Reserve Seat &rarr;
+                </button>
               </div>
 
+              <!-- Event 5 -->
               <div class="event-item-card">
-                <strong>social celebrations</strong>
-                <span>Bar association annual retreats, festive banquets, and practitioner galas.</span>
+                <strong>AI &amp; Tech Book Reading Circle</strong>
+                <span class="event-venue-tag lib-tag">📚 Central Tech Annex &bull; Delhi NCR</span>
+                <div class="event-meta-row">
+                  <span>Sun, Dec 14 &bull; 3 PM</span>
+                  <span style="color:#059669;font-weight:700;">14 seats left</span>
+                </div>
+                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-5')">
+                  Reserve Seat &rarr;
+                </button>
+              </div>
+
+              <!-- Event 6 -->
+              <div class="event-item-card">
+                <strong>Open Source Agent Sprint &amp; Demo</strong>
+                <span class="event-venue-tag">☕ Third Wave Koregaon Park &bull; Pune</span>
+                <div class="event-meta-row">
+                  <span>Sat, Dec 20 &bull; 4 PM</span>
+                  <span style="color:#059669;font-weight:700;">11 seats left</span>
+                </div>
+                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-6')">
+                  Reserve Seat &rarr;
+                </button>
               </div>
             </div>
           </div>
 
           <div class="megamenu-footer">
-            <span style="font-size: 11.5px; color: #64748B;">RSVP open to verified members and cohort fellows</span>
+            <span style="font-size: 11.5px; color: #64748B;">Physical seats reserved at mapped venues</span>
             <a href="#pillar-events" class="megamenu-action-link">
               <span>View Full Calendar &rarr;</span>
             </a>
@@ -2029,18 +2141,18 @@
   <!-- ─── Hero Section ─── -->
   <section class="hero-section">
     <div class="hero-inner">
-      <div class="section-badge">SOVEREIGN WORKFORCE &amp; STATUTORY INTELLIGENCE NETWORK</div>
+      <div class="section-badge">SOVEREIGN WORKFORCE &amp; AGENTIC LEARNING NETWORK</div>
       <h1 class="hero-title">
-        The Sovereign Operating System for<br>
-        <span class="highlight-blue">Autonomous Legal Practitioners</span>
+        The Sovereign Portal for<br>
+        <span class="highlight-blue">Young Learners &amp; Graduating Professionals</span>
       </h1>
       <p class="hero-desc">
-        Command verified agentic spaces across national court corridors, master skillpedia NSQF frameworks, participate in specialized legal cohorts, and deploy air-gapped agent swarms with Hayagriva.
+        Explore physical study cafes with high-speed Wi-Fi &amp; donuts, visit libraries equipped with computer terminals and AI books, master Skillpedia NSQF certifications, and connect with specialized professional cohorts.
       </p>
       <div class="hero-cta-group">
         <a href="#spaces-radar" class="hero-btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-          <span>Explore Spaces Radar Map</span>
+          <span>Explore Physical Spaces Map</span>
         </a>
         <button type="button" class="hero-btn-secondary" onclick="openDownloadModal()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
@@ -2059,13 +2171,13 @@
     <div class="metrics-container">
       <div class="metric-box">
         <span class="metric-value">16+</span>
-        <span class="metric-label">Agentic Spaces</span>
-        <span class="metric-sub">Work-Cafes &bull; Law Libraries</span>
+        <span class="metric-label">Physical Spaces</span>
+        <span class="metric-sub">Study Cafes &bull; AI Libraries</span>
       </div>
       <div class="metric-box">
-        <span class="metric-value">NSQF L7-9</span>
+        <span class="metric-value">NSQF L5-9</span>
         <span class="metric-label">Skillpedia Competencies</span>
-        <span class="metric-sub">Autonomous Toolpacks</span>
+        <span class="metric-sub">Learner &bull; Practitioner Tools</span>
       </div>
       <div class="metric-box">
         <span class="metric-value">3 Tracks</span>
@@ -2091,30 +2203,31 @@
           <!-- Mode Switcher: ☕ cafes vs 📚 libraries (Matching Image 2) -->
           <div class="mode-switcher">
             <button type="button" class="mode-btn active" id="mode-cafes-btn" onclick="setSpacesFilter('cafe')">
-              <span>☕ cafes (8)</span>
+              <span>☕ study cafes (8)</span>
             </button>
             <button type="button" class="mode-btn" id="mode-libs-btn" onclick="setSpacesFilter('library')">
-              <span>📚 libraries (8)</span>
+              <span>📚 ai libraries (8)</span>
             </button>
           </div>
 
           <!-- Search Box (Matching Image 2) -->
           <div class="search-box" id="spaces-search-box">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="spaces-search-input" placeholder="search cafes, libraries, court complexes, city..." oninput="handleSearchSpaces(this.value)" />
+            <input type="text" id="spaces-search-input" placeholder="search cafes, libraries, cities, ai books..." oninput="handleSearchSpaces(this.value)" />
             <button type="button" id="spaces-search-clear" class="search-clear-btn" onclick="clearSpacesSearch()">&times;</button>
           </div>
 
-          <!-- Filter Row: City Jurisdiction Select -->
+          <!-- Filter Row: City Select -->
           <div class="filter-row">
             <select id="sidebar-city-select" class="filter-select" onchange="filterByCity(this.value)">
-              <option value="all">All Jurisdictions (National Radar)</option>
-              <option value="Delhi NCR">Delhi NCR (Supreme Court / High Court / NCLT)</option>
-              <option value="Mumbai">Mumbai (Bombay High Court / NCLT BKC)</option>
-              <option value="Bengaluru">Bengaluru (Karnataka High Court / NCLT)</option>
-              <option value="Chandigarh">Chandigarh (Punjab &amp; Haryana High Court)</option>
-              <option value="Kolkata">Kolkata (Calcutta High Court)</option>
-              <option value="Hyderabad">Hyderabad (Telangana High Court)</option>
+              <option value="all">All Cities (National Radar)</option>
+              <option value="Delhi NCR">Delhi NCR</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Pune">Pune</option>
             </select>
           </div>
 
@@ -2441,19 +2554,63 @@
       <button type="button" class="modal-close" onclick="closeModal('desk-modal')">&times;</button>
       <h3 class="modal-title">Reserve a Work Desk</h3>
       <p class="modal-subtitle" id="desk-modal-subtitle">
-        Confirm check-in at selected legal workspace. Instant Wi-Fi access pass and desk reservation.
+        Confirm check-in at selected workspace. Instant Wi-Fi access pass and desk reservation.
       </p>
 
       <form class="modal-form" onsubmit="handleDeskReservation(event)">
         <div>
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">FULL NAME / BAR ENROLLMENT</label>
-          <input type="text" class="form-input" placeholder="Adv. Rajesh Sharma (D/1420/2014)" required>
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">FULL NAME</label>
+          <input type="text" class="form-input" placeholder="Your Name" required>
         </div>
         <div>
           <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">DATE &amp; TIME SLOT</label>
           <input type="datetime-local" class="form-input" required>
         </div>
         <button type="submit" class="modal-submit-btn">Confirm Desk Check-In &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Event Seat Reservation Modal -->
+  <div class="modal-backdrop" id="event-modal" onclick="closeModalOnBackdrop(event, 'event-modal')">
+    <div class="modal-card">
+      <button type="button" class="modal-close" onclick="closeModal('event-modal')">&times;</button>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span class="sub-badge" id="event-modal-badge" style="background:#EFF6FF;color:#1E40AF;font-size:11px;font-weight:700;">PROFESSIONAL EVENT</span>
+        <span id="event-modal-seats-pill" style="font-size:11px;font-family:monospace;color:#059669;font-weight:700;background:#ECFDF5;padding:2px 6px;border-radius:4px;">12 seats left</span>
+      </div>
+      <h3 class="modal-title" id="event-modal-title">Autonomous AI Hackathon 2026</h3>
+      <p class="modal-subtitle" id="event-modal-subtitle" style="margin-bottom:14px;">
+        Hosted @ Blue Tokai Coffee Roasters — Saket, Delhi NCR.<br>
+        <span style="color:#0F172A;font-weight:600;" id="event-modal-date">Saturday, Dec 6, 2026 • 10:00 AM – 6:00 PM</span>
+      </p>
+
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 12px;margin-bottom:16px;font-size:12px;color:#475569;" id="event-modal-amenities">
+        ☕ <strong>Venue Perks:</strong> High-Speed Wi-Fi, Dedicated Worktable, Unlimited Brewed Coffee &amp; Donuts included.
+      </div>
+
+      <form class="modal-form" onsubmit="handleEventReservation(event)">
+        <input type="hidden" id="event-reservation-id" value="" />
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:#334155;font-family:var(--font-heading);">FULL NAME</label>
+          <input type="text" class="form-input" id="event-rsvp-name" placeholder="Your Name" required />
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:#334155;font-family:var(--font-heading);">EMAIL ADDRESS</label>
+          <input type="email" class="form-input" id="event-rsvp-email" placeholder="name@example.com" required />
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:#334155;font-family:var(--font-heading);">BACKGROUND / PROFILE</label>
+          <select class="form-input" id="event-rsvp-category" style="font-family:inherit;">
+            <option value="Young Learner / Student">Young Learner of Agentic Skills / Student</option>
+            <option value="Graduating Legal Practitioner">Graduating Legal Practitioner (Advocate / Counsel)</option>
+            <option value="Insolvency Professional / Valuer">Insolvency Professional / Valuer (IBC)</option>
+            <option value="AI Engineer / Developer">AI Engineer / Open Source Tool Developer</option>
+          </select>
+        </div>
+        <button type="submit" class="modal-submit-btn" style="margin-top:6px;">
+          Confirm Seat Reservation &rarr;
+        </button>
       </form>
     </div>
   </div>
@@ -2488,266 +2645,370 @@
 
   <!-- ─── Interactive Telemetry & Spaces GIS Logic ─── -->
   <script>
-    // Curated Database of Agentic Spaces (Cafes & Law Libraries Strictly - No Halls)
+    // Curated Database of Agentic Spaces (Cafes with Wi-Fi & Donuts • Libraries with Computers & AI Books)
     const spacesData = [
-      // ─── CAFES ───
+      // ─── CAFES (Coffee & Donuts Co-working / Study Spots) ───
       {
         id: 'cafe-1',
         type: 'cafe',
-        name: 'Blue Tokai Coffee Roasters',
+        name: 'Blue Tokai Coffee Roasters — Saket',
         city: 'Delhi NCR',
-        location: 'Saket District Court Annex, New Delhi',
-        proximity: '350 meters from Saket District Court • 8 mins to NCLT South',
-        lat: 28.5244,
-        lng: 77.2155,
-        wifi: '350 Mbps Dedicated Fiber Wi-Fi',
-        power: 'Universal Outlets at Every Worktable',
-        noise: 'Silent Research Zone (42 dB ambient)',
-        specialty: 'Artisan Pour-overs & Private Meeting Annex',
-        desc: 'Top choice for insolvency and litigation counsel between matters. Ergonomic tables, reliable high-speed fiber, and quiet corners for brief drafting.',
-        directionsUrl: 'https://maps.google.com/?q=28.5244,77.2155'
+        location: 'Saidulajab, Westend Marg, Saket, New Delhi',
+        proximity: 'Near Saket Metro & Select Citywalk • South Delhi Hub',
+        lat: 28.5204,
+        lng: 77.2015,
+        wifi: '350 Mbps Dedicated Fiber',
+        power: 'Universal Outlets at All Tables',
+        noise: 'Silent Co-working Vibe (42 dB)',
+        specialty: 'Specialty Pourovers, Fresh Sourdough Bakes & Artisanal Donuts',
+        desc: 'Vibrant co-working cafe favored by young AI developers, prompt engineers, and legal tech counsel. Ergonomic benching and strong Wi-Fi.',
+        directionsUrl: 'https://maps.google.com/?q=28.5204,77.2015'
       },
       {
         id: 'cafe-2',
         type: 'cafe',
         name: 'Starbucks Reserve — BKC',
         city: 'Mumbai',
-        location: 'Bandra Kurla Complex, Mumbai',
-        proximity: '400 meters from NCLT Mumbai Benches 1-5',
+        location: 'G Block, Bandra Kurla Complex, Mumbai',
+        proximity: 'Near Diamond Bourse & NCLT Mumbai Corridor',
         lat: 19.0657,
-        lng: 72.8642,
+        lng: 72.8682,
         wifi: '400 Mbps High-Speed Wi-Fi',
-        power: 'Dedicated Power Ports at Long Shared Tables',
-        noise: 'Moderate Buzz / Noise-Canceling Recommended (52 dB)',
-        specialty: 'Reserve Nitro Brews & Private Conference Alcove',
-        desc: 'The corporate restructuring epicenter in Mumbai. Daily gathering point for Resolution Professionals, Valuers, and NCLT arguing counsel.',
-        directionsUrl: 'https://maps.google.com/?q=19.0657,72.8642'
+        power: 'Executive Worktables with AC/USB Sockets',
+        noise: 'Moderate Buzz / Focused Corner Workspaces (50 dB)',
+        specialty: 'Reserve Nitro Cold Brews, Fresh Bagels & Glazed Donuts',
+        desc: 'Prime networking hub for corporate professionals, restructuring specialists, and fintech builders graduating to agentic workflows.',
+        directionsUrl: 'https://maps.google.com/?q=19.0657,72.8682'
       },
       {
         id: 'cafe-3',
         type: 'cafe',
-        name: 'Third Wave Coffee Roasters',
+        name: 'Third Wave Coffee — Indiranagar',
         city: 'Bengaluru',
-        location: 'Indiranagar 100ft Road, Bengaluru',
-        proximity: 'Direct Metro Access to Karnataka High Court (Vidhana Soudha)',
-        lat: 12.9784,
-        lng: 77.6408,
-        wifi: '300 Mbps Fiber Wi-Fi',
-        power: 'Dual AC + USB Outlets at Every Seat',
-        noise: 'Quiet Work Loft on First Floor (44 dB)',
-        specialty: 'Cold Brew Flights & Power Backup Generator',
-        desc: 'Tech-forward space popular with legal tech developers, intellectual property attorneys, and commercial litigation teams.',
-        directionsUrl: 'https://maps.google.com/?q=12.9784,77.6408'
+        location: '100ft Road, HAL 2nd Stage, Indiranagar, Bengaluru',
+        proximity: 'Direct Metro Access • Tech Corridor',
+        lat: 12.9719,
+        lng: 77.6412,
+        wifi: '500 Mbps High-Speed Mesh',
+        power: 'Sockets & USB Ports at Every Carrel Booth',
+        noise: 'Quiet Work Loft on First Floor (42 dB)',
+        specialty: 'Single-Origin Brews, Cinnamon Rolls & Chocolate Doughnuts',
+        desc: 'The Silicon Valley of India hub for young AI agent builders, hackathon teams, and students experimenting with local LLM harnesses.',
+        directionsUrl: 'https://maps.google.com/?q=12.9719,77.6412'
       },
       {
         id: 'cafe-4',
         type: 'cafe',
-        name: 'The Legal Grounds Chambers Cafe',
-        city: 'Delhi NCR',
-        location: 'Barakhamba Road, Connaught Place, New Delhi',
-        proximity: '5 mins to Delhi High Court & Patiala House Courts',
-        lat: 28.6315,
-        lng: 77.2167,
-        wifi: '500 Mbps Fiber with Enterprise VPN Support',
-        power: 'In-Desk Surge Protectors & Multi-Plugs',
-        noise: 'Library Whisper Mode Enforced (38 dB)',
-        specialty: 'High-Speed Document Scanning & Print Station',
-        desc: 'Specialized legal work cafe catering exclusively to legal professionals with quiet chambers, legal reference periodicals, and instant scanning.',
-        directionsUrl: 'https://maps.google.com/?q=28.6315,77.2167'
+        name: 'Roastery Coffee House — Banjara Hills',
+        city: 'Hyderabad',
+        location: 'Road No. 14, Banjara Hills, Hyderabad',
+        proximity: 'Near IT Corridor & High Court Connectivity',
+        lat: 17.4156,
+        lng: 78.4350,
+        wifi: '300 Mbps Fiber Wi-Fi',
+        power: 'Courtyard & Indoor Work Desks with Plugs',
+        noise: 'Serene Garden Setting (44 dB)',
+        specialty: 'Monsooned Malabar Roasts, Fresh Bakes & Doughnuts',
+        desc: 'Lush greenery and peaceful ambience ideal for focused study sessions, agent architecture planning, and peer code reviews.',
+        directionsUrl: 'https://maps.google.com/?q=17.4156,78.4350'
       },
       {
         id: 'cafe-5',
         type: 'cafe',
-        name: 'Roastery Coffee House',
-        city: 'Delhi NCR',
-        location: 'Sector 62 Judicial Hub, Noida',
-        proximity: '1.2 km from Noida District Courts & Commercial Benches',
-        lat: 28.6280,
-        lng: 77.3649,
-        wifi: '250 Mbps Wi-Fi',
-        power: 'Under-desk Outlets across Garden Patio',
-        noise: 'Serene Garden Setting (45 dB)',
-        specialty: 'Specialty Roasts & Al Fresco Case Strategy Nooks',
-        desc: 'Peaceful setting for deep drafting sessions and multi-party insolvency negotiations away from court commotion.',
-        directionsUrl: 'https://maps.google.com/?q=28.6280,77.3649'
+        name: 'Blue Tokai Coffee Roasters — Park Street',
+        city: 'Kolkata',
+        location: 'Park Street Commercial & Heritage Hub, Kolkata',
+        proximity: '10 mins to Calcutta High Court & St. Xavier’s',
+        lat: 22.5512,
+        lng: 88.3524,
+        wifi: '300 Mbps High-Speed Fiber',
+        power: 'Silent Mezzanine Worktables with Power Strips',
+        noise: 'Library Whisper Mode on Upper Floor (39 dB)',
+        specialty: 'Specialty Pour-Overs, Sourdough Croissants & Donuts',
+        desc: 'Historic central hub popular with university researchers, students, and legal practitioners preparing statutory submissions.',
+        directionsUrl: 'https://maps.google.com/?q=22.5512,88.3524'
       },
       {
         id: 'cafe-6',
         type: 'cafe',
-        name: 'Subko Specialty Coffee & Craft Bakehouse',
+        name: 'Subko Coffee & Craft Bakehouse — Bandra',
         city: 'Mumbai',
-        location: 'Bandra Reclamation, Mumbai',
-        proximity: '12 mins to Bombay High Court Western Bench',
-        lat: 19.0435,
-        lng: 72.8273,
-        wifi: '300 Mbps High-Speed Wi-Fi',
-        power: 'Available at Bench Seating Areas',
-        noise: 'Vibrant Ambient Cafe (54 dB)',
-        specialty: 'Single Origin Indian Coffees & Podcasting Booth',
-        desc: 'Creative workspace frequented by media, copyright, and commercial litigation advocates.',
-        directionsUrl: 'https://maps.google.com/?q=19.0435,72.8273'
+        location: 'Ranwar Village, Bandra West, Mumbai',
+        proximity: 'Western Express Highway & Bandra Station Access',
+        lat: 19.0596,
+        lng: 72.8295,
+        wifi: '350 Mbps Wi-Fi',
+        power: 'Communal Craft Benches with Multi-Plugs',
+        noise: 'Creative Cafe Atmosphere (48 dB)',
+        specialty: 'Bean-to-Bar Chocolate, Sourdough Bakes & Brioche Donuts',
+        desc: 'Creative workspace buzzing with open-source AI developers, media researchers, and young technology professionals.',
+        directionsUrl: 'https://maps.google.com/?q=19.0596,72.8295'
       },
       {
         id: 'cafe-7',
         type: 'cafe',
-        name: 'Coffee Mechanics Cowork Lounge',
-        city: 'Bengaluru',
-        location: 'Rajajinagar Judicial Complex Corridor, Bengaluru',
-        proximity: '800 meters from City Civil Court Complex',
-        lat: 12.9915,
-        lng: 77.5528,
-        wifi: '350 Mbps Dedicated Line',
-        power: 'Full Charging Station at Every Booth',
-        noise: 'Quiet Coworking Zone (40 dB)',
-        specialty: 'Estate Brews & Whiteboard Consultation Rooms',
-        desc: 'Equipped with soundproof call booths for urgent court mentions and hybrid virtual court appearances.',
-        directionsUrl: 'https://maps.google.com/?q=12.9915,77.5528'
+        name: 'The Coffee Bean & Tea Leaf — Sector 35',
+        city: 'Chandigarh',
+        location: 'Sector 35-B Commercial Corridor, Chandigarh',
+        proximity: 'Near Panjab University & High Court Transit',
+        lat: 30.7266,
+        lng: 76.7681,
+        wifi: '300 Mbps Wi-Fi',
+        power: 'Quiet Study Booths with Dedicated Sockets',
+        noise: 'Calm Academic Environment (40 dB)',
+        specialty: 'Gourmet Cold Brews, Blueberry Muffins & Glazed Donuts',
+        desc: 'Student-friendly study retreat frequented by Panjab University students and young advocates preparing litigation briefs.',
+        directionsUrl: 'https://maps.google.com/?q=30.7266,76.7681'
       },
       {
         id: 'cafe-8',
         type: 'cafe',
-        name: 'Indian Coffee House Heritage Chamber',
-        city: 'Chandigarh',
-        location: 'Sector 17 Commercial Center, Chandigarh',
-        proximity: '10 mins to Punjab & Haryana High Court',
-        lat: 30.7410,
-        lng: 76.7850,
-        wifi: '200 Mbps Wi-Fi',
-        power: 'Perimeter Wall Outlets',
-        noise: 'Traditional Bar Buzz (50 dB)',
-        specialty: 'Heritage Filter Coffee & Senior Bar Discussions',
-        desc: 'Historic meeting place for senior advocates, constitutional scholars, and legal historians in the tricity area.',
-        directionsUrl: 'https://maps.google.com/?q=30.7410,76.7850'
+        name: 'Third Wave Coffee — Koregaon Park',
+        city: 'Pune',
+        location: 'North Main Road, Koregaon Park, Pune',
+        proximity: 'Pune Tech Corridor & Student Hub',
+        lat: 18.5362,
+        lng: 73.8940,
+        wifi: '400 Mbps Mesh Network',
+        power: 'Outlets at Every Booth & Window Bench',
+        noise: 'Study & Work Friendly (43 dB)',
+        specialty: 'Nitro Brews, Fresh Bagels & Filled Donuts',
+        desc: 'Vibrant co-working haven for engineering students, AI startup founders, and consultants working on multi-agent automations.',
+        directionsUrl: 'https://maps.google.com/?q=18.5362,73.8940'
       },
 
-      // ─── LAW LIBRARIES ───
+      // ─── LIBRARIES (Computers, AI Books & Academic Stacks) ───
       {
         id: 'lib-1',
         type: 'library',
-        name: 'Delhi High Court Bar Association Library',
+        name: 'Delhi Public Library — Central Tech Annex',
         city: 'Delhi NCR',
-        location: 'Sher Shah Road, New Delhi',
-        proximity: 'Inside Delhi High Court Main Block',
-        lat: 28.6083,
-        lng: 77.2384,
-        wifi: 'High Court Gigabit Secure Fiber',
-        power: 'Terminal Plug on Every Carrel Desk',
+        location: 'Opposite Old Delhi Railway Station, Chandni Chowk, Delhi',
+        proximity: 'Direct Metro Access (Chandni Chowk / Kashmere Gate)',
+        lat: 28.6562,
+        lng: 77.2310,
+        wifi: 'National Gigabit Research Network',
+        terminals: '60 PC Workstations',
+        ai_books: '850+ Volumes (AI, Python, Deep Learning, Cyber Law)',
+        power: 'Wired Reading Desks with Sockets',
         noise: 'Strict Silence Enforced (< 30 dB)',
-        specialty: 'AIR, SCC, SCR Complete Physical & Digital Archives',
-        desc: 'Premier reference library for Delhi advocates featuring 65,000+ volumes, all Supreme Court and High Court law reports, and SCC Online terminals.',
-        directionsUrl: 'https://maps.google.com/?q=28.6083,77.2384'
+        specialty: 'Free Public Computer Access & Extensive Technical Reading Stacks',
+        desc: 'Public knowledge repository equipped with 60 high-speed internet computers and physical shelves stocked with AI, machine learning, and computer science textbooks.',
+        directionsUrl: 'https://maps.google.com/?q=28.6562,77.2310'
       },
       {
         id: 'lib-2',
         type: 'library',
-        name: 'NCLT Principal Bench Judicial Archive',
-        city: 'Delhi NCR',
-        location: 'Block 3, CGO Complex, Lodhi Road, New Delhi',
-        proximity: 'Directly Adjacent to Principal Bench Courtrooms 1 & 2',
-        lat: 28.5892,
-        lng: 77.2372,
-        wifi: 'Tribunal Intranet & Research Wi-Fi',
-        power: 'Individual Carrel Outlets',
-        noise: 'Quiet Research Archive (32 dB)',
-        specialty: 'Comprehensive IBBI Gazette Digests & CIRP Orders',
-        desc: 'Specialized corporate restructuring library housing all National Company Law Tribunal orders, appellate decisions, and liquidation precedents since 2016.',
-        directionsUrl: 'https://maps.google.com/?q=28.5892,77.2372'
+        name: 'National Institute of Advanced Studies (NIAS) Library',
+        city: 'Bengaluru',
+        location: 'IISc Campus, Mathikere, Bengaluru',
+        proximity: 'Inside Premier IISc Academic Campus',
+        lat: 13.0163,
+        lng: 77.5657,
+        wifi: 'National Knowledge Network (NKN) 1 Gbps',
+        terminals: '40 Research Terminals',
+        ai_books: '1,200+ Volumes (Cognitive Science, Autonomous Agents, LLMs)',
+        power: 'Individual Carrel Outlets & Surge Protectors',
+        noise: 'Pin-Drop Silence (< 28 dB)',
+        specialty: 'Advanced AI Research Treatises & Digital ACM/IEEE Terminal Access',
+        desc: 'World-class interdisciplinary research library housing foundational volumes on cognitive artificial intelligence, algorithmic ethics, and complex computational systems.',
+        directionsUrl: 'https://maps.google.com/?q=13.0163,77.5657'
       },
       {
         id: 'lib-3',
         type: 'library',
-        name: 'Bombay Bar Association Memorial Library',
+        name: 'Bombay Bar Association Memorial Library & AI Hub',
         city: 'Mumbai',
         location: 'High Court Heritage Building, Fort, Mumbai',
-        proximity: 'Within Bombay High Court Main Heritage Wing',
+        proximity: 'Inside Bombay High Court Heritage Wing',
         lat: 18.9298,
         lng: 72.8301,
-        wifi: 'Bar Council High-Speed Fiber',
-        power: 'Teak Reading Desk Power Banks',
-        noise: 'Strict Silence (< 32 dB)',
-        specialty: 'Centenary Law Digests, Privy Council Rulings & Admiralty Records',
-        desc: 'One of the oldest legal reference institutions in Asia. Houses rare constitutional treatises, commercial court digests, and precedent registries.',
+        wifi: 'Bar Council Research Fiber',
+        terminals: '35 High-Speed Workstations',
+        ai_books: '400+ Volumes (Legal Tech, Cyber Jurisprudence, Statutory Digests)',
+        power: 'Brass Lamp Carrels with Charging Outlets',
+        noise: 'Strict Silence (< 30 dB)',
+        specialty: 'Centenary Law Digests, Digital Citation Banks & Statutory AI Guides',
+        desc: 'One of the oldest legal reference institutions in Asia, now modernized with terminal access for researching statutory algorithms and case law databases.',
         directionsUrl: 'https://maps.google.com/?q=18.9298,72.8301'
       },
       {
         id: 'lib-4',
         type: 'library',
-        name: 'Karnataka High Court Advocates Central Library',
-        city: 'Bengaluru',
-        location: 'Attara Kacheri, Ambedkar Veedhi, Bengaluru',
-        proximity: 'High Court Heritage Wing, Cubbon Park Entrance',
-        lat: 12.9767,
-        lng: 77.5928,
-        wifi: 'Bar Council Research Network',
-        power: 'Individual Research Carrels',
-        noise: 'Strict Silence (30 dB)',
-        specialty: 'Karnataka Law Journal, SCC, and Digital Citation Banks',
-        desc: 'Comprehensive research repository inside the iconic red-brick Attara Kacheri. Provides quiet reading carrels for supreme court and high court advocates.',
-        directionsUrl: 'https://maps.google.com/?q=12.9767,77.5928'
-      },
-      {
-        id: 'lib-5',
-        type: 'library',
-        name: 'Punjab & Haryana High Court Bar Library',
-        city: 'Chandigarh',
-        location: 'Capitol Complex, Sector 1, Chandigarh',
-        proximity: 'Within Le Corbusier High Court Complex',
-        lat: 30.7588,
-        lng: 76.8041,
-        wifi: 'High Court Secure Network',
-        power: 'Carrels with Surge-Protected Power',
-        noise: 'Strict Silence (30 dB)',
-        specialty: 'Constitutional, Agrarian, and Criminal Law Repositories',
-        desc: 'Modernized architectural masterpiece housing regional law digests, tri-code comparative indices, and terminal access to Manupatra and SCC Online.',
-        directionsUrl: 'https://maps.google.com/?q=30.7588,76.8041'
-      },
-      {
-        id: 'lib-6',
-        type: 'library',
-        name: 'NCLAT Appellate Research Library',
-        city: 'Delhi NCR',
-        location: 'MTNL Building, 7th Floor, New Delhi',
-        proximity: 'Inside National Company Law Appellate Tribunal',
-        lat: 28.5839,
-        lng: 77.2274,
-        wifi: 'NCLAT Judicial Wi-Fi',
-        power: 'All Reading Tables Wired',
-        noise: 'Silent Research (< 30 dB)',
-        specialty: 'Complete NCLAT & Supreme Court Insolvency Appeals History',
-        desc: 'Essential archive for appellate restructuring counsel analyzing Section 61 appeals, CoC commercial wisdom challenges, and avoidance transactions.',
-        directionsUrl: 'https://maps.google.com/?q=28.5839,77.2274'
-      },
-      {
-        id: 'lib-7',
-        type: 'library',
-        name: 'Calcutta High Court Centenary Library',
+        name: 'Calcutta High Court Centenary Library & Digital Repository',
         city: 'Kolkata',
         location: 'Old Post Office Street, BBD Bagh, Kolkata',
         proximity: 'Adjacent to Calcutta High Court Main Gates',
         lat: 22.5719,
         lng: 88.3476,
-        wifi: 'Advocates Association Gigabit Network',
-        power: 'Classic Brass Lamp Carrels with Sockets',
+        wifi: 'Advocates Association Gigabit Grid',
+        terminals: '30 High-Speed Terminals',
+        ai_books: '550+ Volumes (Commercial Jurisprudence, AI Law, Precedents)',
+        power: 'Teak Reading Carrels with Plugs',
         noise: 'Strict Silence Enforced (28 dB)',
-        specialty: 'Calcutta Weekly Notes, Privy Council, & Commercial Digests',
-        desc: 'Historic collection serving advocates across Eastern India. Unmatched historical jurisprudence in maritime, bankruptcy, and company affairs.',
+        specialty: 'Historic Common Law Compendiums & Digital Case Law Archives',
+        desc: 'Distinguished research center with computer stations for drafting statutory filings, researching precedents, and studying tri-code transitions.',
         directionsUrl: 'https://maps.google.com/?q=22.5719,88.3476'
+      },
+      {
+        id: 'lib-5',
+        type: 'library',
+        name: 'State Central Library — Afzal Gunj Digital Annex',
+        city: 'Hyderabad',
+        location: 'Afzal Gunj, Bank of Musi River, Hyderabad',
+        proximity: 'Near High Court of Telangana & City College',
+        lat: 17.3712,
+        lng: 78.4754,
+        wifi: 'State Digital Knowledge Fiber',
+        terminals: '50 Public Terminals',
+        ai_books: '700+ Volumes (AI Systems, Data Science, Engineering Texts)',
+        power: 'Terminal Plugs at All 80 Carrels',
+        noise: 'Strict Silence (30 dB)',
+        specialty: 'Grand Architectural Rotunda with Free Digital PC Workstations',
+        desc: 'Historic landmark library offering students and practitioners free access to 50 computers, high-speed web research, and comprehensive tech collections.',
+        directionsUrl: 'https://maps.google.com/?q=17.3712,78.4754'
+      },
+      {
+        id: 'lib-6',
+        type: 'library',
+        name: 'Punjab University A.C. Joshi Library & Tech Commons',
+        city: 'Chandigarh',
+        location: 'Sector 14 Campus, Panjab University, Chandigarh',
+        proximity: 'Central Campus • 24x7 Outer Reading Hall',
+        lat: 30.7588,
+        lng: 76.7685,
+        wifi: 'Campus 10-Gigabit Network',
+        terminals: '80 Computer Terminals',
+        ai_books: '1,500+ Volumes (Computer Science, AI, Robotics, Mathematics)',
+        power: 'Fully Wired Individual Reading Carrels',
+        noise: 'Quiet Academic Hall (30 dB)',
+        specialty: '24x7 Study Facilities & Dedicated AI/ML Reference Wing',
+        desc: 'Premier university library in Northern India with over 80 terminals, round-the-clock reading rooms, and extensive technical literature.',
+        directionsUrl: 'https://maps.google.com/?q=30.7588,76.7685'
+      },
+      {
+        id: 'lib-7',
+        type: 'library',
+        name: 'Karnataka State Central Library — Cubbon Park Knowledge Lab',
+        city: 'Bengaluru',
+        location: 'Seshadri Iyer Memorial Hall, Cubbon Park, Bengaluru',
+        proximity: 'Adjacent to Karnataka High Court (Attara Kacheri)',
+        lat: 12.9767,
+        lng: 77.5928,
+        wifi: 'City Digital Gigabit Network',
+        terminals: '45 Public Terminals',
+        ai_books: '600+ Volumes (AI Fundamentals, Algorithmic Logic, Tech Law)',
+        power: 'Individual Research Carrels with Outlets',
+        noise: 'Strict Silence Enforced (28 dB)',
+        specialty: 'Heritage Red-Brick Sanctuary with Modernized Digital Center',
+        desc: 'Iconic library located inside lush Cubbon Park, providing free computer carrels and comprehensive reading rooms for engineers and lawyers alike.',
+        directionsUrl: 'https://maps.google.com/?q=12.9767,77.5928'
       },
       {
         id: 'lib-8',
         type: 'library',
-        name: 'Telangana High Court Advocates Association Library',
-        city: 'Hyderabad',
-        location: 'Ghansi Bazaar, Near City College, Hyderabad',
-        proximity: 'High Court Premises, Bank of Musi River',
-        lat: 17.3688,
-        lng: 78.4739,
-        wifi: 'State Bar Research Fiber',
-        power: 'Desk Plugs at All 80 Carrels',
-        noise: 'Strict Silence (30 dB)',
-        specialty: 'Andhra Pradesh & Telangana Law Times Archives',
-        desc: 'Premier judicial library in South India, featuring automated citation cross-referencing and extensive criminal jurisprudence commentaries.',
-        directionsUrl: 'https://maps.google.com/?q=17.3688,78.4739'
+        name: 'Indian Institute of Public Administration (IIPA) Library',
+        city: 'Delhi NCR',
+        location: 'Indraprastha Estate, Ring Road, New Delhi',
+        proximity: 'Near Supreme Court & Pragati Maidan Hub',
+        lat: 28.6234,
+        lng: 77.2489,
+        wifi: 'IIPA National Knowledge Network',
+        terminals: '30 Research Workstations',
+        ai_books: '900+ Volumes (AI Governance, Autonomous Policy, Administrative Law)',
+        power: 'Desk Plugs at All Carrel Desks',
+        noise: 'Silent Research (< 30 dB)',
+        specialty: 'Statutory AI Governance, Gazette Archives & Policy Stacks',
+        desc: 'Specialized administrative and public policy archive housing literature on algorithmic governance, statutory drafting, and digital safety standards.',
+        directionsUrl: 'https://maps.google.com/?q=28.6234,77.2489'
+      }
+    ];
+
+    // Curated Events happening at the physical mapped Cafes & Libraries
+    const eventsData = [
+      {
+        id: 'evt-1',
+        title: 'Autonomous AI Hackathon 2026',
+        category: 'professional',
+        type: 'hackathon',
+        venueId: 'cafe-1',
+        venueName: 'Blue Tokai Coffee Roasters — Saket',
+        city: 'Delhi NCR',
+        date: 'Saturday, Dec 6, 2026 • 10:00 AM – 6:00 PM',
+        seatsTotal: 40,
+        seatsLeft: 12,
+        amenities: 'Free High-Speed Wi-Fi, Dedicated Worktable, Unlimited Brewed Coffee & Donuts',
+        desc: 'Build multi-agent task swarms, deterministic section extractors, and tool-calling pipelines using local models.'
+      },
+      {
+        id: 'evt-2',
+        title: 'Agentic Skills Saturday Study Hall',
+        category: 'professional',
+        type: 'study-hall',
+        venueId: 'cafe-3',
+        venueName: 'Third Wave Coffee — Indiranagar',
+        city: 'Bengaluru',
+        date: 'Saturday, Dec 13, 2026 • 11:00 AM – 4:00 PM',
+        seatsTotal: 30,
+        seatsLeft: 8,
+        amenities: 'Gigabit Mesh Wi-Fi, Power Outlets at every seat, Artisan Pourovers & Donuts',
+        desc: 'Peer study circle for young learners and career-starters completing NSQF Level 6 & 7 agentic certifications.'
+      },
+      {
+        id: 'evt-3',
+        title: 'Statutory AI Practitioner Conclave',
+        category: 'professional',
+        type: 'conference',
+        venueId: 'lib-4',
+        venueName: 'Calcutta High Court Centenary Library',
+        city: 'Kolkata',
+        date: 'Friday, Dec 19, 2026 • 2:00 PM – 6:00 PM',
+        seatsTotal: 50,
+        seatsLeft: 15,
+        amenities: 'Digital Terminal Access, Physical Citation Compendiums, High Court Entry Pass',
+        desc: 'Senior advocates and insolvency professionals analyzing statutory verification gates in court filings.'
+      },
+      {
+        id: 'evt-4',
+        title: 'Mindful Co-working & Evening Bhajan Clubbing',
+        category: 'social',
+        type: 'bhajan-clubbing',
+        venueId: 'cafe-2',
+        venueName: 'Starbucks Reserve — BKC',
+        city: 'Mumbai',
+        date: 'Sunday, Dec 7, 2026 • 5:00 PM – 8:30 PM',
+        seatsTotal: 45,
+        seatsLeft: 9,
+        amenities: 'Acoustic Sound Therapy, Reserve Coffee, Vegan Donuts, Reflective Fellowship',
+        desc: 'Litigator sound healing, sacred acoustic frequencies, and mindful co-working to decompress between intense court weeks.'
+      },
+      {
+        id: 'evt-5',
+        title: 'AI & Machine Learning Book Reading Circle',
+        category: 'social',
+        type: 'reading-circle',
+        venueId: 'lib-1',
+        venueName: 'Delhi Public Library — Central Tech Annex',
+        city: 'Delhi NCR',
+        date: 'Sunday, Dec 14, 2026 • 3:00 PM – 6:00 PM',
+        seatsTotal: 35,
+        seatsLeft: 14,
+        amenities: 'Free Access to 850+ AI Books, PC Terminals, Discussion Hall, Light Refreshments',
+        desc: 'Community deep dive into foundational AI architectures, attention mechanisms, and autonomous agent design patterns.'
+      },
+      {
+        id: 'evt-6',
+        title: 'Open Source Agent Sprint & Demo Night',
+        category: 'professional',
+        type: 'hackathon',
+        venueId: 'cafe-8',
+        venueName: 'Third Wave Coffee — Koregaon Park',
+        city: 'Pune',
+        date: 'Saturday, Dec 20, 2026 • 4:00 PM – 9:00 PM',
+        seatsTotal: 35,
+        seatsLeft: 11,
+        amenities: 'Dedicated High-Speed Mesh, Power Sockets, Brioche Donuts & Cold Brews',
+        desc: 'Showcase your local Ollama tool harnesses, browser agents, and Python autonomous workflows to the community.'
       }
     ];
 
@@ -2865,12 +3126,12 @@
       // Update Mode button counts
       const totalCafes = spacesData.filter(s => s.type === 'cafe').length;
       const totalLibs = spacesData.filter(s => s.type === 'library').length;
-      if (cafesBtn) cafesBtn.querySelector('span').textContent = `☕ cafes (${totalCafes})`;
-      if (libsBtn) libsBtn.querySelector('span').textContent = `📚 libraries (${totalLibs})`;
+      if (cafesBtn) cafesBtn.querySelector('span').textContent = `☕ study cafes (${totalCafes})`;
+      if (libsBtn) libsBtn.querySelector('span').textContent = `📚 ai libraries (${totalLibs})`;
 
       // Update Stats bar
       if (countDisplay) {
-        countDisplay.textContent = `${filtered.length} verified ${currentFilter === 'cafe' ? 'spaces' : 'libraries'}`;
+        countDisplay.textContent = `${filtered.length} verified ${currentFilter === 'cafe' ? 'study cafes' : 'ai libraries'}`;
       }
       if (cityDisplay) {
         cityDisplay.textContent = currentCity === 'all' ? 'National Radar' : currentCity;
@@ -2883,7 +3144,7 @@
           <div style="padding:48px 16px;text-align:center;color:#64748B;font-size:13px;">
             <div style="font-size:24px;margin-bottom:8px;">🔍</div>
             <div style="font-weight:600;color:#0F172A;margin-bottom:4px;">No verified spaces found</div>
-            <div style="margin-bottom:14px;">Try clearing your search or switching jurisdictions.</div>
+            <div style="margin-bottom:14px;">Try clearing your search or switching cities.</div>
             <button type="button" onclick="clearSpacesSearch()" style="padding:6px 14px;border-radius:8px;border:1px solid #CBD5E1;background:#FFFFFF;color:#0F172A;font-size:12px;font-weight:600;cursor:pointer;">
               Reset Search
             </button>
@@ -2900,13 +3161,18 @@
       cardList.innerHTML = filtered.map(s => {
         const isActive = (s.id === activeSpaceId);
         const isBookmarked = bookmarkedSpaces.has(s.id);
-        const stageBadge = s.type === 'cafe' ? '300+ MBPS' : 'AIR-GAPPED ARCHIVE';
-        const stageBadgeClass = s.type === 'cafe' ? 'badge-cafe' : 'badge-lib';
-        const typeLabel = s.type === 'cafe' ? 'Work-From-Cafe' : 'Law Library';
+        const isCafe = (s.type === 'cafe');
+        const stageBadge = isCafe ? (s.wifi.split(' ')[0] + ' MBPS') : (s.terminals ? 'COMPUTERS & AI' : 'AIR-GAPPED ARCHIVE');
+        const stageBadgeClass = isCafe ? 'badge-cafe' : 'badge-lib';
+        const typeLabel = isCafe ? 'Study & Co-working Cafe' : 'Computer & AI Library';
 
-        // Extract court proximity short
-        const courtName = s.proximity.includes('from ') ? s.proximity.split('from ')[1] : s.proximity;
-        const courtDist = s.proximity.includes('from ') ? s.proximity.split('from ')[0].trim() : (s.proximity.includes('Within') ? 'Within Complex' : s.proximity.split('•')[0]);
+        const metric1Key = isCafe ? 'AMENITIES' : 'COMPUTERS';
+        const metric1Val = isCafe ? (s.power.includes('Universal') ? 'Power at All Desks' : 'Power Outlets') : (s.terminals || 'PC Workstations');
+
+        const metric2Key = isCafe ? 'WIFI SPEED' : 'AI BOOKS';
+        const metric2Val = isCafe ? (s.wifi.split(' ')[0] + ' ' + s.wifi.split(' ')[1]) : (s.ai_books ? s.ai_books.split('(')[0].trim() : 'AI Book Stacks');
+
+        const reserveBtnText = isCafe ? 'Reserve Desk &rarr;' : 'Reserve Carrel &rarr;';
 
         return `
           <div class="deal-card ${isActive ? 'active' : ''}" data-id="${s.id}" onclick="selectSpaceFromCard('${s.id}')">
@@ -2922,26 +3188,26 @@
 
             <div class="card-badges-row">
               <span class="sub-badge court-badge">${s.city}</span>
-              <span class="sub-badge city-badge" title="${courtName}">${courtName.length > 26 ? courtName.slice(0,25) + '…' : courtName}</span>
+              <span class="sub-badge city-badge" title="${s.proximity}">${s.proximity.length > 28 ? s.proximity.slice(0,27) + '…' : s.proximity}</span>
               <span class="sub-badge type-badge">${typeLabel}</span>
             </div>
 
             <div class="card-metrics-grid">
               <div class="metric-item">
-                <span class="metric-key">COURT DISTANCE</span>
-                <span class="metric-val">${courtDist}</span>
+                <span class="metric-key">${metric1Key}</span>
+                <span class="metric-val">${metric1Val}</span>
               </div>
               <div class="metric-item" style="text-align:right;">
-                <span class="metric-key">${s.type === 'cafe' ? 'WIFI SPEED' : 'NOISE LEVEL'}</span>
-                <span class="metric-val" style="color:${s.type === 'cafe' ? '#059669' : '#0284C7'};">
-                  ${s.type === 'cafe' ? (s.wifi.split(' ')[0] + ' ' + s.wifi.split(' ')[1]) : (s.noise.includes('(') ? s.noise.split('(')[1].replace(')', '') : s.noise)}
+                <span class="metric-key">${metric2Key}</span>
+                <span class="metric-val" style="color:${isCafe ? '#059669' : '#0284C7'};">
+                  ${metric2Val}
                 </span>
               </div>
             </div>
 
             <div class="card-footer-actions">
               <button type="button" class="card-reserve-btn" onclick="event.stopPropagation(); openDeskReservationModal('${s.id}')">
-                Reserve Desk &rarr;
+                ${reserveBtnText}
               </button>
               <a href="${s.directionsUrl}" target="_blank" rel="noopener" class="card-directions-btn" onclick="event.stopPropagation()">
                 Directions
@@ -2969,11 +3235,15 @@
           icon: createCustomPin(item, isCurrentActive)
         });
 
+        const isCafe = (item.type === 'cafe');
         const popupContent = `
-          <div style="font-family:var(--font-heading);min-width:220px;padding:2px;">
+          <div style="font-family:var(--font-heading);min-width:240px;padding:2px;">
             <div style="font-weight:700;font-size:13.5px;color:#0F172A;margin-bottom:3px;line-height:1.3;">${item.name}</div>
-            <div style="font-size:11px;color:#0284C7;font-weight:600;margin-bottom:4px;">${item.type === 'cafe' ? '☕ Work-From-Cafe' : '📚 Law Library'} &bull; ${item.city}</div>
-            <div style="font-size:11.5px;color:#475569;margin-bottom:8px;line-height:1.4;">${item.proximity}</div>
+            <div style="font-size:11px;color:${isCafe ? '#D97706' : '#0284C7'};font-weight:700;margin-bottom:4px;">${isCafe ? '☕ Study &amp; Co-working Cafe' : '📚 Computer &amp; AI Library'} &bull; ${item.city}</div>
+            <div style="font-size:11.5px;color:#475569;margin-bottom:6px;line-height:1.4;">${item.proximity}</div>
+            <div style="font-size:11px;color:#334155;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:6px;padding:4px 6px;margin-bottom:6px;line-height:1.3;">
+              ${isCafe ? '☕ ' + (item.specialty || item.desc) : '💻 ' + item.terminals + ' &bull; 📖 ' + item.ai_books}
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E2E8F0;padding-top:6px;font-size:11.5px;">
               <span style="font-family:monospace;font-weight:700;color:#059669;">${item.wifi}</span>
               <a href="${item.directionsUrl}" target="_blank" rel="noopener" style="color:#1E6C93;font-weight:700;text-decoration:none;">Directions &rarr;</a>
@@ -3205,7 +3475,7 @@
     function openLoginModal() { openModal('login-modal'); }
     function openDownloadModal() { openModal('download-modal'); }
     function openDeskReservationModal(id) {
-      let spaceTitle = 'Legal Space';
+      let spaceTitle = 'Workspace / Library Carrel';
       if (id) {
         const found = spacesData.find(s => s.id === id);
         if (found) spaceTitle = found.name;
@@ -3213,6 +3483,47 @@
       const sub = document.getElementById('desk-modal-subtitle');
       if (sub) sub.textContent = `Confirm check-in and Wi-Fi credential allocation at ${spaceTitle}.`;
       openModal('desk-modal');
+    }
+
+    function openEventReservationModal(eventId) {
+      const evt = eventsData.find(e => e.id === eventId);
+      if (!evt) return;
+
+      const title = document.getElementById('event-modal-title');
+      const badge = document.getElementById('event-modal-badge');
+      const seats = document.getElementById('event-modal-seats-pill');
+      const sub = document.getElementById('event-modal-subtitle');
+      const perks = document.getElementById('event-modal-amenities');
+      const hiddenId = document.getElementById('event-reservation-id');
+
+      if (title) title.textContent = evt.title;
+      if (badge) {
+        badge.textContent = evt.category === 'professional' ? 'PROFESSIONAL TRACK' : 'SOCIAL FELLOWSHIP';
+        badge.style.background = evt.category === 'professional' ? '#EFF6FF' : '#F5F3FF';
+        badge.style.color = evt.category === 'professional' ? '#1E40AF' : '#7C3AED';
+      }
+      if (seats) seats.textContent = `${evt.seatsLeft} seats left (out of ${evt.seatsTotal})`;
+      if (sub) {
+        sub.innerHTML = `Hosted @ <strong>${evt.venueName}</strong> (${evt.city}).<br><span style="color:#0F172A;font-weight:600;">${evt.date}</span>`;
+      }
+      if (perks) {
+        perks.innerHTML = `✨ <strong>Venue Amenities:</strong> ${evt.amenities}`;
+      }
+      if (hiddenId) hiddenId.value = evt.id;
+
+      openModal('event-modal');
+    }
+
+    function handleEventReservation(e) {
+      e.preventDefault();
+      const name = document.getElementById('event-rsvp-name')?.value || 'Learner';
+      const evtId = document.getElementById('event-reservation-id')?.value;
+      const evt = eventsData.find(e => e.id === evtId);
+      const evtName = evt ? evt.title : 'Agentic Event';
+      const venue = evt ? evt.venueName : 'Venue';
+
+      alert(`RSVP Confirmed for ${name}!\n\nYour physical seat for "${evtName}" at ${venue} has been reserved. Check your email for your digital entry pass and calendar invite.`);
+      closeModal('event-modal');
     }
 
     function openSkillsWaitlistModal() {
@@ -3235,7 +3546,7 @@
 
     function handleDeskReservation(e) {
       e.preventDefault();
-      alert('Desk reservation confirmed! Your high-speed practitioner access pass has been registered.');
+      alert('Desk reservation confirmed! Your high-speed access pass has been registered.');
       closeModal('desk-modal');
     }
 
