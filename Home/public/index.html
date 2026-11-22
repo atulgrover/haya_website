@@ -1,67 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic Professionals — Sovereign Operating System for Legal & Restructuring Practitioners</title>
-  <meta name="description" content="Sovereign network for autonomous legal practitioners: command agentic spaces radar, skillpedia NSQF skills, specialized cohorts across IBC, BNS, and CPC, professional and social events, Hayagriva desktop harness, and statutory answers.">
-  
-  <!-- Typography matching IBC and BNS standards -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic Professionals — Sovereign Spaces Radar & Ecosystem</title>
+  <meta name="description" content="Sovereign radar for agentic professionals: discover physical work-from-cafes, AI research libraries, specialized cohorts across IBC, BNS, and CPC, and autonomous skillpedia skills." />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Typography matching IBC and BNS Institutional Standards -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Google+Sans:wght@400;500;700;800&family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Google+Sans:wght@400;500;700;800&family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Roboto+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Leaflet CDN for Spaces Radar Map -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
     :root {
-      /* Shared Institutional Light Palette */
-      --bg-primary: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --bg-card-subtle: #F1F5F9;
-      --border-color: #E2E8F0;
-      --border-hover: #CBD5E1;
-      
-      --text-main: #0F172A;
-      --text-muted: #64748B;
-      --text-subtle: #94A3B8;
+      /* Palette */
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
 
       /* Primary Brand & Accents */
-      --primary-navy: #0F172A;
-      --primary-blue: #1E6C93;
-      --primary-blue-hover: #165272;
-      --primary-blue-light: #EFF6FF;
-      --primary-blue-border: #BFDBFE;
-
-      /* Domain Specific Accents */
-      --ibc-emerald: #059669;
-      --ibc-emerald-hover: #047857;
-      --ibc-emerald-light: #ECFDF5;
-      --ibc-emerald-border: #A7F3D0;
-
-      --bns-sky: #0284C7;
-      --bns-sky-hover: #0369A1;
-      --bns-sky-light: #F0F9FF;
-      --bns-sky-border: #BAE6FD;
-
-      --cpc-purple: #7C3AED;
-      --cpc-purple-light: #F5F3FF;
-      --cpc-purple-border: #DDD6FE;
-
-      --amber-accent: #D97706;
-      --amber-light: #FEF3C7;
-
-      /* Shadows */
-      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      --card-shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
-      --megamenu-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.14), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+      --brand-navy: #0f172a;
+      --brand-blue: #0284c7;
+      --brand-emerald: #059669;
+      --brand-amber: #d97706;
 
       /* Typography */
       --font-heading: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-body: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'Roboto Mono', monospace;
+      --font-mono: 'JetBrains Mono', 'Roboto Mono', monospace;
       --font-display: 'Chakra Petch', sans-serif;
     }
 
@@ -71,14 +49,14 @@
       padding: 0;
     }
 
-    body {
-      background-color: var(--bg-primary);
-      color: var(--text-main);
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--slate-50);
+      color: var(--slate-900);
       font-family: var(--font-body);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     a {
@@ -86,61 +64,64 @@
       text-decoration: none;
     }
 
-    /* ─── 60px Master Header ─── */
+    /* ─── 60px Sovereign Site Header ─── */
     .site-header {
       height: 60px;
-      background: rgba(255, 255, 255, 0.97);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--slate-200);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 32px;
+      padding: 0 24px;
       z-index: 2000;
-      position: sticky;
-      top: 0;
+      position: relative;
+      flex-shrink: 0;
     }
 
-    .header-left {
+    /* 1. Left: Brand Lockup WITHOUT Dropdown */
+    .brand-container {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
 
-    .brand-link {
+    .brand-lockup {
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
       cursor: pointer;
     }
 
     .unicorn-icon {
       width: 26px;
       height: 26px;
-      fill: #0F172A;
+      fill: var(--slate-900);
       transition: transform 0.2s ease;
       flex-shrink: 0;
     }
 
-    .brand-link:hover .unicorn-icon {
+    .brand-lockup:hover .unicorn-icon {
       transform: scale(1.08);
     }
 
     .brand-title {
       font-family: var(--font-heading);
-      font-size: 17px;
+      font-size: 16.5px;
       font-weight: 700;
-      color: #0F172A;
+      color: var(--slate-900);
       letter-spacing: -0.3px;
       white-space: nowrap;
     }
 
-    /* ─── Center Nav with Megamenus ─── */
-    .center-nav {
+    /* 2. Center: Megamenus Navigation */
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
+      list-style: none;
       position: relative;
     }
 
@@ -148,810 +129,303 @@
       position: relative;
     }
 
-    .nav-trigger-btn {
-      background: none;
-      border: none;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      color: #334155;
-      padding: 8px 12px;
-      border-radius: 8px;
+    .nav-btn {
       display: inline-flex;
       align-items: center;
       gap: 5px;
+      padding: 6px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--slate-600);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.15s ease;
       text-transform: lowercase;
+      font-family: inherit;
+      transition: all 0.15s ease;
     }
 
-    .nav-trigger-btn:hover,
-    .nav-item.active .nav-trigger-btn,
-    .nav-item.open .nav-trigger-btn,
-    .nav-item.hovering .nav-trigger-btn {
-      color: #0F172A;
-      background: #F1F5F9;
+    .nav-btn:hover {
+      color: var(--slate-900);
+      background: var(--slate-100);
     }
 
-    .nav-chevron {
+    .nav-btn.pill-active {
+      background: #e0f2fe;
+      color: #0369a1;
+      border-color: #bae6fd;
+      font-weight: 700;
+    }
+
+    .chevron-icon {
       width: 13px;
       height: 13px;
-      color: #64748B;
+      stroke-width: 2.5;
       transition: transform 0.2s ease;
     }
 
-    .nav-item.active .nav-chevron,
-    .nav-item.open .nav-chevron,
-    .nav-item.hovering .nav-chevron,
-    .nav-item:hover .nav-chevron {
+    .nav-item:hover .chevron-icon,
+    .nav-item.active .chevron-icon {
       transform: rotate(180deg);
-      color: var(--primary-blue);
     }
 
-    /* Megamenu Panels with invisible hover bridge and persistent click-to-pin */
-    .megamenu {
+    /* Megamenu Flyout Panel with Safe Hover Tunnel */
+    .megamenu-panel {
       position: absolute;
-      top: calc(100% + 4px);
+      top: 100%;
       left: 50%;
-      transform: translateX(-50%);
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
+      transform: translateX(-50%) translateY(8px);
+      width: 680px;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
       border-radius: 14px;
-      box-shadow: var(--megamenu-shadow);
+      box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.16), 0 8px 16px -4px rgba(15, 23, 42, 0.08);
       padding: 20px;
-      display: none;
-      z-index: 2100;
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      transition: opacity 0.15s ease, transform 0.15s ease;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+      z-index: 2100;
     }
 
-    /* Invisible hover bridge: covers the gap from button to menu completely */
-    .megamenu::before {
+    /* Invisible hover tunnel bridging the 10px gap between button and panel */
+    .nav-item::after {
       content: '';
       position: absolute;
-      top: -20px;
+      top: 100%;
       left: 0;
-      right: 0;
-      height: 20px;
-      background: transparent;
-      display: block;
+      width: 100%;
+      height: 14px;
+      pointer-events: auto;
     }
 
-    .nav-item:hover .megamenu,
-    .nav-item.hovering .megamenu,
-    .nav-item.open .megamenu {
-      display: block;
+    .nav-item:hover .megamenu-panel,
+    .nav-item:focus-within .megamenu-panel,
+    .nav-item.is-open .megamenu-panel {
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
       transform: translateX(-50%) translateY(0);
     }
 
-    /* Megamenu Sizes */
-    .megamenu-spaces { width: 520px; }
-    .megamenu-skills { width: 440px; }
-    .megamenu-cohorts { width: 660px; }
-    .megamenu-events { width: 640px; }
-
-    .megamenu-header {
+    .megamenu-header-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #F1F5F9;
+      border-bottom: 1px solid var(--slate-100);
       padding-bottom: 12px;
       margin-bottom: 14px;
     }
 
     .megamenu-title {
-      font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 11px;
+      font-family: var(--font-mono);
       font-weight: 700;
-      color: #475569;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      color: var(--slate-500);
     }
 
     .megamenu-badge {
+      font-size: 10.5px;
       font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      background: #F1F5F9;
-      color: #64748B;
-    }
-
-    /* Spaces Megamenu Specifics */
-    .spaces-quick-toggle {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #F1F5F9;
-      padding: 3px;
-      border-radius: 8px;
-      margin-bottom: 14px;
-    }
-
-    .spaces-quick-btn {
-      flex: 1;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      font-family: var(--font-heading);
-      font-size: 12.5px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: transparent;
-      color: #64748B;
-      transition: all 0.15s ease;
-    }
-
-    .spaces-quick-btn.active {
-      background: #FFFFFF;
-      color: #0F172A;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-
-    .spaces-locations-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-height: 240px;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
-
-    .space-item-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid transparent;
-      transition: all 0.15s ease;
-    }
-
-    .space-item-link:hover {
-      background: #F8FAFC;
-      border-color: var(--border-color);
-    }
-
-    .space-info-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .space-icon-box {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: #EFF6FF;
-      color: var(--primary-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    .space-icon-box.lib-box {
-      background: #F0FDF4;
-      color: var(--ibc-emerald);
-    }
-
-    .space-title-text {
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 600;
-      color: #0F172A;
-    }
-
-    .space-sub-text {
-      font-size: 11.5px;
-      color: #64748B;
-      font-family: var(--font-mono);
-    }
-
-    .space-badge-right {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #059669;
-      background: #ECFDF5;
+      background: var(--slate-100);
+      color: var(--slate-600);
       padding: 2px 7px;
       border-radius: 4px;
-      white-space: nowrap;
     }
 
-    .megamenu-footer {
-      border-top: 1px solid #F1F5F9;
-      padding-top: 12px;
-      margin-top: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .megamenu-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    .megamenu-action-link {
-      font-family: var(--font-heading);
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--primary-blue);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .megamenu-action-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Skills Megamenu Specifics */
-    .skills-levels-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .skill-card-link {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 12px;
+    .megamenu-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
       border-radius: 10px;
-      border: 1px solid #EEF2F6;
-      background: #F8FAFC;
+      padding: 14px;
+      text-decoration: none;
+      display: block;
       transition: all 0.15s ease;
     }
 
-    .skill-card-link:hover {
-      background: #FFFFFF;
-      border-color: var(--primary-blue-border);
-      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.08);
+    .megamenu-card:hover {
+      background: #ffffff;
+      border-color: #0284c7;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
       transform: translateY(-1px);
     }
 
-    .skill-level-badge {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--primary-blue);
-      background: var(--primary-blue-light);
-      padding: 3px 8px;
-      border-radius: 6px;
-      white-space: nowrap;
-      margin-top: 2px;
-    }
-
-    .skill-body strong {
-      display: block;
-      font-family: var(--font-heading);
+    .megamenu-card-title {
       font-size: 13.5px;
-      color: var(--text-main);
-      margin-bottom: 2px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .skill-body p {
+    .megamenu-card-desc {
       font-size: 12px;
-      color: var(--text-muted);
+      color: var(--slate-500);
       line-height: 1.4;
     }
 
-    /* Cohorts Megamenu 3 Columns */
-    .cohorts-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .cohort-col {
-      background: #F8FAFC;
-      border: 1px solid #EEF2F6;
-      border-radius: 10px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      transition: all 0.15s ease;
-    }
-
-    .cohort-col:hover {
-      background: #FFFFFF;
-      border-color: var(--border-hover);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
-    }
-
-    .cohort-col-title {
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: lowercase;
-      color: #334155;
+    /* 3. Right: Actions Tray */
+    .actions-tray {
       display: flex;
       align-items: center;
-      gap: 6px;
-    }
-
-    .cohort-col.col-commercial { border-top: 3px solid var(--ibc-emerald); }
-    .cohort-col.col-criminal { border-top: 3px solid var(--bns-sky); }
-    .cohort-col.col-civil { border-top: 3px solid var(--cpc-purple); }
-
-    .cohort-pill-link {
-      display: block;
-      padding: 8px 10px;
-      border-radius: 6px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      transition: all 0.15s ease;
-    }
-
-    .cohort-pill-link:hover {
-      border-color: var(--primary-blue);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-
-    .cohort-pill-link strong {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      color: #0F172A;
-    }
-
-    .cohort-pill-link span {
-      display: block;
-      font-size: 11px;
-      font-family: var(--font-mono);
-      color: #64748B;
-    }
-
-    /* Events Megamenu 2 Columns */
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .event-col {
-      background: #F8FAFC;
-      border: 1px solid #EEF2F6;
-      border-radius: 10px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
       gap: 10px;
     }
 
-    .event-col-title {
-      font-family: var(--font-heading);
+    .action-btn {
       font-size: 13px;
-      font-weight: 700;
-      text-transform: lowercase;
-      color: #0F172A;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .event-item-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 11px 12px;
-      transition: all 0.15s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .event-item-card:hover {
-      border-color: var(--primary-blue-border);
-      box-shadow: 0 4px 12px rgba(30, 108, 147, 0.08);
-      transform: translateY(-1px);
-    }
-
-    .event-item-card strong {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
-      color: #0F172A;
-      line-height: 1.3;
-    }
-
-    .event-venue-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
       font-weight: 600;
-      color: #0284C7;
-      background: #F0F9FF;
-      border: 1px solid #BAE6FD;
-      padding: 2px 7px;
-      border-radius: 4px;
-      align-self: flex-start;
-      margin: 3px 0;
-    }
-
-    .event-venue-tag.lib-tag {
-      color: #059669;
-      background: #ECFDF5;
-      border-color: #A7F3D0;
-    }
-
-    .event-meta-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #64748B;
-      font-family: var(--font-mono);
-      margin-top: 2px;
-    }
-
-    .event-reserve-btn {
-      margin-top: 6px;
-      width: 100%;
-      background: #0F172A;
-      color: #FFFFFF;
+      color: var(--slate-600);
+      background: none;
       border: none;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-family: var(--font-heading);
-      font-size: 11.5px;
-      font-weight: 700;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: background 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .event-reserve-btn:hover {
-      background: var(--primary-blue);
-      box-shadow: 0 2px 8px rgba(30, 108, 147, 0.25);
-    }
-
-    /* ─── Right Nav Actions ─── */
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-action-link {
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #334155;
       padding: 6px 12px;
       border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-      cursor: pointer;
-      text-transform: lowercase;
+      transition: all 0.15s;
     }
 
-    .nav-action-link:hover {
-      color: #0F172A;
-      background: #F1F5F9;
+    .action-btn:hover {
+      color: var(--slate-900);
+      background: var(--slate-100);
     }
 
-    .nav-action-btn {
-      background: #F1F5F9;
-      border: 1px solid var(--border-color);
-      color: #0F172A;
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      text-transform: lowercase;
-    }
-
-    .nav-action-btn:hover {
-      background: #E2E8F0;
-      transform: translateY(-1px);
-    }
-
-    .nav-signin-btn {
-      background: #0F172A;
-      color: #FFFFFF;
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 7px 18px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      text-transform: lowercase;
-      white-space: nowrap;
-    }
-
-    .nav-signin-btn:hover {
-      background: #1E293B;
-      transform: translateY(-1px);
-    }
-
-    /* ─── Hero Section ─── */
-    .hero-section {
-      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
-      border-bottom: 1px solid var(--border-color);
-      padding: 50px 24px 44px;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .section-badge {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--primary-blue);
-      background: var(--primary-blue-light);
-      border: 1px solid var(--primary-blue-border);
-      padding: 4px 14px;
-      border-radius: 9999px;
-      display: inline-block;
-      letter-spacing: 0.8px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 42px;
-      font-weight: 800;
-      line-height: 1.15;
-      color: #0F172A;
-      margin-bottom: 16px;
-      letter-spacing: -0.8px;
-    }
-
-    .hero-title .highlight-blue {
-      color: var(--primary-blue);
-    }
-
-    .hero-desc {
-      font-size: 17px;
-      color: var(--text-muted);
-      max-width: 800px;
-      margin: 0 auto 30px;
-      line-height: 1.65;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .hero-btn-primary {
-      background: var(--primary-blue);
-      color: #FFFFFF;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 700;
-      padding: 12px 24px;
-      border-radius: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: none;
-    }
-
-    .hero-btn-primary:hover {
-      background: var(--primary-blue-hover);
-      box-shadow: 0 6px 16px rgba(30, 108, 147, 0.25);
-      transform: translateY(-1px);
-    }
-
-    .hero-btn-secondary {
-      background: #FFFFFF;
-      color: var(--text-main);
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      padding: 12px 22px;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-
-    .hero-btn-secondary:hover {
-      background: #F8FAFC;
-      border-color: var(--border-hover);
-      transform: translateY(-1px);
-    }
-
-    /* ─── Metrics Strip ─── */
-    .metrics-bar {
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border-color);
-      padding: 18px 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .metrics-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      max-width: 1240px;
-      width: 100%;
-      gap: 16px;
-      text-align: center;
-    }
-
-    .metric-box {
-      padding: 12px 16px;
-      border-radius: 10px;
-      background: #F8FAFC;
-      border: 1px solid #EEF2F6;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .metric-value {
-      font-family: var(--font-heading);
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--primary-blue);
-      line-height: 1.1;
-    }
-
-    .metric-label {
+    .signin-btn {
       font-size: 13px;
-      font-weight: 700;
-      color: var(--text-main);
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--slate-900);
+      border: 1px solid var(--slate-900);
+      border-radius: 8px;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: all 0.15s;
     }
 
-    .metric-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
+    .signin-btn:hover {
+      background: #1e293b;
     }
 
-    /* ─── AGENTIC SPACES RADAR (SPLIT VIEW MATCHING INVESTOR OPPORTUNITIES) ─── */
-    .spaces-radar-section {
-      width: 100%;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      background: #FFFFFF;
-      position: relative;
-    }
-
-    .spaces-split-view {
+    /* ─── Main Canvas: Full Viewport Split View ─── */
+    .main-canvas {
       display: flex;
+      flex: 1;
+      height: calc(100vh - 60px);
       width: 100%;
-      height: 700px;
       position: relative;
       overflow: hidden;
-      background: #FFFFFF;
     }
 
-    /* Left Sidebar (390px, Matching Investor Opportunities) */
-    .spaces-sidebar {
-      width: 390px;
-      min-width: 390px;
+    #radar-view {
+      display: flex;
+      flex: 1;
+      width: 100%;
       height: 100%;
-      background: #FFFFFF;
-      border-right: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left Sidebar: Cards & Filter */
+    .sidebar {
+      width: 420px;
+      min-width: 420px;
+      height: 100%;
+      background: #ffffff;
+      border-right: 1px solid var(--slate-200);
       display: flex;
       flex-direction: column;
-      z-index: 100;
-      transition: width 0.25s ease, min-width 0.25s ease, margin-left 0.25s ease;
-      overflow: hidden;
+      z-index: 500;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), margin-left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
     }
 
-    .spaces-sidebar.collapsed {
-      width: 0 !important;
-      min-width: 0 !important;
-      margin-left: -390px !important;
+    .sidebar.collapsed {
+      margin-left: -420px;
     }
 
     .sidebar-header {
-      padding: 16px;
-      border-bottom: 1px solid var(--border-color);
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--slate-200);
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: #FFFFFF;
-      flex-shrink: 0;
+      background: #ffffff;
     }
 
-    /* Mode Switcher: ☕ cafes vs 📚 libraries (Matching Image 2) */
+    /* Mode Switcher: Study Cafes vs AI Libraries */
     .mode-switcher {
       display: flex;
-      background: #F1F5F9;
+      background: var(--slate-100);
       padding: 3px;
       border-radius: 10px;
-      gap: 2px;
+      gap: 3px;
     }
 
     .mode-btn {
       flex: 1;
       border: none;
-      background: transparent;
-      font-family: var(--font-heading);
-      font-size: 12.5px;
+      background: none;
+      font-family: var(--font-display);
+      font-size: 12px;
       font-weight: 700;
-      color: #64748B;
-      padding: 7px 10px;
+      color: var(--slate-600);
+      padding: 8px 6px;
       border-radius: 7px;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.15s;
+      text-transform: lowercase;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     .mode-btn.active {
-      background: #FFFFFF;
-      color: #0F172A;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      background: #ffffff;
+      color: var(--slate-900);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
-    /* Search Box (Matching Image 2) */
     .search-box {
       position: relative;
       width: 100%;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 11px;
+      width: 16px;
+      height: 16px;
+      color: var(--slate-400);
+      pointer-events: none;
     }
 
     .search-box input {
       width: 100%;
       height: 38px;
       padding: 0 34px;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
-      background: #F8FAFC;
-      font-family: var(--font-body);
+      border-radius: 9px;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
       font-size: 13px;
-      color: #0F172A;
       outline: none;
+      font-family: inherit;
       transition: border-color 0.15s, background 0.15s;
     }
 
     .search-box input:focus {
-      border-color: var(--primary-blue);
-      background: #FFFFFF;
-      box-shadow: 0 0 0 3px rgba(30, 108, 147, 0.08);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 10px;
-      top: 11px;
-      width: 16px;
-      height: 16px;
-      color: #94A3B8;
-      pointer-events: none;
+      border-color: var(--brand-blue);
+      background: #ffffff;
     }
 
     .search-clear-btn {
@@ -961,68 +435,97 @@
       transform: translateY(-50%);
       background: none;
       border: none;
-      color: #94A3B8;
+      color: var(--slate-400);
       font-size: 18px;
       font-weight: 700;
       line-height: 1;
       cursor: pointer;
       padding: 4px;
       display: none;
+      border-radius: 4px;
+    }
+
+    .search-clear-btn:hover {
+      color: var(--slate-900);
+      background: var(--slate-100);
     }
 
     .search-box.has-query .search-clear-btn {
       display: block;
     }
 
-    /* Jurisdiction Filter Row */
     .filter-row {
       display: flex;
       align-items: center;
+      gap: 8px;
       width: 100%;
     }
 
     .filter-select {
-      width: 100%;
+      flex: 1;
       height: 32px;
       border-radius: 8px;
-      border: 1px solid var(--border-color);
-      background: #F8FAFC;
-      font-family: var(--font-heading);
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
       font-size: 12px;
       font-weight: 500;
+      color: var(--slate-700);
       padding: 0 8px;
-      color: #334155;
       outline: none;
+      font-family: inherit;
       cursor: pointer;
     }
 
-    .filter-select:focus {
-      border-color: var(--primary-blue);
+    .reset-filters-btn {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-300);
+      border-radius: 8px;
+      height: 32px;
+      padding: 0 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--slate-600);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
     }
 
-    /* Stats Bar */
+    .reset-filters-btn:hover {
+      background: var(--slate-200);
+      color: var(--slate-900);
+    }
+
     .stats-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 11px;
-      font-family: var(--font-mono);
-      color: #64748B;
+      color: var(--slate-500);
+      padding-top: 2px;
     }
 
     .stats-pill {
-      background: #ECFDF5;
-      color: #065F46;
-      padding: 3px 8px;
+      background: #ecfdf5;
+      color: #065f46;
+      padding: 2px 8px;
       border-radius: 999px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      border: 1px solid #A7F3D0;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
     }
 
-    /* Scrollable Card List (Matching Image 2) */
+    .status-pulse {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    }
+
+    /* Scrollable Card List */
     .card-list {
       flex: 1;
       overflow-y: auto;
@@ -1030,12 +533,12 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: #F8FAFC;
+      background: #fafafa;
     }
 
-    .deal-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
+    .space-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
       border-radius: 12px;
       padding: 14px;
       cursor: pointer;
@@ -1043,20 +546,18 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-      position: relative;
     }
 
-    .deal-card:hover {
-      border-color: var(--primary-blue);
-      box-shadow: 0 4px 14px rgba(30, 108, 147, 0.08);
+    .space-card:hover {
+      border-color: var(--brand-blue);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
       transform: translateY(-1px);
     }
 
-    .deal-card.active {
-      border-color: var(--primary-blue);
-      background: #EFF6FF;
-      box-shadow: 0 0 0 1.5px var(--primary-blue);
+    .space-card.active {
+      border-color: var(--brand-blue);
+      background: #f0f9ff;
+      box-shadow: 0 0 0 1px var(--brand-blue);
     }
 
     .card-top {
@@ -1066,775 +567,380 @@
       gap: 8px;
     }
 
-    .company-name {
-      font-family: var(--font-heading);
+    .space-name {
       font-size: 14px;
       font-weight: 700;
-      color: #0F172A;
+      color: var(--slate-900);
       line-height: 1.3;
     }
 
-    .stage-badge {
-      font-size: 10px;
+    .type-badge {
+      font-size: 9.5px;
       font-family: var(--font-mono);
+      font-weight: 700;
       padding: 2px 6px;
       border-radius: 4px;
-      font-weight: 700;
+      text-transform: uppercase;
       white-space: nowrap;
     }
 
-    .badge-cafe {
-      background: #FEF3C7;
-      color: #92400E;
-      border: 1px solid #FDE68A;
+    .type-badge.cafe {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
     }
 
-    .badge-lib {
-      background: #ECFDF5;
-      color: #065F46;
-      border: 1px solid #A7F3D0;
+    .type-badge.library {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    .space-proximity {
+      font-size: 11.5px;
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+
+    .card-metrics {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding-top: 6px;
+      border-top: 1px solid var(--slate-100);
+    }
+
+    .metric-tag {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      background: var(--slate-100);
+      color: var(--slate-600);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .metric-tag.wifi {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      font-weight: 600;
+    }
+
+    .card-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2px;
     }
 
     .bookmark-btn {
       background: none;
       border: none;
-      color: #94A3B8;
       cursor: pointer;
       padding: 2px;
-      transition: color 0.15s;
-    }
-    .bookmark-btn:hover {
-      color: var(--primary-blue);
-    }
-
-    .card-badges-row {
-      display: flex;
-      gap: 5px;
-      flex-wrap: wrap;
-    }
-
-    .sub-badge {
-      font-family: var(--font-heading);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 4px;
-    }
-
-    .court-badge {
-      background: #EFF6FF;
-      color: #1E40AF;
-      border: 1px solid #BFDBFE;
-    }
-
-    .city-badge {
-      background: #F1F5F9;
-      color: #475569;
-      border: 1px solid #E2E8F0;
-    }
-
-    .type-badge {
-      background: #FAF5FF;
-      color: #7E22CE;
-      border: 1px solid #E9D5FF;
-    }
-
-    .card-metrics-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding-top: 4px;
-      border-top: 1px solid #F1F5F9;
-    }
-
-    .metric-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .metric-key {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      color: #64748B;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-
-    .metric-val {
-      font-family: var(--font-heading);
-      font-size: 12.5px;
-      font-weight: 800;
-      color: #0F172A;
-    }
-
-    .card-footer-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .card-reserve-btn {
-      flex: 1;
-      background: var(--primary-blue);
-      color: #FFFFFF;
-      border: none;
-      border-radius: 6px;
-      font-family: var(--font-heading);
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 6px 10px;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .card-reserve-btn:hover {
-      background: var(--primary-blue-hover);
-    }
-
-    .card-directions-btn {
-      font-family: var(--font-heading);
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #475569;
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 5px 9px;
-      text-decoration: none;
-    }
-    .card-directions-btn:hover {
-      background: #F1F5F9;
-      color: #0F172A;
-    }
-
-    /* Sidebar Toggle Tab Button [ < ] (Matching Image 2) */
-    .sidebar-toggle-tab {
-      position: absolute;
-      top: 14px;
-      left: 376px;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: #94a3b8;
+      transition: all 0.15s;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .bookmark-btn:hover {
+      color: #f59e0b;
+      transform: scale(1.15);
+    }
+
+    .bookmark-btn.bookmarked {
+      color: #f59e0b;
+    }
+
+    .view-dossier-link {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    /* Sidebar Toggle Tab Button [ < ] */
+    .sidebar-toggle-tab {
+      position: absolute;
+      top: 14px;
+      left: 420px;
+      z-index: 600;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      color: var(--slate-700);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      z-index: 200;
-      color: #475569;
-      transition: left 0.25s ease, background 0.15s, color 0.15s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: left 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s, color 0.15s;
+    }
+
+    .sidebar-toggle-tab svg {
+      transition: transform 0.2s ease;
     }
 
     .sidebar-toggle-tab:hover {
-      background: #F8FAFC;
-      color: #0F172A;
+      background: var(--slate-50);
+      color: var(--slate-900);
     }
 
-    .spaces-sidebar.collapsed ~ .sidebar-toggle-tab {
+    .sidebar.collapsed ~ .sidebar-toggle-tab {
       left: 14px;
     }
 
-    .spaces-sidebar.collapsed ~ .sidebar-toggle-tab svg {
+    .sidebar.collapsed ~ .sidebar-toggle-tab svg {
       transform: rotate(180deg);
     }
 
-    /* Right Full Map Canvas (Matching Image 2) */
+    /* Right Map Canvas */
     .map-canvas {
       flex: 1;
       height: 100%;
       position: relative;
-      background: #E2E8F0;
+      background: #e5e7eb;
+    }
+
+    #leaflet-map {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Custom Leaflet Map Markers */
+    .custom-space-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+      position: relative;
+    }
+
+    .custom-space-marker:hover {
+      transform: scale(1.18);
+      z-index: 999 !important;
+    }
+
+    .custom-space-marker.cafe-marker {
+      background: #0f172a;
+      border: 2.5px solid #10b981;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+    }
+
+    .custom-space-marker.library-marker {
+      background: #0f172a;
+      border: 2.5px solid #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+    }
+
+    .marker-pulse-ring {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border-radius: 50%;
+      animation: pin-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      pointer-events: none;
+    }
+
+    .cafe-marker .marker-pulse-ring {
+      border: 2px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .library-marker .marker-pulse-ring {
+      border: 2px solid rgba(56, 189, 248, 0.4);
+    }
+
+    @keyframes pin-pulse {
+      0% { transform: scale(0.9); opacity: 0.9; }
+      70% { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    /* Slide-Out Inspector Drawer (Desktop Right Panel & Mobile Bottom Sheet) */
+    .inspector-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 400px;
+      height: 100%;
+      background: #ffffff;
+      border-left: 1px solid var(--slate-200);
+      box-shadow: -8px 0 28px rgba(15, 23, 42, 0.12);
+      z-index: 1000;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .inspector-drawer.open {
+      transform: translateX(0);
+    }
+
+    .inspector-drawer-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--slate-100);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      background: #ffffff;
       z-index: 10;
     }
 
-    #spaces-map {
-      width: 100%;
-      height: 100%;
-    }
-
-    @media (max-width: 900px) {
-      .spaces-split-view {
-        flex-direction: column;
-        height: 850px;
-      }
-      .spaces-sidebar {
-        width: 100%;
-        min-width: 100%;
-        height: 400px;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-      }
-      .map-canvas {
-        height: 450px;
-      }
-      .sidebar-toggle-tab {
-        display: none;
-      }
-    }
-
-    /* ─── 3 COMPANION PILLARS (SKILLS, COHORTS, EVENTS) ─── */
-    .companion-section {
-      padding: 64px 24px;
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .companion-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .companion-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 30px;
-      transition: all 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .companion-card:hover {
-      box-shadow: var(--card-shadow-hover);
-      transform: translateY(-3px);
-      border-color: var(--border-hover);
-    }
-
-    .card-top-blue { border-top: 4px solid var(--primary-blue); }
-    .card-top-emerald { border-top: 4px solid var(--ibc-emerald); }
-    .card-top-purple { border-top: 4px solid var(--cpc-purple); }
-
-    .card-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-
-    .card-title {
-      font-family: var(--font-heading);
-      font-size: 21px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    .card-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .card-bullet-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 13px;
-      color: #334155;
-    }
-
-    .card-bullet-item span.chk {
-      color: #10B981;
-      font-weight: bold;
-    }
-
-    .card-btn {
-      padding: 10px 18px;
+    .drawer-close-btn {
+      background: var(--slate-100);
+      border: none;
+      width: 28px;
+      height: 28px;
       border-radius: 8px;
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 700;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
       cursor: pointer;
-    }
-
-    .btn-outline-blue {
-      background: #FFFFFF;
-      border: 1px solid var(--primary-blue);
-      color: var(--primary-blue);
-    }
-    .btn-outline-blue:hover {
-      background: var(--primary-blue-light);
-    }
-
-    .btn-outline-emerald {
-      background: #FFFFFF;
-      border: 1px solid var(--ibc-emerald);
-      color: var(--ibc-emerald);
-    }
-    .btn-outline-emerald:hover {
-      background: var(--ibc-emerald-light);
-    }
-
-    .btn-outline-purple {
-      background: #FFFFFF;
-      border: 1px solid var(--cpc-purple);
-      color: var(--cpc-purple);
-    }
-    .btn-outline-purple:hover {
-      background: var(--cpc-purple-light);
-    }
-
-    /* ─── TWO FEATURED ACTION CARDS (HAYAGRIVA & ANSWERS) ─── */
-    .featured-actions-section {
-      background: #F8FAFC;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      padding: 56px 24px;
-    }
-
-    .featured-actions-container {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .featured-actions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .action-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
-    }
-
-    .action-card:hover {
-      box-shadow: var(--card-shadow-hover);
-      transform: translateY(-2px);
-    }
-
-    .action-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .action-icon-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      color: var(--slate-600);
+      font-size: 18px;
+      transition: all 0.15s;
       flex-shrink: 0;
     }
 
-    .icon-hayagriva {
-      background: #0F172A;
-      color: #FFFFFF;
+    .drawer-close-btn:hover {
+      background: var(--slate-200);
+      color: var(--slate-900);
     }
 
-    .icon-answers {
-      background: #ECFDF5;
-      color: var(--ibc-emerald);
-    }
-
-    .action-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 700;
-      color: #0F172A;
-    }
-
-    .action-desc {
-      font-size: 14.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .action-pills-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .action-pill {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: #F1F5F9;
-      color: #475569;
-    }
-
-    .action-btn-primary {
-      background: #0F172A;
-      color: #FFFFFF;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .action-btn-primary:hover {
-      background: #1E293B;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
-    }
-
-    .action-btn-emerald {
-      background: var(--ibc-emerald);
-      color: #FFFFFF;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .action-btn-emerald:hover {
-      background: var(--ibc-emerald-hover);
-      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
-    }
-
-    /* ─── SOVEREIGN SUBDOMAIN GATEWAYS ─── */
-    .gateways-section {
-      background: #FFFFFF;
-      padding: 56px 24px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .gateways-container {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .gateways-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .gateway-banner {
-      background: #F8FAFC;
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
-    }
-
-    .gateway-banner:hover {
-      background: #FFFFFF;
-      box-shadow: var(--card-shadow);
-      transform: translateY(-2px);
-    }
-
-    .gateway-banner-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .gateway-title {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .gateway-domain-badge {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      padding: 3px 8px;
-      border-radius: 6px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dot-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-    .dot-ibc { background: var(--ibc-emerald); }
-    .dot-bns { background: var(--bns-sky); }
-
-    .gateway-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    .gateway-link {
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .link-ibc { color: var(--ibc-emerald); }
-    .link-bns { color: var(--bns-sky); }
-
-    /* ─── MODAL STYLES (Supabase Login / Download / Desk Reservation) ─── */
-    .modal-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 9999;
+    .mobile-back-btn {
       display: none;
       align-items: center;
-      justify-content: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      padding: 5px 10px;
+      border-radius: 8px;
+      color: var(--slate-700);
+      cursor: pointer;
+    }
+
+    .inspector-drawer-body {
       padding: 20px;
-    }
-
-    .modal-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      max-width: 440px;
-      width: 100%;
-      padding: 32px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    .modal-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .modal-subtitle {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 22px;
-      line-height: 1.5;
-    }
-
-    .modal-form {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 14px;
-      outline: none;
-    }
-
-    .form-input:focus {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 3px rgba(30, 108, 147, 0.1);
-    }
-
-    .modal-submit-btn {
-      background: var(--primary-blue);
-      color: #FFFFFF;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 6px;
-    }
-
-    .modal-submit-btn:hover {
-      background: var(--primary-blue-hover);
-    }
-
-    /* ─── Footer ─── */
-    footer {
-      background: #FFFFFF;
-      border-top: 1px solid var(--border-color);
-      padding: 44px 28px;
-      margin-top: auto;
-    }
-
-    .footer-container {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
       gap: 16px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid #F1F5F9;
+      flex: 1;
     }
 
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    /* Mobile Floating View Switcher Pill */
+    .mobile-view-pill-container {
+      display: none;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1100;
     }
 
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      list-style: none;
-      font-size: 13.5px;
-      color: var(--text-muted);
-    }
-
-    .footer-links a:hover {
-      color: var(--primary-blue);
-    }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 12.5px;
-      color: var(--text-subtle);
-      font-family: var(--font-mono);
-    }
-
-    /* ─── Leaflet Marker Styling ─── */
-    .custom-map-pin {
-      background: #FFFFFF;
-      border: 2px solid #0F172A;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      font-size: 15px;
+    .mobile-view-toggle-btn {
+      background: var(--slate-900);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
       cursor: pointer;
-      transition: transform 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .custom-map-pin:hover,
-    .custom-map-pin.active-pin {
-      transform: scale(1.2);
-      border-color: var(--primary-blue);
-      box-shadow: 0 6px 14px rgba(30, 108, 147, 0.4);
+    /* Mobile Pin Bottom Card Preview */
+    .mobile-pin-preview {
+      display: none;
+      position: absolute;
+      bottom: 74px;
+      left: 14px;
+      right: 14px;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--slate-200);
+      z-index: 1050;
     }
 
-    .pin-cafe {
-      background: #FEF3C7;
-      border-color: #B45309;
-    }
-
-    .pin-library {
-      background: #ECFDF5;
-      border-color: #047857;
-    }
-
-    @media (max-width: 1024px) {
-      .spaces-radar-grid { grid-template-columns: 1fr; height: auto; }
-      .map-canvas-container { height: 420px; }
-      .companion-grid { grid-template-columns: 1fr; }
-      .metrics-container { grid-template-columns: 1fr 1fr; }
-      .featured-actions-grid { grid-template-columns: 1fr; }
-      .gateways-grid { grid-template-columns: 1fr; }
-      .megamenu { position: static; transform: none; width: 100%; box-shadow: none; border-radius: 0; }
-    }
-
-    @media (max-width: 768px) {
-      .site-header { padding: 0 16px; }
-      .center-nav { display: none; }
-      .hero-title { font-size: 30px; }
-      .metrics-container { grid-template-columns: 1fr; }
+    /* ─── Responsive Adjustments ─── */
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 100%;
+        min-width: 100%;
+      }
+      .sidebar-toggle-tab {
+        display: none !important;
+      }
+      .mobile-view-pill-container {
+        display: flex;
+      }
+      #radar-view.mobile-mode-map .sidebar {
+        display: none;
+      }
+      #radar-view.mobile-mode-map .map-canvas {
+        display: block;
+      }
+      #radar-view.mobile-mode-list .sidebar {
+        display: flex;
+      }
+      #radar-view.mobile-mode-list .map-canvas {
+        display: none;
+      }
+      .inspector-drawer {
+        width: 100%;
+      }
+      .mobile-back-btn {
+        display: inline-flex;
+      }
+      .nav-links {
+        display: none; /* Hide top megamenus on tiny screens, access via mobile tray */
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ─── 60px Master Header ─── -->
+  <!-- ─── 60px Sovereign Master Header ─── -->
   <header class="site-header">
-    <div class="header-left">
-      <a href="/" class="brand-link" title="Agentic Professionals Sovereign Network">
+    
+    <!-- 1. Left: Brand Lockup (WITHOUT Dropdown) -->
+    <div class="brand-container">
+      <a href="/" class="brand-lockup" title="Agentic Professionals Sovereign Network">
         <svg class="unicorn-icon" viewBox="0 0 852 845">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 L 796 96 L 792 96 L 785 99 L 781 99 L 760 105 L 757 107 L 749 108 L 746 110 L 742 110 L 736 113 L 732 113 L 725 116 L 721 116 L 718 118 L 711 119 L 708 121 L 700 122 L 690 126 L 682 127 L 679 129 L 672 130 L 658 135 L 654 135 L 651 137 L 633 141 L 630 143 L 626 143 L 619 146 L 605 149 L 602 151 L 598 151 L 591 154 L 587 154 L 573 159 L 566 160 L 563 162 L 559 162 L 552 165 L 548 165 L 538 168 L 535 170 L 527 171 L 525 172 L 524 175 L 532 187 L 532 190 L 534 192 L 533 196 L 520 177 L 508 165 L 489 152 L 469 143 L 464 143 L 461 140 L 458 139 L 470 138 L 484 140 L 486 138 L 487 131 L 490 124 L 490 120 L 493 115 L 493 112 L 495 110 L 496 105 L 498 103 L 498 101 L 504 90 L 519 68 L 509 69 L 498 72 L 479 80 L 455 94 L 454 96 L 452 96 L 441 105 L 437 105 L 438 97 L 446 79 L 446 76 L 449 72 L 454 58 L 457 54 L 460 45 L 462 43 L 463 36 L 460 36 L 457 38 L 451 39 L 449 41 L 436 45 L 434 47 L 426 50 L 418 55 L 416 55 L 386 74 L 357 97 L 321 133 L 317 134 L 317 132 L 323 123 L 323 121 L 334 106 L 339 101 L 341 97 L 333 97 L 327 99 L 320 99 L 305 102 L 301 104 L 292 105 L 277 110 L 273 110 L 261 115 L 249 118 L 244 121 L 241 121 L 215 132 L 178 152 L 153 169 L 131 187 L 104 215 L 91 232 L 85 244 L 87 244 L 90 241 L 92 241 L 99 236 L 107 233 L 133 219 L 144 214 L 149 213 L 151 211 L 154 211 L 156 209 L 172 203 L 193 197 L 198 197 L 208 194 L 213 196 L 205 201 L 186 209 L 161 223 L 134 241 L 109 261 L 87 283 L 71 303 L 55 331 L 46 355 L 46 360 L 44 363 L 43 373 L 41 377 L 41 384 L 38 396 L 36 423 L 36 442 L 38 467 L 40 472 L 43 492 L 46 499 L 46 503 L 49 509 L 49 512 L 52 517 L 52 520 L 54 522 L 55 527 L 57 529 L 63 543 L 68 550 L 68 552 L 84 574 L 107 598 L 126 614 L 129 615 L 133 619 L 173 644 L 202 658 L 218 664 L 220 666 L 223 666 L 235 672 L 253 678 L 263 683 L 266 683 L 276 688 L 279 688 L 284 691 L 287 691 L 345 716 L 344 708 L 339 695 L 339 691 L 331 672 L 314 641 L 300 621 L 290 609 L 291 606 L 295 609 L 297 609 L 311 619 L 331 636 L 348 654 L 365 677 L 375 693 L 376 697 L 382 707 L 387 719 L 389 721 L 389 724 L 397 742 L 403 761 L 406 777 L 408 781 L 409 791 L 411 796 L 412 808 L 415 808 L 430 782 L 430 780 L 438 766 L 438 764 L 440 762 L 454 729 L 454 726 L 462 706 L 463 699 L 465 696 L 468 680 L 470 676 L 471 666 L 474 654 L 474 647 L 476 641 L 477 624 L 476 582 L 474 576 L 473 564 L 468 548 L 468 544 L 462 528 L 455 513 L 452 509 L 451 505 L 441 491 L 440 488 L 424 468 L 412 456 L 389 439 L 353 404 L 344 391 L 336 374 L 336 370 L 334 367 L 333 362 L 332 342 L 334 329 L 342 307 L 345 302 L 348 302 L 348 327 L 351 341 L 354 347 L 354 350 L 362 364 L 373 375 L 377 378 L 379 378 L 389 384 L 395 386 L 403 387 L 407 389 L 419 389 L 433 392 L 440 395 L 451 402 L 463 414 L 471 426 L 477 438 L 477 441 L 482 452 L 485 464 L 486 475 L 488 479 L 488 484 L 494 501 L 500 508 L 504 510 L 509 510 L 514 507 L 517 503 L 518 500 L 518 489 L 517 484 L 513 476 L 517 475 L 521 478 L 529 488 L 529 490 L 531 492 L 534 499 L 535 504 L 538 510 L 542 514 L 547 516 L 563 515 L 570 511 L 580 501 L 583 496 L 589 480 L 589 474 L 591 468 L 591 452 L 589 445 L 588 431 L 586 427 L 586 422 L 583 410 L 581 407 L 580 400 L 575 388 L 572 375 L 564 355 L 564 351 L 558 336 L 554 322 L 553 314 L 550 307 L 550 301 L 548 296 L 547 281 L 545 273 L 545 237 L 542 224 L 546 220 L 550 219 L 554 216 L 608 191 L 620 184 L 641 175 L 661 164 L 670 161 L 684 153 L 703 145 L 723 134 L 732 131 L 740 126 L 742 126 L 756 118 L 771 112 L 785 104 L 800 98 Z" />
         </svg>
@@ -1842,365 +948,143 @@
       </a>
     </div>
 
-    <!-- ─── Center Nav with Megamenus (Spaces First!) ─── -->
-    <nav class="center-nav">
-
-      <!-- 1. AGENTIC SPACES (FIRST!) -->
-      <div class="nav-item" id="nav-spaces">
-        <button type="button" class="nav-trigger-btn">
-          <span>agentic spaces</span>
-          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-
-        <div class="megamenu megamenu-spaces">
-          <div class="megamenu-header">
-            <span class="megamenu-title">VISITABLE PHYSICAL SPACES</span>
-            <span class="megamenu-badge">Cafes &bull; Libraries</span>
-          </div>
-
-          <!-- Strict Toggle: Cafes vs Libraries -->
-          <div class="spaces-quick-toggle">
-            <button type="button" class="spaces-quick-btn active" id="quick-toggle-cafes" onclick="switchMegamenuSpaces('cafe')">
-              <span>☕ Work &amp; Study Cafes</span>
-            </button>
-            <button type="button" class="spaces-quick-btn" id="quick-toggle-libs" onclick="switchMegamenuSpaces('library')">
-              <span>📚 Computer &amp; AI Libraries</span>
-            </button>
-          </div>
-
-          <!-- Quick List of Spaces -->
-          <div class="spaces-locations-list" id="megamenu-spaces-list">
-            <!-- Rendered by JS -->
-          </div>
-
-          <div class="megamenu-footer">
-            <span style="font-size: 11.5px; color: #64748B;">High-speed Wi-Fi &bull; PC Terminals &bull; AI Books</span>
-            <a href="#spaces-radar" class="megamenu-action-link" onclick="focusSpacesMap()">
-              <span>Open Spaces Radar Map &rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. AGENTIC SKILLS -->
-      <div class="nav-item" id="nav-skills">
-        <button type="button" class="nav-trigger-btn">
-          <span>agentic skills</span>
-          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-
-        <div class="megamenu megamenu-skills">
-          <div class="megamenu-header">
-            <span class="megamenu-title">skillpedia skills (agentic nsqf)</span>
-            <span class="megamenu-badge">Level 5 - 9</span>
-          </div>
-
-          <div class="skills-levels-list">
-            <a href="#pillar-skills" class="skill-card-link">
-              <span class="skill-level-badge">NSQF L5-6</span>
-              <div class="skill-body">
-                <strong>Agentic Prompting &amp; Local LLMs</strong>
-                <p>Ollama, tool calling, local inference, and deterministic workflow pipelines for young learners.</p>
-              </div>
-            </a>
-
-            <a href="#pillar-skills" class="skill-card-link">
-              <span class="skill-level-badge">NSQF L7-8</span>
-              <div class="skill-body">
-                <strong>Multi-Agent Swarm Orchestrator</strong>
-                <p>Orchestrate research swarms, statutory section extractors, and Section 53 waterfall solvers for practitioners.</p>
-              </div>
-            </a>
-
-            <a href="#pillar-skills" class="skill-card-link">
-              <span class="skill-level-badge">NSQF L9</span>
-              <div class="skill-body">
-                <strong>Principal Autonomous Systems Architect</strong>
-                <p>Air-gapped enterprise harness architecture, cryptographic verification, and sovereign judicial safety gates.</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="megamenu-footer">
-            <span style="font-size: 11.5px; color: #64748B;">National Skills Qualification Framework Accredited</span>
-            <a href="#pillar-skills" class="megamenu-action-link">
-              <span>View Curriculum Guide &rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. AGENTIC COHORTS (3 COLUMNS: COMMERCIAL, CRIMINAL, CIVIL) -->
-      <div class="nav-item" id="nav-cohorts">
-        <button type="button" class="nav-trigger-btn">
-          <span>agentic cohorts</span>
-          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-
-        <div class="megamenu megamenu-cohorts">
-          <div class="megamenu-header">
-            <span class="megamenu-title">Practice Cohorts</span>
-            <span class="megamenu-badge">3 Specialized Tracks</span>
-          </div>
-
-          <div class="cohorts-grid">
-            <!-- Commercial / IBC -->
-            <div class="cohort-col col-commercial">
-              <div class="cohort-col-title">
-                <span class="dot-indicator dot-ibc"></span>
-                <span>commercial</span>
-              </div>
-              <a href="https://ibc.agenticprofessionals.net" class="cohort-pill-link" target="_blank" rel="noopener">
-                <strong>insolvency (ibc)</strong>
-                <span>CIRP, Liquidation, CoC Voting Thresholds &bull; ibc.agenticprofessionals.net</span>
+    <!-- 2. Center: Megamenus Navigation -->
+    <nav>
+      <ul class="nav-links">
+        
+        <!-- Megamenu 1: Agentic Skills -->
+        <li class="nav-item" id="nav-item-skills">
+          <button type="button" class="nav-btn" aria-haspopup="true">
+            <span>agentic skills</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="megamenu-panel">
+            <div class="megamenu-header-row">
+              <span class="megamenu-title">Skillpedia Competency Tracks</span>
+              <span class="megamenu-badge">Agentic NSQF L7.0 &amp; L8.0</span>
+            </div>
+            <div class="megamenu-grid-2">
+              <a href="#skills-agentic" class="megamenu-card">
+                <div class="megamenu-card-title">
+                  <span>Skillpedia Skills</span>
+                  <span style="font-size:11px;color:#059669;font-family:var(--font-mono);">Active</span>
+                </div>
+                <p class="megamenu-card-desc">Sovereign training blueprints, runtime harnesses, and prompt evaluation suites certified under national occupational standards.</p>
               </a>
-              <p style="font-size: 11.5px; color: #64748B; line-height: 1.4;">
-                Resolution Professionals, valuers, and financial creditors running Section 12A and waterfall models.
-              </p>
-            </div>
-
-            <!-- Criminal / BNS -->
-            <div class="cohort-col col-criminal">
-              <div class="cohort-col-title">
-                <span class="dot-indicator dot-bns"></span>
-                <span>criminal</span>
-              </div>
-              <a href="https://bns.agenticprofessionals.net" class="cohort-pill-link" target="_blank" rel="noopener">
-                <strong>(bns)</strong>
-                <span>Bharatiya Nyaya Sanhita 2023 &bull; bns.agenticprofessionals.net</span>
+              <a href="#skills-nsqf" class="megamenu-card">
+                <div class="megamenu-card-title">
+                  <span>Agentic NSQF Curriculum</span>
+                  <span style="font-size:11px;color:#0284c7;font-family:var(--font-mono);">Level 7 &amp; 8</span>
+                </div>
+                <p class="megamenu-card-desc">Multi-agent governance, judicial precedent retrieval, and zero-hallucination verification frameworks for legal and restructuring analysts.</p>
               </a>
-              <p style="font-size: 11.5px; color: #64748B; line-height: 1.4;">
-                Criminal defense advocates mastering IPC-to-BNS tri-code conversions and bail precedent algorithms.
-              </p>
             </div>
+          </div>
+        </li>
 
-            <!-- Civil / CPC -->
-            <div class="cohort-col col-civil">
-              <div class="cohort-col-title">
-                <span class="dot-indicator" style="background: var(--cpc-purple);"></span>
-                <span>civil</span>
-              </div>
-              <a href="#pillar-cohorts" class="cohort-pill-link">
-                <strong>(cpc)</strong>
-                <span>Civil Procedure Code 1908</span>
+        <!-- Megamenu 2: Agentic Cohorts (Linking to Live Sites) -->
+        <li class="nav-item" id="nav-item-cohorts">
+          <button type="button" class="nav-btn" aria-haspopup="true">
+            <span>agentic cohorts</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="megamenu-panel" style="width: 720px;">
+            <div class="megamenu-header-row">
+              <span class="megamenu-title">Jurisprudential Practice Cohorts</span>
+              <span class="megamenu-badge">3 Sovereign Hubs</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+              <a href="https://ibc.agenticprofessionals.net" target="_blank" class="megamenu-card">
+                <div class="megamenu-card-title">
+                  <span>Commercial</span>
+                  <span style="font-size:10px;background:#ecfdf5;color:#059669;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">IBC</span>
+                </div>
+                <p class="megamenu-card-desc">Insolvency &amp; restructuring radar across 16 NCLT benches. Live on ibc.agenticprofessionals.net &rarr;</p>
               </a>
-              <p style="font-size: 11.5px; color: #64748B; line-height: 1.4;">
-                Commercial suits, interim injunction motions, execution petitions, and discovery filings.
-              </p>
+              <a href="https://bns.agenticprofessionals.net" target="_blank" class="megamenu-card">
+                <div class="megamenu-card-title">
+                  <span>Criminal</span>
+                  <span style="font-size:10px;background:#f0f9ff;color:#0284c7;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">BNS</span>
+                </div>
+                <p class="megamenu-card-desc">Bharatiya Nyaya Sanhita radar across 48 cyber cells &amp; police stations. Live on bns.agenticprofessionals.net &rarr;</p>
+              </a>
+              <a href="#cpc-cohort" class="megamenu-card">
+                <div class="megamenu-card-title">
+                  <span>Civil</span>
+                  <span style="font-size:10px;background:#f5f3ff;color:#7c3aed;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">CPC</span>
+                </div>
+                <p class="megamenu-card-desc">Commercial court jurisdictions, decree executions, and sovereign mediation registries.</p>
+              </a>
             </div>
           </div>
+        </li>
 
-          <div class="megamenu-footer">
-            <span style="font-size: 11.5px; color: #64748B;">Selective peer cohorts with weekly statutory briefings</span>
-            <a href="#pillar-cohorts" class="megamenu-action-link">
-              <span>Apply for Cohort &rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
+        <!-- Active Radar Pill: Agentic Spaces -->
+        <li class="nav-item">
+          <a href="#" class="nav-btn pill-active" id="nav-spaces-btn" onclick="showRadarView(); return false;">
+            <span>agentic spaces</span>
+          </a>
+        </li>
 
-      <!-- 4. AGENTIC EVENTS (2 COLUMNS: PROFESSIONAL, SOCIAL) -->
-      <div class="nav-item" id="nav-events">
-        <button type="button" class="nav-trigger-btn">
-          <span>agentic events</span>
-          <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-
-        <div class="megamenu megamenu-events">
-          <div class="megamenu-header">
-            <span class="megamenu-title">Events at Cafes &amp; Libraries</span>
-            <span class="megamenu-badge">Reserve a Physical Seat</span>
-          </div>
-
-          <div class="events-grid">
-            <!-- Professional Column -->
-            <div class="event-col">
-              <div class="event-col-title">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg>
-                <span>professional track</span>
-              </div>
-
-              <!-- Event 1 -->
-              <div class="event-item-card">
-                <strong>Autonomous AI Hackathon 2026</strong>
-                <span class="event-venue-tag">☕ Blue Tokai Saket &bull; Delhi NCR</span>
-                <div class="event-meta-row">
-                  <span>Sat, Dec 6 &bull; 10 AM</span>
-                  <span style="color:#059669;font-weight:700;">12 seats left</span>
-                </div>
-                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-1')">
-                  Reserve Seat &rarr;
-                </button>
-              </div>
-
-              <!-- Event 2 -->
-              <div class="event-item-card">
-                <strong>Agentic Skills Saturday Study Hall</strong>
-                <span class="event-venue-tag">☕ Third Wave Indiranagar &bull; Bengaluru</span>
-                <div class="event-meta-row">
-                  <span>Sat, Dec 13 &bull; 11 AM</span>
-                  <span style="color:#059669;font-weight:700;">8 seats left</span>
-                </div>
-                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-2')">
-                  Reserve Seat &rarr;
-                </button>
-              </div>
-
-              <!-- Event 3 -->
-              <div class="event-item-card">
-                <strong>Statutory AI Practitioner Conclave</strong>
-                <span class="event-venue-tag lib-tag">📚 Centenary Library &bull; Kolkata</span>
-                <div class="event-meta-row">
-                  <span>Fri, Dec 19 &bull; 2 PM</span>
-                  <span style="color:#059669;font-weight:700;">15 seats left</span>
-                </div>
-                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-3')">
-                  Reserve Seat &rarr;
-                </button>
-              </div>
+        <!-- Megamenu 3: Agentic Events -->
+        <li class="nav-item" id="nav-item-events">
+          <button type="button" class="nav-btn" aria-haspopup="true">
+            <span>agentic events</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="megamenu-panel">
+            <div class="megamenu-header-row">
+              <span class="megamenu-title">Community &amp; Knowledge Gathering</span>
+              <span class="megamenu-badge">National Schedule</span>
             </div>
-
-            <!-- Social Column -->
-            <div class="event-col">
-              <div class="event-col-title">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                <span>social &bull; fellowship</span>
-              </div>
-
-              <!-- Event 4 -->
-              <div class="event-item-card">
-                <strong>Mindful Co-working &amp; Bhajan Clubbing</strong>
-                <span class="event-venue-tag">☕ Starbucks Reserve BKC &bull; Mumbai</span>
-                <div class="event-meta-row">
-                  <span>Sun, Dec 7 &bull; 5 PM</span>
-                  <span style="color:#059669;font-weight:700;">9 seats left</span>
+            <div class="megamenu-grid-2">
+              <div class="megamenu-card">
+                <div class="megamenu-card-title">
+                  <span>Professional Tracks</span>
+                  <span style="font-size:10px;background:#f1f5f9;color:#334155;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">Tech</span>
                 </div>
-                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-4')">
-                  Reserve Seat &rarr;
-                </button>
+                <p class="megamenu-card-desc"><strong>Hackathons &amp; Conferences:</strong> High-throughput AI law coding sprints, agent harness architecture workshops, and annual restructuring symposiums.</p>
               </div>
-
-              <!-- Event 5 -->
-              <div class="event-item-card">
-                <strong>AI &amp; Tech Book Reading Circle</strong>
-                <span class="event-venue-tag lib-tag">📚 Central Tech Annex &bull; Delhi NCR</span>
-                <div class="event-meta-row">
-                  <span>Sun, Dec 14 &bull; 3 PM</span>
-                  <span style="color:#059669;font-weight:700;">14 seats left</span>
+              <div class="megamenu-card">
+                <div class="megamenu-card-title">
+                  <span>Social Gatherings</span>
+                  <span style="font-size:10px;background:#fef3c7;color:#92400e;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">Culture</span>
                 </div>
-                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-5')">
-                  Reserve Seat &rarr;
-                </button>
-              </div>
-
-              <!-- Event 6 -->
-              <div class="event-item-card">
-                <strong>Open Source Agent Sprint &amp; Demo</strong>
-                <span class="event-venue-tag">☕ Third Wave Koregaon Park &bull; Pune</span>
-                <div class="event-meta-row">
-                  <span>Sat, Dec 20 &bull; 4 PM</span>
-                  <span style="color:#059669;font-weight:700;">11 seats left</span>
-                </div>
-                <button type="button" class="event-reserve-btn" onclick="openEventReservationModal('evt-6')">
-                  Reserve Seat &rarr;
-                </button>
+                <p class="megamenu-card-desc"><strong>Bhajan Clubbing &amp; Social Celebrations:</strong> Mindful collective gatherings, acoustic music sessions, and collaborative networking at partner cafes &amp; libraries.</p>
               </div>
             </div>
           </div>
+        </li>
 
-          <div class="megamenu-footer">
-            <span style="font-size: 11.5px; color: #64748B;">Physical seats reserved at mapped venues</span>
-            <a href="#pillar-events" class="megamenu-action-link">
-              <span>View Full Calendar &rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
+      </ul>
     </nav>
 
-    <!-- ─── Header Right Actions: answers, hayagriva, sign in ─── -->
-    <div class="header-right">
-      <!-- answers -->
-      <a href="https://ibc.agenticprofessionals.net/#forum" class="nav-action-link" title="Statutory Jurisprudence &amp; Precedents Forum" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <!-- 3. Actions Tray (Right) -->
+    <div class="actions-tray">
+      <button type="button" class="action-btn" id="nav-answers-trigger" onclick="toggleAnswersView()">
         <span>answers</span>
-      </a>
-
-      <!-- hayagriva -->
-      <button type="button" class="nav-action-btn" onclick="openDownloadModal()" title="Download Hayagriva Desktop Harness v2.0">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        <span>hayagriva</span>
       </button>
-
-      <!-- sign in -->
-      <button type="button" class="nav-signin-btn" onclick="openLoginModal()">sign in</button>
+      <a href="https://github.com/atulgrover/hayagriva" target="_blank" class="action-btn" title="Hayagriva Desktop Agent Harness">
+        <span>hayagriva</span>
+      </a>
+      <button type="button" class="signin-btn" id="nav-signin-trigger" onclick="openReservationModal('Sign In / Portal Account')">
+        <span>sign in</span>
+      </button>
     </div>
+
   </header>
 
-  <!-- ─── Hero Section ─── -->
-  <section class="hero-section">
-    <div class="hero-inner">
-      <div class="section-badge">SOVEREIGN WORKFORCE &amp; AGENTIC LEARNING NETWORK</div>
-      <h1 class="hero-title">
-        The Sovereign Portal for<br>
-        <span class="highlight-blue">Young Learners &amp; Graduating Professionals</span>
-      </h1>
-      <p class="hero-desc">
-        Explore physical study cafes with high-speed Wi-Fi &amp; donuts, visit libraries equipped with computer terminals and AI books, master Skillpedia NSQF certifications, and connect with specialized professional cohorts.
-      </p>
-      <div class="hero-cta-group">
-        <a href="#spaces-radar" class="hero-btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-          <span>Explore Physical Spaces Map</span>
-        </a>
-        <button type="button" class="hero-btn-secondary" onclick="openDownloadModal()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          <span>Download Hayagriva Harness</span>
-        </button>
-        <a href="https://ibc.agenticprofessionals.net/#forum" class="hero-btn-secondary" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          <span>Statutory Answers Forum</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- ─── Main Canvas: Full Viewport Split-View Radar ─── -->
+  <main class="main-canvas" id="main-canvas">
 
-  <!-- ─── Live Institutional Metrics Strip ─── -->
-  <section class="metrics-bar">
-    <div class="metrics-container">
-      <div class="metric-box">
-        <span class="metric-value">16+</span>
-        <span class="metric-label">Physical Spaces</span>
-        <span class="metric-sub">Study Cafes &bull; AI Libraries</span>
-      </div>
-      <div class="metric-box">
-        <span class="metric-value">NSQF L5-9</span>
-        <span class="metric-label">Skillpedia Competencies</span>
-        <span class="metric-sub">Learner &bull; Practitioner Tools</span>
-      </div>
-      <div class="metric-box">
-        <span class="metric-value">3 Tracks</span>
-        <span class="metric-label">Practice Cohorts</span>
-        <span class="metric-sub">Commercial &bull; Criminal &bull; Civil</span>
-      </div>
-      <div class="metric-box">
-        <span class="metric-value">&lt; 50ms</span>
-        <span class="metric-label">Multi-Domain Go Engine</span>
-        <span class="metric-sub">Zero-Hallucination Core</span>
-      </div>
-    </div>
-  </section>
+    <!-- View 1: Radar View (Replicating 3002 Layout) -->
+    <div id="radar-view" class="mobile-mode-list">
 
-  <!-- ─── AGENTIC SPACES RADAR (SPLIT VIEW MATCHING INVESTOR OPPORTUNITIES) ─── -->
-  <section class="spaces-radar-section" id="spaces-radar">
-    <div class="spaces-split-view" id="spaces-split-view">
-
-      <!-- LEFT SIDEBAR: List & Filtering (Matching Image 2) -->
-      <aside class="spaces-sidebar" id="spaces-sidebar">
+      <!-- Left Sidebar: Filtering & Cards List -->
+      <aside class="sidebar" id="sidebar">
+        
         <div class="sidebar-header">
-
-          <!-- Mode Switcher: ☕ cafes vs 📚 libraries (Matching Image 2) -->
+          <!-- Mode Switcher: Study Cafes vs AI Libraries -->
           <div class="mode-switcher">
             <button type="button" class="mode-btn active" id="mode-cafes-btn" onclick="setSpacesFilter('cafe')">
               <span>☕ study cafes (8)</span>
@@ -2210,17 +1094,17 @@
             </button>
           </div>
 
-          <!-- Search Box (Matching Image 2) -->
-          <div class="search-box" id="spaces-search-box">
+          <!-- Search Box -->
+          <div class="search-box" id="search-box-container">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="spaces-search-input" placeholder="search cafes, libraries, cities, ai books..." oninput="handleSearchSpaces(this.value)" />
-            <button type="button" id="spaces-search-clear" class="search-clear-btn" onclick="clearSpacesSearch()">&times;</button>
+            <input type="text" id="search-input" placeholder="search cafes, libraries, cities, ai books..." oninput="handleSearchSpaces(this.value)" />
+            <button type="button" id="search-clear-btn" class="search-clear-btn" onclick="clearSpacesSearch()">&times;</button>
           </div>
 
-          <!-- Filter Row: City Select -->
+          <!-- Filter Row: City Select + Reset -->
           <div class="filter-row">
-            <select id="sidebar-city-select" class="filter-select" onchange="filterByCity(this.value)">
-              <option value="all">All Cities (National Radar)</option>
+            <select id="city-filter" class="filter-select" onchange="filterByCity(this.value)">
+              <option value="ALL">All Cities (National Radar)</option>
               <option value="Delhi NCR">Delhi NCR</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Bengaluru">Bengaluru</option>
@@ -2228,1428 +1112,692 @@
               <option value="Kolkata">Kolkata</option>
               <option value="Chandigarh">Chandigarh</option>
               <option value="Pune">Pune</option>
+              <option value="Ahmedabad">Ahmedabad</option>
             </select>
+            <button type="button" id="reset-filters-btn" class="reset-filters-btn" style="display:none;" onclick="resetAllFilters()">
+              &times; reset
+            </button>
           </div>
 
           <!-- Stats Bar -->
           <div class="stats-bar">
-            <span class="stats-pill"><span class="status-pulse"></span> <span id="spaces-count-display">8 verified spaces</span></span>
-            <span id="spaces-city-display">National Radar</span>
+            <span class="stats-pill">
+              <span class="status-pulse"></span>
+              <span id="spaces-count-display">8 verified spaces</span>
+            </span>
+            <span id="spaces-city-display" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-500);">National Radar</span>
           </div>
-
         </div>
 
-        <!-- Scrollable Card List (Matching Image 2) -->
-        <div class="card-list" id="spaces-card-list">
-          <!-- Rendered dynamically by JavaScript -->
+        <!-- Scrollable Card List -->
+        <div class="card-list" id="card-list">
+          <!-- Populated dynamically by JavaScript -->
         </div>
+
       </aside>
 
-      <!-- Sidebar Toggle Tab Button [ < ] (Matching Image 2) -->
-      <button type="button" class="sidebar-toggle-tab" id="sidebar-toggle-btn" onclick="toggleSidebarCollapse()" title="Collapse / Expand list ([ or \)">
+      <!-- Sidebar Toggle Tab Button [ < ] (Rotates and slides on collapse) -->
+      <button type="button" class="sidebar-toggle-tab" id="sidebar-toggle" onclick="toggleSidebarCollapse()" title="Hide / Show list ([ or \)" aria-label="Toggle sidebar">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
 
-      <!-- RIGHT FULL MAP CANVAS (Matching Image 2) -->
-      <div class="map-canvas" id="spaces-map-canvas">
-        <div id="spaces-map"></div>
+      <!-- Right Leaflet Map Canvas -->
+      <div class="map-canvas" id="map-canvas">
+        <div id="leaflet-map"></div>
+
+        <!-- Mobile Pin Bottom Preview Card -->
+        <div class="mobile-pin-preview" id="mobile-pin-preview"></div>
+      </div>
+
+      <!-- Slide-Out Inspector Drawer -->
+      <aside class="inspector-drawer" id="inspector-drawer">
+        <!-- Populated on click by JavaScript -->
+      </aside>
+
+      <!-- Mobile Floating View Switcher Pill -->
+      <div class="mobile-view-pill-container" id="mobile-view-pill-container">
+        <button type="button" class="mobile-view-toggle-btn" id="mobile-view-toggle-btn" onclick="toggleMobileView()">
+          <svg id="pill-icon-map" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 21s-6-5.5-6-10.5A6 6 0 0 1 18 10.5c0 5-6 10.5-6 10.5z"/><circle cx="12" cy="10.5" r="2"/></svg>
+          <svg id="pill-icon-list" style="display:none;" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#38bdf8" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="4" cy="18" r="1.5"/></svg>
+          <span id="mobile-view-label">View Map</span>
+        </button>
       </div>
 
     </div>
-  </section>
 
-  <!-- ─── 3 COMPANION PILLARS (SKILLS, COHORTS, EVENTS) ─── -->
-  <section class="companion-section">
-    <div class="section-head-center">
-      <span class="section-badge">INTEGRATED PROFESSIONAL PILLARS</span>
-      <h2 class="section-title">Skills, Cohorts &amp; Community Ecosystem</h2>
-      <p class="section-subtitle">
-        Beyond physical spaces, Agentic Professionals connects practitioners with institutional skills certification, specialized practice cohorts, and professional &amp; social gatherings.
-      </p>
-    </div>
-
-    <div class="companion-grid">
-
-      <!-- PILLAR: AGENTIC SKILLS -->
-      <article class="companion-card card-top-blue" id="pillar-skills">
-        <div>
-          <span class="card-tag" style="background: #EFF6FF; color: var(--primary-blue);">PILLAR &bull; NSQF SKILLS</span>
-          <h3 class="card-title">Skillpedia Skills (Agentic NSQF)</h3>
-          <p class="card-desc">
-            Accredited statutory intelligence frameworks designed for training and certifying autonomous legal engineers across NSQF Levels 7 through 9.
-          </p>
-          <ul class="card-bullets">
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>NSQF Level 7:</strong> Statutory Research &amp; Deterministic Precedent Grounding.</span>
-            </li>
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>NSQF Level 8:</strong> Section 53 Waterfall Math &amp; Swarm Copilots.</span>
-            </li>
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>NSQF Level 9:</strong> Air-Gapped Enterprise Harness Architecture.</span>
-            </li>
-          </ul>
-        </div>
-        <button type="button" class="card-btn btn-outline-blue" onclick="openSkillsWaitlistModal()">
-          <span>Enroll in Skillpedia NSQF &rarr;</span>
-        </button>
-      </article>
-
-      <!-- PILLAR: AGENTIC COHORTS -->
-      <article class="companion-card card-top-emerald" id="pillar-cohorts">
-        <div>
-          <span class="card-tag" style="background: #ECFDF5; color: var(--ibc-emerald);">PILLAR &bull; PRACTICE COHORTS</span>
-          <h3 class="card-title">Specialized Legal Cohorts</h3>
-          <p class="card-desc">
-            Intensive peer groups operating across 3 core statutory tracks: Commercial (Insolvency), Criminal (BNS), and Civil (CPC).
-          </p>
-          <ul class="card-bullets">
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>Commercial Track:</strong> Insolvency &amp; Bankruptcy Code CIRP workflows (<a href="https://ibc.agenticprofessionals.net" target="_blank" rel="noopener" style="color:var(--ibc-emerald); font-weight:600;">ibc.agenticprofessionals.net</a>).</span>
-            </li>
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>Criminal Track:</strong> Bharatiya Nyaya Sanhita 2023 Tri-Code (<a href="https://bns.agenticprofessionals.net" target="_blank" rel="noopener" style="color:var(--bns-sky); font-weight:600;">bns.agenticprofessionals.net</a>).</span>
-            </li>
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>Civil Track:</strong> Civil Procedure Code 1908 motions &amp; discovery.</span>
-            </li>
-          </ul>
-        </div>
-        <button type="button" class="card-btn btn-outline-emerald" onclick="openCohortsModal()">
-          <span>Join a Practice Cohort &rarr;</span>
-        </button>
-      </article>
-
-      <!-- PILLAR: AGENTIC EVENTS -->
-      <article class="companion-card card-top-purple" id="pillar-events">
-        <div>
-          <span class="card-tag" style="background: #F5F3FF; color: var(--cpc-purple);">PILLAR &bull; ECOSYSTEM EVENTS</span>
-          <h3 class="card-title">Professional &amp; Social Gatherings</h3>
-          <p class="card-desc">
-            A balanced calendar pairing high-stakes hackathons and legal conferences with soul-enriching bhajan clubbing and practitioner fellowship.
-          </p>
-          <ul class="card-bullets">
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>Professional:</strong> Autonomous Legal AI Hackathons &amp; Annual Conclaves.</span>
-            </li>
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>Social:</strong> Weekend Bhajan Clubbing for Litigators &amp; Sound Healing.</span>
-            </li>
-            <li class="card-bullet-item">
-              <span class="chk">&check;</span>
-              <span><strong>Fellowship:</strong> Annual Bar Celebrations &amp; Sovereign Practitioner Banquets.</span>
-            </li>
-          </ul>
-        </div>
-        <button type="button" class="card-btn btn-outline-purple" onclick="openEventsModal()">
-          <span>Explore Community Calendar &rarr;</span>
-        </button>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ─── TWO FEATURED ACTION CARDS (HAYAGRIVA & ANSWERS) ─── -->
-  <section class="featured-actions-section">
-    <div class="featured-actions-container">
-      <div class="section-head-center">
-        <span class="section-badge">CORE EXECUTION TOOLS</span>
-        <h2 class="section-title">Hayagriva Harness &amp; Statutory Answers</h2>
-        <p class="section-subtitle">
-          Two indispensable operational tools built for sovereign practitioners requiring zero data leakage and deterministic legal grounding.
-        </p>
-      </div>
-
-      <div class="featured-actions-grid">
-
-        <!-- CARD 1: DOWNLOAD HAYAGRIVA -->
-        <div class="action-card" id="hayagriva-card">
+    <!-- View 2: Sovereign Answers / Forum Canvas -->
+    <div id="answers-view" style="display:none;flex:1;width:100%;height:100%;overflow-y:auto;padding:32px 40px;background:var(--slate-50);">
+      <div style="max-width:880px;margin:0 auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
           <div>
-            <div class="action-card-header">
-              <div class="action-icon-circle icon-hayagriva">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-              </div>
-              <div>
-                <h3 class="action-title">Download Hayagriva Desktop Harness</h3>
-                <span style="font-size: 12px; font-family: var(--font-mono); color: #64748B;">v2.0 Air-Gapped Legal Runtime</span>
-              </div>
-            </div>
-            <p class="action-desc">
-              The secure, offline-first execution environment for legal engineers. Run autonomous multi-agent copilots, ingest confidential litigation briefs, and calculate Section 53 waterfall models without cloud data exposure.
-            </p>
-            <div class="action-pills-row">
-              <span class="action-pill">&bull; Multi-Agent Swarms</span>
-              <span class="action-pill">&bull; Local Vector Indexing</span>
-              <span class="action-pill">&bull; Zero Cloud Leakage</span>
-              <span class="action-pill">&bull; macOS &amp; Windows</span>
-            </div>
+            <h1 style="font-size:22px;font-weight:700;color:var(--slate-900);letter-spacing:-0.5px;">Agentic Professionals Answers &amp; Precedents</h1>
+            <p style="font-size:13px;color:var(--slate-500);margin-top:2px;">Statutory inquiry desk and autonomous knowledge base.</p>
           </div>
-          <button type="button" class="action-btn-primary" onclick="openDownloadModal()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            <span>Download Hayagriva App (v2.0)</span>
+          <button type="button" onclick="showRadarView()" class="action-btn" style="background:#ffffff;border:1px solid var(--slate-200);display:flex;align-items:center;gap:6px;">
+            &larr; Return to Spaces Radar
           </button>
         </div>
 
-        <!-- CARD 2: STATUTORY ANSWERS -->
-        <div class="action-card" id="answers-card">
-          <div>
-            <div class="action-card-header">
-              <div class="action-icon-circle icon-answers">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              </div>
-              <div>
-                <h3 class="action-title">Statutory Answers &amp; Precedents</h3>
-                <span style="font-size: 12px; font-family: var(--font-mono); color: #059669;">Peer-Verified Jurisprudence Forum</span>
-              </div>
-            </div>
-            <p class="action-desc">
-              Citation-grounded statutory Q&amp;A forum. Post high-stakes legal dilemmas and receive deterministic answers cross-referenced against authoritative NCLT, NCLAT, High Court, and Supreme Court rulings.
-            </p>
-            <div class="action-pills-row">
-              <span class="action-pill">&bull; IBC Restructuring Q&amp;A</span>
-              <span class="action-pill">&bull; BNS Tri-Code Ingestion</span>
-              <span class="action-pill">&bull; LightRAG Verified Citations</span>
-              <span class="action-pill">&bull; Peer Counsel Reviews</span>
-            </div>
+        <div style="background:#ffffff;border:1px solid var(--slate-200);border-radius:12px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.04);margin-bottom:20px;">
+          <div style="display:flex;gap:10px;">
+            <input type="text" id="forum-search-box" placeholder="Ask any question across agentic spaces, BNS, IBC, or NSQF levels..." style="flex:1;height:42px;padding:0 14px;border-radius:8px;border:1px solid var(--slate-200);font-size:13.5px;outline:none;" />
+            <button type="button" class="signin-btn" style="padding:0 20px;" onclick="alert('Querying sovereign agent graph across 48 jurisdictions...')">
+              Query Graph
+            </button>
           </div>
-          <a href="https://ibc.agenticprofessionals.net/#forum" class="action-btn-emerald" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
-            <span>Launch Statutory Answers Forum</span>
-          </a>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── SOVEREIGN SUBDOMAIN GATEWAYS ─── -->
-  <section class="gateways-section" id="gateways">
-    <div class="gateways-container">
-      <div class="section-head-center">
-        <span class="section-badge">DIRECT PRACTICE PLATFORMS</span>
-        <h2 class="section-title">Sovereign Domain Gateways</h2>
-        <p class="section-subtitle">
-          Jump directly into specialized institutional workspaces powered by our unified Go multi-host engine.
-        </p>
-      </div>
-
-      <div class="gateways-grid">
-        <!-- IBC Hub -->
-        <div class="gateway-banner">
-          <div>
-            <div class="gateway-banner-head">
-              <h3 class="gateway-title">IBC &bull; Insolvency Hub</h3>
-              <span class="gateway-domain-badge">
-                <span class="dot-indicator dot-ibc"></span>
-                <span>ibc.agenticprofessionals.net</span>
-              </span>
-            </div>
-            <p class="gateway-desc">
-              Deterministic statutory intelligence for Resolution Professionals, Corporate Debtors, and Financial Creditors under the Insolvency &amp; Bankruptcy Code 2016.
-            </p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:#ffffff;border:1px solid var(--slate-200);border-radius:10px;padding:16px;">
+            <span style="font-size:11px;font-family:var(--font-mono);color:#0284c7;font-weight:700;text-transform:uppercase;">SPACES RADAR INQUIRY</span>
+            <h3 style="font-size:15px;font-weight:700;margin:4px 0 6px 0;">How do I reserve a dedicated workstation with GPU terminals at Saket AI Library?</h3>
+            <p style="font-size:12.5px;color:var(--slate-600);line-height:1.5;">You can click on any Library card on the Spaces Radar and select 'Reserve Workstation &rarr;'. All terminals are equipped with dual 4K monitors and preloaded Python agent sandboxes.</p>
           </div>
-          <a href="https://ibc.agenticprofessionals.net" class="gateway-link link-ibc" target="_blank" rel="noopener">
-            <span>Launch Live IBC Practice Hub (ibc.agenticprofessionals.net) &rarr;</span>
-          </a>
-        </div>
-
-        <!-- BNS Hub -->
-        <div class="gateway-banner">
-          <div>
-            <div class="gateway-banner-head">
-              <h3 class="gateway-title">BNS &bull; Criminal Law Hub</h3>
-              <span class="gateway-domain-badge">
-                <span class="dot-indicator dot-bns"></span>
-                <span>bns.agenticprofessionals.net</span>
-              </span>
-            </div>
-            <p class="gateway-desc">
-              Bharatiya Nyaya Sanhita 2023 statutory copilot: Real-time IPC-to-BNS tri-code cross-reference engine, compoundability tables, and criminal procedural navigation.
-            </p>
+          <div style="background:#ffffff;border:1px solid var(--slate-200);border-radius:10px;padding:16px;">
+            <span style="font-size:11px;font-family:var(--font-mono);color:#059669;font-weight:700;text-transform:uppercase;">NSQF LEVEL 7.0 ADVISORY</span>
+            <h3 style="font-size:15px;font-weight:700;margin:4px 0 6px 0;">What are the prerequisite credentials for Agentic Restructuring Certification?</h3>
+            <p style="font-size:12.5px;color:var(--slate-600);line-height:1.5;">Prerequisites include foundational familiarity with Section 29A statutory verifications, CIRP timelines under Section 12, and prompt harness execution on the Hayagriva runtime.</p>
           </div>
-          <a href="https://bns.agenticprofessionals.net" class="gateway-link link-bns" target="_blank" rel="noopener">
-            <span>Launch Live BNS Criminal Law Hub (bns.agenticprofessionals.net) &rarr;</span>
-          </a>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ─── MODALS ─── -->
+  </main>
 
-  <!-- 1. Supabase Sign In Modal -->
-  <div class="modal-backdrop" id="login-modal" onclick="closeModalOnBackdrop(event, 'login-modal')">
-    <div class="modal-card">
-      <button type="button" class="modal-close" onclick="closeModal('login-modal')">&times;</button>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-        <svg class="unicorn-icon" viewBox="0 0 852 845" style="width:24px;height:24px;">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 ... Z" />
-        </svg>
-        <strong style="font-family: var(--font-heading); font-size: 16px;">Agentic Professionals</strong>
-      </div>
-      <h3 class="modal-title">Sign In to Sovereign Hub</h3>
-      <p class="modal-subtitle">
-        Enter your practitioner credentials to unlock Hayagriva desktop downloads, verified statutory forums, and space reservations.
-      </p>
-
-      <form class="modal-form" onsubmit="handleAuthSubmit(event)">
-        <div>
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">PRACTITIONER EMAIL</label>
-          <input type="email" class="form-input" placeholder="counsel@chambers.in" required>
-        </div>
-        <div>
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">PASSWORD</label>
-          <input type="password" class="form-input" placeholder="••••••••••••" required>
-        </div>
-        <button type="submit" class="modal-submit-btn">Authorize &amp; Continue &rarr;</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- 2. Hayagriva Download Modal -->
-  <div class="modal-backdrop" id="download-modal" onclick="closeModalOnBackdrop(event, 'download-modal')">
-    <div class="modal-card">
-      <button type="button" class="modal-close" onclick="closeModal('download-modal')">&times;</button>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-        <div class="action-icon-circle icon-hayagriva" style="width:32px; height:32px; font-size:16px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        </div>
-        <strong style="font-family: var(--font-heading); font-size: 16px;">Hayagriva Desktop Harness v2.0</strong>
-      </div>
-      <h3 class="modal-title">Download Air-Gapped Harness</h3>
-      <p class="modal-subtitle">
-        Select your operating system to initiate the cryptographically signed package download.
-      </p>
-
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <button type="button" class="action-btn-primary" onclick="triggerDownload('macOS Apple Silicon')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5V11h2l-3-4-3 4h2v5.5z"/></svg>
-          <span>macOS Apple Silicon (ARM64 &bull; .dmg)</span>
-        </button>
-        <button type="button" class="hero-btn-secondary" style="width:100%; justify-content:center;" onclick="triggerDownload('macOS Intel')">
-          <span>macOS Intel (x86_64 &bull; .dmg)</span>
-        </button>
-        <button type="button" class="hero-btn-secondary" style="width:100%; justify-content:center;" onclick="triggerDownload('Windows')">
-          <span>Windows 11 / 10 (.exe Installer)</span>
-        </button>
-      </div>
-
-      <div style="margin-top:16px; padding:10px; background:#F8FAFC; border-radius:8px; font-size:11.5px; color:#64748B; font-family:var(--font-mono);">
-        SHA256: 8a4f9...e27b &bull; Signed with Sovereign Practitioner Root Key
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. Desk Reservation Modal -->
-  <div class="modal-backdrop" id="desk-modal" onclick="closeModalOnBackdrop(event, 'desk-modal')">
-    <div class="modal-card">
-      <button type="button" class="modal-close" onclick="closeModal('desk-modal')">&times;</button>
-      <h3 class="modal-title">Reserve a Work Desk</h3>
-      <p class="modal-subtitle" id="desk-modal-subtitle">
-        Confirm check-in at selected workspace. Instant Wi-Fi access pass and desk reservation.
-      </p>
-
-      <form class="modal-form" onsubmit="handleDeskReservation(event)">
-        <div>
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">FULL NAME</label>
-          <input type="text" class="form-input" placeholder="Your Name" required>
-        </div>
-        <div>
-          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px; font-family:var(--font-heading);">DATE &amp; TIME SLOT</label>
-          <input type="datetime-local" class="form-input" required>
-        </div>
-        <button type="submit" class="modal-submit-btn">Confirm Desk Check-In &rarr;</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- 4. Event Seat Reservation Modal -->
-  <div class="modal-backdrop" id="event-modal" onclick="closeModalOnBackdrop(event, 'event-modal')">
-    <div class="modal-card">
-      <button type="button" class="modal-close" onclick="closeModal('event-modal')">&times;</button>
+  <!-- Reservation / Contact Modal -->
+  <div id="booking-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.6);backdrop-filter:blur(4px);z-index:3000;align-items:center;justify-content:center;">
+    <div style="background:#ffffff;width:90%;max-width:440px;border-radius:16px;padding:24px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);position:relative;">
+      <button type="button" onclick="closeReservationModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--slate-400);">&times;</button>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-        <span class="sub-badge" id="event-modal-badge" style="background:#EFF6FF;color:#1E40AF;font-size:11px;font-weight:700;">PROFESSIONAL EVENT</span>
-        <span id="event-modal-seats-pill" style="font-size:11px;font-family:monospace;color:#059669;font-weight:700;background:#ECFDF5;padding:2px 6px;border-radius:4px;">12 seats left</span>
+        <span id="modal-type-tag" style="font-size:10px;font-family:var(--font-mono);padding:2px 6px;border-radius:4px;background:#e0f2fe;color:#0369a1;font-weight:700;">AGENTIC SPACE</span>
       </div>
-      <h3 class="modal-title" id="event-modal-title">Autonomous AI Hackathon 2026</h3>
-      <p class="modal-subtitle" id="event-modal-subtitle" style="margin-bottom:14px;">
-        Hosted @ Blue Tokai Coffee Roasters — Saket, Delhi NCR.<br>
-        <span style="color:#0F172A;font-weight:600;" id="event-modal-date">Saturday, Dec 6, 2026 • 10:00 AM – 6:00 PM</span>
-      </p>
-
-      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 12px;margin-bottom:16px;font-size:12px;color:#475569;" id="event-modal-amenities">
-        ☕ <strong>Venue Perks:</strong> High-Speed Wi-Fi, Dedicated Worktable, Unlimited Brewed Coffee &amp; Donuts included.
-      </div>
-
-      <form class="modal-form" onsubmit="handleEventReservation(event)">
-        <input type="hidden" id="event-reservation-id" value="" />
+      <h3 id="modal-space-title" style="font-size:17px;font-weight:700;color:var(--slate-900);line-height:1.3;margin-bottom:4px;">Reserve Work Desk</h3>
+      <p id="modal-space-subtitle" style="font-size:12px;color:var(--slate-500);margin-bottom:16px;">Book a high-speed workstation or meeting chamber.</p>
+      
+      <form onsubmit="handleReservationSubmit(event)" style="display:flex;flex-direction:column;gap:12px;">
         <div>
-          <label style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:#334155;font-family:var(--font-heading);">FULL NAME</label>
-          <input type="text" class="form-input" id="event-rsvp-name" placeholder="Your Name" required />
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Full Name</label>
+          <input type="text" required placeholder="Adv. / Researcher Name" style="width:100%;height:38px;padding:0 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;" />
         </div>
         <div>
-          <label style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:#334155;font-family:var(--font-heading);">EMAIL ADDRESS</label>
-          <input type="email" class="form-input" id="event-rsvp-email" placeholder="name@example.com" required />
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Phone or Email</label>
+          <input type="text" required placeholder="+91 98765-43210 or name@chambers.in" style="width:100%;height:38px;padding:0 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;" />
         </div>
         <div>
-          <label style="display:block;font-size:12px;font-weight:700;margin-bottom:4px;color:#334155;font-family:var(--font-heading);">BACKGROUND / PROFILE</label>
-          <select class="form-input" id="event-rsvp-category" style="font-family:inherit;">
-            <option value="Young Learner / Student">Young Learner of Agentic Skills / Student</option>
-            <option value="Graduating Legal Practitioner">Graduating Legal Practitioner (Advocate / Counsel)</option>
-            <option value="Insolvency Professional / Valuer">Insolvency Professional / Valuer (IBC)</option>
-            <option value="AI Engineer / Developer">AI Engineer / Open Source Tool Developer</option>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Time Slot</label>
+          <select style="width:100%;height:38px;padding:0 10px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;background:var(--slate-50);">
+            <option>Today: Morning Session (09:00 AM – 01:00 PM)</option>
+            <option>Today: Afternoon Session (02:00 PM – 06:00 PM)</option>
+            <option>Today: Evening Focus (06:00 PM – 10:00 PM)</option>
+            <option>Tomorrow: Full Day Access</option>
           </select>
         </div>
-        <button type="submit" class="modal-submit-btn" style="margin-top:6px;">
-          Confirm Seat Reservation &rarr;
+        <button type="submit" class="signin-btn" style="height:40px;margin-top:6px;font-size:13px;width:100%;justify-content:center;">
+          Confirm Booking Request &rarr;
         </button>
       </form>
     </div>
   </div>
 
-  <!-- ─── Institutional Footer ─── -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <svg class="unicorn-icon" viewBox="0 0 852 845" style="width: 24px; height: 24px;">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 ... Z" />
-          </svg>
-          <strong style="font-family: var(--font-heading); font-size: 15px; color: var(--text-main);">Agentic Professionals</strong>
-        </div>
-
-        <ul class="footer-links">
-          <li><a href="#spaces-radar">Agentic Spaces Radar</a></li>
-          <li><a href="#pillar-skills">Skillpedia NSQF Skills</a></li>
-          <li><a href="#pillar-cohorts">Practice Cohorts</a></li>
-          <li><a href="#pillar-events">Community Events</a></li>
-          <li><a href="https://ibc.agenticprofessionals.net" target="_blank" rel="noopener">IBC Hub (ibc.agenticprofessionals.net)</a></li>
-          <li><a href="https://bns.agenticprofessionals.net" target="_blank" rel="noopener">BNS Hub (bns.agenticprofessionals.net)</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-bottom">
-        <div>Unified Sovereign Network for Legal Engineers &amp; Statutory Practice.</div>
-        <div>&copy; 2026 Agentic Professionals. All rights reserved.</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ─── Interactive Telemetry & Spaces GIS Logic ─── -->
+  <!-- ─── JAVASCRIPT ENGINE (PORTED FROM 3002 RADAR.JS) ─── -->
   <script>
-    // Curated Database of Agentic Spaces (Cafes with Wi-Fi & Donuts • Libraries with Computers & AI Books)
-    const spacesData = [
-      // ─── CAFES (Coffee & Donuts Co-working / Study Spots) ───
-      {
-        id: 'cafe-1',
-        type: 'cafe',
-        name: 'Blue Tokai Coffee Roasters — Saket',
-        city: 'Delhi NCR',
-        location: 'Saidulajab, Westend Marg, Saket, New Delhi',
-        proximity: 'Near Saket Metro & Select Citywalk • South Delhi Hub',
-        lat: 28.5204,
-        lng: 77.2015,
-        wifi: '350 Mbps Dedicated Fiber',
-        power: 'Universal Outlets at All Tables',
-        noise: 'Silent Co-working Vibe (42 dB)',
-        specialty: 'Specialty Pourovers, Fresh Sourdough Bakes & Artisanal Donuts',
-        desc: 'Vibrant co-working cafe favored by young AI developers, prompt engineers, and legal tech counsel. Ergonomic benching and strong Wi-Fi.',
-        directionsUrl: 'https://maps.google.com/?q=28.5204,77.2015'
-      },
-      {
-        id: 'cafe-2',
-        type: 'cafe',
-        name: 'Starbucks Reserve — BKC',
-        city: 'Mumbai',
-        location: 'G Block, Bandra Kurla Complex, Mumbai',
-        proximity: 'Near Diamond Bourse & NCLT Mumbai Corridor',
-        lat: 19.0657,
-        lng: 72.8682,
-        wifi: '400 Mbps High-Speed Wi-Fi',
-        power: 'Executive Worktables with AC/USB Sockets',
-        noise: 'Moderate Buzz / Focused Corner Workspaces (50 dB)',
-        specialty: 'Reserve Nitro Cold Brews, Fresh Bagels & Glazed Donuts',
-        desc: 'Prime networking hub for corporate professionals, restructuring specialists, and fintech builders graduating to agentic workflows.',
-        directionsUrl: 'https://maps.google.com/?q=19.0657,72.8682'
-      },
-      {
-        id: 'cafe-3',
-        type: 'cafe',
-        name: 'Third Wave Coffee — Indiranagar',
-        city: 'Bengaluru',
-        location: '100ft Road, HAL 2nd Stage, Indiranagar, Bengaluru',
-        proximity: 'Direct Metro Access • Tech Corridor',
-        lat: 12.9719,
-        lng: 77.6412,
-        wifi: '500 Mbps High-Speed Mesh',
-        power: 'Sockets & USB Ports at Every Carrel Booth',
-        noise: 'Quiet Work Loft on First Floor (42 dB)',
-        specialty: 'Single-Origin Brews, Cinnamon Rolls & Chocolate Doughnuts',
-        desc: 'The Silicon Valley of India hub for young AI agent builders, hackathon teams, and students experimenting with local LLM harnesses.',
-        directionsUrl: 'https://maps.google.com/?q=12.9719,77.6412'
-      },
-      {
-        id: 'cafe-4',
-        type: 'cafe',
-        name: 'Roastery Coffee House — Banjara Hills',
-        city: 'Hyderabad',
-        location: 'Road No. 14, Banjara Hills, Hyderabad',
-        proximity: 'Near IT Corridor & High Court Connectivity',
-        lat: 17.4156,
-        lng: 78.4350,
-        wifi: '300 Mbps Fiber Wi-Fi',
-        power: 'Courtyard & Indoor Work Desks with Plugs',
-        noise: 'Serene Garden Setting (44 dB)',
-        specialty: 'Monsooned Malabar Roasts, Fresh Bakes & Doughnuts',
-        desc: 'Lush greenery and peaceful ambience ideal for focused study sessions, agent architecture planning, and peer code reviews.',
-        directionsUrl: 'https://maps.google.com/?q=17.4156,78.4350'
-      },
-      {
-        id: 'cafe-5',
-        type: 'cafe',
-        name: 'Blue Tokai Coffee Roasters — Park Street',
-        city: 'Kolkata',
-        location: 'Park Street Commercial & Heritage Hub, Kolkata',
-        proximity: '10 mins to Calcutta High Court & St. Xavier’s',
-        lat: 22.5512,
-        lng: 88.3524,
-        wifi: '300 Mbps High-Speed Fiber',
-        power: 'Silent Mezzanine Worktables with Power Strips',
-        noise: 'Library Whisper Mode on Upper Floor (39 dB)',
-        specialty: 'Specialty Pour-Overs, Sourdough Croissants & Donuts',
-        desc: 'Historic central hub popular with university researchers, students, and legal practitioners preparing statutory submissions.',
-        directionsUrl: 'https://maps.google.com/?q=22.5512,88.3524'
-      },
-      {
-        id: 'cafe-6',
-        type: 'cafe',
-        name: 'Subko Coffee & Craft Bakehouse — Bandra',
-        city: 'Mumbai',
-        location: 'Ranwar Village, Bandra West, Mumbai',
-        proximity: 'Western Express Highway & Bandra Station Access',
-        lat: 19.0596,
-        lng: 72.8295,
-        wifi: '350 Mbps Wi-Fi',
-        power: 'Communal Craft Benches with Multi-Plugs',
-        noise: 'Creative Cafe Atmosphere (48 dB)',
-        specialty: 'Bean-to-Bar Chocolate, Sourdough Bakes & Brioche Donuts',
-        desc: 'Creative workspace buzzing with open-source AI developers, media researchers, and young technology professionals.',
-        directionsUrl: 'https://maps.google.com/?q=19.0596,72.8295'
-      },
-      {
-        id: 'cafe-7',
-        type: 'cafe',
-        name: 'The Coffee Bean & Tea Leaf — Sector 35',
-        city: 'Chandigarh',
-        location: 'Sector 35-B Commercial Corridor, Chandigarh',
-        proximity: 'Near Panjab University & High Court Transit',
-        lat: 30.7266,
-        lng: 76.7681,
-        wifi: '300 Mbps Wi-Fi',
-        power: 'Quiet Study Booths with Dedicated Sockets',
-        noise: 'Calm Academic Environment (40 dB)',
-        specialty: 'Gourmet Cold Brews, Blueberry Muffins & Glazed Donuts',
-        desc: 'Student-friendly study retreat frequented by Panjab University students and young advocates preparing litigation briefs.',
-        directionsUrl: 'https://maps.google.com/?q=30.7266,76.7681'
-      },
-      {
-        id: 'cafe-8',
-        type: 'cafe',
-        name: 'Third Wave Coffee — Koregaon Park',
-        city: 'Pune',
-        location: 'North Main Road, Koregaon Park, Pune',
-        proximity: 'Pune Tech Corridor & Student Hub',
-        lat: 18.5362,
-        lng: 73.8940,
-        wifi: '400 Mbps Mesh Network',
-        power: 'Outlets at Every Booth & Window Bench',
-        noise: 'Study & Work Friendly (43 dB)',
-        specialty: 'Nitro Brews, Fresh Bagels & Filled Donuts',
-        desc: 'Vibrant co-working haven for engineering students, AI startup founders, and consultants working on multi-agent automations.',
-        directionsUrl: 'https://maps.google.com/?q=18.5362,73.8940'
-      },
+    (function () {
+      'use strict';
 
-      // ─── LIBRARIES (Computers, AI Books & Academic Stacks) ───
-      {
-        id: 'lib-1',
-        type: 'library',
-        name: 'Delhi Public Library — Central Tech Annex',
-        city: 'Delhi NCR',
-        location: 'Opposite Old Delhi Railway Station, Chandni Chowk, Delhi',
-        proximity: 'Direct Metro Access (Chandni Chowk / Kashmere Gate)',
-        lat: 28.6562,
-        lng: 77.2310,
-        wifi: 'National Gigabit Research Network',
-        terminals: '60 PC Workstations',
-        ai_books: '850+ Volumes (AI, Python, Deep Learning, Cyber Law)',
-        power: 'Wired Reading Desks with Sockets',
-        noise: 'Strict Silence Enforced (< 30 dB)',
-        specialty: 'Free Public Computer Access & Extensive Technical Reading Stacks',
-        desc: 'Public knowledge repository equipped with 60 high-speed internet computers and physical shelves stocked with AI, machine learning, and computer science textbooks.',
-        directionsUrl: 'https://maps.google.com/?q=28.6562,77.2310'
-      },
-      {
-        id: 'lib-2',
-        type: 'library',
-        name: 'National Institute of Advanced Studies (NIAS) Library',
-        city: 'Bengaluru',
-        location: 'IISc Campus, Mathikere, Bengaluru',
-        proximity: 'Inside Premier IISc Academic Campus',
-        lat: 13.0163,
-        lng: 77.5657,
-        wifi: 'National Knowledge Network (NKN) 1 Gbps',
-        terminals: '40 Research Terminals',
-        ai_books: '1,200+ Volumes (Cognitive Science, Autonomous Agents, LLMs)',
-        power: 'Individual Carrel Outlets & Surge Protectors',
-        noise: 'Pin-Drop Silence (< 28 dB)',
-        specialty: 'Advanced AI Research Treatises & Digital ACM/IEEE Terminal Access',
-        desc: 'World-class interdisciplinary research library housing foundational volumes on cognitive artificial intelligence, algorithmic ethics, and complex computational systems.',
-        directionsUrl: 'https://maps.google.com/?q=13.0163,77.5657'
-      },
-      {
-        id: 'lib-3',
-        type: 'library',
-        name: 'Bombay Bar Association Memorial Library & AI Hub',
-        city: 'Mumbai',
-        location: 'High Court Heritage Building, Fort, Mumbai',
-        proximity: 'Inside Bombay High Court Heritage Wing',
-        lat: 18.9298,
-        lng: 72.8301,
-        wifi: 'Bar Council Research Fiber',
-        terminals: '35 High-Speed Workstations',
-        ai_books: '400+ Volumes (Legal Tech, Cyber Jurisprudence, Statutory Digests)',
-        power: 'Brass Lamp Carrels with Charging Outlets',
-        noise: 'Strict Silence (< 30 dB)',
-        specialty: 'Centenary Law Digests, Digital Citation Banks & Statutory AI Guides',
-        desc: 'One of the oldest legal reference institutions in Asia, now modernized with terminal access for researching statutory algorithms and case law databases.',
-        directionsUrl: 'https://maps.google.com/?q=18.9298,72.8301'
-      },
-      {
-        id: 'lib-4',
-        type: 'library',
-        name: 'Calcutta High Court Centenary Library & Digital Repository',
-        city: 'Kolkata',
-        location: 'Old Post Office Street, BBD Bagh, Kolkata',
-        proximity: 'Adjacent to Calcutta High Court Main Gates',
-        lat: 22.5719,
-        lng: 88.3476,
-        wifi: 'Advocates Association Gigabit Grid',
-        terminals: '30 High-Speed Terminals',
-        ai_books: '550+ Volumes (Commercial Jurisprudence, AI Law, Precedents)',
-        power: 'Teak Reading Carrels with Plugs',
-        noise: 'Strict Silence Enforced (28 dB)',
-        specialty: 'Historic Common Law Compendiums & Digital Case Law Archives',
-        desc: 'Distinguished research center with computer stations for drafting statutory filings, researching precedents, and studying tri-code transitions.',
-        directionsUrl: 'https://maps.google.com/?q=22.5719,88.3476'
-      },
-      {
-        id: 'lib-5',
-        type: 'library',
-        name: 'State Central Library — Afzal Gunj Digital Annex',
-        city: 'Hyderabad',
-        location: 'Afzal Gunj, Bank of Musi River, Hyderabad',
-        proximity: 'Near High Court of Telangana & City College',
-        lat: 17.3712,
-        lng: 78.4754,
-        wifi: 'State Digital Knowledge Fiber',
-        terminals: '50 Public Terminals',
-        ai_books: '700+ Volumes (AI Systems, Data Science, Engineering Texts)',
-        power: 'Terminal Plugs at All 80 Carrels',
-        noise: 'Strict Silence (30 dB)',
-        specialty: 'Grand Architectural Rotunda with Free Digital PC Workstations',
-        desc: 'Historic landmark library offering students and practitioners free access to 50 computers, high-speed web research, and comprehensive tech collections.',
-        directionsUrl: 'https://maps.google.com/?q=17.3712,78.4754'
-      },
-      {
-        id: 'lib-6',
-        type: 'library',
-        name: 'Punjab University A.C. Joshi Library & Tech Commons',
-        city: 'Chandigarh',
-        location: 'Sector 14 Campus, Panjab University, Chandigarh',
-        proximity: 'Central Campus • 24x7 Outer Reading Hall',
-        lat: 30.7588,
-        lng: 76.7685,
-        wifi: 'Campus 10-Gigabit Network',
-        terminals: '80 Computer Terminals',
-        ai_books: '1,500+ Volumes (Computer Science, AI, Robotics, Mathematics)',
-        power: 'Fully Wired Individual Reading Carrels',
-        noise: 'Quiet Academic Hall (30 dB)',
-        specialty: '24x7 Study Facilities & Dedicated AI/ML Reference Wing',
-        desc: 'Premier university library in Northern India with over 80 terminals, round-the-clock reading rooms, and extensive technical literature.',
-        directionsUrl: 'https://maps.google.com/?q=30.7588,76.7685'
-      },
-      {
-        id: 'lib-7',
-        type: 'library',
-        name: 'Karnataka State Central Library — Cubbon Park Knowledge Lab',
-        city: 'Bengaluru',
-        location: 'Seshadri Iyer Memorial Hall, Cubbon Park, Bengaluru',
-        proximity: 'Adjacent to Karnataka High Court (Attara Kacheri)',
-        lat: 12.9767,
-        lng: 77.5928,
-        wifi: 'City Digital Gigabit Network',
-        terminals: '45 Public Terminals',
-        ai_books: '600+ Volumes (AI Fundamentals, Algorithmic Logic, Tech Law)',
-        power: 'Individual Research Carrels with Outlets',
-        noise: 'Strict Silence Enforced (28 dB)',
-        specialty: 'Heritage Red-Brick Sanctuary with Modernized Digital Center',
-        desc: 'Iconic library located inside lush Cubbon Park, providing free computer carrels and comprehensive reading rooms for engineers and lawyers alike.',
-        directionsUrl: 'https://maps.google.com/?q=12.9767,77.5928'
-      },
-      {
-        id: 'lib-8',
-        type: 'library',
-        name: 'Indian Institute of Public Administration (IIPA) Library',
-        city: 'Delhi NCR',
-        location: 'Indraprastha Estate, Ring Road, New Delhi',
-        proximity: 'Near Supreme Court & Pragati Maidan Hub',
-        lat: 28.6234,
-        lng: 77.2489,
-        wifi: 'IIPA National Knowledge Network',
-        terminals: '30 Research Workstations',
-        ai_books: '900+ Volumes (AI Governance, Autonomous Policy, Administrative Law)',
-        power: 'Desk Plugs at All Carrel Desks',
-        noise: 'Silent Research (< 30 dB)',
-        specialty: 'Statutory AI Governance, Gazette Archives & Policy Stacks',
-        desc: 'Specialized administrative and public policy archive housing literature on algorithmic governance, statutory drafting, and digital safety standards.',
-        directionsUrl: 'https://maps.google.com/?q=28.6234,77.2489'
-      }
-    ];
+      // State
+      let activeMode = 'cafe'; // 'cafe' or 'library'
+      let rawSpaces = [];
+      let filteredSpaces = [];
+      let selectedSpaceId = null;
+      let bookmarkedIds = new Set();
+      let map = null;
+      let markers = [];
+      let isSidebarCollapsed = false;
+      let isMobileMapView = false;
 
-    // Curated Events happening at the physical mapped Cafes & Libraries
-    const eventsData = [
-      {
-        id: 'evt-1',
-        title: 'Autonomous AI Hackathon 2026',
-        category: 'professional',
-        type: 'hackathon',
-        venueId: 'cafe-1',
-        venueName: 'Blue Tokai Coffee Roasters — Saket',
-        city: 'Delhi NCR',
-        date: 'Saturday, Dec 6, 2026 • 10:00 AM – 6:00 PM',
-        seatsTotal: 40,
-        seatsLeft: 12,
-        amenities: 'Free High-Speed Wi-Fi, Dedicated Worktable, Unlimited Brewed Coffee & Donuts',
-        desc: 'Build multi-agent task swarms, deterministic section extractors, and tool-calling pipelines using local models.'
-      },
-      {
-        id: 'evt-2',
-        title: 'Agentic Skills Saturday Study Hall',
-        category: 'professional',
-        type: 'study-hall',
-        venueId: 'cafe-3',
-        venueName: 'Third Wave Coffee — Indiranagar',
-        city: 'Bengaluru',
-        date: 'Saturday, Dec 13, 2026 • 11:00 AM – 4:00 PM',
-        seatsTotal: 30,
-        seatsLeft: 8,
-        amenities: 'Gigabit Mesh Wi-Fi, Power Outlets at every seat, Artisan Pourovers & Donuts',
-        desc: 'Peer study circle for young learners and career-starters completing NSQF Level 6 & 7 agentic certifications.'
-      },
-      {
-        id: 'evt-3',
-        title: 'Statutory AI Practitioner Conclave',
-        category: 'professional',
-        type: 'conference',
-        venueId: 'lib-4',
-        venueName: 'Calcutta High Court Centenary Library',
-        city: 'Kolkata',
-        date: 'Friday, Dec 19, 2026 • 2:00 PM – 6:00 PM',
-        seatsTotal: 50,
-        seatsLeft: 15,
-        amenities: 'Digital Terminal Access, Physical Citation Compendiums, High Court Entry Pass',
-        desc: 'Senior advocates and insolvency professionals analyzing statutory verification gates in court filings.'
-      },
-      {
-        id: 'evt-4',
-        title: 'Mindful Co-working & Evening Bhajan Clubbing',
-        category: 'social',
-        type: 'bhajan-clubbing',
-        venueId: 'cafe-2',
-        venueName: 'Starbucks Reserve — BKC',
-        city: 'Mumbai',
-        date: 'Sunday, Dec 7, 2026 • 5:00 PM – 8:30 PM',
-        seatsTotal: 45,
-        seatsLeft: 9,
-        amenities: 'Acoustic Sound Therapy, Reserve Coffee, Vegan Donuts, Reflective Fellowship',
-        desc: 'Litigator sound healing, sacred acoustic frequencies, and mindful co-working to decompress between intense court weeks.'
-      },
-      {
-        id: 'evt-5',
-        title: 'AI & Machine Learning Book Reading Circle',
-        category: 'social',
-        type: 'reading-circle',
-        venueId: 'lib-1',
-        venueName: 'Delhi Public Library — Central Tech Annex',
-        city: 'Delhi NCR',
-        date: 'Sunday, Dec 14, 2026 • 3:00 PM – 6:00 PM',
-        seatsTotal: 35,
-        seatsLeft: 14,
-        amenities: 'Free Access to 850+ AI Books, PC Terminals, Discussion Hall, Light Refreshments',
-        desc: 'Community deep dive into foundational AI architectures, attention mechanisms, and autonomous agent design patterns.'
-      },
-      {
-        id: 'evt-6',
-        title: 'Open Source Agent Sprint & Demo Night',
-        category: 'professional',
-        type: 'hackathon',
-        venueId: 'cafe-8',
-        venueName: 'Third Wave Coffee — Koregaon Park',
-        city: 'Pune',
-        date: 'Saturday, Dec 20, 2026 • 4:00 PM – 9:00 PM',
-        seatsTotal: 35,
-        seatsLeft: 11,
-        amenities: 'Dedicated High-Speed Mesh, Power Sockets, Brioche Donuts & Cold Brews',
-        desc: 'Showcase your local Ollama tool harnesses, browser agents, and Python autonomous workflows to the community.'
-      }
-    ];
+      // DOM References
+      const sidebar = document.getElementById('sidebar');
+      const cardList = document.getElementById('card-list');
+      const modeCafesBtn = document.getElementById('mode-cafes-btn');
+      const modeLibsBtn = document.getElementById('mode-libs-btn');
+      const searchInput = document.getElementById('search-input');
+      const searchBoxContainer = document.getElementById('search-box-container');
+      const cityFilter = document.getElementById('city-filter');
+      const resetFiltersBtn = document.getElementById('reset-filters-btn');
+      const spacesCountDisplay = document.getElementById('spaces-count-display');
+      const spacesCityDisplay = document.getElementById('spaces-city-display');
+      const inspectorDrawer = document.getElementById('inspector-drawer');
+      const mobilePinPreview = document.getElementById('mobile-pin-preview');
+      const radarView = document.getElementById('radar-view');
+      const answersView = document.getElementById('answers-view');
+      const navSpacesBtn = document.getElementById('nav-spaces-btn');
 
-    let currentFilter = 'cafe'; // 'cafe' or 'library'
-    let currentCity = 'all';
-    let searchQuery = '';
-    let activeSpaceId = null;
-    let map = null;
-    let markersLayer = null;
-    let markersMap = {};
-    let bookmarkedSpaces = new Set();
-
-    // Load saved bookmarks from localStorage
-    try {
-      const savedBm = localStorage.getItem('agentic_spaces_bookmarks');
-      if (savedBm) {
-        bookmarkedSpaces = new Set(JSON.parse(savedBm));
-      }
-    } catch (e) {}
-
-    function saveBookmarks() {
+      // Initialize Bookmarks from LocalStorage
       try {
-        localStorage.setItem('agentic_spaces_bookmarks', JSON.stringify(Array.from(bookmarkedSpaces)));
+        const stored = localStorage.getItem('agentic_spaces_bookmarks');
+        if (stored) bookmarkedIds = new Set(JSON.parse(stored));
       } catch (e) {}
-    }
 
-    function toggleBookmark(id, event) {
-      if (event) event.stopPropagation();
-      if (bookmarkedSpaces.has(id)) {
-        bookmarkedSpaces.delete(id);
-      } else {
-        bookmarkedSpaces.add(id);
+      // ─── 1. Map Initialization ───
+      function initMap() {
+        if (map) return;
+        
+        // India Center
+        map = L.map('leaflet-map', {
+          zoomControl: false,
+          attributionControl: false
+        }).setView([21.8, 78.9], 5);
+
+        // CartoDB Voyager Clean Tiles
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+          maxZoom: 19,
+          subdomains: 'abcd'
+        }).addTo(map);
+
+        // Zoom controls at top right
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+        // Map Click closes inspector if open
+        map.on('click', function () {
+          closeInspector();
+          if (mobilePinPreview) mobilePinPreview.style.display = 'none';
+        });
       }
-      saveBookmarks();
-      renderCardsList();
-    }
 
-    // Initialize Leaflet Map
-    function initMap() {
-      const mapContainer = document.getElementById('spaces-map');
-      if (!mapContainer || map) return;
+      // ─── 2. Data Fetching ───
+      async function loadSpacesData() {
+        cardList.innerHTML = `
+          <div style="padding:40px 20px;text-align:center;color:#64748b;font-size:13px;font-family:var(--font-mono);">
+            <span class="status-pulse" style="display:inline-block;margin-right:6px;"></span>
+            Connecting to Agentic Spaces Radar API...
+          </div>
+        `;
 
-      // Center around India (Delhi as focal reference)
-      map = L.map('spaces-map', {
-        zoomControl: true,
-        scrollWheelZoom: true
-      }).setView([22.5, 78.5], 5);
+        try {
+          const res = await fetch('/api/radar/spaces');
+          if (!res.ok) throw new Error('Network response not ok: ' + res.status);
+          const data = await res.json();
+          rawSpaces = data.spaces || [];
+        } catch (err) {
+          console.warn('[WARN] API fetch failed, using built-in fallback spaces:', err);
+          rawSpaces = getBuiltInFallbackSpaces();
+        }
 
-      // CartoDB Positron - Pristine Institutional Light Mode Tiles
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(map);
+        applyFilters();
+      }
 
-      markersLayer = L.layerGroup().addTo(map);
+      // ─── 3. Filtering & Rendering ───
+      function applyFilters() {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        const city = cityFilter ? cityFilter.value : 'ALL';
 
-      // Render cards and pins, and populate megamenu
-      renderCardsList();
-      renderMarkers();
-      populateMegamenuSpaces();
+        // Toggle search clear button
+        if (searchBoxContainer) {
+          searchBoxContainer.classList.toggle('has-query', query.length > 0);
+        }
 
-      // Keyboard shortcut [ or \ to toggle sidebar (matching IBC)
-      window.addEventListener('keydown', (e) => {
+        const hasActiveFilters = query.length > 0 || city !== 'ALL';
+        if (resetFiltersBtn) resetFiltersBtn.style.display = hasActiveFilters ? 'block' : 'none';
+
+        filteredSpaces = rawSpaces.filter(s => {
+          if (s.type !== activeMode) return false;
+          if (city !== 'ALL' && s.city !== city) return false;
+          if (query) {
+            const matchName = (s.name || '').toLowerCase().includes(query);
+            const matchCity = (s.city || '').toLowerCase().includes(query);
+            const matchLoc = (s.location || '').toLowerCase().includes(query);
+            const matchProx = (s.proximity || '').toLowerCase().includes(query);
+            const matchSpec = (s.specialty || '').toLowerCase().includes(query);
+            const matchBooks = (s.aiBooks || s.ai_books || '').toLowerCase().includes(query);
+            if (!matchName && !matchCity && !matchLoc && !matchProx && !matchSpec && !matchBooks) {
+              return false;
+            }
+          }
+          return true;
+        });
+
+        // Update counts in header
+        const totalCafes = rawSpaces.filter(s => s.type === 'cafe').length;
+        const totalLibs = rawSpaces.filter(s => s.type === 'library').length;
+        if (modeCafesBtn) modeCafesBtn.innerHTML = `<span>☕ study cafes (${totalCafes})</span>`;
+        if (modeLibsBtn) modeLibsBtn.innerHTML = `<span>📚 ai libraries (${totalLibs})</span>`;
+
+        if (spacesCountDisplay) {
+          spacesCountDisplay.textContent = `${filteredSpaces.length} verified ${activeMode === 'cafe' ? 'cafes' : 'libraries'}`;
+        }
+        if (spacesCityDisplay) {
+          spacesCityDisplay.textContent = city === 'ALL' ? 'National Radar' : city;
+        }
+
+        renderCards();
+        renderMapMarkers();
+      }
+
+      function renderCards() {
+        if (!cardList) return;
+
+        if (filteredSpaces.length === 0) {
+          cardList.innerHTML = `
+            <div style="padding:40px 20px;text-align:center;color:#64748b;font-size:13px;">
+              <div style="font-size:28px;margin-bottom:8px;">🔍</div>
+              No verified ${activeMode === 'cafe' ? 'study cafes' : 'AI libraries'} match your filters.
+              <br><button type="button" onclick="resetAllFilters()" style="margin-top:12px;background:#0f172a;color:#ffffff;border:none;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Reset Filters</button>
+            </div>
+          `;
+          return;
+        }
+
+        cardList.innerHTML = filteredSpaces.map(s => {
+          const isSelected = s.id === selectedSpaceId;
+          const isBookmarked = bookmarkedIds.has(s.id);
+          const isCafe = s.type === 'cafe';
+
+          return `
+            <article class="space-card ${isSelected ? 'active' : ''}" id="card-${s.id}" onclick="selectSpace('${s.id}')">
+              <div class="card-top">
+                <div>
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                    <span class="type-badge ${isCafe ? 'cafe' : 'library'}">${isCafe ? '☕ Work-From-Cafe' : '📚 AI Library'}</span>
+                    <span style="font-size:11px;font-family:var(--font-mono);color:#64748b;">${escapeHTML(s.city)}</span>
+                  </div>
+                  <h3 class="space-name">${escapeHTML(s.name)}</h3>
+                </div>
+                <button type="button" class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark(event, '${s.id}')" title="Pin space to your desk">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                </button>
+              </div>
+
+              <div class="space-proximity">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-6-5.5-6-10.5A6 6 0 0 1 18 10.5c0 5-6 10.5-6 10.5z"/><circle cx="12" cy="10.5" r="2"/></svg>
+                <span>${escapeHTML(s.proximity || s.location)}</span>
+              </div>
+
+              <div class="card-metrics">
+                <span class="metric-tag wifi">⚡ ${escapeHTML(s.wifiSpeed || s.wifi_speed || '300+ Mbps')}</span>
+                <span class="metric-tag">🔇 ${escapeHTML(s.noiseLevel || s.noise_level || 'Quiet focus')}</span>
+                <span class="metric-tag">🔌 ${escapeHTML(s.powerSockets ? 'Power at desk' : 'Universal Outlets')}</span>
+              </div>
+
+              <div class="card-actions-row">
+                <span style="font-size:11px;color:#64748b;font-family:var(--font-mono);">${escapeHTML(s.openingHours || s.opening_hours || '08:00 AM – 10:00 PM')}</span>
+                <span class="view-dossier-link">
+                  View Dossier &rarr;
+                </span>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      function renderMapMarkers() {
+        if (!map) return;
+
+        // Clear existing markers
+        markers.forEach(m => map.removeLayer(m));
+        markers = [];
+
+        if (filteredSpaces.length === 0) return;
+
+        const bounds = L.latLngBounds();
+
+        filteredSpaces.forEach(s => {
+          const lat = parseFloat(s.latitude);
+          const lng = parseFloat(s.longitude);
+          if (isNaN(lat) || isNaN(lng)) return;
+
+          bounds.extend([lat, lng]);
+
+          const isCafe = s.type === 'cafe';
+          const iconHtml = `
+            <div class="custom-space-marker ${isCafe ? 'cafe-marker' : 'library-marker'}" style="width:34px;height:34px;font-size:15px;">
+              <span class="marker-pulse-ring"></span>
+              <span>${isCafe ? '☕' : '📚'}</span>
+            </div>
+          `;
+
+          const customIcon = L.divIcon({
+            html: iconHtml,
+            className: '',
+            iconSize: [34, 34],
+            iconAnchor: [17, 17],
+            popupAnchor: [0, -18]
+          });
+
+          const marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
+
+          marker.on('click', () => {
+            selectSpace(s.id, false);
+            showMobilePinPreview(s);
+          });
+
+          // Popup on hover/click
+          marker.bindTooltip(`<strong>${escapeHTML(s.name)}</strong><br><span style="font-size:11px;color:#0284c7;">⚡ ${escapeHTML(s.wifiSpeed || '300+ Mbps')}</span>`, {
+            direction: 'top',
+            offset: [0, -18]
+          });
+
+          markers.push(marker);
+        });
+
+        // Fit map bounds if there are spaces
+        if (markers.length > 0) {
+          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
+        }
+      }
+
+      // ─── 4. Space Selection & Inspector Drawer ───
+      window.selectSpace = function (id, panMap = true) {
+        selectedSpaceId = id;
+        const space = rawSpaces.find(s => s.id === id);
+        if (!space) return;
+
+        // Highlight active card and scroll into view
+        document.querySelectorAll('.space-card').forEach(c => c.classList.remove('active'));
+        const activeCard = document.getElementById(`card-${id}`);
+        if (activeCard) {
+          activeCard.classList.add('active');
+          activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Pan map
+        if (panMap && map) {
+          const lat = parseFloat(space.latitude);
+          const lng = parseFloat(space.longitude);
+          if (!isNaN(lat) && !isNaN(lng)) {
+            map.flyTo([lat, lng], 14, { duration: 0.8 });
+          }
+        }
+
+        openInspector(space);
+      };
+
+      function openInspector(space) {
+        if (!inspectorDrawer) return;
+
+        const isCafe = space.type === 'cafe';
+        const isBookmarked = bookmarkedIds.has(space.id);
+
+        inspectorDrawer.innerHTML = `
+          <div class="inspector-drawer-header">
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                <button type="button" class="mobile-back-btn" onclick="closeInspector()">
+                  &larr; Back
+                </button>
+                <span class="type-badge ${isCafe ? 'cafe' : 'library'}">
+                  ${isCafe ? '☕ WORK-FROM-CAFE' : '📚 AI LIBRARY'}
+                </span>
+                <span style="font-size:11px;font-family:var(--font-mono);color:#64748b;text-transform:uppercase;">
+                  ${escapeHTML(space.city)}
+                </span>
+              </div>
+              <h2 style="font-size:17.5px;font-weight:800;color:#0f172a;line-height:1.3;margin:0;">
+                ${escapeHTML(space.name)}
+              </h2>
+              <div style="font-size:11.5px;color:#0284c7;margin-top:3px;display:flex;align-items:center;gap:4px;">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-6-5.5-6-10.5A6 6 0 0 1 18 10.5c0 5-6 10.5-6 10.5z"/><circle cx="12" cy="10.5" r="2"/></svg>
+                <span>${escapeHTML(space.proximity || space.location)}</span>
+              </div>
+            </div>
+            <button type="button" class="drawer-close-btn" onclick="closeInspector()" title="Close dossier">&times;</button>
+          </div>
+
+          <div class="inspector-drawer-body">
+            
+            <!-- Facilities Grid -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div>
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Wi-Fi Bandwidth</span>
+                <strong style="font-size:13.5px;font-family:var(--font-mono);color:#059669;">⚡ ${escapeHTML(space.wifiSpeed || space.wifi_speed || '300+ Mbps')}</strong>
+              </div>
+              <div>
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Acoustic Ambiance</span>
+                <strong style="font-size:13px;color:#0f172a;">🔇 ${escapeHTML(space.noiseLevel || space.noise_level || 'Quiet focus')}</strong>
+              </div>
+              <div style="grid-column: span 2;border-top:1px solid #e2e8f0;padding-top:10px;">
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Power Outlets</span>
+                <span style="font-size:12px;color:#334155;">🔌 ${escapeHTML(space.powerSockets || space.power_sockets || 'At every workstation')}</span>
+              </div>
+              <div style="grid-column: span 2;">
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Operating Hours</span>
+                <span style="font-size:12px;color:#334155;font-family:var(--font-mono);">⏰ ${escapeHTML(space.openingHours || space.opening_hours || '08:00 AM – 10:00 PM')}</span>
+              </div>
+            </div>
+
+            <!-- Specialty & Facilities Details -->
+            <div>
+              <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px;">
+                ${isCafe ? '☕ Artisanal Roasts, Bakery & Seating' : '📚 AI Literature, Books & Workstations'}
+              </span>
+              <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0;font-size:12.5px;color:#334155;line-height:1.5;">
+                <p><strong>Highlights:</strong> ${escapeHTML(space.specialty || 'High-speed sovereign work facility equipped with ergonomic seating and quiet zones.')}</p>
+                ${space.terminals ? `
+                  <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
+                    <strong>🖥 Dev Terminals:</strong> ${escapeHTML(space.terminals)}
+                  </div>
+                ` : ''}
+                ${space.aiBooks || space.ai_books ? `
+                  <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
+                    <strong>📖 AI Corpus &amp; Books:</strong> ${escapeHTML(space.aiBooks || space.ai_books)}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Address Landmark -->
+            <div>
+              <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px;">Address &amp; Landmark</span>
+              <p style="font-size:12px;color:#475569;margin:0;">${escapeHTML(space.location)}</p>
+            </div>
+
+            <!-- Bookmark Button -->
+            <button type="button" onclick="toggleBookmark(event, '${space.id}')" style="width:100%;padding:10px;border-radius:10px;border:1px solid #cbd5e1;background:${isBookmarked ? '#0f172a' : '#ffffff'};color:${isBookmarked ? '#ffffff' : '#0f172a'};font-family:var(--font-display);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.15s;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+              <span>${isBookmarked ? 'Pinned to My Spaces Desk' : 'Pin to My Spaces Desk'}</span>
+            </button>
+
+            <!-- Actions CTAs -->
+            <div style="display:flex;gap:8px;margin-top:auto;padding-top:12px;border-top:1px solid #f1f5f9;">
+              <a href="${escapeHTML(space.directionsUrl || space.directions_url || 'https://maps.google.com')}" target="_blank" style="flex:1;text-align:center;background:#0f172a;color:#ffffff;font-family:var(--font-display);font-weight:700;font-size:12px;padding:10px;border-radius:10px;text-decoration:none;transition:background 0.15s;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:4px;">
+                <span>Get Directions</span>
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <button type="button" onclick="openReservationModal('${escapeHTML(space.name)}', '${isCafe ? 'CAFE' : 'LIBRARY'}')" style="flex:1;text-align:center;background:#059669;color:#ffffff;border:none;font-family:var(--font-display);font-weight:700;font-size:12px;padding:10px;border-radius:10px;cursor:pointer;transition:background 0.15s;text-transform:uppercase;">
+                Reserve Seat &rarr;
+              </button>
+            </div>
+
+          </div>
+        `;
+
+        inspectorDrawer.classList.add('open');
+      }
+
+      window.closeInspector = function () {
+        if (inspectorDrawer) inspectorDrawer.classList.remove('open');
+      };
+
+      function showMobilePinPreview(space) {
+        if (!mobilePinPreview || window.innerWidth > 900) return;
+        const isCafe = space.type === 'cafe';
+
+        mobilePinPreview.innerHTML = `
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+            <div>
+              <span class="type-badge ${isCafe ? 'cafe' : 'library'}">${isCafe ? '☕ CAFE' : '📚 AI LIBRARY'}</span>
+              <h4 style="font-size:14px;font-weight:700;margin:4px 0 2px 0;">${escapeHTML(space.name)}</h4>
+              <p style="font-size:11.5px;color:#0284c7;margin:0;">${escapeHTML(space.proximity || space.location)}</p>
+            </div>
+            <button type="button" onclick="this.parentElement.parentElement.style.display='none'" style="background:none;border:none;font-size:18px;cursor:pointer;color:#94a3b8;">&times;</button>
+          </div>
+          <div style="margin-top:10px;display:flex;gap:6px;">
+            <button type="button" onclick="openInspector(rawSpaces.find(s=>s.id==='${space.id}'))" class="signin-btn" style="flex:1;padding:6px;font-size:11.5px;">View Dossier</button>
+            <a href="${escapeHTML(space.directionsUrl || 'https://maps.google.com')}" target="_blank" class="action-btn" style="background:#f1f5f9;font-size:11.5px;padding:6px 10px;">Directions</a>
+          </div>
+        `;
+        mobilePinPreview.style.display = 'block';
+      }
+
+      // ─── 5. Bookmarks Toggle ───
+      window.toggleBookmark = function (e, id) {
+        if (e) e.stopPropagation();
+        if (bookmarkedIds.has(id)) {
+          bookmarkedIds.delete(id);
+        } else {
+          bookmarkedIds.add(id);
+        }
+        try {
+          localStorage.setItem('agentic_spaces_bookmarks', JSON.stringify(Array.from(bookmarkedIds)));
+        } catch (err) {}
+        renderCards();
+        const space = rawSpaces.find(s => s.id === id);
+        if (space && inspectorDrawer && inspectorDrawer.classList.contains('open')) {
+          openInspector(space);
+        }
+      };
+
+      // ─── 6. Controls: Mode, Search, City, Collapse, Mobile ───
+      window.setSpacesFilter = function (mode) {
+        activeMode = mode;
+        if (modeCafesBtn) modeCafesBtn.classList.toggle('active', mode === 'cafe');
+        if (modeLibsBtn) modeLibsBtn.classList.toggle('active', mode === 'library');
+        applyFilters();
+      };
+
+      window.handleSearchSpaces = function () {
+        applyFilters();
+      };
+
+      window.clearSpacesSearch = function () {
+        if (searchInput) {
+          searchInput.value = '';
+          applyFilters();
+          searchInput.focus();
+        }
+      };
+
+      window.filterByCity = function () {
+        applyFilters();
+      };
+
+      window.resetAllFilters = function () {
+        if (searchInput) searchInput.value = '';
+        if (cityFilter) cityFilter.value = 'ALL';
+        applyFilters();
+      };
+
+      window.toggleSidebarCollapse = function () {
+        isSidebarCollapsed = !isSidebarCollapsed;
+        if (sidebar) sidebar.classList.toggle('collapsed', isSidebarCollapsed);
+        setTimeout(() => {
+          if (map) map.invalidateSize();
+        }, 280);
+      };
+
+      // Keyboard shortcut for collapse tab ([ or \)
+      window.addEventListener('keydown', function (e) {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         if (e.key === '[' || e.key === '\\') {
+          e.preventDefault();
           toggleSidebarCollapse();
         }
       });
-    }
 
-    // Custom Leaflet DivIcon
-    function createCustomPin(item, isActive) {
-      const isCafe = item.type === 'cafe';
-      const iconChar = isCafe ? '☕' : '📚';
-      const pinClass = isCafe ? 'pin-cafe' : 'pin-library';
-      const activeClass = isActive ? 'active-pin' : '';
-
-      return L.divIcon({
-        className: 'custom-pin-wrapper',
-        html: `<div class="custom-map-pin ${pinClass} ${activeClass}" title="${item.name}">${iconChar}</div>`,
-        iconSize: [32, 32],
-        iconAnchor: [16, 16]
-      });
-    }
-
-    // Filter spaces based on type, city, and text search
-    function getFilteredSpaces() {
-      return spacesData.filter(item => {
-        const matchesType = (item.type === currentFilter);
-        const matchesCity = (currentCity === 'all' || item.city === currentCity);
-        const q = searchQuery.toLowerCase();
-        const matchesSearch = !q || (
-          item.name.toLowerCase().includes(q) ||
-          item.city.toLowerCase().includes(q) ||
-          item.location.toLowerCase().includes(q) ||
-          item.proximity.toLowerCase().includes(q) ||
-          item.specialty.toLowerCase().includes(q) ||
-          item.desc.toLowerCase().includes(q)
-        );
-        return matchesType && matchesCity && matchesSearch;
-      });
-    }
-
-    // Render Cards in Sidebar (Matching Image 2)
-    function renderCardsList() {
-      const cardList = document.getElementById('spaces-card-list');
-      const countDisplay = document.getElementById('spaces-count-display');
-      const cityDisplay = document.getElementById('spaces-city-display');
-      const cafesBtn = document.getElementById('mode-cafes-btn');
-      const libsBtn = document.getElementById('mode-libs-btn');
-
-      const filtered = getFilteredSpaces();
-
-      // Update Mode button counts
-      const totalCafes = spacesData.filter(s => s.type === 'cafe').length;
-      const totalLibs = spacesData.filter(s => s.type === 'library').length;
-      if (cafesBtn) cafesBtn.querySelector('span').textContent = `☕ study cafes (${totalCafes})`;
-      if (libsBtn) libsBtn.querySelector('span').textContent = `📚 ai libraries (${totalLibs})`;
-
-      // Update Stats bar
-      if (countDisplay) {
-        countDisplay.textContent = `${filtered.length} verified ${currentFilter === 'cafe' ? 'study cafes' : 'ai libraries'}`;
-      }
-      if (cityDisplay) {
-        cityDisplay.textContent = currentCity === 'all' ? 'National Radar' : currentCity;
-      }
-
-      if (!cardList) return;
-
-      if (filtered.length === 0) {
-        cardList.innerHTML = `
-          <div style="padding:48px 16px;text-align:center;color:#64748B;font-size:13px;">
-            <div style="font-size:24px;margin-bottom:8px;">🔍</div>
-            <div style="font-weight:600;color:#0F172A;margin-bottom:4px;">No verified spaces found</div>
-            <div style="margin-bottom:14px;">Try clearing your search or switching cities.</div>
-            <button type="button" onclick="clearSpacesSearch()" style="padding:6px 14px;border-radius:8px;border:1px solid #CBD5E1;background:#FFFFFF;color:#0F172A;font-size:12px;font-weight:600;cursor:pointer;">
-              Reset Search
-            </button>
-          </div>
-        `;
-        return;
-      }
-
-      // If activeSpaceId is not in filtered list, set it to the first item
-      if (!filtered.some(s => s.id === activeSpaceId)) {
-        activeSpaceId = filtered[0].id;
-      }
-
-      cardList.innerHTML = filtered.map(s => {
-        const isActive = (s.id === activeSpaceId);
-        const isBookmarked = bookmarkedSpaces.has(s.id);
-        const isCafe = (s.type === 'cafe');
-        const stageBadge = isCafe ? (s.wifi.split(' ')[0] + ' MBPS') : (s.terminals ? 'COMPUTERS & AI' : 'AIR-GAPPED ARCHIVE');
-        const stageBadgeClass = isCafe ? 'badge-cafe' : 'badge-lib';
-        const typeLabel = isCafe ? 'Study & Co-working Cafe' : 'Computer & AI Library';
-
-        const metric1Key = isCafe ? 'AMENITIES' : 'COMPUTERS';
-        const metric1Val = isCafe ? (s.power.includes('Universal') ? 'Power at All Desks' : 'Power Outlets') : (s.terminals || 'PC Workstations');
-
-        const metric2Key = isCafe ? 'WIFI SPEED' : 'AI BOOKS';
-        const metric2Val = isCafe ? (s.wifi.split(' ')[0] + ' ' + s.wifi.split(' ')[1]) : (s.ai_books ? s.ai_books.split('(')[0].trim() : 'AI Book Stacks');
-
-        const reserveBtnText = isCafe ? 'Reserve Desk &rarr;' : 'Reserve Carrel &rarr;';
-
-        return `
-          <div class="deal-card ${isActive ? 'active' : ''}" data-id="${s.id}" onclick="selectSpaceFromCard('${s.id}')">
-            <div class="card-top">
-              <div class="company-name" style="flex:1;">${s.name}</div>
-              <div style="display:flex;align-items:center;gap:6px;">
-                <span class="stage-badge ${stageBadgeClass}">${stageBadge}</span>
-                <button type="button" class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" title="${isBookmarked ? 'Remove Bookmark' : 'Bookmark Space'}" onclick="toggleBookmark('${s.id}', event)">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="card-badges-row">
-              <span class="sub-badge court-badge">${s.city}</span>
-              <span class="sub-badge city-badge" title="${s.proximity}">${s.proximity.length > 28 ? s.proximity.slice(0,27) + '…' : s.proximity}</span>
-              <span class="sub-badge type-badge">${typeLabel}</span>
-            </div>
-
-            <div class="card-metrics-grid">
-              <div class="metric-item">
-                <span class="metric-key">${metric1Key}</span>
-                <span class="metric-val">${metric1Val}</span>
-              </div>
-              <div class="metric-item" style="text-align:right;">
-                <span class="metric-key">${metric2Key}</span>
-                <span class="metric-val" style="color:${isCafe ? '#059669' : '#0284C7'};">
-                  ${metric2Val}
-                </span>
-              </div>
-            </div>
-
-            <div class="card-footer-actions">
-              <button type="button" class="card-reserve-btn" onclick="event.stopPropagation(); openDeskReservationModal('${s.id}')">
-                ${reserveBtnText}
-              </button>
-              <a href="${s.directionsUrl}" target="_blank" rel="noopener" class="card-directions-btn" onclick="event.stopPropagation()">
-                Directions
-              </a>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // Render Markers on Leaflet Map
-    function renderMarkers() {
-      if (!markersLayer) return;
-      markersLayer.clearLayers();
-      markersMap = {};
-
-      const filtered = getFilteredSpaces();
-      if (filtered.length === 0) return;
-
-      const bounds = [];
-
-      filtered.forEach((item) => {
-        const isCurrentActive = (item.id === activeSpaceId);
-        const marker = L.marker([item.lat, item.lng], {
-          icon: createCustomPin(item, isCurrentActive)
-        });
-
-        const isCafe = (item.type === 'cafe');
-        const popupContent = `
-          <div style="font-family:var(--font-heading);min-width:240px;padding:2px;">
-            <div style="font-weight:700;font-size:13.5px;color:#0F172A;margin-bottom:3px;line-height:1.3;">${item.name}</div>
-            <div style="font-size:11px;color:${isCafe ? '#D97706' : '#0284C7'};font-weight:700;margin-bottom:4px;">${isCafe ? '☕ Study &amp; Co-working Cafe' : '📚 Computer &amp; AI Library'} &bull; ${item.city}</div>
-            <div style="font-size:11.5px;color:#475569;margin-bottom:6px;line-height:1.4;">${item.proximity}</div>
-            <div style="font-size:11px;color:#334155;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:6px;padding:4px 6px;margin-bottom:6px;line-height:1.3;">
-              ${isCafe ? '☕ ' + (item.specialty || item.desc) : '💻 ' + item.terminals + ' &bull; 📖 ' + item.ai_books}
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E2E8F0;padding-top:6px;font-size:11.5px;">
-              <span style="font-family:monospace;font-weight:700;color:#059669;">${item.wifi}</span>
-              <a href="${item.directionsUrl}" target="_blank" rel="noopener" style="color:#1E6C93;font-weight:700;text-decoration:none;">Directions &rarr;</a>
-            </div>
-          </div>
-        `;
-        marker.bindPopup(popupContent, { maxWidth: 280, className: 'space-leaflet-popup' });
-
-        marker.on('click', () => {
-          selectSpaceFromMarker(item.id);
-        });
-
-        markersLayer.addLayer(marker);
-        markersMap[item.id] = marker;
-        bounds.push([item.lat, item.lng]);
-
-        if (isCurrentActive) {
-          setTimeout(() => {
-            if (markersMap[item.id]) markersMap[item.id].openPopup();
-          }, 100);
+      window.toggleMobileView = function () {
+        isMobileMapView = !isMobileMapView;
+        if (radarView) {
+          radarView.classList.toggle('mobile-mode-map', isMobileMapView);
+          radarView.classList.toggle('mobile-mode-list', !isMobileMapView);
         }
-      });
+        const label = document.getElementById('mobile-view-label');
+        const iconMap = document.getElementById('pill-icon-map');
+        const iconList = document.getElementById('pill-icon-list');
+        if (label) label.textContent = isMobileMapView ? 'View List' : 'View Map';
+        if (iconMap) iconMap.style.display = isMobileMapView ? 'none' : 'block';
+        if (iconList) iconList.style.display = isMobileMapView ? 'block' : 'none';
+        if (isMobileMapView && map) {
+          setTimeout(() => map.invalidateSize(), 200);
+        }
+      };
 
-      if (bounds.length > 0) {
-        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
-      }
-    }
+      // ─── 7. Navigation Views: Radar vs Answers ───
+      window.showRadarView = function () {
+        if (radarView) radarView.style.display = 'flex';
+        if (answersView) answersView.style.display = 'none';
+        if (navSpacesBtn) navSpacesBtn.classList.add('pill-active');
+        if (map) setTimeout(() => map.invalidateSize(), 150);
+      };
 
-    // Select Space from clicking a card in the left sidebar
-    function selectSpaceFromCard(id) {
-      activeSpaceId = id;
-      const space = spacesData.find(s => s.id === id);
-      if (!space) return;
-
-      // Update card active classes
-      document.querySelectorAll('#spaces-card-list .deal-card').forEach(card => {
-        if (card.getAttribute('data-id') === id) {
-          card.classList.add('active');
+      window.toggleAnswersView = function () {
+        if (answersView && answersView.style.display !== 'none') {
+          showRadarView();
         } else {
-          card.classList.remove('active');
+          if (radarView) radarView.style.display = 'none';
+          if (answersView) answersView.style.display = 'block';
+          if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
         }
+      };
+
+      // ─── 8. Reservation / Modal Handlers ───
+      window.openReservationModal = function (title, type = 'SPACE') {
+        const modal = document.getElementById('booking-modal');
+        const modalTitle = document.getElementById('modal-space-title');
+        const modalTypeTag = document.getElementById('modal-type-tag');
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalTypeTag) modalTypeTag.textContent = type;
+        if (modal) modal.style.display = 'flex';
+      };
+
+      window.closeReservationModal = function () {
+        const modal = document.getElementById('booking-modal');
+        if (modal) modal.style.display = 'none';
+      };
+
+      window.handleReservationSubmit = function (e) {
+        e.preventDefault();
+        alert('Thank you! Your workspace reservation request has been registered. You will receive an SMS and email confirmation.');
+        closeReservationModal();
+      };
+
+      function escapeHTML(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      // Built-in emergency fallback data if offline
+      function getBuiltInFallbackSpaces() {
+        return [
+          { id: 'cafe-bt-saket', type: 'cafe', name: 'Blue Tokai Coffee Roasters — Saket', city: 'Delhi NCR', location: 'Saidulajab, Saket, New Delhi', proximity: '350 meters from Saket District Court', latitude: 28.5204, longitude: 77.2015, wifiSpeed: '350 Mbps', powerSockets: 'Every table', noiseLevel: 'Quiet ambient', specialty: 'Cold Brew, Artisan Sourdough & Cruffins', openingHours: '07:30 AM – 10:30 PM', directionsUrl: 'https://maps.google.com/?q=28.5204,77.2015' },
+          { id: 'cafe-sb-bkc', type: 'cafe', name: 'Starbucks Reserve — BKC', city: 'Mumbai', location: 'G Block BKC, Bandra Kurla Complex', proximity: '400 meters from NCLT Mumbai Benches 1–5', latitude: 19.066, longitude: 72.8685, wifiSpeed: '400 Mbps', powerSockets: 'At every lounge', noiseLevel: 'Executive hum', specialty: 'Reserve Micro-lot Espresso & Fresh Bagels', openingHours: '07:00 AM – 11:00 PM', directionsUrl: 'https://maps.google.com/?q=19.0660,72.8685' },
+          { id: 'cafe-tw-vidhana', type: 'cafe', name: 'Third Wave Coffee Roasters — Cunningham', city: 'Bengaluru', location: 'Cunningham Road, Vasanth Nagar', proximity: 'Direct Metro access to High Court (Vidhana Soudha)', latitude: 12.9866, longitude: 77.5975, wifiSpeed: '300 Mbps', powerSockets: 'Under-desk strip', noiseLevel: 'Quiet focus', specialty: 'Single-origin pour-overs & Cruffins', openingHours: '08:00 AM – 11:30 PM', directionsUrl: 'https://maps.google.com/?q=12.9866,77.5975' },
+          { id: 'cafe-roastery-hyd', type: 'cafe', name: 'Roastery Coffee House — Banjara Hills', city: 'Hyderabad', location: 'Road No. 14, Banjara Hills', proximity: '15 min drive from High Court & NCLT', latitude: 17.4156, longitude: 78.4347, wifiSpeed: '300 Mbps', powerSockets: 'Patio & booths', noiseLevel: 'Tranquil courtyard', specialty: 'Monsooned Malabar & Baked Cheesecake', openingHours: '08:00 AM – 11:00 PM', directionsUrl: 'https://maps.google.com/?q=17.4156,78.4347' },
+          { id: 'cafe-bt-parkst', type: 'cafe', name: 'Blue Tokai Coffee Roasters — Park Street', city: 'Kolkata', location: 'Park Street Heritage Zone', proximity: '1.2 km from Calcutta High Court', latitude: 22.551, longitude: 88.3524, wifiSpeed: '300 Mbps', powerSockets: 'Universal plugs', noiseLevel: 'Reading lounge', specialty: 'French Press & Brioche Donuts', openingHours: '08:00 AM – 10:30 PM', directionsUrl: 'https://maps.google.com/?q=22.5510,88.3524' },
+          { id: 'cafe-sec7-chd', type: 'cafe', name: 'Sector 7 Social & Work Cafe', city: 'Chandigarh', location: 'Madhya Marg, Sector 7-C', proximity: '2.5 km from High Court (Sector 1)', latitude: 30.7302, longitude: 76.8041, wifiSpeed: '350 Mbps', powerSockets: 'Executive desks', noiseLevel: 'Daytime quiet', specialty: 'Espresso Tonic & Fresh Doughnuts', openingHours: '09:00 AM – 11:00 PM', directionsUrl: 'https://maps.google.com/?q=30.7302,76.8041' },
+          { id: 'cafe-onedegree-pune', type: 'cafe', name: 'One Degree Coffee Roasters — Kalyani Nagar', city: 'Pune', location: 'East Avenue, Kalyani Nagar', proximity: '10 min drive from District Court', latitude: 18.5482, longitude: 73.9022, wifiSpeed: '300 Mbps', powerSockets: 'Every desk', noiseLevel: 'Focus alcove', specialty: 'Aeropress Reserve & Glazed Donuts', openingHours: '08:00 AM – 10:00 PM', directionsUrl: 'https://maps.google.com/?q=18.5482,73.9022' },
+          { id: 'cafe-mocha-ahmedabad', type: 'cafe', name: 'Mocha Work Cafe — Bodakdev', city: 'Ahmedabad', location: 'Sindhu Bhavan Marg, Bodakdev', proximity: 'Direct corridor to Gujarat High Court', latitude: 23.0396, longitude: 72.5085, wifiSpeed: '350 Mbps', powerSockets: 'Laptop banks', noiseLevel: 'Quiet zone', specialty: 'Affogato, Chocolate Mud Cake & Buns', openingHours: '09:00 AM – 11:30 PM', directionsUrl: 'https://maps.google.com/?q=23.0396,72.5085' },
+          { id: 'lib-delhi-ai', type: 'library', name: 'National Cyber & Legal AI Terminals — Saket', city: 'Delhi NCR', location: 'Institutional Area, Saket District Court', proximity: 'Adjacent to Saket Lawyers Chambers', latitude: 28.5245, longitude: 77.2062, wifiSpeed: '1 Gbps Dedicated', powerSockets: 'Dual surge rails', noiseLevel: 'Silent research (<30 dB)', specialty: 'Agentic LLMs & Statutory NLP', terminals: '10 Dev Workstations with Dual 4K Displays', aiBooks: 'Reinforcement Learning, Modern Agent Architectures, Constitutional AI', openingHours: '08:00 AM – 09:00 PM', directionsUrl: 'https://maps.google.com/?q=28.5245,77.2062' },
+          { id: 'lib-mumbai-fort', type: 'library', name: 'Mumbai Legal Tech & AI Reading Room — Fort', city: 'Mumbai', location: 'High Court Annexe, Fort Heritage Precinct', proximity: 'Walking distance to Bombay High Court', latitude: 18.9304, longitude: 72.8317, wifiSpeed: '1 Gbps Fiber', powerSockets: 'Desktop terminals', noiseLevel: 'Strict silent zone', specialty: 'BNS, IBC & CPC Vector Embeddings', terminals: '8 GPU-enabled Workstations (RTX 4090)', aiBooks: 'Deep Learning, Agentic Workflows for Discovery', openingHours: '08:30 AM – 08:30 PM', directionsUrl: 'https://maps.google.com/?q=18.9304,72.8317' },
+          { id: 'lib-nlsiu-blr', type: 'library', name: 'NLSIU AI & Computational Law Commons', city: 'Bengaluru', location: 'Nagarbhavi Academic Campus', proximity: 'National Law School Central Library', latitude: 12.9558, longitude: 77.5126, wifiSpeed: '1 Gbps NKN Campus', powerSockets: 'Carrel modules', noiseLevel: 'Deep silence', specialty: 'Skillpedia NSQF L7.0 & L8.0 Reserve', terminals: '12 Dual-Monitor Linux Workstations', aiBooks: 'AI: A Modern Approach, Multi-Agent Systems', openingHours: '08:00 AM – Midnight', directionsUrl: 'https://maps.google.com/?q=12.9558,77.5126' },
+          { id: 'lib-nalsar-hyd', type: 'library', name: 'NALSAR Sovereign Agent Lab & Law Library', city: 'Hyderabad', location: 'Justice City, Shameerpet', proximity: 'Digital Informatics Center', latitude: 17.5956, longitude: 78.5724, wifiSpeed: '1 Gbps Academic', powerSockets: 'Dual outlets', noiseLevel: 'Quiet repository', specialty: 'Precedents Graph & IBC Automations', terminals: '10 High-spec Terminals with JupyterLab', aiBooks: 'Foundations of LLMs, Prompt Engineering', openingHours: '09:00 AM – 10:00 PM', directionsUrl: 'https://maps.google.com/?q=17.5956,78.5724' },
+          { id: 'lib-nujs-kolkata', type: 'library', name: 'WBNUJS AI Statutory Informatics Center', city: 'Kolkata', location: '12 LB Block, Sector III, Salt Lake', proximity: 'NUJS Salt Lake Campus', latitude: 22.5701, longitude: 88.4067, wifiSpeed: '1 Gbps Fiber', powerSockets: 'Desk power strips', noiseLevel: 'Silent hall', specialty: 'Commercial Drafting AI Corpora', terminals: '8 Development Terminals with Git & Docker', aiBooks: 'Designing Data-Intensive Applications', openingHours: '08:30 AM – 09:30 PM', directionsUrl: 'https://maps.google.com/?q=22.5701,88.4067' },
+          { id: 'lib-chd-bar', type: 'library', name: 'Punjab & Haryana High Court Bar AI Library', city: 'Chandigarh', location: 'Capitol Complex, Sector 1', proximity: 'Bar Association Heritage Building', latitude: 30.7589, longitude: 76.8049, wifiSpeed: '500 Mbps Legal Net', powerSockets: '3-pin sockets', noiseLevel: 'Chambers silent study', specialty: 'BNS 2023 & BNSS 2023 AI Corpus', terminals: '6 Research Workstations with AIR & SCC AI', aiBooks: 'Speech and Language Processing, Penal Code Concordance', openingHours: '09:00 AM – 07:00 PM', directionsUrl: 'https://maps.google.com/?q=30.7589,76.8049' },
+          { id: 'lib-ils-pune', type: 'library', name: 'ILS Law College AI & Empirical Research Desk', city: 'Pune', location: 'Law College Road, Shivajinagar', proximity: 'ILS Campus Library', latitude: 18.5173, longitude: 73.8293, wifiSpeed: '500 Mbps Campus', powerSockets: 'Surge protection', noiseLevel: 'Scholarly quiet', specialty: 'Legal Ontologies & Agent Workflows', terminals: '8 Dual-Screen Terminals with Ollama', aiBooks: 'Hands-On Machine Learning, Deep Learning for NLP', openingHours: '08:00 AM – 08:00 PM', directionsUrl: 'https://maps.google.com/?q=18.5173,73.8293' },
+          { id: 'lib-gnlu-ahmedabad', type: 'library', name: 'GNLU Autonomous Agentics & Legal AI Archive', city: 'Ahmedabad', location: 'Knowledge Corridor, Koba, Gandhinagar', proximity: 'GNLU Research Block', latitude: 23.161, longitude: 72.6369, wifiSpeed: '1 Gbps Optical', powerSockets: 'Power carrels', noiseLevel: 'Ultra-silent sanctum', specialty: 'Cross-Border Trade Law & Agentic Sim', terminals: '10 Multi-agent Simulation Terminals', aiBooks: 'RLHF, Building Systems with ChatGPT API', openingHours: '08:00 AM – 11:00 PM', directionsUrl: 'https://maps.google.com/?q=23.1610,72.6369' }
+        ];
+      }
+
+      // Initialize on DOM ready
+      document.addEventListener('DOMContentLoaded', function () {
+        initMap();
+        loadSpacesData();
       });
 
-      // Update map markers
-      Object.keys(markersMap).forEach(mId => {
-        const marker = markersMap[mId];
-        const item = spacesData.find(s => s.id === mId);
-        if (item) {
-          marker.setIcon(createCustomPin(item, mId === id));
-        }
-      });
-
-      // Fly map to selected venue and open popup
-      if (map && markersMap[id]) {
-        map.flyTo([space.lat, space.lng], 15, { duration: 0.8 });
-        setTimeout(() => {
-          if (markersMap[id]) markersMap[id].openPopup();
-        }, 850);
-      }
-    }
-
-    // Select Space from clicking a pin on the map
-    function selectSpaceFromMarker(id) {
-      activeSpaceId = id;
-
-      // Update card active classes
-      document.querySelectorAll('#spaces-card-list .deal-card').forEach(card => {
-        if (card.getAttribute('data-id') === id) {
-          card.classList.add('active');
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          card.classList.remove('active');
-        }
-      });
-
-      // Update pins
-      Object.keys(markersMap).forEach(mId => {
-        const marker = markersMap[mId];
-        const item = spacesData.find(s => s.id === mId);
-        if (item) {
-          marker.setIcon(createCustomPin(item, mId === id));
-        }
-      });
-    }
-
-    // Switch between Cafes and Libraries
-    function setSpacesFilter(type) {
-      currentFilter = type;
-
-      const cafeBtn = document.getElementById('mode-cafes-btn');
-      const libBtn = document.getElementById('mode-libs-btn');
-
-      if (cafeBtn && libBtn) {
-        if (type === 'cafe') {
-          cafeBtn.classList.add('active');
-          libBtn.classList.remove('active');
-        } else {
-          libBtn.classList.add('active');
-          cafeBtn.classList.remove('active');
-        }
-      }
-
-      renderCardsList();
-      renderMarkers();
-    }
-
-    // Filter by City
-    function filterByCity(cityName) {
-      currentCity = cityName;
-      renderCardsList();
-      renderMarkers();
-    }
-
-    // Search spaces by text
-    function handleSearchSpaces(query) {
-      searchQuery = query || '';
-      const clearBtn = document.getElementById('spaces-search-clear');
-      if (clearBtn) {
-        clearBtn.style.display = searchQuery ? 'block' : 'none';
-      }
-      renderCardsList();
-      renderMarkers();
-    }
-
-    function clearSpacesSearch() {
-      const input = document.getElementById('spaces-search-input');
-      if (input) input.value = '';
-      handleSearchSpaces('');
-    }
-
-    // Toggle Sidebar Collapse (Matching Image 2)
-    function toggleSidebarCollapse() {
-      const sidebar = document.getElementById('spaces-sidebar');
-      const btn = document.getElementById('sidebar-toggle-btn');
-      if (!sidebar) return;
-
-      const isCollapsed = sidebar.classList.toggle('collapsed');
-      if (btn) {
-        btn.setAttribute('aria-expanded', !isCollapsed);
-        btn.title = isCollapsed ? 'Expand list ([ or \\)' : 'Collapse list ([ or \\)';
-      }
-
-      // Smoothly re-render Leaflet tiles across full canvas width
-      setTimeout(() => {
-        if (map) {
-          map.invalidateSize();
-        }
-      }, 260);
-    }
-
-    // Populate the Spaces Megamenu Dropdown
-    function populateMegamenuSpaces(type = 'cafe') {
-      const container = document.getElementById('megamenu-spaces-list');
-      if (!container) return;
-
-      const filtered = spacesData.filter(s => s.type === type);
-      container.innerHTML = filtered.map(item => `
-        <a href="#spaces-radar" class="space-item-link" onclick="selectFromMegamenu('${item.id}')">
-          <div class="space-info-left">
-            <div class="space-icon-box ${item.type === 'library' ? 'lib-box' : ''}">
-              ${item.type === 'cafe' ? '☕' : '📚'}
-            </div>
-            <div>
-              <div class="space-title-text">${item.name}</div>
-              <div class="space-sub-text">${item.city} &bull; ${item.proximity.split('•')[0]}</div>
-            </div>
-          </div>
-          <span class="space-badge-right">${item.type === 'cafe' ? '300+ Mbps' : 'Silent Archive'}</span>
-        </a>
-      `).join('');
-    }
-
-    function switchMegamenuSpaces(type) {
-      const cafeBtn = document.getElementById('quick-toggle-cafes');
-      const libBtn = document.getElementById('quick-toggle-libs');
-
-      if (cafeBtn && libBtn) {
-        if (type === 'cafe') {
-          cafeBtn.classList.add('active');
-          libBtn.classList.remove('active');
-        } else {
-          libBtn.classList.add('active');
-          cafeBtn.classList.remove('active');
-        }
-      }
-
-      populateMegamenuSpaces(type);
-    }
-
-    function selectFromMegamenu(id) {
-      const space = spacesData.find(s => s.id === id);
-      if (!space) return;
-
-      setSpacesFilter(space.type);
-      currentCity = 'all';
-      const citySelect = document.getElementById('sidebar-city-select');
-      if (citySelect) citySelect.value = 'all';
-
-      renderCardsList();
-      renderMarkers();
-      selectSpaceFromCard(id);
-
-      const el = document.getElementById('spaces-radar');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function focusSpacesMap() {
-      const el = document.getElementById('spaces-radar');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Modal Control Functions
-    function openModal(id) {
-      const m = document.getElementById(id);
-      if (m) m.style.display = 'flex';
-    }
-
-    function closeModal(id) {
-      const m = document.getElementById(id);
-      if (m) m.style.display = 'none';
-    }
-
-    function closeModalOnBackdrop(e, id) {
-      if (e.target.id === id) {
-        closeModal(id);
-      }
-    }
-
-    function openLoginModal() { openModal('login-modal'); }
-    function openDownloadModal() { openModal('download-modal'); }
-    function openDeskReservationModal(id) {
-      let spaceTitle = 'Workspace / Library Carrel';
-      if (id) {
-        const found = spacesData.find(s => s.id === id);
-        if (found) spaceTitle = found.name;
-      }
-      const sub = document.getElementById('desk-modal-subtitle');
-      if (sub) sub.textContent = `Confirm check-in and Wi-Fi credential allocation at ${spaceTitle}.`;
-      openModal('desk-modal');
-    }
-
-    function openEventReservationModal(eventId) {
-      const evt = eventsData.find(e => e.id === eventId);
-      if (!evt) return;
-
-      const title = document.getElementById('event-modal-title');
-      const badge = document.getElementById('event-modal-badge');
-      const seats = document.getElementById('event-modal-seats-pill');
-      const sub = document.getElementById('event-modal-subtitle');
-      const perks = document.getElementById('event-modal-amenities');
-      const hiddenId = document.getElementById('event-reservation-id');
-
-      if (title) title.textContent = evt.title;
-      if (badge) {
-        badge.textContent = evt.category === 'professional' ? 'PROFESSIONAL TRACK' : 'SOCIAL FELLOWSHIP';
-        badge.style.background = evt.category === 'professional' ? '#EFF6FF' : '#F5F3FF';
-        badge.style.color = evt.category === 'professional' ? '#1E40AF' : '#7C3AED';
-      }
-      if (seats) seats.textContent = `${evt.seatsLeft} seats left (out of ${evt.seatsTotal})`;
-      if (sub) {
-        sub.innerHTML = `Hosted @ <strong>${evt.venueName}</strong> (${evt.city}).<br><span style="color:#0F172A;font-weight:600;">${evt.date}</span>`;
-      }
-      if (perks) {
-        perks.innerHTML = `✨ <strong>Venue Amenities:</strong> ${evt.amenities}`;
-      }
-      if (hiddenId) hiddenId.value = evt.id;
-
-      openModal('event-modal');
-    }
-
-    function handleEventReservation(e) {
-      e.preventDefault();
-      const name = document.getElementById('event-rsvp-name')?.value || 'Learner';
-      const evtId = document.getElementById('event-reservation-id')?.value;
-      const evt = eventsData.find(e => e.id === evtId);
-      const evtName = evt ? evt.title : 'Agentic Event';
-      const venue = evt ? evt.venueName : 'Venue';
-
-      alert(`RSVP Confirmed for ${name}!\n\nYour physical seat for "${evtName}" at ${venue} has been reserved. Check your email for your digital entry pass and calendar invite.`);
-      closeModal('event-modal');
-    }
-
-    function openSkillsWaitlistModal() {
-      alert('Skillpedia NSQF Curriculum Guide downloaded. Enrolling you in Practitioner Cohort Q1 2026.');
-    }
-
-    function openCohortsModal() {
-      alert('Practice Cohort application opened: Select your focus track (Commercial IBC / Criminal BNS / Civil CPC).');
-    }
-
-    function openEventsModal() {
-      alert('Ecosystem Calendar: RSVP confirmed for Legal Hackathon 2026 & Litigator Sound Healing Session.');
-    }
-
-    function handleAuthSubmit(e) {
-      e.preventDefault();
-      alert('Supabase Auth Verified: Practitioner session authorized. Redirecting to sovereign workspace...');
-      closeModal('login-modal');
-    }
-
-    function handleDeskReservation(e) {
-      e.preventDefault();
-      alert('Desk reservation confirmed! Your high-speed access pass has been registered.');
-      closeModal('desk-modal');
-    }
-
-    function triggerDownload(osName) {
-      alert(`Initiating verified Hayagriva v2.0 air-gapped download for ${osName}. Cryptographic signature verified.`);
-      closeModal('download-modal');
-    }
-
-    // Telemetry Poller
-    async function updateNetworkStatus() {
-      try {
-        const res = await fetch('/api/status');
-        if (!res.ok) return;
-        const data = await res.json();
-      } catch (err) {
-        // Non-blocking telemetry
-      }
-    }
-
-    // Elevated Apex Domain Subdomain routing
-    if (window.location.hostname.endsWith('agenticprofessionals.net') && !window.location.hostname.startsWith('ibc.') && !window.location.hostname.startsWith('bns.')) {
-      document.querySelectorAll('a[href^="/ibc"]').forEach(a => a.href = 'https://ibc.agenticprofessionals.net' + a.getAttribute('href').replace('/ibc', ''));
-      document.querySelectorAll('a[href^="/bns"]').forEach(a => a.href = 'https://bns.agenticprofessionals.net' + a.getAttribute('href').replace('/bns', ''));
-    }
-
-    // Enhanced Megamenu: Click-to-Pin and Graceful Hover Protection
-    function initMegamenus() {
-      const navItems = document.querySelectorAll('.center-nav .nav-item');
-      let navHoverTimer = null;
-
-      navItems.forEach(item => {
-        const btn = item.querySelector('.nav-trigger-btn');
-        const megamenu = item.querySelector('.megamenu');
-
-        if (btn) {
-          // Click to toggle and pin open
-          btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const wasOpen = item.classList.contains('open');
-            navItems.forEach(other => {
-              other.classList.remove('open');
-              other.classList.remove('hovering');
-            });
-            if (!wasOpen) {
-              item.classList.add('open');
-            }
-          });
-        }
-
-        // Hover with safety grace period so fast mouse transitions never close it
-        item.addEventListener('mouseenter', () => {
-          if (navHoverTimer) {
-            clearTimeout(navHoverTimer);
-            navHoverTimer = null;
-          }
-          item.classList.add('hovering');
-        });
-
-        item.addEventListener('mouseleave', () => {
-          navHoverTimer = setTimeout(() => {
-            item.classList.remove('hovering');
-          }, 240); // 240ms grace period allows deliberate cursor movement without flickering
-        });
-
-        // Clicking a link inside closes the menu
-        if (megamenu) {
-          megamenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-              item.classList.remove('open');
-              item.classList.remove('hovering');
-            });
-          });
-        }
-      });
-
-      // Clicking anywhere outside clears pinned menus
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.center-nav')) {
-          navItems.forEach(item => {
-            item.classList.remove('open');
-            item.classList.remove('hovering');
-          });
-        }
-      });
-
-      // Escape key clears pinned menus
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          navItems.forEach(item => {
-            item.classList.remove('open');
-            item.classList.remove('hovering');
-          });
-        }
-      });
-    }
-
-    // Initialize Map, Megamenus and Telemetry on Load
-    window.addEventListener('DOMContentLoaded', () => {
-      initMap();
-      initMegamenus();
-      updateNetworkStatus();
-      setInterval(updateNetworkStatus, 6000);
-    });
+    })();
   </script>
 </body>
 </html>
