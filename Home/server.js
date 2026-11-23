@@ -1111,7 +1111,7 @@ const server = http.createServer((req, res) => {
   if (safePath === '/' || safePath === '') {
     safePath = '/index.html';
   } else if (safePath === '/docs' || safePath === '/docs/') {
-    safePath = '/docs/index.html';
+    safePath = '/index.html';
   } else if (safePath === '/answers' || safePath === '/answers/') {
     safePath = '/index.html';
   }

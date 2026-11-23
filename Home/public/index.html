@@ -1059,26 +1059,27 @@
 
     .space-card {
       background: #ffffff;
-      border: 1px solid var(--slate-200);
-      border-radius: 12px;
-      padding: 14px 16px;
+      border: 2px solid #0284c7;
+      border-radius: 16px;
+      padding: 16px 18px;
       cursor: pointer;
       transition: all 0.15s ease;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.05);
     }
 
     .space-card:hover {
-      border-color: var(--brand-blue);
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
+      border-color: #0369a1;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.14);
       transform: translateY(-1px);
     }
 
     .space-card.active {
-      border-color: var(--brand-blue);
+      border-color: #0284c7;
       background: #f0f9ff;
-      box-shadow: 0 0 0 1px var(--brand-blue);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
     }
 
     .card-top {
@@ -1089,21 +1090,23 @@
     }
 
     .space-name {
-      font-size: 14.5px;
+      font-size: 16.5px;
       font-weight: 700;
       color: var(--slate-900);
-      line-height: 1.3;
+      line-height: 1.35;
       margin: 0;
+      letter-spacing: -0.01em;
     }
 
     .type-badge {
-      font-size: 9.5px;
+      font-size: 11px;
       font-family: var(--font-mono);
       font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
       text-transform: uppercase;
       white-space: nowrap;
+      letter-spacing: 0.02em;
     }
 
     .type-badge.cafe {
@@ -1985,6 +1988,101 @@
       }
     }
 
+
+    /* ─── Hayagriva Docs 3-Panel Styles ─── */
+    .product-table-wrapper {
+      margin: 20px 0 28px;
+      overflow-x: auto;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .product-table th {
+      background: #f8fafc;
+      padding: 12px 14px;
+      font-weight: 700;
+      color: #475569;
+      border-bottom: 1px solid #cbd5e1;
+      white-space: nowrap;
+    }
+
+    .product-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: middle;
+      color: #334155;
+    }
+
+    .product-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .product-table td a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .product-table td a:hover {
+      text-decoration: underline;
+    }
+
+    .copy-prompt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .copy-prompt-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .diagram-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .code-container {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      color: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      overflow-x: auto;
+    }
+
+    .code-container pre {
+      margin: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -2197,7 +2295,7 @@
       <a href="/answers" class="action-btn" id="nav-answers-trigger" onclick="event.preventDefault(); toggleAnswersView();">
         <span>answers</span>
       </a>
-      <a href="/docs" class="action-btn" title="Hayagriva Sovereign Docs & Desktop App">
+      <a href="/docs" class="action-btn" id="nav-hayagriva-trigger" onclick="event.preventDefault(); toggleDocsView();" title="Hayagriva Sovereign Docs & Desktop App">
         <span>hayagriva</span>
       </a>
       <button type="button" class="signin-btn" id="nav-signin-trigger" onclick="openReservationModal('Sign In / Portal Account')">
@@ -2433,6 +2531,282 @@
         </div>
       </div>
     </section>
+
+    <!-- View 3: Hayagriva Sovereign Docs Canvas (3-Panel Unified Layout) -->
+    <section id="docs-view" style="display:none;width:100%;height:100%;overflow:hidden;flex-direction:column;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;" aria-label="Hayagriva Documentation">
+      <div class="catalog-shell" style="height:100%;overflow:hidden;">
+        
+        <!-- Left Rail: Docs Sections Navigation -->
+        <aside class="catalog-left-rail" aria-label="Documentation Sections">
+          <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;padding:0 8px;">Documentation</div>
+          <nav class="catalog-nav-pills" id="docs-nav-pills">
+            <button type="button" class="catalog-rail-pill active" onclick="scrollDocSection('doc-introduction', this)">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+                <span>Introduction</span>
+              </div>
+            </button>
+            <button type="button" class="catalog-rail-pill" onclick="scrollDocSection('doc-pageindex-agent', this)">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 9 6 6m0-6-6 6"/></svg>
+                <span>PageIndex Agent</span>
+              </div>
+            </button>
+            <button type="button" class="catalog-rail-pill" onclick="scrollDocSection('doc-product-matrix', this)">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Comparison Matrix</span>
+              </div>
+            </button>
+            <button type="button" class="catalog-rail-pill" onclick="scrollDocSection('doc-architecture', this)">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                <span>Tree of Tokens</span>
+              </div>
+            </button>
+            <button type="button" class="catalog-rail-pill" onclick="scrollDocSection('doc-why-agentic', this)">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Why Agentic?</span>
+              </div>
+            </button>
+            <button type="button" class="catalog-rail-pill" onclick="scrollDocSection('doc-sdks', this)">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span>Python &amp; TS SDKs</span>
+              </div>
+            </button>
+          </nav>
+
+          <div style="margin-top:28px;padding:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#0f172a;text-transform:uppercase;margin-bottom:6px;">
+              <span style="display:inline-block;width:7px;height:7px;background:#0284c7;border-radius:50%;"></span>
+              Hayagriva Runtime v2.4
+            </div>
+            <div style="font-size:12px;color:#64748b;line-height:1.45;">PageIndex structural document harness with local model execution for sovereign chambers.</div>
+          </div>
+        </aside>
+
+        <!-- Center + Right Content Area -->
+        <div class="catalog-content-area" id="docs-scroll-container" style="overflow-y:auto;height:100%;">
+          <div class="catalog-content-grid">
+
+            <!-- Center Column: Main Documentation -->
+            <div class="catalog-main-feed">
+              <section id="doc-introduction" style="scroll-margin-top:20px;">
+                <h1 style="font-size:24px;font-weight:800;color:#0f172a;letter-spacing:-0.5px;margin:0 0 12px 0;">Introduction to Hayagriva Docs</h1>
+                <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:20px;">
+                  <strong>PageIndex</strong> is a document harness for LLMs and agents: the layer that lets your AI model work with your documents. Use it to get cited answers from long documents, find the pages that answer a question, and extract data as JSON. Pick the product that fits your needs:
+                </p>
+              </section>
+
+              <!-- Product Matrix Table Section -->
+              <section id="doc-product-matrix" style="scroll-margin-top:20px;">
+                <div class="product-table-wrapper">
+                  <table class="product-table">
+                    <thead>
+                      <tr>
+                        <th>You want to</th>
+                        <th>Use</th>
+                        <th>API keys you need</th>
+                        <th>Coding agent</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Get answers with line-level citations</td>
+                        <td><a href="#doc-pageindex-agent">PageIndex Agent</a></td>
+                        <td>PageIndex and your LLM's</td>
+                        <td>
+                          <button type="button" class="copy-prompt-btn" onclick="copyPrompt('agent', this)">
+                            Copy prompt 📋
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Find the pages that answer a question</td>
+                        <td><a href="#doc-pageindex-agent">Page Search API</a></td>
+                        <td>PageIndex</td>
+                        <td>
+                          <button type="button" class="copy-prompt-btn" onclick="copyPrompt('search', this)">
+                            Copy prompt 📋
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Extract fields and tables as JSON</td>
+                        <td><a href="#doc-sdks">Page Extract API</a></td>
+                        <td>PageIndex</td>
+                        <td>
+                          <button type="button" class="copy-prompt-btn" onclick="copyPrompt('extract', this)">
+                            Copy prompt 📋
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p style="font-size:13.5px;color:#475569;line-height:1.7;margin-bottom:20px;">
+                  All three products use the same PageIndex API key, the same SDK (Python or JavaScript) and the same document library: a document you upload for one works with the others. Working with a coding agent such as <strong>Claude Code, Codex, or Cursor</strong>? <em>Copy prompt</em> copies a prompt to paste into it, and the agent sets up that product in your project.
+                </p>
+              </section>
+
+              <!-- PageIndex Agent & Structural Hierarchy -->
+              <section id="doc-pageindex-agent" style="scroll-margin-top:20px;margin-top:36px;">
+                <h2 style="font-size:19px;font-weight:700;color:#0f172a;margin:0 0 10px 0;">PageIndex Agent &amp; Structural Tree</h2>
+                <p style="font-size:13.5px;color:#475569;line-height:1.65;margin-bottom:14px;">
+                  PageIndex replaces fragile vector text-chunking with <strong>hierarchical document reasoning</strong>. Rather than breaking 100+ page CIRP resolution plans or High Court paper books into arbitrary 500-token chunks, PageIndex extracts the document's true table of contents and structural tree so your model navigates pages just like a seasoned practitioner.
+                </p>
+
+                <!-- Architecture SVG Diagram -->
+                <section id="doc-architecture" class="diagram-card">
+                  <svg viewBox="0 0 760 210" width="100%" height="210" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(15, 15)">
+                      <rect x="0" y="0" width="145" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8"/>
+                      <rect x="10" y="10" width="125" height="155" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,3"/>
+                      <text x="72" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">your documents</text>
+                      <text x="72" y="90" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">IBC Dockets, BNS</text>
+                      <text x="72" y="108" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">120+ pages</text>
+                    </g>
+
+                    <path d="M180 102 L235 102" stroke="#0284c7" stroke-width="2.5" fill="none"/>
+                    
+                    <g transform="translate(250, 15)">
+                      <rect x="0" y="0" width="230" height="175" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+                      <rect x="12" y="12" width="206" height="34" rx="5" fill="#f0f9ff" stroke="#bae6fd"/>
+                      <text x="24" y="34" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#0284c7">Resolution Plan (120 pages)</text>
+                      
+                      <rect x="20" y="58" width="190" height="44" rx="5" fill="#f8fafc" stroke="#e2e8f0"/>
+                      <text x="30" y="76" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Operational Creditors Claim</text>
+                      <text x="30" y="92" font-family="monospace" font-size="9.5" fill="#64748b">p. 1 &ndash; 24</text>
+                      
+                      <rect x="20" y="112" width="190" height="44" rx="5" fill="#f8fafc" stroke="#e2e8f0"/>
+                      <text x="30" y="130" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Financial Restructuring Matrix</text>
+                      <text x="30" y="146" font-family="monospace" font-size="9.5" fill="#64748b">p. 25 &ndash; 78</text>
+                    </g>
+
+                    <path d="M500 102 L555 102" stroke="#0284c7" stroke-width="2.5" fill="none"/>
+
+                    <g transform="translate(570, 15)">
+                      <rect x="0" y="0" width="170" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8"/>
+                      <text x="85" y="28" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#64748b">p. 34</text>
+                      <line x1="20" y1="46" x2="150" y2="46" stroke="#e2e8f0" stroke-width="2"/>
+                      <line x1="20" y1="62" x2="150" y2="62" stroke="#e2e8f0" stroke-width="2"/>
+                      <rect x="18" y="74" width="134" height="26" rx="4" fill="#fef3c7" stroke="#fde68a"/>
+                      <text x="24" y="91" font-family="monospace" font-size="9.5" font-weight="700" fill="#92400e">&sect; 53 Priority Waterfall</text>
+                      <line x1="20" y1="116" x2="150" y2="116" stroke="#e2e8f0" stroke-width="2"/>
+                      <line x1="20" y1="132" x2="120" y2="132" stroke="#e2e8f0" stroke-width="2"/>
+                      <circle cx="138" cy="148" r="9" fill="#059669"/>
+                      <path d="M134 148 L137 151 L143 145" stroke="#ffffff" stroke-width="2" fill="none"/>
+                    </g>
+                  </svg>
+                </section>
+              </section>
+
+              <!-- Why Agentic Section -->
+              <section id="doc-why-agentic" style="scroll-margin-top:20px;margin-top:36px;">
+                <h2 style="font-size:19px;font-weight:700;color:#0f172a;margin:0 0 10px 0;">Why Agentic Professionals?</h2>
+                <p style="font-size:13.5px;color:#475569;line-height:1.65;margin-bottom:16px;">
+                  The restructuring and valuation landscape is transitioning from passive manual research to <strong>autonomous agentic execution</strong>. Becoming an Agentic Professional equips your practice with sovereign local agents that read filings, verify statutory timelines, cross-reference judicial precedents, and synthesize multi-page briefs with verifiable citations.
+                </p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+                  <div style="background:#ffffff;border:1px solid #cbd5e1;border-radius:8px;padding:16px;">
+                    <div style="font-size:20px;margin-bottom:6px;">🛡️</div>
+                    <strong style="font-size:13.5px;color:#0f172a;display:block;margin-bottom:4px;">100% Client Sovereignty</strong>
+                    <p style="font-size:12.5px;color:#475569;line-height:1.5;margin:0;">Your confidential CIRP resolution plans and case files never leave your workstation. Hayagriva processes documents locally.</p>
+                  </div>
+                  <div style="background:#ffffff;border:1px solid #cbd5e1;border-radius:8px;padding:16px;">
+                    <div style="font-size:20px;margin-bottom:6px;">⚖️</div>
+                    <strong style="font-size:13.5px;color:#0f172a;display:block;margin-bottom:4px;">Line-Level Statutory Proof</strong>
+                    <p style="font-size:12.5px;color:#475569;line-height:1.5;margin:0;">Every statement generated by the agent links directly back to the exact paragraph, page number, and watermark in the original filing.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- SDK Installation & Usage -->
+              <section id="doc-sdks" style="scroll-margin-top:20px;margin-top:36px;">
+                <h2 style="font-size:19px;font-weight:700;color:#0f172a;margin:0 0 10px 0;">Python &amp; TypeScript SDKs</h2>
+                <p style="font-size:13.5px;color:#475569;line-height:1.65;margin-bottom:12px;">
+                  Install the PageIndex library with a single command:
+                </p>
+
+                <div class="code-container">
+                  <pre><code># Python SDK
+pip install pageindex
+
+# JavaScript & TypeScript SDK
+npm install pageindex</code></pre>
+                </div>
+
+                <div class="code-container">
+                  <pre><code>import pageindex
+
+# Upload and hierarchical token indexing
+doc = pageindex.upload_and_index("cirp_resolution_plan_120pp.pdf")
+
+# Line-level precision query
+answer = pageindex.query(
+    document_id=doc.id,
+    prompt="What is the distribution waterfall under Section 53 for operational creditors?"
+)
+
+print(answer.text)
+for citation in answer.citations:
+    print(f"Page {citation.page_number}, Line {citation.line_start}-{citation.line_end}: {citation.matched_text}")</code></pre>
+                </div>
+              </section>
+
+            </div>
+
+            <!-- Right Rail: Downloads & Statutory Desk -->
+            <aside class="catalog-right-rail" aria-label="Hayagriva Downloads & Statutory Desk">
+              <!-- Primary CTA: Download Hayagriva Desktop -->
+              <button type="button" class="catalog-primary-cta" onclick="handleDownloadDesktop()" style="background:#059669;border-color:#059669;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>+ Download HAYAGRIVA Desktop</span>
+              </button>
+
+              <!-- Card 1: Statutory Desk Info -->
+              <div class="catalog-side-card">
+                <div class="catalog-side-card-header">
+                  <span style="text-transform:lowercase;">statutory desk</span>
+                  <span style="font-size:10px;font-family:monospace;color:#0284c7;font-weight:700;">PAGEINDEX</span>
+                </div>
+                <div class="catalog-side-card-body">
+                  <p class="catalog-side-copy">Offline local agent runtime for sovereign chambers &amp; legal informatics.</p>
+                  <ul class="catalog-guarantee-list">
+                    <li>100% Client Sovereignty &amp; Zero Vector Loss</li>
+                    <li>Line-level NCLT/Court citations</li>
+                    <li>Ollama &amp; HuggingFace local models</li>
+                    <li>Dual 4K Workstation optimized</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Card 2: Emergency Contact -->
+              <div class="catalog-side-card">
+                <div class="catalog-side-card-header">
+                  <span style="text-transform:lowercase;">emergency contact</span>
+                </div>
+                <div class="catalog-side-card-body">
+                  <p class="catalog-side-copy" style="font-size:12px;color:#475569;margin-bottom:6px;">For urgent NCLT filing or Section 29A clearance:</p>
+                  <div style="font-weight:700;color:#059669;font-size:13.5px;letter-spacing:-0.2px;">93160-15274 (11 am &ndash; 4 pm)</div>
+                </div>
+              </div>
+
+              <!-- Return to Radar Shortcut -->
+              <button type="button" onclick="showRadarView(true)" style="background:#ffffff;border:1px solid #cbd5e1;padding:8px 12px;border-radius:8px;font-size:12.5px;color:#475569;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background 0.15s;">
+                &larr; return to spaces radar
+              </button>
+            </aside>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   </main>
 
@@ -2803,20 +3177,20 @@
           return `
             <article class="space-card ${isSelected ? 'active' : ''}" id="card-${s.id}" onclick="selectSpace('${s.id}')">
               <div class="card-top">
-                <div style="display:flex;align-items:center;gap:8px;">
+                <div style="display:flex;align-items:center;gap:10px;">
                   <span class="type-badge ${isCafe ? 'cafe' : 'library'}">${isCafe ? '☕ WORK-FROM-CAFE' : '📚 LAW LIBRARY'}</span>
-                  <span style="font-size:11.5px;font-family:var(--font-mono);color:#64748b;font-weight:500;">${escapeHTML(s.city)}</span>
+                  <span style="font-size:13px;font-family:var(--font-mono);color:#64748b;font-weight:500;">${escapeHTML(s.city || 'Delhi NCR')}</span>
                 </div>
                 <button type="button" class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark(event, '${s.id}')" title="Pin space to your desk">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="${isBookmarked ? '#f59e0b' : '#94a3b8'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="${isBookmarked ? '#f59e0b' : '#64748b'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                 </button>
               </div>
 
               <h3 class="space-name">${escapeHTML(s.name)}</h3>
 
               <div class="card-actions-row">
-                <span style="font-size:11.5px;color:#64748b;font-family:var(--font-mono);">${escapeHTML(s.openingHours || s.opening_hours || '07:30 AM – 10:30 PM')}</span>
-                <span class="view-dossier-link">
+                <span style="font-size:13px;color:#64748b;font-family:var(--font-mono);font-weight:500;">${escapeHTML(s.openingHours || s.opening_hours || '07:30 AM – 10:30 PM')}</span>
+                <span class="view-dossier-link" style="font-size:13px;font-weight:700;color:#0284c7;display:inline-flex;align-items:center;gap:4px;">
                   View Dossier &rarr;
                 </span>
               </div>
@@ -3478,7 +3852,7 @@
         alert(`Welcome, ${name}! Your practitioner session has been authenticated.`);
       };
 
-      // ─── 10. Navigation Views: Radar vs Answers ───
+      // ─── 10. Navigation Views: Radar vs Answers vs Hayagriva Docs ───
       function closeAllMegamenus() {
         document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('is-open', 'active'));
       }
@@ -3488,9 +3862,15 @@
         closeAllMegamenus();
         if (radarView) radarView.style.display = 'flex';
         if (answersView) answersView.style.display = 'none';
+        const docsView = document.getElementById('docs-view');
+        if (docsView) docsView.style.display = 'none';
+
         if (navSpacesBtn) navSpacesBtn.classList.add('pill-active');
         const navAnswers = document.getElementById('nav-answers-trigger');
         if (navAnswers) navAnswers.classList.remove('pill-active');
+        const navHayagriva = document.getElementById('nav-hayagriva-trigger');
+        if (navHayagriva) navHayagriva.classList.remove('pill-active');
+
         if (pushState && window.location.pathname !== '/') {
           history.pushState({ view: 'radar' }, '', '/');
         }
@@ -3501,10 +3881,16 @@
       function showAnswersView(pushState = true) {
         closeAllMegamenus();
         if (radarView) radarView.style.display = 'none';
+        const docsView = document.getElementById('docs-view');
+        if (docsView) docsView.style.display = 'none';
         if (answersView) answersView.style.display = 'flex';
+
         if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
         const navAnswers = document.getElementById('nav-answers-trigger');
         if (navAnswers) navAnswers.classList.add('pill-active');
+        const navHayagriva = document.getElementById('nav-hayagriva-trigger');
+        if (navHayagriva) navHayagriva.classList.remove('pill-active');
+
         if (pushState && window.location.pathname !== '/answers') {
           history.pushState({ view: 'answers' }, '', '/answers');
         }
@@ -3520,6 +3906,75 @@
         }
       }
       window.toggleAnswersView = toggleAnswersView;
+
+      function showDocsView(pushState = true) {
+        closeAllMegamenus();
+        if (radarView) radarView.style.display = 'none';
+        if (answersView) answersView.style.display = 'none';
+        const docsView = document.getElementById('docs-view');
+        if (docsView) docsView.style.display = 'flex';
+
+        if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
+        const navAnswers = document.getElementById('nav-answers-trigger');
+        if (navAnswers) navAnswers.classList.remove('pill-active');
+        const navHayagriva = document.getElementById('nav-hayagriva-trigger');
+        if (navHayagriva) navHayagriva.classList.add('pill-active');
+
+        if (pushState && window.location.pathname !== '/docs') {
+          history.pushState({ view: 'docs' }, '', '/docs');
+        }
+      }
+      window.showDocsView = showDocsView;
+
+      function toggleDocsView() {
+        const docsView = document.getElementById('docs-view');
+        if (docsView && docsView.style.display !== 'none') {
+          showRadarView(true);
+        } else {
+          showDocsView(true);
+        }
+      }
+      window.toggleDocsView = toggleDocsView;
+
+      window.scrollDocSection = function(sectionId, btn) {
+        document.querySelectorAll('#docs-nav-pills .catalog-rail-pill').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        const target = document.getElementById(sectionId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      window.handleDownloadDesktop = function() {
+        const user = getCurrentUser();
+        if (!user) {
+          openAuthModal("Authentication required: Please sign in or register to download Hayagriva Desktop.");
+          return;
+        }
+        alert(`Authentication verified for ${user.name}! Downloading Hayagriva Desktop v2.4 (macOS Universal DMG)...`);
+        const a = document.createElement('a');
+        a.href = '/docs/Hayagriva-Setup-v2.4.dmg';
+        a.download = 'Hayagriva-Setup-v2.4.dmg';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+
+      window.copyPrompt = function(type, btn) {
+        let text = '';
+        if (type === 'agent') {
+          text = 'Install and configure PageIndex Agent in this project. Use the pageindex library to upload and index documents, and configure it to deliver line-level citations for long PDF filings.';
+        } else if (type === 'search') {
+          text = 'Set up PageIndex Page Search API in this project. I want to search through indexed PDF paper-books and return matching page numbers and exact paragraph coordinates.';
+        } else if (type === 'extract') {
+          text = 'Set up PageIndex Page Extract API in this project to extract structured JSON data and balance sheet tables from corporate dockets.';
+        }
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btn.textContent;
+          btn.textContent = 'Copied! ✓';
+          setTimeout(() => btn.textContent = original, 2000);
+        });
+      };
 
       // ─── 11. Forum Questions, Filter & LightRAG Engine ───
       let currentForumTrack = 'all';
@@ -4173,9 +4628,11 @@
         initEventSwitcher();
         initAuth();
 
-        // Check deep-linking URL for /answers
+        // Check deep-linking URL on load
         if (window.location.pathname.startsWith('/answers')) {
           showAnswersView(false);
+        } else if (window.location.pathname.startsWith('/docs')) {
+          showDocsView(false);
         }
       });
 
@@ -4183,6 +4640,8 @@
       window.addEventListener('popstate', function () {
         if (window.location.pathname.startsWith('/answers')) {
           showAnswersView(false);
+        } else if (window.location.pathname.startsWith('/docs')) {
+          showDocsView(false);
         } else {
           showRadarView(false);
         }
