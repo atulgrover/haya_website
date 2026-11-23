@@ -488,6 +488,89 @@
       background: #047857;
     }
 
+    .menu-card.selected {
+      background: #f0f9ff;
+      border-color: #7dd3fc;
+      box-shadow: 0 1px 3px rgba(2, 132, 199, 0.1);
+    }
+
+    .menu-card.selected .menu-card-info h4 {
+      color: #0284c7;
+    }
+
+    .cohort-narrative-card {
+      flex: 1;
+      min-height: 0;
+      margin: 0 0 8px 0;
+      padding: 9px 11px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cohort-narrative-text {
+      font-size: 11px;
+      line-height: 1.45;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    .cohort-narrative-text strong {
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: lowercase;
+    }
+
+    .fast-track-submit-btn {
+      width: 100%;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 8px;
+      background: #10b981;
+      color: #020617;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: lowercase;
+      letter-spacing: 0.3px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+    }
+
+    .fast-track-submit-btn:hover {
+      background: #34d399;
+      transform: translateY(-1px);
+    }
+
+    .calnode-emergency-contact {
+      flex-shrink: 0;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(51, 65, 85, 0.45);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .calnode-emergency-contact:hover {
+      opacity: 0.9;
+    }
+
     .megamenu-card {
       background: var(--slate-50);
       border: 1px solid var(--slate-200);
@@ -1493,39 +1576,59 @@
           </div>
         </li>
 
-        <!-- Megamenu 3: Agentic Cohorts (Linking to Live Sites) -->
+        <!-- Megamenu 3: Agentic Cohorts (Dual-Column: IBC, BNS | Upcoming Cohorts & Intake Dock) -->
         <li class="nav-item" id="nav-item-cohorts">
           <button type="button" class="nav-btn" aria-haspopup="true">
             <span>agentic cohorts</span>
             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="megamenu-panel" style="width: 720px;">
-            <div class="megamenu-header-row">
-              <span class="megamenu-title">Jurisprudential Practice Cohorts</span>
-              <span class="megamenu-badge">3 Sovereign Hubs</span>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
-              <a href="https://ibc.agenticprofessionals.net" target="_blank" class="megamenu-card">
-                <div class="megamenu-card-title">
-                  <span>Commercial</span>
-                  <span style="font-size:10px;background:#ecfdf5;color:#059669;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">IBC</span>
+          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
+            <div class="megamenu-grid-dual">
+              <!-- Left Column: Cohorts Index -->
+              <div class="megamenu-col-left">
+                <div>
+                  <h3 class="megamenu-col-title">agentic cohorts</h3>
+                  <div class="space-y-1" id="cohorts-tracks-list">
+                    <!-- Track 1: IBC Professionals -->
+                    <a href="https://ibc.agenticprofessionals.net" class="menu-card cohort-card" data-cohort="ibc" id="cohort-card-ibc">
+                      <div class="menu-card-info">
+                        <h4>ibc professionals</h4>
+                        <p>Insolvency, liquidation waterfalls &amp; restructuring practice pods across 16 NCLT benches.</p>
+                      </div>
+                    </a>
+
+                    <!-- Track 2: BNS Professionals -->
+                    <a href="https://bns.agenticprofessionals.net" class="menu-card cohort-card" data-cohort="bns" id="cohort-card-bns">
+                      <div class="menu-card-info">
+                        <h4>bns professionals</h4>
+                        <p>Bharatiya Nyaya Sanhita, cyber forensics &amp; criminal practice clinics across 48 jurisdictions.</p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
-                <p class="megamenu-card-desc">Insolvency &amp; restructuring radar across 16 NCLT benches. Live on ibc.agenticprofessionals.net &rarr;</p>
-              </a>
-              <a href="https://bns.agenticprofessionals.net" target="_blank" class="megamenu-card">
-                <div class="megamenu-card-title">
-                  <span>Criminal</span>
-                  <span style="font-size:10px;background:#f0f9ff;color:#0284c7;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">BNS</span>
+              </div>
+
+              <!-- Right Column: Cohort Scope & Advisory Dock -->
+              <div class="megamenu-col-dark" style="justify-content:space-between;">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+                  <div class="cohort-narrative-card">
+                    <p class="cohort-narrative-text">
+                      <strong id="cohort-dock-title">upcoming cohorts</strong> &ndash;
+                      <span id="cohort-dock-desc">Next sovereign cohort sprint across IBC restructuring and BNS criminal forensics starts Dec 1st. Live peer pods, case debriefs &amp; mock bench arguments.</span>
+                    </p>
+                  </div>
+
+                  <button type="button" class="fast-track-submit-btn" id="join-cohort-btn" onclick="openCohortIntake();">
+                    <span id="join-cohort-btn-text">join a cohort &rarr;</span>
+                  </button>
                 </div>
-                <p class="megamenu-card-desc">Bharatiya Nyaya Sanhita radar across 48 cyber cells &amp; police stations. Live on bns.agenticprofessionals.net &rarr;</p>
-              </a>
-              <a href="#cpc-cohort" class="megamenu-card">
-                <div class="megamenu-card-title">
-                  <span>Civil</span>
-                  <span style="font-size:10px;background:#f5f3ff;color:#7c3aed;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">CPC</span>
-                </div>
-                <p class="megamenu-card-desc">Commercial court jurisdictions, decree executions, and sovereign mediation registries.</p>
-              </a>
+
+                <a href="tel:+919316015274" class="calnode-emergency-contact">
+                  <span style="color:#94a3b8;">emergency contact:</span>
+                  <strong style="color:#34d399;">93160-15274</strong>
+                  <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
+                </a>
+              </div>
             </div>
           </div>
         </li>
@@ -2751,11 +2854,86 @@
         });
       }
 
+      // ─── 12. Agentic Cohorts Interactive Switcher & Deep Linking ───
+      const COHORT_METADATA = {
+        default: {
+          title: "upcoming cohorts",
+          desc: "Next sovereign cohort sprint across IBC restructuring and BNS criminal forensics starts Dec 1st. Live peer pods, case debriefs & mock bench arguments.",
+          btnText: "join a cohort \u2192"
+        },
+        ibc: {
+          title: "ibc practice cohort — sprint 4",
+          desc: "16-week intensive restructuring bench pleadings, resolution plan formulation & PUFE forensic audits across 16 NCLT benches.",
+          btnText: "join ibc cohort \u2192"
+        },
+        bns: {
+          title: "bns practice cohort — sprint 2",
+          desc: "Bharatiya Nyaya Sanhita & BNSS compliance, cyber forensics, digital evidence triage & FIR pleading clinics across 48 jurisdictions.",
+          btnText: "join bns cohort \u2192"
+        }
+      };
+
+      function initCohortSwitcher() {
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const ibcUrl = isLocal ? 'http://localhost:3002/investors/' : 'https://ibc.agenticprofessionals.net';
+        const bnsUrl = isLocal ? 'http://localhost:3003/police/' : 'https://bns.agenticprofessionals.net';
+
+        const ibcCard = document.getElementById('cohort-card-ibc');
+        const bnsCard = document.getElementById('cohort-card-bns');
+        if (ibcCard) ibcCard.href = ibcUrl;
+        if (bnsCard) bnsCard.href = bnsUrl;
+
+        const dockTitle = document.getElementById('cohort-dock-title');
+        const dockDesc = document.getElementById('cohort-dock-desc');
+        const dockBtnText = document.getElementById('join-cohort-btn-text');
+        const cards = document.querySelectorAll('.cohort-card');
+
+        function setCohort(key) {
+          const data = COHORT_METADATA[key] || COHORT_METADATA.default;
+          if (dockTitle) dockTitle.textContent = data.title;
+          if (dockDesc) dockDesc.textContent = data.desc;
+          if (dockBtnText) dockBtnText.innerHTML = data.btnText;
+
+          cards.forEach(c => {
+            if (c.dataset.cohort === key) {
+              c.classList.add('selected');
+            } else {
+              c.classList.remove('selected');
+            }
+          });
+        }
+
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            setCohort(card.dataset.cohort);
+          });
+          card.addEventListener('focus', () => {
+            setCohort(card.dataset.cohort);
+          });
+        });
+
+        const cohortsPanel = document.querySelector('#nav-item-cohorts .megamenu-panel');
+        if (cohortsPanel) {
+          cohortsPanel.addEventListener('mouseleave', () => {
+            setCohort('default');
+          });
+        }
+      }
+
+      window.openCohortIntake = function () {
+        if (typeof openReservationModal === 'function') {
+          openReservationModal('Sovereign Practice Cohort Intake', 'COHORT');
+        } else {
+          alert('Cohort registration: Please contact 93160-15274 or select your role to register.');
+        }
+      };
+
       // Initialize on DOM ready
       document.addEventListener('DOMContentLoaded', function () {
         initMap();
         loadRadarData();
         initSkillpediaLinks();
+        initCohortSwitcher();
       });
 
     })();
