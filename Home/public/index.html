@@ -778,12 +778,12 @@
       background: #ffffff;
       border: 1px solid var(--slate-200);
       border-radius: 12px;
-      padding: 14px;
+      padding: 14px 16px;
       cursor: pointer;
       transition: all 0.15s ease;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
     }
 
     .pro-card:hover {
@@ -816,15 +816,15 @@
       font-family: var(--font-heading);
       color: #ffffff;
       flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
-    .pro-avatar.ip { background: linear-gradient(135deg, #d97706, #b45309); }
-    .pro-avatar.advocate { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
-    .pro-avatar.cyber_specialist { background: linear-gradient(135deg, #059669, #047857); }
-    .pro-avatar.valuer { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
-    .pro-avatar.researcher { background: linear-gradient(135deg, #0d9488, #0f766e); }
-    .pro-avatar.learner { background: linear-gradient(135deg, #0284c7, #0369a1); }
+    .pro-avatar.ip { background: #c2410c; }
+    .pro-avatar.advocate { background: #1d4ed8; }
+    .pro-avatar.cyber_specialist { background: #047857; }
+    .pro-avatar.valuer { background: #6d28d9; }
+    .pro-avatar.researcher { background: #0f766e; }
+    .pro-avatar.learner { background: #0369a1; }
 
     .pro-meta {
       flex: 1;
@@ -904,22 +904,6 @@
       border-color: #bae6fd;
       transform: translateY(-1px);
     }
-      padding: 8px 6px;
-      border-radius: 7px;
-      cursor: pointer;
-      transition: all 0.15s;
-      text-transform: lowercase;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .mode-btn.active {
-      background: #ffffff;
-      color: var(--slate-900);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
 
     .search-box {
       position: relative;
@@ -989,17 +973,28 @@
 
     .filter-select {
       flex: 1;
-      height: 32px;
-      border-radius: 8px;
+      height: 38px;
+      border-radius: 9px;
       border: 1px solid var(--slate-200);
-      background: var(--slate-50);
-      font-size: 12px;
+      background: #ffffff;
+      font-size: 13px;
       font-weight: 500;
-      color: var(--slate-700);
-      padding: 0 8px;
+      color: var(--slate-800);
+      padding: 0 12px;
       outline: none;
       font-family: inherit;
       cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='7 15 12 20 17 15'/%3E%3Cpolyline points='7 9 12 4 17 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 32px;
+      transition: border-color 0.15s;
+    }
+
+    .filter-select:focus {
+      border-color: var(--brand-blue);
     }
 
     .reset-filters-btn {
@@ -1728,29 +1723,6 @@
             </button>
           </div>
 
-          <!-- Secondary Sub-Filter Row: Changes based on active mode -->
-          <!-- 1. For Professionals: Role Chips -->
-          <div class="subfilter-container" id="subfilter-pros-container">
-            <div class="subfilter-scroll">
-              <button type="button" class="subfilter-chip active" data-role="ALL" onclick="setProfessionalRoleFilter('ALL')">All Roles</button>
-              <button type="button" class="subfilter-chip" data-role="ip" onclick="setProfessionalRoleFilter('ip')">Insolvency (IP)</button>
-              <button type="button" class="subfilter-chip" data-role="advocate" onclick="setProfessionalRoleFilter('advocate')">Advocates</button>
-              <button type="button" class="subfilter-chip" data-role="cyber_specialist" onclick="setProfessionalRoleFilter('cyber_specialist')">Cyber &amp; Forensics</button>
-              <button type="button" class="subfilter-chip" data-role="valuer" onclick="setProfessionalRoleFilter('valuer')">Valuers</button>
-              <button type="button" class="subfilter-chip" data-role="researcher" onclick="setProfessionalRoleFilter('researcher')">Researchers</button>
-              <button type="button" class="subfilter-chip" data-role="learner" onclick="setProfessionalRoleFilter('learner')">Learners</button>
-            </div>
-          </div>
-
-          <!-- 2. For Spaces: All / Cafes / Libraries Chips -->
-          <div class="subfilter-container" id="subfilter-spaces-container" style="display:none;">
-            <div class="subfilter-scroll">
-              <button type="button" class="subfilter-chip active" data-space-type="ALL" onclick="setSpacesTypeFilter('ALL')">All Spaces (16)</button>
-              <button type="button" class="subfilter-chip" data-space-type="cafe" onclick="setSpacesTypeFilter('cafe')">☕ Study Cafes (8)</button>
-              <button type="button" class="subfilter-chip" data-space-type="library" onclick="setSpacesTypeFilter('library')">📚 AI Libraries (8)</button>
-            </div>
-          </div>
-
           <!-- Search Box -->
           <div class="search-box" id="search-box-container">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -1758,31 +1730,18 @@
             <button type="button" id="search-clear-btn" class="search-clear-btn" onclick="clearSearch()">&times;</button>
           </div>
 
-          <!-- Filter Row: City Select + Reset -->
+          <!-- Filter Row: Role Select + Reset -->
           <div class="filter-row">
-            <select id="city-filter" class="filter-select" onchange="filterByCity(this.value)">
-              <option value="ALL">All Cities (National Radar)</option>
-              <option value="Delhi NCR">Delhi NCR</option>
-              <option value="Mumbai">Mumbai</option>
-              <option value="Bengaluru">Bengaluru</option>
-              <option value="Hyderabad">Hyderabad</option>
-              <option value="Kolkata">Kolkata</option>
-              <option value="Chandigarh">Chandigarh</option>
-              <option value="Pune">Pune</option>
-              <option value="Ahmedabad">Ahmedabad</option>
+            <select id="role-filter" class="filter-select" onchange="handleDropdownFilter(this.value)">
+              <option value="ALL">All Roles</option>
+              <option value="ip">Insolvency Professionals</option>
+              <option value="valuer">Registered Valuers</option>
+              <option value="cyber_specialist">Forensic Experts</option>
+              <option value="advocate">Corporate Lawyers</option>
             </select>
             <button type="button" id="reset-filters-btn" class="reset-filters-btn" style="display:none;" onclick="resetAllFilters()">
               &times; reset
             </button>
-          </div>
-
-          <!-- Stats Bar -->
-          <div class="stats-bar">
-            <span class="stats-pill">
-              <span class="status-pulse"></span>
-              <span id="results-count-display">10 registered professionals</span>
-            </span>
-            <span id="results-city-display" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-500);">National Radar</span>
           </div>
         </div>
 
@@ -1923,14 +1882,10 @@
       const modeSpacesBtn = document.getElementById('mode-spaces-btn');
       const prosCountTab = document.getElementById('pros-count-tab');
       const spacesCountTab = document.getElementById('spaces-count-tab');
-      const subfilterPros = document.getElementById('subfilter-pros-container');
-      const subfilterSpaces = document.getElementById('subfilter-spaces-container');
       const searchInput = document.getElementById('search-input');
       const searchBoxContainer = document.getElementById('search-box-container');
-      const cityFilter = document.getElementById('city-filter');
+      const roleFilter = document.getElementById('role-filter');
       const resetFiltersBtn = document.getElementById('reset-filters-btn');
-      const resultsCountDisplay = document.getElementById('results-count-display');
-      const resultsCityDisplay = document.getElementById('results-city-display');
       const inspectorDrawer = document.getElementById('inspector-drawer');
       const mobilePinPreview = document.getElementById('mobile-pin-preview');
       const radarView = document.getElementById('radar-view');
@@ -2015,26 +1970,20 @@
       // ─── 3. Filtering & Rendering ───
       function applyFilters() {
         const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        const city = cityFilter ? cityFilter.value : 'ALL';
 
         if (searchBoxContainer) {
           searchBoxContainer.classList.toggle('has-query', query.length > 0);
         }
 
-        const hasActiveFilters = query.length > 0 || city !== 'ALL' || 
+        const hasActiveFilters = query.length > 0 || 
           (radarMode === 'professionals' && activeProRole !== 'ALL') ||
           (radarMode === 'spaces' && activeSpaceType !== 'ALL');
 
         if (resetFiltersBtn) resetFiltersBtn.style.display = hasActiveFilters ? 'block' : 'none';
 
-        if (resultsCityDisplay) {
-          resultsCityDisplay.textContent = city === 'ALL' ? 'National Radar' : city;
-        }
-
         if (radarMode === 'professionals') {
           filteredProfessionals = rawProfessionals.filter(p => {
             if (activeProRole !== 'ALL' && p.role !== activeProRole) return false;
-            if (city !== 'ALL' && p.city !== city) return false;
             if (query) {
               const matchName = (p.name || '').toLowerCase().includes(query);
               const matchDesig = (p.designation || '').toLowerCase().includes(query);
@@ -2052,10 +2001,6 @@
             return true;
           });
 
-          if (resultsCountDisplay) {
-            resultsCountDisplay.textContent = `${filteredProfessionals.length} registered professionals`;
-          }
-
           renderProfessionalCards();
           renderProfessionalMarkers();
 
@@ -2063,7 +2008,6 @@
           // Spaces Mode
           filteredSpaces = rawSpaces.filter(s => {
             if (activeSpaceType !== 'ALL' && s.type !== activeSpaceType) return false;
-            if (city !== 'ALL' && s.city !== city) return false;
             if (query) {
               const matchName = (s.name || '').toLowerCase().includes(query);
               const matchCity = (s.city || '').toLowerCase().includes(query);
@@ -2077,10 +2021,6 @@
             }
             return true;
           });
-
-          if (resultsCountDisplay) {
-            resultsCountDisplay.textContent = `${filteredSpaces.length} verified spaces`;
-          }
 
           renderSpaceCards();
           renderSpaceMarkers();
@@ -2115,30 +2055,22 @@
                   <div class="pro-name-row">
                     <h3 class="pro-name">${escapeHTML(p.name)}</h3>
                     ${p.isVerified ? `
-                      <svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor" title="Verified Practitioner">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      <svg class="verified-icon" viewBox="0 0 24 24" width="15" height="15">
+                        <circle cx="12" cy="12" r="10" fill="#0284c7"/>
+                        <polyline points="8 12 11 15 16 9" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     ` : ''}
                     <span class="role-badge ${escapeHTML(p.role)}">${roleLabel}</span>
                   </div>
                   <div class="pro-designation">${escapeHTML(p.designation)} &bull; <strong style="color:#0f172a;">${escapeHTML(p.firm)}</strong></div>
-                  <div class="pro-bench">
-                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-6-5.5-6-10.5A6 6 0 0 1 18 10.5c0 5-6 10.5-6 10.5z"/><circle cx="12" cy="10.5" r="2"/></svg>
-                    <span>${escapeHTML(p.bench || p.city)}</span>
-                  </div>
                 </div>
                 <button type="button" class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark(event, '${p.id}')" title="Pin practitioner to your consultation list">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="${isBookmarked ? '#f59e0b' : '#94a3b8'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                 </button>
               </div>
 
-              <div class="card-metrics">
-                <span class="metric-tag" style="background:#f1f5f9;color:#334155;font-weight:600;">📜 ${escapeHTML(p.regNo || 'Enrolled Sovereign')}</span>
-                <span class="metric-tag wifi">⚡ ${escapeHTML(p.activeMandates ? `${p.activeMandates} Active Mandates` : 'Available')}</span>
-              </div>
-
               <div class="card-actions-row">
-                <span style="font-size:11px;color:#64748b;font-family:var(--font-mono);">${escapeHTML(p.city)}, ${escapeHTML(p.state || 'India')}</span>
+                <span style="font-size:11.5px;color:#64748b;font-family:var(--font-mono);">${escapeHTML(p.city)}, ${escapeHTML(p.state || 'India')}</span>
                 <span class="view-dossier-link">
                   View Dossier &rarr;
                 </span>
@@ -2644,8 +2576,25 @@
         if (modeProsBtn) modeProsBtn.classList.toggle('active', mode === 'professionals');
         if (modeSpacesBtn) modeSpacesBtn.classList.toggle('active', mode === 'spaces');
 
-        if (subfilterPros) subfilterPros.style.display = mode === 'professionals' ? 'flex' : 'none';
-        if (subfilterSpaces) subfilterSpaces.style.display = mode === 'spaces' ? 'flex' : 'none';
+        if (roleFilter) {
+          if (mode === 'professionals') {
+            roleFilter.innerHTML = `
+              <option value="ALL">All Roles</option>
+              <option value="ip">Insolvency Professionals</option>
+              <option value="valuer">Registered Valuers</option>
+              <option value="cyber_specialist">Forensic Experts</option>
+              <option value="advocate">Corporate Lawyers</option>
+            `;
+            roleFilter.value = activeProRole;
+          } else {
+            roleFilter.innerHTML = `
+              <option value="ALL">All Spaces</option>
+              <option value="cafe">Work-From-Cafes</option>
+              <option value="library">Law Libraries</option>
+            `;
+            roleFilter.value = activeSpaceType;
+          }
+        }
 
         if (searchInput) {
           searchInput.placeholder = mode === 'professionals' 
@@ -2657,19 +2606,24 @@
         applyFilters();
       };
 
+      window.handleDropdownFilter = function (val) {
+        if (radarMode === 'professionals') {
+          activeProRole = val;
+        } else {
+          activeSpaceType = val;
+        }
+        applyFilters();
+      };
+
       window.setProfessionalRoleFilter = function (role) {
         activeProRole = role;
-        document.querySelectorAll('#subfilter-pros-container .subfilter-chip').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-role') === role);
-        });
+        if (roleFilter && radarMode === 'professionals') roleFilter.value = role;
         applyFilters();
       };
 
       window.setSpacesTypeFilter = function (type) {
         activeSpaceType = type;
-        document.querySelectorAll('#subfilter-spaces-container .subfilter-chip').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-space-type') === type);
-        });
+        if (roleFilter && radarMode === 'spaces') roleFilter.value = type;
         applyFilters();
       };
 
@@ -2725,15 +2679,9 @@
 
       window.resetAllFilters = function () {
         if (searchInput) searchInput.value = '';
-        if (cityFilter) cityFilter.value = 'ALL';
         activeProRole = 'ALL';
         activeSpaceType = 'ALL';
-        document.querySelectorAll('#subfilter-pros-container .subfilter-chip').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-role') === 'ALL');
-        });
-        document.querySelectorAll('#subfilter-spaces-container .subfilter-chip').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-space-type') === 'ALL');
-        });
+        if (roleFilter) roleFilter.value = 'ALL';
         applyFilters();
       };
 
@@ -2812,13 +2760,13 @@
 
       function getRoleLabel(role) {
         switch (role) {
-          case 'ip': return '⚖️ Insolvency (IP)';
-          case 'advocate': return '🏛️ Advocate / Counsel';
-          case 'cyber_specialist': return '🛡️ Cyber Forensics';
-          case 'valuer': return '📊 Valuer';
-          case 'researcher': return '🔬 Researcher';
-          case 'learner': return '🎓 Learner';
-          default: return '👥 Professional';
+          case 'ip': return '⚖️ INSOLVENCY (IP)';
+          case 'advocate': return '🏛️ CORPORATE LAWYER';
+          case 'cyber_specialist': return '🛡️ FORENSIC EXPERT';
+          case 'valuer': return '📊 REGISTERED VALUER';
+          case 'researcher': return '📜 RESEARCHER';
+          case 'learner': return '🎓 APPRENTICE';
+          default: return '👥 PROFESSIONAL';
         }
       }
 
