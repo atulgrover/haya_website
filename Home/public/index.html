@@ -1633,31 +1633,58 @@
           </div>
         </li>
 
-        <!-- Megamenu 4: Agentic Events -->
+        <!-- Megamenu 4: Agentic Events (Dual-Column: Hackathons, Conferences | Social Events & Event Creation) -->
         <li class="nav-item" id="nav-item-events">
           <button type="button" class="nav-btn" aria-haspopup="true">
             <span>agentic events</span>
             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="megamenu-panel">
-            <div class="megamenu-header-row">
-              <span class="megamenu-title">Community &amp; Knowledge Gathering</span>
-              <span class="megamenu-badge">National Schedule</span>
-            </div>
-            <div class="megamenu-grid-2">
-              <div class="megamenu-card">
-                <div class="megamenu-card-title">
-                  <span>Professional Tracks</span>
-                  <span style="font-size:10px;background:#f1f5f9;color:#334155;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">Tech</span>
+          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
+            <div class="megamenu-grid-dual">
+              <!-- Left Column: Events Index -->
+              <div class="megamenu-col-left">
+                <div>
+                  <h3 class="megamenu-col-title">agentic events</h3>
+                  <div class="space-y-1" id="events-tracks-list">
+                    <!-- Event Track 1: Hackathons -->
+                    <a href="#hackathons" class="menu-card event-card" data-event="hackathons" id="event-card-hackathons">
+                      <div class="menu-card-info">
+                        <h4>hackathons</h4>
+                        <p>High-throughput AI coding sprints, agent harness architecture workshops &amp; bench challenges.</p>
+                      </div>
+                    </a>
+
+                    <!-- Event Track 2: Conferences -->
+                    <a href="#conferences" class="menu-card event-card" data-event="conferences" id="event-card-conferences">
+                      <div class="menu-card-info">
+                        <h4>conferences</h4>
+                        <p>Annual sovereign restructuring symposiums, jurisprudential keynote summits &amp; judicial dialogues.</p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
-                <p class="megamenu-card-desc"><strong>Hackathons &amp; Conferences:</strong> High-throughput AI law coding sprints, agent harness architecture workshops, and annual restructuring symposiums.</p>
               </div>
-              <div class="megamenu-card">
-                <div class="megamenu-card-title">
-                  <span>Social Gatherings</span>
-                  <span style="font-size:10px;background:#fef3c7;color:#92400e;padding:2px 5px;border-radius:4px;font-family:var(--font-mono);">Culture</span>
+
+              <!-- Right Column: Social Events & Creation Dock -->
+              <div class="megamenu-col-dark" style="justify-content:space-between;">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+                  <div class="cohort-narrative-card">
+                    <p class="cohort-narrative-text">
+                      <strong id="event-dock-title">social events</strong> &ndash;
+                      <span id="event-dock-desc">Bhajan clubbing, mindful acoustic music sessions &amp; collaborative networking at partner cafes &amp; law libraries.</span>
+                    </p>
+                  </div>
+
+                  <button type="button" class="fast-track-submit-btn" id="create-event-btn" onclick="openEventIntake();">
+                    <span id="create-event-btn-text">create an event &rarr;</span>
+                  </button>
                 </div>
-                <p class="megamenu-card-desc"><strong>Bhajan Clubbing &amp; Social Celebrations:</strong> Mindful collective gatherings, acoustic music sessions, and collaborative networking at partner cafes &amp; libraries.</p>
+
+                <a href="tel:+919316015274" class="calnode-emergency-contact">
+                  <span style="color:#94a3b8;">emergency contact:</span>
+                  <strong style="color:#34d399;">93160-15274</strong>
+                  <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
+                </a>
               </div>
             </div>
           </div>
@@ -2928,12 +2955,78 @@
         }
       };
 
+      // ─── 13. Agentic Events Interactive Switcher ───
+      const EVENT_METADATA = {
+        default: {
+          title: "social events",
+          desc: "Bhajan clubbing, mindful acoustic music sessions & collaborative networking at partner cafes & law libraries.",
+          btnText: "create an event \u2192"
+        },
+        hackathons: {
+          title: "hackathons & sprint challenges",
+          desc: "48-hour high-throughput legal AI coding sprints, multi-agent harness architecture hackathons & automated discovery challenges.",
+          btnText: "propose a hackathon \u2192"
+        },
+        conferences: {
+          title: "annual symposiums & keynotes",
+          desc: "National sovereign restructuring symposiums, judicial keynote dialogues & statutory AI benchmarking conferences.",
+          btnText: "propose a conference \u2192"
+        }
+      };
+
+      function initEventSwitcher() {
+        const dockTitle = document.getElementById('event-dock-title');
+        const dockDesc = document.getElementById('event-dock-desc');
+        const dockBtnText = document.getElementById('create-event-btn-text');
+        const cards = document.querySelectorAll('.event-card');
+
+        function setEvent(key) {
+          const data = EVENT_METADATA[key] || EVENT_METADATA.default;
+          if (dockTitle) dockTitle.textContent = data.title;
+          if (dockDesc) dockDesc.textContent = data.desc;
+          if (dockBtnText) dockBtnText.innerHTML = data.btnText;
+
+          cards.forEach(c => {
+            if (c.dataset.event === key) {
+              c.classList.add('selected');
+            } else {
+              c.classList.remove('selected');
+            }
+          });
+        }
+
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            setEvent(card.dataset.event);
+          });
+          card.addEventListener('focus', () => {
+            setEvent(card.dataset.event);
+          });
+        });
+
+        const eventsPanel = document.querySelector('#nav-item-events .megamenu-panel');
+        if (eventsPanel) {
+          eventsPanel.addEventListener('mouseleave', () => {
+            setEvent('default');
+          });
+        }
+      }
+
+      window.openEventIntake = function () {
+        if (typeof openReservationModal === 'function') {
+          openReservationModal('Propose an Agentic Event', 'EVENT');
+        } else {
+          alert('Event proposals: Please contact 93160-15274 or email events@agenticprofessionals.net');
+        }
+      };
+
       // Initialize on DOM ready
       document.addEventListener('DOMContentLoaded', function () {
         initMap();
         loadRadarData();
         initSkillpediaLinks();
         initCohortSwitcher();
+        initEventSwitcher();
       });
 
     })();
