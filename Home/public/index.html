@@ -246,58 +246,53 @@
     .megamenu-grid-dual {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
       align-items: stretch;
     }
 
     .megamenu-col-left {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .megamenu-col-left-header {
-      padding-bottom: 4px;
-      border-bottom: 1px solid var(--slate-100);
-      margin-bottom: 2px;
+      justify-content: center;
     }
 
     .megamenu-col-title {
       font-family: var(--font-heading);
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--slate-900);
       text-transform: lowercase;
-      letter-spacing: -0.2px;
-      margin: 0;
+      letter-spacing: -0.3px;
+      margin: 0 0 6px 0;
+      padding: 0 2px 5px 2px;
+      border-bottom: 1px solid var(--slate-100);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .space-y-1 {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
     .menu-card {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 10px;
+      padding: 7px 9px;
+      margin-bottom: 3px;
+      border-radius: 8px;
       text-decoration: none;
       transition: all 0.15s ease;
       cursor: pointer;
-      border: 1px solid var(--slate-200);
-      background: var(--slate-50);
+      border: 1px solid transparent;
+      background: transparent;
     }
 
     .menu-card:hover {
-      background: #ffffff;
-      border-color: var(--brand-blue);
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
-      transform: translateY(-1px);
-    }
-
-    .menu-card-icon {
-      font-size: 18px;
-      line-height: 1;
-      flex-shrink: 0;
-      padding-top: 2px;
+      background: var(--slate-50);
+      border-color: var(--slate-200);
     }
 
     .menu-card-info {
@@ -307,18 +302,19 @@
 
     .menu-card-info h4 {
       font-family: var(--font-heading);
-      font-size: 13.5px;
+      font-size: 12.5px;
       font-weight: 700;
-      color: var(--slate-900);
-      margin: 0 0 3px 0;
+      color: #0f172a;
+      margin: 0;
+      line-height: 1.3;
       text-transform: lowercase;
     }
 
     .menu-card-info p {
-      font-size: 11.5px;
+      font-size: 10.5px;
       color: var(--slate-500);
-      line-height: 1.4;
-      margin: 0 0 4px 0;
+      line-height: 1.35;
+      margin: 2px 0 0 0;
     }
 
     .track-stat-badge {
@@ -337,27 +333,27 @@
       background: linear-gradient(135deg, #0f172a 0%, #090d16 100%);
       color: #ffffff;
       border-radius: 12px;
-      padding: 14px;
+      padding: 10px 12px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       border: 1px solid #1e293b;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-      gap: 10px;
     }
 
     .dark-dock-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 8px;
+      padding-bottom: 6px;
       border-bottom: 1px solid #1e293b;
-      font-size: 10px;
+      font-size: 9.5px;
       font-family: var(--font-mono);
       font-weight: 700;
       color: #38bdf8;
       letter-spacing: 0.8px;
       text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
     .pulse-dot {
@@ -369,6 +365,10 @@
       animation: pulseDot 1.5s infinite;
     }
 
+    .pulse-dot.emerald {
+      background: #34d399;
+    }
+
     @keyframes pulseDot {
       0% { transform: scale(0.9); opacity: 0.7; }
       50% { transform: scale(1.3); opacity: 1; }
@@ -378,15 +378,16 @@
     .dock-actions-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 4px;
+      margin: 0;
     }
 
     .dock-action-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 12px;
-      border-radius: 10px;
+      padding: 7px 9px;
+      border-radius: 8px;
       background: rgba(30, 41, 59, 0.8);
       border: 1px solid rgba(51, 65, 85, 0.8);
       text-decoration: none;
@@ -403,15 +404,16 @@
 
     .dock-action-left {
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
     }
 
     .dock-card-badge {
-      font-size: 18px;
+      font-size: 14px;
       line-height: 1;
       flex-shrink: 0;
-      padding-top: 2px;
     }
 
     .dock-action-text {
@@ -421,18 +423,33 @@
 
     .dock-action-text h5 {
       font-family: var(--font-heading);
-      font-size: 13.5px;
+      font-size: 12px;
       font-weight: 700;
       color: #ffffff;
-      margin: 0 0 3px 0;
+      margin: 0;
+      line-height: 1.3;
       text-transform: lowercase;
     }
 
     .dock-action-text p {
-      font-size: 11px;
+      font-size: 10px;
       color: #94a3b8;
-      line-height: 1.4;
-      margin: 0 0 4px 0;
+      line-height: 1.35;
+      margin: 2px 0 0 0;
+    }
+
+    .dock-arrow {
+      font-size: 12px;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding-left: 6px;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    .dock-action-row:hover .dock-arrow {
+      color: #38bdf8;
+      transform: translateX(2px);
     }
 
     .dark-stat-tag {
@@ -448,12 +465,12 @@
 
     .dock-download-btn {
       width: 100%;
-      padding: 8px 12px;
-      border-radius: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
       background: #059669;
       color: #ffffff;
       font-family: var(--font-display);
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -1420,82 +1437,57 @@
             <span>agentic skills</span>
             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="megamenu-panel" style="width: 720px;">
-            <div class="megamenu-header-row">
-              <span class="megamenu-title">Skillpedia National Competency Matrix</span>
-              <span class="megamenu-badge">Sovereign 4-Pillar Tracks</span>
-            </div>
-            
+          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
             <div class="megamenu-grid-dual">
-              <!-- Left Column: Workforce & Process Operations (Light Surface) -->
+              <!-- Left Column: Workforce & Process Skills (Light Surface) -->
               <div class="megamenu-col-left">
-                <div class="megamenu-col-left-header">
-                  <span style="font-size:10px;font-family:var(--font-mono);color:#0284c7;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">WORKFORCE &amp; OPERATIONS</span>
+                <div>
                   <h3 class="megamenu-col-title">agentic skills</h3>
-                </div>
+                  <div class="space-y-1">
+                    <!-- Card 1: Employees -->
+                    <a href="http://localhost:3001/employees" target="_blank" class="menu-card skillpedia-link" data-path="/employees">
+                      <div class="menu-card-info">
+                        <h4>employees</h4>
+                        <p>NSQF qualifications (L1–L10), practical job skills &amp; occupational standards across 2,176 approved roles.</p>
+                      </div>
+                    </a>
 
-                <div style="display:flex;flex-direction:column;gap:8px;">
-                  <!-- Card 1: Employees -->
-                  <a href="http://localhost:3001/employees" target="_blank" class="menu-card skillpedia-link" data-path="/employees">
-                    <span class="menu-card-icon">👥</span>
-                    <div class="menu-card-info">
-                      <h4>employees</h4>
-                      <p>NSQF Qualifications (L1–L10), practical job skills &amp; occupational standards across 2,176 approved roles.</p>
-                      <span class="track-stat-badge">2,176 Roles &bull; Digilocker Audit</span>
-                    </div>
-                  </a>
-
-                  <!-- Card 2: Employers -->
-                  <a href="http://localhost:3001/employers" target="_blank" class="menu-card skillpedia-link" data-path="/employers">
-                    <span class="menu-card-icon">🏭</span>
-                    <div class="menu-card-info">
-                      <h4>employers</h4>
-                      <p>13,000+ ready-made process SOP guides, industrial machine workflows &amp; factory safety checklists.</p>
-                      <span class="track-stat-badge">13,000+ SOPs &bull; ISO Compliance</span>
-                    </div>
-                  </a>
+                    <!-- Card 2: Employers -->
+                    <a href="http://localhost:3001/employers" target="_blank" class="menu-card skillpedia-link" data-path="/employers">
+                      <div class="menu-card-info">
+                        <h4>employers</h4>
+                        <p>13,000+ ready-made process SOP guides, industrial machine workflows &amp; factory safety checklists.</p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
 
               <!-- Right Column: Sovereign Venture & IP Dock (Dark Gradient Dock) -->
               <div class="megamenu-col-dark">
-                <div class="dark-dock-header">
-                  <span>SOVEREIGN VENTURE &amp; IP DOCK</span>
-                  <span class="pulse-dot"></span>
-                </div>
-
                 <div class="dock-actions-list">
                   <!-- Card 3: Entrepreneurs -->
                   <a href="http://localhost:3001/entrepreneurs" target="_blank" class="dock-action-row skillpedia-link" data-path="/entrepreneurs">
                     <div class="dock-action-left">
-                      <span class="dock-card-badge">🚀</span>
                       <div class="dock-action-text">
                         <h5>entrepreneurs</h5>
                         <p>11,420 turnkey MSME project ideas, machinery lists &amp; 1-click Bank Project Reports.</p>
-                        <span class="dark-stat-tag">11,420 MSME DPRs &bull; Bank Ready</span>
                       </div>
                     </div>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="dock-arrow">&rarr;</span>
                   </a>
 
                   <!-- Card 4: Ennovators -->
                   <a href="http://localhost:3001/patents.html" target="_blank" class="dock-action-row skillpedia-link" data-path="/patents.html">
                     <div class="dock-action-left">
-                      <span class="dock-card-badge">💡</span>
                       <div class="dock-action-text">
                         <h5>ennovators</h5>
                         <p>National industrial patent blueprints, shop-floor tolerances &amp; provisional IP claims.</p>
-                        <span class="dark-stat-tag">2,002 Patents &bull; Claims Drafted</span>
                       </div>
                     </div>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="dock-arrow">&rarr;</span>
                   </a>
                 </div>
-
-                <!-- Dock Footer CTA -->
-                <a href="http://localhost:3001" target="_blank" class="dock-download-btn skillpedia-link" data-path="/">
-                  <span>Open Full Skillpedia Catalog &rarr;</span>
-                </a>
               </div>
             </div>
           </div>
