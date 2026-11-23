@@ -242,6 +242,235 @@
       gap: 14px;
     }
 
+    /* ─── 3002/3003 Dual-Column Megamenu Grid (Light Left + Dark Dock Right) ─── */
+    .megamenu-grid-dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .megamenu-col-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .megamenu-col-left-header {
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--slate-100);
+      margin-bottom: 2px;
+    }
+
+    .megamenu-col-title {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--slate-900);
+      text-transform: lowercase;
+      letter-spacing: -0.2px;
+      margin: 0;
+    }
+
+    .menu-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+    }
+
+    .menu-card:hover {
+      background: #ffffff;
+      border-color: var(--brand-blue);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .menu-card-icon {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .menu-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .menu-card-info h4 {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin: 0 0 3px 0;
+      text-transform: lowercase;
+    }
+
+    .menu-card-info p {
+      font-size: 11.5px;
+      color: var(--slate-500);
+      line-height: 1.4;
+      margin: 0 0 4px 0;
+    }
+
+    .track-stat-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: #0284c7;
+      background: #e0f2fe;
+      padding: 1px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Megamenu Column 2: Dark Sovereign Dock (Matching 3002/3003) */
+    .megamenu-col-dark {
+      background: linear-gradient(135deg, #0f172a 0%, #090d16 100%);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #1e293b;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      gap: 10px;
+    }
+
+    .dark-dock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1e293b;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      display: inline-block;
+      animation: pulseDot 1.5s infinite;
+    }
+
+    @keyframes pulseDot {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+
+    .dock-actions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .dock-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .dock-action-row:hover {
+      background: #1e293b;
+      border-color: #38bdf8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+    }
+
+    .dock-action-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .dock-card-badge {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .dock-action-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .dock-action-text h5 {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 3px 0;
+      text-transform: lowercase;
+    }
+
+    .dock-action-text p {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.4;
+      margin: 0 0 4px 0;
+    }
+
+    .dark-stat-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 1px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .dock-download-btn {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #059669;
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .dock-download-btn:hover {
+      background: #047857;
+    }
+
     .megamenu-card {
       background: var(--slate-50);
       border: 1px solid var(--slate-200);
@@ -1185,32 +1414,89 @@
           </button>
         </li>
 
-        <!-- Megamenu 2: Agentic Skills -->
+        <!-- Megamenu 2: Agentic Skills (Dual-Column: Employees, Employers | Entrepreneurs, Ennovators) -->
         <li class="nav-item" id="nav-item-skills">
           <button type="button" class="nav-btn" aria-haspopup="true">
             <span>agentic skills</span>
             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="megamenu-panel">
+          <div class="megamenu-panel" style="width: 720px;">
             <div class="megamenu-header-row">
-              <span class="megamenu-title">Skillpedia Competency Tracks</span>
-              <span class="megamenu-badge">Agentic NSQF L7.0 &amp; L8.0</span>
+              <span class="megamenu-title">Skillpedia National Competency Matrix</span>
+              <span class="megamenu-badge">Sovereign 4-Pillar Tracks</span>
             </div>
-            <div class="megamenu-grid-2">
-              <a href="#skills-agentic" class="megamenu-card">
-                <div class="megamenu-card-title">
-                  <span>Skillpedia Skills</span>
-                  <span style="font-size:11px;color:#059669;font-family:var(--font-mono);">Active</span>
+            
+            <div class="megamenu-grid-dual">
+              <!-- Left Column: Workforce & Process Operations (Light Surface) -->
+              <div class="megamenu-col-left">
+                <div class="megamenu-col-left-header">
+                  <span style="font-size:10px;font-family:var(--font-mono);color:#0284c7;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">WORKFORCE &amp; OPERATIONS</span>
+                  <h3 class="megamenu-col-title">agentic skills</h3>
                 </div>
-                <p class="megamenu-card-desc">Sovereign training blueprints, runtime harnesses, and prompt evaluation suites certified under national occupational standards.</p>
-              </a>
-              <a href="#skills-nsqf" class="megamenu-card">
-                <div class="megamenu-card-title">
-                  <span>Agentic NSQF Curriculum</span>
-                  <span style="font-size:11px;color:#0284c7;font-family:var(--font-mono);">Level 7 &amp; 8</span>
+
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                  <!-- Card 1: Employees -->
+                  <a href="http://localhost:3001/employees" target="_blank" class="menu-card skillpedia-link" data-path="/employees">
+                    <span class="menu-card-icon">👥</span>
+                    <div class="menu-card-info">
+                      <h4>employees</h4>
+                      <p>NSQF Qualifications (L1–L10), practical job skills &amp; occupational standards across 2,176 approved roles.</p>
+                      <span class="track-stat-badge">2,176 Roles &bull; Digilocker Audit</span>
+                    </div>
+                  </a>
+
+                  <!-- Card 2: Employers -->
+                  <a href="http://localhost:3001/employers" target="_blank" class="menu-card skillpedia-link" data-path="/employers">
+                    <span class="menu-card-icon">🏭</span>
+                    <div class="menu-card-info">
+                      <h4>employers</h4>
+                      <p>13,000+ ready-made process SOP guides, industrial machine workflows &amp; factory safety checklists.</p>
+                      <span class="track-stat-badge">13,000+ SOPs &bull; ISO Compliance</span>
+                    </div>
+                  </a>
                 </div>
-                <p class="megamenu-card-desc">Multi-agent governance, judicial precedent retrieval, and zero-hallucination verification frameworks for legal and restructuring analysts.</p>
-              </a>
+              </div>
+
+              <!-- Right Column: Sovereign Venture & IP Dock (Dark Gradient Dock) -->
+              <div class="megamenu-col-dark">
+                <div class="dark-dock-header">
+                  <span>SOVEREIGN VENTURE &amp; IP DOCK</span>
+                  <span class="pulse-dot"></span>
+                </div>
+
+                <div class="dock-actions-list">
+                  <!-- Card 3: Entrepreneurs -->
+                  <a href="http://localhost:3001/entrepreneurs" target="_blank" class="dock-action-row skillpedia-link" data-path="/entrepreneurs">
+                    <div class="dock-action-left">
+                      <span class="dock-card-badge">🚀</span>
+                      <div class="dock-action-text">
+                        <h5>entrepreneurs</h5>
+                        <p>11,420 turnkey MSME project ideas, machinery lists &amp; 1-click Bank Project Reports.</p>
+                        <span class="dark-stat-tag">11,420 MSME DPRs &bull; Bank Ready</span>
+                      </div>
+                    </div>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </a>
+
+                  <!-- Card 4: Ennovators -->
+                  <a href="http://localhost:3001/patents.html" target="_blank" class="dock-action-row skillpedia-link" data-path="/patents.html">
+                    <div class="dock-action-left">
+                      <span class="dock-card-badge">💡</span>
+                      <div class="dock-action-text">
+                        <h5>ennovators</h5>
+                        <p>National industrial patent blueprints, shop-floor tolerances &amp; provisional IP claims.</p>
+                        <span class="dark-stat-tag">2,002 Patents &bull; Claims Drafted</span>
+                      </div>
+                    </div>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </a>
+                </div>
+
+                <!-- Dock Footer CTA -->
+                <a href="http://localhost:3001" target="_blank" class="dock-download-btn skillpedia-link" data-path="/">
+                  <span>Open Full Skillpedia Catalog &rarr;</span>
+                </a>
+              </div>
             </div>
           </div>
         </li>
@@ -2462,10 +2748,22 @@
         ];
       }
 
+      // ─── 11. Skillpedia Dynamic Deep Linking ───
+      function initSkillpediaLinks() {
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const base = isLocal ? 'http://localhost:3001' : 'https://skills.agenticprofessionals.net';
+        
+        document.querySelectorAll('.skillpedia-link').forEach(el => {
+          const path = el.getAttribute('data-path') || '';
+          el.href = base + (path.startsWith('/') ? path : '/' + path);
+        });
+      }
+
       // Initialize on DOM ready
       document.addEventListener('DOMContentLoaded', function () {
         initMap();
         loadRadarData();
+        initSkillpediaLinks();
       });
 
     })();
