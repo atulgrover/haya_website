@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hayagriva Documentation &amp; Desktop — PageIndex Document Harness for Agentic Professionals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+
+      --brand-blue: #0284c7;
+      --brand-blue-hover: #0369a1;
+      --brand-green: #059669;
+      --brand-green-hover: #047857;
+      --brand-green-light: #ecfdf5;
+      --brand-green-border: #a7f3d0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: #ffffff;
+      color: var(--slate-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── Top Global Navigation ─── */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 56px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.4px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .header-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-link {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--slate-600);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .header-link:hover {
+      color: var(--slate-900);
+    }
+
+    .header-link.back-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--brand-blue);
+    }
+
+    .user-auth-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .signin-button {
+      background: var(--slate-900);
+      color: #ffffff;
+      border: none;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .signin-button:hover {
+      background: var(--slate-700);
+    }
+
+    /* ─── 3-Column Documentation Layout ─── */
+    .docs-container {
+      display: flex;
+      min-height: calc(100vh - 56px);
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* ─── Left Column: Navigation Sidebar ─── */
+    .left-sidebar {
+      width: 250px;
+      flex-shrink: 0;
+      border-right: 1px solid var(--slate-200);
+      background: #fafafa;
+      padding: 24px 16px 40px 24px;
+      overflow-y: auto;
+      max-height: calc(100vh - 56px);
+      position: sticky;
+      top: 56px;
+    }
+
+    .nav-section {
+      margin-bottom: 24px;
+    }
+
+    .nav-section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate-500);
+      text-transform: capitalize;
+      letter-spacing: -0.2px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-items-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-item-link {
+      display: block;
+      padding: 5px 10px;
+      font-size: 13px;
+      color: var(--slate-600);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.12s ease;
+    }
+
+    .nav-item-link:hover {
+      color: var(--slate-900);
+      background: var(--slate-100);
+    }
+
+    .nav-item-link.active {
+      color: var(--brand-blue);
+      background: #f0f9ff;
+      font-weight: 600;
+      border-left: 3px solid var(--brand-blue);
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* ─── Center Column: Main Content Area ─── */
+    .center-content {
+      flex: 1;
+      padding: 40px 48px;
+      max-width: 860px;
+      min-width: 0;
+    }
+
+    .page-title {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -1px;
+      margin-bottom: 18px;
+    }
+
+    .lead-paragraph {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--slate-700);
+      margin-bottom: 28px;
+    }
+
+    /* Product Comparison Matrix Table */
+    .product-table-wrapper {
+      margin: 28px 0;
+      overflow-x: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+    }
+
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13.5px;
+    }
+
+    .product-table th {
+      background: var(--slate-50);
+      padding: 12px 16px;
+      font-weight: 600;
+      color: var(--slate-600);
+      border-bottom: 1px solid var(--slate-200);
+      white-space: nowrap;
+    }
+
+    .product-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--slate-100);
+      vertical-align: middle;
+    }
+
+    .product-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .product-table td a {
+      color: var(--brand-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .product-table td a:hover {
+      text-decoration: underline;
+    }
+
+    .copy-prompt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-300);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .copy-prompt-btn:hover {
+      background: var(--slate-200);
+      color: var(--slate-900);
+    }
+
+    .copy-prompt-btn.copied {
+      background: #ecfdf5;
+      color: #047857;
+      border-color: #a7f3d0;
+    }
+
+    .docs-text-block {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--slate-700);
+      margin-bottom: 24px;
+    }
+
+    .docs-text-block a {
+      color: var(--brand-blue);
+      text-decoration: none;
+    }
+
+    .docs-text-block a:hover {
+      text-decoration: underline;
+    }
+
+    .section-heading {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.6px;
+      margin: 40px 0 16px 0;
+    }
+
+    /* Diagram Canvas */
+    .diagram-card {
+      background: #fafafa;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .diagram-svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Code Blocks */
+    .code-container {
+      background: var(--slate-900);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      color: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      overflow-x: auto;
+    }
+
+    .code-container pre {
+      margin: 0;
+    }
+
+    /* ─── Right Column: Action & Utility Dock ─── */
+    .right-dock {
+      width: 320px;
+      flex-shrink: 0;
+      padding: 32px 24px 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: sticky;
+      top: 56px;
+      max-height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+
+    /* Download Button */
+    .download-desktop-btn {
+      width: 100%;
+      background: var(--brand-green);
+      color: #ffffff;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .download-desktop-btn:hover {
+      background: var(--brand-green-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+    }
+
+    .download-desktop-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Statutory Desk Card */
+    .dock-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .dock-card-header {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.3px;
+      text-transform: lowercase;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--slate-100);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .statutory-desk-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .desk-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .desk-chip {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+
+    .desk-chip:hover {
+      background: #f0f9ff;
+      border-color: #bae6fd;
+      color: var(--brand-blue);
+    }
+
+    .desk-input-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .desk-input {
+      flex: 1;
+      height: 34px;
+      border-radius: 6px;
+      border: 1px solid var(--slate-200);
+      padding: 0 10px;
+      font-size: 12px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .desk-input:focus {
+      border-color: var(--brand-blue);
+    }
+
+    .desk-submit-btn {
+      background: var(--slate-900);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 0 12px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .desk-answer-box {
+      margin-top: 8px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--slate-700);
+      display: none;
+    }
+
+    /* Emergency Contact Card */
+    .emergency-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .emergency-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.3px;
+      text-transform: lowercase;
+      margin-bottom: 12px;
+    }
+
+    .emergency-phone {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--brand-green);
+      letter-spacing: -0.2px;
+      margin-bottom: 4px;
+    }
+
+    .emergency-subtext {
+      font-size: 11px;
+      color: var(--slate-500);
+    }
+
+    /* ─── Modal: Sign In / Registration ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 440px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: var(--slate-400);
+      cursor: pointer;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 6px;
+    }
+
+    .modal-subtitle {
+      font-size: 13px;
+      color: var(--slate-500);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--slate-700);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 40px;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      padding: 0 12px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--brand-blue);
+    }
+
+    .modal-submit-btn {
+      width: 100%;
+      height: 44px;
+      background: var(--brand-green);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s;
+    }
+
+    .modal-submit-btn:hover {
+      background: var(--brand-green-hover);
+    }
+
+    /* Toast Notification */
+    .toast-pill {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--slate-900);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .docs-container {
+        flex-direction: column;
+      }
+      .left-sidebar, .right-dock {
+        width: 100%;
+        max-height: none;
+        position: static;
+      }
+      .center-content {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Top Global Navigation Bar ─── -->
+  <header class="top-header">
+    <div class="brand-group">
+      <a href="/" class="brand-title">
+        <span>agentic professionals</span>
+      </a>
+      <span class="brand-tag">// hayagriva docs</span>
+    </div>
+
+    <div class="header-nav-links">
+      <a href="/" class="header-link back-link">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>return to spaces radar</span>
+      </a>
+      <a href="http://localhost:3002/investors/" target="_blank" class="header-link">ibc practice hub</a>
+      <a href="http://localhost:3003/criminal/" target="_blank" class="header-link">bns criminal hub</a>
+
+      <div class="user-auth-badge" id="header-auth-container">
+        <button type="button" class="signin-button" id="header-auth-btn" onclick="openAuthModal()">
+          sign in
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── 3-Column Documentation Container ─── -->
+  <div class="docs-container">
+
+    <!-- ─── Column 1: Left Navigation Sidebar ─── -->
+    <aside class="left-sidebar">
+      
+      <!-- Overview -->
+      <div class="nav-section">
+        <div class="nav-section-title">Overview</div>
+        <ul class="nav-items-list">
+          <li><a href="#introduction" class="nav-item-link active">Introduction</a></li>
+          <li><a href="#why-agentic" class="nav-item-link">Why Agentic Professionals?</a></li>
+          <li><a href="#architecture" class="nav-item-link">Sovereignty &amp; Local Harness</a></li>
+        </ul>
+      </div>
+
+      <!-- PageIndex Agent -->
+      <div class="nav-section">
+        <div class="nav-section-title">PageIndex Agent</div>
+        <ul class="nav-items-list">
+          <li><a href="#pageindex-agent" class="nav-item-link">Quick start</a></li>
+          <li><a href="#use-with-llm" class="nav-item-link">Use with your LLM</a></li>
+          <li><a href="#use-with-agent" class="nav-item-link">Use with your agent</a></li>
+        </ul>
+      </div>
+
+      <!-- Page Search API -->
+      <div class="nav-section">
+        <div class="nav-section-title">Page Search API</div>
+        <ul class="nav-items-list">
+          <li><a href="#search-quickstart" class="nav-item-link">Quick start</a></li>
+          <li><a href="#search-pages" class="nav-item-link">Search pages</a></li>
+          <li><a href="#search-documents" class="nav-item-link">Search documents</a></li>
+        </ul>
+      </div>
+
+      <!-- Page Extract API -->
+      <div class="nav-section">
+        <div class="nav-section-title">Page Extract API</div>
+        <ul class="nav-items-list">
+          <li><a href="#extract-quickstart" class="nav-item-link">Quick start</a></li>
+          <li><a href="#writing-schema" class="nav-item-link">Writing a schema</a></li>
+          <li><a href="#options-jobs" class="nav-item-link">Options and jobs</a></li>
+        </ul>
+      </div>
+
+      <!-- Documents -->
+      <div class="nav-section">
+        <div class="nav-section-title">Documents</div>
+        <ul class="nav-items-list">
+          <li><a href="#upload-manage" class="nav-item-link">Upload and manage</a></li>
+          <li><a href="#collections" class="nav-item-link">Collections with metadata</a></li>
+          <li><a href="#file-system" class="nav-item-link">File system with folders</a></li>
+        </ul>
+      </div>
+
+      <!-- API Reference -->
+      <div class="nav-section">
+        <div class="nav-section-title">
+          <span>API reference</span>
+          <span style="font-size:10px;">&gt;</span>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="nav-section">
+        <div class="nav-section-title">Resources</div>
+        <ul class="nav-items-list">
+          <li><a href="#migrate-sdks" class="nav-item-link">Migrate from old SDKs</a></li>
+          <li><a href="#changelog" class="nav-item-link">Changelog</a></li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- ─── Column 2: Center Main Content ─── -->
+    <main class="center-content">
+      
+      <section id="introduction">
+        <h1 class="page-title">Introduction</h1>
+
+        <p class="lead-paragraph">
+          <strong>PageIndex</strong> is a document harness for LLMs and agents: the layer that lets your AI model work with your documents. Use it to get cited answers from long documents, find the pages that answer a question, and extract data as JSON. Pick the product that fits your needs:
+        </p>
+
+        <!-- Product Matrix Table -->
+        <div class="product-table-wrapper">
+          <table class="product-table">
+            <thead>
+              <tr>
+                <th>You want to</th>
+                <th>Use</th>
+                <th>API keys you need</th>
+                <th>Coding agent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Get answers with line-level citations</td>
+                <td><a href="#pageindex-agent">PageIndex Agent</a></td>
+                <td>PageIndex and your LLM's</td>
+                <td>
+                  <button type="button" class="copy-prompt-btn" onclick="copyPrompt('agent', this)">
+                    Copy prompt 📋
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Find the pages that answer a question</td>
+                <td><a href="#search-quickstart">Page Search API</a></td>
+                <td>PageIndex</td>
+                <td>
+                  <button type="button" class="copy-prompt-btn" onclick="copyPrompt('search', this)">
+                    Copy prompt 📋
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Extract fields and tables as JSON</td>
+                <td><a href="#extract-quickstart">Page Extract API</a></td>
+                <td>PageIndex</td>
+                <td>
+                  <button type="button" class="copy-prompt-btn" onclick="copyPrompt('extract', this)">
+                    Copy prompt 📋
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="docs-text-block">
+          All three products use the same PageIndex API key, the same SDK (Python or JavaScript) and the same document library: a document you upload for one works with the others. Get a key in the <a href="#pageindex-console">PageIndex Console</a>. A new account starts with $10 of free credit and needs no subscription. See <a href="#pricing">Pricing</a>.
+        </p>
+
+        <p class="docs-text-block">
+          Working with a coding agent such as <strong>Claude Code, Codex, or Cursor</strong>? <em>Copy prompt</em> copies a prompt to paste into it, and the agent sets up that product in your project.
+        </p>
+      </section>
+
+      <!-- Section: PageIndex Agent -->
+      <section id="pageindex-agent" style="margin-top: 48px;">
+        <h2 class="section-heading">PageIndex Agent</h2>
+
+        <p class="docs-text-block">
+          PageIndex replaces fragile text-chunking and vector proximity with <strong>hierarchical document reasoning</strong>. Rather than breaking 100+ page CIRP resolution plans or High Court paper books into blind chunks, PageIndex extracts the document's true table of contents and structural tree so your model navigates pages just like a seasoned practitioner.
+        </p>
+
+        <!-- Diagram SVG matching the uploaded drawing -->
+        <div class="diagram-card">
+          <svg class="diagram-svg" viewBox="0 0 760 220" width="100%" height="220" xmlns="http://www.w3.org/2000/svg">
+            <!-- Box 1: Your Documents -->
+            <g transform="translate(20, 20)">
+              <rect x="0" y="0" width="140" height="170" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8"/>
+              <rect x="10" y="10" width="120" height="150" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="3,3"/>
+              <text x="70" y="70" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#0f172a">your documents</text>
+              <text x="70" y="90" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748b">IBC Dockets, BNS</text>
+              <text x="70" y="105" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748b">120+ pages</text>
+            </g>
+
+            <!-- Arrow 1 -->
+            <path d="M180 105 L230 105" stroke="#0284c7" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+            
+            <!-- Box 2: Table of Contents Tree -->
+            <g transform="translate(250, 20)">
+              <rect x="0" y="0" width="220" height="170" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+              <rect x="12" y="12" width="196" height="32" rx="5" fill="#f0f9ff" stroke="#bae6fd"/>
+              <text x="24" y="33" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#0284c7">Resolution Plan (120 pages)</text>
+              
+              <rect x="20" y="56" width="180" height="42" rx="5" fill="#f8fafc" stroke="#e2e8f0"/>
+              <text x="30" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#0f172a">Operational Creditors Claim</text>
+              <text x="30" y="88" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748b">p. 1 – 24</text>
+              
+              <rect x="20" y="108" width="180" height="42" rx="5" fill="#f8fafc" stroke="#e2e8f0"/>
+              <text x="30" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#0f172a">Financial Restructuring Matrix</text>
+              <text x="30" y="140" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748b">p. 25 – 78</text>
+            </g>
+
+            <!-- Arrow 2 -->
+            <path d="M490 105 L540 105" stroke="#0284c7" stroke-width="2.5" fill="none"/>
+
+            <!-- Box 3: Page with Line Citations -->
+            <g transform="translate(560, 20)">
+              <rect x="0" y="0" width="160" height="170" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8"/>
+              <text x="80" y="28" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#64748b">p. 34</text>
+              <line x1="20" y1="46" x2="140" y2="46" stroke="#e2e8f0" stroke-width="2"/>
+              <line x1="20" y1="62" x2="140" y2="62" stroke="#e2e8f0" stroke-width="2"/>
+              <!-- Highlighted citation area -->
+              <rect x="18" y="74" width="124" height="26" rx="4" fill="#fef3c7" stroke="#fde68a"/>
+              <text x="24" y="91" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#92400e">&sect; 53 Watermark Priority</text>
+              <line x1="20" y1="116" x2="140" y2="116" stroke="#e2e8f0" stroke-width="2"/>
+              <line x1="20" y1="132" x2="110" y2="132" stroke="#e2e8f0" stroke-width="2"/>
+              <!-- Green verified tick -->
+              <circle cx="130" cy="148" r="9" fill="#059669"/>
+              <path d="M126 148 L129 151 L135 145" stroke="#ffffff" stroke-width="2" fill="none"/>
+            </g>
+          </svg>
+        </div>
+
+        <p class="docs-text-block">
+          Install the PageIndex library with a single command:
+        </p>
+
+        <div class="code-container">
+          <pre><code># Python SDK
+pip install pageindex
+
+# JavaScript & TypeScript SDK
+npm install pageindex</code></pre>
+        </div>
+      </section>
+
+      <!-- Section: Why Agentic Professionals? -->
+      <section id="why-agentic" style="margin-top: 48px;">
+        <h2 class="section-heading">Why Agentic Professionals?</h2>
+        
+        <p class="docs-text-block">
+          The legal, restructuring, and valuation landscape is transitioning from passive manual research to <strong>autonomous agentic execution</strong>. Becoming an Agentic Professional means equipping your chambers with sovereign local agents that read filings, verify statutory timelines, cross-reference judicial precedents, and synthesize multi-page briefs with verifiable citations.
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;">
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+            <div style="font-size:18px;margin-bottom:6px;">🛡️</div>
+            <strong style="font-size:13.5px;color:#0f172a;display:block;margin-bottom:4px;">100% Client Sovereignty</strong>
+            <p style="font-size:12.5px;color:#475569;line-height:1.5;">Your confidential CIRP resolution plans and case files never leave your workstation. Hayagriva processes documents locally.</p>
+          </div>
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+            <div style="font-size:18px;margin-bottom:6px;">⚖️</div>
+            <strong style="font-size:13.5px;color:#0f172a;display:block;margin-bottom:4px;">Line-Level Statutory Proof</strong>
+            <p style="font-size:12.5px;color:#475569;line-height:1.5;">Every statement generated by the agent links directly back to the exact paragraph, page number, and watermark in the original filing.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ─── Column 3: Right Action & Utility Dock ─── -->
+    <aside class="right-dock">
+
+      <!-- Top CTA: Download HAYAGRIVA Desktop Button -->
+      <button type="button" class="download-desktop-btn" id="download-desktop-cta" onclick="handleDesktopDownload()">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        <span>Download HAYAGRIVA Desktop</span>
+      </button>
+
+      <!-- Statutory Desk Card -->
+      <div class="dock-card">
+        <div class="dock-card-header">
+          <span>statutory desk</span>
+          <span style="font-size:10px;font-family:var(--font-mono);color:var(--brand-blue);font-weight:700;">LIVE INQUIRY</span>
+        </div>
+        <div class="statutory-desk-body">
+          <p style="font-size:11.5px;color:var(--slate-500);line-height:1.4;">
+            Autonomous guidance on the why, where, and how of being an Agentic Professional:
+          </p>
+          
+          <div class="desk-chips-row">
+            <span class="desk-chip" onclick="askStatutoryDesk('Why become an Agentic Professional?')">Why Agentic?</span>
+            <span class="desk-chip" onclick="askStatutoryDesk('Where do I run Hayagriva Desktop?')">Where to run?</span>
+            <span class="desk-chip" onclick="askStatutoryDesk('How does PageIndex reason over documents?')">How PageIndex works?</span>
+            <span class="desk-chip" onclick="askStatutoryDesk('Which local LLMs are supported?')">Supported LLMs?</span>
+          </div>
+
+          <div class="desk-input-row">
+            <input type="text" id="statutory-inquiry-input" class="desk-input" placeholder="ask question..." onkeydown="if(event.key==='Enter') submitStatutoryInquiry()" />
+            <button type="button" class="desk-submit-btn" onclick="submitStatutoryInquiry()">&rarr;</button>
+          </div>
+
+          <div class="desk-answer-box" id="statutory-desk-answer"></div>
+        </div>
+      </div>
+
+      <!-- Emergency Contact Card -->
+      <div class="emergency-card">
+        <div class="emergency-title">emergency contact</div>
+        <div class="emergency-phone">93160-15274 (11 am – 4 pm)</div>
+        <div class="emergency-subtext">Statutory inquiry &amp; practice concierge desk</div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- ─── Authentication / Registration Modal ─── -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" onclick="closeAuthModal()">&times;</button>
+      <h3 class="modal-title">Sign In / Register</h3>
+      <p class="modal-subtitle">Register your practitioner credentials to download Hayagriva Desktop.</p>
+
+      <form onsubmit="handleAuthSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Full Name / Practice Chamber</label>
+          <input type="text" id="auth-name" class="form-input" placeholder="e.g. Adv. Sanjay Kumar Gupta" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Official Email</label>
+          <input type="email" id="auth-email" class="form-input" placeholder="practitioner@chambers.in" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Practicing Domain</label>
+          <select id="auth-domain" class="form-input" style="height:40px;background:#fff;">
+            <option value="Insolvency Professional (IP)">Insolvency Professional (IP)</option>
+            <option value="Advocate / Counsel">Advocate / Counsel</option>
+            <option value="Registered Valuer">Registered Valuer</option>
+            <option value="Forensic Expert">Forensic Expert</option>
+          </select>
+        </div>
+        <button type="submit" class="modal-submit-btn">
+          Verify &amp; Download Desktop App &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Pill -->
+  <div class="toast-pill" id="toast-pill"></div>
+
+  <!-- ─── Interactive JavaScript ─── -->
+  <script>
+    // ─── 1. Authentication State ───
+    function getAuthenticatedUser() {
+      try {
+        const stored = localStorage.getItem('agentic_user');
+        return stored ? JSON.parse(stored) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function updateAuthHeader() {
+      const user = getAuthenticatedUser();
+      const container = document.getElementById('header-auth-container');
+      if (!container) return;
+
+      if (user) {
+        container.innerHTML = `
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:12px;font-family:var(--font-mono);color:#059669;font-weight:700;">● ${escapeHTML(user.name.split(' ')[0])}</span>
+            <button type="button" onclick="logoutUser()" style="background:none;border:none;color:#94a3b8;font-size:11px;cursor:pointer;text-decoration:underline;">sign out</button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <button type="button" class="signin-button" onclick="openAuthModal()">
+            sign in
+          </button>
+        `;
+      }
+    }
+
+    function openAuthModal() {
+      const modal = document.getElementById('auth-modal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById('auth-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('auth-name').value.trim();
+      const email = document.getElementById('auth-email').value.trim();
+      const domain = document.getElementById('auth-domain').value;
+
+      const user = { name, email, domain, loggedInAt: new Date().toISOString() };
+      localStorage.setItem('agentic_user', JSON.stringify(user));
+
+      closeAuthModal();
+      updateAuthHeader();
+      showToast(`Welcome ${name}! Starting Hayagriva Desktop download...`);
+
+      // Trigger download immediately
+      triggerDMGDownload();
+    }
+
+    function logoutUser() {
+      localStorage.removeItem('agentic_user');
+      updateAuthHeader();
+      showToast('Signed out of practitioner session.');
+    }
+
+    // ─── 2. Desktop App Download Handler ───
+    function handleDesktopDownload() {
+      const user = getAuthenticatedUser();
+      if (!user) {
+        openAuthModal();
+        showToast('Please sign in to download Hayagriva Desktop.');
+      } else {
+        showToast('Starting download of Hayagriva Desktop v1.0.0 (DMG)...');
+        triggerDMGDownload();
+      }
+    }
+
+    function triggerDMGDownload() {
+      const link = document.createElement('a');
+      link.href = '/downloads/Hayagriva-Desktop-Setup-v1.0.0.dmg';
+      link.download = 'Hayagriva-Desktop-Setup-v1.0.0.dmg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // ─── 3. Copy Prompt Functionality ───
+    const PROMPT_TEMPLATES = {
+      agent: `Set up PageIndex Agent in my project. I want to pass long documents (such as legal briefs, CIRP resolution plans, or annual reports) to my LLM and get verified answers with exact line-level page citations without chunking.`,
+      search: `Set up Page Search API using the PageIndex SDK. I want to submit natural language queries over uploaded legal dockets and instantly receive the exact page numbers that contain relevant statutory evidence.`,
+      extract: `Set up Page Extract API using the PageIndex SDK. I want to define a strict JSON schema for IBC creditor claims or BNS evidentiary facts and extract structured tables directly out of raw PDF dockets.`
+    };
+
+    function copyPrompt(key, btn) {
+      const text = PROMPT_TEMPLATES[key] || '';
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Copied! ✓';
+        btn.classList.add('copied');
+        showToast('Prompt copied to clipboard!');
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        showToast('Could not copy to clipboard.');
+      });
+    }
+
+    // ─── 4. Statutory Desk Interactive Q&A ───
+    const KNOWLEDGE_BASE = {
+      'why': `<strong>Why become an Agentic Professional?</strong><br>Autonomous AI agents reduce 40+ hours of paper-book discovery down to seconds. With Hayagriva, your reasoning is sovereign: client data never leaves your workstation, and every finding is backed by line-level statutory citations under IBC 2016 and BNS 2023.`,
+      'where': `<strong>Where do I run Hayagriva Desktop?</strong><br>Hayagriva runs locally on your workstation (macOS / Linux / Windows) as an air-gapped sovereign harness. It binds with your local Ollama or vLLM models or private API endpoints.`,
+      'how': `<strong>How does PageIndex reason over documents?</strong><br>Unlike vector databases that break PDFs into arbitrary 500-word chunks, PageIndex maps the true hierarchical Table of Contents (ToC) of long documents. The LLM navigates the outline tree just like a human lawyer.`,
+      'supported': `<strong>Which LLMs are supported?</strong><br>Hayagriva supports all major model backends: local models via Ollama (Llama-3, DeepSeek-R1, Mistral, Qwen) as well as API endpoints from Anthropic Claude, OpenAI, and Google Gemini.`
+    };
+
+    function askStatutoryDesk(question) {
+      const input = document.getElementById('statutory-inquiry-input');
+      if (input) input.value = question;
+      submitStatutoryInquiry();
+    }
+
+    function submitStatutoryInquiry() {
+      const input = document.getElementById('statutory-inquiry-input');
+      const answerBox = document.getElementById('statutory-desk-answer');
+      if (!input || !answerBox) return;
+
+      const q = input.value.toLowerCase().trim();
+      if (!q) return;
+
+      let answer = '';
+      if (q.includes('why') || q.includes('benefit') || q.includes('advantage')) {
+        answer = KNOWLEDGE_BASE['why'];
+      } else if (q.includes('where') || q.includes('desktop') || q.includes('run') || q.includes('install')) {
+        answer = KNOWLEDGE_BASE['where'];
+      } else if (q.includes('how') || q.includes('pageindex') || q.includes('vector') || q.includes('chunk')) {
+        answer = KNOWLEDGE_BASE['how'];
+      } else if (q.includes('llm') || q.includes('model') || q.includes('ollama') || q.includes('claude')) {
+        answer = KNOWLEDGE_BASE['supported'];
+      } else {
+        answer = `<strong>Statutory Desk Response:</strong><br>Practicing as an Agentic Professional connects your chambers to sovereign document reasoning, verifiable dockets, and local PageIndex execution. Download Hayagriva Desktop or call our emergency desk at <strong>93160-15274</strong>.`;
+      }
+
+      answerBox.innerHTML = answer;
+      answerBox.style.display = 'block';
+    }
+
+    // ─── 5. Toast Notifications ───
+    function showToast(msg) {
+      const toast = document.getElementById('toast-pill');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3500);
+    }
+
+    function escapeHTML(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Initialize state on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAuthHeader();
+    });
+  </script>
+</body>
+</html>

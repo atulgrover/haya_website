@@ -29,6 +29,8 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon',
   '.woff2': 'font/woff2',
   '.txt': 'text/plain; charset=utf-8',
+  '.dmg': 'application/x-apple-diskimage',
+  '.zip': 'application/zip',
 };
 
 // ─── 1. PROFESSIONALS ROSTER (ALL REGISTERED USERS ACROSS ROLES) ───
@@ -671,12 +673,16 @@ const server = http.createServer((req, res) => {
   let safePath = path.normalize(urlPath).replace(/^(\.\.[\/\\])+/, '');
   if (safePath === '/' || safePath === '') {
     safePath = '/index.html';
+  } else if (safePath === '/docs' || safePath === '/docs/') {
+    safePath = '/docs/index.html';
   }
 
   let filePath = path.join(PUBLIC_DIR, safePath);
 
   fs.stat(filePath, (err, stats) => {
-    if (err || !stats.isFile()) {
+    if (!err && stats.isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
+    } else if (err || !stats.isFile()) {
       filePath = path.join(PUBLIC_DIR, 'index.html');
     }
 
