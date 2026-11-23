@@ -1178,80 +1178,11 @@
     <nav>
       <ul class="nav-links">
         
-        <!-- Megamenu 1: Agentic Spaces (FIRST TAB) -->
+        <!-- 1. Primary Active Tab: Agentic Spaces (FIRST TAB, CLEAN NO DROPDOWN) -->
         <li class="nav-item" id="nav-item-spaces">
-          <button type="button" class="nav-btn pill-active" id="nav-spaces-btn" aria-haspopup="true" onclick="showRadarView();">
+          <button type="button" class="nav-btn pill-active" id="nav-spaces-btn" onclick="showRadarView();">
             <span>agentic spaces</span>
-            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="megamenu-panel" style="width: 500px;">
-            <div class="megamenu-header-row">
-              <span class="megamenu-title">LEGAL CHAMBERS &amp; WORKSPACES</span>
-              <span class="megamenu-badge">Cafes &bull; Libraries Only</span>
-            </div>
-            
-            <!-- Quick Sub-switch: Cafes vs Libraries -->
-            <div style="display:flex;background:var(--slate-100);padding:3px;border-radius:8px;gap:3px;margin-bottom:12px;">
-              <button type="button" class="megamenu-switch-btn active" id="menu-switch-cafes" onclick="switchMegamenuSpaces('cafe'); event.stopPropagation();" style="flex:1;border:none;background:#ffffff;padding:6px 10px;border-radius:6px;font-family:var(--font-display);font-size:11.5px;font-weight:700;color:var(--slate-900);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;gap:6px;">
-                <span>☕ Work-From-Cafes</span>
-              </button>
-              <button type="button" class="megamenu-switch-btn" id="menu-switch-libs" onclick="switchMegamenuSpaces('library'); event.stopPropagation();" style="flex:1;border:none;background:none;padding:6px 10px;border-radius:6px;font-family:var(--font-display);font-size:11.5px;font-weight:700;color:var(--slate-600);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
-                <span>📚 Law Libraries</span>
-              </button>
-            </div>
-
-            <!-- Spaces Quick List (Populated by JS or default) -->
-            <div id="megamenu-spaces-list" style="display:flex;flex-direction:column;gap:7px;max-height:230px;overflow-y:auto;margin-bottom:10px;">
-              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-bt-saket'); return false;" class="megamenu-space-item">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <span style="font-size:16px;">☕</span>
-                  <div>
-                    <strong style="font-size:13px;color:#0f172a;display:block;">Blue Tokai Coffee Roasters</strong>
-                    <span style="font-size:11px;color:#64748b;">Delhi NCR &bull; 350 meters from Saket District Court</span>
-                  </div>
-                </div>
-                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
-              </a>
-              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-sb-bkc'); return false;" class="megamenu-space-item">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <span style="font-size:16px;">☕</span>
-                  <div>
-                    <strong style="font-size:13px;color:#0f172a;display:block;">Starbucks Reserve &mdash; BKC</strong>
-                    <span style="font-size:11px;color:#64748b;">Mumbai &bull; 400 meters from NCLT Mumbai Benches 1&ndash;5</span>
-                  </div>
-                </div>
-                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
-              </a>
-              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-tw-vidhana'); return false;" class="megamenu-space-item">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <span style="font-size:16px;">☕</span>
-                  <div>
-                    <strong style="font-size:13px;color:#0f172a;display:block;">Third Wave Coffee Roasters</strong>
-                    <span style="font-size:11px;color:#64748b;">Bengaluru &bull; Direct Metro Access to Karnataka High Court</span>
-                  </div>
-                </div>
-                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
-              </a>
-              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-roastery-hyd'); return false;" class="megamenu-space-item">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <span style="font-size:16px;">☕</span>
-                  <div>
-                    <strong style="font-size:13px;color:#0f172a;display:block;">Roastery Coffee House &mdash; Banjara Hills</strong>
-                    <span style="font-size:11px;color:#64748b;">Hyderabad &bull; 15 min drive from High Court &amp; NCLT</span>
-                  </div>
-                </div>
-                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
-              </a>
-            </div>
-
-            <!-- Megamenu Footer Row -->
-            <div style="border-top:1px solid var(--slate-100);padding-top:10px;display:flex;align-items:center;justify-content:space-between;font-size:11.5px;">
-              <span style="color:var(--slate-500);font-size:11px;">High-speed Wi-Fi, silent chambers, proximity to courts</span>
-              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); return false;" style="font-weight:700;color:var(--brand-blue);display:inline-flex;align-items:center;gap:3px;">
-                Open Spaces Radar Map &rarr;
-              </a>
-            </div>
-          </div>
         </li>
 
         <!-- Megamenu 2: Agentic Skills -->
