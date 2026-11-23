@@ -2194,9 +2194,9 @@
 
     <!-- 3. Actions Tray (Right) -->
     <div class="actions-tray">
-      <button type="button" class="action-btn" id="nav-answers-trigger" onclick="toggleAnswersView()">
+      <a href="/answers" class="action-btn" id="nav-answers-trigger" onclick="event.preventDefault(); toggleAnswersView();">
         <span>answers</span>
-      </button>
+      </a>
       <a href="/docs" class="action-btn" title="Hayagriva Sovereign Docs & Desktop App">
         <span>hayagriva</span>
       </a>
@@ -3479,7 +3479,12 @@
       };
 
       // ─── 10. Navigation Views: Radar vs Answers ───
-      window.showRadarView = function (pushState = true) {
+      function closeAllMegamenus() {
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('is-open', 'active'));
+      }
+      window.closeAllMegamenus = closeAllMegamenus;
+
+      function showRadarView(pushState = true) {
         closeAllMegamenus();
         if (radarView) radarView.style.display = 'flex';
         if (answersView) answersView.style.display = 'none';
@@ -3490,9 +3495,10 @@
           history.pushState({ view: 'radar' }, '', '/');
         }
         if (map) setTimeout(() => map.invalidateSize(), 150);
-      };
+      }
+      window.showRadarView = showRadarView;
 
-      window.showAnswersView = function (pushState = true) {
+      function showAnswersView(pushState = true) {
         closeAllMegamenus();
         if (radarView) radarView.style.display = 'none';
         if (answersView) answersView.style.display = 'flex';
@@ -3503,15 +3509,17 @@
           history.pushState({ view: 'answers' }, '', '/answers');
         }
         loadAnswersQuestions();
-      };
+      }
+      window.showAnswersView = showAnswersView;
 
-      window.toggleAnswersView = function () {
+      function toggleAnswersView() {
         if (answersView && answersView.style.display !== 'none') {
           showRadarView(true);
         } else {
           showAnswersView(true);
         }
-      };
+      }
+      window.toggleAnswersView = toggleAnswersView;
 
       // ─── 11. Forum Questions, Filter & LightRAG Engine ───
       let currentForumTrack = 'all';
