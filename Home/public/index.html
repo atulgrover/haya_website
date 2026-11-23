@@ -1482,6 +1482,509 @@
         display: none; /* Hide top megamenus on tiny screens, access via mobile tray */
       }
     }
+
+    /* ─── Sovereign Answers & Statutory Forum 3-Panel Layout ─── */
+    .catalog-shell {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+      background: #ffffff;
+      box-sizing: border-box;
+    }
+
+    .catalog-left-rail {
+      width: 270px;
+      flex-shrink: 0;
+      padding: 20px 14px 40px;
+      border-right: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .catalog-nav-pills {
+      position: sticky;
+      top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .catalog-rail-pill {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 7px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+    }
+
+    .catalog-rail-pill:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .catalog-rail-pill.active {
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .catalog-content-area {
+      flex: 1;
+      min-width: 0;
+      padding: 24px 32px 64px;
+      box-sizing: border-box;
+      background: #f8fafc;
+      overflow-y: auto;
+      height: 100%;
+    }
+
+    .catalog-content-grid {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .catalog-main-feed {
+      min-width: 0;
+    }
+
+    .catalog-feed-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .catalog-feed-header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .catalog-sort-group {
+      display: inline-flex;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #ffffff;
+    }
+
+    .catalog-sort-btn {
+      padding: 5px 12px;
+      background: #ffffff;
+      border: none;
+      border-right: 1px solid #cbd5e1;
+      color: #64748b;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .catalog-sort-btn:last-child {
+      border-right: none;
+    }
+
+    .catalog-sort-btn:hover {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .catalog-sort-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .catalog-feed-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .catalog-right-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .catalog-primary-cta {
+      width: 100%;
+      height: 44px;
+      min-height: 44px;
+      background: #059669;
+      border: 1px solid #059669;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      transition: background 0.15s ease;
+    }
+
+    .catalog-primary-cta:hover {
+      background: #047857;
+      border-color: #047857;
+    }
+
+    .catalog-side-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+    }
+
+    .catalog-side-card-header {
+      background: #f8fafc;
+      color: #0f172a;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .catalog-side-card-body {
+      padding: 14px 16px;
+    }
+
+    .catalog-side-copy {
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+
+    .catalog-guarantee-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .catalog-guarantee-list li {
+      font-size: 12px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .catalog-guarantee-list li::before {
+      content: "✓";
+      color: #059669;
+      font-weight: 700;
+    }
+
+    /* ─── Question Cards & LightRAG Styling ─── */
+    .forum-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 22px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: border-color 0.15s ease;
+    }
+
+    .forum-card:hover {
+      border-color: #cbd5e1;
+    }
+
+    .forum-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .forum-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .forum-badge-precedent {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      white-space: nowrap;
+      font-family: monospace;
+    }
+
+    .forum-ws-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: monospace;
+      letter-spacing: 0.3px;
+    }
+
+    .forum-ws-agy { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .forum-ws-ibc { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .forum-ws-bns { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8; }
+    .forum-ws-valuation { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+
+    .forum-card-content {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.6;
+      margin: 8px 0 14px;
+    }
+
+    .forum-meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #64748b;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .forum-bot-callout {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #059669;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 14px 0;
+    }
+
+    .forum-bot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .forum-bot-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #059669;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .forum-bot-body {
+      font-size: 13.5px;
+      color: #1e293b;
+      line-height: 1.65;
+    }
+
+    .forum-bot-body p {
+      margin: 0 0 10px;
+    }
+
+    .forum-bot-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .forum-bot-citations {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .forum-citation-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 3px 8px;
+      font-size: 11.5px;
+      color: #475569;
+      font-family: monospace;
+    }
+
+    .forum-discussions {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .forum-discussions-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .forum-discussions-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .forum-discussion-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+    }
+
+    .forum-discussion-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 5px;
+    }
+
+    .forum-discussion-content {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .forum-add-comment-btn {
+      background: transparent;
+      border: 1px dashed #94a3b8;
+      border-radius: 6px;
+      padding: 7px 12px;
+      color: #475569;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .forum-add-comment-btn:hover {
+      border-color: #0f172a;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+
+    .forum-comment-form {
+      margin-top: 10px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .forum-comment-form textarea {
+      width: 100%;
+      min-height: 60px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    .forum-comment-form textarea:focus {
+      border-color: #059669;
+    }
+
+    /* Modal dialog styling */
+    .sovereign-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 3500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sovereign-modal-card {
+      background: #ffffff;
+      width: 90%;
+      max-width: 520px;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 900px) {
+      .catalog-content-grid {
+        grid-template-columns: 1fr;
+      }
+      .catalog-left-rail {
+        display: none;
+      }
+      .catalog-right-rail {
+        order: -1;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1782,44 +2285,240 @@
 
     </div>
 
-    <!-- View 2: Sovereign Answers / Forum Canvas -->
-    <div id="answers-view" style="display:none;flex:1;width:100%;height:100%;overflow-y:auto;padding:32px 40px;background:var(--slate-50);">
-      <div style="max-width:880px;margin:0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
-          <div>
-            <h1 style="font-size:22px;font-weight:700;color:var(--slate-900);letter-spacing:-0.5px;">Agentic Professionals Answers &amp; Precedents</h1>
-            <p style="font-size:13px;color:var(--slate-500);margin-top:2px;">Statutory inquiry desk and autonomous knowledge base.</p>
-          </div>
-          <button type="button" onclick="showRadarView()" class="action-btn" style="background:#ffffff;border:1px solid var(--slate-200);display:flex;align-items:center;gap:6px;">
-            &larr; Return to Spaces Radar
-          </button>
-        </div>
-
-        <div style="background:#ffffff;border:1px solid var(--slate-200);border-radius:12px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.04);margin-bottom:20px;">
-          <div style="display:flex;gap:10px;">
-            <input type="text" id="forum-search-box" placeholder="Ask any question across agentic spaces, BNS, IBC, or NSQF levels..." style="flex:1;height:42px;padding:0 14px;border-radius:8px;border:1px solid var(--slate-200);font-size:13.5px;outline:none;" />
-            <button type="button" class="signin-btn" style="padding:0 20px;" onclick="alert('Querying sovereign agent graph across 48 jurisdictions...')">
-              Query Graph
+        <!-- View 2: Sovereign Answers / Forum Canvas (3-Panel Unified Layout) -->
+    <section id="answers-view" style="display:none;width:100%;height:100%;overflow:hidden;flex-direction:column;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;" aria-label="Statutory Answers Forum">
+      <div class="catalog-shell" style="height:100%;overflow:hidden;">
+        
+        <!-- Left Rail: Track Filters (100% pixel-aligned with 3002 catalog left rail) -->
+        <aside class="catalog-left-rail" aria-label="Forum Categories">
+          <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;padding:0 8px;">Workspace Tracks</div>
+          <nav class="catalog-nav-pills" id="forum-track-nav">
+            <button type="button" class="catalog-rail-pill active" data-track="all" onclick="filterForumTrack('all')">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+                <span>all questions</span>
+              </div>
+              <span id="track-count-all" style="font-size:11.5px;opacity:0.75;">4</span>
             </button>
-          </div>
-        </div>
+            <button type="button" class="catalog-rail-pill" data-track="agy" onclick="filterForumTrack('agy')">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 9 6 6m0-6-6 6"/></svg>
+                <span>agy: spaces &amp; hayagriva</span>
+              </div>
+              <span id="track-count-agy" style="font-size:11.5px;opacity:0.75;">1</span>
+            </button>
+            <button type="button" class="catalog-rail-pill" data-track="ibc" onclick="filterForumTrack('ibc')">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+                <span>ibc: insolvency (ip)</span>
+              </div>
+              <span id="track-count-ibc" style="font-size:11.5px;opacity:0.75;">1</span>
+            </button>
+            <button type="button" class="catalog-rail-pill" data-track="bns" onclick="filterForumTrack('bns')">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>bns: criminal &amp; forensics</span>
+              </div>
+              <span id="track-count-bns" style="font-size:11.5px;opacity:0.75;">1</span>
+            </button>
+            <button type="button" class="catalog-rail-pill" data-track="valuation" onclick="filterForumTrack('valuation')">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>valuation &amp; estate</span>
+              </div>
+              <span id="track-count-valuation" style="font-size:11.5px;opacity:0.75;">1</span>
+            </button>
+          </nav>
 
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div style="background:#ffffff;border:1px solid var(--slate-200);border-radius:10px;padding:16px;">
-            <span style="font-size:11px;font-family:var(--font-mono);color:#0284c7;font-weight:700;text-transform:uppercase;">SPACES RADAR INQUIRY</span>
-            <h3 style="font-size:15px;font-weight:700;margin:4px 0 6px 0;">How do I reserve a dedicated workstation with GPU terminals at Saket AI Library?</h3>
-            <p style="font-size:12.5px;color:var(--slate-600);line-height:1.5;">You can click on any Library card on the Spaces Radar and select 'Reserve Workstation &rarr;'. All terminals are equipped with dual 4K monitors and preloaded Python agent sandboxes.</p>
+          <div style="margin-top:28px;padding:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#0f172a;text-transform:uppercase;margin-bottom:6px;">
+              <span style="display:inline-block;width:7px;height:7px;background:#059669;border-radius:50%;"></span>
+              LightRAG Sovereign Nodes
+            </div>
+            <div style="font-size:12px;color:#64748b;line-height:1.45;">All statutory inquiries are routed across isolated knowledge graph workspaces (AGY, IBC, BNS, Valuation) with line-level token citations.</div>
           </div>
-          <div style="background:#ffffff;border:1px solid var(--slate-200);border-radius:10px;padding:16px;">
-            <span style="font-size:11px;font-family:var(--font-mono);color:#059669;font-weight:700;text-transform:uppercase;">NSQF LEVEL 7.0 ADVISORY</span>
-            <h3 style="font-size:15px;font-weight:700;margin:4px 0 6px 0;">What are the prerequisite credentials for Agentic Restructuring Certification?</h3>
-            <p style="font-size:12.5px;color:var(--slate-600);line-height:1.5;">Prerequisites include foundational familiarity with Section 29A statutory verifications, CIRP timelines under Section 12, and prompt harness execution on the Hayagriva runtime.</p>
+        </aside>
+
+        <!-- Center + Right Content Area -->
+        <div class="catalog-content-area" style="overflow-y:auto;height:100%;">
+          <div class="catalog-content-grid">
+
+            <!-- Center Column: Questions Feed Header + Q&A List -->
+            <div class="catalog-main-feed">
+              <div class="catalog-feed-header">
+                <div>
+                  <h1 id="forum-feed-title" style="text-transform:lowercase;font-size:18px;font-weight:700;color:#0f172a;margin:0;">statutory questions &amp; answers</h1>
+                  <div style="font-size:12.5px;color:#64748b;margin-top:2px;">Precedent database &amp; sovereign LightRAG bot synthesis</div>
+                </div>
+                <div class="catalog-sort-group" id="forum-sort-group" role="group" aria-label="Filter forum questions">
+                  <button type="button" class="catalog-sort-btn active" id="sort-recent" onclick="setForumSort('recent')">recent</button>
+                  <button type="button" class="catalog-sort-btn" id="sort-precedents" onclick="setForumSort('precedents')">precedents</button>
+                  <button type="button" class="catalog-sort-btn" id="sort-unanswered" onclick="setForumSort('unanswered')">unanswered</button>
+                </div>
+              </div>
+
+              <!-- Sovereign LightRAG Answers Search/Ask Dock -->
+              <div id="answers-query-dock" style="background:#ffffff;border:1px solid #cbd5e1;border-radius:10px;padding:14px 16px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,0.03);">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:240px;">
+                    <svg style="width:17px;height:17px;color:#64748b;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="answers-query-input" placeholder="ask any question across AGY spaces, IBC, BNS, or Valuation..." style="border:none;outline:none;background:transparent;width:100%;font-size:13.5px;color:#0f172a;font-family:inherit;" onkeydown="if(event.key==='Enter') executeLightRAGQuery();">
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <select id="answers-query-ws" style="border:1px solid #cbd5e1;background:#f8fafc;padding:6px 10px;border-radius:6px;font-size:12px;color:#334155;outline:none;cursor:pointer;">
+                      <option value="all">Auto Workspace</option>
+                      <option value="agy">AGY (Spaces/Hayagriva)</option>
+                      <option value="ibc">IBC (Insolvency)</option>
+                      <option value="bns">BNS (Criminal/Forensics)</option>
+                      <option value="valuation">Valuation (IBBI)</option>
+                    </select>
+                    <button type="button" id="answers-query-submit-btn" onclick="executeLightRAGQuery()" style="background:#0f172a;color:#ffffff;border:none;padding:7px 14px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px;">
+                      <span>query graph</span>
+                      <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <!-- Dynamic Live Answer Container -->
+                <div id="answers-live-result" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid #e2e8f0;"></div>
+              </div>
+
+              <!-- Question List Container -->
+              <div id="forum-questions-list" class="catalog-feed-list" role="list">
+                <div style="padding:28px;text-align:center;color:#64748b;font-size:13px;">loading statutory questions...</div>
+              </div>
+            </div>
+
+            <!-- Right Rail: Ask CTA + Statutory Desk Guarantee -->
+            <aside class="catalog-right-rail" aria-label="Statutory Desk & Guidelines">
+              <button type="button" class="catalog-primary-cta" id="forum-ask-trigger-btn" onclick="handleAskQuestionClick()" style="text-transform:lowercase;">
+                <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>ask statutory question &rarr;</span>
+              </button>
+
+              <!-- Card 1: Statutory Desk Info -->
+              <div class="catalog-side-card">
+                <div class="catalog-side-card-header">
+                  <span style="text-transform:lowercase;">statutory desk</span>
+                </div>
+                <div class="catalog-side-card-body">
+                  <p class="catalog-side-copy">Sovereign statutory guidance curated by empanelled advocates, registered insolvency professionals, and forensic specialists.</p>
+                  <ul class="catalog-guarantee-list">
+                    <li>Supreme Court &amp; NCLAT precedent verification</li>
+                    <li>Direct Section &amp; Regulation citations</li>
+                    <li>Zero hallucination sovereign LightRAG graph</li>
+                    <li>Open reading for all visitors</li>
+                    <li>Auth-verified practitioner discussions</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Card 2: Statutory Emergency Contact -->
+              <div class="catalog-side-card">
+                <div class="catalog-side-card-header">
+                  <span style="text-transform:lowercase;">emergency contact</span>
+                </div>
+                <div class="catalog-side-card-body">
+                  <p class="catalog-side-copy" style="font-size:12px;color:#475569;margin-bottom:6px;">For urgent NCLT filing or Section 29A clearance:</p>
+                  <div style="font-weight:700;color:#059669;font-size:13.5px;letter-spacing:-0.2px;">93160-15274 (11 am &ndash; 4 pm)</div>
+                </div>
+              </div>
+
+              <!-- Return to Map Shortcut -->
+              <button type="button" onclick="showRadarView(true)" style="background:#ffffff;border:1px solid #cbd5e1;padding:8px 12px;border-radius:8px;font-size:12.5px;color:#475569;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background 0.15s;">
+                &larr; return to spaces radar
+              </button>
+            </aside>
+
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
   </main>
+
+
+  <!-- ─── Authentication / Registration Modal ─── -->
+  <div id="auth-modal" class="sovereign-modal">
+    <div class="sovereign-modal-card">
+      <button type="button" onclick="closeAuthModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--slate-400);">&times;</button>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:10px;font-family:var(--font-mono);padding:2px 6px;border-radius:4px;background:#e0f2fe;color:#0369a1;font-weight:700;">PORTAL AUTHENTICATION</span>
+      </div>
+      <h3 style="font-size:18px;font-weight:700;color:var(--slate-900);line-height:1.3;margin-bottom:4px;">Practitioner Sign In / Registration</h3>
+      <p id="auth-modal-notice" style="font-size:12.5px;color:var(--slate-600);margin-bottom:16px;">Sign in to ask statutory questions or participate in verified practitioner discussions.</p>
+
+      <form onsubmit="handleAuthSubmit(event)" style="display:flex;flex-direction:column;gap:12px;">
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Full Name</label>
+          <input type="text" id="auth-name" required placeholder="Adv. / IP / Specialist Name" style="width:100%;height:38px;padding:0 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;" />
+        </div>
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Professional Role</label>
+          <select id="auth-role" style="width:100%;height:38px;padding:0 10px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;background:#f8fafc;">
+            <option value="Insolvency Professional (IP)">Insolvency Professional (IP)</option>
+            <option value="Corporate Lawyer">Corporate Lawyer / Appellate Counsel</option>
+            <option value="Forensic Expert">Forensic Expert / Cyber Analyst</option>
+            <option value="Registered Valuer">Registered Valuer (IBBI)</option>
+            <option value="Legal Tech Researcher">Legal Tech / AI Researcher</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Official Email</label>
+          <input type="email" id="auth-email" required placeholder="name@chambers.in" style="width:100%;height:38px;padding:0 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;" />
+        </div>
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Chamber / Firm / Institution</label>
+          <input type="text" id="auth-firm" placeholder="e.g. Deloitte / Supreme Court Bar / NALSAR" style="width:100%;height:38px;padding:0 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;" />
+        </div>
+        <button type="submit" class="catalog-primary-cta" style="margin-top:6px;width:100%;">
+          Sign In &amp; Continue &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ─── Ask Statutory Question Modal ─── -->
+  <div id="ask-question-modal" class="sovereign-modal">
+    <div class="sovereign-modal-card">
+      <button type="button" onclick="closeAskModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--slate-400);">&times;</button>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:10px;font-family:var(--font-mono);padding:2px 6px;border-radius:4px;background:#dcfce7;color:#15803d;font-weight:700;">LIGHTRAG SYNTHESIS DOCK</span>
+      </div>
+      <h3 style="font-size:18px;font-weight:700;color:var(--slate-900);line-height:1.3;margin-bottom:4px;">Ask a Statutory Question</h3>
+      <p style="font-size:12.5px;color:var(--slate-600);margin-bottom:16px;">Your question will automatically be answered by the sovereign LightRAG bot across statutory precedents and open to practitioner peer discussion.</p>
+
+      <form onsubmit="handleQuestionSubmit(event)" style="display:flex;flex-direction:column;gap:12px;">
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Target Workspace Track</label>
+          <select id="modal-q-ws" style="width:100%;height:38px;padding:0 10px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;background:#f8fafc;">
+            <option value="agy">AGY: Spaces, Runtime &amp; Hayagriva</option>
+            <option value="ibc" selected>IBC: Insolvency &amp; Restructuring (IP)</option>
+            <option value="bns">BNS: Criminal Law &amp; Cyber Forensics</option>
+            <option value="valuation">Valuation: IBBI Valuation Standards</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Question Title</label>
+          <input type="text" id="modal-q-title" required placeholder="e.g. Does Section 29A(d) disqualify joint resolution applicants with offshore parent convictions?" style="width:100%;height:38px;padding:0 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;" />
+        </div>
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Detailed Statutory Inquiry / Context</label>
+          <textarea id="modal-q-content" required placeholder="Provide factual context, statutory sections, or bench details..." style="width:100%;min-height:90px;padding:10px 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;font-family:inherit;resize:vertical;box-sizing:border-box;"></textarea>
+        </div>
+        <div>
+          <label style="font-size:11px;font-family:var(--font-mono);color:var(--slate-600);display:block;margin-bottom:4px;text-transform:uppercase;">Tags (comma-separated)</label>
+          <input type="text" id="modal-q-tags" placeholder="e.g. Section 29A, CIRP, NCLAT" style="width:100%;height:38px;padding:0 12px;border:1px solid var(--slate-200);border-radius:8px;font-size:13px;outline:none;" />
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <input type="checkbox" id="modal-q-precedent" style="cursor:pointer;" />
+          <label for="modal-q-precedent" style="font-size:12.5px;color:var(--slate-700);cursor:pointer;">Mark as Statutory Precedent Query</label>
+        </div>
+        <button type="submit" id="modal-q-submit-btn" class="catalog-primary-cta" style="margin-top:6px;width:100%;">
+          Submit &amp; Synthesize Bot Answer &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- Reservation / Contact Modal -->
   <div id="booking-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.6);backdrop-filter:blur(4px);z-index:3000;align-items:center;justify-content:center;">
@@ -2708,25 +3407,525 @@
         }
       };
 
-      // ─── 9. Navigation Views: Radar vs Answers ───
-      window.showRadarView = function () {
+      // ─── 9. Authentication & User State ───
+      function getCurrentUser() {
+        try {
+          const stored = localStorage.getItem('agentic_user');
+          if (stored) return JSON.parse(stored);
+        } catch (e) {}
+        return null;
+      }
+
+      function initAuth() {
+        const user = getCurrentUser();
+        const signinBtn = document.getElementById('nav-signin-trigger');
+        if (!signinBtn) return;
+
+        if (user && user.name) {
+          const initials = user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'AP';
+          signinBtn.innerHTML = `
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#059669;color:#ffffff;border-radius:50%;font-size:10px;font-weight:700;">${escapeHTML(initials)}</span>
+            <span>${escapeHTML(user.name.split(' ')[0])}</span>
+            <span style="font-size:11px;color:#94a3b8;margin-left:2px;" onclick="event.stopPropagation();handleSignOut();" title="Sign Out">&times;</span>
+          `;
+          signinBtn.title = `${user.name} (${user.role || 'Member'}) — Click × to Sign Out`;
+          signinBtn.onclick = function() {
+            if (confirm(`Signed in as ${user.name} (${user.role || 'Member'}). Sign out?`)) {
+              handleSignOut();
+            }
+          };
+        } else {
+          signinBtn.innerHTML = `<span>sign in</span>`;
+          signinBtn.title = 'Sign In / Register';
+          signinBtn.onclick = function() { openAuthModal(); };
+        }
+      }
+
+      window.handleSignOut = function() {
+        localStorage.removeItem('agentic_user');
+        initAuth();
+        alert('You have signed out of the sovereign network.');
+      };
+
+      window.openAuthModal = function(notice) {
+        const modal = document.getElementById('auth-modal');
+        const noticeEl = document.getElementById('auth-modal-notice');
+        if (noticeEl && notice) noticeEl.textContent = notice;
+        if (modal) modal.style.display = 'flex';
+      };
+
+      window.closeAuthModal = function() {
+        const modal = document.getElementById('auth-modal');
+        if (modal) modal.style.display = 'none';
+      };
+
+      window.handleAuthSubmit = function(e) {
+        e.preventDefault();
+        const name = (document.getElementById('auth-name')?.value || '').trim();
+        const role = document.getElementById('auth-role')?.value || 'Agentic Professional';
+        const email = (document.getElementById('auth-email')?.value || '').trim();
+        const firm = (document.getElementById('auth-firm')?.value || '').trim();
+
+        if (!name || !email) {
+          alert('Name and Email are required.');
+          return;
+        }
+
+        const user = { name, role, email, firm, signedInAt: new Date().toISOString() };
+        localStorage.setItem('agentic_user', JSON.stringify(user));
+        initAuth();
+        closeAuthModal();
+        alert(`Welcome, ${name}! Your practitioner session has been authenticated.`);
+      };
+
+      // ─── 10. Navigation Views: Radar vs Answers ───
+      window.showRadarView = function (pushState = true) {
+        closeAllMegamenus();
         if (radarView) radarView.style.display = 'flex';
         if (answersView) answersView.style.display = 'none';
         if (navSpacesBtn) navSpacesBtn.classList.add('pill-active');
+        const navAnswers = document.getElementById('nav-answers-trigger');
+        if (navAnswers) navAnswers.classList.remove('pill-active');
+        if (pushState && window.location.pathname !== '/') {
+          history.pushState({ view: 'radar' }, '', '/');
+        }
         if (map) setTimeout(() => map.invalidateSize(), 150);
+      };
+
+      window.showAnswersView = function (pushState = true) {
+        closeAllMegamenus();
+        if (radarView) radarView.style.display = 'none';
+        if (answersView) answersView.style.display = 'flex';
+        if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
+        const navAnswers = document.getElementById('nav-answers-trigger');
+        if (navAnswers) navAnswers.classList.add('pill-active');
+        if (pushState && window.location.pathname !== '/answers') {
+          history.pushState({ view: 'answers' }, '', '/answers');
+        }
+        loadAnswersQuestions();
       };
 
       window.toggleAnswersView = function () {
         if (answersView && answersView.style.display !== 'none') {
-          showRadarView();
+          showRadarView(true);
         } else {
-          if (radarView) radarView.style.display = 'none';
-          if (answersView) answersView.style.display = 'block';
-          if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
+          showAnswersView(true);
         }
       };
 
-      // ─── 10. Reservation / Consultation Modal Handlers ───
+      // ─── 11. Forum Questions, Filter & LightRAG Engine ───
+      let currentForumTrack = 'all';
+      let currentForumSort = 'recent';
+
+      window.filterForumTrack = function(track) {
+        currentForumTrack = track;
+        document.querySelectorAll('#forum-track-nav .catalog-rail-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.track === track);
+        });
+        loadAnswersQuestions();
+      };
+
+      window.setForumSort = function(sort) {
+        currentForumSort = sort;
+        document.querySelectorAll('#forum-sort-group .catalog-sort-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.id === `sort-${sort}`);
+        });
+        loadAnswersQuestions();
+      };
+
+      async function loadAnswersQuestions() {
+        const listEl = document.getElementById('forum-questions-list');
+        if (!listEl) return;
+
+        listEl.innerHTML = '<div style="padding:32px;text-align:center;color:#64748b;font-size:13px;">loading statutory questions &amp; precedents...</div>';
+
+        try {
+          let url = `/api/answers/questions?track=${encodeURIComponent(currentForumTrack)}&sort=${encodeURIComponent(currentForumSort)}`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          const questions = data.questions || [];
+
+          if (questions.length === 0) {
+            listEl.innerHTML = `
+              <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:36px;text-align:center;color:#64748b;">
+                <div style="font-size:24px;margin-bottom:8px;">⚖️</div>
+                <div style="font-size:14px;font-weight:600;color:#0f172a;margin-bottom:4px;">No statutory inquiries found in this track.</div>
+                <div style="font-size:12.5px;color:#64748b;">Be the first to submit a statutory question for sovereign LightRAG graph synthesis.</div>
+                <button type="button" class="catalog-primary-cta" style="margin:16px auto 0;width:auto;padding:8px 18px;display:inline-flex;" onclick="handleAskQuestionClick()">
+                  + Ask First Question &rarr;
+                </button>
+              </div>
+            `;
+            return;
+          }
+
+          listEl.innerHTML = questions.map(q => {
+            const wsClass = `forum-ws-${(q.workspace || 'agy').toLowerCase()}`;
+            const wsLabel = (q.workspace_label || q.workspace || 'AGY').toUpperCase();
+            const botAns = q.bot_answer;
+            const comments = q.comments || [];
+
+            return `
+              <article class="forum-card" id="card-${q.id}">
+                <div class="forum-card-header">
+                  <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                      <span class="forum-ws-tag ${wsClass}">[${escapeHTML(wsLabel)}]</span>
+                      ${q.is_statutory_precedent ? '<span class="forum-badge-precedent">statutory precedent</span>' : ''}
+                    </div>
+                    <h2 class="forum-card-title">${escapeHTML(q.title)}</h2>
+                  </div>
+                </div>
+
+                <p class="forum-card-content">${escapeHTML(q.content)}</p>
+
+                <div class="forum-meta-bar">
+                  <span>asked by <strong>${escapeHTML(q.author_name)}</strong> (${escapeHTML(q.author_role)})</span>
+                  <span>&bull;</span>
+                  <span>${q.view_count || 1} views</span>
+                  ${(q.tags || []).map(t => `<span style="background:#f1f5f9;color:#475569;padding:2px 6px;border-radius:4px;font-size:11px;">#${escapeHTML(t)}</span>`).join(' ')}
+                </div>
+
+                <!-- LightRAG Bot Answer Callout -->
+                ${botAns ? `
+                  <div class="forum-bot-callout">
+                    <div class="forum-bot-header">
+                      <div class="forum-bot-title">
+                        <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="4" y="8" width="16" height="12" rx="2"/><circle cx="9" cy="13" r="1.5"/><circle cx="15" cy="13" r="1.5"/><path d="M10 17h4"/></svg>
+                        <span>🤖 LightRAG Bot Answer (${escapeHTML(botAns.workspace ? botAns.workspace.toUpperCase() : 'SOVEREIGN')})</span>
+                      </div>
+                      <span style="font-size:11.5px;color:#059669;font-weight:700;">✓ Precedent Verified</span>
+                    </div>
+
+                    <div class="forum-bot-body">
+                      ${botAns.answer_html || `<p>${escapeHTML(botAns.answer)}</p>`}
+                    </div>
+
+                    ${(botAns.citations && botAns.citations.length > 0) ? `
+                      <div class="forum-bot-citations">
+                        <span style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;margin-right:4px;">Citations:</span>
+                        ${botAns.citations.map(c => `
+                          <span class="forum-citation-pill" title="${escapeHTML(c.desc || '')}">
+                            <svg style="width:11px;height:11px;color:#059669;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <span>${escapeHTML(c.label)}</span>
+                          </span>
+                        `).join('')}
+                      </div>
+                    ` : ''}
+                  </div>
+                ` : ''}
+
+                <!-- Threaded Practitioner Discussions -->
+                <div class="forum-discussions">
+                  <div class="forum-discussions-header">
+                    <div class="forum-discussions-title">
+                      <svg style="width:14px;height:14px;color:#64748b;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                      <span>Practitioner Discussions (${comments.length})</span>
+                    </div>
+                    <button type="button" class="forum-add-comment-btn" onclick="handleCommentClick('${q.id}')">
+                      <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                      <span>Add Discussion Note</span>
+                    </button>
+                  </div>
+
+                  <!-- Existing Comments -->
+                  <div id="comments-list-${q.id}">
+                    ${comments.map(c => `
+                      <div class="forum-discussion-item">
+                        <div class="forum-discussion-meta">
+                          <div>
+                            <strong style="color:#0f172a;">${escapeHTML(c.author_name)}</strong>
+                            <span style="color:#64748b;margin-left:4px;">(${escapeHTML(c.author_role)}${c.firm ? ' &bull; ' + escapeHTML(c.firm) : ''})</span>
+                          </div>
+                          <span style="font-size:11px;color:#94a3b8;">${new Date(c.created_at || Date.now()).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' })}</span>
+                        </div>
+                        <div class="forum-discussion-content">${escapeHTML(c.content)}</div>
+                      </div>
+                    `).join('')}
+                  </div>
+
+                  <!-- Inline Comment Form (hidden by default) -->
+                  <div id="comment-form-wrap-${q.id}" class="forum-comment-form" style="display:none;">
+                    <textarea id="comment-input-${q.id}" placeholder="Add your statutory perspective, judicial precedent note, or practitioner remark..."></textarea>
+                    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px;">
+                      <button type="button" onclick="cancelComment('${q.id}')" style="background:#ffffff;border:1px solid #cbd5e1;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;color:#64748b;">Cancel</button>
+                      <button type="button" onclick="submitComment('${q.id}')" style="background:#0f172a;color:#ffffff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">Post Note</button>
+                    </div>
+                  </div>
+                </div>
+
+              </article>
+            `;
+          }).join('');
+
+        } catch (err) {
+          listEl.innerHTML = `<div style="padding:24px;text-align:center;color:#ef4444;font-size:13px;">Failed to load statutory questions: ${escapeHTML(err.message)}</div>`;
+        }
+      }
+
+      // ─── 12. Ask Question & LightRAG Search Interactions ───
+      window.handleAskQuestionClick = function() {
+        const user = getCurrentUser();
+        if (!user) {
+          openAuthModal("Authentication required: Please sign in or register to submit a statutory question for sovereign LightRAG synthesis.");
+          return;
+        }
+        openAskModal();
+      };
+
+      window.openAskModal = function() {
+        const modal = document.getElementById('ask-question-modal');
+        if (modal) modal.style.display = 'flex';
+      };
+
+      window.closeAskModal = function() {
+        const modal = document.getElementById('ask-question-modal');
+        if (modal) modal.style.display = 'none';
+      };
+
+      window.handleQuestionSubmit = async function(e) {
+        e.preventDefault();
+        const user = getCurrentUser();
+        if (!user) {
+          closeAskModal();
+          openAuthModal("Authentication required: Please sign in to submit.");
+          return;
+        }
+
+        const ws = document.getElementById('modal-q-ws')?.value || 'ibc';
+        const title = (document.getElementById('modal-q-title')?.value || '').trim();
+        const content = (document.getElementById('modal-q-content')?.value || '').trim();
+        const tagsRaw = (document.getElementById('modal-q-tags')?.value || '').trim();
+        const isPrecedent = Boolean(document.getElementById('modal-q-precedent')?.checked);
+
+        if (!title || !content) {
+          alert('Question title and context are required.');
+          return;
+        }
+
+        const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [ws.toUpperCase()];
+        const submitBtn = document.getElementById('modal-q-submit-btn');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Synthesizing LightRAG Bot Answer...';
+        }
+
+        try {
+          const res = await fetch('/api/answers/questions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title,
+              content,
+              workspace: ws,
+              tags,
+              is_statutory_precedent: isPrecedent,
+              author_name: user.name,
+              author_role: user.role
+            })
+          });
+
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          closeAskModal();
+          e.target.reset();
+          alert('Question successfully published! LightRAG bot has synthesized the statutory answer.');
+          loadAnswersQuestions();
+        } catch (err) {
+          alert(`Failed to submit question: ${err.message}`);
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit & Synthesize Bot Answer →';
+          }
+        }
+      };
+
+      // ─── 13. Discussion Comment Interactions ───
+      window.handleCommentClick = function(questionId) {
+        const user = getCurrentUser();
+        if (!user) {
+          openAuthModal("Authentication required: Please sign in or register to contribute to practitioner discussions.");
+          return;
+        }
+        const formWrap = document.getElementById(`comment-form-wrap-${questionId}`);
+        if (formWrap) {
+          formWrap.style.display = formWrap.style.display === 'none' ? 'block' : 'none';
+          if (formWrap.style.display === 'block') {
+            const input = document.getElementById(`comment-input-${questionId}`);
+            if (input) input.focus();
+          }
+        }
+      };
+
+      window.cancelComment = function(questionId) {
+        const formWrap = document.getElementById(`comment-form-wrap-${questionId}`);
+        if (formWrap) formWrap.style.display = 'none';
+      };
+
+      window.submitComment = async function(questionId) {
+        const user = getCurrentUser();
+        if (!user) {
+          openAuthModal("Authentication required: Please sign in to post a discussion note.");
+          return;
+        }
+
+        const input = document.getElementById(`comment-input-${questionId}`);
+        const content = (input?.value || '').trim();
+        if (!content) {
+          alert('Please enter your discussion note.');
+          return;
+        }
+
+        try {
+          const res = await fetch('/api/answers/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              question_id: questionId,
+              content: content,
+              author_name: user.name,
+              author_role: user.role,
+              firm: user.firm || ''
+            })
+          });
+
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+
+          const commentsList = document.getElementById(`comments-list-${questionId}`);
+          if (commentsList && data.comment) {
+            const c = data.comment;
+            const newCommentHTML = `
+              <div class="forum-discussion-item" style="animation:fadeIn 0.2s ease;">
+                <div class="forum-discussion-meta">
+                  <div>
+                    <strong style="color:#0f172a;">${escapeHTML(c.author_name)}</strong>
+                    <span style="color:#64748b;margin-left:4px;">(${escapeHTML(c.author_role)}${c.firm ? ' &bull; ' + escapeHTML(c.firm) : ''})</span>
+                  </div>
+                  <span style="font-size:11px;color:#94a3b8;">Just now</span>
+                </div>
+                <div class="forum-discussion-content">${escapeHTML(c.content)}</div>
+              </div>
+            `;
+            commentsList.insertAdjacentHTML('beforeend', newCommentHTML);
+          }
+
+          input.value = '';
+          window.cancelComment(questionId);
+        } catch (err) {
+          alert(`Failed to post note: ${err.message}`);
+        }
+      };
+
+      // ─── 14. Live LightRAG Graph Query Execution ───
+      window.executeLightRAGQuery = async function() {
+        const input = document.getElementById('answers-query-input');
+        const query = (input?.value || '').trim();
+        if (!query) {
+          alert('Please enter a question to query the sovereign LightRAG graph.');
+          return;
+        }
+
+        const wsSelect = document.getElementById('answers-query-ws');
+        const workspace = wsSelect?.value || 'all';
+        const submitBtn = document.getElementById('answers-query-submit-btn');
+        const resultEl = document.getElementById('answers-live-result');
+
+        if (!resultEl) return;
+        resultEl.style.display = 'block';
+        resultEl.innerHTML = `
+          <div style="padding:16px;text-align:center;color:#64748b;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;">
+            <svg style="width:16px;height:16px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+            <span>Querying sovereign LightRAG knowledge graph across ${workspace.toUpperCase()} workspace...</span>
+          </div>
+        `;
+
+        if (submitBtn) submitBtn.disabled = true;
+
+        try {
+          const res = await fetch('/api/answers/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query, workspace, mode: 'mix' })
+          });
+
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+
+          resultEl.innerHTML = `
+            <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:4px solid #059669;border-radius:8px;padding:16px;position:relative;">
+              <button type="button" onclick="document.getElementById('answers-live-result').style.display='none'" style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:16px;color:#94a3b8;cursor:pointer;">&times;</button>
+              
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <span class="forum-ws-tag forum-ws-${(data.workspace || 'agy').toLowerCase()}">[${(data.workspace || 'AGY').toUpperCase()}]</span>
+                <strong style="color:#059669;font-size:12.5px;text-transform:uppercase;">🤖 LightRAG Live Synthesis</strong>
+              </div>
+
+              <div class="forum-bot-body">
+                ${data.answer_html || `<p>${escapeHTML(data.answer)}</p>`}
+              </div>
+
+              ${(data.references && data.references.length > 0) ? `
+                <div class="forum-bot-citations">
+                  <span style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;margin-right:4px;">Citations:</span>
+                  ${data.references.map(r => `
+                    <span class="forum-citation-pill" title="${escapeHTML((r.content && r.content[0]) || '')}">
+                      <svg style="width:11px;height:11px;color:#059669;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      <span>${escapeHTML(r.file_path || r.reference_id)}</span>
+                    </span>
+                  `).join('')}
+                </div>
+              ` : ''}
+
+              <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e2e8f0;display:flex;justify-content:flex-end;">
+                <button type="button" onclick="saveLiveResultAsQuestion('${escapeHTML(query)}', '${escapeHTML(data.workspace)}', '${escapeHTML(data.answer)}')" style="background:#0f172a;color:#ffffff;border:none;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">
+                  Post as Public Forum Thread &rarr;
+                </button>
+              </div>
+            </div>
+          `;
+        } catch (err) {
+          resultEl.innerHTML = `<div style="padding:14px;color:#ef4444;font-size:12.5px;">Query failed: ${escapeHTML(err.message)}</div>`;
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      };
+
+      window.saveLiveResultAsQuestion = async function(query, workspace, answer) {
+        const user = getCurrentUser();
+        if (!user) {
+          openAuthModal("Authentication required: Please sign in or register to publish this thread.");
+          return;
+        }
+
+        try {
+          const res = await fetch('/api/answers/questions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: query,
+              content: `Statutory question submitted via LightRAG search: "${query}".`,
+              workspace: workspace || 'agy',
+              tags: [workspace ? workspace.toUpperCase() : 'AGY', 'LightRAG'],
+              is_statutory_precedent: true,
+              author_name: user.name,
+              author_role: user.role
+            })
+          });
+
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          document.getElementById('answers-live-result').style.display = 'none';
+          document.getElementById('answers-query-input').value = '';
+          alert('Saved as a public statutory discussion thread!');
+          loadAnswersQuestions();
+        } catch (err) {
+          alert(`Failed to save thread: ${err.message}`);
+        }
+      };
+
+      // ─── 15. Reservation / Consultation Modal Handlers ───
       window.openReservationModal = function (title, type = 'SPACE') {
         const modal = document.getElementById('booking-modal');
         const modalTitle = document.getElementById('modal-space-title');
@@ -2964,6 +4163,21 @@
         initSkillpediaLinks();
         initCohortSwitcher();
         initEventSwitcher();
+        initAuth();
+
+        // Check deep-linking URL for /answers
+        if (window.location.pathname.startsWith('/answers')) {
+          showAnswersView(false);
+        }
+      });
+
+      // Handle browser forward/back buttons
+      window.addEventListener('popstate', function () {
+        if (window.location.pathname.startsWith('/answers')) {
+          showAnswersView(false);
+        } else {
+          showRadarView(false);
+        }
       });
 
     })();
