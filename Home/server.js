@@ -31,7 +31,221 @@ const MIME_TYPES = {
   '.txt': 'text/plain; charset=utf-8',
 };
 
-// Curated 16 Agentic Spaces (8 Cafes & 8 Libraries)
+// ─── 1. PROFESSIONALS ROSTER (ALL REGISTERED USERS ACROSS ROLES) ───
+const PROFESSIONALS = [
+  {
+    id: "pro-1",
+    slug: "sanjay-kumar-gupta",
+    name: "Sanjay Kumar Gupta",
+    role: "ip",
+    designation: "Insolvency Professional",
+    regNo: "IBBI/IPA-002/IP-N00124/2017-2018/10311",
+    firm: "Deloitte Touche Tohmatsu India LLP",
+    bench: "NCLT Ahmedabad",
+    city: "Ahmedabad",
+    state: "Gujarat",
+    latitude: 23.022500,
+    longitude: 72.571400,
+    email: "sgupta.ip@deloitte.com",
+    phone: "+91 79 6671 2000",
+    initials: "SG",
+    isVerified: true,
+    specialization: "Heavy Industrial, Power & Utilities CIRP",
+    bio: "Empaneled Insolvency Professional with extensive resolution experience in heavy manufacturing, energy sector restructuring, and cross-border assets under IBC 2016.",
+    activeMandates: 3
+  },
+  {
+    id: "pro-2",
+    slug: "anuj-jain",
+    name: "Anuj Jain",
+    role: "ip",
+    designation: "Senior Insolvency Professional",
+    regNo: "IBBI/IPA-001/IP-P00088/2017-2018/10184",
+    firm: "PricewaterhouseCoopers",
+    bench: "NCLT New Delhi (Principal Bench)",
+    city: "Delhi NCR",
+    state: "Delhi",
+    latitude: 28.613900,
+    longitude: 77.209000,
+    email: "anuj.jain.ip@pwc.com",
+    phone: "+91 11 4115 0000",
+    initials: "AJ",
+    isVerified: true,
+    specialization: "Real Estate & Mega Infrastructure",
+    bio: "Lead Resolution Professional in landmark real estate restructuring matters with multi-lender committee coordination under CIRP regulations.",
+    activeMandates: 2
+  },
+  {
+    id: "pro-3",
+    slug: "milind-kasodekar",
+    name: "Milind Kasodekar",
+    role: "ip",
+    designation: "Partner - Insolvency & Restructuring",
+    regNo: "IBBI/IPA-002/IP-N00112/2017-2018/10280",
+    firm: "KPMG India",
+    bench: "NCLT Mumbai (Court-I)",
+    city: "Mumbai",
+    state: "Maharashtra",
+    latitude: 18.930400,
+    longitude: 72.831700,
+    email: "mkasodekar.ip@kpmg.com",
+    phone: "+91 22 3090 1000",
+    initials: "MK",
+    isVerified: true,
+    specialization: "EPC Contracting, Ports & Aviation Logistics",
+    bio: "Over 20 years in corporate turnaround and forensic valuation. Registered Insolvency Professional with high liquidation and resolution success rate.",
+    activeMandates: 4
+  },
+  {
+    id: "pro-4",
+    slug: "adv-radhika-sharma",
+    name: "Adv. Radhika Sharma",
+    role: "advocate",
+    designation: "High Court Senior Advocate",
+    regNo: "D/1420/2012 (Bar Council of Delhi)",
+    firm: "Sharma & Associates Chambers",
+    bench: "Delhi High Court & Saket District Court",
+    city: "Delhi NCR",
+    state: "Delhi",
+    latitude: 28.520400,
+    longitude: 77.201500,
+    email: "radhika@sharmachambers.in",
+    phone: "+91 11 2651 8840",
+    initials: "RS",
+    isVerified: true,
+    specialization: "Commercial Disputes, BNS Cyber Forensics & IBC Appeals",
+    bio: "Practicing Advocate representing lenders and resolution applicants before NCLAT and Supreme Court of India. Regular speaker on Agentic NSQF legal standards.",
+    activeMandates: 6
+  },
+  {
+    id: "pro-5",
+    slug: "dr-vikram-aditya-nair",
+    name: "Dr. Vikram Aditya Nair",
+    role: "cyber_specialist",
+    designation: "Chief Cyber Forensic Analyst & BNS Specialist",
+    regNo: "DSCI/CE-2021/889",
+    firm: "National Digital Forensics Center",
+    bench: "Cyber Police Cells & Karnataka High Court",
+    city: "Bengaluru",
+    state: "Karnataka",
+    latitude: 12.971600,
+    longitude: 77.594600,
+    email: "vikram.nair@cyberjuris.org",
+    phone: "+91 80 4120 7765",
+    initials: "VN",
+    isVerified: true,
+    specialization: "BNS Section 111 Organized Cyber Crime & Electronic Evidences",
+    bio: "Certified digital forensics expert specializing in Section 65B/BNS 2023 evidentiary compliance, sovereign LLM inference for evidence hashing, and blockchain tracing.",
+    activeMandates: 5
+  },
+  {
+    id: "pro-6",
+    slug: "adv-kavita-krishnan",
+    name: "Adv. Kavita Krishnan",
+    role: "advocate",
+    designation: "Commercial & Appellate Counsel",
+    regNo: "KAR/892/2015 (Karnataka Bar Council)",
+    firm: "Apex Law Partners",
+    bench: "High Court of Karnataka (Vidhana Soudha)",
+    city: "Bengaluru",
+    state: "Karnataka",
+    latitude: 12.986600,
+    longitude: 77.597500,
+    email: "kavita@apexlawpartners.com",
+    phone: "+91 80 2221 4450",
+    initials: "KK",
+    isVerified: true,
+    specialization: "Commercial Contracts, CPC Section 89 Mediation & Arbitration",
+    bio: "Senior counsel in cross-border commercial contracts and dispute resolution. Empaneled mediator with over 150 successfully settled commercial disputes.",
+    activeMandates: 4
+  },
+  {
+    id: "pro-7",
+    slug: "rajesh-subramanian",
+    name: "Rajesh Subramanian",
+    role: "valuer",
+    designation: "Registered Valuer (Securities & Financial Assets)",
+    regNo: "IBBI/RV/06/2019/11045",
+    firm: "Sundaram & Subramanian Valuation Advisory",
+    bench: "NCLT Hyderabad Bench",
+    city: "Hyderabad",
+    state: "Telangana",
+    latitude: 17.415600,
+    longitude: 78.434700,
+    email: "rajesh.val@ssadvisory.in",
+    phone: "+91 40 2335 9901",
+    initials: "RS",
+    isVerified: true,
+    specialization: "Liquidation Value Audits & Intangible AI Assets",
+    bio: "IBBI-registered valuer with over 80 statutory CIRP valuation reports submitted across NCLT benches. Pioneer in valuing algorithmic models and data pipelines.",
+    activeMandates: 7
+  },
+  {
+    id: "pro-8",
+    slug: "prof-arundhati-sen",
+    name: "Prof. Arundhati Sen",
+    role: "researcher",
+    designation: "Chair Professor & Computational Law Researcher",
+    regNo: "NUJS/FAC/2018/042",
+    firm: "WBNUJS Legal Informatics Center",
+    bench: "Calcutta High Court Precinct",
+    city: "Kolkata",
+    state: "West Bengal",
+    latitude: 22.570100,
+    longitude: 88.406700,
+    email: "asen@nujs.edu",
+    phone: "+91 33 2335 7379",
+    initials: "AS",
+    isVerified: true,
+    specialization: "Agentic NSQF Curriculum & Legal Knowledge Graphs",
+    bio: "Principal investigator on legal ontologies, judicial decision prediction models, and statutory graph reasoning frameworks for Indian law.",
+    activeMandates: 2
+  },
+  {
+    id: "pro-9",
+    slug: "adv-harpreet-singh",
+    name: "Adv. Harpreet Singh",
+    role: "advocate",
+    designation: "Criminal Jurisprudence Counsel",
+    regNo: "PH/3421/2011",
+    firm: "Capitol Chambers",
+    bench: "Punjab & Haryana High Court",
+    city: "Chandigarh",
+    state: "Punjab & Haryana",
+    latitude: 30.758900,
+    longitude: 76.804900,
+    email: "harpreet@capitolchambers.law",
+    phone: "+91 172 274 0012",
+    initials: "HS",
+    isVerified: true,
+    specialization: "BNS 2023 Statutory Transition & Appellate Defense",
+    bio: "Trial lawyer and author of comparative commentaries between IPC and Bharatiya Nyaya Sanhita (BNS 2023). Regular counsel before the High Court.",
+    activeMandates: 5
+  },
+  {
+    id: "pro-10",
+    slug: "tanya-mehta",
+    name: "Tanya Mehta",
+    role: "learner",
+    designation: "Agentic AI Apprentice & Law Scholar",
+    regNo: "NLSIU/LLB-AI/2024/019",
+    firm: "National Law School of India University",
+    bench: "NLSIU AI Commons",
+    city: "Bengaluru",
+    state: "Karnataka",
+    latitude: 12.955800,
+    longitude: 77.512600,
+    email: "tanya.mehta@nlsiu.ac.in",
+    phone: "+91 80 2316 0532",
+    initials: "TM",
+    isVerified: true,
+    specialization: "Prompt Engineering for Legal Discovery & NSQF L7.0",
+    bio: "Graduate researcher in agentic workflows, multi-agent arbitration simulations, and air-gapped legal assistance tools.",
+    activeMandates: 1
+  }
+];
+
+// ─── 2. SPACES DIRECTORY (CAFES & LIBRARIES) ───
 const SPACES = [
   // ─── 8 WORK-FROM-CAFES ───
   {
@@ -403,11 +617,26 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // API Route: Professionals Radar Endpoint
+  if (urlPath === '/api/radar/professionals') {
+    const roleFilter = parsedUrl.searchParams.get('role');
+    let filtered = PROFESSIONALS;
+    if (roleFilter && roleFilter.toUpperCase() !== 'ALL') {
+      filtered = PROFESSIONALS.filter(p => p.role.toLowerCase() === roleFilter.toLowerCase());
+    }
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=60',
+    });
+    res.end(JSON.stringify({ professionals: filtered }));
+    return;
+  }
+
   // API Route: Spaces Radar Endpoints
   if (urlPath === '/api/radar/spaces') {
     const filterType = parsedUrl.searchParams.get('type');
     let filtered = SPACES;
-    if (filterType) {
+    if (filterType && filterType.toUpperCase() !== 'ALL') {
       filtered = SPACES.filter(s => s.type.toLowerCase() === filterType.toLowerCase());
     }
     res.writeHead(200, {
@@ -473,4 +702,5 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`[INFO] Agentic Professionals Root Gateway listening on port ${PORT}`);
   console.log(`[INFO] Spaces Radar API ready: http://localhost:${PORT}/api/radar/spaces`);
+  console.log(`[INFO] Professionals Radar API ready: http://localhost:${PORT}/api/radar/professionals`);
 });

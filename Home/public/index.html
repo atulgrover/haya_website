@@ -361,7 +361,7 @@
       background: #ffffff;
     }
 
-    /* Mode Switcher: Study Cafes vs AI Libraries */
+    /* Mode Switcher: Professionals vs Spaces */
     .mode-switcher {
       display: flex;
       background: var(--slate-100);
@@ -378,6 +378,203 @@
       font-size: 12px;
       font-weight: 700;
       color: var(--slate-600);
+      padding: 7px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      text-transform: lowercase;
+    }
+
+    .mode-btn:hover {
+      color: var(--slate-900);
+    }
+
+    .mode-btn.active {
+      background: #ffffff;
+      color: var(--slate-900);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Sub-filter chips row */
+    .subfilter-container {
+      display: flex;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .subfilter-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .subfilter-scroll {
+      display: flex;
+      gap: 5px;
+      min-width: max-content;
+    }
+
+    .subfilter-chip {
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      color: var(--slate-600);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .subfilter-chip:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+      border-color: var(--slate-300);
+    }
+
+    .subfilter-chip.active {
+      background: var(--slate-900);
+      color: #ffffff;
+      border-color: var(--slate-900);
+      font-weight: 700;
+    }
+
+    /* Professional Cards */
+    .pro-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pro-card:hover {
+      border-color: var(--brand-blue);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .pro-card.active {
+      border-color: var(--brand-blue);
+      background: #f0f9ff;
+      box-shadow: 0 0 0 1px var(--brand-blue);
+    }
+
+    .pro-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .pro-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      font-family: var(--font-heading);
+      color: #ffffff;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .pro-avatar.ip { background: linear-gradient(135deg, #d97706, #b45309); }
+    .pro-avatar.advocate { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+    .pro-avatar.cyber_specialist { background: linear-gradient(135deg, #059669, #047857); }
+    .pro-avatar.valuer { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+    .pro-avatar.researcher { background: linear-gradient(135deg, #0d9488, #0f766e); }
+    .pro-avatar.learner { background: linear-gradient(135deg, #0284c7, #0369a1); }
+
+    .pro-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pro-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pro-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate-900);
+      line-height: 1.3;
+    }
+
+    .verified-icon {
+      width: 14px;
+      height: 14px;
+      color: #0284c7;
+      flex-shrink: 0;
+    }
+
+    .pro-designation {
+      font-size: 11.5px;
+      color: var(--slate-600);
+      margin-top: 1px;
+    }
+
+    .pro-bench {
+      font-size: 11px;
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .role-badge {
+      font-size: 9.5px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .role-badge.ip { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .role-badge.advocate { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .role-badge.cyber_specialist { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+    .role-badge.valuer { background: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+    .role-badge.researcher { background: #f0fdfa; color: #0f766e; border: 1px solid #99f6e4; }
+    .role-badge.learner { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; }
+
+    /* Megamenu Space Item */
+    .megamenu-space-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--slate-100);
+      background: #ffffff;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .megamenu-space-item:hover {
+      background: var(--slate-50);
+      border-color: #bae6fd;
+      transform: translateY(-1px);
+    }
       padding: 8px 6px;
       border-radius: 7px;
       cursor: pointer;
@@ -751,6 +948,35 @@
       box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
     }
 
+    /* Custom Leaflet Markers for Professionals */
+    .custom-pro-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+      position: relative;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 11px;
+      color: #ffffff;
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .custom-pro-marker:hover {
+      transform: scale(1.22);
+      z-index: 1000 !important;
+    }
+
+    .custom-pro-marker.ip-marker { background: #d97706; border-color: #fde68a; box-shadow: 0 0 14px rgba(217, 119, 6, 0.5); }
+    .custom-pro-marker.advocate-marker { background: #2563eb; border-color: #bfdbfe; box-shadow: 0 0 14px rgba(37, 99, 235, 0.5); }
+    .custom-pro-marker.cyber-marker { background: #059669; border-color: #a7f3d0; box-shadow: 0 0 14px rgba(5, 150, 105, 0.5); }
+    .custom-pro-marker.valuer-marker { background: #7c3aed; border-color: #e9d5ff; box-shadow: 0 0 14px rgba(124, 58, 237, 0.5); }
+    .custom-pro-marker.researcher-marker { background: #0d9488; border-color: #99f6e4; box-shadow: 0 0 14px rgba(13, 148, 136, 0.5); }
+    .custom-pro-marker.learner-marker { background: #0284c7; border-color: #bae6fd; box-shadow: 0 0 14px rgba(2, 132, 199, 0.5); }
+
     .marker-pulse-ring {
       position: absolute;
       top: -6px;
@@ -952,7 +1178,83 @@
     <nav>
       <ul class="nav-links">
         
-        <!-- Megamenu 1: Agentic Skills -->
+        <!-- Megamenu 1: Agentic Spaces (FIRST TAB) -->
+        <li class="nav-item" id="nav-item-spaces">
+          <button type="button" class="nav-btn pill-active" id="nav-spaces-btn" aria-haspopup="true" onclick="showRadarView();">
+            <span>agentic spaces</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="megamenu-panel" style="width: 500px;">
+            <div class="megamenu-header-row">
+              <span class="megamenu-title">LEGAL CHAMBERS &amp; WORKSPACES</span>
+              <span class="megamenu-badge">Cafes &bull; Libraries Only</span>
+            </div>
+            
+            <!-- Quick Sub-switch: Cafes vs Libraries -->
+            <div style="display:flex;background:var(--slate-100);padding:3px;border-radius:8px;gap:3px;margin-bottom:12px;">
+              <button type="button" class="megamenu-switch-btn active" id="menu-switch-cafes" onclick="switchMegamenuSpaces('cafe'); event.stopPropagation();" style="flex:1;border:none;background:#ffffff;padding:6px 10px;border-radius:6px;font-family:var(--font-display);font-size:11.5px;font-weight:700;color:var(--slate-900);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;gap:6px;">
+                <span>☕ Work-From-Cafes</span>
+              </button>
+              <button type="button" class="megamenu-switch-btn" id="menu-switch-libs" onclick="switchMegamenuSpaces('library'); event.stopPropagation();" style="flex:1;border:none;background:none;padding:6px 10px;border-radius:6px;font-family:var(--font-display);font-size:11.5px;font-weight:700;color:var(--slate-600);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+                <span>📚 Law Libraries</span>
+              </button>
+            </div>
+
+            <!-- Spaces Quick List (Populated by JS or default) -->
+            <div id="megamenu-spaces-list" style="display:flex;flex-direction:column;gap:7px;max-height:230px;overflow-y:auto;margin-bottom:10px;">
+              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-bt-saket'); return false;" class="megamenu-space-item">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:16px;">☕</span>
+                  <div>
+                    <strong style="font-size:13px;color:#0f172a;display:block;">Blue Tokai Coffee Roasters</strong>
+                    <span style="font-size:11px;color:#64748b;">Delhi NCR &bull; 350 meters from Saket District Court</span>
+                  </div>
+                </div>
+                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
+              </a>
+              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-sb-bkc'); return false;" class="megamenu-space-item">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:16px;">☕</span>
+                  <div>
+                    <strong style="font-size:13px;color:#0f172a;display:block;">Starbucks Reserve &mdash; BKC</strong>
+                    <span style="font-size:11px;color:#64748b;">Mumbai &bull; 400 meters from NCLT Mumbai Benches 1&ndash;5</span>
+                  </div>
+                </div>
+                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
+              </a>
+              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-tw-vidhana'); return false;" class="megamenu-space-item">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:16px;">☕</span>
+                  <div>
+                    <strong style="font-size:13px;color:#0f172a;display:block;">Third Wave Coffee Roasters</strong>
+                    <span style="font-size:11px;color:#64748b;">Bengaluru &bull; Direct Metro Access to Karnataka High Court</span>
+                  </div>
+                </div>
+                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
+              </a>
+              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('cafe-roastery-hyd'); return false;" class="megamenu-space-item">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:16px;">☕</span>
+                  <div>
+                    <strong style="font-size:13px;color:#0f172a;display:block;">Roastery Coffee House &mdash; Banjara Hills</strong>
+                    <span style="font-size:11px;color:#64748b;">Hyderabad &bull; 15 min drive from High Court &amp; NCLT</span>
+                  </div>
+                </div>
+                <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">300+ Mbps</span>
+              </a>
+            </div>
+
+            <!-- Megamenu Footer Row -->
+            <div style="border-top:1px solid var(--slate-100);padding-top:10px;display:flex;align-items:center;justify-content:space-between;font-size:11.5px;">
+              <span style="color:var(--slate-500);font-size:11px;">High-speed Wi-Fi, silent chambers, proximity to courts</span>
+              <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); return false;" style="font-weight:700;color:var(--brand-blue);display:inline-flex;align-items:center;gap:3px;">
+                Open Spaces Radar Map &rarr;
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Megamenu 2: Agentic Skills -->
         <li class="nav-item" id="nav-item-skills">
           <button type="button" class="nav-btn" aria-haspopup="true">
             <span>agentic skills</span>
@@ -982,7 +1284,7 @@
           </div>
         </li>
 
-        <!-- Megamenu 2: Agentic Cohorts (Linking to Live Sites) -->
+        <!-- Megamenu 3: Agentic Cohorts (Linking to Live Sites) -->
         <li class="nav-item" id="nav-item-cohorts">
           <button type="button" class="nav-btn" aria-haspopup="true">
             <span>agentic cohorts</span>
@@ -1019,14 +1321,7 @@
           </div>
         </li>
 
-        <!-- Active Radar Pill: Agentic Spaces -->
-        <li class="nav-item">
-          <a href="#" class="nav-btn pill-active" id="nav-spaces-btn" onclick="showRadarView(); return false;">
-            <span>agentic spaces</span>
-          </a>
-        </li>
-
-        <!-- Megamenu 3: Agentic Events -->
+        <!-- Megamenu 4: Agentic Events -->
         <li class="nav-item" id="nav-item-events">
           <button type="button" class="nav-btn" aria-haspopup="true">
             <span>agentic events</span>
@@ -1084,21 +1379,44 @@
       <aside class="sidebar" id="sidebar">
         
         <div class="sidebar-header">
-          <!-- Mode Switcher: Study Cafes vs AI Libraries -->
-          <div class="mode-switcher">
-            <button type="button" class="mode-btn active" id="mode-cafes-btn" onclick="setSpacesFilter('cafe')">
-              <span>☕ study cafes (8)</span>
+          <!-- Primary Mode Switcher: Professionals vs Spaces -->
+          <div class="mode-switcher" id="radar-mode-switcher">
+            <button type="button" class="mode-btn active" id="mode-pros-btn" onclick="switchRadarMode('professionals')">
+              <span>👥 professionals (<span id="pros-count-tab">10</span>)</span>
             </button>
-            <button type="button" class="mode-btn" id="mode-libs-btn" onclick="setSpacesFilter('library')">
-              <span>📚 ai libraries (8)</span>
+            <button type="button" class="mode-btn" id="mode-spaces-btn" onclick="switchRadarMode('spaces')">
+              <span>🏛️ spaces (<span id="spaces-count-tab">16</span>)</span>
             </button>
+          </div>
+
+          <!-- Secondary Sub-Filter Row: Changes based on active mode -->
+          <!-- 1. For Professionals: Role Chips -->
+          <div class="subfilter-container" id="subfilter-pros-container">
+            <div class="subfilter-scroll">
+              <button type="button" class="subfilter-chip active" data-role="ALL" onclick="setProfessionalRoleFilter('ALL')">All Roles</button>
+              <button type="button" class="subfilter-chip" data-role="ip" onclick="setProfessionalRoleFilter('ip')">Insolvency (IP)</button>
+              <button type="button" class="subfilter-chip" data-role="advocate" onclick="setProfessionalRoleFilter('advocate')">Advocates</button>
+              <button type="button" class="subfilter-chip" data-role="cyber_specialist" onclick="setProfessionalRoleFilter('cyber_specialist')">Cyber &amp; Forensics</button>
+              <button type="button" class="subfilter-chip" data-role="valuer" onclick="setProfessionalRoleFilter('valuer')">Valuers</button>
+              <button type="button" class="subfilter-chip" data-role="researcher" onclick="setProfessionalRoleFilter('researcher')">Researchers</button>
+              <button type="button" class="subfilter-chip" data-role="learner" onclick="setProfessionalRoleFilter('learner')">Learners</button>
+            </div>
+          </div>
+
+          <!-- 2. For Spaces: All / Cafes / Libraries Chips -->
+          <div class="subfilter-container" id="subfilter-spaces-container" style="display:none;">
+            <div class="subfilter-scroll">
+              <button type="button" class="subfilter-chip active" data-space-type="ALL" onclick="setSpacesTypeFilter('ALL')">All Spaces (16)</button>
+              <button type="button" class="subfilter-chip" data-space-type="cafe" onclick="setSpacesTypeFilter('cafe')">☕ Study Cafes (8)</button>
+              <button type="button" class="subfilter-chip" data-space-type="library" onclick="setSpacesTypeFilter('library')">📚 AI Libraries (8)</button>
+            </div>
           </div>
 
           <!-- Search Box -->
           <div class="search-box" id="search-box-container">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="search-input" placeholder="search cafes, libraries, cities, ai books..." oninput="handleSearchSpaces(this.value)" />
-            <button type="button" id="search-clear-btn" class="search-clear-btn" onclick="clearSpacesSearch()">&times;</button>
+            <input type="text" id="search-input" placeholder="search registered professionals, roles, chambers, bars..." oninput="handleSearch(this.value)" />
+            <button type="button" id="search-clear-btn" class="search-clear-btn" onclick="clearSearch()">&times;</button>
           </div>
 
           <!-- Filter Row: City Select + Reset -->
@@ -1123,9 +1441,9 @@
           <div class="stats-bar">
             <span class="stats-pill">
               <span class="status-pulse"></span>
-              <span id="spaces-count-display">8 verified spaces</span>
+              <span id="results-count-display">10 registered professionals</span>
             </span>
-            <span id="spaces-city-display" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-500);">National Radar</span>
+            <span id="results-city-display" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-500);">National Radar</span>
           </div>
         </div>
 
@@ -1239,33 +1557,41 @@
     </div>
   </div>
 
-  <!-- ─── JAVASCRIPT ENGINE (PORTED FROM 3002 RADAR.JS) ─── -->
+  <!-- ─── JAVASCRIPT ENGINE (DUAL RADAR: PROFESSIONALS & SPACES) ─── -->
   <script>
     (function () {
       'use strict';
 
-      // State
-      let activeMode = 'cafe'; // 'cafe' or 'library'
+      // ─── State ───
+      let radarMode = 'professionals'; // 'professionals' or 'spaces'
+      let activeProRole = 'ALL';
+      let activeSpaceType = 'ALL';
+      let rawProfessionals = [];
+      let filteredProfessionals = [];
       let rawSpaces = [];
       let filteredSpaces = [];
-      let selectedSpaceId = null;
+      let selectedItemId = null;
       let bookmarkedIds = new Set();
       let map = null;
       let markers = [];
       let isSidebarCollapsed = false;
       let isMobileMapView = false;
 
-      // DOM References
+      // ─── DOM References ───
       const sidebar = document.getElementById('sidebar');
       const cardList = document.getElementById('card-list');
-      const modeCafesBtn = document.getElementById('mode-cafes-btn');
-      const modeLibsBtn = document.getElementById('mode-libs-btn');
+      const modeProsBtn = document.getElementById('mode-pros-btn');
+      const modeSpacesBtn = document.getElementById('mode-spaces-btn');
+      const prosCountTab = document.getElementById('pros-count-tab');
+      const spacesCountTab = document.getElementById('spaces-count-tab');
+      const subfilterPros = document.getElementById('subfilter-pros-container');
+      const subfilterSpaces = document.getElementById('subfilter-spaces-container');
       const searchInput = document.getElementById('search-input');
       const searchBoxContainer = document.getElementById('search-box-container');
       const cityFilter = document.getElementById('city-filter');
       const resetFiltersBtn = document.getElementById('reset-filters-btn');
-      const spacesCountDisplay = document.getElementById('spaces-count-display');
-      const spacesCityDisplay = document.getElementById('spaces-city-display');
+      const resultsCountDisplay = document.getElementById('results-count-display');
+      const resultsCityDisplay = document.getElementById('results-city-display');
       const inspectorDrawer = document.getElementById('inspector-drawer');
       const mobilePinPreview = document.getElementById('mobile-pin-preview');
       const radarView = document.getElementById('radar-view');
@@ -1274,7 +1600,7 @@
 
       // Initialize Bookmarks from LocalStorage
       try {
-        const stored = localStorage.getItem('agentic_spaces_bookmarks');
+        const stored = localStorage.getItem('agentic_portal_bookmarks');
         if (stored) bookmarkedIds = new Set(JSON.parse(stored));
       } catch (e) {}
 
@@ -1282,7 +1608,7 @@
       function initMap() {
         if (map) return;
         
-        // India Center
+        // Center of India
         map = L.map('leaflet-map', {
           zoomControl: false,
           attributionControl: false
@@ -1294,7 +1620,7 @@
           subdomains: 'abcd'
         }).addTo(map);
 
-        // Zoom controls at top right
+        // Zoom controls top right
         L.control.zoom({ position: 'topright' }).addTo(map);
 
         // Map Click closes inspector if open
@@ -1304,24 +1630,45 @@
         });
       }
 
-      // ─── 2. Data Fetching ───
-      async function loadSpacesData() {
-        cardList.innerHTML = `
-          <div style="padding:40px 20px;text-align:center;color:#64748b;font-size:13px;font-family:var(--font-mono);">
-            <span class="status-pulse" style="display:inline-block;margin-right:6px;"></span>
-            Connecting to Agentic Spaces Radar API...
-          </div>
-        `;
+      // ─── 2. Data Fetching (Professionals & Spaces in Parallel) ───
+      async function loadRadarData() {
+        if (cardList) {
+          cardList.innerHTML = `
+            <div style="padding:40px 20px;text-align:center;color:#64748b;font-size:13px;font-family:var(--font-mono);">
+              <span class="status-pulse" style="display:inline-block;margin-right:6px;"></span>
+              Connecting to Sovereign Radar Network...
+            </div>
+          `;
+        }
 
-        try {
-          const res = await fetch('/api/radar/spaces');
-          if (!res.ok) throw new Error('Network response not ok: ' + res.status);
-          const data = await res.json();
-          rawSpaces = data.spaces || [];
-        } catch (err) {
-          console.warn('[WARN] API fetch failed, using built-in fallback spaces:', err);
+        const [prosResult, spacesResult] = await Promise.allSettled([
+          fetch('/api/radar/professionals').then(r => {
+            if (!r.ok) throw new Error(r.status);
+            return r.json();
+          }),
+          fetch('/api/radar/spaces').then(r => {
+            if (!r.ok) throw new Error(r.status);
+            return r.json();
+          })
+        ]);
+
+        if (prosResult.status === 'fulfilled' && prosResult.value && prosResult.value.professionals) {
+          rawProfessionals = prosResult.value.professionals;
+        } else {
+          console.warn('[WARN] Professionals API fetch fallback:', prosResult.reason);
+          rawProfessionals = getBuiltInFallbackProfessionals();
+        }
+
+        if (spacesResult.status === 'fulfilled' && spacesResult.value && spacesResult.value.spaces) {
+          rawSpaces = spacesResult.value.spaces;
+        } else {
+          console.warn('[WARN] Spaces API fetch fallback:', spacesResult.reason);
           rawSpaces = getBuiltInFallbackSpaces();
         }
+
+        // Update counts in mode switcher tabs
+        if (prosCountTab) prosCountTab.textContent = rawProfessionals.length;
+        if (spacesCountTab) spacesCountTab.textContent = rawSpaces.length;
 
         applyFilters();
       }
@@ -1331,56 +1678,146 @@
         const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
         const city = cityFilter ? cityFilter.value : 'ALL';
 
-        // Toggle search clear button
         if (searchBoxContainer) {
           searchBoxContainer.classList.toggle('has-query', query.length > 0);
         }
 
-        const hasActiveFilters = query.length > 0 || city !== 'ALL';
+        const hasActiveFilters = query.length > 0 || city !== 'ALL' || 
+          (radarMode === 'professionals' && activeProRole !== 'ALL') ||
+          (radarMode === 'spaces' && activeSpaceType !== 'ALL');
+
         if (resetFiltersBtn) resetFiltersBtn.style.display = hasActiveFilters ? 'block' : 'none';
 
-        filteredSpaces = rawSpaces.filter(s => {
-          if (s.type !== activeMode) return false;
-          if (city !== 'ALL' && s.city !== city) return false;
-          if (query) {
-            const matchName = (s.name || '').toLowerCase().includes(query);
-            const matchCity = (s.city || '').toLowerCase().includes(query);
-            const matchLoc = (s.location || '').toLowerCase().includes(query);
-            const matchProx = (s.proximity || '').toLowerCase().includes(query);
-            const matchSpec = (s.specialty || '').toLowerCase().includes(query);
-            const matchBooks = (s.aiBooks || s.ai_books || '').toLowerCase().includes(query);
-            if (!matchName && !matchCity && !matchLoc && !matchProx && !matchSpec && !matchBooks) {
-              return false;
+        if (resultsCityDisplay) {
+          resultsCityDisplay.textContent = city === 'ALL' ? 'National Radar' : city;
+        }
+
+        if (radarMode === 'professionals') {
+          filteredProfessionals = rawProfessionals.filter(p => {
+            if (activeProRole !== 'ALL' && p.role !== activeProRole) return false;
+            if (city !== 'ALL' && p.city !== city) return false;
+            if (query) {
+              const matchName = (p.name || '').toLowerCase().includes(query);
+              const matchDesig = (p.designation || '').toLowerCase().includes(query);
+              const matchRole = (p.role || '').toLowerCase().includes(query);
+              const matchFirm = (p.firm || '').toLowerCase().includes(query);
+              const matchBench = (p.bench || '').toLowerCase().includes(query);
+              const matchCity = (p.city || '').toLowerCase().includes(query);
+              const matchReg = (p.regNo || '').toLowerCase().includes(query);
+              const matchSpec = (p.specialization || '').toLowerCase().includes(query);
+              const matchBio = (p.bio || '').toLowerCase().includes(query);
+              if (!matchName && !matchDesig && !matchRole && !matchFirm && !matchBench && !matchCity && !matchReg && !matchSpec && !matchBio) {
+                return false;
+              }
             }
+            return true;
+          });
+
+          if (resultsCountDisplay) {
+            resultsCountDisplay.textContent = `${filteredProfessionals.length} registered professionals`;
           }
-          return true;
-        });
 
-        // Update counts in header
-        const totalCafes = rawSpaces.filter(s => s.type === 'cafe').length;
-        const totalLibs = rawSpaces.filter(s => s.type === 'library').length;
-        if (modeCafesBtn) modeCafesBtn.innerHTML = `<span>☕ study cafes (${totalCafes})</span>`;
-        if (modeLibsBtn) modeLibsBtn.innerHTML = `<span>📚 ai libraries (${totalLibs})</span>`;
+          renderProfessionalCards();
+          renderProfessionalMarkers();
 
-        if (spacesCountDisplay) {
-          spacesCountDisplay.textContent = `${filteredSpaces.length} verified ${activeMode === 'cafe' ? 'cafes' : 'libraries'}`;
+        } else {
+          // Spaces Mode
+          filteredSpaces = rawSpaces.filter(s => {
+            if (activeSpaceType !== 'ALL' && s.type !== activeSpaceType) return false;
+            if (city !== 'ALL' && s.city !== city) return false;
+            if (query) {
+              const matchName = (s.name || '').toLowerCase().includes(query);
+              const matchCity = (s.city || '').toLowerCase().includes(query);
+              const matchLoc = (s.location || '').toLowerCase().includes(query);
+              const matchProx = (s.proximity || '').toLowerCase().includes(query);
+              const matchSpec = (s.specialty || '').toLowerCase().includes(query);
+              const matchBooks = (s.aiBooks || s.ai_books || '').toLowerCase().includes(query);
+              if (!matchName && !matchCity && !matchLoc && !matchProx && !matchSpec && !matchBooks) {
+                return false;
+              }
+            }
+            return true;
+          });
+
+          if (resultsCountDisplay) {
+            resultsCountDisplay.textContent = `${filteredSpaces.length} verified spaces`;
+          }
+
+          renderSpaceCards();
+          renderSpaceMarkers();
         }
-        if (spacesCityDisplay) {
-          spacesCityDisplay.textContent = city === 'ALL' ? 'National Radar' : city;
-        }
-
-        renderCards();
-        renderMapMarkers();
       }
 
-      function renderCards() {
+      // ─── 4A. Render Professional Cards ───
+      function renderProfessionalCards() {
+        if (!cardList) return;
+
+        if (filteredProfessionals.length === 0) {
+          cardList.innerHTML = `
+            <div style="padding:40px 20px;text-align:center;color:#64748b;font-size:13px;">
+              <div style="font-size:28px;margin-bottom:8px;">👥</div>
+              No registered professionals match your filters.
+              <br><button type="button" onclick="resetAllFilters()" style="margin-top:12px;background:#0f172a;color:#ffffff;border:none;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Reset Filters</button>
+            </div>
+          `;
+          return;
+        }
+
+        cardList.innerHTML = filteredProfessionals.map(p => {
+          const isSelected = p.id === selectedItemId;
+          const isBookmarked = bookmarkedIds.has(p.id);
+          const roleLabel = getRoleLabel(p.role);
+
+          return `
+            <article class="pro-card ${isSelected ? 'active' : ''}" id="card-${p.id}" onclick="selectProfessional('${p.id}')">
+              <div class="pro-card-header">
+                <div class="pro-avatar ${escapeHTML(p.role)}">${escapeHTML(p.initials || p.name.substring(0,2).toUpperCase())}</div>
+                <div class="pro-meta">
+                  <div class="pro-name-row">
+                    <h3 class="pro-name">${escapeHTML(p.name)}</h3>
+                    ${p.isVerified ? `
+                      <svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor" title="Verified Practitioner">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                    ` : ''}
+                    <span class="role-badge ${escapeHTML(p.role)}">${roleLabel}</span>
+                  </div>
+                  <div class="pro-designation">${escapeHTML(p.designation)} &bull; <strong style="color:#0f172a;">${escapeHTML(p.firm)}</strong></div>
+                  <div class="pro-bench">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-6-5.5-6-10.5A6 6 0 0 1 18 10.5c0 5-6 10.5-6 10.5z"/><circle cx="12" cy="10.5" r="2"/></svg>
+                    <span>${escapeHTML(p.bench || p.city)}</span>
+                  </div>
+                </div>
+                <button type="button" class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark(event, '${p.id}')" title="Pin practitioner to your consultation list">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                </button>
+              </div>
+
+              <div class="card-metrics">
+                <span class="metric-tag" style="background:#f1f5f9;color:#334155;font-weight:600;">📜 ${escapeHTML(p.regNo || 'Enrolled Sovereign')}</span>
+                <span class="metric-tag wifi">⚡ ${escapeHTML(p.activeMandates ? `${p.activeMandates} Active Mandates` : 'Available')}</span>
+              </div>
+
+              <div class="card-actions-row">
+                <span style="font-size:11px;color:#64748b;font-family:var(--font-mono);">${escapeHTML(p.city)}, ${escapeHTML(p.state || 'India')}</span>
+                <span class="view-dossier-link">
+                  View Dossier &rarr;
+                </span>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // ─── 4B. Render Space Cards ───
+      function renderSpaceCards() {
         if (!cardList) return;
 
         if (filteredSpaces.length === 0) {
           cardList.innerHTML = `
             <div style="padding:40px 20px;text-align:center;color:#64748b;font-size:13px;">
-              <div style="font-size:28px;margin-bottom:8px;">🔍</div>
-              No verified ${activeMode === 'cafe' ? 'study cafes' : 'AI libraries'} match your filters.
+              <div style="font-size:28px;margin-bottom:8px;">🏛️</div>
+              No verified spaces match your filters.
               <br><button type="button" onclick="resetAllFilters()" style="margin-top:12px;background:#0f172a;color:#ffffff;border:none;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;">Reset Filters</button>
             </div>
           `;
@@ -1388,7 +1825,7 @@
         }
 
         cardList.innerHTML = filteredSpaces.map(s => {
-          const isSelected = s.id === selectedSpaceId;
+          const isSelected = s.id === selectedItemId;
           const isBookmarked = bookmarkedIds.has(s.id);
           const isCafe = s.type === 'cafe';
 
@@ -1429,10 +1866,66 @@
         }).join('');
       }
 
-      function renderMapMarkers() {
+      // ─── 5A. Render Professional Markers on Map ───
+      function renderProfessionalMarkers() {
         if (!map) return;
 
-        // Clear existing markers
+        markers.forEach(m => map.removeLayer(m));
+        markers = [];
+
+        if (filteredProfessionals.length === 0) return;
+
+        const bounds = L.latLngBounds();
+
+        filteredProfessionals.forEach(p => {
+          const lat = parseFloat(p.latitude);
+          const lng = parseFloat(p.longitude);
+          if (isNaN(lat) || isNaN(lng)) return;
+
+          bounds.extend([lat, lng]);
+
+          const initials = escapeHTML(p.initials || p.name.substring(0,2).toUpperCase());
+          const roleClass = `${p.role}-marker`;
+
+          const iconHtml = `
+            <div class="custom-pro-marker ${roleClass}" style="width:34px;height:34px;">
+              <span class="marker-pulse-ring"></span>
+              <span>${initials}</span>
+            </div>
+          `;
+
+          const customIcon = L.divIcon({
+            html: iconHtml,
+            className: '',
+            iconSize: [34, 34],
+            iconAnchor: [17, 17],
+            popupAnchor: [0, -18]
+          });
+
+          const marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
+
+          marker.on('click', () => {
+            selectProfessional(p.id, false);
+            showMobileProPreview(p);
+          });
+
+          marker.bindTooltip(`<strong>${escapeHTML(p.name)}</strong><br><span style="font-size:11px;color:#0284c7;">${escapeHTML(p.designation)} &bull; ${escapeHTML(p.city)}</span>`, {
+            direction: 'top',
+            offset: [0, -18]
+          });
+
+          markers.push(marker);
+        });
+
+        if (markers.length > 0) {
+          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
+        }
+      }
+
+      // ─── 5B. Render Space Markers on Map ───
+      function renderSpaceMarkers() {
+        if (!map) return;
+
         markers.forEach(m => map.removeLayer(m));
         markers = [];
 
@@ -1470,7 +1963,6 @@
             showMobilePinPreview(s);
           });
 
-          // Popup on hover/click
           marker.bindTooltip(`<strong>${escapeHTML(s.name)}</strong><br><span style="font-size:11px;color:#0284c7;">⚡ ${escapeHTML(s.wifiSpeed || '300+ Mbps')}</span>`, {
             direction: 'top',
             offset: [0, -18]
@@ -1479,19 +1971,162 @@
           markers.push(marker);
         });
 
-        // Fit map bounds if there are spaces
         if (markers.length > 0) {
           map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
         }
       }
 
-      // ─── 4. Space Selection & Inspector Drawer ───
+      // ─── 6A. Selection & Dossier: Professional ───
+      window.selectProfessional = function (id, panMap = true) {
+        selectedItemId = id;
+        const pro = rawProfessionals.find(p => p.id === id);
+        if (!pro) return;
+
+        document.querySelectorAll('.pro-card').forEach(c => c.classList.remove('active'));
+        const activeCard = document.getElementById(`card-${id}`);
+        if (activeCard) {
+          activeCard.classList.add('active');
+          activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        if (panMap && map) {
+          const lat = parseFloat(pro.latitude);
+          const lng = parseFloat(pro.longitude);
+          if (!isNaN(lat) && !isNaN(lng)) {
+            map.flyTo([lat, lng], 13, { duration: 0.8 });
+          }
+        }
+
+        openProfessionalInspector(pro);
+      };
+
+      function openProfessionalInspector(pro) {
+        if (!inspectorDrawer) return;
+
+        const isBookmarked = bookmarkedIds.has(pro.id);
+        const roleLabel = getRoleLabel(pro.role);
+
+        inspectorDrawer.innerHTML = `
+          <div class="inspector-drawer-header">
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                <button type="button" class="mobile-back-btn" onclick="closeInspector()">
+                  &larr; Back
+                </button>
+                <span class="role-badge ${escapeHTML(pro.role)}">${roleLabel}</span>
+                ${pro.isVerified ? `
+                  <span style="font-size:10px;font-family:var(--font-mono);background:#ecfdf5;color:#047857;padding:2px 6px;border-radius:4px;font-weight:700;">
+                    ✓ VERIFIED
+                  </span>
+                ` : ''}
+              </div>
+              <h2 style="font-size:17.5px;font-weight:800;color:#0f172a;line-height:1.3;margin:0;">
+                ${escapeHTML(pro.name)}
+              </h2>
+              <div style="font-size:12px;color:var(--slate-600);margin-top:2px;">
+                ${escapeHTML(pro.designation)} &bull; <strong>${escapeHTML(pro.firm)}</strong>
+              </div>
+              <div style="font-size:11.5px;color:#0284c7;margin-top:3px;display:flex;align-items:center;gap:4px;">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-6-5.5-6-10.5A6 6 0 0 1 18 10.5c0 5-6 10.5-6 10.5z"/><circle cx="12" cy="10.5" r="2"/></svg>
+                <span>${escapeHTML(pro.bench || pro.city)}</span>
+              </div>
+            </div>
+            <button type="button" class="drawer-close-btn" onclick="closeInspector()" title="Close dossier">&times;</button>
+          </div>
+
+          <div class="inspector-drawer-body">
+            
+            <!-- Professional Credentials Grid -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="grid-column: span 2;">
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Statutory Registration</span>
+                <strong style="font-size:12px;font-family:var(--font-mono);color:#0f172a;word-break:break-all;">${escapeHTML(pro.regNo || 'Direct Enrolled')}</strong>
+              </div>
+              <div>
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Primary Jurisdiction</span>
+                <span style="font-size:12.5px;font-weight:600;color:#0284c7;">${escapeHTML(pro.city)}, ${escapeHTML(pro.state || 'India')}</span>
+              </div>
+              <div>
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Active Mandates</span>
+                <strong style="font-size:12.5px;font-family:var(--font-mono);color:#059669;">⚡ ${escapeHTML(pro.activeMandates ? `${pro.activeMandates} Mandates` : 'Available')}</strong>
+              </div>
+              <div style="grid-column: span 2;border-top:1px solid #e2e8f0;padding-top:10px;">
+                <span style="font-size:10px;font-family:var(--font-mono);color:#64748b;display:block;text-transform:uppercase;">Firm / Chamber Association</span>
+                <span style="font-size:12.5px;color:#334155;">🏛️ ${escapeHTML(pro.firm)}</span>
+              </div>
+            </div>
+
+            <!-- Specialization & Experience Bio -->
+            <div>
+              <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px;">
+                Specialization &amp; Agentic Practice
+              </span>
+              <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid #e2e8f0;font-size:12.5px;color:#334155;line-height:1.5;">
+                <p><strong>Domain Focus:</strong> ${escapeHTML(pro.specialization || 'Comprehensive legal & restructuring advisory.')}</p>
+                <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
+                  <strong>Dossier Bio:</strong> ${escapeHTML(pro.bio || 'Registered professional on the sovereign agentic network.')}
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct Contact Details -->
+            <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:12px;">
+              <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#64748b;text-transform:uppercase;display:block;margin-bottom:6px;">Chamber Contact Coordinates</span>
+              <div style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#475569;">
+                <div>📧 <a href="mailto:${escapeHTML(pro.email)}" style="color:#0284c7;text-decoration:none;">${escapeHTML(pro.email || 'contact@agenticprofessionals.net')}</a></div>
+                <div>📞 <span style="font-family:var(--font-mono);">${escapeHTML(pro.phone || '+91 Practice Office')}</span></div>
+              </div>
+            </div>
+
+            <!-- Bookmark Button -->
+            <button type="button" onclick="toggleBookmark(event, '${pro.id}')" style="width:100%;padding:10px;border-radius:10px;border:1px solid #cbd5e1;background:${isBookmarked ? '#0f172a' : '#ffffff'};color:${isBookmarked ? '#ffffff' : '#0f172a'};font-family:var(--font-display);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.15s;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="${isBookmarked ? '#f59e0b' : 'none'}" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+              <span>${isBookmarked ? 'Pinned to Consultation List' : 'Pin to My Consultations'}</span>
+            </button>
+
+            <!-- Actions CTAs -->
+            <div style="display:flex;gap:8px;margin-top:auto;padding-top:12px;border-top:1px solid #f1f5f9;">
+              <a href="mailto:${escapeHTML(pro.email)}" style="flex:1;text-align:center;background:#0f172a;color:#ffffff;font-family:var(--font-display);font-weight:700;font-size:12px;padding:10px;border-radius:10px;text-decoration:none;transition:background 0.15s;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:4px;">
+                <span>Email Chambers</span>
+              </a>
+              <button type="button" onclick="openReservationModal('${escapeHTML(pro.name)}', 'CONSULTATION')" style="flex:1;text-align:center;background:#0284c7;color:#ffffff;border:none;font-family:var(--font-display);font-weight:700;font-size:12px;padding:10px;border-radius:10px;cursor:pointer;transition:background 0.15s;text-transform:uppercase;">
+                Book Retainer &rarr;
+              </button>
+            </div>
+
+          </div>
+        `;
+
+        inspectorDrawer.classList.add('open');
+      }
+
+      function showMobileProPreview(pro) {
+        if (!mobilePinPreview || window.innerWidth > 900) return;
+        const roleLabel = getRoleLabel(pro.role);
+
+        mobilePinPreview.innerHTML = `
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+            <div>
+              <span class="role-badge ${escapeHTML(pro.role)}">${roleLabel}</span>
+              <h4 style="font-size:14px;font-weight:700;margin:4px 0 2px 0;">${escapeHTML(pro.name)}</h4>
+              <p style="font-size:11.5px;color:#0284c7;margin:0;">${escapeHTML(pro.bench || pro.city)}</p>
+            </div>
+            <button type="button" onclick="this.parentElement.parentElement.style.display='none'" style="background:none;border:none;font-size:18px;cursor:pointer;color:#94a3b8;">&times;</button>
+          </div>
+          <div style="margin-top:10px;display:flex;gap:6px;">
+            <button type="button" onclick="selectProfessional('${pro.id}')" class="signin-btn" style="flex:1;padding:6px;font-size:11.5px;">View Dossier</button>
+            <a href="mailto:${escapeHTML(pro.email)}" class="action-btn" style="background:#f1f5f9;font-size:11.5px;padding:6px 10px;">Email</a>
+          </div>
+        `;
+        mobilePinPreview.style.display = 'block';
+      }
+
+      // ─── 6B. Selection & Dossier: Space ───
       window.selectSpace = function (id, panMap = true) {
-        selectedSpaceId = id;
+        selectedItemId = id;
         const space = rawSpaces.find(s => s.id === id);
         if (!space) return;
 
-        // Highlight active card and scroll into view
         document.querySelectorAll('.space-card').forEach(c => c.classList.remove('active'));
         const activeCard = document.getElementById(`card-${id}`);
         if (activeCard) {
@@ -1499,7 +2134,6 @@
           activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Pan map
         if (panMap && map) {
           const lat = parseFloat(space.latitude);
           const lng = parseFloat(space.longitude);
@@ -1508,10 +2142,10 @@
           }
         }
 
-        openInspector(space);
+        openSpaceInspector(space);
       };
 
-      function openInspector(space) {
+      function openSpaceInspector(space) {
         if (!inspectorDrawer) return;
 
         const isCafe = space.type === 'cafe';
@@ -1631,14 +2265,14 @@
             <button type="button" onclick="this.parentElement.parentElement.style.display='none'" style="background:none;border:none;font-size:18px;cursor:pointer;color:#94a3b8;">&times;</button>
           </div>
           <div style="margin-top:10px;display:flex;gap:6px;">
-            <button type="button" onclick="openInspector(rawSpaces.find(s=>s.id==='${space.id}'))" class="signin-btn" style="flex:1;padding:6px;font-size:11.5px;">View Dossier</button>
+            <button type="button" onclick="selectSpace('${space.id}')" class="signin-btn" style="flex:1;padding:6px;font-size:11.5px;">View Dossier</button>
             <a href="${escapeHTML(space.directionsUrl || 'https://maps.google.com')}" target="_blank" class="action-btn" style="background:#f1f5f9;font-size:11.5px;padding:6px 10px;">Directions</a>
           </div>
         `;
         mobilePinPreview.style.display = 'block';
       }
 
-      // ─── 5. Bookmarks Toggle ───
+      // ─── 7. Bookmarks Toggle ───
       window.toggleBookmark = function (e, id) {
         if (e) e.stopPropagation();
         if (bookmarkedIds.has(id)) {
@@ -1647,28 +2281,98 @@
           bookmarkedIds.add(id);
         }
         try {
-          localStorage.setItem('agentic_spaces_bookmarks', JSON.stringify(Array.from(bookmarkedIds)));
+          localStorage.setItem('agentic_portal_bookmarks', JSON.stringify(Array.from(bookmarkedIds)));
         } catch (err) {}
-        renderCards();
-        const space = rawSpaces.find(s => s.id === id);
-        if (space && inspectorDrawer && inspectorDrawer.classList.contains('open')) {
-          openInspector(space);
+
+        if (radarMode === 'professionals') {
+          renderProfessionalCards();
+          const pro = rawProfessionals.find(p => p.id === id);
+          if (pro && inspectorDrawer && inspectorDrawer.classList.contains('open')) {
+            openProfessionalInspector(pro);
+          }
+        } else {
+          renderSpaceCards();
+          const space = rawSpaces.find(s => s.id === id);
+          if (space && inspectorDrawer && inspectorDrawer.classList.contains('open')) {
+            openSpaceInspector(space);
+          }
         }
       };
 
-      // ─── 6. Controls: Mode, Search, City, Collapse, Mobile ───
-      window.setSpacesFilter = function (mode) {
-        activeMode = mode;
-        if (modeCafesBtn) modeCafesBtn.classList.toggle('active', mode === 'cafe');
-        if (modeLibsBtn) modeLibsBtn.classList.toggle('active', mode === 'library');
+      // ─── 8. Controls: Mode, Subfilter, Search, City, Collapse ───
+      window.switchRadarMode = function (mode) {
+        radarMode = mode;
+        if (modeProsBtn) modeProsBtn.classList.toggle('active', mode === 'professionals');
+        if (modeSpacesBtn) modeSpacesBtn.classList.toggle('active', mode === 'spaces');
+
+        if (subfilterPros) subfilterPros.style.display = mode === 'professionals' ? 'flex' : 'none';
+        if (subfilterSpaces) subfilterSpaces.style.display = mode === 'spaces' ? 'flex' : 'none';
+
+        if (searchInput) {
+          searchInput.placeholder = mode === 'professionals' 
+            ? 'search registered professionals, roles, chambers, bars...'
+            : 'search cafes, libraries, cities, ai books...';
+        }
+
+        closeInspector();
         applyFilters();
       };
 
-      window.handleSearchSpaces = function () {
+      window.setProfessionalRoleFilter = function (role) {
+        activeProRole = role;
+        document.querySelectorAll('#subfilter-pros-container .subfilter-chip').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-role') === role);
+        });
         applyFilters();
       };
 
-      window.clearSpacesSearch = function () {
+      window.setSpacesTypeFilter = function (type) {
+        activeSpaceType = type;
+        document.querySelectorAll('#subfilter-spaces-container .subfilter-chip').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-space-type') === type);
+        });
+        applyFilters();
+      };
+
+      window.switchMegamenuSpaces = function (type) {
+        const cafeBtn = document.getElementById('menu-switch-cafes');
+        const libBtn = document.getElementById('menu-switch-libs');
+        if (cafeBtn) {
+          cafeBtn.style.background = type === 'cafe' ? '#ffffff' : 'none';
+          cafeBtn.style.color = type === 'cafe' ? 'var(--slate-900)' : 'var(--slate-600)';
+          cafeBtn.style.boxShadow = type === 'cafe' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none';
+        }
+        if (libBtn) {
+          libBtn.style.background = type === 'library' ? '#ffffff' : 'none';
+          libBtn.style.color = type === 'library' ? 'var(--slate-900)' : 'var(--slate-600)';
+          libBtn.style.boxShadow = type === 'library' ? '0 1px 3px rgba(0,0,0,0.06)' : 'none';
+        }
+
+        const container = document.getElementById('megamenu-spaces-list');
+        if (!container) return;
+
+        const spacesToShow = rawSpaces.filter(s => s.type === type).slice(0, 4);
+        const icon = type === 'cafe' ? '☕' : '📚';
+
+        container.innerHTML = spacesToShow.map(s => `
+          <a href="#" onclick="showRadarView(); switchRadarMode('spaces'); selectSpace('${s.id}'); return false;" class="megamenu-space-item">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:16px;">${icon}</span>
+              <div>
+                <strong style="font-size:13px;color:#0f172a;display:block;">${escapeHTML(s.name)}</strong>
+                <span style="font-size:11px;color:#64748b;">${escapeHTML(s.city)} &bull; ${escapeHTML(s.proximity || s.location)}</span>
+              </div>
+            </div>
+            <span style="font-size:10.5px;font-family:var(--font-mono);font-weight:700;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;">${escapeHTML(s.wifiSpeed || '300+ Mbps')}</span>
+          </a>
+        `).join('');
+      };
+
+      window.handleSearch = function () {
+        applyFilters();
+      };
+
+      window.clearSearch = function () {
         if (searchInput) {
           searchInput.value = '';
           applyFilters();
@@ -1683,6 +2387,14 @@
       window.resetAllFilters = function () {
         if (searchInput) searchInput.value = '';
         if (cityFilter) cityFilter.value = 'ALL';
+        activeProRole = 'ALL';
+        activeSpaceType = 'ALL';
+        document.querySelectorAll('#subfilter-pros-container .subfilter-chip').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-role') === 'ALL');
+        });
+        document.querySelectorAll('#subfilter-spaces-container .subfilter-chip').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-space-type') === 'ALL');
+        });
         applyFilters();
       };
 
@@ -1720,7 +2432,7 @@
         }
       };
 
-      // ─── 7. Navigation Views: Radar vs Answers ───
+      // ─── 9. Navigation Views: Radar vs Answers ───
       window.showRadarView = function () {
         if (radarView) radarView.style.display = 'flex';
         if (answersView) answersView.style.display = 'none';
@@ -1738,7 +2450,7 @@
         }
       };
 
-      // ─── 8. Reservation / Modal Handlers ───
+      // ─── 10. Reservation / Consultation Modal Handlers ───
       window.openReservationModal = function (title, type = 'SPACE') {
         const modal = document.getElementById('booking-modal');
         const modalTitle = document.getElementById('modal-space-title');
@@ -1755,9 +2467,21 @@
 
       window.handleReservationSubmit = function (e) {
         e.preventDefault();
-        alert('Thank you! Your workspace reservation request has been registered. You will receive an SMS and email confirmation.');
+        alert('Thank you! Your request has been registered on the sovereign network. You will receive an SMS and email confirmation.');
         closeReservationModal();
       };
+
+      function getRoleLabel(role) {
+        switch (role) {
+          case 'ip': return '⚖️ Insolvency (IP)';
+          case 'advocate': return '🏛️ Advocate / Counsel';
+          case 'cyber_specialist': return '🛡️ Cyber Forensics';
+          case 'valuer': return '📊 Valuer';
+          case 'researcher': return '🔬 Researcher';
+          case 'learner': return '🎓 Learner';
+          default: return '👥 Professional';
+        }
+      }
 
       function escapeHTML(str) {
         if (!str) return '';
@@ -1769,7 +2493,23 @@
           .replace(/'/g, '&#39;');
       }
 
-      // Built-in emergency fallback data if offline
+      // Built-in emergency fallback data for professionals
+      function getBuiltInFallbackProfessionals() {
+        return [
+          { id: "pro-1", name: "Sanjay Kumar Gupta", role: "ip", designation: "Insolvency Professional", regNo: "IBBI/IPA-002/IP-N00124/2017-2018/10311", firm: "Deloitte Touche Tohmatsu India LLP", bench: "NCLT Ahmedabad", city: "Ahmedabad", state: "Gujarat", latitude: 23.0225, longitude: 72.5714, email: "sgupta.ip@deloitte.com", phone: "+91 79 6671 2000", initials: "SG", isVerified: true, specialization: "Heavy Industrial, Power & Utilities CIRP", bio: "Empaneled Insolvency Professional with extensive resolution experience in heavy manufacturing, energy sector restructuring, and cross-border assets under IBC 2016.", activeMandates: 3 },
+          { id: "pro-2", name: "Anuj Jain", role: "ip", designation: "Senior Insolvency Professional", regNo: "IBBI/IPA-001/IP-P00088/2017-2018/10184", firm: "PricewaterhouseCoopers", bench: "NCLT New Delhi (Principal Bench)", city: "Delhi NCR", state: "Delhi", latitude: 28.6139, longitude: 77.2090, email: "anuj.jain.ip@pwc.com", phone: "+91 11 4115 0000", initials: "AJ", isVerified: true, specialization: "Real Estate & Mega Infrastructure", bio: "Lead Resolution Professional in landmark real estate restructuring matters with multi-lender committee coordination under CIRP regulations.", activeMandates: 2 },
+          { id: "pro-3", name: "Milind Kasodekar", role: "ip", designation: "Partner - Insolvency & Restructuring", regNo: "IBBI/IPA-002/IP-N00112/2017-2018/10280", firm: "KPMG India", bench: "NCLT Mumbai (Court-I)", city: "Mumbai", state: "Maharashtra", latitude: 18.9304, longitude: 72.8317, email: "mkasodekar.ip@kpmg.com", phone: "+91 22 3090 1000", initials: "MK", isVerified: true, specialization: "EPC Contracting, Ports & Aviation Logistics", bio: "Over 20 years in corporate turnaround and forensic valuation. Registered Insolvency Professional with high liquidation and resolution success rate.", activeMandates: 4 },
+          { id: "pro-4", name: "Adv. Radhika Sharma", role: "advocate", designation: "High Court Senior Advocate", regNo: "D/1420/2012 (Bar Council of Delhi)", firm: "Sharma & Associates Chambers", bench: "Delhi High Court & Saket District Court", city: "Delhi NCR", state: "Delhi", latitude: 28.5204, longitude: 77.2015, email: "radhika@sharmachambers.in", phone: "+91 11 2651 8840", initials: "RS", isVerified: true, specialization: "Commercial Disputes, BNS Cyber Forensics & IBC Appeals", bio: "Practicing Advocate representing lenders and resolution applicants before NCLAT and Supreme Court of India. Regular speaker on Agentic NSQF legal standards.", activeMandates: 6 },
+          { id: "pro-5", name: "Dr. Vikram Aditya Nair", role: "cyber_specialist", designation: "Chief Cyber Forensic Analyst & BNS Specialist", regNo: "DSCI/CE-2021/889", firm: "National Digital Forensics Center", bench: "Cyber Police Cells & Karnataka High Court", city: "Bengaluru", state: "Karnataka", latitude: 12.9716, longitude: 77.5946, email: "vikram.nair@cyberjuris.org", phone: "+91 80 4120 7765", initials: "VN", isVerified: true, specialization: "BNS Section 111 Organized Cyber Crime & Electronic Evidences", bio: "Certified digital forensics expert specializing in Section 65B/BNS 2023 evidentiary compliance, sovereign LLM inference for evidence hashing, and blockchain tracing.", activeMandates: 5 },
+          { id: "pro-6", name: "Adv. Kavita Krishnan", role: "advocate", designation: "Commercial & Appellate Counsel", regNo: "KAR/892/2015 (Karnataka Bar Council)", firm: "Apex Law Partners", bench: "High Court of Karnataka (Vidhana Soudha)", city: "Bengaluru", state: "Karnataka", latitude: 12.9866, longitude: 77.5975, email: "kavita@apexlawpartners.com", phone: "+91 80 2221 4450", initials: "KK", isVerified: true, specialization: "Commercial Contracts, CPC Section 89 Mediation & Arbitration", bio: "Senior counsel in cross-border commercial contracts and dispute resolution. Empaneled mediator with over 150 successfully settled commercial disputes.", activeMandates: 4 },
+          { id: "pro-7", name: "Rajesh Subramanian", role: "valuer", designation: "Registered Valuer (Securities & Financial Assets)", regNo: "IBBI/RV/06/2019/11045", firm: "Sundaram & Subramanian Valuation Advisory", bench: "NCLT Hyderabad Bench", city: "Hyderabad", state: "Telangana", latitude: 17.4156, longitude: 78.4347, email: "rajesh.val@ssadvisory.in", phone: "+91 40 2335 9901", initials: "RS", isVerified: true, specialization: "Liquidation Value Audits & Intangible AI Assets", bio: "IBBI-registered valuer with over 80 statutory CIRP valuation reports submitted across NCLT benches. Pioneer in valuing algorithmic models and data pipelines.", activeMandates: 7 },
+          { id: "pro-8", name: "Prof. Arundhati Sen", role: "researcher", designation: "Chair Professor & Computational Law Researcher", regNo: "NUJS/FAC/2018/042", firm: "WBNUJS Legal Informatics Center", bench: "Calcutta High Court Precinct", city: "Kolkata", state: "West Bengal", latitude: 22.5701, longitude: 88.4067, email: "asen@nujs.edu", phone: "+91 33 2335 7379", initials: "AS", isVerified: true, specialization: "Agentic NSQF Curriculum & Legal Knowledge Graphs", bio: "Principal investigator on legal ontologies, judicial decision prediction models, and statutory graph reasoning frameworks for Indian law.", activeMandates: 2 },
+          { id: "pro-9", name: "Adv. Harpreet Singh", role: "advocate", designation: "Criminal Jurisprudence Counsel", regNo: "PH/3421/2011", firm: "Capitol Chambers", bench: "Punjab & Haryana High Court", city: "Chandigarh", state: "Punjab & Haryana", latitude: 30.7589, longitude: 76.8049, email: "harpreet@capitolchambers.law", phone: "+91 172 274 0012", initials: "HS", isVerified: true, specialization: "BNS 2023 Statutory Transition & Appellate Defense", bio: "Trial lawyer and author of comparative commentaries between IPC and Bharatiya Nyaya Sanhita (BNS 2023). Regular counsel before the High Court.", activeMandates: 5 },
+          { id: "pro-10", name: "Tanya Mehta", role: "learner", designation: "Agentic AI Apprentice & Law Scholar", regNo: "NLSIU/LLB-AI/2024/019", firm: "National Law School of India University", bench: "NLSIU AI Commons", city: "Bengaluru", state: "Karnataka", latitude: 12.9558, longitude: 77.5126, email: "tanya.mehta@nlsiu.ac.in", phone: "+91 80 2316 0532", initials: "TM", isVerified: true, specialization: "Agentic Prompt Harnesses & Statutory RAG", bio: "Undergraduate law researcher certified in Agentic NSQF Level 7.0 foundations. Conducting benchmarks on sovereign LLMs for statutory case law summarization.", activeMandates: 1 }
+        ];
+      }
+
+      // Built-in emergency fallback data for spaces
       function getBuiltInFallbackSpaces() {
         return [
           { id: 'cafe-bt-saket', type: 'cafe', name: 'Blue Tokai Coffee Roasters — Saket', city: 'Delhi NCR', location: 'Saidulajab, Saket, New Delhi', proximity: '350 meters from Saket District Court', latitude: 28.5204, longitude: 77.2015, wifiSpeed: '350 Mbps', powerSockets: 'Every table', noiseLevel: 'Quiet ambient', specialty: 'Cold Brew, Artisan Sourdough & Cruffins', openingHours: '07:30 AM – 10:30 PM', directionsUrl: 'https://maps.google.com/?q=28.5204,77.2015' },
@@ -1794,7 +2534,7 @@
       // Initialize on DOM ready
       document.addEventListener('DOMContentLoaded', function () {
         initMap();
-        loadSpacesData();
+        loadRadarData();
       });
 
     })();
