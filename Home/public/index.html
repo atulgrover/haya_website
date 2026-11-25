@@ -689,18 +689,18 @@
       transform: rotate(180deg);
     }
 
-    /* Hayagriva Dropdown Flyout */
+    /* Hayagriva Dropdown Flyout - Styled to match Megamenus */
     .hayagriva-dropdown-panel {
       position: absolute;
       top: 100%;
       right: 0;
       transform: translateY(8px);
-      width: 290px;
+      width: 300px;
       background: #ffffff;
       border: 1px solid var(--slate-200);
-      border-radius: 12px;
-      box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.16), 0 6px 12px -2px rgba(15, 23, 42, 0.06);
-      padding: 8px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.16), 0 8px 16px -4px rgba(15, 23, 42, 0.08);
+      padding: 12px 14px;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -728,63 +728,16 @@
       transform: translateY(0);
     }
 
-    .hayagriva-menu-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      cursor: pointer;
-    }
-
-    .hayagriva-menu-item:hover {
-      background: #f8fafc;
-    }
-
+    .hayagriva-menu-item.selected,
     .hayagriva-menu-item.active {
       background: #f0f9ff;
+      border-color: #7dd3fc;
+      box-shadow: 0 1px 3px rgba(2, 132, 199, 0.1);
     }
 
-    .hayagriva-menu-item.active .hayagriva-item-title {
+    .hayagriva-menu-item.selected .menu-card-info h4,
+    .hayagriva-menu-item.active .menu-card-info h4 {
       color: #0284c7;
-    }
-
-    .hayagriva-item-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    .hayagriva-item-content {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .hayagriva-item-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--slate-800);
-      line-height: 1.25;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .hayagriva-item-desc {
-      font-size: 11px;
-      color: var(--slate-500);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .hayagriva-dropdown-divider {
@@ -2644,37 +2597,35 @@
 
         <div class="hayagriva-dropdown-panel" id="hayagriva-dropdown-panel">
           <div class="hayagriva-dropdown-menu">
-            <a href="/answers" class="hayagriva-menu-item" id="menu-item-answers" onclick="event.preventDefault(); closeHayagrivaDropdown(); showAnswersView(true);">
-              <div class="hayagriva-item-icon">💬</div>
-              <div class="hayagriva-item-content">
-                <div class="hayagriva-item-title">answers</div>
-                <div class="hayagriva-item-desc">Statutory forum &amp; LightRAG synthesis</div>
+            <h3 class="megamenu-col-title" style="margin:0 0 6px 0;padding:0 2px 5px 2px;border-bottom:1px solid var(--slate-100);font-size:11px;font-family:var(--font-mono);font-weight:700;color:var(--slate-500);text-transform:uppercase;letter-spacing:0.5px;">hayagriva sovereign</h3>
+            
+            <a href="/answers" class="menu-card hayagriva-menu-item" id="menu-item-answers" onclick="event.preventDefault(); closeHayagrivaDropdown(); showAnswersView(true);">
+              <div class="menu-card-info">
+                <h4>answers</h4>
+                <p>statutory forum &amp; lightrag multi-workspace synthesis</p>
               </div>
             </a>
             
-            <a href="/docs" class="hayagriva-menu-item" id="menu-item-docs" onclick="event.preventDefault(); closeHayagrivaDropdown(); showDocsView(true);">
-              <div class="hayagriva-item-icon">📖</div>
-              <div class="hayagriva-item-content">
-                <div class="hayagriva-item-title">documentation</div>
-                <div class="hayagriva-item-desc">PageIndex document harness &amp; SDKs</div>
+            <a href="/docs" class="menu-card hayagriva-menu-item" id="menu-item-docs" onclick="event.preventDefault(); closeHayagrivaDropdown(); showDocsView(true);">
+              <div class="menu-card-info">
+                <h4>documentation</h4>
+                <p>pageindex document harness, tree-of-tokens &amp; sdks</p>
               </div>
             </a>
 
-            <a href="#download-desktop" class="hayagriva-menu-item" id="menu-item-desktop" onclick="event.preventDefault(); closeHayagrivaDropdown(); handleDownloadDesktop();">
-              <div class="hayagriva-item-icon">💻</div>
-              <div class="hayagriva-item-content">
-                <div class="hayagriva-item-title">desktop app</div>
-                <div class="hayagriva-item-desc">Download Hayagriva Desktop for macOS</div>
+            <a href="#download-desktop" class="menu-card hayagriva-menu-item" id="menu-item-desktop" onclick="event.preventDefault(); closeHayagrivaDropdown(); handleDownloadDesktop();">
+              <div class="menu-card-info">
+                <h4>desktop app</h4>
+                <p>download sovereign hayagriva desktop for macos (.dmg)</p>
               </div>
             </a>
 
             <!-- Unauthenticated Quiet Sign In Option (Hidden when user is logged in) -->
             <div class="hayagriva-dropdown-divider" id="hayagriva-guest-divider"></div>
-            <a href="#signin" class="hayagriva-menu-item hayagriva-signin-link" id="hayagriva-guest-signin" onclick="event.preventDefault(); closeHayagrivaDropdown(); openAuthModal('Sign in to your practitioner account');">
-              <div class="hayagriva-item-icon">🔑</div>
-              <div class="hayagriva-item-content">
-                <div class="hayagriva-item-title" style="color:var(--brand-blue);">sign in</div>
-                <div class="hayagriva-item-desc">Registered practitioners portal access &rarr;</div>
+            <a href="#signin" class="menu-card hayagriva-menu-item hayagriva-signin-link" id="hayagriva-guest-signin" onclick="event.preventDefault(); closeHayagrivaDropdown(); openAuthModal('Sign in to your practitioner account');">
+              <div class="menu-card-info">
+                <h4 style="color:var(--brand-blue);">sign in</h4>
+                <p>registered practitioners portal access &rarr;</p>
               </div>
             </a>
           </div>
@@ -4356,7 +4307,10 @@ for citation in answer.citations:
         if (navSpacesBtn) navSpacesBtn.classList.add('pill-active');
         const navHayagriva = document.getElementById('nav-hayagriva-trigger');
         if (navHayagriva) navHayagriva.classList.remove('pill-active');
-        document.querySelectorAll('.hayagriva-menu-item').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.hayagriva-menu-item').forEach(el => {
+          el.classList.remove('active');
+          el.classList.remove('selected');
+        });
 
         if (pushState && window.location.pathname !== '/') {
           history.pushState({ view: 'radar' }, '', '/');
@@ -4375,9 +4329,15 @@ for citation in answer.citations:
         if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
         const navHayagriva = document.getElementById('nav-hayagriva-trigger');
         if (navHayagriva) navHayagriva.classList.add('pill-active');
-        document.querySelectorAll('.hayagriva-menu-item').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.hayagriva-menu-item').forEach(el => {
+          el.classList.remove('active');
+          el.classList.remove('selected');
+        });
         const menuAns = document.getElementById('menu-item-answers');
-        if (menuAns) menuAns.classList.add('active');
+        if (menuAns) {
+          menuAns.classList.add('active');
+          menuAns.classList.add('selected');
+        }
 
         if (pushState && window.location.pathname !== '/answers') {
           history.pushState({ view: 'answers' }, '', '/answers');
@@ -4405,9 +4365,15 @@ for citation in answer.citations:
         if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
         const navHayagriva = document.getElementById('nav-hayagriva-trigger');
         if (navHayagriva) navHayagriva.classList.add('pill-active');
-        document.querySelectorAll('.hayagriva-menu-item').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.hayagriva-menu-item').forEach(el => {
+          el.classList.remove('active');
+          el.classList.remove('selected');
+        });
         const menuDocs = document.getElementById('menu-item-docs');
-        if (menuDocs) menuDocs.classList.add('active');
+        if (menuDocs) {
+          menuDocs.classList.add('active');
+          menuDocs.classList.add('selected');
+        }
 
         if (pushState && window.location.pathname !== '/docs') {
           history.pushState({ view: 'docs' }, '', '/docs');
