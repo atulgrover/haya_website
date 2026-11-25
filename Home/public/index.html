@@ -608,7 +608,8 @@
     .actions-tray {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      position: relative;
     }
 
     .action-btn {
@@ -642,6 +643,346 @@
 
     .signin-btn:hover {
       background: #1e293b;
+    }
+
+    /* Hayagriva Dropdown Component */
+    .hayagriva-nav-item {
+      position: relative;
+    }
+
+    .hayagriva-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--slate-700);
+      background: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .hayagriva-btn:hover,
+    .hayagriva-nav-item:hover .hayagriva-btn,
+    .hayagriva-nav-item.is-open .hayagriva-btn {
+      color: var(--slate-900);
+      background: var(--slate-100);
+    }
+
+    .hayagriva-btn.pill-active {
+      background: #e0f2fe;
+      color: #0369a1;
+      border-color: #bae6fd;
+      font-weight: 700;
+    }
+
+    .hayagriva-btn .dropdown-chevron {
+      transition: transform 0.2s ease;
+    }
+
+    .hayagriva-nav-item:hover .dropdown-chevron,
+    .hayagriva-nav-item.is-open .dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Hayagriva Dropdown Flyout */
+    .hayagriva-dropdown-panel {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      transform: translateY(8px);
+      width: 290px;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.16), 0 6px 12px -2px rgba(15, 23, 42, 0.06);
+      padding: 8px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+      z-index: 2200;
+    }
+
+    /* Safe hover tunnel */
+    .hayagriva-nav-item::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      height: 12px;
+      pointer-events: auto;
+    }
+
+    .hayagriva-nav-item:hover .hayagriva-dropdown-panel,
+    .hayagriva-nav-item:focus-within .hayagriva-dropdown-panel,
+    .hayagriva-nav-item.is-open .hayagriva-dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .hayagriva-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .hayagriva-menu-item:hover {
+      background: #f8fafc;
+    }
+
+    .hayagriva-menu-item.active {
+      background: #f0f9ff;
+    }
+
+    .hayagriva-menu-item.active .hayagriva-item-title {
+      color: #0284c7;
+    }
+
+    .hayagriva-item-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .hayagriva-item-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hayagriva-item-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--slate-800);
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hayagriva-item-desc {
+      font-size: 11px;
+      color: var(--slate-500);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hayagriva-dropdown-divider {
+      height: 1px;
+      background: var(--slate-100);
+      margin: 6px 0;
+    }
+
+    /* Authenticated User Profile Avatar & Popover */
+    .user-profile-wrap {
+      position: relative;
+    }
+
+    .user-profile-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      padding: 3px 10px 3px 4px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .user-profile-btn:hover,
+    .user-profile-wrap:hover .user-profile-btn,
+    .user-profile-wrap.is-open .user-profile-btn {
+      border-color: var(--slate-300);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    .user-avatar-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.3px;
+    }
+
+    .user-avatar-circle.large {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+
+    .user-display-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--slate-800);
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Profile Dropdown Panel */
+    .profile-dropdown-panel {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      transform: translateY(8px);
+      width: 260px;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 14px;
+      box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.16), 0 6px 12px -2px rgba(15, 23, 42, 0.06);
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+      z-index: 2200;
+    }
+
+    .user-profile-wrap::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      height: 12px;
+      pointer-events: auto;
+    }
+
+    .user-profile-wrap:hover .profile-dropdown-panel,
+    .user-profile-wrap:focus-within .profile-dropdown-panel,
+    .user-profile-wrap.is-open .profile-dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .profile-card-header {
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--slate-100);
+      margin-bottom: 8px;
+    }
+
+    .profile-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .profile-name-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .profile-full-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .profile-role-sub {
+      font-size: 11px;
+      color: var(--slate-500);
+      font-family: var(--font-mono);
+    }
+
+    .profile-status-pill {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      padding: 2px 7px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 600;
+    }
+
+    .profile-status-pill .status-dot {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+
+    .profile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .profile-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 12px;
+      color: var(--slate-700);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .profile-menu-item:hover {
+      background: #f8fafc;
+      color: var(--slate-900);
+    }
+
+    .profile-signout-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 12px;
+      color: #ef4444;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s ease;
+      font-family: inherit;
+      font-weight: 500;
+    }
+
+    .profile-signout-btn:hover {
+      background: #fef2f2;
     }
 
     /* ─── Main Canvas: Full Viewport Split View ─── */
@@ -2290,17 +2631,97 @@
       </ul>
     </nav>
 
-    <!-- 3. Actions Tray (Right) -->
+    <!-- 3. Actions Tray (Right: Hayagriva Unified Dropdown + Contextual Profile Avatar) -->
     <div class="actions-tray">
-      <a href="/answers" class="action-btn" id="nav-answers-trigger" onclick="event.preventDefault(); toggleAnswersView();">
-        <span>answers</span>
-      </a>
-      <a href="/docs" class="action-btn" id="nav-hayagriva-trigger" onclick="event.preventDefault(); toggleDocsView();" title="Hayagriva Sovereign Docs & Desktop App">
-        <span>hayagriva</span>
-      </a>
-      <button type="button" class="signin-btn" id="nav-signin-trigger" onclick="openReservationModal('Sign In / Portal Account')">
-        <span>sign in</span>
-      </button>
+      <!-- Hayagriva Sovereign Intelligence Dropdown -->
+      <div class="hayagriva-nav-item" id="nav-hayagriva-menu-item">
+        <button type="button" class="hayagriva-btn" id="nav-hayagriva-trigger" onclick="toggleHayagrivaDropdown(event);" title="Hayagriva Sovereign Intelligence">
+          <span>hayagriva</span>
+          <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 1l4 4 4-4"/>
+          </svg>
+        </button>
+
+        <div class="hayagriva-dropdown-panel" id="hayagriva-dropdown-panel">
+          <div class="hayagriva-dropdown-menu">
+            <a href="/answers" class="hayagriva-menu-item" id="menu-item-answers" onclick="event.preventDefault(); closeHayagrivaDropdown(); showAnswersView(true);">
+              <div class="hayagriva-item-icon">💬</div>
+              <div class="hayagriva-item-content">
+                <div class="hayagriva-item-title">answers</div>
+                <div class="hayagriva-item-desc">Statutory forum &amp; LightRAG synthesis</div>
+              </div>
+            </a>
+            
+            <a href="/docs" class="hayagriva-menu-item" id="menu-item-docs" onclick="event.preventDefault(); closeHayagrivaDropdown(); showDocsView(true);">
+              <div class="hayagriva-item-icon">📖</div>
+              <div class="hayagriva-item-content">
+                <div class="hayagriva-item-title">documentation</div>
+                <div class="hayagriva-item-desc">PageIndex document harness &amp; SDKs</div>
+              </div>
+            </a>
+
+            <a href="#download-desktop" class="hayagriva-menu-item" id="menu-item-desktop" onclick="event.preventDefault(); closeHayagrivaDropdown(); handleDownloadDesktop();">
+              <div class="hayagriva-item-icon">💻</div>
+              <div class="hayagriva-item-content">
+                <div class="hayagriva-item-title">desktop app</div>
+                <div class="hayagriva-item-desc">Download Hayagriva Desktop for macOS</div>
+              </div>
+            </a>
+
+            <!-- Unauthenticated Quiet Sign In Option (Hidden when user is logged in) -->
+            <div class="hayagriva-dropdown-divider" id="hayagriva-guest-divider"></div>
+            <a href="#signin" class="hayagriva-menu-item hayagriva-signin-link" id="hayagriva-guest-signin" onclick="event.preventDefault(); closeHayagrivaDropdown(); openAuthModal('Sign in to your practitioner account');">
+              <div class="hayagriva-item-icon">🔑</div>
+              <div class="hayagriva-item-content">
+                <div class="hayagriva-item-title" style="color:var(--brand-blue);">sign in</div>
+                <div class="hayagriva-item-desc">Registered practitioners portal access &rarr;</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authenticated Practitioner Profile Avatar (Hidden by default for guests) -->
+      <div class="user-profile-wrap" id="nav-user-profile" style="display: none;">
+        <button type="button" class="user-profile-btn" id="user-profile-trigger" onclick="toggleProfileDropdown(event);" title="Practitioner Profile">
+          <div class="user-avatar-circle" id="user-avatar-initials">AP</div>
+          <span class="user-display-name" id="user-display-name">Advocate</span>
+          <svg class="dropdown-chevron" viewBox="0 0 10 6" width="8" height="5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 1l4 4 4-4"/>
+          </svg>
+        </button>
+
+        <div class="profile-dropdown-panel" id="user-profile-dropdown">
+          <div class="profile-card-header">
+            <div class="profile-badge-row">
+              <div class="user-avatar-circle large" id="user-avatar-initials-lg">AP</div>
+              <div class="profile-name-meta">
+                <div class="profile-full-name" id="profile-full-name">Practitioner Name</div>
+                <div class="profile-role-sub" id="profile-role-sub">Verified Practitioner</div>
+              </div>
+            </div>
+            <div class="profile-status-pill">
+              <span class="status-dot"></span> Sovereign Session Active
+            </div>
+          </div>
+
+          <div class="profile-menu-links">
+            <a href="#" class="profile-menu-item" onclick="event.preventDefault(); showBookmarkedSpaces();">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              <span>Pinned Spaces (<span id="profile-bookmarks-count">0</span>)</span>
+            </a>
+            <a href="/answers" class="profile-menu-item" onclick="event.preventDefault(); closeProfileDropdown(); showAnswersView(true);">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>My Inquiries &amp; Discussions</span>
+            </a>
+            <div class="hayagriva-dropdown-divider"></div>
+            <button type="button" class="profile-signout-btn" onclick="handleSignOut();">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
   </header>
@@ -3794,31 +4215,45 @@ for citation in answer.citations:
 
       function initAuth() {
         const user = getCurrentUser();
-        const signinBtn = document.getElementById('nav-signin-trigger');
-        if (!signinBtn) return;
+        const guestSignin = document.getElementById('hayagriva-guest-signin');
+        const guestDivider = document.getElementById('hayagriva-guest-divider');
+        const profileWrap = document.getElementById('nav-user-profile');
+        const initialsEl = document.getElementById('user-avatar-initials');
+        const initialsLgEl = document.getElementById('user-avatar-initials-lg');
+        const displayNameEl = document.getElementById('user-display-name');
+        const fullNameEl = document.getElementById('profile-full-name');
+        const roleSubEl = document.getElementById('profile-role-sub');
+        const bookmarksCountEl = document.getElementById('profile-bookmarks-count');
+
+        if (bookmarksCountEl && typeof bookmarkedIds !== 'undefined') {
+          bookmarksCountEl.textContent = bookmarkedIds ? bookmarkedIds.size : 0;
+        }
 
         if (user && user.name) {
+          // Authenticated State: Show profile avatar, hide guest sign-in in dropdown
+          if (guestSignin) guestSignin.style.display = 'none';
+          if (guestDivider) guestDivider.style.display = 'none';
+          if (profileWrap) profileWrap.style.display = 'block';
+
           const initials = user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'AP';
-          signinBtn.innerHTML = `
-            <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#059669;color:#ffffff;border-radius:50%;font-size:10px;font-weight:700;">${escapeHTML(initials)}</span>
-            <span>${escapeHTML(user.name.split(' ')[0])}</span>
-            <span style="font-size:11px;color:#94a3b8;margin-left:2px;" onclick="event.stopPropagation();handleSignOut();" title="Sign Out">&times;</span>
-          `;
-          signinBtn.title = `${user.name} (${user.role || 'Member'}) — Click × to Sign Out`;
-          signinBtn.onclick = function() {
-            if (confirm(`Signed in as ${user.name} (${user.role || 'Member'}). Sign out?`)) {
-              handleSignOut();
-            }
-          };
+          const firstName = user.name.split(' ')[0] || user.name;
+
+          if (initialsEl) initialsEl.textContent = initials;
+          if (initialsLgEl) initialsLgEl.textContent = initials;
+          if (displayNameEl) displayNameEl.textContent = firstName;
+          if (fullNameEl) fullNameEl.textContent = user.name;
+          if (roleSubEl) roleSubEl.textContent = user.role || user.email || 'Verified Practitioner';
         } else {
-          signinBtn.innerHTML = `<span>sign in</span>`;
-          signinBtn.title = 'Sign In / Register';
-          signinBtn.onclick = function() { openAuthModal(); };
+          // Guest State: Hide profile avatar, show quiet sign-in inside Hayagriva dropdown
+          if (profileWrap) profileWrap.style.display = 'none';
+          if (guestSignin) guestSignin.style.display = 'flex';
+          if (guestDivider) guestDivider.style.display = 'block';
         }
       }
 
       window.handleSignOut = function() {
         localStorage.removeItem('agentic_user');
+        closeProfileDropdown();
         initAuth();
         alert('You have signed out of the sovereign network.');
       };
@@ -3855,8 +4290,59 @@ for citation in answer.citations:
       };
 
       // ─── 10. Navigation Views: Radar vs Answers vs Hayagriva Docs ───
+      function toggleHayagrivaDropdown(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const item = document.getElementById('nav-hayagriva-menu-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('is-open');
+        closeAllMegamenus();
+        if (!isOpen) item.classList.add('is-open');
+      }
+      window.toggleHayagrivaDropdown = toggleHayagrivaDropdown;
+
+      function closeHayagrivaDropdown() {
+        const item = document.getElementById('nav-hayagriva-menu-item');
+        if (item) item.classList.remove('is-open');
+      }
+      window.closeHayagrivaDropdown = closeHayagrivaDropdown;
+
+      function toggleProfileDropdown(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const wrap = document.getElementById('nav-user-profile');
+        if (!wrap) return;
+        const isOpen = wrap.classList.contains('is-open');
+        closeAllMegamenus();
+        if (!isOpen) wrap.classList.add('is-open');
+      }
+      window.toggleProfileDropdown = toggleProfileDropdown;
+
+      function closeProfileDropdown() {
+        const wrap = document.getElementById('nav-user-profile');
+        if (wrap) wrap.classList.remove('is-open');
+      }
+      window.closeProfileDropdown = closeProfileDropdown;
+
+      function showBookmarkedSpaces() {
+        closeProfileDropdown();
+        showRadarView(true);
+        if (typeof bookmarkedIds !== 'undefined' && bookmarkedIds.size > 0) {
+          alert(`You have ${bookmarkedIds.size} saved items on your desk.`);
+        } else {
+          alert('You have not pinned any spaces yet. Click the bookmark icon on any space or practitioner card to pin it.');
+        }
+      }
+      window.showBookmarkedSpaces = showBookmarkedSpaces;
+
       function closeAllMegamenus() {
         document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('is-open', 'active'));
+        closeHayagrivaDropdown();
+        closeProfileDropdown();
       }
       window.closeAllMegamenus = closeAllMegamenus;
 
@@ -3868,10 +4354,9 @@ for citation in answer.citations:
         if (docsView) docsView.style.display = 'none';
 
         if (navSpacesBtn) navSpacesBtn.classList.add('pill-active');
-        const navAnswers = document.getElementById('nav-answers-trigger');
-        if (navAnswers) navAnswers.classList.remove('pill-active');
         const navHayagriva = document.getElementById('nav-hayagriva-trigger');
         if (navHayagriva) navHayagriva.classList.remove('pill-active');
+        document.querySelectorAll('.hayagriva-menu-item').forEach(el => el.classList.remove('active'));
 
         if (pushState && window.location.pathname !== '/') {
           history.pushState({ view: 'radar' }, '', '/');
@@ -3888,10 +4373,11 @@ for citation in answer.citations:
         if (answersView) answersView.style.display = 'flex';
 
         if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
-        const navAnswers = document.getElementById('nav-answers-trigger');
-        if (navAnswers) navAnswers.classList.add('pill-active');
         const navHayagriva = document.getElementById('nav-hayagriva-trigger');
-        if (navHayagriva) navHayagriva.classList.remove('pill-active');
+        if (navHayagriva) navHayagriva.classList.add('pill-active');
+        document.querySelectorAll('.hayagriva-menu-item').forEach(el => el.classList.remove('active'));
+        const menuAns = document.getElementById('menu-item-answers');
+        if (menuAns) menuAns.classList.add('active');
 
         if (pushState && window.location.pathname !== '/answers') {
           history.pushState({ view: 'answers' }, '', '/answers');
@@ -3917,10 +4403,11 @@ for citation in answer.citations:
         if (docsView) docsView.style.display = 'flex';
 
         if (navSpacesBtn) navSpacesBtn.classList.remove('pill-active');
-        const navAnswers = document.getElementById('nav-answers-trigger');
-        if (navAnswers) navAnswers.classList.remove('pill-active');
         const navHayagriva = document.getElementById('nav-hayagriva-trigger');
         if (navHayagriva) navHayagriva.classList.add('pill-active');
+        document.querySelectorAll('.hayagriva-menu-item').forEach(el => el.classList.remove('active'));
+        const menuDocs = document.getElementById('menu-item-docs');
+        if (menuDocs) menuDocs.classList.add('active');
 
         if (pushState && window.location.pathname !== '/docs') {
           history.pushState({ view: 'docs' }, '', '/docs');
@@ -4629,6 +5116,16 @@ for citation in answer.citations:
         initCohortSwitcher();
         initEventSwitcher();
         initAuth();
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', function (e) {
+          if (!e.target.closest('#nav-hayagriva-menu-item')) {
+            closeHayagrivaDropdown();
+          }
+          if (!e.target.closest('#nav-user-profile')) {
+            closeProfileDropdown();
+          }
+        });
 
         // Check deep-linking URL on load
         if (window.location.pathname.startsWith('/answers')) {
