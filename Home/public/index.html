@@ -2982,10 +2982,12 @@ for citation in answer.citations:
           attributionControl: false
         }).setView([21.8, 78.9], 5);
 
-        // CartoDB Voyager Clean Tiles
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        // CartoDB Voyager Clean Tiles with Official CARTO API Key
+        const CARTO_API_KEY = 'cb1_4ovj_2_158feff6e06f5cc7ee779bf9';
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?api_key=' + CARTO_API_KEY + '&key=' + CARTO_API_KEY, {
           maxZoom: 19,
-          subdomains: 'abcd'
+          subdomains: 'abcd',
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
         }).addTo(map);
 
         // Zoom controls top right
