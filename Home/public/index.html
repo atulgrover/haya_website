@@ -108,11 +108,12 @@
     }
 
     .brand-title {
-      font-family: var(--font-heading);
-      font-size: 16.5px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 18px;
       font-weight: 700;
-      color: var(--slate-900);
-      letter-spacing: -0.3px;
+      color: #0f172a;
+      letter-spacing: -0.4px;
+      line-height: 1;
       white-space: nowrap;
     }
 
@@ -608,8 +609,54 @@
     .actions-tray {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       position: relative;
+    }
+
+    .catalog-nav-btn {
+      height: 34px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: lowercase;
+      color: var(--slate-600);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .catalog-nav-btn:hover {
+      color: #0f172a;
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .catalog-nav-btn.cart-btn {
+      width: 34px;
+      padding: 0;
+      justify-content: center;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      border-radius: 7px;
+    }
+
+    .catalog-nav-btn.cart-btn:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .catalog-nav-btn.signin-nav-btn {
+      color: #0f172a;
+      font-weight: 600;
     }
 
     .action-btn {
@@ -693,9 +740,9 @@
     .hayagriva-dropdown-panel {
       position: absolute;
       top: 100%;
-      right: 0;
-      transform: translateY(8px);
-      width: 300px;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 320px;
       background: #ffffff;
       border: 1px solid var(--slate-200);
       border-radius: 14px;
@@ -713,9 +760,9 @@
       content: '';
       position: absolute;
       top: 100%;
-      right: 0;
+      left: 0;
       width: 100%;
-      height: 12px;
+      height: 14px;
       pointer-events: auto;
     }
 
@@ -725,7 +772,7 @@
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
 
     .hayagriva-menu-item.selected,
@@ -2390,25 +2437,197 @@
         <svg class="unicorn-icon" viewBox="0 0 852 845">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M 810 92 L 799 94 L 796 96 L 792 96 L 785 99 L 781 99 L 760 105 L 757 107 L 749 108 L 746 110 L 742 110 L 736 113 L 732 113 L 725 116 L 721 116 L 718 118 L 711 119 L 708 121 L 700 122 L 690 126 L 682 127 L 679 129 L 672 130 L 658 135 L 654 135 L 651 137 L 633 141 L 630 143 L 626 143 L 619 146 L 605 149 L 602 151 L 598 151 L 591 154 L 587 154 L 573 159 L 566 160 L 563 162 L 559 162 L 552 165 L 548 165 L 538 168 L 535 170 L 527 171 L 525 172 L 524 175 L 532 187 L 532 190 L 534 192 L 533 196 L 520 177 L 508 165 L 489 152 L 469 143 L 464 143 L 461 140 L 458 139 L 470 138 L 484 140 L 486 138 L 487 131 L 490 124 L 490 120 L 493 115 L 493 112 L 495 110 L 496 105 L 498 103 L 498 101 L 504 90 L 519 68 L 509 69 L 498 72 L 479 80 L 455 94 L 454 96 L 452 96 L 441 105 L 437 105 L 438 97 L 446 79 L 446 76 L 449 72 L 454 58 L 457 54 L 460 45 L 462 43 L 463 36 L 460 36 L 457 38 L 451 39 L 449 41 L 436 45 L 434 47 L 426 50 L 418 55 L 416 55 L 386 74 L 357 97 L 321 133 L 317 134 L 317 132 L 323 123 L 323 121 L 334 106 L 339 101 L 341 97 L 333 97 L 327 99 L 320 99 L 305 102 L 301 104 L 292 105 L 277 110 L 273 110 L 261 115 L 249 118 L 244 121 L 241 121 L 215 132 L 178 152 L 153 169 L 131 187 L 104 215 L 91 232 L 85 244 L 87 244 L 90 241 L 92 241 L 99 236 L 107 233 L 133 219 L 144 214 L 149 213 L 151 211 L 154 211 L 156 209 L 172 203 L 193 197 L 198 197 L 208 194 L 213 196 L 205 201 L 186 209 L 161 223 L 134 241 L 109 261 L 87 283 L 71 303 L 55 331 L 46 355 L 46 360 L 44 363 L 43 373 L 41 377 L 41 384 L 38 396 L 36 423 L 36 442 L 38 467 L 40 472 L 43 492 L 46 499 L 46 503 L 49 509 L 49 512 L 52 517 L 52 520 L 54 522 L 55 527 L 57 529 L 63 543 L 68 550 L 68 552 L 84 574 L 107 598 L 126 614 L 129 615 L 133 619 L 173 644 L 202 658 L 218 664 L 220 666 L 223 666 L 235 672 L 253 678 L 263 683 L 266 683 L 276 688 L 279 688 L 284 691 L 287 691 L 345 716 L 344 708 L 339 695 L 339 691 L 331 672 L 314 641 L 300 621 L 290 609 L 291 606 L 295 609 L 297 609 L 311 619 L 331 636 L 348 654 L 365 677 L 375 693 L 376 697 L 382 707 L 387 719 L 389 721 L 389 724 L 397 742 L 403 761 L 406 777 L 408 781 L 409 791 L 411 796 L 412 808 L 415 808 L 430 782 L 430 780 L 438 766 L 438 764 L 440 762 L 454 729 L 454 726 L 462 706 L 463 699 L 465 696 L 468 680 L 470 676 L 471 666 L 474 654 L 474 647 L 476 641 L 477 624 L 476 582 L 474 576 L 473 564 L 468 548 L 468 544 L 462 528 L 455 513 L 452 509 L 451 505 L 441 491 L 440 488 L 424 468 L 412 456 L 389 439 L 353 404 L 344 391 L 336 374 L 336 370 L 334 367 L 333 362 L 332 342 L 334 329 L 342 307 L 345 302 L 348 302 L 348 327 L 351 341 L 354 347 L 354 350 L 362 364 L 373 375 L 377 378 L 379 378 L 389 384 L 395 386 L 403 387 L 407 389 L 419 389 L 433 392 L 440 395 L 451 402 L 463 414 L 471 426 L 477 438 L 477 441 L 482 452 L 485 464 L 486 475 L 488 479 L 488 484 L 494 501 L 500 508 L 504 510 L 509 510 L 514 507 L 517 503 L 518 500 L 518 489 L 517 484 L 513 476 L 517 475 L 521 478 L 529 488 L 529 490 L 531 492 L 534 499 L 535 504 L 538 510 L 542 514 L 547 516 L 563 515 L 570 511 L 580 501 L 583 496 L 589 480 L 589 474 L 591 468 L 591 452 L 589 445 L 588 431 L 586 427 L 586 422 L 583 410 L 581 407 L 580 400 L 575 388 L 572 375 L 564 355 L 564 351 L 558 336 L 554 322 L 553 314 L 550 307 L 550 301 L 548 296 L 547 281 L 545 273 L 545 237 L 542 224 L 546 220 L 550 219 L 554 216 L 608 191 L 620 184 L 641 175 L 661 164 L 670 161 L 684 153 L 703 145 L 723 134 L 732 131 L 740 126 L 742 126 L 756 118 L 771 112 L 785 104 L 800 98 Z" />
         </svg>
-        <span class="brand-title">Agentic Professionals</span>
+        <span class="brand-title">agentic professionals</span>
       </a>
     </div>
 
-    <!-- 2. Center: Megamenus Navigation -->
+    <!-- 2. Center: Megamenus Navigation (5 Pillars) -->
     <nav>
       <ul class="nav-links">
         
-        <!-- 1. Primary Active Tab: Agentic Spaces (FIRST TAB, CLEAN NO DROPDOWN) -->
+        <!-- 1. Primary Active Tab: Spaces (Dual-Column: Coworking Cafes, Coworking Libraries | Desk Reservation Dock) -->
         <li class="nav-item" id="nav-item-spaces">
-          <button type="button" class="nav-btn pill-active" id="nav-spaces-btn" onclick="showRadarView();">
-            <span>agentic spaces</span>
+          <button type="button" class="nav-btn pill-active" id="nav-spaces-btn" onclick="showRadarView();" aria-haspopup="true">
+            <span>spaces</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
+          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
+            <div class="megamenu-grid-dual">
+              <!-- Left Column: Spaces Directory -->
+              <div class="megamenu-col-left">
+                <div>
+                  <h3 class="megamenu-col-title">spaces directory</h3>
+                  <div class="space-y-1" id="spaces-tracks-list">
+                    <!-- Track 1: Coworking Cafes -->
+                    <a href="#coworking-cafes" class="menu-card space-menu-card" data-space-type="cafe" onclick="event.preventDefault(); switchSpacesFilter('cafe');">
+                      <div class="menu-card-info">
+                        <h4>☕ coworking cafes</h4>
+                        <p>8 high-speed work-from-cafes across Saket, BKC, Vidhana Soudha, etc. with 300+ Mbps fiber &amp; power booths.</p>
+                      </div>
+                    </a>
+
+                    <!-- Track 2: Coworking Libraries -->
+                    <a href="#coworking-libraries" class="menu-card space-menu-card" data-space-type="library" onclick="event.preventDefault(); switchSpacesFilter('library');">
+                      <div class="menu-card-info">
+                        <h4>📚 coworking libraries</h4>
+                        <p>8 silent statutory research sanctuaries with 4K workstations, AI terminals &amp; legal treatises.</p>
+                      </div>
+                    </a>
+
+                    <!-- Track 3: All Spaces -->
+                    <a href="#all-spaces" class="menu-card space-menu-card" data-space-type="ALL" onclick="event.preventDefault(); switchSpacesFilter('ALL');">
+                      <div class="menu-card-info">
+                        <h4>🗺️ all spaces radar</h4>
+                        <p>Explore all 16 partner cafes &amp; research terminals across India on the spatial map.</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Desk Reservation Dock -->
+              <div class="megamenu-col-dark" style="justify-content:space-between;">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+                  <div class="cohort-narrative-card">
+                    <p class="cohort-narrative-text">
+                      <strong id="space-dock-title">sovereign desk network</strong> &ndash;
+                      <span id="space-dock-desc">Reserved quiet alcoves, dual-screen dev terminals &amp; dedicated power stations adjacent to High Courts and NCLT benches.</span>
+                    </p>
+                  </div>
+
+                  <button type="button" class="fast-track-submit-btn" id="reserve-desk-btn" onclick="closeAllMegamenus(); openReservationModal('Sovereign Work Desk / Space', 'SPACE');">
+                    <span id="reserve-desk-btn-text">reserve a desk &rarr;</span>
+                  </button>
+                </div>
+
+                <a href="tel:+919316015274" class="calnode-emergency-contact">
+                  <span style="color:#94a3b8;">emergency contact:</span>
+                  <strong style="color:#34d399;">93160-15274</strong>
+                  <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </li>
 
-        <!-- Megamenu 2: Agentic Skills (Dual-Column: Employees, Employers | Entrepreneurs, Ennovators) -->
+        <!-- Megamenu 2: Groups (Dual-Column: IBC, BNS | Upcoming Cohorts & Intake Dock) -->
+        <li class="nav-item" id="nav-item-cohorts">
+          <button type="button" class="nav-btn" aria-haspopup="true">
+            <span>groups</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
+            <div class="megamenu-grid-dual">
+              <!-- Left Column: Groups Index -->
+              <div class="megamenu-col-left">
+                <div>
+                  <h3 class="megamenu-col-title">professional groups</h3>
+                  <div class="space-y-1" id="cohorts-tracks-list">
+                    <!-- Track 1: IBC Professionals -->
+                    <a href="https://ibc.agenticprofessionals.net" class="menu-card cohort-card" data-cohort="ibc" id="cohort-card-ibc">
+                      <div class="menu-card-info">
+                        <h4>ibc professionals</h4>
+                        <p>Insolvency, liquidation waterfalls &amp; restructuring practice pods across 16 NCLT benches.</p>
+                      </div>
+                    </a>
+
+                    <!-- Track 2: BNS Professionals -->
+                    <a href="https://bns.agenticprofessionals.net" class="menu-card cohort-card" data-cohort="bns" id="cohort-card-bns">
+                      <div class="menu-card-info">
+                        <h4>bns professionals</h4>
+                        <p>Bharatiya Nyaya Sanhita, cyber forensics &amp; criminal practice clinics across 48 jurisdictions.</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Cohort Scope & Advisory Dock -->
+              <div class="megamenu-col-dark" style="justify-content:space-between;">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+                  <div class="cohort-narrative-card">
+                    <p class="cohort-narrative-text">
+                      <strong id="cohort-dock-title">upcoming cohorts</strong> &ndash;
+                      <span id="cohort-dock-desc">Next sovereign cohort sprint across IBC restructuring and BNS criminal forensics starts Dec 1st. Live peer pods, case debriefs &amp; mock bench arguments.</span>
+                    </p>
+                  </div>
+
+                  <button type="button" class="fast-track-submit-btn" id="join-cohort-btn" onclick="openCohortIntake();">
+                    <span id="join-cohort-btn-text">join a cohort &rarr;</span>
+                  </button>
+                </div>
+
+                <a href="tel:+919316015274" class="calnode-emergency-contact">
+                  <span style="color:#94a3b8;">emergency contact:</span>
+                  <strong style="color:#34d399;">93160-15274</strong>
+                  <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Megamenu 3: Events (Dual-Column: Hackathons, Conferences | Social Events & Event Creation) -->
+        <li class="nav-item" id="nav-item-events">
+          <button type="button" class="nav-btn" aria-haspopup="true">
+            <span>events</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
+            <div class="megamenu-grid-dual">
+              <!-- Left Column: Events Index -->
+              <div class="megamenu-col-left">
+                <div>
+                  <h3 class="megamenu-col-title">events</h3>
+                  <div class="space-y-1" id="events-tracks-list">
+                    <!-- Event Track 1: Hackathons -->
+                    <a href="#hackathons" class="menu-card event-card" data-event="hackathons" id="event-card-hackathons">
+                      <div class="menu-card-info">
+                        <h4>hackathons</h4>
+                        <p>High-throughput AI coding sprints, agent harness architecture workshops &amp; bench challenges.</p>
+                      </div>
+                    </a>
+
+                    <!-- Event Track 2: Conferences -->
+                    <a href="#conferences" class="menu-card event-card" data-event="conferences" id="event-card-conferences">
+                      <div class="menu-card-info">
+                        <h4>conferences</h4>
+                        <p>Annual sovereign restructuring symposiums, jurisprudential keynote summits &amp; judicial dialogues.</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Social Events & Creation Dock -->
+              <div class="megamenu-col-dark" style="justify-content:space-between;">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
+                  <div class="cohort-narrative-card">
+                    <p class="cohort-narrative-text">
+                      <strong id="event-dock-title">social events</strong> &ndash;
+                      <span id="event-dock-desc">Bhajan clubbing, mindful acoustic music sessions &amp; collaborative networking at partner cafes &amp; law libraries.</span>
+                    </p>
+                  </div>
+
+                  <button type="button" class="fast-track-submit-btn" id="create-event-btn" onclick="openEventIntake();">
+                    <span id="create-event-btn-text">create an event &rarr;</span>
+                  </button>
+                </div>
+
+                <a href="tel:+919316015274" class="calnode-emergency-contact">
+                  <span style="color:#94a3b8;">emergency contact:</span>
+                  <strong style="color:#34d399;">93160-15274</strong>
+                  <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Megamenu 4: Skills (Dual-Column: Employees, Employers | Entrepreneurs, Ennovators) -->
         <li class="nav-item" id="nav-item-skills">
           <button type="button" class="nav-btn" aria-haspopup="true">
-            <span>agentic skills</span>
+            <span>skills</span>
             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
           <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
@@ -2416,7 +2635,7 @@
               <!-- Left Column: Workforce & Process Skills (Light Surface) -->
               <div class="megamenu-col-left">
                 <div>
-                  <h3 class="megamenu-col-title">agentic skills</h3>
+                  <h3 class="megamenu-col-title">skills</h3>
                   <div class="space-y-1">
                     <!-- Card 1: Employees -->
                     <a href="http://localhost:3001/employees" target="_blank" class="menu-card skillpedia-link" data-path="/employees">
@@ -2467,116 +2686,29 @@
           </div>
         </li>
 
-        <!-- Megamenu 3: Agentic Cohorts (Dual-Column: IBC, BNS | Upcoming Cohorts & Intake Dock) -->
-        <li class="nav-item" id="nav-item-cohorts">
-          <button type="button" class="nav-btn" aria-haspopup="true">
-            <span>agentic cohorts</span>
+        <!-- Megamenu 5: Resources (Forum & Desktop App) -->
+        <li class="nav-item hayagriva-nav-item" id="nav-item-hayagriva">
+          <button type="button" class="nav-btn" id="nav-hayagriva-trigger" onclick="toggleHayagrivaDropdown(event);" aria-haspopup="true" title="Sovereign Resources &amp; Tools">
+            <span>resources</span>
             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
-            <div class="megamenu-grid-dual">
-              <!-- Left Column: Cohorts Index -->
-              <div class="megamenu-col-left">
-                <div>
-                  <h3 class="megamenu-col-title">agentic cohorts</h3>
-                  <div class="space-y-1" id="cohorts-tracks-list">
-                    <!-- Track 1: IBC Professionals -->
-                    <a href="https://ibc.agenticprofessionals.net" class="menu-card cohort-card" data-cohort="ibc" id="cohort-card-ibc">
-                      <div class="menu-card-info">
-                        <h4>ibc professionals</h4>
-                        <p>Insolvency, liquidation waterfalls &amp; restructuring practice pods across 16 NCLT benches.</p>
-                      </div>
-                    </a>
-
-                    <!-- Track 2: BNS Professionals -->
-                    <a href="https://bns.agenticprofessionals.net" class="menu-card cohort-card" data-cohort="bns" id="cohort-card-bns">
-                      <div class="menu-card-info">
-                        <h4>bns professionals</h4>
-                        <p>Bharatiya Nyaya Sanhita, cyber forensics &amp; criminal practice clinics across 48 jurisdictions.</p>
-                      </div>
-                    </a>
-                  </div>
+          <div class="megamenu-panel hayagriva-dropdown-panel" id="hayagriva-dropdown-panel" style="width: 320px; padding: 12px 14px;">
+            <div class="hayagriva-dropdown-menu">
+              <h3 class="megamenu-col-title" style="margin:0 0 8px 0;padding:0 2px 6px 2px;border-bottom:1px solid var(--slate-100);font-size:11px;font-family:var(--font-mono);font-weight:700;color:var(--slate-500);text-transform:uppercase;letter-spacing:0.5px;">resources</h3>
+              
+              <a href="/answers" class="menu-card hayagriva-menu-item" id="menu-item-answers" onclick="event.preventDefault(); closeHayagrivaDropdown(); showAnswersView(true);">
+                <div class="menu-card-info">
+                  <h4>forum</h4>
+                  <p>statutory Q&amp;A forum &amp; lightrag multi-workspace synthesis</p>
                 </div>
-              </div>
-
-              <!-- Right Column: Cohort Scope & Advisory Dock -->
-              <div class="megamenu-col-dark" style="justify-content:space-between;">
-                <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
-                  <div class="cohort-narrative-card">
-                    <p class="cohort-narrative-text">
-                      <strong id="cohort-dock-title">upcoming cohorts</strong> &ndash;
-                      <span id="cohort-dock-desc">Next sovereign cohort sprint across IBC restructuring and BNS criminal forensics starts Dec 1st. Live peer pods, case debriefs &amp; mock bench arguments.</span>
-                    </p>
-                  </div>
-
-                  <button type="button" class="fast-track-submit-btn" id="join-cohort-btn" onclick="openCohortIntake();">
-                    <span id="join-cohort-btn-text">join a cohort &rarr;</span>
-                  </button>
+              </a>
+              
+              <a href="/docs" class="menu-card hayagriva-menu-item" id="menu-item-docs" onclick="event.preventDefault(); closeHayagrivaDropdown(); showDocsView(true);">
+                <div class="menu-card-info">
+                  <h4>desktop app</h4>
+                  <p>sovereign documentation, tree-of-tokens &amp; macOS (.dmg) download</p>
                 </div>
-
-                <a href="tel:+919316015274" class="calnode-emergency-contact">
-                  <span style="color:#94a3b8;">emergency contact:</span>
-                  <strong style="color:#34d399;">93160-15274</strong>
-                  <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <!-- Megamenu 4: Agentic Events (Dual-Column: Hackathons, Conferences | Social Events & Event Creation) -->
-        <li class="nav-item" id="nav-item-events">
-          <button type="button" class="nav-btn" aria-haspopup="true">
-            <span>agentic events</span>
-            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
-          </button>
-          <div class="megamenu-panel" style="width: 660px; padding: 14px 16px;">
-            <div class="megamenu-grid-dual">
-              <!-- Left Column: Events Index -->
-              <div class="megamenu-col-left">
-                <div>
-                  <h3 class="megamenu-col-title">agentic events</h3>
-                  <div class="space-y-1" id="events-tracks-list">
-                    <!-- Event Track 1: Hackathons -->
-                    <a href="#hackathons" class="menu-card event-card" data-event="hackathons" id="event-card-hackathons">
-                      <div class="menu-card-info">
-                        <h4>hackathons</h4>
-                        <p>High-throughput AI coding sprints, agent harness architecture workshops &amp; bench challenges.</p>
-                      </div>
-                    </a>
-
-                    <!-- Event Track 2: Conferences -->
-                    <a href="#conferences" class="menu-card event-card" data-event="conferences" id="event-card-conferences">
-                      <div class="menu-card-info">
-                        <h4>conferences</h4>
-                        <p>Annual sovereign restructuring symposiums, jurisprudential keynote summits &amp; judicial dialogues.</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Right Column: Social Events & Creation Dock -->
-              <div class="megamenu-col-dark" style="justify-content:space-between;">
-                <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0;">
-                  <div class="cohort-narrative-card">
-                    <p class="cohort-narrative-text">
-                      <strong id="event-dock-title">social events</strong> &ndash;
-                      <span id="event-dock-desc">Bhajan clubbing, mindful acoustic music sessions &amp; collaborative networking at partner cafes &amp; law libraries.</span>
-                    </p>
-                  </div>
-
-                  <button type="button" class="fast-track-submit-btn" id="create-event-btn" onclick="openEventIntake();">
-                    <span id="create-event-btn-text">create an event &rarr;</span>
-                  </button>
-                </div>
-
-                <a href="tel:+919316015274" class="calnode-emergency-contact">
-                  <span style="color:#94a3b8;">emergency contact:</span>
-                  <strong style="color:#34d399;">93160-15274</strong>
-                  <span style="color:#64748b;">(11 am &ndash; 4 pm)</span>
-                </a>
-              </div>
+              </a>
             </div>
           </div>
         </li>
@@ -2584,52 +2716,22 @@
       </ul>
     </nav>
 
-    <!-- 3. Actions Tray (Right: Hayagriva Unified Dropdown + Contextual Profile Avatar) -->
+    <!-- 3. Actions Tray (Right: Shopping Cart Icon & Contextual Sign In / Profile Avatar) -->
     <div class="actions-tray">
-      <!-- Hayagriva Sovereign Intelligence Dropdown -->
-      <div class="hayagriva-nav-item" id="nav-hayagriva-menu-item">
-        <button type="button" class="hayagriva-btn" id="nav-hayagriva-trigger" onclick="toggleHayagrivaDropdown(event);" title="Hayagriva Sovereign Intelligence">
-          <span>hayagriva</span>
-          <svg class="dropdown-chevron" viewBox="0 0 10 6" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 1l4 4 4-4"/>
-          </svg>
+      <!-- Shopping Cart Icon (Dossiers, Reports, Invoices) -->
+      <button type="button" class="catalog-nav-btn cart-btn" id="nav-cart-btn" title="purchased reports / cart" aria-label="cart" onclick="handleCartClick();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+          <circle cx="8" cy="21" r="1"/>
+          <circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+      </button>
+
+      <!-- Logged-Out State: Standalone Sign In Button -->
+      <div id="auth-logged-out-tray" style="display:flex;align-items:center;">
+        <button type="button" class="catalog-nav-btn signin-nav-btn" id="open-auth-btn" onclick="openAuthModal('Sign in to your practitioner account');">
+          <span>sign in</span>
         </button>
-
-        <div class="hayagriva-dropdown-panel" id="hayagriva-dropdown-panel">
-          <div class="hayagriva-dropdown-menu">
-            <h3 class="megamenu-col-title" style="margin:0 0 6px 0;padding:0 2px 5px 2px;border-bottom:1px solid var(--slate-100);font-size:11px;font-family:var(--font-mono);font-weight:700;color:var(--slate-500);text-transform:uppercase;letter-spacing:0.5px;">hayagriva sovereign</h3>
-            
-            <a href="/answers" class="menu-card hayagriva-menu-item" id="menu-item-answers" onclick="event.preventDefault(); closeHayagrivaDropdown(); showAnswersView(true);">
-              <div class="menu-card-info">
-                <h4>answers</h4>
-                <p>statutory forum &amp; lightrag multi-workspace synthesis</p>
-              </div>
-            </a>
-            
-            <a href="/docs" class="menu-card hayagriva-menu-item" id="menu-item-docs" onclick="event.preventDefault(); closeHayagrivaDropdown(); showDocsView(true);">
-              <div class="menu-card-info">
-                <h4>documentation</h4>
-                <p>pageindex document harness, tree-of-tokens &amp; sdks</p>
-              </div>
-            </a>
-
-            <a href="#download-desktop" class="menu-card hayagriva-menu-item" id="menu-item-desktop" onclick="event.preventDefault(); closeHayagrivaDropdown(); handleDownloadDesktop();">
-              <div class="menu-card-info">
-                <h4>desktop app</h4>
-                <p>download sovereign hayagriva desktop for macos (.dmg)</p>
-              </div>
-            </a>
-
-            <!-- Unauthenticated Quiet Sign In Option (Hidden when user is logged in) -->
-            <div class="hayagriva-dropdown-divider" id="hayagriva-guest-divider"></div>
-            <a href="#signin" class="menu-card hayagriva-menu-item hayagriva-signin-link" id="hayagriva-guest-signin" onclick="event.preventDefault(); closeHayagrivaDropdown(); openAuthModal('Sign in to your practitioner account');">
-              <div class="menu-card-info">
-                <h4 style="color:var(--brand-blue);">sign in</h4>
-                <p>registered practitioners portal access &rarr;</p>
-              </div>
-            </a>
-          </div>
-        </div>
       </div>
 
       <!-- Authenticated Practitioner Profile Avatar (Hidden by default for guests) -->
@@ -2661,9 +2763,9 @@
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
               <span>Pinned Spaces (<span id="profile-bookmarks-count">0</span>)</span>
             </a>
-            <a href="/answers" class="profile-menu-item" onclick="event.preventDefault(); closeProfileDropdown(); showAnswersView(true);">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              <span>My Inquiries &amp; Discussions</span>
+            <a href="#" class="profile-menu-item" onclick="event.preventDefault(); closeProfileDropdown(); handleCartClick();">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+              <span>Purchased Dossiers &amp; Cart</span>
             </a>
             <div class="hayagriva-dropdown-divider"></div>
             <button type="button" class="profile-signout-btn" onclick="handleSignOut();">
@@ -4166,8 +4268,7 @@ for citation in answer.citations:
 
       function initAuth() {
         const user = getCurrentUser();
-        const guestSignin = document.getElementById('hayagriva-guest-signin');
-        const guestDivider = document.getElementById('hayagriva-guest-divider');
+        const loggedOutTray = document.getElementById('auth-logged-out-tray');
         const profileWrap = document.getElementById('nav-user-profile');
         const initialsEl = document.getElementById('user-avatar-initials');
         const initialsLgEl = document.getElementById('user-avatar-initials-lg');
@@ -4181,9 +4282,8 @@ for citation in answer.citations:
         }
 
         if (user && user.name) {
-          // Authenticated State: Show profile avatar, hide guest sign-in in dropdown
-          if (guestSignin) guestSignin.style.display = 'none';
-          if (guestDivider) guestDivider.style.display = 'none';
+          // Authenticated State: Show profile avatar, hide standalone sign-in
+          if (loggedOutTray) loggedOutTray.style.display = 'none';
           if (profileWrap) profileWrap.style.display = 'block';
 
           const initials = user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'AP';
@@ -4195,12 +4295,20 @@ for citation in answer.citations:
           if (fullNameEl) fullNameEl.textContent = user.name;
           if (roleSubEl) roleSubEl.textContent = user.role || user.email || 'Verified Practitioner';
         } else {
-          // Guest State: Hide profile avatar, show quiet sign-in inside Hayagriva dropdown
+          // Guest State: Hide profile avatar, show standalone sign-in
           if (profileWrap) profileWrap.style.display = 'none';
-          if (guestSignin) guestSignin.style.display = 'flex';
-          if (guestDivider) guestDivider.style.display = 'block';
+          if (loggedOutTray) loggedOutTray.style.display = 'flex';
         }
       }
+
+      window.handleCartClick = function() {
+        const user = getCurrentUser();
+        if (!user) {
+          openAuthModal('Sign in to view your purchased dossiers, reports and active cart');
+        } else {
+          alert('Cart active for ' + user.name + ': 0 pending items. Purchased statutory dossiers and reports are synchronized across IBC & BNS practice hubs.');
+        }
+      };
 
       window.handleSignOut = function() {
         localStorage.removeItem('agentic_user');
@@ -4246,7 +4354,7 @@ for citation in answer.citations:
           e.preventDefault();
           e.stopPropagation();
         }
-        const item = document.getElementById('nav-hayagriva-menu-item');
+        const item = document.getElementById('nav-item-hayagriva') || document.getElementById('nav-hayagriva-menu-item');
         if (!item) return;
         const isOpen = item.classList.contains('is-open');
         closeAllMegamenus();
@@ -4255,7 +4363,7 @@ for citation in answer.citations:
       window.toggleHayagrivaDropdown = toggleHayagrivaDropdown;
 
       function closeHayagrivaDropdown() {
-        const item = document.getElementById('nav-hayagriva-menu-item');
+        const item = document.getElementById('nav-item-hayagriva') || document.getElementById('nav-hayagriva-menu-item');
         if (item) item.classList.remove('is-open');
       }
       window.closeHayagrivaDropdown = closeHayagrivaDropdown;
@@ -4935,7 +5043,80 @@ for citation in answer.citations:
         });
       }
 
-      // ─── 12. Agentic Cohorts Interactive Switcher & Deep Linking ───
+      // ─── 12. Spaces Megamenu Switcher ───
+      const SPACE_METADATA = {
+        default: {
+          title: "sovereign desk network",
+          desc: "Reserved quiet alcoves, dual-screen dev terminals & dedicated power stations adjacent to High Courts and NCLT benches.",
+          btnText: "reserve a desk \u2192"
+        },
+        cafe: {
+          title: "coworking cafes",
+          desc: "Curated work-from-cafes with dedicated 300+ Mbps fiber lines, quiet courtyard alcoves & barista roasts near court districts.",
+          btnText: "find a work cafe \u2192"
+        },
+        library: {
+          title: "coworking libraries",
+          desc: "10 high-performance workstations with 4K dual displays, dev containers & complete offline corpus of agentic AI & statutory law.",
+          btnText: "reserve a terminal \u2192"
+        },
+        ALL: {
+          title: "all sovereign spaces",
+          desc: "16 verified workspaces across Delhi NCR, Mumbai, Bengaluru, Hyderabad, Kolkata, Chandigarh, Pune, and Ahmedabad.",
+          btnText: "explore map radar \u2192"
+        }
+      };
+
+      function initSpaceSwitcher() {
+        const dockTitle = document.getElementById('space-dock-title');
+        const dockDesc = document.getElementById('space-dock-desc');
+        const dockBtnText = document.getElementById('reserve-desk-btn-text');
+        const cards = document.querySelectorAll('.space-menu-card');
+
+        function setSpaceMeta(key) {
+          const data = SPACE_METADATA[key] || SPACE_METADATA.default;
+          if (dockTitle) dockTitle.textContent = data.title;
+          if (dockDesc) dockDesc.textContent = data.desc;
+          if (dockBtnText) dockBtnText.innerHTML = data.btnText;
+
+          cards.forEach(c => {
+            if (c.dataset.spaceType === key) {
+              c.classList.add('selected');
+            } else {
+              c.classList.remove('selected');
+            }
+          });
+        }
+
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            setSpaceMeta(card.dataset.spaceType);
+          });
+          card.addEventListener('focus', () => {
+            setSpaceMeta(card.dataset.spaceType);
+          });
+        });
+
+        const spacesPanel = document.querySelector('#nav-item-spaces .megamenu-panel');
+        if (spacesPanel) {
+          spacesPanel.addEventListener('mouseleave', () => {
+            setSpaceMeta('default');
+          });
+        }
+      }
+
+      window.switchSpacesFilter = function(type) {
+        closeAllMegamenus();
+        showRadarView(true);
+        if (typeof switchRadarMode === 'function') {
+          switchRadarMode('spaces');
+        }
+        if (typeof setSpacesTypeFilter === 'function') {
+          setSpacesTypeFilter(type);
+        }
+      };
+
+      // ─── 13. Professional Groups Interactive Switcher & Deep Linking ───
       const COHORT_METADATA = {
         default: {
           title: "upcoming cohorts",
@@ -5079,13 +5260,14 @@ for citation in answer.citations:
         initMap();
         loadRadarData();
         initSkillpediaLinks();
+        initSpaceSwitcher();
         initCohortSwitcher();
         initEventSwitcher();
         initAuth();
 
         // Close dropdowns on outside click
         document.addEventListener('click', function (e) {
-          if (!e.target.closest('#nav-hayagriva-menu-item')) {
+          if (!e.target.closest('#nav-item-hayagriva') && !e.target.closest('#nav-hayagriva-menu-item')) {
             closeHayagrivaDropdown();
           }
           if (!e.target.closest('#nav-user-profile')) {

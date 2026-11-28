@@ -67,3 +67,24 @@ The master platform is **Agentic Professionals** (`agenticprofessionals.net`). T
 - **Tab 3 (Forensic Agents ⌄):** Megamenu with PUFE audit tracks and Calnode practitioner booking.
 - **Tab 4 (Advisory Agents):** Opens the 3-panel LightRAG statutory forum canvas.
 - **Right Tray:** Cart icon (`🛒`) opens the reports catalog; `sign in` opens contextual JIT authentication.
+
+---
+
+## 5. Root Gateway Header Architecture (`agenticprofessionals.net` / Port 3000 & 8080)
+
+### Visual Blueprint
+```text
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [🦄] agentic professionals    spaces ⌄    groups ⌄    events ⌄    skills ⌄    resources ⌄    🛒    sign in │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### The 5 Pillars & Actions Tray
+1. **`[🦄] agentic professionals`:** Sovereign master brand logo (`font-family: 'Inter'`, `18px`, `font-weight: 700`, `letter-spacing: -0.4px`, `#0f172a`).
+2. **`spaces ⌄` (Megamenu):** Dual-column spatial directory housing **coworking cafes** (8 partner cafes with 300+ Mbps fiber), **coworking libraries** (8 silent AI research sanctuaries with 4K workstations), and the **desk reservation dock**.
+3. **`groups ⌄` (Megamenu):** Insolvency (IBC), criminal forensics (BNS), and upcoming cohort intake sprints.
+4. **`events ⌄` (Megamenu):** Coding hackathons, sovereign symposiums, mindful acoustic evenings, and event proposals.
+5. **`skills ⌄` (Megamenu):** 2,176 NSQF approved roles, 13,000+ process SOPs, and MSME project blueprints.
+6. **`resources ⌄` (Flyout):** Sovereign knowledge & software hub housing **forum** (Statutory LightRAG Answers) and **desktop app** (PageIndex Harness Docs with embedded macOS `.dmg` download CTA on the right rail).
+7. **`🛒` (Right Tray):** Synchronized purchased dossiers & reports cart.
+8. **`sign in` (Right Tray):** Direct one-click practitioner gateway; transitions to user avatar `(AP)` upon authentication.
